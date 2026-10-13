@@ -68,8 +68,8 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 30. [Laboratorio II](#ch-30)
 31. [Infraestructura crítica y seguridad sectorial: casos avanzados](#ch-31)
 32. [Infraestructura crítica y seguridad sectorial: interfaces interdisciplinarias](#ch-32)
-33. [Métodos de investigación II](../../en/book/MANUSCRIPT.md#ch-33)
-34. [Proyecto comparativo](../../en/book/MANUSCRIPT.md#ch-34)
+33. [Métodos de investigación II](#ch-33)
+34. [Proyecto comparativo](#ch-34)
 35. [Propuesta del proyecto final](../../en/book/MANUSCRIPT.md#ch-35)
 36. [Práctica de campo o comunitaria](../../en/book/MANUSCRIPT.md#ch-36)
 37. [Seminario de revisión de la evidencia](../../en/book/MANUSCRIPT.md#ch-37)
@@ -2386,7 +2386,157 @@ La seguridad en los servicios críticos se sitúa entre el derecho, la economía
 <!-- cyberabc:chapter-navigation:start ch-32 -->
 ### Siga estudiando — capítulo 32 de 40
 
-[← Capítulo 31](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 →](../../en/book/MANUSCRIPT.md#ch-33)
+[← Capítulo 31](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de investigación II
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) diseñar entrevistas y análisis documentales como métodos cualitativos, incluidos la aprobación ética y el consentimiento; (2) codificar datos cualitativos con un libro de códigos y comprobar el acuerdo entre codificadores; (3) hacer reproducible un análisis cuantitativo; y (4) combinar evidencia cualitativa y cuantitativa en un diseño de métodos mixtos. Se apoya en el capítulo 18 y prepara el proyecto comparativo (capítulo 34) y el proyecto final (capítulos 35–40).
+
+### 33.1 Métodos cualitativos
+
+Muchas preguntas importantes de la seguridad de los sectores críticos tratan sobre personas y organizaciones: por qué los operadores eluden un control, cómo se tomaron las decisiones durante un incidente, qué creen los profesionales que funciona. Las **entrevistas semiestructuradas** siguen una guía de preguntas abiertas y permiten repreguntar. El **análisis documental** examina planes, informes y políticas. Ambos requieren la **aprobación ética** de su institución cuando implican a personas, el **consentimiento informado** (los participantes conocen el propósito, qué se registrará y cómo se almacenará, y pueden retirarse) y la protección de los participantes y de sus organizaciones: en su tesis no debe aparecer ningún detalle que identifique a una persona o exponga una vulnerabilidad de un operador real. Las notas de entrevistas sobre debilidades de seguridad son datos sensibles; almacénelas cifradas y elimínelas según el calendario previsto (capítulo 14).
+
+### 33.2 Codificación y acuerdo
+
+La **codificación** asigna etiquetas a los fragmentos: «respaldo en papel», «dependencia de un proveedor», «responsable de la decisión poco claro». Un **libro de códigos** define cada código con reglas de inclusión y exclusión y un ejemplo. Para comprobar la **fiabilidad**, dos personas codifican la misma muestra de forma independiente y miden el acuerdo. El porcentaje de acuerdo bruto sobrestima la fiabilidad porque parte del acuerdo se produce por azar; el **kappa de Cohen** lo corrige: $\kappa = (p_o - p_e)/(1 - p_e)$, donde $p_o$ es el acuerdo observado y $p_e$ el acuerdo esperado por azar a partir de las frecuencias de etiquetado de cada codificador. Los desacuerdos no son fracasos; discutirlos afina el libro de códigos.
+
+### 33.3 Análisis cuantitativo reproducible
+
+Un análisis reproducible mantiene inalterados los datos brutos, realiza todas las transformaciones mediante scripts, registra las versiones y las semillas aleatorias y produce cada número del informe a partir del código ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)). Los laboratorios de este libro siguen estas reglas: semillas fijas, solo la biblioteca estándar, salidas impresas reproducidas en el texto. Si se usa una simulación o un modelo, indique cómo se contrastó con la realidad: la verificación y validación de modelos de simulación es una disciplina en sí misma ([Sargent, 2013](https://doi.org/10.1057/jos.2012.20)).
+
+### 33.4 Métodos mixtos
+
+La evidencia cuantitativa dice **cuánto**; la evidencia cualitativa dice **cómo y por qué**. Un diseño de métodos mixtos podría contar, en 30 informes públicos de incidentes, cuántos mencionan un paso a la operación manual como respaldo (cuantitativo) y después entrevistar a cuatro operadores sobre qué hace que funcione el respaldo manual (cualitativo). La combinación es más sólida que cualquiera de las dos partes por separado, siempre que cada parte se haga correctamente y que la integración (cómo informa una a la otra) sea explícita. En el diseño de los 30 informes, el vínculo se fija antes de la recogida: cualquier condición del respaldo que aparezca en al menos cinco informes se convierte en una pregunta de la entrevista.
+
+En el ejemplo de los 30 informes, el recuento le dice con qué frecuencia mencionan los informes el respaldo manual, y las entrevistas explican por qué el respaldo falla a veces, por ejemplo porque el personal no lo ha practicado. Integración significa que la guía de entrevista pregunta por las condiciones que reveló el recuento.
+
+### 33.5 Ejemplo resuelto: codificación de informes de incidentes (datos sintéticos)
+
+**Los datos son sintéticos.** Dos estudiantes codifican 20 extractos de informes de incidentes según la presencia del código «responsable de la decisión poco claro». Coinciden en 16 de 20 ($p_o = 0.80$). El estudiante A aplicó el código a 8 extractos; el estudiante B, a 6. Acuerdo por azar: ambos «sí» $= (8/20)(6/20) = 0.12$; ambos «no» $= (12/20)(14/20) = 0.42$; $p_e = 0.54$. Kappa $= (0.80 - 0.54)/(1 - 0.54) = 0.26/0.46 \approx 0.57$: acuerdo moderado. Los estudiantes revisan los cuatro desacuerdos, descubren que uno codificó «decisión retrasada» como «responsable poco claro» incluso cuando el responsable estaba nombrado, y precisan la definición: «se aplica solo cuando el informe afirma o muestra que los participantes no sabían quién tenía la decisión».
+
+### 33.6 Errores comunes y límites
+
+- Entrevistar a profesionales sin aprobación ética ni consentimiento.
+- Publicar detalles identificables de las debilidades de operadores reales.
+- Presentar el porcentaje de acuerdo como fiabilidad.
+- Pasos del análisis hechos a mano y no registrados.
+- «Métodos mixtos» que son dos estudios separados que nunca se integran.
+
+En el ejemplo de codificación, informar de un 80 % de acuerdo en lugar de un kappa de 0,57 sería el tercer error. Entrevistar a ingenieros de la CRP sobre el acceso remoto sin consentimiento ni aprobación sería el primero, y citar la pasarela sin parchear de un operador identificado sería el segundo. Una hoja de cálculo editada a mano sin registro sería el cuarto.
+
+### Ejercicios — capítulo 33
+
+**EX065 — Calcule kappa.** *Objetivo:* medir la fiabilidad. *Entradas:* dos codificadores, 40 extractos, coinciden en 34; el codificador A aplicó el código 10 veces y el codificador B, 12. *Pasos:* calcule $p_o$, $p_e$ y $\kappa$, e interprételos. *Evidencia esperada:* cálculos e interpretación. *Rúbrica:* 3 = $p_o = 0.85$; $p_e = 0.25 \times 0.30 + 0.75 \times 0.70 = 0.075 + 0.525 = 0.60$; $\kappa = 0.625$, acuerdo entre sustancial y moderado, con la observación de que las escalas de interpretación son convenciones; 2 = error aritmético; 1 = solo $p_o$; 0 = nada.
+
+**EX066 — Consentimiento y protección.** *Objetivo:* diseñar un trabajo cualitativo ético. *Entradas:* el plan de entrevistar a ingenieros de tres operadores de la CRP sobre sus prácticas de acceso remoto. *Pasos:* escriba la información para el consentimiento (cinco puntos) y tres medidas de protección de datos. *Evidencia esperada:* listas. *Rúbrica:* 3 = propósito, participación voluntaria/retirada, qué se registra, almacenamiento/conservación, cómo se anonimizan los resultados, más cifrado, seudónimos y ningún detalle de vulnerabilidades en los resultados/revisión por la organización anfitriona; 2 = parcial; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Los métodos cualitativos responden al cómo y al porqué; necesitan aprobación ética, consentimiento y protección de los participantes y de las organizaciones. Los libros de códigos y kappa hacen fiable la codificación; los scripts, las semillas y las versiones hacen reproducible el análisis cuantitativo; los métodos mixtos solo valen lo que valga su integración.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Siga estudiando — capítulo 33 de 40
+
+[← Capítulo 32](#ch-32) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Proyecto comparativo
+
+### Resultados de aprendizaje y conexión
+
+Después de este proyecto usted podrá (1) comparar tres o más opciones según criterios explícitos con pesos y evidencias; (2) comprobar la sensibilidad de la clasificación a los pesos; (3) presentar una comparación que un responsable de la decisión pueda cuestionar; y (4) reconocer cuándo una puntuación ponderada oculta una consideración decisiva. Se apoya en los capítulos 1, 15, 23 y 24 y prepara la propuesta del proyecto final (capítulo 35). Es la expresión central del resultado del curso: comparar métodos, evaluar evidencias y diseñar soluciones defendibles.
+
+### 34.1 Comparación multicriterio
+
+Las decisiones sobre servicios críticos implican varios criterios que no comparten unidad: reducción de la consecuencia, carga operativa, coste, plazo de implantación, solidez de la evidencia de que la opción funciona. El **análisis de decisión multicriterio** puntúa cada opción en cada criterio, pondera los criterios y los combina, en el caso más sencillo como una suma ponderada. Su valor reside menos en el número final que en hacer visibles los criterios, las puntuaciones y los pesos para que las personas puedan discutirlos de forma productiva. En la evaluación de los dispositivos sin soporte del proyecto final (capítulo 39), el peso del coste se imprime junto a cada puntuación, y así es como un lector puede ver que la pasarela del proveedor gana cuando ese peso supera 0,45.
+
+### 34.2 Hacerlo con honestidad
+
+Defina cada criterio de modo que más alto sea mejor (invierta los costes y las cargas). Puntúe en una escala anclada («5 = elimina la peor consecuencia creíble; 1 = ningún efecto medible»). Registre la evidencia detrás de cada puntuación (capítulo 15). Fije los pesos *antes* de puntuar, idealmente con las partes interesadas, para evitar ajustar los pesos a una opción favorita. Después realice un **análisis de sensibilidad**: varíe los pesos y vea si cambia la ganadora. Si solo cambia con pesos inverosímiles, la decisión es robusta; si pequeños cambios la invierten, informe de que la decisión depende de un juicio de valor y nómbrelo.
+
+### 34.3 Cuando una puntuación no basta
+
+Algunas consideraciones son **restricciones**, no criterios: una obligación legal, un requisito de seguridad funcional, un nivel mínimo de servicio. Una opción que vulnera una restricción queda excluida, sea cual sea su puntuación. Otras son **vetos** de personas con autoridad (el rechazo de un director clínico a una opción que perturba los quirófanos). Trátelas explícitamente antes de puntuar. Para el CEDC, el requisito del regulador de restablecer el servicio en cuatro horas es una restricción (EX068), que excluye las opciones que no puedan demostrarlo. El veto de un director clínico a una opción que cierra los quirófanos durante una semana se trata del mismo modo.
+
+### 34.4 Ejemplo resuelto y Lab 13 (sintético)
+
+**Este caso es sintético.** La CRP compara tres opciones de resiliencia frente al ransomware para el CEDC con cuatro criterios y pesos de 0,4, 0,2, 0,2 y 0,2.
+
+```python
+# Lab 13 - weighted comparison of three options and weight sensitivity (synthetic scores, offline)
+CRITERIA = ["consequence reduction", "operational burden (inverted)", "cost (inverted)", "evidence strength"]
+W = [0.4, 0.2, 0.2, 0.2]
+SCORES = {  # 1-5, higher is better
+    "network segmentation project": [5, 2, 2, 4],
+    "managed detection service":    [3, 4, 3, 3],
+    "offline backups + restore drills": [4, 4, 4, 5],
+}
+def total(s, w): return sum(a * b for a, b in zip(s, w))
+for name, s in SCORES.items():
+    print(f"{name:33} {total(s, W):.2f}")
+print("weight on consequence needed for segmentation to win:")
+for wc in (0.4, 0.5, 0.6, 0.7, 0.8):
+    rest = (1 - wc) / 3
+    w = [wc, rest, rest, rest]
+    best = max(SCORES, key=lambda k: total(SCORES[k], w))
+    print(f"  w_consequence={wc:.1f} -> {best}")
+```
+
+Salida esperada:
+
+```text
+network segmentation project      3.60
+managed detection service         3.20
+offline backups + restore drills  4.20
+weight on consequence needed for segmentation to win:
+  w_consequence=0.4 -> offline backups + restore drills
+  w_consequence=0.5 -> offline backups + restore drills
+  w_consequence=0.6 -> offline backups + restore drills
+  w_consequence=0.7 -> network segmentation project
+  w_consequence=0.8 -> network segmentation project
+```
+
+Las copias de seguridad con simulacros de restauración ganan con los pesos acordados y siguen por delante hasta que la reducción de la consecuencia representa entre 0,6 y 0,7 del peso total. Por tanto, el informe dice: «Recomendación: copias de seguridad fuera de línea con simulacros de restauración. La recomendación solo se invierte si la asociación otorga a la reducción de la consecuencia más de aproximadamente 0,63 de la decisión (el EX067 deduce el punto de cruce exacto), en cuyo caso se prefiere la segmentación. Las opciones no son excluyentes; la segmentación es la candidata más sólida para el segundo año». Observe lo que las puntuaciones no recogen: las copias de seguridad permiten recuperarse del ransomware, pero no impiden el robo de datos que a menudo lo acompaña, una consideración que debe declararse explícitamente y no esconderse en un número.
+
+### 34.5 Entregable del proyecto
+
+Un informe comparativo de 2500 palabras sobre una pregunta de su elección dentro del caso Calder o sobre un tema público documentado (por ejemplo, tres enfoques del acceso remoto, tres estrategias de copia de seguridad, tres opciones de supervisión): restricciones, criterios con escalas ancladas, evidencia de cada puntuación, pesos fijados de antemano, análisis de sensibilidad, recomendación con condiciones de inversión y límites. Para la comparación de los dispositivos sin soporte del proyecto final (capítulo 39), ese peso es 0,45 en el coste; por debajo gana el aislamiento con supervisión, por encima gana la pasarela del proveedor. Declare la condición de inversión con palabras, como hace el informe del Lab 13: el peso con el que cambiaría la recomendación y el juicio de valor que representa ese peso.
+
+### 34.6 Errores comunes y límites
+
+- Puntuar primero y elegir los pesos después.
+- Puntuaciones sin anclar («un 4 porque me parece bien»).
+- Ignorar las restricciones y los vetos.
+- Presentar un total ponderado como una verdad objetiva.
+- Tratar las opciones como mutuamente excluyentes cuando pueden combinarse.
+
+El Lab 13 evita el primero al fijar los pesos en 0,4, 0,2, 0,2 y 0,2 antes de puntuar. El informe también señala que la segmentación y las copias de seguridad pueden combinarse, con lo que evita el quinto error. Una puntuación de 4 en solidez de la evidencia necesita los registros de los simulacros que la respaldan; sin ellos, es el segundo error. Presentar 4,20 como una prueba sería el cuarto.
+
+### Ejercicios — capítulo 34
+
+**EX067 — Encuentre el punto de cruce.** *Objetivo:* localizar el punto de inversión. *Entradas:* el Lab 13. *Pasos:* calcule el peso exacto de la consecuencia con el que la segmentación y las copias de seguridad empatan, usando la regla de reparto igualitario para los demás pesos. *Evidencia esperada:* deducción y valor. *Rúbrica:* 3 = segmentación $5w + (2+2+4)(1-w)/3$, copias de seguridad $4w + (4+4+5)(1-w)/3$; empate cuando $w = 5(1-w)/3$, por lo que $w = 5/8 = 0.625$; 2 = búsqueda numérica hasta 0,62–0,63; 1 = solo el intervalo 0,6–0,7; 0 = nada.
+
+**EX068 — Añada una restricción.** *Objetivo:* tratar un requisito no compensatorio. *Entradas:* el regulador del CEDC exige un restablecimiento demostrado en 4 horas. *Pasos:* explique cómo cambia esto el análisis y qué evidencia debe aportar cada opción. *Evidencia esperada:* explicación. *Rúbrica:* 3 = tratado como restricción y no como criterio; solo cumplen las opciones que demuestran el restablecimiento (las copias de seguridad con simulacros, directamente; la segmentación y la detección no restablecen, por lo que deben combinarse con una capacidad de recuperación); 2 = tratado como un peso elevado; 1 = ignorado; 0 = nada.
+
+### Síntesis del capítulo
+
+La comparación es la habilidad central del grado: criterios explícitos, puntuaciones ancladas, evidencias, pesos fijados de antemano, análisis de sensibilidad y condiciones de inversión declaradas. Las restricciones y los vetos van antes de puntuar, y un total ponderado es un argumento estructurado, no un veredicto.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Siga estudiando — capítulo 34 de 40
+
+[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](../../en/book/MANUSCRIPT.md#ch-35)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2524,6 +2674,14 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX063.** Modelo: «Nuestro modelo de resiliencia eléctrica (con números sintéticos) muestra que el diseño de respaldo del CVH necesita dos fallas para cortar la alimentación a las áreas críticas: un corte de la red y una falla del respaldo. Una debilidad elude esto: el sistema de gestión del edificio puede desconectar por sí solo los circuitos críticos. Si se usara indebidamente, los pacientes de quirófanos y cuidados intensivos podrían quedarse sin alimentación sin ningún problema en la red. Proponemos un cambio de ingeniería (unas 25 000 £, cifra ilustrativa) para que el sistema del edificio no pueda desconectar los circuitos críticos. Las probabilidades del modelo son estimaciones y un atacante no se comporta de forma aleatoria, por lo que el argumento se basa en eliminar el punto único de falla, no en los números exactos».
 
 **EX064.** Riesgo: un operador que teclea mal una contraseña bajo estrés, o un atacante que introduce deliberadamente contraseñas erróneas, bloquea la HMI durante una emergencia e impide el control. Alternativas: ningún bloqueo en las HMI de la sala de control, combinado con control de acceso físico a la sala, limitación de tasa, alertas ante fallos repetidos y un procedimiento de anulación de emergencia con auditoría; autenticación robusta donde no obstaculice la respuesta (p. ej., tarjetas inteligentes).
+
+**EX065.** $p_o = 34/40 = 0.85$. Codificador A: 10/40 = 0,25 «sí»; B: 12/40 = 0,30 «sí». $p_e = 0.25 \times 0.30 + 0.75 \times 0.70 = 0.075 + 0.525 = 0.60$. $\kappa = (0.85 - 0.60)/(1 - 0.60) = 0.625$. Convencionalmente se describe como acuerdo sustancial; las escalas son convenciones, así que informe del valor, discuta los desacuerdos y afine el libro de códigos.
+
+**EX066.** Información para el consentimiento: propósito del estudio; participación voluntaria y derecho a retirarse hasta una fecha indicada; qué se registra (notas o audio) y por qué; cómo se almacenan los datos, durante cuánto tiempo y quién los ve; cómo se presentarán los resultados (anonimizados, sin detalles que identifiquen a la organización ni vulnerabilidades, revisión por la organización anfitriona). Protección de datos: almacenamiento cifrado, seudónimos para personas y organizaciones, eliminación de las notas brutas tras la transcripción y según el calendario previsto, y ningún detalle técnico de vulnerabilidades en ningún resultado.
+
+**EX067.** Puntuación de la segmentación $= 5w + 8(1-w)/3$; copias de seguridad $= 4w + 13(1-w)/3$. Empate: $w = 5(1-w)/3 \Rightarrow 3w = 5 - 5w \Rightarrow w = 5/8 = 0.625$. Ambas puntúan 4,125 en ese punto. Por encima de 0,625 gana la segmentación.
+
+**EX068.** El requisito es una restricción, no un criterio ponderado: una opción que no puede demostrar el restablecimiento en 4 horas queda excluida. Las copias de seguridad con simulacros de restauración pueden aportar la demostración directamente (registros de los simulacros, idealmente observados por terceros independientes). La segmentación y la detección gestionada reducen la probabilidad o la propagación del ransomware, pero no restablecen el servicio; solo cumplen si se combinan con una capacidad de recuperación demostrada. La comparación pasa a ser entre combinaciones que cumplen la restricción.
 
 <a id="glossary"></a>
 

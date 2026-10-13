@@ -2603,7 +2603,7 @@ weight on consequence needed for segmentation to win:
   w_consequence=0.8 -> network segmentation project
 ```
 
-Backups with restore drills win under the agreed weights and remain ahead until consequence reduction carries between 0.6 and 0.7 of the total weight. The report therefore says: "Recommended: offline backups with restore drills. The recommendation reverses only if the partnership values consequence reduction at more than about two-thirds of the decision, in which case segmentation is preferred. The options are not exclusive; segmentation is the strongest second-year candidate." Note what the scores do not capture: backups recover from ransomware but do not prevent the data theft that often accompanies it — a consideration to state explicitly, not hide in a number.
+Backups with restore drills win under the agreed weights and remain ahead until consequence reduction carries between 0.6 and 0.7 of the total weight. The report therefore says: "Recommended: offline backups with restore drills. The recommendation reverses only if the partnership values consequence reduction at more than about 0.63 of the decision (EX067 derives the exact crossover), in which case segmentation is preferred. The options are not exclusive; segmentation is the strongest second-year candidate." Note what the scores do not capture: backups recover from ransomware but do not prevent the data theft that often accompanies it — a consideration to state explicitly, not hide in a number.
 
 ### 34.5 Project deliverable
 
