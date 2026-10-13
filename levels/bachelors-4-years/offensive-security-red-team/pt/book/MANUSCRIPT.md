@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Bacharelado
 
 - Idioma: português do Brasil (`pt`); bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 40 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–40 (EX049–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 40 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–40 (EX073–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de segurança e de computação em geral.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a construção de plataformas de avaliação; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a implementação. **Este livro une teoria, casos, laboratórios e um projeto final.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
 
-Capítulos 17–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
+Capítulos 25–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1395,11 +1395,742 @@ Arquitetura é zonas, fluxos com dono e padrões que falham fechados.
 
 [← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
 
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) dizer o que o TLS faz; (2) proteger evidências em repouso; (3) evitar inventar esquemas.
+
+### 17.1 TLS em trânsito
+
+Confidencialidade e integridade das sessões — não a AuthZ da aplicação. O TLS impede que alguém no caminho da rede leia ou altere silenciosamente o tráfego entre o navegador de um cliente e os servidores do TRB, e permite ao navegador verificar que está falando com o domínio real do banco. Ele não faz nada quanto ao que acontece depois que a requisição chega. Se a aplicação entrega ao cliente A o extrato do cliente B, ela o faz por uma conexão perfeitamente cifrada. Os achados mantêm as duas coisas separadas. Uma versão de protocolo desatualizada ou uma suíte de cifras fraca é um achado de transporte. Uma verificação de titularidade ausente é um achado de aplicação, e corrigir as configurações de TLS o deixaria intocado.
+
+### 17.2 Em repouso
+
+Cifragem do cofre de evidências e logs de acesso à chave. Cifrar o armazenamento do cofre protege contra alguém que obtenha os discos, os backups ou os snapshots sem passar pela aplicação, por exemplo um bucket de armazenamento mal configurado ou um disco descartado. Isso não protege contra quem consegue fazer login normalmente no cofre, porque a aplicação decifra os dados para essa pessoa. A chave que destrava o armazenamento é o verdadeiro ativo, e é por isso que seu uso é registrado separadamente do acesso aos arquivos. Uma rajada de eventos de uso da chave sem logins correspondentes no cofre sugeriria que alguém está lendo o armazenamento diretamente, que é o cenário que a cifragem em repouso existe para impedir.
+
+### 17.3 Hashes
+
+SHA-256 para a integridade das evidências, não para aulas sobre o desenho do armazenamento de senhas aqui. Um hash de uso geral como o SHA-256 é projetado para ser rápido, o que serve para tirar a impressão digital de arquivos de evidência: calcular o hash de um grande arquivo de capturas de tela leva segundos, e qualquer mudança aparece. A mesma velocidade o torna uma má escolha para armazenar senhas, onde a lentidão é uma defesa deliberada contra a adivinhação. O armazenamento de senhas precisa de funções dedicadas, como Argon2 ou bcrypt, um tema dos capítulos de identidade. Neste livro, o SHA-256 responde a uma pergunta, se este é o mesmo arquivo que foi capturado, e os testadores não devem presumir que um sistema é seguro porque ele usa um hash em algum lugar.
+
+### 17.4 Antipadrões
+
+Criptografia caseira para os tokens do TrackScope é proibida. Um dos primeiros protótipos do TrackScope construía tokens de sessão codificando em base64 o nome do testador e um carimbo de tempo e, depois, aplicando XOR do resultado com uma string fixa. Parecia ilegível e não oferecia proteção nenhuma. Quem visse dois tokens conseguiria recuperar a string fixa e forjar tokens novos. A regra desde então é usar a biblioteca de tokens assinados do framework ou um padrão consolidado, como JWTs assinados com uma chave mantida no cofre, e nunca inventar um algoritmo ou uma codificação. Quando Sam vê tokens opacos num sistema em teste, ele confere se mudam de forma previsível entre requisições, um sinal comum de esquemas caseiros.
+
+### 17.5 Custódia de chaves
+
+Chaves da plataforma em HSM ou cofre, com controle dual onde exigido. Quem detém uma chave de assinatura pode se passar pelo sistema que a usa. As chaves mais importantes do TRB, como a que assina os arquivos de escopo do TrackScope e a chave mestra do cofre, ficam num módulo de segurança de hardware. O HSM executa operações com a chave, mas não a entrega. Controle dual significa que operações sensíveis, como exportar uma chave ou mudar quem pode usá-la, precisam de duas pessoas autorizadas agindo juntas, para que nenhuma conta comprometida ou descuidada consiga fazê-las sozinha. Chaves menos críticas ficam no cofre de software, ainda com acesso registrado e donos nomeados.
+
+### 17.6 Limites
+
+A criptografia não detém administradores mal-intencionados autorizados com chaves válidas. Cifragem, assinatura e hashes protegem contra pessoas sem as chaves. Um administrador que detém legitimamente uma chave pode decifrar, assinar ou alterar dados, e a criptografia vai confirmar fielmente suas ações como válidas. Os controles contra pessoas de dentro são, portanto, procedimentais e detectivos: segregação de funções, controle dual para as operações mais sensíveis, logs que o administrador não consegue apagar e revisões do uso das chaves. Quando um relatório diz que os dados estão protegidos por cifragem, Sam acrescenta quem pode decifrá-los, porque é nessa lista que está o risco remanescente.
+
+### 17.7 Testar a negação da exportação de chaves
+
+As cerimônias de exportação no HSM para chaves da plataforma exigem duas pessoas e um código de motivo. O papel de estagiário de Sam não pode exportar. Ele testou a negação tentando uma exportação em staging e registrou o log de negação como evidência de que o controle funciona. O teste foi combinado com antecedência com o dono do HSM e rodado contra uma chave de staging que não protege nada real; assim, uma falha não teria tido consequências. O log de negação registra a conta, a operação pedida, o horário e o motivo da recusa. Um auditor pode se apoiar nesse registro em vez de numa declaração de que a política existe. Ele também dá um ponto de referência se o comportamento do controle algum dia mudar.
+
+### 17.8 Tokens de plataforma de vida curta
+
+Os tokens da plataforma expiram dentro da janela mais uma hora. Sam testa que tokens expirados não conseguem registrar achados. Tokens que persistem são achados contra a plataforma. Um token que sobrevive ao seu propósito é uma credencial esperando para ser roubada. A hora extra permite aos testadores terminar a redação depois que a janela fecha, e qualquer coisa mais longa só acrescenta exposição. O teste é direto. Sam guarda um token de uma janela encerrada, espera passar sua expiração e tenta criar um achado com ele. A plataforma precisa recusar, e a recusa precisa aparecer no log. Se a tentativa tiver sucesso, o achado nomeia o componente da plataforma que deixou de verificar a expiração.
+
+### 17.9 Registrar as cerimônias de chaves
+
+As notas das cerimônias listam os participantes e os ids das chaves, nunca material secreto. Sam arquiva as notas no cofre com a mesma retenção das evidências. Uma cerimônia de chaves é o evento formal em que uma chave é criada, rotacionada ou exportada sob controle dual. Suas notas mostram que o evento seguiu o procedimento, cobrindo quem estava presente, qual chave estava envolvida, qual código de motivo se aplicava e o que cada pessoa conferiu. Valores secretos nunca aparecem, nem parcialmente, porque as notas são lidas por auditores e revisores que não devem conseguir reconstruir uma chave. Manter as notas sob o cronograma de retenção das evidências significa que elas ficam disponíveis enquanto qualquer coisa assinada com aquela chave puder ser questionada.
+
+### 17.10 Uma string com cara de chave bloqueada na CI
+
+Sam tenta fazer commit de um blob base64 "temporário" que parece uma chave. A CI falha. Ele fica contente. A mensagem de falha leva ao documento da cerimônia de chaves. As salvaguardas devem ensinar, não só bloquear. O blob era um fixture de teste copiado de staging, e Sam pretendia removê-lo antes do merge. Um scanner de segredos no pipeline não confia em intenções. Uma vez que uma chave está no histórico de versões, ela está em todo clone do repositório, e apagá-la num commit posterior não a remove. O link da mensagem explicava como pedir uma chave de teste adequada, o que resolveu o problema imediato e mostrou o caminho correto para a próxima vez.
+
+### 17.11 Quando tokens de vida curta incomodam as pessoas
+
+A validade do token mais uma hora certa vez pegou um analista que escrevia tarde. Melhor uma nova autenticação do que um token num notebook roubado semanas depois. O analista perdeu alguns minutos de texto não salvo quando o token expirou no meio de uma frase. A resposta razoável foi corrigir o incômodo sem alongar a validade. O FindingsDesk agora salva os rascunhos localmente de forma cifrada e pede ao usuário que faça login de novo antes de enviar, em vez de descartar o trabalho. Controles de segurança que custam esforço às pessoas tendem a ser contornados; por isso, reduzir o custo sem enfraquecer o controle faz parte de projetá-lo.
+
+### 17.12 Guardar as negações como evidência
+
+Os logs de negação das cerimônias são retidos como evidência positiva para os examinadores que perguntam se os papéis de estagiário são impostos. Os examinadores frequentemente perguntam como o banco sabe que uma restrição é imposta, e não apenas escrita. Uma exportação de configuração mostra a configuração pretendida. Um registro datado de uma tentativa real sendo recusada mostra a configuração em vigor. Os logs de negação são arquivados com o controle a que se referem e renovados sempre que o software do HSM ou as definições de papéis mudam, para que a evidência nunca descreva uma versão do sistema mais antiga que a examinada.
+
+### 17.13 Usar os registros de negação na integração
+
+Os pacotes de evidência positiva de negação são reutilizados na primeira semana de integração. Os funcionários novos aprendem mais vendo um controle real recusar uma requisição real do que lendo que as chaves estão protegidas. Cada pacote junta a requisição, a recusa e a política que a causou e mostra como ler o log. Ele também define expectativas. Os estagiários novos veem no primeiro dia que seu papel não pode exportar chaves e que tentar deixa um registro, o que torna a regra concreta. Os pacotes contêm apenas dados de staging e são revisados antes de serem reutilizados.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam rejeita um PR que cifra os arquivos de escopo com uma chave AES fixa no código-fonte.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX049 — TLS vs AuthZ.** O TLS corrige um IDOR? *Rubrica:* 3 = não; 2 = não; 1 = sim; 0 = nada.
+- **EX050 — Chave fixa no código.** Por que rejeitar chaves AES fixas no código-fonte? *Rubrica:* 3 = exposição da chave no repositório; sem controle dual; 2 = parcial; 1 = tudo bem; 0 = nada.
+- **EX051 — Uso do hash aqui.** Para que servem os digests SHA-256 neste curso? *Rubrica:* 3 = integridade das evidências; 2 = parcial; 1 = cifrar o tráfego; 0 = nada.
+
+### Síntese
+
+Use criptografia padrão corretamente; nunca crie a sua própria para os segredos do engajamento.
+
+### Continue estudando — capítulo 17 de 40
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular perguntas respondíveis; (2) desenhar pequenos ensaios de purple team; (3) pré-registrar métricas.
+
+### 18.1 Perguntas
+
+"O controle X aumenta a detecção da T1566 em staging?" é melhor que "a segurança é boa?". Uma pergunta de pesquisa precisa nomear o que será medido, em que condições e contra qual comparação. Perguntar se a segurança é boa convida opiniões que não podem estar erradas e não podem guiar uma decisão. Perguntar se um novo filtro de e-mail aumenta a detecção da técnica de phishing T1566 no ambiente de staging, comparado com o filtro atual, nomeia o controle, a técnica, o lugar e a linha de base. Essa pergunta decide o desenho: um conjunto fixo de amostras de phishing, uma caixa de staging sob cada filtro e uma detecção ou falha registrada para cada amostra. Perguntas vagas produzem trabalho vago.
+
+### 18.2 Desenho
+
+Conjunto de teste fixo, ambiente registrado, plano de tamanho de amostra. Três escolhas decidem se um leitor posterior pode confiar no resultado. O conjunto de teste é escrito antes de qualquer ensaio rodar, para que ninguém possa descartar as amostras que fazem um controle parecer ruim. O ambiente é registrado: qual versão do filtro, qual configuração da caixa de correio, qual data. Sem esse registro, uma mudança posterior pode tornar o resultado irreproduzível. O tamanho da amostra é planejado para a precisão de que a decisão precisa, usando os mesmos métodos de intervalo do relato de detecção. Um desenho que pula qualquer um desses pontos ainda pode produzir um número, mas esse número não vai encerrar uma discussão.
+
+### 18.3 Pré-registro
+
+Escreva a métrica e o limiar antes de ver os resultados. As pessoas ajustam naturalmente o que conta como sucesso depois de ver os dados. Uma taxa de detecção de sessenta por cento pode ser chamada de sucesso ou de fracasso, dependendo do que a equipe esperava. O pré-registro escreve a métrica e o limiar numa nota datada antes do primeiro ensaio, por exemplo que o novo filtro tem sucesso se o limite inferior do seu intervalo de Wilson superar a taxa observada do filtro atual. Mudar o limiar depois é permitido, mas isso precisa ser rotulado como exploratório. A nota datada é o que impede que uma reinterpretação esperançosa seja apresentada como o plano original.
+
+### 18.4 Ética
+
+Dados de clientes estão fora de alcance; phishing sintético para funcionários precisa de aprovação do RH e do CISO. Pesquisas que usam mensagens ou contas reais de clientes estão fora dos métodos deste livro e dos contratos de teste do TRB. Phishing sintético enviado a funcionários reais também não é um teste técnico comum. Ele envolve pessoas que podem se sentir enganadas e pode afetar a confiança nas mensagens de segurança. Qualquer ensaio desse tipo precisa, portanto, de aprovação do RH e do CISO que declare a finalidade, a população, as mensagens, a possibilidade de recusa quando viável e como os resultados serão relatados sem nomear indivíduos. Curiosidade técnica não é aprovação.
+
+### 18.5 Resultados negativos
+
+Publique internamente; eles evitam ideias fracassadas repetidas. Um ensaio que mostra que um controle não fez diferença mensurável é tão útil quanto um que mostra que fez, porque impede a próxima equipe de gastar mais um trimestre na mesma ideia. Resultados negativos também calibram as expectativas. Se três campanhas de conscientização falharam, cada uma, em mover as taxas de clique nos exercícios de staging, a próxima proposta de uma quarta campanha enfrenta uma barra mais alta. Publicação interna significa um relato curto no quadro de ensaios, com a métrica pré-registrada, o resultado e uma frase sobre o que não tentar de novo. Esconder resultados negativos faz a organização reaprender a mesma lição.
+
+### 18.6 Limites
+
+Staging ≠ produção; declare as ameaças à validade. O staging é mais silencioso, mais limpo e monitorado de forma diferente da produção. Uma taxa de detecção medida ali pode ser mais alta porque o tráfego é mais leve, ou mais baixa porque a produção tem sensores extras. Ameaças à validade são os motivos pelos quais um resultado pode não se transferir: a amostra era pequena demais, o kit de phishing estava desatualizado, o filtro estava mal configurado, o SOC foi avisado de que um ensaio estava rodando. Nomeá-las não enfraquece o relatório. Isso diz a quem decide o quanto pode se apoiar no achado. Um resultado sem limites declarados é aquele de que se deve desconfiar.
+
+### 18.7 Relatar um resultado negativo
+
+Os resultados negativos usam o mesmo modelo que os positivos. A nota de Sam "a fadiga de prompts de MFA não melhorou a detecção da T1566 com n=40" impediu um segundo ensaio idêntico no trimestre seguinte. O modelo obriga aos mesmos campos: pergunta, desenho, limiar pré-registrado, resultado, limites. Usar um formato diferente e apologético para resultados negativos os faz parecer falhas da equipe, e não achados sobre um controle. O ensaio de fadiga mostrou que acrescentar mais prompts de MFA não aumentou a detecção do conjunto de phishing, o que redirecionou a proposta seguinte para autenticadores resistentes a phishing. Sem o relato, a mesma ideia da fadiga teria voltado com um novo patrocinador.
+
+### 18.8 Um quadro interno de ensaios
+
+Um quadro público (interno) mostra os ensaios pré-registrados e seu status. Ensaios duplicados são rejeitados num relance. O quadro lista a pergunta, o dono, o tamanho de amostra planejado e se o ensaio está planejado, em andamento ou relatado. Quem propõe um novo ensaio pesquisa nele primeiro. Duplicatas são comuns quando as equipes trabalham em paralelo e cada uma acredita que sua ideia é original. Rejeitar uma duplicata cedo poupa uma turma de funcionários ou um bloco de tempo de staging e, muitas vezes, leva o proponente a se juntar ao ensaio existente. O quadro é chato de propósito. Sua tarefa é tornar a repetição visível.
+
+### 18.9 Preferir intervalos a uma falsa significância
+
+Sam evita declarar significância sem um plano. A maioria dos ensaios de purple team no TRB é descritiva, com intervalos, e não pseudoensaios clínicos. Um p-valor calculado depois do fato a partir de uma pequena amostra de conveniência não significa o que as pessoas pensam. Ele pode parecer decisivo quando a incerteza real é grande. O padrão do TRB é, portanto, relatar contagens e intervalos de Wilson e reservar as afirmações formais de significância para os raros ensaios desenhados para elas, com um plano de tamanho de amostra. O relato descritivo não é uma forma menor de evidência. Ele é honesto sobre o que um exercício de purple team de quarenta ensaios consegue sustentar.
+
+### 18.10 Um ensaio de conscientização fracassado ainda merece um relato
+
+Um ensaio pré-registrado sobre e-mails de conscientização não atinge seu limiar. Sam o relata mesmo assim. A reunião de orçamento do trimestre seguinte cita o resultado negativo para evitar comprar de novo o mesmo pacote de conteúdo. O fornecedor do pacote de conteúdo tinha estudos de caso promissores de outros setores. O ensaio do TRB, com um conjunto fixo de phishing e um limiar de detecção pré-registrado, não atingiu esse limiar. Relatá-lo evitou tanto um enterro silencioso quanto uma discussão acalorada baseada em anedotas. As reuniões de orçamento preferem um resultado datado à sensação de que o treinamento "pareceu útil". O fornecedor foi convidado a propor um pacote diferente para um novo ensaio, em vez de revender o mesmo.
+
+### 18.11 Juntar-se a um ensaio existente em vez de duplicá-lo
+
+O quadro de registro rejeitou em um minuto o título de um ensaio duplicado. O autor se juntou ao ensaio existente como colaborador, em vez de desperdiçar uma turma. A duplicata tinha uma redação ligeiramente diferente, mas o mesmo controle, a mesma técnica e a mesma população de staging. Rodar os dois teria dividido os voluntários disponíveis e deixado cada ensaio com poder estatístico insuficiente. Entrar como colaborador significou que o segundo autor contribuiu com amostras e tempo de revisão, ganhou a coautoria do relato e ainda respondeu à sua pergunta de fundo. O valor do quadro não é rejeitar por rejeitar. É redirecionar o esforço para um resultado capaz de decidir alguma coisa.
+
+### 18.12 Celebrar resultados negativos
+
+Os resultados negativos ganham um ícone de rolha de champanhe no quadro — celebração do aprendizado, não do fracasso. A cultura decide se as pessoas registram resultados negativos ou os escondem. Uma pequena recompensa visível, mesmo um ícone bobo, sinaliza que a organização quer o aprendizado. O ícone só aparece quando o relato está completo, de modo que não pode ser ganho deixando de terminar. As equipes que publicam resultados negativos são agradecidas no resumo trimestral de pesquisa ao lado das que publicam positivos. Ao longo de um ano, a mistura de rolhas e vistos comuns no quadro mostra se a cultura está funcionando.
+
+### 18.13 Ícones não substituem relatos
+
+Os ícones de rolha de champanhe são opcionais; o relato não é. Sam rejeita ícones sem texto. Um ícone sem um relato vinculado deixaria uma equipe reivindicar crédito por um resultado negativo com o qual ninguém consegue aprender. A regra do quadro é que o ícone só é exibido quando os campos do relato estão preenchidos: pergunta, desenho, limiar, resultado, limites. Rejeitar um ícone solto é ocasional e um pouco constrangedor, e mantém o quadro útil. Uma celebração que não deixa um registro reutilizável é só decoração.
+
+### 18.14 Um linter para celebrações vazias
+
+Ícones sem texto são removidos pelo linter de markdown do quadro. O linter é uma verificação curta que roda quando uma entrada do quadro é salva. Se encontra um ícone de rolha e campos de relato vazios, ele remove o ícone e deixa um comentário pedindo o texto. A automação importa aqui porque Sam não consegue revisar toda edição. O linter também impede que colegas bem-intencionados acrescentem ícones a entradas antigas que nunca tiveram relatos, o que inventaria uma história que o quadro não tem.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam pré-registra: sucesso se a detecção for ≥80% em 50 e-mails sintéticos no estilo T1566, com limite inferior de Wilson ≥0,7.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX052 — Pergunta ruim.** Por que "a segurança é boa?" é uma pergunta de pesquisa ruim? *Rubrica:* 3 = não é mensurável/específica; 2 = parcial; 1 = tudo bem; 0 = nada.
+- **EX053 — Pré-registro.** O que deve ser escrito antes dos resultados? *Rubrica:* 3 = métrica e limiar (e desenho); 2 = parcial; 1 = nada; 0 = nada.
+- **EX054 — Phishing com funcionários.** Que aprovações são necessárias antes de um phishing simulado? *Rubrica:* 3 = CISO/RH (e ROE); 2 = uma; 1 = nenhuma; 0 = nada.
+
+### Síntese
+
+Perguntas respondíveis, métricas pré-registradas e ética antes dos ensaios de purple team.
+
+### Continue estudando — capítulo 18 de 40
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Escopo e teoria da segurança ofensiva autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar os tipos de avaliação do SP 800-115; (2) mapear as etapas do PTES; (3) situar os testes orientados por ameaças.
+
+### 19.1 Tipos do SP 800-115
+
+Revisões, avaliações de vulnerabilidades, red teaming — profundidades e modelos de permissão diferentes. O NIST SP 800-115 distingue vários tipos de teste de segurança. Uma revisão examina desenhos, configurações ou código sem atacar um sistema vivo. Uma avaliação de vulnerabilidades procura fraquezas conhecidas com ferramentas e verificações manuais leves, geralmente com permissão ampla e pouca furtividade. O red teaming emula um adversário com objetivos específicos, muitas vezes sob regras mais rígidas quanto à detecção e ao impacto. Confundir os nomes leva a expectativas erradas. Uma avaliação web trimestral não consegue responder se um atacante determinado alcançaria o razão sem ser notado, e um exercício orientado por ameaças não consegue substituir as verificações regulares de regressão no portal do cliente.
+
+### 19.2 PTES
+
+Do pré-engajamento ao relatório, como nomes de etapas compartilhados. O Penetration Testing Execution Standard nomeia as etapas que a maioria dos testes autorizados compartilha: pré-engajamento, coleta de inteligência, modelagem de ameaças, análise de vulnerabilidades, exploração, pós-exploração e relatório. O TRB usa esses nomes para que planejadores, testadores e clientes queiram dizer a mesma coisa com cada etapa. O pré-engajamento é onde o escopo e as regras são assinados. O relatório é onde os achados são escritos para os donos, não onde acontecem testes novos. Usar nomes de etapas compartilhados também torna as lacunas óbvias. Um engajamento que salta da coleta de inteligência para o relatório sem análise pulou o trabalho que transforma observações em achados.
+
+### 19.3 Orientados por ameaças
+
+O TIBER-EU e o CBEST usam inteligência para moldar cenários para entidades financeiras; o TRB os estuda mesmo quando faz testes mais leves. Os exercícios orientados por ameaças partem de quem provavelmente atacaria esse tipo de instituição e do que essas pessoas geralmente querem e, então, constroem cenários em torno desse quadro. TIBER-EU e CBEST são frameworks que os bancos usam para esses exercícios sob supervisão regulatória. Os testes web comuns do TRB são mais leves e mais frequentes, mas a ideia orientada por ameaças ainda os molda. As reuniões de escopo perguntam quais técnicas os relatórios atuais de ameaças destacam para bancos de varejo, e os cartões de método do trimestre favorecem essas técnicas. Estudar os frameworks também mantém a equipe honesta sobre o que um teste leve não pode afirmar.
+
+### 19.4 Teoria da mudança
+
+Os testes informam decisões de risco; eles não criam segurança por si sós. Um engajamento bem-sucedido produz evidências que um dono de risco pode usar: uma fraqueza existe, ela é alcançável sob condições declaradas, e corrigi-la removeria esse caminho. A segurança só melhora se alguém então decidir corrigi-la, aceitá-la com um controle compensatório ou mudar o sistema para que o caminho deixe de importar. Testes que produzem achados sem dono são jornalismo caro. Por isso, o TrackScope exige um dono e uma data-limite antes que um achado saia de rascunho, e o PulseMap acompanha a idade dos achados, para que os riscos conhecidos, mas ignorados, continuem visíveis.
+
+### 19.5 Limites da garantia
+
+Um teste limpo é uma garantia limitada no tempo, não um certificado de garantia. Um teste que não encontra nada grave mostra que, com os métodos usados, contra os sistemas do escopo, durante aquela janela, os testadores não demonstraram uma fraqueza grave. Ele não mostra que não existe fraqueza, que nenhuma vai aparecer na semana seguinte quando uma nova funcionalidade for lançada, nem que um adversário diferente, com métodos diferentes, falharia. Os relatórios declaram esse limite explicitamente. O TRB proíbe frases que transformam um teste limpo numa garantia, porque essas frases viram passivos quando o próximo incidente acontece.
+
+### 19.6 Papel da plataforma
+
+O TrackScope codifica a teoria como regras de negação executáveis. As ideias sobre autorização, escopo e falha fechada só protegem o banco quando rodam como código. O TrackScope se recusa a iniciar um teste sem um arquivo de escopo assinado, recusa alvos fora desse arquivo, recusa métodos que as regras marcam como proibidos e para quando sua política não pode ser carregada. Codificar a teoria significa que um testador cansado à meia-noite recebe a mesma recusa que um cuidadoso ao meio-dia. Significa também que as melhorias na teoria, como uma nova exclusão, se tornam melhorias em todo engajamento no momento em que o arquivo de escopo é atualizado.
+
+### 19.7 Declarar o que cada tipo de teste não pode afirmar
+
+O catálogo de avaliações inclui o que cada tipo não pode afirmar. Testes web anuais não podem afirmar cobertura orientada por ameaças; exercícios orientados por ameaças não podem afirmar cobertura de regressão trimestral. Sam cita a linha do que não se pode afirmar nas reuniões de abertura. Clientes e patrocinadores internos naturalmente esticam o que compraram. Depois de um teste web limpo, alguém pergunta se o banco está a salvo de atores estatais. Depois de um exercício orientado por ameaças, alguém pergunta por que um simples bug de regressão chegou à produção. A linha do que não se pode afirmar, lida em voz alta na abertura e impressa no relatório, responde às duas perguntas antes que virem discussões. Ela também define o valor do catálogo. Os compradores sabem o que estão e o que não estão adquirindo.
+
+### 19.8 Frases aprovadas para relatórios
+
+As frases aprovadas para relatórios incluem "garantia limitada no tempo" e proíbem "seguro com garantia". O linter de Sam sinaliza as frases proibidas. Quem escreve sob prazo busca uma linguagem forte. Uma biblioteca de frases aprovadas lhes dá uma linguagem forte o suficiente que o jurídico e o CISO já aceitaram. As frases proibidas são bloqueadas no pipeline de relatórios com uma mensagem que sugere uma substituição. O linter é rude de propósito. É mais fácil discutir com uma substituição sugerida do que notar uma frase perigosa num rascunho longo à meia-noite.
+
+### 19.9 Responder a questionários a partir do catálogo
+
+As respostas a questionários citam o catálogo. Sam impede que colegas respondam "fazemos pentest em tudo" quando o SWIFT está excluído. Questionários de seguradoras e de fornecedores fazem perguntas amplas de sim ou não que não correspondem a como os testes de fato funcionam. Responder de memória produz afirmações exageradas. Responder a partir do catálogo produz frases como: avaliações web autorizadas trimestrais das aplicações voltadas para a internet, exercício orientado por ameaças concluído pela última vez no ano declarado, gateway de pagamentos excluído dos testes comuns. Essas frases se sustentam numa disputa de sinistro. "Fazemos pentest em tudo" não se sustenta.
+
+### 19.10 Uma resposta honesta a uma seguradora
+
+Um questionário de seguradora pergunta "Vocês fazem red teaming?". Sam responde com o catálogo: testes web trimestrais, sim; o último exercício completo orientado por ameaças foi feito em 20XX; o SWIFT é excluído dos testes comuns. A honestidade na caixa de seleção vence a bravata. O formulário queria um sim ou um não. A resposta honesta é um parágrafo curto, que a seguradora aceitou depois de uma ligação de esclarecimento. Um sim na caixa de seleção teria sugerido um programa de red team atual e abrangente que o TRB não tinha naquele ano. Quando um incidente depois envolveu um sistema vizinho dos pagamentos, a resposta escrita mostrou que os testes comuns nunca tinham afirmado cobri-lo, o que importou mais do que parecer assertivo no formulário.
+
+### 19.11 Substituir uma frase proibida
+
+O linter de garantia reprovou um relatório por "totalmente seguro após a remediação". A substituição de Sam: "risco residual aceito para o F3 até 1º de dezembro, com administração compensatória apenas via jump host". A frase proibida prometia um estado que nenhum teste pode provar. A substituição nomeia o achado, a decisão, a data e o controle compensatório. Um dono pode agir com base nela, um auditor pode conferi-la e um incidente posterior pode ser comparado com ela. Escrever a frase específica levou mais tempo que o slogan, e esse é o ponto. A precisão é o produto.
+
+### 19.12 Ler em voz alta as linhas do que não se pode afirmar
+
+As linhas do catálogo sobre o que não se pode afirmar são lidas em voz alta na abertura; murmurar é corrigido. Ler em voz alta obriga cada pessoa na sala a ouvir o limite, incluindo os patrocinadores que pulam o material escrito. Murmurar é corrigido porque um limite ouvido pela metade é como começam as afirmações exageradas. A prática parece um pouco formal nas primeiras vezes e depois se torna normal. Aberturas que a pulam tendem a produzir as mesmas discussões de esclarecimento uma semana depois; por isso, a equipe trata a leitura como parte do início do engajamento, não como um teatro opcional.
+
+### 19.13 Recomeçar uma leitura murmurada
+
+Murmurar na abertura faz a leitura do que não se pode afirmar recomeçar. Clareza acima do conforto. Um recomeço é levemente constrangedor e, por isso, eficaz. Quem lê desacelera, a sala presta atenção e o limite é de fato ouvido. Sam mantém o tom leve. O objetivo é o entendimento compartilhado, não a punição. Depois de alguns recomeços no início do ano, as leituras murmuradas ficaram raras, que é o resultado que a regra existe para produzir. O recomeço também dá a quem chegou atrasado uma segunda chance de ouvir o limite. As aberturas frequentemente começam enquanto alguém ainda está entrando na chamada, e a primeira leitura murmurada é justamente a que essa pessoa teria ouvido. Esperar por uma leitura clara custa menos do que explicar a mesma fronteira de novo no meio do engajamento.
+
+### 19.14 Acompanhar as aberturas murmuradas
+
+Os recomeços da leitura do que não se pode afirmar são registrados como uma métrica divertida de murmúrio. O registro é uma contagem bem-humorada na wiki da equipe, não uma nota de desempenho. Uma contagem em alta sugeriria que as aberturas estão apressadas ou que funcionários novos não viram a prática. Uma contagem em queda sugere que o hábito pegou. Tratar a métrica como diversão impede que ela vire algo que as pessoas manipulam lendo depressa demais para evitar um recomeço. O sinal útil é a tendência ao longo dos trimestres, não uma abertura isolada.
+
+### Exemplo resolvido (TRB sintético)
+
+A nota de aula de Sam: "Cenários no estilo CBEST precisam de inteligência + ROE + objetivos de detecção; nosso teste web trimestral é mais estreito e ainda assim valioso."
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX055 — Etapa.** Onde o PTES coloca o relatório? *Rubrica:* 3 = etapa final, depois do trabalho técnico; 2 = cedo; 1 = nunca; 0 = nada.
+- **EX056 — Par orientado por ameaças.** Nomeie os frameworks orientados por ameaças da UE e do Reino Unido citados. *Rubrica:* 3 = TIBER-EU e CBEST; 2 = um; 1 = errado; 0 = nada.
+- **EX057 — Certificado de garantia.** Por que um teste limpo não é um certificado de garantia? *Rubrica:* 3 = limitado no tempo / limites de cobertura / mudanças; 2 = parcial; 1 = é sim; 0 = nada.
+
+### Síntese
+
+A teoria liga os tipos de avaliação às permissões, às etapas e a afirmações de garantia humildes.
+
+### Continue estudando — capítulo 19 de 40
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos sintéticos do TRB; (2) separar fato de palpite; (3) escalar riscos aos pagamentos.
+
+### 20.1 Pacote do caso
+
+Trecho das ROE, logs, rascunho de achados, relato de um funcionário sobre reutilização de senha. Um caso fundamental dá aos alunos um mundo fechado sobre o qual podem raciocinar sem inventar fatos. O pacote contém apenas o que a equipe realmente teria: uma página das regras de engajamento, um recorte de logs da VPN e da aplicação, um rascunho de achado e um relato curto de um funcionário de que uma senha foi reutilizada. Nada além disso vale. Os alunos precisam rotular o que sabem, o que supõem e o que fariam em seguida, o que treina o hábito de não preencher lacunas com ficção confiante. O mesmo pacote é reutilizado entre turmas, para que os facilitadores possam comparar como grupos diferentes lidam com a mesma evidência.
+
+### 20.2 Rótulos
+
+Linhas de Fato / Palpite / Ação. Toda afirmação numa discussão de caso é rotulada como um Fato tirado do pacote, um Palpite que vai além dele ou uma Ação que a equipe tomaria em seguida. Os Fatos podem ser conferidos contra o pacote. Os Palpites são permitidos, mas limitados, porque uma lista ilimitada de palpites vira uma história de atribuição. As Ações precisam ser permitidas pelas regras de engajamento. Os rótulos desaceleram a conversa o suficiente para impedir que uma sala deslize para uma narrativa não verificada. Quando duas pessoas discordam, elas primeiro conferem se estão discutindo um Fato ou um Palpite.
+
+### 20.3 Escalonamento
+
+Possível impacto na integridade dos pagamentos → CISO no mesmo dia. Os critérios de escalonamento são escritos antes de o caso começar, para que a urgência não seja negociada no calor da discussão. No TRB, qualquer coisa que possa afetar a integridade dos pagamentos, a movimentação de fundos de clientes ou a disponibilidade do internet banking é escalada ao CISO no mesmo dia, mesmo que a evidência ainda esteja incompleta. O pacote do caso inclui o relato de um funcionário sobre reutilização de senha num jump host vizinho dos pagamentos, o que atinge essa barra. Os alunos praticam a escrita da nota de escalonamento: o que foi observado, o que ainda é desconhecido, o que foi interrompido e que decisão é necessária. Praticar a nota num caso sintético torna a real mais rápida.
+
+### 20.4 Fora do escopo
+
+O conteúdo do e-mail pessoal permanece intocado. O relato do funcionário menciona que a senha reutilizada também era usada numa caixa de e-mail pessoal. Esse detalhe é uma tentação. Ler a caixa pessoal poderia revelar mais sobre a pessoa, e isso está fora de toda fronteira profissional e jurídica do engajamento. O caso ensina a recusa explicitamente. Os alunos podem recomendar que o funcionário troque suas senhas pessoais e podem oferecer orientação, mas não podem pedir nem aceitar acesso a contas pessoais. Escrever essa recusa nas linhas de Ação faz parte de um relato de caso aprovado.
+
+### 20.5 ATT&CK
+
+Etiquete as técnicas para a caça do SOC. Quando o caso produz um achado, os alunos o etiquetam com as técnicas do ATT&CK que ele demonstra, como Valid Accounts para a senha reutilizada no jump host. As etiquetas dão ao SOC um ponto de partida para caçadas: procurar outros logins com aquela conta, ou movimento lateral a partir daquele host depois do login. As etiquetas não são decoração. Um achado sem etiqueta de técnica é mais difícil de transformar em trabalho de detecção. Os facilitadores conferem que as etiquetas correspondem à evidência, e não a uma técnica favorita que o aluno queria mencionar.
+
+### 20.6 Sem culpa
+
+Foco nos sistemas e nos processos. O funcionário que reutilizou uma senha cometeu um erro, e as perguntas úteis são sobre o sistema que permitiu que esse erro importasse: uma senha de administrador compartilhada ainda estava em uso, o jump host aceitava autenticação por senha, os processos de desligamento e de rotação a deixaram passar? Um relato sem culpa nomeia a pessoa apenas na medida em que o pacote exige e gasta sua energia nos controles. Relatos centrados na culpa produzem colegas na defensiva e sistemas inalterados. Os facilitadores redirecionam qualquer linha de Ação que comece punindo alguém para uma Ação que mude um controle.
+
+### 20.7 Proibir o drama sem horário
+
+Os facilitadores proíbem adjetivos de linha do tempo como "de repente", a menos que exista um carimbo de tempo. As notas de caso de Sam agora começam com os horários UTC dos logs e só depois trazem a narrativa. As linhas de Palpite não podem trazer carimbos de tempo fingindo ser fatos. Palavras como de repente, imediatamente e por fim contrabandeiam uma linha do tempo para a história sem evidência. Uma linha de log às 21:14 e outra às 21:47 sustentam um intervalo de trinta e três minutos. "De repente" sustenta o que quer que o falante sinta. Começar pelos carimbos de tempo obriga a narrativa a se ajustar à evidência. Um Palpite sobre o que aconteceu no intervalo continua sendo um Palpite, sem um relógio falso preso a ele.
+
+### 20.8 Declarar o fuso horário dos logs na primeira página
+
+Todo pacote de caso declara o fuso horário das linhas de log na primeira página. Sam certa vez perdeu uma hora por causa de um UTC silencioso; a linha de capa evita isso. Linhas de log que parecem locais e na verdade são UTC, ou o contrário, criam lacunas fantasmas e eventos sobrepostos que mandam a equipe pelo caminho errado. A linha de capa é chata e inegociável: todos os carimbos de tempo deste pacote estão em UTC, ou todos estão em America/New_York. Quando duas fontes de log usam fusos diferentes, os dois são declarados e um deles é convertido numa nota de trabalho, nunca em silêncio na cabeça de alguém.
+
+### 20.9 Um orçamento de três palpites
+
+Cada caso pode trazer no máximo três linhas de Palpite. Os palpites excedentes viram dever de casa para reunir fatos. Palpites ilimitados transformam um caso em escrita criativa. Três palpites bastam para capturar as incertezas mais importantes sem deixar a discussão morar nelas. Quando aparece um quarto palpite, o facilitador pergunta que Fato o resolveria e o atribui como dever de casa: qual log, qual dono, qual consulta. O orçamento treina as pessoas a perceber quando estão inventando e a preferir uma pequena investigação a uma grande história.
+
+### 20.10 Remover uma atribuição não merecida
+
+Noite de caso: uma linha de Palpite sobre "APT29" é removida por falta de evidência. A sala resmunga e depois escreve linhas de Fato melhores sobre os logs da VPN. O teatro da atribuição vicia; o sino ajuda. Nomear um ator conhecido parece expertise. Sem ferramentas, infraestrutura ou relatórios de inteligência correspondentes no pacote, é um Palpite que rouba a atenção do que os logs de fato mostram. Removê-lo é impopular por um minuto e produtivo depois. Os Fatos da VPN que o substituem geralmente importam mais para a próxima ação do banco do que qualquer nome de ator importaria.
+
+### 20.11 Dois fatos em vez de um palpite de APT
+
+O orçamento de palpites obrigou uma equipe a substituir um palpite de APT por dois fatos dos logs da VPN. O caso ficou menos cinematográfico e mais verdadeiro. Os dois Fatos eram que a conta fez login a partir de uma nova impressão digital de dispositivo e que a mesma conta alcançou o jump host em quatro minutos. Esses Fatos sustentam Ações: desativar a conta, revisar outros logins a partir daquele dispositivo, verificar se o MFA foi satisfeito. O Palpite de APT sustentava apenas uma sensação de importância. Menos cinematográfico é o padrão de que o banco precisa quando há dinheiro real e clientes reais envolvidos.
+
+### 20.12 ISO 8601 na capa
+
+As linhas de capa dos carimbos de tempo usam ISO 8601 com deslocamento; "manhã" é proibido. Manhã significa horas diferentes para leitores diferentes e desaparece sob os fusos horários. Um carimbo de tempo ISO 8601 com deslocamento, como 2026-03-04T21:14:00Z, significa um único momento. A proibição de palavras de tempo vagas vale tanto para as linhas de Palpite e de Ação quanto para os Fatos. Se um aluno não sabe o horário, ele escreve que não sabe, o que é em si uma informação útil.
+
+Se um aluno sabe apenas que algo aconteceu de manhã, a linha de Fato diz que o horário é desconhecido, e a linha de Palpite, se houver, fica claramente separada. Fingir precisão é pior do que admitir uma lacuna.
+
+### 20.13 Conferir as linhas de capa na CI
+
+As linhas de capa em ISO 8601 são validadas por uma regex na CI dos pacotes de caso. Os pacotes ficam num pequeno repositório. Uma verificação de integração contínua faz o build falhar quando a primeira página não tem uma linha correspondente ao padrão de carimbo de tempo, ou quando palavras proibidas como manhã aparecem nas linhas de Fato. A verificação é mesquinha de propósito. Os facilitadores devem gastar sua atenção na qualidade do raciocínio, não em pegar desvios de formatação. A automação cuida da correção chata.
+
+Quando a verificação falha, a mensagem de erro mostra o padrão esperado da linha de capa e a lista de palavras proibidas, para que os autores possam corrigir o pacote sem perguntar a um facilitador.
+
+### 20.14 Oficinas de linhas de Fato
+
+As oficinas de linhas de Fato proíbem adjetivos por vinte minutos. Só substantivos, verbos, números e carimbos de tempo. A restrição parece artificial e produz os pacotes de caso mais limpos do período. Sam guarda um pacote-troféu do ano passado como padrão. A restrição tem jeito de jogo e reinicia hábitos formados por livros de suspense e filmes de incidentes. Depois de vinte minutos, o grupo geralmente produz um pacote com base no qual um analista do turno da noite poderia agir sem perguntar o que os adjetivos significavam. O pacote-troféu é reutilizado como a barra para as turmas seguintes.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam escala a senha da VPN reutilizada no e-mail pessoal; redefine as credenciais do TRB; não lê o e-mail pessoal.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX058 — Fato vs palpite.** Rotule: "um funcionário relatou reutilização" vs "um Estado-nação tem o hash". *Rubrica:* 3 = fato vs palpite; 2 = parcial; 1 = ambos fatos; 0 = nada.
+- **EX059 — E-mail pessoal.** Por que não ler o e-mail pessoal do funcionário? *Rubrica:* 3 = fora do escopo/privacidade; 2 = parcial; 1 = deveria ler; 0 = nada.
+- **EX060 — Gatilho de escalonamento.** O que dispara aqui o escalonamento ao CISO no mesmo dia? *Rubrica:* 3 = reutilização de credencial que arrisca acesso ao banco/pagamentos; 2 = parcial; 1 = nada; 0 = nada.
+
+### Síntese
+
+Os casos recompensam o raciocínio rotulado e o escalonamento rápido dos riscos vizinhos dos pagamentos.
+
+### Continue estudando — capítulo 20 de 40
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Modelos de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o internet banking; (2) listar os pontos de entrada; (3) registrar as premissas.
+
+### 21.1 Elementos
+
+Atores, pontos de entrada, armazenamentos, zonas de confiança, processadores externos. Um modelo de sistema para testes autorizados é um mapa do que pode ser alcançado e do que precisa ser protegido, não uma arquitetura corporativa completa. Atores são pessoas ou serviços que iniciam ações: clientes, funcionários, rotinas em lote, testadores. Pontos de entrada são onde esses atores encontram o sistema: a aplicação web, a API móvel, a VPN dos funcionários. Armazenamentos guardam dados que importam: o banco de dados de clientes, o cofre de evidências. Zonas de confiança agrupam componentes que compartilham um nível de exposição. Processadores externos ficam fora do controle do TRB. Nomear cada elemento antes de testar evita que a equipe descubra no meio do engajamento que um par de lote esquecido consegue alcançar o razão.
+
+### 21.2 Pontos de entrada
+
+Web, API móvel, VPN dos funcionários, pares de lote. Cada ponto de entrada tem usuários diferentes, autenticação diferente e formas diferentes de dar errado. A aplicação web pública fica de frente para qualquer pessoa na internet. A API móvel pode compartilhar backends com a aplicação web, mas usar tokens diferentes. A VPN dos funcionários aproxima os administradores dos sistemas internos. Os pares de lote são sistemas de outras instituições que trocam arquivos num cronograma. Um modelo que lista apenas a aplicação web vai deixar passar achados que só aparecem na API móvel ou só depois do login na VPN. Sam confere o log de tickets de mudança em busca de novos pontos de entrada antes de cada engajamento.
+
+### 21.3 Premissas
+
+"O staging espelha a AuthZ da produção" precisa ser validado. Os modelos estão cheios de premissas, e as não validadas são onde os achados se escondem. As equipes frequentemente presumem que o staging usa as mesmas regras de autorização que a produção, que um deep link móvel reutiliza as verificações de sessão da web ou que um callback de um processador de pagamentos é autenticado. Cada premissa é escrita num post-it e marcada como Aberta até que alguém a confira. Uma premissa Aberta na abertura vira uma frase de risco residual no plano: o teste pode deixar passar fraquezas que só existem onde a premissa falha. Fechar premissas faz parte da preparação, não é uma tarefa paralela.
+
+### 21.4 Fluxos de dados
+
+Os caminhos de dados pessoais de clientes dirigem a minimização. O modelo marca todo caminho que transporta dados pessoais de clientes: do navegador para a camada web, da camada web para o armazenamento de clientes, do armazenamento para uma extração de relatórios. Esses caminhos decidem onde as regras de minimização se aplicam durante os testes. Um caminho que nunca transporta dados pessoais pode ser exercitado com mais liberdade, com tráfego sintético. Um caminho que os transporta exige a regra de prova, e não de volume, e um manuseio cuidadoso das evidências. Desenhar os caminhos também revela surpresas, como um site de marketing que posta na API central e, portanto, num armazenamento de dados pessoais.
+
+### 21.5 Exclusões
+
+O gateway SWIFT é omitido quando está fora do escopo. As exclusões precisam aparecer no modelo com a mesma clareza das inclusões. Deixar o gateway SWIFT totalmente fora do diagrama o faz parecer esquecido. Desenhá-lo e marcá-lo como fora do escopo torna a fronteira visível para todos que usam o modelo. Testadores que veem um caminho interessante em direção ao gateway sabem imediatamente que não lhes cabe segui-lo. A mesma disciplina se aplica aos processadores terceiros e aos bancos de dados de clientes de produção quando o engajamento se limita ao staging.
+
+### 21.6 Modelos vivos
+
+Atualize ao surgirem novas rotas de callback de pagamento. Um modelo que não é atualizado vira um perigo, porque as pessoas confiam nele. A regra do TRB é que todo ticket de mudança que acrescente ou altere um ponto de entrada, um armazenamento ou um callback externo precisa atualizar o modelo em até uma semana. A revisão semanal de Sam compara os tickets de mudança abertos com as arestas do modelo e lista os retardatários. A revisão é curta e um pouco irritante, e é por isso que funciona. As equipes atualizam o modelo para não aparecer na lista, e o modelo fica perto o bastante da realidade para planejar testes com base nele.
+
+### 21.7 Fichas físicas para premissas abertas
+
+As oficinas com os donos usam fichas físicas para as premissas. Uma ficha deixada em Aberta no fim bloqueia a abertura. A regra tátil parece infantil e funciona melhor que uma coluna de planilha que ninguém atualiza. Cada premissa Aberta ganha uma ficha na mesa. Fechá-la move a ficha para uma tigela de Fechadas, com uma nota de quem conferiu e como. As fichas ainda em Aberta no fim da oficina são fotografadas para o plano como riscos residuais, e a abertura não pode ser marcada como pronta até que o líder do engajamento as aceite. Colunas de planilha convidam a uma negligência educada. Uma ficha na mesa convida a uma decisão.
+
+### 21.8 Manter os callbacks de pagamento no modelo
+
+Novos callbacks de pagamento precisam aparecer no modelo em até uma semana após os tickets de mudança. A comparação semanal de Sam entre tickets de mudança e arestas do modelo pega os retardatários. Os callbacks de pagamento são fáceis de deixar passar porque chegam de fora e muitas vezes são acrescentados por equipes de produto sob pressão de entrega. Um callback que não está no modelo também não está no registro de fluxos, o que significa que pode não ter dono nem uma verificação de autenticação acordada. A comparação semanal é uma junção simples: tickets de mudança que mencionam callback, webhook ou notify, versus as arestas do modelo. Tudo o que não casa vira uma tarefa para o dono do ticket antes do próximo engajamento.
+
+### 21.9 Desenhar os processadores como caixas-pretas
+
+Os processadores aparecem como caixas-pretas, com os tipos de dados que cruzam a fronteira, e não como falsos hosts internos. Desenhar os servidores internos de um fornecedor convida os testadores a pensar em atacá-los. Desenhar uma caixa-preta rotulada "fornecedor de SMS", com códigos únicos saindo e recibos de entrega chegando, mantém a atenção no lado do TRB da fronteira: os recibos são validados, as falhas são tratadas, o fornecedor é autenticado? Os tipos de dados nas setas importam mais do que qualquer coisa dentro da caixa. Eles dizem aos testadores quais dados pessoais saem do TRB e o que volta que pode receber confiança demais.
+
+### 21.10 Um deep link vira uma premissa aberta
+
+Um novo deep link móvel aparece num ticket de mudança. Em três dias, o modelo de Sam ganha um ponto de entrada e um post-it de premissa: "AuthZ igual à da web?". O post-it continua Aberto na abertura e vira uma frase de risco residual. O deep link poderia reutilizar as verificações de autorização da web ou poderia ter sido ligado às pressas, com uma verificação mais fraca. Ninguém tinha validado qual. Deixar a premissa Aberta foi correto. A frase de risco residual disse a todos que a autorização do deep link móvel não estava coberta pelos testes web planejados, o que impediu que um relatório web limpo fosse lido erroneamente como uma cobertura móvel limpa.
+
+### 21.11 Uma rota silenciosa a partir do site de marketing
+
+A comparação do inventário de callbacks encontrou uma rota silenciosa do site de marketing para a core-api. Ela virou uma revisão de conduíte, e não uma surpresa de marketing em produção. O site de marketing tinha recebido um endpoint de conveniência para preencher previamente formulários de proposta. O endpoint alcançava a core-api e, portanto, o armazenamento de clientes, e nunca tinha aparecido no diagrama de arquitetura. Encontrá-lo numa comparação semanal significou que o conduíte pôde ser revisado, autenticado e ter sua taxa limitada antes que um engajamento ou um atacante o encontrasse. Surpresas são mais baratas em revisões de inventário do que em incidentes de produção.
+
+### 21.12 Fotografar as premissas abertas para o plano
+
+Os post-its de premissas abertas são fotografados para o pacote das ROE antes da abertura. Uma fotografia congela o estado da oficina sem depender de alguém digitá-lo depois. A imagem vai para o pacote das regras de engajamento, ao lado das frases de risco residual, para que qualquer pessoa que leia a autorização possa ver o que ainda era desconhecido. Depois da abertura, os post-its podem ir para o lixo. A fotografia permanece. Se um achado depois depender de uma premissa que estava Aberta, o pacote mostra que a equipe conhecia a lacuna.
+
+A fotografia também resolve disputas sobre o que foi dito na oficina. A memória diverge; uma foto dos post-its não.
+
+### 21.13 Premissas abertas no sumário executivo
+
+As frases de risco residual vindas dos post-its Abertos são coladas automaticamente no rascunho do sumário executivo. Os executivos raramente leem registros de premissas. Eles leem o sumário executivo. Colar ali as premissas Abertas, numa frase simples cada uma, significa que as pessoas que aceitam o risco residual o veem antes de aceitar o relatório. A automação importa porque colar à mão é a etapa que é pulada sob prazo. As frases são curtas de propósito: a autorização do deep link móvel não foi validada contra as regras de produção.
+
+Se a automação falhar, o líder do engajamento cola as frases à mão e abre um ticket contra o pipeline. O sumário ainda precisa trazer os riscos.
+
+### 21.14 Do quadro branco para o registro de premissas
+
+O plantão de modelos termina com uma fotografia do quadro branco e uma passagem de OCR para o registro de premissas. Post-its que o OCR não consegue ler são reescritos. Premissas ilegíveis são premissas negadas. Os erros de OCR são tratados como premissas Abertas até serem corrigidos, o que motiva uma letra caprichada. O caminho de fotografia mais OCR também significa que a oficina pode continuar analógica e colaborativa enquanto o registro duradouro continua pesquisável. Notas ilegíveis não podem virar Fechadas em silêncio. Uma premissa negada não pode ser tratada como Fechada no plano, o que mantém a pressão sobre quem é dono da nota ilegível para reescrevê-la.
+
+### Exemplo resolvido (TRB sintético)
+
+O modelo de Sam mostra web→ledger-db tracejado em vermelho como não intencional.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX061 — Premissa.** Como validar que o staging espelha a AuthZ da produção? *Rubrica:* 3 = comparar configurações/testes com os donos; 2 = parcial; 1 = presumir; 0 = nada.
+- **EX062 — Por que omitir o SWIFT.** Por que omitir o SWIFT deste modelo? *Rubrica:* 3 = fora do escopo; 2 = parcial; 1 = sem importância; 0 = nada.
+- **EX063 — Pontos de entrada.** Nomeie três pontos de entrada do internet banking. *Rubrica:* 3 = três entre web, API móvel, VPN dos funcionários, lote; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Os modelos tornam visíveis os fluxos não intencionais e explícitas as premissas.
+
+### Continue estudando — capítulo 21 de 40
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as dependências; (2) sinalizar fluxos não aprovados; (3) designar donos.
+
+### 22.1 Dependências
+
+API central, banco de dados do razão, serviço antifraude, SMS, processador de cartões. Uma lista de dependências para testes é o conjunto de sistemas de que o alvo precisa para se comportar normalmente. O internet banking do TRB precisa da API central, do banco de dados do razão, de um serviço de pontuação antifraude, de um provedor de SMS para códigos únicos e de um processador de cartões para as etapas de pagamento. Se algum deles estiver fora do ar ou fora do escopo, partes da aplicação não podem ser testadas com honestidade. A lista também mostra onde os achados podem de fato pertencer. Uma falha que parece um bug do aplicativo bancário pode ser um serviço antifraude mal configurado. Sam confirma o dono e o status de autorização de cada dependência antes da abertura.
+
+### 22.2 Laboratório de fluxos
+
+O lab_flows marca web→ledger-db como UNAPPROVED. O laboratório compara o tráfego observado com o registro de fluxos aprovados e imprime qualquer caminho que não tenha uma entrada. Um caminho direto da web para o razão é o exemplo clássico: ele pula as verificações de autorização da API central e dá a um host web comprometido uma rota para dentro do banco de dados. Rodar o laboratório não é o achado. O achado é o caminho não aprovado mais o ticket de mudança e o dono ausentes. Os testadores salvam a saída do laboratório ao lado do registro do engajamento, para que uma disputa posterior sobre se o caminho existia possa ser respondida com um artefato datado.
+
+### 22.3 Titularidade
+
+Cada fluxo tem um dono de controle. A titularidade responde quem pode aprovar uma mudança, quem recebe um achado e quem pode parar um teste que usa o fluxo. Um fluxo sem dono não pode ser testado com segurança, porque ninguém pode aceitar o risco nem corrigir o que quebrar. O registro do TRB rejeita fluxos novos sem campo de dono, e a verificação pré-engajamento de Sam lista todos os fluxos do escopo cujo dono saiu do banco. Substituir um dono que saiu é uma tarefa de planejamento, não uma surpresa no meio da janela. Achados registrados contra fluxos sem dono tendem a ficar intocados, o que é mais um motivo para exigir a titularidade de antemão.
+
+### 22.4 Terceiros
+
+Autorização separada. As dependências que pertencem a outras empresas precisam da permissão dessas empresas antes que alguém as sonde. A autorização do TRB cobre os sistemas do TRB. O fornecedor de SMS, o processador de cartões e o provedor de nuvem têm, cada um, suas próprias regras. Sam pode observar como o TRB os chama e se o TRB valida as respostas deles, o que testa o código do TRB. Ele não pode rodar varreduras de vulnerabilidades contra os endpoints deles, a menos que seus programas digam que pode. A distinção está escrita nos cartões de método, para que um testador curioso não improvise.
+
+### 22.5 Interrupções
+
+Indisponibilidades de fornecedores são paradas, não oportunidades de martelar. Quando uma dependência está falhando, continuar a enviar tráfego raramente produz evidência de segurança útil e muitas vezes piora a indisponibilidade. As regras de engajamento tratam uma indisponibilidade confirmada de fornecedor como condição de parada para os métodos que precisam desse fornecedor. Sam registra a indisponibilidade, avisa o líder do engajamento e passa para métodos que não dependem do caminho quebrado. Martelar um serviço fora do ar para ver como ele falha é um teste de negação de serviço disfarçado e é proibido, a menos que as ROE o permitam explicitamente numa janela dedicada.
+
+### 22.6 Segredos
+
+Chaves de API em repositórios são achados do TRB. Uma chave de API incluída num commit de um repositório de código-fonte é uma credencial em todo clone, todo backup e, muitas vezes, todo log de integração contínua. Mesmo depois que a chave é removida do commit mais recente, o histórico ainda a guarda. Os achados de Sam para chaves em repositórios recomendam rotacionar a chave, removê-la do histórico quando viável, acrescentar um scanner de segredos ao pipeline e registrar um dono para o novo segredo no cofre. A severidade do achado depende do que a chave destrava. Uma chave de analytics somente leitura é diferente de uma chave que pode movimentar dinheiro.
+
+### 22.7 Expirar os fluxos temporários
+
+As datas de desativação dos fluxos temporários acionam o dono e Sam três dias antes. Se ninguém responde, o TrackScope marca o fluxo como expirado e nega os testes que dependiam dele até que seja renovado por escrito. Fluxos temporários sem expiração se tornam permanentes. O acionamento e a expiração automática transformam o temporário num limite de tempo real. Negar os testes que usavam o fluxo expirado é deliberado. Isso impede que um engajamento passe a depender em silêncio de um caminho que o banco já não pretendia manter e força uma renovação escrita que reafirme o motivo de negócio.
+
+### 22.8 Varrer os repositórios do TRB
+
+As varreduras de segredos em repositórios rodam sobre o código do TRB listado nas ROE. Sam abre achados para chaves sem dono no modelo de ativos. A varredura cobre apenas os repositórios que o engajamento está autorizado a examinar. Os achados distinguem as chaves que já têm donos no cofre das chaves que parecem órfãs. Uma chave órfã é urgente porque ninguém a está rotacionando. Ligar cada achado ao modelo de ativos também mostra quando uma chave pertence a um sistema fora do escopo; nesse caso, Sam a relata ao dono do sistema sem testar mais nada.
+
+### 22.9 Renovações precisam de um motivo
+
+Os acionamentos das datas de desativação incluem o motivo de negócio original. Renovações sem motivo são negadas. Uma renovação que diz "prorrogar por três meses" não ensina nada e convida a regras temporárias eternas. Exigir o motivo original, e uma frase sobre por que ele ainda se aplica, faz o dono perceber quando o projeto que precisava do fluxo já terminou. As renovações negadas aparecem numa lista semanal que Sam revisa com o dono da arquitetura. Padrões de negação muitas vezes apontam para um projeto que deveria terminar ou aceitar um conduíte permanente e revisado.
+
+### 22.10 Quando o dono principal está de licença
+
+Os acionamentos da data de desativação disparam; o dono está de licença. O dono substituto renova com um motivo. Sam passa a tratar como obrigatório o campo de dono substituto — acionamentos de expiração com um único dono são frágeis. Um controle que depende de uma pessoa estar à sua mesa falha durante férias e doenças. O dono substituto já tinha sido informado sobre a finalidade do fluxo, de modo que a renovação levou minutos. Tornar obrigatório o campo de substituto significa que o próximo fluxo temporário não pode ser criado até que duas pessoas possam responder por ele. Uma fragilidade removida no momento do registro não precisa ser descoberta durante uma tempestade de acionamentos.
+
+### 22.11 Uma renovação que tornou o risco visível
+
+Uma expiração sem motivo foi negada; o dono escreveu "atraso no projeto de segmentação PCI". Agora o risco está visível, não eterno. A frase fez dois trabalhos. Ela renovou o fluxo por um tempo limitado e disse a qualquer pessoa que lesse o registro por que um caminho arriscado ainda existia. Atrasos de projeto são reais; atrasos não ditos viram folclore. Quando o projeto de segmentação depois terminou, a mesma entrada do registro tornou óbvio que o motivo do fluxo tinha acabado e que a data de desativação não deveria ser renovada de novo.
+
+### 22.12 Os donos substitutos precisam confirmar
+
+Os donos substitutos precisam confirmar na interface do ticket; silêncio não é aceitação. Listar alguém como substituto sem a sua confirmação cria uma falsa sensação de cobertura. A interface exige um clique que registra a pessoa, o horário e o fluxo. Até que esse clique aconteça, o fluxo temporário não pode ser aprovado. A regra atrasou alguns registros e evitou várias lacunas silenciosas em que o substituto nomeado nunca tinha ouvido falar do fluxo. Nomes de substitutos escritos num ticket sem um clique desaparecem quando essa pessoa muda de equipe. O clique de confirmação é o que transforma um nome num dever.
+
+### 22.13 Bloquear o encerramento sem um substituto
+
+Campos obrigatórios de dono substituto bloqueiam o encerramento do ticket. Sam adora bloquear encerramentos. Os tickets de mudança que abrem fluxos temporários não podem ser encerrados até que exista a confirmação do substituto. Bloquear o encerramento é mais confiável do que enviar lembretes, porque a pressão de entrega já se concentra em fechar tickets. O bloqueio fica visível no mesmo lugar para onde os gerentes de projeto já olham. A preferência de Sam por bloqueios em vez de lembretes vem de ter visto processos baseados em lembretes falharem sempre que a equipe está ocupada.
+
+A pressão de entrega dissolve os acordos de corredor. O bloqueio obriga o dono substituto nomeado a confirmar o fluxo antes que o ticket de mudança possa ser encerrado, e é isso que constitui o controle.
+
+### 22.14 Post-mortems de fluxos expirados
+
+Os post-mortems de expiração de fluxos perguntam se o motivo de negócio original ainda existe. Se o projeto terminou, o fluxo morre. Se o projeto continua, uma nova data de desativação é obrigatória. Regras temporárias eternas são rebatizadas como achados nas notas do post-mortem. O post-mortem é curto: motivo, resultado, próxima data de desativação ou exclusão. Rebatizar as regras temporárias eternas como achados torna o padrão visível para as mesmas pessoas que veem os outros riscos. Um fluxo que sobrevive a todo post-mortem sem um motivo vivo é uma falha de processo, não uma necessidade de rede. Escrever o post-mortem na semana em que o fluxo expira, e não meses depois, mantém honesto o motivo de negócio.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam abre um ticket conjunto para os donos da rede e da aplicação sobre o UNAPPROVED web→ledger-db.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX064 — Linha do laboratório.** Cite a linha UNAPPROVED do laboratório. *Rubrica:* 3 = web -> ledger-db UNAPPROVED; 2 = parcial; 1 = errado; 0 = nada.
+- **EX065 — Ticket conjunto.** Por que abrir o ticket para a rede e a aplicação juntas? *Rubrica:* 3 = o fluxo exige mudanças tanto no roteamento quanto no comportamento da aplicação; 2 = parcial; 1 = só uma; 0 = nada.
+- **EX066 — Martelar o fornecedor.** E se o fornecedor de SMS der timeout? *Rubrica:* 3 = parar as verificações relacionadas; nenhuma tempestade de novas tentativas; 2 = parcial; 1 = inundar de novas tentativas; 0 = nada.
+
+### Síntese
+
+Dependências e fluxos têm donos; arestas não aprovadas viram tickets.
+
+### Continue estudando — capítulo 22 de 40
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir cartões de método; (2) vincular os métodos às ROE; (3) definir limites de taxa.
+
+### 23.1 Cartões
+
+Finalidade, cláusula das ROE, ferramenta/configurações, paradas, evidência. Um cartão de método é a unidade de trabalho dos testes autorizados. Ele declara por que o método está sendo executado, qual cláusula das regras de engajamento o permite, qual ferramenta e quais configurações serão usadas, que condições param o método e que evidência ele precisa produzir. Os cartões impedem a improvisação. Um testador que quer tentar algo que não está num cartão precisa propor um novo cartão e incluí-lo no conjunto congelado, ou esperar uma alteração das regras. O TrackScope agenda cartões, não atividades livres.
+
+### 23.2 WSTG
+
+Selecione os temas de autenticação, sessão e controle de acesso para o staging do internet banking. O Web Security Testing Guide da OWASP cataloga muitas ideias de teste. O TRB não roda todas em cada engajamento. Para o staging do internet banking, os temas prioritários são autenticação, gerenciamento de sessão e controle de acesso, porque as falhas ali movimentam dados de clientes ou dinheiro. Outros temas aparecem quando os relatórios de ameaças ou mudanças recentes os justificam. Selecionar os temas no plano torna honesta a profundidade do engajamento. Um relatório que afirmasse ampla cobertura web depois de rodar apenas três temas enganaria.
+
+### 23.3 Taxas
+
+Os tetos protegem a disponibilidade. Mesmo testes autorizados podem derrubar um serviço se enviarem tráfego demais. Os cartões de método incluem tetos de taxa: requisições por segundo, sessões concorrentes, total de identidades tentadas. Os tetos são definidos com o dono do serviço e com o SOC, que sabem como é o normal. Exceder um teto é uma condição de parada, não uma sugestão. Sam prefere terminar um método devagar ao longo de duas noites a explicar uma indisponibilidade causada por um teste que deveria ser cuidadoso.
+
+### 23.4 Proibidos
+
+Spraying e DoS continuam proibidos. O password spraying contra muitas contas e os testes de negação de serviço são excluídos das janelas comuns do TRB porque seu impacto é difícil de conter e sua barra de autorização é mais alta. Um testador que descobre que o spraying seria interessante ainda assim não o faz. Ele escreve uma nota de que o método foi considerado e excluído, que pode virar uma recomendação de um exercício separado e cuidadosamente delimitado, se o risco o justificar. Proibido significa proibido, não proibido a menos que se tenha curiosidade.
+
+### 23.5 Silenciosos vs ruidosos
+
+Prefira métodos silenciosos quando a detecção também está em teste. Alguns métodos produzem pouco ruído nos logs; outros inundam o SOC de alertas. Quando o engajamento também está medindo a detecção, métodos ruidosos afogam o sinal que o SOC precisa mostrar. Métodos silenciosos primeiro deixam o SOC demonstrar o que pega em condições realistas. Raspagens ruidosas de inventário ficam em dias separados, com um orçamento de ruído assinado pelo SOC. Misturá-los uma vez produziu uma nevasca de alertas que não ensinou nada nem sobre a detecção nem sobre o inventário.
+
+### 23.6 Congelamento
+
+O conjunto de métodos congela depois da abertura, a menos que as ROE sejam alteradas. Depois da abertura, os cartões agendados ficam fixos. Acrescentar um método no meio da janela contornaria a revisão que conferiu o escopo, os limites de taxa e as condições de parada. Se um método novo se tornar necessário, as regras de engajamento são alteradas por escrito e o congelamento é suspenso apenas para essa alteração. O congelamento frustra os improvisadores e protege todos os demais. Os clientes não podem alegar que foram surpreendidos por um método que não estava na lista da abertura, e os testadores não podem alegar que achavam que um método improvisado era permitido.
+
+### 23.7 Separar os dias silenciosos dos ruidosos
+
+Os métodos silenciosos são preferidos nas janelas de purple team, para que o sinal do SOC seja interpretável. Sam agenda raspagens ruidosas de inventário em dias separados. Misturá-los produziu uma vez uma nevasca de alertas inútil; o calendário agora impede isso. O bloco do calendário é compartilhado com o SOC. Um dia de purple team mostra apenas cartões silenciosos. Um dia de inventário mostra cartões ruidosos e um orçamento de ruído maior. Verificações automáticas se recusam a agendar um cartão ruidoso num dia de purple team. A nevasca ensinou à equipe que o desenho do calendário faz parte do desenho dos métodos.
+
+### 23.8 Todo cartão precisa de um dono
+
+Cada cartão de método tem um engenheiro dono. Cartões sem dono não podem ser agendados. Sam assume a titularidade antes de propor um cartão na abertura. Titularidade significa que alguém mantém atualizados a cláusula das ROE, as versões das ferramentas e as condições de parada do cartão. Cartões sem dono apodrecem: citam cláusulas aposentadas ou configurações que já não correspondem à plataforma. Recusar-se a agendá-los faz da titularidade um requisito prático, e não um campo de cortesia. Assumir a titularidade antes da abertura também significa que quem propõe está se oferecendo para manter o cartão, o que reduz as sugestões de passagem.
+
+### 23.9 Orçamentos de ruído do SOC
+
+O SOC assina um orçamento de ruído por janela. Excedê-lo é uma condição de parada que Sam respeita imediatamente. O orçamento é um número de alertas por hora, geralmente, mais uma lista dos tipos de alerta que contam. O SOC o assina porque conhece sua escala e seu outro trabalho naquela noite. Quando o TrackScope ou o SOC dizem que o orçamento se esgotou, Sam para os cartões ruidosos mesmo que a janela ainda tenha horas pela frente. O respeito imediato à parada constrói confiança. Um testador que negocia para passar de uma parada do SOC uma vez vai achar a próxima conversa sobre orçamento muito mais difícil.
+
+### 23.10 Dividir um cartão para caber no orçamento
+
+O orçamento de ruído do SOC é de 30 alertas por hora. O cartão de método de Sam geraria cerca de 80. Ele divide o cartão em dois dias. O líder do SOC lhe paga um café; a janela fica verde. A divisão preservou o objetivo do teste e a capacidade de resposta do SOC. Os requisitos de evidência do cartão foram cumpridos ao longo dos dois dias, com rótulos claros para que ninguém pensasse que o método tinha sido abandonado. O café é opcional. Uma janela verde, isto é, sem nenhuma emergência causada pelos testes, é a verdadeira recompensa e o motivo pelo qual os orçamentos existem.
+
+### 23.11 Tratar as assinaturas do SOC como as do CISO
+
+A folha do orçamento de ruído é assinada como uma mini-ROE. Sam trata as assinaturas do SOC com o mesmo respeito que as do CISO. O SOC não é dono da autorização geral, mas é dono do ambiente de detecção que o teste vai perturbar. Sua assinatura no orçamento de ruído é a autorização para essa perturbação. Ignorá-la seria ignorar uma fronteira tão real quanto um host excluído. O hábito de Sam de respeito igual também incentiva o SOC a assinar prontamente, porque sabe que a assinatura será honrada, e não barganhada.
+
+### 23.12 Pausa automática quando o orçamento estoura
+
+Estouros do orçamento de ruído disparam uma flag automática de pausa do cartão de método no TrackScope. A automação elimina a conversa constrangedora em que um testador argumenta que só mais algumas requisições terminariam o cartão. A plataforma conta os alertas atribuídos ao engajamento e, quando o orçamento é atingido, pausa os cartões ruidosos e avisa Sam e o SOC. Terminar então exige uma contra-assinatura do SOC para uma prorrogação, não uma decisão unilateral. A flag já deteve vários estouros educados que teriam virado indisponibilidades nada educadas.
+
+### 23.13 Os testadores não podem liberar a própria pausa
+
+As flags de pausa só são liberadas com a contra-assinatura do SOC. Sam não pode liberar o próprio estouro de ruído. A autoliberação faria da pausa automática um teatro. A contra-assinatura do SOC é uma segunda pessoa afirmando que o ambiente aguenta mais carga. Às vezes, ela recusa e pede uma continuação mais silenciosa no dia seguinte. Essa recusa é um controle bem-sucedido. Registrar quem liberou uma pausa, e quando, também ajuda as revisões posteriores a entender por que um cartão ruidoso continuou depois de um estouro.
+
+Promessas informais não sobrevivem ao próximo ciclo de lançamentos. Uma confirmação registrada sobrevive porque pode ser auditada quando alguém pergunta quem aceitou o risco.
+
+### 23.14 Auditorias rotativas dos cartões
+
+A curadoria dos cartões de método é uma função rotativa. A cada mês, um engenheiro diferente audita cinco cartões em busca de deriva nas cláusulas das ROE. A auditoria de Sam encontrou um cartão que citava uma seção aposentada das ROE; ele foi suspenso em uma hora. Uma cláusula aposentada das ROE num cartão ativo é um bug silencioso de autorização. A auditoria mensal pega alguns por ano, geralmente depois de uma reescrita das regras. Suspender o cartão imediatamente impede que alguém agende trabalho sob uma cláusula que já não existe. A função rotativa espalha pela equipe a familiaridade com a biblioteca. Publicar quais cinco cartões foram auditados a cada mês torna a rotação visível e mais difícil de pular.
+
+### Exemplo resolvido (TRB sintético)
+
+O cartão de IDOR de Sam: 1 req/s, dois usuários de teste, parada em rajada de 5xx.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX067 — Campos do cartão.** Liste cinco campos do cartão de método. *Rubrica:* 3 = cinco do capítulo; 2 = três; 1 = um; 0 = nada.
+- **EX068 — Par proibido.** Nomeie dois métodos proibidos. *Rubrica:* 3 = spraying e DoS; 2 = um; 1 = autenticação do WSTG; 0 = nada.
+- **EX069 — Congelamento.** Por que congelar os métodos depois da abertura? *Rubrica:* 3 = evitar a expansão silenciosa de escopo/métodos; 2 = parcial; 1 = sem motivo; 0 = nada.
+
+### Síntese
+
+Os métodos são cartões vinculados às ROE, com taxas e congelamentos.
+
+### Continue estudando — capítulo 23 de 40
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) associar controles a achados; (2) classificar achados; (3) propor controles compensatórios.
+
+### 24.1 Associação
+
+Administrador compartilhado → contas nominais + cofre; fluxo não aprovado → firewall + negação na aplicação; cadastro fraco de MFA → correção do cadastro. Uma recomendação de controle precisa corresponder à fraqueza que responde. Senhas de administrador compartilhadas se corrigem com contas nominais e um cofre, não com uma política de senhas mais longas. Um caminho de rede não aprovado se corrige removendo a regra de firewall e negando o caminho na aplicação, não apenas acrescentando monitoramento. Um cadastro fraco de MFA se corrige no fluxo de cadastro. Recomendações desencontradas desperdiçam o tempo de quem corrige e deixam o caminho original aberto. A revisão de Sam dos rascunhos de achados confere que cada controle recomendado de fato fecharia o caminho demonstrado.
+
+### 24.2 Laboratório de classificação
+
+O lab_rank ordena F1, F3 e F4, com pontuação 6, antes de F2, com 3.
+
+```python
+"""Lab 24: rank synthetic TRB findings by likelihood x impact, ties by id."""
+f = [("F1","Shared admin on loan system",2,3),("F2","Verbose error pages",3,1),
+     ("F3","Web tier reaches ledger DB directly",2,3),("F4","Weak MFA enrolment check",3,2)]
+for i,t,l,m in sorted(f, key=lambda x:(-x[2]*x[3], x[0])):
+    s=l*m; print(f"{i} {s} {'high' if s>=6 else 'medium' if s>=3 else 'low':6} {t}")
+```
+
+Execute com `python3 lab_rank.py`. Saída verificada:
+
+```text
+F1 6 high   Shared admin on loan system
+F3 6 high   Web tier reaches ledger DB directly
+F4 6 high   Weak MFA enrolment check
+F2 3 medium Verbose error pages
+```
+
+O produto de probabilidade e impacto é um auxílio simples de classificação, não uma lei da natureza. Os empates são desfeitos pelo id do achado, para que a ordem seja reproduzível. F1, F3 e F4 pontuam seis e superam os três de F2, o que corresponde à intuição de que uma senha de administrador compartilhada, um caminho direto da web para o razão e uma verificação fraca no cadastro de MFA importam mais que páginas de erro verbosas. A tarefa do laboratório é tornar a classificação visível antes que as personalidades entrem na discussão. Uma vez que as pontuações estão na mesa, argumentar para rebaixar um achado vira uma decisão visível de aceitação de risco, e não uma reordenação silenciosa.
+
+### 24.3 Compensatórios
+
+Administração apenas via jump host enquanto as senhas se tornam únicas. Um controle compensatório reduz o risco enquanto a correção definitiva não está pronta. Se ainda existem senhas de administrador compartilhadas, restringir a administração ao jump host com autenticação multifator reduz quem pode usar essas senhas e torna seu uso auditável. A compensação tem data. O achado continua aberto, com uma data-limite para as senhas únicas, e o controle compensatório é listado ao lado dele, para que ninguém confunda a regra do jump host com a correção completa. Quando a correção definitiva chega, a compensação pode ser aposentada ou mantida como defesa em profundidade.
+
+### 24.4 Titularidade
+
+Todo controle tem um dono nomeado e uma data. Um controle sem dono é uma frase num relatório. O dono é a pessoa que vai implementá-lo ou operá-lo, e a data é quando ele estará implantado ou será revisado de novo. O TrackScope se recusa a marcar um achado como aceito-com-controle a menos que os dois campos estejam preenchidos. A titularidade também evita compensações órfãs. Quando a pessoa que configurou a administração apenas via jump host sai, o campo datado de dono mostra quem precisa assumir o controle, ou o achado é reaberto.
+
+### 24.5 Verificar depois
+
+O Capítulo 30 trata dos retestes. Declarar um controle implementado não é o mesmo que mostrar que ele funciona. Os retestes fecham essa lacuna. Depois que o dono diz que as contas nominais substituíram a senha de administrador compartilhada, Sam agenda um reteste que tenta a senha antiga e confere que a administração ainda exige o jump host. Retestes reprovados reabrem o achado automaticamente. A data do reteste faz parte do registro do controle, de modo que um controle que nunca foi retestado aparece no PulseMap como não verificado. Um reteste é planejado com a mesma conta, a mesma rede de origem e a mesma requisição que provaram a fraqueza, para que uma aprovação signifique que o caminho está fechado, e não que o testador tentou algo mais fácil.
+
+### 24.6 Afirmação exagerada
+
+Não chame um controle de "previne todo APT". Os controles reduzem caminhos específicos. Nomear um ator sofisticado ou prometer prevenção total transforma um achado preciso em marketing. A linguagem dos relatórios de Sam nomeia o caminho fechado, as condições do teste e o risco residual. Uma frase como "a administração a partir da VLAN de usuários para os servidores de staging está bloqueada enquanto as senhas não se tornam únicas" é utilizável. Uma frase como "isto previne ameaças persistentes avançadas" não é. O linter de garantia sinaliza o segundo tipo de frase antes que o relatório saia de rascunho.
+
+### 24.7 Congelar as pontuações antes da discussão
+
+As reuniões de classificação congelam as pontuações antes da discussão de personalidades. Sam coleta as pontuações em silêncio e depois as revela. O lobby para rebaixar um achado porque uma equipe está "ocupada" acontece depois das pontuações, onde fica visível como aceitação de risco. A pontuação silenciosa impede que a primeira voz alta ancore todas as outras. Revelar depois permite discutir honestamente a ocupação como motivo para aceitar o risco por um tempo, com assinatura e expiração, em vez de como motivo para fingir que o achado pontuou menos. A diferença é se o registro do banco mostra o trade-off.
+
+### 24.8 Aceitação de risco por escrito
+
+A aceitação de risco usa um formulário com o montante, a expiração e a assinatura do CISO. Um "a gente convive com isso" verbal não fecha o F3. A aceitação verbal evapora quando a equipe muda ou quando um incidente faz todos esquecerem quem concordou. O formulário registra o que é aceito, até quando e por quem. O PulseMap mostra os achados aceitos com expiração em âmbar, e não em verde, para que não sumam da atenção. Quando a expiração chega sem correção nem renovação, o achado é reaberto. Esse mecanismo é o motivo pelo qual o F3 não pode ser fechado com uma conversa de corredor.
+
+### 24.9 Revelar as pontuações só depois que todos enviarem
+
+As pontuações só aparecem depois que todos os avaliadores enviam as suas. O roteiro de facilitação de Sam bloqueia revelações antecipadas. Revelações antecipadas deixam os avaliadores posteriores se ajustarem ao grupo, o que anula o julgamento independente. O roteiro de facilitação é uma lista de verificação que Sam lê: confirmar que todo avaliador enviou e, então, mostrar a tabela. O TrackScope impõe a mesma regra em reuniões remotas, escondendo o agregado até que chegue a última cédula. Bloquear revelações antecipadas atrasou ocasionalmente uma reunião em cinco minutos e regularmente impediu que uma voz sênior definisse a pontuação.
+
+### 24.10 Uma trilha de higiene para correções fáceis
+
+A revelação da classificação mostra o F2 por último. A equipe web ainda quer corrigir o F2 primeiro porque é fácil. Sam registra o que é fácil, mas baixo, numa trilha separada de "higiene", para que isso não desloque o financiamento do F3. Correções fáceis valem a pena. Não valem a pena a ponto de deixar sem recursos o trabalho mais bem classificado. A trilha de higiene tem sua própria pequena capacidade e seu próprio limite de WIP, para que a equipe web possa eliminar as páginas de erro verbosas sem tirar engenheiros da correção do caminho para o razão. Manter as trilhas separadas também mantém os relatórios honestos: a vazão da higiene não é apresentada como progresso nos achados de alto risco.
+
+### 24.11 Trilhas paralelas protegem o trabalho difícil
+
+A trilha de higiene corrigiu o F2 em três dias sem roubar a reunião de orçamento do F3. Trilhas paralelas impedem que o trabalho fácil deixe o difícil sem recursos. Antes da divisão, todo achado fácil competia pelo mesmo espaço na reunião que o F3, e o fácil geralmente vencia porque prometia uma vitória rápida. Depois da divisão, o F3 manteve sua conversa de financiamento e o F2 ainda foi corrigido. O padrão se generaliza. Sempre que o trabalho de baixa severidade desloca de forma consistente o de alta severidade, a correção é uma alocação de capacidade separada, não um sermão sobre prioridades.
+
+### 24.12 Limites de WIP na higiene
+
+Os limites de WIP da trilha de higiene a impedem de virar um depósito de riscos ignorados. Sem um limite, todo achado desconfortável é rerrotulado como higiene e a trilha vira um segundo backlog de riscos ignorados. O limite força uma escolha: terminar algo antes de começar mais. Os achados que não cabem precisam esperar, conquistar um lugar na lista classificada principal ou ser aceitos com expiração. O limite de WIP é um controle sobre o processo que alega ajudar. Um achado movido para a higiene ainda precisa levar sua pontuação original, para que qualquer pessoa que revise a trilha possa ver se um item de alto risco foi disfarçado de arrumação.
+
+### 24.13 Um WIP rígido de três
+
+O limite de WIP da higiene é três. A quarta correção fácil espera. Foco é um controle. Três é pouco o bastante para que a equipe sinta a restrição e muito o bastante para que o trabalho real de higiene continue. Quando aparece uma quarta correção fácil, ela espera visivelmente no quadro. Esperar é desconfortável e útil. Isso impede o acúmulo silencioso de arrumações pela metade e evita que a promessa de rapidez da trilha de higiene vire mais uma fila infinita. O limite é revisado a cada trimestre. Se os itens esperam mais de um mês, a equipe ou aumenta a capacidade, ou admite que parte do trabalho de higiene não será feita e registra essa decisão.
+
+### 24.14 Capas de noventa segundos para os conselhos de financiamento
+
+Os conselhos de financiamento recebem listas classificadas com uma capa de uma página em linguagem simples. Sam pratica a capa em voz alta até conseguir apresentá-la em noventa segundos. Os conselhos se lembram da capa por mais tempo que do apêndice. Praticar em voz alta pega o jargão que o apêndice pode manter e a capa não. Conselhos que se lembram da capa fazem perguntas melhores sobre a lista classificada. Conselhos que recebem apenas o apêndice muitas vezes não se lembram de nada além da contagem total de achados, que é o número menos útil do material. O apêndice ainda importa para os engenheiros que vão fazer o trabalho; por isso, a capa sempre termina com uma indicação da tabela classificada e de sua rubrica de pontuação.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam apresenta a lista classificada; o conselho financia F1/F3/F4 primeiro.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX070 — Ordem da classificação.** Qual achado fica em último no laboratório? *Rubrica:* 3 = F2; 2 = F1; 1 = F4; 0 = nada.
+- **EX071 — Compensatório.** Dê um controle compensatório para o administrador compartilhado. *Rubrica:* 3 = apenas via jump host/MFA/monitoramento enquanto as senhas se tornam únicas; 2 = parcial; 1 = ignorar; 0 = nada.
+- **EX072 — Pontuação.** Qual é a pontuação e a faixa do F4? *Rubrica:* 3 = 6, high; 2 = 6; 1 = 3; 0 = nada.
+
+### Síntese
+
+Os controles correspondem aos achados; a classificação dirige o financiamento; os controles compensatórios ganham tempo.
+
+### Continue estudando — capítulo 24 de 40
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O conjunto dentro do escopo é o conjunto de endereços da VLAN menos o conjunto unitário que contém o gateway SWIFT.
 
@@ -1496,6 +2227,54 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em i
 **EX047.** Negar os testes até que a política seja carregada.
 
 **EX048.** Não; o processador precisa autorizar os seus próprios sistemas.
+
+**EX049.** Não. O TLS não corrige bugs de autorização.
+
+**EX050.** A chave vaza junto com o repositório e contorna a custódia adequada de chaves.
+
+**EX051.** Verificações de integridade nos arquivos de evidência.
+
+**EX052.** Ela não é específica nem mensurável.
+
+**EX053.** A métrica, o limiar e o desenho do ensaio.
+
+**EX054.** Aprovação do CISO e do RH sob ROE escritas.
+
+**EX055.** Como uma etapa tardia/final, depois das etapas técnicas.
+
+**EX056.** TIBER-EU e CBEST.
+
+**EX057.** Ele é limitado no tempo, limitado na cobertura e invalidado por mudanças posteriores.
+
+**EX058.** O relato é um fato; a posse por um Estado-nação é um palpite sem evidência.
+
+**EX059.** Isso está fora do escopo e é uma violação de privacidade; o TRB pode redefinir as próprias credenciais sem lê-lo.
+
+**EX060.** Uma senha de VPN do banco exposta fora do TRB cria risco de acesso não autorizado aos sistemas bancários.
+
+**EX061.** Comparar as configurações e rodar os testes acordados com os donos — não presumir.
+
+**EX062.** Ele está fora do escopo do engajamento; por isso, modelá-lo convida a testes acidentais.
+
+**EX063.** Web, API móvel e VPN dos funcionários (também os pares de lote).
+
+**EX064.** `web -> ledger-db UNAPPROVED` (ênfase do capítulo 22).
+
+**EX065.** Corrigir um fluxo não aprovado pode exigir mudanças tanto no firewall/roteamento quanto na aplicação.
+
+**EX066.** Parar as verificações relacionadas e evitar tempestades de novas tentativas.
+
+**EX067.** Finalidade, cláusula das ROE, ferramenta/configurações, condições de parada, evidência esperada.
+
+**EX068.** Password spraying e testes de negação de serviço.
+
+**EX069.** Para evitar a expansão silenciosa das técnicas além do que foi autorizado.
+
+**EX070.** F2 (páginas de erro verbosas), com pontuação 3.
+
+**EX071.** Restringir a administração aos jump hosts e exigir MFA enquanto as senhas se tornam únicas.
+
+**EX072.** Pontuação 6, faixa high.
 
 <a id="references"></a>
 ## Referências
