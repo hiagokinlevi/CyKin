@@ -785,21 +785,31 @@ You will (1) describe the networks public PCs use; (2) explain segmentation and 
 
 Each Fernhill branch has a switch connecting public PCs, staff laptops, printers and a router to the internet. Public PCs use DNS, HTTPS for browsing and a print protocol to reach the print server.
 
+Mateo drew each branch's layout from the supplier's documents and walked the rooms to check them. At Eastgate he found a printer that staff had moved and reconnected to a different port. Knowing which protocols the public PCs actually need is the starting point for the firewall rules, since anything not on the list can be blocked.
+
 ### 11.2 Segmentation
 
 Placing public PCs on their own network segment, with firewall rules allowing only internet, printing and the management server, prevents them from reaching staff devices. This answers the design question from chapter 2.
+
+Mateo writes the allowed flows as a short table: destination, protocol and reason. Anything not in the table is denied. The supplier configures the rules from the table, and the test report checks each line. If a librarian later needs a new flow, such as a ticket printer, it is added to the table with a reason before the rule changes.
 
 ### 11.3 Old protocols
 
 SMB version 1, an old file-sharing protocol, has known weaknesses and should be disabled on all endpoints, as baselines from CIS and Microsoft recommend.
 
+Mateo checked the image and found the old protocol still enabled for a scanner that nobody had used in years. Removing it caused no complaints. He adds a test to the release checklist that confirms the protocol is off, because an update or a hurried fix could switch it back on without anyone noticing. Disabling old protocols reduces what an attacker on the same network could use, even inside a segmented branch.
+
 ### 11.4 Management traffic
 
 The restore and update system needs a management connection from each PC to a central server. This traffic must be authenticated and encrypted.
 
+Mateo's design has each PC connect out to the management server rather than the server reaching into the public segment, which keeps the firewall rules simple. The connection uses certificates, so a PC accepts instructions only from Fernhill's server and the server accepts reports only from enrolled PCs. If the server cannot be reached, the PC keeps its current image and reports the failure the next time it connects.
+
 ### 11.5 Logging
 
 Network devices can log connections, helping detect if a public PC tries to reach unexpected addresses.
+
+Mateo asks the supplier to send firewall logs for the public segment to Fernhill's central log store. Most entries will be ordinary browsing, which he does not examine. What he looks for is denied attempts to reach internal addresses, which would show a PC trying to cross the segment boundary. The logs record addresses and times only, consistent with the project's rule against recording patrons' activity.
 
 ### Name resolution and filtering
 
@@ -845,21 +855,31 @@ You will (1) explain processes, users, permissions and services; (2) describe ho
 
 Operating systems run programs as users with permissions. A patron session should run as a standard user, not an administrator, so it cannot change system files or install system-wide software.
 
+Mateo's design gives each session a fresh standard account that has no rights beyond its own profile. Staff use a separate account with administrator rights only when maintaining the PC, and that account is not available at the login screen during opening hours. Most of the toolbars Fernhill found had been installed for the current user only, which the nightly restore removes anyway.
+
 ### 12.2 Services
 
 Background services run continuously. Unneeded services increase attack surface; NIST SP 800-123 recommends removing or disabling unnecessary services on servers, and the same principle applies to endpoints.
+
+Mateo lists every running service on the image, finds out what each does and asks whether the public PCs need it. The worked example shows one result. Each service kept is noted with its reason in the image contents list, so a later reviewer can repeat the exercise and see whether anything has crept back.
 
 ### 12.3 Kernel protection
 
 The kernel enforces separation between processes. The Linux kernel self-protection project documents techniques that make the kernel harder to misuse; Windows has comparable features in its security baselines.
 
+Fernhill's public PCs run Windows, so Mateo uses the vendor's baseline for kernel-related settings and compares the image with it. The Linux material helps him understand why the settings matter: they make it harder for a flaw in a driver or program to give an attacker control of the kernel itself. He records which baseline version the image follows.
+
 ### 12.4 Updates
 
 Operating system updates fix vulnerabilities. Public PCs must receive them even though they reset nightly, so the golden image itself must be updated.
 
+A PC that restores to an old image every night would undo its own updates. Mateo's process therefore applies updates to the golden image each month, tests it on a lab PC and releases it in stages. Urgent fixes for actively exploited flaws can go out faster, with a shorter test. The image version on each PC is checked daily, so a PC still running last month's image stands out.
+
 ### 12.5 Logs
 
 The OS records events such as logons, installations and errors, which feed monitoring.
+
+Mateo selects a short list of events that matter to the project: restore results, attempts to install software, changes to security settings and errors from the restore agent. These are forwarded to the central store. Everything else stays on the PC, where the nightly restore clears it. Keeping the list short makes the logs useful and avoids collecting information about what patrons did during their sessions. The list is reviewed yearly.
 
 ### Least functionality
 
@@ -907,21 +927,31 @@ You will (1) design records for inventory, restore results and events; (2) choos
 
 The project needs an inventory of PCs (asset tag, branch, model, firmware version), nightly restore results (PC, date, success, duration) and security events (PC, time, event type).
 
+Each record type answers a different need. The inventory tells Marta what she owns and whether it is up to date. Restore results show whether the core promise of the design is kept each night. Security events show what the controls blocked. Mateo kept the fields to what the agreed questions require, so the records are small and easy to check for mistakes.
+
 ### 13.2 Keys
 
 Asset tags uniquely identify PCs even when hostnames change, so they are used as keys.
+
+Mateo found that hostnames at Millbrook had been changed twice in a year when PCs moved between rooms, which would have split each PC's history into pieces. The asset tag is printed on a label on the case and stored in the firmware, so it stays the same whatever the PC is called. Reports that need a readable name join the inventory to show the current hostname alongside the tag.
 
 ### 13.3 Privacy
 
 Records never store patron names or browsing. Session records count logons, not identities.
 
+Mateo checks each field against the purpose of the project before adding it. A count of sessions per PC helps plan capacity; who used a PC does not help with anything in scope. The data protection officer reviewed the table definitions and agreed that none of the fields identifies a patron. If a later request asks for identities, it goes back to her. Her agreement is filed with the design.
+
 ### 13.4 Retention
 
 Restore and event records are kept for one year, enough to analyse trends; older records are deleted.
 
+A year covers every season, including exam periods and holidays, so trends across the calendar can be compared. Mateo's deletion job runs monthly and removes records older than the limit from the store and from backups on the backup schedule. The job writes a count of deleted records to a log, so Marta can show that retention is enforced rather than just written in a policy.
+
 ### 13.5 Queries
 
 Typical questions: which PCs failed restore last night, which branch has the slowest restores, which firmware versions are in use.
+
+Mateo collected these questions by asking Marta what she checked each week and what she wished she could see. Each became a test for the data design. The slowest-branch question showed that restore results needed a branch field or a join, and the firmware question showed that the inventory needed versions recorded in a consistent format. Both were fixed before the pilot began.
 
 ### Testing queries
 
@@ -981,21 +1011,31 @@ You will (1) manage code with version control and reviews; (2) write requirement
 
 All scripts, image definitions and configuration files live in a version-controlled repository, so every change is recorded with author and reason.
 
+Before the project, image changes were made directly on a master PC and nobody could say afterwards exactly what had changed. Mateo's repository holds the scripts that build the image, so the image can be rebuilt from scratch and every difference between releases can be read. Marta now asks for the commit reference when someone reports that a release changed something.
+
 ### 14.2 Reviews
 
 Changes are reviewed by another person before use, catching mistakes early.
+
+Mateo's own changes are reviewed by Marta or another member of her team, and theirs by him. The reviewer runs the change on a lab PC as well as reading it. In the first month, reviews caught a script that would have deleted printer settings and a policy that applied to staff laptops by mistake. Both would have reached every branch without the second pair of eyes. Reviews take little time.
 
 ### 14.3 Requirements
 
 Requirements are numbered and testable, such as "R3: USB storage devices are blocked on public PCs".
 
+Numbering lets tests, reviews and reports refer to requirements exactly. Each requirement says what must be true, on which PCs and how it is checked. Mateo rewrote several of Fernhill's older rules that said things like keep PCs safe, which nobody could test. Requirements that cannot be tested are either sharpened or moved to a list of goals. Each requirement also names its owner.
+
 ### 14.4 Tests
 
 Each requirement has a test, run on a lab PC before an image is released.
 
+Mateo's tests are mostly short scripts that check a setting or try an action that should fail, such as mounting a synthetic USB storage device. Each test names the requirement it checks and prints pass or fail. Running them takes a few minutes, which means they actually get run before every release instead of being skipped when the team is busy. Failures block the release.
+
 ### 14.5 Releases
 
 New golden images are released in stages: lab PC, one branch, then all branches, so problems affect few PCs first.
+
+Each stage lasts long enough to see normal use, usually a few days at the pilot branch. Marta watches the dashboard and the help requests from that branch before approving the next stage. If a problem appears, the remaining branches stay on the previous image while it is fixed. The release record lists each stage, its dates and who approved moving on.
 
 ### Change history in practice
 
@@ -1047,21 +1087,31 @@ You will (1) apply confidentiality, integrity and availability to public PCs; (2
 
 Confidentiality: patrons' data must not be left for others. Integrity: PCs must run only approved software and settings. Availability: PCs must be ready when the library opens.
 
+Mateo writes each goal in terms librarians would recognise, then links it to the measure that shows whether it is met. The three can pull against each other: stricter controls may block a tool patrons need, and a long restore could delay opening. The design is judged on all three together, not on whichever is easiest to improve.
+
 ### 15.2 Threats
 
 Threats include careless users, curious users, malicious software from websites or USB devices and equipment failures.
+
+Most of Fernhill's actual problems came from the first two. Patrons forgot to sign out or installed something to make a game work, without any intent to harm. Malicious software was rarer in the records but more damaging when it appeared. Equipment failures cause no harm to data but leave patrons without a PC. Mateo's design addresses each, and he lists which control handles which threat.
 
 ### 15.3 Principles
 
 Saltzer and Schroeder (1975) set out design principles including least privilege, fail-safe defaults and economy of mechanism. A public PC that resets to a minimal, locked image applies all three.
 
+Mateo explains each principle with a library example. Least privilege is the standard account. Fail-safe defaults means a new USB device is blocked unless it is a keyboard or mouse. Economy of mechanism means one image and one restore process for every public PC, which is easier to check than many custom setups.
+
 ### 15.4 Controls
 
 CIS Controls v8 groups safeguards such as inventory, secure configuration and data recovery, each relevant to the project.
 
+Mateo uses the controls as a checklist rather than a target. Inventory comes first because Fernhill cannot protect PCs it does not know about. Secure configuration is the golden image. Data recovery is the nightly restore, used here to remove patron data rather than to recover lost files. Safeguards that do not fit a public PC are noted as not applicable, with a reason.
+
 ### 15.5 Risk
 
 Risk combines likelihood and impact; chapter 23 ranks scenarios.
+
+Mateo uses a simple scale for both parts at first, with three levels each, so that librarians and managers can join the discussion. A leftover bank statement is fairly likely and serious for the patron; a failed restore is likely but minor if caught at the morning check. The ranking shows where to spend effort first. More careful methods come later, once the scenarios are written out and measured. Each ranking is dated.
 
 ### Threats in plain words
 
