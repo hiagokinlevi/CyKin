@@ -389,7 +389,7 @@ enriched  139/160 = 0.869  95% CI [0.808, 0.913]
 
 ### 5.3 Reading the result
 
-Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition. Nadia reports the interval for each condition and leaves the main inference to the registered paired test. The two intervals together show readers the scale of the change. Neither interval is used to claim significance on its own, since overlapping or separate intervals are not a formal test.
+Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition. They treat the 160 pooled decisions as independent, although each analyst contributes 20 of them, so they are likely somewhat too narrow if analysts differ in skill; this is why they are descriptive only. Nadia reports the interval for each condition and leaves the main inference to the registered paired test. The two intervals together show readers the scale of the change. Neither interval is used to claim significance on its own, since overlapping or separate intervals are not a formal test.
 
 ### 5.4 Harms
 
@@ -456,7 +456,7 @@ Nadia sorts critiques into: threatens validity (Reviewer 2), changes conclusions
 
 ### 6.4 Responses
 
-To Reviewer 2 she runs a pre-planned secondary analysis using a small follow-up with four analysts and single-field cards; history alone gives most of the gain and both missed attacks — evidence that history context is powerful and risky. To Reviewer 3 she moves the harm to the abstract and recommends showing history only alongside a "why it could still be malicious" prompt. To Reviewer 1 she adds a limits section and releases the generator so others can test realism. The analyst's point is accepted for the next study.
+To Reviewer 2 she runs an exploratory follow-up with four analysts and single-field cards; history alone gives most of the gain and both missed attacks — evidence that history context is powerful and risky. To Reviewer 3 she moves the harm to the abstract and recommends showing history only alongside a "why it could still be malicious" prompt. To Reviewer 1 she adds a limits section and releases the generator so others can test realism. The analyst's point is accepted for the next study.
 
 ### 6.5 The response letter
 
