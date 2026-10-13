@@ -724,7 +724,7 @@ Each finding leads to a process change rather than a one-off fix, and the board 
 - Evidence packs built specially before audits.
 - Programmes dependent on a single expert.
 
-Each error has a guard. Re-observe negotiated algorithms instead of reading reports. Generate evidence from normal operations. Train successors and keep decision records, so the programme continues if its lead leaves. At NRHT internal audit re-observed 60 tier-1 flows rather than reading status reports, and found three with classical fallback. The evidence pack is generated from normal operation and refreshed each quarter. A named deputy can run each review if the lead is absent, and decision records explain why each choice was made, so a newcomer can continue the work.
+Each error has a guard. Re-observe negotiated algorithms instead of reading reports. Generate evidence from normal operations. Train successors and keep decision records, so the programme continues if its lead leaves. At NRHT the year-two audit sample of 60 tier-1 flows (9.6) is the model: re-observation found what status reports had missed. The evidence pack is generated from normal operation and refreshed each quarter. A named deputy can run each review if the lead is absent, and decision records explain why each choice was made, so a newcomer can continue the work.
 
 ### Exercises
 
@@ -844,7 +844,7 @@ Record in the project plan which data will be collected, who can access it, wher
 
 ### 11.5 Impact evaluation
 
-Define impact before starting: for example, "tier-1 unknown share in the radiology division reduced from 25 % to below 10 %" or "supplier questionnaire adopted for all new radiology contracts". Measure after a defined period.
+Define impact before starting: for example, "tier-1 unknown share in the radiology division reduced from 31 % to below 10 %" or "supplier questionnaire adopted for all new radiology contracts". Measure after a defined period.
 
 Set a baseline measure before starting and agree the target and the date for measuring it. At NRHT's radiology project the unknown share started at 31 % and was measured again after six months. Report the result whether or not it meets the target. Choose measures the organization already collects where possible.
 
@@ -1083,6 +1083,8 @@ Model answers; any answer meeting the rubric scores equally. Numbers about NRHT 
 ## Twelve-subject teaching route
 
 This is the **postgraduate specialist** course. It follows the synthetic **Northgate Regional Health Trust (NRHT)** through organization-scale decisions: robust choice, current practice, evidence grading, risk ethics, design alternatives, controlled evaluation, integration, difficult cases, assurance, research critique, applied project and transfer.
+
+<a id="references"></a>
 
 ## References
 
