@@ -2893,7 +2893,7 @@ For TMRP, the reconnection burst found in integration testing is the clearest ex
 
 ### 36.4 Scale
 
-At fleet scale, manual processes fail. Key enrolment, rotation and revocation must be automated with audit; monitoring must aggregate and prioritise; updates must be staged and observable; inventory must be continuously reconciled. A procedure that takes 30 minutes per device takes three weeks of staff time for a thousand devices.
+At fleet scale, manual processes fail. Key enrolment, rotation and revocation must be automated with audit; monitoring must aggregate and prioritise; updates must be staged and observable; inventory must be continuously reconciled. A procedure that takes 30 minutes per device takes 500 hours of staff time, about three months for one full-time engineer, for a thousand devices.
 
 LRWA has only 42 field stations today, but the same design may later be used for a much larger fleet, so TMRP automates key enrolment and rotation records from the start rather than relying on a spreadsheet maintained by one engineer.
 

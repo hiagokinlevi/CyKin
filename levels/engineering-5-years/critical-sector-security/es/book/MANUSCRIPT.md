@@ -70,9 +70,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 32. [Infraestructura crítica y seguridad sectorial: confiabilidad](#ch-32)
 33. [Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia](#ch-33)
 34. [Infraestructura crítica y seguridad sectorial: integración](#ch-34)
-35. [Taller de diseño II](../../en/book/MANUSCRIPT.md#ch-35)
-36. [Infraestructura crítica y seguridad sectorial: desempeño y escala](../../en/book/MANUSCRIPT.md#ch-36)
-37. [Infraestructura crítica y seguridad sectorial: operaciones](../../en/book/MANUSCRIPT.md#ch-37)
+35. [Taller de diseño II](#ch-35)
+36. [Infraestructura crítica y seguridad sectorial: desempeño y escala](#ch-36)
+37. [Infraestructura crítica y seguridad sectorial: operaciones](#ch-37)
 38. [Infraestructura crítica y seguridad sectorial: validación](../../en/book/MANUSCRIPT.md#ch-38)
 39. [Infraestructura crítica y seguridad sectorial: mantenibilidad](../../en/book/MANUSCRIPT.md#ch-39)
 40. [Laboratorio de verificación II](../../en/book/MANUSCRIPT.md#ch-40)
@@ -2694,7 +2694,208 @@ Integre de forma incremental, con pruebas de interfaz y escenarios de sistema co
 <!-- cyberabc:chapter-navigation:start ch-34 -->
 ### Siga estudiando — capítulo 34 de 50
 
-[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](../../en/book/MANUSCRIPT.md#ch-35)
+[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Taller de diseño II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) llevar un diseño desde el concepto hasta el diseño de detalle con una justificación cuantitativa; (2) integrar los análisis de confiabilidad, seguridad funcional, seguridad, desempeño y coste en un único argumento; (3) construir un argumento de aseguramiento estructurado que vincule las afirmaciones con la evidencia; y (4) defender las decisiones del diseño de detalle ante una revisión. Integra los capítulos 26–34 y prepara los capítulos 36–40.
+
+### 35.1 Del concepto al diseño de detalle
+
+El Taller I seleccionó un concepto. El Taller II lo detalla: componentes concretos, configuraciones, interfaces, procedimientos y verificación. Vuelven todas las cifras de los capítulos anteriores: tiempos de autonomía (capítulos 1 y 6), dimensionamiento de baterías (capítulo 3), tasas base (capítulo 7), latencia (capítulo 11), árbol de fallos (capítulo 23), métricas de detección (capítulo 29), disponibilidad (capítulo 32) y colas (avance del capítulo 36). Un diseño de detalle es coherente cuando estas cifras concuerdan entre sí y con los requisitos. En el TMRP, el dimensionamiento de las baterías, las 72 horas de operación automática local, la reserva de cuatro horas del hospital y el tiempo de recuperación deben contar la misma historia; el EX069 muestra qué ocurre cuando una de ellas no lo hace.
+
+### 35.2 Argumentos de aseguramiento
+
+Un **caso de aseguramiento** es un argumento estructurado de que un sistema cumple una afirmación, respaldado por evidencia. Tiene una afirmación principal («el TMRP mantiene abastecido al hospital en escenarios creíbles, incluida la falsificación de órdenes remotas»), subafirmaciones (cada requisito se cumple; los riesgos residuales son aceptables), argumentos (por qué las subafirmaciones respaldan la afirmación) y evidencia (resultados de pruebas, análisis, revisiones). El modelo de argumentación de Toulmin —afirmación, datos, garantía, respaldo, cualificador, refutación ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005))— es una lente útil: qué evidencia respalda la afirmación, por qué es pertinente y qué la derrotaría. Los **derrotadores** explícitos («salvo que el centro SCADA esté comprometido») mantienen honesto el argumento.
+
+### 35.3 Encargo del Taller II (sintético)
+
+Elabore el diseño de detalle de la fase 1 del TMRP (PS2, PS3, PS4 y Hollin Hill): lista de componentes con sus funciones de seguridad; listas de permitidos de zonas y conductos; procedimiento de gestión de claves; procedimientos de manual local y de conmutación por error; racionalización de las nuevas alarmas de seguridad; plan de verificación; y un caso de aseguramiento para la afirmación principal con al menos cuatro subafirmaciones y derrotadores identificados. El encargo abarca los cuatro activos que más importan para St Brenna's: PS2 como piloto probado, PS3 y Hollin Hill como la vía del depósito y PS4 como alimentación directa. Las estaciones restantes y la planta de Fenwick vienen en fases posteriores, de modo que el caso de aseguramiento de la fase 1 debe decir con claridad que todavía no las cubre.
+
+### 35.4 Ejemplo resuelto: una rama del caso de aseguramiento (sintético)
+
+*Subafirmación C2:* las órdenes remotas falsificadas no pueden causar la pérdida del suministro al hospital. *Argumento:* las órdenes requieren un MAC válido por estación (R1) y un contador reciente (R2); incluso las órdenes aceptadas no pueden llevar el proceso más allá de los límites locales (R3); la pérdida de ambas vías de suministro exige además que falle el depósito del hospital (árbol de fallos). *Evidencia:* T1 y T2 aprobadas (banco y aceptación en el emplazamiento en PS2); T3 aprobada en v2; análisis de condicionamiento del Lab 9; revisión independiente de la gestión de claves. *Derrotadores:* (D1) servidores SCADA comprometidos: las órdenes son auténticas; se mitiga con los límites locales y la aprobación por dos personas de los cambios masivos, con el riesgo residual aceptado por el director de operaciones; (D2) clave de estación extraída de una RTU robada: limitada a una estación, detección mediante la alarma de manipulación, procedimiento de rotación. *Cualificador:* la afirmación se sostiene para los escenarios del registro de riesgos v1.2; no para un ataque físico contra ambas estaciones de bombeo.
+
+### 35.5 Actividad práctica
+
+Redacte el caso de aseguramiento completo para el encargo del Taller II y preséntelo a un panel al que se le haya pedido encontrar derrotadores. Entregue al panel el encargo, su lista de componentes y el caso de aseguramiento, y pídale que encuentre qué derrotaría cada subafirmación. Registre cada derrotador que encuentre, lo hubiera enumerado usted o no, y redacte una respuesta: evidencia que lo aborde, un cambio de diseño o una aceptación explícita con un responsable. Se esperan derrotadores como un centro SCADA comprometido o una clave de RTU robada; la tarea del panel es encontrar los que usted pasó por alto, como el mal uso del modo manual local.
+
+### 35.6 Errores comunes y límites
+
+- Cifras incoherentes entre análisis.
+- Casos de aseguramiento con afirmaciones sin evidencia, o con evidencia sin argumento.
+- Derrotadores omitidos para que el caso parezca más sólido.
+- Diseño de detalle que modifica los requisitos en silencio.
+
+El EX069 es un ejemplo del primer error dentro del propio TMRP: R6 pide ocho horas, pero el ensayo de recuperación midió doce. Un caso que afirmara R6 citando el ensayo sería incoherente, de modo que el caso registra R6 como no cumplido y explica por qué la afirmación sobre el hospital puede seguir sosteniéndose gracias a la operación automática local.
+
+### Ejercicios — capítulo 35
+
+**EX069 — Comprobación de coherencia.** *Objetivo:* encontrar incoherencias entre análisis. *Entradas:* autonomía de las baterías de PS4 de 24 h (R5); reserva del hospital de 4 h; R6, restablecer la operación remota en 8 h; el ensayo del capítulo 47 muestra 12 h. *Pasos:* identifique qué afirmaciones entran en conflicto y qué significa el conflicto para el caso de aseguramiento. *Evidencia esperada:* análisis. *Rúbrica:* 3 = identifica que R6 no se cumple (12 > 8), que el suministro no depende de la operación remota (automático local), de modo que la afirmación sobre el hospital puede seguir sosteniéndose, y que el caso debe registrar R6 como fallido con un plan; 2 = parcial; 1 = no advierte lo de R6; 0 = nada.
+
+**EX070 — Encuentre un derrotador.** *Objetivo:* cuestionar un argumento. *Entradas:* la subafirmación C2 del §35.4. *Pasos:* proponga otros dos derrotadores no enumerados y la evidencia o el cambio de diseño que respondería a cada uno. *Evidencia esperada:* dos derrotadores con sus respuestas. *Rúbrica:* 3 = derrotadores creíbles (p. ej., mal uso del modo manual local por un interno; compromiso del camino de actualización del firmware de la pasarela; fallo en la persistencia del contador) con respuestas específicas; 2 = uno débil; 1 = repite los ya enumerados; 0 = nada.
+
+### Síntesis del capítulo
+
+El diseño de detalle hace que todas las cifras anteriores encajen. Un caso de aseguramiento conecta la afirmación principal con la evidencia mediante argumentos explícitos, con los cualificadores y los derrotadores enunciados abiertamente. La coherencia entre análisis y la honestidad sobre los derrotadores son lo que hace defendible un diseño de detalle.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Siga estudiando — capítulo 35 de 50
+
+[← Capítulo 34](#ch-34) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Infraestructura crítica y seguridad sectorial: desempeño y escala
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) modelar el rendimiento, la latencia y la utilización con la teoría de colas y la ley de Little; (2) estimar el coste en desempeño de los controles de seguridad; (3) dimensionar sistemas para condiciones de pico y degradadas, incluida la carga provocada por ataques; y (4) diseñar para la escala —flotas de miles de dispositivos— en la gestión de claves, la supervisión y las actualizaciones. Se apoya en los capítulos 11, 19 y 34 y prepara el capítulo 41.
+
+### 36.1 Colas por todas partes
+
+Los mensajes esperan en colas en pasarelas, servidores y enlaces. La [ley de Little](https://doi.org/10.1287/opre.9.3.383), $L = \lambda W$, relaciona el número medio en un sistema $L$, la tasa de llegadas $\lambda$ y el tiempo medio en el sistema $W$, en condiciones muy generales. Para el modelo sencillo M/M/1 (llegadas aleatorias, servicio exponencial, un servidor con tasa de servicio $\mu$), la utilización es $\rho = \lambda/\mu$ y $W = 1/(\mu - \lambda)$. El retardo crece sin límite cuando $\rho \to 1$: con una utilización del 80 %, el mensaje medio pasa cinco tiempos de servicio en el sistema; con el 96 %, veinticinco. Dimensione de modo que la utilización de pico se mantenga muy por debajo de 1, habitualmente por debajo de 0,7 en los caminos críticos para la latencia.
+
+### 36.2 El coste de la seguridad
+
+Todo control cuesta algo: bytes (la sobrecarga de 22 bytes del Lab 8), CPU (cálculo de MAC, negociaciones TLS), latencia (decisiones de política, inspección) y tiempo de los operadores (reautenticación, aprobaciones). Mídalos en el banco. Los costes suelen ser pequeños en comparación con los tiempos de ida y vuelta de la red, pero importan en enlaces limitados (radio de bajo ancho de banda), en dispositivos limitados (microcontroladores pequeños) y a escala. En el TMRP, los costes medidos incluyen los veintidós bytes adicionales por trama, el cálculo del MAC de cada mensaje en el verificador del lado del SCADA y el tiempo de los operadores para la aprobación por dos personas de los cambios masivos de consignas. Ninguno es grande, pero el límite de rendimiento del verificador es lo que el ejemplo resuelto debe dimensionar.
+
+### 36.3 Carga de pico, degradada y de ataque
+
+Dimensione para la peor carga creíble: avalanchas de alarmas durante tormentas, ráfagas de reconexión tras cortes (capítulo 34), recuperación del retraso tras una conmutación por error e inundaciones deliberadas. Un atacante que puede enviar tráfico a una pasarela puede llevar la utilización hacia 1 y retrasar las alarmas legítimas; las defensas incluyen límites de frecuencia por origen, colas con prioridad para las alarmas, rechazo temprano del tráfico no autenticado (verifique primero la comprobación barata) y márgenes de capacidad. En el TMRP, la ráfaga de reconexión encontrada en las pruebas de integración es el ejemplo más claro, y la cola con prioridad para las alarmas del verificador es la defensa elegida en el ejemplo resuelto.
+
+### 36.4 Escala
+
+A escala de flota, los procesos manuales fallan. El registro, la rotación y la revocación de claves deben automatizarse, con auditoría; la supervisión debe agregar y priorizar; las actualizaciones deben hacerse por etapas y ser observables; el inventario debe conciliarse de forma continua. Un procedimiento que lleva 30 minutos por dispositivo consume 500 horas de trabajo del personal, unos tres meses de un ingeniero a tiempo completo, para mil dispositivos. La LRWA tiene hoy solo 42 estaciones de campo, pero el mismo diseño puede usarse más adelante para una flota mucho mayor, de modo que el TMRP automatiza desde el principio los registros de alta y rotación de claves, en lugar de depender de una hoja de cálculo mantenida por un único ingeniero.
+
+### 36.5 Ejemplo resuelto: dimensionamiento de la pasarela (sintético)
+
+El verificador del lado del SCADA puede procesar 50 mensajes/s. En régimen estacionario, las 42 estaciones de la LRWA generan unos 20 mensajes/s ($\rho = 0.4$, $W \approx 33$ ms). Durante una tormenta, las alarmas elevan las llegadas a 40/s ($\rho = 0.8$, $W = 100$ ms, unos 4 mensajes en el sistema). A 48/s, $W = 500$ ms y hay de media 24 mensajes en el sistema. El sondeo secuencial de 42 estaciones con 180 ms de ida y vuelta más el tiempo de registros dura 7,8 s por ciclo; seis canales en paralelo lo reducen a 1,3 s. Decisiones: duplicar la capacidad del verificador hasta 100 mensajes/s para tener margen; cola con prioridad para las alarmas; notificación por excepción de las alarmas en lugar de esperar al sondeo.
+
+### 36.6 Actividad práctica: Lab 13
+
+```python
+# Lab 13 - is the telemetry gateway fast enough? M/M/1 and a polling cycle (synthetic, offline)
+mu = 50.0                                    # messages/s the gateway can verify and forward
+for lam in (20.0, 40.0, 45.0, 48.0):
+    rho = lam / mu; W = 1 / (mu - lam); L = lam * W
+    print(f"lambda={lam:>4} rho={rho:.2f} W={W*1000:6.1f} ms L={L:5.1f} msgs")
+stations, regs_per_poll, rtt_ms, per_reg_ms = 42, 3, 180, 2
+cycle = stations * (rtt_ms + regs_per_poll * per_reg_ms)
+print(f"sequential polling cycle: {cycle/1000:.2f} s; with 6 parallel channels: {cycle/6/1000:.2f} s")
+```
+
+Salida esperada:
+
+```text
+lambda=20.0 rho=0.40 W=  33.3 ms L=  0.7 msgs
+lambda=40.0 rho=0.80 W= 100.0 ms L=  4.0 msgs
+lambda=45.0 rho=0.90 W= 200.0 ms L=  9.0 msgs
+lambda=48.0 rho=0.96 W= 500.0 ms L= 24.0 msgs
+sequential polling cycle: 7.81 s; with 6 parallel channels: 1.30 s
+```
+
+Las cuatro primeras líneas muestran cómo el retardo crece con fuerza a medida que las llegadas se acercan a la capacidad del verificador, de cincuenta mensajes por segundo: a veinte mensajes por segundo, el mensaje medio espera aproximadamente un tercio de décima de segundo, mientras que a cuarenta y ocho espera medio segundo y hay dos docenas de mensajes en el sistema. Las líneas de sondeo muestran por qué la LRWA usa seis canales en paralelo: un ciclo secuencial de casi ocho segundos dejaría las alarmas esperando mucho antes de que llegaran al verificador.
+
+### 36.7 Errores comunes y límites
+
+- Dimensionar para la carga media.
+- Ignorar que el retardo se dispara cerca de la utilización plena.
+- Suponer que los costes de seguridad son despreciables sin medirlos en el dispositivo de destino.
+- Procedimientos manuales que no escalan.
+- Usar M/M/1 cuando las llegadas llegan en ráfagas o el servicio es determinista; trátelo como una primera aproximación.
+
+El dimensionamiento del TMRP evita los dos primeros errores al dimensionar para la carga de tormenta y mantener el verificador duplicado muy por debajo de la utilización plena, y trata los resultados de colas como una primera aproximación que debe contrastarse con mediciones en el banco.
+
+### Ejercicios — capítulo 36
+
+**EX071 — Duplicar la capacidad.** *Objetivo:* cuantificar el margen. *Entradas:* Lab 13 con $\mu = 100$. *Pasos:* calcule $\rho$, $W$ y $L$ a 20, 40 y 48 mensajes/s; compárelos con $\mu = 50$. *Evidencia esperada:* tabla. *Rúbrica:* 3 = valores correctos (p. ej., a 48/s: ρ = 0,48, W ≈ 19,2 ms, L ≈ 0,92) y conclusión; 2 = un error; 1 = una sola tasa; 0 = nada.
+
+**EX072 — Defensa contra inundaciones.** *Objetivo:* diseñar frente a la carga de ataque. *Entradas:* un atacante en la red LTE puede enviar 1.000 tramas falsificadas/s al verificador. *Pasos:* proponga tres defensas en orden de coste y explique cómo protege cada una la latencia de las alarmas. *Evidencia esperada:* lista. *Rúbrica:* 3 = filtrado a nivel de red por origen o túnel, comprobaciones previas baratas antes del MAC, límites de frecuencia por origen y colas con prioridad, con razonamiento sobre dónde se descarta la carga; 2 = una sola defensa; 1 = solo «añadir capacidad»; 0 = nada.
+
+### Síntesis del capítulo
+
+Las colas gobiernan la latencia; la ley de Little y los modelos de colas sencillos muestran que el retardo se dispara cuando la utilización se acerca a uno. Mida los costes de los controles de seguridad, dimensione para la carga de pico, degradada y de ataque con prioridad para las alarmas, y automatice desde el principio los procesos a escala de flota.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Siga estudiando — capítulo 36 de 50
+
+[← Capítulo 35](#ch-35) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Infraestructura crítica y seguridad sectorial: operaciones
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar operaciones de seguridad para la TO: supervisión, clasificación, escalado y coordinación con las operaciones del proceso; (2) redactar procedimientos operativos y guías de actuación que los operadores puedan ejecutar bajo presión; (3) gestionar los cambios, los accesos y las vulnerabilidades en las operaciones diarias; y (4) aprender de los incidentes y de los cuasiincidentes sin culpabilizar. Se apoya en los capítulos 18, 29 y 34 y prepara los capítulos 38 y 47.
+
+### 37.1 Operaciones de seguridad en la TO
+
+La supervisión de seguridad de la TO vigila el tráfico de red, los registros y los datos del proceso en busca de indicios de uso indebido. La clasificación en la TO difiere de la de TI: la primera pregunta no es «¿es esto malicioso?», sino «¿está seguro el proceso?». Por eso, las vías de escalado llegan a la sala de control y al jefe de operaciones de turno, además de al personal de seguridad. Muchas empresas de servicios no tienen un equipo de seguridad 24/7; la sala de control sí está atendida 24/7 y debe poder actuar ante las alarmas de seguridad con guías de actuación claras, escalando a especialistas de seguridad de guardia.
+
+### 37.2 Guías de actuación
+
+Una guía de actuación es un procedimiento breve y probado para una situación concreta: desencadenante, acciones de seguridad inmediatas, información que recopilar, decisiones y quién las toma, comunicaciones y vuelta a la normalidad. Escriba para un operador cansado a las 03:00: pasos numerados, puntos de decisión claros, números de teléfono, sin jerga. Pruebe cada guía en ejercicios y actualícela después de cada uso. Las orientaciones sobre gestión de incidentes como [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) ofrecen una estructura general; las guías de TO añaden pasos de seguridad del proceso.
+
+La guía de actuación de la LRWA ante un cambio inesperado de consigna está redactada conforme a este criterio.
+
+### 37.3 Gestión de cambios, accesos y vulnerabilidades
+
+Las operaciones diarias mantienen el sistema en su estado de diseño: gestión de cambios (ningún cambio de configuración sin aprobación y registro); gestión de accesos (altas, cambios de puesto y bajas; sesiones de fabricantes aprobadas para cada uso); gestión de vulnerabilidades (seguir avisos como los [avisos ICS de la CISA](https://www.cisa.gov/news-events/ics-advisories), evaluar su aplicabilidad, planificar la corrección, capítulo 12). La deriva —la acumulación de cambios no documentados— es la forma más común en que un sistema bien diseñado se vuelve inseguro.
+
+En la LRWA, el script olvidado de informes corporativos que apareció en la revisión de flujos es un ejemplo de deriva, y el control de cambios en cada conducto es la forma en que el TMRP impide que esas vías reaparezcan.
+
+### 37.4 Aprender sin culpabilizar
+
+Los incidentes y los cuasiincidentes son evidencia sobre el sistema. [Reason (2000)](https://doi.org/10.1136/bmj.320.7237.768) contrastó el enfoque centrado en la persona (culpar a los individuos) con el enfoque sistémico (defensas, barreras y condiciones latentes), y sostuvo que este último es más eficaz. Las revisiones posteriores a la acción preguntan qué ocurrió, por qué tenía sentido para las personas implicadas en aquel momento, qué defensas funcionaron o fallaron y qué va a cambiar. La culpa reprime la notificación, y los cuasiincidentes no notificados son lecciones perdidas.
+
+En la LRWA, el técnico que conectó un portátil a la red de PS3 en el EX074 recibe este trato: la revisión pregunta por qué el servidor de salto le parecía demasiado lento y qué hizo posible el atajo.
+
+### 37.5 Ejemplo resuelto: guía de actuación «cambio inesperado de consigna» (sintético)
+
+*Desencadenante:* el SCADA muestra un cambio de consigna en cualquier estación que no coincide con una acción del operador en los últimos 5 minutos, o una pasarela registra fallos de MAC repetidos. *Acciones de seguridad inmediatas:* (1) contraste los valores del proceso de la estación con mediciones independientes; (2) si están fuera del rango normal, restablezca localmente la consigna anterior o pase a manual local a través del técnico de turno; (3) no desactive la telemetría remota. *Recopilar:* estación, hora, valores anterior y nuevo, extracto del registro de la pasarela, registro del operador. *Decidir:* el jefe de turno decide si desactiva las escrituras remotas en toda la flota (conmutador de configuración de las pasarelas). *Comunicar:* al responsable de seguridad de guardia en 30 minutos; al enlace con el hospital si PS3 o PS4 están afectadas. *Vuelta a la normalidad:* las escrituras remotas se reactivan solo cuando el responsable de seguridad de guardia está de acuerdo.
+
+### 37.6 Actividad práctica
+
+Ejecute la guía de actuación en un ejercicio de mesa con una secuencia guionizada de inyecciones (primero un único cambio de consigna, luego fallos de MAC en una segunda estación y, por último, una llamada del hospital por presión baja). Registre los tiempos de decisión y las ambigüedades, y revise la guía. Ejecute las inyecciones en orden y anote la hora de cada decisión. Observe en particular si el equipo mantiene en funcionamiento la telemetría remota, como exige la guía, y si el jefe de turno decide desactivar las escrituras remotas en toda la flota antes de que llegue la llamada del hospital. Registre cada punto en el que alguien preguntó qué quería decir la guía. Después del ejercicio de mesa, reescriba esos pasos y programe una segunda ejecución para comprobar las revisiones.
+
+### 37.7 Errores comunes y límites
+
+- Alarmas de seguridad dirigidas a un equipo que no está de servicio cuando saltan.
+- Guías de actuación escritas para expertos y nunca probadas.
+- Gestión de cambios eludida «temporalmente».
+- Revisiones posteriores a la acción que terminan en «error del operador».
+
+El diseño de la guía de la LRWA responde a estos errores: las alarmas de seguridad llegan a la sala de control, que está atendida a todas horas, y se llama al responsable de seguridad de guardia en 30 minutos. La guía se prueba en ejercicios de mesa, y el control de cambios no admite excepciones temporales. Las revisiones posteriores a la acción de la LRWA buscan condiciones latentes, como un servidor de salto lento, en lugar de terminar en un error del operador.
+
+### Ejercicios — capítulo 37
+
+**EX073 — Revisión de la guía de actuación.** *Objetivo:* mejorar una guía de actuación. *Entradas:* §37.5. *Pasos:* identifique tres debilidades (p. ej., umbrales ambiguos, contactos que faltan, un valor por defecto inseguro) y reescriba los pasos afectados. *Evidencia esperada:* pasos revisados. *Rúbrica:* 3 = debilidades sustanciales corregidas con pasos ejecutables; 2 = cambios cosméticos; 1 = solo crítica; 0 = nada.
+
+**EX074 — Revisión de un cuasiincidente.** *Objetivo:* realizar una revisión sin culpabilizar. *Entradas:* un técnico conectó un portátil a la red de control de PS3 para descargar registros, eludiendo el servidor de salto; el portátil no se había analizado. No hubo incidente posterior. *Pasos:* redacte una revisión de una página: qué ocurrió, por qué tenía sentido, qué defensas fallaron y qué cambios del sistema se proponen. *Evidencia esperada:* revisión. *Rúbrica:* 3 = explica la racionalidad local (servidor de salto lento, plazo), identifica las condiciones latentes (sin seguridad de puertos, sin una vía sencilla para los registros) y propone cambios del sistema; 2 = algo de culpa; 1 = «volver a formar al técnico»; 0 = nada.
+
+### Síntesis del capítulo
+
+Las operaciones de seguridad de la TO empiezan por la seguridad del proceso y encauzan el escalado a través de la sala de control. Las guías de actuación deben ser breves, estar probadas y poder ejecutarse bajo presión. La gestión diaria de cambios, accesos y vulnerabilidades mantiene el sistema tal como se diseñó, y el aprendizaje sin culpabilizar a partir de incidentes y cuasiincidentes mejora las defensas.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Siga estudiando — capítulo 37 de 50
+
+[← Capítulo 36](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 →](../../en/book/MANUSCRIPT.md#ch-38)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2908,6 +3109,24 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX067.** 42 × 180 = 7.560 mensajes; a 50 por segundo, 151,2 s para vaciar la cola; una alarma prioritaria situada al final espera unos 151 s, lo que incumple R7 (60 s). Corrección: cola con prioridad para las alarmas y reenvío del valor más reciente, con relleno del histórico a frecuencia limitada hacia el historiador.
 
 **EX068.** Cláusulas: notificación de incidentes a la LRWA en 1 h desde su detección; divulgación en 72 h de las vulnerabilidades que afecten a la red privada; mantenimientos planificados notificados con 10 días hábiles de antelación; prioridad de restablecimiento para los emplazamientos de la LRWA con un objetivo de 4 h; registros de acceso al APN de la LRWA entregados mensualmente; ejercicio conjunto anual.
+
+### Capítulo 35
+
+**EX069.** R6 (8 h) entra en conflicto con el resultado del ensayo (12 h): R6 no se cumple. El suministro al hospital no depende de la operación remota (modo automático local, 72 h), de modo que la afirmación N1 puede seguir sosteniéndose; el caso de aseguramiento debe registrar R6 como fallido, con un plan de corrección o una revisión acordada con las partes interesadas. Las baterías de 24 h y la reserva de 4 h son coherentes.
+
+**EX070.** D3: mal uso del modo manual local en PS4 por un interno; respuesta: regla de dos personas para el modo manual fuera de las horas de mantenimiento, alarma y CCTV en el panel. D4: compromiso del camino de actualización del firmware de la pasarela; respuesta: actualizaciones firmadas con claves en un HSM, implantación por etapas, supervisión del comportamiento de la pasarela. D5: la persistencia del contador falla tras una pérdida de alimentación; respuesta: prueba de reinicio (EX060) y rotación de claves tras un reinicio no limpio.
+
+### Capítulo 36
+
+**EX071.** μ = 100/s: λ = 20 → ρ = 0,20, W = 12,5 ms, L = 0,25; λ = 40 → ρ = 0,40, W ≈ 16,7 ms, L ≈ 0,67; λ = 48 → ρ = 0,48, W ≈ 19,2 ms, L ≈ 0,92. En comparación con μ = 50 (33,3, 100 y 500 ms), duplicar la capacidad elimina la explosión del retardo durante las tormentas.
+
+**EX072.** (1) Filtrado a nivel de red: solo los extremos de los túneles de las pasarelas pueden llegar al verificador, lo que descarta la mayor parte del tráfico falsificado antes de cualquier cálculo. (2) Comprobaciones previas baratas (longitud, ID de estación conocido, contador plausiblemente por delante del último aceptado) antes de calcular el MAC. (3) Límites de frecuencia por origen y una cola de prioridad estricta para las alarmas verificadas, de modo que las inundaciones se descarten en la prioridad más baja. Añadir capacidad por sí solo pierde frente a un atacante que puede escalar el tráfico.
+
+### Capítulo 37
+
+**EX073.** Debilidades: «no coincide con una acción del operador» es ambiguo; defínalo como la ausencia de una orden registrada del operador para esa estación y ese parámetro en los 5 min anteriores; no hay datos de contacto: añada los números del jefe de turno y del responsable de seguridad de guardia; restablecer las consignas a distancia podría usar el camino comprometido: especifique el restablecimiento local por parte del técnico de turno si hay fallos de MAC en la pasarela.
+
+**EX074.** Qué ocurrió: un técnico conectó un portátil a la red de PS3 para descargar registros. Por qué tenía sentido: la ruta por el servidor de salto es lenta y exige un ticket; los registros se necesitaban para una llamada con el fabricante esa misma tarde. Defensas que fallaron: sin seguridad de puertos en el conmutador; sin una vía sencilla y aprobada para los registros; el procedimiento suponía que el servidor de salto siempre estaba disponible. Cambios: ofrecer un colector de registros en la DMZ para que los técnicos no tengan que conectarse; habilitar la seguridad de puertos; proporcionar un conjunto de portátiles de mantenimiento analizados; simplificar el acceso por el servidor de salto para la obtención de registros de solo lectura.
 
 <a id="glossary"></a>
 

@@ -2712,7 +2712,7 @@ Dimensione para a pior carga crível: inundações de alarmes em tempestades, ra
 
 ### 36.4 Escala
 
-Na escala de frota, os processos manuais falham. O cadastro, a rotação e a revogação de chaves precisam ser automatizados, com auditoria; o monitoramento precisa agregar e priorizar; as atualizações precisam ser feitas em etapas e ser observáveis; o inventário precisa ser conciliado continuamente. Um procedimento que leva 30 minutos por dispositivo consome três semanas de trabalho da equipe para mil dispositivos. A LRWA tem hoje apenas 42 estações de campo, mas o mesmo projeto pode depois ser usado numa frota muito maior, então o TMRP automatiza desde o início os registros de cadastro e rotação de chaves, em vez de depender de uma planilha mantida por um único engenheiro.
+Na escala de frota, os processos manuais falham. O cadastro, a rotação e a revogação de chaves precisam ser automatizados, com auditoria; o monitoramento precisa agregar e priorizar; as atualizações precisam ser feitas em etapas e ser observáveis; o inventário precisa ser conciliado continuamente. Um procedimento que leva 30 minutos por dispositivo consome 500 horas de trabalho da equipe, cerca de três meses de um engenheiro em tempo integral, para mil dispositivos. A LRWA tem hoje apenas 42 estações de campo, mas o mesmo projeto pode depois ser usado numa frota muito maior, então o TMRP automatiza desde o início os registros de cadastro e rotação de chaves, em vez de depender de uma planilha mantida por um único engenheiro.
 
 ### 36.5 Exemplo resolvido: dimensionamento do gateway (sintético)
 
