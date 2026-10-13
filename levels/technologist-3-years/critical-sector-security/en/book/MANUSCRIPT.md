@@ -191,7 +191,7 @@ Fourteen samples are a small basis for any forecast. The method's value is that 
 
 **EX002 — Explain the growth.** *Objective:* separate a capacity problem from a configuration problem. *Inputs:* the worked example. *Constraints:* do not touch any real system; reason from the numbers. *Steps:* (1) compute how many days of data at 1.91 GB/day the current 120.9 GB represents; (2) give two plausible configuration causes; (3) describe the check that would distinguish them. *Expected evidence:* short note with observed / inferred / open labels. *Rubric:* 3 = about 63 days computed, two specific causes (for example rotation not deleting, buffer for an offline upstream not being purged, a second log stream outside the retention policy) and a check for each; 2 = causes generic; 1 = recommends a larger disk only; 0 = none.
 
-**EX003 — Quiet failure checklist.** *Objective:* turn quiet failure modes into checks. *Inputs:* §1.5. *Constraints:* five checks; each must name what is measured, the threshold and who reads the result. *Steps:* write a table with columns: failure mode, measurement, threshold, reader, action. *Expected evidence:* table. *Rubric:* 3 = five distinct failure modes, measurable thresholds with warning time, a named reader and an action for each; 2 = one column weak; 1 = generic "monitor the server"; 0 = none.
+**EX003 — Quiet failure checklist.** *Objective:* turn quiet failure modes into checks. *Inputs:* Chapter 1 ("Quiet failure modes"). *Constraints:* five checks; each must name what is measured, the threshold and who reads the result. *Steps:* write a table with columns: failure mode, measurement, threshold, reader, action. *Expected evidence:* table. *Rubric:* 3 = five distinct failure modes, measurable thresholds with warning time, a named reader and an action for each; 2 = one column weak; 1 = generic "monitor the server"; 0 = none.
 
 ### Chapter synthesis
 
@@ -307,6 +307,8 @@ SILENT    10.20.0.13 -> 10.30.0.5    tcp/502  (declared flow with no traffic)
 
 Write each finding as one line: what was observed, which class it belongs to, the most likely benign explanation, the most worrying explanation, and the next check. Do not "test" any path yourself; ask the owner.
 
+Applied to the night export, the four lines look like this. Corporate 10.40.3.7 to PS-04 Modbus, 12 conversations: undeclared path; benign, an engineer's configuration tool on the wrong network; worrying, a compromised workstation reaching a PLC; next check, ask Water engineering who uses that host. External 192.0.2.44 to the relay on SSH: exposure; next check, why port 22 answers from outside. Relay to 192.0.2.80 HTTPS: undeclared egress. PS-09 silent: declared flow with zero traffic, raised with Water operations first.
+
 ### 2.6 Common errors and limits
 
 - Reading a rule base and believing it describes traffic; rules are intentions, flows are facts.
@@ -319,7 +321,7 @@ Flow records show who talked to whom, on which port, how much; they do not show 
 
 ### Exercises — chapter 2
 
-**EX004 — Classify and prioritize.** *Objective:* classify flow differences and order the follow-up. *Inputs:* Lab 2 output. *Constraints:* four findings; at most one sentence of explanation each. *Steps:* (1) put each finding in a class from §2.3; (2) rank them for follow-up by potential consequence to the water service; (3) name the owner you would contact first for each. *Expected evidence:* table. *Rubric:* 3 = corporate→station Modbus ranked first because it reaches the physical process, silent PS-09 treated as an operational priority, external SSH and relay outbound sensibly ordered, owners named; 2 = classes right, ranking weakly justified; 1 = ranks by count of conversations; 0 = none.
+**EX004 — Classify and prioritize.** *Objective:* classify flow differences and order the follow-up. *Inputs:* Lab 2 output. *Constraints:* four findings; at most one sentence of explanation each. *Steps:* (1) put each finding in a class from Chapter 2 ("Declared versus observed"); (2) rank them for follow-up by potential consequence to the water service; (3) name the owner you would contact first for each. *Expected evidence:* table. *Rubric:* 3 = corporate→station Modbus ranked first because it reaches the physical process, silent PS-09 treated as an operational priority, external SSH and relay outbound sensibly ordered, owners named; 2 = classes right, ranking weakly justified; 1 = ranks by count of conversations; 0 = none.
 
 **EX005 — Update the declaration.** *Objective:* decide between changing the design and changing the network. *Inputs:* Water operations confirms the relay's outbound HTTPS was an operating-system update from a vendor mirror; the corporate→PLC traffic was an engineer's laptop. *Constraints:* every conduit needs source, destination, protocol/port, purpose and owner. *Steps:* (1) decide for each whether to add a conduit or remove the path; (2) for any added conduit, write its full entry; (3) for the engineer's access, propose the declared path that should replace it. *Expected evidence:* updated conduit list and rationale. *Rubric:* 3 = update path added narrowly (specific mirror, via proxy or update server, owner named) or replaced by an internal update source; engineering access moved to a declared, authenticated jump path, not corporate→PLC; 2 = sensible but incomplete entries; 1 = simply allows everything observed; 0 = none.
 
@@ -374,6 +376,8 @@ A validation function that returns only "valid" or "invalid" forces a bad choice
 ### 3.4 Small-code discipline
 
 Four habits make small tools trustworthy. Keep **one function per decision**, so it can be tested alone. Make the **state explicit** — the last-seen sequence per station is passed in, not hidden in a global. **Fail closed** — any path you did not anticipate ends in reject, not accept. And **test with bad cases first**: for every check, write at least one input that should fail it, and run them all after every change.
+
+Lab 3 follows all four. The sequence check receives the last accepted number per station as an argument, which is why the repeated 102 can be tested on its own, and the chlorine plausibility rule is a separate function, which is why 9.80 mg/L can be quarantined rather than rejected without touching the parser.
 
 ### 3.5 Worked example: the station message validator (synthetic)
 
@@ -448,6 +452,8 @@ PS-04|LEVEL_M|3.47|1789999999          reject: field count
 
 Before changing anything, write down what you expect each line to print. Then run it. Any line where your expectation was wrong is a place where your mental model of the code was wrong — which is the purpose of the exercise.
 
+Three lines usually surprise readers: `nan` being rejected rather than stored, `PS-7` failing the identifier pattern although it looks harmless, and the 9.80 mg/L chlorine reading ending in quarantine rather than reject. If you predicted any of them wrongly, write down why, then add one bad case of your own to the message list, such as a sequence number lower than 102 or an identifier with a trailing space, and confirm the validator rejects it before you trust the change.
+
 ### 3.7 Common errors and limits
 
 - Validating with a denylist ("reject if it contains a semicolon") instead of an allowlist of what is acceptable.
@@ -463,7 +469,7 @@ Validation protects the receiver from malformed and implausible data. It does **
 
 **EX007 — Predict, then run.** *Objective:* test your model of validation order. *Inputs:* Lab 3. *Constraints:* write predictions before running. *Steps:* (1) add three messages: `PS-04|LEVEL_M|inf|1789999999|103`, `PS-04|LEVEL_M|12.0|1789999999|103`, `PS-04|LEVEL_M|-0.0|1789999999|104`; (2) predict each outcome; (3) run and explain any surprise. *Expected evidence:* predictions, output, explanation. *Rubric:* 3 = inf rejected as not finite, 12.0 accepted (inclusive limit), -0.0 accepted because −0.0 equals 0.0 and the sequence advanced, with a comment on whether −0.0 should be normalized; 2 = outcomes right, explanation thin; 1 = not run; 0 = none.
 
-**EX008 — Quarantine design.** *Objective:* design the quarantine path. *Inputs:* §3.3 and the PS-07 chlorine case. *Constraints:* no code required. *Steps:* (1) say where quarantined messages are stored and for how long; (2) say who reviews them, how quickly, and what triggers escalation to Water operations; (3) say what the operator display should show while a value is quarantined. *Expected evidence:* half-page design. *Rubric:* 3 = separate store with retention, named reviewer and response time, escalation rule tied to the physical process (for example two consecutive implausible chlorine readings → call the control room), display shows "value withheld — under review" rather than the last good value as if current; 2 = one element missing; 1 = "an admin checks it"; 0 = none.
+**EX008 — Quarantine design.** *Objective:* design the quarantine path. *Inputs:* Chapter 3 ("Reject, quarantine, accept") and the PS-07 chlorine case. *Constraints:* no code required. *Steps:* (1) say where quarantined messages are stored and for how long; (2) say who reviews them, how quickly, and what triggers escalation to Water operations; (3) say what the operator display should show while a value is quarantined. *Expected evidence:* half-page design. *Rubric:* 3 = separate store with retention, named reviewer and response time, escalation rule tied to the physical process (for example two consecutive implausible chlorine readings → call the control room), display shows "value withheld — under review" rather than the last good value as if current; 2 = one element missing; 1 = "an admin checks it"; 0 = none.
 
 **EX009 — Fail closed.** *Objective:* find a fail-open path. *Inputs:* this fragment: `try: v = float(val) except: pass; if v > hi: return "quarantine"; return "accept"`. *Constraints:* identify, explain, fix. *Steps:* (1) show an input for which it returns accept wrongly; (2) explain; (3) rewrite it. *Expected evidence:* input, explanation, corrected code. *Rubric:* 3 = shows that a non-numeric value leaves `v` unset or stale (a `NameError` on the first message, or the previous message's value reused later), notes the missing lower bound and the bare `except`, and rewrites to return reject on any parse failure with both bounds and a finiteness check; 2 = finds one issue; 1 = vague; 0 = none.
 
@@ -502,9 +508,13 @@ A **data model** says what kinds of things the records describe (**entities**: a
 
 A **constraint** is a rule the database enforces on every write. `NOT NULL` says a value must be present; `CHECK (criticality BETWEEN 1 AND 3)` says only those values are allowed; a foreign key says the referenced row must exist (in SQLite, foreign-key enforcement must be switched on per connection, a detail worth knowing because it surprises people). Constraints move validation from "someone should check" to "the system refuses". They are Chapter 3's input validation applied to records.
 
+In Lab 4 the last query is exactly this: inserting an asset with criticality 7 fails at the database, whoever wrote the script.
+
 ### 4.3 Missing values are findings
 
 In an inventory, a missing value is not a blank; it is a statement that something is unknown. An asset with no owner is an asset nobody will patch, review or decommission. An asset with unknown firmware is one whose vulnerabilities cannot be assessed. Queries should therefore look *for* missing values, not ignore them. SQL's `NULL` behaves specially: `owner_id = NULL` is never true; you must write `owner_id IS NULL`. Many silent reporting errors come from forgetting this.
+
+Lab 4's ownerless criticality-1 asset, PS-09's RTU, appears only because the query asks for it.
 
 ### 4.4 Joins answer the real questions
 
@@ -576,6 +586,8 @@ Expected output (Python 3.13.5):
 constraint rejected bad row: CHECK constraint failed: criticality BETWEEN 1 AND 3
 ```
 
+Read the output as a work list rather than a report. PS-09's RTU is the first line of work, because three findings meet on one asset: no owner, criticality 1 and vendor support ended on 2025-12-31. The PS-04 station switch's unknown firmware becomes a question for Water's engineer, not a guess. The two servers on FSTS's retire-by-policy list go to the platform owner with their replacement dates. Finally, check the refused insert: if the criticality-7 row had been accepted, foreign-key and `CHECK` enforcement were not active on that connection, and every earlier answer would deserve less trust.
+
 ### 4.7 Common errors and limits
 
 - Free-text fields for anything that should reference another record (owners, sites, models).
@@ -592,7 +604,7 @@ A data model cannot tell you that an asset exists if nobody recorded it. It can 
 
 **EX011 — Add a constraint and a table.** *Objective:* extend the model safely. *Inputs:* Lab 4. *Constraints:* standard library only. *Steps:* (1) add a `review` table (asset id, review date, reviewer, result) with a foreign key to asset and a `CHECK` that result is one of `ok`, `issue`, `not-reachable`; (2) enable foreign keys with `PRAGMA foreign_keys = ON`; (3) show that inserting a review for a non-existent asset fails; (4) write a query listing criticality-1 assets with no review in the last 90 days. *Expected evidence:* code and output. *Rubric:* 3 = constraint and foreign key enforced, query uses a left join or `NOT EXISTS` so never-reviewed assets appear; 2 = works but misses never-reviewed assets; 1 = schema only; 0 = none.
 
-**EX012 — Spreadsheet to model.** *Objective:* recognize data-quality faults. *Inputs:* a synthetic spreadsheet row set: `PS-03 PLC | owner: Water Ops | fw: 4.2 | support: Jun 2027`; `PS-03 plc | owner: water operations | fw: ? | support: 30/06/27`; `PS-05 PLC | owner: A. Okafor (left) | fw: 4.1 | support: TBC`. *Constraints:* no code needed. *Steps:* (1) list every data-quality fault; (2) say which constraint or design choice in §4.1–4.3 prevents each. *Expected evidence:* table. *Rubric:* 3 = duplicate asset with inconsistent case, free-text owner variants, person instead of role as owner and a leaver, unknown firmware as "?", mixed date formats, "TBC" — each mapped to primary key, foreign key, NOT NULL/explicit unknown, ISO dates; 2 = most found; 1 = few; 0 = none.
+**EX012 — Spreadsheet to model.** *Objective:* recognize data-quality faults. *Inputs:* a synthetic spreadsheet row set: `PS-03 PLC | owner: Water Ops | fw: 4.2 | support: Jun 2027`; `PS-03 plc | owner: water operations | fw: ? | support: 30/06/27`; `PS-05 PLC | owner: A. Okafor (left) | fw: 4.1 | support: TBC`. *Constraints:* no code needed. *Steps:* (1) list every data-quality fault; (2) say which constraint or design choice in Chapter 4's guidance on keys, constraints and missing values prevents each. *Expected evidence:* table. *Rubric:* 3 = duplicate asset with inconsistent case, free-text owner variants, person instead of role as owner and a leaver, unknown firmware as "?", mixed date formats, "TBC" — each mapped to primary key, foreign key, NOT NULL/explicit unknown, ISO dates; 2 = most found; 1 = few; 0 = none.
 
 ### Chapter synthesis
 
@@ -663,6 +675,8 @@ An FSTS status report says: "LANTERN is secure. Firewalls are in place. Backups 
 
 Pick one LANTERN control from Chapters 2–4 (for example, the message validator). Write a one-page **control card**: name; risk it addresses; type (prevent / detect / recover); where it is implemented; owner; how it could fail; evidence that it works; date of last evidence. You will extend these cards in Chapter 18.
 
+For the message validator, a complete card reads: risk, forged, replayed or malformed station messages reaching the historian; type, prevent; implemented in the relay's input path; owner, FSTS Platform; could fail if the replay state is lost on restart or the allowlist lags a new station such as PS-11; evidence, Lab 3's three accepts, six rejects and two quarantines, plus the relay's reject counts; last evidence, the date of the most recent run.
+
 ### 5.7 Common errors and limits
 
 - Using "secure" as a state rather than describing specific protections and their evidence.
@@ -670,6 +684,8 @@ Pick one LANTERN control from Chapters 2–4 (for example, the message validator
 - Counting controls instead of asking what each prevents, detects or recovers.
 - Reading incident reports as how-to guides, or repeating a first account after it has been revised.
 - Calling every event an incident, which exhausts responders; or calling nothing an incident, which delays response.
+
+Each of these appears in this chapter's status report before it was rewritten. "LANTERN is secure" is the first error. "Firewalls are in place" counts a control without saying that one undeclared corporate→PS-04 path had to be closed under CHG-121. "Monitoring is active" hid that Rule B detected only 7 of 10 tests.
 
 ### Exercises — chapter 5
 
@@ -714,9 +730,13 @@ LANTERN's relays and historian are ordinary servers. Most compromises of such se
 
 Run each service as its own unprivileged account (`relay`, not `root`). Give that account read access to its configuration, write access only to its own data and log directories, and no shell login. Use the operating system's service manager to restart it on failure and to apply further restrictions (for example, a read-only view of most of the filesystem). If the relay process is ever compromised, these choices determine whether the attacker holds one service or the whole host.
 
+On RLY-01 this is the service definition whose permissions changed to `0666`.
+
 ### 6.3 Configuration files are security-relevant
 
 On a relay, the most security-relevant files are its configuration (what it listens on, where it forwards, where its key lives), its allowlist of stations, and its service definition (which account it runs as, with what restrictions). A change to any of them changes the security of the service. File permissions matter as much as content: a service definition that has become writable by any user lets any local user decide what runs as the service.
+
+RLY-01 showed both kinds: a content change, `debug_listen 0.0.0.0:9000`, and a permission change to `0666`.
 
 ### 6.4 File-integrity baselines
 
@@ -789,6 +809,8 @@ baseline json bytes: 342
 
 The script creates its files in a temporary directory, so you can run it anywhere. Note that the digest printed for `relay.conf` depends only on the file's content: if you change one character of the synthetic content in the script, the digest changes completely.
 
+Compare the output with the RLY-01 week described above: four differences, of which only the `PS-11` allowlist entry under CHG-118 has a change record. Then make one edit of your own inside the script, for example add a second debug line or change a mode from `0640` to `0644`, rerun it and confirm the comparison reports exactly that difference and nothing else. A baseline that reports more or less than you changed is not yet reliable enough to be evidence in an investigation.
+
 ### 6.8 Common errors and limits
 
 - Hardening once at build time and never checking again.
@@ -851,9 +873,13 @@ In the incident reports of Chapter 5, access is a recurring thread: remote acces
 
 Accounts go wrong at transitions. A **joiner** gets access copied from a colleague and inherits privileges they do not need. A **mover** keeps old access when gaining new. A **leaver**'s accounts remain enabled because nobody told the system owner. The fix is a process linked to an authoritative source — the HR roster — and a periodic **access review** that catches what the process missed.
 
+Lab 7's export shows all three failures: `c.mendes` is a leaver whose account stayed enabled after 31 August, `d.reyes` keeps historian admin that Clinical Engineering does not need, and `vendor-kell` is standing supplier access never tied to a ticket.
+
 ### 7.4 The access review
 
 An access review compares three things: the **accounts** that exist on a system (exported from it, not from memory), the **roster** of people and their status, and a statement of **need** — which roles each team requires on each system. Findings fall into recognizable types: orphans (accounts with no matching person), leavers still enabled (worse if used after leaving), unjustified roles, privileged access without MFA, dormant accounts, shared accounts, and standing supplier access.
+
+For RLY-01 and HIST-01, the export lists nine accounts and the roster tells you that `f.ito` matches nobody.
 
 ### 7.5 Worked example: quarterly review of RLY-01 and HIST-01 (synthetic)
 
@@ -917,6 +943,8 @@ f.ito        RLY-01   not on HR roster (orphan)
 accounts: 9 findings: 9 accounts with >=1 finding: 5
 ```
 
+Sort the nine findings by what must happen today. `c.mendes`, used on 14 September after leaving on 31 August, goes to the incident process: preserve the authentication logs before disabling the account. `vendor-kell`, a standing administrator on the relay with no MFA and 85 idle days, is disabled and re-enabled only per ticket. `d.reyes`, `opsuser` and `f.ito` become tickets with owners. Then look for what the script cannot see, such as how `svc-relay`'s credential is stored and when it was last rotated.
+
 ### 7.7 Common errors and limits
 
 - Reviewing accounts from a list someone typed, instead of an export from the system.
@@ -979,6 +1007,8 @@ Segmentation of control networks from business networks, with controlled and mon
 
 Many diagrams show the data path and omit the **management path**: how administrators, backup systems, monitoring agents and suppliers reach each host. Management paths usually carry the most powerful access in the system. In LANTERN, administration reaches relays only from a management jump host in the corporate zone, with MFA; suppliers reach the jump host through a time-bound account (Chapter 7); monitoring receives logs pushed *from* the relays rather than logging in to them.
 
+Lab 22's RLY-02, reaching public time servers, is a management path nobody drew.
+
 ### 8.4 Designing for operability
 
 A secure design that operators cannot run will be bypassed. Ask for each control: how is it maintained? What happens at 03:00 when it fails? How does an engineer get emergency access, and how is that access recorded? What does the service do when the relay is down — do operators know that their historian view is stale? Design **degraded modes** deliberately: LANTERN's stations buffer 24 hours of readings locally, so a relay outage loses timeliness, not data; the operator display shows the age of every value.
@@ -987,13 +1017,17 @@ A secure design that operators cannot run will be bypassed. Ask for each control
 
 Architectures erode through reasonable-sounding exceptions: a "temporary" firewall rule for a supplier, a dual-homed laptop used for configuration, a report server moved into the control zone "to make it faster", a shared administrator account for convenience. Each one is small; together they remove the separation. The defences are routine: conduits recorded with owner and expiry (Chapter 2), flow reviews, rule reviews, and refusing undocumented exceptions.
 
+Fallowmere shows each kind. The corporate workstation talking Modbus to PS-04 is a dual-homed habit; the cellular modem Kell left on PS-07's PLC is a forgotten supplier exception that no flow record shows; and the request to send recommended setpoints from the historian to PS-07 would have been a reasonable-sounding exception reversing the direction of trust.
+
 ### 8.6 Worked example: a request that crosses zones (synthetic)
 
-Water operations asks for the historian to send a weekly "recommended setpoint" file to PS-07's PLC, to automate an optimization. Checked against §8.1, the request breaks the most important property: it creates a path from the corporate zone to the station zone that carries *control* information. You do not refuse it outright; you return the design question to its owner with alternatives: an operator reviews the recommendation in the control-room system and applies it there; or the file goes to the control-room system, which validates and stages it for operator approval. Either preserves the direction of trust. Your role is to show the consequence and the alternatives, and to record the decision.
+Water operations asks for the historian to send a weekly "recommended setpoint" file to PS-07's PLC, to automate an optimization. Checked against Chapter 8 ("Zones, conduits and the direction of trust"), the request breaks the most important property: it creates a path from the corporate zone to the station zone that carries *control* information. You do not refuse it outright; you return the design question to its owner with alternatives: an operator reviews the recommendation in the control-room system and applies it there; or the file goes to the control-room system, which validates and stages it for operator approval. Either preserves the direction of trust. Your role is to show the consequence and the alternatives, and to record the decision.
 
 ### 8.7 Practical activity: draw the management path
 
 Draw LANTERN's zones and conduits from Chapter 2, then add every management path: administrator SSH via the jump host, supplier access, backup, monitoring, time, package updates. For each, record source, destination, protocol, authentication and owner. Mark any path that would let a single credential reach both the corporate and station zones.
+
+In LANTERN the path to watch is the supplier route: Kell's time-bound account reaches the jump host, and the jump host reaches the relays. If that same account, or a shared `opsuser` credential, also opens the corporate file share, one stolen password crosses both zones. Mark the time-server path too, since Lab 22's RLY-02 was found using public time servers that no diagram showed.
 
 ### 8.8 Common errors and limits
 
@@ -1005,9 +1039,11 @@ Draw LANTERN's zones and conduits from Chapter 2, then add every management path
 
 Architecture limits what can happen; it does not show what does happen. Verification needs flows, logs and tests (Chapters 2, 19 and 23).
 
+Fallowmere examples: the R2 control cards would be less independent than they look if vendor session logging and the vendor account were administered by the same Kell login.
+
 ### Exercises — chapter 8
 
-**EX022 — Check the direction of trust.** *Objective:* evaluate change requests against the key design property. *Inputs:* three requests: (a) the relay pulls a new station allowlist from the historian every hour; (b) the SIEM sends an automated block command to the station firewall when it sees an attack; (c) the relay forwards telemetry to Halden Cloud for an analytics trial. *Constraints:* accept, reject or redesign each with one paragraph. *Steps:* evaluate each against §8.1–8.4. *Expected evidence:* three paragraphs. *Rubric:* 3 = (a) redesign: configuration should flow from version control through change, not be pulled from a lower-trust zone; (b) redesign with care: automated blocking in an OT path needs operations agreement, safe failure and manual confirmation; (c) acceptable only as a new declared conduit with data-flow register entry (Chapter 12), contract and monitoring; 2 = two well argued; 1 = flat answers; 0 = none.
+**EX022 — Check the direction of trust.** *Objective:* evaluate change requests against the key design property. *Inputs:* three requests: (a) the relay pulls a new station allowlist from the historian every hour; (b) the SIEM sends an automated block command to the station firewall when it sees an attack; (c) the relay forwards telemetry to Halden Cloud for an analytics trial. *Constraints:* accept, reject or redesign each with one paragraph. *Steps:* evaluate each against Chapter 8's four design properties (direction of trust, least privilege, management paths, operability). *Expected evidence:* three paragraphs. *Rubric:* 3 = (a) redesign: configuration should flow from version control through change, not be pulled from a lower-trust zone; (b) redesign with care: automated blocking in an OT path needs operations agreement, safe failure and manual confirmation; (c) acceptable only as a new declared conduit with data-flow register entry (Chapter 12), contract and monitoring; 2 = two well argued; 1 = flat answers; 0 = none.
 
 **EX023 — Independence of layers.** *Objective:* test defence in depth. *Inputs:* proposed layers protecting the relay: firewall managed by E. Strand; relay admin by E. Strand; HMAC key generated and stored by E. Strand on the relay; monitoring rules written by E. Strand. *Constraints:* do not assume bad intent. *Steps:* (1) identify the common dependency; (2) say what single event defeats all layers; (3) propose two changes that restore independence. *Expected evidence:* half page. *Rubric:* 3 = single person and single credential set; compromise or error of one account defeats all; changes such as separate admin roles, key held in a separate store with different custodians, monitoring rules owned and reviewed by the security team; 2 = partial; 1 = "add more controls"; 0 = none.
 
@@ -1044,9 +1080,13 @@ Every later chapter asks you to prove something with evidence: that a control wo
 
 A measure is useful when someone else could recompute it. State the **question** ("how quickly do we install vendor fixes on station controllers?"), the **population** (which assets, which fixes), the **numerator and denominator**, the **period**, the **source** of the data, and what is **excluded** and why. A patch-compliance figure of "96 %" with no denominator might mean 96 % of office laptops, which says nothing about the pumping stations.
 
+Lab 9's pooled 9-day median fails this test: it gives no population, and its denominator silently excludes seven open fixes.
+
 ### 9.2 Distributions, not just averages
 
 Operational quantities — time to patch, time to restore, alert response time — are usually skewed: most are quick, a few are very slow, and the slow ones are the ones that matter. The **median** describes the typical case; the **90th percentile** (p90) describes the bad cases; the **mean** is pulled by outliers and describes neither well. Report median and p90 together, and look at the maximum.
+
+In Lab 9, the station controllers' median of 95 days with five fixes still open is the figure the pooled median hid.
 
 ### 9.3 Open items and survivorship
 
@@ -1057,6 +1097,8 @@ Pooling groups with very different behaviour is the related trap. A single media
 ### 9.4 Small samples need intervals
 
 Critical-service tests are expensive, so samples are small: ten restore drills, eight injected test alerts. "9 out of 10 drills met the target" is a fact; "our restore success rate is 90 %" is an over-claim. A **confidence interval** shows the range of underlying rates consistent with the data. For proportions from small samples, the **Wilson score interval** behaves well ([Wilson, 1927](https://doi.org/10.1080/01621459.1927.10502953)). For 9 of 10, the 95 % Wilson interval is roughly 0.60 to 0.98: the true rate could plausibly be as low as 60 %.
+
+This is why Lab 23's backup restore, 9 of 10 drills on target, still fails a claim rule whose lower bound must reach 0.70.
 
 ### 9.5 Worked example: patch latency and restore drills (synthetic)
 
@@ -1104,6 +1146,8 @@ restore drills within target: 9/10 = 90%, 95% Wilson interval [0.60, 0.98]
 
 Write the report line you would send instead of "median patch latency: 9 days". It should fit in two sentences.
 
+A two-sentence line that would pass: "Corporate IT installed 12 of 12 fixes, median 5.5 days; relay and historian 6 of 8, median 18.5 days, two open. Station controllers installed 3 of 8, median 95 days, with five fixes open under compensating controls and dated plans." It is longer than "9 days", but a reader can now see where the risk sits, and the station controllers are no longer hidden behind office laptops.
+
 ### 9.7 Common errors and limits
 
 - Reporting a percentage without its denominator.
@@ -1114,6 +1158,8 @@ Write the report line you would send instead of "median patch latency: 9 days". 
 - Changing a measure's definition between reports without saying so.
 
 Measures describe what was recorded. If the source data are incomplete — fixes not recorded, drills not logged — no statistic will repair that.
+
+In Lab 9 the pooled median shows three of these at once: no denominator, open items excluded and groups pooled.
 
 ### Exercises — chapter 9
 
@@ -1184,6 +1230,8 @@ At 02:10 the FSTS jump host fails a disk. Water operations loses remote administ
 
 For each Fallowmere customer, list three FSTS-run systems. For each system write: what people lose if it stops, how quickly that loss becomes harmful, who decides on emergency action, and which other system it depends on. Keep this table; Chapter 11 turns it into an inventory with dependencies.
 
+For Fallowmere Community Hospital, one row might read: infusion-pump gateway; loss, drug-library updates cannot be loaded; harmful within hours if a scheduled update such as the 06:00 one is missed; Clinical Engineering decides; depends on the FSTS jump host. That row is why the jump-host failure in the worked example was escalated to the hospital before Water.
+
 ### 10.7 Common errors and limits
 
 - Treating every system run by an IT team as having the same consequence.
@@ -1192,9 +1240,13 @@ For each Fallowmere customer, list three FSTS-run systems. For each system write
 - Quoting regulations from memory; their scope and deadlines change and differ by jurisdiction.
 - Assuming the implementer has no part in the operator's obligations.
 
+The jump-host failure shows the first and third errors together: one shared FSTS host had three consequences with three deadlines.
+
+Measuring harm only in money would have ranked Water first that night, because it is the largest customer, and missed the 06:00 drug-library update.
+
 ### Exercises — chapter 10
 
-**EX028 — Consequence in people and time.** *Objective:* express harm in service units. *Inputs:* the §10.5 scenario. *Constraints:* synthetic numbers only; state assumptions. *Steps:* for each customer write one sentence of the form "N people lose X for T, becoming harmful after D because…". *Expected evidence:* three sentences with assumptions. *Rubric:* 3 = three specific, plausible, assumption-labelled statements showing different deadlines, with the hospital's patient-safety deadline identified as the earliest; 2 = one generic; 1 = all in money; 0 = none.
+**EX028 — Consequence in people and time.** *Objective:* express harm in service units. *Inputs:* the Chapter 10 ("Worked example: one fault, three customers") scenario. *Constraints:* synthetic numbers only; state assumptions. *Steps:* for each customer write one sentence of the form "N people lose X for T, becoming harmful after D because…". *Expected evidence:* three sentences with assumptions. *Rubric:* 3 = three specific, plausible, assumption-labelled statements showing different deadlines, with the hospital's patient-safety deadline identified as the earliest; 2 = one generic; 1 = all in money; 0 = none.
 
 **EX029 — Shared dependency map.** *Objective:* find interdependencies created by a shared service. *Inputs:* FSTS runs one jump host, one SIEM, one identity directory and one backup system for all three customers; Kell supplies water RTUs, BayTel carries water telemetry and hospital internet. *Constraints:* use Rinaldi's four types. *Steps:* (1) classify each dependency; (2) name the single failure with the widest effect; (3) propose one change to reduce it. *Expected evidence:* table and paragraph. *Rubric:* 3 = shared FSTS systems as cyber/logical, BayTel as a cyber/physical common carrier, staff as logical; identity directory or jump host compromise identified as widest; a practical change such as per-customer privileged tiers or a second carrier path for telemetry; 2 = classification weak; 1 = list only; 0 = none.
 
@@ -1244,6 +1296,8 @@ Chapter 4 showed how to model an inventory. This chapter is about filling it tru
 
 No single source is complete. **Purchase and contract records** know what was bought but not where it went. **Configuration-management or engineering records** know the design but may lag reality. **Network observation** (switch tables, flow records, a passive sensor) sees what talks but not what is silent. **Site surveys** see what is physically present but are expensive and infrequent. **Vendor portals** know firmware versions for what they support. Combine at least two sources and record which source said what.
 
+PS-09 shows why: only flow records knew the station had gone silent.
+
 ### 11.3 Safe discovery in operational networks
 
 Active scanning — sending probes to every address — is routine in office networks and risky in control networks: some older controllers and embedded devices can misbehave or reset when probed unexpectedly. NIST's OT guide advises caution with active scanning in OT environments and favours passive methods or carefully planned, coordinated active work ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). For an implementer the rule is: in the station zone, use passive sources (flow records, switch tables, the controllers' own configuration exports done by their engineers) unless an active method has been agreed with operations, tested on a spare, and scheduled.
@@ -1256,6 +1310,8 @@ When sources disagree, the disagreement is information. An asset in purchase rec
 
 Critical services often run equipment past vendor support, because replacement needs capital, outages and re-certification. The inventory must make this visible, with a **compensating-control** plan for each unsupported asset: tighter segmentation, stricter allowlists, extra monitoring, spare parts, and a replacement date owned by someone with budget.
 
+PS-09's Kell R2 RTU, unsupported since 2025-12-31 and still criticality 1, is the Fallowmere case. Its plan would name the relay allowlist entry and the conduit as the tightened controls, Rule C as the extra monitoring, a spare RTU held by Water, and a replacement date owned by Water operations, which holds the capital budget.
+
 ### 11.6 Worked example: reconciling PS-09 (synthetic)
 
 Three sources describe pumping station PS-09. The purchase record lists a Kell R2 RTU bought in 2017. The engineering record lists firmware 1.1 and owner "Water Ops". Flow records show 10.20.0.13 talking to the relay until three weeks ago, and nothing since (Chapter 2's silent station). The inventory (Chapter 4) has no owner for PS09-RTU and records vendor support ended 2025-12-31. You record four discrepancies: owner missing in the inventory but present in the engineering record (fix the record, after confirming with Water Ops); support ended (needs a compensating-control plan); station silent (operational issue, raised with Water operations the same day); and firmware not independently verified (ask Water's engineer to export the RTU configuration at the next site visit — Chapter 28).
@@ -1263,6 +1319,10 @@ Three sources describe pumping station PS-09. The purchase record lists a Kell R
 ### 11.7 Practical activity: three-source reconciliation
 
 Using the Lab 4 inventory and the Lab 2 flows, list every asset or address that appears in one source but not the other, and every attribute that differs. For each, write the next action and owner. Do not probe any device to resolve a discrepancy; ask the owner.
+
+Expect PS-09's RTU at 10.20.0.13 to appear in both sources but disagree: present in the inventory, silent in the flows.
+
+Also expect the Lab 2 flows to show addresses the inventory lacks, such as the corporate workstation 10.40.3.7; record its owner as a question for Water engineering, not as a guess.
 
 ### 11.8 Common errors and limits
 
@@ -1274,6 +1334,8 @@ Using the Lab 4 inventory and the Lab 2 flows, list every asset or address that 
 - Hiding discrepancies to make the inventory look complete.
 
 An inventory is a model of reality, always slightly out of date. Its quality is measured by how recently each record was verified and how quickly discrepancies are closed.
+
+PS-07's cellular modem, found only by a site visit, is the case against trusting one source.
 
 ### Exercises — chapter 11
 
@@ -1314,6 +1376,8 @@ Chapter 2 compared network flows with declared conduits. A conduit says *a path 
 
 Each entry in LANTERN's register records: identifier; source and destination (systems, not just addresses); **data class**; whether the flow is encrypted in transit; how long the destination keeps the data; the purpose; the owner; and, for personal data, the legal basis recorded by the data owner. The register is a document that people read in an incident ("what left the hospital gateway?") and in a privacy request ("where does this patient's pump data go?").
 
+DF5 is a model entry: clinical gateway to Halden Cloud, patient-linked, encrypted, 30 days registered.
+
 ### 12.2 Data classes
 
 For an implementer, four classes cover most of a critical shared service:
@@ -1332,6 +1396,8 @@ Registers decay like inventories. Verify them by sampling what actually happens:
 ### 12.4 New flows need review before they start
 
 Most data-flow problems begin with a reasonable request: a supplier wants telemetry for remote diagnostics; a reporting team wants a copy of clinical gateway events. Before such a flow starts, the register entry is written and reviewed — by the data owner, by security (protection and conduit), and where personal data are involved by the privacy function. If it carries control or configuration data, the architecture rule of Chapter 8 applies.
+
+Kell's request for hourly telemetry from the relays is the Fallowmere case: the entry must be written and reviewed before the first hour is sent.
 
 ### 12.5 Worked example: register versus reality (synthetic)
 
@@ -1393,6 +1459,8 @@ MED  unregistered flow HIST-01->VENDOR-SUPPORT (telemetry, encrypted=False)
 HIGH unregistered flow CLIN-GW->REPORTS (patient-linked, encrypted=True)
 ```
 
+The output reproduces the three differences above. Before acting, decide who receives each one: the 400-day retention on DF5 goes to the hospital's data owner and to whoever holds the Halden contract; the clear-text historian flow to the vendor-support system goes to Water's data owner and FSTS Security; and the unregistered patient-linked flow to the reports server goes to the hospital's privacy function first, because a corporate-zone audience may already have seen the data.
+
 ### 12.7 Common errors and limits
 
 - Registering paths (conduits) but not data classes and retention.
@@ -1403,11 +1471,13 @@ HIGH unregistered flow CLIN-GW->REPORTS (patient-linked, encrypted=True)
 
 The register shows what is known; flows that leave by unexpected routes (removable media, a supplier's laptop) need other controls.
 
+The unregistered flow from the clinical gateway to the reports server is the second error at work: encrypted, and still unacceptable.
+
 ### Exercises — chapter 12
 
 **EX034 — Triage the differences.** *Objective:* prioritize data-flow findings. *Inputs:* Lab 12 output. *Constraints:* one action and owner per finding. *Steps:* (1) rank the three findings; (2) give the first action and the owner; (3) say which needs to be reported to someone outside FSTS. *Expected evidence:* table. *Rubric:* 3 = CLIN-GW→REPORTS first (unapproved patient-linked data in a wrong audience: stop flow with hospital data owner's agreement, assess), DF5 retention second (hospital data owner and Halden contract), vendor-support clear-text third (stop or encrypt, register); recognizes that whether external reporting is needed is the data owner's and privacy function's decision; 2 = ranking defensible, owners vague; 1 = ranks by encryption only; 0 = none.
 
-**EX035 — Write a register entry.** *Objective:* specify a new flow before it starts. *Inputs:* Kell Instruments asks for hourly telemetry from PS-09 for remote diagnostics. *Constraints:* every field in §12.1; include conduit and protection. *Steps:* write the entry and list who must approve it. *Expected evidence:* entry and approvers. *Rubric:* 3 = specific source/destination (relay or historian export, not the RTU directly), data class operational telemetry, encrypted transport, minimum fields and frequency, retention limited and contractual, purpose, owner, approvals by Water data owner and FSTS security, with an expiry date; 2 = one field weak; 1 = "send data to Kell"; 0 = none.
+**EX035 — Write a register entry.** *Objective:* specify a new flow before it starts. *Inputs:* Kell Instruments asks for hourly telemetry from PS-09 for remote diagnostics. *Constraints:* every field in Chapter 12 ("The register"); include conduit and protection. *Steps:* write the entry and list who must approve it. *Expected evidence:* entry and approvers. *Rubric:* 3 = specific source/destination (relay or historian export, not the RTU directly), data class operational telemetry, encrypted transport, minimum fields and frequency, retention limited and contractual, purpose, owner, approvals by Water data owner and FSTS security, with an expiry date; 2 = one field weak; 1 = "send data to Kell"; 0 = none.
 
 **EX036 — Extend the check.** *Objective:* add a check to the tool. *Inputs:* Lab 12. *Constraints:* standard library only. *Steps:* (1) add a check that flags any flow of `patient-linked` data whose destination is not on an approved list `{"CLIN-GW", "HALDEN-CLOUD"}`, even if registered; (2) register `("DF6", "CLIN-GW", "REPORTS", "patient-linked", True, 365)` and rerun; (3) explain why registration alone should not make that flow acceptable. *Expected evidence:* code, output, explanation. *Rubric:* 3 = REPORTS flow still flagged after registration; explanation that the register records decisions, and a registered flow to an unapproved audience is a bad decision to review, not a clean result; 2 = code works, explanation thin; 1 = not run; 0 = none.
 
@@ -1442,6 +1512,8 @@ Risk assessment can be done at many depths; NIST's guide describes a full proces
 
 "Ransomware" is a category. A scenario is: "Ransomware delivered through a phishing email encrypts HIST-01; station data still reach the relay, which buffers them; operators lose trend displays and weekly compliance reports until the historian is restored." A good scenario names the **cause**, the **path**, the **affected asset**, the **consequence** for people and service, and the **existing controls**. It can then be tested ("does the relay really buffer? for how long?") and monitored.
 
+R2 meets the test: stolen vendor credential, vendor remote access, PS-07's dosing setpoint, a chlorine change people drink.
+
 ### 13.2 Consequence first
 
 Consequence describes what happens to people: how many, for how long, and whether anyone could be harmed. A simple banding uses people × hours of disruption, with any credible safety effect placed in the highest band regardless of numbers. **Likelihood** is a judgement band (1 to 5) informed by exposure, known threats and history. Write the reason for each band; a band without a reason cannot be challenged.
@@ -1452,9 +1524,13 @@ Many registers rank by the product likelihood × consequence. The product is con
 
 For each scenario record the controls that already reduce it and whether they have been tested (Chapter 23). An untested control is a hope, and should not lower the band much. The **residual risk** — what remains after controls — needs an owner who has accepted it, by name of role, with a review date.
 
+For R1, historian ransomware, the key control is the relay's buffering of station data while HIST-01 is down. Until that buffering has been tested by stopping the historian on purpose and checking how many hours the relay holds, it is a hope, and R1's low band rests on it. The residual-risk owner for R1 would be Water operations, because compliance reporting is theirs.
+
 ### 13.4 From scenarios to work
 
 The register's value is the work it produces. For each of the top scenarios, list the implementation tasks that would reduce consequence or likelihood, and the monitoring that would detect it in progress. A register that produces no tasks is a document; one that produces tasks with owners is a plan.
+
+For R3, the relay disk filling, the work is concrete: find what keeps RLY-01's data beyond 30 days, set a disk alert before the 85 % alarm, and test the buffer's behaviour when the disk is full. For R2 it is the vendor-account controls and the chlorine out-of-band alert that appear as control cards in Chapter 18.
 
 ### 13.5 Worked example: six Fallowmere scenarios (synthetic)
 
@@ -1508,6 +1584,8 @@ ranked by CxL product only:
   R3 R6 R2 R4 R5 R1
 ```
 
+Run it and compare the two orderings. Ranked by consequence first, R2 and R4 lead because both carry the safety flag at band 5. Ranked by product, R3 at 16 and R6 at 12 overtake them, and R1 stays at the bottom either way. Then change one input that you consider uncertain, such as R2's likelihood, and see whether it moves R2 below R3. If the consequence-first ordering survives your change and the product ordering does not, that is the argument to put in front of the people who allocate next quarter's work.
+
 ### 13.7 Common errors and limits
 
 - Writing categories instead of scenarios.
@@ -1518,6 +1596,10 @@ ranked by CxL product only:
 - Leaving out scenarios outside your system that your system must detect.
 
 Bands are judgements. Their value is that they make reasoning explicit and comparable, not that they measure risk precisely.
+
+Lab 13 shows the third error: ranking by product puts disk capacity above chlorine dosing.
+
+Leaving out R2 because LANTERN carries no commands would be the sixth error: LANTERN's telemetry is how operators notice an unexpected dosing change.
 
 ### Exercises — chapter 13
 
@@ -1572,9 +1654,15 @@ In OT, the approval for any change that could affect the physical process includ
 
 A change plan for LANTERN states: what will change and why; affected systems and customers; pre-checks (backups taken, rollback staged, operations informed); the **window** (agreed with operations — not during the morning demand peak or a scheduled report run); step-by-step implementation; **verification** (how you will know it worked — specific checks, not "test the service"); **rollback** criteria and steps; and who to call. Chapter 27 extends this to deployments with canaries.
 
+Moving RLY-02's SSH listener is a typical case: the rollback must not depend on SSH.
+
 ### 14.4 Evidence of change
 
 After a change, three things should agree: the change record (what was approved), the version-controlled baseline (what should now be true) and the system itself (what is true, verified by the integrity check of Chapter 6 and the drift check of Chapter 22). When they disagree, either the change was not made as approved or the record is wrong. Both are findings.
+
+After CHG-118, all three agreed for `allow.list` and disagreed for the debug listener.
+
+For the debug listener there was no change record at all, so the disagreement itself was the finding, and it led to the investigation in Chapter 6.
 
 ### 14.5 Worked example: adding PS-11 (synthetic)
 
@@ -1582,7 +1670,9 @@ Water operations commissions a new station, PS-11. Adding it to LANTERN is a sta
 
 ### 14.6 Practical activity: write a normal-change plan
 
-Write a full change plan for: "Move RLY-02's SSH listener from all interfaces to the management interface only." Include every element of §14.3. Pay attention to the risk that you lock yourself out: how will you reach the host if the change fails?
+Write a full change plan for: "Move RLY-02's SSH listener from all interfaces to the management interface only." Include every element of Chapter 14 ("Planning a change in an operational environment"). Pay attention to the risk that you lock yourself out: how will you reach the host if the change fails?
+
+For the RLY-02 change, a safe plan keeps a second way in: console access through the hypervisor, or an open session on the management interface, tested before the listener is moved. Verification is specific: SSH answers on the management address, does not answer on the station-facing address, and the drift check shows only the intended line changed. Choose the window with Water operations, avoiding the morning demand peak and the weekly report runs on days 6 and 7.
 
 ### 14.7 Common errors and limits
 
@@ -1594,6 +1684,8 @@ Write a full change plan for: "Move RLY-02's SSH listener from all interfaces to
 - Emergency changes never reviewed afterwards, so they become permanent.
 
 Change control controls *authorized* change. It does not detect unauthorized change; that is the job of integrity and drift checks.
+
+The NTP merge in Chapter 25 is the fourth error in practice: its acceptance criterion said only "update NTP servers".
 
 ### Exercises — chapter 14
 
@@ -1628,7 +1720,7 @@ After this chapter you should be able to:
 - add **freshness** (time window) and **ordering** (sequence numbers) to defeat replay;
 - test the build with deliberately bad messages and record the results as evidence.
 
-This is the first guided build of LANTERN's core component. Chapter 3's validator checks that messages are well-formed and plausible; it cannot tell whether a message really came from a station. Here you add authentication. The design is deliberately simple so that every line can be understood; a production design would add key management and transport security (§15.6).
+This is the first guided build of LANTERN's core component. Chapter 3's validator checks that messages are well-formed and plausible; it cannot tell whether a message really came from a station. Here you add authentication. The design is deliberately simple so that every line can be understood; a production design would add key management and transport security (Chapter 15 ("What this build does not do")).
 
 ### 15.1 Integrity and authenticity
 
@@ -1640,13 +1732,23 @@ A MAC does **not** provide confidentiality (the message is still readable), does
 
 A MAC is computed over bytes. If sender and receiver serialize the same message differently — different key order, different spacing — verification fails. LANTERN's messages are serialized as JSON with sorted keys and no spaces, and the MAC is computed over exactly those bytes. Always define the canonical form explicitly.
 
+A relay that re-serializes the parsed JSON before checking the MAC can accept bytes the station never signed.
+
+Lab 15 serializes with sorted keys and no spaces on both sides, so the station gateway and the relay compute the MAC over identical bytes; a gateway firmware update that changed the spacing would show up at once as a burst of MAC failures from that station.
+
 ### 15.3 Constant-time comparison
 
 Comparing the received MAC with the expected one using an ordinary string comparison can leak, through timing, how many leading characters matched. Python's `hmac.compare_digest` compares in time independent of where the inputs differ ([Python hmac documentation](https://docs.python.org/3/library/hmac.html)). Use it for every MAC comparison.
 
+Lab 15 and Lab 29 both use `hmac.compare_digest`, never `==`, and the relay that rejected 40 of 40 MAC-failure tests in Chapter 23 must do the same.
+
+An ordinary comparison would let an attacker on the station network learn a valid MAC for a forged chlorine reading one character at a time.
+
 ### 15.4 Freshness and ordering
 
 Two cheap checks defeat replay. A **time window** rejects messages whose timestamp is more than a set number of seconds from the receiver's clock (here 120 s); it depends on both clocks being right (Chapter 17). A **sequence number** per station, increasing with each message, lets the receiver reject any message whose number is not greater than the last accepted. Both values are inside the MAC'd body, so an attacker cannot change them without invalidating the MAC.
+
+PS-09's 422-second clock error shows the cost: its genuine messages would fail the 120 s window.
 
 ### 15.5 Guided build
 
@@ -1724,6 +1826,8 @@ The lab key is printed in the source because it is fake; in production the key l
 - Keys in source code, configuration repositories or tickets.
 - Assuming a valid MAC means a correct reading.
 
+Each has a LANTERN consequence. A plain hash lets anyone who can reach the relay compute a valid-looking digest. One key for every station means a key lifted from PS-07's gateway, where the key file sat on a removable card, forges messages for all fourteen stations. And a valid MAC on a 9.80 mg/L chlorine reading proves only that PS-07 sent it, not that the analyser is right.
+
 ### Exercises — chapter 15
 
 **EX043 — Order of checks.** *Objective:* see why authentication comes first. *Inputs:* Lab 15. *Constraints:* modify a copy. *Steps:* (1) move the replay check before the MAC check, keeping the state update where it is; (2) craft an unauthenticated message for PS-04 with `seq` 1000000 and a wrong MAC; (3) send it, then a genuine message with `seq` 3; (4) report what happens and why the original order is safer. *Expected evidence:* code, output and explanation. *Rubric:* 3 = shows that with state updated before authentication an attacker can block a station's future messages (or, if the state update stays after the MAC check, shows no blocking and explains why the update's position is the real safeguard); explanation links to "authenticate, then trust"; 2 = observation without explanation; 1 = not run; 0 = none.
@@ -1763,6 +1867,8 @@ Methods I (Chapter 14) controlled change. Methods II covers the two routines tha
 
 Advisories arrive from vendors, national agencies and security mailing lists. The first question is **applicability**: do we run the affected product and version, in a configuration where the flaw matters? This depends on the inventory (Chapter 11) being accurate about versions. Record the decision — "applicable", "not applicable (reason)", "unknown (action to find out)" — for every advisory touching a product in the inventory. "Unknown" is common in OT and must have an owner.
 
+For the Arlen 300 advisory, the inventory held both versions: PS04-PLC on 4.2 and PS07-PLC on 3.9.
+
 ### 16.2 Prioritization
 
 A severity score describes the flaw in general; your priority depends on your situation. Three questions sharpen it. **Is it being exploited?** CISA's Known Exploited Vulnerabilities catalog lists flaws with evidence of active exploitation ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)); such entries move to the front. **Is it exposed?** A flaw reachable from the internet or from the corporate zone is more urgent than one reachable only from inside a well-controlled conduit. **What is the consequence?** A flaw on a criticality-1 asset in the station zone matters more than one on a depot kiosk. Patch management guidance treats this as risk-based scheduling with defined maintenance plans for different asset groups ([NIST SP 800-40 Rev. 4](https://csrc.nist.gov/pubs/sp/800/40/r4/final)).
@@ -1771,9 +1877,13 @@ A severity score describes the flaw in general; your priority depends on your si
 
 Station controllers may need vendor-certified firmware, a site visit, an outage window and re-testing of the process. Treatment then has two parts: **compensating controls now** (restrict the conduit further, disable the vulnerable function if not used, add monitoring for exploitation attempts, increase review of the device's configuration) and **a dated plan** for the fix. Record both, and the residual risk owner (Chapter 13). Remember Chapter 9: these long-open items must appear in your patch measures.
 
+PS04-PLC and PS07-PLC are the Fallowmere case: disable the unused web interface, close the corporate→PS-04 path, alert on the web port, then firmware 4.3 at the next site visits.
+
 ### 16.4 Verification
 
 A fix is complete when it is verified on the device: the version is confirmed (from the device or its engineering export, not from the ticket), the service works (Chapter 27's checks), and the compensating controls that are no longer needed are removed under change control — otherwise temporary rules accumulate.
+
+For PS07-PLC, the version was read from the device on the site visit: 3.9, as recorded, so the fix is still open. When 4.3 is installed, the evidence is the engineer's export showing 4.3, and the alert on the PLC web port is kept or removed by its own change record.
 
 ### 16.5 Backups and restore tests
 
@@ -1790,7 +1900,9 @@ An advisory reports a flaw in the Arlen 300 PLC's web management interface, firm
 
 ### 16.7 Practical activity: vulnerability record
 
-Write the full record for the §16.6 advisory: applicability per asset, priority with reasons for each of the three questions, compensating controls with evidence, fix plan with dates and owners, verification steps, and the residual-risk owner.
+Write the full record for the Chapter 16 ("Worked example: an advisory for the Arlen 300") advisory: applicability per asset, priority with reasons for each of the three questions, compensating controls with evidence, fix plan with dates and owners, verification steps, and the residual-risk owner.
+
+Priority for PS04-PLC rests on three answers: applicable (4.2 is below 4.3), exploited elsewhere, and exposed, because the flow review saw a corporate workstation talking to PS-04. PS07-PLC is applicable and exploited, but no undeclared path has been seen, so its exposure reason is weaker. Name Water operations as residual-risk owner until 4.3 is verified on both.
 
 ### 16.8 Common errors and limits
 
@@ -1802,11 +1914,15 @@ Write the full record for the §16.6 advisory: applicability per asset, priority
 - Backups stored where the same administrator account can delete all copies.
 - Measuring backup success by job completion instead of restore tests.
 
+Both PLCs show the fifth error's risk: the ticket would close at "firmware 4.3 scheduled", while 3.9 still runs at PS-07.
+
+PS04-PLC's 4.2 would have been marked not applicable by anyone reading only the advisory's score.
+
 ### Exercises — chapter 16
 
 **EX046 — Prioritize three advisories.** *Objective:* apply exploitation, exposure and consequence. *Inputs:* (a) critical-severity flaw in the depot kiosk browser, no known exploitation, kiosk on the depot network with internet access; (b) medium-severity flaw in the relay's SSH server, listed in KEV, SSH reachable only from the jump host; (c) high-severity flaw in HIST-01's database, no known exploitation, reachable from the corporate zone. *Constraints:* rank and justify in one sentence each. *Steps:* rank, then give a target date for each. *Expected evidence:* table. *Rubric:* 3 = (b) first because of active exploitation and criticality despite medium score and restricted exposure; then a defensible ordering of (c) and (a) with reasons (consequence of historian vs internet exposure of kiosk); dates proportionate; 2 = ranking defensible, reasons thin; 1 = by severity only; 0 = none.
 
-**EX047 — Compensating-control plan.** *Objective:* treat a vulnerability that cannot be patched quickly. *Inputs:* §16.6; firmware 4.3 can be installed at PS-07 only in 10 weeks. *Constraints:* at least three controls, each with evidence and an end date. *Steps:* write the plan. *Expected evidence:* table. *Rubric:* 3 = disable web interface if unused (evidence: engineering export), conduit restriction verified by flow review, alert on web-port connections tested, increased configuration comparison; all ending when 4.3 is verified; 2 = no end dates; 1 = "monitor"; 0 = none.
+**EX047 — Compensating-control plan.** *Objective:* treat a vulnerability that cannot be patched quickly. *Inputs:* Chapter 16 ("Worked example: an advisory for the Arlen 300"); firmware 4.3 can be installed at PS-07 only in 10 weeks. *Constraints:* at least three controls, each with evidence and an end date. *Steps:* write the plan. *Expected evidence:* table. *Rubric:* 3 = disable web interface if unused (evidence: engineering export), conduit restriction verified by flow review, alert on web-port connections tested, increased configuration comparison; all ending when 4.3 is verified; 2 = no end dates; 1 = "monitor"; 0 = none.
 
 **EX048 — Restore test design.** *Objective:* design a restore test that proves the RTO. *Inputs:* HIST-01, RTO 4 h, RPO 24 h. *Constraints:* must not disturb production; must be repeatable. *Steps:* (1) describe the test environment; (2) the steps and timing points; (3) the pass criteria; (4) what is recorded. *Expected evidence:* one page. *Rubric:* 3 = isolated restore target, starts from the offline/immutable copy, times from "decision to restore" to "operators can query data", checks data recency against RPO, records times, gaps and lessons, and is scheduled regularly; 2 = timing or RPO check missing; 1 = "check the backup job succeeded"; 0 = none.
 
@@ -1852,6 +1968,10 @@ The syslog protocol, [RFC 5424](https://www.rfc-editor.org/rfc/rfc5424), defines
 ### 17.4 Normalization
 
 A **normalizer** turns each source's format into one common record: UTC time, host, application, severity, and named fields such as `src`, `user`, `dst`, `dport`, `action`. Downstream rules (Chapter 19) are then written once. A normalizer must **count what it cannot parse** and report it: silent drops are how a monitoring system goes blind to the one source that changed its format.
+
+The relay's BSD-format line in the worked night shows why: without an unparsed count, it would simply have vanished.
+
+The kiosk line with no timestamp at all is the other case: the normalizer must flag it, not stamp it with arrival time.
 
 ### 17.5 Tools you can trust
 
@@ -1913,6 +2033,8 @@ None kiosk-depot notice - no timestamp supplied
 {"app": "sshd", "facility": 10, "host": "rly-01", "msg": "Failed password", "msgid": "AUTH", "severity": "warning", "src": "192.0.2.44", "ts": "2026-10-11T22:15:40.004Z", "ts_utc": "2026-10-11T22:15:40.004Z", "user": "root"}
 parsed 6, unparsed 1, missing timestamp 1
 ```
+
+Check two things in the output. First, the unparsed count is 1, the relay application's BSD-format line, which is a configuration fault in a LANTERN component, not noise. Second, the historian's `+01:00` line, converted to UTC, sits at 22:02:11, before the 22:14 administrator login and the 22:15 failed root logins rather than after them. Sorted that way, the corporate-to-PS-04 Modbus flow at 22:16 follows an administrator login from the same workstation, which is the sequence Rule B will later flag.
 
 ### 17.8 Common errors and limits
 
@@ -2000,6 +2122,8 @@ Evidence differs by type of control. For a **configuration** control (SSH bound 
 
 Write a rotation runbook for one station key: preparation (new key generated and stored, relay configured to accept old *and* new for a short overlap), cut-over at the station gateway, verification (messages accepted with the new key version; MAC failures counted), removal of the old key, and rollback. State the overlap length and why.
 
+For PS-07, whose gateway key sat on a removable card in an unlocked enclosure, rotation is no longer routine maintenance: it is the response to a physical finding. An overlap of a few hours, long enough to confirm accepted messages under the new key version, keeps the station reporting during cut-over.
+
 ### 18.8 Common errors and limits
 
 - Selecting controls from a catalogue without walking a scenario, producing many controls and gaps between them.
@@ -2008,11 +2132,15 @@ Write a rotation runbook for one station key: preparation (new key generated and
 - Key rotation never rehearsed, so it is avoided.
 - Removing a compensating control when the fix is scheduled rather than verified.
 
+The R2 cards avoid these: each control has a role owner and evidence, and the chlorine alert's test raised an alert in 2 minutes.
+
+Key rotation for PS-07 was avoided for years for the fourth reason.
+
 ### Exercises — chapter 18
 
 **EX052 — Walk a scenario.** *Objective:* build a control set from a path. *Inputs:* R3 from Chapter 13 (relay disk fills; telemetry dropped). *Constraints:* at least one control per step and per function. *Steps:* (1) write the path in steps; (2) attach prevent, detect and recover controls; (3) name the evidence for each. *Expected evidence:* table. *Rubric:* 3 = steps such as growth → threshold → write failure → dropped messages, with controls like retention enforcement, capacity forecast and alarm with lead time (Chapter 1), disk alarm and reject/drop count alert, station buffering and backlog upload; evidence specified; 2 = one function missing; 1 = single control; 0 = none.
 
-**EX053 — Catalogue check.** *Objective:* use a catalogue for completeness. *Inputs:* the R2 control cards in §18.6 and SP 800-53 Rev. 5 control family list. *Constraints:* cite the families by identifier. *Steps:* (1) map each card to a family; (2) name one family relevant to R2 that has no card; (3) propose a card for it. *Expected evidence:* table with citation. *Rubric:* 3 = sensible mappings (for example AC, AU, CM/SI, IR or CP) and a credible missing family such as personnel security for vendor staff, supply chain risk management (SR) for the vendor's own security, or incident response (IR) for a dosing incident, with a concrete card; 2 = mapping right, missing family weak; 1 = no citation; 0 = none.
+**EX053 — Catalogue check.** *Objective:* use a catalogue for completeness. *Inputs:* the R2 control cards in Chapter 18 ("Worked example: control cards for R2") and SP 800-53 Rev. 5 control family list. *Constraints:* cite the families by identifier. *Steps:* (1) map each card to a family; (2) name one family relevant to R2 that has no card; (3) propose a card for it. *Expected evidence:* table with citation. *Rubric:* 3 = sensible mappings (for example AC, AU, CM/SI, IR or CP) and a credible missing family such as personnel security for vendor staff, supply chain risk management (SR) for the vendor's own security, or incident response (IR) for a dosing incident, with a concrete card; 2 = mapping right, missing family weak; 1 = no citation; 0 = none.
 
 **EX054 — Overlap length.** *Objective:* reason about key rotation. *Inputs:* stations buffer up to 24 hours; backlog messages are sealed with the key active when they were created. *Constraints:* the relay should accept as few keys as possible for as short as possible. *Steps:* (1) say how long the relay must keep accepting the old key after cut-over; (2) explain how the relay knows which key to try. *Expected evidence:* paragraph. *Rubric:* 3 = old key accepted for at least the 24 h buffer period (plus margin) because backlog messages carry old-key MACs; messages carry a key version identifier inside the authenticated body or alongside it so the relay selects the key rather than trying all; old key then removed and the removal verified; 2 = overlap right, selection vague; 1 = no overlap; 0 = none.
 
@@ -2051,6 +2179,8 @@ Three sources produce LANTERN's rules. **Scenarios** (Chapter 13): each step on 
 
 In critical services, many of the most important alerts are about things that *stop* happening: a station that stops reporting, a relay that stops forwarding, a log source that falls silent, a backup that does not run. Absence rules need an **expected rhythm** (a heartbeat every five minutes) and a **tolerance** (alert after 15 minutes of silence). They catch outages, failed devices, cut cables, misconfigurations — and attackers who disable logging.
 
+Rule C caught PS-09 after 40 minutes of silence; its 15-minute tolerance is the design choice.
+
 ### 19.3 Events, episodes and alert quality
 
 A rule that fires for every matching event floods the on-call technologist: 14 failed logins become 14 alerts. Better rules alert once per **episode** — the first event in a window, with a count of the rest — and attach context: source zone, asset criticality, related recent events. Track each rule's **false-alarm rate** and its **response time**. A rule that has fired a hundred times without a true positive is training people to ignore it; tune it, change its threshold, or route it to a daily report instead of a page.
@@ -2059,9 +2189,15 @@ A rule that fires for every matching event floods the on-call technologist: 14 f
 
 Every alert needs an owner and a **first action** written in the rule: "Corporate→station Modbus: check whether an approved engineering session is in progress (change calendar); if not, call Water control room, then preserve flow records." Alerts that affect the physical process go to Water operations as well as FSTS. Write first actions before turning a rule on.
 
+Rule B's first action did its job on the worked night: change calendar first, then the Water control room.
+
+Rule C's first action, after the Chapter 24 study, is "call the Water control room, then check carrier status".
+
 ### 19.5 Monitoring the monitoring
 
 Rules, sources and forwarders fail silently. Monitor: each source's event rate (an absence rule for logs); the normalizer's unparsed count (Chapter 17); each rule's last evaluation time; and periodic **test events** that should produce known alerts (Chapter 23). NIST's guidance on information security continuous monitoring emphasizes ongoing awareness of whether controls remain effective ([NIST SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+Lab 23's Rule B misses, flows from a station switch never exported to the SIEM, show the cost of not monitoring sources: the rule was right, its input was missing.
 
 ### 19.6 Worked example: one night, three rules (synthetic)
 
@@ -2117,6 +2253,8 @@ Expected output (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
+Count the alerts by episode, not by line. Rule A fires once for 192.0.2.44, Rule B twice for one workstation, at 22:16 and 22:31, and Rule C once for PS-09 at 23:00. That is four alerts for three episodes; tuning Rule B to alert once and update a count brings it to three. Then confirm the non-event: `e.strand`'s single failed login from an internal address stays below Rule A's threshold, as intended.
+
 ### 19.8 Common errors and limits
 
 - Rules with no scenario, owner or first action.
@@ -2127,6 +2265,8 @@ alerts: 4 | rule B fired per event, not per episode: 2
 - Sending process-relevant alerts only to IT.
 
 Rules detect what was anticipated. Unanticipated behaviour needs people who look at data — threat hunting, reviews — and absence rules, which catch effects without knowing causes.
+
+Rule B's two pages for one episode on the worked night are the third error.
 
 ### Exercises — chapter 19
 
@@ -2167,7 +2307,7 @@ Most of an implementer's working life is spent on faults. In critical services s
 
 1. **Define the symptom precisely**: what is wrong, since when, for whom, measured how. "PS-07 and PS-09 show gaps on the dashboard since about 22:50" — not "telemetry is broken".
 2. **Check impact and safety first**: does anyone need to act on the physical process now? Tell Water operations what they can and cannot rely on.
-3. **Preserve before you change**: copy the relevant logs, configurations and outputs, with times, before restarting or reconfiguring anything (§20.2).
+3. **Preserve before you change**: copy the relevant logs, configurations and outputs, with times, before restarting or reconfiguring anything (Chapter 20 ("Preserve before you change")).
 4. **List hypotheses**, including at least one non-malicious and one malicious explanation, and what evidence would distinguish them.
 5. **Test the cheapest discriminating hypothesis first**, using reads before writes.
 6. **Change one thing at a time**, under the appropriate change type (Chapter 14), recording each change.
@@ -2181,6 +2321,8 @@ Restarting a service clears its memory, rotates logs, and may destroy the only e
 ### 20.3 When a fault becomes an incident
 
 Escalate to the incident process when any of these is true: evidence of unauthorized access or change (an unapproved configuration difference, a leaver's account used — Chapter 7); a security control has failed in a way that could be exploited; data may have gone where they should not (Chapter 12); or the cause cannot be found and a malicious cause is plausible. Escalating is not an accusation. It brings in people with different authority and duties, including the operator's reporting obligations (Chapter 10).
+
+`c.mendes`'s login on 14 September is the clearest Fallowmere trigger.
 
 ### 20.4 Missing data: four common causes
 
@@ -2234,6 +2376,8 @@ PS-07 points in dashboard window: 4
 PS-09 points in dashboard window: 0
 ```
 
+Look at the two stations' columns side by side. PS-07's sequence numbers jump from 4 to 9, so four messages never arrived. PS-09's sequence numbers are complete, but its station timestamps lag the relay's arrival times by about 422 seconds on every message. The first is loss; the second is time. Then write the next check for each: the relay's reject log and BayTel's status for the PS-07 gap, and the NTP path and time configuration for PS-09, preserved before anyone resets the clock.
+
 ### 20.7 Common errors and limits
 
 - Restarting first and investigating later.
@@ -2243,13 +2387,17 @@ PS-09 points in dashboard window: 0
 - "Fixing" a clock or a configuration before recording what it was.
 - Closing the ticket without a record of cause and evidence.
 
+Resetting PS-09's clock first would have destroyed the evidence for the 422-second question.
+
+Calling BayTel for PS-07's gap before checking the relay's reject log would be the second error: one hypothesis, the most familiar one, tested first and possibly only.
+
 ### Exercises — chapter 20
 
 **EX058 — Hypotheses and discriminators.** *Objective:* reason before acting. *Inputs:* symptom: "relay reject count for PS-04 rose from 0 to 300 per hour at 09:00; dashboard shows no PS-04 data since." *Constraints:* four hypotheses, at least one malicious. *Steps:* for each, give the evidence that would support or rule it out, and the cheapest check. *Expected evidence:* table. *Rubric:* 3 = for example key rotated at station but not relay (MAC failures in reject reasons, change calendar), station clock jump (window rejects), replay state poisoned (replay rejects after a high sequence — Chapter 29), forged traffic (MAC failures from an unexpected source address); checks are reads; 2 = three; 1 = one; 0 = none.
 
 **EX059 — Preservation list.** *Objective:* preserve evidence quickly. *Inputs:* PS-09 clock offset case. *Constraints:* ten minutes maximum; no changes to systems. *Steps:* list what you would copy or record, in order, and how you would show later that the copies were not altered. *Expected evidence:* list. *Rubric:* 3 = relay NTP and relay logs, conduit/firewall configuration and recent change log, historian extract, Lab-20-style analysis output, time of collection, hashes recorded in the ticket and copies stored off-host; 2 = missing hashing or times; 1 = "take a screenshot"; 0 = none.
 
-**EX060 — Problem record.** *Objective:* write a usable record. *Inputs:* §20.5 and assume the PS-09 cause was a firewall change that blocked udp/123 from relay to station two days earlier. *Constraints:* at most 250 words; observed / inferred / done / open labels. *Steps:* write the record. *Expected evidence:* the record. *Rubric:* 3 = precise symptom, evidence (offset ~422 s, complete sequence), cause with the change identified, fix under change control, verification, and open items (why the change removed NTP; why no alert fired on clock offset — add one); 2 = one element missing; 1 = narrative only; 0 = none.
+**EX060 — Problem record.** *Objective:* write a usable record. *Inputs:* Chapter 20 ("Worked example: two gaps, two causes") and assume the PS-09 cause was a firewall change that blocked udp/123 from relay to station two days earlier. *Constraints:* at most 250 words; observed / inferred / done / open labels. *Steps:* write the record. *Expected evidence:* the record. *Rubric:* 3 = precise symptom, evidence (offset ~422 s, complete sequence), cause with the change identified, fix under change control, verification, and open items (why the change removed NTP; why no alert fired on clock offset — add one); 2 = one element missing; 1 = narrative only; 0 = none.
 
 ### Chapter synthesis
 
@@ -2291,6 +2439,8 @@ For each neighbour, write down the interface as an agreement:
 
 A **RACI** matrix records for each activity who is Responsible (does it), Accountable (owns the outcome — exactly one), Consulted and Informed. Test it with a scenario: walk through "relay compromised at 02:00" and check that every step has exactly one accountable role, that nobody needs to be consulted who cannot be reached at 02:00, and that the people who must act on the physical process are informed early.
 
+Walking "relay compromised at 02:00" through Fallowmere's draft exposed the problem the worked example describes: nobody was Accountable for telling Water operators to distrust telemetry.
+
 ### 21.3 Supplier integration
 
 Suppliers are part of the service. Their remote access is a path into it; their software updates are changes to it; their outages are your outages. Integration means: their access through the declared path; their change notices into your change calendar; their security advisories into your vulnerability routine (Chapter 16); and contract terms that require notification of incidents affecting you. CISA's Secure by Design initiative encourages manufacturers to take ownership of customer security outcomes ([CISA Secure by Design](https://www.cisa.gov/securebydesign)); as a customer, ask suppliers how they meet such expectations and record the answers.
@@ -2307,6 +2457,8 @@ The draft RACI for "suspected compromise of a relay" lists: FSTS on-call — R; 
 
 Write a one-page interface agreement between LANTERN and Water operations covering: what each side provides, service levels (timeliness, value age display), alert routing, how a suspected telemetry problem is reported, the triggers for "telemetry unreliable", and review frequency.
 
+Make the triggers measurable: for example, "telemetry unreliable" is declared when relay MAC failures exceed a stated rate across more than one station, when two or more stations show clock offsets like PS-09's 422 seconds, or when FSTS suspects compromise of a relay. State who declares it (the Water duty manager, on FSTS advice), how the control room is told, and that it is exercised annually.
+
 ### 21.7 Common errors and limits
 
 - Treating integration as data formats and APIs only.
@@ -2315,9 +2467,13 @@ Write a one-page interface agreement between LANTERN and Water operations coveri
 - Continuity plans that assume the IT service is either fully up or fully down, with no "up but untrustworthy" state.
 - Triggers defined but never exercised.
 
+The first draft RACI shows the second error: no role was accountable for the operational response.
+
+Kell's exclusion from the draft RACI's consulted roles shows the third: a supplier whose account may be the path in was only to be informed.
+
 ### Exercises — chapter 21
 
-**EX061 — Repair the RACI.** *Objective:* fix a responsibility matrix. *Inputs:* the §21.5 draft. *Constraints:* exactly one A per activity; split activities if necessary. *Steps:* write the repaired matrix for activities: detect and triage; contain at relay; disable vendor access; decide operational response; notify regulators if required; restore service. *Expected evidence:* matrix. *Rubric:* 3 = one A per row; SOC R for triage; FSTS Security A for technical containment; Water duty manager A for operational response; regulatory notification A with the operator's designated role, not FSTS; Kell C on vendor access; 2 = one row wrong; 1 = multiple A's remain; 0 = none.
+**EX061 — Repair the RACI.** *Objective:* fix a responsibility matrix. *Inputs:* the Chapter 21 ("Worked example: a RACI that failed its test") draft. *Constraints:* exactly one A per activity; split activities if necessary. *Steps:* write the repaired matrix for activities: detect and triage; contain at relay; disable vendor access; decide operational response; notify regulators if required; restore service. *Expected evidence:* matrix. *Rubric:* 3 = one A per row; SOC R for triage; FSTS Security A for technical containment; Water duty manager A for operational response; regulatory notification A with the operator's designated role, not FSTS; Kell C on vendor access; 2 = one row wrong; 1 = multiple A's remain; 0 = none.
 
 **EX062 — Define a trigger.** *Objective:* make "telemetry unreliable" precise. *Inputs:* LANTERN's alerts from Chapter 19 and validation outcomes from Chapter 3. *Constraints:* measurable conditions; must not fire on ordinary single-station faults. *Steps:* (1) write the trigger conditions; (2) say who declares it and who ends it; (3) say what Water does when it is declared. *Expected evidence:* half page. *Rubric:* 3 = conditions such as confirmed unauthorized change on a relay, MAC failures across several stations, or relay integrity failure; declared by FSTS Security lead with Water duty manager; Water switches to manual readings and sampling; end condition requires verified clean state; 2 = conditions vague; 1 = "when it seems wrong"; 0 = none.
 
@@ -2358,6 +2514,10 @@ Write the desired state of each host class as data in version control: SSH setti
 
 Good automation separates **plan** from **apply**. The plan lists every intended change: host, setting, current value, desired value, and mode. The apply step executes an approved plan, not a fresh computation. This gives a person a chance to see what will happen, gives the change record something specific to approve, and produces evidence afterwards.
 
+Lab 22's plan for RLY-02 lists two changes, password SSH and public time servers, with current and desired values.
+
+RLY-03's debug listener appears in the plan as a ticket rather than an action, because removing it could destroy evidence of who enabled it.
+
 ### 22.3 Safe auto-fix versus ticket
 
 Some drift is safe to correct automatically: settings that are low-risk, reversible and well-understood (re-disabling SSH password authentication; restoring the approved time servers; restoring log forwarding). Other drift must go through change control: anything that may change service behaviour (a package version), anything that may be evidence (an unexpected debug listener — which may be an attacker's or an engineer's, and should be preserved before removal, Chapter 20), and anything that affects the physical process. Write the auto-fix list explicitly and keep it short.
@@ -2369,6 +2529,10 @@ Automation must protect against its own mistakes. Common limits: apply to **one 
 ### 22.5 Automation is code: treat it so
 
 The automation's own code and desired-state files are high-value: whoever can change them can change every host. Protect them with review before merge, restricted write access, signed commits or protected branches, and logs of each run. The automation's credentials to read and change hosts are privileged accounts (Chapter 7).
+
+The NTP merge in Chapter 25 is the warning: one reviewed commit changed time on every relay.
+
+Treat the account the automation uses to reach RLY-01 to RLY-03 like `vendor-kell`: time-bound where possible, logged, and reviewed in the quarterly access review of Chapter 7.
 
 ### 22.6 Worked example: a dry run across three relays (synthetic)
 
@@ -2424,6 +2588,8 @@ dry run only: 3 auto-fix steps, 2 need a change ticket
 guard: drifted hosts 2 of 3 -> HALT and escalate (possible bad source of truth)
 ```
 
+Read the halt first. Two of three relays drifted, more than half the fleet, so the run stopped before applying anything. Then read the plan per host: RLY-02's password authentication and public time servers are on the auto-fix list; RLY-03's debug listener, older relay package and missing log forwarding are not, and become tickets. Before approving any fix on RLY-03, copy its local logs, because without forwarding they may be the only record of when the debug listener appeared.
+
 ### 22.8 Common errors and limits
 
 - Automation that applies changes without a reviewable plan.
@@ -2432,6 +2598,10 @@ guard: drifted hosts 2 of 3 -> HALT and escalate (possible bad source of truth)
 - No halt condition for "too much drift".
 - Automation code and credentials less protected than the hosts they manage.
 - Treating automated compliance as proof of security; it proves only the settings it checks.
+
+Lab 22's halt at two of three drifted relays is the fourth item done right.
+
+An auto-fix list that included the debug listener would have removed the evidence of who set it on RLY-03.
 
 ### Exercises — chapter 22
 
@@ -2480,9 +2650,13 @@ Before any test, write and get signed **rules of engagement**: purpose; systems 
 
 Decide before testing what result will count as "effective". A **claim rule** might be: the 95 % Wilson lower bound of the detection rate is at least 0.70 and the median time to alert meets the target. Fixing the rule in advance stops the temptation to choose a flattering interpretation afterwards. Chapter 9's lesson applies: small numbers of tests give wide intervals, so "8 of 8 detected" may still not meet the rule.
 
+Rule C's 8 of 8 is the case: a perfect record whose lower bound, 0.68, misses 0.70.
+
 ### 23.4 From results to work
 
 Each control that is "not yet shown" needs either improvement (fix the rule, the source, the configuration) or more tests (if the issue is only sample size). Record the next test date. Each control "shown effective" is re-tested on a schedule, because controls degrade.
+
+Lab 23 sorts its four controls this way. Rule C needs only more tests: two or three further successes would lift its lower bound above 0.70. Rule B needs improvement first, by exporting the missing station switch's flows to the SIEM, then a retest. FIM needs both: more frequent checks on critical files, then more tests. Backup restore needs the decryption key added to the runbook, then new drills.
 
 ### 23.5 Worked example: a quarter's control tests (synthetic)
 
@@ -2532,6 +2706,8 @@ FIM unapproved-change alert           4/6  low95=0.30 median 1440 min  not yet s
 backup restore within 4 h             9/10 low95=0.60 median    - min  not yet shown
 ```
 
+The two effective controls are Rule A, 12 of 12 with lower bound 0.76, and the relay's MAC check, 40 of 40 with lower bound 0.91. For each of the four that are not yet shown, write one line: the reason (Rule B, a source gap; Rule C, sample size; FIM, daily checks and too few tests; restore, a runbook gap), the next action and the next test date. Do not round Rule C's 0.68 up to 0.70.
+
 ### 23.7 Common errors and limits
 
 - Testing without written rules of engagement, or with unclear scope.
@@ -2545,7 +2721,7 @@ Tests show how controls respond to the test events you designed. Real adversarie
 
 ### Exercises — chapter 23
 
-**EX067 — Rules of engagement.** *Objective:* authorize a safe test. *Inputs:* a test of Rule B using a test workstation and the spare Arlen 300 PLC in FSTS's lab, plus one test flow to PS-04's PLC during a site visit. *Constraints:* every element of §23.2. *Steps:* write the rules of engagement. *Expected evidence:* one page. *Rubric:* 3 = scope by identifier with the live PLC flow allowed only with Water's named approval, a read-only or connection-only test (no writes), engineer on site, marked test address, communication to control room and SOC, explicit stop conditions, result storage; 2 = one element missing; 1 = informal; 0 = none.
+**EX067 — Rules of engagement.** *Objective:* authorize a safe test. *Inputs:* a test of Rule B using a test workstation and the spare Arlen 300 PLC in FSTS's lab, plus one test flow to PS-04's PLC during a site visit. *Constraints:* every element of Chapter 23 ("Rules of engagement"). *Steps:* write the rules of engagement. *Expected evidence:* one page. *Rubric:* 3 = scope by identifier with the live PLC flow allowed only with Water's named approval, a read-only or connection-only test (no writes), engineer on site, marked test address, communication to control room and SOC, explicit stop conditions, result storage; 2 = one element missing; 1 = informal; 0 = none.
 
 **EX068 — How many more tests?** *Objective:* plan sample size. *Inputs:* Rule C at 8/8. *Constraints:* use the Wilson lower bound from Lab 23. *Steps:* find the number of additional consecutive successes needed for the lower bound to reach 0.70. *Expected evidence:* the number and the run. *Rubric:* 3 = one more success (9/9 gives a lower bound of about 0.701; 10/10 gives about 0.722), correctly shown, with the comment that meeting a threshold by a margin of 0.001 is fragile and a second extra test is worth planning; 2 = right with unclear method; 1 = guessed; 0 = none.
 
@@ -2582,6 +2758,10 @@ Technologists are often asked questions that sound simple — "did the new alert
 
 Write the question so that data can answer it: population (which stations, alerts, hosts), measure (with definition — Chapter 9), comparison (against what), period and decision (what will be done differently depending on the answer). "Did the new first-action text for Rule C reduce time from alert to control-room call?" is answerable; "is monitoring better?" is not.
 
+The Rule C question names its population (absence alerts), measure (minutes to the call) and decision (adopt the text or not).
+
+"Is monitoring better?" names none of them.
+
 ### 24.2 Comparisons and their traps
 
 - **Before/after** on the same system is easy and weak: anything else that changed in the period (staff, season, workload) can explain the difference.
@@ -2598,9 +2778,15 @@ Use data the service already records where possible: alert and acknowledgement t
 
 For small operational studies, simple methods are best and most honest: medians and percentiles (Chapter 9), differences between groups with the number of observations stated, intervals for proportions (Wilson), and a check of whether the result survives obvious alternative explanations (remove one unusual week; compare shifts separately). If the conclusion changes when one data point is removed, say so.
 
+The Rule C study did this check: removing the carrier-outage week moved the old-text median from 14 to 11 minutes, still slower than 6.
+
+Comparing shifts separately would have been the next check.
+
 ### 24.5 Reporting
 
 A one-page study note has: question; method (population, measure, comparison, period, what was decided in advance); results with counts; limits and alternative explanations; and recommendation with the confidence it deserves. Separate observed results from inferences, as everywhere in this book.
+
+For the Rule C study, the observed results are 11 old-text alerts with a median of 14 minutes and 12 new-text alerts with a median of 6; the inference is that the first action helps. The limits line names the small numbers, the awareness effect and the carrier-outage week.
 
 ### 24.6 Worked example: did the new first-action text help? (synthetic)
 
@@ -2609,6 +2795,8 @@ FSTS rewrote Rule C's alert to include a first action ("call the Water control r
 ### 24.7 Practical activity: design a study
 
 Choose one question from: (a) has RLY-02's p95 latency increased since relayd 2.4.1? (b) do quarterly station visits find drift that automated checks miss? (c) does the access review find fewer issues each quarter? Write the study design: question, population, measure, comparison, period, decision, data source, ethical and safety notes, analysis planned in advance.
+
+For question (a), the comparison is ready-made: Chapter 27's canary measured RLY-03's p95 latency at 41 ms on relayd 2.4.1 against 37 ms on 2.4.0, for one night-time hour. A study would extend that to several weeks of routine data, include the morning peak and the weekly report runs, and decide in advance what increase would trigger a rollback.
 
 ### 24.8 Common errors and limits
 
@@ -2619,13 +2807,17 @@ Choose one question from: (a) has RLY-02's p95 latency increased since relayd 2.
 - Results reported without counts or limits.
 - Treating a small study as settled; it is evidence for a decision, to be re-checked.
 
+The Rule C study avoided the second error by alternating text by week rather than comparing before with after.
+
+Asking technologists for their opinion after the trial would have added nothing the times did not show, and would have collected personal views the study did not need.
+
 ### Exercises — chapter 24
 
 **EX070 — Make it answerable.** *Objective:* reframe vague questions. *Inputs:* (a) "Is our patching good?"; (b) "Are suppliers a risk?"; (c) "Does the SOC help?" *Constraints:* each rewritten question must name population, measure, comparison and period. *Steps:* rewrite all three. *Expected evidence:* three questions. *Rubric:* 3 = specific, measurable, with comparison and period and a decision attached; 2 = one weak; 1 = still vague; 0 = none.
 
 **EX071 — Spot the weaknesses.** *Objective:* critique a study. *Inputs:* "After the March outage we added Rule C. In April there were 30 % fewer telemetry complaints than in March, proving Rule C works." *Constraints:* four weaknesses. *Steps:* name each and propose a better design. *Expected evidence:* list and design. *Rubric:* 3 = before/after only, regression to the mean after an unusual month, complaints as a poor measure of detection, no counts or interval, other changes in the period; better design measures detection time on alerts with a comparison; 2 = three; 1 = one; 0 = none.
 
-**EX072 — Write the study note.** *Objective:* report a small study. *Inputs:* §24.6. *Constraints:* one page; headings from §24.5. *Steps:* write the note. *Expected evidence:* note. *Rubric:* 3 = all headings; counts and medians; limits including awareness, small n and the outage week, with the sensitivity check; recommendation proportionate with a re-measurement plan; 2 = limits thin; 1 = advocacy; 0 = none.
+**EX072 — Write the study note.** *Objective:* report a small study. *Inputs:* Chapter 24 ("Worked example: did the new first-action text help?"). *Constraints:* one page; headings from Chapter 24 ("Reporting"). *Steps:* write the note. *Expected evidence:* note. *Rubric:* 3 = all headings; counts and medians; limits including awareness, small n and the outage week, with the sensitivity check; recommendation proportionate with a re-measurement plan; 2 = limits thin; 1 = advocacy; 0 = none.
 
 ### Chapter synthesis
 
@@ -2662,13 +2854,21 @@ A LANTERN delivery team at FSTS has four or five people: a **service owner** (pr
 
 Every work item states what "done" means as **acceptance criteria** that produce evidence. "Add station-silence alerting" is a wish. "Rule C alerts within 20 minutes of a station's heartbeat stopping, verified by three injected test silences across two stations; first action written and agreed by Water control room; control card updated" is a work item. The evidence becomes part of the capstone record.
 
+The NTP merge in this chapter shows the cost of a weak criterion: "update NTP servers" was met while every relay lost its second time source. The rewritten criterion, "offset < 1 s on all relays for 24 h", would have failed on the first day.
+
 ### 25.3 Review as a control
 
 Peer review of code, desired-state files, firewall changes and runbooks catches errors, spreads knowledge and makes it harder for one compromised or careless account to change the service alone. Make review **required** for anything that changes the service (protected branches, Chapter 22), **specific** (the reviewer checks against acceptance criteria and the design properties of Chapter 8, not just style), and **recorded**. Rotate reviewers so that review is not rubber-stamped by one habitual approver.
 
+The NTP merge was reviewed, but for syntax; the reviewer never checked that the new server existed.
+
 ### 25.4 Rhythm
 
 A short, regular rhythm suits operational teams: a weekly planning conversation (what will be done, by whom, with what evidence), a brief daily check (what is blocked), and a review at the end of each cycle (what was delivered, shown with its evidence to the customer representative). Operational work — incidents, faults — interrupts project work; plan for it rather than pretending it will not happen.
+
+The PS-09 silence and the jump-host disk failure are the interruptions to plan for.
+
+In Fallowmere, the daily check is where the PS-09 silence was raised the morning after Rule C fired.
 
 ### 25.5 Blameless reviews
 
@@ -2682,6 +2882,8 @@ During the project, a technologist merged a desired-state change that removed `1
 
 Write the backlog for the capstone (Chapter 29): at least ten work items covering the relay, validation, authentication, historian, logging, monitoring rules, access, backup and restore, automation, runbooks and evidence. Each needs acceptance criteria that produce evidence and an owner role.
 
+One complete item as a model: "Relay clock offset alert: alert when any relay's offset exceeds 2 s; acceptance, an injected offset on a test relay raises the alert within one evaluation cycle and the first action is written; owner, FSTS monitoring." It comes straight from the NTP review. Include at least one item that exists only to close a gap found earlier, such as FIM's 1,440-minute median detection time.
+
 ### 25.8 Common errors and limits
 
 - Work items without acceptance criteria.
@@ -2690,11 +2892,15 @@ Write the backlog for the capstone (Chapter 29): at least ten work items coverin
 - Plans that ignore operational interruptions.
 - Reviews of failures that end with "be more careful".
 
+The NTP review in this chapter ended with three changed conditions, not with "be more careful".
+
+The NTP merge shows the first two: a vague acceptance criterion and a review of syntax only. A single person understanding the key store is the third, which the handover in Chapter 26 exposed when the receiving team could not find it.
+
 ### Exercises — chapter 25
 
 **EX073 — Acceptance criteria.** *Objective:* write evidence-producing criteria. *Inputs:* work items: (a) "secure SSH on relays"; (b) "backups for historian"; (c) "vendor access process". *Constraints:* each criterion must be checkable by someone else. *Steps:* rewrite each with at least three criteria. *Expected evidence:* list. *Rubric:* 3 = for example (a) password auth off and listener on management interface on all relays (drift check output), connection from corporate zone refused (test record), MFA on jump host; (b) nightly backup with one immutable copy, restore test within RTO recorded; (c) time-bound enablement tested end to end, expiry verified, Kell acknowledged; 2 = criteria partly checkable; 1 = restated wishes; 0 = none.
 
-**EX074 — Review checklist.** *Objective:* make review substantive. *Inputs:* the §25.6 case and Chapter 8 design properties. *Constraints:* eight items. *Steps:* write a checklist for reviewing a desired-state change. *Expected evidence:* checklist. *Rubric:* 3 = includes existence and reachability of referenced systems, direction of trust preserved, no new listener on all interfaces, secrets not in the change, rollback defined, acceptance criteria and verification, affected customers informed, staged rollout; 2 = six; 1 = style-only items; 0 = none.
+**EX074 — Review checklist.** *Objective:* make review substantive. *Inputs:* the Chapter 25 ("Worked example: a merge that should not have happened") case and Chapter 8 design properties. *Constraints:* eight items. *Steps:* write a checklist for reviewing a desired-state change. *Expected evidence:* checklist. *Rubric:* 3 = includes existence and reachability of referenced systems, direction of trust preserved, no new listener on all interfaces, secrets not in the change, rollback defined, acceptance criteria and verification, affected customers informed, staged rollout; 2 = six; 1 = style-only items; 0 = none.
 
 **EX075 — Blameless review.** *Objective:* run a review that produces changes. *Inputs:* incident: an on-call technologist silenced Rule B for 24 hours during a noisy night and forgot to unsilence it; a real undeclared flow went unalerted for three days. *Constraints:* blameless; conditions, not people. *Steps:* write the review: timeline, what made sense at the time, conditions, changes with owners. *Expected evidence:* one page. *Rubric:* 3 = recognizes Rule B's per-event noise (Chapter 19) as a cause, no automatic expiry on silences, no visibility of silenced rules; changes such as episode alerting, silences that expire and are shown on the dashboard, handover checklist item; 2 = changes partial; 1 = blames the technologist; 0 = none.
 
@@ -2732,7 +2938,7 @@ A LANTERN handover pack contains:
 - **Service description** — purpose, customers, architecture with zones, conduits and management paths (Chapter 8), and the design properties that must be preserved.
 - **Ownership** — service owner, technical owner, security owner, customer contacts, supplier contacts, with roles and out-of-hours numbers.
 - **Service levels** — what customers can expect (telemetry within 60 s, value age shown, RTO 4 h for the historian) and how they are measured (Chapter 9).
-- **Runbooks** for routine and emergency tasks (§26.2).
+- **Runbooks** for routine and emergency tasks (Chapter 26 ("Runbooks that work at 03:00")).
 - **Control cards** for every control, with last evidence dates (Chapter 18).
 - **Monitoring** — every rule with its first action, and the self-monitoring checks (Chapter 19).
 - **Open items** — known issues, accepted risks with owners, compensating controls with end dates.
@@ -2748,9 +2954,13 @@ Core LANTERN runbooks: add or remove a station (standard change); rotate a stati
 
 The receiving team should be able to answer "is LANTERN healthy?" in two minutes from a dashboard or a daily report: stations reporting / expected; accept, reject and quarantine counts per hour; relay resource headroom (Chapter 1); clock offsets; log-source freshness; last successful backup and last restore test; rules last evaluated; open alerts; silenced rules and their expiry (Chapter 25).
 
+The handover in this chapter found the gap: the health report said "backups OK" but showed no restore-test date. For LANTERN the two-minute check would show 14 stations expected, accept, reject and quarantine counts, clock offsets against the 2 s alert, RLY-01's disk against its 85 % alarm, and any silenced rule with its expiry.
+
 ### 26.4 Running the handover
 
 Handover is a process, not an email. Run it in stages: walk-through of the pack with the receiving team; **shadowing**, where the receiving team performs routine tasks with the project team watching; **reverse shadowing**, where the project team watches the receiving team handle an injected test alert and a runbook; and **acceptance**, where the service owner and receiving team lead sign off with open items listed. Agree an **early-life support** period in which the project team remains available.
+
+Fallowmere's reverse shadowing used an injected Rule C alert for PS-09.
 
 ### 26.5 Worked example: a handover that found three gaps (synthetic)
 
@@ -2758,7 +2968,9 @@ During reverse shadowing, the FSTS operations team is given a test Rule C alert 
 
 ### 26.6 Practical activity: write and test a runbook
 
-Write the runbook "Respond to Rule C — station silent" using §26.2's structure, including the decision point from §26.5. Ask a colleague (or, if studying alone, yourself after a day's break) to follow it against the Lab 20 data and note every place they hesitated.
+Write the runbook "Respond to Rule C — station silent" using the structure in Chapter 26 ("Runbooks that work at 03:00"), including the decision point from Chapter 26 ("Worked example: a handover that found three gaps"). Ask a colleague (or, if studying alone, yourself after a day's break) to follow it against the Lab 20 data and note every place they hesitated.
+
+Use the handover's lesson as the decision point: after calling the Water control room, check the relay's MAC-failure log for the silent station before calling BayTel. In the handover test the injected cause was a key mismatch, and the runbook without that step sent the on-call technologist to the carrier. With the Lab 20 data, the same step separates PS-07's lost messages from PS-09's clock offset.
 
 ### 26.7 Common errors and limits
 
@@ -2769,11 +2981,15 @@ Write the runbook "Respond to Rule C — station silent" using §26.2's structur
 - Open items and accepted risks left out to make the service look complete.
 - Project team disappearing the day after acceptance.
 
+The PS-09 drill caught the second error: "check carrier status" sent the technologist to BayTel for a key mismatch.
+
+The "backups OK" line without a restore date is the third.
+
 ### Exercises — chapter 26
 
 **EX076 — Runbook critique.** *Objective:* improve a runbook. *Inputs:* "Key rotation: 1. Generate new key. 2. Put it on the relay and station. 3. Check it works. 4. Delete old key." *Constraints:* identify at least six problems. *Steps:* list problems and rewrite. *Expected evidence:* list and rewrite. *Rubric:* 3 = missing purpose and prerequisites, no store location or access, no overlap period (Chapter 18), no specific verification, no safety/operations notice, no rollback, deleting old key too early for backlog, no recording; rewrite addresses them; 2 = four or five; 1 = cosmetic; 0 = none.
 
-**EX077 — Health report.** *Objective:* define health evidence. *Inputs:* §26.3. *Constraints:* one screen; ten items maximum. *Steps:* choose items, give each a green/amber/red threshold, and say who reads it daily. *Expected evidence:* table. *Rubric:* 3 = items covering availability (stations reporting), integrity (reject/quarantine), capacity, time, logging, backup/restore, monitoring health and silences; thresholds sensible; reader named; 2 = eight items or thresholds weak; 1 = list without thresholds; 0 = none.
+**EX077 — Health report.** *Objective:* define health evidence. *Inputs:* Chapter 26 ("Health evidence"). *Constraints:* one screen; ten items maximum. *Steps:* choose items, give each a green/amber/red threshold, and say who reads it daily. *Expected evidence:* table. *Rubric:* 3 = items covering availability (stations reporting), integrity (reject/quarantine), capacity, time, logging, backup/restore, monitoring health and silences; thresholds sensible; reader named; 2 = eight items or thresholds weak; 1 = list without thresholds; 0 = none.
 
 **EX078 — Acceptance decision.** *Objective:* decide whether to accept a handover. *Inputs:* all runbooks tested except historian restore (tested by its author only); two control cards lack evidence dates; one accepted risk (PS09-RTU unsupported) has owner and plan. *Constraints:* accept, accept with conditions, or reject. *Steps:* decide and justify, listing any conditions with dates. *Expected evidence:* paragraph. *Rubric:* 3 = accept with conditions: independent historian restore test within a short date, evidence for the two controls by a date, early-life support until conditions met; recognizes the accepted risk is properly handled; 2 = decision without conditions; 1 = accept unconditionally; 0 = none.
 
@@ -2816,9 +3032,15 @@ A **canary** deployment installs the new version on one host first and compares 
 
 After each host is upgraded, validate: **functional** properties (all stations accepted, latency normal, historian receiving); **security** properties (MAC checks still enforced — inject a test message with a wrong MAC; listeners unchanged — run the drift check; logs still forwarded and parsed — check the normalizer's counts); and **operational** properties (alerts still evaluated; health report green). Security regressions are easy to miss because a service can work perfectly while a check has been silently disabled.
 
+On RLY-03, the drift check after 2.4.1 still showed the debug listener: function passed, a security property did not.
+
 ### 27.4 What the window cannot show
 
 A one-hour night-time canary shows behaviour at night-time load for one hour. It says nothing about the morning demand peak, weekly report runs (Chapter 1), month-end reporting or rare message types. Either extend the window over the periods that matter or state the gap and watch those periods closely after promotion.
+
+Relayd 2.4.1's canary ran one night-time hour, so its 0.0010 drop in acceptance ratio was recorded as an open item for the morning peak.
+
+Weekly report runs on days 6 and 7, at about 62 % CPU, are another period an hour at night cannot show.
 
 ### 27.5 Worked example: relayd 2.4.1 (synthetic)
 
@@ -2860,6 +3082,10 @@ pre-checks: PASS
 decision: promote to rly-02, then rly-01
 ```
 
+Check each line against the criteria fixed before the window: acceptance ratio 0.9985 against 0.9994, a drop of 0.0010 within the 0.002 allowed; p95 latency 41 ms against 37 ms, within 25 %; no restarts; MAC rejects unchanged. All pass, so the decision is to promote to RLY-02, then RLY-01, one host at a time. The drop, though within the criteria, stays on the open-items list for the morning peak.
+
+If the drop had been 0.0025, the rule fixed in advance would have required rollback, however small the difference looked.
+
 ### 27.7 Common errors and limits
 
 - Installing packages without verifying their origin.
@@ -2869,11 +3095,15 @@ decision: promote to rly-02, then rly-01
 - Promoting all remaining hosts at once after the canary.
 - Rollback never tested.
 
+The relayd 2.4.1 deployment avoided each: signature verified, criteria fixed before the canary, a wrong-MAC message injected after, and promotion one host at a time.
+
+The open item for the morning peak is how the fourth is handled when the window cannot be longer.
+
 ### Exercises — chapter 27
 
 **EX079 — Fail the canary.** *Objective:* apply the rollback rule. *Inputs:* Lab 27. *Constraints:* change only the canary's numbers. *Steps:* (1) set the canary's accepted count to 7170; (2) run; (3) state the decision and the first three actions. *Expected evidence:* output and actions. *Rubric:* 3 = acceptance drop ≈ 0.0036 fails the 0.002 criterion, decision roll back; actions: roll back canary under the change, preserve canary logs and reject reasons, open problem record and inform control room; 2 = decision right, actions thin; 1 = not run; 0 = none.
 
-**EX080 — Security validation set.** *Objective:* specify post-deployment security checks. *Inputs:* §27.3. *Constraints:* five checks, each with expected result. *Steps:* list them. *Expected evidence:* table. *Rubric:* 3 = wrong-MAC test rejected, replay test rejected, drift check shows no new listeners, normalizer unparsed count unchanged, service runs as unprivileged account, alert test still fires; 2 = four; 1 = function only; 0 = none.
+**EX080 — Security validation set.** *Objective:* specify post-deployment security checks. *Inputs:* Chapter 27 ("Validation after deployment"). *Constraints:* five checks, each with expected result. *Steps:* list them. *Expected evidence:* table. *Rubric:* 3 = wrong-MAC test rejected, replay test rejected, drift check shows no new listeners, normalizer unparsed count unchanged, service runs as unprivileged account, alert test still fires; 2 = four; 1 = function only; 0 = none.
 
 **EX081 — Extend the window.** *Objective:* design a canary window that covers real load. *Inputs:* weekly report runs on days 6–7 (Chapter 1), morning peak 06:00–09:00. *Constraints:* the change must complete within ten days. *Steps:* propose the window(s), promotion points and the criteria checked at each. *Expected evidence:* schedule. *Rubric:* 3 = canary across at least one morning peak and one report run before promotion, with criteria evaluated at each, then staged promotion within the ten days; notes rollback readiness throughout; 2 = covers one; 1 = one-hour window kept; 0 = none.
 
@@ -2912,6 +3142,10 @@ Before going to PS-07, agree with Water operations: purpose and tasks; date and 
 
 Physical safety rules at operational sites come from the operator and from health-and-safety law: confined spaces, chemicals (chlorine dosing rooms), electrical panels, lone working, weather. Follow the site's induction and the operator's instructions; if in doubt, stop and ask. Security work never justifies a safety shortcut.
 
+At PS-07, the chlorine dosing room is part of the visit route; Water's engineer leads and decides where you may stand.
+
+Lone working at a station like PS-09, silent for three weeks, needs a check-in arrangement with the Water control room before the visit, not after.
+
 ### 28.3 Evidence collection at site
 
 Field visits are the moment to verify what remote sources cannot: the physical presence and labels of devices (Chapter 11); firmware versions read from the device or its engineering export by Water's engineer; cabling that may create undeclared paths (a second network cable to a cellular modem, a laptop left connected); physical protection of the station gateway that holds HMAC keys (Chapter 15); and the state of local buffering and time. Photograph labels and panels only with permission and without capturing passwords or screens with sensitive data. Record everything with time and source, under observed / inferred / done / open.
@@ -2920,13 +3154,19 @@ Field visits are the moment to verify what remote sources cannot: the physical p
 
 Field equipment is a classic path into control systems: USB drives and maintenance laptops carry malware between sites and networks. Use dedicated, scanned media; never connect a personal device; never connect a field laptop to the corporate network and a station network at the same time; record what was connected to what. CISA's performance goals include controls on connecting unauthorized devices and media to OT networks ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)).
 
+PS-07's cellular modem, installed by Kell for remote support and still attached to the PLC's second port, shows the same risk from a supplier's side: a connection nobody recorded.
+
 ### 28.5 Working with operations
 
 Operations staff hold authority over the process and knowledge that no document contains. Ask them what they would expect to see if the station were misbehaving; how they would run it manually; what changed recently. Explain what you are doing in plain language, and stop if they ask you to. Many of the best findings at site come from conversations: "we sometimes plug the vendor's laptop into that spare port" is worth more than a scan.
 
+At PS-07, the modem was explained by the engineer in one sentence; no scan would have told its history.
+
 ### 28.6 Exercises with operators
 
 A **tabletop exercise** walks through a scenario in discussion; a **functional exercise** performs some actions for real in a controlled way. For LANTERN, an annual exercise with Water operations tests the "telemetry unreliable" trigger (Chapter 21): FSTS declares it, the control room switches to manual readings at selected stations, and both sides time each step and record problems. The exercise is planned with rules of engagement (Chapter 23) and stop conditions, and ends with a blameless review (Chapter 25).
+
+PS-09's three silent weeks are a good tabletop starting point.
 
 ### 28.7 Worked example: the PS-07 visit (synthetic)
 
@@ -2934,7 +3174,9 @@ You visit PS-07 with Water's engineer to read the PLC firmware (for Chapter 16's
 
 ### 28.8 Practical activity: site work plan
 
-Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware not independently verified, station silent for three weeks). Include every element of §28.1, safety notes, the evidence you intend to collect, what you will not touch, and how findings will be recorded and raised.
+Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware not independently verified, station silent for three weeks). Include every element of Chapter 28 ("Planning a visit"), safety notes, the evidence you intend to collect, what you will not touch, and how findings will be recorded and raised.
+
+For PS-09, the plan's evidence list should include the RTU's firmware read from the device, the station clock against the relay's, and the state of the NTP path, given the 422-second offset found in Chapter 20. List what you will not touch, such as the RTU configuration and the gateway's key file, and who raises the change if a modem like PS-07's is found.
 
 ### 28.9 Common errors and limits
 
@@ -2945,11 +3187,15 @@ Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware n
 - Treating operations staff as obstacles rather than partners.
 - Exercises without stop conditions.
 
+The PS-07 visit avoided the third error: the modem was recorded and removed later under Water's change.
+
+Unplugging PS-07's modem on the spot would have been the third error, however obviously unused it looked; Water confirmed first that nothing depended on it, and the engineer raised the change.
+
 ### Exercises — chapter 28
 
-**EX082 — Record the modem.** *Objective:* write field findings correctly. *Inputs:* §28.7. *Constraints:* observed / inferred / done / open labels; no recommendation to act without change control. *Steps:* write the finding record and say which registers must be updated. *Expected evidence:* record. *Rubric:* 3 = observed (modem present, model/label, connected to PLC port 2, engineer's account), inferred (undeclared remote path, possibly active), done (photographed with permission, change raised by Water), open (whether it is powered and has a working SIM, who holds the account, removal date); inventory, conduit list, data-flow register and risk register updated; 2 = labels mixed; 1 = narrative; 0 = none.
+**EX082 — Record the modem.** *Objective:* write field findings correctly. *Inputs:* Chapter 28 ("Worked example: the PS-07 visit"). *Constraints:* observed / inferred / done / open labels; no recommendation to act without change control. *Steps:* write the finding record and say which registers must be updated. *Expected evidence:* record. *Rubric:* 3 = observed (modem present, model/label, connected to PLC port 2, engineer's account), inferred (undeclared remote path, possibly active), done (photographed with permission, change raised by Water), open (whether it is powered and has a working SIM, who holds the account, removal date); inventory, conduit list, data-flow register and risk register updated; 2 = labels mixed; 1 = narrative; 0 = none.
 
-**EX083 — Field laptop rules.** *Objective:* define field equipment controls. *Inputs:* §28.4. *Constraints:* six rules, each with how it is checked. *Steps:* write them. *Expected evidence:* table. *Rubric:* 3 = dedicated device, patched and hardened, no personal use, never dual-connected, removable media scanned and dedicated, connection log kept, device checked after each visit; each with a check; 2 = four or five; 1 = generic; 0 = none.
+**EX083 — Field laptop rules.** *Objective:* define field equipment controls. *Inputs:* Chapter 28 ("Removable media and field laptops"). *Constraints:* six rules, each with how it is checked. *Steps:* write them. *Expected evidence:* table. *Rubric:* 3 = dedicated device, patched and hardened, no personal use, never dual-connected, removable media scanned and dedicated, connection log kept, device checked after each visit; each with a check; 2 = four or five; 1 = generic; 0 = none.
 
 **EX084 — Exercise plan.** *Objective:* plan a functional exercise. *Inputs:* trigger "telemetry unreliable" (Chapter 21). *Constraints:* two stations; no effect on supply; one hour. *Steps:* write objectives, scenario, participants, steps with timing points, stop conditions, safety notes, and how results are recorded. *Expected evidence:* one page. *Rubric:* 3 = measurable objectives (time to declare, time to first manual reading), realistic scenario, control room authority preserved, stop conditions on any process concern, safety at sites, blameless review scheduled; 2 = one element weak; 1 = tabletop only; 0 = none.
 
@@ -3060,6 +3306,8 @@ PS-07 mean chlorine stored: 0.606 mg/L
 
 Check that the numbers add up. Messages on the wire: 120 + 119 + 85 + 3 injected = 327. Stored: 324 (all genuine readings). Not stored: 3 (the replay, the forgery and the out-of-range reading). Alerts: four, one of each kind, and four of four injected tests detected. The digest lets anyone confirm later that the record has not been edited; in a real service the record would be stored off-host and the digest written into the change or test ticket.
 
+If the stored count had read 325, one genuine reading would be unexplained.
+
 ### 29.4 A defect that only appears in combination
 
 Change the injected out-of-range message's sequence number from 20 to 1000 — as a faulty station gateway might after a reset — and rerun. The result changes dramatically: stored readings fall from 324 to 225 and alerts rise from 4 to 103. Ninety-nine genuine PS-07 readings are rejected as replays. The cause is that the relay updates its last-seen sequence number *after* authentication but *before* the range check: the out-of-range message is authentic, so its sequence number 1000 is recorded, and every later genuine message (sequence 21 to 119) looks like a replay.
@@ -3068,7 +3316,7 @@ Each component was "correct" by its own chapter's tests. Chapter 3 warned agains
 
 ### 29.5 Building the real capstone
 
-The project version of the capstone, done in a team (Chapter 25), builds the same shape with real components in a lab: three relay virtual machines, a historian database, log forwarding to a collector, the normalizer, three monitoring rules plus self-monitoring, configuration as code with a drift check, a backup and timed restore, runbooks and a handover pack. Use only lab equipment or simulated stations. The deliverable is the **service evidence record**: for each requirement in §29.1, the test performed, its date, the raw output, the result against a pre-stated claim rule (Chapter 23), and the open items.
+The project version of the capstone, done in a team (Chapter 25), builds the same shape with real components in a lab: three relay virtual machines, a historian database, log forwarding to a collector, the normalizer, three monitoring rules plus self-monitoring, configuration as code with a drift check, a backup and timed restore, runbooks and a handover pack. Use only lab equipment or simulated stations. The deliverable is the **service evidence record**: for each requirement in Chapter 29 ("What the capstone must demonstrate"), the test performed, its date, the raw output, the result against a pre-stated claim rule (Chapter 23), and the open items.
 
 ### 29.6 Common errors and limits
 
@@ -3077,6 +3325,10 @@ The project version of the capstone, done in a team (Chapter 25), builds the sam
 - Injected tests that the team designed to pass.
 - No digest or off-host copy of evidence.
 - Omitting the "what this does not show" section: Lab 29 shows nothing about real field devices, carrier behaviour, load at scale, or attackers who adapt.
+
+Team A's summary in Chapter 30 commits the fifth: it states no limits at all.
+
+An injected forgery built with the station's real key would test nothing; the team must design tests that could fail.
 
 ### Exercises — chapter 29
 
@@ -3121,11 +3373,13 @@ A design review is a structured conversation in which reviewers test whether the
 
 Operational evidence is the record of the service running: health reports over weeks, alerts and their handling, control tests with results against claim rules (Chapter 23), restore tests, access reviews, drift reports, problem records, and blameless reviews with their changes. Assessors look for: evidence that is **dated and sourced**; **counts that add up**; claim rules stated **before** results; "not yet shown" handled honestly; and **limits** stated (synthetic data, lab equipment, short periods).
 
+Team B's summary in this chapter is the model: counts, a digest, a claim rule and a stated gap.
+
 ### 30.3 Assessment rubric
 
 | Criterion | 3 — strong | 2 — adequate | 1 — weak | 0 — missing |
 |---|---|---|---|---|
-| End-to-end function | All requirements of §29.1 demonstrated with raw evidence | One requirement with thin evidence | Function asserted, not shown | Not working |
+| End-to-end function | All requirements of Chapter 29 ("What the capstone must demonstrate") demonstrated with raw evidence | One requirement with thin evidence | Function asserted, not shown | Not working |
 | Controls and monitoring | Each top scenario has prevent/detect/recover controls tested against claim rules; self-monitoring present | Gaps in one scenario or no self-monitoring | Controls configured but untested | None |
 | Design properties | Direction of trust and layer independence preserved and argued; management paths shown | One property weakly argued | Diagram only | None |
 | Operability and handoff | Runbooks tested by others; health evidence; handover with open items | Runbooks untested by others | Documents only | None |
@@ -3137,6 +3391,10 @@ Operational evidence is the record of the service running: health reports over w
 
 The capstones that do worst are rarely the least technical. They are the ones that present configuration as evidence, hide a failed test, choose claim rules after the results, test only components, or describe a design that the evidence does not match. The capstones that do best are often modest in scope and exact in evidence.
 
+Team A, "fully secured… all tests passed", shows the first two failures.
+
+Team B, in contrast, reports Rule C's extra tests, FIM's 4 of 6 and an untested key compromise.
+
 ### 30.5 Worked example: two capstone summaries (synthetic)
 
 Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups. All tests passed." Team B: "Four of four injected faults were detected in the final run (record digest aa40e3905d17…). Rule C met its claim rule only after four further successful tests (12/12, lower bound 0.76); FIM detection is not yet shown (4/6, daily checks too slow — change raised). We found and fixed a replay-state defect during integration (Chapter 29). The historian restore met its 4-hour RTO in 9 of 10 drills; the failure was a runbook gap, fixed and re-tested. We have not tested key compromise or carrier failure at scale." Team B's summary scores higher on every criterion except perhaps confidence — and confidence is not a criterion.
@@ -3145,19 +3403,23 @@ Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups.
 
 The course has taught one method, applied thirty times: know what must stay true about the service; build it so that it stays true; check that it does, with evidence someone else can verify; notice quickly when it stops; respond without destroying evidence; and hand it on so that others can do the same. The vocabulary changes by sector — chlorine and pumps in water, drug libraries in a hospital, timetables at a depot — but the method transfers.
 
+PS-09 traced the whole method once: silent, reconciled, alerted on, explained by its clock.
+
 ### 30.7 Continuing practice
 
 Services and threats change; so do standards. Keep a short continuing-practice plan: re-read the main standards you rely on when they are revised (NIST CSF 2.0, SP 800-82, the CISA CPGs, the sector guidance for your jurisdiction); follow the advisories for the products in your inventory; take part in exercises; review one public incident report a month for failed assumptions (Chapter 5); and seek review of your own work. The next course in the study path, the Cybersecurity bachelor's course, broadens the foundations behind much of what this book applied.
 
 ### 30.8 Practical activity: self-assessment
 
-Score your capstone against §30.3 before your assessor does. For every criterion below 3, write what evidence would raise it and when you could produce it.
+Score your capstone against Chapter 30 ("Assessment rubric") before your assessor does. For every criterion below 3, write what evidence would raise it and when you could produce it.
+
+Use Team B's summary as the standard for the evidence each score needs. If Rule C met its claim rule in your record only after extra tests, say so and give the counts, as Team B did with 12 of 12 and lower bound 0.76. If FIM is not yet shown in your record, score that criterion honestly and name the change that would raise it, such as more frequent integrity checks on critical files, with a date for the retest. A self-assessment that differs from the assessor's by more than one point on any criterion usually means evidence was missing, not that the work was weak.
 
 ### Exercises — chapter 30
 
 **EX088 — Answer the reviewers.** *Objective:* defend a design honestly. *Inputs:* questions: (a) "What happens if the relay's HMAC key leaks?"; (b) "What if the person who built the automation leaves?"; (c) "What if BayTel is down for a day?" *Constraints:* answer from the design and evidence in this book; say where evidence is missing. *Steps:* answer each in 100–150 words. *Expected evidence:* three answers. *Rubric:* 3 = (a) per-station keys limit impact; detection via unexpected source or sequence anomalies is weak — admits gap; rotation runbook tested; revocation steps; (b) review, rotation of roles, runbooks, protected pipeline, handover — with evidence of shadowing; (c) stations buffer 24 h, silence alerts, manual readings trigger, backlog upload headroom — and states whether a day-long outage has been exercised; 2 = one answer weak; 1 = confident without evidence; 0 = none.
 
-**EX089 — Assess Team A and Team B.** *Objective:* apply the rubric. *Inputs:* §30.5 summaries. *Constraints:* score only what the summary shows. *Steps:* score both on each criterion and justify. *Expected evidence:* table. *Rubric:* 3 = Team A low on evidence quality and honesty (assertions only), unknown on others; Team B high on evidence quality and honesty, adequate-to-strong on controls with stated gaps; assessor notes what further evidence is needed for each; 2 = scores defensible, justification thin; 1 = scores by confidence of tone; 0 = none.
+**EX089 — Assess Team A and Team B.** *Objective:* apply the rubric. *Inputs:* Chapter 30 ("Worked example: two capstone summaries") summaries. *Constraints:* score only what the summary shows. *Steps:* score both on each criterion and justify. *Expected evidence:* table. *Rubric:* 3 = Team A low on evidence quality and honesty (assertions only), unknown on others; Team B high on evidence quality and honesty, adequate-to-strong on controls with stated gaps; assessor notes what further evidence is needed for each; 2 = scores defensible, justification thin; 1 = scores by confidence of tone; 0 = none.
 
 **EX090 — Continuing-practice plan.** *Objective:* plan to stay current. *Inputs:* your inventory's products and your jurisdiction's sector guidance. *Constraints:* one page; monthly, quarterly and yearly activities; named sources with versions. *Steps:* write the plan. *Expected evidence:* plan. *Rubric:* 3 = specific sources and versions (for example NIST CSF 2.0, SP 800-82 Rev. 3, CISA CPGs or NCSC CAF), advisory subscriptions for inventory products, monthly incident-report reading, quarterly exercise participation, yearly review of standards, peer review; realistic workload; 2 = generic sources; 1 = vague intent; 0 = none.
 
@@ -3221,7 +3483,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 ### Chapter 6: EX016–EX018
 
-**EX016 — Hardening review.** Bind SSH to the management interface only (normal change, because a mistake locks administrators out); remove the debug listener on 0.0.0.0:9000 (normal change, after preserving evidence of who enabled it — Chapter 20); disable RPC on port 111 (standard change if a procedure exists); remove the compiler and desktop environment (standard change); move the relay from `root` to a dedicated `relay` account with filesystem restrictions (normal change with testing). Each change has a reason tied to §6.1–6.2.
+**EX016 — Hardening review.** Bind SSH to the management interface only (normal change, because a mistake locks administrators out); remove the debug listener on 0.0.0.0:9000 (normal change, after preserving evidence of who enabled it — Chapter 20); disable RPC on port 111 (standard change if a procedure exists); remove the compiler and desktop environment (standard change); move the relay from `root` to a dedicated `relay` account with filesystem restrictions (normal change with testing). Each change has a reason tied to Chapter 6 ("Hardening as subtraction")–6.2.
 
 **EX017 — Protect the baseline.** Design 1: after each approved change, the baseline is exported to a write-once store off the host (an append-only bucket or a server the relay administrators cannot modify). Design 2: the baseline file is signed with a key held by the security team, not on the relay; the comparison verifies the signature first. An attacker with root on the relay can alter files and even the local baseline copy, but cannot alter the off-host or signed baseline undetected. Because the comparison tool on the relay could itself be subverted, also run the comparison from outside (collect hashes remotely, or compare collected files off-host).
 
