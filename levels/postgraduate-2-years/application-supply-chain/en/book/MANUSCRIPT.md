@@ -50,9 +50,21 @@ Hannah Brooks is product security lead at the fictional Northbridge Bank and a p
 
 Hannah's board asks: what should we do about third-party SDKs? She frames three options: continue without review; review every SDK update before release; or remove third-party SDKs and build analytics in-house.
 
+Section one point two develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point two, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point two treats the case framing the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.3 Expected cost
 
 For each option she estimates the annual cost of the control, the probability of a similar incident in a year and its impact (fines, remediation, customer trust), using the February incident and industry reports as anchors.
+
+Section one point three develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point three, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point three treats the case framing the as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — comparing options
 
@@ -75,17 +87,41 @@ remove SDKs, in-house analytics  control  220k + 0.02 x 900k =  238.0k
 
 With an impact of 900k, "no review" has an expected cost of 270k (0.30 × 900k). "Review on update" costs 60k plus 0.08 × 900k, totalling 132k. Removing SDKs costs 220k plus 0.02 × 900k, totalling 238k. On these estimates, reviewing updates is cheapest overall.
 
+Section one point four develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point four, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point four treats the case framing the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Beyond money
 
 Some harms are not well captured in money: customer trust, regulatory relationships, and the bank's duty to treat customers fairly. Hannah lists these alongside the numbers and notes that they strengthen the case for review rather than changing the ranking.
+
+Section one point five develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point five, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point five treats the case framing the as testable only when evidence and ticket IDs are recorded.
 
 ### 1.6 Sensitivity
 
 If the incident probability without review were 0.15 instead of 0.30, "no review" would cost 135k, almost tied with review. Hannah shows the board this sensitivity so they see the decision depends on her estimates.
 
+Section one point six develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point six, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point six treats the case framing the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.7 Accountability
 
 The decision, options, estimates and sensitivity are recorded and signed by the chief information security officer (CISO), so later reviewers can see what was known and why the choice was made.
+
+Section one point seven develops advanced security decision-making with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section one point seven, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section one point seven treats the case framing the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -125,29 +161,75 @@ You will (1) describe current industry practice for third-party code in applicat
 
 Mobile and web apps typically include open-source libraries and commercial SDKs for analytics, crash reporting, payments and identity checks. SDKs run with the app's permissions and can collect data or change behaviour with each update.
 
+Section two point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point one treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 The SSDF
 
 NIST SP 800-218 (Souppaya et al., 2022) asks organisations to acquire and maintain well-secured software components (PW.4), to protect all forms of code from unauthorised access and tampering (PS.1), and to identify and confirm vulnerabilities on an ongoing basis (RV.1). Third-party SDK governance falls largely under PW.4.
+
+Section two point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point two treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 SAMM
 
 OWASP SAMM v2 (2020) assesses maturity across governance, design, implementation, verification and operations. Its implementation function includes secure build and secure deployment practices, while the design function includes security requirements, including requirements for suppliers.
 
+Section two point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point three treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 SLSA and provenance
 
 SLSA v1.0 focuses on build integrity: knowing which source and build produced an artifact. For vendor SDKs delivered as binaries, provenance and signatures from the vendor would show the SDK was built as claimed, but most SDK vendors do not yet provide them.
+
+Section two point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point four treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 SBOMs
 
 NTIA (2021) minimum elements give a baseline for listing components. Northbridge generates SBOMs for its own builds, but the SDK appears as a single opaque entry.
 
+Section two point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point five treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Northbridge Bank will not accept application work without a written trail.
+
 ### 2.6 Gap assessment
 
 Hannah's assessment finds: no review of SDK updates, no inventory of what data each SDK collects, no contractual SBOM requirement for vendors, and update automation that pulls SDKs along with open-source libraries.
 
+Section two point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point six treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
+
 ### 2.7 The gaps that matter
 
 The February incident maps directly to the first two gaps; Hannah prioritises them.
+
+Section two point seven develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section two point seven, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section two point seven treats third-party code in apps as testable only when evidence and ticket IDs are recorded.
+
+For section two point seven, Northbridge Bank will not accept application work without a written trail.
 
 ### Worked example
 
@@ -187,13 +269,35 @@ You will (1) use specialist evidence to prioritise vulnerabilities in dependenci
 
 Northbridge's apps have hundreds of dependency findings each quarter. Treating all high-severity findings as urgent overwhelms teams.
 
+Section three point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section three point one treats too many findings severity as testable only when evidence and ticket IDs are recorded.
+
+For section three point one, Northbridge Bank will not accept application work without a written trail.
+
 ### 3.2 Severity and likelihood
 
 CVSS gives a severity score describing how bad a flaw could be. EPSS (Jacobs et al., 2021) estimates the probability that a vulnerability will be exploited in the next 30 days, using observed activity. Severity and likelihood answer different questions.
 
+Section three point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section three point two treats too many findings severity as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Reachability
 
 A flaw matters most if the vulnerable function is reachable from the app's code. Static analysis can estimate reachability, though imperfectly.
+
+Section three point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section three point three treats too many findings severity as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Northbridge Bank will not accept application work without a written trail.
 
 ### Lab — Lab — two rankings
 
@@ -217,13 +321,31 @@ by risk score: ['F2', 'F4', 'F3', 'F5', 'F1']
 
 By CVSS alone, the order is F1, F5, F3, F2, F4. Weighting CVSS by EPSS and reducing unreachable findings to one tenth gives F2, F4, F3, F5, F1. F1 (CVSS 9.8) falls to last because its EPSS is low and it is not reachable; F2 (7.5) rises to first because it is reachable and has EPSS 0.61.
 
+Section three point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
 ### 3.5 Ecosystem evidence
 
 Decan et al. (2018) showed vulnerabilities spread through dependency networks and fixes reach dependents slowly; Kula et al. (2018) found developers often do not update. These support investing in fast updating, not only prioritisation.
 
+Section three point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section three point five treats too many findings severity as testable only when evidence and ticket IDs are recorded.
+
 ### 3.6 Explaining to engineers
 
 Engineers trust prioritisation they can understand. Hannah shows the three inputs for each finding and lets teams challenge reachability judgements.
+
+Section three point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section three point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section three point six treats too many findings severity as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Northbridge Bank will not accept application work without a written trail.
 
 ### Deadlines remain
 
@@ -267,25 +389,63 @@ You will (1) assess risk to customers, not only to the organisation; (2) apply d
 
 The February incident cost the bank little money, but customers lost control of their location data. Hannah's risk method now rates harm to customers separately from harm to the bank, so a cheap incident with real customer harm is not under-ranked.
 
+Section four point one develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point one, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point one treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Data protection duties
 
 The bank is responsible for data its app collects, including data an SDK sends to a vendor. A lawful basis and transparency are needed; the privacy notice did not mention location. Data protection impact assessments are now required for SDKs that process personal data.
+
+Section four point two develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point two, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point two treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Ethical tensions
 
 The SDK vendor's sales team argued that location helped "improve analytics". Hannah's view: collecting data customers were not told about breaks trust regardless of usefulness. The bank asks the vendor to disable location collection by default for all its customers, not just Northbridge.
 
+Section four point three develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point three, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point three treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Disclosure
 
 The bank told the regulator and published a short notice for customers explaining what happened, what data was involved and what the bank did. Hannah argues that clear, early disclosure protects trust better than silence.
+
+Section four point four develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point four, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point four treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Responsible reporting to vendors
 
 The change in data collection was not a vulnerability but a behaviour change; still, the bank reports it to the vendor's security contact so other customers can be told.
 
+Section four point five develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point five, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point five treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
+
 ### 4.6 Fairness to staff
 
 The engineer who merged the dependency refresh followed the process as it was; the analysis focuses on the missing review step, not on blame.
+
+Section four point six develops advanced risk and ethics with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section four point six, Dr Ravi Menon expects advanced claims to carry owners and dates.
+
+Section four point six treats customer-centred risk data protection as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Northbridge Bank will not accept advanced work without a written trail.
 
 ### Worked example
 
@@ -325,29 +485,77 @@ You will (1) design alternative processes for governing third-party code; (2) co
 
 The board chose "review on update". Hannah must design how. Three designs are considered.
 
+Section five point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point one treats the need design manual as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Northbridge Bank will not accept application work without a written trail.
+
 ### 5.2 Design A: manual review
 
 Every SDK update is reviewed by the security team before merging: changelog, permissions requested, network destinations observed in a test run. Strong but slow; the security team has two people.
+
+Section five point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point two treats the need design manual as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Design B: automated diff plus targeted review
 
 A CI job runs the app in a test harness with synthetic data, records network destinations, permissions and data fields sent by each SDK, and compares with the previous version. Only changes trigger human review.
 
+Section five point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point three treats the need design manual as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Design C: isolation
 
 Run SDKs in a restricted wrapper that limits the data they can access, for example passing only anonymised events rather than giving SDKs direct access to device APIs. Strong but requires engineering work per SDK.
+
+Section five point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point four treats the need design manual as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Delivery speed
 
 Hannah models effects: Design A adds a median of 5 days per SDK update; B adds 1 day; C adds no delay after initial work but takes three months to build.
 
+Section five point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point five treats the need design manual as testable only when evidence and ticket IDs are recorded.
+
 ### 5.6 Stakeholders
 
 Mobile engineers prefer B; privacy prefers C; the CISO wants something in place within a month.
 
+Section five point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point six treats the need design manual as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Northbridge Bank will not accept application work without a written trail.
+
 ### 5.7 Choice
 
 B now, with C for the two SDKs that handle the most sensitive events over the next six months.
+
+Section five point seven develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section five point seven, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section five point seven treats the need design manual as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, Northbridge Bank will not accept application work without a written trail.
 
 ### Review records
 
@@ -391,13 +599,33 @@ You will (1) evaluate a new control with a controlled comparison; (2) choose out
 
 Does the automated SDK diff (Design B) shorten the time to detect unreviewed changes in third-party code?
 
+Section six point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section six point one treats question design ethics lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Northbridge Bank will not accept application work without a written trail.
+
 ### 6.2 Design
 
 Two mobile teams pilot Design B; two comparable teams continue with the old process for three months. Synthetic test changes, harmless but detectable (a new test-only network destination), are introduced into SDK updates in all four teams' test builds, with the teams' managers aware but not the engineers.
 
+Section six point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
 ### 6.3 Ethics
 
 The engineers' managers and the works council approved the study. No real customer data is involved; results are reported by team, not by person.
+
+Section six point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section six point three treats question design ethics lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Northbridge Bank will not accept application work without a written trail.
 
 ### Lab — Lab — comparing detection times
 
@@ -422,13 +650,33 @@ median pilot 2.0 comparison 11.5 difference 9.5
 
 Pilot teams detected test changes in a median of 2 days; comparison teams in 11.5 days, a difference of 9.5 days. The bootstrap 95% interval (4,000 resamples, seed 3) runs from 6.0 to 19.0 days, so the improvement is unlikely to be chance, though its size is uncertain.
 
+Section six point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section six point four treats question design ethics lab as testable only when evidence and ticket IDs are recorded.
+
 ### 6.5 Interpreting
 
 Eight changes per group is a small sample. Comparison teams knew a study was running, which might have changed their behaviour; if anything this would narrow the difference.
 
+Section six point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section six point five treats question design ethics lab as testable only when evidence and ticket IDs are recorded.
+
 ### 6.6 Other outcomes
 
 Delivery speed: pilot teams' median SDK update time rose by 1 day, as modelled. False alarms: 3 harmless changes flagged per month, each taking about 20 minutes to review.
+
+Section six point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section six point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section six point six treats question design ethics lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Northbridge Bank will not accept application work without a written trail.
 
 ### Pre-registered measures
 
@@ -472,29 +720,79 @@ You will (1) embed third-party code governance into existing processes; (2) assi
 
 Rather than adding a separate approval board, Hannah connects SDK governance to processes teams already use: the dependency update pull request triggers the diff; the privacy impact assessment covers new SDKs; procurement contracts include SDK clauses.
 
+Section seven point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point one treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Responsibilities
 
 Mobile teams own SDK updates and first review of diffs; the security team reviews flagged changes involving new destinations or permissions; privacy reviews new data fields; procurement manages vendor terms. A RACI table makes this clear.
+
+Section seven point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point two treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Procurement
 
 Standard contract terms now require: notice of data-collection changes, a security contact, timely fixes, and SBOMs where available. These align with SSDF PW.4.
 
+Section seven point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point three treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Northbridge Bank will not accept application work without a written trail.
+
 ### 7.4 Inventory
 
 A register lists every SDK in every app, its owner, purpose, data processed and contract. It is generated partly from SBOMs and partly from the harness results.
+
+Section seven point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point four treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Training
 
 Short sessions for mobile engineers explain why SDK changes matter, using the February incident.
 
+Section seven point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point five treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Northbridge Bank will not accept application work without a written trail.
+
 ### 7.6 Adoption measures
 
 Share of apps with the diff enabled, share of SDK updates with completed reviews, and register completeness.
 
+Section seven point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point six treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Northbridge Bank will not accept application work without a written trail.
+
 ### 7.7 SAMM progress
 
 Using SAMM v2, Northbridge's maturity for supplier security in design and for secure build in implementation rises one level over a year.
+
+Section seven point seven develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section seven point seven, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section seven point seven treats existing processes responsibilities procurement as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Northbridge Bank will not accept application work without a written trail.
 
 ### Feedback loop
 
@@ -538,25 +836,61 @@ You will (1) handle cases where good options conflict; (2) manage vendor resista
 
 A fraud-detection SDK vendor refuses to disclose which data its SDK collects, citing trade secrets. The SDK reduces fraud losses significantly. Options: accept with isolation, negotiate, or replace. Hannah negotiates a confidential data schedule shared with the bank's privacy team only, plus isolation of the SDK's inputs.
 
+Section eight point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
 ### 8.2 Compromised upstream
 
 An open-source library used by the web banking app is reported to have had a malicious version published for six hours after a maintainer's account was taken over, a pattern described by Ohm et al. (2020). Using SBOMs, the team confirms no Northbridge build included that version, because lockfile hashes pinned the previous version and updates are batched weekly.
+
+Section eight point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point two, Dr Ravi Menon expects application claims to carry owners and dates.
 
 ### 8.3 Incomplete information
 
 Early reports are confused about which versions were affected. Hannah's rule: assume the wider range until confirmed, check builds against it, and update the assessment as facts emerge.
 
+Section eight point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section eight point three treats vendor resistance compromised upstream as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Conflicting priorities
 
 A product launch depends on a new identity-verification SDK whose diff shows it sends device identifiers to a new destination. The vendor explains it is a fraud-prevention service. Privacy approves with a notice update; launch slips by three days.
+
+Section eight point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section eight point four treats vendor resistance compromised upstream as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Escalation
 
 When teams disagree, the CISO decides within two working days, with reasoning recorded.
 
+Section eight point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section eight point five treats vendor resistance compromised upstream as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Northbridge Bank will not accept application work without a written trail.
+
 ### 8.6 Learning
 
 Each difficult case is written up as a short case study for training.
+
+Section eight point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eight point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section eight point six treats vendor resistance compromised upstream as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Northbridge Bank will not accept application work without a written trail.
 
 ### Case library
 
@@ -600,9 +934,23 @@ You will (1) lead a programme for application and supply-chain security; (2) pro
 
 Hannah leads a programme with three goals for the year: every app release verifiable (provenance and signatures), every SDK update reviewed, and critical dependency findings fixed within 14 days.
 
+Section nine point one develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point one, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point one treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Assurance
 
 Assurance means giving decision-makers justified confidence. The board and the regulator want evidence that controls work, not just that they exist.
+
+Section nine point two develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point two, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point two treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Northbridge Bank will not accept application work without a written trail.
 
 ### Lab — Lab — assurance indicators
 
@@ -625,21 +973,61 @@ Q3: provenance verified 15/15 = 100%  SDKs reviewed 25/25 = 100%
 
 Provenance-verified releases rose from 9 of 14 (64%) in Q1 to 13 of 16 (81%) in Q2 and 15 of 15 (100%) in Q3. SDK updates reviewed rose from 15 of 22 (68%) to 21 of 24 (87%) and 25 of 25 (100%).
 
+Section nine point three develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point three, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point three treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Northbridge Bank will not accept application work without a written trail.
+
 ### 9.4 Indicators
 
 Indicators are chosen because they link to the February incident and SLSA-style build integrity. Each has a definition, data source and owner.
+
+Section nine point four develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point four, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point four treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Northbridge Bank will not accept application work without a written trail.
 
 ### 9.5 Independent checks
 
 Internal audit samples five releases each quarter and re-verifies provenance and review records.
 
+Section nine point five develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point five, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point five treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Northbridge Bank will not accept application work without a written trail.
+
 ### 9.6 Gaps
 
 In Q1, five releases lacked verified provenance because a legacy build path was still in use; it was retired in Q2.
 
+Section nine point six develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point six, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point six treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Northbridge Bank will not accept application work without a written trail.
+
 ### 9.7 Regulator
 
 Northbridge's regulator receives a summary showing the February incident's follow-up and the indicators.
+
+Section nine point seven develops application and software supply chain with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section nine point seven, Dr Ravi Menon expects application claims to carry owners and dates.
+
+Section nine point seven treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point seven, Northbridge Bank will not accept application work without a written trail.
 
 ### Reporting format
 
@@ -687,25 +1075,67 @@ You will (1) read research on software supply chains critically; (2) assess vali
 
 Hannah reads Ladisa et al. (2023), a taxonomy of attacks on open-source supply chains with safeguards; Zimmermann et al. (2019) on concentration of risk in npm; Wermke et al. (2022) on trust practices in open-source projects; Newman et al. (2022) on Sigstore; and Torres-Arias et al. (2019) on in-toto.
 
+Section ten point one develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point one, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point one treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Validity
 
 For each paper she asks: what data, what method, what claims, what threats to validity? The taxonomy is built from literature and expert input, valuable for structure but not for estimating frequency. Ecosystem studies measure one registry at one time.
+
+Section ten point two develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point two, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point two treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Transferability
 
 Northbridge uses several ecosystems and commercial SDKs, which open-source studies may not cover. Findings about maintainer concentration likely transfer; specific percentages may not.
 
+Section ten point three develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point three, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point three treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Northbridge Bank will not accept research work without a written trail.
+
 ### 10.4 Synthesis
 
 Guidance for Northbridge: reduce dependency count; prefer well-maintained components; verify integrity (signatures, provenance); monitor maintainer and behaviour changes; and require vendors to provide transparency equivalent to open-source practice.
+
+Section ten point four develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point four, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point four treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Open questions
 
 How should banks verify closed-source SDKs that offer no provenance? How effective are behaviour diffs at catching subtle changes? Hannah lists these as research gaps.
 
+Section ten point five develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point five, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point five treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Northbridge Bank will not accept research work without a written trail.
+
 ### 10.6 Critique practice
 
 She writes a one-page critique of each paper, shared with her team as a reading group.
+
+Section ten point six develops research reading and critique with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section ten point six, Dr Ravi Menon expects research claims to carry owners and dates.
+
+Section ten point six treats selected readings validity transferability as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Northbridge Bank will not accept research work without a written trail.
 
 ### Reading group practice
 
@@ -749,29 +1179,85 @@ You will (1) plan and carry out an applied project in the workplace; (2) measure
 
 Hannah's applied project: reduce the number of third-party SDKs in the mobile app and cut the time from SDK data-collection change to detection to under three days, across all Northbridge apps.
 
+Section eleven point one develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point one, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point one treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Baseline
 
 At the start: 22 SDKs across apps; February detection time 19 days; no SDK register.
+
+Section eleven point two develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point two, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point two treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Northbridge Bank will not accept applied work without a written trail.
+
+Section eleven point two fails closed if applied evidence is missing rather than guessing.
 
 ### 11.3 Actions
 
 Diff harness rollout (chapter 7), isolation of two sensitive SDKs, contract clauses, and an SDK reduction review asking each team to justify each SDK.
 
+Section eleven point three develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point three, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point three treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Northbridge Bank will not accept applied work without a written trail.
+
 ### 11.4 Results
 
 After nine months: 15 SDKs (seven removed or replaced with in-house code); median detection of planted changes 2 days across all teams; register complete; two real vendor data-collection changes detected and reviewed before release.
+
+Section eleven point four develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point four, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point four treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Stakeholders
 
 Product owners worried about losing analytics features; Hannah worked with them to replace duplicated SDKs first, keeping features.
 
+Section eleven point five develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point five, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point five treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Northbridge Bank will not accept applied work without a written trail.
+
 ### 11.6 Limits
 
 Planted changes test detection, not every real-world variation; nine months is short; the cost of in-house replacements will continue.
 
+Section eleven point six develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point six, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point six treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Northbridge Bank will not accept applied work without a written trail.
+
 ### 11.7 Reporting
 
 A project report for Calder College and a summary for Northbridge's board.
+
+Section eleven point seven develops applied project with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section eleven point seven, Dr Ravi Menon expects applied claims to carry owners and dates.
+
+Section eleven point seven treats the project baseline actions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Northbridge Bank will not accept applied work without a written trail.
+
+Section eleven point seven fails closed if applied evidence is missing rather than guessing.
 
 ### Project governance
 
@@ -819,25 +1305,73 @@ You will (1) review the course's learning against practice; (2) transfer lessons
 
 From an unreviewed SDK update to a governed, measured process, Hannah's course connected decisions, evidence, design, evaluation, integration and assurance.
 
+Section twelve point one develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point one, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point one treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Northbridge Bank will not accept final work without a written trail.
+
 ### 12.2 Transfer
 
 The same pattern applies to browser scripts on the web banking site and to internal shared libraries: inventory, behaviour diff, isolation where needed, contracts or ownership, and indicators.
+
+Section twelve point two develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point two, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point two treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Sustainability
 
 The SDK register and harness have named owners; the indicators are part of quarterly reporting; training is in onboarding.
 
+Section twelve point three develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point three, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point three treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Northbridge Bank will not accept final work without a written trail.
+
 ### 12.4 Sharing
 
 Hannah presents an anonymised version at an industry forum, with all examples synthetic.
+
+Section twelve point four develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point four, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point four treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Northbridge Bank will not accept final work without a written trail.
 
 ### 12.5 Personal goals
 
 Deepen knowledge of build provenance (SLSA levels) and contribute to an open-source verification tool.
 
+Section twelve point five develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point five, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point five treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Northbridge Bank will not accept final work without a written trail.
+
 ### 12.6 Next steps
 
 Further study in the next course of the curriculum.
+
+Section twelve point six develops final review and transfer with a Northbridge Bank note Hannah Brooks can demo offline.
+
+Under section twelve point six, Dr Ravi Menon expects final claims to carry owners and dates.
+
+Section twelve point six treats looking back transfer sustainability as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Northbridge Bank will not accept final work without a written trail.
+
+Section twelve point six fails closed if final evidence is missing rather than guessing.
 
 ### What changed in practice
 
