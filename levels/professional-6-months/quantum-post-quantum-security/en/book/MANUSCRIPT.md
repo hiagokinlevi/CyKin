@@ -964,7 +964,7 @@ The feedback shows why grading matters: the misgraded claim had raised an asset'
 
 Complete the five-day lab and keep a short daily log.
 
-Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio. Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week.
+Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio. Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week. At MTI, the log is the first evidence your supervisor reads when signing off the lab.
 
 ### 11.7 Reflection
 
