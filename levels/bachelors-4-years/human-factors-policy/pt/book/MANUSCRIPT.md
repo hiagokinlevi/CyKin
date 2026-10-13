@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 098, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a estudar, projetar e avaliar o comportamento de segurança e os reportes numa pequena organização pública.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam reportes, calculam taxas, intervalos de Wilson, funis e medianas e consultam SQLite sobre dados sintéticos; nenhum funcionário, usuário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, acordada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada; os testes de usabilidade usam uma caixa postal de teste com voluntários que sabem que estão testando a ferramenta, e não sendo testados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -519,11 +519,405 @@ As regras podem ser ignoradas sob pressão. Organizações pequenas podem não t
 - **EX029 — A confiança como ativo.** Por que o engano deve ser usado com parcimônia? *Rubrica:* 3 = pode prejudicar a confiança, que é um ativo de segurança;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Tipo de isca proibido.** Que iscas as regras proíbem? *Rubrica:* 3 = as que exploram sofrimento pessoal, como salário ou saúde;; 2 = sofrimento;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar contas, permissões e atualizações num sistema operacional; (2) descrever como os avisos de atualização afetam os usuários; (3) propor configurações que reduzam o ônus para o usuário.
+
+### 11.1 Contas e permissões
+
+Um sistema operacional gerencia contas e controla o que cada conta pode fazer. Na Ashcombe, os computadores do balcão usam contas compartilhadas, o que torna impossível saber quem fez o quê. Os notebooks dos escritórios dão aos funcionários direitos de administrador para que possam instalar drivers de impressora, o que também permite que um malware se instale. Nadia aprende que separar contas comuns e de administrador limita os danos de erros e ataques. Ela recomenda contas nominais com login por cartão de aproximação nos balcões e a remoção dos direitos de administrador de rotina, com a TI instalando os drivers de forma centralizada, em vez de depender de cada pessoa.
+
+### 11.2 Avisos de atualização
+
+Os sistemas operacionais pedem aos usuários que reiniciem para aplicar atualizações. Os funcionários da Ashcombe adiam as reinicializações porque elas chegam em horários movimentados e levam vários minutos. Nadia constata que alguns notebooks adiam atualizações há mais de um mês, deixando sem correção fraquezas conhecidas. Ela liga isso à ideia de orçamento de compliance de Beautement, Sasse e Wonham (2008): as pessoas têm disposição limitada para gastar esforço com segurança, e quando os avisos chegam em maus momentos, são adiados. Culpar os funcionários pelo adiamento ignoraria o problema de horário embutido no próprio sistema.
+
+### 11.3 Reduzir o ônus
+
+Nadia propõe que as atualizações sejam instaladas automaticamente durante a noite, quando as bibliotecas estão fechadas, com os notebooks deixados carregando nos escritórios. As reinicializações durante o horário de funcionamento passam a ser raras. Ela também sugere que a TI monitore a situação das atualizações de forma centralizada, para que ninguém precise se lembrar. A mudança transfere o esforço dos indivíduos para o sistema, que é mais confiável. O Dr. Prescott observa que esse é um tema recorrente em fatores humanos: quando um comportamento seguro depende de muitas pessoas se lembrarem, projete o sistema para fazê-lo por elas sempre que possível.
+
+### Exemplo resolvido
+
+Nadia recomenda contas nominais e a remoção dos direitos de administrador de rotina, liga os adiamentos de atualização ao orçamento de compliance e propõe atualizações noturnas.
+
+> **Caso sintético.** As configurações são sintéticas; Beautement et al. (2008) é real.
+
+### Erros e limites
+
+Atualizações noturnas falham se os dispositivos estiverem desligados. Remover direitos de administrador aumenta a carga da TI.
+
+### Exercícios
+
+- **EX031 — Problema da conta compartilhada.** Qual é o problema das contas compartilhadas do balcão? *Rubrica:* 3 = ninguém consegue saber quem fez o quê;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Orçamento de compliance.** O que o orçamento de compliance descreve? *Rubrica:* 3 = disposição limitada para gastar esforço com segurança;; 2 = esforço;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Transferência do ônus.** Para onde Nadia transfere o esforço das atualizações? *Rubrica:* 3 = dos indivíduos para o sistema;; 2 = sistema;; 1 = usuários;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar uma proporção com um intervalo de confiança; (2) comparar duas proporções com cautela; (3) explicar por que amostras pequenas enganam.
+
+### 12.1 Proporções e intervalos
+
+A Ashcombe conduziu uma simulação anunciada e acordada com os funcionários, na qual 120 funcionários receberam um e-mail de prática. Destes, 18 o reportaram em até uma hora. A proporção que reportou é de 15%. Nadia aprende que um número isolado esconde a incerteza, por isso calcula um intervalo de confiança de 95% pelo método de Wilson, que se comporta bem com contagens pequenas. O intervalo mostra a faixa de taxas compatíveis com os dados. Ela relata a taxa junto com seu intervalo, para que os gestores não tratem uma estimativa isolada como exata. O intervalo vai de 9,7% a 22,5%.
+
+### Laboratório — Intervalo de Wilson para uma proporção de reportes
+
+```python
+# Wilson 95% interval for reporting proportions (synthetic).
+from math import sqrt
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+for name, k, n in (("all staff", 18, 120), ("Central", 6, 30), ("Riverside", 3, 24)):
+    lo, hi = wilson(k, n); print(f"{name}: {k}/{n} = {k / n:.1%}, 95% CI {lo:.1%} to {hi:.1%}")
+```
+
+Execute com `python3 lab_ci.py`. Saída verificada:
+
+```text
+all staff: 18/120 = 15.0%, 95% CI 9.7% to 22.5%
+Central: 6/30 = 20.0%, 95% CI 9.5% to 37.3%
+Riverside: 3/24 = 12.5%, 95% CI 4.3% to 31.0%
+```
+
+### 12.2 Comparar proporções
+
+Duas unidades mostram taxas de reporte diferentes: Central, 6 de 30 (20%, intervalo de 9,5% a 37,3%), e Riverside, 3 de 24 (12,5%, intervalo de 4,3% a 31,0%). Nadia as compara e descobre que os intervalos se sobrepõem bastante. A diferença aparente poderia facilmente surgir por acaso. Ela resiste à tentação de elogiar uma unidade e criticar a outra. Comparar grupos de forma justa exige atenção ao tamanho da amostra e, no trabalho de fatores humanos, também exige cuidado, porque comparações públicas entre equipes podem criar pressão e ressentimento que prejudicam a cultura de reporte que o programa busca construir.
+
+### 12.3 Amostras pequenas
+
+Em unidades pequenas, a ação de uma única pessoa muda muito a taxa. Em Quay, com cinco funcionários, um reporte a mais move a taxa em vinte pontos. Nadia explica isso aos gestores usando a saída do laboratório e sugere relatar os resultados por unidade apenas quando incluírem pelo menos vinte funcionários, ou combinar unidades pequenas. Essa regra protege tanto a precisão dos números quanto a privacidade dos funcionários de equipes pequenas, em que as ações individuais poderiam, de outro modo, ser deduzidas de uma taxa do grupo. Os gestores aceitam a regra.
+
+### Exemplo resolvido
+
+Nadia calcula um intervalo de Wilson para 18 de 120, compara duas unidades com cautela e define um tamanho mínimo de grupo de vinte.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Os intervalos supõem respostas independentes. Uma simulação é um retrato único.
+
+### Exercícios
+
+- **EX034 — Intervalo geral.** Qual foi o intervalo de 95% para 18 de 120? *Rubrica:* 3 = cerca de 9,7% a 22,5%;; 2 = faixa;; 1 = exatamente 15%;; 0 = nenhuma.
+- **EX035 — Comparação entre unidades.** Por que não elogiar Central em detrimento de Riverside? *Rubrica:* 3 = os intervalos se sobrepõem bastante;; 2 = acaso;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Grupo mínimo.** Que tamanho mínimo de grupo Nadia sugeriu? *Rubrica:* 3 = vinte funcionários;; 2 = 20;; 1 = cinco;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os fatores de autenticação; (2) avaliar políticas de senha com evidências de fatores humanos; (3) recomendar uma autenticação usável.
+
+### 13.1 Fatores de autenticação
+
+A autenticação verifica se alguém é quem diz ser, usando algo que a pessoa sabe, como uma senha; algo que ela tem, como um cartão ou uma chave de segurança; ou algo que ela é, como uma impressão digital. Combinar fatores torna as senhas roubadas menos úteis. Nadia observa que a Ashcombe usa apenas senhas no sistema de gestão da biblioteca, que guarda os endereços dos usuários. Um e-mail de phishing que capturasse uma senha daria acesso total, de modo que acrescentar um segundo fator reduziria o dano que uma única pessoa enganada poderia causar.
+
+### 13.2 Políticas de senha
+
+A Ashcombe exige que os funcionários troquem as senhas a cada sessenta dias, com regras complexas. Adams e Sasse (1999) constataram que regras assim levam as pessoas a anotar as senhas ou a usar padrões previsíveis, porque memorizar muitas senhas que mudam é difícil. Nadia aplica um questionário anônimo a um pequeno grupo de colegas e descobre que a maioria acrescenta um número à senha antiga a cada troca. Ela recomenda acabar com as trocas periódicas forçadas, a menos que haja evidência de comprometimento, e permitir frases-senha mais longas, que são mais fáceis de lembrar e mais difíceis de adivinhar.
+
+### 13.3 Autenticação usável
+
+Nadia compara opções de segundo fator: códigos por SMS, um aplicativo autenticador em celulares pessoais e chaves de segurança. Nem todos os atendentes de balcão têm celular do trabalho, e alguns preferem não usar o celular pessoal para o trabalho. As chaves de segurança funcionam sem celular e resistem ao phishing porque verificam o site. Ela recomenda chaves para os funcionários que acessam dados de usuários, com um processo simples de contingência. Sua recomendação equilibra segurança, custo e a situação prática dos funcionários, algo que ela aprendeu a ponderar nos capítulos anteriores.
+
+### Exemplo resolvido
+
+Nadia explica os fatores, liga as trocas forçadas a senhas fracas e recomenda frases-senha e chaves de segurança.
+
+> **Caso sintético.** O questionário é sintético; Adams e Sasse (1999) é real.
+
+### Erros e limites
+
+Chaves podem ser perdidas. Acabar com as trocas forçadas exige detecção de comprometimento.
+
+### Exercícios
+
+- **EX037 — Três tipos de fator.** Quais são os três tipos de fator? *Rubrica:* 3 = saber, ter, ser;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Efeito da troca forçada.** O que Nadia descobriu que os funcionários fazem nas trocas forçadas? *Rubrica:* 3 = acrescentam um número à senha antiga;; 2 = padrão;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Vantagem da chave.** Por que as chaves de segurança resistem ao phishing? *Rubrica:* 3 = verificam o site;; 2 = verificação do site;; 1 = são longas;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os princípios centrais de privacidade; (2) aplicá-los aos dados dos usuários de uma biblioteca; (3) ligar a privacidade à confiança dos funcionários nos programas de segurança.
+
+### 14.1 Princípios de privacidade
+
+Os princípios de privacidade incluem a limitação da finalidade, ou seja, coletar dados apenas para finalidades declaradas; a minimização de dados; a exatidão; a limitação do armazenamento; e a segurança do tratamento. As bibliotecas guardam informações sensíveis sobre o que as pessoas leem, por isso têm uma forte tradição de proteger a privacidade dos usuários. Nadia aprende que privacidade e segurança se sobrepõem, mas diferem: a segurança protege os dados contra acesso não autorizado, enquanto a privacidade também limita o que as pessoas autorizadas fazem com eles. Um sistema pode ser seguro e ainda assim usar mal os dados, se coletar ou compartilhar mais do que o necessário. Nadia lê a política de privacidade da biblioteca.
+
+### 14.2 Dados dos usuários
+
+Nadia revisa como a Ashcombe trata os pedidos de dados de usuários. Às vezes, quem liga pergunta se uma pessoa é usuária ou o que ela tomou emprestado. Os funcionários são treinados para recusar, mas quem diz ser da polícia ou parente pode ser persuasivo, usando a autoridade e a urgência descritas por Cialdini. Nadia propõe um procedimento escrito: nunca revelar informações de usuários por telefone; encaminhar os pedidos formais ao encarregado de privacidade, por escrito. Isso elimina a necessidade de os atendentes julgarem a credibilidade sob pressão, o que protege tanto os usuários quanto os funcionários.
+
+### 14.3 Privacidade e confiança dos funcionários
+
+Os programas de segurança também coletam dados sobre os funcionários, como quem reportou ou clicou. Se os funcionários acreditarem que esses dados serão usados contra eles, podem parar de reportar. Nadia argumenta que os mesmos princípios de privacidade devem valer para os dados dos funcionários: coletar apenas o necessário, relatar agregados e não usar os resultados das simulações para punição. Respeitar a privacidade dos funcionários constrói a confiança que faz as pessoas admitirem erros rapidamente, o que muitas vezes é o comportamento de segurança mais valioso depois de um incidente. Os gestores discutem a proposta.
+
+### Exemplo resolvido
+
+Nadia explica os princípios de privacidade, escreve um procedimento de não revelação por telefone e aplica a privacidade aos dados de segurança dos funcionários.
+
+> **Caso sintético.** O procedimento é sintético; Cialdini (2021) é real.
+
+### Erros e limites
+
+Os procedimentos podem atrasar pedidos urgentes legítimos. Agregados ainda podem revelar indivíduos em grupos pequenos.
+
+### Exercícios
+
+- **EX040 — Privacidade versus segurança.** Em que a privacidade difere da segurança? *Rubrica:* 3 = a privacidade também limita o que as pessoas autorizadas fazem com os dados;; 2 = limites de uso;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Procedimento telefônico.** O que o novo procedimento exige? *Rubrica:* 3 = nenhuma revelação por telefone e pedidos por escrito ao encarregado de privacidade;; 2 = por escrito;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Dados dos funcionários.** Por que aplicar princípios de privacidade aos dados dos funcionários? *Rubrica:* 3 = para manter a confiança que sustenta os reportes;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medidas válidas de comportamento de segurança; (2) distinguir produtos de resultados; (3) medir sem prejudicar a confiança.
+
+### 15.1 Medidas válidas
+
+Uma medida é válida se captura o que diz capturar. As taxas de conclusão de cursos mostram que as pessoas clicaram até o fim de um módulo, e não que se comportam com segurança. As taxas de clique em simulações dependem muito da dificuldade do e-mail, que a NIST Phish Scale (Dawkins e Jacobs, 2023) ajuda a classificar. Nadia lista medidas candidatas para a Ashcombe e julga a validade de cada uma. As taxas de reporte de e-mails suspeitos reais e o tempo até o primeiro reporte estão mais perto do que importa: a rapidez com que a organização fica sabendo de um ataque.
+
+### 15.2 Produtos e resultados
+
+Produtos são o que o programa entrega, como vídeos exibidos ou e-mails enviados. Resultados são mudanças no mundo, como menos fraudes bem-sucedidas ou reportes mais rápidos. Nadia classifica os números atuais da Ashcombe e descobre que todos são produtos. Ela propõe duas medidas de resultado: a mediana do tempo entre a chegada de um e-mail malicioso e o primeiro reporte, e o número de pedidos de pagamento fraudulentos barrados. O laboratório calcula a mediana do tempo a partir de um mês sintético de dados, mostrando como um resultado pode ser calculado a partir de registros já existentes.
+
+### Laboratório — Mediana do tempo até o primeiro reporte
+
+```python
+# Median minutes from arrival to first report for a month of malicious emails (synthetic).
+times = [4, 7, 9, 11, 12, 14, 15, 22, 30, 41, 65]
+s = sorted(times); print("emails:", len(s), "median:", s[len(s) // 2], "min")
+```
+
+Execute com `python3 lab_median.py`. Saída verificada:
+
+```text
+emails: 11 median: 14 min
+```
+
+### 15.3 Medir com respeito
+
+A medição pode prejudicar a confiança se os funcionários se sentirem vigiados. Nadia propõe que os resultados sejam relatados por grupos de unidades com vinte ou mais pessoas, que os dados individuais não sejam mostrados aos gestores e que os funcionários vejam o mesmo resumo que o conselho. Ela também propõe perguntar aos funcionários, a cada poucos meses, quanto esforço a segurança exige. Medir o ônus junto com os resultados lembra aos líderes que o esforço de segurança tem um custo, e que um programa que melhora os resultados à custa de esgotar os funcionários dificilmente vai durar. Os representantes dos funcionários revisam a proposta.
+
+### Exemplo resolvido
+
+Nadia julga a validade das medidas, separa produtos de resultados, calcula uma mediana do tempo de reporte e propõe uma medição respeitosa.
+
+> **Caso sintético.** Os dados são sintéticos; Dawkins e Jacobs (2023) é real.
+
+### Erros e limites
+
+As medidas de resultado podem ser ruidosas. Ataques não reportados são invisíveis.
+
+### Exercícios
+
+- **EX043 — Validade da conclusão.** Por que as taxas de conclusão são medidas fracas? *Rubrica:* 3 = mostram que se clicou até o fim, e não o comportamento;; 2 = validade;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Resultado da mediana.** Qual foi a mediana do tempo até o primeiro reporte no laboratório? *Rubrica:* 3 = 14 minutos;; 2 = 14;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Medida de ônus.** Por que medir também o esforço dos funcionários? *Rubrica:* 3 = o esforço é um custo real que afeta a sustentabilidade;; 2 = custo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever defesas em camadas; (2) situar os papéis humanos dentro de uma arquitetura; (3) projetar para que um único erro humano não seja catastrófico.
+
+### 16.1 Defesas em camadas
+
+A arquitetura de segurança organiza os controles de modo que várias camadas protejam cada ativo. No banco de dados de usuários da Ashcombe, as camadas incluem filtragem de e-mail, autenticação com segundo fator, direitos de acesso limitados, monitoramento e backups. Nenhuma camada é perfeita, mas juntas reduzem a chance de que uma única falha leve a um dano. Saltzer e Schroeder (1975) descreveram princípios como o menor privilégio e a aceitabilidade psicológica, que significa que a proteção deve ser fácil de usar corretamente. Nadia percebe que esses princípios ligam a arquitetura diretamente aos fatores humanos.
+
+### 16.2 Papéis humanos
+
+Nadia marca onde as pessoas atuam dentro da arquitetura: os funcionários decidem se abrem e-mails, os gestores aprovam acessos, o pessoal de TI revisa alertas e os usuários escolhem senhas para as contas online. Cada papel humano é ao mesmo tempo uma fraqueza potencial e uma força potencial. Funcionários que reportam e-mails suspeitos atuam como sensores que detectam ataques que os filtros deixam passar. Ela rotula cada papel com o apoio de que precisa, como ferramentas claras, treinamento ou tempo. Uma arquitetura que ignora os papéis humanos supõe que as pessoas se comportarão de forma perfeita, o que nunca acontece na prática.
+
+### 16.3 Tolerar o erro
+
+Nadia projeta a arquitetura da Ashcombe para que um único erro não leve ao desastre. Se um funcionário digitar a senha num site falso, o segundo fator bloqueia o atacante. Se alguém abrir um malware, os direitos limitados impedem que ele se espalhe e os backups permitem a recuperação. Se alguém enviar dados de usuários ao endereço errado, os alertas sobre exportações em massa ajudam a detectar o problema. Ela chama isso de tolerar o erro, o que reflete a visão de que as pessoas às vezes vão errar, de modo que os sistemas devem absorver os erros, em vez de depender da perfeição.
+
+### Exemplo resolvido
+
+Nadia organiza defesas em camadas, mapeia os papéis humanos e projeta a arquitetura para tolerar erros individuais.
+
+> **Caso sintético.** A arquitetura é sintética; Saltzer e Schroeder (1975) é real.
+
+### Erros e limites
+
+As camadas acrescentam custo e complexidade. Os alertas precisam de pessoas para responder a eles.
+
+### Exercícios
+
+- **EX046 — Princípio da aceitabilidade.** O que significa aceitabilidade psicológica? *Rubrica:* 3 = a proteção deve ser fácil de usar corretamente;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Funcionários como sensores.** Como os funcionários podem fortalecer a arquitetura? *Rubrica:* 3 = reportando ataques que os filtros deixam passar;; 2 = sensores;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Defesa contra site falso.** O que bloqueia um atacante depois que uma senha é digitada num site falso? *Rubrica:* 3 = o segundo fator;; 2 = fator;; 1 = backups;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar criptografia e assinaturas em termos simples; (2) descrever os problemas de usabilidade das ferramentas criptográficas; (3) recomendar onde a criptografia deve ser invisível.
+
+### 17.1 Criptografia e assinaturas
+
+A criptografia embaralha os dados para que só quem tem a chave certa consiga lê-los. As assinaturas digitais permitem ao destinatário verificar quem enviou uma mensagem e que ela não foi alterada. Nadia aprende essas ideias em termos simples, o suficiente para entender seus papéis. As conexões web com o catálogo da biblioteca são criptografadas automaticamente, de modo que os usuários não precisam fazer nada. Assinaturas de e-mail poderiam ajudar os funcionários a confiar nas mensagens internas, mas apenas se verificá-las fosse simples. O valor da criptografia depende muito de quanto ela exige das pessoas.
+
+### 17.2 Problemas de usabilidade
+
+Whitten e Tygar (1999) estudaram um programa de criptografia de e-mail e constataram que a maioria dos participantes não conseguiu usá-lo corretamente em noventa minutos, e alguns expuseram segredos que pretendiam proteger. Os problemas estavam em conceitos confusos, como chaves públicas e privadas, e numa interface que não orientava os usuários. Nadia observa que, duas décadas depois, a criptografia mais bem-sucedida, como a dos navegadores e dos aplicativos de mensagens, é aquela que os usuários mal percebem, porque funciona automaticamente, sem decisões. Essa lição molda seus conselhos.
+
+### 17.3 Criptografia invisível
+
+Nadia recomenda que a Ashcombe confie numa criptografia que funcione sem decisões dos funcionários: conexões criptografadas, discos de notebook criptografados ativados centralmente e chaves de segurança que usam criptografia por trás de um simples toque. Ela desaconselha pedir aos funcionários que criptografem manualmente anexos de e-mail, o que seria propenso a erros. Onde os funcionários precisam fazer uma escolha, como ao enviar dados de usuários para fora, o sistema deve oferecer uma única opção segura óbvia. Tornar a criptografia invisível aplica as lições da segurança usável a algumas de suas ferramentas mais difíceis. A TI concorda com o plano.
+
+### Exemplo resolvido
+
+Nadia explica criptografia e assinaturas, recupera os achados de Whitten e Tygar e recomenda a criptografia invisível.
+
+> **Caso sintético.** As recomendações são sintéticas; Whitten e Tygar (1999) é real.
+
+### Erros e limites
+
+Ferramentas invisíveis podem esconder falhas. A criptografia central exige recuperação de chaves.
+
+### Exercícios
+
+- **EX049 — Finalidade da assinatura.** O que uma assinatura digital mostra? *Rubrica:* 3 = quem enviou a mensagem e que ela não foi alterada;; 2 = origem;; 1 = sigilo;; 0 = nenhuma.
+- **EX050 — Achado do estudo.** O que Whitten e Tygar constataram? *Rubrica:* 3 = a maioria não conseguiu usar a criptografia corretamente em noventa minutos;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Criptografia manual.** Por que evitar a criptografia manual de anexos? *Rubrica:* 3 = é propensa a erros dos funcionários;; 2 = erros;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma pergunta de pesquisa clara; (2) escolher entre questionários, entrevistas e observação; (3) planejar a amostragem e a ética de um estudo pequeno.
+
+### 18.1 Perguntas de pesquisa
+
+Uma boa pergunta de pesquisa é específica, respondível e vale a pena ser feita. A primeira tentativa de Nadia, como melhorar a segurança na Ashcombe, é ampla demais. Ela a estreita para: o que impede os atendentes de balcão de reportar e-mails suspeitos em até uma hora? Essa pergunta nomeia um grupo, um comportamento e um prazo, e pode ser respondida com evidências. O Dr. Prescott sugere que ela também pergunte o que ajuda os funcionários a reportar, para que o estudo identifique forças a desenvolver, além de barreiras a remover. Ela anota as duas perguntas.
+
+### 18.2 Escolher os métodos
+
+Questionários alcançam muitas pessoas rapidamente e servem para contar quão comuns são as opiniões. Entrevistas exploram razões em profundidade com menos pessoas. A observação mostra o que as pessoas de fato fazem, e não o que dizem. Nadia planeja usar um questionário curto e anônimo com todos os funcionários e entrevistas com oito atendentes de balcão. Ela evita a observação encoberta porque levantaria preocupações éticas sem consentimento. Combinar métodos permite que o questionário mostre quão comum é cada barreira, enquanto as entrevistas explicam por que ela importa para as pessoas. O questionário leva cinco minutos.
+
+### 18.3 Amostragem e ética
+
+Nadia seleciona entrevistados de unidades, turnos e níveis de experiência diferentes, para que as opiniões não sejam dominadas por um único grupo. Ela busca aprovação ética, escreve uma folha de informações e um termo de consentimento e planeja guardar as anotações sem nomes. Informa aos participantes que podem parar a qualquer momento e que os gestores verão apenas temas anonimizados. Ela testa o questionário num piloto com três colegas para verificar se as perguntas estão claras. Um planejamento cuidadoso nesta fase evita dados fracos depois. A aprovação chega em três semanas.
+
+### Exemplo resolvido
+
+Nadia estreita sua pergunta, combina um questionário com entrevistas e planeja a amostragem e a ética.
+
+> **Caso sintético.** O plano de estudo é sintético.
+
+### Erros e limites
+
+Voluntários podem diferir dos demais. Questionários dependem de autorrelato honesto.
+
+### Exercícios
+
+- **EX052 — Pergunta estreitada.** Qual foi a pergunta estreitada de Nadia? *Rubrica:* 3 = o que impede os atendentes de reportar em até uma hora;; 2 = barreiras;; 1 = como melhorar a segurança;; 0 = nenhuma.
+- **EX053 — Escolha da observação.** Por que Nadia evitou a observação encoberta? *Rubrica:* 3 = levanta preocupações éticas sem consentimento;; 2 = consentimento;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Finalidade do piloto.** Por que testar o questionário num piloto? *Rubrica:* 3 = para verificar se as perguntas estão claras;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Fatores humanos e política cibernética: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o escopo dos fatores humanos em cibersegurança; (2) explicar as principais teorias do comportamento de segurança; (3) aplicar a teoria à Ashcombe.
+
+### 19.1 Escopo
+
+Os fatores humanos em cibersegurança estudam como as pessoas interagem com a segurança: usuários, defensores, gestores e atacantes. O campo cobre usabilidade, tomada de decisão, cultura, política, treinamento e engenharia social. Nadia aprende que o campo passou de culpar os usuários a projetar para eles, uma mudança expressa nos títulos de Adams e Sasse (1999), "Users are not the enemy", e de Sasse, Brostoff e Weirich (2001), "Transforming the weakest link". O escopo também inclui a política, porque regras e leis moldam o que as organizações pedem às pessoas. Nadia lê os dois artigos na íntegra.
+
+### 19.2 Teorias do comportamento
+
+Várias teorias ajudam a explicar o comportamento de segurança. A teoria do comportamento planejado, de Ajzen (1991), diz que as intenções dependem das atitudes, das normas sociais e do controle percebido. O orçamento de compliance (Beautement, Sasse e Wonham, 2008) diz que as pessoas pesam o esforço de segurança contra suas tarefas principais. Herley (2009) argumentou que rejeitar alguns conselhos é racional quando seus custos superam os benefícios. Nadia compara essas teorias e observa que elas concordam num ponto: o comportamento depende de quão fácil e quão valiosa a ação segura parece, e não apenas do conhecimento. Ela resume cada uma numa tabela.
+
+### 19.3 Aplicar a teoria
+
+Nadia aplica essas teorias ao problema de reporte da Ashcombe. O comportamento planejado sugere verificar se os funcionários acreditam que os colegas reportam e se reportar parece fácil. O orçamento de compliance sugere verificar se reportar compete com o atendimento aos usuários. A visão de Herley sugere verificar se os funcionários veem algum benefício em reportar. Ela transforma cada ponto num item do questionário. Assim, a teoria orienta o que medir, em vez de deixar o estudo à mercê das perguntas que lhe ocorrerem, e ajuda a explicar os resultados quando os dados chegam. Cada item está ligado a uma teoria em seu plano.
+
+### Exemplo resolvido
+
+Nadia define o campo, compara três teorias e as transforma em itens de questionário para a Ashcombe.
+
+> **Caso sintético.** A aplicação é sintética; Ajzen (1991), Beautement et al. (2008) e Herley (2009) são reais.
+
+### Erros e limites
+
+As teorias se sobrepõem. Os itens do questionário podem não capturar plenamente os construtos.
+
+### Exercícios
+
+- **EX055 — Mudança do campo.** Que mudança o campo mostra? *Rubrica:* 3 = de culpar os usuários a projetar para eles;; 2 = design;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Partes do comportamento planejado.** Que três fatores moldam as intenções na teoria de Ajzen? *Rubrica:* 3 = atitudes, normas e controle percebido;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Ponto comum.** Em que as teorias concordam? *Rubrica:* 3 = o comportamento depende de quão fácil e valiosa a ação segura parece;; 2 = facilidade;; 1 = conhecimento;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Fatores humanos e política cibernética: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar relatos publicados de engenharia social; (2) identificar fatores humanos comuns em incidentes; (3) tirar lições para organizações pequenas.
+
+### 20.1 Estudar casos
+
+Nadia estuda como a engenharia social é descrita em Hadnagy (2018) e no Verizon DBIR. Padrões comuns incluem fingir ser uma autoridade confiável, criar urgência, explorar a prestatividade e usar informações coletadas em fontes públicas. Ela constrói um caso sintético para a Ashcombe com base nesses padrões: alguém que liga fingindo ser auditor da prefeitura pede a uma atendente de unidade que envie por e-mail uma lista de usuários com multas em atraso, alegando um prazo naquela mesma tarde. O caso lhe permite analisar os fatores sem usar nenhum incidente real. O Dr. Prescott aprova o caso.
+
+### 20.2 Fatores comuns
+
+Nadia lista os fatores humanos do caso sintético: a pressão de autoridade de um suposto cargo na prefeitura; a urgência do prazo; a prestatividade, já que os atendentes querem ajudar as autoridades; e a falta de um procedimento para pedidos de dados. Ela observa que a atendente não é tola; a situação foi desenhada para explorar intenções normais e boas. Também identifica fatores organizacionais: nenhum responsável claro pelos pedidos de dados e nenhuma forma fácil de verificar se o auditor existe. A maioria dos fatores está no sistema, e não na pessoa.
+
+### 20.3 Lições para organizações pequenas
+
+Organizações pequenas como a Ashcombe não têm equipes de segurança, por isso as lições precisam ser simples. Nadia propõe três: uma regra de que dados de usuários nunca são enviados em resposta a uma ligação; um único contato nomeado que verifica qualquer pedido oficial; e uma cultura em que os funcionários possam dizer não à pressão sem medo. Ela observa que as diretrizes de cultura de cibersegurança da ENISA enfatizam a cultura organizacional e o apoio da liderança. Essas lições custam pouco, o que importa para uma biblioteca pública com orçamento apertado. Os gestores as discutem numa reunião de equipe.
+
+### Exemplo resolvido
+
+Nadia constrói um caso sintético de falsificação de identidade, identifica fatores pessoais e organizacionais e propõe três lições simples.
+
+> **Caso sintético.** O caso é sintético; Hadnagy (2018), o DBIR e as diretrizes da ENISA são reais.
+
+### Erros e limites
+
+Casos sintéticos podem deixar de fora detalhes reais. Regras simples têm exceções.
+
+### Exercícios
+
+- **EX058 — Tipos de pressão.** Que pressões quem ligou usou? *Rubrica:* 3 = autoridade e urgência;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Onde estão os fatores.** Onde está a maioria dos fatores no caso? *Rubrica:* 3 = no sistema, e não na pessoa;; 2 = sistema;; 1 = a atendente;; 0 = nenhuma.
+- **EX060 — Contato nomeado.** O que faz o contato nomeado? *Rubrica:* 3 = verifica qualquer pedido oficial;; 2 = verificar;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** 40 reportes por cem funcionários, já que 48 dividido por 120 dá 0,4.
 
@@ -584,6 +978,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em i
 **EX029.** Porque pode prejudicar a confiança, que por si só sustenta a segurança.
 
 **EX030.** Iscas que exploram sofrimento pessoal, como salário ou saúde.
+
+**EX031.** É impossível saber quem fez o quê.
+
+**EX032.** A disposição limitada das pessoas para gastar esforço com tarefas de segurança.
+
+**EX033.** Dos funcionários, individualmente, para um processo automático noturno.
+
+**EX034.** Cerca de 9,7% a 22,5%.
+
+**EX035.** Porque os intervalos se sobrepõem bastante, de modo que a diferença pode ser acaso.
+
+**EX036.** Vinte funcionários, ou a combinação de unidades pequenas.
+
+**EX037.** Algo que você sabe, algo que você tem e algo que você é.
+
+**EX038.** A maioria acrescenta um número à senha antiga.
+
+**EX039.** Porque verificam se o site é legítimo antes de responder.
+
+**EX040.** A privacidade também limita o que as pessoas autorizadas podem fazer com os dados.
+
+**EX041.** Nunca revelar informações de usuários por telefone e encaminhar os pedidos por escrito ao encarregado de privacidade.
+
+**EX042.** Porque funcionários que temem o mau uso param de reportar, de modo que a privacidade constrói confiança.
+
+**EX043.** Porque mostram que as pessoas terminaram um módulo, e não que se comportam com segurança.
+
+**EX044.** 14 minutos.
+
+**EX045.** Porque o esforço de segurança é um custo real, e esgotar os funcionários não é sustentável.
+
+**EX046.** Que os mecanismos de proteção devem ser fáceis de usar corretamente.
+
+**EX047.** Reportando e-mails suspeitos que os filtros deixam passar, atuando como sensores.
+
+**EX048.** O segundo fator de autenticação.
+
+**EX049.** Quem enviou a mensagem e que ela não foi alterada.
+
+**EX050.** A maioria dos participantes não conseguiu usar o programa corretamente em noventa minutos.
+
+**EX051.** Porque pedir aos funcionários que criptografem anexos manualmente é propenso a erros.
+
+**EX052.** O que impede os atendentes de balcão de reportar e-mails suspeitos em até uma hora?
+
+**EX053.** Porque levantaria preocupações éticas sem consentimento.
+
+**EX054.** Para verificar se as perguntas estão claras antes do questionário principal.
+
+**EX055.** De culpar os usuários a projetar a segurança em torno deles.
+
+**EX056.** Atitudes, normas sociais e controle comportamental percebido.
+
+**EX057.** Que o comportamento depende de quão fácil e valiosa a ação segura parece.
+
+**EX058.** Autoridade, por um suposto cargo na prefeitura, e urgência, por um prazo.
+
+**EX059.** No sistema, como a falta de procedimentos, e não na pessoa.
+
+**EX060.** Verifica qualquer pedido oficial antes que dados sejam compartilhados.
 
 <a id="references"></a>
 ## Referências
