@@ -144,6 +144,8 @@ Lucía begins with the systems themselves. Nakamoto's Bitcoin paper describes a 
 
 Atzei, Bartoletti and Cimoli (2017) surveyed attacks on Ethereum contracts and organised them by cause in the language, the virtual machine and the blockchain. Luu and colleagues (2016) built Oyente, a symbolic execution tool, and reported that many deployed contracts showed patterns such as transaction-ordering dependence and mishandled exceptions. The SWC registry catalogues weakness classes, and the EEA EthTrust Security Levels define requirements a reviewer can certify. Lucía reads these defensively, extracting categories and review requirements rather than attack techniques.
 
+Her review checklist takes its categories from these sources, so each checklist item can be traced to a published weakness class.
+
 ### 2.3 Tools and their limits
 
 Durieux and colleagues (2020) ran nine automated analysis tools on tens of thousands of contracts and found low agreement between tools and many false positives. Tsankov and colleagues (2018) presented Securify, which checks compliance and violation patterns. Perez and Livshits (2021) showed that contracts flagged as vulnerable were rarely exploited in practice, a reminder that flags are not harm. Lucía concludes that tools are valuable for coverage but cannot stand alone, and that the human review process itself has been studied far less than tools.
@@ -414,6 +416,8 @@ contracts with zero residual high: checklist 8/12, usual 2/12
 ### 5.2 Results
 
 The run reports mean residual high-severity issues of 0.42 per contract with the checklist and 1.25 with usual review, a difference of 0.83. The one-sided permutation test with seed 2026 and ten thousand shuffles gives p equal to 0.0146. Eight of twelve checklist contracts have no residual high issues, compared with two of twelve under usual review. Lucía reports the difference with its uncertainty and notes that twelve contracts per arm is a small sample, so the estimate is imprecise.
+
+A p-value of 0.0146 makes chance an unlikely explanation for the 0.83 difference, but it says nothing about how large the true difference is.
 
 ### 5.3 Independent validation
 

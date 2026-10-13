@@ -246,6 +246,8 @@ risk ratio single key vs multisig+timelock: 5.0
 
 The run shows key-related incidents in 5 of 12 single-key protocols (41.7 percent), 3 of 16 multi-signature protocols (18.8 percent) and 1 of 12 with multi-signature and timelock (8.3 percent), 9 of 40 overall. The crude risk ratio for single key against multi-signature with timelock is 5.0. Tariq notes how few events lie behind these percentages: one incident more or less in the timelock group would change the ratio dramatically, so the estimate is fragile. He reports the counts alongside every percentage.
 
+With a single timelocked incident, the ratio of 5.0 rests on one event: a second incident in that group would halve it to 2.5.
+
 ### 4.3 Competing explanations
 
 Tariq lists explanations other than the control itself. Size: larger protocols may have bigger teams and more audits, and also adopt stronger controls. Care: teams that adopt timelocks may be generally more careful. Reporting: larger protocols may attract more scrutiny, so their incidents are more likely to be reported, which would work against his finding. Change over time: newer protocols may start with stronger controls. Each explanation predicts a different pattern, which tells him what to check. He writes each in one sentence.
@@ -415,6 +417,8 @@ share of single-key protocols that are small: 9/12; small protocols overall: 18/
 ### 6.2 Stratified results
 
 Stratifying by size changes the picture. Among small protocols, incidents occur in 4 of 9 single-key, 2 of 6 multi-signature and 1 of 3 timelocked protocols. Among large protocols, the rates are 1 of 3, 1 of 10 and 0 of 9. Nine of the twelve single-key protocols are small, while most timelocked ones are large. The association is weaker within strata than in the crude comparison, which shows that size explains part, though apparently not all, of the crude difference.
+
+Among large protocols, one incident in three single-key protocols sets that rate at 33.3 percent, so even the stratified figures rest on very few events. Tariq therefore reports the stratified counts beside the crude ratio of 5.0.
 
 ### 6.3 Other checks
 

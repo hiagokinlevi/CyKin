@@ -713,6 +713,8 @@ Jonas applies the classic security goals. Integrity matters most for balances: c
 
 Jonas studies weakness classes from the SWC registry and the OWASP Smart Contract Top 10, including access control flaws, re-entrancy where an external call lets code be entered again before state is updated, unchecked external call results, arithmetic and rounding errors, and reliance on manipulable price data. Atzei and colleagues (2017) organise similar weaknesses by their cause. He studies each from the defender's side: what the weakness is, why it occurs, and which design patterns and review checks prevent it.
 
+Re-entrancy, for example, is prevented by updating state before any external call, a check a reviewer can confirm line by line.
+
 ### 15.3 Defender's mindset
 
 Thinking like a defender means asking what could go wrong for each function and who could cause it, intentionally or by mistake. Jonas practises with the cooperative's planned transfer function: what if amounts are zero, larger than balances, or sent to the contract itself; what if the function is called twice at once; what if an administrator key is lost. Each question becomes a requirement or test. The aim is to find problems on paper and in tests before anyone else finds them in production.
@@ -1196,6 +1198,8 @@ issue: step 7: supply 1470 exceeds cap 1400
 
 The replay processes eight steps and reports two issues. At step 5, h03 tries to transfer 60 while holding only 50; the script rejects the step, as a correct contract would. At step 7, a mint raises supply to 1,470, above the 1,400 cap, meaning the synthetic log contains a mint the cap should have blocked. Jonas explains that the first is the system working correctly, while the second indicates either a cap misconfiguration or a missing check, and would trigger investigation.
 
+Separating expected rejections from unexpected successes keeps the replay from raising alarms on correct behaviour.
+
 ### Worked example
 
 The replay of eight steps rejects an overdraft at step 5 and flags supply of 1,470 exceeding the 1,400 cap at step 7.
@@ -1649,6 +1653,8 @@ q=0.3: z for P<0.001 = 24
 ### 32.2 Reading the results
 
 The script reproduces the values in Nakamoto's paper: with q equal to 0.1, the probability is 0.0509779 at two confirmations and 0.0002428 at six; five confirmations bring it below 0.001. With q equal to 0.3, six confirmations still leave 0.1321112, and twenty-four are needed to go below 0.001. Jonas concludes that the number of confirmations must depend on assumptions about adversary strength and the value at stake, and recommends a documented waiting rule for bridged deposits based on deposit size.
+
+With q equal to 0.1, for example, six confirmations put the risk near 0.0002, while larger deposits could justify a longer wait under a stronger adversary assumption.
 
 ### 32.3 Failure planning
 
