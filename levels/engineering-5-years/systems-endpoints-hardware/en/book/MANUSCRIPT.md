@@ -1567,21 +1567,31 @@ You will (1) write security requirements from objectives; (2) make them testable
 
 Each objective yields requirements. O1 yields R4 nightly restore of the patron area and R8 staff disk encryption. O2 yields R5 application control in enforce mode and R3 USB storage blocked.
 
+Mateo works through each objective and asks what must be true for it to be met. The links run both ways: every requirement names its objective, and every objective has at least one requirement. A requirement that serves no objective is questioned before it is kept. Marta reviews the full list with him.
+
 ### 21.2 Boot integrity
 
 R1 Secure Boot enabled and R2 firmware password set protect the restore mechanism itself.
+
+These two come first in the numbering because everything else depends on them. If the firmware or boot order could be changed, an altered system could start in place of the approved one, and the nightly restore might never run or might run from a tampered copy. Mateo writes them as outcomes that a script can check on every PC: Secure Boot reports as on, and the firmware reports that a password is set. Both checks run daily.
 
 ### 21.3 Operations
 
 R6 automatic logoff after 15 minutes idle; R7 remote logging of security events; R9 alert on restore failure.
 
+Each of these keeps the system working day to day. The idle logoff closes sessions that patrons forget, which is a common route by which files are left for the next person. Remote logging means events survive the nightly restore. The restore alert lets staff fix a failed PC before opening. Mateo chose fifteen minutes after watching how long patrons typically step away to collect printing or ask a question at the desk.
+
 ### 21.4 Accessibility
 
 R10 approved accessibility tools available on every PC.
 
+The approved set includes a screen reader, a magnifier and an on-screen keyboard, chosen with patrons who use them and with the librarian who supports them. Each tool must start without staff help, which the worked example added after review. The requirement is tested on every release, since application control or a new image setting could block a tool by accident. Failing this test blocks the release just as a security failure would.
+
 ### 21.5 Priorities
 
 R1, R4 and R5 are must-haves; R9 and R10 are must-haves for safe operation and fairness.
+
+Must-have means a release cannot go to branches without the requirement met. Mateo lists the remaining requirements as important but allowed to lag briefly with a recorded plan, such as remote logging during a supplier change. Treating accessibility and the restore alert as must-haves reflects ethics as well as engineering: a design that excludes some patrons, or fails silently, is not acceptable however secure it is.
 
 ### Requirement attributes
 
@@ -1637,9 +1647,13 @@ You will (1) model the boot chain and measured components; (2) compare observed 
 
 Firmware verifies the bootloader, which verifies the kernel; the kernel loads an initial file system and then applies the kiosk policy. Each component can be measured by its digest.
 
+Each step checks the next before handing over control, so the chain is only as strong as its first link. Mateo draws it as five boxes in a row, matching the components in the lab. The kiosk policy sits at the end because it is applied by the running system, not verified by firmware; that makes it the component most likely to drift, as the lab result shows.
+
 ### 22.2 Manifest
 
 The golden image release includes a manifest of expected digests for each component.
+
+The manifest is created by the release process from the image itself, not written by hand, so it cannot disagree with what was built. Each entry names a component and its digest. Mateo stores the manifest with the signed release, and each PC compares its own measurements with the manifest of the release it is supposed to run. A PC on an older release is compared with that release's manifest.
 
 ### Lab — Lab — boot measurements
 
@@ -1669,6 +1683,8 @@ kiosk-policy  MISMATCH  9ad757800d10
 
 Four components match the manifest; the kiosk policy does not. One of five components differs.
 
+The output lists each component on its own line, which makes the single mismatch easy to spot. The short digest prefix shown is enough for a person to compare by eye; the full digest is used for the actual comparison. Mateo reads the result as a fact about this PC at this moment, not yet as an explanation of why the policy differs. The next step is to find the cause.
+
 ### 22.4 Interpreting
 
 The mismatch shows the PC is running policy version 2.0, not 2.1. Investigation finds the PC was offline during the update. The fix is to reapply the release, not to treat the PC as compromised.
@@ -1676,6 +1692,8 @@ The mismatch shows the PC is running policy version 2.0, not 2.1. Investigation 
 ### 22.5 Data model
 
 Measurement results are stored with PC, date, component and status.
+
+Mateo keeps one record per component per check, so a PC's history shows exactly when a component changed and when it was corrected. The asset tag serves as the PC key, as in the inventory. Status takes three values: match, mismatch or not measured, since a missing measurement is a finding of its own. These records feed the weekly summary and the response rule. A mismatch recorded on two consecutive days is easy to find with a simple query.
 
 ### Measured boot and attestation
 
@@ -1727,6 +1745,8 @@ You will (1) list misuse and failure scenarios; (2) rank by likelihood and impac
 
 Mateo lists seven scenarios, from personal files left behind to a staff laptop lost unencrypted, rating likelihood and impact from 1 to 5.
 
+Each scenario describes something that could go wrong and who would be affected, without describing how anyone would cause it. Mateo drew them from Fernhill's incident records, staff interviews and the threats listed earlier. The scale is coarse on purpose, because finer numbers would suggest a precision the evidence cannot support. Each rating is agreed with Marta, and disagreements are noted rather than averaged away.
+
 ### Lab — Lab — scenario ranking
 
 ```python
@@ -1754,13 +1774,19 @@ Run with `python3 lab_scenarios.py`. Verified output:
 
 Top: unauthorised software installed by a patron (16), personal files left behind (15), malware via USB (12), silent restore failure (10). Firmware update failure scores 8, boot settings changed 6, lost staff laptop 5.
 
+The top two are close, and both are the problems that started the project. That agreement between the ranking and Fernhill's experience is a useful sanity check. Silent restore failure ranks fourth despite its high impact, because it should be rare; the next sections explain why it still gets a must-have requirement. Low scores still receive attention.
+
 ### 23.3 Linking to requirements
 
 Software installs map to R5; files to R4; USB to R3; silent restore failure to R9; firmware update failure to firmware resilience; boot settings to R2; staff laptop to R8.
 
+Mateo writes this mapping into the traceability table, so each scenario points to the requirements that reduce it and each requirement points back to the scenarios it addresses. When a scenario is re-rated after deployment, the table shows which requirement produced the change, and a requirement whose scenario disappears can be reviewed for removal.
+
 ### 23.4 Coverage
 
 Every scenario has at least one requirement; silent restore failure, though lower ranked, has severe impact.
+
+Coverage alone does not show that a requirement works, only that one exists. The verification plan supplies the evidence later. Silent restore failure is the case where ranking and priority differ. If it happened, every other control that relies on the restore would quietly stop working, and nobody would know. That is why the alert on restore failure is a must-have, even though the scenario sits in the middle of the list. Mateo records this reasoning beside the ranking.
 
 ### Reasoning for ratings
 
@@ -1816,6 +1842,8 @@ You will (1) verify an image against hardening requirements; (2) use benchmarks 
 
 CIS Benchmarks and Microsoft baselines provide recommended settings; DISA STIGs offer stricter options. Mateo selects ten requirements relevant to kiosks.
 
+Mateo compared the three sources setting by setting for the items relevant to public PCs. Where they agreed, he took the common setting; where they differed, he chose the one that suited a library and recorded why. The ten requirements in the lab are the result: each can be checked automatically against an image, and each traces to a source and an objective.
+
 ### Lab — Lab — image hardening check
 
 ```python
@@ -1841,13 +1869,19 @@ requirements 10, met 8
 
 Eight of ten requirements are met. Gaps: firmware password not set, and application control in audit rather than enforce mode.
 
+Both gaps were expected. The firmware password had never been set across the fleet, as the inventory showed, and application control had been left in audit mode deliberately while the allowlist was built. The lab confirms both and, just as usefully, confirms the other eight settings are already correct in the image. Mateo files the output with the release record so the starting point is documented.
+
 ### 24.3 Closing gaps
 
 Firmware passwords are set through the vendor's management tool. Application control stays in audit until chapter 31 evaluates the allowlist, avoiding blocking needed tools.
 
+Mateo sets the passwords on lab PCs first, checks that staff can still reach the firmware menu when needed, then rolls out branch by branch. For application control, the audit logs from the pilot branch show what would be blocked. Moving to enforcement waits until those logs show no needed program missing from the allowlist, which protects patrons who rely on accessibility tools.
+
 ### 24.4 Recording
 
 Each gap and decision is recorded in the image release notes.
+
+The release notes say which requirements the image meets, which gaps remain, why each gap is accepted for now and when it will be closed. Marta reads them before approving a release. A later reviewer can see from the notes alone why the image was released with application control in audit mode, without having to ask anyone who was there at the time. Notes are kept with every image in the repository.
 
 ### Choosing among sources
 
@@ -1903,21 +1937,31 @@ You will (1) present an initial design for critique; (2) respond to feedback; (3
 
 Students present designs to peers and industry guests, who critique them.
 
+Guests come from local employers, another library network and the institute's own staff. Each student has ten minutes to present and twenty for questions. The aim is not to win approval but to find weaknesses while the design is still cheap to change. Students are marked partly on how well they record and respond to the critique they receive, not only on the design itself. Guests receive designs in advance.
+
 ### 25.2 Mateo's design
 
 A hardened golden image, nightly restore of the patron area, Secure Boot with firmware password, application control, USB storage blocked, public segment and monitoring.
+
+Mateo presented it as a single diagram with the layers stacked, starting from firmware at the bottom. Next to each layer he listed the requirement it meets and the scenario it addresses. Guests could see at a glance how the parts fit, and their questions went straight to the gaps rather than to understanding the basics.
 
 ### 25.3 Feedback
 
 A guest asks how patrons save work. Another asks what happens when the restore server is down.
 
+Both questions came from people who had run public computers. The first exposed something Mateo had not thought about from the patron's side: the design removed problems but also removed a way of working that some patrons relied on. The second exposed a single point of failure in the restore design. He wrote both down word for word before answering. Neither had an easy answer.
+
 ### 25.4 Responses
 
 Patrons can save to their own USB storage? No: USB storage is blocked, so the notice directs them to email or cloud storage; a print-to-PDF option helps. If the server is down, PCs restore from a local protected copy.
 
+The answers were partly worked out on the spot, so Mateo checked each afterwards. Email and cloud storage depend on patrons having accounts, which not all do; the print-to-PDF option helps those who can email the file to themselves. The local copy needed a design of its own.
+
 ### 25.5 Iteration
 
 The local restore copy becomes a design change.
+
+The change adds a protected partition on each PC that holds a copy of the current image. The nightly restore uses the server copy when available and the local copy otherwise. Mateo recorded the decision with the studio question that prompted it, and added a requirement and test so the fallback is checked on every release. The local copy is updated with each image release and verified by its digest. Marta approved it.
 
 ### Learning from critique
 
