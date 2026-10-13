@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 099, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 40 já estão escritos em português, com os exercícios EX001–EX102 e suas resoluções com rubricas de 0 a 3 e 10 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 35–40 (EX103–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os dez laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de graduação que aprendem a projetar, avaliar e operar a arquitetura de segurança de organizações reais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios avaliam lógica, buscam caminhos de ataque, calculam intervalos amostrais, pseudonimizam, medem cobertura, contam dependências, verificam o menor privilégio, ajustam uma regra de detecção, estimam uma diferença em diferenças e ponderam opções, tudo sobre dados sintéticos; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) |
-
-Capítulos 35–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1582,11 +1580,239 @@ Os pesos refletem opiniões. As notas de um grupo pequeno podem compartilhar vie
 
 - **EX102 — Resultado da sensibilidade.** O que aconteceu quando o peso do custo dobrou? *Rubrica:* 3 = B continuou vencendo, 3,83 a 3,30;; 2 = B vence;; 1 = A vence;; 0 = nenhuma.
 
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta de trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma proposta de projeto final (capstone) para um projeto de arquitetura de segurança; (2) definir escopo, entregáveis e avaliação; (3) obter a concordância dos patrocinadores.
+
+### 35.1 Escolher o projeto final
+
+Lucas propõe seu projeto final: uma arquitetura de segurança para o segundo armazém planejado pela Fernway, que usará robôs de separação automatizados e um novo sistema de gestão de armazém. O projeto é real o bastante para importar para a Fernway, delimitado o bastante para um único estudante ao longo de dois semestres e rico em questões de arquitetura: novos fornecedores, tecnologia operacional na rede, novos papéis na equipe e integração com o sistema de estoque existente. O Dr. Bellini aprova o tema com a condição de que o escopo exclua os sistemas internos de segurança física dos robôs, que exigem engenheiros especializados.
+
+### 35.2 Escopo e entregáveis
+
+A proposta define os entregáveis: uma visão geral da arquitetura do armazém, um modelo de fluxo de dados com fronteiras de confiança, uma análise STRIDE e de árvore de ataque, um conjunto de controles ligado aos riscos, testes de verificação para cinco requisitos-chave e uma avaliação. Ela lista o que está fora do escopo, inclusive a segurança física dos robôs e as práticas internas de desenvolvimento do fornecedor. Ela define marcos a cada mês. Registrar as exclusões por escrito protege o estudante do aumento descontrolado do escopo (scope creep) e diz claramente ao patrocinador o que não será entregue, para que as expectativas continuem realistas.
+
+### 35.3 Avaliação e concordância
+
+Lucas define como o projeto final será julgado: se a Fernway adota o projeto, se os testes de verificação passam e se um revisor independente, uma arquiteta de segurança de uma cooperativa parceira, encontra lacunas graves. Ele escreve esses critérios na proposta para que o sucesso não seja definido depois do fato. Hannah assina como patrocinadora, o Dr. Bellini como orientador, e o gerente do projeto do armazém concorda em compartilhar documentos. A proposta ocupa quatro páginas e se torna o contrato para os dois semestres seguintes. Os três signatários guardam cópias.
+
+### Exemplo resolvido
+
+Lucas propõe um projeto final de arquitetura de segurança para o armazém, define entregáveis e exclusões, fixa os critérios de avaliação de antemão e obtém três assinaturas.
+
+> **Caso sintético.** O armazém e as pessoas são sintéticos.
+
+### Erros e limites
+
+Projetos reais atrasam, afetando os cronogramas dos estudantes. Os patrocinadores podem mudar de prioridades.
+
+### Exercícios
+
+- **EX103 — Área excluída.** O que o Dr. Bellini exigiu que fosse excluído? *Rubrica:* 3 = os sistemas internos de segurança física dos robôs;; 2 = segurança dos robôs;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX104 — Por que listar exclusões.** Por que escrever as exclusões na proposta? *Rubrica:* 3 = para evitar o scope creep e alinhar as expectativas do patrocinador;; 2 = escopo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX105 — Critérios de antemão.** Por que definir os critérios de avaliação na proposta? *Rubrica:* 3 = para que o sucesso não seja definido depois do fato;; 2 = de antemão;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar habilidades de arquitetura de segurança num ambiente comunitário; (2) adaptar as recomendações para organizações sem equipe de TI; (3) refletir sobre o que se transfere.
+
+### 36.1 Um estágio comunitário
+
+Como parte da prática de campo, Lucas trabalha como voluntário por quatro semanas num banco de alimentos local que usa notebooks doados, um serviço de e-mail gratuito e uma planilha das famílias atendidas. Não há equipe de TI, e os voluntários mudam toda semana. Ele aplica o mesmo raciocínio usado na Fernway, mas as restrições são mais duras: nenhum orçamento, pouco tempo e usuários com graus variados de confiança digital. Ele começa ouvindo como os voluntários trabalham, já que qualquer recomendação que acrescente etapas a um turno de distribuição movimentado será ignorada.
+
+### 36.2 Adaptar as recomendações
+
+Lucas identifica três prioridades: a planilha das famílias é compartilhada por link com qualquer pessoa, a conta compartilhada dos voluntários não tem segundo fator e os notebooks não são criptografados. Ele restringe o compartilhamento a contas nominais, ativa o segundo fator gratuito do provedor de e-mail para a coordenadora e passa os voluntários para contas gratuitas individuais, e habilita a criptografia de disco nativa. Ele escreve um guia de uma página com imagens. Ele abandona a implantação planejada de um gerenciador de senhas porque os voluntários não a sustentariam. As recomendações para pequenos grupos comunitários precisam ser mínimas, gratuitas e fáceis de manter.
+
+### 36.3 Reflexão
+
+Em seu diário reflexivo, Lucas registra o que se transferiu da Fernway: a classificação de dados, o menor privilégio e a pergunta sobre quem perceberia um problema. O que não se transferiu: formulários de mudança, dashboards de métricas e questionários de fornecedores, que pressupõem tempo da equipe. Ele percebe que arquitetura é ajustar a proteção à organização, e que um projeto simples que os voluntários seguem é melhor do que um projeto completo que eles abandonam. A coordenadora do banco de alimentos relata depois que o guia está afixado junto ao balcão de distribuição e que os novos voluntários o leem no primeiro dia.
+
+### Exemplo resolvido
+
+Lucas adapta recomendações de arquitetura para um banco de alimentos, corrige três prioridades com ferramentas gratuitas e reflete sobre o que se transfere de um varejista.
+
+> **Caso sintético.** O banco de alimentos é sintético.
+
+### Erros e limites
+
+A rotatividade dos voluntários corrói as mudanças. Os serviços gratuitos podem mudar seus termos.
+
+### Exercícios
+
+- **EX106 — Primeiro passo.** Por que Lucas começou ouvindo os voluntários? *Rubrica:* 3 = recomendações que acrescentam etapas a turnos movimentados são ignoradas;; 2 = adequação;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX107 — Plano abandonado.** O que Lucas abandonou, e por quê? *Rubrica:* 3 = a implantação de um gerenciador de senhas que os voluntários não sustentariam;; 2 = sustentar;; 1 = custo;; 0 = nenhuma.
+
+- **EX108 — O que se transferiu.** Cite duas coisas que se transferiram da Fernway. *Rubrica:* 3 = classificação, menor privilégio, perguntar quem perceberia;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar criticamente as fontes publicadas; (2) distinguir normas, pesquisa e opinião; (3) apresentar aos colegas uma síntese justa das evidências.
+
+### 37.1 Avaliar as fontes
+
+No seminário, cada estudante revisa as evidências sobre uma pergunta. Lucas fica com a pergunta: a segmentação de rede reduz a propagação de ransomware em pequenas organizações? Ele reúne normas, relatórios de fornecedores, artigos acadêmicos e posts de blog. Para cada um, pergunta quem o escreveu, que método foi usado, que dados o sustentam e que interesses o autor tem. Herley e van Oorschot (2017) alertam que boa parte do conhecimento em segurança se apoia em afirmações, e não em alegações testadas, então Lucas procura evidências que resistiriam a um exame rigoroso.
+
+### 37.2 Tipos de fonte
+
+Lucas classifica suas fontes. Normas como o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 registram o consenso de especialistas sobre boas práticas, mas não medem resultados. Os relatórios de fornecedores oferecem grandes conjuntos de dados, mas têm interesses comerciais e métodos pouco claros. Os estudos acadêmicos têm métodos mais claros, mas muitas vezes estudam redes simuladas. Os posts de blog dão exemplos vívidos, mas não podem ser generalizados. Ele pondera cada tipo pelo que ele consegue mostrar. O resultado é um quadro em que a segmentação é amplamente recomendada e plausível, mas as evidências de resultado para pequenas organizações são escassas.
+
+### 37.3 Apresentar com justiça
+
+Lucas apresenta sua síntese ao seminário com uma tabela que mostra cada fonte, seu tipo, seu achado e seus limites. Ele enuncia a conclusão com cuidado: a segmentação é uma prática razoável apoiada no consenso de especialistas e em estudos de simulação, mas as medições no mundo real para pequenas organizações são escassas. Um colega o contesta com uma estatística de fornecedor; ele explica por que o método dela não é claro. O Dr. Bellini elogia a imparcialidade, observando que uma síntese honesta de evidências fracas é mais útil para os profissionais do que uma síntese confiante construída sobre marketing.
+
+### Exemplo resolvido
+
+Lucas avalia fontes sobre segmentação e ransomware, classifica-as por tipo e apresenta uma síntese justa, apontando que as evidências de resultado são escassas.
+
+> **Caso sintético.** A coleção de fontes é sintética nos detalhes; Herley e van Oorschot (2017), o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+Ausência de evidência não é evidência de ausência. Os revisores podem carregar seus próprios vieses.
+
+### Exercícios
+
+- **EX109 — Quatro perguntas.** Que quatro perguntas Lucas fez a cada fonte? *Rubrica:* 3 = autor, método, dados e interesses;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX110 — Limite das normas.** O que as normas não fazem? *Rubrica:* 3 = medir resultados;; 2 = resultados;; 1 = tudo;; 0 = nenhuma.
+
+- **EX111 — Conclusão.** Qual foi a conclusão de Lucas sobre a segmentação? *Rubrica:* 3 = prática razoável apoiada em consenso e simulações, mas com poucas evidências reais para pequenas organizações;; 2 = equilibrada;; 1 = comprovada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar o trabalho de arquitetura do projeto final; (2) gerenciar mudanças num projeto em andamento; (3) manter a rastreabilidade dos riscos aos controles.
+
+### 38.1 Fazer o trabalho
+
+Lucas avança pelos entregáveis do projeto final para o novo armazém. Ele modela o sistema de gestão de armazém, os controladores dos robôs, a integração com o sistema de estoque e o link de suporte remoto do fornecedor. Ele marca uma fronteira entre a rede dos robôs e a rede do escritório, com apenas o sistema de gestão de armazém autorizado a falar com as duas. Ele executa o STRIDE e uma árvore de ataque para o objetivo "parar a separação durante a alta temporada", o que revela que o link de suporte remoto do fornecedor é o caminho mais fácil, porque usa uma senha compartilhada.
+
+### 38.2 Gerenciar a mudança
+
+No meio do caminho, a Fernway troca de fornecedor de gestão de armazém depois de uma disputa de preços. Os modelos de Lucas ficam parcialmente obsoletos. Ele revisa quais entregáveis são afetados, informa Hannah e o Dr. Bellini e acerta um marco revisado. O sistema do novo fornecedor usa um serviço em nuvem em vez de um servidor local, então a fronteira se desloca. Ele reaproveita seu método e a maior parte da sua lista de riscos, atualizando apenas o que mudou. A experiência lhe ensina que os documentos de arquitetura precisam ser projetados para mudar, com premissas claras, para que os leitores saibam o que revisitar.
+
+### 38.3 Rastreabilidade
+
+Lucas mantém uma tabela que liga cada risco a seus controles, requisitos e testes de verificação, como no capítulo 24. Quando o fornecedor muda, a tabela mostra quais controles dependem do sistema antigo e precisam ser substituídos. O link de suporte remoto do fornecedor passa a ter como requisito contas nominais com autenticação multifator e gravação de sessão, verificado por um login de teste. Ao final, todo risco alto se liga a pelo menos um controle verificado. A rastreabilidade torna o projeto final auditável e permite que a Fernway mantenha o projeto depois que Lucas sair.
+
+### Exemplo resolvido
+
+Lucas modela o armazém, encontra um link de suporte com senha compartilhada, adapta-se a uma troca de fornecedor e mantém a rastreabilidade do risco ao teste.
+
+> **Caso sintético.** O armazém e os fornecedores são sintéticos.
+
+### Erros e limites
+
+As trocas de fornecedor podem invalidar testes anteriores. As tabelas de rastreabilidade precisam de um responsável para se manterem atualizadas.
+
+### Exercícios
+
+- **EX112 — Caminho mais fácil.** Qual era o caminho mais fácil para parar a separação? *Rubrica:* 3 = o link de suporte remoto do fornecedor com senha compartilhada;; 2 = link de suporte;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX113 — Troca de fornecedor.** Como Lucas lidou com a troca de fornecedor? *Rubrica:* 3 = revisou os entregáveis afetados, acertou novos marcos, reaproveitou o método e atualizou o que mudou;; 2 = adaptou-se;; 1 = recomeçou;; 0 = nenhuma.
+
+- **EX114 — Controle do link de suporte.** Que requisito substituiu a senha compartilhada de suporte? *Rubrica:* 3 = contas nominais com autenticação multifator e gravação de sessão;; 2 = nominais;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o projeto final segundo os critérios acordados; (2) usar um revisor independente; (3) separar o que foi alcançado das lacunas remanescentes.
+
+### 39.1 Segundo os critérios
+
+Lucas volta aos critérios da sua proposta. Adoção: a Fernway adotou a visão geral da arquitetura e os controles para o novo armazém. Verificação: quatro dos cinco testes-chave passaram; o quinto, o isolamento da rede dos robôs, não pôde ser executado porque os robôs ainda não haviam chegado. Revisão independente: uma arquiteta de segurança de uma cooperativa parceira revisou o projeto. Ele relata cada critério com evidências e não força o teste incompleto a virar uma aprovação. Critérios acordados de antemão tornam a avaliação simples e honesta. O teste incompleto é marcado como pendente, e não como aprovado.
+
+### 39.2 Revisão independente
+
+A revisora não encontra lacunas graves, mas duas moderadas: nenhum plano para aplicar patches nos controladores dos robôs, que muitas vezes não podem ser atualizados durante a operação, e nenhum processo para revogar o acesso do fornecedor caso o contrato termine. Lucas aceita as duas, acrescenta um plano de janelas de manutenção acordado com o fornecedor e um checklist de saída do contrato. Ele observa que a revisora viu lacunas que ele havia deixado passar porque já tinha trabalhado com tecnologia operacional. A revisão independente é valiosa justamente porque o revisor traz uma experiência diferente.
+
+### 39.3 O alcançado e as lacunas
+
+A avaliação de Lucas lista o que foi alcançado, os dois achados da revisão já corrigidos e as lacunas remanescentes: o teste de isolamento aguarda os robôs, e o provedor de identidade continua sendo um ponto único de falha nos dois armazéns. Ele dá a cada lacuna remanescente um responsável na Fernway. O Dr. Bellini observa que uma boa avaliação deixa o patrocinador sabendo exatamente o que está feito e o que não está. Hannah agenda o teste de isolamento para a semana de instalação dos robôs e acrescenta a questão da resiliência da identidade ao orçamento do próximo ano. A nota de passagem lista cada item em aberto com uma data.
+
+### Exemplo resolvido
+
+Lucas avalia seu projeto final segundo três critérios acordados de antemão, incorpora dois achados da revisora e entrega as lacunas remanescentes a responsáveis nomeados.
+
+> **Caso sintético.** A avaliação e as pessoas são sintéticas.
+
+### Erros e limites
+
+A disponibilidade do revisor limita a profundidade. Testes adiados para a instalação podem ser esquecidos sem responsáveis.
+
+### Exercícios
+
+- **EX115 — Teste não executado.** Que teste não pôde ser executado, e por quê? *Rubrica:* 3 = isolamento da rede dos robôs; os robôs não haviam chegado;; 2 = isolamento;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX116 — Achados da revisora.** Que duas lacunas a revisora encontrou? *Rubrica:* 3 = nenhum plano de patches para os controladores dos robôs e nenhum processo de revogação do acesso do fornecedor;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX117 — Responsáveis pelas lacunas.** O que aconteceu com as lacunas remanescentes? *Rubrica:* 3 = cada uma recebeu um responsável na Fernway;; 2 = responsáveis;; 1 = ignoradas;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tese e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar um trabalho de conclusão de bacharelado em arquitetura de segurança; (2) apresentar os achados a públicos acadêmicos e profissionais; (3) planejar os próximos passos nos estudos ou no trabalho.
+
+### 40.1 Estruturar o trabalho de conclusão
+
+Lucas escreve seu trabalho de conclusão na estrutura padrão: introdução com o problema e as perguntas, fundamentação sobre princípios e normas, método, a arquitetura da Fernway e o projeto final, resultados incluindo a verificação e a revisão, discussão dos limites e conclusão. Ele cita apenas fontes que leu, entre elas Saltzer e Schroeder (1975), Shostack (2014), o SP 800-207 e Anderson (2020). Ele mantém os rótulos de sintético em todo conjunto de dados e detalhe de caso. O trabalho tem quarenta páginas, com os modelos e os registros de teste em apêndices. Cada capítulo abre com um breve resumo, e um glossário explica termos como fronteira de confiança para leitores não especialistas.
+
+### 40.2 Dois públicos
+
+Lucas apresenta duas vezes. À banca, explica os métodos, a validade e como seu trabalho se relaciona com as orientações publicadas. Ao conselho da Fernway, explica o que mudou, quanto custou, que riscos permanecem e que decisões eles precisam tomar em seguida. Ele usa as mesmas evidências, mas com ênfase e linguagem diferentes, como praticado no capítulo 32. O conselho pergunta sobre o risco do provedor de identidade, e a banca pergunta sobre a validade do quase-experimento. Ele responde às duas diretamente, admitindo a incerteza onde ela existe. Cada apresentação dura vinte minutos, mais as perguntas.
+
+### 40.3 Próximos passos
+
+Lucas reflete sobre seu curso. Ele aprendeu a modelar sistemas, avaliar riscos, escolher e verificar controles, medir resultados, revisar evidências e trabalhar entre disciplinas. A Fernway lhe oferece uma vaga de segurança júnior, e o Dr. Bellini sugere, mais adiante, um certificado de pós-graduação em arquitetura de segurança. Ele escolhe o emprego, com planos de estudar em tempo parcial. Seu conselho final aos futuros estudantes é tratar todo projeto como uma hipótese a ser testada e registrar o que não se sabe com o mesmo cuidado que o que se sabe.
+
+### Exemplo resolvido
+
+Lucas estrutura um trabalho de conclusão de quarenta páginas, apresenta à banca e ao conselho com ênfases diferentes e planeja entrar na Fernway enquanto estuda em tempo parcial.
+
+> **Caso sintético.** Os detalhes do trabalho e as pessoas são sintéticos; as obras citadas são reais.
+
+### Erros e limites
+
+As apresentações simplificam; o trabalho escrito guarda os detalhes. Os planos de carreira mudam.
+
+### Exercícios
+
+- **EX118 — Fontes do trabalho.** Que regra Lucas seguiu nas citações? *Rubrica:* 3 = citar apenas as fontes que de fato leu;; 2 = lidas;; 1 = quaisquer;; 0 = nenhuma.
+
+- **EX119 — Perguntas do conselho.** Sobre o que o conselho perguntou? *Rubrica:* 3 = o risco do provedor de identidade;; 2 = identidade;; 1 = validade;; 0 = nenhuma.
+
+- **EX120 — Conselho final.** Qual foi o conselho de Lucas aos futuros estudantes? *Rubrica:* 3 = tratar todo projeto como hipótese e registrar as incógnitas com cuidado;; 2 = hipótese;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX102 (as de EX103–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** M OR (S AND R), e (M OR S) AND R.
 
@@ -1791,6 +2017,42 @@ Respostas-modelo para EX001–EX102 (as de EX103–EX120 estão na edição em i
 **EX101.** A opção A obteve 3,05 e a opção B, 4,10.
 
 **EX102.** A opção B continuou vencendo, 3,83 a 3,30.
+
+**EX103.** Os sistemas internos de segurança física dos robôs, que exigem engenheiros especializados.
+
+**EX104.** Para proteger contra o scope creep e deixar claro o que não será entregue.
+
+**EX105.** Para que o sucesso seja julgado por critérios acordados de antemão, e não depois dos resultados.
+
+**EX106.** Porque recomendações que atrasam um turno de distribuição movimentado serão ignoradas.
+
+**EX107.** A implantação do gerenciador de senhas, porque os voluntários não continuariam a usá-lo.
+
+**EX108.** A classificação de dados e o menor privilégio, além da pergunta sobre quem perceberia um problema.
+
+**EX109.** Quem o escreveu, que método, que dados e que interesses o autor tem.
+
+**EX110.** Elas registram o consenso sobre boas práticas, mas não medem resultados.
+
+**EX111.** É uma prática razoável apoiada em consenso e simulação, com poucas evidências de resultado no mundo real para pequenas organizações.
+
+**EX112.** O link de suporte remoto do fornecedor, porque usava uma senha compartilhada.
+
+**EX113.** Ele identificou os entregáveis afetados, acertou marcos revisados e atualizou apenas o que mudou.
+
+**EX114.** Contas nominais com autenticação multifator e sessões gravadas, verificado por um login de teste.
+
+**EX115.** O teste de isolamento da rede dos robôs, porque os robôs não haviam chegado.
+
+**EX116.** Nenhum plano de patches para os controladores dos robôs e nenhum processo para revogar o acesso do fornecedor ao fim do contrato.
+
+**EX117.** Cada uma foi atribuída a um responsável na Fernway, com uma ação agendada.
+
+**EX118.** Ele citou apenas fontes que havia lido.
+
+**EX119.** O ponto único de falha do provedor de identidade.
+
+**EX120.** Tratar os projetos como hipóteses a testar e registrar o que é desconhecido com o mesmo cuidado que o que é conhecido.
 
 <a id="references"></a>
 ## Referências
