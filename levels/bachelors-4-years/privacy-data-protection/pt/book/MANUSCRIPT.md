@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 40 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–40 (EX046–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 16–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -466,11 +466,252 @@ Os códigos pessoais podem ser vagos; ligue cada valor a um comportamento concre
 - **EX029 — Recusar dados reais.** Por que Elena recusa a planilha real? *Rubrica:* 3 = seu estágio só autoriza dados sintéticos;; 2 = menciona autoridade;; 1 = aceita;; 0 = nenhuma.
 - **EX030 — Encaminhar a reclamação.** Por que encaminhar a investigação da reclamação ao responsável pela proteção de dados? *Rubrica:* 3 = exige autoridade e acesso que ela não tem;; 2 = menciona o papel;; 1 = investiga;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar contas e permissões nos dispositivos escolares; (2) gerir logs e arquivos temporários; (3) planejar o descarte seguro de dispositivos.
+
+### 11.1 Contas em dispositivos compartilhados
+
+Elena estuda como os sistemas operacionais gerenciam contas. Nos computadores compartilhados das salas de aula, os alunos entram com contas individuais, para que os trabalhos e a navegação fiquem separados. Ela descobre que uma escola usa uma única conta compartilhada para todos os alunos, o que deixa arquivos e históricos de navegação visíveis para todos. Recomenda contas individuais com limpeza automática dos arquivos temporários ao sair. Explica ao técnico da escola que as configurações do sistema operacional são a primeira linha de privacidade nos dispositivos compartilhados, antes que qualquer aplicativo seja aberto.
+
+### 11.2 Permissões e pastas compartilhadas
+
+Os professores salvam documentos em pastas de rede. Elena confere as permissões e encontra uma pasta de anotações de proteção das crianças que todos os funcionários conseguem ler. Ela trabalha com o técnico para restringi-la aos responsáveis pela proteção. Também ativa a auditoria da pasta, para que os acessos possam ser revisados. O episódio mostra que informações sensíveis muitas vezes ficam em pastas comuns, e não em sistemas protegidos, e que as permissões se desviam ao longo dos anos à medida que os funcionários mudam de função sem que ninguém revise quem ainda abre quais pastas. As revisões corrigem isso.
+
+### 11.3 Logs
+
+Os sistemas operacionais registram os logins e os acessos a arquivos. Elena explica que os logs ajudam a investigar incidentes, mas também contêm dados pessoais de funcionários e alunos. Ela recomenda guardar os logs pelo tempo necessário às investigações, como seis meses, restringir o acesso à equipe de segurança de TI e informar os funcionários, na política de uso aceitável, de que a atividade é registrada. A transparência, observa, é exigida pelos artigos 13 e 14 do GDPR tanto para os funcionários quanto para os alunos, e os funcionários têm o direito de saber o que é registrado sobre eles. Eles podem pedir acesso a esses registros.
+
+### 11.4 Descarte
+
+Notebooks e tablets antigos são vendidos ou reciclados. Elena descobre que os dispositivos são apagados com a exclusão das contas de usuário, o que pode deixar dados recuperáveis. Ela recomenda usar as funções nativas de apagamento seguro ou a criptografia de disco completo com destruição da chave, e manter um registro de descarte para cada dispositivo. Aprende que o descarte faz parte do ciclo de vida dos dados e que muitas violações no setor envolveram dispositivos vendidos sem o apagamento adequado, uma forma evitável e constrangedora de perder dados de crianças. Os certificados comprovam o apagamento.
+
+### Exemplo resolvido
+
+Elena substitui uma conta compartilhada de alunos por contas individuais, restringe e audita uma pasta de proteção das crianças, define a retenção dos logs com transparência para os funcionários e introduz o apagamento seguro e os registros de descarte.
+
+> **Caso sintético.** Os dispositivos e as pastas são sintéticos; os artigos 13 e 14 do GDPR são reais.
+
+### Erros e limites
+
+Os métodos de apagamento seguro variam de dispositivo para dispositivo; verifique se o método funciona em cada modelo.
+
+### Exercícios
+
+- **EX031 — Risco da conta compartilhada.** O que há de errado com uma única conta compartilhada de alunos? *Rubrica:* 3 = arquivos e históricos ficam visíveis para todos os alunos;; 2 = menciona compartilhamento;; 1 = está tudo bem;; 0 = nenhuma.
+- **EX032 — Pasta de proteção.** Como a pasta de proteção das crianças foi corrigida? *Rubrica:* 3 = acesso restrito aos responsáveis pela proteção, com auditoria;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Descarte de dispositivos.** Por que excluir as contas de usuário não basta antes de vender um notebook? *Rubrica:* 3 = os dados podem continuar recuperáveis no disco;; 2 = menciona recuperação;; 1 = basta;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar uma proporção a partir de uma pesquisa, com sua incerteza; (2) comparar grupos com cuidado; (3) relatar resultados de pesquisa sem identificar os respondentes.
+
+### 12.1 A pesquisa com as famílias
+
+A rede faz uma pesquisa com as famílias sobre a consciência de privacidade. Uma pergunta indaga se os pais sabem quais aplicativos recebem os dados de seu filho. Elena analisa os resultados sintéticos. Nas doze escolas, 131 de 520 respondentes dizem que sim, 25%. Ela calcula um intervalo de Wilson de 95%, que se comporta bem com proporções próximas de zero ou de um e com amostras pequenas, e obtém de 22% a 29%. Ela relata o intervalo porque um único percentual esconde o quanto a estimativa é incerta, sobretudo para cada escola isolada. O intervalo de Wilson funciona bem com proporções perto de zero ou amostras pequenas.
+
+### 12.2 Comparação entre escolas
+
+Elena compara duas escolas. Na Ashby Primary, 9 de 40 pais dizem que sim, 22%, com intervalo de 12% a 38%. Na Kelso Primary, 22 de 48 dizem que sim, 46%, com intervalo de 33% a 60%. Os intervalos quase não se sobrepõem, o que sugere uma diferença real. Ela investiga e descobre que a Kelso envia às famílias uma carta anual listando os aplicativos. Ela adverte que a pesquisa não consegue provar que a carta causou a diferença, mas o padrão justifica testar a carta em outras escolas. Outras diferenças entre as escolas também poderiam explicar a distância. Só um experimento mostraria a causalidade.
+
+### 12.3 Viés de resposta
+
+Nem todos os pais respondem. Elena observa que os pais interessados em privacidade podem ter mais propensão a responder, o que faria a consciência parecer maior do que é. Ela relata a taxa de resposta de cada escola e recomenda cautela na interpretação das escolas com poucas respostas. Explica que as estatísticas sobre pessoas dependem de quem é contado, e que um analista cuidadoso sempre pergunta quem está faltando nos dados antes de tirar conclusões sobre todos. Os pais que respondem às pesquisas podem ser diferentes dos que não respondem, e isso precisa constar do relatório.
+
+### 12.4 Proteção dos respondentes
+
+A pesquisa inclui um campo de comentário livre. Alguns comentários mencionam nomes e condições de crianças. Elena remove os detalhes identificadores antes de compartilhar os comentários com a direção da rede e só relata números por escola quando pelo menos vinte pais responderam. Ela explica que uma pesquisa sobre privacidade precisa, ela própria, proteger a privacidade, e que os grupos pequenos e o texto livre são as formas mais comuns de os relatórios de pesquisa identificarem pessoas por acidente. Ela suprime resultados de grupos com menos de dez pessoas e retira respostas livres que citam nomes ou turmas de crianças.
+
+### Laboratório — Consciência das famílias com intervalos de Wilson
+
+```python
+# Wilson 95% intervals for a synthetic parent survey: "I know which apps receive my child's data".
+import math
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+for school, k, n in [("Ashby Primary", 9, 40), ("Kelso Primary", 22, 48), ("all 12 schools", 131, 520)]:
+    lo, hi = wilson(k, n); print(f"{school:15s} {k}/{n} = {k/n:.0%}  95% CI {lo:.0%}-{hi:.0%}")
+```
+
+Execute com `python3 lab_wilson.py`. Saída verificada:
+
+```text
+Ashby Primary   9/40 = 22%  95% CI 12%-38%
+Kelso Primary   22/48 = 46%  95% CI 33%-60%
+all 12 schools  131/520 = 25%  95% CI 22%-29%
+```
+
+### Exemplo resolvido
+
+Elena estima a consciência em toda a rede em 25% (intervalo de 95% de 22% a 29%), encontra 22% na Ashby contra 46% na Kelso, com intervalos que quase não se sobrepõem, aponta o viés de resposta e remove os detalhes identificadores dos comentários.
+
+> **Caso sintético.** Os dados da pesquisa são sintéticos.
+
+### Erros e limites
+
+Intervalos que quase não se sobrepõem são sugestivos, não um teste formal; um teste de diferença seria mais preciso.
+
+### Exercícios
+
+- **EX034 — Intervalo da rede.** Qual é o intervalo de 95% para a consciência em toda a rede? *Rubrica:* 3 = de 22% a 29%;; 2 = aproximadamente certo;; 1 = errado;; 0 = nenhuma.
+- **EX035 — Diferença da Kelso.** O que pode explicar a consciência maior na Kelso? *Rubrica:* 3 = uma carta anual listando os aplicativos, embora a causalidade não esteja provada;; 2 = menciona a carta;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Proteção dos respondentes.** Como Elena protege os respondentes da pesquisa? *Rubrica:* 3 = remove identificadores do texto livre e só relata escolas com pelo menos vinte respostas;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar o acesso baseado em funções nos sistemas escolares; (2) gerir entradas, mudanças e saídas de pessoas; (3) revisar os acessos com regularidade.
+
+### 13.1 Funções
+
+Elena projeta funções para o sistema de gestão escolar da rede: professor de turma, coordenador de ano, coordenadora de necessidades especiais, auxiliar administrativo, responsável pela proteção das crianças e diretor. Cada função tem um acesso definido. Ela documenta a finalidade de cada permissão. Por exemplo, os auxiliares administrativos precisam dos dados de contato para enviar cartas, mas não dos resultados das avaliações. O desenho das funções transforma o princípio do privilégio mínimo em algo que funcionários e auditores conseguem entender e conferir. A função administrativa, por exemplo, pode atualizar contatos, mas não vê os níveis de leitura.
+
+### 13.2 Entradas, mudanças e saídas
+
+Os funcionários mudam de função com frequência. Elena descobre que uma antiga coordenadora de necessidades especiais, agora professora de turma, ainda tem acesso a todos os planos de apoio. Outro professor, que deixou a rede seis meses antes, ainda tem uma conta ativa. Ela propõe um processo ligado ao sistema de recursos humanos: quando alguém entra, muda de função ou sai, seu acesso muda automaticamente, com um gestor confirmando a nova função. Ela observa que o acesso remanescente é uma das falhas de controle de acesso mais comuns em organizações de todos os tamanhos.
+
+### 13.3 Revisões de acesso
+
+Elena institui revisões de acesso a cada período letivo. Cada diretor recebe uma lista dos funcionários e de suas funções e a confirma ou corrige. Na primeira revisão, onze das 340 contas precisam de mudanças. Ela registra os resultados e repete a revisão no período seguinte, quando só três mudanças são necessárias. As revisões regulares, explica, pegam erros que os processos automáticos deixam passar e fornecem evidências de responsabilização pelo artigo 5(2) do GDPR. Cada diretor confirma a lista de sua escola a cada período. As correções são registradas com datas e motivos.
+
+### 13.4 Autenticação
+
+Elena recomenda autenticação multifator para os funcionários que acessam registros de alunos de fora da escola. Também recomenda que os alunos usem logins simples, mas individuais, adequados à idade. Os alunos muito pequenos podem usar senhas com figuras nos dispositivos da sala, enquanto os mais velhos usam senhas. Ela explica que a autenticação precisa servir às pessoas que a usam, e que uma segurança que as crianças pequenas não conseguem manejar será contornada por professores bem-intencionados que compartilham os próprios logins. Os alunos menores usam senhas com figuras nos tablets compartilhados, e os professores não precisam mais compartilhar seus logins.
+
+### Exemplo resolvido
+
+Elena define seis funções com finalidades documentadas, liga as mudanças de acesso ao RH, faz revisões a cada período (de onze mudanças para três) e adapta a autenticação aos funcionários e à idade dos alunos.
+
+> **Caso sintético.** As contas e as funções são sintéticas; o artigo 5(2) do GDPR é real.
+
+### Erros e limites
+
+A integração com o RH falha se os registros do RH atrasarem; as revisões continuam necessárias.
+
+### Exercícios
+
+- **EX037 — Casos de acesso remanescente.** Cite os dois casos de acesso remanescente que Elena encontrou. *Rubrica:* 3 = a antiga coordenadora de necessidades especiais com os planos de apoio; o professor que saiu com conta ativa;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX038 — Resultado das revisões.** Quantas contas precisaram de mudanças na primeira e na segunda revisão? *Rubrica:* 3 = onze, depois três;; 2 = um número;; 1 = errado;; 0 = nenhuma.
+- **EX039 — Login adequado à idade.** Por que usar senhas com figuras para os alunos muito pequenos? *Rubrica:* 3 = uma segurança que eles não conseguem manejar será contornada;; 2 = menciona usabilidade;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos da privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar teorias da privacidade; (2) aplicar os princípios de proteção de dados; (3) identificar as bases legais do tratamento escolar.
+
+### 14.1 Teorias
+
+Elena estuda a teoria da privacidade. Warren e Brandeis (1890) defenderam o direito de ser deixado em paz. Solove (2006) descreve a privacidade como uma família de problemas, como a vigilância, a agregação e a divulgação. A integridade contextual de Nissenbaum sustenta que os fluxos de informação devem respeitar as normas do contexto em que surgem. Elena aplica a integridade contextual às escolas: a informação que os pais compartilham com uma professora sobre uma situação familiar não deve fluir para outros pais nem para fornecedores de aplicativos, mesmo que isso seja tecnicamente possível. As normas acompanham a informação.
+
+### 14.2 Princípios
+
+Ela estuda os princípios do artigo 5 do GDPR e encontra equivalentes no art. 6º da LGPD, que lista princípios como finalidade, adequação, necessidade, transparência, segurança e prevenção. Ela relaciona cada princípio a um exemplo escolar: a limitação da finalidade significa que os dados de frequência coletados para a proteção das crianças não devem ser usados para ranquear professores; a minimização significa que um aplicativo de merenda não precisa dos níveis de leitura. Os exemplos tornam concretos, para o treinamento da equipe, princípios que pareciam abstratos. Cada exemplo vem da prática da rede.
+
+### 14.3 Bases legais
+
+Elena aprende que o tratamento precisa de uma base legal pelo artigo 6 do GDPR; na LGPD, as hipóteses estão no art. 7º. As escolas costumam se apoiar na obrigação legal para os registros exigidos pela legislação educacional, na missão de interesse público para o ensino e no consentimento para atividades opcionais, como fotografias em boletins. Ela explica que o consentimento nem sempre é a base certa: se a escola precisa dos dados para ensinar, pedir consentimento sugere que os pais poderiam recusar sem consequências, o que pode não ser verdade. Escolher a base correta torna o tratamento mais honesto. A missão de interesse público cobre a maior parte dos dados dos alunos.
+
+### 14.4 Categorias especiais
+
+Dados de saúde, convicções religiosas e origem étnica são categorias especiais pelo artigo 9; a LGPD os chama de dados sensíveis e trata deles no art. 11. As escolas os tratam para cuidados médicos, necessidades alimentares e monitoramento da igualdade. Cada tratamento precisa de uma condição do artigo 9, além de uma base do artigo 6. Elena monta uma tabela do tratamento de categorias especiais da rede com as duas bases. Descobre que os dados de monitoramento da igualdade são guardados com os nomes, quando uma análise agregada bastaria, e recomenda separá-los. A separação reduz a exposição sem reduzir a utilidade dos relatórios. O responsável concorda.
+
+### Exemplo resolvido
+
+Elena aplica a integridade contextual às informações familiares, relaciona os princípios do GDPR e da LGPD a exemplos escolares, explica por que o consentimento nem sempre é a base certa e descobre dados de igualdade guardados com os nomes.
+
+> **Caso sintético.** O tratamento da rede é sintético; Warren e Brandeis (1890), Solove (2006), Nissenbaum (2004), os artigos 5, 6 e 9 do GDPR e os arts. 6º, 7º e 11 da LGPD são reais.
+
+### Erros e limites
+
+A escolha da base legal depende da legislação educacional de cada país; confira localmente.
+
+### Exercícios
+
+- **EX040 — Fluxo contextual.** Como a integridade contextual se aplica às informações familiares compartilhadas com uma professora? *Rubrica:* 3 = não devem fluir para outros pais nem para fornecedores;; 2 = menciona normas;; 1 = podem circular livremente;; 0 = nenhuma.
+- **EX041 — Uso indevido do consentimento.** Por que o consentimento é a base errada para dados necessários ao ensino? *Rubrica:* 3 = os pais não podem de fato recusar sem consequências;; 2 = menciona escolha;; 1 = sempre consentimento;; 0 = nenhuma.
+- **EX042 — Dados de igualdade.** O que Elena descobriu sobre os dados de monitoramento da igualdade? *Rubrica:* 3 = eram guardados com os nomes quando uma análise agregada bastaria;; 2 = menciona nomes;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir o desempenho no atendimento aos pedidos de direitos; (2) identificar as causas dos atrasos; (3) definir metas e monitoramento.
+
+### 15.1 Pedidos de acesso das famílias
+
+Os pais podem pedir acesso aos dados do filho, e as próprias crianças podem fazer pedidos quando tiverem maturidade suficiente. Elena reúne dados sintéticos de vinte pedidos do último ano. O tempo mediano de resposta é de 26 dias e a média, de 26,8. Seis dos vinte, 30%, levaram mais de trinta dias, o limite aproximado de um mês do artigo 12(3) do GDPR; no Brasil, o art. 19, II, da LGPD fixa quinze dias para a declaração completa. O mais longo levou 61 dias. Os números dão à rede seu primeiro retrato factual de como trata os pedidos. A maioria foi respondida no prazo, mas os atrasos se concentraram perto das férias.
+
+### 15.2 Causas
+
+Elena examina os pedidos atrasados. Todos os quatro pedidos recebidos logo antes das férias escolares atrasaram, porque a equipe estava ausente. Ela também descobre que os pedidos iam para cada escola, e não para um ponto central, então o tratamento variava. Explica que o prazo do GDPR continua correndo nas férias, embora o artigo 12(3) permita prorrogá-lo por dois meses em caso de pedidos complexos ou numerosos, desde que o solicitante seja informado no primeiro mês. As férias, sozinhas, não justificam a prorrogação. A maioria dos atrasos veio das férias escolares, e o planejamento resolve isso.
+
+### 15.3 Metas e processo
+
+Elena propõe uma caixa central de pedidos gerida pelo responsável pela proteção de dados, uma escala de cobertura nas férias e a meta de responder a todos os pedidos em até vinte e cinco dias, para deixar margem. Também propõe um modelo de carta para as prorrogações realmente necessárias. As Diretrizes 01/2022 do EDPB sobre o direito de acesso a ajudam a desenhar a verificação de identidade e o conteúdo das respostas. Ela apresenta o plano à direção da rede com a linha de base medida. O plano fixa uma meta interna de vinte dias. Cada pedido é registrado centralmente desde o primeiro dia.
+
+### 15.4 Monitoramento
+
+Elena monta um relatório mensal simples: pedidos recebidos, pedidos em aberto, tempo mediano e pedidos atrasados. Explica que medir com regularidade transforma uma revisão pontual em um ciclo de retorno. O Dr. Asante observa que números pequenos deixam os percentuais instáveis, então ela relata as contagens junto com os percentuais. Seis meses depois, com o novo processo em funcionamento, nenhum pedido atrasa. Ela relata a melhoria com a ressalva de que a amostra é pequena. Com tão poucos pedidos, um único atraso muda bastante o percentual. Por isso as contagens também aparecem no relatório.
+
+### Laboratório — Tempos de resposta aos pedidos de acesso das famílias
+
+```python
+# Subject access requests from parents over one year: days to respond, one-month (30-day) target.
+import statistics
+days = [12, 25, 31, 8, 44, 19, 27, 30, 52, 15, 22, 35, 9, 28, 61, 17, 24, 29, 33, 14]
+print(f"requests {len(days)}; median {statistics.median(days)} days; mean {statistics.mean(days):.1f}")
+late = [d for d in days if d > 30]
+print(f"late (>30 days): {len(late)} of {len(days)} ({len(late)/len(days):.0%}); longest {max(days)} days")
+print("holiday-period requests late:", sum(1 for d in [44, 52, 61, 35] if d > 30), "of 4")
+```
+
+Execute com `python3 lab_sar.py`. Saída verificada:
+
+```text
+requests 20; median 26.0 days; mean 26.8
+late (>30 days): 6 of 20 (30%); longest 61 days
+holiday-period requests late: 4 of 4
+```
+
+### Exemplo resolvido
+
+Elena mede uma mediana de 26 dias, com 6 de 20 pedidos atrasados (todos os quatro do período de férias), centraliza o atendimento com cobertura nas férias e passa a monitorar mensalmente.
+
+> **Caso sintético.** Os pedidos são sintéticos; o artigo 12(3) do GDPR, o art. 19 da LGPD e as Diretrizes 01/2022 do EDPB são reais.
+
+### Erros e limites
+
+Vinte pedidos são poucos; um único atraso muda muito o percentual.
+
+### Exercícios
+
+- **EX043 — Parcela atrasada.** Que parcela dos pedidos atrasou? *Rubrica:* 3 = 6 de 20, 30%;; 2 = cerca de um terço;; 1 = errado;; 0 = nenhuma.
+- **EX044 — Prorrogação nas férias.** As férias escolares justificam prorrogar o prazo? *Rubrica:* 3 = não; a prorrogação é para complexidade ou volume, com aviso;; 2 = não;; 1 = sim;; 0 = nenhuma.
+- **EX045 — Contagens com percentuais.** Por que relatar contagens junto com os percentuais? *Rubrica:* 3 = números pequenos deixam os percentuais instáveis;; 2 = menciona tamanho;; 1 = desnecessário;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -531,6 +772,36 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em i
 **EX029.** O termo de estágio só permite dados sintéticos, então ver registros reais excederia sua autoridade.
 
 **EX030.** A investigação exige autoridade e acesso que só o responsável pode conceder.
+
+**EX031.** Todo aluno consegue ver os arquivos e o histórico de navegação dos outros.
+
+**EX032.** O acesso foi limitado aos responsáveis pela proteção das crianças e a auditoria foi ativada.
+
+**EX033.** Contas excluídas podem deixar dados recuperáveis; é preciso apagamento seguro ou destruição da chave.
+
+**EX034.** De 22% a 29%.
+
+**EX035.** A Kelso envia uma carta anual listando os aplicativos; isso pode explicar a diferença, mas não está provado.
+
+**EX036.** Ela remove os detalhes identificadores dos comentários e só relata números por escola quando vinte ou mais pais responderam.
+
+**EX037.** Uma antiga coordenadora de necessidades especiais com acesso aos planos de apoio e um professor que saiu com a conta ativa.
+
+**EX038.** Onze de 340 na primeira revisão, três na segunda.
+
+**EX039.** Crianças pequenas não conseguem manejar senhas complexas, o que leva ao compartilhamento de logins.
+
+**EX040.** A informação compartilhada em confiança com uma professora deve permanecer naquele contexto.
+
+**EX041.** Porque a recusa não é realmente livre quando os dados são necessários para o ensino.
+
+**EX042.** Eram guardados com os nomes, embora uma análise agregada atendesse à finalidade.
+
+**EX043.** 6 de 20 (30%).
+
+**EX044.** Não. As prorrogações são permitidas para pedidos complexos ou numerosos, com aviso, e não por causa das férias.
+
+**EX045.** Com poucos pedidos, os percentuais oscilam muito, então as contagens dão contexto.
 
 <a id="references"></a>
 ## Referências
