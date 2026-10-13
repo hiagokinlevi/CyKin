@@ -266,10 +266,10 @@ The revised question becomes: *In distribution outages that require manual, sequ
 
 ### 1.10 Practical activity: resilience metrics can reverse rankings
 
-The following offline lab computes four summaries of three synthetic performance curves. Run it with Python 3; no packages are needed.
+The following offline lab computes three summaries of three synthetic performance curves and flags whether each is censored. Run it with Python 3; no packages are needed.
 
 ```python
-# Lab 1 - resilience metrics on two synthetic performance curves (offline, standard library only)
+# Lab 1 - resilience metrics on three synthetic performance curves (offline, standard library only)
 # Q(t) = delivered fraction of normal service (1.0 = full), sampled hourly over a 48-hour window.
 def curve(drop_at, depth, hold, recover_hours, window=48):
     q = []
