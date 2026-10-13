@@ -536,6 +536,8 @@ Record exact output in your reproduction log, not a paraphrase.
 
 The rule encoded in `STRONG` and in the independence flag is a *choice*. Changing it changes which claims are "supported". A literature map must publish its coding rule so readers can disagree with it explicitly.
 
+Two checks are worth making before trusting the map. First, run it with the independence flag removed: C3 then counts P5 as a strong validation and is reported as supported, which shows how much of the verdict rests on that one coding decision. Second, have a second coder classify validation and independence for all eight papers without seeing the first coder's sheet, and record where they disagree. Disagreement over whether a utility exercise counts as field validation, as in P7, is a finding about the coding frame, and the frame should be tightened before the map is used to choose a gap.
+
 ### 2.10 From map to frontier: the contribution test
 
 A gap becomes a doctoral contribution when it passes four tests: **Open** — the documented search shows it is not already answered; **Important** — an answer would change a decision someone actually makes (here, restoration ordering in emergency operations); **Feasible** — data, models, partners and ethics allow it within the program; **Falsifiable** — a stated observation would show the claim wrong. Drafting format: *"In [population/context], [intervention] compared with [strongest baseline] will change [primary metric] by at least [smallest effect of interest] without worsening [safety metric] beyond [margin]; this will be refuted if [observation]."*
@@ -550,6 +552,11 @@ The Cascade Study's statement (to be refined in Chapter 3): *In distribution out
 - Comparing detection papers by headline F1 without checking the evaluation protocol.
 - Counting studies instead of appraising their independence and validation.
 - Writing a gap as a topic ("interdependencies in smart cities") instead of a falsifiable statement.
+
+- Treating a dedicated venue such as the CRITIS series as covering the whole field, when most restoration work appears in engineering and operations-research outlets.
+- Reading a framework's widespread adoption as outcome evidence; adoption shows that people chose it, not that consequences fell.
+- Coding a paper as independent because its authors differ from the proposers, without checking whether it reuses the proposers' model or testbed.
+- Stopping citation chaining early because the first rounds confirmed the expected gap.
 
 ### Exercises — chapter 2
 
@@ -776,6 +783,11 @@ This is the single most important design decision in the book: **choose the comp
 - Treating a graph with OR semantics as if it modelled redundancy.
 - Writing a mechanism that predicts only success.
 - Setting the smallest effect of interest by statistical convention instead of practical consequence.
+
+- Choosing the second context after seeing which kind of region favours the method, rather than fixing selection criteria in advance.
+- Treating an earliest-time-to-impact rule as optimal when scheduling theory shows the weighted problem is hard and the rule ignores weights and fan-out.
+- Recording only each facility's direct power buffer, so that indirect paths such as the hospital's dependence on water are missed.
+- Letting the partner who supplies the data also choose the thresholds without recording who set them and when.
 
 ### Exercises — chapter 3
 
@@ -1028,6 +1040,11 @@ In the tabletop pilot, P02 asked why the hospital's generator buffer was shown a
 - Reporting point-adjusted F1 for infrastructure detection without latency relative to consequence.
 - Asking experts for single numbers and treating them as certain.
 - Using pilot effect sizes to plan or to claim.
+
+- Checking only the perturbed sector in a reproduction, as with power in the transposed inoperability matrix, which agrees under both conventions.
+- Assuming a library's parameter order matches the paper's notation, as with the triangular distribution in the GridWater-Sim case.
+- Interpreting differences between policies in a pilot, when the pilot's purpose is feasibility and its results are logged as exploratory.
+- Changing a tabletop instrument after the pilot without recording the change in the deviation log.
 
 ### Exercises — chapter 4
 
@@ -1322,6 +1339,11 @@ Report, at minimum: the preregistration and all amendments with dates; the devia
 - Measuring operators' stated preferences instead of the consequences of their choices.
 - Treating face validity as validation of parameters.
 
+- Reading the Riverbend failure of H2 as a reason to revise DEP and rerun the main study under the same preregistration.
+- Reporting a statistically significant tabletop shift as evidence of adoption, when twelve participants from three utilities only show that a display can change choices.
+- Treating one historical event, such as the 2019 ice storm, as validation for cyber-induced scenarios.
+- Omitting the ORACLE gap, which shows how far any rule is from the best ordering.
+
 ### Exercises — chapter 5
 
 **EX027 — Run and interpret the main study.** *Objective:* reproduce and interpret Lab 5. *Inputs:* the code in §5.2.1. *Constraints:* offline; record exact output. *Steps:* (1) run the lab; (2) fill the hypothesis table in §5.2.2 from your output; (3) compute the relative change of DEP versus CRITFLAG in each region; (4) write a 150-word results paragraph that a hostile reviewer would accept. *Expected evidence:* output, table, paragraph. *Rubric:* 3 = exact output, H2 reported as failed in Riverbend and supported in Port Halvard, H4a failure reported, no rescue; 2 = correct numbers, paragraph overstates; 1 = errors; 0 = not run.
@@ -1519,6 +1541,12 @@ A good response letter quotes each comment, states whether it is accepted, partl
 - Presenting an exploratory revision as confirmatory.
 - Writing negative results as "not significant".
 - Skipping dual-use review because results are "only simulations".
+
+- Accepting a red-team objection in its original form without testing whether a stronger version holds, as happened with circularity.
+- Treating a boundary condition as a defeat rather than as a confirmed prediction of the mechanism that narrows the claim.
+- Assuming a random-region generator's independence assumptions match real regions, where customer counts and buffers may be correlated.
+- Writing a response letter that thanks reviewers and defends the original claim instead of changing it where the evidence requires.
+- Publishing partner-derived buffer ranges because they look harmless in aggregate.
 
 ### Exercises — chapter 6
 
@@ -1720,6 +1748,12 @@ The candidate's first archive plan placed everything at T2 "to be safe". The com
 - Release scripts that fail open.
 - Limitations sections without direction or resolving studies.
 
+- Placing everything at a restrictive tier to be safe, which prevents verification and makes the work unaccountable rather than safe.
+- Ordering release rules so that a permissive pattern such as synthetic matches before a restrictive one such as partner.
+- Classifying files by name alone, without scanning contents for coordinates, asset identifiers or names.
+- Letting confirmatory results depend on withheld partner material, so examiners cannot check them.
+- Omitting a single command that regenerates every table and figure from the public files.
+
 ### Exercises — chapter 7
 
 **EX039 — Argument map.** *Objective:* expose the thesis argument. *Inputs:* the narrowed claim of §6.5. *Constraints:* use all six Toulmin elements. *Steps:* (1) map the claim; (2) mark which thesis chapter supplies each element; (3) identify the weakest warrant and the evidence that would strengthen it. *Expected evidence:* map and paragraph. *Rubric:* 3 = complete map, weakest warrant correctly identified (model adequacy for real regions, or omitted human buffers) with a specific strengthening study; 2 = one element thin; 1 = claim and data only; 0 = none.
@@ -1904,6 +1938,12 @@ The answer concedes what is true, cites the specific evidence, restates the narr
 - Posting preprints before deciding whether coordination is needed.
 - Policy recommendations without confidence levels or evidence links.
 - Post-doctoral plans that repeat the thesis instead of addressing its limitations.
+
+- Keeping a claim register but auditing it only by keyword, which misses overreach phrased as nationwide or the grid.
+- Answering an examiner's alternative explanation by defending the original claim instead of describing the test that would distinguish them.
+- Posting the infrastructure-security paper before partners and the sector information-sharing body have been consulted on the map-integrity finding.
+- Citing one paper from the thesis as stronger evidence than it is in the next paper.
+- Writing policy recommendations that imply a mandate the evidence does not support.
 
 ### Exercises — chapter 8
 
