@@ -1360,6 +1360,8 @@ Minimum practice for every analysis in a thesis:
 
 After a pilot, write a short report with: objectives and criteria (copied from the protocol), results for each criterion, decision (proceed / amend / stop), list of protocol amendments with version numbers, and the updated sample-size calculation. The report is dated before the main study begins, establishing that amendments were made before main-study data existed.
 
+For the SHA study, the report would state whether pilot rater agreement on error type met the protocol target (failure condition F1) and whether free-text handoffs already carried ruled-out hypotheses and telemetry gaps (F2). Either failure leads to amend or stop, never to a quiet start of the main study.
+
 ### 4.9 Reproducibility as a spectrum, not a badge
 
 [Peng (2011)](https://doi.org/10.1126/science.1213847) described reproducibility in computational science as a spectrum running from publication alone, through publication with code, code and data, and finally linked and executable code and data, with full replication as the gold standard beyond it. The spectrum framing is useful for incident-response research because the field's constraints (Chapter 1 §1.4) often make the top of the spectrum unreachable for real data. A thesis can still state where on the spectrum each artifact sits and why, which is more informative than a binary "available / not available" statement.
@@ -1518,6 +1520,8 @@ Raters are the measurement instrument. Blinding keeps them from measuring their 
 
 Every number in the results should be traceable to raw records: session recordings or logs (where consented), participant decision forms, raw rater sheets before adjudication, adjudication notes and the analysis scripts. Keep raw records immutable and hashed; derive analysis files by script. This chain is what makes the study auditable, and it is the core of the reproducibility archive in Chapter 8. Raw records also enable later critics (Chapter 7) to recode decisions under alternative outcome definitions.
 
+In the SHA study the raw rater sheets matter most, because error-type coding is where adjudication can quietly change an outcome.
+
 ### 5.5 Analysis with uncertainty
 
 #### 5.5.1 Estimates, not verdicts
@@ -1613,6 +1617,8 @@ harmful actions           mean_diff=-0.083 sd=0.669 95%CI=(-0.508, 0.341) exact_
 ### 5.9 Practical activity: results section skeleton
 
 Write a results section in this order: participant flow (recruited, consented, randomized, completed, excluded with reasons); fidelity and deviations; rater agreement and blinding check; primary outcome estimate and interval relative to SEOI; mechanism outcome; safety outcome; secondary outcomes; sensitivity analyses; error analysis. Each number must reference the script and data hash that produced it.
+
+In the SHA study, the primary estimate is the difference in comprehension and projection errors per scenario, read against the SEOI of 0.5. If the interval excludes the SEOI, failure condition F3 applies and the section reports a precise null. Placing participant flow first lets a reader judge whether exclusions could explain the estimate before seeing it.
 
 ### 5.10 Reporting the study so that others can judge it
 
@@ -1895,6 +1901,8 @@ KFL gap interaction=0.850 SE=0.500 z=1.70
 
 For a third organization of your choice (real or synthetic, described only at a level that exposes no confidential information), write a memo that: lists its values on each feature in §6.1; predicts the SHA effect using the mechanism and the two-context evidence; states the uncertainty; and proposes the smallest study that would check the prediction there. The memo is a reasoning exercise, not a recommendation to adopt.
 
+A memo for a small library service such as Harbor Library would first have to say whether its responders hand off between shifts at all, since the mechanism works through handoffs.
+
 ### 6.8 The generalizability problem, stated precisely
 
 [Yarkoni (2022)](https://doi.org/10.1017/S0140525X20001685) argued that much of psychology suffers a "generalizability crisis": verbal claims are stated at a level of generality far beyond what the statistical models support, because those models treat only participants as a random sample while treating stimuli, tasks, settings and experimenters as fixed. If the verbal claim is about *incident handoffs in general*, then scenarios, organizations and facilitators are also samples from larger populations, and their variability belongs in the uncertainty of the estimate.
@@ -2084,6 +2092,8 @@ Three responses are always available: **concede** (the critic is right; revise),
 
 When a critic proposes an alternative definition or analysis, the default is to **run it and report it**, unless it is clearly invalid. Report the original preregistered analysis as primary, the critic's analysis as a sensitivity or robustness analysis, and explain any divergence. Never replace the primary analysis silently; never suppress the alternative because it is less favorable. If the alternative analysis reveals that the original claim depended on one contestable choice, the claim should be narrowed.
 
+For the SHA study, a critic might recode errors under a broader definition of projection error; the raw rater sheets kept under §5.4 make that rerun possible.
+
 ### 7.5 Worked example: external reviewers challenge the main study's outcome definition
 
 *Synthetic.* An external reviewer of the Handoff Study writes:
@@ -2156,9 +2166,13 @@ A negative result — no effect, or an effect smaller than the SEOI — is infor
 
 A good response document has, for each comment: the comment quoted; the classification; the response (concede, defend, test); what changed, with locations; and any new analysis, with code and output referenced. Keep the tone factual. Where you defend, give evidence, not assertion. Where you concede, do not hedge the revision into meaninglessness.
 
+Suppose a reviewer argues that the SEOI of 0.5 errors per scenario was chosen to make the study feasible. The response quotes the cost–benefit anchoring from §3.13, reports the precision the sample actually achieved and, if the reviewer is right, narrows the claim. Each response names the page or file where the change can be checked.
+
 ### 7.8 Post-publication critique and correction
 
 Critique continues after publication. If an error is found — a coding mistake, an archive that does not reproduce a table, a misdescribed sample — correct it publicly, through the venue's correction process and in the archive's change log. Corrections are an integrity strength. A thesis should state how readers can report problems and how corrections will be handled (Chapter 8).
+
+For the SHA study, a correction might concern a scenario whose error count was mis-adjudicated. The change log would record the old and new values, the script that recomputes the primary estimate and whether the interval's relation to the SEOI changed.
 
 ### 7.9 Critique as structured adversarial review
 
@@ -2437,6 +2451,8 @@ The candidate's README states plainly: "This archive lets you run every analysis
 ### 8.8 Practical activity: archive audit
 
 Ask a colleague who has not worked on the project to audit the archive using only its README. They should record: whether they could run the pipeline; whether each reported number could be regenerated or was explained as restricted; whether licenses and permissions were clear; and every question they had to ask. Each question becomes a documentation fix before release.
+
+For the SHA archive, the decisive test is whether the primary estimate can be regenerated from hashed raw rater sheets by script, and whether restricted items such as consented session recordings are explained rather than silently missing.
 
 ### 8.9 A specimen archive layout with documentation
 

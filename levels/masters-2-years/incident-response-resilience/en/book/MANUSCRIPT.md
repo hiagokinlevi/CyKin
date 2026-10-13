@@ -489,6 +489,8 @@ Notice what this paragraph does: it names the shared finding, locates the disagr
 
 When you present a study, spend most of your time on design: unit, assignment, outcome and rivals. Put the result on one slide at the end. Practise the sentence "the strongest claim this design supports is…". When you challenge a presenter, ask questions that could change the conclusion ("how many incidents were still open?") rather than questions that display your knowledge. Record the session's open questions; several will become your own study's secondary analyses.
 
+Practise that sentence for your own Triage Rubric Study before the seminar, because it is the one examiners will test.
+
 ### 2.10 Common errors and limits
 
 - Treating "effectiveness" as self-evident and adopting whatever metric the ticketing system produces.
@@ -1013,6 +1015,8 @@ Month 17-18  examination, corrections, partner briefing
 ```
 
 Build slack after each critical task. If ethics approval takes ten weeks instead of six, the pilot moves, not the analysis plan.
+
+Two of the three items marked critical, ethics approval and panel availability, fall before the month 5 pilot, which cannot start until both are done. The third, recruitment for the 24 main-study sessions in months 7–9, comes later; if it runs slow, the slack should come from the writing months rather than from cutting sessions below what the pre-analysis plan requires.
 
 ### 5.3 The risk register
 

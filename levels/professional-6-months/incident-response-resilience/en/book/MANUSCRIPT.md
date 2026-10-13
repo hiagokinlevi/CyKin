@@ -1579,6 +1579,8 @@ For the adversarial **BYPASS** control, a form route denies an S42 write but a d
 
 A professionally useful handoff at 09:42 includes the current S42 effect scope; the C17 approval identifier/time/expiry; C18 operator report; C19's one-route observations and remaining route unknowns; which source evidence is preserved or only requested; service cost and rollback owner; and a time- or event-triggered next review. It does not name an attacker. Chapter 7 introduces a different type of evidence—the job/task mechanism—which can strengthen a cause-specific correction without rewriting this earlier containment record.
 
+A second responder should be able to check each item without access to the original conversation.
+
 ### Common errors and limits
 
 - Converting C16's tolerance into C17's approval. They are separate cards, two minutes apart, with different meanings.
@@ -1835,6 +1837,8 @@ BATCH17_DOWN: BUSINESS_REGRESSION
 ### 7.15 Synthesis and handoff
 
 At 10:07, the task-specific mechanism is better supported than at 09:26 and the task has been reported disabled; the source does not prove durable nonexecution or resolve the unexpected recovery method. C21's hold extension and C24's task action are different authorizations. The Chapter 8 identity decision, data reconciliation and recovery testing are **later** evidence, not available to this 10:07 handoff.
+
+Keeping C21 and C24 separate lets a later reviewer see that extending the hold did not by itself authorize action on the task, and that each approval has its own owner and time.
 
 ### Common errors and limits
 
@@ -2110,6 +2114,8 @@ SCHEDULED_DOWN SERVICE_GATE_FAIL
 
 A recovery candidate may be technically usable yet fail current owner-approved data, audit or service criteria. A service may be conditionally accepted without a complete actor finding or an established future monitoring result. Preserve C27's failed audit observation, C28's isolated correction, C29's independently approved production work and C30's limited owner acceptance as different records. Chapter 9 then introduces a **new, unverified information claim** whose communication and privacy route must not be collapsed into a service-restored announcement.
 
+Each record keeps its own source, approver and time.
+
 ### Common errors and limits
 
 - Choosing the most recent backup without comparing its contents to the approved target and later legitimate writes.
@@ -2364,6 +2370,8 @@ The **EARLY_V9** adversarial test preserves the 11:00 release boundary; **UNAPPR
 ### 9.16 Synthesis and next-step boundary
 
 An accurate message is part of incident response but cannot create evidence. At 11:00 the service has an owner-accepted *limited* return; the data assessment is open; message dispatch remains a separate approval-dependent act. Chapter 10 translates these distinctions into testable playbook decisions. The optional V9 11:20 evidence must remain isolated from the main case when evaluating its 11:00 status.
+
+Keeping V9 apart protects the 11:00 record from hindsight: whoever judges the 11:00 decision must see only what was known then. Dispatch, likewise, needs its own approver even when the wording is final.
 
 ### Common errors and limits
 
@@ -2640,6 +2648,8 @@ V10B_UNAPPROVED_ACTION: INVALID_UNAPPROVED_EXECUTION
 ### 10.17 Synthesis and next chapter
 
 The repaired playbook is stronger because it makes authority, source limits, accepted business state, failed tests and unknowns visible to a second responder. It is not an executable runbook. The next chapter's staged tabletop can measure whether a supervised learner actually follows the gates under time pressure, including when a source or approver is unavailable; success in a toy decision function is not operational readiness or an accredited qualification.
+
+At each gate, a second responder should be able to tell who may approve and which evidence is still missing.
 
 ### Common errors and limits
 
