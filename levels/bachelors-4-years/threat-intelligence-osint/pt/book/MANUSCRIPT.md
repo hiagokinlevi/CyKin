@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de bacharelado
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 40 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–40 (EX073–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que se preparam para trabalhar como analistas juniores de inteligência de ameaças cibernéticas (CTI) ou para seguir na pesquisa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhum contato com infraestrutura de adversários. Organizações, pessoas e indicadores são **sintéticos**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 25–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1264,11 +1264,277 @@ Os casos fundadores ensinam lições duradouras: reutilize a inteligência entre
 
 [← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Inteligência de ameaças e OSINT: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o sistema de inteligência do HCHT como entradas, processos e saídas; (2) identificar ciclos de retroalimentação; (3) encontrar gargalos; (4) expressar o modelo em termos de objetos STIX.
+
+### 21.1 A inteligência como sistema
+
+Entradas: relatórios do HSSC, alertas públicos, feeds de fornecedores, incidentes internos. Processos: triagem, validação, enriquecimento, análise, armazenamento. Saídas: bloqueios, buscas, briefings, relatórios compartilhados. Retroalimentação: os consumidores relatam o que ajudou. Desenhar esse fluxo mostra onde o trabalho se acumula. Amara desenha o fluxo do HCHT numa página e conta o que passa por cada etapa numa semana típica. O desenho deixa claro que a análise é o ponto mais estreito, o que explica por que os relatórios costumam chegar atrasados. Ele também mostra que a retroalimentação raramente chega ao início do fluxo, então a direção é fraca, e a equipe concorda em acrescentar uma revisão mensal do que os consumidores pediram.
+
+### 21.2 Gargalos
+
+No HCHT, a análise é feita por uma supervisora e uma estagiária. Se a triagem passa todos os itens para a análise, a fila cresce mais rápido do que diminui. Uma regra de triagem — só seguem os itens que correspondem a ativos do HCHT ou ao setor — mantém o sistema estável. Amara testa a regra num mês de itens passados e descobre que cerca de um terço passaria, o que a equipe consegue atender. Os itens retidos ficam guardados e pesquisáveis, então nada se perde se depois se tornarem relevantes. A regra é revista a cada trimestre em comparação com o que deixou de ser visto.
+
+### 21.3 Ciclos de retroalimentação
+
+Ciclo positivo: briefings úteis trazem mais perguntas, que afiam a direção. Ciclo negativo: bloqueios demais por falso positivo fazem a equipe de rede ignorar os pedidos da CTI. Sistemas saudáveis monitoram os dois. Amara vigia o ciclo negativo acompanhando quantos bloqueios foram revertidos depois de reclamações. Quando as reversões aumentam, ela confere a fonte dos indicadores bloqueados e eleva o limiar de confiança para essa fonte. O ciclo positivo é sustentado respondendo às perguntas com rapidez e anotando em cada briefing o que a equipe de segurança pediu e o que mudou em consequência.
+
+### 21.4 O STIX como modelo de dados
+
+O STIX 2.1 representa a inteligência como objetos: `indicator`, `malware`, `threat-actor`, `attack-pattern`, `campaign`, `identity`, `report` e objetos `relationship` que os ligam. Cada objeto tem um identificador, carimbos de tempo e definições de marcação opcionais, como o TLP. Mapear as colunas do banco de dados do HCHT para o STIX facilita o compartilhamento posterior. Amara mapeia as próprias colunas para propriedades STIX. A coluna `value` vira o padrão do indicador, `first_seen` e `last_seen` viram os tempos de validade do indicador, e a coluna TLP vira uma definição de marcação. Duas colunas, `status` e `outcome`, não têm equivalente direto no STIX, então ela as mantém como campos locais e documenta a escolha para analistas futuros.
+
+### 21.5 Fronteiras
+
+A fronteira do modelo exclui as decisões clínicas; a CTI as informa por meio dos responsáveis, não diretamente. Por exemplo, a inteligência sobre ataques a bombas de infusão vai para a engenharia clínica, que decide quais mudanças são seguras para os pacientes. A equipe de CTI fornece fatos e opções, nunca instruções à equipe clínica. Amara desenha a fronteira no diagrama como uma linha que a inteligência só pode cruzar por meio de um responsável nomeado, o que lembra à equipe onde termina a sua autoridade e onde começa o julgamento clínico. Registrar essa fronteira evita recomendações bem-intencionadas, mas inseguras.
+
+### 21.6 Aritmética da capacidade
+
+Se chegam quarenta itens por semana e cada um leva trinta minutos para ser analisado, são necessárias vinte horas de analista. Duas pessoas com outras funções talvez forneçam oito. Sem triagem, o acúmulo cresce cerca de vinte e quatro itens por semana; anotar essa aritmética defende, em termos simples, filtros mais rigorosos ou mais pessoal. Amara apresenta esse cálculo ao líder de segurança. O líder concorda com a regra de triagem e pede um relatório mensal da fila, para que o crescimento seja notado cedo. Amara também mede o próprio tempo de análise por item, que fica mais perto de vinte minutos nos itens rotineiros, e atualiza a aritmética.
+
+### Níveis de serviço
+
+Combine metas simples com os consumidores: indicadores urgentes revisados em até quatro horas, itens rotineiros em até três dias úteis. As metas transformam o modelo do sistema em compromissos e revelam depressa quando a capacidade deixa de corresponder à demanda.
+
+### Exemplo resolvido
+
+Amara mapeia uma semana: chegaram 140 itens; 40 passaram pela triagem; 12 foram analisados; 3 levaram a uma ação. O gargalo é a análise. Ela propõe critérios de triagem mais rigorosos e um modelo de texto que corta pela metade o tempo de redação. A supervisora concorda em testar os dois por um mês.
+
+> **Caso sintético.** As contagens são inventadas.
+
+### Erros e limites
+
+Diagramas de sistema simplificam o julgamento humano. Meça antes e depois das mudanças.
+
+### Exercícios
+
+- **EX061 — Encontre o gargalo.** Na semana de Amara, onde estava o gargalo e como você sabe? *Rubrica:* 3 = análise; 40 entraram, 12 concluídos; 2 = análise; 1 = coleta; 0 = nenhuma.
+- **EX062 — Ciclo negativo.** Descreva um ciclo de retroalimentação negativo na entrega de CTI. *Rubrica:* 3 = bloqueios por falso positivo → a equipe de rede ignora a CTI; 2 = vago; 1 = tentativa mínima; 0 = nenhuma.
+- **EX063 — Mapeamento STIX.** Que tipo de objeto STIX liga um indicador a um objeto malware? *Rubrica:* 3 = `relationship` (por exemplo, `indicates`); 2 = `relationship`; 1 = `report`; 0 = nenhuma.
+
+### Síntese
+
+Modele a CTI como um sistema, administre os gargalos, vigie os ciclos de retroalimentação e mapeie os dados para o STIX.
+
+### Continue estudando — capítulo 21 de 40
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Inteligência de ameaças e OSINT: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) catalogar as fontes de inteligência do HCHT e as suas dependências; (2) avaliar pontos únicos de falha; (3) avaliar as licenças e os termos das fontes; (4) planejar a perda de uma fonte.
+
+### 22.1 Catálogo de fontes
+
+Para cada fonte, registre: provedor, tipo de conteúdo, formato, método de entrega, licença ou termos, TLP, custo e responsável. O HSSC (STIX sobre TAXII 2.1, acordo de adesão), um serviço nacional de alertas (páginas web públicas), um feed comercial (contrato) e os registros internos de incidentes. Amara monta o catálogo numa planilha compartilhada revista a cada trimestre. Vários campos eram desconhecidos no início, como os termos exatos de redistribuição do feed comercial, e descobri-los levou mais tempo que registrar todo o resto. Hoje o catálogo responde em segundos à maioria das perguntas sobre uma fonte.
+
+### 22.2 Dependências
+
+O feed comercial depende da renovação de um contrato; o HSSC depende de pessoal voluntário; os scripts de importação dependem do conhecimento de uma analista. Cada uma é uma dependência que pode falhar. Amara acrescenta cada dependência ao catálogo com o que aconteceria se ela falhasse e com que rapidez a equipe perceberia. A data de renovação do contrato entra no calendário da equipe com um lembrete dois meses antes. Para o HSSC, ela anota o contato reserva que a comunidade oferece. A dependência do script é a que a equipe controla mais diretamente, o que leva ao trabalho de documentação e treinamento descrito a seguir.
+
+### 22.3 Termos e licenças
+
+Feeds comerciais muitas vezes proíbem a redistribuição. Antes de compartilhar com o HSSC um indicador aprendido num feed pago, Amara confere a licença. Alertas públicos podem permitir a reutilização com atribuição. Quando a licença proíbe o compartilhamento, Amara compartilha só a observação do próprio HCHT, por exemplo que o domínio foi visto nos seus logs, se a licença permitir isso, e do contrário apenas informa ao HSSC que um feed pago lista o item. Ela registra cada decisão na entrada da fonte no catálogo, para que a mesma pergunta seja respondida de forma consistente.
+
+### 22.4 Pontos únicos de falha
+
+Se a única pessoa que entende o script de importação sair, o pipeline para. Documentação, uma segunda pessoa treinada e código simples reduzem esse risco. Amara escreve um guia curto do script de importação, explicando cada passo e os erros comuns, e treina uma colega para executá-lo. A colega roda a importação por duas semanas enquanto Amara acompanha, o que revela dois passos não documentados que agora estão no guia. Simplificar o código também o tornou mais fácil de revisar e testar.
+
+### 22.5 Lacunas de cobertura
+
+As fontes cobrem umas ameaças melhor que outras. Alertas nacionais podem dar pouco peso às ameaças a dispositivos médicos; feeds de fornecedores podem se concentrar em malware comum. Uma tabela de cobertura mostra as lacunas. Amara monta a tabela com os tipos de ameaça nas linhas e as fontes nas colunas, marcando onde cada fonte dá uma cobertura útil. As células vazias mostram onde o HCHT depende da sorte. As ameaças a dispositivos médicos são a lacuna mais clara, então a equipe pergunta à engenharia clínica se os fabricantes de dispositivos publicam alertas que poderiam ser acrescentados como fonte. Dois fabricantes publicam, e os seus avisos entram no catálogo com um responsável.
+
+### 22.6 Avaliação das fontes ao longo do tempo
+
+As fontes mudam: um feed antes excelente pode piorar depois de uma aquisição, ou um grupo voluntário pode parar de publicar. Uma verificação trimestral — volume, pontualidade, proporção de itens que levam a ações — capta o declínio antes que os analistas percebam que uma fonte virou ruído em silêncio. Amara registra os resultados da verificação no catálogo, ao lado de cada fonte. Ao longo de um ano, as verificações mostram a pontualidade do feed comercial piorando depois de uma troca de dono, enquanto os avisos dos fabricantes se mostram mais úteis que o esperado. A equipe usa os números na renovação do contrato, pedindo ao fornecedor que explique o declínio, e ajusta o peso que cada fonte recebe na triagem.
+
+### Fontes internas
+
+Os incidentes do próprio HCHT são a sua inteligência mais relevante: mostram o que de fato chegou ao trust. Chamados da central de serviços sobre e-mails suspeitos, alertas de endpoint e notas de lições aprendidas devem entrar no catálogo como fontes, com o mesmo cuidado com os dados pessoais que o material externo.
+
+### Exemplo resolvido
+
+O contrato comercial fica uma semana sem vigência por um atraso nas compras. O catálogo de Amara mostra quais detecções dependem desse feed. A equipe as passa temporariamente para os dados do HSSC e leva a dependência ao registro de riscos.
+
+> **Caso sintético.** A interrupção é inventada.
+
+### Erros e limites
+
+Catálogos ficam desatualizados; revise-os a cada trimestre.
+
+### Exercícios
+
+- **EX064 — Conferir a licença.** Por que Amara precisa conferir antes de compartilhar com o HSSC um indicador de feed pago? *Rubrica:* 3 = a licença pode proibir a redistribuição; 2 = parcial; 1 = não precisa conferir; 0 = nenhuma.
+- **EX065 — Dependência humana.** Dê duas formas de reduzir a dependência de uma única analista. *Rubrica:* 3 = documentação; segunda pessoa treinada (ou código mais simples); 2 = uma; 1 = vago; 0 = nenhuma.
+- **EX066 — Campos do catálogo.** Liste quatro campos de uma entrada do catálogo de fontes. *Rubrica:* 3 = quatro entre provedor/formato/entrega/licença/TLP/custo/responsável; 2 = três; 1 = um ou dois; 0 = nenhuma.
+
+### Síntese
+
+Conheça as suas fontes, os seus termos e dependências, e planeje a falha delas.
+
+### Continue estudando — capítulo 22 de 40
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Inteligência de ameaças e OSINT: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) codificar relatórios em técnicas do ATT&CK; (2) calcular a frequência das técnicas; (3) interpretar a frequência com cautela; (4) transformar a frequência em prioridades defensivas.
+
+### 23.1 Codificar relatórios
+
+Leia cada relatório e marque as técnicas com identificadores do ATT&CK, citando a frase que sustenta cada marcação. Evite marcar a partir de manchetes; marque apenas o que o texto descreve. Amara mantém a frase de apoio ao lado de cada marcação na sua planilha de codificação, para que um revisor possa conferir a marcação sem reler o relatório inteiro. Quando o texto é vago, como "o atacante obteve acesso", ela codifica "desconhecida" em vez de adivinhar uma técnica. As marcações são conferidas por um segundo leitor numa amostra.
+
+### Laboratório — frequência das técnicas
+
+```python
+"""Lab 5 (ch 23): rank ATT&CK techniques by frequency across synthetic sector reports."""
+from collections import Counter
+reports = {
+    "R1": ["T1566", "T1204", "T1059"], "R2": ["T1566", "T1078"], "R3": ["T1190", "T1059", "T1486"],
+    "R4": ["T1566", "T1204", "T1486"], "R5": ["T1078", "T1021", "T1486"],
+}
+c = Counter(t for ts in reports.values() for t in ts)
+for tid, n in c.most_common():
+    print(f"{tid} in {n}/{len(reports)} reports")
+```
+
+Execute com `python3 lab_freq.py`. Saída verificada:
+
+```text
+T1566 in 3/5 reports
+T1486 in 3/5 reports
+T1204 in 2/5 reports
+T1059 in 2/5 reports
+T1078 in 2/5 reports
+T1190 in 1/5 reports
+T1021 in 1/5 reports
+```
+
+### 23.2 Ler o resultado
+
+Em cinco relatórios sintéticos do HSSC, Phishing (T1566) e Data Encrypted for Impact (T1486) aparecem em três cada. User Execution (T1204), Command and Scripting Interpreter (T1059) e Valid Accounts (T1078) aparecem em dois. Exploit Public-Facing Application (T1190) e Remote Services (T1021) aparecem uma vez. Amara confere as contagens com a planilha de codificação antes de relatá-las. Cada contagem remete às frases dos relatórios por trás dela, para que o leitor veja como o número foi produzido. Os números descrevem apenas estes cinco relatórios e são apresentados como um resumo da amostra, com o período e a fonte declarados. Amara inclui a tabela numa nota curta para o líder de segurança.
+
+### 23.3 Cautela
+
+Cinco relatórios é muito pouco. A frequência reflete o que os autores dos relatórios notaram e escreveram, não o que aconteceu. Uma técnica que aparece uma vez pode importar mais se o HCHT estiver exposto a ela — um sistema exposto à internet e sem correções torna a T1190 relevante apesar da contagem baixa. Amara acrescenta à tabela uma coluna de exposição, anotando para cada técnica se o HCHT tem os sistemas ou as fraquezas que ela visa. Isso muda a leitura: uma técnica vista uma vez, mas que corresponde a um sistema exposto, sobe, enquanto uma frequente e já bem controlada desce. As contagens são o ponto de partida da análise, não a sua conclusão.
+
+### 23.4 Da frequência à prioridade
+
+A prioridade combina a frequência, a exposição do HCHT e as lacunas de controle. O phishing é frequente, e o HCHT já tem treinamento e filtragem; os serviços remotos aparecem uma vez, mas o acesso remoto dos fornecedores é mal monitorado. A lista final de prioridades pode pôr o monitoramento dos serviços remotos acima de mais treinamento contra phishing. Amara escreve a justificativa de cada posição da lista, para que o líder de segurança possa discordar de um julgamento específico, e não da classificação inteira. A lista é revista depois dos relatórios de cada trimestre e depois de qualquer incidente no HCHT, já que qualquer um dos dois pode mudar a exposição ou revelar uma lacuna nova. As mudanças são registradas com o motivo.
+
+### 23.5 Registro
+
+Guarde a planilha de codificação com os identificadores dos relatórios e as frases de apoio para que outros possam verificar. A planilha lista cada relatório por identificador e data, cada código com a sua frase de apoio e todos os códigos que foram discutidos e alterados. Amara a guarda com a análise e a vincula no relatório final. Outro analista pode então reconferir qualquer contagem ou aplicar o mesmo esquema aos relatórios do trimestre seguinte, o que torna comparáveis as tendências ao longo do tempo. A planilha é versionada no repositório da equipe.
+
+### 23.6 Granularidade da codificação
+
+O ATT&CK tem técnicas e subtécnicas. Codificar no nível da subtécnica dá detalhe, mas divide amostras pequenas em contagens minúsculas; codificar no nível da técnica é mais grosso, porém mais estável. Escolha um nível para cada estudo e declare-o, ou as contagens ficam incomparáveis. Amara codifica no nível da técnica nas suas contagens trimestrais. O detalhe das subtécnicas fica na planilha para referência, para que um estudo posterior com mais relatórios possa usá-lo. Amara anota o nível escolhido no parágrafo de método do relatório e, ao comparar com as contagens do próprio HSSC, confere qual nível foi usado antes de tirar qualquer conclusão.
+
+### Comparar com os incidentes internos
+
+Ponha as contagens do setor ao lado das marcações dos incidentes do próprio HCHT. Se os incidentes internos mostram abuso de contas válidas com muito mais frequência que os relatórios do setor, as condições locais importam mais que a média setorial.
+
+### Exemplo resolvido
+
+A primeira codificação de Amara marca T1059 num relatório que diz apenas "o atacante executou comandos". A supervisora pede a frase de apoio; ela não especifica um interpretador. As duas mantêm a marcação, mas anotam "baixa especificidade" na planilha.
+
+> **Caso sintético.** Os relatórios são inventados.
+
+### Erros e limites
+
+A codificação é subjetiva; codifique uma amostra em dobro para conferir a concordância.
+
+### Exercícios
+
+- **EX067 — Líderes do laboratório.** Quais técnicas apareceram mais vezes no laboratório? *Rubrica:* 3 = T1566 e T1486, 3/5 cada; 2 = uma delas; 1 = errada; 0 = nenhuma.
+- **EX068 — Contagem baixa, prioridade alta.** Por que a T1190 pode merecer prioridade apesar de aparecer uma vez? *Rubrica:* 3 = exposição do HCHT (sistema exposto à internet sem correções); 2 = parcial; 1 = não merece; 0 = nenhuma.
+- **EX069 — Frase de apoio.** Por que registrar a frase de apoio de cada marcação? *Rubrica:* 3 = verificabilidade e revisão da codificação; 2 = parcial; 1 = formatação; 0 = nenhuma.
+
+### Síntese
+
+Codifique com cuidado, conte com honestidade, leia as contagens no contexto e combine-as com a exposição para definir prioridades.
+
+### Continue estudando — capítulo 23 de 40
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Inteligência de ameaças e OSINT: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear técnicas para mitigações usando o ATT&CK; (2) redigir uma solicitação de controle orientada por inteligência; (3) estimar o custo e os efeitos colaterais de um controle; (4) verificar se um controle funciona.
+
+### 24.1 Da técnica à mitigação
+
+Cada página de técnica do ATT&CK lista mitigações — para o phishing, treinamento de usuários, filtragem e restrição de conteúdo web; para contas válidas, autenticação multifator e gestão de contas privilegiadas. São pontos de partida, não prescrições. Amara confere cada mitigação sugerida com o que o HCHT já tem, para que uma solicitação peça apenas o que falta. Para contas válidas, a autenticação multifator está ativa para os funcionários, mas não para algumas contas de fornecedores, então a solicitação se concentra nelas. Mitigações que entrariam em conflito com o trabalho clínico são discutidas com o responsável pelo sistema antes de serem propostas.
+
+### 24.2 A solicitação de controle
+
+Uma boa solicitação declara: a inteligência (com fonte e TLP), a técnica, o controle proposto, o benefício esperado, os efeitos colaterais, o responsável e um prazo. Ela não exige; informa a decisão do responsável. Amara usa um modelo curto em todas as solicitações, o que facilita para os responsáveis compará-las e decidir depressa. O rótulo TLP mostra até onde o responsável pode repassar a inteligência. Os responsáveis podem aceitar, alterar ou recusar a solicitação, e a decisão é registrada com o motivo. Solicitações recusadas não são fracassos; mostram onde a inteligência e as necessidades operacionais divergem.
+
+### 24.3 Efeitos colaterais
+
+Bloquear macros em documentos fecha uma rota de entrega, mas pode quebrar uma planilha de laboratório usada todos os dias. Pergunte aos responsáveis sobre o impacto antes de propor. Amara aprendeu isso quando se descobriu que um bloqueio de macros proposto afetaria uma planilha que o laboratório usa para registrar os resultados de exames. O responsável sugeriu, em vez disso, assinar as macros do próprio laboratório e bloquear as não assinadas, o que fecha a mesma rota de entrega sem atrapalhar o trabalho. Perguntar primeiro transformou uma solicitação recusada num controle melhor, e a equipe do laboratório agora levanta preocupações parecidas cedo.
+
+### 24.4 Verificação
+
+Depois que um controle é aplicado, teste-o com segurança: envie um documento de teste inofensivo pelo filtro ou confirme que um domínio bloqueado não resolve. Registre o teste. Amara escreve os passos do teste na solicitação, para que o responsável saiba o que será conferido. Os testes usam arquivos inofensivos e domínios de teste conhecidos, nunca amostras maliciosas reais, e são feitos em acordo com o responsável. Um controle que falha no teste é comunicado ao responsável imediatamente, com a evidência, e a solicitação fica aberta até que um novo teste passe.
+
+### 24.5 Degradação
+
+Os controles se degradam: exceções são acrescentadas, regras são desativadas durante interrupções e nunca reativadas. Reconfira a cada trimestre. Amara agenda uma verificação trimestral de cada controle criado a partir da inteligência, comparando a configuração atual com a registrada. As exceções são listadas com o responsável e o motivo; as que não têm motivo são levadas ao responsável. Na primeira verificação, ela encontrou um domínio bloqueado que havia sido removido durante uma interrupção e nunca restaurado, e o comunicou na hora. A verificação leva cerca de duas horas por trimestre.
+
+### 24.6 A detecção como controle
+
+Nem todo risco pode ser prevenido. Onde a prevenção quebraria o trabalho clínico, uma regra de detecção mais uma resposta ensaiada pode ser o controle certo. A solicitação então nomeia quem recebe os alertas, com que rapidez precisa agir e o que vai fazer, para que a detecção não vire um painel que ninguém lê. Amara redige essas solicitações com os responsáveis pelos sistemas clínicos. As solicitações nomeiam os destinatários dos alertas, que podem ser contatados a qualquer hora, e descrevem uma resposta curta que não interrompe o atendimento aos pacientes, como isolar uma estação de trabalho enquanto um colega clínico continua em outra. A resposta é ensaiada uma vez com os responsáveis antes de a regra entrar em produção.
+
+### Priorizar as solicitações
+
+Os responsáveis recebem muitas solicitações. Ordene as suas pela frequência da técnica, pela exposição do HCHT e pelo custo do controle, e envie poucas solicitações fortes em vez de muitas fracas. Uma nota de capa curta explicando a ordem ajuda os responsáveis a planejar o próprio trabalho em torno dela.
+
+### Exemplo resolvido
+
+A inteligência mostra uma onda no setor usando anexos de documentos maliciosos (User Execution, T1204). Amara redige uma solicitação à equipe de e-mail: pôr em quarentena os anexos com macros vindos de remetentes externos, com um processo de exceção para dois fornecedores conhecidos. A equipe aceita; Amara verifica com um arquivo de teste inofensivo e registra o resultado.
+
+> **Caso sintético.** A onda e os fornecedores são inventados.
+
+### Erros e limites
+
+As mitigações listadas no ATT&CK variam em força. Prefira controles que você consegue testar.
+
+### Exercícios
+
+- **EX070 — Conteúdo da solicitação.** Liste cinco elementos de uma solicitação de controle orientada por inteligência. *Rubrica:* 3 = cinco entre inteligência/fonte/TLP, técnica, controle, benefício, efeitos colaterais, responsável, prazo; 2 = três; 1 = um; 0 = nenhuma.
+- **EX071 — Planilha do laboratório.** Por que perguntar aos responsáveis antes de propor um bloqueio de macros? *Rubrica:* 3 = pode quebrar um fluxo de trabalho crítico; exceções necessárias; 2 = parcial; 1 = não é preciso; 0 = nenhuma.
+- **EX072 — Verificar um bloqueio.** Como Amara pode verificar com segurança o bloqueio de um domínio? *Rubrica:* 3 = testar que a resolução/conexão a partir de um dispositivo de teste falha; registrar; 2 = parcial; 1 = presumir; 0 = nenhuma.
+
+### Síntese
+
+Mapeie técnicas para mitigações, peça com evidência, pese os efeitos colaterais, verifique e reconfira.
+
+### Continue estudando — capítulo 24 de 40
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Abdução — ela propõe a explicação mais plausível para uma observação sem prová-la.
 
@@ -1389,6 +1655,30 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** Os adversários mudam domínios e endereços a baixo custo, mas as suas técnicas e hábitos mudam devagar.
 
 **EX060.** As organizações com backups offline se recuperaram mais rápido que as sem eles.
+
+**EX061.** A análise: quarenta itens chegaram até ela, mas só doze foram concluídos, então o trabalho se acumulou ali.
+
+**EX062.** Bloqueios repetidos por falso positivo irritam a equipe de rede, que passa a dar baixa prioridade aos pedidos da CTI, e assim até a boa inteligência age mais devagar.
+
+**EX063.** Um objeto `relationship`, por exemplo do tipo `indicates`, do indicador para o malware.
+
+**EX064.** A licença comercial pode proibir a redistribuição, então compartilhar poderia violar o contrato.
+
+**EX065.** Escrever uma documentação clara do pipeline e treinar uma segunda pessoa para executá-lo e corrigi-lo.
+
+**EX066.** Provedor, método de entrega, licença ou termos e TLP (também formato, custo e responsável).
+
+**EX067.** Phishing (T1566) e Data Encrypted for Impact (T1486), cada uma em 3 de 5 relatórios.
+
+**EX068.** Se o HCHT opera uma aplicação exposta à internet sem correções, a sua exposição torna a técnica importante, não importa quantas vezes outros a relataram.
+
+**EX069.** Para que os revisores possam conferir se cada marcação é sustentada pelo texto e corrigir erros de codificação.
+
+**EX070.** A inteligência com fonte e TLP, a técnica do ATT&CK, o controle proposto, o benefício esperado e os efeitos colaterais (mais o responsável e o prazo).
+
+**EX071.** A equipe do laboratório depende de uma planilha com macros; um bloqueio sem consulta poderia interromper a emissão de resultados de exames.
+
+**EX072.** A partir de um dispositivo de teste aprovado, conferir que o domínio não resolve mais nem aceita conexão, e registrar o horário e o resultado.
 
 <a id="references"></a>
 ## Referências
