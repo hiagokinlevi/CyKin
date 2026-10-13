@@ -787,7 +787,7 @@ Lea en tres pasadas: el resumen, las figuras y la conclusión para decidir la pe
 
 ### 10.2 Preguntas de crítica
 
-¿Qué puede hacer y saber el atacante? ¿Es realista el modelo de amenaza para su despliegue? ¿Se incluyen líneas base y ataques adaptativos? ¿Se miden los resultados por sus efectos y se comunican con su incertidumbre? ¿Rompería el resultado un pequeño cambio de contexto? ¿Publicaron los autores el código y los datos? Artículos como el de Carlini et al. (arXiv:1902.06705) ofrecen una lista de comprobación para las evaluaciones de robustez; Arp et al. (arXiv:2010.09470) enumeran errores habituales del aprendizaje automático aplicado a la seguridad, entre ellos el sesgo de muestreo, el fisgoneo de datos (*data snooping*) y las líneas base inadecuadas.
+¿Qué puede hacer y saber el atacante? ¿Es realista el modelo de amenaza para su despliegue? ¿Se incluyen líneas base y ataques adaptativos? ¿Se miden los resultados por sus efectos y se comunican con su incertidumbre? ¿Rompería el resultado un pequeño cambio de contexto? ¿Publicaron los autores el código y los datos? La crítica de Amira al preprint en 10.5 detectó que faltaban tres de estos elementos: un atacante adaptativo, un éxito medido por las llamadas a herramientas en lugar del texto del modelo, y el código publicado. Artículos como el de Carlini et al. (arXiv:1902.06705) ofrecen una lista de comprobación para las evaluaciones de robustez; Arp et al. (arXiv:2010.09470) enumeran errores habituales del aprendizaje automático aplicado a la seguridad, entre ellos el sesgo de muestreo, el fisgoneo de datos (*data snooping*) y las líneas base inadecuadas.
 
 ### 10.3 Traslado a la práctica
 
@@ -841,7 +841,7 @@ Un buen proyecto responde a una decisión que la organización debe tomar: «¿D
 
 ### 11.2 Planificación
 
-Planifique por fases: línea base (estado actual y riesgo), intervención (diseño o controles), evaluación (pruebas controladas), apoyo a la decisión (informe y recomendación) y traspaso. Cada fase tiene un entregable y una revisión. Mantenga un registro de riesgos del propio proyecto: daños causados por las pruebas, exposición de datos, retrasos en el calendario. En el proyecto de Tomás, las fases fueron una medición de la fuga de línea base, la deduplicación como intervención, pruebas controladas en la copia aislada, una recomendación y el traspaso. Actualice el registro de riesgos cada semana.
+Planifique por fases: línea base (estado actual y riesgo), intervención (diseño o controles), evaluación (pruebas controladas), apoyo a la decisión (informe y recomendación) y traspaso. Cada fase tiene un entregable y una revisión. Mantenga un registro de riesgos del propio proyecto: daños causados por las pruebas, exposición de datos, retrasos en el calendario. En el proyecto de Tomás, las fases fueron una medición de la fuga de línea base, la deduplicación como intervención, pruebas controladas en la copia aislada, una recomendación y el traspaso. Cada entregable se revisó con Amira, la responsable de la decisión, y el registro de riesgos se actualizaba en la revisión semanal.
 
 ### 11.3 Ejecución
 
@@ -987,7 +987,7 @@ La propuesta sigue el mismo razonamiento que las decisiones sobre los reembolsos
 - Planes sin compromisos medibles.
 - Una orientación que transmite respuestas en lugar de razonamiento.
 
-Cada error debilita la transferencia. Las nuevas tecnologías requieren las mismas preguntas sobre las entradas no fiables y la aplicación de los límites; inventar principios nuevos cada vez hace perder lo aprendido. Un plan sin compromisos medibles se abandona con facilidad. Una orientación que entrega respuestas deja a los más nuevos incapaces de razonar sobre el siguiente sistema. Revise su plan de práctica en busca de los tres.
+Cada error debilita la transferencia. Las nuevas tecnologías requieren las mismas preguntas sobre las entradas no fiables y la aplicación de los límites; inventar principios nuevos cada vez hace perder lo aprendido. Un plan sin compromisos medibles se abandona con facilidad; ponga una fecha a cada elemento y revise el plan con un colega cada trimestre. Una orientación que entrega respuestas deja a los más nuevos incapaces de razonar sobre el siguiente sistema. Revise su plan de práctica en busca de los tres.
 
 ### Ejercicios
 
