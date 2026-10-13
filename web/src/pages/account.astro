@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Minha área · CyKin" description="Acompanhe aulas e exercícios no CyKin. O cadastro é opcional; os livros continuam abertos.">
-  <section class="account-hero"><div class="shell"><div class="eyebrow">ÁREA OPCIONAL DO ESTUDANTE</div><h1>Seu estudo,<br /><span class="gold-text">no seu ritmo.</span></h1><p>Crie uma sessão apenas se quiser guardar aulas concluídas e respostas de exercícios. Livros, aulas e API continuam abertos a todos, sem conta.</p></div></section>
-  <section class="section"><div class="shell account-grid"><div class="card profile"><div class="eyebrow">IDENTIDADE</div><h2 id="profile-title">Verificando acesso…</h2><p id="profile-description" class="muted">Seu login é gerenciado pela Cloudflare Access. Nenhuma senha é guardada pelo CyKin.</p><div id="profile-action"></div></div><div class="card benefits"><div class="eyebrow">SUA ÁREA DE ESTUDO</div><h2>O que você pode acompanhar</h2><div class="benefit"><span>✓</span><div><strong>Aulas concluídas</strong><p>Marque o capítulo ao finalizar sua leitura.</p></div></div><div class="benefit"><span>✎</span><div><strong>Exercícios tentados</strong><p>Registre suas respostas para continuar mais tarde.</p></div></div><div class="benefit"><span>◌</span><div><strong>Áudio e vídeo</strong><p>Recurso planejado para uma próxima etapa; a leitura já está aberta.</p></div></div></div></div></section>
-  <section class="section records"><div class="shell"><div class="eyebrow">MEU HISTÓRICO</div><h2>Progresso salvo</h2><p id="records-status" class="muted">Faça login para ver suas aulas e tentativas.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/learn/">Continuar estudando →</a></div></section>
+<BaseLayout title="My area · CyKin" description="Track lessons and exercises on CyKin. An account is optional; books remain open.">
+  <section class="account-hero"><div class="shell"><div class="eyebrow">OPTIONAL STUDENT AREA</div><h1>Your learning,<br /><span class="gold-text">at your pace.</span></h1><p>Sign in only if you want to save completed lessons and exercise answers. Books, lessons and the API remain open without an account.</p></div></section>
+  <section class="section"><div class="shell account-grid"><div class="card profile"><div class="eyebrow">IDENTITY</div><h2 id="profile-title">Checking access…</h2><p id="profile-description" class="muted">Sign-in is managed by Cloudflare Access. CyKin does not store your password.</p><div id="profile-action"></div></div><div class="card benefits"><div class="eyebrow">YOUR STUDY AREA</div><h2>What you can track</h2><div class="benefit"><span>✓</span><div><strong>Completed lessons</strong><p>Mark a chapter when you finish reading.</p></div></div><div class="benefit"><span>✎</span><div><strong>Exercise attempts</strong><p>Save your answers and continue later.</p></div></div><div class="benefit"><span>◌</span><div><strong>Audio and video</strong><p>Planned for a later stage; reading is already open.</p></div></div></div></div></section>
+  <section class="section records"><div class="shell"><div class="eyebrow">MY HISTORY</div><h2>Saved progress</h2><p id="records-status" class="muted">Sign in to view your lessons and attempts.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/learn/">Continue learning →</a></div></section>
   <script>
     type Lesson = { level: string; area: string; language: string; chapter: number; status: string; updated_at: string };
     type Exercise = Lesson & { exercise_id: string; answer: string };
@@ -17,23 +17,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const lessonLink = (item: Lesson) => `/learn/?mode=theme&lang=${encodeURIComponent(item.language)}&area=${encodeURIComponent(item.area)}&level=${encodeURIComponent(item.level)}&chapter=${item.chapter}`;
     try {
       const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
-      if (!me.ok) throw new Error(me.status === 503 ? 'O login opcional ainda não está ativado neste domínio.' : 'Entre na sua conta para salvar o progresso.');
-      const user = await me.json(); title.textContent = user.email || 'Sessão ativa'; description.textContent = 'Seu progresso pertence somente à sua conta.';
+      if (!me.ok) throw new Error(me.status === 503 ? 'Optional sign-in is not enabled on this domain yet.' : 'Sign in to save progress.');
+      const user = await me.json(); title.textContent = user.email || 'Active session'; description.textContent = 'Your progress belongs only to your account.';
       const response = await fetch('/private/progress', { credentials: 'same-origin', cache: 'no-store' });
-      if (!response.ok) throw new Error('O progresso não pôde ser carregado agora.');
+      if (!response.ok) throw new Error('Progress could not be loaded now.');
       const data = await response.json() as { lessons: Lesson[]; exercises: Exercise[] };
-      status.textContent = `${data.lessons.length} aula(s) marcadas · ${data.exercises.length} exercício(s) registrados.`;
+      status.textContent = `${data.lessons.length} lessons marked · ${data.exercises.length} exercise attempts saved.`;
       for (const item of data.lessons) {
         const a = document.createElement('a'); a.className='record'; a.href=lessonLink(item);
-        const heading = document.createElement('strong'); heading.textContent=`${item.area.replaceAll('-', ' ')} · aula ${String(item.chapter).padStart(2,'0')}`;
-        const sub = document.createElement('span'); sub.textContent=`${item.language.toUpperCase()} · ${item.status === 'completed' ? 'Concluída' : 'Em andamento'} · ${item.updated_at}`;
+        const heading = document.createElement('strong'); heading.textContent=`${item.area.replaceAll('-', ' ')} · lesson ${String(item.chapter).padStart(2,'0')}`;
+        const sub = document.createElement('span'); sub.textContent=`${item.language.toUpperCase()} · ${item.status === 'completed' ? 'Completed' : 'In progress'} · ${item.updated_at}`;
         a.append(heading,sub); list.append(a);
       }
-      if (!data.lessons.length) status.textContent = 'Nenhuma aula marcada ainda. Comece por uma aula publicada.';
+      if (!data.lessons.length) status.textContent = 'No lessons marked yet. Begin with a published lesson.';
     } catch(error) {
-      title.textContent='Leitura sempre aberta'; description.textContent=String(error);
-      action.append(link('/private/login','Entrar com e-mail →'), link('/learn/','Estudar sem cadastro →'));
-      status.textContent='Seu histórico aparecerá quando o login opcional estiver disponível e você entrar.';
+      title.textContent='Reading always open'; description.textContent=String(error);
+      action.append(link('/private/login','Sign in with email →'), link('/learn/','Study without an account →'));
+      status.textContent='Your history will appear when optional sign-in is available and you sign in.';
     }
   </script>
 </BaseLayout>

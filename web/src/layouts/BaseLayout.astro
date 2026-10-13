@@ -1,10 +1,11 @@
 ---
 import '../styles/global.css';
-const { title = 'CyKin — conhecimento cibernético aberto', description = 'Cursos e livros públicos de segurança cibernética, para estudantes e inteligências artificiais.' } = Astro.props;
+import '../styles/reader.css';
+const { title = 'CyKin — open cybersecurity learning', description = 'Open cybersecurity courses, lessons and books for students and AI systems.' } = Astro.props;
 const path = Astro.url.pathname;
 ---
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,33 +16,51 @@ const path = Astro.url.pathname;
     <title>{title}</title>
     <script is:inline>
       try { document.documentElement.dataset.theme = localStorage.getItem('cykin-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
+      const supported = ['en', 'pt', 'es'];
+      const requested = new URLSearchParams(location.search).get('lang')?.slice(0, 2).toLowerCase();
+      const saved = (() => { try { return localStorage.getItem('cykin-language'); } catch (_) { return null; } })();
+      const browser = navigator.languages?.map(value => value.slice(0, 2).toLowerCase()).find(value => supported.includes(value)) || navigator.language.slice(0, 2).toLowerCase();
+      const language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
+      document.documentElement.lang = language;
+      document.documentElement.dataset.language = language;
     </script>
   </head>
   <body>
-    <a class="skip" href="#main">Pular para o conteúdo</a>
+    <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="shell nav">
-        <a class="brand" href="/" aria-label="CyKin, página inicial"><span class="brand-mark"><span>C</span></span> CyKin</a>
-        <nav class="nav-links" aria-label="Navegação principal">
-          <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Comece por aqui</a>
-          <a href="/learn/" aria-current={path === '/learn/' ? 'page' : undefined}>Cursos</a>
-          <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>Para IAs</a>
-          <a href="https://github.com/hiagokinlevi/CyKin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="brand" href="/" aria-label="CyKin, home"><span class="brand-mark"><span>C</span></span> CyKin</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
+          <a href="/learn/" aria-current={path === '/learn/' ? 'page' : undefined}>Courses</a>
+          <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
+          <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
         </nav>
         <div class="nav-actions">
-          <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro e escuro" title="Alternar tema">◐</button>
-          <a class="button secondary" href="/account/">Minha área</a>
+          <label class="site-language"><span class="sr-only">Site language</span><select id="site-language" aria-label="Site language"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option></select></label>
+          <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
+          <a class="button secondary" href="/account/">My area</a>
         </div>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="footer">
       <div class="shell footer-inner">
-        <span>© CyKin · Conteúdo livre no GitHub · Responsabilidade editorial: hiagokinlevi</span>
-        <div class="footer-links"><a href="/for-ai/">API & MCP</a><a href="https://github.com/hiagokinlevi/CyKin/blob/main/RIGHTS.md">Direitos</a><a href="https://github.com/hiagokinlevi/CyKin">Código e livros ↗</a></div>
+        <span>© CyKin · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
+        <div class="footer-links"><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/learn/">Books and courses</a></div>
       </div>
     </footer>
     <script>
+      import { translatePage, siteLanguage } from '../lib/i18n';
+      const selector = document.getElementById('site-language') as HTMLSelectElement;
+      selector.value = siteLanguage();
+      selector.addEventListener('change', () => {
+        try { localStorage.setItem('cykin-language', selector.value); } catch (_) { /* private mode */ }
+        const next = new URL(location.href);
+        if (next.searchParams.has('lang')) next.searchParams.set('lang', selector.value);
+        location.href = next.href;
+      });
+      translatePage();
       const toggle = document.getElementById('theme-toggle');
       toggle?.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';

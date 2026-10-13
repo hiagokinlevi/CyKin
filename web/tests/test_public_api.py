@@ -56,6 +56,21 @@ def test_unwritten_chapter_is_not_served_as_lesson(client):
     assert response.status_code == 404
 
 
+def test_full_book_and_internal_reference_source(client):
+    book = client.get('/api/books/rapid-1-month/incident-response-resilience/en')
+    assert book.status_code == 200
+    assert '<a id="ch-01"></a>' in book.text
+    assert '<a id="answers"></a>' in book.text
+
+    plan = client.get('/api/source', params={
+        'path': 'levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md',
+    })
+    assert plan.status_code == 200
+    assert '<a id="ch-01"></a>' in plan.text
+    for forbidden in ('../README.md', '/README.md', 'levels//README.md', 'missing.md'):
+        assert client.get('/api/source', params={'path': forbidden}).status_code == 404
+
+
 def test_stateless_mcp_public_and_progress_private(client):
     headers = {"Content-Type": "application/json", "Accept": "application/json, text/event-stream"}
     initialize = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})

@@ -16,6 +16,8 @@ uv run pywrangler dev --local --port 8787
 
 Open `http://localhost:8787/`. The site and `/api/*` and `/mcp` are public. The protected progress endpoints require a Cloudflare Access token and are unavailable in local development without a matching Access session.
 
+Readers use `/learn/` for the course and lesson guide, `/book/?level=...&area=...&lang=...` for the full manuscript, and `/read/?path=...` for course references and plans. These pages render the Markdown within CyKin and route book, chapter, index and reference links internally. The interface starts in English, follows a supported browser language (English, Portuguese or Spanish), and offers a persistent language switch. The selected course edition remains separate from the interface translation; an outline is never shown as a written lesson.
+
 ## Student sign-in and progress
 
 Reading never requires an account. Only `/private/*` is protected by the Cloudflare Access self-hosted application **CyKin student progress** for `cykin.org/private/*`. Its **Allow** policy requires a verified one-time email PIN. FastAPI independently validates the signed Access JWT, its issuer, application audience, expiration, not-before time and user ID. The D1 `cykin-progress` database stores completed lessons and attempted exercises under that user ID. The optional `/account/` page and all books, lessons, catalog, OpenAPI and MCP routes remain public.
@@ -42,6 +44,7 @@ For a content-only publication, push the Markdown to GitHub; the reader fetches 
 - `GET /api/courses/{level}/{area}/{language}` distinguishes authored chapters from outlines.
 - `GET /api/lessons/{level}/{area}/{language}/{chapter}` returns a chapter, exercises, worked answers and its GitHub source URL.
 - `GET /api/books/{level}/{area}/{language}` returns the current Markdown manuscript.
+- `GET /api/source?path=...` returns a public Markdown course reference for internal reading routes.
 - `GET /api/search/{level}/{area}/{language}?q=...` searches the current book.
 - `POST /mcp` provides stateless MCP Streamable HTTP discovery, reading and search. `GET /mcp` returns 405 as required when no event stream is offered.
 - `GET /llms.txt` gives AI clients a compact entry point.

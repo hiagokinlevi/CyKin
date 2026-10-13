@@ -304,6 +304,19 @@ async def api_book(request: Request, level: str, area: str, language: str) -> Re
     return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "public, max-age=60"})
 
 
+@app.get("/api/source")
+async def api_source(request: Request, path: str = Query(min_length=1, max_length=320)) -> Response:
+    """Serve a public Markdown reference so course navigation stays on CyKin."""
+    if (not path.endswith(".md") or path.startswith("/") or "\\" in path
+            or any(part in ("", ".", "..") for part in path.split("/"))
+            or not re.fullmatch(r"[\w./-]+", path, re.UNICODE)):
+        raise HTTPException(404, "Unknown public document")
+    document = await source_text(request, path)
+    if document is None:
+        raise HTTPException(404, "Public document not found")
+    return PlainTextResponse(document, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "public, max-age=60"})
+
+
 @app.get("/api/search/{level}/{area}/{language}")
 async def api_search(request: Request, level: str, area: str, language: str, q: str = Query(min_length=3, max_length=80)) -> dict[str, Any]:
     get_course(await catalog(request), level, area, language)

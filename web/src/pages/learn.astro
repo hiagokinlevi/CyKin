@@ -1,47 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Estudar · CyKin" description="Escolha idioma, tema e nível ou percorra todos os temas de um nível. Leia as aulas públicas do CyKin.">
+<BaseLayout title="Study · CyKin" description="Choose a language, subject and level, or browse every subject at a level. Read CyKin lessons here.">
   <section class="learn-heading">
     <div class="shell">
-      <div class="eyebrow">SALA DE ESTUDO · ACESSO ABERTO</div>
-      <h1>Seu caminho pelo conhecimento.</h1>
-      <p>Escolha o percurso e avance entre as aulas publicadas. Planos de capítulos aparecem identificados e não são apresentados como aulas prontas.</p>
+      <div class="eyebrow">STUDY ROOM · OPEN ACCESS</div>
+      <h1>Your path through knowledge.</h1>
+      <p>Choose a route and move through the published lessons. Planned chapters are identified and never presented as finished lessons.</p>
       <div class="study-controls card">
-        <div class="field"><label for="study-lang">Idioma</label><select id="study-lang"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option></select></div>
-        <div class="field"><label for="study-mode">Percurso</label><select id="study-mode"><option value="theme">Tema → nível</option><option value="level">Nível → todos os temas</option></select></div>
-        <div class="field"><label for="study-area">Tema</label><select id="study-area"></select></div>
-        <div class="field"><label for="study-level">Nível</label><select id="study-level"></select></div>
+        <div class="field"><label for="study-lang">Language</label><select id="study-lang"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option></select></div>
+        <div class="field"><label for="study-mode">Route</label><select id="study-mode"><option value="theme">Subject → level</option><option value="level">Level → all subjects</option></select></div>
+        <div class="field"><label for="study-area">Subject</label><select id="study-area"></select></div>
+        <div class="field"><label for="study-level">Level</label><select id="study-level"></select></div>
       </div>
-      <div id="status" class="status" role="status">Carregando o catálogo público…</div>
+      <div id="status" class="status" role="status">Loading the public catalog…</div>
     </div>
   </section>
   <section class="workspace shell">
-    <aside class="sidebar card" aria-label="Guia de cursos e aulas">
-      <div class="sidebar-head"><span class="eyebrow">GUIA CURRICULAR</span><h2 id="sidebar-title">Cursos</h2><p id="sidebar-subtitle">Selecione um percurso.</p></div>
+    <aside class="sidebar card" aria-label="Course and lesson guide">
+      <div class="sidebar-head"><span class="eyebrow">COURSE GUIDE</span><h2 id="sidebar-title">Courses</h2><p id="sidebar-subtitle">Choose a route.</p></div>
       <div id="courses" class="course-list"></div>
       <div id="lessons" class="lesson-list"></div>
     </aside>
     <div class="reader card">
-      <div id="reader-empty" class="empty-state"><span class="empty-symbol">◎</span><h2>Escolha um curso para começar.</h2><p>O guia exibirá as matérias em ordem e indicará quais capítulos já têm texto de aula publicado.</p></div>
+      <div id="reader-empty" class="empty-state"><span class="empty-symbol">◎</span><h2>Choose a course to begin.</h2><p>The guide shows subjects in order and marks chapters with published lesson text.</p></div>
       <div id="reader-content" hidden>
         <div class="reader-kicker" id="reader-kicker"></div>
         <h2 id="reader-title"></h2>
         <p id="reader-intro" class="muted"></p>
         <div id="source-bar" class="source-bar"></div>
         <article id="lesson-markdown" class="prose" hidden></article>
-        <section id="answer-section" class="answer-section" hidden><details><summary>Ver respostas trabalhadas</summary><div id="answer-markdown" class="prose"></div></details></section>
-        <section id="progress-tools" class="progress-tools" hidden><div class="eyebrow">SEU PROGRESSO · OPCIONAL</div><h3>Guardar esta aula</h3><p>Você pode estudar sem conta. Com login, marque a aula e registre suas respostas.</p><div id="progress-action"></div><div id="exercise-forms"></div><p id="progress-status" role="status"></p></section>
+        <section id="answer-section" class="answer-section" hidden><details><summary>View worked answers</summary><div id="answer-markdown" class="prose"></div></details></section>
+        <section id="progress-tools" class="progress-tools" hidden><div class="eyebrow">YOUR PROGRESS · OPTIONAL</div><h3>Save this lesson</h3><p>You can study without an account. With sign-in, mark lessons and save your answers.</p><div id="progress-action"></div><div id="exercise-forms"></div><p id="progress-status" role="status"></p></section>
         <div id="lesson-nav" class="lesson-nav"></div>
       </div>
     </div>
   </section>
   <script>
-    import { marked } from 'marked';
-    import DOMPurify from 'dompurify';
+    import { renderMarkdown } from '../lib/reader';
+    import { siteLanguage } from '../lib/i18n';
 
     type Edition = { authored_at_build: number; planned: number };
-    type Course = { number: number; level: string; area: string; title: string; planned_chapters: number; editions: Record<string, Edition>; github: string };
+    type Course = { number: number; level: string; area: string; title: string; planned_chapters: number; editions: Record<string, Edition> };
     type Catalog = { courses: Course[]; level_order: string[]; level_names: Record<string, Record<string, string>>; languages: string[] };
     type Lesson = { chapter: number; title: string; published: boolean; source_url: string };
     type Details = { course: Course; language: string; lessons: Lesson[]; published_chapters: number; planned_chapters: number; book_url: string | null; notice: string };
@@ -80,8 +80,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
     function renderCourseList() {
       $('courses').replaceChildren();
-      $('sidebar-title').textContent = mode.value === 'level' ? data.level_names[level.value][language.value] : selectedCourses()[0]?.title || 'Cursos';
-      $('sidebar-subtitle').textContent = mode.value === 'level' ? '23 temas, na ordem curricular' : 'Escolha um nível para este tema';
+      $('sidebar-title').textContent = mode.value === 'level' ? data.level_names[level.value][language.value] : selectedCourses()[0]?.title || 'Courses';
+      $('sidebar-subtitle').textContent = mode.value === 'level' ? '23 subjects in study order' : 'Choose a level for this subject';
       for (const item of selectedCourses()) {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'course-item' + (selectedCourse?.number === item.number ? ' active' : '');
         const title = mode.value === 'level' ? item.title : data.level_names[item.level][language.value];
@@ -90,81 +90,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
     function renderLessons(details: Details) {
-      $('lessons').replaceChildren(textElement('div','lesson-list-title','Aulas deste curso'));
+      $('lessons').replaceChildren(textElement('div','lesson-list-title','Lessons in this course'));
       for (const item of details.lessons) {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'lesson-item' + (selectedChapter === item.chapter ? ' active' : '');
         button.append(textElement('span','lesson-num',String(item.chapter).padStart(2,'0')), textElement('span','lesson-name',item.title), textElement('span','lesson-state',item.published ? '●' : '○'));
-        button.title = item.published ? 'Abrir aula publicada' : 'Capítulo planejado';
+        button.title = item.published ? 'Open published lesson' : 'Planned chapter';
         button.addEventListener('click', () => void selectLesson(item.chapter)); $('lessons').append(button);
       }
     }
     async function selectCourse(course: Course, chapter?: number) {
       const id = ++requestId; selectedCourse = course; selectedChapter = null; currentDetails = null;
-      renderCourseList(); $('lessons').replaceChildren(); $('status').textContent = 'Carregando guia do curso…';
+      renderCourseList(); $('lessons').replaceChildren(); $('status').textContent = 'Loading the course guide…';
       $('reader-empty').hidden = true; $('reader-content').hidden = false;
-      $('reader-kicker').textContent = `CURSO ${String(course.number).padStart(3,'0')} · ${data.level_names[course.level][language.value]}`;
-      $('reader-title').textContent = course.title; $('reader-intro').textContent = 'Lendo o plano e o manuscrito atuais no GitHub…';
+      $('reader-kicker').textContent = `COURSE ${String(course.number).padStart(3,'0')} · ${data.level_names[course.level][language.value]}`;
+      $('reader-title').textContent = course.title; $('reader-intro').textContent = 'Loading the current course plan and book…';
       $('lesson-markdown').hidden = true; $('answer-section').hidden = true; $('lesson-nav').replaceChildren();
       urlState();
       try {
         const response = await fetch(`/api/courses/${course.level}/${course.area}/${language.value}`);
-        if (!response.ok) throw new Error('Não foi possível carregar este curso.');
+        if (!response.ok) throw new Error('This course could not be loaded.');
         const details = await response.json() as Details;
         if (id !== requestId) return;
         currentDetails = details; renderLessons(details);
-        $('reader-intro').textContent = `${details.published_chapters} de ${details.planned_chapters} capítulos têm texto de aula publicado nesta edição. Um capítulo listado no plano ainda pode não ter aula.`;
+        $('reader-intro').textContent = `${details.published_chapters} of ${details.planned_chapters} chapters have published lesson text in this edition. A planned chapter may not yet have a lesson.`;
         $('source-bar').replaceChildren();
-        const source = document.createElement('a'); source.href = details.book_url || course.github; source.target = '_blank'; source.rel = 'noopener noreferrer'; source.textContent = details.book_url ? 'Abrir o livro no GitHub ↗' : 'Abrir o curso no GitHub ↗'; $('source-bar').append(source);
-        $('status').textContent = `Guia atualizado para ${language.options[language.selectedIndex].text}.`;
+        const source = document.createElement('a'); source.href = details.book_url ? '/book/?' + new URLSearchParams({level:course.level, area:course.area, lang:language.value}) : '/read/?' + new URLSearchParams({path:`levels/${course.level}/${course.area}/${language.value}/book/PLAN.md`}); source.textContent = details.book_url ? 'Read the full book here →' : 'Read the course plan here →'; $('source-bar').append(source);
+        $('status').textContent = `Guide updated for ${language.options[language.selectedIndex].text}.`;
         if (chapter) await selectLesson(chapter);
         else urlState();
-      } catch (error) { if (id === requestId) { $('status').textContent = String(error); $('reader-intro').textContent = 'Leia o curso diretamente no GitHub enquanto o serviço é restabelecido.'; } }
-    }
-    async function renderMarkdown(target: HTMLElement, markdown: string, sourceUrl: string) {
-      for (const old of target.querySelectorAll<HTMLImageElement>('img[data-mermaid-url]')) URL.revokeObjectURL(old.dataset.mermaidUrl!);
-      const html = await marked.parse(markdown, { gfm: true });
-      target.innerHTML = DOMPurify.sanitize(html, { ADD_TAGS: ['input'], ADD_ATTR: ['class', 'id'] });
-      const fileBase = sourceUrl.split('#')[0];
-      const directory = fileBase.slice(0, fileBase.lastIndexOf('/') + 1);
-      for (const link of target.querySelectorAll<HTMLAnchorElement>('a[href]')) {
-        const href = link.getAttribute('href') || '';
-        if (href.startsWith('#')) { link.href = fileBase + href; continue; }
-        if (!/^(https?:|mailto:)/i.test(href)) link.href = new URL(href, directory).href;
-        link.target = '_blank'; link.rel = 'noopener noreferrer';
-      }
-      for (const image of target.querySelectorAll<HTMLImageElement>('img[src]')) {
-        const src = image.getAttribute('src') || '';
-        if (!/^https?:/i.test(src)) image.src = new URL(src, directory.replace('github.com/hiagokinlevi/CyKin/blob/main/', 'raw.githubusercontent.com/hiagokinlevi/CyKin/main/')).href;
-        image.loading = 'lazy';
-      }
-      const diagrams = target.querySelectorAll<HTMLElement>('pre code.language-mermaid');
-      if (diagrams.length) {
-      const mermaid = (await import('mermaid')).default;
-      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', flowchart: { htmlLabels: false }, theme: document.documentElement.dataset.theme === 'light' ? 'default' : 'dark' });
-      for (const block of diagrams) {
-        const parent = block.parentElement!; const code = block.textContent || '';
-        const container = document.createElement('figure'); container.className = 'diagram';
-        try {
-          const rendered = await mermaid.render('mermaid-' + Math.random().toString(36).slice(2), code);
-          // SVG-as-image keeps Mermaid's foreignObject labels visible while the
-          // browser treats the document as inert, isolated image content.
-          const url = URL.createObjectURL(new Blob([rendered.svg], { type: 'image/svg+xml' }));
-          const viewport = document.createElement('div'); viewport.className = 'diagram-viewport';
-          const picture = document.createElement('img'); picture.src = url; picture.dataset.mermaidUrl = url; picture.alt = 'Technical diagram from this lesson';
-          picture.addEventListener('load', () => {
-            const ratio = picture.naturalWidth / picture.naturalHeight;
-            if (ratio > 5) picture.classList.add('diagram-wide');
-            if (ratio < .5) picture.classList.add('diagram-tall');
-          }, { once: true });
-          viewport.append(picture);
-          const full = document.createElement('a'); full.href = url; full.target = '_blank'; full.rel = 'noopener noreferrer'; full.textContent = 'Open full diagram ↗';
-          const source = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = 'View diagram source';
-          const raw = document.createElement('pre'); raw.textContent = code; source.append(summary, raw);
-          container.append(viewport, full, source); parent.replaceWith(container);
-        }
-        catch { /* Keep the original source when a diagram is invalid. */ }
-      }
-      }
+      } catch (error) { if (id === requestId) { $('status').textContent = String(error); $('reader-intro').textContent = 'This course is temporarily unavailable. Please try again shortly.'; } }
     }
     async function showProgress(lesson: LessonData, course: Course) {
       const tools = $('progress-tools'), action = $('progress-action'), forms = $('exercise-forms');
@@ -173,25 +127,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
         if (!me.ok) throw new Error('Sign-in unavailable');
       } catch {
-        const login = document.createElement('a'); login.className='button secondary'; login.href='/account/'; login.textContent='Entrar para guardar progresso →'; action.append(login); return;
+        const login = document.createElement('a'); login.className='button secondary'; login.href='/account/'; login.textContent='Sign in to save progress →'; action.append(login); return;
       }
       const base = {level:course.level, area:course.area, language:language.value, chapter:lesson.chapter};
-      const mark = document.createElement('button'); mark.className='button gold'; mark.type='button'; mark.textContent='Marcar aula concluída ✓';
+      const mark = document.createElement('button'); mark.className='button gold'; mark.type='button'; mark.textContent='Mark lesson complete ✓';
       mark.addEventListener('click', async () => {
         const response = await fetch('/private/progress/lesson', { method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json'}, body:JSON.stringify({...base,status:'completed'}) });
-        $('progress-status').textContent = response.ok ? 'Aula concluída e salva em sua área.' : 'Não foi possível salvar agora.';
+        $('progress-status').textContent = response.ok ? 'Lesson completed and saved to your account.' : 'Could not save right now.';
       }); action.append(mark);
       for (const digits of lesson.exercise_ids) {
         const id = `EX${digits}`;
         const form = document.createElement('form'); form.className='exercise-form';
-        const label = document.createElement('label'); label.textContent=`Sua resposta para ${id}`; label.htmlFor=`answer-${id}`;
-        const input = document.createElement('textarea'); input.id=`answer-${id}`; input.maxLength=20_000; input.rows=4; input.placeholder='Registre sua tentativa. Confira depois as respostas trabalhadas.';
-        const save = document.createElement('button'); save.type='submit'; save.className='button secondary'; save.textContent='Salvar tentativa';
+        const label = document.createElement('label'); label.textContent=`Your answer for ${id}`; label.htmlFor=`answer-${id}`;
+        const input = document.createElement('textarea'); input.id=`answer-${id}`; input.maxLength=20_000; input.rows=4; input.placeholder='Save your attempt, then compare the worked answer.';
+        const save = document.createElement('button'); save.type='submit'; save.className='button secondary'; save.textContent='Save attempt';
         form.append(label,input,save);
         form.addEventListener('submit', async event => {
           event.preventDefault(); save.disabled=true;
-          try { const response = await fetch('/private/progress/exercise', {method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...base,exercise_id:id,answer:input.value,status:'attempted'})}); $('progress-status').textContent = response.ok ? `${id} registrado em sua área.` : `Não foi possível registrar ${id}.`; }
-          catch { $('progress-status').textContent = `Não foi possível registrar ${id}.`; }
+          try { const response = await fetch('/private/progress/exercise', {method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...base,exercise_id:id,answer:input.value,status:'attempted'})}); $('progress-status').textContent = response.ok ? `${id} saved to your account.` : `Could not save ${id}.`; }
+          catch { $('progress-status').textContent = `Could not save ${id}.`; }
           finally { save.disabled=false; }
         }); forms.append(form);
       }
@@ -202,27 +156,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const item = details.lessons.find(entry => entry.chapter === chapter);
       if (!item) return;
       const id = ++requestId; selectedChapter = chapter; renderLessons(details); urlState();
-      $('reader-kicker').textContent = `AULA ${String(chapter).padStart(2,'0')} · CURSO ${String(course.number).padStart(3,'0')}`;
+      $('reader-kicker').textContent = `LESSON ${String(chapter).padStart(2,'0')} · COURSE ${String(course.number).padStart(3,'0')}`;
       $('reader-title').textContent = item.title;
       $('lesson-markdown').hidden = true; $('answer-section').hidden = true; $('progress-tools').hidden = true; $('lesson-nav').replaceChildren();
       $('source-bar').replaceChildren();
-      const source = document.createElement('a'); source.href = item.source_url; source.target = '_blank'; source.rel = 'noopener noreferrer'; source.textContent = item.published ? 'Texto original no GitHub ↗' : 'Ver plano do capítulo no GitHub ↗'; $('source-bar').append(source);
-      if (!item.published) { $('reader-intro').textContent = 'Esta matéria está no plano do curso. O texto da aula ainda não foi publicado nesta edição.'; return; }
-      $('reader-intro').textContent = 'Carregando a aula publicada…';
+      const source = document.createElement('a'); source.href = item.published ? '/book/?' + new URLSearchParams({level:course.level, area:course.area, lang:language.value}) + `#ch-${String(chapter).padStart(2,'0')}` : '/read/?' + new URLSearchParams({path:`levels/${course.level}/${course.area}/${language.value}/book/PLAN.md`}) + `#ch-${String(chapter).padStart(2,'0')}`; source.textContent = item.published ? 'Read this chapter in the book →' : 'Read the chapter plan →'; $('source-bar').append(source);
+      if (!item.published) { $('reader-intro').textContent = 'This subject is in the course plan. Its lesson text has not been published in this edition.'; return; }
+      $('reader-intro').textContent = 'Loading the published lesson…';
       try {
         const response = await fetch(`/api/lessons/${course.level}/${course.area}/${language.value}/${chapter}`);
-        if (!response.ok) throw new Error('A aula não está disponível neste momento.');
+        if (!response.ok) throw new Error('The lesson is temporarily unavailable.');
         const lesson = await response.json() as LessonData;
         if (id !== requestId) return;
         $('reader-title').textContent = lesson.title;
-        $('reader-intro').textContent = `${lesson.exercise_ids.length} exercício(s) identificados nesta aula · Fonte: GitHub main`;
-        await renderMarkdown($('lesson-markdown'), lesson.markdown, lesson.source_url); $('lesson-markdown').hidden = false;
-        if (lesson.worked_answers) { await renderMarkdown($('answer-markdown'), lesson.worked_answers, lesson.source_url); $('answer-section').hidden = false; }
+        $('reader-intro').textContent = `${lesson.exercise_ids.length} exercise(s) found in this lesson · Public book edition`;
+        await renderMarkdown($('lesson-markdown'), lesson.markdown, lesson.source_url, language.value); $('lesson-markdown').hidden = false;
+        if (lesson.worked_answers) { await renderMarkdown($('answer-markdown'), lesson.worked_answers, lesson.source_url, language.value); $('answer-section').hidden = false; }
         void showProgress(lesson, course);
         const navigation = $('lesson-nav');
         const add = (label: string, nextChapter: number | null) => { const button = document.createElement('button'); button.className = 'button secondary'; button.type = 'button'; button.textContent = label; button.disabled = nextChapter === null; if (nextChapter !== null) button.addEventListener('click', () => void selectLesson(nextChapter)); navigation.append(button); };
-        add('← Aula anterior', lesson.previous); add('Próxima aula →', lesson.next);
-        $('status').textContent = `Aula ${chapter} carregada do GitHub.`;
+        add('← Previous lesson', lesson.previous);
+        const guide = document.createElement('button'); guide.className = 'button secondary'; guide.type = 'button'; guide.textContent = 'Course guide';
+        guide.addEventListener('click', () => void selectCourse(course)); navigation.append(guide);
+        if (lesson.next !== null) add('Next lesson →', lesson.next);
+        else {
+          const nextCourse = data.courses.find(item => item.number === course.number + 1);
+          if (nextCourse) {
+            const next = document.createElement('a'); next.className = 'button secondary'; next.textContent = 'Next course →';
+            next.href = '/learn/?' + new URLSearchParams({ mode: 'theme', lang: language.value, area: nextCourse.area, level: nextCourse.level });
+            navigation.append(next);
+          }
+        }
+        $('status').textContent = `Lesson ${chapter} loaded from the public book.`;
       } catch (error) { if (id === requestId) $('reader-intro').textContent = String(error); }
     }
     function changeRoute() {
@@ -231,14 +196,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       renderCourseList(); $('lessons').replaceChildren(); $('reader-empty').hidden = false; $('reader-content').hidden = true; urlState();
     }
     try {
-      const response = await fetch('/api/catalog'); if (!response.ok) throw new Error('Catálogo indisponível');
+      const response = await fetch('/api/catalog'); if (!response.ok) throw new Error('Catalog unavailable');
       data = await response.json() as Catalog;
       fill(area, data.courses.filter(item => item.level === data.level_order[0]).map(item => [item.area, item.title]), params.get('area'));
-      fill(level, data.level_order.map(item => [item, data.level_names[item][params.get('lang') || 'en']]), params.get('level'));
-      language.value = params.get('lang') || 'en'; if (!['en','pt','es'].includes(language.value)) language.value = 'en';
+      const initialLanguage = params.get('lang') || siteLanguage();
+      fill(level, data.level_order.map(item => [item, data.level_names[item][initialLanguage] || data.level_names[item].en]), params.get('level'));
+      language.value = initialLanguage; if (!['en','pt','es'].includes(language.value)) language.value = 'en';
       mode.value = params.get('mode') === 'level' ? 'level' : 'theme';
       area.closest('.field')!.toggleAttribute('hidden', mode.value === 'level');
-      $('status').textContent = 'Escolha um curso para consultar o livro público.';
+      $('status').textContent = 'Choose a course to read its public book.';
       renderCourseList();
       const initial = data.courses.find(item => item.number === Number(params.get('course')));
       const queryCourse = initial && selectedCourses().some(item => item.number === initial.number) ? initial :
@@ -247,8 +213,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       mode.addEventListener('change', changeRoute);
       area.addEventListener('change', changeRoute);
       level.addEventListener('change', changeRoute);
-      language.addEventListener('change', () => { fill(level, data.level_order.map(item => [item, data.level_names[item][language.value]]), level.value); changeRoute(); });
-    } catch { $('status').textContent = 'O catálogo está indisponível. Consulte os livros no GitHub.'; }
+      language.addEventListener('change', () => {
+        try { localStorage.setItem('cykin-language', language.value); } catch { /* private mode */ }
+        const next = new URL(location.href); next.searchParams.set('lang', language.value); location.href = next.href;
+      });
+    } catch { $('status').textContent = 'The catalog is temporarily unavailable.'; }
   </script>
 </BaseLayout>
 
