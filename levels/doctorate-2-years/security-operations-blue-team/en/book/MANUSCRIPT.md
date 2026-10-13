@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Doctoral Research Track
 
 - Language: English (`en`); course 199, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates who will produce original, reproducible research on security operations, alert quality and analyst decision-making.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -48,23 +48,23 @@ SOC research shapes how organisations spend scarce analyst time. A study that ov
 
 ### 1.2 Three constructs, kept apart
 
-**Detection quality** asks whether a rule fires on the activity it targets and stays quiet otherwise (precision, recall). **Triage quality** asks whether an analyst, given an alert, reaches the right disposition (accuracy, time, agreement). **Operational outcome** asks whether incidents are contained sooner or with less harm. A study can improve one while harming another; claims must name which construct was measured.
+**Detection quality** asks whether a rule fires on the activity it targets and stays quiet otherwise (precision, recall). **Triage quality** asks whether an analyst, given an alert, reaches the right disposition (accuracy, time, agreement). **Operational outcome** asks whether incidents are contained sooner or with less harm. A study can improve one while harming another; claims must name which construct was measured. Nadia's thesis measures triage quality only. Her synthetic alerts have known labels, so accuracy can be scored exactly, but nothing in the design shows whether Northgate would contain incidents faster. Her conclusion chapter keeps that boundary.
 
 ### 1.3 Data for research
 
-Real SOC data contains personal data, business secrets and evidence of live incidents. It is rarely shareable and may not be consented for research. Synthetic alert sets with known ground truth allow exact scoring and open publication. Where operational data is needed, it is used under a data-sharing agreement, minimised and pseudonymised, with ethics approval.
+Real SOC data contains personal data, business secrets and evidence of live incidents. It is rarely shareable and may not be consented for research. Synthetic alert sets with known ground truth allow exact scoring and open publication. Where operational data is needed, it is used under a data-sharing agreement, minimised and pseudonymised, with ethics approval. Nadia's corpus is synthetic for these reasons: Northgate serves several municipalities, and its real alerts would include residents' and staff data. The only operational data in her study are the analysts' own triage logs, collected with consent and anonymised before analysis, under ethics approval from Calder University.
 
 ### 1.4 Pre-registration
 
-Before the main study the candidate registers hypotheses, primary and secondary measures, sample size reasoning, analysis plan and exclusion rules. Later changes are allowed but logged with reasons, so readers can tell planned from exploratory results.
+Before the main study the candidate registers hypotheses, primary and secondary measures, sample size reasoning, analysis plan and exclusion rules. Later changes are allowed but logged with reasons, so readers can tell planned from exploratory results. Nadia registers accuracy as the primary measure and time-to-disposition as secondary, with the paired analysis and the exclusion rule for incomplete sessions. Her change log, starting with version 1.1 after the pilot, records each later change, so readers can see that moving context fields to the top of the card happened before the main study, not after the results were known.
 
 ### 1.5 Interests and tools
 
-Vendors may fund SOC studies or supply tools. Funding, relationships and tool versions are declared. A study that tests a product must not let the vendor approve conclusions.
+Vendors may fund SOC studies or supply tools. Funding, relationships and tool versions are declared. A study that tests a product must not let the vendor approve conclusions. Nadia's study uses no vendor product; the alert cards are her own design, and the rules are written in the open Sigma format. She still records the Python version used to generate alerts and score decisions, and Calder's declaration form states that Northgate receives no payment or product benefit from the study. Her thesis lists these declarations in the front matter, so examiners see them before the results.
 
 ### 1.6 Ethics with analysts as participants
 
-When analysts are participants, their performance data could affect careers. Consent is voluntary, managers do not see individual scores, and participants may withdraw.
+When analysts are participants, their performance data could affect careers. Consent is voluntary, managers do not see individual scores, and participants may withdraw. At Northgate, Ruth Okonkwo approved participation in work time but agreed in writing not to see individual accuracy scores. Analysts receive random IDs before the sessions, and results are reported only in aggregate. An analyst who withdraws can have their logs removed up to the point of analysis, and the consent form states that date. Nadia also promised to present results to the analysts first.
 
 ### Worked example
 
@@ -104,7 +104,7 @@ You will (1) map open problems in security operations research; (2) explain the 
 
 ### 2.1 The base-rate problem
 
-Axelsson (2000) showed that because genuine intrusions are rare among the events a detector sees, even a small false-positive rate produces mostly false alarms. Precision depends on prevalence as well as on the detector.
+Axelsson (2000) showed that because genuine intrusions are rare among the events a detector sees, even a small false-positive rate produces mostly false alarms. Precision depends on prevalence as well as on the detector. For Nadia's study, the base-rate argument is the motivation: if rules fire mostly on benign activity, the analyst's decision at triage decides whether a SOC is useful. Her experiment therefore measures what happens at that second stage, where the alerts that detection could not filter must be sorted by people.
 
 ### Lab — precision under different base rates
 
@@ -132,23 +132,23 @@ prevalence=1e-04 TPR=0.95 FPR=1e-03 -> precision=0.087
 
 ### 2.2 Reading the result
 
-With 95% true-positive rate and 1% false-positive rate, precision is 0.490 at a prevalence of one in a hundred, 0.087 at one in a thousand and 0.009 at one in ten thousand. Cutting the false-positive rate to 0.1% lifts the one-in-a-thousand case only to 0.487. Rare-event detection needs very low false-positive rates or a second stage, such as analyst triage, to be useful.
+With 95% true-positive rate and 1% false-positive rate, precision is 0.490 at a prevalence of one in a hundred, 0.087 at one in a thousand and 0.009 at one in ten thousand. Cutting the false-positive rate to 0.1% lifts the one-in-a-thousand case only to 0.487. Rare-event detection needs very low false-positive rates or a second stage, such as analyst triage, to be useful. Nadia uses the lab to set expectations for her corpus. Because real alert streams are dominated by benign triggers, her corpus includes many of them deliberately, so that triage decisions are tested on the alerts analysts most often see.
 
 ### 2.3 Alert fatigue
 
-Alahmadi, Axon and Martinovic (2022) interviewed SOC practitioners and found that many alarms called "false positives" are benign triggers: the rule matched real behaviour that was legitimate in context. They propose that alarms be Reliable, Explainable, Analytical, Contextual and Transferable. Hassan et al. (2019) used provenance graphs to rank alerts and reduce fatigue.
+Alahmadi, Axon and Martinovic (2022) interviewed SOC practitioners and found that many alarms called "false positives" are benign triggers: the rule matched real behaviour that was legitimate in context. They propose that alarms be Reliable, Explainable, Analytical, Contextual and Transferable. Hassan et al. (2019) used provenance graphs to rank alerts and reduce fatigue. The benign-trigger finding is the starting point of Nadia's project: if many alarms are correct matches on legitimate activity, analysts need context to recognise legitimacy quickly. Her enriched cards test the Contextual property directly. Ranking methods like Hassan et al.'s reduce how many alerts reach analysts, which is complementary to her question rather than a competitor.
 
 ### 2.4 Machine learning caution
 
-Sommer and Paxson (2010) argued that anomaly detection suits closed worlds poorly: attacks are rare, benign variety is huge, and errors are costly to explain. Their critique still frames how frontier work must be evaluated.
+Sommer and Paxson (2010) argued that anomaly detection suits closed worlds poorly: attacks are rare, benign variety is huge, and errors are costly to explain. Their critique still frames how frontier work must be evaluated. Nadia's study avoids anomaly detection altogether; her rules are explicit Sigma conditions. The critique still shapes her design, because it warns that a method evaluated on convenient data can fail in operation. That is why she reports realism as a limitation and plans an operational pilot as the test that could falsify her claim.
 
 ### 2.5 Human and organisational factors
 
-Sundaramurthy et al. (2014) embedded researchers in SOCs and found tacit knowledge and tooling friction central. Kokulu et al. (2019) stressed mismatches between management metrics and analyst reality.
+Sundaramurthy et al. (2014) embedded researchers in SOCs and found tacit knowledge and tooling friction central. Kokulu et al. (2019) stressed mismatches between management metrics and analyst reality. These studies remind Nadia that triage happens inside an organisation, with habits and tools that a laboratory session removes. Her pilot found exactly such friction: analysts did not see a field placed at the bottom of the card. A senior analyst's later comment that the raw command line was missing came from the same kind of tacit knowledge.
 
 ### 2.6 Nadia's position
 
-Nadia's thesis sits between detection and triage: it tests whether adding context to alerts, as the "Contextual" property suggests, improves analysts' decisions on benign triggers without hiding true attacks.
+Nadia's thesis sits between detection and triage: it tests whether adding context to alerts, as the "Contextual" property suggests, improves analysts' decisions on benign triggers without hiding true attacks. The position makes her claim specific. She does not test whether context improves detection, nor whether it shortens incidents; she tests whether analysts who see context reach the right disposition more often. Her worry from the start was the second half of the sentence: that context might also lead analysts to dismiss a true attack, which is why harms are measured alongside accuracy.
 
 ### Worked example
 
@@ -188,11 +188,11 @@ You will (1) state an original contribution precisely; (2) separate the contribu
 
 ### 3.1 What counts as original
 
-An original contribution adds knowledge others can use and test: a validated method, a measured effect, a reusable dataset. Nadia proposes three items: a labelled synthetic alert corpus with benign triggers; a controlled experiment on context enrichment; and an analysis of where enrichment fails.
+An original contribution adds knowledge others can use and test: a validated method, a measured effect, a reusable dataset. Nadia proposes three items: a labelled synthetic alert corpus with benign triggers; a controlled experiment on context enrichment; and an analysis of where enrichment fails. Each item can be checked separately by others. The corpus can be reused for different experiments; the measured effect can be challenged by repeating the study; and the failure analysis gives designers concrete cases. Nadia's contribution statement names the three items so examiners can judge each one against its evidence.
 
 ### 3.2 Supporting work
 
-Detection rules must be good enough that triage, not detection, is the bottleneck in the experiment. Nadia evaluates candidate rules on labelled synthetic events before building alert cards. Rules are written in the Sigma format from SigmaHQ so others can read them in a vendor-neutral way.
+Detection rules must be good enough that triage, not detection, is the bottleneck in the experiment. Nadia evaluates candidate rules on labelled synthetic events before building alert cards. Rules are written in the Sigma format from SigmaHQ so others can read them in a vendor-neutral way. The rule evaluation is supporting work, not a contribution in itself. Its purpose is to make sure that the alerts in the experiment come from plausible rules, including one that fires on benign activity, so that triage decisions are tested on realistic material.
 
 ### Lab — replaying detection conditions
 
@@ -227,19 +227,19 @@ v2 office-parent  TP=4 FP=0 FN=0 precision=1.00 recall=1.00
 
 ### 3.3 Reading the result
 
-Condition v1 (encoded PowerShell command line) catches 3 of 4 attacks but also fires on 3 benign events — the software-deployment agent and an administrator — giving precision 0.50. Condition v2 (script host whose parent is an Office application) catches all 4 attacks with no false alarms in this small set. The benign triggers of v1 are exactly the kind of alerts context should help analysts dismiss, so Nadia keeps v1's alerts in the corpus as triage material.
+Condition v1 (encoded PowerShell command line) catches 3 of 4 attacks but also fires on 3 benign events — the software-deployment agent and an administrator — giving precision 0.50. Condition v2 (script host whose parent is an Office application) catches all 4 attacks with no false alarms in this small set. The benign triggers of v1 are exactly the kind of alerts context should help analysts dismiss, so Nadia keeps v1's alerts in the corpus as triage material. Both results come from a small labelled set, so Nadia does not claim v2 is a better rule in general; she only checks that each rule behaves as intended on known events. The administrator and deployment-agent alerts give her benign triggers whose context, such as user role or a history of benign closures, is exactly what enriched cards display.
 
 ### 3.4 Novelty
 
-Her review shows prior work measured analysts' perceptions (Alahmadi et al., 2022) and automated ranking (Hassan et al., 2019), but few controlled experiments on context in alert cards with known ground truth.
+Her review shows prior work measured analysts' perceptions (Alahmadi et al., 2022) and automated ranking (Hassan et al., 2019), but few controlled experiments on context in alert cards with known ground truth. The gap is narrow but real: practitioners report that context helps, and ranking systems reduce volume, yet few studies measure whether showing context changes analysts' decisions on alerts with known truth. Nadia's literature map supports this claim, and she keeps the search record so examiners can check it. The search covered security venues and human-factors venues.
 
 ### 3.5 Feasibility
 
-Eight analysts from the fictional **Northgate Shared SOC**, which serves several municipalities, agree to participate in work time with manager **Ruth Okonkwo**'s approval; the corpus is synthetic; the study fits in two semesters.
+Eight analysts from the fictional **Northgate Shared SOC**, which serves several municipalities, agree to participate in work time with manager **Ruth Okonkwo**'s approval; the corpus is synthetic; the study fits in two semesters. Running sessions in work time with the manager's approval avoids asking analysts to give up their own time, but it also means that urgent incidents could interrupt a session. The protocol allows a session to be paused and resumed, with the pause recorded. Two semesters allow for the pilot, the main study and the analysis with some slack.
 
 ### 3.6 Risks
 
-Recruitment may fall short; analysts may recognise synthetic patterns. Mitigations: a reserve pool from a second SOC; realism review by two senior analysts.
+Recruitment may fall short; analysts may recognise synthetic patterns. Mitigations: a reserve pool from a second SOC; realism review by two senior analysts. Recognising synthetic patterns could inflate accuracy in both conditions, which would narrow any difference. The realism review checks the corpus before the main study; the second SOC's reserve pool is contacted only if Northgate's volunteers fall below eight. Both mitigations are recorded in the proposal with who is responsible. Nadia reviews the risk list with Prof. Grant each month until the main study ends.
 
 ### Worked example
 
@@ -278,11 +278,11 @@ You will (1) replicate a baseline before testing an intervention; (2) measure in
 
 ### 4.1 Why replicate a baseline
 
-Before claiming enrichment helps, Nadia must show her setup reproduces known behaviour: analysts in the baseline condition should show accuracy and benign-trigger confusion similar to what practitioners report. If the baseline is odd, the comparison is meaningless.
+Before claiming enrichment helps, Nadia must show her setup reproduces known behaviour: analysts in the baseline condition should show accuracy and benign-trigger confusion similar to what practitioners report. If the baseline is odd, the comparison is meaningless. Nadia's check is that baseline analysts confuse benign triggers with attacks at a rate similar to what practitioners describe. If baseline accuracy were near perfect, enrichment would have nothing to improve and the corpus would be too easy. Her pilot and baseline results are compared with the benign-trigger reports in the literature before the main analysis.
 
 ### 4.2 Ground-truth labels
 
-The corpus labels are written by Nadia when she generates alerts, but "malicious" versus "benign" can be debatable for borderline cases. Two senior analysts independently label 20 sample alerts to test whether labels are clear.
+The corpus labels are written by Nadia when she generates alerts, but "malicious" versus "benign" can be debatable for borderline cases. Two senior analysts independently label 20 sample alerts to test whether labels are clear. If the two senior analysts disagree often, the ground truth itself is unclear and accuracy cannot be scored fairly. The 20 alerts are drawn to include borderline cases, not only obvious ones, so the test is demanding. The senior analysts do not take part in the main study.
 
 ### Lab — agreement on labels
 
@@ -307,19 +307,19 @@ n=20 observed agreement=0.90 chance=0.625 kappa=0.73
 
 ### 4.3 Reading the result
 
-The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how often each says "malicious", is 0.625, so Cohen's kappa is 0.73 — "substantial" on the Landis and Koch (1977) scale. The two disagreements are discussed; one label is corrected and one alert is rewritten to remove ambiguity.
+The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how often each says "malicious", is 0.625, so Cohen's kappa is 0.73 — "substantial" on the Landis and Koch (1977) scale. The two disagreements are discussed; one label is corrected and one alert is rewritten to remove ambiguity. Kappa is lower than the raw agreement because both analysts called many alerts malicious, which makes chance agreement high. The corrected label and the rewritten alert are recorded in the change log, including alert 17. With these fixes, Nadia treats the corpus labels as reliable enough to score the main study.
 
 ### 4.4 The pilot
 
-Two volunteer analysts not in the main study triage 40 alerts in each condition. The pilot checks timing, instructions, the alert-card layout and logging.
+Two volunteer analysts not in the main study triage 40 alerts in each condition. The pilot checks timing, instructions, the alert-card layout and logging. The pilot analysts use the same cards and instructions as the main study, so any problem they meet would also affect the main sessions. They are asked afterwards what confused them, and Nadia watches one session to see where they hesitate. Their logs are kept separately and are not part of any reported effect. Pilot analysts also time each session.
 
 ### 4.5 What the pilot found
 
-Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits sessions into two of 40 alerts.
+Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits sessions into two of 40 alerts. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second. The pilot also confirmed that the logging worked: every disposition and change was recorded with a timestamp, so no fix was needed there.
 
 ### 4.6 Pilot data
 
-Pilot results are not used to estimate effects; they test procedure. This is stated in the registration.
+Pilot results are not used to estimate effects; they test procedure. This is stated in the registration. Using pilot data for estimates would mix procedure testing with outcome measurement, and the pilot cards differed from the final ones after the layout change. Keeping them apart means the main results come only from the registered design. Nadia still reports what the pilot found about procedure, because it explains why the final cards look as they do. The registered plan states this separation explicitly.
 
 ### Worked example
 
@@ -358,11 +358,11 @@ You will (1) run a controlled crossover study; (2) estimate effects with interva
 
 ### 5.1 Design
 
-Eight analysts each triage 160 alerts: 80 baseline cards and 80 enriched cards, in counterbalanced order, with alert sets swapped between halves. Each analyst sees each alert once. Enriched cards add asset criticality, user role, and the count of similar alerts closed as benign in the last 30 days.
+Eight analysts each triage 160 alerts: 80 baseline cards and 80 enriched cards, in counterbalanced order, with alert sets swapped between halves. Each analyst sees each alert once. Enriched cards add asset criticality, user role, and the count of similar alerts closed as benign in the last 30 days. Counterbalancing means half the analysts see baseline cards first and half see enriched cards first, so learning and fatigue affect both conditions equally. Swapping alert sets between halves ensures that differences come from the cards, not from easier alerts in one condition. The three enriched fields were chosen from the Contextual property and from what Northgate's analysts said they look up most often.
 
 ### 5.2 Primary measure
 
-Accuracy: the share of dispositions matching ground truth. Pooled across analysts, each condition has 160 alert decisions in the primary sample used for the registered interval.
+Accuracy: the share of dispositions matching ground truth. Pooled across analysts, each condition has 160 alert decisions in the primary sample used for the registered interval. Accuracy is scored against the corpus labels confirmed by the senior analysts. Decisions are logged automatically, including any change of disposition before submission, so the final decision is the one scored. Time-to-disposition is recorded in the same log but treated as secondary, as registered. An alert is scored correct only when the disposition matches the label exactly; escalating a benign alert counts as an error, just as closing an attack does, because both cost a SOC time or safety.
 
 ### Lab — intervals for accuracy
 
@@ -389,19 +389,19 @@ enriched  139/160 = 0.869  95% CI [0.808, 0.913]
 
 ### 5.3 Reading the result
 
-Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition.
+Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition. Nadia reports the interval for each condition and leaves the main inference to the registered paired test. The two intervals together show readers the scale of the change. Neither interval is used to claim significance on its own, since overlapping or separate intervals are not a formal test.
 
 ### 5.4 Harms
 
-Of the 21 additional correct decisions, most were benign triggers correctly closed. But two true attacks were wrongly closed in the enriched condition, both carrying the note "similar alerts closed as benign: 14". History context can lull analysts. This is reported prominently.
+Of the 21 additional correct decisions, most were benign triggers correctly closed. But two true attacks were wrongly closed in the enriched condition, both carrying the note "similar alerts closed as benign: 14". History context can lull analysts. This is reported prominently. Nadia reports the two missed attacks in the abstract, not only in the results, because a reader deploying enriched cards needs to know about them. She examines both alerts in detail as part of her failure analysis, and the history field becomes the focus of the follow-up and the critique that followed.
 
 ### 5.5 Independent validation
 
-A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals.
+A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals. The statistician received the registered plan and the anonymised logs, not Nadia's tables, so agreement shows that the analysis follows from the plan and the data. Matching to three decimals also checks that the scripts are complete. The validation report is in the archive with her name and university. Prof. Grant arranged the statistician through the university.
 
 ### 5.6 Time
 
-Median time-to-disposition fell from 96 to 81 seconds; the time difference is secondary and labelled as such.
+Median time-to-disposition fell from 96 to 81 seconds; the time difference is secondary and labelled as such. Because time was registered as secondary, Nadia does not test it as a main hypothesis or build claims on it. She notes that faster decisions on enriched cards are consistent with analysts using context to settle benign triggers quickly, but the same speed could contribute to the two missed attacks. The time data are released with the logs for others to analyse. The time comparison is also reported per analyst.
 
 ### Deviations from the plan
 
@@ -444,15 +444,15 @@ You will (1) seek and receive structured critique; (2) classify critiques by sev
 
 ### 6.1 Sources of critique
 
-Nadia's committee, an external examiner in training, Northgate's senior analysts and a workshop paper's anonymous reviewers all read the draft. Each sees different weaknesses.
+Nadia's committee, an external examiner in training, Northgate's senior analysts and a workshop paper's anonymous reviewers all read the draft. Each sees different weaknesses. Each source looks at the thesis differently: the committee at method, the trainee examiner at structure, the senior analysts at realism and the workshop reviewers at the claim. Nadia logs every comment in one table with its source, so none is lost between drafts. The table also records which draft each change entered and whether the commenter saw the revised text, so Prof. Grant can check that each source had a chance to respond to Nadia's changes.
 
 ### 6.2 The main critiques
 
-Reviewer 1: "The corpus is synthetic; benign triggers in real SOCs are messier." Reviewer 2: "The benign-history field may be doing all the work; you cannot separate the three fields." Reviewer 3: "Two missed attacks are a safety issue, not a footnote." A senior analyst: "Your alert cards lack the raw command line that we always look at first."
+Reviewer 1: "The corpus is synthetic; benign triggers in real SOCs are messier." Reviewer 2: "The benign-history field may be doing all the work; you cannot separate the three fields." Reviewer 3: "Two missed attacks are a safety issue, not a footnote." A senior analyst: "Your alert cards lack the raw command line that we always look at first." The analyst's comment shows how practice can see what researchers miss: the cards were designed from the Contextual property, but analysts work from the raw event.
 
 ### 6.3 Classifying severity
 
-Nadia sorts critiques into: threatens validity (Reviewer 2), changes conclusions (Reviewer 3), limits scope (Reviewer 1), improves realism (analyst). Validity threats are answered first.
+Nadia sorts critiques into: threatens validity (Reviewer 2), changes conclusions (Reviewer 3), limits scope (Reviewer 1), improves realism (analyst). Validity threats are answered first. Answering validity threats first makes sense because they could change what the data mean. Reviewer 2's point led to the exploratory follow-up with single-field cards, while Reviewer 3's point changed how prominently the missed attacks were reported. The analyst's comment led to the raw command line being restored on all cards. Reviewer 1's point became a stated limit on realism, with a plan for an operational pilot.
 
 ### 6.4 Responses
 
@@ -460,15 +460,15 @@ To Reviewer 2 she runs a pre-planned secondary analysis using a small follow-up 
 
 ### 6.5 The response letter
 
-Each critique is quoted, followed by the change made (with page numbers) or a reasoned disagreement.
+Each critique is quoted, followed by the change made (with page numbers) or a reasoned disagreement. Nadia's letter answers Reviewer 2 by describing the follow-up and labelling its result exploratory, so the reviewer can see that the confound was addressed without overstating it. Where she disagrees, as with a request to drop the synthetic corpus altogether, she explains why with evidence from the realism review and the ethical limits on real SOC data. Every change carries a page number. Prof. Grant reads the letter before it is sent.
 
 ### 6.6 Avoiding defensive revision
 
-Grant reminds her that rebuttal without change rarely persuades; where a reviewer is wrong, show evidence.
+Grant reminds her that rebuttal without change rarely persuades; where a reviewer is wrong, show evidence. For Reviewer 3, rebuttal would have meant arguing that two attacks in many decisions were a small number. Nadia instead moved the missed attacks into the abstract and added a design recommendation, which persuaded the reviewer more than any argument could. Grant's reminder applies to her own instincts as much as to the reviewers' tone. The response letter shows the change for each critique that was accepted.
 
 ### Worked example
 
-Response excerpt: "R2.1 — We agree the fields are confounded. A follow-up (n = 4 analysts, 40 alerts each) with single-field cards suggests the benign-history field accounts for most of the improvement and for both missed attacks (Section 6.3, labelled exploratory)."
+Response excerpt: "R2.1 — We agree the fields are confounded. A follow-up (n = 4 analysts, 40 alerts each) with single-field cards suggests the benign-history field accounts for most of the improvement and for both missed attacks (reported in the critique chapter, labelled exploratory)."
 
 > **Synthetic case.** Critiques and follow-up are invented.
 
@@ -503,31 +503,31 @@ You will (1) synthesise findings into a coherent thesis argument; (2) build a re
 
 ### 7.1 The argument
 
-The thesis argues: (1) benign triggers dominate analyst workload, consistent with Alahmadi et al. (2022); (2) context on alert cards improves triage accuracy; (3) benign-history context carries a specific risk of dismissing true attacks; (4) alert design should pair context with counter-evidence prompts.
+The thesis argues: (1) benign triggers dominate analyst workload, consistent with Alahmadi et al. (2022); (2) context on alert cards improves triage accuracy; (3) benign-history context carries a specific risk of dismissing true attacks; (4) alert design should pair context with counter-evidence prompts. Each step rests on a different kind of evidence: the first on literature, the second on the registered experiment, the third on the failure analysis and exploratory follow-up, and the fourth on Nadia's judgement from all three. The thesis labels the fourth as a recommendation, not a finding.
 
 ### 7.2 Confirmatory versus exploratory
 
-Chapter results are tagged: the accuracy effect is confirmatory (registered); the field attribution and time effect are exploratory. Tables mark each.
+Chapter results are tagged: the accuracy effect is confirmatory (registered); the field attribution and time effect are exploratory. Tables mark each. Tagging tells readers how much weight each result can bear. The confirmatory accuracy effect was tested as registered; the attribution to the benign-history field comes from a small follow-up with four analysts and is a lead, not a conclusion. Nadia's summary table repeats each tag next to the archive file that reproduces the result. The time result carries a secondary tag.
 
 ### 7.3 The archive
 
-The archive contains: the alert generator and seed; the 320-alert corpus with labels; Sigma-format rules used; anonymised analyst logs; analysis scripts with pinned versions; the pre-registration and change log; and a README explaining how to rerun every table.
+The archive contains: the alert generator and seed; the 320-alert corpus with labels; Sigma-format rules used; anonymised analyst logs; analysis scripts with pinned versions; the pre-registration and change log; and a README explaining how to rerun every table. The archive lets another researcher regenerate every alert, rule match, card and table from the seed. Anonymised logs replace the raw triage records, as the consent forms promised. The change log and pre-registration show readers which choices were fixed before the data and which came later.
 
 ### 7.4 Testing the archive
 
-A fellow student downloads the archive on a clean machine and regenerates all tables. Two figures differ in the fourth decimal because of a rounding call; Nadia fixes the script and notes it.
+A fellow student downloads the archive on a clean machine and regenerates all tables. Two figures differ in the fourth decimal because of a rounding call; Nadia fixes the script and notes it. The differences were small, but finding them shows that the test checks the archive itself. Nadia records the fix in the change log and tags a new archive version. A colleague at Calder ran the test on a clean machine, using only the archive's instructions. Her rebuilt tables differed in two rounding places, traced to an unpinned library version. Pinning that version made the outputs match exactly.
 
 ### 7.5 Licensing and privacy
 
-Corpus and code are released under an open licence. Analyst logs are anonymised: analyst IDs are random, timestamps shifted, free-text notes removed after review for identifying content.
+Corpus and code are released under an open licence. Analyst logs are anonymised: analyst IDs are random, timestamps shifted, free-text notes removed after review for identifying content. Removing free-text notes after review prevents analysts from being identified by their writing or by details of their workplace. Shifted timestamps keep durations accurate while hiding when sessions occurred. The open licence lets other researchers reuse the corpus for different alert-card experiments, which is the point of the first contribution. The archive README explains these steps.
 
 ### 7.6 Implications
 
-For SOCs: test enrichment fields one at a time and monitor missed-attack rates; history fields need guard rails. For research: field-level experiments and realism studies on corpora. The SOC-CMM (van Os, 2016) offers a way for SOCs to place such changes within capability maturity.
+For SOCs: test enrichment fields one at a time and monitor missed-attack rates; history fields need guard rails. For research: field-level experiments and realism studies on corpora. The SOC-CMM (van Os, 2016) offers a way for SOCs to place such changes within capability maturity. The implications follow the evidence: the missed attacks support the advice on history fields, while the exploratory attribution supports testing fields one at a time. Each implication in the thesis names the result it rests on, so a reader can follow it back to the evidence and its confirmatory or exploratory tag before applying it at their own SOC.
 
 ### 7.7 Mapping to frameworks
 
-Findings are mapped to NIST CSF 2.0's Detect function (adverse event analysis) so practitioners can locate them.
+Findings are mapped to NIST CSF 2.0's Detect function (adverse event analysis) so practitioners can locate them. Mapping the work to adverse event analysis lets a SOC manager see that the findings concern how alerts are assessed after detection, not how rules are written. Nadia also notes the related Respond activities, since dismissing a true attack at triage delays every later step of incident handling. The mapping appears in the practitioner article as well as the thesis. The thesis cites NIST CSF 2.0 for this mapping.
 
 ### Worked example
 
@@ -566,31 +566,31 @@ You will (1) prepare for a doctoral defense; (2) anticipate hard questions; (3) 
 
 ### 8.1 The defense
 
-The defense tests whether the candidate can explain, justify and limit the work. Nadia prepares a 40-minute talk: problem, design, results, harm, limits, contributions.
+The defense tests whether the candidate can explain, justify and limit the work. Nadia prepares a 40-minute talk: problem, design, results, harm, limits, contributions. Nadia gives the harm finding its own slide immediately after the accuracy result, so examiners see both together. She rehearses with Prof. Grant and with a colleague who plays the external examiner, and keeps backup slides for the follow-up study and the archive test. The talk itself lasts about forty minutes. Nadia ends it with the limits of a synthetic corpus and the planned operational pilot, so the examiners' questions start from what the study cannot show.
 
 ### 8.2 Hard questions
 
-Mock examiners ask: "Why should a SOC trust a synthetic corpus?" "Is a 13-point gain worth the two missed attacks?" "Would results hold for analysts with two months' experience?" "What would falsify your claim?" Nadia answers with evidence and admits where she does not know.
+Mock examiners ask: "Why should a SOC trust a synthetic corpus?" "Is a 13-point gain worth the two missed attacks?" "Would results hold for analysts with two months' experience?" "What would falsify your claim?" Nadia answers with evidence and admits where she does not know. Her answers draw on the thesis: the realism review for the synthetic corpus, the failure analysis for the missed attacks, and the participant profile for analyst experience, which she admits her sample does not cover. For the falsification question, she names an operational pilot across at least two SOCs.
 
 ### 8.3 The trade-off question
 
-On the missed attacks, Nadia avoids a simple yes. She explains that the value depends on the SOC's base rates and costs (Axelsson, 2000): if benign triggers consume most analyst time, the gain frees capacity for deeper investigation, but only if guard rails reduce the history-driven misses. She proposes measuring both in an operational pilot.
+On the missed attacks, Nadia avoids a simple yes. She explains that the value depends on the SOC's base rates and costs (Axelsson, 2000): if benign triggers consume most analyst time, the gain frees capacity for deeper investigation, but only if guard rails reduce the history-driven misses. She proposes measuring both in an operational pilot. Her answer keeps the two outcomes in one sentence, as the evidence does, and uses the same reasoning about base rates that motivated the project in the first place.
 
 ### 8.4 Publication plan
 
-Paper 1 (experiment and harm) to a security venue; paper 2 (corpus and generator) to a dataset track; a practitioner article for SOC managers. The corpus and code are released with the first paper.
+Paper 1 (experiment and harm) to a security venue; paper 2 (corpus and generator) to a dataset track; a practitioner article for SOC managers. The corpus and code are released with the first paper. Releasing the corpus with the first paper lets reviewers check the experiment's material directly. The dataset paper describes the generator, labels and benign-trigger annotations so others can extend them. The practitioner article leads with the guard-rail recommendation for history fields and states the limits of a synthetic corpus.
 
 ### 8.5 Practitioner engagement
 
-Nadia presents results to Northgate's analysts first, as promised in consent forms, and offers a design note on alert cards. She avoids marketing language.
+Nadia presents results to Northgate's analysts first, as promised in consent forms, and offers a design note on alert cards. She avoids marketing language. Presenting first to Northgate's analysts keeps the promise made when they consented, and lets them hear about the missed attacks before anyone else. Ruth Okonkwo receives the same aggregate results; no analyst's individual performance is shown. The design note proposes context fields with counter-evidence prompts, matching the thesis's recommendation. Analysts can comment on the note before it goes to Ruth.
 
 ### 8.6 After the defense
 
-Corrections required by examiners are tracked and completed before final submission; the archive is updated with a version tag.
+Corrections required by examiners are tracked and completed before final submission; the archive is updated with a version tag. Each correction is listed with the examiner's comment, the change and the page, and any change that affects a figure triggers a rerun from the archive. The final version tag is cited in the thesis and the papers, so all outputs point to the same reproducible state of the work. Prof. Grant signs off each correction after checking it against the examiners' list, and the final thesis is deposited at Calder with the archive link.
 
 ### 8.7 Strategy alignment
 
-Her design note references Strategy 8 of Knerler, Parker and Zimmerman (2022), "Leverage tools to support analyst workflow", to connect the research with SOC planning language.
+Her design note references Strategy 8 of Knerler, Parker and Zimmerman (2022), "Leverage tools to support analyst workflow", to connect the research with SOC planning language. The connection lets SOC managers place her recommendation within a plan they may already use, instead of treating it as an isolated research idea. Nadia is careful not to claim that the strategy is validated by her study; she cites it as planning language, while her evidence concerns one design choice within it. The same reference appears in her practitioner article.
 
 ### Worked example
 
