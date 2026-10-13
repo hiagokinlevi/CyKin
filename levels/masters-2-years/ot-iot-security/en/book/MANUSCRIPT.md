@@ -131,13 +131,13 @@ A question with no failure condition invites a dissertation that can only succee
 
 ### Exercises — chapter 1
 
-- **EX001** — Rewrite "I want to study Modbus security" as a researchable question with system, phenomenon, comparison and scope.
-- **EX002** — Build a synonym table (≥4 control + ≥4 security terms) for detecting manipulated sensor data.
-- **EX003** — Write inclusion/exclusion criteria that decide the vendor white paper and the DNP3 paper in Lab 1.
-- **EX004** — Run Lab 1; add a grey record with an ampersand in the title; show whether your key() catches it; recompute kappa after changing one decision.
-- **EX005** — Draft a one-page scoping protocol (databases, dates, synonyms, screening rules, kappa target).
-- **EX006** — Explain why a DOI key must precede a title key in deduplication.
-- **EX007** — Classify three sources (Giraldo survey, CISA advisory, vendor blog) by evidence tier for a dissertation.
+- **EX001 — Researchable Modbus question.** Rewrite "I want to study Modbus security" as a researchable question with system, phenomenon, comparison and scope. *Rubric:* 3 = system, phenomenon, comparison, scope with ≥90% metric; 2 = missing one element; 1 = vague Modbus interest; 0 = none.
+- **EX002 — Synonym table for sensor manipulation.** Build a synonym table (≥4 control + ≥4 security terms) for detecting manipulated sensor data. *Rubric:* 3 = ≥4 control + ≥4 security terms; 2 = 3+3; 1 = one community; 0 = none.
+- **EX003 — Include or exclude white paper and DNP3.** Write inclusion/exclusion criteria that decide the vendor white paper and the DNP3 paper in Lab 1. *Rubric:* 3 = criteria exclude vendor marketing, include DNP3 field measurement; 2 = decisions without criteria; 1 = one decision; 0 = none.
+- **EX004 — Ampersand grey record and kappa.** Run Lab 1; add a grey record with an ampersand in the title; show whether your key() catches it; recompute kappa after changing one decision. *Rubric:* 3 = normalize key catches ampersand + kappa movement explained; 2 = key without kappa; 1 = kappa only; 0 = none.
+- **EX005 — One-page scoping protocol.** Draft a one-page scoping protocol (databases, dates, synonyms, screening rules, kappa target). *Rubric:* 3 = databases/dates/synonyms/screening/κ≥0.6; 2 = missing one field; 1 = bullet list; 0 = none.
+- **EX006 — DOI key before title key.** Explain why a DOI key must precede a title key in deduplication. *Rubric:* 3 = DOI identity across title variants + title-key failure mode; 2 = DOI first without failure mode; 1 = slogan; 0 = none.
+- **EX007 — Evidence tiers for three sources.** Classify three sources (Giraldo survey, CISA advisory, vendor blog) by evidence tier for a dissertation. *Rubric:* 3 = Giraldo high, CISA medium, vendor blog low with reasons; 2 = tiers without reasons; 1 = one source; 0 = none.
 
 ### Chapter synthesis
 
@@ -193,13 +193,13 @@ These errors share a pattern: they mistake the existence of a document for evide
 
 ### Exercises — chapter 2
 
-- **EX008** — Map Harbor Loop L1 components to Purdue levels 0–3 and name two conduits.
-- **EX009** — Rewrite one 62443 zone recommendation as a measurable hypothesis.
-- **EX010** — Compare Modbus and DNP3 Secure Authentication on authentication presence using only public specs.
-- **EX011** — Appraise a fictional study that reports point-adjusted F1 = 0.99 on one testbed; state what it can support.
-- **EX012** — Select two ATT&CK for ICS techniques for Harbor Loop; explain why they are not frequency evidence.
-- **EX013** — Write weak and strong gap statements for residual detection of sensor replay.
-- **EX014** — List three evaluation pitfalls from Arp et al. that apply to OT detectors and one OT-specific pitfall.
+- **EX008 — Purdue map of Harbor Loop L1.** Map Harbor Loop L1 components to Purdue levels 0–3 and name two conduits. *Rubric:* 3 = L0–L3 components + two conduits (SCADA↔PLC, historian↔SCADA); 2 = levels only; 1 = partial; 0 = none.
+- **EX009 — 62443 zone as measurable hypothesis.** Rewrite one 62443 zone recommendation as a measurable hypothesis. *Rubric:* 3 = measurable read-only conduit hypothesis with ≥90% metric; 2 = hypothesis without metric; 1 = slogan; 0 = none.
+- **EX010 — Modbus versus DNP3-SA authentication.** Compare Modbus and DNP3 Secure Authentication on authentication presence using only public specs. *Rubric:* 3 = Modbus no auth vs DNP3-SA challenges; presence not adoption; 2 = presence only; 1 = adoption claim; 0 = none.
+- **EX011 — Ceiling for point-adjusted F1 study.** Appraise a fictional study that reports point-adjusted F1 = 0.99 on one testbed; state what it can support. *Rubric:* 3 = support ceiling for segment flags only; excludes delay/impact/generalization/aware; 2 = ceiling without exclusions; 1 = accepts 0.99; 0 = none.
+- **EX012 — Two ATT&CK techniques for Harbor Loop.** Select two ATT&CK for ICS techniques for Harbor Loop; explain why they are not frequency evidence. *Rubric:* 3 = Spoof Reporting Message + Modify Parameter + not frequency; 2 = techniques without caveat; 1 = one; 0 = none.
+- **EX013 — Weak and strong residual-detection gaps.** Write weak and strong gap statements for residual detection of sensor replay. *Rubric:* 3 = weak vs strong gap matching §2.5 substance; 2 = weak/strong without OT detail; 1 = one; 0 = none.
+- **EX014 — Arp pitfalls plus one OT pitfall.** List three evaluation pitfalls from Arp et al. that apply to OT detectors and one OT-specific pitfall. *Rubric:* 3 = three Arp pitfalls + OT impact-at-detection pitfall; 2 = Arp only; 1 = one pitfall; 0 = none.
 
 ### Chapter synthesis
 
@@ -291,12 +291,12 @@ Each error has a concrete guard. Register the design and its decision rules befo
 
 ### Exercises — chapter 3
 
-- **EX015** — Match three questions (detector comparison; adoption rate of DNP3-SA; operator trust in alarms) to design types.
-- **EX016** — Run Lab 3; report numbers against H1 (class A CUSUM ≥95% recall, band ≤10%) and H4 (class B ≤10%).
-- **EX017** — Write the worst credible outcome, independent layer and stop authority for a pump-forcing experiment on Rig R2.
-- **EX018** — Apply Menlo's four principles to publishing a class B evasion method.
-- **EX019** — Draft a one-page pre-analysis plan with frozen metrics and seeds.
-- **EX020** — Assign T0–T3 to: simulator code, synthetic traces, R2 wiring diagram, anonymized operator quotes.
+- **EX015 — Match questions to design types.** Match three questions (detector comparison; adoption rate of DNP3-SA; operator trust in alarms) to design types. *Rubric:* 3 = experiment/survey/interview matched correctly; 2 = two correct; 1 = one; 0 = none.
+- **EX016 — Lab 3 numbers against H1 and H4.** Run Lab 3; report numbers against H1 (class A CUSUM ≥95% recall, band ≤10%) and H4 (class B ≤10%). *Rubric:* 3 = H1 80/80 vs 0/80, H4 0/80, band FA noted; 2 = H1/H4 without FA; 1 = qualitative; 0 = none.
+- **EX017 — Bound pump-forcing on Rig R2.** Write the worst credible outcome, independent layer and stop authority for a pump-forcing experiment on Rig R2. *Rubric:* 3 = drip-tray overflow, float valve+tray, named manager e-stop; 2 = missing independence; 1 = PLC-only; 0 = unbounded.
+- **EX018 — Menlo on publishing class B evasion.** Apply Menlo's four principles to publishing a class B evasion method. *Rubric:* 3 = Menlo principles → publish class+defence, withhold product steps pending CVD; 2 = principles without decision; 1 = publish all; 0 = none.
+- **EX019 — Pre-analysis plan with frozen seeds.** Draft a one-page pre-analysis plan with frozen metrics and seeds. *Rubric:* 3 = metrics, seeds 0–79/1000–1079, k=0.8 h=6, no change after R2 load; 2 = missing seeds or freeze; 1 = vague plan; 0 = none.
+- **EX020 — Tier simulator through operator quotes.** Assign T0–T3 to: simulator code, synthetic traces, R2 wiring diagram, anonymized operator quotes. *Rubric:* 3 = code T0, traces T1, wiring T2, quotes T2/T1 with anonymization note; 2 = three correct; 1 = two; 0 = none.
 
 ### Chapter synthesis
 
@@ -340,12 +340,12 @@ A rival without a test is a worry, not part of the analysis. Each one needs an o
 
 ### Exercises — chapter 4
 
-- **EX021** — Write five rivals for "zone segmentation reduces attacks" and one test each.
-- **EX022** — Design a gain sweep that would support or refute rival (3); predict the pattern if Urbina-style impact bounding holds.
-- **EX023** — Explain why class B failure strengthens rather than weakens a careful thesis.
-- **EX024** — For a study reporting only point-adjusted F1, which rivals remain untested?
-- **EX025** — Write a causal diagram (as a bullet list of nodes and arrows) from attacker capability to overfill at alarm.
-- **EX026** — Propose a negative control: an attack that should *not* trigger the residual CUSUM if the warrant is correct.
+- **EX021 — Five rivals for zone segmentation.** Write five rivals for "zone segmentation reduces attacks" and one test each. *Rubric:* 3 = five rivals each with a test; 2 = three rivals with tests; 1 = rivals without tests; 0 = none.
+- **EX022 — Gain sweep for Urbina-style impact.** Design a gain sweep that would support or refute rival (3); predict the pattern if Urbina-style impact bounding holds. *Rubric:* 3 = gain sweep design + Urbina-style pattern prediction; 2 = sweep without prediction; 1 = vague; 0 = none.
+- **EX023 — Why class B failure strengthens the thesis.** Explain why class B failure strengthens rather than weakens a careful thesis. *Rubric:* 3 = class B failure as characterized limit that sharpens claims; 2 = 'failure is honesty' without limit link; 1 = hides failure; 0 = none.
+- **EX024 — Untested rivals under point-adjusted F1.** For a study reporting only point-adjusted F1, which rivals remain untested?. *Rubric:* 3 = lists untested rivals (delay, FA, impact, aware adversary, etc.); 2 = two rivals; 1 = one; 0 = none.
+- **EX025 — Causal diagram to overfill at alarm.** Write a causal diagram (as a bullet list of nodes and arrows) from attacker capability to overfill at alarm. *Rubric:* 3 = nodes/arrows from capability→spoof→residual/band→alarm→overfill; 2 = nodes without arrows; 1 = partial; 0 = none.
+- **EX026 — Negative control for residual CUSUM.** Propose a negative control: an attack that should *not* trigger the residual CUSUM if the warrant is correct. *Rubric:* 3 = negative control attack that should not trip residual if warrant holds; 2 = control without warrant link; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -389,12 +389,12 @@ Before you send the proposal, confirm: (1) H1–H4 have numbers and H4 is a fail
 
 ### Exercises — chapter 5
 
-- **EX027** — Write H1–H4 with numeric thresholds justified by a stated trip margin.
-- **EX028** — Write go/no-go criteria including one safety and one data-quality rule.
-- **EX029** — List three abandonment conditions and what you would switch to studying if abandoned.
-- **EX030** — Draft the attacker-model table (capabilities, knowledge, goal, out of scope).
-- **EX031** — Explain why pilot traces must not enter the validation set.
-- **EX032** — Write a one-paragraph risk assessment for interviewing operators Q01–Q08.
+- **EX027 — H1–H4 with trip-margin thresholds.** Write H1–H4 with numeric thresholds justified by a stated trip margin. *Rubric:* 3 = H1–H4 numeric with trip-margin justification; 2 = hypotheses without justification; 1 = H1 only; 0 = none.
+- **EX028 — Go/no-go with safety and data rules.** Write go/no-go criteria including one safety and one data-quality rule. *Rubric:* 3 = safety + data-quality go/no-go (float valve, log loss); 2 = one rule type; 1 = vague go; 0 = none.
+- **EX029 — Three abandonment conditions.** List three abandonment conditions and what you would switch to studying if abandoned. *Rubric:* 3 = three abandonment conditions + fallback study; 2 = conditions without fallback; 1 = one; 0 = none.
+- **EX030 — Attacker-model table for Harbor Loop.** Draft the attacker-model table (capabilities, knowledge, goal, out of scope). *Rubric:* 3 = capabilities/knowledge/goal/out-of-scope table for Harbor Loop; 2 = missing a column; 1 = prose only; 0 = none.
+- **EX031 — Why pilots stay out of validation.** Explain why pilot traces must not enter the validation set. *Rubric:* 3 = pilot leakage into validation invalidates freeze; 2 = 'contamination' without freeze link; 1 = vague; 0 = none.
+- **EX032 — Risk assessment for operator interviews.** Write a one-paragraph risk assessment for interviewing operators Q01–Q08. *Rubric:* 3 = risks for Q01–Q08 with mitigations (consent, anonymization, stop); 2 = risks without mitigations; 1 = one risk; 0 = none.
 
 ### Chapter synthesis
 
@@ -479,12 +479,12 @@ Keep a short table that pairs each number with the claim it supports and the lev
 
 ### Exercises — chapter 6
 
-- **EX033** — Run Lab 3 and Lab 6; write a 150-word results paragraph with numbers.
-- **EX034** — Rerun Lab 6 with independent seeds for k = 0.6; compare CI width.
-- **EX035** — Classify six uncertainty sources as stochastic, parametric or structural.
-- **EX036** — Write the freeze rule that must hold before R2 validation.
-- **EX037** — Propose how to summarize runs that never alarm (right-censoring).
-- **EX038** — State what Lab 6's intervals do *not* mean.
+- **EX033 — 150-word results from Lab 3 and Lab 6.** Run Lab 3 and Lab 6; write a 150-word results paragraph with numbers. *Rubric:* 3 = ~150 words with Lab 3/6 numbers for H1/H4 and bias/allowance; 2 = numbers without structure; 1 = short; 0 = none.
+- **EX034 — Independent seeds CI width for k=0.6.** Rerun Lab 6 with independent seeds for k = 0.6; compare CI width. *Rubric:* 3 = wider CI under independent seeds vs paired, with direction; 2 = direction only; 1 = wrong; 0 = none.
+- **EX035 — Six uncertainty sources classified.** Classify six uncertainty sources as stochastic, parametric or structural. *Rubric:* 3 = stochastic/parametric/structural with examples; 2 = classes only; 1 = one class; 0 = none.
+- **EX036 — Freeze rule before R2 validation.** Write the freeze rule that must hold before R2 validation. *Rubric:* 3 = freeze k/h hashed before R2 attack data + invalidation rule; 2 = freeze without invalidation; 1 = vague; 0 = none.
+- **EX037 — Summarize never-alarm runs.** Propose how to summarize runs that never alarm (right-censoring). *Rubric:* 3 = detection proportion + median among detected or survival-style summary; 2 = one better summary; 1 = mean with cap; 0 = none.
+- **EX038 — What Lab 6 intervals do not mean.** State what Lab 6's intervals do *not* mean. *Rubric:* 3 = intervals ≠ plant uncertainty / structural error; 2 = one caveat; 1 = treats as plant truth; 0 = none.
 
 ### Chapter synthesis
 
@@ -534,12 +534,12 @@ Test the result with a reader who has not seen the dissertation: ask them what t
 
 ### Exercises — chapter 7
 
-- **EX039** — Write an abstract (≤150 words) that includes the class B failure.
-- **EX040** — Build a directional limitations table with ≥5 rows.
-- **EX041** — Assign tiers to eight artifacts and justify two borderline cases.
-- **EX042** — Write a dataset card for the Harbor Loop simulator (invented vs calibrated).
-- **EX043** — Outline chapter word budgets that sum to your institution's limit.
-- **EX044** — Red-team your abstract: find one overclaim and rewrite it.
+- **EX039 — Abstract that includes class B failure.** Write an abstract (≤150 words) that includes the class B failure. *Rubric:* 3 = ≤150 words including class B failure and contexts; 2 = omits class B; 1 = overclaim; 0 = none.
+- **EX040 — Directional limitations table.** Build a directional limitations table with ≥5 rows. *Rubric:* 3 = ≥5 rows with direction labels; 2 = 3–4 rows; 1 = undirected list; 0 = none.
+- **EX041 — Tier eight Harbor Loop artifacts.** Assign tiers to eight artifacts and justify two borderline cases. *Rubric:* 3 = eight tiers + two borderline justifications; 2 = tiers only; 1 = four; 0 = none.
+- **EX042 — Dataset card for Harbor Loop simulator.** Write a dataset card for the Harbor Loop simulator (invented vs calibrated). *Rubric:* 3 = purpose/parameters/invented/prohibited uses; 2 = missing field; 1 = purpose only; 0 = none.
+- **EX043 — Chapter word budgets to a limit.** Outline chapter word budgets that sum to your institution's limit. *Rubric:* 3 = budgets sum to stated institutional limit; 2 = budgets without sum check; 1 = vague; 0 = none.
+- **EX044 — Red-team one overclaim in the abstract.** Red-team your abstract: find one overclaim and rewrite it. *Rubric:* 3 = finds overclaim and narrowed rewrite; 2 = finds without rewrite; 1 = nitpick; 0 = none.
 
 ### Chapter synthesis
 
@@ -595,12 +595,12 @@ Keep the archive manifest and hashes alongside the final text so a later reader 
 
 ### Exercises — chapter 8
 
-- **EX045** — Audit three claims from your Chapter 6 paragraph.
-- **EX046** — Write model answers to positioning and safety questions.
-- **EX047** — Sequence two papers from the dissertation and justify order.
-- **EX048** — Classify three findings as disclosure / not disclosure / lab issue.
-- **EX049** — Write the operator brief if class B was not tested.
-- **EX050** — Outline a doctoral proposal that extends Harbor Loop to multi-loop calibrated plants.
+- **EX045 — Audit three Chapter 6 claims.** Audit three claims from your Chapter 6 paragraph. *Rubric:* 3 = three claims PASS/REVISE with fixes; 2 = two; 1 = one; 0 = none.
+- **EX046 — Positioning and safety viva answers.** Write model answers to positioning and safety questions. *Rubric:* 3 = positioning + R2 safety bound answers; 2 = one family; 1 = vague; 0 = none.
+- **EX047 — Sequence two papers from the thesis.** Sequence two papers from the dissertation and justify order. *Rubric:* 3 = two-paper order with dependency reason; 2 = order without reason; 1 = one paper; 0 = none.
+- **EX048 — Three disclosure classifications.** Classify three findings as disclosure / not disclosure / lab issue. *Rubric:* 3 = disclosure / not / lab-issue correctly for three findings; 2 = two correct; 1 = one; 0 = none.
+- **EX049 — Operator brief without class B tests.** Write the operator brief if class B was not tested. *Rubric:* 3 = high/medium/unknown with untested class B explicit; 2 = missing unknown; 1 = one level; 0 = none.
+- **EX050 — Doctoral proposal beyond Harbor Loop.** Outline a doctoral proposal that extends Harbor Loop to multi-loop calibrated plants. *Rubric:* 3 = doctoral extension with falsifiable multi-loop hypotheses; 2 = topics without H; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -615,69 +615,91 @@ Audit, prepare, disclose carefully, translate with confidence labels. The master
 ## Worked results
 
 ### Chapter 1
-- **EX001** — "In a synthetic Modbus/TCP level loop, does enabling write-protection on setpoint registers reduce successful unauthorized setpoint changes by ≥90% versus an unprotected baseline under a scripted write storm, and does the protection break availability when the engineering workstation needs legitimate writes?"
-- **EX002** — Control: residual generation, analytical redundancy, observer-based FDI, sensor validation. Security: false data injection, sensor spoofing, replay, manipulation of view, physics-based ADS.
-- **EX003** — Include peer-reviewed measurement or survey of ICS detection/protocols 2010–2026; exclude vendor marketing without method. Vendor white paper → exclude; DNP3 field measurement → include.
-- **EX004** — Ampersand: normalize by stripping non-alphanumerics so "Ransomware & emergency" matches a hyphenated duplicate; kappa moves when one decision flips because chance agreement depends on marginal rates.
-- **EX005** — Protocol: IEEE/ACM/Scopus/arXiv 2010–2026; synonyms from EX002; two screeners; target κ≥0.6 after criteria repair; grey stream separate.
-- **EX006** — DOI identifies the same work across title variants; title key alone keeps both "Survey" and "survey" duplicates when punctuation differs unless normalized — DOI first is stricter.
-- **EX007** — Giraldo: peer-reviewed survey (high for framing). CISA advisory: practitioner evidence (medium for existence of issues). Vendor blog: marketing (low; hypothesis only).
+**EX001.** "In a synthetic Modbus/TCP level loop, does enabling write-protection on setpoint registers reduce successful unauthorized setpoint changes by ≥90% versus an unprotected baseline under a scripted write storm, and does the protection break availability when the engineering workstation needs legitimate writes?"
+**EX002.** Control: residual generation, analytical redundancy, observer-based FDI, sensor validation. Security: false data injection, sensor spoofing, replay, manipulation of view, physics-based ADS.
+**EX003.** Include peer-reviewed measurement or survey of ICS detection/protocols 2010–2026; exclude vendor marketing without method. Vendor white paper → exclude; DNP3 field measurement → include.
+**EX004.** Ampersand: normalize by stripping non-alphanumerics so "Ransomware & emergency" matches a hyphenated duplicate; kappa moves when one decision flips because chance agreement depends on marginal rates.
+**EX005.** Protocol: IEEE/ACM/Scopus/arXiv 2010–2026; synonyms from EX002; two screeners; target κ≥0.6 after criteria repair; grey stream separate.
+**EX006.** DOI identifies the same work across title variants; title key alone keeps both "Survey" and "survey" duplicates when punctuation differs unless normalized — DOI first is stricter.
+**EX007.** Giraldo: peer-reviewed survey (high for framing). CISA advisory: practitioner evidence (medium for existence of issues). Vendor blog: marketing (low; hypothesis only).
 
 ### Chapter 2
-- **EX008** — L0: tank/pump/sensors; L1: PLC; L2: SCADA; L3: historian. Conduits: SCADA↔PLC (Modbus), historian↔SCADA.
-- **EX009** — "A conduit allowing only Modbus function codes 3/4 (reads) from L2 to L1 reduces hosts able to write setpoints by ≥90% versus flat networking, measured by reachability on a synthetic inventory."
-- **EX010** — Modbus Application Protocol: no authentication fields. DNP3-SA: defines authentication challenges for critical requests. Comparison is about presence of a mechanism, not adoption.
-- **EX011** — Supports at most "detector flagged ≥1 point in these segments on this testbed"; not delay, impact, generalization or adversary-aware performance.
-- **EX012** — Spoof Reporting Message; Modify Parameter. Matrix documents techniques, not rates.
-- **EX013** — Weak: "Physics-based detection needs more study." Strong: the gap paragraph in §2.5.
-- **EX014** — Arp: inappropriate metrics, lab-only eval, training/test leakage. OT-specific: ignoring physical impact at detection.
+**EX008.** L0: tank/pump/sensors; L1: PLC; L2: SCADA; L3: historian. Conduits: SCADA↔PLC (Modbus), historian↔SCADA.
+**EX009.** "A conduit allowing only Modbus function codes 3/4 (reads) from L2 to L1 reduces hosts able to write setpoints by ≥90% versus flat networking, measured by reachability on a synthetic inventory."
+**EX010.** Modbus Application Protocol: no authentication fields. DNP3-SA: defines authentication challenges for critical requests. Comparison is about presence of a mechanism, not adoption.
+**EX011.** Supports at most "detector flagged ≥1 point in these segments on this testbed"; not delay, impact, generalization or adversary-aware performance.
+**EX012.** Spoof Reporting Message; Modify Parameter. Matrix documents techniques, not rates.
+**EX013.** Weak: "Physics-based detection needs more study." Strong: the gap paragraph in §2.5.
+**EX014.** Arp: inappropriate metrics, lab-only eval, training/test leakage. OT-specific: ignoring physical impact at detection.
 
 ### Chapter 3
-- **EX015** — Detector comparison → controlled experiment. Adoption → survey with sampling frame. Operator trust → interview/survey with ethics review.
-- **EX016** — H1 supported (80/80 vs 0/80). H4 supported (0/80). Band FA 11/80 noted.
-- **EX017** — Overflow into drip tray; mechanical float valve + tray; named lab manager with e-stop.
-- **EX018** — Beneficence favors publishing capability class + architectural defence; withhold product-specific steps pending CVD if a product flaw exists.
-- **EX019** — Metrics, seeds 0–79 eval / 1000–1079 tune, k=0.8 h=6, no threshold change after R2 load.
-- **EX020** — Code T0; traces T1; wiring T2; quotes T2 (identifiable) or T1 if fully anonymized.
+**EX015.** Detector comparison → controlled experiment. Adoption → survey with sampling frame. Operator trust → interview/survey with ethics review.
+**EX016.** H1 supported (80/80 vs 0/80). H4 supported (0/80). Band FA 11/80 noted.
+**EX017.** Overflow into drip tray; mechanical float valve + tray; named lab manager with e-stop.
+**EX018.** Beneficence favors publishing capability class + architectural defence; withhold product-specific steps pending CVD if a product flaw exists.
+**EX019.** Metrics, seeds 0–79 eval / 1000–1079 tune, k=0.8 h=6, no threshold change after R2 load.
+**EX020.** Code T0; traces T1; wiring T2; quotes T2 (identifiable) or T1 if fully anonymized.
 
 ### Chapter 4
-- **EX021** — Misconfiguration not segmentation; monitoring elsewhere; attacker preference; reporting bias; short study window — each with a discrimination test.
-- **EX022** — Sweep gains; if slow attacks evade but overfill stays small, Urbina-style bounding holds.
-- **EX023** — It defines the domain of the contribution (independent sensing paths), which is actionable for defenders.
-- **EX024** — Tuning leakage, delay, impact, false alarms/shift, adversary awareness.
-- **EX025** — Attacker capability → sensor honesty → residual → CUSUM → alarm time → overfill; band alarm parallel path from level.
-- **EX026** — Attack that changes a sensor unrelated to the mass balance (e.g. a temperature sensor) should not systematically raise the level–flow residual.
+**EX021.** Misconfiguration not segmentation; monitoring elsewhere; attacker preference; reporting bias; short study window — each with a discrimination test.
+**EX022.** Sweep gains; if slow attacks evade but overfill stays small, Urbina-style bounding holds.
+**EX023.** It defines the domain of the contribution (independent sensing paths), which is actionable for defenders.
+**EX024.** Tuning leakage, delay, impact, false alarms/shift, adversary awareness.
+**EX025.** Attacker capability → sensor honesty → residual → CUSUM → alarm time → overfill; band alarm parallel path from level.
+**EX026.** Attack that changes a sensor unrelated to the mass balance (e.g. a temperature sensor) should not systematically raise the level–flow residual.
 
 ### Chapter 5
-- **EX027** — H1: ≥95% recall, delay ≤60; H2: CUSUM FA ≤ band FA; H3: overfill@alarm lower for CUSUM; H4: class B ≤10% recall. Thresholds tied to half-margin to trip.
-- **EX028** — Safety: float valve never reached in 3 runs. Data: log loss <1%.
-- **EX029** — Cannot bound R2; historian cannot log 1 Hz; ethics denial for interviews → switch to simulation-only dissertation with explicit scope.
-- **EX030** — Class A: level spoof + pump write; Class B: + flow spoof; knowledge of band; goal manipulation of view; out of scope: float valve, physical tampering.
-- **EX031** — Pilot used for feasibility; using it for validation double-dips and inflates performance.
-- **EX032** — Risk: operators reveal unsafe practices; mitigate with confidential notes, aggregate reporting, right to withdraw.
+**EX027.** H1: ≥95% recall, delay ≤60; H2: CUSUM FA ≤ band FA; H3: overfill@alarm lower for CUSUM; H4: class B ≤10% recall. Thresholds tied to half-margin to trip.
+**EX028.** Safety: float valve never reached in 3 runs. Data: log loss <1%.
+**EX029.** Cannot bound R2; historian cannot log 1 Hz; ethics denial for interviews → switch to simulation-only dissertation with explicit scope.
+**EX030.** Class A: level spoof + pump write; Class B: + flow spoof; knowledge of band; goal manipulation of view; out of scope: float valve, physical tampering.
+**EX031.** Pilot used for feasibility; using it for validation double-dips and inflates performance.
+**EX032.** Risk: operators reveal unsafe practices; mitigate with confidential notes, aggregate reporting, right to withdraw.
 
 ### Chapter 6
-- **EX033** — Use §6.3 paragraph with Lab 3/6 numbers.
-- **EX034** — Independent seeds widen CIs (shared noise no longer cancels).
-- **EX035** — Stochastic: noise draws. Parametric: orifice, k, bias. Structural: single-tank, ignoring lag.
-- **EX036** — "k and h hashed before any R2 attack data are opened."
-- **EX037** — Report detection proportion + median delay among detected, or survival curve.
-- **EX038** — They are not uncertainty about real plants or about structural model error.
+**EX033.** Use §6.3 paragraph with Lab 3/6 numbers.
+**EX034.** Independent seeds widen CIs (shared noise no longer cancels).
+**EX035.** Stochastic: noise draws. Parametric: orifice, k, bias. Structural: single-tank, ignoring lag.
+**EX036.** "k and h hashed before any R2 attack data are opened."
+**EX037.** Report detection proportion + median delay among detected, or survival curve.
+**EX038.** They are not uncertainty about real plants or about structural model error.
 
 ### Chapter 7
-- **EX039** — Abstract including class B = 0/80 and two synthetic contexts only.
-- **EX040** — Five rows as in §7.2 plus fixed onset time (unknown direction) and single attacker goal (overstates generality).
-- **EX041** — As doctoral EX041 pattern; wiring diagram T2; operator notes T2.
-- **EX042** — Invented; parameters listed; prohibited: claims about real plants.
-- **EX043** — Example: Intro 8k, Background 10k, Methods 12k, Results 12k, Discussion 8k, Conclusion 2k (adjust to local rules).
-- **EX044** — Overclaim "secures plants" → "detected class A replay in synthetic model and states class B failure".
+**EX039.** Abstract including class B = 0/80 and two synthetic contexts only.
+**EX040.** Five rows as in §7.2 plus fixed onset time (unknown direction) and single attacker goal (overstates generality).
+**EX041.** As doctoral EX041 pattern; wiring diagram T2; operator notes T2.
+**EX042.** Invented; parameters listed; prohibited: claims about real plants.
+**EX043.** Example: Intro 8k, Background 10k, Methods 12k, Results 12k, Discussion 8k, Conclusion 2k (adjust to local rules).
+**EX044.** Overclaim "secures plants" → "detected class A replay in synthetic model and states class B failure".
 
 ### Chapter 8
-- **EX045** — Audit §6.3 sentences for evidence/scope/falsifier.
-- **EX046** — Positioning: measurement of when cross-sensor invariants help. Safety: R2 float valve + e-stop; no production.
-- **EX047** — Paper 1 metrics/methodology; Paper 2 Harbor Loop comparison — methodology first.
-- **EX048** — Modbus no auth: not disclosure. PLC accepts writes to protected register: CVD. Shared wiring on R2: lab issue.
-- **EX049** — High/medium as §8.4; unknown for dual-sensor attacker — do not claim.
-- **EX050** — Multi-loop calibrated plant; H: recall ≥80% with FA ≤1/shift under coupling; frozen thresholds; second industry partner context.
+**EX045.** Audit §6.3 sentences for evidence/scope/falsifier.
+**EX046.** Positioning: measurement of when cross-sensor invariants help. Safety: R2 float valve + e-stop; no production.
+**EX047.** Paper 1 metrics/methodology; Paper 2 Harbor Loop comparison — methodology first.
+**EX048.** Modbus no auth: not disclosure. PLC accepts writes to protected register: CVD. Shared wiring on R2: lab issue.
+**EX049.** High/medium as §8.4; unknown for dual-sensor attacker — do not claim.
+**EX050.** Multi-loop calibrated plant; H: recall ≥80% with FA ≤1/shift under coupling; frozen thresholds; second industry partner context.
 
 **End of worked results.** Return to the [course chapter index](../SUBJECTS.md).
+
+## Glossary
+
+**ATT&CK for ICS.** MITRE technique knowledge base for industrial control adversaries; not a frequency distribution.
+
+**Class A / class B (Harbor Loop).** Class A spoofs one sensor while an independent measurement stays honest; class B controls both consistently and defeats a mass-balance residual.
+
+**CUSUM.** Page (1954) cumulative sum applied to a residual between independently wired measurements.
+
+**Harbor Loop.** Masters running case: synthetic Modbus/TCP level loop used for scoping, experiments and operator-facing claims.
+
+**Manipulation of view.** Feeding false readings so operators or detectors miss a diverging process state.
+
+**Menlo Report.** DHS (2012) ICT research ethics principles used when deciding what evasion detail to publish.
+
+**Rig R2.** Isolated laboratory pump/tank rig with mechanical float valve, drip tray and named e-stop; used like T2 for frozen-threshold checks.
+
+**Purdue levels / IEC 62443 zones.** Architecture and segmentation vocabulary for stating measurable conduit hypotheses.
+
+**Point-adjusted F1.** Score that credits an entire attack segment after one alarm; hides detection delay.
+
+**Residual / physics-based detection.** Detectors that compare process measurements to a physical relationship (for example mass balance).
