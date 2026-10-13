@@ -3665,55 +3665,57 @@ You will (1) compare two assessment approaches; (2) use TRB criteria; (3) recomm
 
 Quarterly WSTG-style web test vs annual threat-led scenario exercise.
 
-The comparative project sets two real options against each other rather than against a fantasy of infinite budget. Quarterly web tests following a WSTG-style method cover common application flaws on a steady rhythm. An annual threat-led scenario digs deeper into adversary paths but consumes far more hours. Sam refuses a third option that claims to do both at full intensity every quarter. Honest options make the later recommendation defensible. Choosing among feasible programmes beats designing an unfunded masterpiece. Boards remember the constraint longer than the adjective that sold the mix.
+The comparative project sets two real options against each other rather than against a fantasy of infinite budget. Quarterly web tests following a WSTG-style method cover common application flaws on a steady rhythm. An annual threat-led scenario digs deeper into adversary paths but consumes far more hours. Sam refuses a third option that claims to do both at full intensity every quarter. Honest options make the later recommendation defensible. Choosing among feasible programmes beats designing an unfunded masterpiece.
 
 ### 34.2 Criteria
 
 Cost, coverage, detection learning, operational risk, examiner expectations.
 
-Criteria are fixed before scores are filled so the answer cannot steer the rubric. Cost includes staff hours and vendor invoices; coverage asks what asset classes are touched; detection learning asks what the SOC gains; operational risk asks what could break; examiner expectations ask what supervisors will look for. Sam weights the criteria with the sponsor before scoring begins. Hidden criteria that appear in the recommendation paragraph are a fail. A public rubric is how comparative work earns the right to advise spending. Students who skip that row usually rediscover it during an awkward defence question.
+Criteria are fixed before scores are filled so the answer cannot steer the rubric. Cost includes staff hours and vendor invoices; coverage asks what asset classes are touched; detection learning asks what the SOC gains; operational risk asks what could break; examiner expectations ask what supervisors will look for. Sam weights the criteria with the sponsor before scoring begins. Hidden criteria that appear in the recommendation paragraph are a fail. A public rubric is how comparative work earns the right to advise spending.
 
 ### 34.3 Evidence
 
 Use synthetic past results and Wilson intervals.
 
-Evidence for the comparison comes from synthetic past results with Wilson intervals around detection and coverage rates. Point estimates without intervals make small samples look decisive. Sam's tables show the interval beside every rate the slide will cite. Synthetic history keeps the exercise shareable while still punishing sloppy stats. Students who drop the intervals to tidy a chart lose marks for evidence hygiene. Interval literacy belongs in programme design, not only in research electives. The facilitator guide flags this moment as where optimism tries to re-enter.
+Evidence for the comparison comes from synthetic past results with Wilson intervals around detection and coverage rates. Point estimates without intervals make small samples look decisive. Sam's tables show the interval beside every rate the slide will cite. Synthetic history keeps the exercise shareable while still punishing sloppy stats. Students who drop the intervals to tidy a chart lose marks for evidence hygiene. Interval literacy belongs in programme design, not only in research electives.
 
 ### 34.4 Recommendation
 
 Mix: keep quarterly web tests; fund threat-led every other year.
 
-The recommended mix keeps quarterly web tests for steady coverage and funds a threat-led scenario every other year. Annual threat-led scored well on learning and poorly on capacity; the biennial cadence won on the capacity row. Sam states what the mix intentionally leaves on the table so sponsors cannot invent full annual depth later. Recommendations name the cut, not only the prize. A mix that admits limits survives contact with the budget committee. Peer reviewers initial the appendix when the supporting file is present.
+The recommended mix keeps quarterly web tests for steady coverage and funds a threat-led scenario every other year. Annual threat-led scored well on learning and poorly on capacity; the biennial cadence won on the capacity row. Sam states what the mix intentionally leaves on the table so sponsors cannot invent full annual depth later. Recommendations name the cut, not only the prize. A mix that admits limits survives contact with the budget committee.
 
 ### 34.5 Non-goals
 
 Not recommending zero testing.
 
-One explicit non-goal is recommending zero testing as a savings measure. Another is pretending vendor marketing slides are evidence. Sam prints non-goals beside the options so the debate cannot quietly redefine success. Comparative projects that skip non-goals drift into whichever option the loudest voice likes. Clear refusals keep the recommendation honest when pressure rises. A third non-goal is scoring options on prestige rather than on the published criteria. Saying what you will not recommend is part of recommending well. Changing the story after the vote is treated as a new proposal, not a clarification.
+One explicit non-goal is recommending zero testing as a savings measure. Another is pretending vendor marketing slides are evidence. Sam prints non-goals beside the options so the debate cannot quietly redefine success. Comparative projects that skip non-goals drift into whichever option the loudest voice likes. Clear refusals keep the recommendation honest when pressure rises. A third non-goal is scoring options on prestige rather than on the published criteria. Saying what you will not recommend is part of recommending well.
 
 ### 34.6 Presentation
 
 Ten slides, decisions last.
 
-The presentation is capped at ten slides with the decision on the final one. Front-loading theatre and hiding the ask is graded as a miss. Sam's coaching is to put criteria and capacity arithmetic before adjectives. Executives who only see the last slide still deserve a self-explanatory decision box. Appendix material stays in the appendix. Speaker notes may be rich; the visible deck stays lean. Short decks force the comparison to carry the weight instead of the speaker's charm. Quiet arithmetic outperforms confident narrative when hours are scarce.
+The presentation is capped at ten slides with the decision on the final one. Front-loading theatre and hiding the ask is graded as a miss. Sam's coaching is to put criteria and capacity arithmetic before adjectives. Executives who only see the last slide still deserve a self-explanatory decision box. Appendix material stays in the appendix. Speaker notes may be rich; the visible deck stays lean. Short decks force the comparison to carry the weight instead of the speaker's charm.
 
 ### 34.7 Capacity to execute row
 
 Comparison tables include a "capacity to execute" row. Threat-led every year scored high on learning and low on capacity; every other year won. Ignoring capacity produces shelfware programmes.
 
-Learning scores seduce sponsors; capacity scores keep programmes real. Sam's table made the annual threat-led option look excellent until the capacity row turned red. Shelfware programmes are how banks buy prestige and ship nothing. The row uses last year's hours, not optimism. When capacity is ignored, the recommendation becomes fiction. Execution capacity is a criterion with the same dignity as coverage. The next cohort inherits the file so folklore cannot replace measurement.
+Learning scores seduce sponsors; capacity scores keep programmes real. Sam's table made the annual threat-led option look excellent until the capacity row turned red. Shelfware programmes are how banks buy prestige and ship nothing. The row uses last year's hours, not optimism. When capacity is ignored, the recommendation becomes fiction. Execution capacity is a criterion with the same dignity as coverage.
 
 ### 34.8 Cost honesty
 
 Comparison tables include staff hours, not only vendor invoices. Internal quarterly tests are not free.
 
-Invoice-only costing makes internal work look free and biases the table toward busywork the staff already cannot finish. Sam converts hours to cost with a published internal rate so apples match apples. Hidden overtime is still cost even when finance has not booked it. Students who omit hours fail the honesty check on the rubric. Sponsors deserve the full price of the mix. Cost honesty prevents comparative theatre from laundering unpaid labour. Sponsors notice when the painful answer arrives before the comforting one.
+Invoice-only costing makes internal work look free and biases the table toward busywork the staff already cannot finish. Sam converts hours to cost with a published internal rate so apples match apples. Hidden overtime is still cost even when finance has not booked it. Students who omit hours fail the honesty check on the rubric. Sponsors deserve the full price of the mix. Cost honesty prevents comparative theatre from laundering unpaid labour.
 
 ### 34.9 Capacity row data
 
 Capacity estimates come from last year's hours, not optimism. Sam cites the hours file.
 
-Optimism is not a dataset. Sam attaches the time-tracking export hash beside the capacity row so reviewers can recompute. Handmade estimates once undercounted threat-led work by roughly forty percent. Citing the file turns a debate about vibes into a debate about arithmetic. Future years update the file rather than inventing a new folklore number. Evidence-backed capacity rows are how mixes stay fundable after leadership changes. Forwardable artefacts outperform spoken assurances that fade by Friday. Graders look for the refusal as carefully as they look for the recommendation.
+Optimism is not a dataset. Sam attaches the time-tracking export hash beside the capacity row so reviewers can recompute. Handmade estimates once undercounted threat-led work by roughly forty percent. Citing the file turns a debate about vibes into a debate about arithmetic. Future years update the file rather than inventing a new folklore number. Evidence-backed capacity rows are how mixes stay fundable after leadership changes.
+
+If the export shows a spike from a one-off incident, Sam footnotes it rather than smoothing it away, so the board sees why the average looks heavy.
 
 ### 34.10 Hours arithmetic scene
 
@@ -3725,19 +3727,21 @@ The scene is a quiet spreadsheet moment rather than a dramatic pitch. Twelve hun
 
 Hours file is exported from time tracking, not remembered. Sam's first handmade estimate was 40% low. Humility is a spreadsheet.
 
-Memory compresses painful projects and inflates tidy ones. The export ends arguments about whether last year was really that heavy. Sam keeps the undercount story in the facilitator guide as a humility prompt. Hashes on the export stop quiet edits after the meeting. Comparative work inherits the same evidence manners as findings work. Spreadsheets that embarrass the author are still better than confident fiction. A missing hash is treated like a missing signature on the capacity claim.
+Memory compresses painful projects and inflates tidy ones. The export ends arguments about whether last year was really that heavy. Sam keeps the undercount story in the facilitator guide as a humility prompt. Hashes on the export stop quiet edits after the meeting. Comparative work inherits the same evidence manners as findings work. Spreadsheets that embarrass the author are still better than confident fiction.
 
 ### 34.12 Hours export in appendix
 
 Hours export is attached to the comparative project appendix as evidence.
 
-Appendix evidence lets a skeptical board member recompute without calling Sam at night. The export is stripped of personal names where policy requires and keeps role labels. Missing exports make the capacity row look decorative. Sam's checklist for the project packet lists the export beside the slide deck. Attachments are how arithmetic becomes auditable. A recommendation without its hours appendix is an opinion in nice fonts. Visual schedules expose collisions that percentage slides politely hide. Finance questions get sharper when the page still makes sense without the speaker.
+Appendix evidence lets a skeptical board member recompute without calling Sam at night. The export is stripped of personal names where policy requires and keeps role labels. Missing exports make the capacity row look decorative. Sam's checklist for the project packet lists the export beside the slide deck. Attachments are how arithmetic becomes auditable. A recommendation without its hours appendix is an opinion in nice fonts.
+
+The appendix also states which time-tracking codes were counted as testing, because reporting and retest hours are easy to leave out by accident.
 
 ### 34.13 Refuse handmade hour estimates
 
 Comparative appendices refuse handmade hour estimates without a time-tracking export hash.
 
-The refusal is mechanical: no hash, no capacity claim. Sam would rather delay a board date than bless a guessed row. Handmade numbers return through the side door whenever the rule is soft. Students learn to request exports early because late requests slip. Harshness here protects everyone from a programme that cannot be staffed. Guarding the capacity row is guarding the recommendation's integrity. Finance questions get sharper when the page still makes sense without the speaker in this comparative cycle. Undercounts from memory are archived as cautionary footnotes in the guide.
+The refusal is mechanical: no hash, no capacity claim. Sam would rather delay a board date than bless a guessed row. Handmade numbers return through the side door whenever the rule is soft. Students learn to request exports early because late requests slip. Harshness here protects everyone from a programme that cannot be staffed. Guarding the capacity row is guarding the recommendation's integrity. Finance questions get sharper when the page still makes sense without the speaker in this comparative cycle.
 
 ### 34.14 What would you cut first
 
@@ -3755,7 +3759,7 @@ A calendar makes collisions with freezes and examiner visits obvious. Shading th
 
 Two-year calendar PDF is the artefact boards forward to finance.
 
-Finance rarely forwards slide decks with metaphors intact. The one-page calendar PDF survives forwarding chains and still shows when money and people are needed. Sam versions the PDF with a date in the footer so stale copies are obvious. If finance asks for a third year, the model extends without rewriting the story. Artefacts designed for forwarding are artefacts designed for decisions. The forwarded calendar is often the only page that still matters a month later. Same-day uploads prevent unofficial copies from becoming the record.
+Finance rarely forwards slide decks with metaphors intact. The one-page calendar PDF survives forwarding chains and still shows when money and people are needed. Sam versions the PDF with a date in the footer so stale copies are obvious. If finance asks for a third year, the model extends without rewriting the story. Artefacts designed for forwarding are artefacts designed for decisions. The forwarded calendar is often the only page that still matters a month later.
 
 ### Worked example (synthetic TRB)
 
@@ -3909,67 +3913,89 @@ You will (1) complete a placement-style reflection; (2) sanitise reports; (3) tr
 
 Shadow TRB assessment operations (synthetic in this course).
 
-Field practice in this course uses a synthetic TRB assessment operations placement so students never touch live customer systems. Shadowing means watching intake, scoping, testing windows and handovers with a notebook of questions. Sam's placement journal forbids inventing war stories that did not happen in the synthetic lane. The goal is operational manners, not secret techniques. Synthetic does not mean casual; the same sanitisation and gift rules still bind. That habit is what host technicians remember after the placement ends. Peer pressure toward thorough sanitisation beats solo optimism every term.
+Field practice in this course uses a synthetic TRB assessment operations placement so students never touch live customer systems. Shadowing means watching intake, scoping, testing windows and handovers with a notebook of questions. Sam's placement journal forbids inventing war stories that did not happen in the synthetic lane. The goal is operational manners, not secret techniques. Synthetic does not mean casual; the same sanitisation and gift rules still bind.
+
+Each shadow day ends with Sam writing down which decision he watched being made and who had the authority to make it.
 
 ### 36.2 Sanitise
 
 No customer identifiers in academic write-ups.
 
-Academic write-ups must contain no customer identifiers, account numbers, raw IPs or hostnames that embed personal names. Sam runs a checklist and a peer initials it before any upload script accepts the file. A single surname in a hostname once nearly escaped; the peer catch became lunch and a teaching slide. Sanitisation is graded as hard as technical content. Citizen data has no place in academic mirrors even when the story feels educational. Upload scripts that reject blank forms sound cruel until the first near miss.
+Academic write-ups must contain no customer identifiers, account numbers, raw IPs or hostnames that embed personal names. Sam runs a checklist and a peer initials it before any upload script accepts the file. A single surname in a hostname once nearly escaped; the peer catch became lunch and a teaching slide. Sanitisation is graded as hard as technical content. Citizen data has no place in academic mirrors even when the story feels educational.
+
+Screenshots are the riskiest artefact: a browser tab title or a terminal prompt can carry a customer name even when the main pane looks clean.
 
 ### 36.3 Translation
 
 Wilson intervals become board-usable sentences.
 
-Placement work includes translating Wilson intervals into sentences a board can fund without losing the uncertainty. Sam practices phrases that keep the range visible instead of collapsing to a heroic percentage. Directors who only hear point estimates approve brittle programmes. Translation drills use the same synthetic results as the comparative project. Statistical caution that cannot be spoken aloud will not survive the boardroom. Leave-behind success is measured by untouched keyboards, not by praise. Board sentences that keep the interval meaning survive translation better. Gift-policy clarity keeps community practice from becoming a conflict case.
+Placement work includes translating Wilson intervals into sentences a board can fund without losing the uncertainty. Sam practices phrases that keep the range visible instead of collapsing to a heroic percentage. Directors who only hear point estimates approve brittle programmes. Translation drills use the same synthetic results as the comparative project. Statistical caution that cannot be spoken aloud will not survive the boardroom.
+
+A typical drill turns "detected 4 of 7, interval roughly 25 to 84 percent" into "we caught about half, and the true rate could be anywhere from a quarter to most". Directors then ask how many more runs would narrow the range, which is the right question.
 
 ### 36.4 Conflicts
 
 Gift policies and vendor dinners — follow TRB rules.
 
-Community and vendor events follow TRB gift policies without special student exceptions. Sam declines dinners that would look wrong in an after-action review even when they look normal in industry blogs. Conflict rules are part of field practice, not a HR appendix nobody reads. When unsure, he asks the placement supervisor before accepting anything of value. Appearance of influence is treated as seriously as actual influence. Weekly journals that name broken assumptions teach faster than victory lists. Runbook edits left behind are the placement's real thank-you gift.
+Community and vendor events follow TRB gift policies without special student exceptions. Sam declines dinners that would look wrong in an after-action review even when they look normal in industry blogs. Conflict rules are part of field practice, not a HR appendix nobody reads. When unsure, he asks the placement supervisor before accepting anything of value. Appearance of influence is treated as seriously as actual influence.
+
+Sam logs any vendor hospitality he declines in the placement journal, so a later review can see the boundary was applied rather than assumed. Small branded items follow the same threshold as meals.
 
 ### 36.5 Journal
 
 Weekly: learned, broken assumption, question.
 
-The weekly journal has three forced lines: what was learned, which assumption broke and what question remains. Victory-only journals teach vanity; broken assumptions teach operations. Sam's supervisor reads the question line and often assigns the next shadow slot from it. Entries stay free of customer identifiers like any other academic artefact. A short honest journal beats a long polished diary that hides confusion. Stern peers catch surname hostnames that kind peers skim past. Privacy oaths on foyer cards sound ceremonial and still change behaviour. Fifteen-minute alone timers expose documentation that only works with the author present.
+The weekly journal has three forced lines: what was learned, which assumption broke and what question remains. Victory-only journals teach vanity; broken assumptions teach operations. Sam's supervisor reads the question line and often assigns the next shadow slot from it. Entries stay free of customer identifiers like any other academic artefact. A short honest journal beats a long polished diary that hides confusion.
+
+A typical broken-assumption line reads: "I assumed the SOC saw our start message; it went to an unmonitored alias." That line became a runbook fix the following week, which is exactly what the journal is for.
 
 ### 36.6 Useful output
 
 Leave a runbook improvement behind.
 
-Every placement must leave a concrete runbook improvement the host can keep. Sam's leave-behind was a clarified stop-message template the technicians actually pasted. Tourism with a badge ends when the host file tree is unchanged. Improvements are small on purpose so they can be reviewed and merged. Usefulness is measured by what remains after the student badge stops working. Initialled checklists create a second pair of eyes without a committee. Size gates on uploads catch empty photographs posing as completed forms. Lunch after a catch is cheaper than a regulator letter after a leak.
+Every placement must leave a concrete runbook improvement the host can keep. Sam's leave-behind was a clarified stop-message template the technicians actually pasted. Tourism with a badge ends when the host file tree is unchanged. Improvements are small on purpose so they can be reviewed and merged. Usefulness is measured by what remains after the student badge stops working.
+
+Sam's change was three lines: the engagement id, the window end time and the SOC alias, placed at the top of the template where tired hands look first. The host merged it after one review and still uses it, which is the evidence that the placement mattered.
 
 ### 36.7 Leave-behind timer
 
 Leave-behind testing uses a timer: the host technician gets fifteen minutes alone. Sam may answer clarifying questions but not touch the keyboard. Keyboard touches mean the leave-behind failed.
 
-The timer is harsh and clarifying. If the technician cannot finish without Sam's hands, the documentation failed even if the tool works. Clarifying answers are allowed; silent takeover is not. Sam watches the clock more than the screen during the test. Hands-off success is the only leave-behind grade that counts. Choosing critics on purpose is a professional skill, not a personality quirk. Academic mirrors that never see citizen names are a design goal, not a slogan.
+The timer is harsh and clarifying. If the technician cannot finish without Sam's hands, the documentation failed even if the tool works. Clarifying answers are allowed; silent takeover is not. Sam watches the clock more than the screen during the test. Hands-off success is the only leave-behind grade that counts.
+
+Failures are written up as documentation defects with the exact step where the technician stalled.
 
 ### 36.8 Sanitisation checklist
 
 Before academic upload, Sam runs a checklist: names, account numbers, IPs, hostnames. A peer initials it.
 
-The checklist is boring on purpose so it gets finished. Peer initials create accountability without a second full review meeting. Sam never initials his own form. Upload automation looks for the initial field before accepting the PDF. Two humans and a script beat one hurried author with good intentions. Seminar clocks keep critique from eating the action-planning slot. Line-referenced feedback is usable; vibe feedback is theatre. Writing actions while quiet beats defending every comment in the moment.
+The checklist is boring on purpose so it gets finished. Peer initials create accountability without a second full review meeting. Sam never initials his own form. Upload automation looks for the initial field before accepting the PDF. Two humans and a script beat one hurried author with good intentions.
+
+The checklist order matters: names first, because they hide in the most places, then account numbers, then network identifiers. Hostnames come last because they need the slowest reading, letter by letter, against the customer list.
 
 ### 36.9 Peer initial box
 
 Sanitisation forms without peer initials are rejected by the academic upload script.
 
-Mechanical rejection removes debates about whether a friend will initial later. Sam learned to book peer time before the upload deadline rather than after. Blank initial boxes are treated like missing signatures on findings. The script's rudeness is a privacy control. If the box is empty, the file simply does not leave the workstation. Methodology checklists outrank social-media lore when standards matter. Filing the seminar note with the capstone keeps the trail complete. Declined feedback with reasons closes threads; bare disagreement does not.
+Mechanical rejection removes debates about whether a friend will initial later. Sam learned to book peer time before the upload deadline rather than after. Blank initial boxes are treated like missing signatures on findings. The script's rudeness is a privacy control. If the box is empty, the file simply does not leave the workstation.
+
+The script checks that the initials differ from the author's own and that the peer is on the current cohort list, so a borrowed or self-signed box still fails.
 
 ### 36.10 Surname hostname catch
 
 Peer initials on sanitisation once caught a hostname containing a customer surname. Sam buys the peer lunch. Checklists with teeth make kindness easy.
 
-The catch was small and enormous. A hostname that looked technical still carried a person. Lunch was thanks and a public signal that catches are welcome. Checklists without teeth produce lonely heroes; checklists with teeth produce lunch. Celebrating the catch teaches the next peer to look hard. Fourteen-day expiry turns polite stalling into a visible choice. Strict state strings stop tired people from inventing comforting statuses. Pagers at day ten are kinder than silent boards at day thirty.
+The catch was small and enormous. A hostname that looked technical still carried a person. Lunch was thanks and a public signal that catches are welcome. Checklists without teeth produce lonely heroes; checklists with teeth produce lunch. Celebrating the catch teaches the next peer to look hard.
+
+The hostname followed an old naming habit where branch servers carried the account manager's surname. After the catch, Sam added a hostname-pattern line to the checklist, and the host team opened a ticket to retire that convention.
 
 ### 36.11 Choose stern peers
 
 Sanitisation peer once was Sam's sternest critic. He chooses stern peers on purpose. Kind peers miss surnames in hostnames.
 
-Kindness and thoroughness are different services. Sam schedules the critic when the file matters most. Friendship reviews still happen for tone; sanitisation wants sharp eyes. Stern peers are thanked specifically so they keep saying yes. Selecting for severity in review is a professional choice, not a social failure. Pedantic APIs are gifts on nights when judgment is thin. Deep links remove the scavenger hunt from comment closure. See-thread without a link is how actions get lost in scrollback.
+Kindness and thoroughness are different services. Sam schedules the critic when the file matters most. Friendship reviews still happen for tone; sanitisation wants sharp eyes. Stern peers are thanked specifically so they keep saying yes. Selecting for severity in review is a professional choice, not a social failure.
+
+Sam keeps a short list of who caught what in earlier reviews and books the person whose catches match the artefact's risk: hostnames go to the peer who found the surname, and tables go to the one who spots stray account digits.
 
 ### 36.12 Privacy oath and form gates
 
@@ -3981,13 +4007,17 @@ Multiple gates exist because any one gate fails eventually. Prior catchers get p
 
 Blank-form size gate once caught a peer who uploaded a photo of a blank table. Pedantry wins.
 
-A photograph of an empty table is an old trick against weak validators. The size gate plus field validation stopped it. Sam documented the attempt so the next validator author would not remove the check as paranoia. Process stories belong in the facilitator guide beside the happy path. Adversarial laziness inside the course is still useful for hardening uploads. Closure weeks make clean boards a cultural product, not an accident. Public open-counts apply gentle pressure without naming and shaming.
+A photograph of an empty table is an old trick against weak validators. The size gate plus field validation stopped it. Sam documented the attempt so the next validator author would not remove the check as paranoia. Process stories belong in the facilitator guide beside the happy path. Adversarial laziness inside the course is still useful for hardening uploads.
+
+The threshold was set by measuring genuinely completed forms, which never fell under the limit.
 
 ### 36.14 Foyer privacy oath card
 
 Privacy oath sentence is signed on the vault foyer card.
 
-The foyer card is visible to anyone collecting a badge for vault work. Signing is quick and slightly solemn, which helps memory. Sam watches new placements sign before their first shadow day. Cards are archived by term so the ritual has a record. Public signing ties privacy manners to entry, not to an unread handbook chapter page. Personal thank-you notes beat automated trophies for zero-open streaks. Golden fixtures that try to trick the tool earn their keep in CI. Defaulting near-matches to conflict lists prevents silent host collapses.
+The foyer card is visible to anyone collecting a badge for vault work. Signing is quick and slightly solemn, which helps memory. Sam watches new placements sign before their first shadow day. Cards are archived by term so the ritual has a record. Public signing ties privacy manners to entry, not to an unread handbook chapter page.
+
+Anyone who refuses to sign does not receive vault access that term; in practice the question it raises is a conversation, not a standoff.
 
 ### Worked example (synthetic TRB)
 
@@ -4281,97 +4311,125 @@ You will (1) evaluate against pre-registered metrics; (2) run independent tests;
 
 Precision/recall on planted drifts; fail-closed cases.
 
-The evaluation plan locks precision and recall on planted drifts plus fail-closed cases before any run begins. Sam freezes metric definitions in a short pre-registration note the advisor signs. Planted adds, removes and type conflicts provide ground truth the script can score. Fail-closed cases are scored as pass or fail, never as soft partial credit. Plans that invent metrics after seeing scores fail the course standard. Precision freezes stop post-score shopping for prettier yardsticks. Keyboard distance during runs is part of the grade, not a courtesy.
+The evaluation plan locks precision and recall on planted drifts plus fail-closed cases before any run begins. Sam freezes metric definitions in a short pre-registration note the advisor signs. Planted adds, removes and type conflicts provide ground truth the script can score. Fail-closed cases are scored as pass or fail, never as soft partial credit. Plans that invent metrics after seeing scores fail the course standard.
+
+Sam plants twenty drifts across the inventory pair (eight adds, seven removes and five type conflicts) so each class has enough cases for an interval to mean something.
 
 ### 39.2 Independent
 
 Another student runs the evaluation script.
 
-Another student runs the evaluation script while Sam stays away from the keyboard. Independence is a social protocol as much as a technical one. The runner signs a one-line statement that Sam did not edit the run logs. Statements sit in the appendix beside the raw outputs. Coached runs are treated as academic misconduct, not as helpful collaboration. Stopwatches on first triage reveal whether scores will survive contact with people. ROE sentences in abstracts catch readers who only skim happy metrics. Labeled exploratory annexes keep curiosity from rewriting the contract.
+Another student runs the evaluation script while Sam stays away from the keyboard. Independence is a social protocol as much as a technical one. The runner signs a one-line statement that Sam did not edit the run logs. Statements sit in the appendix beside the raw outputs. Coached runs are treated as academic misconduct, not as helpful collaboration.
+
+The runner receives only the README, the frozen script and the fixture bundle; if they get stuck, they file a question in writing, and the question itself becomes evaluation data about the documentation.
 
 ### 39.3 Side effects
 
 Usability timing; false alarm burden.
 
-Side-effect measures include usability timing and false-alarm burden for operators. A precise tool that floods operators with noise will not be adopted. Sam times first-time conflict triage on a fixed inventory pair. False alarms are counted and discussed even when precision looks flattering. Side effects belong in the report beside the headline scores. Staging success criteria written early prevent production pep talks from jumping the queue. Signed distance pledges make lingering authors socially expensive. Monitor-only staging plans are returned with a request for dates and evidence. Unofficial eternal student ownership is the abandonment pattern advisors watch for.
+Side-effect measures include usability timing and false-alarm burden for operators. A precise tool that floods operators with noise will not be adopted. Sam times first-time conflict triage on a fixed inventory pair. False alarms are counted and discussed even when precision looks flattering. Side effects belong in the report beside the headline scores.
+
+Sam's first measurement showed operators spending most of their time on type conflicts that were harmless naming variants. He reported that cost honestly instead of tuning it away before the evaluation closed, and the finding went into the v2 list.
 
 ### 39.4 Residual risk
 
 Tool helps inventory hygiene; does not replace ROE discipline.
 
-Residual risk statements say clearly that the tool helps inventory hygiene and does not replace ROE discipline. Sam refuses marketing language that implies authorised testing can be automated away. Readers who skip this paragraph are the ones most likely to misuse the tool. The statement is required in both the report abstract and the final slide. Hygiene aids remain subordinate to human authorisation boundaries. Refusal-capable service owners turn paper plans into real gates. Thanked failures that rewrite preambles are how docs catch up to reality.
+Residual risk statements say clearly that the tool helps inventory hygiene and does not replace ROE discipline. Sam refuses marketing language that implies authorised testing can be automated away. Readers who skip this paragraph are the ones most likely to misuse the tool. The statement is required in both the report abstract and the final slide. Hygiene aids remain subordinate to human authorisation boundaries.
+
+A concrete example helps: the tool can say a host is missing from the documented scope, but it cannot say whether testing that host is authorised. That judgement stays with the ROE owner.
 
 ### 39.5 Report
 
 Results vs pre-registration; no post hoc metric swaps.
 
-The report compares results to the pre-registration and forbids post hoc metric swaps. Exploratory analyses are allowed only in a clearly labeled appendix. Sam's template highlights any metric that was not pre-registered. Victory-lap swaps are a fail even if the new metric looks kinder. Honesty about misses is part of the graded science. Evaporating inbox bullets are why adoption work must live in tickets. Loud unfinished tickets are preferable to silently closed empty promises. Shrinking unread pages respects operators more than scolding their skimming.
+The report compares results to the pre-registration and forbids post hoc metric swaps. Exploratory analyses are allowed only in a clearly labeled appendix. Sam's template highlights any metric that was not pre-registered. Victory-lap swaps are a fail even if the new metric looks kinder. Honesty about misses is part of the graded science.
+
+Where a planted drift class scored poorly, the report shows the misses by fixture name so readers can inspect them. Sam's lowest result, on type conflicts, appears in the abstract rather than on the last page.
 
 ### 39.6 Recommend
 
 Adopt in staging first.
 
-The recommendation is staging adoption first with named owners and a thirty-day checklist. Tools without adoption plans are hobbies, however clever. Sam writes what staging success looks like before anyone talks about production. Production promotion waits on evidence from solo operator runs. Recommendations that skip staging are rejected by the advisor. Valued break reports turn early confusion into deny-text improvements. Searchable adoption pain across cohorts is a curriculum asset. Limit-led openings make skeptical panels lean in rather than lean back. First-minute positioning corrections save entire Q&A threads from confusion.
+The recommendation is staging adoption first with named owners and a thirty-day checklist. Tools without adoption plans are hobbies, however clever. Sam writes what staging success looks like before anyone talks about production. Production promotion waits on evidence from solo operator runs. Recommendations that skip staging are rejected by the advisor.
+
+In Sam's plan, staging success means two solo operator runs with no author help, no fail-closed regressions, and false alarms below the level operators said they could tolerate in the timing study. Only then does a production discussion start, with the service owner chairing it.
 
 ### 39.7 Independence statement
 
 Independent evaluators sign a one-line statement that Sam did not edit their run logs. The statement sits in the appendix. Trustworthy evaluation is a social protocol as much as a script.
 
-Scripts alone cannot prove independence when authors linger nearby. The signed line makes the social rule visible to examiners. Sam keeps distance during runs even when curiosity itches. Missing statements block the evaluation chapter from closing. Trustworthy science is partly paperwork done without resentment. Visible timers in rehearsal make overtime socially awkward before defence day. Banks that include refusals teach newcomers the boundary is normal.
+Scripts alone cannot prove independence when authors linger nearby. The signed line makes the social rule visible to examiners. Sam keeps distance during runs even when curiosity itches. Missing statements block the evaluation chapter from closing. Trustworthy science is partly paperwork done without resentment.
+
+The wording is fixed so that runners cannot soften it into "mostly unedited".
 
 ### 39.8 Staging adoption plan
 
 Evaluation reports include a thirty-day staging plan with owners. Tools without adoption plans are hobbies.
 
-The thirty-day plan names dates, owners and evidence expected at each gate. Sam rejects plans that only say monitor in staging. Checklists become tickets so work cannot hide in email bullets. Hobby energy is welcome in labs and unwelcome in adoption claims. Staffed plans are how tools leave the thesis and enter operations. Future-work fences keep dreams from contaminating delivered claims. Pinned generators let strangers regenerate scores without private favours. Stress clarity grades matter because rambled refusals sound like maybe.
+The thirty-day plan names dates, owners and evidence expected at each gate. Sam rejects plans that only say monitor in staging. Checklists become tickets so work cannot hide in email bullets. Hobby energy is welcome in labs and unwelcome in adoption claims. Staffed plans are how tools leave the thesis and enter operations.
+
+Sam's plan has three gates: a first solo run by day ten, a second by day twenty, and a review of break reports and false-alarm counts at day thirty. Each gate names the evidence file that proves it passed.
 
 ### 39.9 Adoption owners
 
 Staging adoption names a service owner and a platform owner. One name is insufficient.
 
-Service owners feel the operational pain; platform owners feel the tooling pain. One name usually means the student still owns everything unofficially. Sam requires both roles before the staging plan can be approved. Split ownership prevents silent abandonment when the term ends. Insufficient naming is treated as an incomplete recommendation. Stewardship means giving next year the questions you wish you had. Logged deletion after self-review keeps improvement from becoming retention risk. Retold gentle-lid scenes spread the right imitation through the cohort.
+Service owners feel the operational pain; platform owners feel the tooling pain. One name usually means the student still owns everything unofficially. Sam requires both roles before the staging plan can be approved. Split ownership prevents silent abandonment when the term ends. Insufficient naming is treated as an incomplete recommendation.
+
+In practice the service owner decides whether a conflict list is good enough to act on, while the platform owner fixes parser and packaging issues. When those two jobs share one name, operational complaints tend to go unanswered because the same person is also busy fixing code.
 
 ### 39.10 Mira and Sam on adoption
 
 Adoption plan names Mira for service ownership and Sam for platform support. Thirty-day checklist includes two operator solo runs. Without Mira's name the plan would be fiction.
 
-Mira's name makes the plan real because she can refuse work that is not ready. Two solo runs catch documentation gaps unit tests miss. Sam's platform role stays supportive rather than possessive. Fiction plans with only student names are a known failure mode. The scene is used in advisor training as a positive example. Boring practiced lid motion beats improvisational toughness on the day. Dominance displays are corrected because they teach fear, not professionalism.
+Mira's name makes the plan real because she can refuse work that is not ready. Two solo runs catch documentation gaps unit tests miss. Sam's platform role stays supportive rather than possessive. Fiction plans with only student names are a known failure mode. The scene is used in advisor training as a positive example.
 
 ### 39.11 Solo run finds DNS gap
 
 Solo run two failed because DNS differed in the operator's profile. README gained a DNS preamble. Solo runs find doc bugs tools miss.
 
-Profile differences are boring until they break a careful operator. Sam thanked the failure in the retro instead of blaming the operator. DNS preamble text is now part of the golden README examples. Solo runs are documentation tests wearing operational clothing. Tools can pass unit tests and still fail humans on day one. Multi-night numeric tracks show whether calm and firm actually improve. Still standards in clips beat drifting adjectives across facilitators.
+Profile differences are boring until they break a careful operator. Sam thanked the failure in the retro instead of blaming the operator. DNS preamble text is now part of the golden README examples. Solo runs are documentation tests wearing operational clothing. Tools can pass unit tests and still fail humans on day one.
+
+The operator's resolver returned short names where the fixture expected fully qualified ones.
 
 ### 39.12 Checklist items as tickets
 
 Thirty-day checklist items are tickets, not bullets in an email.
 
-Tickets carry owners, due dates and evidence attachments. Email bullets evaporate when inboxes rotate. Sam's adoption template opens tickets automatically from the checklist. Closed tickets without evidence are reopened by policy. Ticketing is how thirty days become accountable instead of aspirational. Durable refuse pages give advisors something stronger than hallway lore. Rot-checked study-path links keep boundaries findable under shortcut pressure. Planted drifts without frozen metrics are just vibes with a script wrapper. Misconduct bright lines around coaching protect the independence claim. False-alarm honesty keeps flattering precision from lying about adoptability.
+Tickets carry owners, due dates and evidence attachments. Email bullets evaporate when inboxes rotate. Sam's adoption template opens tickets automatically from the checklist. Closed tickets without evidence are reopened by policy. Ticketing is how thirty days become accountable instead of aspirational.
+
+Sam's checklist produces six tickets: two solo runs, the false-alarm review, a deny-message review, the README update and the day-thirty retro. Each has an owner from the adoption plan and a due date inside the thirty days, so slippage is visible on the board before the window closes.
 
 ### 39.13 Evidence to auto-close
 
 Tickets for checklist items auto-close only when solo-run evidence is attached.
 
-Auto-close without evidence recreates paper completion theatre. Sam wires the rule so convenience cannot delete the proof requirement. Operators learn to attach outputs while the run is fresh. Missing attachments keep the ticket loud on purpose. Evidence-gated closure is adoption hygiene. Marketing automation fantasies are rewritten into subordinate hygiene language. Victory-lap metric swaps fail even when the new number looks kinder. Hobby energy belongs in labs, not in unstaffed adoption claims. Paperwork without resentment is still part of trustworthy evaluation. Email cannot carry due dates the way tickets can.
+Auto-close without evidence recreates paper completion theatre. Sam wires the rule so convenience cannot delete the proof requirement. Operators learn to attach outputs while the run is fresh. Missing attachments keep the ticket loud on purpose. Evidence-gated closure is adoption hygiene.
+
+Acceptable evidence is specific: the conflict output file, the operator's command line and the tool version hash. A screenshot alone does not count, because it cannot show which build ran. When evidence is missing, the ticket stays open and pings its owner each morning.
 
 ### 39.14 Rewrite ignored README parts
 
 Adoption retros at day 30 ask operators what they ignored in the README. Ignored sections are deleted or rewritten, not defended.
 
-Defending unread paragraphs wastes the only attention operators offered. Sam would rather shrink docs than lecture people for skimming. Ignored means the writing failed the environment it entered. Retros that rewrite are kinder than retros that blame. Attention is the scarce resource adoption must budget. Split ownership is how tools survive the student's graduation week. Advisor training reuses the Mira naming scene as a positive pattern. Day-one human failures are documentation tests in operational clothing.
+Defending unread paragraphs wastes the only attention operators offered. Sam would rather shrink docs than lecture people for skimming. Ignored means the writing failed the environment it entered. Retros that rewrite are kinder than retros that blame. Attention is the scarce resource adoption must budget.
+
+In the first retro, operators admitted skipping the long architecture overview entirely. Sam cut it to three sentences and moved the deny-path example to the top, since that was the part people actually needed during their first run.
 
 ### 39.15 Intentional break reports
 
 Day-ten adoption check asks operators to break the tool on purpose and file the brokenness. Sam would rather hear early pain than polite silence. Two intentional break reports in the first cohort improved deny messages more than a month of speculative polish would have.
 
-Polite silence is an adoption anti-pattern. Inviting breaks legitimises early bad news. Deny-message improvements from real confusion beat imagined UX polish. Sam tracks break reports as valued input, not as complaints. Early pain is cheaper than quiet abandonment. Policy reopens empty closures so proof remains non-optional. Attention budgets are the real constraint behind README length fights.
+Polite silence is an adoption anti-pattern. Inviting breaks legitimises early bad news. Deny-message improvements from real confusion beat imagined UX polish. Sam tracks break reports as valued input, not as complaints. Early pain is cheaper than quiet abandonment.
 
 ### 39.16 BREAK-ADOPT ticket type
 
 Intentional break reports have their own ticket type: BREAK-ADOPT.
 
-A distinct type keeps adoption pain searchable later. Sam reviews BREAK-ADOPT trends each cohort for doc and deny gaps. Mixing breaks into generic bugs hides the adoption signal. Operators use the type without shame because it was requested. Searchable pain is how programmes learn across years. Quiet abandonment costs more than awkward early break tickets. Cohort trend reviews on BREAK-ADOPT shape the next term's doc drills. Ethics headings before next steps signal values ordering to examiners. Legal and ethical boundaries need slide ink, not only prose hopes.
+A distinct type keeps adoption pain searchable later. Sam reviews BREAK-ADOPT trends each cohort for doc and deny gaps. Mixing breaks into generic bugs hides the adoption signal. Operators use the type without shame because it was requested. Searchable pain is how programmes learn across years.
+
+Each report records what the operator tried, what the tool did and what they expected instead. The first cohort's reports found that an empty inventory file produced a vague message, which became a specific deny reason in the next release.
 
 ### Worked example (synthetic TRB)
 
@@ -4409,79 +4467,103 @@ You will (1) structure the thesis; (2) defend limits; (3) state next steps.
 
 Claim, background, method, results, limits, ethics, next steps.
 
-The thesis structure is claim, background, method, results, limits, ethics and next steps. Sam leads with limits early enough that panels trust the results that follow. Ethics is not an appendix afterthought; it has its own heading before next steps. Next steps stay outside graded claims to avoid scope inflation. Readers should know what was asked before they judge what was found. Limit-led openings make skeptical panels lean in rather than lean back. First-minute positioning corrections save entire Q&A threads from confusion. Visible timers in rehearsal make overtime socially awkward before defence day.
+The thesis structure is claim, background, method, results, limits, ethics and next steps. Sam leads with limits early enough that panels trust the results that follow. Ethics is not an appendix afterthought; it has its own heading before next steps. Next steps stay outside graded claims to avoid scope inflation. Readers should know what was asked before they judge what was found.
+
+Sam drafts the limits paragraph before the results chapter, so the results are written knowing what they cannot claim.
 
 ### 40.2 Positioning
 
 Inventory hygiene tooling for authorized testing programmes — not a red-team exploit framework.
 
-Positioning states inventory hygiene tooling for authorised testing programmes, not a red-team exploit framework. Sam corrects misunderstandings in the first minute of the talk. Exploit-framework readings of the work are treated as communication failures to fix, not as flattering hype. Slides repeat the positioning sentence near the claim. Clear positioning protects the programme's legal and ethical boundaries. Banks that include refusals teach newcomers the boundary is normal. Future-work fences keep dreams from contaminating delivered claims. Pinned generators let strangers regenerate scores without private favours.
+Positioning states inventory hygiene tooling for authorised testing programmes, not a red-team exploit framework. Sam corrects misunderstandings in the first minute of the talk. Exploit-framework readings of the work are treated as communication failures to fix, not as flattering hype. Slides repeat the positioning sentence near the claim. Clear positioning protects the programme's legal and ethical boundaries.
+
+The positioning sentence also governs vocabulary: the thesis says inventory drift, conflict and deny, and avoids attack words that would invite the wrong reading.
 
 ### 40.3 Presentation
 
 12 minutes + questions; time discipline.
 
-The presentation is twelve minutes plus questions, with hard time discipline. Sam rehearses with a visible timer and stops mid-sentence in practice if needed. Overtime steals question time where the real examination happens. Panels notice who respects the clock. Brevity under observation is part of the professional skill being graded. Stress clarity grades matter because rambled refusals sound like maybe. Stewardship means giving next year the questions you wish you had. Logged deletion after self-review keeps improvement from becoming retention risk. Retold gentle-lid scenes spread the right imitation through the cohort.
+The presentation is twelve minutes plus questions, with hard time discipline. Sam rehearses with a visible timer and stops mid-sentence in practice if needed. Overtime steals question time where the real examination happens. Panels notice who respects the clock. Brevity under observation is part of the professional skill being graded.
+
+Sam's twelve minutes break down as two on the claim and positioning, four on method, three on results with intervals, two on limits and ethics, and one on the decision he is asking the panel to accept. Live demo time comes out of the method block, not out of questions.
 
 ### 40.4 Likely questions
 
 Fail-closed demos; ethics; why no live scan; threats to validity.
 
-Likely questions cover fail-closed demos, ethics, why there is no live scan and threats to validity. Sam publishes his question bank after the defence so the next cohort rehearses better. The public-website demo refusal is in the bank on purpose. Rehearsal answers are short, cited and calm. Surprise questions still happen; banks reduce avoidable panic. Boring practiced lid motion beats improvisational toughness on the day. Dominance displays are corrected because they teach fear, not professionalism. Multi-night numeric tracks show whether calm and firm actually improve.
+Likely questions cover fail-closed demos, ethics, why there is no live scan and threats to validity. Sam publishes his question bank after the defence so the next cohort rehearses better. The public-website demo refusal is in the bank on purpose. Rehearsal answers are short, cited and calm. Surprise questions still happen; banks reduce avoidable panic.
+
+For "why no live scan", Sam's answer is that the claim concerns inventory comparison, synthetic data was enough to test it, and a live scan would have needed authorisation the course cannot grant.
 
 ### 40.5 Next steps
 
 Integrate FindingsDesk tickets; study threat-led detection metrics.
 
-Next steps mention FindingsDesk ticket integration and studies of threat-led detection metrics. They remain clearly labeled as future work, not as incomplete graded claims. Sam resists stuffing next steps with features banned by non-goals. Ambition belongs here only when it does not rewrite the thesis claim. Examiners should not need to guess what was delivered versus dreamed. Still standards in clips beat drifting adjectives across facilitators. Durable refuse pages give advisors something stronger than hallway lore. Rot-checked study-path links keep boundaries findable under shortcut pressure.
+Next steps mention FindingsDesk ticket integration and studies of threat-led detection metrics. They remain clearly labeled as future work, not as incomplete graded claims. Sam resists stuffing next steps with features banned by non-goals. Ambition belongs here only when it does not rewrite the thesis claim. Examiners should not need to guess what was delivered versus dreamed.
+
+Ticket integration is listed with its own risk, which is that conflicts could flood FindingsDesk with low-value items, so a future study would need a triage threshold first. Threat-led metrics are framed as a separate research question, not a tool feature.
 
 ### 40.6 Reproducibility
 
 Appendix with synthetic data and scripts.
 
-The reproducibility appendix includes synthetic data and scripts sufficient to regenerate the scores. Sam pins script hashes and generator versions beside the results tables. Claims without runnable appendices are graded as incomplete science. Synthetic data keeps reproduction inside course policy. Future students should be able to rerun without asking Sam for private files. Planted drifts without frozen metrics are just vibes with a script wrapper. Misconduct bright lines around coaching protect the independence claim. False-alarm honesty keeps flattering precision from lying about adoptability. Marketing automation fantasies are rewritten into subordinate hygiene language.
+The reproducibility appendix includes synthetic data and scripts sufficient to regenerate the scores. Sam pins script hashes and generator versions beside the results tables. Claims without runnable appendices are graded as incomplete science. Synthetic data keeps reproduction inside course policy. Future students should be able to rerun without asking Sam for private files.
+
+A reproduction run on a fresh lab machine is part of the submission check: an advisor's assistant follows the appendix instructions and confirms the precision and recall figures match the report to the stated decimal place. Any mismatch blocks submission until the appendix is fixed.
 
 ### 40.7 Hostile demo refusal
 
 Hostile-examiner rehearsal includes a request for a live demo against a public bank website. Sam's refusal cites law and curriculum boundaries. Peers grade the refusal's clarity under stress.
 
-The rehearsal is uncomfortable on purpose. Clarity under stress is the skill, not aggression. Sam cites law and curriculum rather than personal preference. Peers score the wording so feedback is specific. Refusals that ramble teach panels the wrong lesson about boundaries. Victory-lap metric swaps fail even when the new number looks kinder. Hobby energy belongs in labs, not in unstaffed adoption claims. Paperwork without resentment is still part of trustworthy evaluation.
+The rehearsal is uncomfortable on purpose. Clarity under stress is the skill, not aggression. Sam cites law and curriculum rather than personal preference. Peers score the wording so feedback is specific. Refusals that ramble teach panels the wrong lesson about boundaries.
+
+Sam's rehearsed line is short: "I'm not authorised to test that site, and the curriculum forbids it; here is the same behaviour on the synthetic fixture." Then he moves on.
 
 ### 40.8 Question bank after defence
 
 Sam publishes his likely-questions list after the defence so next year's cohort rehearses better. The bank includes the public-website demo refusal.
 
-Publishing after defence avoids leaking answers into the graded event. Including the refusal normalises the boundary for newcomers. Sam updates the bank when new hostile patterns appear. Cohorts that rehearse from real banks perform calmer under panel heat. Generosity with questions is part of programme stewardship. Email cannot carry due dates the way tickets can. Split ownership is how tools survive the student's graduation week. Advisor training reuses the Mira naming scene as a positive pattern.
+Publishing after defence avoids leaking answers into the graded event. Including the refusal normalises the boundary for newcomers. Sam updates the bank when new hostile patterns appear. Cohorts that rehearse from real banks perform calmer under panel heat. Generosity with questions is part of programme stewardship.
+
+Each entry pairs the question with the answer Sam gave and a note on what he would say better now. The note is often the most useful part for next year's students.
 
 ### 40.9 Refusal audio self-review
 
 Rehearsal refusals are audio-recorded for self-review then deleted within 24 hours. Sam checks his voice for hesitation.
 
-Short retention balances improvement against unnecessary storage of stress audio. Sam listens for hesitation, apology stacking and lost citations. Deletion is logged so the practice does not become surveillance. Self-review catches habits peers are too polite to name. Voice under pressure is a trainable instrument. Day-one human failures are documentation tests in operational clothing. Policy reopens empty closures so proof remains non-optional. Attention budgets are the real constraint behind README length fights. Quiet abandonment costs more than awkward early break tickets.
+Short retention balances improvement against unnecessary storage of stress audio. Sam listens for hesitation, apology stacking and lost citations. Deletion is logged so the practice does not become surveillance. Self-review catches habits peers are too polite to name. Voice under pressure is a trainable instrument.
+
+Sam's first recording had three apologies before the actual refusal. By the third rehearsal it had none, and peers rated the later version as both calmer and firmer. He keeps a written note of that change after the audio is deleted.
 
 ### 40.10 Closing the hostile laptop
 
 In rehearsal the hostile examiner opens a laptop to a public bank login. Sam closes the lid gently, cites the boundary, and continues with the fail-closed demo. Peers score the gentleness and the firmness separately.
 
-Gentleness without firmness is surrender; firmness without gentleness is theatre. Closing the lid gently keeps the room learning the boundary, not the scare. Sam continues into the fail-closed demo so the talk does not stall on the refusal. Separate scores prevent charisma from hiding shaky no's. The scene is the course's most retold rehearsal moment. Cohort trend reviews on BREAK-ADOPT shape the next term's doc drills.
+Gentleness without firmness is surrender; firmness without gentleness is theatre. Closing the lid gently keeps the room learning the boundary, not the scare. Sam continues into the fail-closed demo so the talk does not stall on the refusal. Separate scores prevent charisma from hiding shaky no's. The scene is the course's most retold rehearsal moment.
 
 ### 40.11 Calm and firm both required
 
 Gentleness score matters: slamming the laptop would scare the room into the wrong lesson. Firm and calm is the skill under examination.
 
-Slamming teaches fear; fear teaches the wrong imitation. Firm and calm is harder and more professional. Sam practices the lid motion until it is boring. Peers who reward slam energy are corrected in the debrief. The skill under examination is boundary-setting, not dominance display. Ethics headings before next steps signal values ordering to examiners. Legal and ethical boundaries need slide ink, not only prose hopes. Stolen question time is stolen examination, which is why clocks matter.
+Slamming teaches fear; fear teaches the wrong imitation. Firm and calm is harder and more professional. Sam practices the lid motion until it is boring. Peers who reward slam energy are corrected in the debrief. The skill under examination is boundary-setting, not dominance display.
+
+Firm means the boundary does not move when the examiner pushes a second time. Calm means voice, pace and hands stay steady while it holds. Rehearsal examiners deliberately push twice, because the second push is where most students either give in or get sharp.
 
 ### 40.12 Calm/firm rubric scores
 
 Peers score calm and firm on a 0–3 rubric; Sam targets 3/3 on both.
 
-Numeric rubrics make noisy rehearsal feedback comparable. Targets of three and three keep the standard visible. Sam accepts twos as coaching signals, not as personal attacks. Rubric anchors include brief descriptions of each score. Comparable scores help facilitators track improvement across nights. Calmer rehearsals from real banks show up as cleaner panel minutes. Examiners hate guessing which paragraphs were dreams. Policy-safe synthetic reruns keep reproduction inside the rules. Specific wording scores beat vague you did fine comments after refusal drills.
+Numeric rubrics make noisy rehearsal feedback comparable. Targets of three and three keep the standard visible. Sam accepts twos as coaching signals, not as personal attacks. Rubric anchors include brief descriptions of each score. Comparable scores help facilitators track improvement across nights.
+
+On the firm scale, zero means the student agreed to the demo, one means they hedged, two means they refused but invited further negotiation, and three means a clear no with the boundary cited. The calm scale uses voice, pace, apologies and posture as its anchors.
 
 ### 40.13 Rubric anchor clips
 
 Calm/firm rubric anchors include sample video clips of good refusals (internal only).
 
-Internal clips keep examples concrete without publishing stress performances. Sam reviews clips for consent and redaction before they enter the pack. Abstract adjectives drift; clips hold the standard still. Access to clips follows the same ethics-folder manners as pressure artefacts. Anchors are teaching tools, not entertainment. Normalised refusals reduce the sense that boundaries are personal quirks. Surveillance fears fade when deletion is prompt and logged. Scare-based teaching produces imitators who slam lids for show. Boundary-setting skill is the exam hiding inside the laptop scene.
+Internal clips keep examples concrete without publishing stress performances. Sam reviews clips for consent and redaction before they enter the pack. Abstract adjectives drift; clips hold the standard still. Access to clips follows the same ethics-folder manners as pressure artefacts. Anchors are teaching tools, not entertainment.
+
+Each clip is under a minute and is paired with its score and a one-line reason, so a new facilitator can calibrate in a few minutes before rehearsal night. Clips of weak refusals are re-enacted by staff rather than taken from real students, to spare anyone the embarrassment.
 
 ### 40.14 What-I-refuse list
 
@@ -4493,7 +4575,9 @@ Graduation costumes do not retire boundaries. Listing refusals beside the PDF ma
 
 What-I-refuse list is linked from STUDY_PATH near course 111.
 
-Discoverability matters when new students hunt for shortcuts in private chats. Sam checks the link each term so rot does not hide the list. Study-path placement treats refusals as curriculum, not as folklore. Course 111 readers meet the boundary before capstone pressure peaks. Linked refusals outlast hallway warnings. Coaching-signal twos are data, not insults, on the calm-firm sheet. Entertainment uses of stress clips are out of bounds for the pack. Integrity keeps unverified dumps off the acceptable-evidence list. Pre-capstone readers who meet refusals early ask better shortcut questions.
+Discoverability matters when new students hunt for shortcuts in private chats. Sam checks the link each term so rot does not hide the list. Study-path placement treats refusals as curriculum, not as folklore. Course 111 readers meet the boundary before capstone pressure peaks. Linked refusals outlast hallway warnings.
+
+Placing the link near course 111 is deliberate: that course introduces the capstone proposal, which is when students first feel tempted to promise a live demo. Seeing a graduate's refusal list at that moment makes the boundary feel like a professional norm rather than a rule from staff.
 
 ### Worked example (synthetic TRB)
 
