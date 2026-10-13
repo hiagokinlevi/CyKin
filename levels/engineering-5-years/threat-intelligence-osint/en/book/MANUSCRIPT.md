@@ -398,9 +398,13 @@ You will (1) model indicator confidence decay with an exponential function; (2) 
 
 Indicators lose value: adversaries rotate IP addresses quickly and domains more slowly, while behaviours described by ATT&CK techniques persist for months or years. Bianco's Pyramid of Pain captures this ordering. Lantern encodes it as a confidence score that decays over time unless re-observed.
 
+The score is not a measure of how dangerous an indicator is. It estimates how likely the indicator still points at hostile activity. An address that was malicious last week may now belong to an unrelated customer of the same hosting firm, and blocking it would cut off legitimate traffic. Decay builds that risk into Lantern without anyone having to remember to remove old entries by hand.
+
 ### 6.2 The model
 
 c(t) = c₀ · e^(−t·ln2/h), where h is the half-life in days. After one half-life confidence halves; after two it quarters. Solving c(t) = floor gives t = h · ln(c₀/floor) / ln 2.
+
+In words, the score falls by the same fraction every day, so the drop is large while confidence is high and small near the floor. The second formula answers the practical question: how many days until this indicator needs review? Kofi uses it to schedule re-validation rather than letting entries linger. Changing the half-life changes the slope, but the shape stays the same.
 
 ### Lab 1 — decay
 
@@ -429,13 +433,19 @@ falls below 30 after 22.2 days -> retire or re-validate
 
 Half-lives are engineering parameters fitted from re-observation data: how often does an IP indicator still appear malicious after a week? Lantern starts with 14 days for IPs, 45 for domains and none for file hashes (which do not change but may become irrelevant), then adjusts from evidence.
 
+Kofi records each starting value with the reasoning behind it. The fourteen days for addresses reflects how quickly hosting customers change; the longer period for domains reflects registration costs. Hashes do not decay because a file never changes, yet they are reviewed when the malware family stops appearing.
+
 ### 6.4 Re-observation
 
 A sighting resets c to a new value. The model therefore describes staleness, not truth.
 
+When a partner reports the same address again, or BEN's own sensors see it in hostile traffic, Lantern raises the score to the value set for that kind of sighting and the clock starts again. An indicator that keeps being seen stays active for as long as it is seen. One that is never seen again fades out on schedule, whatever its initial confidence. The record keeps every sighting with its source, so an analyst can see why the score is what it is.
+
 ### 6.5 When the model misleads
 
 A dormant infrastructure reused after months will have decayed to near zero. Retired indicators should be archived, not deleted, so analysts can still match historical events.
+
+Kofi saw this with a domain that had been quiet for six months and then reappeared in a phishing run. Its score had fallen far below the blocking floor, so Lantern did not block it automatically. Because the archive still held it, the analyst who saw the new sighting found the earlier campaign at once and raised the score by hand. Deleting retired entries would have lost that history.
 
 ### Practice note — Re-fitting half-lives
 
@@ -477,6 +487,8 @@ You will (1) compute precision from sensitivity, false-positive rate and prevale
 
 A rule that matches 95% of malicious connections and wrongly matches 2% of benign ones sounds excellent. But if only 1 in 100 connections is malicious, most alerts are false. If only 1 in 1,000 is malicious, almost all are.
 
+The lab makes the point with numbers. At the lower prevalence almost two thousand benign connections are flagged for under a hundred malicious ones. Analysts quickly learn to ignore such alerts, and then they miss the true ones. The rule itself has not changed between the two rows; only the traffic it runs against has. That is why Kofi always asks where a rule will run before judging how good it is.
+
 ### Lab 3 — base rate
 
 ```python
@@ -499,13 +511,19 @@ prevalence 0.001: TP=95 FP=1998 precision=0.045
 
 At prevalence 0.010, 950 true and 1,980 false positives give precision 0.324. At 0.001, precision falls to 0.045: about 21 false alerts for each true one. Engineering response: lower the false-positive rate, raise prevalence by applying the rule only where malicious traffic is likelier, or route matches to enrichment before analysts.
 
+The third option is what the worked example recommends. A match then adds weight to other evidence instead of paging an analyst on its own. Kofi also checks the arithmetic by hand once, because a lab that disagrees with a simple calculation usually has a bug.
+
 ### 7.3 Calibrated words
 
 Analysts translate probabilities into words. Kent's essay on words of estimative probability showed readers interpret "probable" inconsistently; teams should publish a mapping. ICD 203 also asks that uncertainty be expressed properly.
 
+Lantern's reporting guide gives each word a range: for example, likely means a probability between about 0.55 and 0.80. Analysts choose a word from the table instead of from instinct, and a reader can look up what it means. Kofi checks drafts for words outside the table, such as possibly, which readers interpret anywhere from rare to even chance. The table is reviewed each year with the people who read the reports, so the words keep the meaning readers expect.
+
 ### 7.4 Skewed data
 
 Time-to-block and enrichment latency are right-skewed. Medians and percentiles (p90, p99) describe them better than means.
+
+Most indicators are blocked within minutes, but a few wait for hours because a partner held them or an approval was slow. Those few pull the mean far above what a typical indicator experiences. The median shows the usual case and the ninetieth percentile shows how bad the slow cases get. Kofi reports both, with the count of items, so readers can see the long tail without it distorting the typical figure. A single mean would describe no actual indicator.
 
 ### Practice note — Recall and coverage
 
@@ -547,21 +565,31 @@ You will (1) relate CPU, memory and storage hierarchy to intelligence processing
 
 Registers and caches are fast and small; main memory larger and slower; solid-state storage slower again; network storage slowest. Lantern's hot set — indicators matched against live traffic — must fit in memory, or every match waits on disk.
 
+Kofi checked this with a simple test. Matching a batch against an in-memory set took a few milliseconds; the same lookups against an on-disk index took tens of milliseconds, mostly waiting for reads. The cold archive can live on slower storage because analysts query it occasionally and can wait a second for an answer.
+
 ### 8.2 Bound by what
 
 Parsing JSON-formatted STIX objects is CPU-heavy. Joining indicators with sightings is memory-heavy. Loading archives is I/O-heavy. Profiling identifies the binding resource; buying the wrong hardware is common and expensive.
+
+Kofi learned this when a request for faster disks arrived to fix slow parsing. Profiling showed the parser was using a full processor core while the disks sat idle. Faster disks would have changed nothing. A second worker process, which cost nothing but configuration, roughly doubled throughput. Each profile is saved with the hardware it ran on, so later comparisons are fair.
 
 ### 8.3 Caching enrichment
 
 Enrichment — adding WHOIS-style registration data, passive DNS or internal asset context — often repeats lookups. A cache keyed by indicator with a time-to-live avoids repeated queries and respects third-party rate limits and terms. Cached data must expire, both for accuracy and because some providers' terms limit retention.
 
+Kofi sets the time to live per provider, using the shortest of what accuracy needs and what the provider's terms allow. The cache records when each entry was fetched, so an analyst can tell whether data is fresh.
+
 ### 8.4 Hardware roots of trust
 
 Collection servers that sign exported data rely on keys. A hardware security module or TPM keeps signing keys out of ordinary memory, improving the integrity of what Lantern shares.
 
+Without such a module the key sits in a file that anyone with administrator access to the server could copy, and a copied key lets an attacker sign false indicators that partners would trust. With it, signing still works but the key cannot be exported. Kofi's design lists which servers hold signing keys and who may use them, and the module's logs show every signing operation for later review.
+
 ### 8.5 Memory sizing
 
 One million indicators averaging 200 bytes in an in-memory set need about 200 MB plus overhead; Python objects can triple that. Measure.
+
+Kofi built a set of a million test strings and measured it rather than trusting the arithmetic. The result was several times the raw data size, because each string object carries its own overhead. He then sized the matcher's memory with room for a year of growth and a margin, and recorded the measurement method so it can be repeated when volumes change. A compact representation, such as storing hashes of values, could reduce the footprint if memory became tight.
 
 ### Practice note — Profiling discipline
 
@@ -603,21 +631,31 @@ You will (1) structure a parser as a pipeline of stages; (2) handle errors witho
 
 Lantern's ingestion is a chain: fetch → decode → validate → normalise → deduplicate → store. Each stage takes records and yields records plus rejects. Generators in Python let large feeds stream without loading everything into memory.
 
+Each stage can be tested on its own with a short list of records, and a failure in one stage does not hide what the others did. Kofi's logs show how many records entered and left every stage, so a sudden drop points to the stage that caused it. When a partner sends a very large archive, streaming means memory use stays flat rather than growing with the file.
+
 ### 9.2 Errors as data
 
 A malformed object is not an exception to swallow; it is a reject record with a reason, the source and the original bytes' hash. Reject counts per source become a data-quality metric that partners can act on.
+
+Kofi's reject records keep the hash rather than the content, so a partner's restricted data is not copied into logs that wider staff can read. If the same reason appears for many records from one source, the partner probably changed something on their side. The report sent to them gives counts and examples, which is usually enough for them to find and fix the problem.
 
 ### 9.3 Safe JSON
 
 `json.loads` parses data without executing code, unlike evaluating text. Limit input sizes to avoid memory exhaustion and validate types after parsing; JSON numbers, strings and nulls arrive in unexpected places.
 
+Kofi sets a maximum size for each object before parsing, so a huge input is rejected instead of filling memory. After parsing he checks that each field has the expected type: a timestamp field holding a number, or a list where a string was expected, is a reject with a clear reason. Older code that evaluated text as a program to save effort was removed during his first month.
+
 ### 9.4 Properties
 
 Instead of only example tests, state properties: normalising twice equals normalising once (idempotence); output is always lower case; no output contains whitespace at either end. Generate many random inputs and check the properties hold.
 
+Kofi's random inputs include mixed case, leading and trailing spaces, empty strings and characters from other alphabets. A property test found that his domain normaliser left a trailing dot in place, which made two forms of the same name count as different indicators. Fixing it removed a few hundred duplicates from the store.
+
 ### 9.5 Versioning parsers
 
 When a partner changes its export format, a new parser version is deployed alongside the old one until the switch is verified. Each stored object records the parser version that produced it.
+
+Running both versions on the same input for a few days shows whether the new one produces the same records, more rejects or different values. Only when the differences are understood does the old parser stop. Recording the version on each object means that if a bug is found later, the affected records can be identified and reprocessed rather than guessed.
 
 ### Practice note — Backpressure
 
@@ -659,21 +697,31 @@ You will (1) apply engineering-ethics duties to intelligence systems; (2) identi
 
 Engineers owe duties to the public, the employer and the profession. In CTI that means protecting people whose data passes through the platform, honouring sharing agreements and refusing work that would facilitate harm.
 
+For Kofi these duties are concrete. Personal data that arrives in a feed is limited to what analysis needs and deleted on schedule. Partner material marked AMBER stays within the agreed audience. If BEN asked for a capability that could hurt people, such as monitoring staff outside work, the duty to the public outweighs the instruction.
+
 ### 10.2 OSINT limits
 
 Public does not mean unrestricted. Platform terms of service may forbid automated collection; data-protection law such as the EU GDPR applies to identifiable people even in public posts; aggregating harmless facts can create a profile that endangers someone. Lantern's OSINT module therefore collects organisational data — domains, certificates, published advisories — not personal social profiles.
+
+Kofi checks each new OSINT source against its terms before writing any code, and records the outcome in the source register. A source that forbids automated access is read by hand, if at all, and nothing from it is stored in bulk.
 
 ### 10.3 Safe failure in an energy company
 
 If Lantern pushes a bad block list to firewalls protecting substation telemetry, it could cut operational visibility. Safety design: operational-technology segments receive blocks only after human approval, and a malformed list causes the push to stop, not to clear the firewall.
 
+Kofi's push service checks the list before sending it: it must parse, it must not be empty and it must not have shrunk by more than a set amount since the last push. A failed check stops the push and alerts the on-call engineer while the firewall keeps its current rules. For substation segments an operator approves each change, because a wrong block there can blind the control room.
+
 ### 10.4 Escalation
 
 If a manager asks Kofi to scrape employee social accounts "to find insiders", he declines, documents the request and escalates to the privacy officer. Ethical refusal is part of engineering competence.
 
+Writing down the request, who made it and what he did protects both Kofi and BEN. The privacy officer can then decide whether any legitimate concern lies behind it and how to address it lawfully, for example through BEN's existing insider-risk process. Kofi does not need to win the argument himself. He needs to make sure the right person hears it.
+
 ### 10.5 Dual use
 
 Tooling that maps an adversary's infrastructure could also map a journalist's. Access controls, purpose limits and audit logs reduce misuse.
+
+Kofi's design gives the infrastructure-mapping tools to a small group, requires a recorded purpose for each query and logs who searched for what. A monthly review samples the logs for searches that do not fit the purpose, such as names of people rather than domains. The controls do not make misuse impossible, but they make it visible, which deters most of it and allows the rest to be found.
 
 ### Practice note — Professional codes
 
