@@ -68,10 +68,10 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 15. [Infraestructura crítica y seguridad sectorial: laboratorio guiado](#ch-15): construir el retransmisor autenticado con protección frente a la reproducción.
 16. [Infraestructura crítica y seguridad sectorial: métodos II](#ch-16): gestión de vulnerabilidades y parches, copias de seguridad y recuperación.
 17. [Infraestructura crítica y seguridad sectorial: herramientas](#ch-17): registro, hora, normalización y construcción de una herramienta en la que se pueda confiar.
-18. [Infraestructura crítica y seguridad sectorial: controles](../../en/book/MANUSCRIPT.md#ch-18): elegir, implantar y documentar controles con evidencia.
-19. [Infraestructura crítica y seguridad sectorial: monitorización](../../en/book/MANUSCRIPT.md#ch-19): reglas de detección, la ausencia como señal y la calidad de las alertas.
-20. [Infraestructura crítica y seguridad sectorial: resolución de problemas](../../en/book/MANUSCRIPT.md#ch-20): un método para fallos que pueden ser ataques o no.
-21. [Infraestructura crítica y seguridad sectorial: integración del servicio](../../en/book/MANUSCRIPT.md#ch-21): integrarse con operadores, proveedores, el SOC y los planes de emergencia.
+18. [Infraestructura crítica y seguridad sectorial: controles](#ch-18): elegir, implantar y documentar controles con evidencia.
+19. [Infraestructura crítica y seguridad sectorial: monitorización](#ch-19): reglas de detección, la ausencia como señal y la calidad de las alertas.
+20. [Infraestructura crítica y seguridad sectorial: resolución de problemas](#ch-20): un método para fallos que pueden ser ataques o no.
+21. [Infraestructura crítica y seguridad sectorial: integración del servicio](#ch-21): integrarse con operadores, proveedores, el SOC y los planes de emergencia.
 22. [Infraestructura crítica y seguridad sectorial: automatización](../../en/book/MANUSCRIPT.md#ch-22): configuración como código, detección de desviaciones y automatización segura.
 23. [Infraestructura crítica y seguridad sectorial: evaluación](../../en/book/MANUSCRIPT.md#ch-23): comprobar si los controles funcionan y decir con cuánta seguridad se sabe.
 24. [Métodos de investigación aplicada](../../en/book/MANUSCRIPT.md#ch-24): responder a una pregunta operativa con un estudio pequeño y honesto.
@@ -1978,7 +1978,423 @@ Registre lo que necesitará para responder, reenvíelo fuera del equipo y compru
 <!-- cyberabc:chapter-navigation:start ch-17 -->
 ### Siga estudiando — capítulo 17 de 30
 
-[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](../../en/book/MANUSCRIPT.md#ch-18)
+[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Infraestructura crítica y seguridad sectorial: controles
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- seleccionar controles para un escenario asignando la causa y el camino a las funciones de prevenir, detectar y recuperar;
+- implementar un control de modo que tenga **responsable, documentación, posibilidad de prueba y monitorización**;
+- usar un catálogo de controles como NIST SP 800-53 para comprobar la exhaustividad sin copiarlo entero;
+- gestionar el ciclo de vida de una clave como ejemplo de control que es un proceso, no un ajuste.
+
+El capítulo 5 presentó las fichas de control; el capítulo 13 produjo escenarios. Este capítulo los conecta: qué controles necesita LANTERN, cómo implementar cada uno para que siga siendo eficaz y cómo demostrar que lo es.
+
+### 18.1 Del escenario al conjunto de controles
+
+Para cada escenario principal, recorra su camino paso a paso y pregúntese en cada paso: ¿qué podría impedir este paso, qué lo detectaría y qué permitiría recuperarse de él? Para R2 (una credencial de proveedor robada que se usa para cambiar el punto de consigna de dosificación de PS-07, capítulo 13), los pasos son: credencial robada → se usa para iniciar sesión → alcanza el sistema de control → cambia el punto de consigna → cambia la calidad del agua. Los controles se asocian a cada paso: MFA resistente al phishing y habilitación limitada en el tiempo (impedir el uso); registro de sesiones y alertas ante inicios de sesión del proveedor fuera de una ventana aprobada (detectar); límites de los puntos de consigna diseñados en el PLC (impedir el daño); alerta de telemetría de LANTERN cuando el cloro sale de su banda (detectar el efecto); procedimiento de dosificación manual y muestreo de la calidad del agua (recuperar). La defensa en profundidad (capítulo 8) es el resultado de hacer este recorrido con honestidad.
+
+### 18.2 Los catálogos como listas de comprobación de la exhaustividad
+
+Los catálogos de controles (NIST SP 800-53 Rev. 5 es el más completo, [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)) describen los controles por familias: control de acceso, auditoría y rendición de cuentas, gestión de la configuración, planificación de contingencias, respuesta a incidentes, protección de sistemas y comunicaciones, y otras. Use un catálogo después del recorrido del escenario para preguntarse «¿hemos olvidado alguna familia?», no como una lista que haya que implantar entera. En TO, contraste los controles del catálogo con las restricciones operativas descritas en NIST SP 800-82, que ofrece orientación específica para TO y una superposición (*overlay*) para SP 800-53 ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)).
+
+### 18.3 Cualidades de la implementación
+
+Es habitual un control que existe el primer día y es ineficaz el día noventa. Implemente cada control con cinco cualidades:
+
+1. **Con responsable**: un rol que lo mantiene y responde de él.
+2. **Documentado**: una ficha de control (capítulo 5) que diga qué hace, dónde y cómo falla.
+3. **Configurado como código** cuando sea posible, para que su estado deseado esté bajo control de versiones y la deriva pueda detectarse (capítulo 22).
+4. **Comprobable**: una forma segura de demostrar que funciona, ejecutada de forma programada (capítulo 23).
+5. **Monitorizado**: una señal cuando deja de funcionar: un latido, un recuento, una comprobación de salud.
+
+### 18.4 Un control que es un proceso: el ciclo de vida de las claves
+
+Las claves HMAC de LANTERN (capítulo 15) muestran por qué algunos controles son procesos. Cada clave de estación debe **generarse** con una fuente aleatoria criptográficamente segura; **distribuirse** a la pasarela de la estación y al retransmisor por una vía protegida; **almacenarse** donde solo pueda leerla el servicio previsto; **rotarse** de forma programada y cuando se marche personal con acceso; **revocarse** cuando se retire una estación o una clave pueda haber quedado expuesta; y **registrarse**: qué versión de clave está activa y dónde, sin registrar la propia clave. Una clave que nunca se ha rotado es una clave cuya exposición no detectaría. La rotación debe ensayarse: si las estaciones y el retransmisor discrepan sobre la clave activa, todos los mensajes fallan en la comprobación del MAC y la estación queda en silencio.
+
+### 18.5 Evidencia de que un control funciona
+
+La evidencia difiere según el tipo de control. Para un control de **configuración** (SSH vinculado a la interfaz de gestión), la evidencia es el resultado de la comprobación de deriva y un intento de conexión, en una prueba, desde una dirección permitida y otra no permitida. Para un control **detectivo**, la evidencia es un evento de prueba que produjo una alerta en un tiempo medido. Para un control de **proceso** (revisión de accesos, rotación de claves), la evidencia es el registro fechado de la última ejecución y sus hallazgos. Para un control de **recuperación**, la evidencia es una restauración cronometrada. «Configurado» no es evidencia de que funcione.
+
+### 18.6 Ejemplo resuelto: fichas de control para R2 (sintético)
+
+| Control | Función | Responsable | Evidencia de que funciona | Monitorizado mediante |
+|---|---|---|---|---|
+| Cuenta de proveedor limitada en el tiempo, MFA | Prevenir | FSTS Security | Registro de habilitación; caducidad probada cada mes | Alerta ante inicio de sesión del proveedor fuera de la ventana |
+| Registro de las sesiones del proveedor | Detectar | FSTS Security | Muestra de sesiones revisada cada semana | Alerta si se detiene el servicio de grabación |
+| Límites del punto de consigna de dosificación en el PLC | Impedir el daño | Ingeniería de Agua | Registro de la prueba de ingeniería; valor releído en la visita a la instalación | Comparación con la línea base aprobada de puntos de consigna |
+| Alerta de telemetría de cloro fuera de banda | Detectar el efecto | Monitorización de FSTS | Una lectura de prueba inyectada generó la alerta en 2 min | Latido de la regla (capítulo 19) |
+| Procedimiento de dosificación manual y muestreo | Recuperar | Operaciones de Agua | Registro de un ejercicio en los últimos 12 meses | Calendario de ejercicios |
+
+### 18.7 Actividad práctica: manual de operación para la rotación de claves
+
+Redacte un manual de operación para la rotación de la clave de una estación: preparación (nueva clave generada y almacenada, retransmisor configurado para aceptar la antigua *y* la nueva durante un breve solapamiento), conmutación en la pasarela de la estación, verificación (mensajes aceptados con la nueva versión de clave; fallos de MAC contados), eliminación de la clave antigua y reversión. Indique la duración del solapamiento y por qué. Para PS-07, cuya clave de pasarela estaba en una tarjeta extraíble dentro de un armario sin cerrar, la rotación ya no es un mantenimiento rutinario: es la respuesta a un hallazgo físico. Un solapamiento de unas pocas horas, suficiente para confirmar mensajes aceptados con la nueva versión de clave, mantiene a la estación informando durante la conmutación.
+
+### 18.8 Errores frecuentes y límites
+
+- Seleccionar controles de un catálogo sin recorrer un escenario, lo que produce muchos controles y huecos entre ellos.
+- Controles sin responsable, o cuyo responsable es una persona y no un rol.
+- Tratar «configurado» como «eficaz».
+- Rotación de claves nunca ensayada, por lo que se evita.
+- Retirar un control compensatorio cuando la corrección está programada en lugar de verificada.
+
+Las fichas de R2 evitan estos errores: cada control tiene un rol responsable y evidencia, y la prueba de la alerta de cloro generó una alerta en 2 minutos.
+
+La rotación de claves de PS-07 se evitó durante años por el cuarto motivo.
+
+### Ejercicios — capítulo 18
+
+**EX052 — Recorra un escenario.** *Objetivo:* construir un conjunto de controles a partir de un camino. *Entradas:* R3 del capítulo 13 (el disco del retransmisor se llena; se pierde telemetría). *Restricciones:* al menos un control por paso y por función. *Pasos:* (1) escriba el camino en pasos; (2) asocie controles de prevención, detección y recuperación; (3) nombre la evidencia de cada uno. *Evidencia esperada:* tabla. *Rúbrica:* 3 = pasos como crecimiento → umbral → fallo de escritura → mensajes perdidos, con controles como la aplicación de la conservación, la previsión de capacidad y una alarma con plazo de antelación (capítulo 1), la alarma de disco y la alerta por recuento de rechazos o pérdidas, el almacenamiento en las estaciones y la subida de la acumulación; evidencia especificada; 2 = falta una función; 1 = un solo control; 0 = nada.
+
+**EX053 — Comprobación con el catálogo.** *Objetivo:* usar un catálogo para comprobar la exhaustividad. *Entradas:* las fichas de control de R2 del capítulo 18 («Ejemplo resuelto: fichas de control para R2») y la lista de familias de controles de SP 800-53 Rev. 5. *Restricciones:* cite las familias por su identificador. *Pasos:* (1) asigne cada ficha a una familia; (2) nombre una familia relevante para R2 que no tenga ficha; (3) proponga una ficha para ella. *Evidencia esperada:* tabla con cita. *Rúbrica:* 3 = asignaciones razonables (por ejemplo, AC, AU, CM/SI, IR o CP) y una familia ausente creíble, como la seguridad del personal para el personal del proveedor, la gestión de riesgos de la cadena de suministro (SR) para la propia seguridad del proveedor o la respuesta a incidentes (IR) para un incidente de dosificación, con una ficha concreta; 2 = asignación correcta, familia ausente débil; 1 = sin cita; 0 = nada.
+
+**EX054 — Duración del solapamiento.** *Objetivo:* razonar sobre la rotación de claves. *Entradas:* las estaciones almacenan hasta 24 horas; los mensajes acumulados se sellan con la clave activa en el momento en que se crearon. *Restricciones:* el retransmisor debería aceptar el menor número de claves posible durante el menor tiempo posible. *Pasos:* (1) indique durante cuánto tiempo debe seguir aceptando el retransmisor la clave antigua después de la conmutación; (2) explique cómo sabe el retransmisor qué clave probar. *Evidencia esperada:* párrafo. *Rúbrica:* 3 = clave antigua aceptada al menos durante el periodo de almacenamiento de 24 h (más un margen) porque los mensajes acumulados llevan MAC con la clave antigua; los mensajes llevan un identificador de versión de clave dentro del cuerpo autenticado o junto a él para que el retransmisor seleccione la clave en lugar de probarlas todas; después se elimina la clave antigua y se verifica la eliminación; 2 = solapamiento correcto, selección vaga; 1 = sin solapamiento; 0 = nada.
+
+### Síntesis del capítulo
+
+Seleccione los controles recorriendo el camino de cada escenario y asociando a sus pasos controles de prevención, detección y recuperación; use los catálogos para comprobar la exhaustividad. Implemente cada control con responsable, documentado, configurado como código cuando sea posible, comprobable y monitorizado. Algunos controles son procesos (el ciclo de vida de las claves es el ejemplo más claro) y deben ensayarse. «Configurado» nunca es lo mismo que «funciona».
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Siga estudiando — capítulo 18 de 30
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Infraestructura crítica y seguridad sectorial: monitorización
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- redactar reglas de detección a partir de escenarios y de la arquitectura declarada;
+- detectar la **ausencia** (latidos que faltan, fuentes en silencio) además de la presencia;
+- ajustar las reglas para que alerten una vez por **episodio** en lugar de una vez por evento, sin perder información;
+- monitorizar la monitorización: saber cuándo una regla, una fuente o un reenviador ha dejado de funcionar.
+
+El capítulo 17 produjo registros normalizados. Este capítulo los convierte en alertas sobre las que pueda actuar una persona de guardia. El objetivo no son muchas alertas, sino las pocas adecuadas, cada una de las cuales apunta a un escenario y a una primera acción.
+
+### 19.1 De dónde salen las reglas
+
+Tres fuentes producen las reglas de LANTERN. Los **escenarios** (capítulo 13): cada paso de un camino que deja rastro es una regla candidata, como un inicio de sesión del proveedor fuera de una ventana aprobada o el cloro fuera de su banda. La **arquitectura** (capítulos 2 y 8): cualquier flujo que incumpla un conducto declarado (de la red corporativa a una estación por un puerto industrial) es una regla que no necesita inteligencia de amenazas, porque la define su propio diseño. Los **comportamientos conocidos**: conviene saber de los inicios de sesión fallidos repetidos desde un mismo origen. La matriz ATT&CK for ICS de MITRE cataloga los comportamientos de adversarios observados contra sistemas industriales y ayuda a comprobar si las reglas cubren las técnicas más relevantes para sus escenarios ([MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)).
+
+### 19.2 La ausencia es una señal
+
+En los servicios críticos, muchas de las alertas más importantes tratan de cosas que *dejan* de ocurrir: una estación que deja de informar, un retransmisor que deja de reenviar, una fuente de registros que queda en silencio, una copia de seguridad que no se ejecuta. Las reglas de ausencia necesitan un **ritmo esperado** (un latido cada cinco minutos) y una **tolerancia** (alertar tras 15 minutos de silencio). Detectan interrupciones, dispositivos averiados, cables cortados, errores de configuración y atacantes que deshabilitan el registro. La regla C marcó a las 23:00 el silencio de 40 minutos de PS-09, 15 minutos después de su último latido; esa tolerancia de 15 minutos es la decisión de diseño.
+
+### 19.3 Eventos, episodios y calidad de las alertas
+
+Una regla que salta con cada evento coincidente inunda al tecnólogo de guardia: 14 inicios de sesión fallidos se convierten en 14 alertas. Las reglas mejores alertan una vez por **episodio** (el primer evento de una ventana, con un recuento del resto) y adjuntan contexto: zona de origen, criticidad del activo y eventos recientes relacionados. Haga un seguimiento de la **tasa de falsas alarmas** y del **tiempo de respuesta** de cada regla. Una regla que ha saltado cien veces sin ningún verdadero positivo está enseñando a la gente a ignorarla; ajústela, cambie su umbral o envíela a un informe diario en lugar de a un aviso al busca.
+
+### 19.4 Encaminamiento y primera acción
+
+Toda alerta necesita un responsable y una **primera acción** escrita en la regla: «Modbus de la red corporativa a una estación: comprobar si hay en curso una sesión de ingeniería aprobada (calendario de cambios); si no, llamar a la sala de control de Agua y, después, conservar los registros de flujos». Las alertas que afectan al proceso físico van a operaciones de Agua además de a FSTS. Redacte las primeras acciones antes de activar una regla. La primera acción de la regla B cumplió su función en la noche resuelta: primero el calendario de cambios y después la sala de control de Agua.
+
+La primera acción de la regla C, tras el estudio del capítulo 24, es «llamar a la sala de control de Agua y, después, comprobar el estado del operador».
+
+### 19.5 Monitorizar la monitorización
+
+Las reglas, las fuentes y los reenviadores fallan en silencio. Monitorice: la tasa de eventos de cada fuente (una regla de ausencia para los registros); el recuento de líneas no analizadas del normalizador (capítulo 17); la hora de la última evaluación de cada regla; y **eventos de prueba** periódicos que deberían producir alertas conocidas (capítulo 23). La guía del NIST sobre la monitorización continua de la seguridad de la información insiste en saber de forma permanente si los controles siguen siendo eficaces ([NIST SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+Los fallos de la regla B en el Lab 23, flujos de un conmutador de estación que nunca se exportaban al SIEM, muestran el coste de no monitorizar las fuentes: la regla era correcta, faltaba su entrada.
+
+### 19.6 Ejemplo resuelto: una noche, tres reglas (sintético)
+
+El Lab 19 aplica tres reglas a una noche de eventos y latidos. La regla A (≥10 inicios de sesión fallidos desde un origen en 5 minutos) salta una vez para 192.0.2.44. La regla B (Modbus de la red corporativa a una estación) salta dos veces para la misma estación de trabajo, a las 22:16 y a las 22:31: dos avisos para un episodio; debería ajustarse para alertar una vez y actualizar un recuento. La regla C (latido ausente durante > 15 minutos) salta a las 23:00 para PS-09, que estuvo en silencio 40 minutos. Observe lo que **no** salta: un único inicio de sesión fallido de `e.strand` desde una dirección interna, por debajo del umbral de la regla A; con razón, ya que una contraseña mal tecleada no es un episodio.
+
+Junto con la cronología del capítulo 17, la regla B es la alerta que más importa: la estación de trabajo que inició sesión como administrador a las 22:14 habló después Modbus con un PLC. Primera acción: comprobar el calendario de cambios; si no se aprobó ninguna sesión de ingeniería, llamar a la sala de control de Agua.
+
+### 19.7 Actividad práctica: reglas sobre eventos
+
+**Lab 19** (guárdelo como `lab19.py` y ejecútelo con `python3 lab19.py`):
+
+```python
+# Lab 19 - three monitoring rules over normalized events, including "absence" (offline, standard library only)
+# Synthetic events for one night at Fallowmere (times are minutes after 22:00 UTC).
+events = [  # minute, host, type, fields
+ (14, "rly-01", "auth_ok", {"src": "10.40.3.7", "user": "b.lind"}),
+ *[(15 + i // 4, "rly-01", "auth_fail", {"src": "192.0.2.44", "user": "root"}) for i in range(14)],
+ (16, "fw-hub", "flow", {"src": "10.40.3.7", "dst": "10.20.0.11", "dport": 502}),
+ (31, "fw-hub", "flow", {"src": "10.40.3.7", "dst": "10.20.0.11", "dport": 502}),
+ (44, "rly-01", "auth_fail", {"src": "10.40.9.9", "user": "e.strand"}),
+]
+heartbeats = {"PS-04": list(range(0, 120, 5)), "PS-07": list(range(0, 120, 5)),
+              "PS-09": [m for m in range(0, 120, 5) if not 50 <= m < 85]}
+alerts = []
+# Rule A: >=10 failed logins from one source within 5 minutes
+fails = [(m, f["src"]) for m, h, t, f in events if t == "auth_fail"]
+for src in {s for _, s in fails}:
+    times = sorted(m for m, s in fails if s == src)
+    for i in range(len(times)):
+        if sum(1 for t in times if times[i] <= t < times[i] + 5) >= 10:
+            alerts.append((times[i], "A brute-force", src)); break
+# Rule B: any flow from corp to a station on an industrial port (not a declared conduit)
+for m, h, t, f in events:
+    if t == "flow" and f["src"].startswith("10.40.") and f["dst"].startswith("10.20.") and f["dport"] == 502:
+        alerts.append((m, "B corp->station Modbus", f"{f['src']}->{f['dst']}"))
+# Rule C: heartbeat missing for > 15 minutes (silence is a signal)
+for st, beats in heartbeats.items():
+    for a, b in zip(beats, beats[1:]):
+        if b - a > 15:
+            alerts.append((a + 15, "C station silent", f"{st} gap {b - a} min"))
+for m, rule, detail in sorted(alerts):
+    print(f"22:{m:02d}+  {rule:<24} {detail}" if m < 60 else f"23:{m-60:02d}+  {rule:<24} {detail}")
+print("alerts:", len(alerts), "| rule B fired per event, not per episode:", sum(1 for a in alerts if a[1].startswith("B")))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+22:15+  A brute-force            192.0.2.44
+22:16+  B corp->station Modbus   10.40.3.7->10.20.0.11
+22:31+  B corp->station Modbus   10.40.3.7->10.20.0.11
+23:00+  C station silent         PS-09 gap 40 min
+alerts: 4 | rule B fired per event, not per episode: 2
+```
+
+Cuente las alertas por episodio, no por línea: las cuatro alertas de la salida son tres episodios, y ajustar la regla B para que alerte una vez y actualice un recuento las deja en tres.
+
+### 19.8 Errores frecuentes y límites
+
+- Reglas sin escenario, responsable ni primera acción.
+- Solo reglas de presencia; nada advierte el silencio.
+- Una alerta por evento, que inunda a quienes responden.
+- Umbrales que nunca se revisan.
+- Suponer que una regla funciona porque se desplegó; debe probarse (capítulo 23).
+- Enviar las alertas relevantes para el proceso solo a TI.
+
+Las reglas detectan lo que se previó. El comportamiento imprevisto necesita personas que miren los datos (búsqueda proactiva de amenazas, revisiones) y reglas de ausencia, que detectan los efectos sin conocer las causas.
+
+Los dos avisos de la regla B para un solo episodio en la noche resuelta son el tercer error.
+
+### Ejercicios — capítulo 19
+
+**EX055 — Regla por episodios.** *Objetivo:* reducir el ruido de las alertas sin perder información. *Entradas:* el Lab 19. *Restricciones:* solo la biblioteca estándar. *Pasos:* (1) cambie la regla B para que genere una alerta por par origen–destino cada 60 minutos, registrando el recuento de eventos coincidentes; (2) ejecútela y muestre la salida; (3) explique qué información se conserva. *Evidencia esperada:* código, salida y explicación. *Rúbrica:* 3 = una alerta de la regla B con recuento 2 y horas primera y última; explicación de que los recuentos y las horas se conservan para la investigación mientras el aviso salta una sola vez; 2 = funciona, falta el recuento; 1 = no ejecutado; 0 = nada.
+
+**EX056 — Primeras acciones.** *Objetivo:* redactar alertas accionables. *Entradas:* las reglas A, B y C. *Restricciones:* como máximo tres pasos cada una; deben incluir a quién llamar. *Pasos:* redacte la primera acción de cada una. *Evidencia esperada:* tres procedimientos breves. *Rúbrica:* 3 = A: confirmar la exposición de SSH, comprobar si hubo algún éxito desde ese origen, bloquear en el perímetro mediante un cambio estándar; B: comprobar el calendario de cambios, llamar a la sala de control de Agua si no está aprobado, conservar los flujos; C: llamar a la sala de control de Agua para confirmar el estado de la estación, comprobar el estado del operador, revisar los registros del retransmisor en busca de fallos de MAC; 2 = una débil; 1 = genéricas; 0 = nada.
+
+**EX057 — Monitorice el monitor.** *Objetivo:* diseñar la automonitorización. *Entradas:* la cadena de monitorización de LANTERN: fuentes → reenviador → normalizador → reglas → avisos. *Restricciones:* una comprobación por etapa. *Pasos:* enumere la comprobación, su umbral y a quién se alerta. *Evidencia esperada:* tabla. *Rúbrica:* 3 = ausencia en la tasa de eventos de las fuentes, cola o acumulación del reenviador, tasa de líneas no analizadas del normalizador, hora de la última ejecución de las reglas, prueba de avisos (aviso sintético programado y confirmado); umbrales y destinatarios razonables; 2 = cuatro etapas; 1 = genérica; 0 = nada.
+
+### Síntesis del capítulo
+
+Derive las reglas de los escenarios, de su propia arquitectura y de los comportamientos conocidos; asigne a cada una un responsable y una primera acción. Detecte la ausencia además de la presencia. Alerte por episodio con recuentos y contexto, haga un seguimiento de las falsas alarmas y de los tiempos de respuesta, y envíe a operaciones las alertas relevantes para el proceso. Monitorice la monitorización, porque cada una de sus etapas puede fallar en silencio.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Siga estudiando — capítulo 19 de 30
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Infraestructura crítica y seguridad sectorial: resolución de problemas
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- seguir un método disciplinado de resolución de problemas que funcione tanto si una avería resulta ser técnica como humana o maliciosa;
+- **conservar la evidencia antes de cambiar nada**, y saber cuándo una avería debe convertirse en un incidente;
+- distinguir las causas habituales de los «datos que faltan» (pérdida, retraso, error de reloj, filtrado) usando los propios datos;
+- redactar un breve registro del problema que la siguiente persona pueda usar.
+
+La mayor parte de la vida laboral de un implementador se dedica a las averías. En los servicios críticos, algunas averías son ataques y algunos ataques parecen averías; el método debe funcionar para ambos sin frenar las reparaciones ordinarias.
+
+### 20.1 Un método
+
+1. **Defina el síntoma con precisión**: qué falla, desde cuándo, para quién y medido cómo. «PS-07 y PS-09 muestran huecos en el panel desde aproximadamente las 22:50», no «la telemetría no funciona».
+2. **Compruebe primero el impacto y la seguridad física**: ¿alguien tiene que actuar ahora sobre el proceso físico? Diga a operaciones de Agua en qué pueden confiar y en qué no.
+3. **Conserve antes de cambiar**: copie los registros, configuraciones y salidas pertinentes, con sus horas, antes de reiniciar o reconfigurar nada (véase «Conserve antes de cambiar», más abajo).
+4. **Enumere hipótesis**, incluida al menos una explicación no maliciosa y otra maliciosa, y qué evidencia las distinguiría.
+5. **Pruebe primero la hipótesis discriminante más barata**, con lecturas antes que escrituras.
+6. **Cambie una sola cosa cada vez**, con el tipo de cambio adecuado (capítulo 14), registrando cada cambio.
+7. **Verifique** la corrección frente al síntoma original y vigile si se repite.
+8. **Registre** la causa, la evidencia, las acciones y los elementos abiertos.
+
+### 20.2 Conserve antes de cambiar
+
+Reiniciar un servicio borra su memoria, rota los registros y puede destruir la única evidencia de lo ocurrido. Las recomendaciones del NIST sobre respuesta a incidentes insisten en conservar la evidencia y en coordinar la respuesta con la gestión de riesgos de la organización ([NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final)). Para un implementador, conservar suele ser rápido: copie los registros y la configuración del servicio, exporte los registros de flujos y de alertas pertinentes, anote los procesos en ejecución y las conexiones de red, calcule los hashes de lo copiado y anote la hora. Si la avería afecta al proceso físico, restablecer el servicio puede ir legítimamente primero, pero dígalo y registre lo que se perdió.
+
+### 20.3 Cuándo una avería se convierte en incidente
+
+Escale al proceso de incidentes cuando se cumpla cualquiera de estas condiciones: hay evidencia de un acceso o un cambio no autorizados (una diferencia de configuración no aprobada, el uso de la cuenta de alguien que se ha marchado, capítulo 7); un control de seguridad ha fallado de una forma que podría explotarse; los datos pueden haber ido adonde no deberían (capítulo 12); o no se encuentra la causa y una causa maliciosa es plausible. Escalar no es una acusación. Incorpora a personas con otra autoridad y otras obligaciones, incluidas las obligaciones de notificación del operador (capítulo 10).
+
+El inicio de sesión de `c.mendes` el 14 de septiembre es el desencadenante más claro de Fallowmere.
+
+### 20.4 Datos que faltan: cuatro causas habituales
+
+La telemetría que falta es el síntoma más común de LANTERN. Los propios datos suelen discriminar entre las causas:
+
+- **Pérdida**: los números de secuencia tienen huecos (capítulo 15); los mensajes nunca se recibieron.
+- **Retraso**: la secuencia está completa, pero la hora de recepción va muy por detrás de la hora de la estación, a menudo tras un problema del operador.
+- **Error de reloj**: la secuencia está completa y la llegada es puntual, pero las marcas de tiempo de la estación están desplazadas una cantidad constante; los datos se archivan en la ventana temporal equivocada, así que un panel que consulta por la hora de la estación muestra un hueco.
+- **Filtrado**: los mensajes se reciben, pero se rechazan o se ponen en cuarentena (recuentos de rechazos crecientes en el registro del retransmisor).
+
+### 20.5 Ejemplo resuelto: dos huecos, dos causas (sintético)
+
+Los operadores informan de huecos en el panel para PS-07 y PS-09. El Lab 20 examina doce números de secuencia de cada estación. A PS-07 le faltan los números de secuencia 5–8, con llegada puntual del resto: los datos se perdieron. PS-09 tiene todos los números de secuencia y llega puntualmente según el reloj del retransmisor, pero las marcas de tiempo de la estación van unos 422 segundos por detrás: su reloj está mal, y la ventana del panel no recoge ninguno de sus puntos. Los dos síntomas parecían idénticos en el panel; las causas y las correcciones son completamente distintas.
+
+Para PS-09, la siguiente pregunta es *por qué* está mal el reloj: ¿ha perdido la estación su ruta NTP hacia el retransmisor (¿un cambio en el conducto?, capítulo 2), o alguien ha cambiado la configuración horaria de la estación? Lo primero es una avería; lo segundo puede ser un evento de seguridad. Un desfase constante de unos siete minutos en todos los mensajes es inusual para una deriva, que es gradual. Conserve los registros NTP del retransmisor y la configuración del conducto antes de que nadie reajuste el reloj.
+
+Para PS-07, el hueco de cuatro mensajes consecutivos podría deberse a una caída del operador, a un reinicio de la estación o a rechazos del retransmisor. Revise el registro de rechazos del retransmisor para esas horas antes de llamar a BayTel: si en ese momento hubo fallos de MAC en PS-07, la causa está en la gestión de claves (capítulo 18), no en el operador.
+
+### 20.6 Actividad práctica: discrimine las causas
+
+**Lab 20** (guárdelo como `lab20.py` y ejecútelo con `python3 lab20.py`):
+
+```python
+# Lab 20 - troubleshooting "missing telemetry": sequence gaps versus clock skew (offline, standard library only)
+# Synthetic historian extract: station, sequence number, station timestamp (s), relay receive time (s).
+rows = {
+ "PS-04": [(s, 1000 + 10*s, 1000 + 10*s + 1) for s in range(1, 13)],
+ "PS-07": [(s, 1000 + 10*s, 1000 + 10*s + 1) for s in range(1, 13) if s not in (5, 6, 7, 8)],
+ "PS-09": [(s, 1000 + 10*s - 420, 1000 + 10*s + 2) for s in range(1, 13)],
+}
+for st, rs in rows.items():
+    seqs = [r[0] for r in rs]
+    missing = sorted(set(range(seqs[0], seqs[-1] + 1)) - set(seqs))
+    offsets = [recv - ts for _, ts, recv in rs]
+    avg = sum(offsets) / len(offsets)
+    dx = "data lost in transit or at source" if missing else ("clock skew: station clock behind by ~%d s; data present but filed in the wrong window" % round(avg) if abs(avg) > 60 else "healthy")
+    print(f"{st}: received {len(rs)}/{seqs[-1]-seqs[0]+1}, missing seq {missing or '-'}, mean recv-ts offset {avg:+.0f} s -> {dx}")
+# A dashboard that queries by station timestamp for window [1050, 1130) would show:
+for st, rs in rows.items():
+    print(st, "points in dashboard window:", sum(1 for _, ts, _ in rs if 1050 <= ts < 1130))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+PS-04: received 12/12, missing seq -, mean recv-ts offset +1 s -> healthy
+PS-07: received 8/12, missing seq [5, 6, 7, 8], mean recv-ts offset +1 s -> data lost in transit or at source
+PS-09: received 12/12, missing seq -, mean recv-ts offset +422 s -> clock skew: station clock behind by ~422 s; data present but filed in the wrong window
+PS-04 points in dashboard window: 8
+PS-07 points in dashboard window: 4
+PS-09 points in dashboard window: 0
+```
+
+Mire las columnas de las dos estaciones una junto a otra. Los números de secuencia de PS-07 saltan de 4 a 9, así que cuatro mensajes nunca llegaron. Los números de secuencia de PS-09 están completos, pero sus marcas de tiempo de estación van unos 422 segundos por detrás de las horas de llegada al retransmisor en todos los mensajes. Lo primero es pérdida; lo segundo, hora. Después redacte la siguiente comprobación para cada una: el registro de rechazos del retransmisor y el estado de BayTel para el hueco de PS-07, y la ruta NTP y la configuración horaria de PS-09, conservadas antes de que nadie reajuste el reloj.
+
+### 20.7 Errores frecuentes y límites
+
+- Reiniciar primero e investigar después.
+- Una sola hipótesis, normalmente la más conocida.
+- Varios cambios a la vez, de modo que nadie sabe cuál lo arregló, o cuál estropeó otra cosa.
+- Tratar todas las averías como ataques, o ninguna.
+- «Arreglar» un reloj o una configuración antes de registrar cómo estaba.
+- Cerrar la incidencia sin un registro de la causa y la evidencia.
+
+Reajustar primero el reloj de PS-09 habría destruido la evidencia para la pregunta de los 422 segundos.
+
+Llamar a BayTel por el hueco de PS-07 antes de revisar el registro de rechazos del retransmisor sería el segundo error: una sola hipótesis, la más conocida, probada en primer lugar y quizá en exclusiva.
+
+### Ejercicios — capítulo 20
+
+**EX058 — Hipótesis y discriminantes.** *Objetivo:* razonar antes de actuar. *Entradas:* síntoma: «el recuento de rechazos del retransmisor para PS-04 subió de 0 a 300 por hora a las 09:00; desde entonces el panel no muestra datos de PS-04». *Restricciones:* cuatro hipótesis, al menos una maliciosa. *Pasos:* para cada una, indique la evidencia que la apoyaría o la descartaría y la comprobación más barata. *Evidencia esperada:* tabla. *Rúbrica:* 3 = por ejemplo, clave rotada en la estación pero no en el retransmisor (fallos de MAC en los motivos de rechazo, calendario de cambios), salto del reloj de la estación (rechazos por ventana), estado de reproducción envenenado (rechazos por reproducción tras una secuencia alta, capítulo 29), tráfico falsificado (fallos de MAC desde una dirección de origen inesperada); las comprobaciones son lecturas; 2 = tres; 1 = una; 0 = nada.
+
+**EX059 — Lista de conservación.** *Objetivo:* conservar la evidencia con rapidez. *Entradas:* el caso del desfase del reloj de PS-09. *Restricciones:* diez minutos como máximo; ningún cambio en los sistemas. *Pasos:* enumere lo que copiaría o registraría, en orden, y cómo demostraría después que las copias no se alteraron. *Evidencia esperada:* lista. *Rúbrica:* 3 = registros NTP y del retransmisor, configuración del conducto o del cortafuegos y registro de cambios reciente, extracto del historiador, salida de un análisis al estilo del Lab 20, hora de la recogida, hashes anotados en la incidencia y copias guardadas fuera del equipo; 2 = faltan los hashes o las horas; 1 = «hacer una captura de pantalla»; 0 = nada.
+
+**EX060 — Registro del problema.** *Objetivo:* redactar un registro útil. *Entradas:* el capítulo 20 («Ejemplo resuelto: dos huecos, dos causas») y suponga que la causa de PS-09 fue un cambio en el cortafuegos que bloqueó udp/123 del retransmisor a la estación dos días antes. *Restricciones:* como máximo 250 palabras; etiquetas observado / inferido / hecho / abierto. *Pasos:* redacte el registro. *Evidencia esperada:* el registro. *Rúbrica:* 3 = síntoma preciso, evidencia (desfase de ~422 s, secuencia completa), causa con el cambio identificado, corrección con control de cambios, verificación y elementos abiertos (por qué el cambio eliminó NTP; por qué no saltó ninguna alerta por el desfase del reloj: añadir una); 2 = falta un elemento; 1 = solo narración; 0 = nada.
+
+### Síntesis del capítulo
+
+Resuelva los problemas con un método: síntoma preciso, seguridad física e impacto primero, conservar antes de cambiar, varias hipótesis incluida una maliciosa, la comprobación discriminante más barata primero, un cambio cada vez, verificar y registrar. Escale a incidente cuando la evidencia sugiera actividad no autorizada o exposición. Para los datos que faltan, los propios datos (secuencia, llegada, marcas de tiempo, recuentos de rechazos) suelen distinguir la pérdida, el retraso, el error de reloj y el filtrado.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Siga estudiando — capítulo 20 de 30
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Infraestructura crítica y seguridad sectorial: integración del servicio
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- integrar un servicio técnico con las personas y organizaciones que lo rodean: operadores, el centro de monitorización de seguridad, proveedores y planificadores de emergencias;
+- definir **interfaces** (qué se entrega, en qué forma, con qué rapidez y a quién), no solo formatos de datos;
+- redactar una matriz de responsabilidades para un servicio compartido y probarla con un escenario;
+- conectar la gestión de incidentes del servicio con los planes de continuidad y de emergencia del operador.
+
+A estas alturas, LANTERN es un servicio técnico que funciona. Un servicio está integrado cuando todos los que dependen de él, o de quienes él depende, saben qué esperar y qué hacer. La mayoría de los fallos en esta etapa no son técnicos: una alerta sin responsable, un proveedor al que nunca se avisó de un cambio, un operador que no sabía que el panel podía mostrar datos desactualizados.
+
+### 21.1 Las interfaces son acuerdos
+
+Para cada vecino, ponga por escrito la interfaz como un acuerdo:
+
+- **Operaciones de Agua**: lo que proporciona LANTERN (telemetría al historiador en 60 s, mostrando la antigüedad del valor), lo que proporciona Agua (solicitudes de puesta en servicio de estaciones, exportaciones de ingeniería, aprobaciones relevantes para el proceso), cómo llegan a la sala de control las alertas que afectan al proceso y cómo notifica Agua un problema sospechado de telemetría.
+- **Monitorización de seguridad de FSTS (SOC)**: qué registros y alertas envía LANTERN, en qué formato y con qué primeras acciones; cómo escala el SOC a la guardia de LANTERN; qué puede hacer el SOC sin preguntar (por ejemplo, deshabilitar una cuenta de proveedor) y qué no debe hacer (por ejemplo, bloquear los conductos de las estaciones).
+- **Proveedores (Kell, Arlen, BayTel, Halden)**: cómo se les avisa de los cambios que les afectan, cómo notifican problemas y vulnerabilidades, cómo funciona su acceso (capítulo 7) y con qué antelación avisan de sus propios cambios.
+- **Planificación de emergencias**: cómo se reflejan una interrupción o un compromiso de LANTERN en los planes de continuidad de Agua y del hospital.
+
+### 21.2 Matrices de responsabilidades
+
+Una matriz **RACI** registra para cada actividad quién es responsable de ejecutarla (R, *Responsible*: la hace), quién rinde cuentas (A, *Accountable*: es dueño del resultado; exactamente uno), a quién se consulta (C, *Consulted*) y a quién se informa (I, *Informed*). Pruébela con un escenario: recorra «retransmisor comprometido a las 02:00» y compruebe que cada paso tiene exactamente un rol que rinde cuentas, que no hace falta consultar a nadie que no pueda localizarse a las 02:00 y que las personas que deben actuar sobre el proceso físico reciben la información pronto.
+
+Recorrer «retransmisor comprometido a las 02:00» sobre el borrador de Fallowmere puso de manifiesto el problema que describe el ejemplo resuelto: nadie rendía cuentas de decir a los operadores de Agua que desconfiaran de la telemetría.
+
+### 21.3 Integración de los proveedores
+
+Los proveedores forman parte del servicio. Su acceso remoto es un camino hacia él; sus actualizaciones de software son cambios en él; sus interrupciones son sus interrupciones. Integrarlos significa: su acceso por el camino declarado; sus avisos de cambio en su calendario de cambios; sus avisos de seguridad en su rutina de vulnerabilidades (capítulo 16); y cláusulas contractuales que exijan la notificación de los incidentes que le afecten. La iniciativa Secure by Design de la CISA anima a los fabricantes a asumir la responsabilidad de los resultados de seguridad de sus clientes ([CISA Secure by Design](https://www.cisa.gov/securebydesign)); como cliente, pregunte a los proveedores cómo cumplen esas expectativas y registre las respuestas.
+
+### 21.4 La gestión de incidentes se encuentra con la continuidad
+
+Un incidente en LANTERN lo gestiona el proceso de incidentes de FSTS, pero sus consecuencias las gestionan los mecanismos de continuidad y de emergencia de Agua y del hospital. El punto de integración es una lista breve de **desencadenantes**: condiciones en las que FSTS dice a Agua «suponga que la telemetría no es fiable: pase a lecturas manuales en las estaciones» o dice al hospital «suponga que la pasarela clínica no está disponible: use el procedimiento en papel de la biblioteca de fármacos». Los desencadenantes deben acordarse y ejercitarse de antemano (capítulo 28), porque a las 02:00 nadie debería estar negociando qué significa «no fiable».
+
+### 21.5 Ejemplo resuelto: una RACI que no superó su prueba (sintético)
+
+El borrador de la RACI para «sospecha de compromiso de un retransmisor» indica: guardia de FSTS, R; responsable de seguridad de FSTS, A; operaciones de Agua, I; SOC, C; Kell, I. Recorrer el escenario revela tres problemas. Primero, la decisión de decir a los operadores de Agua que desconfíen de la telemetría no tiene ningún rol que rinda cuentas: FSTS Security no puede juzgar el impacto en el proceso, y Agua solo está informada. Corrección: el jefe de turno de Agua rinde cuentas de la respuesta operativa y el responsable de seguridad de FSTS de la respuesta técnica, con un desencadenante designado para el traspaso. Segundo, Kell solo está informada, pero si el compromiso llegó por el camino del proveedor, la cuenta de Kell debe deshabilitarse de inmediato y hay que consultar a Kell sobre su propia exposición. Tercero, el SOC figura como «consultado», pero en la práctica detecta la mayoría de los incidentes; debería ser responsable de los primeros pasos del triaje.
+
+### 21.6 Actividad práctica: acuerdos de interfaz
+
+Redacte un acuerdo de interfaz de una página entre LANTERN y operaciones de Agua que cubra: lo que proporciona cada parte, los niveles de servicio (puntualidad, visualización de la antigüedad del valor), el encaminamiento de las alertas, cómo se notifica un problema sospechado de telemetría, los desencadenantes de «telemetría no fiable» y la frecuencia de revisión. Haga que los desencadenantes sean medibles: por ejemplo, se declara «telemetría no fiable» cuando los fallos de MAC del retransmisor superan una tasa fijada en más de una estación, cuando dos o más estaciones muestran desfases de reloj como los 422 segundos de PS-09, o cuando FSTS sospecha el compromiso de un retransmisor. Indique quién lo declara (el jefe de turno de Agua, con el asesoramiento de FSTS), cómo se informa a la sala de control y que se ejercita cada año.
+
+### 21.7 Errores frecuentes y límites
+
+- Tratar la integración solo como formatos de datos e interfaces de programación (API).
+- Matrices RACI con varios roles que rinden cuentas, o con ninguno.
+- Proveedores fuera de los procesos de cambios y de vulnerabilidades.
+- Planes de continuidad que suponen que el servicio de TI está o totalmente activo o totalmente caído, sin un estado «activo pero no fiable».
+- Desencadenantes definidos pero nunca ejercitados.
+
+El primer borrador de la RACI muestra el segundo error: ningún rol rendía cuentas de la respuesta operativa.
+
+La exclusión de Kell de los roles consultados en el borrador de la RACI muestra el tercero: a un proveedor cuya cuenta puede ser la vía de entrada solo se le iba a informar.
+
+### Ejercicios — capítulo 21
+
+**EX061 — Repare la RACI.** *Objetivo:* corregir una matriz de responsabilidades. *Entradas:* el borrador del capítulo 21 («Ejemplo resuelto: una RACI que no superó su prueba»). *Restricciones:* exactamente una A por actividad; divida actividades si es necesario. *Pasos:* redacte la matriz reparada para las actividades: detectar y hacer el triaje; contener en el retransmisor; deshabilitar el acceso del proveedor; decidir la respuesta operativa; notificar a los reguladores si es obligatorio; restablecer el servicio. *Evidencia esperada:* matriz. *Rúbrica:* 3 = una A por fila; el SOC, R en el triaje; FSTS Security, A en la contención técnica; el jefe de turno de Agua, A en la respuesta operativa; la A de la notificación regulatoria recae en el rol designado del operador, no en FSTS; Kell, C en el acceso del proveedor; 2 = una fila errónea; 1 = siguen varias A; 0 = nada.
+
+**EX062 — Defina un desencadenante.** *Objetivo:* precisar «telemetría no fiable». *Entradas:* las alertas de LANTERN del capítulo 19 y los resultados de validación del capítulo 3. *Restricciones:* condiciones medibles; no debe activarse con averías ordinarias de una sola estación. *Pasos:* (1) redacte las condiciones del desencadenante; (2) indique quién lo declara y quién lo da por terminado; (3) indique qué hace Agua cuando se declara. *Evidencia esperada:* media página. *Rúbrica:* 3 = condiciones como un cambio no autorizado confirmado en un retransmisor, fallos de MAC en varias estaciones o un fallo de integridad del retransmisor; lo declara el responsable de seguridad de FSTS con el jefe de turno de Agua; Agua pasa a lecturas manuales y muestreo; la condición de fin exige un estado limpio verificado; 2 = condiciones vagas; 1 = «cuando parezca que algo va mal»; 0 = nada.
+
+**EX063 — Preguntas al proveedor.** *Objetivo:* integrar a un proveedor. *Entradas:* Kell Instruments. *Restricciones:* seis preguntas; cada una vinculada a un proceso de LANTERN. *Pasos:* redacte las preguntas y el proceso al que alimenta cada una. *Evidencia esperada:* lista. *Rúbrica:* 3 = por ejemplo, cómo notifica Kell las vulnerabilidades (capítulo 16), cómo se controla y revoca el acceso de su personal (capítulo 7), su compromiso de notificar incidentes (este capítulo), cómo se firma el firmware (capítulo 27), las fechas de fin de soporte (capítulo 11) y la disponibilidad de una SBOM ([CISA SBOM](https://www.cisa.gov/sbom)); 2 = cuatro o cinco; 1 = genéricas; 0 = nada.
+
+### Síntesis del capítulo
+
+Un servicio está integrado cuando cada vecino (operadores, el SOC, proveedores, planificadores de emergencias) tiene una interfaz acordada: qué se proporciona, con qué rapidez, a quién y qué ocurre cuando falla. Pruebe las matrices de responsabilidades con escenarios hasta que cada actividad tenga un solo rol que rinda cuentas. Incorpore a los proveedores a los procesos de cambios, vulnerabilidades e incidentes. Acuerde y ejercite los desencadenantes que conectan un incidente técnico con los planes de continuidad del operador, incluido el estado «activo pero no fiable».
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Siga estudiando — capítulo 21 de 30
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](../../en/book/MANUSCRIPT.md#ch-22)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2124,6 +2540,49 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX050 — Orden de los eventos.** Orden escrito (sin tener en cuenta los desfases): 22:14:03 inicio de sesión en rly-01; 22:15:40 fallido; 22:15:41 fallido; 22:16:00 FLOW; 23:02:11 error de cuota de disco del historiador (la línea del quiosco no tiene hora). Orden UTC: 22:02:11 historiador; 22:14:03; 22:15:40; 22:15:41; 22:16:00. Un investigador que usara el orden escrito vería el error del historiador 46 minutos *después* de los inicios de sesión fallidos como root y podría vincularlo con ellos como consecuencia de un ataque; en UTC ocurrió *antes*, así que no pudieron causarlo.
 
 **EX051 — Cuente lo que descarta.** Añada `assert len(out) + bad == len(lines), "input/output mismatch"` (o termine con un error) después del bucle; mantenga `unparsed_by_host` tomando como equipo el cuarto elemento separado por espacios de las líneas no analizadas, cuando exista (para la línea BSD, `rly-01`). La salida añade `unparsed by host: {'rly-01': 1}`. Un recuento creciente de líneas no analizadas de un equipo significa que esa fuente cambió de formato o se averió; todas las reglas que dependen de ella quedan ciegas en silencio, así que el sistema de monitorización debería alertar sobre ello (capítulo 19).
+
+### Capítulo 18: EX052–EX054
+
+**EX052 — Recorra un escenario.** Camino: (1) los datos conservados más allá de la política hacen crecer el disco → (2) el disco supera los umbrales → (3) fallan las escrituras → (4) el retransmisor pierde mensajes. Prevenir: aplicación de la conservación y rotación (evidencia: comprobación de la antigüedad del archivo más antiguo); previsión de capacidad con un umbral de plazo de antelación (capítulo 1) (evidencia: previsión mensual). Detectar: alarma de uso del disco al 65 %/85 % (probada con una prueba sintética de umbral); alerta por recuento de pérdidas/rechazos del retransmisor y alerta de silencio de estación (pruebas inyectadas). Recuperar: almacenamiento en las estaciones y subida de la acumulación (probados cada trimestre); manual de operación para liberar espacio con seguridad. Cada uno tiene una evidencia nombrada.
+
+**EX053 — Comprobación con el catálogo.** Asignaciones en SP 800-53 Rev. 5: MFA del proveedor limitada en el tiempo → AC (*Access Control*, control de acceso) e IA (*Identification and Authentication*, identificación y autenticación); registro de sesiones → AU (*Audit and Accountability*, auditoría y rendición de cuentas); límites de los puntos de consigna del PLC → SI (*System and Information Integrity*, integridad del sistema y de la información) o CM (*Configuration Management*, gestión de la configuración); alerta de cloro → SI (monitorización del sistema); procedimiento de dosificación manual → CP (*Contingency Planning*, planificación de contingencias). Familia ausente: SR (*Supply Chain Risk Management*, gestión de riesgos de la cadena de suministro): las propias prácticas de seguridad de Kell determinan la probabilidad de que les roben las credenciales. Ficha propuesta: «Aseguramiento de la seguridad del proveedor: cuestionario anual y cláusulas contractuales que exijan MFA, revocación del acceso del personal en 24 h y notificación de incidentes; responsable: gestor de proveedores de FSTS; evidencia: contrato firmado y respuesta anual». También es aceptable IR (*Incident Response*, respuesta a incidentes) para un incidente de dosificación.
+
+**EX054 — Duración del solapamiento.** El retransmisor debe aceptar la clave antigua durante al menos 24 horas después de la conmutación, más un margen (por ejemplo, 26–48 horas), porque los mensajes acumulados creados antes de la conmutación llevan MAC con la clave antigua. Cada mensaje lleva un identificador de versión de clave (dentro del cuerpo autenticado, o como selector sin autenticar, como el ID de estación del EX044); el retransmisor selecciona la clave por su versión en lugar de probarlas todas. Tras el solapamiento, se elimina la clave antigua y se verifica la eliminación: un mensaje de prueba sellado con la clave antigua debe ser rechazado entonces.
+
+### Capítulo 19: EX055–EX057
+
+**EX055 — Regla por episodios.** Agrupe los eventos de la regla B por (origen, destino); para cada grupo, abra un episodio en el primer evento y añádale los eventos posteriores que caigan dentro de 60 minutos. Salida: una línea como `22:16+  B corp->station Modbus 10.40.3.7->10.20.0.11 (2 events, last 22:31)`; el total de alertas baja de 4 a 3. Se conservan el recuento, las horas primera y última y el par, de modo que los investigadores no pierden nada mientras la persona de guardia recibe un aviso en lugar de dos.
+
+**EX056 — Primeras acciones.** Regla A: (1) confirmar si SSH está expuesto más allá del servidor de salto (no debería estarlo: hallazgo del capítulo 2); (2) comprobar si hubo algún inicio de sesión correcto desde ese origen; (3) bloquear el origen en el perímetro mediante un cambio estándar y notificar la exposición como hallazgo. Regla B: (1) comprobar en el calendario de cambios si hay una sesión de ingeniería aprobada; (2) si no la hay, llamar a la sala de control de Agua y pedirle que vigile PS-04; (3) conservar los registros de flujos e identificar al usuario de la estación de trabajo. Regla C: (1) llamar a la sala de control de Agua para confirmar el estado de la estación; (2) comprobar el estado de BayTel; (3) revisar los registros del retransmisor en busca de rechazos por MAC o por ventana de esa estación (la carencia del capítulo 26).
+
+**EX057 — Monitorice el monitor.** Fuentes: regla de ausencia por tasa de eventos de cada fuente (ningún evento durante 15 min de una fuente que normalmente envía cada minuto) → SOC. Reenviador: longitud de la cola o acumulación > 10 min → guardia de plataforma. Normalizador: proporción de líneas no analizadas > 1 % por equipo, o cualquier equipo nuevo con líneas no analizadas → guardia de plataforma. Reglas: última evaluación hace > 5 min → responsable del SOC. Avisos: un aviso sintético programado cada día a las 10:00 debe confirmarse en 15 min → si no, al responsable de guardia.
+
+### Capítulo 20: EX058–EX060
+
+**EX058 — Hipótesis y discriminantes.** (1) Claves que no coinciden tras una rotación en la estación pero no en el retransmisor: los rechazos son «bad MAC»; revisar el calendario de cambios y los registros de versión de clave. (2) Salto del reloj de la estación: los rechazos son «outside time window»; comparar las marcas de tiempo de la estación con las horas de recepción (método del Lab 20). (3) Estado de reproducción envenenado por un mensaje auténtico con un número de secuencia alto: los rechazos son «replay»; buscar un gran salto de secuencia justo antes de las 09:00 (capítulo 29). (4) Tráfico falsificado: «bad MAC» desde una dirección de origen inesperada o a un ritmo inusual mientras también llegan mensajes legítimos; revisar los flujos. Todas las comprobaciones son lecturas de registros.
+
+**EX059 — Lista de conservación.** En orden, en diez minutos: (1) anotar la hora y abrir la incidencia; (2) copiar los registros del retransmisor (incluidos los de NTP y de rechazos) de los últimos 7 días; (3) exportar la configuración del cortafuegos y su historial de cambios reciente para el conducto entre el retransmisor y las estaciones; (4) exportar el extracto del historiador de PS-09 y la salida del análisis al estilo del Lab 20; (5) guardar como texto la salida de estado de `timedatectl`/NTP del retransmisor; (6) calcular el hash de cada archivo (SHA-256) y anotar los hashes en la incidencia; (7) guardar copias fuera del equipo en el almacén de evidencias. No se cambia nada en los sistemas.
+
+**EX060 — Registro del problema.** *Observado:* hueco de PS-09 en el panel desde aproximadamente las 22:50 del 9 de octubre; todos los números de secuencia presentes; marcas de tiempo de la estación unos 422 s por detrás de la hora de recepción del retransmisor; el registro NTP del retransmisor no muestra ninguna petición de hora de PS-09 respondida desde el 7 de octubre. *Inferido:* PS-09 perdió su fuente de hora; los datos se archivaron en la ventana equivocada, no se perdieron. *Causa:* el cambio del cortafuegos CHG-131 del 7 de octubre sustituyó el conjunto de reglas del retransmisor a las estaciones y omitió udp/123. *Hecho:* udp/123 restablecido con CHG-135; desfase de PS-09 < 1 s en 30 min; el panel muestra datos; registros del historiador reindexados por hora de recepción para el periodo afectado (CHG-136). *Abierto:* por qué la revisión del cambio no detectó la omisión de NTP (lista de comprobación de revisión, capítulo 25) y por qué no saltó ninguna alerta por el desfase del reloj (nueva regla: desfase de estación > 30 s; monitorización de FSTS, antes del 20 de octubre).
+
+### Capítulo 21: EX061–EX063
+
+**EX061 — Repare la RACI.**
+
+| Actividad | SOC | Guardia de FSTS | Responsable de seguridad de FSTS | Jefe de turno de Agua | Kell | Rol de cumplimiento designado por el operador |
+|---|---|---|---|---|---|---|
+| Detectar y hacer el triaje | R | C | A | I | — | — |
+| Contener en el retransmisor | C | R | A | C | I | — |
+| Deshabilitar el acceso del proveedor | R | R | A | I | C | — |
+| Decidir la respuesta operativa (confianza en la telemetría, lecturas manuales) | I | C | C | A/R | — | I |
+| Notificar a los reguladores si es obligatorio | — | — | C | C | — | A/R |
+| Restablecer el servicio | I | R | A | C | C | I |
+
+Cada fila tiene exactamente una A. La decisión operativa corresponde a Agua, y la notificación regulatoria al rol designado del operador, nunca a FSTS.
+
+**EX062 — Defina un desencadenante.** Se declara «telemetría no fiable» cuando se cumple cualquiera de estas condiciones: (1) un cambio no autorizado confirmado en cualquier retransmisor (un hallazgo de integridad o de deriva que ningún registro de cambio explica en 30 minutos); (2) fallos de MAC de tres o más estaciones en 15 minutos; (3) un fallo de la comprobación de integridad del retransmisor o evidencia de su compromiso. Los fallos de MAC o el silencio de una sola estación *no* lo activan (se tratan con el manual de operación de la regla C). Lo declaran conjuntamente el responsable de seguridad de FSTS y el jefe de turno de Agua; Agua pasa las estaciones afectadas a lecturas manuales y aumenta el muestreo de la calidad del agua. Se da por terminado conjuntamente cuando se verifica que los retransmisores están limpios (reconstrucción o integridad confirmada con una línea base fuera del equipo) y las lecturas coinciden con las muestras manuales.
+
+**EX063 — Preguntas al proveedor.** (1) ¿Cómo notifican a los clientes las vulnerabilidades del firmware de Kell R2 y con qué rapidez? → rutina de vulnerabilidades (capítulo 16). (2) ¿Cómo se protegen las credenciales de su personal y cómo se revocan cuando alguien se marcha? → acceso (capítulo 7). (3) ¿Cuál es su compromiso de notificarnos los incidentes que afecten a sus sistemas de asistencia remota? → integración e incidentes (este capítulo). (4) ¿Están firmadas las imágenes de firmware y cómo las verificamos? → despliegue (capítulo 27). (5) ¿Cuáles son las fechas de fin de soporte de cada modelo que usamos? → inventario (capítulo 11). (6) ¿Pueden facilitar una SBOM del firmware de la RTU ([CISA SBOM](https://www.cisa.gov/sbom))? → aplicabilidad de las vulnerabilidades (capítulo 16).
 
 <a id="glossary"></a>
 

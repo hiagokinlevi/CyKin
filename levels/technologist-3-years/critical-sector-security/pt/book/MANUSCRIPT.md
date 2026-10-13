@@ -2179,7 +2179,7 @@ Três fontes produzem as regras do LANTERN. **Cenários** (Capítulo 13): cada p
 
 Nos serviços críticos, muitos dos alertas mais importantes são sobre coisas que *param* de acontecer: uma estação que para de reportar, um relay que para de encaminhar, uma fonte de logs que fica em silêncio, um backup que não roda. As regras de ausência precisam de um **ritmo esperado** (um heartbeat a cada cinco minutos) e de uma **tolerância** (alertar depois de 15 minutos de silêncio). Elas pegam interrupções, dispositivos com defeito, cabos cortados, configurações erradas — e atacantes que desabilitam os logs.
 
-A Regra C pegou a PS-09 depois de 40 minutos de silêncio; a sua tolerância de 15 minutos é a escolha de projeto.
+A Regra C sinalizou o silêncio de 40 minutos da PS-09 às 23:00, 15 minutos depois do seu último heartbeat; essa tolerância de 15 minutos é a escolha de projeto.
 
 ### 19.3 Eventos, episódios e qualidade dos alertas
 
@@ -2253,7 +2253,7 @@ Saída esperada (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
-Conte os alertas por episódio, e não por linha. A Regra A dispara uma vez para 192.0.2.44, a Regra B duas vezes para uma estação de trabalho, às 22:16 e às 22:31, e a Regra C uma vez para a PS-09 às 23:00. São quatro alertas para três episódios; ajustar a Regra B para alertar uma vez e atualizar uma contagem os reduz a três. Depois confirme o não evento: o único login malsucedido de `e.strand` a partir de um endereço interno fica abaixo do limiar da Regra A, como pretendido.
+Conte os alertas por episódio, e não por linha: os quatro alertas da saída são três episódios, e ajustar a Regra B para alertar uma vez e atualizar uma contagem os reduz a três.
 
 ### 19.8 Erros comuns e limites
 
