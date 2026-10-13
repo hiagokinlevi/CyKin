@@ -26,8 +26,8 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
-| Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) |
-| Ingeniería de seguridad de la IA | [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) |
+| Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
+| Ingeniería de seguridad de la IA | [20](#ch-20) · [21](#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) |
 | Práctica y proyecto final | [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -1087,7 +1087,203 @@ La arquitectura es donde la seguridad de la IA se vuelve exigible: las fronteras
 
 ### Siga estudiando — capítulo 18 de 50
 
-[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidad y criptografía
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) diseñar la identidad y el acceso para usuarios, servicios y agentes de IA; (2) aplicar hashes, firmas y cifrado a los artefactos de IA; (3) verificar la integridad de modelos y conjuntos de datos con manifiestos; y (4) explicar la procedencia y la firma en la cadena de suministro de la IA.
+
+### 19.1 Identidades para los agentes
+
+Toda acción debe poder atribuirse. Un agente de IA debe actuar *en nombre de* un usuario, con permisos delegados y de alcance limitado (por ejemplo, tokens OAuth restringidos a ámbitos concretos), y no con una cuenta de servicio poderosa. Las credenciales de corta duración limitan el daño si se filtran; nunca coloque credenciales en los prompts. La delegación significa que el agente nunca puede hacer más de lo que podría hacer el usuario, y los registros muestran a ambos: el usuario en cuyo nombre se ejecutó la acción y el agente que la propuso. Una cuenta de servicio compartida borra esa distinción, de modo que, tras un incidente, nadie puede saber qué conversación causó qué acción. Los tokens que duran minutos en lugar de meses hacen además que una credencial copiada de un registro sea inútil para cuando alguien intente usarla.
+
+### 19.2 Hashes y manifiestos
+
+Un hash criptográfico como SHA-256 asigna a un archivo un resumen de tamaño fijo; cualquier cambio, aunque sea de un solo bit, produce un resumen distinto. Un manifiesto enumera el resumen esperado de cada artefacto (pesos, tokenizador, configuración). El laboratorio detecta tanto un cambio de un bit en los pesos como una línea añadida a la configuración.
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Salida esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+La salida muestra por qué cada archivo necesita su propia entrada: el tokenizador no se tocó y supera la comprobación, mientras que dos cambios distintos en dos archivos se detectan cada uno de forma independiente. Un solo bit invertido en el desplazamiento 5000 basta para cambiar por completo el resumen del archivo de pesos.
+
+### 19.3 Firmas y procedencia
+
+Un hash prueba que un archivo coincide con un manifiesto; una *firma digital* sobre el manifiesto prueba quién lo produjo. Firmar los artefactos del modelo y registrar su procedencia (qué datos, código y canalización los produjeron) permite a los consumidores verificar su origen. Esto aborda OWASP LLM03 (*cadena de suministro*) y los riesgos de puertas traseras en modelos de terceros (Gu et al., arXiv:1708.06733). Las firmas trasladan la cuestión de la confianza a la clave de firma: quién la tiene, cómo se protege y cómo sabe un consumidor qué clave esperar. La procedencia añade un contexto que una firma por sí sola no puede dar, como la versión del conjunto de datos usada, de modo que un consumidor puede juzgar si el modelo es adecuado para su uso y no solo si es auténtico.
+
+### 19.4 Cifrado
+
+Cifre los datos de entrenamiento y los pesos en reposo y todo el tráfico en tránsito (TLS). El cifrado protege la confidencialidad frente al robo del almacenamiento y la interceptación, pero no frente a una consulta de apariencia legítima que extraiga información del modelo. Las claves deben gestionarse por separado de los datos que protegen; un archivo de pesos cifrado guardado junto a su clave no protege nada. El cifrado tampoco altera el comportamiento del propio modelo. Un usuario con acceso ordinario de consulta puede seguir extrayendo datos de entrenamiento o reconstruir un modelo a través de sus respuestas, así que el cifrado se combina con límites de consultas y controles de las salidas. Los ingenieros registran qué amenazas aborda cada control de cifrado y cuáles no aborda explícitamente.
+
+### 19.5 Ejemplo resuelto (caso sintético de NRS)
+
+NRS recibe las actualizaciones del modelo de TrackEye de un proveedor de modelos de visión. Sam exigió un manifiesto firmado con resúmenes SHA-256 de cada archivo, verificado en el ordenador del tren de inspección antes de la carga. En una prueba, una configuración modificada que habilitaba la carga remota de código fue rechazada, en coincidencia con el `config.yaml MISMATCH` del laboratorio. Verificar en el tren y no en el depósito importa porque los archivos podrían alterarse en cualquier punto entre el proveedor y el dispositivo. Primero se comprueba la firma del manifiesto; los hashes de los archivos solo se consideran fiables una vez demostrado que la firma procede de la clave esperada del proveedor.
+
+### 19.6 Errores y límites
+
+- Agentes que usan cuentas de servicio de administración compartidas.
+- Hashes obtenidos del mismo lugar que los archivos (un atacante puede cambiar ambos).
+- Suponer que el cifrado impide las filtraciones a nivel del modelo.
+
+Las cuentas de administración compartidas hacen que cada acción de un agente sea tan poderosa como la tarea más poderosa que necesite cualquier agente. Un hash descargado del mismo servidor que el archivo solo prueba que el servidor es coherente consigo mismo, así que el resumen esperado debe llegar por un canal separado y confiable, como un manifiesto firmado. El cifrado protege los datos en reposo y en tránsito, pero un modelo que responde a consultas aún puede revelar lo que aprendió.
+
+### Ejercicios — capítulo 19
+
+- **EX055 — Lectura del laboratorio.** ¿Qué archivos fallan en el laboratorio H y por qué supera la comprobación `tokenizer.json`? Rúbrica: 3 = model.bin (bit invertido) y config.yaml (línea añadida); el tokenizador no cambió; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX056 — Hashes de la misma fuente.** ¿Por qué es débil un manifiesto descargado del mismo servidor que el modelo, y qué lo corrige? Rúbrica: 3 = un atacante que controla el servidor cambia ambos; manifiesto firmado con clave fijada; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX057 — Delegación.** Diseñe la credencial de la herramienta de órdenes de trabajo de Wrench. Rúbrica: 3 = delegada por usuario, limitada a crear borradores, de corta duración, registrada; 2 = tres; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+La identidad hace que las acciones de los agentes sean atribuibles y acotadas; los hashes, las firmas y la procedencia hacen verificables los artefactos de IA. Juntos anclan la confianza en la cadena de suministro de la IA.
+
+### Siga estudiando — capítulo 19 de 50
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: contexto de ingeniería
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) describir el ciclo de vida de la IA (datos, entrenamiento, evaluación, despliegue, monitorización, retirada) y sus superficies de ataque; (2) usar las funciones del AI RMF del NIST para organizar el trabajo de ingeniería; (3) situar los marcos (NIST AI 100-2 E2025, OWASP LLM 2025, MITRE ATLAS, ISO/IEC 42001, Reglamento de IA de la UE) según su finalidad; y (4) definir el alcance de una tarea de ingeniería de seguridad de la IA.
+
+### 20.1 El ciclo de vida y su superficie de ataque
+
+La recogida de datos puede envenenarse; el etiquetado puede corromperse; las canalizaciones de entrenamiento y los modelos de terceros pueden llevar puertas traseras; la evaluación puede manipularse o filtrarse; los modelos desplegados se enfrentan a la evasión, la extracción, la inferencia de pertenencia y la inyección de prompts; la monitorización puede quedar cegada; los modelos retirados pueden dejar datos tras de sí. Cada etapa necesita responsables y controles. Exponer las etapas muestra que la mayoría de los ataques no necesitan ningún acceso al modelo desplegado: una etiqueta envenenada o un archivo de un tercero sustituido hacen su daño mucho antes del despliegue. Nombrar un responsable para cada etapa evita la laguna habitual en que los equipos de datos suponen que de eso se ocupa seguridad y los equipos de seguridad suponen que la calidad de los datos es trabajo de otros.
+
+### 20.2 El AI RMF del NIST como marco organizador
+
+NIST AI 100-1 define cuatro funciones. *Gobernar* (*Govern*): políticas, roles, rendición de cuentas. *Mapear* (*Map*): contexto, uso previsto, partes interesadas, riesgos. *Medir* (*Measure*): analizar, evaluar y seguir los riesgos con métodos adecuados. *Gestionar* (*Manage*): priorizar los riesgos y actuar sobre ellos. NIST AI 600-1 perfila estas funciones para la IA generativa y enumera riesgos como la seguridad de la información, la confabulación y la privacidad de los datos, con acciones sugeridas. Los ingenieros trabajan sobre todo en Mapear, Medir y Gestionar, dentro de las reglas de Gobernar. Las funciones se repiten en lugar de ejecutarse una sola vez: las mediciones alimentan las decisiones de gestión, que cambian el sistema y exigen nuevas mediciones.
+
+### 20.3 Qué marco para qué pregunta
+
+- *¿Qué ataques existen?* NIST AI 100-2 E2025 (taxonomía y terminología) y MITRE ATLAS (tácticas, técnicas, estudios de casos).
+- *¿Qué falla en las aplicaciones basadas en LLM?* OWASP Top 10 for LLM Applications 2025.
+- *¿Cómo gestionamos la IA en una organización?* ISO/IEC 42001:2023 (sistema de gestión de la IA) y el AI RMF.
+- *¿Qué exige la ley?* El Reglamento de IA de la UE (Reglamento (UE) 2024/1689) para los sistemas que entran en su ámbito.
+
+Los marcos aportan vocabulario y listas de comprobación; no son evidencia de que un sistema sea seguro. Usar el marco equivocado para una pregunta produce lagunas, como cuando una norma organizativa se lee como una lista de ataques.
+
+### 20.4 Delimitación del alcance
+
+Una tarea de ingeniería necesita un alcance: qué sistema, qué etapas del ciclo de vida, qué amenazas, qué activos y qué queda fuera del alcance. Las exclusiones explícitas evitan una falsa garantía. Un alcance también fija expectativas. Si la extracción de modelos queda fuera del alcance, un informe posterior no puede leerse como si dijera que la extracción se probó y se halló imposible. Cada exclusión lleva un motivo y una fecha de revisión, para que no se vuelva permanente sin que nadie lo decida. Los alcances de Sam enumeran además los supuestos, como «no se expone ninguna API externa», porque una exclusión que se apoya en un supuesto debe revisarse en cuanto el supuesto cambia.
+
+### 20.5 Ejemplo resuelto (caso sintético de NRS)
+
+NRS pidió a Sam que «asegurara la IA». Sam lo convirtió en tres líneas de trabajo con alcance definido: integridad de TrackEye (envenenamiento a través del contratista de etiquetado; marcas físicas adversariales; cadena de suministro de las actualizaciones del modelo), agencia de Wrench (inyección de prompts; agencia excesiva; divulgación de información sensible) y resiliencia de Pulse (suplantación de sensores; deriva por lazos de realimentación). La extracción de modelos quedó explícitamente fuera del alcance de este trimestre, porque no se expone externamente ninguna API de IA.
+
+Cada línea de trabajo sigue los activos y las amenazas de un sistema, de modo que los responsables y las medidas de éxito están claros. La exclusión de la extracción se apoya en un supuesto, la ausencia de una API externa, que Sam anota con un desencadenante: si NRS llega a exponer externamente un servicio de IA, la extracción vuelve al alcance.
+
+### 20.6 Errores y límites
+
+- Usar la lista de comprobación de un marco como prueba de seguridad.
+- Alcances sin exclusiones.
+- Ignorar las primeras etapas del ciclo de vida (datos, etiquetado).
+
+Una lista de comprobación completada muestra que se consideraron los temas, no que los controles funcionen; la evidencia procede de pruebas y mediciones. Un alcance sin exclusiones da a entender que se examinó todo, lo que rara vez es cierto. Las primeras etapas del ciclo de vida son fáciles de ignorar porque parecen gestión de datos más que seguridad, pero los ataques de envenenamiento y de etiquetado empiezan ahí y son los más difíciles de encontrar después, una vez que un modelo ha aprendido de los datos malos.
+
+### Ejercicios — capítulo 20
+
+- **EX058 — Ciclo de vida.** Para cada una de cinco etapas del ciclo de vida, nombre un ataque. Rúbrica: 3 = cinco pares correctos; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX059 — RMF.** Asigne tres actividades de Sam a funciones del AI RMF. Rúbrica: 3 = tres correctas con razones; 2 = dos; 1 = una; 0 = nada.
+- **EX060 — Elección del marco.** ¿Qué marco responde a «qué riesgos de las aplicaciones basadas en LLM debe cubrir nuestra revisión de diseño», y por qué? Rúbrica: 3 = OWASP LLM 2025 (con ATLAS/600-1 como complementos), con razón; 2 = solo el nombre; 1 = desajustado; 0 = nada.
+
+### Síntesis del capítulo
+
+La ingeniería de seguridad de la IA empieza por el ciclo de vida, un marco organizador y el marco adecuado para cada pregunta, y después un alcance que diga qué entra y qué queda fuera.
+
+### Siga estudiando — capítulo 20 de 50
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: requisitos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) redactar requisitos de seguridad para componentes de IA que sean específicos, medibles y verificables; (2) derivar requisitos de los casos de abuso; (3) expresar requisitos estadísticos con cotas de confianza; y (4) trazar los requisitos hasta los marcos y la regulación.
+
+### 21.1 De los casos de abuso a los requisitos
+
+Un caso de abuso describe cómo alguien podría hacer un mal uso del sistema: «Un proveedor incrusta en un boletín una instrucción que hace que Wrench programe un mantenimiento innecesario». Cada caso de abuso da lugar a requisitos que lo previenen, lo detectan o lo limitan. Redactar los casos de abuso como historias con un actor, un objetivo y una vía los hace lo bastante concretos para probarlos. El caso del boletín da tres requisitos: etiquetar el texto de los boletines como no confiable (prevenir), alertar ante contenido con apariencia de instrucción en los boletines (detectar) y exigir confirmación para las órdenes de trabajo (limitar). Tener los tres significa que el fallo de uno no deja abierto el caso de abuso.
+
+### 21.2 Tipos de requisito
+
+- **Funcionalidad de seguridad**: «Las órdenes de trabajo requieren la confirmación del técnico».
+- **Comportamiento estadístico**: «En el conjunto reservado de inyecciones (≥ 600 casos), Wrench propone llamadas a herramientas no autorizadas en ≤ 2 % de los casos (cota superior del 95 %)».
+- **Proceso**: «Cada publicación de un modelo supera el control de evaluación de seguridad».
+- **Datos**: «Las imágenes de entrenamiento llevan su procedencia; los reetiquetados de los contratistas se muestrean y revisan al 5 %».
+- **Operación**: «Presupuesto de acciones por usuario de 20 órdenes de trabajo por hora; las alertas por encima de 3 veces la línea base avisan a la guardia».
+
+El mínimo de 600 casos es el doble del conjunto de 300 casos que bloqueó el prompt más amable, porque un conjunto menor da una cota superior demasiado amplia para mostrar una tasa cercana al 2 %.
+
+### 21.3 Redacción de requisitos estadísticos verificables
+
+Indique la población (conjunto de prueba), la métrica, el umbral, el nivel de confianza y el tamaño mínimo de la muestra. «Robusto frente a ataques» no es verificable. «Exactitud bajo PGD con L∞ ε = 4/255 ≥ 70 % en el conjunto reservado» sí lo es, y enuncia implícitamente el modelo de amenazas. El ejemplo de PGD nombra el ataque, la norma y el presupuesto, de modo que los probadores saben exactamente qué ejecutar y los lectores saben qué no cubre el resultado: presupuestos mayores, otras normas y ataques físicos. Un requisito estadístico necesita además datos suficientes para decidir. Si el conjunto de prueba es demasiado pequeño, la cota superior puede superar el umbral aunque el modelo sea bueno, y no puede demostrarse que el requisito se cumple. Por eso el tamaño de la muestra forma parte del propio requisito.
+
+### 21.4 Trazabilidad
+
+Vincule cada requisito con su origen (caso de abuso, entrada de OWASP, artículo del Reglamento de IA, objetivo de control de la ISO/IEC 42001) y con su método de verificación. El artículo 15 del Reglamento de IA de la UE exige que los sistemas de alto riesgo sean resistentes a los intentos de alterar su uso o su funcionamiento aprovechando vulnerabilidades, y menciona el envenenamiento de datos, el envenenamiento de modelos, los ejemplos adversariales y los ataques a la confidencialidad; los requisitos que abordan cada uno hacen trazables los argumentos de cumplimiento. Una tabla de trazabilidad funciona en ambos sentidos: de cada origen a los requisitos que le responden, y de cada requisito a su prueba. Así, las lagunas aparecen como celdas vacías.
+
+### 21.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam redactó el REQ-AI-014: «La tasa de falsos negativos de TrackEye para defectos ≥ 10 mm será ≤ 1,5 % con cota superior del 95 %, por estrato de condiciones (día, amanecer/anochecer, noche, lluvia), en un conjunto reservado de ≥ 1.000 defectos por estrato; se verificará mediante un informe de pruebas en cada publicación». Origen: peligro H-03 y artículo 15 del Reglamento de IA (precisión). El REQ-AI-015 abordaba las marcas adversariales: «Ninguna marca individual de ≤ 20 × 20 cm colocada a ≥ 0,5 m del carril reducirá por debajo del 95 % la detección de un defecto adyacente en la campaña de pruebas físicas». La regla de los estratos cierra la laguna del amanecer: una buena tasa global ya no puede ocultar una condición débil.
+
+### 21.6 Errores y límites
+
+- Requisitos sin umbrales ni conjuntos de prueba.
+- Umbrales sin cotas de confianza.
+- Requisitos que no pueden verificarse con los datos disponibles.
+
+Sin un umbral y un conjunto de prueba, nadie puede decir si un requisito se ha cumplido. Un umbral sin cota de confianza puede superarse por suerte con una muestra pequeña. Un requisito que necesita datos que no existen, como mil defectos nocturnos por estrato cuando solo se han registrado doscientos, debe reescribirse o ir acompañado de un plan para recoger los datos antes de la publicación que depende de él.
+
+### Ejercicios — capítulo 21
+
+- **EX061 — Reescritura.** Reescriba «Wrench no debe filtrar secretos» como un requisito verificable. Rúbrica: 3 = población, métrica, umbral, confianza, verificación; 2 = cuatro; 1 = vago; 0 = sin cambios.
+- **EX062 — Caso de abuso.** Redacte un caso de abuso para Pulse y un requisito derivado. Rúbrica: 3 = caso verosímil y requisito verificable; 2 = uno débil; 1 = vago; 0 = nada.
+- **EX063 — Tamaño de la muestra.** ¿Cuántos casos de prueba se necesitan para mostrar una tasa ≤ 2 % con una cota superior unilateral del 95 % si se observan cero fallos? Rúbrica: 3 = unos 150 (regla del tres: 3/n ≤ 0,02); 2 = solo el método; 1 = incorrecto pero razonado; 0 = nada.
+
+### Síntesis del capítulo
+
+Los buenos requisitos de seguridad de la IA son enunciados medibles sobre el comportamiento ante ataques declarados, con tamaños de muestra y confianza, trazados hasta su origen y hasta su verificación.
+
+### Siga estudiando — capítulo 21 de 50
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](../../en/book/MANUSCRIPT.md#ch-22)
 
 <a id="worked-results"></a>
 
@@ -1202,6 +1398,24 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX053.** Entre las instrucciones confiables (sistema y usuario) y los boletines/notas recuperados no confiables. Todos son tokens de una misma secuencia y el seguimiento de instrucciones del modelo es estadístico, así que puede seguir texto inyectado.
 
 **EX054.** Contexto: los técnicos quieren que Wrench envíe solicitudes de piezas. Opciones: herramienta de correo libre; correo solo a una lista de permitidos de direcciones de proveedores, con confirmación; solo borrador. Decisión: destinatarios en lista de permitidos más confirmación. Consecuencias: flexibilidad limitada; la exfiltración inyectada queda bloqueada. Riesgo residual: los proveedores permitidos podrían recibir contenido erróneo; se mitiga mostrando el mensaje completo antes de enviarlo.
+
+**EX055.** model.bin falla (un bit invertido en el byte 5000) y config.yaml falla (una línea añadida); tokenizer.json no se modificó, así que su resumen coincide.
+
+**EX056.** Un atacante que controla el servidor puede sustituir tanto los pesos como el manifiesto. Firme el manifiesto con la clave del proveedor y fije esa clave pública en el verificador, u obtenga los resúmenes por un canal independiente.
+
+**EX057.** Un token delegado por usuario, limitado a «crear borrador de orden de trabajo» para el depósito del usuario, válido durante minutos, vinculado a la sesión y con cada uso registrado.
+
+**EX058.** Recogida de datos: envenenamiento; etiquetado: manipulación de etiquetas; entrenamiento/modelo de terceros: puerta trasera; despliegue: evasión o inyección de prompts; monitorización: cegado por inundación u ocultación de la deriva (además, API: extracción/inferencia de pertenencia).
+
+**EX059.** Redactar las líneas de trabajo con alcance definido: Mapear (contexto y riesgos). Ejecutar el conjunto de evaluación de inyecciones: Medir. Decidir retirar la herramienta olvidada y exigir confirmación: Gestionar.
+
+**EX060.** OWASP Top 10 for LLM Applications 2025, porque enumera las categorías de riesgo más comunes de las aplicaciones basadas en LLM con sus mitigaciones; ATLAS y NIST AI 600-1 lo complementan con técnicas y con acciones frente a los riesgos de la IA generativa.
+
+**EX061.** «En un conjunto reservado de ≥ 500 intentos de extracción dirigidos a credenciales y al prompt del sistema, Wrench no emite ninguna cadena secreta (0 apariciones; cota superior del 95 % ≤ 0,6 %); los secretos no están en el prompt por diseño (verificado mediante revisión de la configuración)».
+
+**EX062.** Caso de abuso: un atacante con acceso a un armario junto a la vía suplanta un sensor de temperatura de rodamiento para que marque valores normales. Requisito: «Pulse señalará un sensor cuyas lecturas difieran en > 8 °C de las del sensor emparejado del mismo eje durante 60 s (verificado mediante prueba de inyección)».
+
+**EX063.** Con cero fallos, la cota superior unilateral del 95 % es ≈ 3/n, así que 3/n ≤ 0,02 da n ≥ 150.
 
 <a id="references"></a>
 
