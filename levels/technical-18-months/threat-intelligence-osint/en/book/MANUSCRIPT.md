@@ -1034,7 +1034,7 @@ The partner compares each printed route with what they expect from the owner lis
 
 No real hostnames or addresses in submitted reports; use the lab's synthetic values.
 
-Lab reports leave the virtual machine and may be read by other students or tutors. Using only the synthetic hostnames and RFC 5737 addresses means nothing about college systems is exposed. The partner check includes a scan of the report for any value that does not come from the lab data. The same rule applies to screenshots and pasted output in the report. The partner rejects any report containing a value that is not in the lab data. Reports that fail the scan are corrected and resubmitted before marking.
+Lab reports leave the virtual machine and may be read by other students or tutors. Using only the synthetic hostnames and RFC 5737 addresses means nothing about college systems is exposed. The partner check includes a scan of the report for any value that does not come from the lab data. The same rule applies to screenshots and pasted output in the report. Reports that fail the scan are rejected, corrected and resubmitted before marking.
 
 ### Extending the lab
 
@@ -1293,7 +1293,7 @@ The incident lead decides what matters most, such as which systems to contain fi
 
 ### 15.7 Supplier intelligence
 
-Advisories about the learning-platform supplier or the email supplier go to contract managers too, who can ask the supplier for assurance.
+Advisories about the learning-platform supplier or the email supplier go to contract managers too.
 
 A supplier advisory may require action that only the supplier can take, such as patching the learning platform they host. Contract managers can ask the supplier for written assurance or a timeline. Tomás sends them a short summary with the advisory's label, so they know what they may forward. The summary also states whether Ashgrove uses the affected product version, which the service table shows.
 
@@ -1479,7 +1479,7 @@ Each check addresses a different way the community version could leak. Label che
 
 ### 17.5 Internal value
 
-The internal summary helps management see that phishing dominates and that one ransomware-related item arrived, prompting a backup check.
+The internal summary helps management see that phishing dominates and that one ransomware-related item arrived.
 
 Management readers need to know what to act on, not only what arrived. The ransomware-related item prompts a check that backups can be restored, which is an internal action. The internal summary can say this because it stays within Ashgrove under the labels of its items. The internal summary also shows that valid-account abuse appears twice, supporting the multi-factor plan for students. Management reads the internal summary together in the monthly meeting.
 
@@ -1560,7 +1560,7 @@ Stripping names and addresses happens before the list is grouped, so the groupin
 
 Time to produce the list (before: two hours; target: thirty minutes); help-desk satisfaction; accuracy of grouping checked by the supervisor.
 
-The time measure compares production before and after with the same steps counted. Accuracy is checked by the supervisor grouping the same week's reports by hand and comparing the result with the script. Satisfaction is asked of the help-desk lead, since they are the main user of the list. The two-hour figure comes from the help desk's own estimate of the manual process. Accuracy is checked by the supervisor on the report-only weeks.
+The time measure compares production before and after with the same steps counted. Accuracy is checked on the report-only weeks, by the supervisor grouping the same week's reports by hand and comparing the result with the script. Satisfaction is asked of the help-desk lead, since they are the main user of the list. The two-hour figure comes from the help desk's own estimate of the manual process.
 
 ### 18.5 Handover
 

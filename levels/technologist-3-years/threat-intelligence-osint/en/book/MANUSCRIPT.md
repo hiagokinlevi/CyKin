@@ -120,7 +120,7 @@ A resident who receives a message with a link has no easy way to tell corvale-pe
 
 A resolver log line typically records time, client, queried name and answer. Lena reads lines such as "08:03 ws-114 pay-portal.example". The client tells her which machine asked; the name tells her whether it matches an indicator.
 
-In the example line, 08:03 is the time, ws-114 the staff machine that asked and pay-portal.example the name it queried. If pay-portal.example is on an indicator list, the line shows that ws-114 at least looked up the name at 08:03. It does not show that the machine connected or entered anything, so Lena treats it as a lead to check, not proof of harm.
+If pay-portal.example is on an indicator list, the line shows that ws-114 at least looked up the name at 08:03. It does not show that the machine connected or entered anything, so Lena treats it as a lead to check, not proof of harm.
 
 ### 2.3 Passive DNS data
 
