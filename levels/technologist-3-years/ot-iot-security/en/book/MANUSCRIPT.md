@@ -44,13 +44,21 @@ You will (1) name the computing devices in a cold-storage warehouse and what eac
 
 The synthetic Northgate Cold Storage (NCS) warehouse keeps frozen food at −22 °C and chilled goods at 2–4 °C. Its obvious computers are the office PCs. Less obvious are two refrigeration controllers (PLC-R1 and PLC-R2) that run the ammonia compressors, an operator screen (HMI-C), a historian (HIST), forty wireless temperature loggers that report through a gateway (GW-LOG) to a cloud service, and IP cameras on the loading dock. A technologist's first job is to see all of them.
 
+Section one point one develops computing systems with a Northgate Cold Storage note Priya Nair can demo offline.
+
 ### 1.2 Embedded versus general-purpose
 
 A PLC runs one control program in a fixed loop and may stay powered for a decade. A Windows HMI runs many processes, receives updates and can be infected by ordinary malware. Loggers are microcontrollers with radio and a battery; they cannot run antivirus at all. Each class needs a different protection approach, which is why NIST SP 800-82r3 discusses OT device types separately.
 
+Section one point two develops computing systems with a Northgate Cold Storage note Priya Nair can demo offline.
+
 ### 1.3 Availability first
 
 If an office PC reboots, someone loses ten minutes. If PLC-R1 stops, compressor suction pressure drifts and the freezer warms by roughly a degree every 15–20 minutes; after a few hours stock worth hundreds of thousands may be condemned. That consequence shapes every later decision: when to patch, how to test, who must be present.
+
+Section one point three develops computing systems with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section one point three, NCS operations expects computing claims to carry owners and dates.
 
 ### Worked example (synthetic NCS)
 
@@ -88,17 +96,37 @@ You will (1) read an IP address plan and identify subnets; (2) explain what a VL
 
 NCS uses 10.10.0.0/24 for offices, 10.20.0.0/24 for refrigeration control and 10.30.0.0/24 for loggers and cameras. A /24 mask means the first three numbers name the network and the last names the host. Two devices on the same subnet talk directly through the switch; devices on different subnets must pass a router or firewall, which is where policy can be applied.
 
+Section two point one develops networks and internet services with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section two point one, NCS operations expects networks claims to carry owners and dates.
+
 ### 2.2 VLANs and firewalls
 
 A VLAN separates traffic logically on shared switches. VLANs alone do not filter: the filtering happens where traffic is routed between them. A firewall rule names source, destination, protocol and port, and whether to allow or deny. A sound default is "deny everything not explicitly allowed".
+
+Section two point two develops networks and internet services with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section two point two, NCS operations expects networks claims to carry owners and dates.
+
+Section two point two treats addresses and subnets vlans as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Outbound cloud connections
 
 GW-LOG opens an outbound HTTPS connection (TCP 443) to the logger vendor's cloud. Outbound connections are easier to secure than inbound ones because nobody on the internet can start a session to the gateway — provided the firewall does not also forward an inbound port to it. Remote-support tools often add exactly that forwarding, which is how many devices become internet-facing.
 
+Section two point three develops networks and internet services with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section two point three, NCS operations expects networks claims to carry owners and dates.
+
 ### 2.4 Name resolution
 
 The gateway finds the cloud by DNS. If the gateway uses an internal DNS server, a misconfiguration there can break logging plant-wide; if it uses a public resolver directly, the firewall must permit that too. Write down which.
+
+Section two point four develops networks and internet services with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section two point four, NCS operations expects networks claims to carry owners and dates.
+
+Section two point four treats addresses and subnets vlans as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -136,17 +164,39 @@ You will (1) write short Python programs using only the standard library; (2) us
 
 Much OT security work is comparing lists: assets in documentation versus assets seen on the network, approved flows versus observed flows, certificate dates versus today. Doing this by eye across hundreds of rows is slow and error-prone. A twenty-line script does it the same way every time, and its output can be attached to a ticket.
 
+Section three point one develops programming foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section three point one, NCS operations expects programming claims to carry owners and dates.
+
 ### 3.2 Dictionaries for lookups
 
 A Python dictionary maps a key (device name) to a value (firmware version). Checking "is this device documented?" becomes `name in docs`, which is fast and readable. Sets give union and difference directly: `set(a) - set(b)` lists what is in `a` but not `b`.
+
+Section three point two develops programming foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section three point two, NCS operations expects programming claims to carry owners and dates.
+
+Section three point two treats why technologists script dictionaries as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Missing data is a result
 
 When a value is absent, say so in the output. `dict.get(key)` returns `None` instead of crashing, and the script can print "-" and a status such as "only-in-docs". Silently skipping missing rows is how gaps disappear from reports.
 
+Section three point three develops programming foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section three point three, NCS operations expects programming claims to carry owners and dates.
+
+Section three point three treats why technologists script dictionaries as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Readable output
 
 Align columns with f-string widths (`f"{name:9}"`) and put the decision at the end of each line. A reviewer can then scan the last column for anything that is not "match".
+
+Section three point four develops programming foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section three point four, NCS operations expects programming claims to carry owners and dates.
+
+Section three point four treats why technologists script dictionaries as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -184,17 +234,37 @@ You will (1) design a simple asset table with keys and attributes; (2) choose id
 
 An asset table holds one row per asset. The key must be unique and stable. IP addresses are poor keys because they change when a device is re-addressed; serial numbers change when a device is replaced. NCS uses an asset tag painted on the equipment (for example "MP-1/PLC-R1"), which stays with the function.
 
+Section four point one develops data models with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section four point one, NCS operations expects data claims to carry owners and dates.
+
 ### 4.2 Relationships
 
 Forty loggers report through GW-LOG. Storing "gateway" as an attribute of each logger row creates a one-to-many relationship that lets a query answer "which loggers go dark if GW-LOG fails?" in one line. Similarly, a flow table with source and destination keys links assets into the communication picture used in Chapter 12.
+
+Section four point two develops data models with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section four point two, NCS operations expects data claims to carry owners and dates.
 
 ### 4.3 What not to store
 
 Passwords, private keys and full configuration backups do not belong in a shared asset table. Store a reference ("credential held in vault entry OT-17") and keep the secret in a system designed for it. A spreadsheet of passwords on a shared drive is a common finding in OT assessments.
 
+Section four point three develops data models with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section four point three, NCS operations expects data claims to carry owners and dates.
+
 ### 4.4 Data quality fields
 
 Add "source" (documentation, network observation, walk-down) and "last verified" date to each row. An inventory without dates cannot be trusted after a year.
+
+Section four point four develops data models with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section four point four, NCS operations expects data claims to carry owners and dates.
+
+Section four point four treats tables keys and attributes as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Northgate Cold Storage will not accept data work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -232,17 +302,37 @@ You will (1) explain safety, availability, integrity and confidentiality for a c
 
 The worst outcome at NCS is an ammonia release — a safety event handled by separate gas detection and emergency ventilation. Next comes loss of cooling and condemned stock. Then integrity of temperature records, which customers and food-safety inspectors rely on. Confidentiality matters for customer contracts and camera footage. The order guides where to spend effort first.
 
+Section five point one develops security literacy with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section five point one, NCS operations expects security claims to carry owners and dates.
+
 ### 5.2 Threat sources
 
 Most OT incidents are not elite attacks. They include commodity ransomware that spreads from office networks onto Windows HMIs, misused vendor remote access, mistakes during maintenance, and devices exposed to the internet with default passwords. CISA advisory AA21-042A, on a water treatment facility, describes access through desktop-sharing software combined with weak passwords — a pattern that fits many small sites.
+
+Section five point two develops security literacy with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section five point two, NCS operations expects security claims to carry owners and dates.
 
 ### 5.3 Reading an advisory
 
 From any advisory extract: affected product and versions, the weakness, whether exploitation has been seen, and the recommended mitigations. Then ask whether NCS has that product (your asset table answers this) and whether the mitigation is feasible.
 
+Section five point three develops security literacy with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section five point three, NCS operations expects security claims to carry owners and dates.
+
+Section five point three treats what matters at ncs as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 ATT&CK for ICS
 
 MITRE ATT&CK for ICS gives names and IDs to observed adversary behaviour. T0886 *Remote Services* covers using remote-access services to reach control systems; T0883 *Internet Accessible Device* covers devices reachable from the internet. Use the IDs to label findings consistently, not to claim completeness.
+
+Section five point four develops security literacy with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section five point four, NCS operations expects security claims to carry owners and dates.
+
+Section five point four treats what matters at ncs as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -280,17 +370,39 @@ You will (1) identify OS-level risks on HMIs and historians; (2) explain what vi
 
 HMI-C runs a long-term-servicing edition of Windows with the refrigeration vendor's HMI software. Its risks are ordinary: unpatched services, shared local accounts, USB sticks, and remote-desktop tools. Its constraints are not: the vendor certifies specific OS builds, and an untested update can stop the HMI runtime. Hardening therefore goes through a test unit or a vendor-approved list.
 
+Section six point one develops operating systems and virtualization with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section six point one, NCS operations expects operating claims to carry owners and dates.
+
 ### 6.2 Virtualized historians
 
 NCS runs HIST as a virtual machine on a small host in the comms room. Virtualization helps recovery — a VM can be restored from a snapshot in minutes — but concentrates risk: compromise or failure of the hypervisor affects every VM on it. Management interfaces for the hypervisor belong on an isolated management network, never on the office VLAN.
+
+Section six point two develops operating systems and virtualization with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section six point two, NCS operations expects operating claims to carry owners and dates.
 
 ### 6.3 Snapshots are not backups
 
 A snapshot lives on the same storage as the VM; if the storage fails or ransomware encrypts it, both go. A backup is a separate copy, ideally offline or immutable, with a tested restore. Record the restore test date — an untested backup is a hope.
 
+Section six point three develops operating systems and virtualization with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section six point three, NCS operations expects operating claims to carry owners and dates.
+
+Section six point three treats the hmi as windows as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Least privilege on hosts
 
 Operators use a named, non-administrator account; the vendor runtime uses a service account that cannot log in interactively; administrator rights are granted per task and logged.
+
+Section six point four develops operating systems and virtualization with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section six point four, NCS operations expects operating claims to carry owners and dates.
+
+Section six point four treats the hmi as windows as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Northgate Cold Storage will not accept operating work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -328,21 +440,51 @@ You will (1) replace shared accounts with named accounts and roles; (2) design c
 
 At many sites one HMI password is shared by every shift and known to former staff. It cannot tell an investigator who changed a freezer setpoint, and it cannot be revoked for one person. Named accounts restore both attribution and revocation. IEC 62443-3-3 makes unique identification of human users a system requirement under its first foundational requirement.
 
+Section seven point one develops identity and access foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seven point one, NCS operations expects identity claims to carry owners and dates.
+
 ### 7.2 Roles
 
 NCS needs three HMI roles: viewer (night security guard checking temperatures), operator (acknowledge alarms, adjust setpoints within limits) and engineer (change limits and alarm settings). The contractor's laptop that programs PLC-R1 is a separate privilege again, controlled by possession of the laptop and its project password.
+
+Section seven point two develops identity and access foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seven point two, NCS operations expects identity claims to carry owners and dates.
+
+Section seven point two treats shared passwords roles contractors as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Contractors
 
 The refrigeration contractor needs access a few times a month. Give the contractor named accounts that are disabled by default, enabled for a ticket and a time window, and reviewed afterwards. Remove the always-on remote-access tool identified in Chapter 5.
 
+Section seven point three develops identity and access foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seven point three, NCS operations expects identity claims to carry owners and dates.
+
+Section seven point three treats shared passwords roles contractors as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Multi-factor authentication
 
 Use MFA for remote access and for engineering tools. On the control-room HMI, a slow MFA prompt during an alarm can be harmful; physical security of the room and short screen-lock times may be the better balance. Document the choice.
 
+Section seven point four develops identity and access foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seven point four, NCS operations expects identity claims to carry owners and dates.
+
+Section seven point four treats shared passwords roles contractors as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 Reviews
 
 Every quarter, list enabled accounts and compare with the staff and contractor list. Disable leavers the same day HR notifies you.
+
+Section seven point five develops identity and access foundations with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seven point five, NCS operations expects identity claims to carry owners and dates.
+
+Section seven point five treats shared passwords roles contractors as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Northgate Cold Storage will not accept identity work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -380,17 +522,37 @@ You will (1) divide a small facility into zones; (2) define conduits between zon
 
 IEC 62443-3-2 introduces zones (groups of assets with common security requirements) and conduits (the communication paths between them). NCS needs at least four zones: office, refrigeration control (PLC-R1, PLC-R2, HMI-C), logging and cameras (loggers, GW-LOG, CAM-DOCK), and a small DMZ holding the historian replica and the remote-access jump host.
 
+Section eight point one develops security architecture basics with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eight point one, NCS operations expects security claims to carry owners and dates.
+
 ### 8.2 Conduits
 
 Each conduit lists what may cross it. Office → DMZ: HTTPS to the historian replica's reports. DMZ → control: none initiated from the DMZ except the jump host's session to HMI-C when enabled. Control → DMZ: historian replication. Logging zone → internet: GW-LOG to vendor cloud on 443 only. Everything else is denied.
+
+Section eight point two develops security architecture basics with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eight point two, NCS operations expects security claims to carry owners and dates.
 
 ### 8.3 Why a DMZ
 
 Without a DMZ, office users who need temperature reports connect straight into the control zone. With it, they reach a copy, and the control zone accepts no sessions from the office at all. That single change removes the path that most commodity ransomware uses to reach HMIs.
 
+Section eight point three develops security architecture basics with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eight point three, NCS operations expects security claims to carry owners and dates.
+
+Section eight point three treats zones for ncs conduits as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Defence in depth
 
 Layers at NCS: zone firewalls; named accounts; allow-listing on HMI-C; passive monitoring of the control zone; offline backups; and, outside the security team's control, independent ammonia detection and emergency ventilation. Each layer assumes the one before it can fail.
+
+Section eight point four develops security architecture basics with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eight point four, NCS operations expects security claims to carry owners and dates.
+
+Section eight point four treats zones for ncs conduits as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -428,17 +590,41 @@ You will (1) collect evidence with timestamps, sources and hashes; (2) separate 
 
 For every observation record: what was observed, where, when (with clock source), by whom and how. For exported files add a SHA-256 hash, computed with `hashlib.sha256(open(path, "rb").read()).hexdigest()`, so anyone can confirm the file has not changed.
 
+Section nine point one develops evidence and measurement with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nine point one, NCS operations expects evidence claims to carry owners and dates.
+
+Section nine point one treats recording evidence observation and as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Observation and conclusion
 
 "Rule 9 permits any source to TCP 502 on 10.20.0.0/24 (firewall export 3 March, hash recorded)" is an observation. "Office ransomware could reach the PLCs" is a conclusion. Both belong in a report, labelled. Readers trust reports that make the line visible.
+
+Section nine point two develops evidence and measurement with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nine point two, NCS operations expects evidence claims to carry owners and dates.
+
+Section nine point two treats recording evidence observation and as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Denominators
 
 "Five loggers have expired certificates" means little without "out of 40". "Two of 11 accounts belong to former staff" is clearer than "some leaver accounts exist". Percentages without counts hide small samples.
 
+Section nine point three develops evidence and measurement with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nine point three, NCS operations expects evidence claims to carry owners and dates.
+
+Section nine point three treats recording evidence observation and as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Uncertainty
 
 If you checked 10 of 40 loggers and found 2 with default passwords, the fleet rate is uncertain. Say: "2 of 10 sampled; the remaining 30 not yet checked." Avoid extrapolating "20 % of the fleet" unless the sample was random and you state the uncertainty.
+
+Section nine point four develops evidence and measurement with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nine point four, NCS operations expects evidence claims to carry owners and dates.
+
+Section nine point four treats recording evidence observation and as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -449,6 +635,8 @@ Priya's evidence log entry: "E-014, 2026-03-03 10:22 (laptop clock synced to NTP
 ### 9.5 Chain of custody in a small site
 
 Small sites rarely have evidence lockers. A practical minimum at NCS is an encrypted folder per investigation, a read-only copy of every original export, and a custody log listing each transfer: who handed what to whom, when and why. If the case later goes to an insurer or to police, that log is what shows the evidence was not altered between the firewall and the report. Keep the log with the evidence, not in someone's e-mail.
+
+Section nine point five develops evidence and measurement with a Northgate Cold Storage note Priya Nair can demo offline.
 
 ### Errors and limits
 
@@ -480,17 +668,35 @@ You will (1) define OT, IoT and cyber-physical systems in NCS terms; (2) describ
 
 Operational technology monitors and controls physical processes — here, compressors, evaporator fans and valves. IoT devices are network-connected sensors and actuators — here, the wireless temperature loggers and cameras. A cyber-physical system is the loop of sensing, computing and acting on the physical world. NCS is all three at once.
 
+Section ten point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section ten point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 10.2 The refrigeration loop
 
 A temperature probe in Freezer-2 reports −21 °C; PLC-R1 compares it with the −22 °C setpoint and increases compressor capacity; more refrigerant evaporates, the room cools, and the probe reports again. An attacker who changes the setpoint, falsifies the probe or overrides the compressor command breaks the loop. ATT&CK for ICS T0836 *Modify Parameter* covers the setpoint case.
+
+Section ten point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section ten point two, NCS operations expects ot claims to carry owners and dates.
 
 ### 10.3 Guidance map
 
 NIST SP 800-82r3 guides OT security programmes for asset owners such as NCS. The IEC 62443 series covers industrial automation and control systems for owners, integrators and product suppliers. NIST IR 8259 describes cybersecurity activities for IoT device manufacturers, and ETSI EN 303 645 sets a baseline for consumer IoT products — useful as a checklist for buying loggers and cameras.
 
+Section ten point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section ten point three, NCS operations expects ot claims to carry owners and dates.
+
 ### 10.4 Safety stays separate
 
 Ammonia gas detection and emergency ventilation are life-safety systems. Security work may observe and report on them, but changes go through the safety owner and the refrigeration engineer, never as a side effect of a firewall project.
+
+Section ten point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section ten point four, NCS operations expects ot claims to carry owners and dates.
+
+Section ten point four treats three overlapping terms the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -528,6 +734,10 @@ You will (1) build an inventory by combining documentation with passive observat
 
 Documentation from the refrigeration contractor lists what was installed; passive observation of network traffic shows what is talking now. Documentation misses later additions; observation misses devices that are quiet or switched off. NIST SP 800-82r3 recommends combining methods rather than relying on active scanning, which can disturb fragile devices.
 
+Section eleven point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eleven point one, NCS operations expects ot claims to carry owners and dates.
+
 ```python
 """Lab 11: merge two synthetic NCSW asset lists and flag conflicts (no scanning)."""
 eng = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.4", "HMI-C": "win10-ltsc", "GW-LOG": "fw 1.9"}
@@ -552,13 +762,29 @@ PLC-R2    docs=fw 2.4      network=fw 2.1   VERSION-CONFLICT
 
 CAM-DOCK appears only on the network: someone installed a camera without updating records. HMI-C appears only in documentation: it may have been quiet during the observation window, or its traffic was not captured. PLC-R2 shows a version conflict — documentation says 2.4, the network shows 2.1 — which matters because an advisory might affect 2.1 but not 2.4.
 
+Section eleven point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eleven point two, NCS operations expects ot claims to carry owners and dates.
+
 ### 11.3 Context
 
 For each asset add function, zone, owner and consequence of loss. The camera's consequence is low for cooling but it may be an entry point; PLC-R2's consequence is high, so its version conflict goes first.
 
+Section eleven point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eleven point three, NCS operations expects ot claims to carry owners and dates.
+
+Section eleven point three treats two sources neither complete as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Unknown devices
 
 An unknown device is investigated physically before anything else: find it, identify the owner, decide whether it belongs. Never "test" an unknown device by sending it traffic.
+
+Section eleven point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eleven point four, NCS operations expects ot claims to carry owners and dates.
+
+Section eleven point four treats two sources neither complete as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -596,6 +822,10 @@ You will (1) write an approved flow matrix; (2) compare observed flows with it; 
 
 A flow matrix lists every permitted conversation: source, destination, port and purpose. It is the conduit table of Chapter 8 made precise enough to test. NCS has four approved flows: HMI-C to each PLC on Modbus/TCP 502, the historian polling PLC-R1, and GW-LOG to the vendor cloud on 443.
 
+Section twelve point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twelve point one, NCS operations expects ot claims to carry owners and dates.
+
 ```python
 """Lab 12: compare observed synthetic flows with the approved flow matrix."""
 approved = {("HMI-C", "PLC-R1", 502), ("HMI-C", "PLC-R2", 502), ("GW-LOG", "CLOUD-LOG", 443), ("HIST", "PLC-R1", 502)}
@@ -621,13 +851,29 @@ approved but not seen: [('HMI-C', 'PLC-R2', 502)]
 
 OFFICE-7 talking Modbus to PLC-R2 is exactly what rule 9 allowed. It might be an engineer's spreadsheet macro, or malware. Either way it is a path from the office to a compressor controller. GW-LOG talking to PLC-R1 is stranger: the logger gateway has no reason to speak Modbus. It could be a vendor "integration" feature or a sign of compromise.
 
+Section twelve point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twelve point two, NCS operations expects ot claims to carry owners and dates.
+
 ### 12.3 Approved but unused
 
 HMI-C → PLC-R2 did not appear. Perhaps the window was short; perhaps the HMI reads PLC-R2 through PLC-R1. Unused approvals are candidates for removal after checking with operations — fewer open paths, less to defend.
 
+Section twelve point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twelve point three, NCS operations expects ot claims to carry owners and dates.
+
+Section twelve point three treats the flow matrix unapproved as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 From comparison to change
 
 Each unapproved flow gets an owner and a decision: approve with justification (and update the matrix), or block. Blocking happens in a planned window with operations informed, because a "mystery" flow may turn out to be something the plant needs.
+
+Section twelve point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twelve point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twelve point four treats the flow matrix unapproved as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -665,17 +911,37 @@ You will (1) write risk scenarios that link a threat, a path and a physical cons
 
 A useful scenario reads: "[Threat] uses [path] to cause [action], leading to [consequence], unless [safeguard] works." For NCS: "Office ransomware uses the office → control flow to encrypt HMI-C, leaving operators without a screen; cooling continues on PLC logic, but alarms are invisible until the screen is restored, unless the cloud logger alerts reach the duty manager's phone."
 
+Section thirteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 13.2 Scales
 
 A three-point consequence scale suits a small site: 1 = inconvenience, 2 = stock loss or regulatory issue, 3 = harm to people or loss of the business. Likelihood, also 1–3, is a judgement based on exposure and known threat activity. Write the reason beside each score.
+
+Section thirteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirteen point two, NCS operations expects ot claims to carry owners and dates.
+
+Section thirteen point two treats scenario structure scales safeguards as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Safeguards
 
 Existing safeguards change the story. Independent ammonia detection makes a cyber-caused gas release unlikely to go unnoticed. Cloud logger alerts provide a second view of temperature. PLC logic keeps cooling if the HMI is lost. Listing safeguards stops scenarios from sounding worse than they are — and shows which safeguard is doing a lot of work.
 
+Section thirteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirteen point three, NCS operations expects ot claims to carry owners and dates.
+
 ### 13.4 Ranking
 
 Rank by consequence first, then likelihood, then how cheaply the scenario can be reduced. A scenario with consequence 2 and an easy fix often deserves action before a consequence-3 scenario whose safeguard is already strong.
+
+Section thirteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section thirteen point four treats scenario structure scales safeguards as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -713,17 +979,37 @@ You will (1) run a structured site walk-down; (2) interview operators and contra
 
 Walk the site with someone who owns it. Look for network sockets in odd places, cellular routers in panels, labels with passwords, laptops left connected, USB sticks in HMIs, and devices not in the inventory. Photograph only with permission, and avoid capturing screens showing customer data.
 
+Section fourteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fourteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 14.2 Interviews
 
 Ask operators what they do when the HMI freezes, who calls the contractor, and what changed recently. Ask the contractor how they connect, what tools they use and where backups live. Open questions ("walk me through a remote support call") reveal more than yes/no checklists. Take notes with the interviewee's name, role and date; separate what they said from what you saw.
+
+Section fourteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
 
 ### 14.3 Configuration review
 
 Export configurations through supported interfaces with read-only accounts: firewall rule sets, switch VLAN settings, HMI user lists. Review exports on your own workstation, not on the device. Hash exports as in Chapter 9.
 
+Section fourteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fourteen point three, NCS operations expects ot claims to carry owners and dates.
+
+Section fourteen point three treats walk-down interviews configuration review as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 Assembling findings
 
 Each finding: title, evidence IDs, affected assets, scenario link, recommendation and owner. One finding per issue; combining unrelated issues makes them impossible to close.
+
+Section fourteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fourteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section fourteen point four treats walk-down interviews configuration review as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Northgate Cold Storage will not accept ot work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -761,6 +1047,10 @@ You will (1) analyse synthetic logger data for temperature excursions; (2) relat
 
 Did Freezer-2's chilled anteroom stay at or below 5 °C, and if not, for how long and did the alarm fire? The lab uses ten synthetic readings five minutes apart and an alarm that fires only when an excursion lasts at least 10 minutes — a delay that avoids nuisance alarms from door openings.
 
+Section fifteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fifteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ```python
 """Lab 15: find cold-room temperature excursions in synthetic logger data (minutes, degC)."""
 readings = [(0, 2.1), (5, 2.4), (10, 3.0), (15, 5.6), (20, 7.2), (25, 8.4), (30, 6.9), (35, 4.8), (40, 3.9), (45, 2.6)]
@@ -784,13 +1074,29 @@ excursion 15-35 min, duration 20 min, peak 8.4 C, alarm raised (delay 10 min)
 
 The excursion started at 15 minutes and ended at 35, lasting 20 minutes with a peak of 8.4 °C. The alarm fired because 20 ≥ 10. The output also tells us the resolution limit: with five-minute samples, the true start could be anywhere between minutes 10 and 15.
 
+Section fifteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fifteen point two, NCS operations expects ot claims to carry owners and dates.
+
+Section fifteen point two treats the lab question interpreting as testable only when evidence and ticket IDs are recorded.
+
 ### 15.3 What an attacker would change
 
 If readings for minutes 15–30 were replaced with values around 4 °C, the script would report no excursion at all — the record would show compliance while the goods warmed. This is why Chapter 13's scenario compares cloud logger data with the PLC's own probe in the historian: two independent records are much harder to falsify consistently.
 
+Section fifteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fifteen point three, NCS operations expects ot claims to carry owners and dates.
+
 ### 15.4 Recording the result
 
 Record the input file (or its hash), the script version, the limit and delay parameters, and the output. Another technologist must be able to reproduce it exactly.
+
+Section fifteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section fifteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section fifteen point four treats the lab question interpreting as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -828,17 +1134,37 @@ You will (1) apply a simple threat-modelling pass to the logger system; (2) asse
 
 Draw the logger system: loggers → radio → GW-LOG → firewall → vendor cloud → web portal used by the quality manager. At each arrow ask: can someone pretend to be the sender, change the data, read it, block it, or gain more control than intended? This prompt list, adapted from STRIDE, produces a short threat list in under an hour.
 
+Section sixteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section sixteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 16.2 Product baseline questions
 
 ETSI EN 303 645 gives concrete questions for each IoT product: does it ship with a universal default password (5.1)? Does the vendor publish a way to report vulnerabilities (5.2)? Can its software be updated securely (5.3)? Does it communicate securely (5.5)? Is personal data protected (5.8)? The answers can come from documentation, a vendor questionnaire and, for some items, a bench check.
+
+Section sixteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section sixteen point two, NCS operations expects ot claims to carry owners and dates.
 
 ### 16.3 Reading vendor claims
 
 "Bank-grade encryption" is not an answer to 5.5; "TLS 1.2 or later with server certificate validation, certificates pinned to the vendor CA" is. Ask for specifics, and note when the vendor cannot provide them.
 
+Section sixteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section sixteen point three, NCS operations expects ot claims to carry owners and dates.
+
+Section sixteen point three treats quick threat-modelling pass product as testable only when evidence and ticket IDs are recorded.
+
 ### 16.4 Assumptions
 
 Threat models rest on assumptions: the radio link range is about 100 m; the portal uses MFA; the vendor's cloud is operated securely. Write them down; if one proves false, revisit the model.
+
+Section sixteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section sixteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section sixteen point four treats quick threat-modelling pass product as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -876,17 +1202,39 @@ You will (1) choose safe tools for OT observation; (2) configure a passive captu
 
 Passive tools listen; active tools send. In OT, passive tools are the default because active probes can upset old devices. NIST SP 800-82r3 discusses the risk of active scanning in OT environments and the value of passive monitoring. A mirror (SPAN) port on the control-zone switch copies traffic to a monitoring laptop or sensor without changing the traffic itself.
 
+Section seventeen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seventeen point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 17.2 Setting up a capture
 
 Agree the switch port with the network owner; configure the mirror in a change window; connect a capture host whose network interface has no IP address, so it cannot transmit. Record start and end times, the switch, the mirrored ports and the packet-loss counters.
+
+Section seventeen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seventeen point two, NCS operations expects ot claims to carry owners and dates.
+
+Section seventeen point two treats passive first setting up as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Offline analysis
 
 Analyse captures on an isolated workstation: protocol decoders identify Modbus function codes, conversation lists show who talks to whom, and simple Python scripts like those in Chapters 11–12 compare results with the inventory and flow matrix.
 
+Section seventeen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seventeen point three, NCS operations expects ot claims to carry owners and dates.
+
+Section seventeen point three treats passive first setting up as testable only when evidence and ticket IDs are recorded.
+
 ### 17.4 Controlling tools
 
 Each tool used on site is listed in the work permit with its version and mode (passive only). Engineering tools from the contractor — PLC programming software — are not security tools; their use is the contractor's, under change control.
+
+Section seventeen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section seventeen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section seventeen point four treats passive first setting up as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -924,17 +1272,39 @@ You will (1) select controls for NCS's top scenarios; (2) map them to IEC 62443-
 
 Scenario 1 (contractor remote tool misused): replace the always-on tool with supervised sessions through a jump host (FR 1 identification and authentication; FR 5 restricted data flow), and record sessions (FR 6 timely response to events). Scenario 2 (office ransomware reaches HMI-C): remove rule 9 (FR 5), allow-list applications on HMI-C (FR 3 system integrity), and keep offline backups (FR 7 resource availability).
 
+Section eighteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eighteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 18.2 Operational effects
 
 Ask of each control: what happens on a bad day? Supervised sessions mean the contractor waits for approval at 3 a.m.; NCS needs an on-call approver. Allow-listing may block an emergency diagnostic tool; keep a documented, monitored exception process.
+
+Section eighteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eighteen point two, NCS operations expects ot claims to carry owners and dates.
+
+Section eighteen point two treats matching controls to scenarios as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Compensating controls
 
 The temperature loggers' radio link is unencrypted and cannot be changed (Chapter 16). Compensate: compare logger data with PLC probes (detect falsification); alert on sudden step changes; ask the vendor about encrypted models at the next purchase. PLC-R2 cannot authenticate Modbus clients; compensate by allowing only HMI-C and HIST to reach it.
 
+Section eighteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eighteen point three, NCS operations expects ot claims to carry owners and dates.
+
 ### 18.4 Recording controls
 
 A control register lists control, scenario, foundational requirement, owner, test method and last test date. Untested controls are listed as "assumed".
+
+Section eighteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section eighteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section eighteen point four treats matching controls to scenarios as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Northgate Cold Storage will not accept ot work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -945,6 +1315,8 @@ Priya's register row: "C-04 Supervised contractor sessions via jump host — sce
 ### 18.5 Prioritising with limited budget
 
 NCS cannot buy everything at once. Priya orders controls by how many scenarios each one reduces and how cheap it is: removing rule 9 costs one maintenance window and reduces two scenarios, so it goes first; allow-listing needs vendor testing and goes second; replacing the loggers with encrypted models waits for the normal replacement cycle, with the compensating comparison check in place meanwhile.
+
+Section eighteen point five develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
 
 ### Errors and limits
 
@@ -976,6 +1348,10 @@ You will (1) build a baseline of normal communication; (2) detect new hosts agai
 
 OT networks are repetitive: the same devices talk to the same partners on the same schedule. That makes a baseline — the set of hosts and flows seen over a representative period — a powerful detector. Anything new is worth a look. NIST SP 800-82r3 recommends monitoring tailored to OT's predictable traffic.
 
+Section nineteen point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nineteen point one, NCS operations expects ot claims to carry owners and dates.
+
 ```python
 """Lab 19: flag hosts not present in a 7-day baseline of synthetic flow records."""
 baseline_days = {"HMI-C", "PLC-R1", "PLC-R2", "HIST", "GW-LOG"}
@@ -998,13 +1374,31 @@ events: 8 unique hosts: 7 new: 2
 
 LAPTOP-V3 appeared twice; UNKNOWN-10.4.2.77 once. The laptop is probably the contractor's (check the visit log). The unknown address is in no NCS subnet at all — that is more urgent, because it suggests a misconfigured device or a path the architecture does not include.
 
+Section nineteen point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nineteen point two, NCS operations expects ot claims to carry owners and dates.
+
+Section nineteen point two treats baselines reading the alerts as testable only when evidence and ticket IDs are recorded.
+
 ### 19.3 Triage with operations
 
 The analyst calls the facilities manager before acting: is a contractor on site? Did anyone add equipment? Operations context resolves most alerts in minutes. Only unexplained alerts escalate.
 
+Section nineteen point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nineteen point three, NCS operations expects ot claims to carry owners and dates.
+
+Section nineteen point three treats baselines reading the alerts as testable only when evidence and ticket IDs are recorded.
+
 ### 19.4 Tuning
 
 Expected changes — scheduled contractor visits, a new logger — should be added to the baseline through a change ticket, not silenced by a blanket rule. Review alert counts monthly; if most alerts are explained routine events, improve the change-ticket link rather than raising thresholds.
+
+Section nineteen point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section nineteen point four, NCS operations expects ot claims to carry owners and dates.
+
+Section nineteen point four treats baselines reading the alerts as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1042,17 +1436,37 @@ You will (1) separate cyber causes from ordinary faults; (2) troubleshoot commun
 
 When HMI-C shows stale values, the cause is usually a cable, a switch port, a failed power supply or an expired licence. Treat it as a fault first, but keep the security possibility in mind and preserve evidence while you work. Jumping to "we are hacked" wastes time; ignoring the possibility can destroy the record an investigation would need.
 
+Section twenty point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 20.2 A layered method
 
 Work up the stack: power and link lights; switch port status and errors; IP reachability from a host on the same subnet (with permission); the protocol session (does HMI-C show a communication error code?); then application configuration. Change one thing at a time and write down each step and result.
+
+Section twenty point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty point two, NCS operations expects ot claims to carry owners and dates.
 
 ### 20.3 Evidence-preserving habits
 
 Before rebooting a host that might be compromised, export its logs and note its running processes. Before replacing a device, photograph its labels and settings. A reboot clears memory that might show malware; a replacement removes the original firmware state.
 
+Section twenty point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty point three, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty point three treats most faults are not as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Stop and escalate
 
 Stop and call the security lead if you find: unknown processes or accounts, configuration changes nobody made, traffic to unknown destinations, or a device whose program differs from the backup.
+
+Section twenty point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty point four treats most faults are not as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1090,17 +1504,35 @@ You will (1) integrate OT data with business services without opening control pa
 
 Customers want temperature certificates for their stored goods; finance wants compressor energy use; the logistics system wants dock door states. Each request tempts someone to connect a business system straight to a PLC. The integration principle is: business systems read copies in the DMZ or cloud, never the control zone directly.
 
+Section twenty-one point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-one point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 21.2 Patterns
 
 Historian replication pushes data from the control zone to a DMZ replica (Chapter 8). For stronger guarantees, a data diode or one-way gateway allows traffic in one direction only by hardware design. For cloud services, the gateway initiates outbound TLS connections and never accepts inbound ones. Integration through files — a nightly CSV export to a shared folder — is acceptable if the share lives in the DMZ and is write-only from the control side.
+
+Section twenty-one point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
 
 ### 21.3 API security
 
 Customer certificate generation uses the logger vendor's cloud API. Use a dedicated API key per integration with least privilege (read temperatures for specific rooms), store it in a secrets vault, rotate it, and log its use. Never embed keys in spreadsheets or scripts on shared drives.
 
+Section twenty-one point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-one point three, NCS operations expects ot claims to carry owners and dates.
+
 ### 21.4 Dependencies
 
 Write each integration's dependencies: the vendor cloud, DNS, certificates, the API key, the DMZ share. When one breaks, you know what else stops.
+
+Section twenty-one point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-one point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-one point four treats business wants data patterns as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Northgate Cold Storage will not accept ot work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -1138,6 +1570,12 @@ You will (1) automate routine checks such as certificate expiry; (2) design auto
 
 Good candidates are repetitive checks with clear rules: certificate expiry, backup completion, inventory drift (Chapter 11 run weekly), flow comparison (Chapter 12 run daily on new captures). Poor candidates are actions on live controllers; those stay manual and approved.
 
+Section twenty-two point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-two point one, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-two point one treats what to automate reading as testable only when evidence and ticket IDs are recorded.
+
 ```python
 """Lab 22: report days until expiry for synthetic IoT logger certificates."""
 from datetime import date
@@ -1162,13 +1600,29 @@ LOG-02 expires 2027-06-30 in  261 days -> ok
 
 LOG-03's certificate expired a week ago, so that logger is probably failing to connect and readings are missing. LOG-01 has 21 days left and needs renewal now, given vendor lead times. LOG-04 should be planned; LOG-02 is fine. Sorting by expiry date puts the urgent items first.
 
+Section twenty-two point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-two point two, NCS operations expects ot claims to carry owners and dates.
+
 ### 22.3 Report, do not change
 
 The script prints and could e-mail the report; it does not renew certificates by itself. Renewal goes through the vendor's process, because an automated renewal that fails halfway could leave a logger offline.
 
+Section twenty-two point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-two point three, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-two point three treats what to automate reading as testable only when evidence and ticket IDs are recorded.
+
 ### 22.4 Scheduling and logging
 
 Run the check daily from a scheduler on a management host in the OT management VLAN, write output to a log with timestamps, and alert if the job did not run. A silent automation failure is worse than no automation, because people stop checking manually.
+
+Section twenty-two point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-two point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-two point four treats what to automate reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1206,17 +1660,37 @@ You will (1) evaluate whether controls achieved their purpose; (2) design simple
 
 After six months of changes at NCS — rule 9 removed, supervised contractor sessions, camera zone, certificate automation — management asks whether the site is "more secure". An evaluation answers narrower, testable questions: is the office → control path closed? Do contractor sessions require approval? Are certificates renewed before expiry?
 
+Section twenty-three point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-three point one, NCS operations expects ot claims to carry owners and dates.
+
 ### 23.2 Tests with expected results
 
 For each control, write the test and the expected result before running it: "From OFFICE-7, attempt a TCP connection to PLC-R2:502 in the maintenance window; expected: refused at the firewall and logged." "Contractor attempts to connect without approval; expected: jump host denies." Tests that touch the control zone are run in maintenance windows with operations informed.
+
+Section twenty-three point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-three point two, NCS operations expects ot claims to carry owners and dates.
 
 ### 23.3 Before and after
 
 Measures that existed before changes give a comparison: unapproved flows per week (before: 2 types; after: 0), HMI accounts belonging to leavers (before 2; after 0), days of logger data lost to expired certificates (before 7 in one incident; after 0 in six months).
 
+Section twenty-three point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-three point three, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-three point three treats did it work tests as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Honest reporting
 
 Report what failed. If one contractor still used the cellular router (Chapter 14) because it was switched on for an emergency and never switched off, say so, with the corrective action. Evaluations that report only successes stop being believed.
+
+Section twenty-three point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-three point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-three point four treats did it work tests as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1254,17 +1728,39 @@ You will (1) frame a small applied research question from operational practice; 
 
 Applied research at technologist level answers a question someone at the site actually has. "Does comparing logger data with PLC probes detect falsified readings faster than the cloud's own alert?" is such a question; it is specific, measurable on recorded or synthetic data, and its answer changes what NCS does.
 
+Section twenty-four point one develops applied research methods with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-four point one, NCS operations expects applied claims to carry owners and dates.
+
 ### 24.2 Data and method
 
 Use historical data the owner provides, or synthetic data with realistic properties, and say which. A method can be as simple as replaying recorded weeks with injected falsifications and measuring how long each check takes to flag them. The method must be repeatable by someone else.
+
+Section twenty-four point two develops applied research methods with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-four point two, NCS operations expects applied claims to carry owners and dates.
+
+Section twenty-four point two treats questions from practice data as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Measures and comparisons
 
 Choose measures before running: time to detect, false alerts per week. Compare against the current practice (the cloud alert) rather than against nothing. Report counts: "detected 9 of 10 injected falsifications; 1 false alert in 4 weeks".
 
+Section twenty-four point three develops applied research methods with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-four point three, NCS operations expects applied claims to carry owners and dates.
+
+Section twenty-four point three treats questions from practice data as testable only when evidence and ticket IDs are recorded.
+
 ### 24.4 Sources
 
 Use primary and peer-reviewed sources. Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245) survey physics-based attack detection — the idea of checking sensor data against physical expectations, which is what comparing two independent probes does. NIST SP 800-82r3 gives programme context. Vendor blog posts are background, not evidence.
+
+Section twenty-four point four develops applied research methods with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-four point four, NCS operations expects applied claims to carry owners and dates.
+
+Section twenty-four point four treats questions from practice data as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1302,21 +1798,55 @@ You will (1) plan a team project with roles and milestones; (2) run short design
 
 Teams of three take one NCS improvement from idea to deliverable in six weeks. This cohort's brief: a "contractor visit pack" — the procedure, forms and checks that let a refrigeration contractor do remote or on-site work securely without slowing repairs.
 
+Section twenty-five point one develops team project studio with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-five point one, NCS operations expects team claims to carry owners and dates.
+
+Section twenty-five point one treats the studio project roles as testable only when evidence and ticket IDs are recorded.
+
 ### 25.2 Roles
 
 One student owns the procedure text, one the technical checks (jump-host configuration, visit-log integration with monitoring from Chapter 19), one the user test with a real contractor and operator. Each role has a named reviewer from the site. Shared work lives in one versioned folder.
+
+Section twenty-five point two develops team project studio with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-five point two, NCS operations expects team claims to carry owners and dates.
+
+Section twenty-five point two treats the studio project roles as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Reviews
 
 Weekly 20-minute reviews follow one format: what changed, what we learned, what we need, what is at risk. The site reviewer can stop work that would affect operations.
 
+Section twenty-five point three develops team project studio with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-five point three, NCS operations expects team claims to carry owners and dates.
+
+Section twenty-five point three treats the studio project roles as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Northgate Cold Storage will not accept team work without a written trail.
+
 ### 25.4 Scope and dependencies
 
 The pack depends on the jump host existing and the on-call approver rota (Chapter 18). If either slips, the team writes the pack against the agreed design and marks the dependency, rather than inventing a workaround.
 
+Section twenty-five point four develops team project studio with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-five point four, NCS operations expects team claims to carry owners and dates.
+
+Section twenty-five point four treats the studio project roles as testable only when evidence and ticket IDs are recorded.
+
 ### 25.5 Usable deliverables
 
 Test with the people who will use it. If the contractor cannot complete the visit form in under five minutes at 3 a.m., it will be skipped.
+
+Section twenty-five point five develops team project studio with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-five point five, NCS operations expects team claims to carry owners and dates.
+
+Section twenty-five point five treats the studio project roles as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Northgate Cold Storage will not accept team work without a written trail.
 
 ### Worked example (synthetic NCS)
 
@@ -1354,6 +1884,10 @@ You will (1) define what a security improvement must hand over to operations; (2
 
 The firewall changes, monitoring and contractor pack only protect NCS if someone operates them after the project team leaves. A handoff transfers knowledge, documents and responsibility from the project to the people who run the site day to day.
 
+Section twenty-six point one develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-six point one, NCS operations expects ot claims to carry owners and dates.
+
 ```python
 """Lab 26: check a synthetic operational handoff package for required items."""
 REQUIRED = ["asset list", "flow matrix", "runbook", "contacts", "backup location", "open risks", "restore test date"]
@@ -1374,13 +1908,29 @@ handoff BLOCKED
 
 The package lacks contacts and a restore-test date. Missing contacts mean that at 3 a.m. nobody knows whom to call for the jump host or the logger vendor. Missing restore evidence means the backup in the package might not work. Both block handoff because each one fails exactly when the site needs it.
 
+Section twenty-six point two develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-six point two, NCS operations expects ot claims to carry owners and dates.
+
 ### 26.3 Sign-off
 
 The receiving owner — the facilities manager — signs that they understand each item and accept responsibility. Sign-off without a walkthrough is a signature, not a handoff; walk through the runbook together and let the operator perform one task while you watch.
 
+Section twenty-six point three develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-six point three, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-six point three treats projects end systems continue as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Hypercare
 
 For the first four weeks, the project team remains on call, reviews alerts with operations weekly and fixes documentation gaps found in real use. Then responsibility moves fully to the site.
+
+Section twenty-six point four develops ot iot and cyber-physical security with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-six point four, NCS operations expects ot claims to carry owners and dates.
+
+Section twenty-six point four treats projects end systems continue as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1418,17 +1968,39 @@ You will (1) plan the deployment of a security change in an OT site; (2) define 
 
 NCS will deploy the new control-zone firewall rule set that replaces rule 9 with explicit flows. The change is small in text but large in effect: if a needed flow is missing, an HMI could lose its PLC values or the historian could stop recording.
 
+Section twenty-seven point one develops deployment and validation with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-seven point one, NCS operations expects deployment claims to carry owners and dates.
+
+Section twenty-seven point one treats the change the plan as testable only when evidence and ticket IDs are recorded.
+
 ### 27.2 The plan
 
 Pre-requisites: approved flow matrix (Chapter 12); rules reviewed by a second person; tested on a bench firewall with replayed traffic; maintenance window agreed for a low-load period; contractor on call. Steps: back up the current rule set; apply the new set; validate; monitor for 24 hours. Rollback: restore the backup, which takes two minutes and is rehearsed.
+
+Section twenty-seven point two develops deployment and validation with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-seven point two, NCS operations expects deployment claims to carry owners and dates.
 
 ### 27.3 Validation checks
 
 Defined in advance and observable: HMI-C shows live values from both PLCs; HIST records new data points for every tag group; GW-LOG uploads succeed; the test from OFFICE-7 to PLC-R2:502 is refused and logged. Any failure in the first three triggers rollback unless fixed within ten minutes.
 
+Section twenty-seven point three develops deployment and validation with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-seven point three, NCS operations expects deployment claims to carry owners and dates.
+
+Section twenty-seven point three treats the change the plan as testable only when evidence and ticket IDs are recorded.
+
 ### 27.4 Recording
 
 Record times, who did what, the hash of old and new rule sets, validation results and any deviations. This record is evidence for the evaluation in Chapter 23 and for future audits.
+
+Section twenty-seven point four develops deployment and validation with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-seven point four, NCS operations expects deployment claims to carry owners and dates.
+
+Section twenty-seven point four treats the change the plan as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1466,17 +2038,39 @@ You will (1) work safely on an industrial site under supervision; (2) follow sit
 
 An ammonia refrigeration plant has hazards a computing student may not expect: toxic gas, moving machinery, cold rooms where exposure is limited, forklifts on the dock. Before any visit: site induction, required PPE, knowledge of alarm signals and muster points, and an escort. Never enter the machine room without the refrigeration engineer's permission.
 
+Section twenty-eight point one develops field practice with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-eight point one, NCS operations expects field claims to carry owners and dates.
+
 ### 28.2 Permits and lock-out
 
 Work on panels may require a permit-to-work and, for electrical isolation, lock-out/tag-out by qualified staff. A technologist reading a front-panel display may need an escort; touching anything inside a live panel is not part of the role.
+
+Section twenty-eight point two develops field practice with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-eight point two, NCS operations expects field claims to carry owners and dates.
+
+Section twenty-eight point two treats site safety first permits as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Communication
 
 Operators know the plant; listen first. Explain what you will do, how long it takes and how it could affect them. Before leaving, tell the shift lead what you did and what you found that matters to them today.
 
+Section twenty-eight point three develops field practice with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-eight point three, NCS operations expects field claims to carry owners and dates.
+
+Section twenty-eight point three treats site safety first permits as testable only when evidence and ticket IDs are recorded.
+
 ### 28.4 Reflection
 
 After each visit, write: what I did, what I observed, what I would do differently, and any safety or ethical question. Reflection is assessed in this chapter because it is how field judgement grows.
+
+Section twenty-eight point four develops field practice with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-eight point four, NCS operations expects field claims to carry owners and dates.
+
+Section twenty-eight point four treats site safety first permits as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1514,17 +2108,39 @@ You will (1) build a capstone artefact that solves a defined NCS problem; (2) wo
 
 Priya's capstone: an "OT drift checker" that runs weekly on NCS's management host, combining the Chapter 11 inventory comparison, the Chapter 12 flow comparison, the Chapter 19 new-talker check and the Chapter 22 certificate check into one report with a single exit status. It reads exported files only and never contacts devices.
 
+Section twenty-nine point one develops capstone build with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-nine point one, NCS operations expects capstone claims to carry owners and dates.
+
+Section twenty-nine point one treats the capstone brief increments as testable only when evidence and ticket IDs are recorded.
+
 ### 29.2 Increments
 
 Week 1: one script that runs the four checks on sample files and prints sections. Week 2: a common output format (check, item, status, evidence file). Week 3: tests for each check using small fixtures, including empty inputs. Week 4: scheduling, logging and the "job did not run" alert. Each increment works end to end before the next begins.
+
+Section twenty-nine point two develops capstone build with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-nine point two, NCS operations expects capstone claims to carry owners and dates.
 
 ### 29.3 Decision log
 
 Examples: "Decision 3 — report exit status non-zero if any check returns UNAPPROVED, EXPIRED or VERSION-CONFLICT; alternative (always zero) rejected because the scheduler could not alert." "Decision 5 — no automatic remediation; all actions via tickets."
 
+Section twenty-nine point three develops capstone build with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-nine point three, NCS operations expects capstone claims to carry owners and dates.
+
+Section twenty-nine point three treats the capstone brief increments as testable only when evidence and ticket IDs are recorded.
+
 ### 29.4 Ready for assessment
 
 The artefact folder contains the code, tests, sample inputs, a README with how to run it, the decision log and a short operations guide. An assessor must be able to run it from a clean checkout and get the documented output.
+
+Section twenty-nine point four develops capstone build with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section twenty-nine point four, NCS operations expects capstone claims to carry owners and dates.
+
+Section twenty-nine point four treats the capstone brief increments as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
@@ -1562,17 +2178,39 @@ You will (1) assess a capstone against its brief and criteria; (2) present resul
 
 The capstone is assessed on: problem fit (does it address an NCS need?), technical correctness (do tests pass and outputs match?), safety and authorization (read-only, no device contact, documented scope), usability (can the site run it?), and honesty (are limitations stated?). Each scored 0–3 with written evidence.
 
+Section thirty point one develops capstone assessment with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirty point one, NCS operations expects capstone claims to carry owners and dates.
+
+Section thirty point one treats criteria demonstration questions to as testable only when evidence and ticket IDs are recorded.
+
 ### 30.2 Demonstration
 
 Run the tool live from a clean checkout on sample inputs, then show the report from a real (owner-approved, sanitized) week. Narrate one finding from the report to resolution: the drift checker flagged a VERSION-CONFLICT for a logger gateway after a vendor update, and the inventory was corrected.
+
+Section thirty point two develops capstone assessment with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirty point two, NCS operations expects capstone claims to carry owners and dates.
+
+Section thirty point two treats criteria demonstration questions to as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 Questions to prepare for
 
 "What happens if the capture is from the wrong switch?" "How do you know the flow matrix is right?" "What would an attacker who knows about the checker do?" "Who maintains it after you?" Answer with evidence or with "I don't know, and here is how I would find out."
 
+Section thirty point three develops capstone assessment with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirty point three, NCS operations expects capstone claims to carry owners and dates.
+
 ### 30.4 Next steps
 
 Technologists continue into bachelor's study, vendor or sector certifications, or roles in OT operations. Keep following CISA ICS advisories for the products you support and revisit NIST SP 800-82r3 and the IEC 62443 parts that apply to your role.
+
+Section thirty point four develops capstone assessment with a Northgate Cold Storage note Priya Nair can demo offline.
+
+Under section thirty point four, NCS operations expects capstone claims to carry owners and dates.
+
+Section thirty point four treats criteria demonstration questions to as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic NCS)
 
