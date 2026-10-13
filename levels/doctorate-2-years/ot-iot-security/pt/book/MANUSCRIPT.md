@@ -160,7 +160,7 @@ events detected  : (2, 2)
 
 Interpretação: os dois episódios foram detectados (revocação por evento 1,0), o que é genuinamente útil, mas o F1 ajustado por pontos de 0,988 esconde que o primeiro alarme no segmento um veio 20 amostras depois do início. Relate a revocação por evento *com* o atraso, nunca o F1 ajustado por pontos sozinho.
 
-Os mesmos cinco alarmes produzem três histórias muito diferentes. Ponto a ponto, o detector encontrou três de quarenta amostras de ataque e gerou dois alarmes falsos. Com o ajuste por pontos, ele parece quase perfeito. Por eventos, ele encontrou os dois episódios, um deles com atraso. Só a terceira visão, acompanhada do atraso, diz a um operador o que teria acontecido no tanque, e por isso é a que o Setpoint Study relata.
+Os mesmos cinco alarmes produzem três histórias muito diferentes. Ponto a ponto, o detector encontrou quatro de quarenta amostras de ataque e gerou um alarme falso. Com o ajuste por pontos, ele parece quase perfeito. Por eventos, ele encontrou os dois episódios, um deles com atraso. Só a terceira visão, acompanhada do atraso, diz a um operador o que teria acontecido no tanque, e por isso é a que o Setpoint Study relata.
 
 ### 1.9 Erros comuns e limites
 
