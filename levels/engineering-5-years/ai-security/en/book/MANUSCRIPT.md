@@ -44,9 +44,13 @@ You will (1) compute derivatives of the functions used in machine learning (poly
 
 The derivative f′(x) measures how much f changes when x changes a little: f(x + h) ≈ f(x) + h f′(x). Engineers use this as a *sensitivity*: if a bearing's temperature model has a large derivative with respect to an input, small sensor errors cause large output changes. Machine-learning models are functions of inputs and parameters, so derivatives tell us how outputs respond to both.
 
+The approximation holds only for small h, so a derivative describes the neighbourhood of one point, not the whole function. Sam therefore always states where a sensitivity was measured, for example at a typical daytime image, and checks it again at other operating points before drawing conclusions about the model as a whole.
+
 ### 1.2 Rules you will use constantly
 
 Power rule (xⁿ)′ = n xⁿ⁻¹; exponential (eˣ)′ = eˣ; logarithm (ln x)′ = 1/x; product, quotient and chain rules. The logistic function σ(z) = 1/(1 + e⁻ᶻ) maps any real number to (0, 1) and satisfies σ′(z) = σ(z)(1 − σ(z)). The logistic loss for a label y ∈ {−1, +1} and score z = w·x is L = ln(1 + e^(−y z)); by the chain rule, ∂L/∂w = −y x / (1 + e^(y w x)).
+
+The logistic derivative is worth remembering because it is largest at z = 0, where σ′ = 0.25, and shrinks towards zero as the score becomes confident in either direction. Inputs near the decision boundary are therefore where small changes move the output most, which is exactly where an attacker starts.
 
 ### 1.3 Checking derivatives numerically
 
@@ -86,19 +90,27 @@ step 5: w=1.0576 loss=0.1139
 step 6: w=1.1652 loss=0.0928
 ```
 
+In the printed table the two columns agree to six decimal places at all four test points, including w = 2, where the gradient is small. The descent steps show the loss falling from 2.1269 to 0.0928, and the shrinking step sizes follow from the gradient flattening as w grows and the example is classified with more confidence.
+
 ### 1.4 Why security engineers care
 
 Training moves *parameters* against the gradient of the loss. An evasion attacker moves the *input* along the gradient of the loss with respect to the input, to make the loss larger — the idea behind the fast gradient sign method (Goodfellow et al., arXiv:1412.6572). So derivatives are both the engine of learning and a map for the attacker. Defences that hide or break gradients without changing the model's behaviour give a false sense of security (Athalye et al., arXiv:1802.00420).
 
+For a security reviewer, a gradient is an attacker's tool as much as a trainer's.
+
 ### 1.5 Worked example (synthetic NRS case)
 
 Sam computes the derivative of TrackEye's final logistic score with respect to one pixel-intensity feature and finds 0.8 per unit, while most features are below 0.05. A dirty lens that shifts that feature by 0.5 changes the score by about 0.4 — enough to flip a borderline decision. Sam records the feature as a *high-sensitivity input* for later robustness testing.
+
+The arithmetic is the first-order approximation at work: 0.8 × 0.5 = 0.4. It holds only near the point where the derivative was measured, so Sam later checks the real score change on images with simulated dirt, which shows whether the linear estimate understates or overstates the effect. The feature joins the robustness test plan with that caveat recorded.
 
 ### 1.6 Errors and limits
 
 - Forgetting the chain rule's inner derivative.
 - Using too small an h in finite differences (rounding error) or too large (truncation error).
 - Treating a small gradient as proof that no small change can flip the output (functions can be non-linear).
+
+Each mistake has a simple guard. Writing the inner function explicitly before differentiating catches a missing chain-rule factor. Trying several step sizes, such as 1e-3, 1e-5 and 1e-7, shows where finite differences are stable, since the error first falls and then rises again. For the third mistake, a small gradient is treated as a reason to test larger changes directly, never as a guarantee that the output cannot flip.
 
 ### Exercises
 
@@ -126,27 +138,39 @@ You will (1) use sets, relations, functions and logic to describe system behavio
 
 A model is a function f: X → Y from an input set to an output set. A policy is a predicate P(user, action, resource) that is true when the action is allowed. Logical connectives (∧, ∨, ¬, →) and quantifiers (∀, ∃) let us write security properties exactly: "∀ tool call c issued by Wrench, Authorised(requesting_user(c), c)". Writing properties this way reveals ambiguities — what is the "requesting user" when the call was triggered by text in a supplier bulletin?
 
+Sam resolves it by defining the requesting user as the person whose session started the conversation.
+
 ### 2.2 Relations and graphs
 
 A directed graph of components (camera → preprocessing → model → alert queue → technician) shows where data flows and where trust changes. Paths from an *untrusted source* to a *privileged sink* are the routes an attacker can use; for language-model applications, the path "supplier bulletin → Wrench prompt → work-order tool" is exactly an indirect prompt-injection path (Greshake et al., arXiv:2302.12173). Reachability in graphs is computed by breadth- or depth-first search.
+
+Drawing the graph first makes the search mechanical: mark every node whose content an outsider can influence, mark every node that can change something in the world, and list the paths between them. Each path found this way needs a control somewhere along it, and the graph shows where.
 
 ### 2.3 Counting
 
 Combinatorics estimates search spaces. If an attacker can change any 3 of 100 features to one of 4 values, there are C(100,3) × 4³ = 161,700 × 64 ≈ 10.3 million variants — feasible to search by computer. Counting shows why "nobody will find the bad input" is not a defence.
 
+Ten million variants can be evaluated in minutes on an ordinary computer if each model query is fast, so an attacker does not need cleverness, only patience and access to the model or a close copy of it. The same counting tells defenders where to limit queries: if each variant had to pass through a rate-limited interface allowing a thousand requests a day, exhaustive search would take decades, and the attacker would need to search much more cleverly.
+
 ### 2.4 Induction and invariants
 
 An *invariant* is a property that holds before and after every step. "The work-order tool can only be called with a technician's session token" is an invariant; proving it holds for every code path (by induction over steps) is stronger than testing a few cases.
 
+The induction has two parts. The base case checks that no tool call is possible before a session exists. The step shows that if every earlier call carried a valid token, the code path that issues the next call also attaches one and refuses otherwise. A test of a few calls cannot show that no path skips the check; an argument over every path can, provided the code paths are listed completely.
+
 ### 2.5 Worked example (synthetic NRS case)
 
 Sam draws Wrench's data-flow graph with nodes for user chat, manuals, technician notes, supplier bulletins (external), the model and two tools (search, create_work_order). Two untrusted-to-privileged paths exist: bulletin → model → create_work_order and technician notes (editable by contractors) → model → create_work_order. Sam writes the property "∀ create_work_order calls, a human technician confirmed it" and marks both paths for controls.
+
+The second path is easy to miss because technician notes look internal, but contractors can edit them, so they belong with untrusted inputs. The confirmation property places one control at the sink, which covers both paths at once, rather than trying to filter every untrusted source separately.
 
 ### 2.6 Errors and limits
 
 - Informal policies with hidden exceptions.
 - Forgetting indirect paths through data stores.
 - Underestimating search spaces that computers enumerate easily.
+
+Hidden exceptions appear when a policy written as 'technicians may create work orders' turns out to mean 'except contractors on weekend shifts', which nobody wrote down. Indirect paths are missed when a graph shows only live connections and omits stores, such as notes saved today and read by the model tomorrow. Search spaces are underestimated by people who picture a human trying inputs by hand, rather than a program trying millions.
 
 ### Exercises
 
@@ -174,27 +198,39 @@ You will (1) relate signals, noise and sampling to sensor and camera inputs; (2)
 
 Sensors convert physical quantities into numbers. Every measurement contains noise; sampling turns continuous signals into discrete ones, and sampling below twice the highest frequency (the Nyquist rate) causes aliasing. Cameras integrate light over exposure time; motion blur, glare and low light all change pixel values. A vision model trained on clear daytime images may meet very different inputs at night or in rain.
 
+For TrackEye, sampling also applies to time: a camera capturing frames too slowly for the train's speed may miss a short defect entirely between frames. Engineers check that frame rate and exposure time suit the highest operating speed, not just an average run.
+
 ### 3.2 Physical shifts versus attacks
 
 *Natural* distribution shift comes from physics: dust on lenses, temperature drift in thermistors, vibration. *Adversarial* physical attacks deliberately craft objects or signals: printed patterns that cause misclassification or injected signals that spoof sensors. Research has shown that perturbations can survive printing and camera capture under varied viewing conditions when optimised over many transformations. Both kinds of shift must be tested; the engineering difference is that adversaries search for the worst case while nature samples typical cases.
+
+The test plan treats them differently: natural shifts are measured as average performance across expected conditions, while adversarial ones are measured as the worst result an attacker could find within stated limits.
 
 ### 3.3 Energy, heat and side channels
 
 Computation consumes power and emits heat and electromagnetic signals that can leak information (side channels). For AI accelerators, timing and power measurements have been studied as ways to infer model properties. Physical access therefore belongs in the threat model of edge AI devices like an inspection-train computer.
 
+An inspection-train computer travels the network and may be serviced in depots by contractors, so someone could attach measuring equipment without much difficulty. Engineers do not usually defend against every side channel, but they record which ones are plausible given who has physical access, and they protect the most valuable assets, such as model weights and signing keys, with tamper-evident enclosures and encrypted storage.
+
 ### 3.4 Specifying physical test conditions
 
 An engineering specification lists conditions: illumination range (lux), temperature range, vibration spectrum, lens contamination levels, and train speed. Each becomes a test axis. For security, add adversarial conditions within the threat model — for example, "an attacker can place markings on sleepers but cannot access the train".
 
+Each axis needs a stated range and how it will be produced in testing: recorded runs, controlled lighting rigs or simulation. Ranges come from operating data, such as the lowest light measured on dawn runs and the highest line speed. A threat-model sentence that says what the attacker cannot do is as important as what they can, because it defines when a failure counts as a security finding rather than a limitation.
+
 ### 3.5 Worked example (synthetic NRS case)
 
 TrackEye's false-negative rate rose from 2% to 9% on dawn runs. Sam traced it to low sun angle causing glare at 60–80 km/h. The fix combined a polarising filter, an exposure change and 4,000 additional dawn images. Sam also added a test axis for deliberate markings near rails, since anyone walking the line could place them.
+
+The rise from 2% to 9% only appeared when results were split by time of day; the overall average hid it. The fix combines physical and data measures, and only a retest on fresh dawn runs can show whether it worked.
 
 ### 3.6 Errors and limits
 
 - Testing only in laboratory lighting.
 - Confusing natural shift with attack (or ignoring either).
 - Omitting physical access from edge-device threat models.
+
+Laboratory lighting is even and stable, so a model that passes there has not met glare, rain or dirty lenses. Treating every failure as an attack wastes effort on threat hunting, while treating every failure as natural can hide deliberate tampering. Edge devices are often reachable by people with legitimate depot access, so physical access is a realistic path, not an exotic one, and leaving it out makes the threat model look safer than the system is.
 
 ### Exercises
 
@@ -222,13 +258,19 @@ You will (1) write small, correct Python programs with functions, loops and data
 
 A program states exactly what the computer does. Variables hold values; functions package steps; loops repeat; conditionals choose. Readable code uses clear names and small functions. The labs in this book use only Python's standard library so they run anywhere.
 
+Precision cuts both ways: the computer does what the code says, not what the author meant. A loop that stops one item early or a condition written with 'or' instead of 'and' produces wrong results without any warning. Sam reads each lab line by line before running it and predicts the output, so a surprise in the printed result points to a gap in his understanding.
+
 ### 4.2 Data structures
 
 Lists hold sequences; dictionaries map keys to values; sets hold unique items. A model inventory is naturally a list of dictionaries; a policy allowlist is naturally a set. Choosing the right structure makes code shorter and safer: membership in a set is a clear, fast test for "is this tool allowed?".
 
+A list would also work for an allowlist, but checking membership in it means scanning every item, and duplicates can creep in unnoticed. The wrong structure can hide a security bug as well: if allowed tools are stored as one comma-separated string, a check such as 'search' in allowed would also accept a tool named 'research'.
+
 ### 4.3 Untrusted input
 
 Any data from outside your program — files, network messages, model outputs — is untrusted. Never pass it to `eval`, shell commands or database queries without strict validation. This applies to AI: OWASP LLM 2025 lists *improper output handling* (LLM05) because applications often execute or render model output directly. Parse with strict parsers (e.g., `json.loads`), validate types and ranges, and reject unknown fields.
+
+Rejecting unknown fields matters because downstream systems may act on fields the validator never looked at. A strict parser refuses them outright.
 
 ### 4.4 Errors as information
 
@@ -237,6 +279,8 @@ When code fails, it should fail *closed* and explain itself. A parser that silen
 ### 4.5 Testing
 
 An `assert` states what must be true. Unit tests call functions with chosen inputs and check outputs, including edge cases (empty lists, very large values, malformed text). Tests make later changes safe.
+
+For security code the most valuable tests are the ones that should fail: a work order with an extra field, a priority spelled differently, an asset identifier containing punctuation. Each expected rejection is written as a test, so a later change that loosens validation breaks the build instead of reaching production. Sam keeps every malformed input that ever caused a problem as a permanent test case.
 
 ### 4.6 Worked example (synthetic NRS case)
 
@@ -260,11 +304,15 @@ except AssertionError as e:
 
 The program prints the valid order, then `rejected: bad asset id`. The model's output is treated as data to validate, never as code.
 
+The asset identifier is rejected because the semicolon and space fail the alphanumeric check, so text that looks like a shell command never reaches the work-order system. The function never requires a summary, so an order without one would pass; Sam adds that check next. In production Sam replaces the asserts with explicit exceptions, for the reason given among the errors below.
+
 ### 4.7 Errors and limits
 
 - Executing model output as code or shell commands.
 - Validation that only checks happy paths.
 - Using asserts as the only check in production code (they can be disabled with `python -O`; use explicit exceptions there).
+
+Each error has a recognisable sign in code review. Calls to eval, exec or subprocess with a string built from model output are the first thing to search for. Validators with no tests for rejected inputs have probably never been tried on bad data. Asserts guarding security conditions should become if-statements that raise a named exception, because an optimised production run would otherwise skip the check entirely without any message.
 
 ### Exercises
 
@@ -292,31 +340,45 @@ You will (1) write clear technical documents (requirements, design notes, test r
 
 Requirements say what a system must do and must not do. Design notes explain choices and alternatives. Test reports state what was tested, how, results and limits. Incident summaries state what happened, impact, cause and actions. Each has a reader with a decision to make; write for that decision.
 
+Writing for a decision changes what goes first. A manager deciding whether to deploy TrackEye needs the risk and the options on page one; a tester repeating the evaluation needs the method in full. Sam opens each document with one sentence naming its reader and the decision it supports, which also shows him what can be left out.
+
 ### 5.2 Communicating uncertainty
 
 Never write "the model is secure". Write "under the tested conditions (list), the false-negative rate was 2.1% (95% interval 1.6–2.7%); untested conditions include heavy snow and deliberate markings". Numbers with intervals and explicit conditions let readers judge for themselves. Separate *facts* (measured), *assessments* (your judgement) and *recommendations*.
+
+The interval tells the reader how much the figure could move if the test were repeated with new data. Listing untested conditions is just as important, because readers otherwise assume the result covers them. Keeping facts, assessments and recommendations in separate paragraphs lets a reader who disagrees with a judgement still trust the measurements it rests on.
 
 ### 5.3 Documenting AI components
 
 Model cards (Mitchell et al., arXiv:1810.03993) describe a model's intended use, out-of-scope uses, evaluation data, metrics broken down by relevant factors, and ethical considerations. Datasheets for datasets (Gebru et al., arXiv:1803.09010) describe motivation, composition, collection, preprocessing, uses, distribution and maintenance. Both make hidden assumptions visible to downstream engineers and auditors.
 
+For TrackEye, the datasheet records that most training images came from daytime runs on standard-gauge track, which explains later weaknesses at dawn and on unfamiliar rail types. A downstream team planning to reuse the model can see that limitation before deploying it, rather than discovering it in service.
+
 ### 5.4 Audiences
 
 Engineers need precise interfaces and failure modes. Managers need risk, cost and options. Regulators and auditors need traceable evidence linked to requirements. The same fact may appear in three forms.
+
+The dawn false-negative problem shows the three forms. For engineers: false negatives rise to 9% between 05:00 and 07:00 at 60–80 km/h, with the test set named. For managers: dawn inspections miss more defects, a fix is under way, and an interim manual check is in place. For auditors: the finding, the requirement it affects, the test record and the corrective action, each with an identifier.
 
 ### 5.5 Structure and traceability
 
 Number requirements (REQ-SEC-012) and refer to them from design notes and test reports so that anyone can trace a requirement to its evidence. Use tables for conditions and results, figures for trends, and short paragraphs for reasoning. Put the conclusion first and the method second for decision readers; reverse it for reviewers who must check the method. Version every document and keep a change log: an evaluation that was true for model v1.3 may be false for v1.4.
 
+A change log entry records what changed, why, and which results it invalidates.
+
 ### 5.6 Worked example (synthetic NRS case)
 
 Sam's first TrackEye test report said "works well in most conditions". The supervisor returned it. The revised version had a one-paragraph summary for managers ("dawn false negatives are 4.5× daytime; fix in progress; interim: second visual check at dawn"), a table by condition with intervals for engineers, and a model-card section stating out-of-scope uses (not validated for tram rails or snow).
+
+The 4.5× figure is the dawn false-negative rate of 9% divided by the daytime 2%. The original sentence was not false, but it gave readers nothing to act on. The revision lets each reader find what they need without reading the rest.
 
 ### 5.7 Errors and limits
 
 - Absolute claims ("secure", "safe") without conditions.
 - Mixing measurement and opinion.
 - Model cards written once and never updated.
+
+Absolute claims are tempting because they sound confident, but a single counterexample undoes them and with them the reader's trust. Mixed measurement and opinion makes it impossible to challenge one without the other. A model card describing version 1.3 attached to version 1.5 is worse than none, because readers rely on it; Sam ties each card to a model version and updates it in the same change that releases the model.
 
 ### Exercises
 
@@ -344,27 +406,39 @@ You will (1) compute partial derivatives and gradients of multivariate functions
 
 For f(x₁, …, xₙ), the partial derivative ∂f/∂xᵢ holds other variables fixed. The gradient ∇f collects them into a vector pointing in the direction of steepest increase. For a linear score s = w·x + b, ∇ₓ s = w: the weights *are* the input gradient, which is why linear models are easy to attack along sign(w).
 
+For a linear model the attack direction is therefore visible in the weights themselves. Anyone who obtains them, for example from a leaked model file, knows exactly which features to push and in which direction. For non-linear models the gradient changes from input to input, but the same reasoning applies locally around each one.
+
 ### 6.2 The multivariate chain rule
 
 Neural networks are compositions f = f_L ∘ … ∘ f₁. The chain rule multiplies Jacobian matrices layer by layer; backpropagation computes this product efficiently from the output backwards. The same algorithm gives gradients with respect to inputs, which white-box attacks use.
+
+Backpropagation saves work by reusing intermediate products, so computing the gradient for all inputs costs about as much as one forward pass. That efficiency is why white-box attacks are cheap: an attacker with the model file can compute the most damaging direction for any input in milliseconds. Protecting model weights is therefore part of defending against evasion, not only a matter of intellectual property.
 
 ### 6.3 Taylor approximation and worst-case change
 
 First-order Taylor: f(x + δ) ≈ f(x) + ∇f(x)·δ. If an attacker may change each feature by at most ε (an L∞ budget), the largest first-order change is ε·‖∇f(x)‖₁, achieved by δ = ε·sign(∇f(x)) — exactly the FGSM step (Goodfellow et al., arXiv:1412.6572). Under an L2 budget, the worst change is ε·‖∇f(x)‖₂. Norms matter: a gradient with many small components can still have a large L1 norm in high dimensions, which is one explanation for adversarial vulnerability of high-dimensional models.
 
+The approximation is accurate only for small ε, so engineers use it as a quick estimate and then test the real model with actual perturbations.
+
 ### 6.4 Lipschitz constants
 
 A function is L-Lipschitz if |f(x) − f(y)| ≤ L‖x − y‖. If a classifier's margin at x is m and its score is L-Lipschitz, no perturbation smaller than m/L can flip the decision — a *certificate*. Computing tight L for deep networks is hard, which is why certified methods such as randomized smoothing (Cohen et al., arXiv:1902.02918) use probabilistic arguments instead.
 
+A certificate is stronger than a test result: it guarantees that no attack within the radius can succeed, however clever. Loose bounds still give valid certificates, but the guaranteed radius may become too small to matter.
+
 ### 6.5 Worked example (synthetic NRS case)
 
 Pulse's bearing anomaly score is s = 0.9·t + 0.4·v − 0.2·h + c (temperature, vibration, humidity, normalised). With ε = 0.1 per feature, the worst first-order change is 0.1 × (0.9 + 0.4 + 0.2) = 0.15. Sam compares this to the typical margin (0.3) and concludes that a sensor-spoofing attacker limited to ±0.1 cannot hide a clearly hot bearing, but can hide borderline ones.
+
+The weights give the worst direction directly: raise humidity and lower temperature and vibration, each by 0.1. A margin of 0.3 is twice the worst change, so clearly hot bearings stay flagged, but any bearing whose score lies within 0.15 of the threshold could be hidden. Sam records that band as the residual risk and suggests cross-checking borderline readings with a second sensor.
 
 ### 6.6 Errors and limits
 
 - Using first-order estimates far from the point where they are accurate.
 - Confusing L1, L2 and L∞ budgets.
 - Treating a local gradient as a global bound.
+
+First-order estimates work near the measured point and become unreliable for larger changes, where curvature dominates. Mixing norms produces bounds that are wrong by a factor that grows with the number of features. A local gradient says nothing about distant inputs, so Sam always pairs estimates with tests using real perturbations and states the budget's norm in every result he reports.
 
 ### Exercises
 
