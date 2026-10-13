@@ -1190,7 +1190,7 @@ Send a short written summary afterwards with the findings, owners and dates.  Ke
 
 ### Worked example (synthetic HPFL)
 
-Tomás's walk-through, under a two-hour permit, finds: (1) the cellular modem in the filler cabinet still connected; (2) ENG-LT anti-malware signatures 40 days old; (3) the network drawing at revision 3 while the IoT VLAN exists only in revision 4 drafts; (4) one recipe drive missing from the media log. He ranks the modem first, the laptop second, the drive third and the drawing fourth, and the supervisor assigns owners.
+Tomás's walk-through, under a two-hour permit, finds: (1) a cellular modem connected inside the filler cabinet and missing from the register; (2) ENG-LT anti-malware signatures 40 days old; (3) the network drawing at revision 3 while the IoT VLAN exists only in revision 4 drafts; (4) one recipe drive missing from the media log. He ranks the modem first, the laptop second, the drive third and the drawing fourth, and the supervisor assigns owners.
 
 > **Synthetic case — HPFL.** The findings are invented.
 
