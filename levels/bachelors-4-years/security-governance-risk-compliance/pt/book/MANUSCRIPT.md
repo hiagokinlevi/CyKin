@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 097, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 40 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–40 (EX085–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a construir, operar e avaliar um programa de GRC proporcional numa organização pequena.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de riscos em SQLite e calculam intervalos de Wilson, medianas de patch, níveis de fornecedores, ordenações de matriz contra perda esperada e um resumo de lacunas do CSF, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
-
-Capítulos 29–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1174,11 +1172,443 @@ As revisões sem culpados ainda precisam responsabilizar a negligência repetida
 - **EX083 — Causas sistêmicas.** Cite duas causas sistêmicas encontradas. *Rubrica:* 3 = preenchimento automático e envio rotineiro das planilhas de atraso por e-mail;; 2 = causas;; 1 = nada;; 0 = nenhuma.
 - **EX084 — Atualização do registro.** Como Sofia atualizou o registro? *Rubrica:* 3 = elevou a probabilidade dos dados mal endereçados e registrou os novos controles;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-29"></a>
+
+## Capítulo 29 — Governança, riscos e compliance de segurança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um calendário de governança; (2) acompanhar as ações até a conclusão; (3) relatar ao conselho.
+
+### 29.1 Calendário de governança
+
+Sofia ajuda a Elmfield a montar um calendário de governança. Mensalmente: revisar alertas e incidentes de segurança. Trimestralmente: revisões de acesso, revisão do registro de riscos e conferências de fornecedores. Duas vezes por ano: relatório ao conselho. Anualmente: revisão das políticas, teste de restauração de backup e reavaliação de lacunas. Cada atividade tem um responsável e um lembrete na agenda compartilhada. Ela aprende que um calendário transforma boas intenções em rotina, e que organizações pequenas se beneficiam de ritmos previsíveis, porque a equipe pode se planejar em torno deles. Pôr no calendário o teste anual de restauração garante que o teste do capítulo 25 seja repetido.
+
+### 29.2 Acompanhar as ações
+
+Cada achado e cada melhoria vira uma ação com responsável e prazo num controle simples. Sofia revisa esse controle mensalmente com a diretora. As ações atrasadas são discutidas, e não escondidas. Depois de três meses, dezoito de vinte e quatro ações estão concluídas. Para as seis em aberto, ela anota se o obstáculo é tempo, orçamento ou uma decisão que falta. Aprende que o acompanhamento é mais útil quando provoca conversas sobre os obstáculos, como um responsável sem tempo ou sem orçamento, e não quando apenas lista itens atrasados que ninguém discute nem desbloqueia.
+
+### 29.3 Relatório ao conselho
+
+Sofia redige o primeiro relatório de segurança da Elmfield para o conselho. Ele cobre os principais riscos e suas mudanças, o progresso da avaliação de lacunas, os incidentes e as lições, as ações atrasadas e as decisões solicitadas. Tem três páginas, em linguagem simples. O conselho faz boas perguntas, sobretudo sobre o risco de fornecedores, o que mostra que o relatório deu aos conselheiros material suficiente para questionar. Sofia aprende que os conselhos se envolvem quando os relatórios são curtos, honestos e pedem decisões. Um relatório que só tranquiliza não dá ao conselho nada a governar, o que mina o propósito da supervisão.
+
+### Exemplo resolvido
+
+Sofia monta um calendário de governança, acompanha vinte e quatro ações, com dezoito concluídas, e redige um relatório de três páginas para o conselho.
+
+> **Caso sintético.** As ações e os relatórios são sintéticos.
+
+### Erros e limites
+
+Os calendários escorregam sob pressão. A atenção do conselho varia.
+
+### Exercícios
+
+- **EX085 — Itens trimestrais.** Que atividades são trimestrais? *Rubrica:* 3 = revisões de acesso, revisão do registro, conferências de fornecedores;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Progresso das ações.** Quantas ações estavam concluídas depois de três meses? *Rubrica:* 3 = dezoito de vinte e quatro;; 2 = 18/24;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Problema do relatório tranquilizador.** Por que um relatório que só tranquiliza é um problema? *Rubrica:* 3 = não dá ao conselho nada a governar;; 2 = sem decisões;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um exercício de mesa; (2) avaliar a resposta contra o plano; (3) registrar as melhorias.
+
+### 30.1 Desenho do exercício
+
+No segundo laboratório, Sofia desenha um exercício de mesa para os gestores da Elmfield: um ransomware criptografou o servidor de arquivos numa segunda-feira de manhã. O cenário se desenrola em etapas, com novas informações a cada uma. Os participantes decidem o que fazer usando o plano de incidentes. O exercício é anunciado, não usa sistemas reais e dura noventa minutos. Sofia prepara injeções, como a ligação de um jornalista e um inquilino perguntando sobre seus dados. A ligação do jornalista testa quem pode falar publicamente, uma pergunta que o plano de incidentes não respondia.
+
+### 30.2 Observações
+
+Sofia e uma colega observam. Os gestores isolam o servidor depressa, mas não sabem quem decide se a polícia e o regulador devem ser contatados. O plano de restauração dos backups existe, mas ninguém sabe onde está guardado. A comunicação com os inquilinos é improvisada. O sistema habitacional, por ser um serviço em nuvem, continua funcionando, o que tranquiliza todos, mas também revela o quanto depende daquele fornecedor. Ela registra cada observação com o horário e compara as ações com o plano de incidentes, para separar o que o plano previa do que os gestores improvisaram.
+
+### 30.3 Melhorias
+
+Depois do exercício, o grupo combina melhorias: nomear a diretora como quem decide as comunicações externas, guardar o plano de restauração em dois lugares, incluindo uma cópia em papel, e preparar modelos de mensagens para os inquilinos. Sofia registra essas melhorias como ações no controle. Aprende que os exercícios de mesa são formas baratas e seguras de testar planos, e que muitas vezes revelam lacunas simples, como um plano que ninguém encontra, que importam enormemente num incidente real. A cópia em papel responde diretamente à constatação de que ninguém conseguia localizar o plano.
+
+### Exemplo resolvido
+
+Sofia conduz um exercício de mesa de ransomware, observa três lacunas e registra as melhorias combinadas como ações acompanhadas.
+
+> **Caso sintético.** O exercício é sintético e não usou sistemas reais.
+
+### Erros e limites
+
+Os exercícios de mesa não testam a recuperação técnica. Os participantes podem atuar para os observadores.
+
+### Exercícios
+
+- **EX088 — Segurança do exercício.** Por que o exercício de mesa não usa sistemas reais? *Rubrica:* 3 = para ser seguro e não causar disrupção;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Plano perdido.** Que lacuna envolvia o plano de restauração? *Rubrica:* 3 = ninguém sabia onde estava guardado;; 2 = localização;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Decisão de comunicação.** Quem vai decidir as comunicações externas? *Rubrica:* 3 = a diretora;; 2 = diretora;; 1 = líder de TI;; 0 = nenhuma.
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Governança, riscos e compliance de segurança: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar a governança em contextos de pagamento e certificação; (2) entender a redução de escopo; (3) comparar tipos de garantia.
+
+### 31.1 Pagamentos
+
+A Elmfield recebe aluguéis com cartão por uma página de pagamento hospedada, operada por um provedor. Sofia aprende que o PCI DSS v4.0 se aplica às organizações que armazenam, processam ou transmitem dados do titular do cartão ou que podem afetar sua segurança. Usando uma página hospedada, a Elmfield mantém os dados de cartão fora de seus próprios sistemas, o que reduz muito suas obrigações, embora ainda precise proteger o site que leva à página de pagamento e confirmar a conformidade do provedor. Ela aprende que escolhas de arquitetura podem encolher bastante o escopo de compliance. Essa arquitetura também pesa na decisão posterior sobre certificação, já que os dados de cartão nunca tocam os notebooks da Elmfield.
+
+### 31.2 Certificação
+
+O conselho da Elmfield pergunta se deve buscar a certificação na ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022). Sofia lista os benefícios: as licitações das prefeituras pedem isso cada vez mais, e a certificação disciplinaria o programa. Os custos incluem honorários de auditoria, tempo da equipe e auditorias de manutenção contínuas. Ela sugere primeiro operar o sistema de gestão por um ano e medir o progresso contra a avaliação de lacunas, e só então decidir. Aprende que a certificação é um meio, e não um fim, e deve ser escolhida por motivos claros. O Dr. Haddad acrescenta que um ano de operação também dará à Elmfield as evidências que qualquer auditoria pediria.
+
+### 31.3 Tipos de garantia
+
+Sofia compara os tipos de garantia que a Elmfield recebe dos fornecedores. A certificação mostra que um sistema de gestão atendia a uma norma na auditoria. Os relatórios SOC 2, baseados nos trust services criteria da AICPA, descrevem os controles e, no relatório tipo 2, testam sua operação ao longo de um período. Os questionários registram o que os fornecedores afirmam. Ela aprende que cada tipo oferece uma força de evidência diferente e que ler o escopo e as exceções de um relatório importa mais do que seu título. Um relatório tipo 2 com exceções na gestão de acessos diz mais do que um certificado limpo cujo escopo exclui o serviço usado.
+
+### Exemplo resolvido
+
+Sofia explica como uma página de pagamento hospedada reduz o escopo do PCI DSS, pondera a certificação e compara os tipos de garantia.
+
+> **Caso sintético.** As escolhas da Elmfield são sintéticas; o PCI DSS v4.0, a ISO/IEC 27001:2022 (ABNT NBR ISO/IEC 27001:2022) e os TSC da AICPA são reais.
+
+### Erros e limites
+
+A redução de escopo não elimina todos os deveres. Os relatórios variam de escopo.
+
+### Exercícios
+
+- **EX091 — Efeito da página hospedada.** Como uma página de pagamento hospedada afeta as obrigações do PCI DSS? *Rubrica:* 3 = mantém os dados de cartão fora dos sistemas da Elmfield, reduzindo o escopo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+- **EX092 — Conselho sobre certificação.** O que Sofia sugeriu antes de decidir sobre a certificação? *Rubrica:* 3 = operar o sistema por um ano e medir o progresso;; 2 = esperar;; 1 = nada;; 0 = nenhuma.
+- **EX093 — Relatório tipo 2.** O que um relatório SOC 2 tipo 2 acrescenta? *Rubrica:* 3 = testes da operação dos controles ao longo de um período;; 2 = operação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Governança, riscos e compliance de segurança: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com o jurídico, finanças e RH na governança; (2) traduzir entre linguagens profissionais; (3) lidar com prioridades conflitantes.
+
+### 32.1 Jurídico
+
+Sofia trabalha com o advogado externo da Elmfield nos acordos de compartilhamento de dados com as prefeituras. O advogado se concentra na base legal e na responsabilidade; Sofia, nos controles de segurança e nas evidências. Eles combinam um modelo que cobre os dois: o advogado define a base legal, e Sofia especifica controles como a criptografia em trânsito. Ela aprende que a equipe de GRC não deve dar aconselhamento jurídico, mas precisa entender os requisitos legais o bastante para fazer as perguntas certas e traduzi-los em controles. A fronteira entre os papéis jurídico e de segurança precisa ser clara e respeitada.
+
+### 32.2 Finanças e RH
+
+Finanças se importa com custo, seguros e fraude; o RH, com o tratamento justo dos funcionários e registros exatos. Sofia aprende a enquadrar a segurança nos termos de cada um. Para finanças, apresenta os controles como redutores da perda esperada e dos prêmios de seguro; o valor de uma fatura falsa paga é uma perda familiar a pesar contra o custo dos controles de aprovação de pagamentos. Para o RH, apresenta o processo de desligamento como proteção dos ex-funcionários contra o mau uso de suas contas, além da proteção dos inquilinos. Usar a linguagem de cada disciplina aumenta a cooperação sem mudar a substância dos controles.
+
+### 32.3 Prioridades conflitantes
+
+Surgem conflitos. Os gestores de habitação querem que a equipe trabalhe depressa de qualquer lugar; a TI quer controles de dispositivo mais rígidos. Sofia facilita uma reunião em que cada lado explica suas preocupações. Eles combinam que os dispositivos gerenciados podem trabalhar de qualquer lugar, enquanto os dispositivos pessoais têm acesso só ao e-mail. Ela aprende que os conflitos se resolvem melhor entendendo as necessidades por trás das posições e combinando um meio-termo documentado, que a diretora aprova como decisão de risco com data de revisão, para que o acordo possa ser revisto se o acesso só ao e-mail se mostrar restritivo demais.
+
+### Exemplo resolvido
+
+Sofia escreve com o jurídico um modelo de compartilhamento de dados, enquadra os controles para finanças e RH e media um conflito sobre dispositivos.
+
+> **Caso sintético.** As colaborações são sintéticas.
+
+### Erros e limites
+
+A tradução pode simplificar demais. Os meios-termos podem se desviar com o tempo.
+
+### Exercícios
+
+- **EX094 — Fronteira jurídica.** O que a equipe de GRC não deve fazer em assuntos jurídicos? *Rubrica:* 3 = dar aconselhamento jurídico;; 2 = aconselhamento;; 1 = nada;; 0 = nenhuma.
+- **EX095 — Enquadramento para o RH.** Como Sofia enquadrou o processo de desligamento para o RH? *Rubrica:* 3 = proteção dos ex-funcionários contra o mau uso de contas;; 2 = justiça;; 1 = nada;; 0 = nenhuma.
+- **EX096 — Meio-termo dos dispositivos.** Que meio-termo foi combinado para os dispositivos? *Rubrica:* 3 = gerenciados de qualquer lugar, pessoais só com e-mail;; 2 = meio-termo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar dados de entrevistas tematicamente; (2) conferir a confiabilidade da codificação; (3) relatar com honestidade os achados qualitativos.
+
+### 33.1 Análise temática
+
+Sofia volta às entrevistas com doze gestores sobre as revisões de acesso. Lê as transcrições várias vezes, codifica trechos com rótulos curtos e agrupa os códigos em temas. Surgem três temas: as listas eram longas demais e usavam o jargão do sistema, os gestores não sabiam do que sua equipe realmente precisava e as revisões chegavam em épocas de muito trabalho. Ela aprende que a análise temática é sistemática, e não impressionista, e exige um registro claro de como os códigos viraram temas; seu livro de códigos e seus memorandos registram, por exemplo, como o código "jargão nas listas" passou a integrar o primeiro tema.
+
+### 33.2 Confiabilidade
+
+Para conferir a codificação, um colega codifica de forma independente quatro transcrições com o livro de códigos de Sofia. Eles concordam na maioria dos trechos, e a discussão das discordâncias refina a definição de dois códigos, o que torna o livro de códigos mais claro para a análise seguinte. Ela relata a concordância com o kappa de Cohen, usando Landis e Koch (1977) para interpretar os níveis de concordância, e observa que a pesquisa qualitativa também valoriza a reflexividade: a consciência de como seu próprio papel na Elmfield pode ter moldado o que os gestores lhe disseram e o que ela percebeu.
+
+### 33.3 Relato
+
+Sofia relata os temas com citações anonimizadas ilustrativas, a contagem de quantos gestores levantaram cada um e as opiniões contrárias que encontrou. Dois gestores gostavam das revisões e as achavam fáceis, o que mostra que as recomendações não se apoiam em queixas uniformes. Ela recomenda listas mais curtas com descrições simples, um guia breve sobre as necessidades de cada papel e revisões fora do fechamento do mês. Aprende que os achados qualitativos convencem mais quando mostram suas evidências, incluem as divergências e levam a mudanças concretas que possam depois ser testadas.
+
+### Exemplo resolvido
+
+Sofia encontra três temas, confere a codificação com um colega e relata achados anonimizados, incluindo as divergências.
+
+> **Caso sintético.** As entrevistas são sintéticas; Landis e Koch (1977) é real.
+
+### Erros e limites
+
+Os temas refletem a lente de quem analisa. Doze entrevistas limitam a generalização.
+
+### Exercícios
+
+- **EX097 — Três temas.** Cite os três temas. *Rubrica:* 3 = listas longas cheias de jargão, necessidades da equipe desconhecidas, épocas de muito trabalho;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX098 — Reflexividade.** O que é a reflexividade neste estudo? *Rubrica:* 3 = consciência de como o papel de Sofia molda os dados;; 2 = autoconsciência;; 1 = nada;; 0 = nenhuma.
+- **EX099 — Divergência.** Por que relatar os dois gestores que gostavam das revisões? *Rubrica:* 3 = incluir as divergências torna os achados mais críveis;; 2 = equilíbrio;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar abordagens de governança entre organizações; (2) escolher critérios de comparação justos; (3) evitar rankings enganosos.
+
+### 34.1 Duas organizações
+
+Sofia compara a Elmfield com uma segunda organização fictícia, o Corbridge Community Trust, uma instituição beneficente de porte semelhante. As duas aceitam compartilhar resumos anonimizados de suas práticas de governança, o que permite falar com honestidade sem expor nomes de funcionários nem fraquezas específicas. O Corbridge usa um provedor de serviços gerenciados para TI e segurança, enquanto a Elmfield tem um líder de TI interno. Sofia quer entender como os modelos diferentes afetam a governança: quem é responsável pelos riscos, como as evidências são reunidas e como os conselhos são informados.
+
+### 34.2 Critérios justos
+
+Sofia escolhe critérios que fazem sentido para as duas: existência de um apetite a riscos aprovado, frequência de revisão do registro, conclusão das revisões de acesso, testes de backup e relatórios ao conselho. A frequência de revisão do registro, por exemplo, pode ser comparada diretamente porque as duas mantêm um registro datado. Ela evita comparar contagens brutas de incidentes, porque as culturas de relato diferem: uma contagem maior pode refletir melhor relato, e não segurança pior. Aprende que as comparações precisam levar em conta o contexto e as diferenças de medição, ou enganarão justamente as pessoas que pretendem informar.
+
+### 34.3 Achados
+
+O Corbridge tem um monitoramento técnico mais forte por meio do provedor, mas uma responsabilização mais fraca, porque a equipe supõe que o provedor cuida de tudo. A Elmfield tem uma responsabilização mais clara, mas menos monitoramento. Sofia apresenta isso como lições complementares, e não como ranking. Recomenda que a Elmfield considere contratar serviços de monitoramento mantendo a responsabilização interna, e que o Corbridge esclareça quais riscos continuam sendo seus. As duas organizações acham a comparação útil por não ter julgado uma melhor que a outra. O Dr. Haddad observa que o modelo do Corbridge mostra que a responsabilização não se terceiriza, mesmo quando as operações se terceirizam.
+
+### Exemplo resolvido
+
+Sofia compara duas organizações em cinco critérios justos, evita as contagens brutas de incidentes e apresenta lições complementares.
+
+> **Caso sintético.** As duas organizações são sintéticas.
+
+### Erros e limites
+
+Dois casos não permitem generalizar. Os resumos compartilhados podem ser otimistas.
+
+### Exercícios
+
+- **EX100 — Diferença de modelo.** Como diferem os modelos de TI das duas organizações? *Rubrica:* 3 = provedor de serviços gerenciados contra líder de TI interno;; 2 = modelos;; 1 = nada;; 0 = nenhuma.
+- **EX101 — Contagens de incidentes.** Por que evitar comparar contagens brutas de incidentes? *Rubrica:* 3 = as culturas de relato diferem;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
+- **EX102 — Fraqueza do Corbridge.** Que fraqueza o Corbridge mostrou? *Rubrica:* 3 = responsabilização fraca porque a equipe supõe que o provedor cuida de tudo;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta de trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) propor um trabalho de conclusão que melhore um controle de governança; (2) definir resultados mensuráveis; (3) planejar a ética e os riscos.
+
+### 35.1 A proposta
+
+No trabalho de conclusão, Sofia propõe redesenhar a revisão trimestral de acessos da Elmfield com base nos achados de sua pesquisa: listas mais curtas com descrições simples, um guia de papéis, revisões fora do fechamento do mês e a inclusão da lista de desligamentos. Ela vai medir se o tempo de conclusão, a taxa de conclusão e o número de direitos excessivos encontrados mudam em relação aos dois trimestres anteriores, que servem de linha de base. Escreve a proposta com contexto, objetivos, métodos, cronograma, ética e riscos, em dez páginas, para que o orientador e a Elmfield saibam exatamente o que será feito.
+
+### 35.2 Resultados
+
+Sofia define os resultados antes de começar: taxa de conclusão no prazo, mediana de dias até a conclusão, direitos removidos por cem revisados e satisfação dos gestores numa pesquisa curta. Ela observa que os direitos removidos podem cair porque as revisões anteriores já limparam os acessos, e não porque o novo desenho seja pior, e registra isso como risco de interpretação. Aprende que definir os resultados e seus limites de antemão evita escolher medidas favoráveis depois que os resultados chegam. Registrar também a satisfação dos gestores impede que a avaliação dependa só dos direitos removidos.
+
+### 35.3 Ética e riscos
+
+O trabalho de conclusão envolve o trabalho dos gestores, mas nenhum dado pessoal além do que as revisões já usam. Sofia obtém a aprovação do Dr. Haddad e a concordância da Elmfield. Os riscos incluem um trimestre carregado, a rotatividade de gestores e seu próprio tempo limitado. Ela planeja respostas, como um cronograma alternativo. Também se compromete a manter o processo antigo disponível caso o novo falhe, para que o controle da Elmfield nunca fique mais fraco por causa de seu projeto; a revisão trimestral continuará a acontecer de qualquer forma, com ou sem o redesenho.
+
+### Exemplo resolvido
+
+Sofia propõe uma revisão de acessos redesenhada, com quatro resultados definidos de antemão, riscos de interpretação e uma alternativa de segurança.
+
+> **Caso sintético.** O trabalho de conclusão é sintético.
+
+### Erros e limites
+
+Comparações antes e depois confundem efeitos de época. As pesquisas medem percepção.
+
+### Exercícios
+
+- **EX103 — Elementos do redesenho.** Que quatro mudanças o redesenho inclui? *Rubrica:* 3 = listas curtas e simples, guia de papéis, melhor época, lista de desligamentos;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Risco de interpretação.** Por que os direitos removidos poderiam cair por motivos alheios ao desenho? *Rubrica:* 3 = as revisões anteriores já limparam os acessos;; 2 = limpeza anterior;; 1 = nada;; 0 = nenhuma.
+- **EX105 — Compromisso de segurança.** O que protege o controle da Elmfield durante o projeto? *Rubrica:* 3 = manter o processo antigo disponível caso o novo falhe;; 2 = alternativa;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar competências de GRC num contexto comunitário; (2) adaptar orientações para organizações muito pequenas; (3) respeitar os limites da ajuda voluntária.
+
+### 36.1 Estágio comunitário
+
+Sofia atua como voluntária numa associação local de inquilinos ligada à Elmfield. Ela tem uma diretoria de oito voluntários, um notebook, uma conta de e-mail compartilhada e uma planilha com os contatos dos associados. Suas necessidades são pequenas, mas reais: guarda dados pessoais e movimenta pequenas quantias de dinheiro. Sofia aprende que os frameworks feitos para organizações com funcionários e orçamento precisam ser fortemente adaptados para grupos assim, focando um punhado de ações de alto valor. As ações que escolhe se concentram na conta de e-mail compartilhada e na planilha de contatos, os dois lugares onde ficam os dados dos associados.
+
+### 36.2 Orientações simples
+
+Sofia escreve um guia de uma página: dar a cada membro da diretoria sua própria conta, em vez de compartilhar uma, ativar a autenticação multifator, manter a lista de associados num só lugar com acesso para duas pessoas, fazer backup mensal e apagar os contatos de quem saiu. Com acesso para duas pessoas, o grupo continua funcionando se um voluntário sair. Ela se apoia nos materiais de início rápido do NIST CSF 2.0 para pequenas empresas, mas simplifica ainda mais. A diretoria adota quatro dos cinco passos imediatamente e combina revisitar o quinto numa próxima reunião.
+
+### 36.3 Limites
+
+Sofia toma cuidado com os limites. Não acessa ela mesma os dados pessoais dos associados, não cria contas com as próprias credenciais e não promete um apoio contínuo que não pode dar. Em vez disso, ensina dois membros da diretoria a executar cada passo, para que o guia sobreviva à sua saída. Ela aprende que a ajuda voluntária deve construir a capacidade do próprio grupo, e não criar dependência, e que as boas intenções precisam vir acompanhadas de fronteiras claras e de uma passagem de bastão bem feita, com instruções que o grupo consiga seguir sozinho.
+
+### Exemplo resolvido
+
+Sofia escreve um guia de cinco passos para uma associação de inquilinos, vê quatro passos adotados e constrói a capacidade da própria diretoria.
+
+> **Caso sintético.** A associação é sintética; os recursos do CSF 2.0 são reais.
+
+### Erros e limites
+
+Os voluntários mudam com frequência. Orientações simples omitem riscos.
+
+### Exercícios
+
+- **EX106 — Correção da conta compartilhada.** O que substituiu a conta de e-mail compartilhada? *Rubrica:* 3 = contas individuais para cada membro da diretoria;; 2 = contas próprias;; 1 = nada;; 0 = nenhuma.
+- **EX107 — Passos adotados.** Quantos passos do guia foram adotados imediatamente? *Rubrica:* 3 = quatro de cinco;; 2 = 4;; 1 = 5;; 0 = nenhuma.
+- **EX108 — Fronteira do voluntariado.** Por que Sofia ensinou os membros em vez de fazer ela mesma o trabalho? *Rubrica:* 3 = para construir capacidade, e não dependência;; 2 = capacidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) criticar as evidências de governança apresentadas pelos colegas; (2) julgar a força das evidências; (3) dar retorno construtivo.
+
+### 37.1 O seminário
+
+No seminário de revisão de evidências, cada estudante apresenta as evidências por trás de uma afirmação de governança de seu estágio. Sofia apresenta a afirmação de que os backups da Elmfield funcionam, apoiada pelo teste de restauração do laboratório, pelo novo teste depois da correção e pelos relatórios mensais das rotinas de backup: três tipos de evidência. Um colega apresenta a afirmação de que o risco de phishing caiu, apoiada só pela queda nos e-mails suspeitos relatados, uma única contagem. A turma discute que afirmações estão bem apoiadas e por quê, e o que cada uma deixa sem cobrir.
+
+### 37.2 Julgar a força
+
+O grupo ordena os tipos de evidência. A reexecução independente e os testes ficam no topo. Os relatórios gerados por sistemas vêm em seguida. As declarações dos responsáveis e os questionários ficam por último. Eles observam que menos e-mails relatados poderiam significar menos phishing, uma filtragem melhor ou menos relatos, então a afirmação do colega é fraca. A de Sofia é forte para os arquivos testados, mas não prova que todos os sistemas têm backup; seu escopo precisa excluir o sistema habitacional, cujo backup é feito pelo fornecedor e que ela nunca testou. Ela aprende que julgar evidências é perguntar o que mais poderia explicá-las e quanto cobrem.
+
+### 37.3 Retorno construtivo
+
+O Dr. Haddad pede aos estudantes um retorno que ajude. Sofia sugere ao colega acrescentar dados sobre os e-mails filtrados e uma pesquisa curta sobre os hábitos de relato. Ela recebe o retorno de que sua afirmação deveria declarar o escopo: só o compartilhamento de arquivos, e não o sistema habitacional, cujo backup é feito pelo fornecedor. Ela revisa a afirmação, o que impede o conselho de supor que o sistema habitacional também foi testado. Aprende que a revisão por pares melhora as afirmações quando o retorno é específico, respeitoso e focado nas evidências, e não na pessoa.
+
+### Exemplo resolvido
+
+Sofia ordena os tipos de evidência, aponta explicações alternativas na afirmação de um colega e restringe o escopo da própria afirmação depois do retorno.
+
+> **Caso sintético.** O seminário e as afirmações são sintéticos.
+
+### Erros e limites
+
+As ordenações são guias gerais. O retorno pode ser educado demais para ajudar.
+
+### Exercícios
+
+- **EX109 — Evidência mais fraca.** Que tipos de evidência ficam por último? *Rubrica:* 3 = declarações dos responsáveis e questionários;; 2 = declarações;; 1 = testes;; 0 = nenhuma.
+- **EX110 — Alternativas no phishing.** O que mais poderia explicar a queda nos e-mails suspeitos relatados? *Rubrica:* 3 = filtragem melhor ou menos relatos;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
+- **EX111 — Correção de escopo.** Como Sofia revisou sua afirmação sobre os backups? *Rubrica:* 3 = limitou-a ao compartilhamento de arquivos;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar um processo de governança redesenhado; (2) monitorá-lo enquanto roda; (3) ajustá-lo sem perder a comparabilidade.
+
+### 38.1 Implementação
+
+Sofia implementa a revisão de acessos redesenhada durante um trimestre. Prepara listas mais curtas, com descrições simples de cada permissão, escreve com a encarregada de proteção de dados um guia de papéis de duas páginas, agenda a revisão para a segunda semana do mês e acrescenta a lista de desligamentos. Apresenta tudo aos gestores numa reunião curta e oferece sessões de ajuda, que também lhe mostram diretamente onde o guia ainda está confuso. Ela mantém um registro de cada pergunta dos gestores, porque as perguntas revelam onde o desenho ainda não está claro.
+
+### 38.2 Monitoramento
+
+Durante a revisão, Sofia acompanha a conclusão diariamente. A maioria dos gestores termina em uma semana. Dois perguntam o que significa uma permissão chamada "escalonamento de caso", então ela esclarece a descrição para todos. Um gestor está de licença, e um substituto conclui a revisão. Ela registra esses eventos. Aprende que monitorar um processo novo enquanto ele roda permite pequenas correções, mas cada mudança precisa ser registrada para que a avaliação a leve em conta depois. O Dr. Haddad observa que o esclarecimento sobre o escalonamento de caso precisa aparecer na avaliação como mudança no meio da revisão.
+
+### 38.3 Comparabilidade
+
+Sofia fica tentada a mudar o método de medição quando nota que os dados antigos de conclusão usavam datas diferentes. Em vez disso, registra a conclusão pelas definições antiga e nova, para que os resultados possam ser comparados com justiça aos trimestres anteriores, com datas de conclusão equivalentes. Ela aprende que melhorar um processo e avaliá-lo são tarefas diferentes, e que manter a medição consistente é essencial se a Elmfield quiser saber se o redesenho realmente ajudou, em vez de comparar números que mediram coisas diferentes.
+
+### Exemplo resolvido
+
+Sofia conduz a revisão redesenhada, registra as perguntas e as correções e mantém as definições de medição antiga e nova para uma comparação justa.
+
+> **Caso sintético.** A implementação é sintética.
+
+### Erros e limites
+
+Correções no meio do caminho complicam a avaliação. Um trimestre é um teste curto.
+
+### Exercícios
+
+- **EX112 — Registro de perguntas.** Por que Sofia registra as perguntas dos gestores? *Rubrica:* 3 = revelam partes pouco claras do desenho;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento de caso;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Definições duplas.** Por que registrar a conclusão pelas duas definições? *Rubrica:* 3 = para comparar com justiça com os trimestres anteriores;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar um processo redesenhado contra resultados definidos de antemão; (2) interpretar os resultados com cautela; (3) recomendar os próximos passos.
+
+### 39.1 Resultados
+
+Sofia compara o trimestre redesenhado com os dois anteriores. A conclusão no prazo subiu de oito de doze gestores para onze de doze. A mediana de dias até a conclusão caiu de catorze para seis. Os direitos removidos por cem revisados caíram um pouco, de quatro para três. A pesquisa com os gestores mostra que a maioria achou as listas mais claras. Ela apresenta cada resultado com as contagens por trás, evitando porcentagens que exagerariam números pequenos. Onze de doze, por exemplo, é mais claro para um conselho pequeno do que noventa e dois por cento, que sugere uma amostra grande.
+
+### 39.2 Interpretação
+
+Sofia interpreta com cautela. A conclusão e a rapidez melhoraram com clareza, o que é compatível com o redesenho ter ajudado. A pequena queda nas remoções corresponde ao risco de interpretação definido de antemão no capítulo 35: as revisões anteriores já tinham limpado boa parte dos acessos excessivos, e isso lhe permite explicar a queda sem justificativas improvisadas. Há outras explicações: o trimestre foi mais calmo do que o normal e os gestores sabiam que estavam sendo estudados. Com doze gestores e um trimestre, ela não consegue descartá-las. Declara que as evidências apoiam o redesenho sem provar que ele causou a melhora.
+
+### 39.3 Próximos passos
+
+Sofia recomenda que a Elmfield mantenha o redesenho, continue medindo por mais três trimestres e estenda a abordagem à revisão do sistema habitacional. Sugere acrescentar uma verificação de que as remoções aprovadas realmente acontecem, uma lacuna do próprio redesenho, já que os pedidos de remoção ainda podem ser ignorados. A diretora da Elmfield aceita as recomendações. Sofia aprende que a avaliação tem valor mesmo quando os resultados não provam causalidade, porque diz à organização se deve continuar, ajustar ou parar, e o que observar em seguida.
+
+### Exemplo resolvido
+
+Sofia constata que a conclusão subiu para onze de doze e a mediana caiu para seis dias, interpreta com cautela e recomenda continuar medindo.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Amostras pequenas e o efeito de ser observado limitam as conclusões. As pesquisas são subjetivas.
+
+### Exercícios
+
+- **EX115 — Mudança na conclusão.** Como mudou a conclusão no prazo? *Rubrica:* 3 = de oito de doze para onze de doze;; 2 = melhorou;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Mudança na mediana.** Como mudou a mediana de dias até a conclusão? *Rubrica:* 3 = de catorze para seis;; 2 = mais rápida;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Cautela causal.** Por que Sofia não pode afirmar que o redesenho causou a melhora? *Rubrica:* 3 = trimestre mais calmo e efeito de ser observado;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tese e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de bacharelado sobre uma melhoria de governança; (2) apresentá-la a públicos acadêmicos e profissionais; (3) refletir sobre o aprendizado.
+
+### 40.1 A tese
+
+Sofia escreve a tese sobre a melhoria da revisão de acessos numa pequena associação de habitação social. Ela cobre o problema, a literatura e as normas, o estudo com entrevistas, o redesenho, a implementação, a avaliação e as conclusões. Cita a ISO/IEC 27002:2022 sobre direitos de acesso, o NIST CSF 2.0 e a pesquisa de Spears e Barki (2010) sobre a participação dos usuários. Cada afirmação se liga a evidências, e as limitações são declaradas com clareza. Os apêndices trazem o roteiro de entrevista, o livro de códigos, o guia de papéis e as definições de medição, que permitem a um leitor repetir suas contagens de conclusão e de remoções.
+
+### 40.2 Apresentações
+
+Sofia apresenta duas vezes. Para a banca do Brightwater, foca métodos, evidências e limites. Para o conselho da Elmfield, foca o que mudou, quanto custou e o que o conselho deve decidir. A banca pergunta como ela evitou o viés, dado seu papel no estágio; ela explica suas notas reflexivas e o segundo codificador, retomando a conferência de confiabilidade do capítulo 33. O conselho pergunta se a abordagem funcionaria para os prestadores de manutenção; ela sugere um piloto. Os dois públicos valorizam evidências claras apresentadas em seus próprios termos.
+
+### 40.3 Reflexão
+
+Sofia reflete sobre seus quatro anos. Começou contando notebooks e terminou redesenhando um processo de governança com base em evidências. Aprendeu que a governança trata sobretudo de pessoas, clareza e persistência, apoiadas por dados e normas. Também aprendeu a declarar os limites com honestidade e a dar crédito aos gestores cujas entrevistas moldaram seu trabalho. O Dr. Haddad observa que seus hábitos de afirmações precisas e evidências justas vão servir em qualquer função de GRC; a afirmação do capítulo 1 sobre duzentas e setenta de trezentas contas já era um exemplo desses mesmos hábitos.
+
+### Exemplo resolvido
+
+Sofia escreve a tese e a apresenta a dois públicos, responde a perguntas sobre viés e reflete sobre o aprendizado.
+
+> **Caso sintético.** A tese é sintética; as fontes citadas são reais.
+
+### Erros e limites
+
+A reflexão pode ser seletiva. Uma única organização limita a generalização.
+
+### Exercícios
+
+- **EX118 — Fontes da tese.** Que artigo de pesquisa sobre participação Sofia cita? *Rubrica:* 3 = Spears e Barki (2010);; 2 = Spears;; 1 = nada;; 0 = nenhuma.
+- **EX119 — Resposta sobre o viés.** Como Sofia respondeu à banca sobre o viés? *Rubrica:* 3 = notas reflexivas e um segundo codificador;; 2 = reflexividade;; 1 = nada;; 0 = nenhuma.
+- **EX120 — Sugestão ao conselho.** O que Sofia sugeriu para os prestadores de manutenção? *Rubrica:* 3 = um piloto da abordagem;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cinco pontos percentuais (uma redução à metade em termos relativos).
 
@@ -1347,6 +1777,78 @@ Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em i
 **EX083.** Por exemplo, o e-mail completou automaticamente o endereço errado e as planilhas de atraso eram enviadas rotineiramente por e-mail (também a falta de aviso externo).
 
 **EX084.** Elevou a estimativa de probabilidade dos dados mal endereçados e registrou os novos controles.
+
+**EX085.** Revisões de acesso, revisão do registro de riscos e conferências de fornecedores.
+
+**EX086.** Dezoito de vinte e quatro.
+
+**EX087.** Porque não dá ao conselho nada a governar ou decidir.
+
+**EX088.** Para que o exercício seja seguro e nada em uso real seja perturbado.
+
+**EX089.** Ninguém sabia onde o plano de restauração estava guardado.
+
+**EX090.** A diretora.
+
+**EX091.** Mantém os dados de cartão fora dos sistemas da Elmfield, o que reduz muito suas obrigações, embora algumas permaneçam.
+
+**EX092.** Operar o sistema de gestão por um ano e medir primeiro o progresso.
+
+**EX093.** Testes de como os controles operaram ao longo de um período.
+
+**EX094.** Dar aconselhamento jurídico; deve entender os requisitos e fazer as perguntas certas.
+
+**EX095.** Como proteção dos ex-funcionários contra o mau uso de suas contas, além da proteção dos inquilinos.
+
+**EX096.** Os dispositivos gerenciados podem trabalhar de qualquer lugar; os pessoais têm só e-mail.
+
+**EX097.** Listas longas demais e cheias de jargão, gestores sem saber das necessidades da equipe e revisões em épocas de muito trabalho.
+
+**EX098.** A consciência de como seu próprio papel na Elmfield pode moldar o que os gestores disseram e o que ela percebeu.
+
+**EX099.** Porque mostrar as opiniões contrárias torna os achados qualitativos mais honestos e convincentes.
+
+**EX100.** O Corbridge usa um provedor de serviços gerenciados; a Elmfield tem um líder de TI interno.
+
+**EX101.** Porque uma contagem maior pode refletir melhor relato, e não segurança pior.
+
+**EX102.** Responsabilização mais fraca, porque a equipe supõe que o provedor cuida de tudo.
+
+**EX103.** Listas mais curtas em linguagem simples, um guia de papéis, revisões fora do fechamento do mês e inclusão da lista de desligamentos.
+
+**EX104.** Porque as revisões anteriores podem já ter removido a maior parte dos acessos excessivos.
+
+**EX105.** Manter o processo antigo disponível como alternativa.
+
+**EX106.** Contas individuais para cada membro da diretoria.
+
+**EX107.** Quatro de cinco.
+
+**EX108.** Para construir a capacidade do próprio grupo, em vez de criar dependência dela.
+
+**EX109.** Declarações dos responsáveis e questionários.
+
+**EX110.** Filtragem melhor ou menos relatos, não necessariamente menos phishing.
+
+**EX111.** Limitou-a ao compartilhamento de arquivos, já que o fornecedor faz o backup do sistema habitacional.
+
+**EX112.** Porque as perguntas mostram onde o desenho ainda não está claro.
+
+**EX113.** A permissão chamada escalonamento de caso.
+
+**EX114.** Para que os resultados possam ser comparados com justiça aos trimestres anteriores.
+
+**EX115.** De oito de doze gestores para onze de doze.
+
+**EX116.** De catorze dias para seis.
+
+**EX117.** Porque um trimestre mais calmo e o fato de os gestores saberem que eram estudados também poderiam explicá-la, com só doze gestores e um trimestre.
+
+**EX118.** Spears e Barki (2010).
+
+**EX119.** Explicando suas notas reflexivas e o uso de um segundo codificador.
+
+**EX120.** Um piloto da abordagem redesenhada.
 
 <a id="references"></a>
 ## Referências
