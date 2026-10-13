@@ -25,7 +25,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 | Parte | Capítulos |
 |---|---|
-| Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](../../en/book/MANUSCRIPT.md#ch-04) · [5](../../en/book/MANUSCRIPT.md#ch-05) · [6](../../en/book/MANUSCRIPT.md#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) |
+| Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) |
 | Seguridad de la IA y del aprendizaje automático | [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
 | Proyecto, despliegue y proyecto final | [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
@@ -258,7 +258,198 @@ Programar alrededor de los modelos significa validar y codificar todo lo que pas
 
 ### Siga estudiando — capítulo 03 de 30
 
-[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Modelos de datos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) describir las estructuras de datos que usan los sistemas de IA: tablas, documentos, *embeddings*; (2) explicar los índices vectoriales y sus propiedades de seguridad; (3) aplicar control de acceso a los datos usados para la recuperación; y (4) clasificar la sensibilidad de los datos.
+
+### 4.1 Tipos de datos
+
+Los sistemas de IA usan tablas relacionales (pedidos, clientes), documentos (políticas, páginas de productos, correos electrónicos), conjuntos de entrenamiento (ejemplos etiquetados) y *embeddings*: listas de números que representan el significado y que se almacenan en índices vectoriales para la recuperación. Ask Brightwell usa tres de ellos: las tablas de pedidos y de clientes mediante la herramienta de pedidos, las páginas de políticas y de productos mediante la recuperación, y sus *embeddings* en el índice vectorial. ReturnGuard añade un conjunto de entrenamiento de devoluciones pasadas, etiquetado por el personal. Cada uno tiene responsables y una sensibilidad distintos, que el inventario registra más adelante.
+
+### 4.2 Índices vectoriales
+
+La generación aumentada por recuperación (RAG) convierte los documentos en *embeddings*, almacena los vectores y, en el momento de la consulta, encuentra los más cercanos para incluirlos en el *prompt*. Problemas de seguridad: el índice puede mezclar documentos con permisos distintos; los *embeddings* pueden filtrar información sobre el texto que codifican; y cualquiera que pueda añadir documentos puede influir en las respuestas. OWASP los recoge como LLM08 Vector and Embedding Weaknesses (debilidades de vectores y *embeddings*). El índice de Ask Brightwell mostró el primer problema: una hoja de cálculo de márgenes de proveedores, subida por alguien, estaba en el mismo índice que las páginas públicas de productos, de modo que una pregunta de un cliente sobre descuentos la recuperó.
+
+### 4.3 Control de acceso en la recuperación
+
+Almacene cada fragmento con metadatos: responsable, público destinatario, sensibilidad. En el momento de la consulta, filtre según los permisos de quien llama antes de pasar los fragmentos al modelo; mejor aún, mantenga índices separados para públicos distintos. Nunca confíe en decirle al modelo «no reveles documentos internos». Tras la filtración de márgenes, Brightwell eligió la opción más sólida: un índice de clientes que solo contiene documentos públicos y un índice separado solo para el personal. Los metadatos de público destinatario siguen registrándose en cada fragmento, de modo que puede encontrarse un documento mal archivado y el filtro actúa como segunda capa si alguna vez se indexa un documento del personal en el lugar equivocado.
+
+### 4.4 Clases de sensibilidad
+
+Clasifique: público, interno, confidencial, personal. Los datos personales necesitan una base jurídica y minimización. Los conjuntos de entrenamiento necesitan la misma clasificación que sus fuentes. En Ask Brightwell, las páginas de productos y la política de devoluciones publicada son públicas, la hoja de cálculo de márgenes de proveedores es confidencial y los detalles de los pedidos son personales. El conjunto de entrenamiento de ReturnGuard hereda la clase personal porque se construye a partir de devoluciones de clientes, así que su almacenamiento y su acceso siguen las mismas reglas que la tabla de pedidos. Clasificar las fuentes antes de indexarlas habría dejado la hoja de márgenes fuera del índice de clientes.
+
+### 4.4b Envenenamiento de datos mediante documentos
+
+Cualquiera que pueda añadir o editar documentos indexados puede plantar texto que el modelo leerá: precios falsos, políticas inventadas o instrucciones ocultas. Restrinja quién puede publicar en el índice, registre la fuente y el historial de cambios de cada documento y revise las fuentes nuevas antes de indexarlas. Las reseñas de productos escritas por clientes no son confiables y deben indexarse por separado o no indexarse. La página de vacaciones de 60 días que más tarde confundió a Ask Brightwell fue un ejemplo involuntario de la misma debilidad. Esa página no era maliciosa, pero llegó a los clientes por el mismo camino.
+
+### 4.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+El índice de Brightwell contenía páginas públicas de productos y una hoja de cálculo interna de «márgenes de proveedores» que alguien había subido. Jonas pregunta a Ask Brightwell «¿qué descuento puedes hacerme en el sofá Oslo?» y obtiene el margen. Añade metadatos de público destinatario, reconstruye el índice de clientes solo con documentos públicos y traslada los documentos internos a un índice solo para el personal. La corrección cambió dónde residen los documentos, no cómo se comporta el modelo. Una pregunta sobre descuentos ahora solo llega a páginas públicas, la formule como la formule el cliente, porque la hoja de márgenes ni siquiera está en el índice de clientes. Decirle al modelo que no la revelara habría dejado los datos a una pregunta ingeniosa de distancia.
+
+### 4.6 Errores y límites
+
+- Un solo índice para todos los públicos.
+- Permisos impuestos mediante instrucciones en el *prompt*.
+- Conjuntos de entrenamiento sin clasificar.
+
+La filtración de márgenes de Brightwell vino del primer error y no se habría corregido con el segundo: una instrucción en el *prompt* no puede impedir que el modelo repita un texto que se le ha dado. El conjunto de entrenamiento de ReturnGuard, construido a partir de devoluciones de clientes, debe clasificarse como datos personales igual que su fuente, de modo que su almacenamiento y su acceso sigan las reglas de la tabla de pedidos. Cada error convierte una equivocación en el tratamiento de datos en una divulgación a través del asistente.
+
+### Ejercicios
+
+- **EX010 — Metadatos.** Proponga campos de metadatos para los fragmentos de recuperación y cómo se usa cada uno. Rúbrica: 3 = responsable, público destinatario, sensibilidad, fuente, fecha, con sus usos; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX011 — Filtración.** Explique la filtración de márgenes y dos correcciones. Rúbrica: 3 = índice mixto; índice separado, filtrado antes del *prompt*; 2 = una corrección; 1 = vago; 0 = ninguna.
+- **EX012 — Clasificación.** Clasifique cinco conjuntos de datos de Brightwell por sensibilidad. Rúbrica: 3 = cinco correctos; 2 = cuatro; 1 = dos o tres; 0 = menos.
+
+### Síntesis
+
+Los modelos de datos de la IA incluyen documentos y *embeddings*; la seguridad depende de etiquetar los datos, filtrar por permisos antes de la recuperación y no dejar nunca que los *prompts* sustituyan al control de acceso.
+
+### Siga estudiando — capítulo 04 de 30
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Alfabetización en seguridad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) usar la confidencialidad, la integridad y la disponibilidad para describir los riesgos de la IA; (2) interpretar correctamente amenaza, vulnerabilidad y riesgo; (3) conocer los principales marcos de seguridad de la IA; y (4) explicar la práctica autorizada.
+
+### 5.1 La tríada CIA aplicada a la IA
+
+Confidencialidad: los datos de entrenamiento, los *prompts*, los *prompts* de sistema y los registros de clientes no deben filtrarse. Integridad: las salidas y las acciones del modelo no deben poder manipularse, ya sea mediante inyección, envenenamiento o entradas adversarias. Disponibilidad: los servicios no deben poder agotarse ni inutilizarse. NIST AI 100-2 E2025 usa objetivos similares (disponibilidad, integridad, privacidad) para clasificar los ataques. En Ask Brightwell, los tres objetivos se corresponden con tres pruebas: si un cliente puede ver el pedido de otro, si un texto plantado puede hacer que el asistente inicie una devolución y si una avalancha de peticiones puede agotar el presupuesto de *tokens*. Cada capítulo posterior añade un control para uno de ellos.
+
+### 5.2 Vocabulario
+
+Una amenaza es una causa posible de daño (un estafador). Una vulnerabilidad es una debilidad (se le puede ordenar al asistente que inicie devoluciones para otras personas). El riesgo combina probabilidad e impacto. Un control reduce el riesgo. Ser precisos ayuda a los equipos a ponerse de acuerdo sobre qué corregir. En el caso de Brightwell, la consulta de pedidos entre clientes distintos era una vulnerabilidad; un estafador que busca reembolsos es la amenaza; el servicio de políticas es el control. Mantener separadas estas palabras evita que un equipo llame vulnerabilidad al estafador o amenaza al modelo, lo que confunde sobre quién debe actuar. También ayuda al redactar un informe de hallazgo, porque cada parte tiene un lector distinto.
+
+### 5.3 Marcos
+
+El NIST AI RMF (AI 100-1) organiza el trabajo sobre el riesgo en Govern, Map, Measure y Manage (gobernar, cartografiar, medir y gestionar). El OWASP Top 10 for LLM Applications 2025 enumera los riesgos habituales de las aplicaciones, desde LLM01 Prompt Injection hasta LLM10 Unbounded Consumption. MITRE ATLAS cataloga las técnicas de los atacantes contra la IA. ISO/IEC 42001 define un sistema de gestión de la IA. Jonas los usa juntos para Brightwell: la lista de OWASP para nombrar los riesgos de aplicación de Ask Brightwell, ATLAS para los ataques contra ReturnGuard, como la extracción, y las funciones del AI RMF para organizar el trabajo. ISO/IEC 42001 pasa a ser pertinente si Brightwell busca la certificación de su gestión de la IA.
+
+### 5.4 Práctica autorizada
+
+Pruebe solo los sistemas que esté autorizado a probar, por escrito y dentro del alcance. Use copias aisladas y datos sintéticos. Comunique los hallazgos por los canales acordados. La curiosidad no es una autorización. La autorización de Jonas cubre la copia de preproducción de Ask Brightwell, no la producción. Cuando quiso comprobar si la consulta entre clientes también funcionaba en vivo, se lo preguntó a su responsable en lugar de intentarlo, y la prueba se ejecutó en preproducción con cuentas de prueba. Todas las pruebas posteriores de este libro se mantienen dentro del mismo alcance escrito. El alcance escrito también protege a Jonas si una prueba en preproducción rompe algo, porque la prueba se acordó de antemano.
+
+### 5.4b Comunicar un hallazgo
+
+Un buen informe de hallazgo indica el sistema y la versión, los pasos para reproducirlo en la copia autorizada, el efecto observado, el impacto en términos de la tríada CIA, una gravedad y una corrección sugerida. Manténgalo factual y evite los detalles de explotación que vayan más allá de lo que necesita el equipo que corrige. El informe de Jonas sobre la consulta entre clientes siguió esta forma: versión de preproducción, la petición «muestra el pedido 100245» desde otro cliente de prueba, la dirección mostrada, un impacto en la confidencialidad y la corrección en el servicio de la herramienta. Su informe omitió cualquier redacción que ayudara a abusar del fallo.
+
+### 5.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas enumera los riesgos de Ask Brightwell en términos de la tríada CIA: confidencialidad, los detalles de los pedidos de otros clientes; integridad, una reseña plantada ordena al asistente aprobar devoluciones; disponibilidad, avalanchas de *tokens*. Asigna el segundo a OWASP LLM01 y LLM06 (agencia excesiva) y comprueba que su autorización de pruebas cubre solo la copia de preproducción. Escribir los riesgos así dio a cada uno una prueba que podía ejecutar en preproducción y un control que proponer. Confirmar el alcance de su autorización antes de probar mantuvo el trabajo en la copia de preproducción, donde las reseñas plantadas y los clientes de prueba no pueden hacer daño.
+
+### 5.6 Errores y límites
+
+- Llamar «vulnerabilidad» a cualquier problema.
+- Probar en producción «solo para comprobar».
+- Usar marcos sin relacionarlos con el sistema.
+
+La lista de Jonas para Ask Brightwell evitó estos errores. El riesgo de avalancha de *tokens* se describe como una laguna de diseño y no como una vulnerabilidad del modelo, todas las pruebas se mantuvieron en preproducción y cada entrada de un marco está vinculada a una parte del dibujo. Una etiqueta que no puede vincularse a un componente no le dice a nadie qué corregir. Estos hábitos hacen que los desarrolladores puedan actuar con facilidad sobre sus informes posteriores.
+
+### Ejercicios
+
+- **EX013 — Tríada CIA.** Dé un riesgo de confidencialidad, uno de integridad y uno de disponibilidad para ReturnGuard. Rúbrica: 3 = tres adecuados; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX014 — Vocabulario.** Etiquete la amenaza, la vulnerabilidad, el riesgo y el control en un escenario breve. Rúbrica: 3 = los cuatro correctos; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX015 — Autorización.** Un amigo le pide que pruebe el *chatbot* de su empresa. ¿Qué debe existir primero? Rúbrica: 3 = autorización escrita del propietario, alcance, reglas, canal de comunicación; 2 = tres; 1 = uno; 0 = hacerlo sin más.
+
+### Síntesis
+
+La alfabetización en seguridad aporta palabras compartidas —tríada CIA, amenaza, vulnerabilidad, riesgo, control—, marcos compartidos y la disciplina de la práctica autorizada.
+
+### Siga estudiando — capítulo 05 de 30
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Sistemas operativos y virtualización
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar los procesos, los usuarios, los permisos de archivos y el aislamiento; (2) usar contenedores y máquinas virtuales para aislar los componentes de IA; (3) confinar en un entorno aislado el código generado o ejecutado por herramientas de IA; y (4) proteger los archivos de modelos en reposo.
+
+### 6.1 Procesos y permisos
+
+Todo servicio se ejecuta como un proceso bajo una cuenta de usuario. Si el orquestador se ejecuta como *root*, un fallo se convierte en un compromiso total del sistema. Ejecute cada componente con su propio usuario de bajo privilegio y con acceso de lectura solo a los archivos que necesita. En Ask Brightwell, el orquestador, el servicio de recuperación y los servicios de herramientas se ejecutan cada uno con su propia cuenta, de modo que un fallo en el orquestador no puede leer directamente la base de datos de pedidos. La cuenta de la herramienta de pedidos puede leer los pedidos pero no modificarlos, y la cuenta de la herramienta de devoluciones puede crear devoluciones pero no leer otras tablas. Jonas lo confirma en preproducción enviando una consulta a la tabla de pedidos con la cuenta del orquestador y comprobando que la base de datos la rechaza.
+
+### 6.2 Contenedores y máquinas virtuales
+
+Los contenedores empaquetan un servicio con sus dependencias y lo aíslan mediante funciones del núcleo; las máquinas virtuales aíslan con más fuerza, con un núcleo separado. Ejecute los servidores de modelos, la recuperación y los servicios de herramientas en contenedores separados con imágenes mínimas, sistemas de archivos de solo lectura cuando sea posible y sin acceso de red innecesario. En CodePilot, el servidor del modelo autoalojado se ejecuta en su propio contenedor con un sistema de archivos de solo lectura, de modo que un servidor comprometido no puede reescribir sus archivos de modelo. Los servicios de herramientas de Ask Brightwell están en contenedores separados con reglas de red que solo permiten que los llame el orquestador. Las imágenes separadas también dejan claro qué componente necesita qué secreto.
+
+### 6.3 Aislamiento del código generado
+
+Los asistentes de programación y los agentes con una herramienta de «ejecutar código» ejecutan texto producido por un modelo, un texto en el que un atacante puede influir. Ejecute ese código en un entorno aislado desechable: sin red por defecto, sin acceso a secretos, con límites de CPU y de memoria, con un límite de tiempo y destruido tras su uso. El botón original «ejecutar pruebas» de CodePilot incumplía todas estas reglas: ejecutaba el código generado en un servidor de compilación compartido que tenía claves de despliegue. El nuevo diseño arranca un contenedor nuevo para cada ejecución, sin red, sin secretos y con un límite de tiempo, y lo destruye después. Un comentario plantado todavía puede moldear el código, pero el código ya no puede llegar a nada valioso.
+
+### 6.4 Archivos de modelos en reposo
+
+Los archivos de pesos de un modelo pueden sustituirse o manipularse. Algunos formatos (por ejemplo, los archivos basados en *pickle* de Python) pueden ejecutar código al cargarse. Prefiera formatos que solo almacenan tensores, verifique los *hashes* antes de cargar y restrinja quién puede escribir en los directorios de modelos.
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Salida esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+Para el modelo autoalojado de CodePilot, Brightwell guarda el *hash* esperado de cada archivo en el control de versiones y el cargador se niega a arrancar si un archivo difiere. Solo la cuenta de la cadena de despliegue puede escribir en el directorio de modelos, y registra cada escritura, de modo que un archivo sustituido quedaría a la vez bloqueado y visible.
+
+### 6.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+CodePilot ofrece un botón «ejecutar pruebas» que ejecuta el código generado en un servidor de compilación compartido con acceso a claves de despliegue. Jonas muestra en una copia que un comentario en un archivo de código abierto descargado puede llevar al asistente a escribir código que imprime las variables de entorno. Traslada la ejecución a un contenedor desechable sin red ni secretos y añade comprobaciones de *hash* para los archivos del modelo autoalojado; el laboratorio muestra cómo se detecta un archivo modificado. El comentario plantado no necesitó explotar nada: solo tuvo que persuadir al asistente, y el acceso del servidor de compilación hizo el resto.
+
+### 6.6 Errores y límites
+
+- Servicios que se ejecutan como *root*.
+- Ejecutar código generado por el modelo en máquinas compartidas.
+- Cargar archivos de modelos sin comprobaciones de integridad.
+
+El diseño original de CodePilot tenía el segundo error y el orquestador anterior de Ask Brightwell se arriesgaba al primero. Los cambios de este capítulo dan a cada servicio su propia cuenta, trasladan el código generado a un contenedor desechable y comprueban los *hashes* de los archivos de modelos antes de cargarlos. Cada error es barato de evitar cuando se construye un servicio y caro de corregir cuando otros sistemas ya dependen de él. La cadena de despliegue ejecuta ahora una comprobación para cada error en cada despliegue.
+
+### Ejercicios
+
+- **EX016 — Mínimo privilegio.** Enumere los permisos que necesita y los que no necesita el servicio de recuperación. Rúbrica: 3 = leer el índice, red solo hacia el orquestador; sin escritura, sin secretos; 2 = parcial; 1 = vago; 0 = ninguno.
+- **EX017 — Entorno aislado.** Especifique cinco ajustes del entorno aislado para la herramienta de código de un agente. Rúbrica: 3 = sin red, sin secretos, CPU/memoria, límite de tiempo, desechable; 2 = cuatro; 1 = dos; 0 = ninguno.
+- **EX018 — Laboratorio de *hashes*.** ¿Qué debe ocurrir cuando el laboratorio informa MISMATCH para model.bin? Rúbrica: 3 = negarse a cargarlo, alertar, investigar el origen; 2 = dos; 1 = uno; 0 = cargarlo de todos modos.
+
+### Síntesis
+
+El aislamiento del sistema operativo limita lo que puede hacer un componente de IA comprometido: cuentas de mínimo privilegio, contenedores, entornos aislados desechables y archivos de modelos verificados.
+
+### Siga estudiando — capítulo 06 de 30
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
 
 <a id="worked-results"></a>
 
@@ -291,6 +482,39 @@ pass to tool service (which rechecks ownership)
 **EX008.** HTML: escape según el contexto. SQL: consultas parametrizadas. *Shell*: evite por completo el *shell* y pase los argumentos como una lista a un programa fijo, con una lista de permitidos de valores.
 
 **EX009.** Con eps 1,0, la exactitud (0,505) está cerca del azar: cambios pequeños y elegidos deliberadamente invierten aproximadamente la mitad de las decisiones. Es un modelo lineal de juguete, pero muestra que no se puede confiar en las salidas ante una entrada adversaria.
+
+**EX010.**
+- responsable (*owner*): a quién preguntar por el contenido;
+- público destinatario (público/personal): filtra la recuperación;
+- sensibilidad: bloquea los fragmentos restringidos;
+- fuente: procedencia para auditorías y comprobaciones de envenenamiento;
+- fecha de actualización: elimina el contenido obsoleto.
+
+**EX011.** Las consultas de los clientes buscaban en un índice mixto que incluía la hoja interna de márgenes, y el modelo la citó. Correcciones: un índice de clientes separado y solo público, y filtrar por público destinatario antes de que los fragmentos entren en el *prompt*.
+
+**EX012.**
+- Páginas de productos: públicas.
+- Política de devoluciones: pública.
+- Márgenes de proveedores: confidenciales.
+- Pedidos y direcciones de clientes: personales.
+- Datos de entrenamiento de ReturnGuard, derivados de los pedidos de clientes: personales y confidenciales.
+
+**EX013.** Confidencialidad: filtración del historial de devoluciones de los clientes a través de las explicaciones. Integridad: estafadores que moldean las devoluciones para evitar las alertas, o que envenenan las etiquetas. Disponibilidad: caída del servicio de puntuación, de modo que las devoluciones se atascan.
+
+**EX014.** Escenario: «Un estafador (amenaza) puede ordenar al asistente que inicie devoluciones de pedidos de otros clientes porque la herramienta carece de comprobaciones de titularidad (vulnerabilidad). Esto podría causar pérdidas de unos pocos miles de euros al mes (riesgo). Una comprobación de titularidad en el servicio de la herramienta (control) lo elimina».
+
+**EX015.** Una autorización escrita de alguien que sea propietario del sistema, un alcance definido y reglas de enfrentamiento (copias, datos, horarios) y un canal de comunicación acordado. Si no, rechace el encargo.
+
+**EX016.** Necesita acceso de lectura a los archivos del índice y acceso de red solo hacia el orquestador. No necesita acceso de escritura al índice, credenciales de la base de datos, salida a internet ni secretos de otros servicios.
+
+**EX017.**
+- Sin red.
+- Sin secretos ni credenciales montados.
+- Topes de CPU y de memoria.
+- Un límite de tiempo de 60 segundos o menos.
+- Un contenedor nuevo por ejecución, destruido después, con una imagen base de solo lectura.
+
+**EX018.** Negarse a cargar el archivo, alertar al responsable y a seguridad, compararlo con la fuente de confianza, revisar los registros de acceso a model.bin y volver a desplegar a partir de un artefacto verificado.
 
 <a id="references"></a>
 
