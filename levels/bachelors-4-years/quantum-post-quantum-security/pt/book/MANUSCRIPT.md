@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Fundamentos para Decisões Defensáveis
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–40 (EX061–EX080) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito; os exercícios EX001–EX080 (dois por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: estudantes de segurança e computação em sentido amplo que precisam de fundamentos duradouros — matemática, sistemas, redes, conceitos criptográficos, evidências e ética — e, depois, de um primeiro estudo cuidadoso da ameaça quântica e da criptografia pós-quântica (PQC). Conhecimento de entrada: matemática do ensino médio, computação básica e comunicação escrita.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta e constrói migrações; os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) as estudam empiricamente. **Este livro constrói os fundamentos e o hábito de comparar alternativas com hipóteses e evidências explícitas.**
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -53,8 +53,16 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 28. [Segurança quântica e pós-quântica: análise de falhas](#ch-28)
 29. [Segurança quântica e pós-quântica: operações](#ch-29)
 30. [Laboratório II](#ch-30)
-
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+31. [Segurança quântica e pós-quântica: casos avançados](#ch-31)
+32. [Segurança quântica e pós-quântica: interfaces interdisciplinares](#ch-32)
+33. [Métodos de pesquisa II](#ch-33)
+34. [Projeto comparativo](#ch-34)
+35. [Proposta de trabalho final](#ch-35)
+36. [Prática de campo ou comunitária](#ch-36)
+37. [Seminário de revisão de evidências](#ch-37)
+38. [Implementação do trabalho final](#ch-38)
+39. [Avaliação do trabalho final](#ch-39)
+40. [Monografia e apresentação](#ch-40)
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2221,16 +2229,757 @@ A autenticação pós-quântica multiplica os bytes do handshake; modelos simple
 <!-- cyberabc:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 40
 
-[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Segurança quântica e pós-quântica: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar migrações com dispositivos restritos, assinaturas de longo prazo e parceiros; (2) aplicar a gestão de assinaturas com estado; (3) planejar a proteção de arquivos de longo prazo; e (4) raciocinar sobre as dependências de terceiros.
+
+### 31.1 Dispositivos restritos
+
+Os terminais de cartão, os caixas eletrônicos e os controladores prediais têm memória limitada, processadores lentos e vidas úteis longas. O ML-KEM é rápido o bastante para a maioria, mas os tamanhos das chaves e das assinaturas podem exceder os buffers, e as ROMs de boot que verificam apenas RSA não podem mudar. O plano realista combina atualizações de firmware onde possível, gateways que terminam os protocolos pós-quânticos na frente dos dispositivos que não conseguem fazê-lo e requisitos de compras para que os substitutos estejam prontos.
+
+Na HCU, os 3.000 terminais de cartão são o caso mais claro. Cada modelo precisa de um registro do que o seu firmware consegue verificar e de quanta memória tem, para que o plano possa dizer quais terminais serão atualizados e quais ficarão atrás de um gateway até serem substituídos.
+
+### 31.2 Assinaturas com estado na prática
+
+O LMS e o XMSS ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) exigem que cada chave de uso único seja usada uma vez. O estado precisa sobreviver a quedas, backups e failover de HSM sem retroceder. A SP 800-208 exige que esses esquemas sejam gerados e usados dentro de módulos criptográficos de hardware e proíbe exportar as chaves privadas, o que reflete o perigo da duplicação do estado. As organizações que os usam planejam com antecedência o número total de assinaturas e monitoram a capacidade restante.
+
+Esgotar as chaves de uso único interrompe completamente a assinatura, então o planejamento de capacidade faz parte do projeto.
+
+### 31.3 Assinaturas e arquivos de longo prazo
+
+Uma hipoteca assinada com ECDSA hoje ainda precisa ser verificável daqui a 30 anos. Se um computador quântico puder falsificar o ECDSA mais tarde, um falsificador poderia antedatar documentos. Os sistemas de arquivo tratam isso com carimbos de tempo e registros de evidência renovados com algoritmos mais fortes antes que os antigos enfraqueçam; a renovação prova que o documento existia enquanto a sua assinatura original ainda era confiável. Os arquivos cifrados precisam de um cuidado semelhante: recifrar com chaves novas não ajuda se os textos cifrados antigos ou as chaves envelopadas já tiverem sido copiados.
+
+Para a HCU, isso significa que o plano do arquivo cobre as assinaturas, os carimbos de tempo e as chaves em conjunto.
+
+### 31.4 Parceiros e fornecedores
+
+As redes de pagamento, os provedores de serviços compartilhados e os reguladores definem requisitos que a HCU não consegue mudar sozinha. Os planos de migração listam as dependências de parceiros, pedem roteiros e incluem cláusulas contratuais de suporte a algoritmos e de divulgação do inventário.
+
+Onde um parceiro ainda não consegue dizer quando vai suportar algoritmos pós-quânticos, o plano registra isso como uma dependência em aberto, com um responsável e uma data para perguntar de novo, em vez de supor que o parceiro estará pronto a tempo. A HCU acompanha assim a sua rede de pagamentos e o seu provedor do sistema bancário central, já que os dois controlam fluxos que ela não consegue mudar sozinha.
+
+### 31.5 Exemplo resolvido
+
+O fornecedor dos caixas eletrônicos da HCU oferece uma atualização de firmware que suporta o ML-KEM no enlace entre o caixa eletrônico e o switch, mas não a assinatura pós-quântica do firmware, porque a ROM de boot verifica apenas RSA. Decisão: implantar a atualização da troca de chaves para proteger o tráfego relacionado aos PINs (de vida curta, mas sensível), aceitar o risco residual de falsificação posterior no firmware até a substituição em cinco anos e exigir a verificação de boot com LMS ou ML-DSA na licitação da substituição.
+
+O risco residual é escrito no registro de riscos com um responsável, para que seja revisado todo ano, em vez de esquecido até a chegada da substituição.
+
+### 31.6 Atividade prática
+
+Escreva um plano de uma página para o arquivo de hipotecas de 30 anos da HCU, cobrindo assinaturas, carimbos de tempo, cifração e envelopamento de chaves.
+
+Diga quais documentos precisam de proteção pelo período inteiro, quando os registros de evidência serão renovados, como a renovação é acionada e quem é o responsável. Explique como o plano lida com os textos cifrados e as chaves envelopadas que podem já ter sido copiados, já que a recifração sozinha não os ajuda. Termine com as três primeiras ações que a HCU deveria tomar este ano e a evidência que cada uma vai produzir. Limite-se a uma página.
+
+### 31.7 Erros comuns e limites
+
+- Usar assinaturas com estado em software sem estado protegido.
+- Supor que a recifração corrige a exposição passada.
+- Deixar as dependências de parceiros fora do plano.
+- Tratar um gateway na frente de dispositivos antigos como permanente, e não como uma ponte até a substituição.
+- Renovar os carimbos de tempo do arquivo apenas depois que o algoritmo antigo já está em dúvida, quando a renovação já não consegue provar nada.
+- Planejar o número total de assinaturas com estado sem prever o uso em testes, backup e failover.
+- Comprar dispositivos substitutos sem a verificação de boot pós-quântica na licitação.
+
+### Exercícios
+
+- **EX061 — Retrocesso do estado.** Descreva o que acontece se um signatário LMS for restaurado do backup de ontem e assinar de novo. Rubrica: 3 = reutilização da chave de uso único, risco de falsificação, prevenção.
+- **EX062 — Renovação do arquivo.** Explique por que a renovação dos carimbos de tempo precisa ocorrer antes que o algoritmo original seja enfraquecido. Rubrica: 3 = prova de existência enquanto a confiança se mantinha.
+
+### Síntese
+
+Os dispositivos restritos, as assinaturas com estado, os arquivos de longo prazo e as dependências de parceiros exigem planos que combinem atualizações, gateways, compras, renovação e contratos.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — capítulo 31 de 40
+
+[← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Segurança quântica e pós-quântica: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) conectar a migração para PQC ao direito, às finanças, às compras e à comunicação; (2) traduzir o risco técnico para as decisões do conselho; (3) estimar os fatores de custo da migração; e (4) projetar o envolvimento das partes interessadas.
+
+### 32.1 Direito e regulação
+
+Os reguladores esperam cada vez mais que as instituições financeiras gerenciem o risco criptográfico. Os contratos definem períodos de confidencialidade que se tornam o *x* da desigualdade de Mosca. As regras de prova para documentos assinados moldam o projeto dos arquivos. Um advogado e um criptógrafo olhando para o mesmo arquivo de hipotecas veem dois lados de um mesmo requisito.
+
+Reunir as duas visões cedo evita um projeto tecnicamente sólido em que não se possa confiar numa disputa. Na HCU, a equipe jurídica fornece os períodos de confidencialidade de cada classe de dados, e esses períodos se tornam as entradas do modelo de priorização, em vez de estimativas feitas apenas pela equipe técnica.
+
+### 32.2 Finanças e compras
+
+Os fatores de custo da migração incluem o esforço do inventário, as atualizações de software, a substituição de hardware, os testes, o treinamento da equipe e a coordenação com os parceiros. Alinhar a substituição de hardware aos ciclos naturais de renovação reduz o custo; as cláusulas de compras que exigem agilidade de algoritmos, suporte pós-quântico e inventários criptográficos reduzem o custo futuro. As equipes de finanças precisam de faixas e hipóteses, e não de números únicos.
+
+Uma faixa que mostra o efeito de um fornecedor atrasado ou de uma substituição antecipada é mais útil que um número preciso que se revela errado. A estimativa da HCU separa os custos que ela controla, como testes e treinamento, dos custos definidos pelos parceiros e fornecedores.
+
+### 32.3 Comunicação e governança
+
+Os conselhos precisam de decisões de uma página: exposição, opções, recomendação, faixa de custo, risco residual. A equipe precisa saber o que muda para ela. Os associados precisam de tranquilidade sem alarme. Evite mensagens baseadas no medo; descreva o que está sendo protegido e por que o momento é prudente.
+
+Os mesmos fatos podem servir a cada público se o nível de detalhe mudar. O documento da HCU para o conselho sobre a migração cabe numa página, com a evidência técnica anexada para quem a quiser. O aviso aos associados, se algum dia for necessário, diz o que está protegido e que nada é exigido dos associados.
+
+### 32.4 Exemplo resolvido
+
+O líder de segurança da HCU apresenta ao conselho: "O nosso arquivo de hipotecas de 30 anos está exposto ao risco do tráfego gravado sob qualquer cronograma quântico plausível. Opção A: troca de chaves híbrida nas VPNs das agências em até 12 meses, custo de UM 180–260 mil (unidades monetárias sintéticas). Opção B: esperar a substituição completa dos equipamentos em quatro anos, custo incluído no orçamento de renovação, mas com mais quatro anos de exposição. Recomendação: A, mais requisitos pós-quânticos na licitação da renovação. Risco residual: assinaturas clássicas nos carimbos de tempo do arquivo, tratadas no plano do arquivo." O conselho aprova A com um relatório trimestral.
+
+### 32.5 Atividade prática
+
+Prepare um mapa das partes interessadas da migração da HCU: jurídico, finanças, compras, operações de TI, fornecedores, parceiros, associados e reguladores, com o que cada um precisa e fornece.
+
+Marque quais grupos precisam aprovar as decisões, quais precisam ser consultados e quais só precisam ser informados. Anote qualquer grupo cuja cooperação esteja no caminho crítico, como a rede de pagamentos, e diga como e quando ele será contatado. Depois compare o seu mapa com o de um colega e discuta qualquer grupo que um de vocês tenha esquecido. Mantenha o mapa atualizado conforme o plano mudar.
+
+### 32.6 Erros comuns e limites
+
+- Apresentar detalhes técnicos sem uma decisão.
+- Estimativas de custo com um único número.
+- Ignorar as compras como controle.
+- Deixar o jurídico e as compras de fora até que o projeto técnico esteja concluído.
+- Tratar a comunicação com os associados como algo secundário.
+- Escrever documentos para o conselho que listam riscos, mas não pedem uma decisão.
+- Supor que os reguladores querem o mesmo detalhe que os engenheiros.
+- Esquecer que os cronogramas dos parceiros podem ditar o ritmo.
+
+Cada um desses torna mais difícil financiar, aprovar ou executar um plano técnico sólido. Envolver esses grupos cedo custa pouco e evita retrabalho.
+
+### 32.7 Reguladores e auditores
+
+Os auditores vão pedir evidências, e não intenções: o inventário com a sua cobertura, o método de priorização, o plano aprovado e o progresso em relação a ele. Organizar o programa de migração de modo que esses artefatos existam como subprodutos do trabalho normal — a CBOM regenerada a cada trimestre, registros de decisão para cada escolha — torna as auditorias mais baratas e mais honestas do que preparar documentos especiais antes de cada revisão.
+
+Um relatório de progresso honesto inclui os itens atrasados e o porquê. A equipe de auditoria interna da HCU revisa a CBOM e os registros de decisão uma vez por ano e relata quaisquer lacunas ao comitê de riscos.
+
+### Exercícios
+
+- **EX063 — Slide para o conselho.** Escreva uma decisão de cinco linhas para o conselho sobre a migração da AC interna da HCU. Rubrica: 3 = exposição, opções, recomendação, faixa de custo, risco residual.
+- **EX064 — Cláusula de compras.** Redija duas cláusulas contratuais que apoiem a agilidade criptográfica. Rubrica: 3 = cláusulas específicas e exigíveis.
+
+### Síntese
+
+A migração para PQC é interdisciplinar: o direito define os tempos de vida, as finanças e as compras moldam o custo, e a governança transforma a análise em decisões.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — capítulo 32 de 40
+
+[← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar estudos comparativos com variáveis controladas; (2) tratar a incerteza das medições e a replicação; (3) analisar dados qualitativos de entrevistas; e (4) escrever uma seção de métodos que outras pessoas consigam repetir.
+
+### 33.1 Desenho comparativo
+
+As perguntas comparativas — "qual de duas configurações híbridas tem melhor desempenho nos enlaces das agências?" — precisam de variáveis controladas: o mesmo hardware, a mesma emulação de rede, as mesmas versões de cliente, ordem aleatorizada. Registre tudo o que poderia diferir. Prefira desenhos pareados, em que cada condição roda no mesmo conjunto de clientes, para que a variação entre clientes se cancele.
+
+Num laboratório, pequenas diferenças, como uma atualização em segundo plano numa máquina virtual, podem ser maiores que o efeito medido. Rode primeiro um piloto curto para verificar se a própria medição é estável antes de coletar os dados principais.
+
+### 33.2 Incerteza e replicação
+
+Relate as medianas e os percentis altos com intervalos de confiança; repita as execuções em dias diferentes; publique os scripts e as configurações. Um resultado que desaparece na replicação era ruído. Para eventos raros, como as falhas de handshake, planeje os tamanhos de amostra com antecedência, para que os limites de confiança sejam estreitos o bastante para sustentar a decisão.
+
+Declare os intervalos no texto, e não apenas num apêndice, para que os leitores vejam quão certo é cada resultado. Uma diferença menor que a variação entre execuções deve ser relatada como nenhuma diferença detectável, o que é, por si só, um achado útil para uma decisão de migração.
+
+### 33.3 Evidências qualitativas
+
+Muitas perguntas sobre a migração são organizacionais: por que uma equipe atrasou? o que os fornecedores dizem sobre os roteiros? As entrevistas semiestruturadas, codificadas por temas recorrentes, respondem a essas perguntas. Proteja os entrevistados com consentimento, anonimização e armazenamento seguro. Combine os achados qualitativos com as medições: as entrevistas podem explicar por que o fallback persiste em certas agências.
+
+As notas das entrevistas são analisadas com o mesmo cuidado que as medições: o esquema de codificação é registrado, e uma segunda pessoa codifica uma amostra para verificar a concordância. As citações são relatadas sem nomes nem detalhes que identifiquem uma agência ou uma pessoa.
+
+### 33.4 Seções de métodos
+
+Uma seção de métodos declara a pergunta, o desenho, o contexto, os participantes ou sistemas, o procedimento, as medidas, a análise e as limitações. O teste é a replicação: outro estudante conseguiria rodar de novo o seu estudo a partir do texto e obter resultados comparáveis?
+
+Escreva-a enquanto o estudo é feito, e não depois. Inclua as versões exatas do software, a configuração de qualquer emulação de rede e quantas execuções foram feitas. As limitações também pertencem a esta seção: nos estudos da HCU, a mais comum é que o laboratório não reproduz todos os dispositivos encontrados nas agências.
+
+### 33.5 Exemplo resolvido
+
+Um estudo da HCU compara handshakes híbridos ML-KEM-768 com handshakes X25519 clássicos em enlaces de agência emulados (RTT de 40 ms, 1 % de perda). Desenho pareado: 20 VMs cliente, cada uma rodando 500 handshakes por condição em ordem aleatória, repetidos em três dias. Resultado (sintético): mediana +0,8 ms (IC de 95 % 0,6–1,0), p99 +3,1 ms (IC 2,2–4,3). As entrevistas com cinco funcionários de TI das agências explicam que duas agências passam por um proxy antigo, que a emulação não incluía — uma limitação declarada e o próximo estudo.
+
+O achado do proxy se liga à implantação do Capítulo 29. Os scripts do estudo são guardados para que ele possa ser rodado de novo.
+
+### 33.6 Atividade prática
+
+Escreva uma seção de métodos para um estudo dos efeitos do tamanho da cadeia de certificados no aplicativo móvel da HCU, incluindo o raciocínio sobre o tamanho da amostra.
+
+Explique de quantos handshakes você precisa para detectar uma diferença que importa, quais dispositivos cliente e condições de rede você vai emular e como vai separar o efeito do tamanho da cadeia de outras mudanças. Declare que resultado levaria a HCU a manter o ECDSA e qual apoiaria uma mudança para o ML-DSA. Liste as limitações que você espera antes de coletar qualquer dado.
+
+### 33.7 Erros comuns e limites
+
+- Comparações não pareadas com clientes não controlados.
+- Relatar apenas médias para latências assimétricas.
+- Entrevistas sem consentimento ou anonimização.
+- Mudar duas variáveis ao mesmo tempo, de modo que o efeito não pode ser atribuído.
+- Rodar toda uma condição antes da outra, deixando que os efeitos da hora do dia se infiltrem.
+- Relatar os resultados de um dia como se fossem gerais.
+- Tirar conclusões de entrevistas apenas com a equipe mais entusiasmada.
+
+Cada um desses enfraquece a evidência da qual depende uma decisão de migração. A correção, em todos os casos, é planejar antes da coleta de dados. Escreva o plano primeiro.
+
+### Exercícios
+
+- **EX065 — Desenho pareado.** Explique por que o desenho pareado de 33.5 é mais forte do que rodar cada condição em clientes diferentes. Rubrica: 3 = redução da variância e confusão.
+- **EX066 — Checklist de métodos.** Liste os oito elementos de uma seção de métodos e dê um exemplo específico da HCU para dois deles. Rubrica: 3 = lista completa com exemplos.
+
+### Síntese
+
+As comparações controladas, as medições replicadas com incerteza, a investigação qualitativa ética e as seções de métodos replicáveis tornam confiável a pesquisa sobre a migração.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — capítulo 33 de 40
+
+[← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar duas ou mais abordagens de migração segundo critérios explícitos; (2) ponderar os critérios de forma transparente; (3) testar a sensibilidade da conclusão aos pesos e às hipóteses; e (4) apresentar uma recomendação defensável.
+
+### 34.1 Critérios e pesos
+
+As comparações precisam de critérios acordados com antecedência: proteção contra o HNDL, proteção contra a falsificação posterior, risco operacional, custo, tempo de implantação, agilidade para mudanças futuras e dependência de terceiros. Os pesos expressam as prioridades; publique-os para que os leitores possam discordar dos pesos, e não de julgamentos ocultos.
+
+Um critério que não pode ser pontuado com evidências deve ser reformulado ou descartado. Na HCU, os pesos foram definidos pelo responsável pelo risco depois de uma discussão com as operações e as finanças, e cada critério tem uma definição curta, para que dois avaliadores o leiam da mesma forma. A proteção contra o HNDL tem o maior peso por causa do arquivo de hipotecas.
+
+### 34.2 Pontuação e sensibilidade
+
+Pontue cada alternativa por critério numa escala simples, com evidências. Multiplique pelos pesos e some. Depois varie os pesos e as hipóteses principais (cronograma do CRQC, datas de entrega dos fornecedores) para ver se a classificação muda. Uma recomendação que se mantém com ponderações razoáveis é robusta; uma que se inverte com pequenas mudanças deve ser apresentada como uma decisão apertada.
+
+Registre cada pontuação com a sua fonte. Uma pontuação sem evidência por trás é um palpite e deve ser marcada como tal. As execuções de sensibilidade são escolhidas onde os revisores mais discordam, e não ao acaso, para que a análise responda às perguntas que as pessoas de fato estão fazendo.
+
+### 34.3 O projeto
+
+Os estudantes comparam, para a WAN das agências da HCU, três opções: (A) IKEv2 híbrido pelo firmware dos equipamentos, (B) chaves pré-compartilhadas pós-quânticas da RFC 8784 como camada provisória e (C) um novo produto SD-WAN com suporte híbrido nativo. As evidências vêm do modelo de sistema (Capítulo 21), das medições de laboratório (Capítulos 25 e 30) e das declarações dos fornecedores, rotuladas como tais.
+
+Cada opção é descrita com detalhe suficiente para que quem lê veja o que de fato mudaria numa agência. A comparação cobre todas as 40 agências, anotando onde o equipamento ou o enlace de uma agência difere do resto, porque uma exceção pode mudar qual opção é viável ali.
+
+### 34.4 Exemplo resolvido
+
+Pontuações sintéticas (1–5) com os pesos HNDL 0,35, risco operacional 0,2, custo 0,15, tempo 0,15, agilidade 0,15: A = 4,4,4,3,4 → 3,85; B = 3,3,5,5,2 → 3,45; C = 5,2,1,2,5 → 3,35. Sensibilidade: se o peso do tempo subir para 0,3 (tirando 0,15 do HNDL), B ultrapassa A por pouco (A 3,70 vs. B 3,75). A recomendação passa a ser "A como alvo; B como provisória nas agências onde o firmware atrasar".
+
+Os pesos foram acordados com o responsável pelo risco da HCU antes do início da pontuação, e a execução de sensibilidade foi escolhida porque o tempo de entrega foi o fator mais disputado na revisão. As agências que esperam o firmware são nomeadas no plano.
+
+### 34.5 Atividade prática
+
+Complete a comparação com as suas próprias pontuações e evidências; rode pelo menos duas variações de sensibilidade; escreva uma recomendação de uma página.
+
+Onde uma pontuação depender de uma declaração do fornecedor, rotule-a e diga como você a verificaria. Na recomendação, declare a opção, o motivo principal, o resultado de sensibilidade que poderia mudá-la e a primeira ação que a HCU deveria tomar. Mantenha a página legível para alguém que não vai abrir a tabela de pontuação. Depois peça a um colega que mude um peso e veja se a sua recomendação se mantém.
+
+### 34.6 Erros comuns e limites
+
+- Escolher os critérios depois da pontuação.
+- Tratar as alegações dos fornecedores como evidência medida.
+- Apresentar uma única classificação sem sensibilidade.
+- Usar critérios demais, de modo que cada um tem pouco peso e a pontuação vira ruído.
+- Contar duas vezes uma mesma preocupação com dois nomes, como custo e tempo quando os dois medem o mesmo atraso do fornecedor.
+- Pontuações sem evidência registrada.
+- Omitir a opção de não fazer nada por enquanto, que é uma escolha real com os seus próprios riscos.
+
+Revise a lista de critérios com alguém de fora do projeto antes de pontuar. Guarde anotações dessa revisão.
+
+### 34.7 Apresentando a comparação
+
+Mostre a tabela de pontuação, os pesos e os resultados de sensibilidade numa página, seguidos da evidência por trás de cada pontuação. Os leitores devem conseguir mudar um peso de cabeça e ver se a conclusão sobrevive. Onde uma pontuação se apoiar numa declaração do fornecedor, e não numa medição, marque-a, porque essas pontuações são as primeiras a revisitar quando o fornecedor entregar ou atrasar.
+
+Guarde o histórico de versões da tabela. Quando um fornecedor entregar atrasado ou adiantado, atualize a pontuação afetada, rode de novo as verificações de sensibilidade e anote a data, para que os leitores vejam como e por que a recomendação evoluiu.
+
+### Exercícios
+
+- **EX067 — Recalcular.** Confira os totais ponderados de 34.4 para A e B com os pesos alterados. Rubrica: 3 = aritmética correta mostrada.
+- **EX068 — Critério.** Proponha um critério adicional pertinente para a HCU e explique como você o pontuaria com evidências. Rubrica: 3 = critério pertinente e mensurável.
+
+### Síntese
+
+Critérios, pesos e análise de sensibilidade transparentes transformam uma comparação de opções de migração numa recomendação que outras pessoas conseguem conferir e questionar.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — capítulo 34 de 40
+
+[← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher um problema de projeto final em segurança quântica e pós-quântica; (2) escrever os objetivos, o escopo, os métodos e as entregas; (3) planejar a autorização, a ética e o tratamento dos dados; e (4) definir os critérios de sucesso e os riscos.
+
+### 35.1 Escolhendo um problema
+
+Um bom projeto final trata de uma decisão real, pode ser concluído em um ano letivo e usa evidências que o estudante pode obter legalmente. Temas adequados: um método de inventário e priorização para uma organização sintética; uma comparação de laboratório de configurações híbridas; um projeto de proteção de arquivos; uma refatoração para agilidade criptográfica de uma pequena ferramenta de código aberto; ou um estudo dos roteiros de PQC dos fornecedores a partir de documentos públicos.
+
+Os melhores temas vêm com uma pessoa nomeada que usaria o resultado. Um estudo que responde a uma pergunta que ninguém está fazendo é mais difícil de motivar e de avaliar, por melhor que seja o seu método.
+
+### 35.2 Estrutura da proposta
+
+Declare o problema e por que ele importa; os objetivos e as perguntas de pesquisa; o escopo (dentro e fora); o método; os dados e a autorização; as entregas (relatório, código, registros de laboratório); o cronograma com marcos; os riscos e as mitigações; e os critérios de sucesso. Os critérios de sucesso devem ser observáveis, por exemplo "um laboratório reprodutível mostrando os grupos negociados para cinco tipos de cliente".
+
+Uma proposta de três ou quatro páginas basta. A parte mais importante costuma ser a dos riscos: o que acontece se uma biblioteca, um conjunto de dados ou o acesso a entrevistas não chegar a tempo, e qual será o plano alternativo. Os revisores procuram critérios que possam claramente ser cumpridos ou não.
+
+### 35.3 Autorização e ética
+
+Qualquer trabalho em sistemas reais precisa de autorização escrita do responsável. Prefira ambientes sintéticos ou de laboratório. Planeje a minimização e a retenção dos dados. Se houver entrevistas, planeje o consentimento e a anonimização. Se você puder encontrar vulnerabilidades em produtos, planeje a divulgação coordenada.
+
+Escreva esses planos antes de começar e peça que sejam conferidos pelo orientador e, quando houver entrevistas, pelo processo de ética da sua instituição. Registre quaisquer dados que você não vai coletar e por quê. Nos projetos baseados na HCU, todos os dados são sintéticos, o que remove a maioria dos riscos, mas não a necessidade de descrever como o modelo foi construído.
+
+### 35.4 Exemplo resolvido
+
+Proposta (sintética): "Priorizando a migração quântica da HCU com uma CBOM ponderada pelo tempo de vida." Objetivos: construir uma CBOM para um modelo sintético da HCU com 60 ativos; classificar os fluxos usando a desigualdade de Mosca variando *z*; validar a classificação com três entrevistas com profissionais. Escopo: estabelecimento de chaves e assinaturas; exclui a QKD. Dados: modelo sintético, normas públicas, entrevistas consentidas. Entregas: ferramenta em Python, relatório, registro de laboratório. Sucesso: classificação estável para *z* de 10 a 25 anos nos cinco primeiros fluxos, ou uma explicação documentada onde ela não for.
+
+O plano de entrevistas foi revisado quanto ao consentimento antes da aprovação.
+
+### 35.5 Atividade prática
+
+Redija a sua proposta usando a estrutura acima e depois troque-a com um colega para uma revisão segundo o teste dos critérios de sucesso.
+
+O revisor deve verificar se cada critério de sucesso poderia ser claramente julgado cumprido ou não cumprido no fim do ano, e se o escopo cabe no tempo disponível. Revise a proposta usando os comentários dele e guarde as duas versões, para que as mudanças fiquem visíveis para o seu orientador. Se o revisor não conseguir julgar um critério, reescreva-o até que consiga.
+
+### 35.6 Erros comuns e limites
+
+- Escopo grande demais para um ano.
+- Critérios de sucesso não observáveis.
+- Supor acesso a sistemas reais sem autorização.
+- Escolher um método antes de a pergunta estar clara.
+- Deixar o cronograma sem marcos, de modo que os atrasos são notados tarde demais.
+- Planejar entrevistas sem prever tempo para a aprovação ética.
+- Escrever objetivos que descrevem uma atividade, como estudar um tema, em vez de uma resposta que possa ser julgada.
+
+Cada um desses torna mais difícil fazer a avaliação final de forma justa. Uma revisão da proposta por um colega costuma pegá-los cedo.
+
+### 35.7 Acordo com o orientador
+
+Antes de começar, acorde a proposta com o seu orientador por escrito, incluindo o que conta como sucesso e o que acontece se uma dependência importante falhar — por exemplo, se uma biblioteca necessária para o laboratório não for lançada. Um plano alternativo de um parágrafo evita uma correria no fim e deixa claro que um resultado negativo bem documentado é um desfecho aceitável.
+
+O acordo é revisto se o escopo mudar. Anote qualquer mudança num adendo datado e assinado por vocês dois, para que a avaliação final seja medida pela versão acordada, e não pelo primeiro rascunho.
+
+### Exercícios
+
+- **EX069 — Critérios de sucesso.** Reescreva "a ferramenta deve funcionar bem" como dois critérios de sucesso observáveis. Rubrica: 3 = critérios mensuráveis e pertinentes.
+- **EX070 — Tabela de riscos.** Liste três riscos de projeto para a proposta resolvida, com mitigações. Rubrica: 3 = riscos e mitigações plausíveis.
+
+### Síntese
+
+Uma proposta de projeto final declara um problema relevante para uma decisão, um escopo delimitado, evidências legais, critérios de sucesso observáveis e riscos gerenciados.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — capítulo 35 de 40
+
+[← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades do curso num estágio supervisionado ou num projeto comunitário; (2) trabalhar dentro dos processos de autorização e de mudança de uma organização; (3) comunicar-se com não especialistas; e (4) refletir sobre a prática usando evidências.
+
+### 36.1 Formas de prática
+
+Os estágios podem envolver apoiar o inventário criptográfico de uma organização, escrever orientações internas sobre PQC, testar uma atualização de biblioteca num laboratório ou ajudar uma organização comunitária (uma biblioteca, uma entidade beneficente ou um pequeno negócio) a entender quais dos seus serviços dependem de fornecedores que precisam migrar. O aprendizado vem de fazer trabalho real sob restrições reais.
+
+Qualquer que seja o contexto, acorde no início o que você vai produzir e quem vai usar. Um inventário curto ou uma página de orientações que uma equipe de fato adota ensina mais que um relatório grande que ninguém lê, e dá a você evidências concretas para o seu diário de prática.
+
+### 36.2 Trabalhando dentro dos processos
+
+As organizações têm controle de mudanças, políticas de segurança e supervisores. Siga-os. Obtenha um escopo por escrito do seu supervisor. Nunca rode ferramentas em sistemas de produção sem aprovação; nunca leve dados para casa. Se você notar algo grave — por exemplo, uma chave privada exposta —, relate imediatamente pelo processo da organização.
+
+Pergunte cedo como as mudanças são aprovadas, porque um teste de laboratório que parecia simples pode precisar de um chamado e de uma revisão. Guarde cópias das aprovações com o seu diário. Trabalhar dentro desses processos faz parte do aprendizado: uma migração numa organização real anda na velocidade do seu controle de mudanças.
+
+### 36.3 Comunicação
+
+Os não especialistas precisam de linguagem simples. Em vez de "migrar o KEX para o híbrido ML-KEM-768", diga "atualizar a forma como os nossos sistemas combinam chaves secretas, para que o tráfego gravado continue protegido mesmo que computadores quânticos poderosos sejam construídos". Verifique a compreensão perguntando o que o ouvinte vai fazer em seguida.
+
+Um resumo curto por escrito depois de uma reunião também ajuda. Ele registra o que foi acordado em palavras que os dois lados entendem e permite ao ouvinte corrigir um mal-entendido antes que ele vire uma ação errada. Mantenha o detalhe técnico num apêndice para quem o quiser.
+
+### 36.4 Reflexão
+
+Mantenha um diário de prática: o que você fez, que evidências produziu, o que o surpreendeu, o que faria diferente. Relacione as entradas aos conceitos do curso. A reflexão transforma a experiência em habilidade transferível.
+
+Escreva as entradas logo depois do trabalho, enquanto os detalhes estão frescos, e mantenha-as breves. Inclua os erros e o que você aprendeu com eles, já que essas costumam ser as entradas mais úteis. Ao longo de um estágio, o diário mostra como o seu julgamento se desenvolveu, que é exatamente o que os avaliadores procuram. Anote qualquer evidência que você possa compartilhar e tudo o que precise manter confidencial.
+
+### 36.5 Exemplo resolvido
+
+Uma estudante faz trabalho voluntário numa pequena cooperativa de crédito comunitária (sintética) que usa uma plataforma bancária hospedada. Com a aprovação escrita do gerente, a estudante revisa os documentos públicos de segurança e o contrato do fornecedor, não encontra nenhum roteiro de PQC e redige três perguntas para a próxima reunião com o fornecedor: quais algoritmos protegem os dados em trânsito, quando a troca de chaves híbrida será suportada e se o fornecedor mantém um inventário criptográfico. A estudante também escreve um explicativo de uma página em linguagem simples para o conselho.
+
+As perguntas foram acordadas primeiro com o gerente.
+
+### 36.6 Atividade prática
+
+Escreva um acordo de escopo e as três primeiras entradas de um diário de prática para o seu estágio ou para um estágio simulado.
+
+O acordo de escopo deve nomear o seu supervisor, os sistemas ou documentos a que você pode ter acesso, o que você vai produzir e o que não pode fazer. Cada entrada do diário deve registrar a tarefa, a evidência produzida e uma reflexão. Se você estiver simulando um estágio, baseie-o no caso da HCU e declare quais partes são inventadas. Peça ao seu supervisor que assine o acordo.
+
+### 36.7 Erros comuns e limites
+
+- Agir fora do escopo acordado para ajudar.
+- Usar jargão com não especialistas.
+- Diários que listam tarefas sem evidências nem reflexão.
+- Guardar as anotações apenas na cabeça, de modo que nada pode ser mostrado depois.
+- Prometer resultados que a organização não pediu.
+- Fazer cópias de documentos fora do escopo acordado.
+- Supor que o silêncio significa aprovação.
+- Esquecer de encerrar o estágio com a entrega do que você produziu.
+
+Cada um desses torna mais difícil para a organização confiar no trabalho ou usá-lo. Uma verificação semanal em relação ao escopo ajuda.
+
+### Exercícios
+
+- **EX071 — Linguagem simples.** Explique a "migração das assinaturas" a um membro do conselho sem formação técnica, em três frases. Rubrica: 3 = preciso, sem jargão, acionável.
+- **EX072 — Escalonamento.** Você encontra uma chave privada numa pasta compartilhada durante um estágio. Liste as suas próximas quatro ações. Rubrica: 3 = parar, relatar pelo processo, não copiar/usar, documentar.
+
+### Síntese
+
+A prática supervisionada aplica as habilidades do curso dentro dos processos de autorização e de mudança, com comunicação simples e reflexão baseada em evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — capítulo 36 de 40
+
+[← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar criticamente as fontes sobre computação quântica e PQC; (2) distinguir resultados revisados por pares, normas, preprints, material de fornecedores e jornalismo; (3) avaliar alegações sobre cronogramas e desempenho; e (4) dar e receber críticas estruturadas de colegas.
+
+### 37.1 Tipos de fonte
+
+As *normas* (FIPS, SP, RFC) têm autoridade sobre o que os algoritmos são e como usá-los, com o status anotado. Os *artigos revisados por pares* passam pelo escrutínio de especialistas, mas ainda podem estar errados. Os *preprints*, como os artigos do arXiv ou do IACR ePrint, são iniciais e não revisados, embora muitos sejam publicados depois; Gidney (2025) era um preprint quando citado aqui. O *material de fornecedores* tem interesses comerciais. O *jornalismo* simplifica e muitas vezes relata errado. Pondere as evidências de acordo e diga em que tipo você se apoia.
+
+Uma alegação sustentada por duas fontes independentes de tipos diferentes é mais forte que uma repetida por muitas fontes que copiam umas às outras.
+
+### 37.2 Avaliando alegações sobre cronogramas
+
+Pergunte: quem fez a estimativa, com que hipóteses (taxas de erro, quantidades de qubits, algoritmos), quando, e que faixa ela dá? Distinga as estimativas de recursos ("quantos qubits seriam necessários") das previsões ("quando eles vão existir"). As pesquisas com especialistas fornecem distribuições, e não datas.
+
+Verifique se uma estimativa mais recente substituiu a que você está lendo, já que as estimativas de recursos caíram fortemente com o tempo. Quando uma notícia der um único ano, rastreie-o até a fonte original e veja que faixa e que hipóteses ela de fato declarou. Na HCU, as alegações sobre cronogramas alimentam a desigualdade de Mosca, então uma data descuidada pode mudar quais fluxos parecem urgentes.
+
+### 37.3 Avaliando alegações sobre desempenho
+
+Pergunte: que hardware, qual implementação, qual conjunto de parâmetros, o que foi medido (operações por segundo, latência do handshake, bytes) e com que variabilidade? Os benchmarks de assembly otimizado não preveem o comportamento em dispositivos restritos.
+
+Pergunte também se o resultado foi reproduzido por alguém além dos autores. Um número de desempenho medido num servidor diz pouco sobre um terminal de cartão. Na HCU, os benchmarks úteis são os rodados nos mesmos equipamentos e enlaces usados nas agências, então as medições de laboratório costumam importar mais que as tabelas publicadas.
+
+### 37.4 Crítica estruturada
+
+A crítica segue uma estrutura: resumir a alegação com justiça; avaliar as evidências; identificar as hipóteses; anotar o que mudaria a conclusão; sugerir melhorias. Critique o trabalho, e não a pessoa.
+
+Um resumo justo é o passo mais difícil e o mais importante: se o autor não reconhecer o seu resumo, o resto da crítica vai errar o alvo. Termine com o que a fonte de fato estabelece, e não apenas com as suas fraquezas. Uma crítica que não encontra nada útil numa fonte deve dizer por que ela foi considerada.
+
+### 37.5 Exemplo resolvido
+
+Um whitepaper de fornecedor afirma: "o nosso sistema de QKD torna a sua rede à prova de computação quântica". Avaliação: fonte de fornecedor; "à prova de computação quântica" não é uma propriedade definida; a QKD ainda precisa de autenticação, que o documento não trata; as orientações da NSA não apoiam a QKD para os sistemas de segurança nacional; a alegação não tem escopo. Conclusão: não é evidência adequada para a decisão da HCU.
+
+A avaliação ainda anota o que o documento mostra: o fornecedor tem hardware funcionando, o que pode importar para enlaces de nicho. Ele simplesmente não responde à pergunta da HCU. Um pedido de avaliação independente seria o próximo passo.
+
+### 37.6 Atividade prática
+
+Em grupos, avaliem um preprint, uma norma e uma notícia sobre PQC usando as estruturas acima; apresentem uma crítica de dois minutos de cada um.
+
+Usem a mesma estrutura para cada fonte: um resumo justo, as evidências oferecidas, as hipóteses e o que mudaria a conclusão. Anotem o tipo de fonte e quanto peso ela merece. Depois comparem as três críticas em grupo: a norma, o preprint e a notícia concordaram, e, se não, em qual deles um tomador de decisão deveria confiar e por quê?
+
+### 37.7 Erros comuns e limites
+
+- Tratar os preprints como resolvidos.
+- Rejeitar de saída o material de fornecedores, em vez de ponderá-lo.
+- Criticar o tom em vez das evidências.
+- Citar um único ano para a chegada da computação quântica sem a faixa por trás dele.
+- Citar um resumo secundário quando o original está disponível.
+- Ignorar a data de uma fonte num campo em que as estimativas mudam rapidamente.
+- Aceitar um benchmark sem perguntar em que hardware ele rodou.
+
+Cada um desses deixa uma evidência fraca moldar uma decisão que ela não consegue sustentar. Mantenha uma nota curta de avaliação para cada fonte em que você se apoia.
+
+### Exercícios
+
+- **EX073 — Ponderação das fontes.** Classifique por autoridade para "tamanho do texto cifrado do ML-KEM-768": uma notícia, a FIPS 203, um blog de fornecedor, um benchmark revisado por pares. Rubrica: 3 = FIPS 203 primeiro, motivos para os demais.
+- **EX074 — Alegação sobre cronograma.** Avalie: "Os especialistas concordam que o RSA será quebrado em 2029." Rubrica: 3 = identifica o falso consenso, as hipóteses ausentes, previsão vs. estimativa.
+
+### Síntese
+
+A revisão de evidências pondera as fontes por tipo e interesse, interroga as hipóteses por trás das alegações sobre cronogramas e desempenho e critica o trabalho de forma construtiva.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — capítulo 37 de 40
+
+[← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Execução do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar o plano do seu projeto final com marcos; (2) manter código e registros de laboratório reprodutíveis; (3) gerenciar as mudanças de escopo; e (4) documentar as decisões ao longo do caminho.
+
+### 38.1 Executando o plano
+
+Trabalhe em marcos: ambiente pronto; primeiros dados ou primeiro modelo; primeira análise; análise completa; rascunho do relatório. Em cada marco, compare o progresso com o plano e registre os desvios. Um progresso pequeno e frequente vale mais que grandes esforços tardios.
+
+Planeje uma folga antes do marco do rascunho do relatório, já que a análise quase sempre leva mais tempo que o esperado. Se um marco atrasar, diga isso cedo e ajuste o que vem depois, em vez de comprimir a escrita nas últimas semanas. Uma nota curta em cada marco, dizendo o que foi feito e o que vem a seguir, facilita muito o relato posterior.
+
+### 38.2 Reprodutibilidade
+
+Use controle de versão para o código, a configuração e o texto. Registre as versões do ambiente. Escreva scripts que regenerem cada figura e tabela a partir das entradas brutas. Mantenha os geradores de dados sintéticos com sementes fixas, para que os resultados possam ser reproduzidos exatamente, como fazem os laboratórios deste livro.
+
+Teste você mesmo a reprodutibilidade antes da entrega, clonando o repositório num ambiente limpo e rodando tudo do zero. Qualquer coisa que falhe ali falharia também para um examinador. Registre a data e o resultado dessa verificação no seu registro de laboratório, para poder mostrar que ela foi feita.
+
+### 38.3 Mudanças de escopo
+
+As descobertas mudam os planos. Se a documentação de um fornecedor mostrar que um laboratório planejado é impossível, registre a mudança, o seu motivo e o seu efeito sobre os objetivos, e acorde-a com o seu orientador. As mudanças de escopo silenciosas tornam a avaliação injusta e as conclusões pouco claras.
+
+Mantenha as mudanças de escopo no mesmo lugar que os registros de decisão, para que o relatório final possa listá-las juntas. Uma mudança que estreita o trabalho é aceitável se for explicada; uma mudança escondida nos resultados não é. A sua avaliação será julgada pelo escopo acordado, então garanta que ele esteja atualizado.
+
+### 38.4 Registros de decisão
+
+Mantenha registros de decisão curtos: contexto, opções, decisão, consequências. "Escolhemos o ML-KEM-768, e não o -1024, para o laboratório porque a política sintética da HCU exige a categoria 3 e o grupo TLS usa o -768." Os registros de decisão tornam o relatório final mais fácil de escrever e de defender.
+
+Escreva cada registro no momento da decisão. Um registro escrito meses depois tende a justificar o resultado, em vez de explicar o raciocínio, e os revisores costumam perceber a diferença. No projeto final, uma pasta de registros datados de uma página basta.
+
+### 38.5 Exemplo resolvido
+
+O projeto final do Capítulo 35 constrói um gerador de CBOM sintética da HCU com 60 ativos e semente fixa, um script de classificação que varia *z* de 10 a 25 anos e um gerador de relatórios. No marco 3, o estudante descobre que a classificação dos cinco primeiros muda em *z* = 12 porque os registros dos associados entram. Registro de decisão: relatar a mudança como um achado e acrescentar uma figura de sensibilidade, em vez de ajustar as hipóteses para tornar a classificação estável.
+
+A figura de sensibilidade se tornou depois um dos principais resultados do projeto final. Ela foi mantida no relatório final.
+
+### 38.6 Atividade prática
+
+Configure o seu repositório com o código, o gerador de dados, o modelo de registro de laboratório e a pasta de registros de decisão; complete a revisão do seu primeiro marco.
+
+A revisão do marco deve comparar o que você planejou com o que fez e registrar quaisquer mudanças. Verifique se um clone novo do repositório consegue rodar o gerador de dados e reproduzir os primeiros resultados. Se não conseguir, corrija isso antes de seguir adiante, porque o problema só cresce à medida que mais código e dados são acrescentados. Depois planeje o segundo marco com datas.
+
+### 38.7 Erros comuns e limites
+
+- Trabalho sem controle de versão.
+- Figuras feitas à mão que não podem ser regeneradas.
+- Ajustar as hipóteses para obter um resultado preferido.
+- Deixar os registros de decisão para o fim, quando os motivos já foram esquecidos.
+- Mudar o escopo sem registrar.
+- Guardar os dados brutos apenas num laptop.
+- Pular as revisões de marco quando o trabalho vai bem, que é quando os pequenos problemas são mais fáceis de corrigir.
+
+Cada um desses torna o relatório final mais difícil de escrever e de defender. A maioria pode ser evitada com uma rotina semanal fixa de commits, anotações e uma breve verificação em relação ao plano.
+
+### 38.8 Trabalhando com os orientadores
+
+Compartilhe as revisões de marco com o seu orientador de forma breve e regular: o que foi feito, o que foi aprendido, o que está bloqueado e que decisão você precisa. Os orientadores só conseguem ajudar com os problemas de que sabem, e uma atualização curta por escrito cria um registro que depois mostra como o trabalho evoluiu.
+
+Guarde as atualizações no repositório. Uma boa atualização cabe em poucas linhas e termina com uma pergunta clara quando você precisa de uma decisão. Registre a resposta nos seus registros de decisão, para que as mudanças acordadas de método ou de escopo fiquem visíveis depois e não sejam reabertas na fase de avaliação.
+
+### Exercícios
+
+- **EX075 — Registro de decisão.** Escreva um registro de decisão para a escolha de um conjunto de dados sintético em vez de dados reais. Rubrica: 3 = contexto, opções, decisão, consequências.
+- **EX076 — Auditoria de reprodutibilidade.** Liste cinco verificações que um colega deveria rodar para confirmar que o seu projeto final é reprodutível. Rubrica: 3 = cinco verificações concretas.
+
+### Síntese
+
+Os marcos, o controle de versão, os scripts reprodutíveis, as mudanças de escopo registradas e os registros de decisão transformam o plano de um projeto final num trabalho crível.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — capítulo 38 de 40
+
+[← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o seu projeto final em relação aos critérios de sucesso; (2) analisar as limitações e as ameaças à validade; (3) buscar uma revisão independente e responder a ela; e (4) declarar o que continua incerto.
+
+### 39.1 Em relação aos critérios
+
+Volte aos critérios de sucesso da sua proposta e avalie cada um: cumprido, parcialmente cumprido ou não cumprido, com evidências. Se os critérios mudaram, explique por quê. A avaliação é honesta quando relata claramente o sucesso parcial.
+
+Para cada critério, aponte a evidência: uma execução de teste, uma figura ou o comentário de um revisor. Um critério que não pode ser avaliado deve ser listado como tal, com o motivo. Os examinadores respeitam mais um relato claro do que foi e do que não foi alcançado que uma avaliação que alega que tudo funcionou.
+
+### 39.2 Limitações
+
+Nomeie as limitações por tipo: dados (sintéticos, amostra pequena), método (redes emuladas), escopo (apenas troca de chaves) e tempo (status das normas numa data). Para cada uma, declare o efeito provável sobre as conclusões. As limitações não são desculpas; elas são a fronteira do que as suas evidências sustentam.
+
+Seja específico sobre a direção de cada efeito quando puder: por exemplo, as redes emuladas podem subestimar a latência nos piores enlaces das agências. Quando você não conseguir dizer para que lado uma limitação empurra o resultado, diga isso também.
+
+### 39.3 Revisão independente
+
+Peça a um colega ou ao orientador que rode de novo parte do seu trabalho e questione as suas conclusões. Registre os comentários deles e as suas respostas. Os revisores costumam encontrar hipóteses não declaradas — por exemplo, que todas as agências usam o mesmo equipamento.
+
+Dê ao revisor uma tarefa clara, como rodar de novo uma figura a partir do repositório e conferir uma conclusão. O resultado dele é evidência sobre a reprodutibilidade; o questionamento dele é evidência sobre a força do seu argumento. Relate as divergências que você não conseguiu resolver, em vez de deixá-las de fora.
+
+### 39.4 Incerteza residual
+
+Encerre com o que continua incerto: os cronogramas quânticos, as normas futuras (FN-DSA, HQC), as entregas dos fornecedores. Explique como um leitor deve atualizar as suas conclusões se esses fatores mudarem.
+
+Para cada incerteza, diga que conclusão ela afeta e em que direção. Por exemplo, um cronograma quântico mais curto tornaria mais fluxos urgentes, mas não mudaria quais fluxos lideram a classificação. Isso permite aos leitores aplicar o seu trabalho depois que as hipóteses mudarem, em vez de descartá-lo. Date a declaração, porque o que conta como incerto nas normas e nos produtos muda de um ano para outro.
+
+### 39.5 Exemplo resolvido
+
+Avaliação do projeto final da CBOM: critério 1 (ferramenta reprodutível) cumprido — um colega a rodou de novo e obteve uma saída idêntica; critério 2 (classificação estável para *z* de 10–25) parcialmente cumprido — estável para *z* ≥ 13, muda abaixo disso; as entrevistas (3) apoiam a pertinência, mas são poucas demais para generalizar. Limitação: os dados sintéticos podem subestimar os ativos desconhecidos, que nos inventários reais costumam ser de 20–40 % (uma hipótese a verificar). Comentário do revisor: o modelo ignora os segmentos controlados por parceiros; resposta: acrescentado como trabalho futuro, com um esboço.
+
+A avaliação relata cada achado em relação aos critérios acordados na proposta.
+
+### 39.6 Atividade prática
+
+Escreva a sua seção de avaliação e peça a um colega que rode de novo um resultado.
+
+Avalie cada critério de sucesso com evidências, nomeie as limitações por tipo e o seu efeito provável, e registre o que continua incerto. Dê ao seu colega instruções claras e um limite de tempo, registre se ele reproduziu o resultado exatamente e anote qualquer passo que o tenha confundido. Corrija as instruções onde for preciso e depois acrescente os comentários dele e as suas respostas à avaliação. Mantenha a avaliação em até duas páginas e ponha as evidências detalhadas num apêndice, onde os leitores possam encontrá-las.
+
+### 39.7 Erros comuns e limites
+
+- Declarar sucesso sem evidência por critério.
+- Esconder as limitações.
+- Ignorar os achados dos revisores.
+- Relatar apenas os resultados que sustentam a conclusão.
+- Tratar uma limitação como motivo para descartar o trabalho, em vez de delimitá-lo.
+- Chamar um critério de cumprido quando a evidência é parcial.
+- Pedir revisão a quem dificilmente vai questionar você.
+- Deixar as incertezas sem data.
+
+Cada um desses torna a avaliação menos útil para o leitor que precisa agir com base nela. Um revisor independente ajuda a pegar a maioria deles. Peça um cedo.
+
+### 39.8 Aprendendo com a avaliação
+
+Termine a avaliação com lições para o próximo projeto: quais escolhas de método funcionaram, quais hipóteses eram as mais fracas e o que você mediria primeiro se começasse de novo. Essas lições são úteis para a organização e para os futuros estudantes, e mostram aos examinadores que você entende o lugar do trabalho num programa contínuo, em vez de tratá-lo como concluído.
+
+Mantenha as lições breves e específicas. No projeto final da CBOM, por exemplo, a hipótese mais fraca era a parcela de ativos desconhecidos, então a primeira lição foi medi-la cedo em qualquer inventário real antes de confiar na classificação.
+
+### Exercícios
+
+- **EX077 — Sucesso parcial.** Escreva uma frase de avaliação para um critério parcialmente cumprido. Rubrica: 3 = status, evidência, motivo.
+- **EX078 — Efeito de uma limitação.** Para "rede emulada em vez das agências reais", declare a direção provável do viés nos resultados de latência. Rubrica: 3 = subestima a latência de cauda/os efeitos de middleboxes, explicado.
+
+### Síntese
+
+A avaliação compara honestamente os resultados com os critérios, nomeia as limitações e os seus efeitos, incorpora a revisão independente e declara a incerteza residual.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — capítulo 39 de 40
+
+[← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Monografia e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma monografia de bacharelado; (2) apresentar os achados a públicos técnicos e não técnicos; (3) defender as suas escolhas sob questionamento; e (4) entregar o trabalho de modo que outras pessoas possam continuá-lo.
+
+### 40.1 Estrutura da monografia
+
+Uma monografia contém: resumo; introdução com o problema e as perguntas; fundamentação com conceitos com fontes e o status das normas; método; resultados; discussão, incluindo as limitações; conclusão; referências; apêndices com o código e os registros de laboratório. Cada capítulo deve ser rastreável até as evidências. Rotule todos os dados sintéticos claramente no texto e nas legendas.
+
+Mantenha a fundamentação curta e focada no que o leitor precisa para a sua pergunta; uma história completa da computação quântica raramente é necessária. Faça a discussão responder diretamente às perguntas de pesquisa, na mesma ordem em que foram feitas.
+
+### 40.2 Apresentação
+
+Prepare duas versões: uma palestra técnica com o método e os resultados, e um resumo curto orientado a decisões para não especialistas. Abra com a pergunta e a resposta; depois mostre as evidências; termine com o que o público deve fazer. Use uma ideia por slide e figuras legíveis.
+
+Ensaie as duas versões com alguém de fora da área e anote onde a pessoa se perde. Uma figura que precisa de um minuto de explicação costuma ser complexa demais para um slide. Guarde slides de reserva com as evidências detalhadas para as perguntas, e termine na decisão que você quer que o público tome, e não num resumo dos métodos.
+
+### 40.3 Defesa
+
+Espere perguntas sobre as hipóteses ("por que *z* de 10 a 25?"), o método ("por que o desenho pareado?"), as normas ("o IR 8547 é final?") e a ética ("como você obteve os dados?"). Responda diretamente, admita a incerteza e aponte as evidências. Se você não souber, diga isso e explique como descobriria.
+
+Prepare-se listando as perguntas que você faria se fosse o examinador, especialmente sobre as suas hipóteses mais fracas. Leve os registros de laboratório e os registros de decisão, para poder mostrar as evidências, em vez de lembrá-las. Uma resposta calma e honesta a uma pergunta difícil vale mais que uma resposta polida a uma fácil.
+
+### 40.4 Entrega
+
+Deixe um README que explique como rodar o código, regenerar os resultados e estender o trabalho, mais uma lista de perguntas em aberto. A prontidão quântica depende da continuidade; o seu trabalho tem mais valor quando outra pessoa consegue construir sobre ele.
+
+Teste o README pedindo a alguém que não viu o projeto que o siga. Inclua as versões de todas as ferramentas usadas e a data do status das normas em que você se apoiou. Na HCU, a entrega iria para a equipe que conduz a migração, então as perguntas em aberto devem ser escritas como as decisões que ela vai enfrentar.
+
+### 40.5 Exemplo resolvido
+
+A apresentação do projeto final da CBOM abre: "Quais fluxos criptográficos da HCU devem migrar primeiro? Em todo cronograma quântico de 13 a 25 anos, os mesmos cinco fluxos lideram, encabeçados pelas transferências do arquivo de hipotecas." A versão para não especialistas termina: "Proteger em até um ano as conexões das agências que levam os arquivos de hipotecas; planejar em seguida as mudanças de certificados." Na defesa, um examinador pergunta por que a categoria 3 foi suposta; o estudante cita a política sintética e a associação de categorias da FIPS 203, e explica o efeito de escolher a categoria 5.
+
+As duas versões usaram as mesmas figuras.
+
+### 40.6 Atividade prática
+
+Faça uma apresentação de dez minutos e um resumo de dois minutos; responda a três perguntas preparadas por um colega no papel de examinador.
+
+Cronometre as duas versões e corte tudo o que passar do tempo. O colega deve fazer pelo menos uma pergunta sobre as hipóteses e uma sobre o método, e deve anotar qualquer resposta que não tenha ficado clara. Depois, revise o slide ou a explicação que causou mais dificuldade e registre a mudança no seu diário de prática, junto com o que você faria diferente da próxima vez. Guarde as anotações do colega com o seu diário.
+
+### 40.7 Erros comuns e limites
+
+- Resultados sem a pergunta.
+- Postura defensiva sob questionamento.
+- Nenhum material de entrega.
+- Sobrecarregar os slides com tabelas que não podem ser lidas do fundo da sala.
+- Alegar mais certeza do que as evidências sustentam quando sob pressão.
+- Responder a uma pergunta diferente da que foi feita.
+- Deixar o código e os dados sem instruções, de modo que o trabalho termina com o estudante.
+
+Cada um desses reduz o valor de um projeto final que, de outro modo, poderia ser forte. Um ensaio com um colega expõe a maioria deles a tempo. Agende-o com uma semana de antecedência.
+
+### Exercícios
+
+- **EX079 — Resumo.** Escreva um resumo de 120 palavras para o projeto final da CBOM. Rubrica: 3 = problema, método, resultado, limitação, implicação.
+- **EX080 — Resposta na defesa.** Responda: "Isto não é inútil se os computadores quânticos nunca chegarem?" Rubrica: 3 = argumento da incerteza do HNDL, benefícios da agilidade, proporcionalidade do custo.
+
+### Síntese
+
+Uma monografia rastreia cada afirmação até as evidências; as boas apresentações começam pela pergunta e pela resposta; as boas defesas admitem a incerteza; as boas entregas permitem que outros continuem.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — capítulo 40 de 40
+
+[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX080 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos.
 
 **EX001.** log₂(10^24) = 24 × 3,32 ≈ 79,7 → cerca de 80 bits; acrescentar 2^20 dá cerca de 100 bits.
 
@@ -2351,6 +3100,50 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX059.** Remover uma assinatura ML-DSA-65: 21.249 − 3.309 = 17.940 bytes.
 
 **EX060.** Profundidade da cadeia 2 (cadeias mais profundas aumentam os bytes); ~400 bytes de outros campos (mais extensões aumentam); dois SCTs (menos reduzem); sem compressão (a compressão quase não reduz as chaves pós-quânticas). Também exclui os bytes da troca de chaves.
+
+**EX061.** O signatário restaurado reutiliza as chaves de uso único já usadas ontem; duas assinaturas com a mesma chave de uso único revelam segredos e permitem falsificações. Prevenção: estado guardado num HSM que não pode retroceder, faixas de índices reservadas, nenhuma restauração do estado a partir de backup sem avançá-lo.
+
+**EX062.** A renovação acrescenta um novo carimbo de tempo que prova que o documento e a sua assinatura original existiam naquele momento; essa prova só é confiável se o algoritmo original ainda não estivesse quebrado então. Depois de uma quebra, as falsificações também poderiam receber carimbos de tempo.
+
+**EX063.** Exposição: a raiz RSA válida até 2044 sustenta todo o TLS interno e as VPNs (falsificação posterior). Opções: raiz pós-quântica agora com emissão em estágios; esperar a atualização da AC pelo fornecedor. Recomendação: construir a raiz ML-DSA em 2027, distribuí-la aos repositórios de confiança, migrar as intermediárias até 2029. Custo: UM 90–150 mil. Risco residual: dispositivos legados que não conseguem verificar ML-DSA.
+
+**EX064.** "O fornecedor deverá suportar a substituição de algoritmos criptográficos por configuração, incluindo os algoritmos das NIST FIPS 203 e FIPS 204, em até 12 meses após a solicitação." "O fornecedor deverá fornecer e manter atualizado um inventário criptográfico do produto entregue, listando algoritmos, parâmetros e bibliotecas."
+
+**EX065.** Cada cliente roda as duas condições, então as diferenças entre clientes (hardware, sistema operacional, posição na rede) se cancelam na comparação; isso reduz a variância e remove a confusão entre cliente e condição.
+
+**EX066.** Pergunta; desenho; contexto; sistemas/participantes; procedimento; medidas; análise; limitações. Exemplos: contexto — WAN de agência emulada com 40 ms/1 % de perda; medidas — mediana e p99 da latência do handshake.
+
+**EX067.** A: 4×0,2 + 4×0,2 + 4×0,15 + 3×0,3 + 4×0,15 = 3,70. B: 3×0,2 + 3×0,2 + 5×0,15 + 5×0,3 + 2×0,15 = 3,75.
+
+**EX068.** "Compatibilidade com os parceiros": parcela das conexões com parceiros que continuariam funcionando depois da mudança, pontuada a partir dos questionários dos parceiros e de testes de interoperabilidade no laboratório.
+
+**EX069.** "A ferramenta reproduz o relatório completo a partir das entradas brutas com um único comando em menos de cinco minutos." "No modelo sintético, a ferramenta classifica 100 % dos ativos numa classe de exposição, com os desconhecidos listados."
+
+**EX070.** Entrevistas indisponíveis → usar estudos de caso públicos. Modelo sintético irrealista → calibrar com estatísticas de inventário publicadas. Aumento do escopo → revisão de marco fixa com o orientador.
+
+**EX071.** "Os nossos sistemas provam quem são usando assinaturas digitais. Os futuros computadores quânticos poderiam falsificar as assinaturas de hoje, então vamos passar gradualmente para os novos métodos de assinatura que o NIST padronizou em 2024, começando pelos sistemas em que se confia por mais tempo. Isso exige planejamento porque muitos dispositivos e parceiros precisam aceitar as novas assinaturas."
+
+**EX072.** Parar e não copiar, usar nem mover a chave; relatar imediatamente ao supervisor/contato de segurança pelo processo da organização; documentar o que você viu e quando; seguir as instruções (por exemplo, revogação e rotação pelos responsáveis).
+
+**EX073.** A FIPS 203 (norma primária) primeiro; o benchmark revisado por pares em segundo (verificável, pode relatar os tamanhos); o blog do fornecedor em terceiro (interessado, secundário); a notícia por último.
+
+**EX074.** Esse consenso não existe; as pesquisas mostram ampla discordância. A alegação não dá fonte, hipóteses nem faixa e confunde uma previsão com uma estimativa de recursos. Reescreva-a como uma faixa com fonte.
+
+**EX075.** Contexto: o projeto final precisa de dados de inventário; dados reais semelhantes aos da HCU são confidenciais. Opções: dados reais sob NDA; dados anonimizados; gerador sintético. Decisão: sintético com semente fixa. Consequências: reprodutível e compartilhável; o realismo precisa ser argumentado e as limitações declaradas.
+
+**EX076.** Um clone novo roda; versões fixadas; um único comando regenera todas as figuras; sementes fixas dão saídas idênticas; os registros de laboratório coincidem com as saídas.
+
+**EX077.** "O critério 2 foi parcialmente cumprido: a classificação dos cinco primeiros foi estável para *z* de 13 a 25 anos, mas mudou abaixo de 13 porque os registros dos associados (x + y = 13) entraram; ver a Figura 4."
+
+**EX078.** A emulação omite os middleboxes e a variabilidade real do rádio e da WAN, então provavelmente subestima a latência de cauda e as taxas de falha.
+
+**EX079.** (Exemplo) "As organizações precisam decidir que criptografia migrar primeiro à medida que a computação quântica avança. Construímos uma lista de materiais criptográficos ponderada pelo tempo de vida para uma cooperativa de crédito sintética com 60 ativos e classificamos os fluxos com a desigualdade de Mosca, variando o cronograma quântico de 10 a 25 anos. Os cinco primeiros fluxos, liderados pelas transferências do arquivo de hipotecas, foram estáveis para cronogramas de 13 anos ou mais; abaixo disso, os registros dos associados entraram. Três entrevistas com profissionais apoiaram a utilidade do método. Os resultados dependem de dados sintéticos e de tempos de vida declarados. As organizações podem adotar o método para priorizar a troca de chaves híbrida nos fluxos de dados de vida longa antes de tratar das assinaturas."
+
+**EX080.** "O harvest-now-decrypt-later significa que os dados gravados ficam expostos se uma máquina capaz chegar em algum momento dentro do seu tempo de vida; não temos como saber que ela não vai chegar. O trabalho também constrói agilidade criptográfica e um inventário que compensam em qualquer mudança futura de algoritmo, e os primeiros passos — troca de chaves híbrida em alguns fluxos de vida longa — são baratos em relação ao dano potencial."
+
+## Rota de ensino de quarenta disciplinas
+
+Este é o curso de **bacharelado**. Ele constrói os fundamentos (1–18) e depois os aplica à sintética **Harbourline Credit Union (HCU)**: escopo e casos, modelos de sistema, inventário, métodos de reticulados, controles, laboratórios, verificação, análise de falhas, operações, casos avançados e trabalho de pesquisa e de projeto final (19–40).
 
 <a id="references"></a>
 

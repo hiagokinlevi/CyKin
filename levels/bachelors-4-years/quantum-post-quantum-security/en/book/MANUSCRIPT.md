@@ -2128,8 +2128,10 @@ Say which documents need protection for the full period, when evidence records w
 - Using stateful signatures in software without protected state.
 - Assuming re-encryption fixes past exposure.
 - Leaving partner dependencies out of the plan.
-
-- Treating a gateway in front of old devices as permanent rather than as a bridge to replacement. - Renewing archive timestamps only after the old algorithm is already doubted, when the renewal can no longer prove anything. - Planning the total number of stateful signatures without allowing for test, backup and failover use. - Buying replacement devices without post-quantum boot verification in the tender.
+- Treating a gateway in front of old devices as permanent rather than as a bridge to replacement.
+- Renewing archive timestamps only after the old algorithm is already doubted, when the renewal can no longer prove anything.
+- Planning the total number of stateful signatures without allowing for test, backup and failover use.
+- Buying replacement devices without post-quantum boot verification in the tender.
 
 ### Exercises
 
@@ -2185,8 +2187,13 @@ Mark which groups must approve decisions, which must be consulted, and which onl
 - Presenting technical detail without a decision.
 - Single-figure cost estimates.
 - Ignoring procurement as a control.
+- Leaving legal and procurement out until the technical design is finished.
+- Treating member communication as an afterthought.
+- Writing board papers that list risks but do not ask for a decision.
+- Assuming regulators want the same detail as engineers.
+- Forgetting that partners' timelines may set the pace.
 
-- Leaving legal and procurement out until the technical design is finished. - Treating member communication as an afterthought. - Writing board papers that list risks but do not ask for a decision. - Assuming regulators want the same detail as engineers. - Forgetting that partners' timelines may set the pace. Each makes a sound technical plan harder to fund, approve or carry out. Involving these groups early costs little and avoids rework.
+Each makes a sound technical plan harder to fund, approve or carry out. Involving these groups early costs little and avoids rework.
 
 ### 32.7 Regulators and auditors
 
@@ -2256,8 +2263,12 @@ Explain how many handshakes you need to detect a difference you care about, whic
 - Unpaired comparisons with uncontrolled clients.
 - Reporting only means for skewed latency.
 - Interviews without consent or anonymisation.
+- Changing two variables at once, so that the effect cannot be attributed.
+- Running all of one condition before the other, letting time-of-day effects creep in.
+- Reporting one day's results as if they were general.
+- Drawing conclusions from interviews with only the most enthusiastic staff.
 
-- Changing two variables at once, so that the effect cannot be attributed. - Running all of one condition before the other, letting time-of-day effects creep in. - Reporting one day's results as if they were general. - Drawing conclusions from interviews with only the most enthusiastic staff. Each weakens the evidence a migration decision depends on. The fix in each case is planning before data collection. Write the plan down first.
+Each weakens the evidence a migration decision depends on. The fix in each case is planning before data collection. Write the plan down first.
 
 ### Exercises
 
@@ -2315,8 +2326,12 @@ Where a score depends on a vendor statement, label it and say how you would chec
 - Choosing criteria after scoring.
 - Treating vendor claims as measured evidence.
 - Presenting a single ranking without sensitivity.
+- Using too many criteria, so each carries little weight and the scoring becomes noise.
+- Double-counting one concern under two names, such as cost and time when both measure the same vendor delay.
+- Scores without recorded evidence.
+- Omitting the option of doing nothing yet, which is a real choice with its own risks.
 
-- Using too many criteria, so each carries little weight and the scoring becomes noise. - Double-counting one concern under two names, such as cost and time when both measure the same vendor delay. - Scores without recorded evidence. - Omitting the option of doing nothing yet, which is a real choice with its own risks. Review the criteria list with someone outside the project before scoring. Keep notes of that review.
+Review the criteria list with someone outside the project before scoring. Keep notes of that review.
 
 ### 34.7 Presenting the comparison
 
@@ -2380,8 +2395,12 @@ The reviewer should check whether each success criterion could clearly be judged
 - Scope too large for one year.
 - Unobservable success criteria.
 - Assuming access to real systems without authorization.
+- Choosing a method before the question is clear.
+- Leaving the timeline without milestones, so delays are noticed too late.
+- Planning interviews without allowing time for ethics approval.
+- Writing aims that describe activity, such as studying a topic, rather than an answer that can be judged.
 
-- Choosing a method before the question is clear. - Leaving the timeline without milestones, so delays are noticed too late. - Planning interviews without allowing time for ethics approval. - Writing aims that describe activity, such as studying a topic, rather than an answer that can be judged. Each makes the final evaluation harder to do fairly. A peer review of the proposal usually catches them early.
+Each makes the final evaluation harder to do fairly. A peer review of the proposal usually catches them early.
 
 ### 35.7 Supervisor agreement
 
@@ -2451,8 +2470,13 @@ The scope agreement should name your supervisor, the systems or documents you ma
 - Acting outside agreed scope to be helpful.
 - Using jargon with non-specialists.
 - Logs that list tasks without evidence or reflection.
+- Keeping notes only in your head, so that nothing can be shown later.
+- Promising results the organisation did not ask for.
+- Taking copies of documents outside the agreed scope.
+- Assuming silence means approval.
+- Forgetting to close the placement with a handover of what you produced.
 
-- Keeping notes only in your head, so that nothing can be shown later. - Promising results the organisation did not ask for. - Taking copies of documents outside the agreed scope. - Assuming silence means approval. - Forgetting to close the placement with a handover of what you produced. Each makes it harder for the organisation to trust the work or use it. A weekly check against the scope helps.
+Each makes it harder for the organisation to trust the work or use it. A weekly check against the scope helps.
 
 ### Exercises
 
@@ -2516,8 +2540,12 @@ Use the same structure for each source: a fair summary, the evidence offered, th
 - Treating preprints as settled.
 - Rejecting vendor material outright rather than weighting it.
 - Critiquing tone instead of evidence.
+- Quoting a single year for quantum arrival without the range behind it.
+- Citing a secondary summary when the original is available.
+- Ignoring the date of a source in a field where estimates change quickly.
+- Accepting a benchmark without asking what hardware it ran on.
 
-- Quoting a single year for quantum arrival without the range behind it. - Citing a secondary summary when the original is available. - Ignoring the date of a source in a field where estimates change quickly. - Accepting a benchmark without asking what hardware it ran on. Each lets weak evidence shape a decision it cannot support. Keep a short appraisal note for each source you rely on.
+Each lets weak evidence shape a decision it cannot support. Keep a short appraisal note for each source you rely on.
 
 ### Exercises
 
@@ -2581,8 +2609,12 @@ The milestone review should compare what you planned with what you have done and
 - Unversioned work.
 - Figures made by hand that cannot be regenerated.
 - Adjusting assumptions to obtain a preferred result.
+- Leaving decision records until the end, when reasons are forgotten.
+- Changing scope without recording it.
+- Keeping raw data only on one laptop.
+- Skipping milestone reviews when work is going well, which is when small problems are easiest to fix.
 
-- Leaving decision records until the end, when reasons are forgotten. - Changing scope without recording it. - Keeping raw data only on one laptop. - Skipping milestone reviews when work is going well, which is when small problems are easiest to fix. Each makes the final report harder to write and harder to defend. Most can be avoided with a fixed weekly routine of commits, notes and a brief check against the plan.
+Each makes the final report harder to write and harder to defend. Most can be avoided with a fixed weekly routine of commits, notes and a brief check against the plan.
 
 ### 38.8 Working with supervisors
 
@@ -2633,7 +2665,7 @@ Give the reviewer a clear task, such as rerunning one figure from the repository
 
 Close with what remains uncertain: quantum timelines, future standards (FN-DSA, HQC), vendor delivery. Explain how a reader should update your conclusions if these change.
 
-For each uncertainty, say which conclusion it affects and in which direction. For example, an earlier quantum timeline would make more flows urgent but would not change which lead the ranking. This lets readers apply your work after the assumptions have moved, instead of discarding it. Date the statement, because what counts as uncertain in standards and products changes from year to year.
+For each uncertainty, say which conclusion it affects and in which direction. For example, an earlier quantum timeline would make more flows urgent but would not change which flows lead the ranking. This lets readers apply your work after the assumptions have moved, instead of discarding it. Date the statement, because what counts as uncertain in standards and products changes from year to year.
 
 ### 39.5 Worked example
 
@@ -2652,8 +2684,13 @@ Assess each success criterion with evidence, name the limitations by type and th
 - Declaring success without evidence per criterion.
 - Hiding limitations.
 - Ignoring reviewer findings.
+- Reporting only the results that support the conclusion.
+- Treating a limitation as a reason to dismiss the work rather than to bound it.
+- Calling a criterion met when the evidence is partial.
+- Asking reviewers who are unlikely to challenge you.
+- Leaving uncertainties undated.
 
-- Reporting only the results that support the conclusion. - Treating a limitation as a reason to dismiss the work rather than to bound it. - Calling a criterion met when the evidence is partial. - Asking reviewers who are unlikely to challenge you. - Leaving uncertainties undated. Each makes the evaluation less useful to the reader who needs to act on it. An independent reviewer helps to catch most of these. Ask for one early.
+Each makes the evaluation less useful to the reader who needs to act on it. An independent reviewer helps to catch most of these. Ask for one early.
 
 ### 39.8 Learning from the evaluation
 
@@ -2723,8 +2760,12 @@ Time both versions and cut anything that runs over. The peer should ask at least
 - Results without the question.
 - Defensiveness under questioning.
 - No handover materials.
+- Overloading slides with tables that cannot be read from the back of the room.
+- Claiming more certainty than the evidence supports when under pressure.
+- Answering a different question from the one asked.
+- Leaving code and data without instructions, so the work ends with the student.
 
-- Overloading slides with tables that cannot be read from the back of the room. - Claiming more certainty than the evidence supports when under pressure. - Answering a different question from the one asked. - Leaving code and data without instructions, so the work ends with the student. Each reduces the value of a capstone that may otherwise be strong. A practice run with a peer exposes most of them in time. Schedule it a week ahead.
+Each reduces the value of a capstone that may otherwise be strong. A practice run with a peer exposes most of them in time. Schedule it a week ahead.
 
 ### Exercises
 
