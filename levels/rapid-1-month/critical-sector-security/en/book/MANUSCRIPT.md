@@ -290,10 +290,9 @@ Keep the boundary card somewhere you will see it, and compare it with a classmat
 - Delaying a report because you are embarrassed you clicked.
 - Verifying a caller's identity using contact details they gave you.
 - Over-sharing: posting a screenshot of a weakness "to warn people".
-- Limits: this chapter is general guidance, not legal advice. Laws on unauthorized access and on reporting duties differ by country and sector; follow your organization's policy.
-
 - Accepting a name-drop such as "K. Ito said it was fine" as permission, when only the owner can authorize work.
 - Sharing a labelled report more widely than its label allows, as Sam avoided by keeping the contractor report inside the clinic.
+- Limits: this chapter is general guidance, not legal advice. Laws on unauthorized access and on reporting duties differ by country and sector; follow your organization's policy.
 
 ### Exercises — chapter 2
 

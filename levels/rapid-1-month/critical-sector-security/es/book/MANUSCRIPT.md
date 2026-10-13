@@ -49,7 +49,7 @@ Toda afirmación factual sobre un marco público, una ley, una orientación o un
 ## Contenido
 
 1. [Fundamentos y decisiones](#ch-01): servicios esenciales, sectores y funciones, primero la consecuencia, una primera frase de riesgo y las tres decisiones del recién llegado.
-2. [Alcance, permiso y práctica segura](../../en/book/MANUSCRIPT.md#ch-02): qué significa la autorización, los límites del recién llegado, la comunicación y el intercambio cuidadoso de información.
+2. [Alcance, permiso y práctica segura](#ch-02): qué significa la autorización, los límites del recién llegado, la comunicación y el intercambio cuidadoso de información.
 3. [Sistemas, datos y dependencias](../../en/book/MANUSCRIPT.md#ch-03): personas, TI, tecnología operativa, datos, proveedores; dependencias aguas arriba y aguas abajo; puntos únicos de fallo.
 4. [Laboratorio guiado y síntesis aplicada](../../en/book/MANUSCRIPT.md#ch-04): el Lab 4 (¿qué más falla?), una ficha del servicio de una página y una autocomprobación del curso.
 - [Resultados resueltos](#worked-results) · [Glosario](#glossary) · [Referencias](#references)
@@ -182,7 +182,146 @@ Las infraestructuras críticas prestan funciones de las que las personas no pued
 <!-- cyberabc:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 04
 
-[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](../../en/book/MANUSCRIPT.md#ch-02)
+[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-02"></a>
+
+## Capítulo 2 — Alcance, permiso y práctica segura
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo será capaz de:
+
+- explicar qué significan **autorización** y **alcance**, y por qué las buenas intenciones no los sustituyen;
+- enumerar lo que un recién llegado puede y no puede hacer con un sistema de un servicio esencial;
+- explicar por qué «solo comprobar» puede ser peligroso en entornos operativos;
+- comunicar un evento sospechoso con claridad, con los hechos adecuados y sin investigar;
+- usar el Protocolo de Semáforo (TLP) para decidir quién puede recibir una información;
+- elegir lugares seguros para practicar habilidades de seguridad.
+
+El capítulo 1 mostró por qué importan estos servicios. Este capítulo fija los límites que mantienen segura su curiosidad. Después, el capítulo 3 mira dentro de un servicio.
+
+### 2.1 Autorización y alcance
+
+La **autorización** es el permiso, otorgado por la persona u organización dueña de un sistema, para hacer algo concreto con él. El **alcance** es el límite exacto de ese permiso: qué sistemas, qué acciones, cuándo y por quién. Una autorización válida suele constar por escrito, nombra al dueño que la otorga e indica qué hacer si algo sale mal. De ello se siguen dos consecuencias:
+
+- **Tener acceso no es tener permiso.** Su usuario del centro de salud le permite reservar citas. No le autoriza a explorar otras carpetas, probar cuentas de otras personas ni comprobar si el sistema se puede romper.
+- **Las buenas intenciones no son una autorización.** «Solo estaba comprobando si era seguro» no es una defensa. Muchos países consideran delito el acceso no autorizado a un sistema informático, sea cual sea el motivo, y los empleadores lo consideran una falta.
+
+Los profesionales de las pruebas de seguridad trabajan con reglas de enfrentamiento escritas precisamente por esta razón; la guía del NIST sobre pruebas técnicas de seguridad describe la planificación, las reglas y las aprobaciones previas a cualquier prueba ([NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)). Ese nivel de pruebas no forma parte de este curso.
+
+### 2.2 Por qué «solo comprobar» es peligroso aquí
+
+Los sistemas operativos de planta —los ordenadores que hacen funcionar bombas, válvulas, interruptores, dispositivos médicos y señalización— suelen ser antiguos, estar delicadamente ajustados y estar hechos para funcionar sin interrupción. La guía de tecnología operativa advierte de que acciones rutinarias en la informática de oficina, como escanear una red, pueden perturbar estos sistemas ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Un recién llegado bienintencionado que «solo comprueba» un dispositivo puede detenerlo, provocar falsas alarmas que aparten a los operadores del trabajo real o dejar el dispositivo en un estado inseguro. En un servicio esencial, la curiosidad más segura es la que hace una pregunta en lugar de pulsar un botón.
+
+### 2.3 Los límites del recién llegado
+
+| **Puede** | **No puede** |
+|---|---|
+| Usar los sistemas que le dieron, para el trabajo que le encargaron. | Explorar, probar, escanear o «toquetear» cualquier sistema, incluidos los de su propio empleador. |
+| Bloquear la pantalla, proteger su contraseña y usar el segundo factor que le dieron. | Compartir su usuario o usar el de otra persona, ni siquiera «solo esta vez». |
+| Fijarse en lo extraño y anotar lo que vio. | Investigar: abrir archivos adjuntos sospechosos para «ver qué hacen», seguir enlaces o probar contraseñas. |
+| Comunicarlo por el canal oficial. | Arreglar las cosas por su cuenta, reiniciar dispositivos clínicos u operativos compartidos o cambiar configuraciones. |
+| Leer guías públicas y practicar en entornos sintéticos o de estudio. | Practicar en servicios reales, incluidos los sitios web públicos, sin permiso escrito. |
+| Preguntar «¿quién es el dueño de esto?». | Publicar fotos, capturas de pantalla o detalles de debilidades en redes sociales. |
+
+### 2.4 Comunicar bien
+
+Un buen aviso es breve, se ciñe a los hechos y se hace rápido. Responde a cinco preguntas:
+
+1. **¿Qué** vio? (Las palabras exactas en pantalla, la dirección del remitente, lo que ocurrió.)
+2. **¿Cuándo**? (Fecha y hora, con su zona horaria.)
+3. **¿Dónde**? (Qué ordenador, sala, sistema o cuenta de correo.)
+4. **¿Qué hizo?** (Por ejemplo: «No hice clic», o con honestidad «Hice clic en el enlace y escribí mi contraseña».)
+5. **¿Cuál es el posible efecto?** (A quién o a qué podría afectar, en una frase y marcada como suposición.)
+
+La honestidad importa sobre todo en el punto 4. Comunicar rápido que *sí* hizo clic es mucho más útil que ocultarlo: cuanto antes lo sepa el dueño, antes podrá restablecer una contraseña o aislar un equipo. Las organizaciones que castigan los avisos honestos reciben menos. Comuníquelo por el canal que indique su organización: un supervisor, el servicio de asistencia informática o un buzón de seguridad. Muchos organismos nacionales también aceptan avisos de incidentes de organizaciones; en Estados Unidos, por ejemplo, la CISA publica una vía para comunicarlos ([CISA, Report to CISA](https://www.cisa.gov/report)). Como recién llegado, comuníquelo primero internamente, salvo que su organización le indique otra cosa.
+
+### 2.5 Compartir información con cuidado: TLP
+
+Los detalles sobre debilidades e incidentes pueden ayudar a los atacantes. El **Protocolo de Semáforo (TLP, *Traffic Light Protocol*) 2.0** es un conjunto sencillo de etiquetas que indica a los destinatarios hasta dónde pueden compartir una información ([FIRST, Traffic Light Protocol](https://www.first.org/tlp/)):
+
+| Etiqueta | Quién puede recibirla |
+|---|---|
+| **TLP:RED** | Solo las personas nombradas que están presentes; no se comparte más. |
+| **TLP:AMBER+STRICT** | Solo la propia organización del destinatario. |
+| **TLP:AMBER** | La organización del destinatario y sus clientes, según la necesidad de conocerla. |
+| **TLP:GREEN** | La comunidad del destinatario, pero no los canales públicos. |
+| **TLP:CLEAR** | Cualquiera; sin más restricción que las normas habituales, como los derechos de autor. |
+
+Si recibe algo etiquetado, respete la etiqueta. Si algo no está etiquetado y podría ser delicado, no lo comparta fuera de su organización; pregunte al remitente.
+
+### 2.6 Lugares seguros para practicar
+
+Puede adquirir habilidades reales sin tocar nada real: los ejemplos resueltos y el laboratorio de este libro; material de estudio como los informes públicos de incidentes; entornos de formación deliberadamente vulnerables que usted mismo ejecute, sin conexión, en su propio ordenador; y kits públicos de ejercicios pensados para el debate, como Exercise in a Box del NCSC del Reino Unido ([NCSC, Exercise in a Box](https://www.ncsc.gov.uk/information/exercise-in-a-box)). Los hábitos cotidianos de seguridad personal —contraseñas robustas y únicas, autenticación multifactor, actualizaciones y saber reconocer el *phishing*— también son un buen punto de partida ([CISA, Secure Our World](https://www.cisa.gov/secure-our-world)).
+
+### 2.7 Ejemplo resuelto: el contratista servicial (sintético)
+
+El jueves por la tarde, un hombre desconocido llega al mostrador del centro de salud. «Soy de LinkNet», dice. «Se os cae internet. Tengo que conectar esta caja a vuestro armario de red; solo serán cinco minutos. K. Ito dijo que no había problema.» Sam no lo ha visto nunca; Ito está fuera del centro. Las decisiones de Sam:
+
+- **Autorización.** La red no es de Sam, y Sam no puede autorizar trabajos en ella. Una afirmación verbal de que «Ito dijo que no había problema» no es una autorización.
+- **Verificar por un canal conocido.** Sam le pide que espere y llama a H. Novak y a K. Ito a los números de la lista de contactos del centro, no a un número que ofrezca el visitante.
+- **Nada de «solo cinco minutos».** Aunque sea auténtico, un dispositivo conectado a la red del centro sin aprobación podría afectar al sistema de citas durante el horario de consulta.
+- **Comunicarlo.** Ito dice que no hay ningún trabajo programado. Novak pide al visitante que se marche y concierta una visita en regla con LinkNet. Sam redacta un aviso:
+
+> Qué: un hombre que decía ser de LinkNet pidió conectar un dispositivo al armario de red; dijo que K. Ito lo había aprobado. Cuándo: jueves, 14:20 (hora local). Dónde: mostrador de recepción, Larkfield Community Clinic. Qué hice: no le dejé entrar en la sala del armario; llamé a H. Novak y a K. Ito a los números de la lista de contactos del centro; Ito confirmó que no había ninguna visita programada. Posible efecto (suposición): intento de obtener acceso a la red del centro. Descripción: alto, chaqueta gris del estilo de LinkNet, no mostró ninguna acreditación.
+
+Sam etiqueta el aviso como TLP:AMBER+STRICT al enviarlo por correo a Novak: se queda dentro del centro. Sam no publica nada al respecto.
+
+### 2.8 Actividad práctica
+
+Escriba su propia «tarjeta de límites»: cinco cosas que puede hacer y cinco que no puede hacer con los sistemas de su lugar de trabajo o centro de estudios, con sus propias palabras. Después redacte un aviso, con las cinco preguntas de 2.4, sobre un correo sospechoso que haya recibido personalmente (elimine los datos personales). No haga clic en nada del correo para reunir más datos. Guarde la tarjeta de límites donde la vea y compárela con la de un compañero: si uno de ustedes permite algo que el otro prohíbe, comprueben cuál tiene razón con la tabla de lo que se puede y no se puede hacer. En el aviso sobre el correo, el punto 4 debe decir con honestidad lo que hizo, aunque fuera abrir el mensaje. Marque el posible efecto como suposición, como hizo Sam en el aviso sobre el contratista.
+
+### 2.9 Errores comunes y límites
+
+- Confundir acceso con permiso.
+- «Investigar» un correo o dispositivo sospechoso antes de comunicarlo, con lo que se destruyen pruebas o se extiende el daño.
+- Retrasar un aviso por vergüenza de haber hecho clic.
+- Verificar la identidad de quien llama con los datos de contacto que esa misma persona le dio.
+- Compartir de más: publicar una captura de pantalla de una debilidad «para avisar a la gente».
+- Aceptar la mención de un nombre, como «K. Ito dijo que no había problema», como permiso, cuando solo el dueño puede autorizar el trabajo.
+- Compartir un aviso etiquetado más allá de lo que permite su etiqueta, algo que Sam evitó al mantener el aviso sobre el contratista dentro del centro.
+- Límites: este capítulo es una orientación general, no asesoramiento jurídico. Las leyes sobre el acceso no autorizado y sobre las obligaciones de comunicación varían según el país y el sector; siga la política de su organización.
+
+### Ejercicios — capítulo 2
+
+**EX014 — ¿Acceso o permiso?** *Objetivo:* distinguir ambas cosas. *Insumos:* Sam puede abrir por accidente una carpeta compartida llamada «Payroll» (nóminas). *Pasos:* decir si Sam puede abrir los archivos y qué debe hacer. *Evidencia esperada:* dos o tres frases. *Rúbrica:* 3 = no abre los archivos y comunica el acceso excesivo al supervisor para que el dueño corrija los permisos; 2 = no los abre, pero no lo comunica; 1 = los abre «para comprobar»; 0 = nada.
+
+**EX015 — Buenas intenciones.** *Objetivo:* explicar por qué el motivo no autoriza. *Insumos:* un compañero dice «no pasa nada por probar si la web del agua del pueblo tiene debilidades, porque les avisaría si encontrara algo». *Pasos:* responder en tres frases. *Evidencia esperada:* la respuesta. *Rúbrica:* 3 = explica que no hay autorización del dueño, que probablemente es ilegal y que podría perturbar un servicio público, y sugiere practicar en un laboratorio o leer la política de divulgación publicada por la organización; 2 = dos de estos puntos; 1 = uno; 0 = nada.
+
+**EX016 — Elementos del alcance.** *Objetivo:* reconocer lo que contiene una autorización válida. *Insumos:* la sección 2.1. *Pasos:* enumerar cuatro cosas que debe indicar una autorización escrita. *Evidencia esperada:* la lista. *Rúbrica:* 3 = quién es el dueño y aprueba, qué sistemas, qué acciones, cuándo (ventana), además de quién lo hace o qué hacer si algo sale mal; 2 = tres elementos; 1 = uno o dos; 0 = nada.
+
+**EX017 — ¿Por qué no escanear?** *Objetivo:* explicar la fragilidad de la TO. *Insumos:* la sección 2.2. *Pasos:* explicar en dos frases por qué un escaneo de red inofensivo en una oficina podría ser dañino en una planta de agua. *Evidencia esperada:* dos frases. *Rúbrica:* 3 = los dispositivos antiguos y sensibles pueden detenerse o comportarse mal, y un dispositivo detenido puede afectar a un proceso físico o a la seguridad de las personas; 2 = menciona una de las dos cosas; 1 = vago; 0 = nada.
+
+**EX018 — Clasificar límites.** *Objetivo:* aplicar la tabla de lo que se puede y no se puede hacer. *Insumos:* (a) bloquear la pantalla; (b) reiniciar el controlador del frigorífico de la farmacia porque su pantalla se ha congelado; (c) comunicar que se ha encontrado una memoria USB sospechosa en el aparcamiento; (d) conectar esa memoria USB para encontrar a su dueño; (e) usar el usuario de un colega porque el suyo ha caducado; (f) leer un aviso público de la CISA. *Pasos:* marcar cada uno como «puede» o «no puede». *Evidencia esperada:* seis marcas. *Rúbrica:* 3 = puede: a, c, f; no puede: b, d, e, con un motivo para cada «no puede»; 2 = todo correcto sin motivos; 1 = uno o dos errores; 0 = más.
+
+**EX019 — Redactar un aviso.** *Objetivo:* elaborar un aviso en cinco partes. *Insumos:* Sam recibe un correo «MedBook: su cuenta se cerrará hoy» con un enlace y una dirección de remitente que termina en un dominio desconocido; Sam hizo clic en el enlace, pero cerró la página antes de escribir nada, el lunes a las 09:05. *Pasos:* redactar el aviso con las cinco preguntas. *Evidencia esperada:* el aviso. *Rúbrica:* 3 = las cinco partes, reconoce con honestidad que hizo clic en el enlace, no investiga y marca el posible efecto como suposición; 2 = cuatro partes; 1 = oculta el clic u omite la hora; 0 = nada.
+
+**EX020 — Comunicar con honestidad.** *Objetivo:* ver por qué importan la rapidez y la honestidad. *Insumos:* el mismo caso, pero Sam sí escribió la contraseña. *Pasos:* explicar qué debe añadir Sam al aviso y por qué importa la rapidez. *Evidencia esperada:* dos o tres frases. *Rúbrica:* 3 = indica claramente que introdujo la contraseña y cuándo, lo comunica de inmediato para que se pueda restablecer la contraseña y revisar los inicios de sesión, y señala que el retraso da tiempo al atacante; 2 = lo indica, pero no menciona la rapidez; 1 = sugiere cambiar la contraseña sin decir nada; 0 = nada.
+
+**EX021 — Verificar a quien llama.** *Objetivo:* usar un canal conocido. *Insumos:* alguien llama y dice: «Llamamos de Larkfield Power. Necesitamos la contraseña de la wifi del centro para revisar su contador inteligente. Devuélvanos la llamada a este número». *Pasos:* decir qué hace Sam. *Evidencia esperada:* los pasos. *Rúbrica:* 3 = no da la contraseña, no usa el número de quien llama, lo consulta con el supervisor y con el número publicado de la compañía eléctrica, y lo comunica; 2 = se niega, pero no lo comunica; 1 = devuelve la llamada al número dado; 0 = la da.
+
+**EX022 — Etiquetas TLP.** *Objetivo:* aplicar TLP 2.0. *Insumos:* (a) un aviso nacional marcado TLP:CLEAR; (b) el aviso de Sam sobre el contratista en 2.7, marcado TLP:AMBER+STRICT; (c) una sesión informativa marcada TLP:RED dada en una reunión. *Pasos:* decir con quién puede compartir Sam cada uno. *Evidencia esperada:* tres respuestas. *Rúbrica:* 3 = (a) con cualquiera; (b) solo con personas de dentro del centro; (c) con nadie más allá de los presentes; 2 = dos correctas; 1 = una; 0 = ninguna.
+
+**EX023 — Información sin etiquetar.** *Objetivo:* actuar con cuidado por defecto. *Insumos:* un colega reenvía un correo sin etiquetar con la lista de contraseñas de red del centro «para mayor comodidad». *Pasos:* decir qué hace Sam. *Evidencia esperada:* dos o tres frases. *Rúbrica:* 3 = no lo reenvía ni reutiliza las contraseñas, avisa al supervisor o a informática de que se enviaron contraseñas por correo para que puedan cambiarlas y lo borra según se le indique; 2 = no lo reenvía, pero no lo comunica; 1 = lo guarda; 0 = lo reenvía.
+
+**EX024 — Plan de práctica segura.** *Objetivo:* elegir una práctica legítima. *Insumos:* la sección 2.6. *Pasos:* describir dos formas de practicar habilidades de seguridad este mes sin tocar ningún sistema real. *Evidencia esperada:* dos elementos. *Rúbrica:* 3 = dos opciones seguras concretas (laboratorio del libro, entorno de formación sin conexión en su propio ordenador, kit público de ejercicio de mesa, higiene de sus cuentas personales) con el motivo por el que cada una es segura; 2 = dos sin motivos; 1 = una; 0 = cualquier opción insegura.
+
+**EX025 — Redes sociales.** *Objetivo:* evitar una divulgación dañina. *Insumos:* una amistad de Sam quiere publicar «¡Larkfield Water sigue usando contraseñas por defecto!» para avisar al público. *Pasos:* explicar el riesgo y una vía mejor. *Evidencia esperada:* tres frases. *Rúbrica:* 3 = publicarlo podría ayudar a los atacantes a apuntar a un servicio crítico para la seguridad antes de que se corrija, y puede no estar verificado; mejor: avisar a la empresa de agua por su contacto o vía de divulgación, o a su supervisor si trabaja allí; 2 = solo el riesgo; 1 = vago; 0 = anima a publicarlo.
+
+**EX026 — Reflexión sobre el caso del contratista.** *Objetivo:* extraer las decisiones de 2.7. *Insumos:* el ejemplo resuelto. *Pasos:* enumerar las cuatro decisiones que tomó Sam y el principio en que se basa cada una. *Evidencia esperada:* cuatro pares. *Rúbrica:* 3 = no le corresponde autorizar / la autorización debe venir del dueño; verificó con contactos conocidos / no fiarse de los datos que da quien llama; rechazó los «cinco minutos» / los cambios no aprobados pueden perturbar el servicio; lo comunicó y lo etiquetó / comunicar y compartir con cuidado; 2 = tres; 1 = una o dos; 0 = nada.
+
+### Síntesis del capítulo
+
+El permiso lo da el dueño del sistema, es concreto y suele constar por escrito; ni el acceso ni las buenas intenciones son permiso. En los servicios esenciales, «solo comprobar» puede perturbar procesos reales, así que las acciones seguras de un recién llegado son usar lo que le dieron, fijarse, comunicarlo rápido y con honestidad por un canal conocido, y compartir con cuidado mediante etiquetas como las del TLP. Las habilidades se adquieren en entornos sintéticos y de estudio, nunca en servicios en funcionamiento.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Siga estudiando — capítulo 02 de 04
+
+[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](../../en/book/MANUSCRIPT.md#ch-03)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -220,6 +359,34 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX012.** Sabido: llegaron correos de MedBook de aspecto falso; piden contraseñas en un enlace. Supuesto: los inicios de sesión de MedBook no tienen segundo factor; los correos son falsos y no un aviso auténtico pero mal diseñado; alguien ha llegado a introducir su contraseña.
 
 **EX013.** «Gracias por contármelo; parece algo que merece la pena plantear a tu supervisor o a quien se ocupe de la seguridad en la planta, porque son quienes pueden comprobarlo y arreglarlo. Mejor no compartas los detalles conmigo ni con nadie de fuera, y desde luego no pruebes la herramienta tú».
+
+### Capítulo 2
+
+**EX014.** Sam no debe abrir los archivos. Tener acceso por accidente no es tener permiso. Sam le dice a H. Novak que el personal de recepción puede ver la carpeta Payroll, para que el dueño (con K. Ito) corrija los permisos.
+
+**EX015.** «Avisarles después no lo convierte en algo autorizado: solo el dueño puede dar permiso, y probar sin él puede ser delito. Además es un servicio público; una prueba podría perturbarlo. Si quieres practicar, usa un laboratorio de formación sin conexión, o mira si publican una política de divulgación de vulnerabilidades y síguela.»
+
+**EX016.** Quién es el dueño del sistema y lo aprueba; qué sistemas entran en el alcance; qué acciones se permiten (y cuáles se prohíben); la ventana de tiempo; quién lo lleva a cabo; qué hacer y a quién llamar si algo sale mal.
+
+**EX017.** «Los dispositivos de una planta de agua suelen ser antiguos y sensibles, y algunos pueden detenerse o comportarse mal cuando reciben tráfico de red inesperado. Un dispositivo detenido puede afectar a las bombas o a la dosificación —un proceso físico del que dependen las personas—, no solo a un archivo.»
+
+**EX018.** Puede: (a), (c), (f). No puede: (b), porque reiniciar un dispositivo clínico es decisión del dueño y podría hacer perder configuraciones o alarmas; (d), porque una memoria USB desconocida puede llevar *malware*, así que hay que comunicarlo; (e), porque usar el usuario de otra persona rompe la rendición de cuentas y la política.
+
+**EX019.** «Qué: correo que dice ser de MedBook, asunto «su cuenta se cerrará hoy», con un enlace; la dirección del remitente termina en un dominio desconocido [copiar la dirección exacta]. Cuándo: lunes, 09:05, hora local. Dónde: PC de recepción, mi cuenta de correo del centro. Qué hice: hice clic en el enlace y cerré la página sin escribir nada; no lo he reenviado. Posible efecto (suposición): intento de robar credenciales de MedBook; puede que haya que revisar mi PC.»
+
+**EX020.** Añadir: «Escribí mi contraseña de MedBook en la página hacia las 09:06». Comunicarlo de inmediato para que el dueño pueda restablecer la contraseña, revisar los inicios de sesión recientes y buscar a otros miembros del personal que lo hayan recibido. Cada minuto de retraso da tiempo al atacante para usar la credencial.
+
+**EX021.** Sam no da la contraseña ni devuelve la llamada al número ofrecido. Sam le dice a quien llama que alguien se pondrá en contacto, informa a H. Novak y, si hace falta, llama a Larkfield Power a su número publicado para comprobarlo. Sam comunica la llamada con la hora y los detalles.
+
+**EX022.** (a) Con cualquiera. (b) Solo con personas de dentro del centro. (c) Con nadie más allá de quienes estaban presentes cuando se dio.
+
+**EX023.** Sam no guarda, reenvía ni usa las contraseñas. Sam avisa a H. Novak y a K. Ito de que se enviaron contraseñas por correo, para que puedan cambiarlas, y borra el correo si se le indica. La información delicada sin etiquetar se trata como de uso solo interno.
+
+**EX024.** (1) El Lab 4 de este libro en mi propio ordenador: datos sintéticos, sin red. (2) Un kit público de ejercicio de mesa, como Exercise in a Box del NCSC, realizado como debate con compañeros: no se toca ningún sistema. También es aceptable: un sistema de formación deliberadamente vulnerable ejecutado sin conexión en mi propio equipo, o mejorar las contraseñas y la autenticación multifactor de mis cuentas personales.
+
+**EX025.** Publicarlo podría señalar a los atacantes un servicio crítico para la seguridad antes de que se corrija, y la afirmación puede ser errónea o estar desactualizada. Mejor: si esa amistad trabaja allí, que se lo diga a su supervisor o a su contacto de seguridad; si no, que use el contacto publicado de la empresa de agua o su vía de divulgación de vulnerabilidades. No publicar detalles.
+
+**EX026.** (1) No le dejó entrar: solo el dueño de la red puede autorizar trabajos. (2) Llamó a Novak y a Ito a los números de la lista del centro: verificar por canales conocidos, nunca por los que da quien llama. (3) Rechazó los «cinco minutos»: los dispositivos y cambios no aprobados pueden perturbar los servicios. (4) Redactó un aviso en cinco partes etiquetado TLP:AMBER+STRICT: comunicar ciñéndose a los hechos y compartir con cuidado.
 
 <a id="glossary"></a>
 
