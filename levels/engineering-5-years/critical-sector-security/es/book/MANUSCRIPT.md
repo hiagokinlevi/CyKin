@@ -62,8 +62,8 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 24. [Infraestructura crítica y seguridad sectorial: métodos I](#ch-24)
 25. [Taller de diseño I](#ch-25)
 26. [Infraestructura crítica y seguridad sectorial: alternativas de arquitectura](#ch-26)
-27. [Infraestructura crítica y seguridad sectorial: diseño de controles](../../en/book/MANUSCRIPT.md#ch-27)
-28. [Infraestructura crítica y seguridad sectorial: implementación I](../../en/book/MANUSCRIPT.md#ch-28)
+27. [Infraestructura crítica y seguridad sectorial: diseño de controles](#ch-27)
+28. [Infraestructura crítica y seguridad sectorial: implementación I](#ch-28)
 29. [Infraestructura crítica y seguridad sectorial: medición](../../en/book/MANUSCRIPT.md#ch-29)
 30. [Laboratorio de verificación I](../../en/book/MANUSCRIPT.md#ch-30)
 31. [Infraestructura crítica y seguridad sectorial: implementación II](../../en/book/MANUSCRIPT.md#ch-31)
@@ -2103,7 +2103,138 @@ Elija la arquitectura según cómo falla y cómo puede atacarse. El control jer�
 <!-- cyberabc:chapter-navigation:start ch-26 -->
 ### Siga estudiando — capítulo 26 de 50
 
-[← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](../../en/book/MANUSCRIPT.md#ch-27)
+[← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Infraestructura crítica y seguridad sectorial: diseño de controles
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar controles que aborden escenarios concretos con un desempeño definido; (2) combinar controles preventivos, detectivos y de recuperación en una defensa en profundidad cuyas capas fallen de forma independiente; (3) preferir límites diseñados, basados en la física, para las peores consecuencias; y (4) especificar cada control de modo que pueda verificarse. Aplica los capítulos 15, 23 y 26 y prepara los capítulos 28 y 30.
+
+### 27.1 Del escenario al control
+
+Cada escenario del capítulo 23 recibe controles en tres puntos: **prevenir** el evento de amenaza, **detectarlo** si la prevención falla, y **limitar y recuperarse** de las consecuencias. Ejemplo, órdenes de parada falsificadas a PS3 y PS4: prevenir con órdenes autenticadas (R1); detectar con alarmas ante anomalías en las órdenes y cambios de estado inesperados; limitar con una lógica local de rearranque automático y con el tanque del hospital; recuperarse con procedimientos manuales locales (R4). Cada uno de estos controles debe especificarse y verificarse después, como muestra el resto del capítulo, antes de que el escenario de la parada falsificada pueda darse por cubierto en el expediente.
+
+### 27.2 Primero, los límites diseñados
+
+Para las peores consecuencias, los controles más robustos no dependen en absoluto del software: válvulas de alivio de presión, topes mecánicos, enclavamientos cableados, bombas dosificadoras de productos químicos dimensionadas físicamente para que no puedan sobredosificar con la carrera máxima. La ingeniería informada por lo cibernético (véase la [CCE del INL](https://inl.gov/national-security/cce/)) da importancia a estos controles porque se mantienen aunque se comprometan todos los sistemas digitales. No pueden cubrirlo todo (una válvula de alivio mecánica no puede impedir que se apague una bomba), pero acotan los peores casos.
+
+Para la bomba dosificadora de LRWA, el límite de carrera dimensionado por los ingenieros de proceso es uno de estos controles.
+
+### 27.3 Capas independientes
+
+La defensa en profundidad solo funciona si las capas fallan de forma independiente. Enumere las dependencias de cada capa: si la autenticación, el monitoreo y el registro dependen todos de los servidores SCADA, un solo compromiso anula los tres. Ponga al menos una capa de detección fuera de los sistemas que vigila (monitoreo pasivo de la red, un analizador independiente) y mantenga los materiales de recuperación (copias fuera de línea, procedimientos, claves de repuesto) fuera del alcance de la amenaza de la que hay que recuperarse.
+
+El TMRP aplica esto poniendo la alarma del analizador de cloro en un registrador separado y guardando las copias fuera de línea lejos de los servidores SCADA que restaurarían.
+
+### 27.4 Especificar los controles
+
+Una especificación de control indica: el escenario o escenarios que aborda; su función; su desempeño (detección en menos de X, tasa de rechazo, tiempo de restauración); sus dependencias; su modo de falla (a prueba de fallos o con operación mantenida, y qué significa eso aquí); su responsable; y su método de verificación. Sin desempeño ni verificación, un control es una intención. La especificación de los límites de consigna del ejemplo resuelto que sigue muestra todos los elementos: el escenario, los límites y el límite de escalón, la regla de alarma, las dependencias, la conservación de la última consigna válida como modo de falla y la prueba T3 como verificación. Su responsable es el equipo de ingeniería de control que configura el controlador de dosificación.
+
+### 27.5 Ejemplo resuelto: límites de consigna (sintético)
+
+Escenario: una consigna falsificada o errónea lleva la bomba dosificadora de cloro a sobredosificar. Controles: (1) **diseñado**: carrera de la bomba dosificadora limitada físicamente para que la dosis máxima con el caudal máximo quede por debajo de una concentración dañina (dimensionada por los ingenieros de proceso); (2) **preventivo**: límites y límites de escalón en el controlador (R3), implementados en el controlador y no en la HMI, para que un SCADA comprometido no pueda eludirlos; (3) **detectivo**: alarma de un analizador de cloro independiente (R9) en un registrador separado; (4) **de recuperación**: procedimiento para aislar la línea de dosificación y purgarla. Especificación de (2): rechazar las consignas fuera de 0,5–5,5 mg/L o que cambien más de 0,5 mg/L por orden, rechazar los valores no finitos, registrar cada rechazo, alarmar ante tres rechazos en 10 minutos; a prueba de fallos = conservar la última consigna válida; verificado con la prueba T3, incluidas pruebas basadas en propiedades (Lab 11).
+
+### 27.6 Actividad práctica
+
+Redacte especificaciones completas de dos controles del escenario de parada falsificada de §27.1, con desempeño, dependencias, modo de falla y verificación. Elija un control preventivo, como las órdenes autenticadas, y un control de recuperación, como la operación manual local en PS3 y PS4. Para cada uno, indique el desempeño que debe lograr, de qué depende y qué ocurre cuando falla. La autenticación debe fallar cerrada para las órdenes; la operación manual local debe funcionar sin el SCADA ni la red. Nombre un responsable por su rol y un método de verificación, y después compruebe si los dos controles comparten alguna dependencia que permitiría a un solo evento anular ambos.
+
+### 27.7 Errores comunes y límites
+
+- Controles sin criterios de desempeño.
+- Límites impuestos en la HMI y no en el controlador.
+- «Capas» que comparten dependencias.
+- Ningún límite diseñado para la peor consecuencia cuando es factible.
+- Materiales de recuperación al alcance del mismo atacante.
+
+El ejemplo de la dosificación evita cada uno: los límites están en el controlador, la alarma del analizador usa un registrador separado, el límite de carrera está diseñado y cada elemento tiene una meta de desempeño. Los límites también conservan la última consigna válida cuando se rechaza una orden, de modo que el modo de falla queda enunciado, y cada rechazo se registra para la regla de alarma.
+
+### Ejercicios — capítulo 27
+
+**EX053 — Auditoría de dependencias de las capas.** *Objetivo:* comprobar la independencia. *Entradas:* los cuatro controles de §27.5 y su implementación: límites del controlador en el PLC de dosificación; analizador en un registrador separado; registro a través del SCADA. *Pasos:* enumere las dependencias de cada capa; identifique cualquier dependencia compartida; proponga un cambio. *Evidencia esperada:* tabla y cambio. *Rúbrica:* 3 = se encuentra la dependencia compartida (registro y alarma de los rechazos a través del SCADA), se propone un cambio (registro local más un camino de alarma independiente); 2 = sin cambio; 1 = solo la lista; 0 = nada.
+
+**EX054 — Qué significa «a prueba de fallos».** *Objetivo:* definir los modos de falla en su contexto. *Entradas:* la pasarela de telemetría autenticada de PS4. *Pasos:* ante una falla de la pasarela, defina qué significa «a prueba de fallos» para (a) las órdenes, (b) la telemetría, (c) el control local, y justifíquelo. *Evidencia esperada:* tres definiciones. *Rúbrica:* 3 = las órdenes fallan cerradas (se rechazan), la telemetría falla de forma visible (alarma en el SCADA), el control local continúa automáticamente; 2 = una mal definida; 1 = «a prueba de fallos = parar»; 0 = nada.
+
+### Síntesis del capítulo
+
+Diseñe controles por escenario en los puntos de prevención, detección y recuperación. Ponga límites físicos diseñados a las peores consecuencias, imponga los límites donde el atacante no pueda eludirlos, haga independientes las capas y especifique para cada control su desempeño, sus dependencias, su modo de falla, su responsable y su verificación.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Siga estudiando — capítulo 27 de 50
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Infraestructura crítica y seguridad sectorial: implementación I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) implementar un control de seguridad como código funcional con pruebas, a partir de su especificación; (2) aplicar prácticas de codificación segura para el manejo de entradas, la criptografía y el manejo de errores; (3) construir un banco de pruebas que ejercite el control sin conexión; y (4) registrar una evidencia de implementación que remita a los requisitos. Implementa las especificaciones del capítulo 27 y prepara el capítulo 29.
+
+### 28.1 De la especificación al código
+
+Parta de la especificación del control (capítulo 27): cada «deberá» se convierte en al menos una prueba, antes del código o a la par que él. Mantenga la implementación pequeña y, cuando sea posible, sin dependencias: la pasarela de este libro usa solo la biblioteca estándar de Python. Estructúrela como recomienda el capítulo 9: un analizador (capítulo 4), un verificador (capítulo 19), un almacén de estado (contadores contra repeticiones) y una interfaz de salida, cada uno probado por separado. La pasarela del TMRP sigue esta estructura, y por eso su error con NaN pudo encontrarse y corregirse solo en el validador.
+
+### 28.2 Codificación segura para los caminos de control
+
+- Valide la entrada antes de usarla: longitud, MAC, contador, forma, rango físico (Labs 3 y 8).
+- Compare los secretos en tiempo constante (`hmac.compare_digest`).
+- Cargue las claves desde un almacenamiento protegido, nunca desde el código fuente ni desde archivos legibles por todos.
+- Trate toda excepción en el camino de verificación como un rechazo; nunca acepte por defecto.
+- Acote el uso de recursos: tamaño máximo de mensaje, longitud máxima de cola, límites de frecuencia por origen.
+- Registre los rechazos con contexto suficiente para investigar, sin registrar secretos.
+
+Estas reglas salen directamente de los Labs 3, 8 y 11. Cada una tiene una prueba en el conjunto de pruebas de la pasarela.
+
+### 28.3 El banco de pruebas
+
+Un banco de pruebas reproduce sin conexión el entorno del control: RTU simuladas que envían mensajes válidos, malformados, falsificados, repetidos y retrasados; un SCADA simulado que recibe la salida de la pasarela; y un reloj que se puede controlar. El Lab 15 (capítulo 40) es una versión compacta. Los bancos permiten probar modos de falla que sería inseguro o imposible provocar en un sistema en servicio. El banco del TMRP incluye RTU simuladas en PS2 y PS4, un receptor SCADA simulado y un reloj controlable, de modo que los reinicios, los retardos y las repeticiones pueden producirse a demanda. El mismo arnés sostiene después la campaña de inyección de fallas con semilla, y por eso invertir pronto en él ahorra tiempo cuando empieza la verificación del proyecto final.
+
+### 28.4 Evidencia
+
+Registre para cada implementación: las versiones del requisito y de la especificación implementadas; la revisión del código fuente; los resultados de las pruebas con las versiones de las herramientas; las limitaciones conocidas; y la aprobación del revisor. Esto pasa a formar parte del expediente de evidencia (capítulo 48). Para el validador de consignas del TMRP, el registro muestra la versión de la especificación, los *commits* de v1 y v2, los resultados de T3 de cada uno, la limitación conocida de que v1 aceptaba NaN y el revisor que planteó la pregunta sobre NaN. Sin ese registro, el hallazgo posterior del expediente sobre el estado de T3 habría sido imposible de resolver, porque nadie podría haber mostrado qué versión había pasado. Registrar la evidencia mientras se hace el trabajo cuesta minutos; reconstruirla después cuesta días.
+
+### 28.5 Ejemplo resuelto: validador de consignas v1 (sintético)
+
+El equipo del TMRP implementa R3 a partir de la especificación de §27.5. La versión 1 comprueba `new < lo`, `new > hi` y el límite de escalón, y supera las pruebas de ejemplo: en rango, aceptado; por encima y por debajo del rango, rechazado; escalón demasiado grande, rechazado. La revisión de código pregunta: ¿y NaN? En la aritmética IEEE 754, toda comparación de orden con NaN es falsa, así que `nan < lo` y `nan > hi` son ambas falsas y `abs(nan - old) > max_step` es falsa: v1 acepta NaN. La versión 2 rechaza explícitamente los valores no finitos y expresa la región segura en positivo (`lo <= new <= hi`), lo que es falso para NaN. Las pruebas basadas en propiedades del capítulo 30 confirman la diferencia de forma sistemática (Lab 11). Esta es la falla de la prueba T3 del escenario de aprobación del capítulo 10.
+
+### 28.6 Actividad práctica
+
+Implemente una pasarela mínima que combine la salida del analizador del Lab 3 con el sellado del Lab 8, de modo que una lectura Modbus validada se convierta en una trama autenticada. Escriba pruebas para cada camino de rechazo. Mantenga las dos partes separadas tras interfaces claras: el analizador devuelve una lectura validada o un motivo de rechazo, y solo se sella una lectura validada. Pruebe cada camino de rechazo del Lab 3 y confirme que nada llega a la función de sellado. Después compruebe que la trama sellada supera el receptor del Lab 8 y que una copia manipulada se rechaza. Guarde la clave fuera del archivo fuente, incluso en este ejercicio, para que el hábito esté instalado antes de que aparezcan claves reales.
+
+### 28.7 Errores comunes y límites
+
+- Código escrito antes de que la especificación esté clara.
+- Comportamiento de aceptar por defecto ante las excepciones.
+- Comprobaciones en negativo (`if x > hi: reject`) que pasan por alto NaN; prefiera comprobaciones en positivo de la región segura.
+- Claves en el código fuente.
+- Evidencia reconstruida a posteriori.
+
+La primera versión del validador de consignas muestra el tercer error, y el expediente del TMRP existe para evitar el último. Su aceptación de NaN venía de las comprobaciones en negativo, y la corrección fue enunciar en positivo la región segura. Las claves del código del banco del TMRP se cargan desde un archivo protegido, nunca se escriben en el código fuente, y toda excepción en el camino de verificación termina en un rechazo que se registra.
+
+### Ejercicios — capítulo 28
+
+**EX055 — NaN y compañía.** *Objetivo:* encontrar aceptaciones inseguras. *Entradas:* `validate_v1` del Lab 11. *Pasos:* evalúe a mano v1 y v2 para `new` = NaN, +∞, −∞, 5.5 y 5.50001 con `old` = 5.2, y explique cada resultado. *Evidencia esperada:* tabla. *Rúbrica:* 3 = entre los valores especiales, v1 acepta solo NaN (∞ se rechaza por `> hi`, −∞ por `< lo`), 5.5 lo aceptan ambas (límite inclusivo), 5.50001 se rechaza; v2 rechaza todos los no finitos; explicaciones correctas; 2 = un error; 1 = sin explicaciones; 0 = nada.
+
+**EX056 — Registro de los rechazos.** *Objetivo:* diseñar registros útiles. *Entradas:* la pasarela. *Pasos:* defina un registro para cada tipo de rechazo (etiqueta, repetición, sin datos recientes, forma, rango) con sus campos, y explique un campo que excluye deliberadamente. *Evidencia esperada:* esquema. *Rúbrica:* 3 = los campos permiten investigar (fuente de tiempo, estación, contador, motivo, ID de la pasarela, hash del mensaje), excluye el material de claves y la carga útil completa cuando es sensible; 2 = falta la fuente de tiempo o la estación; 1 = texto libre; 0 = nada.
+
+### Síntesis del capítulo
+
+Implemente los controles a partir de las especificaciones, con pruebas para cada «deberá». Programe el camino de control de forma defensiva: valide por completo, compare en tiempo constante, proteja las claves, rechace ante cualquier error, acote los recursos y registre de forma útil. Prefiera las comprobaciones en positivo de la región segura. Pruebe en un banco capaz de producir las fallas que no puede provocar en servicio, y registre la evidencia sobre la marcha.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Siga estudiando — capítulo 28 de 50
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](../../en/book/MANUSCRIPT.md#ch-29)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2269,6 +2400,18 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX051.** La mediana de tres tolera un transmisor falsificado o averiado. Un atacante que controle la RTU que lee los tres puede falsificarlos todos de forma coherente y anular la votación. Restablezca la independencia cableando los transmisores a módulos de E/S o controladores separados, con comunicaciones separadas, de modo que ningún compromiso individual controle dos de las tres entradas.
 
 **EX052.** ADR modelo: contexto: PS4 es la alimentación directa del hospital y sus consignas cambian aproximadamente una vez al mes; opciones: C2 (remoto dentro de límites) o C3/variante de C2 (escrituras de consigna solo locales, monitoreo remoto); decisión: escrituras de consigna solo locales en PS4, manteniendo el arranque y la parada remotos con autenticación; consecuencias: visita mensual al sitio para los cambios de consigna, procedimientos de respuesta local más rápidos, riesgo residual D1 en PS4 reducido al arranque y la parada; revisar si aumenta la frecuencia de los cambios de consigna o cambia la dotación de personal.
+
+### Capítulo 27
+
+**EX053.** Límite diseñado: ninguna (mecánico). Límites del controlador: PLC de dosificación. Alarma del analizador: registrador separado y sus comunicaciones. Registro y alarma de los rechazos: a través del SCADA, compartido con el sistema que podría estar comprometido. Cambio: registro local no volátil de los rechazos en el PLC y un camino de alarma independiente (del registrador del analizador a la sala de control por una ruta separada).
+
+**EX054.** Las órdenes fallan cerradas: si la pasarela falla, no pasa ninguna orden. La telemetría falla de forma visible: el SCADA genera una alarma de estación sin datos en menos de 60 s. El control local continúa automáticamente dentro de los límites impuestos localmente. Parar la estación convertiría la falla de un componente de seguridad en una falla de suministro.
+
+### Capítulo 28
+
+**EX055.** Con `old` = 5.2: v1: NaN aceptado (todas las comparaciones son falsas); +∞ rechazado (`> hi`); −∞ rechazado (`< lo`); 5,5 aceptado (|5,5 − 5,2| = 0,3 ≤ 0,5, límite inclusivo); 5,50001 rechazado (`> hi`). v2 rechaza NaN y ±∞ mediante `isfinite`, acepta 5,5 y rechaza 5,50001.
+
+**EX056.** Campos: marca de tiempo UTC y fuente de tiempo; ID de la pasarela; ID de la estación; código de motivo (etiqueta, repetición, sin datos recientes, forma, rango); valor del contador (si puede analizarse); último contador aceptado; SHA-256 de la trama recibida; dirección de origen. Excluya el material de claves y la carga útil completa de las órdenes cuando pueda revelar consignas sensibles a quienes leen los registros; el hash de la trama permite correlacionar sin divulgar.
 
 <a id="glossary"></a>
 
