@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 071, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a configurar, verificar e manter os controles de segurança da informação de uma instituição de lazer sem fins lucrativos com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam estações de trabalho sintéticas contra uma linha de base de quatro itens, revisam uma lista sintética de regras de firewall em busca de regras amplas, sombreadas e sem uso e analisam um log sintético de autenticação para classificar as origens de logins com falha. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
-
-Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1099,11 +1097,305 @@ O certificado de um fornecedor só é uma evidência útil se seu escopo cobrir 
 
 - **EX069 — Configuração da nuvem.** Que configuração padrão da nuvem é restringida? *Rubrica:* 3 = o compartilhamento externo de arquivos;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
+<a id="ch-24"></a>
+
+## Capítulo 24 — Políticas e procedimentos
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir políticas de procedimentos; (2) escrever procedimentos claros para tarefas técnicas; (3) manter os documentos atualizados.
+
+### 24.1 Políticas e procedimentos
+
+Jamal aprende que uma política declara o que precisa acontecer, como a exigência de que todas as contas da equipe usem autenticação multifator, enquanto um procedimento explica passo a passo como fazê-lo. As políticas do Riverbend são escritas pelo gerente de TI e aprovadas pelo diretor executivo. A ISO/IEC 27002:2022 oferece orientações sobre políticas de segurança da informação, que o Riverbend usa como referência. A Sra. Grant observa que os tecnólogos escrevem e seguem sobretudo procedimentos, por isso procedimentos claros fazem parte de seu ofício. Ele lê as políticas atuais antes de escrever qualquer coisa.
+
+### 24.2 Redação de procedimentos
+
+Jamal escreve procedimentos para as tarefas que executa: criar contas a partir de modelos, executar a verificação mensal das estações de trabalho e tratar um celular perdido. Cada um lista o propósito, quando usá-lo, os passos, os resultados esperados e o que fazer se algo der errado. Ele testa cada procedimento pedindo ao técnico que o siga sem ajuda. Dois passos estão confusos, e ele os reescreve. Ele aprende que um procedimento só é bom se outra pessoa consegue segui-lo. O técnico diz que as versões revisadas estão claras o bastante para usar sozinho.
+
+### 24.3 Controle de versões
+
+Jamal guarda os procedimentos numa pasta compartilhada com números de versão, datas e responsáveis. As versões antigas são arquivadas, não apagadas, para que a equipe possa ver o que mudou. Ele acrescenta uma data de revisão a cada um. A Sra. Grant explica que procedimentos que se referem a telas ou configurações antigas causam erros, por isso a revisão regular é necessária. Ele cria lembretes para revisões semestrais. Ele também acrescenta uma breve nota de alteração no topo de cada documento explicando o que mudou na versão mais recente e por quê, para que os leitores não precisem comparar as versões por conta própria. O gerente de TI aprova a estrutura e pede que todos os documentos de TI a sigam.
+
+### 24.4 Ligação com a política
+
+Cada procedimento remete à política que apoia, para que os leitores entendam por que a tarefa importa. Jamal percebe que a política de senhas ainda menciona as trocas mensais, embora a prática tenha mudado. Ele pede ao gerente de TI que atualize a política para que prática e política concordem. A Sra. Grant observa que os auditores verificam se a prática corresponde à política e que políticas desatualizadas geram achados evitáveis. O gerente de TI atualiza a política no mês seguinte, e o diretor executivo aprova a mudança. Jamal confere as outras políticas com a prática atual e não encontra mais contradições.
+
+### Exemplo resolvido
+
+Jamal distingue política de procedimento, escreve e testa três procedimentos, acrescenta versões e datas de revisão e consegue que uma política de senhas desatualizada seja atualizada.
+
+> **Caso sintético.** Os documentos são sintéticos.
+
+### Erros e limites
+
+Políticas que contradizem a prática geram achados de auditoria evitáveis.
+
+### Exercícios
+
+- **EX070 — Teste dos procedimentos.** Como Jamal testa seus procedimentos? *Rubrica:* 3 = o técnico os segue sem ajuda;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX071 — Regra de arquivamento.** O que acontece com as versões antigas dos procedimentos? *Rubrica:* 3 = são arquivadas, não apagadas;; 2 = correto;; 1 = apagadas;; 0 = nenhuma.
+
+- **EX072 — Política desatualizada.** Qual política está desatualizada? *Rubrica:* 3 = a política de senhas;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Apoio à conscientização em segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) apoiar as atividades de conscientização como tecnólogo; (2) usar exemplos reais com segurança; (3) incentivar as comunicações.
+
+### 25.1 O papel do tecnólogo
+
+A conscientização no Riverbend é conduzida pela gerente de recursos humanos, mas Jamal a apoia com conhecimento técnico. Ele fornece exemplos reais tirados das comunicações de phishing, sem os dados pessoais, para as dicas mensais à equipe. Ele também explica como funciona o botão de comunicação. A Sra. Grant observa que os tecnólogos veem os ataques de perto, por isso seus exemplos tornam a conscientização mais concreta e relevante do que materiais genéricos de treinamento. Ele combina um processo simples com a gerente de recursos humanos: todo mês ele envia dois exemplos anonimizados com uma breve explicação, e ela os inclui no boletim da equipe com um lembrete sobre o botão de comunicação.
+
+### 25.2 Sessões curtas
+
+Jamal ajuda a conduzir sessões de dez minutos nas reuniões de equipe de cada centro. Ele mostra duas mensagens reais de phishing e aponta as pistas: um endereço de remetente ligeiramente diferente do verdadeiro, uma redação urgente e um link que não corresponde ao site alegado. A equipe pratica a identificação das pistas em exemplos impressos. Ele mantém as sessões curtas porque a equipe dos centros trabalha em turnos e não pode participar de treinamentos longos. Depois de cada sessão, ele pergunta à equipe qual pista foi mais difícil de perceber, e a maioria responde os links que não correspondem. Ele acrescenta um breve guia para conferir links no celular.
+
+### 25.3 Cultura de comunicação
+
+Jamal garante que toda comunicação receba um agradecimento em até um dia, mesmo quando a mensagem era inofensiva. Quando um salva-vidas comunica uma mensagem de texto suspeita que alega vir da folha de pagamento do Riverbend, Jamal confirma que era um golpe e alerta toda a equipe. O salva-vidas recebe um agradecimento público na reunião de equipe seguinte. A Sra. Grant explica que o reconhecimento incentiva as comunicações, o que ajuda a detectar os ataques cedo. Ele mantém um log das comunicações e dos agradecimentos, e a gerente de recursos humanos menciona as comunicações no boletim da equipe todo mês para manter o hábito visível.
+
+### 25.4 Medição
+
+Jamal acompanha o número de comunicações por mês e o tempo entre a primeira comunicação e a remoção do phishing das caixas postais. As comunicações aumentam depois das sessões. Ele evita medir as taxas de clique individuais, o que poderia desestimular as comunicações. A Sra. Grant observa que as medidas de conscientização devem se concentrar nos comportamentos úteis, como comunicar, e não em flagrar as pessoas cometendo erros. Ele apresenta os números trimestralmente ao gerente de TI e à gerente de recursos humanos num gráfico curto. Eles concordam em manter o foco nas comunicações e repetir as sessões todo ano com exemplos novos.
+
+### Exemplo resolvido
+
+Jamal fornece exemplos reais anonimizados, conduz sessões de dez minutos nos centros, agradece a cada pessoa que comunica e mede as comunicações e o tempo de remoção em vez dos cliques individuais.
+
+> **Caso sintético.** As mensagens são sintéticas.
+
+### Erros e limites
+
+Medir as taxas de clique individuais pode desestimular as comunicações.
+
+### Exercícios
+
+- **EX073 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = dez minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX074 — Pista de phishing.** Cite uma pista de phishing que Jamal mostra. *Rubrica:* 3 = endereço de remetente ligeiramente diferente;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX075 — Comunicação do salva-vidas.** O que o salva-vidas comunicou? *Rubrica:* 3 = uma mensagem de texto de golpe que alegava vir da folha de pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Automação e agendamento
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar verificações de segurança de rotina; (2) agendar e monitorar scripts; (3) lidar com as falhas da automação.
+
+### 26.1 O que automatizar
+
+Jamal escreveu vários scripts: a verificação de contas inativas, a verificação da linha de base das estações, a análise de logins com falha e a verificação das restaurações. Executá-los à mão leva tempo e é fácil de esquecer. Ele seleciona os que rodam num calendário fixo com entradas previsíveis e os automatiza. A Sra. Grant aconselha automatizar primeiro as tarefas estáveis e manter uma pessoa envolvida nas decisões, como desativar contas. Ele lista cada script candidato com a frequência de execução, a entrada de que precisa e se sua saída exige uma decisão, e escolhe quatro para automatizar no primeiro mês.
+
+### 26.2 Agendamento
+
+Jamal agenda os scripts num servidor usando o agendador de tarefas do sistema operacional. Cada um roda sob uma conta de serviço dedicada, com apenas o acesso de que precisa. Os resultados vão para uma pasta compartilhada, e um e-mail de resumo vai para o gerente de TI. Ele documenta cada agendamento com a finalidade, o responsável e o horário. Ele aprende que as tarefas agendadas também precisam de inventário e de responsável, assim como os sistemas. Ele testa cada tarefa agendada por uma semana, conferindo que as saídas chegam e que as contas de serviço não conseguem acessar nada além do que cada script precisa.
+
+### 26.3 Monitoramento da automação
+
+As verificações automatizadas podem falhar em silêncio. Jamal acrescenta um sinal de vida simples: cada script grava uma linha num log quando termina, e uma verificação separada alerta se algum script não rodou no horário. No primeiro mês, o alerta pega a verificação da linha de base falhando depois de uma troca de senha em sua conta de serviço. Ele a corrige no mesmo dia. A Sra. Grant observa que a automação sem monitoramento pode dar uma falsa confiança por meses. Ele acrescenta a própria verificação do sinal de vida à documentação de agendamento, com seu responsável.
+
+### 26.4 Pessoas envolvidas
+
+Jamal projeta o script de contas inativas para listar as contas para revisão, em vez de desativá-las automaticamente. O gerente de TI revisa a lista toda semana e desativa as contas depois de conferir com os gerentes. Uma conta pertence a um funcionário em licença médica prolongada, que não deve ser desativada. Jamal aprende que a automação deve apoiar o julgamento onde o contexto importa, em vez de substituí-lo. Ele acrescenta um campo de observação à lista de revisão para que o gerente de TI possa registrar por que uma conta sinalizada foi mantida, o que ajuda as revisões seguintes a não repetir as mesmas perguntas.
+
+### Exemplo resolvido
+
+Jamal automatiza quatro verificações estáveis sob contas de serviço dedicadas, acrescenta um sinal de vida que pega uma tarefa falhando e mantém a revisão humana para a desativação de contas.
+
+> **Caso sintético.** Os agendamentos são sintéticos.
+
+### Erros e limites
+
+A automação que falha em silêncio dá uma falsa confiança.
+
+### Exercícios
+
+- **EX076 — Escolha da automação.** Quais tarefas são automatizadas primeiro? *Rubrica:* 3 = as tarefas estáveis com entradas previsíveis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX077 — O que o sinal de vida pegou.** O que o sinal de vida detectou? *Rubrica:* 3 = a verificação da linha de base falhando após uma troca de senha;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX078 — Licença médica.** Por que uma conta inativa deve continuar ativada? *Rubrica:* 3 = funcionário em licença médica prolongada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Documentação e passagem de serviço
+
+### Objetivos de aprendizagem
+
+Você vai (1) documentar sistemas e controles para outras pessoas; (2) preparar uma passagem de serviço; (3) verificar a documentação pelo uso.
+
+### 27.1 O que documentar
+
+Jamal documenta o que construiu e alterou: diagramas de rede, modelos de contas, procedimentos, scripts com instruções, agendamentos e a lista de fornecedores. Cada documento indica um responsável e uma data de revisão. A Sra. Grant explica que as equipes de TI pequenas dependem da documentação, porque, quando uma pessoa está ausente, a outra precisa dar conta sozinha. Jamal guarda tudo numa única pasta estruturada com um índice. Ele pede ao gerente de TI que revise o índice e confirme que não falta nada importante. O gerente de TI acrescenta um item: o procedimento de renovação do certificado do site.
+
+### 27.2 Plano de passagem de serviço
+
+Com o fim do estágio se aproximando, Jamal prepara uma passagem de serviço. Ele lista cada tarefa que executa, com que frequência, qual documento a explica e quem a assumirá. O técnico assumirá a maioria das tarefas; o gerente de TI revisará os resultados. Ele agenda sessões em que o técnico executa cada tarefa com Jamal observando e, depois, sozinho. A Sra. Grant observa que a passagem de serviço é um controle de segurança, porque as tarefas que ficam sem responsável param. Ele mantém uma lista de verificação que mostra cada tarefa, a data em que foi passada e a assinatura do técnico.
+
+### 27.3 Teste pelo uso
+
+Durante a passagem de serviço, o técnico segue o procedimento de teste de restauração e trava num ponto em que o nome de um servidor mudou. Jamal atualiza o documento. O técnico também descobre que as instruções dos scripts pressupõem conhecimentos que ele não tem. Jamal acrescenta uma breve explicação. Ele aprende que a documentação é testada pelas pessoas que precisam usá-la, e não por seu autor. Depois das mudanças, o técnico segue de novo cada procedimento sem ajuda. Jamal registra a data em que cada documento foi testado e por quem, para que os leitores posteriores saibam que ele foi conferido por um usuário real.
+
+### 27.4 Verificação final
+
+Jamal verifica que todas as contas que usou estão desativadas ou transferidas, que todas as senhas que conhecia foram trocadas e que seu acesso aos sistemas do Riverbend é removido no último dia. Ele confirma isso com o gerente de TI. A Sra. Grant observa que os funcionários e estudantes que saem também são desligamentos e que seguir o processo de desligamento para si mesmo dá um bom exemplo. Ele também devolve o cartão de acesso ao prédio e confirma que seu nome foi retirado da lista de contatos fora do expediente. O gerente de TI assina a lista de verificação de desligamento, e Jamal guarda uma cópia no caderno.
+
+### Exemplo resolvido
+
+Jamal documenta seu trabalho numa pasta com índice, planeja uma passagem de serviço supervisionada, corrige os documentos depois que o técnico os testa e confirma a remoção do próprio acesso.
+
+> **Caso sintético.** Os documentos são sintéticos.
+
+### Erros e limites
+
+A documentação testada apenas por seu autor muitas vezes falha com outros usuários.
+
+### Exercícios
+
+- **EX079 — Quem recebe o serviço.** Quem assume a maioria das tarefas? *Rubrica:* 3 = o técnico;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX080 — Correção do documento de restauração.** O que estava errado no procedimento de restauração? *Rubrica:* 3 = o nome de um servidor que mudou;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX081 — O próprio acesso.** O que acontece com o acesso de Jamal? *Rubrica:* 3 = é removido no último dia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Estágio
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades num local de trabalho; (2) trabalhar dentro dos limites profissionais; (3) refletir sobre o aprendizado.
+
+### 28.1 O estágio
+
+O estágio de Jamal no último ano dura um período inteiro na sede do Riverbend, com visitas aos centros. Ele trabalha em revisões de contas, monitoramento, apoio às correções e no projeto aplicado. O gerente de TI se reúne com ele toda semana para revisar o progresso. A Sra. Grant faz duas visitas. Ele descobre que o trabalho real envolve interrupções frequentes, como pedidos urgentes dos centros, por isso planejar e priorizar são tão importantes quanto a habilidade técnica. Ele mantém uma lista diária de tarefas e a revisa toda semana com o gerente de TI para combinar as prioridades da semana seguinte.
+
+### 28.2 Limites
+
+Jamal tem acesso aos dados e aos sistemas dos associados. Ele segue as políticas do Riverbend, usa apenas o acesso necessário para suas tarefas e pergunta antes de investigar qualquer coisa fora de sua alçada. Quando percebe os dados de um associado expostos num quadro de avisos público de um centro, ele comunica o fato ao gerente do centro em vez de removê-los ele mesmo. A Sra. Grant observa que saber quando agir e quando comunicar faz parte do julgamento profissional. O gerente do centro retira o aviso no mesmo dia e agradece a ele.
+
+### 28.3 Aprendizado
+
+Jamal mantém o caderno durante todo o estágio. Ele registra não só as tarefas técnicas, mas também as conversas: explicar a uma gerente de centro por que seu computador antigo não podia ficar na rede, ou negociar uma janela de manutenção com o fornecedor do café. Ele observa que a comunicação toma tanto de seu tempo quanto o trabalho técnico e que a equipe reage melhor quando entende os motivos. A Sra. Grant lê trechos do caderno durante as visitas e comenta que os registros das conversas mostram uma confiança crescente para explicar decisões técnicas a pessoas sem formação técnica.
+
+### 28.4 Retorno
+
+No fim do estágio, o gerente de TI dá um retorno por escrito. Os pontos fortes incluem scripts confiáveis, documentação clara e o tratamento calmo do incidente da caixa postal. Os pontos a desenvolver incluem estimar quanto tempo as tarefas levam e se manifestar mais cedo quando estiver travado. Jamal discute o retorno com a Sra. Grant e define metas para o projeto aplicado. Jamal define duas metas: estimar cada tarefa do projeto antes de começar e comparar a estimativa com o tempo real, e comunicar os bloqueios em até um dia. A Sra. Grant concorda que essas metas são específicas e mensuráveis e pede que ele as relate no fim do projeto.
+
+### Exemplo resolvido
+
+Jamal conclui um estágio de um período inteiro, respeita os limites ao comunicar em vez de agir sobre uma exposição num quadro de avisos, registra as lições de comunicação e recebe um retorno equilibrado.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Investigar fora da própria alçada sem perguntar ultrapassa os limites profissionais.
+
+### Exercícios
+
+- **EX082 — Interrupções no estágio.** O que torna o planejamento importante no estágio? *Rubrica:* 3 = interrupções urgentes frequentes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX083 — Quadro de avisos.** O que Jamal faz a respeito do quadro de avisos? *Rubrica:* 3 = comunica ao gerente do centro;; 2 = correto;; 1 = remover;; 0 = nenhuma.
+
+- **EX084 — Ponto a desenvolver.** Cite um ponto a desenvolver. *Rubrica:* 3 = estimar o tempo das tarefas;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir com um cliente um projeto prático de segurança; (2) entregá-lo com evidências; (3) medir o resultado.
+
+### 29.1 Definição do projeto
+
+Para o projeto aplicado, Jamal escolhe o acesso remoto aos sistemas do Riverbend. A revisão do firewall e a análise dos logs mostraram serviços expostos à internet mais do que o necessário. A meta do projeto é que todo caminho de acesso remoto seja conhecido, restrito às pessoas e aos fornecedores que precisam dele e protegido por autenticação multifator. O gerente de TI concorda e fixa um prazo de oito semanas. A Sra. Grant aprova o plano e os critérios de sucesso. Ele escreve a meta, os critérios e o prazo num plano de uma página assinado pelo gerente de TI.
+
+### 29.2 Encontrar todos os caminhos
+
+Jamal lista os caminhos de acesso remoto: o gateway de área de trabalho remota da equipe, o servidor de transferência de arquivos, a conta remota da empresa das câmeras, a conexão do fornecedor do controlador da piscina e o serviço de e-mail. Ele usa as regras de firewall, a lista de fornecedores e uma varredura externa autorizada dos endereços de internet do Riverbend. A varredura encontra mais um caminho: uma antiga página web de administração de um roteador, alcançável pela internet. Ele registra cada caminho numa tabela com a finalidade, as pessoas ou os fornecedores que o usam, como ele é protegido e a evidência usada para encontrá-lo. A tabela se torna o principal documento de trabalho do projeto.
+
+### 29.3 Entrega
+
+Jamal trata cada caminho. O gateway já usa autenticação multifator. O servidor de transferência de arquivos foi restringido antes. A conta das câmeras fica desativada entre as visitas. A conexão do controlador da piscina passa para trás do gateway. A página de administração do roteador é fechada para a internet. Ele registra cada mudança, a data e a evidência: capturas de tela da configuração e uma nova varredura externa. Ele testa cada mudança de fora da rede do Riverbend usando um notebook autorizado e confirma que os caminhos fechados não são mais alcançáveis. Para o controlador da piscina, ele confirma com o fornecedor que seus engenheiros ainda conseguem se conectar pelo gateway.
+
+### 29.4 Medição
+
+Jamal mede o resultado: cinco caminhos conhecidos e um recém-encontrado, todos os seis agora restringidos ou fechados, e todos os caminhos restantes protegidos por autenticação multifator. A nova varredura não mostra serviços inesperados. A análise semanal dos logins com falha não mostra tentativas externas de adivinhação. Ele anota os limites: a varredura vê apenas o que está alcançável no momento, por isso precisa ser repetida regularmente. Ele apresenta as medidas numa tabela curta com as evidências vinculadas, e o gerente de TI agenda uma nova varredura externa a cada trimestre. Jamal estimou seis semanas para o projeto e terminou em sete, o que registra em relação à meta do retorno.
+
+### Exemplo resolvido
+
+Jamal define um projeto de acesso remoto, encontra seis caminhos, incluindo uma página de roteador exposta, restringe ou fecha todos com evidências e mede o resultado com uma nova varredura.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Uma única varredura externa mostra apenas o que estava alcançável naquele momento.
+
+### Exercícios
+
+- **EX085 — Meta do projeto.** Qual é a meta do projeto? *Rubrica:* 3 = todo caminho remoto conhecido, restrito e protegido por MFA;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX086 — Caminho extra.** Que caminho extra a varredura encontrou? *Rubrica:* 3 = uma antiga página de administração de roteador;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX087 — Total de caminhos.** Quantos caminhos foram restringidos ou fechados? *Rubrica:* 3 = seis;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Revisão do projeto e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um projeto a um cliente e a uma tutora; (2) responder a perguntas sobre as evidências; (3) planejar o desenvolvimento contínuo.
+
+### 30.1 Apresentação
+
+Jamal apresenta o projeto ao gerente de TI, ao diretor executivo e à Sra. Grant. Ele explica o problema em linguagem simples: caminhos de entrada nos sistemas do Riverbend a partir da internet que não eram todos conhecidos nem protegidos. Ele mostra os seis caminhos, as mudanças e as evidências. O diretor executivo pergunta como o Riverbend saberá se um novo caminho aparecer. Jamal explica as varreduras agendadas e a revisão do firewall a cada seis meses. Ele leva cópias impressas da tabela de caminhos e dos resultados das varreduras para cada pessoa presente.
+
+### 30.2 Perguntas
+
+A Sra. Grant pergunta por que ele não eliminou de vez a área de trabalho remota. Jamal explica que alguns funcionários trabalham de casa e precisam dela, por isso o gateway com autenticação multifator equilibra necessidade e risco. O gerente de TI pergunta sobre o custo; Jamal mostra que todas as mudanças usaram ferramentas existentes. As duas respostas se apoiam em evidências de seus registros. Ele aprende que registros claros tornam as perguntas fáceis de responder. A Sra. Grant também pergunta o que ele faria diferente, e ele responde que teria feito a varredura externa primeiro, porque ela encontrou um caminho que os registros internos tinham deixado escapar.
+
+### 30.3 Resultado
+
+O projeto é aceito, e o Riverbend adota a revisão semestral do acesso remoto como tarefa permanente. Jamal recebe uma nota alta. Ele reflete que os três anos lhe ensinaram a configurar, verificar e documentar controles e que o hábito mais valioso foi confirmar que cada mudança funcionou. A Sra. Grant observa que o caderno dele mostra um crescimento constante, de seguir instruções a fazer julgamentos cuidadosos. O diretor executivo agradece a ele por tornar compreensível um assunto técnico, e o gerente de TI pede que ele apresente o projeto aos gerentes dos centros na próxima reunião deles.
+
+### 30.4 Próximos passos
+
+Jamal aceita um cargo de técnico júnior no Riverbend depois de se formar. Ele planeja estudar para uma certificação profissional e aprofundar seus conhecimentos de serviços em nuvem. A Sra. Grant lembra que as normas mudam; a ISO/IEC 27000 foi revisada em 2026, e ele deve conferir as edições ao citá-las. O próximo curso nesta área, governança de dados, examina como são tomadas as decisões sobre a qualidade e o uso dos dados, o que complementa os controles que ele aprendeu a operar. Ele também planeja orientar o estagiário do ano seguinte.
+
+### Exemplo resolvido
+
+Jamal apresenta o projeto de acesso remoto, responde com evidências às perguntas sobre a área de trabalho remota e o custo, consegue que a revisão seja adotada como tarefa permanente e planeja estudos futuros.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Respostas sem registros que as sustentem enfraquecem a revisão de um projeto.
+
+### Exercícios
+
+- **EX088 — Detecção de novos caminhos.** Como os novos caminhos serão detectados? *Rubrica:* 3 = varreduras agendadas e revisão semestral do firewall;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX089 — Área de trabalho remota mantida.** Por que manter a área de trabalho remota? *Rubrica:* 3 = funcionários trabalham de casa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX090 — Tarefa permanente.** O que se torna uma tarefa permanente? *Rubrica:* 3 = a revisão semestral do acesso remoto;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Configurar, verificar e manter os controles de segurança.
 
@@ -1242,6 +1534,48 @@ Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em i
 **EX068.** É ativado apenas para trabalhos agendados, com contas individuais.
 
 **EX069.** O compartilhamento externo de arquivos.
+
+**EX070.** Pedindo ao técnico que os siga sem ajuda.
+
+**EX071.** São arquivadas, não apagadas.
+
+**EX072.** A política de senhas, que ainda menciona as trocas mensais.
+
+**EX073.** Dez minutos.
+
+**EX074.** Um endereço de remetente ligeiramente diferente do verdadeiro.
+
+**EX075.** Uma mensagem de texto de golpe que alegava vir da folha de pagamento do Riverbend.
+
+**EX076.** As tarefas estáveis, com calendário fixo e entradas previsíveis.
+
+**EX077.** A verificação da linha de base falhando depois da troca de senha de uma conta de serviço.
+
+**EX078.** Ela pertence a um funcionário em licença médica prolongada.
+
+**EX079.** O técnico.
+
+**EX080.** O nome de um servidor tinha mudado.
+
+**EX081.** É removido no último dia dele.
+
+**EX082.** Os pedidos urgentes frequentes dos centros.
+
+**EX083.** Ele comunica o fato ao gerente do centro.
+
+**EX084.** Estimar quanto tempo as tarefas levam.
+
+**EX085.** Todo caminho de acesso remoto conhecido, restrito e protegido por MFA.
+
+**EX086.** Uma antiga página de administração de roteador alcançável pela internet.
+
+**EX087.** Seis caminhos.
+
+**EX088.** Por varreduras agendadas e uma revisão semestral do firewall.
+
+**EX089.** Alguns funcionários trabalham de casa e precisam dela.
+
+**EX090.** A revisão semestral do acesso remoto.
 
 <a id="references"></a>
 ## Referências
