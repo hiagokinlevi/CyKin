@@ -145,7 +145,7 @@ reached via more than one path: zipx
 
 ticket-web has 3 direct dependencies but 9 in total. zipx is reached by more than one path (from qr-make and from imgkit), so updating it may require coordinating two parents.
 
-The breadth-first search visits each package once, using the seen set, so zipx is counted once even though two arrows lead to it. Doubling the graph's size would not double the effort much, which is why tools can compute closures for real applications with hundreds of packages in moments. Six of the nine arrive only indirectly.
+The breadth-first search visits each package once, using the seen set, so zipx is counted once even though two arrows lead to it. The work grows only in proportion to the number of packages and arrows, which is why tools can compute closures for real applications with hundreds of packages in moments. Six of the nine arrive only indirectly.
 
 ### 2.4 Why it matters
 
