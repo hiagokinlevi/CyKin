@@ -902,7 +902,7 @@ print("valid signature verifies:", verify(pk, b"firmware v1.0", s1))
 print("tampered message rejected:", not verify(pk, b"firmware v1.1", s1))
 s2 = sign(sk, b"firmware v1.1")          # KEY REUSE: never do this
 revealed = sum(1 for i in range(256) if bits_of(b"firmware v1.0")[i] != bits_of(b"firmware v1.1")[i])
-print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forgeries become feasible")
+print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forging needs ~2^{256 - revealed} hashes, not 2^256")
 print("signature size:", 256 * 32, "bytes; public key:", 2 * 256 * 32, "bytes")
 ```
 
@@ -911,7 +911,7 @@ Expected output:
 ```text
 valid signature verifies: True
 tampered message rejected: True
-after one reuse, both secrets revealed at 118/256 positions -> forgeries become feasible
+after one reuse, both secrets revealed at 118/256 positions -> forging needs ~2^138 hashes, not 2^256
 signature size: 8192 bytes; public key: 16384 bytes
 ```
 
@@ -2344,7 +2344,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HCU a
 
 **EX033.** Password storage: password-hashing function (e.g. PBKDF2 or a memory-hard function). Server integrity: HMAC-SHA-256. Session key agreement: hybrid X25519MLKEM768 (FIPS 203 + RFC 10024). Document approval: ML-DSA-65 (FIPS 204) or hybrid with ECDSA during transition.
 
-**EX034.** Each signature reveals one secret per bit position. Two different message hashes differ at ~half the positions, revealing both secrets there (118/256 in Lab L). An attacker can sign any new message whose hash bits at the remaining positions match what was revealed; with more reuse, forgeries become easy.
+**EX034.** Each signature reveals one secret per bit position. Two different message hashes differ at ~half the positions, revealing both secrets there (118/256 in Lab L). An attacker can sign any new message whose hash bits at the remaining 138 positions match what was revealed, which takes about 2^138 hash attempts; each further reuse roughly halves the unmatched positions, so after a few reuses forgeries become easy.
 
 **EX035.** "What share of HCU's 25 critical vendors have published a PQC roadmap with dates for hybrid key exchange, measured by review of their public documents and questionnaire responses by 30 June?"
 
