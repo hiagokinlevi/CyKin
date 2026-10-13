@@ -2424,7 +2424,7 @@ After this chapter you can (1) plan and run a verification campaign for security
 
 Verification answers: does the implementation meet its specification? A campaign plan lists, for each requirement, the test cases, environment, inputs, procedure, expected result, pass criterion and who runs it. Tests are written before execution and are not changed to make results pass. Results include environment details (software versions, seeds, configuration) so the test can be repeated.
 
-TMRP's campaign plan lists T1 to T7 against R1 to R8, with pass criteria fixed before any test runs. Each test names its environment and who runs it.
+TMRP's campaign plan lists T1 to T7 against R1 to R8, with pass criteria fixed before any test runs; R9 has no test assigned yet, which the evidence map later exposes. Each test names its environment and who runs it.
 
 ### 30.2 Kinds of test
 
@@ -3039,7 +3039,7 @@ For TMRP, the night exercise of local manual mode is the validation activity tha
 
 Trace needs to requirements to tests to results. Then ask three questions: which requirements have no test (untested claims)? Which tests failed or were not run (unsupported claims)? Which needs depend only on requirements that are not yet verified (unvalidated needs)? Lab 14 computes these for the TMRP dossier.
 
-For TMRP the questions are concrete. R4 has no test because its demonstration was never scheduled. R3's only recorded test is the failed one on v1, and R8's test has not run. N1 depends on R4, so it cannot be claimed as validated until the night exercise takes place. Lab 14 prints these gaps directly.
+For TMRP the questions are concrete. R4 has no test because its demonstration was never scheduled. R9, the independent dosing alarm, has no test at all: the requirement table names a test as its verification method, but no test was ever written for it. R3's only recorded test is the failed one on v1, and R8's test has not run. N1 depends on R4, so it cannot be claimed as validated until the night exercise takes place. Lab 14 prints these gaps directly.
 
 ### 38.3 Stakeholder validation
 
@@ -3055,14 +3055,14 @@ TMRP's evidence map makes this concrete: N1 depends on R4, which has not yet bee
 
 ### 38.5 Worked example: TMRP evidence map (synthetic)
 
-Lab 14 shows: R4 (local manual operation) has no test — it was planned as a demonstration and never scheduled; R3 has a failed test (on v1; the re-test on v2 has not yet been entered into the matrix); R8's test T6 has not run. Verified: 5 of 8 requirements (62.5%). Consequence for validation: N1 (hospital supply) depends on R4, so N1 cannot be claimed as validated; the night-time local manual exercise is scheduled as the validation activity. The matrix also exposes an administrative gap — the v2 re-test of T3 must be recorded — which is exactly the kind of inconsistency examiners and auditors find.
+Lab 14 shows: R4 (local manual operation) has no test — it was planned as a demonstration and never scheduled; R3 has a failed test (on v1; the re-test on v2 has not yet been entered into the matrix); R8's test T6 has not run. R9 (independent dosing alarm) has no test either: its verification method is "Test", but no test identifier was ever assigned, so the evidence for it is a design intent, not a result. Verified: 5 of 9 requirements (55.6%). Consequence for validation: N1 (hospital supply) depends on R4, so N1 cannot be claimed as validated; the night-time local manual exercise is scheduled as the validation activity. The matrix also exposes an administrative gap — the v2 re-test of T3 must be recorded — which is exactly the kind of inconsistency examiners and auditors find.
 
 ### 38.6 Practical activity: Lab 14
 
 ```python
 # Lab 14 - requirements traceability: what is claimed but not shown? (synthetic TMRP dossier, offline)
 REQS = ["R1 auth telemetry", "R2 replay reject", "R3 setpoint bounds", "R4 local manual", "R5 24h hold-up",
-        "R6 restore 8h", "R7 alarm 60s", "R8 log integrity"]
+        "R6 restore 8h", "R7 alarm 60s", "R8 log integrity", "R9 dosing alarm"]
 TESTS = {"T1": ["R1"], "T2": ["R1", "R2"], "T3": ["R3"], "T4": ["R5"], "T5": ["R7"], "T6": ["R8"], "T7": ["R6"]}
 RESULT = {"T1": "pass", "T2": "pass", "T3": "fail", "T4": "pass", "T5": "pass", "T6": "not run", "T7": "pass"}
 ids = [r.split()[0] for r in REQS]
@@ -3076,12 +3076,12 @@ print(f"verified {len(verified)}/{len(ids)} = {100*len(verified)/len(ids):.1f}%"
 Expected output:
 
 ```text
-untested: ['R4']
+untested: ['R4', 'R9']
 tested but not passing: ['R3', 'R8']
-verified 5/8 = 62.5%
+verified 5/9 = 55.6%
 ```
 
-The output shows that R4 has no test, that R3 and R8 are tested but not passing, and that five of eight requirements are verified. R3's status is out of date rather than truly failed: the v2 re-test passed, but nobody entered it in the matrix, which is exactly the administrative gap the worked example warns about. EX075 updates the map. Note that the matrix lists only R1 to R8, so the chlorine dosing alarm, R9, still needs its own entry.
+The output shows that R4 and R9 have no test, that R3 and R8 are tested but not passing, and that five of nine requirements are verified. R3's status is out of date rather than truly failed: the v2 re-test passed, but nobody entered it in the matrix, which is exactly the administrative gap the worked example warns about. EX075 updates the map. R9 is the harder lesson: the dosing alarm appears in the requirement set, the risk table and the dosing controls, so it feels covered, yet no test was ever assigned to it. An earlier version of this matrix left R9 out of the list entirely, which raised the verified share from five of nine to five of eight without any new evidence. A matrix must list every defined requirement, because a requirement it omits cannot be reported as untested.
 
 ### 38.7 Common errors and limits
 
@@ -3094,7 +3094,7 @@ TMRP's map shows the last error itself: the T3 re-test on v2 passed, but the mat
 
 ### Exercises — chapter 38
 
-**EX075 — Update the map.** *Objective:* maintain traceability. *Inputs:* Lab 14. *Steps:* (1) add T3b (v2 re-test) covering R3 with result "pass" and remove T3's link to R3 as superseded; (2) add T8 demonstration covering R4 with result "pass"; (3) run T6 with result "pass"; recompute. *Expected evidence:* code and output. *Rubric:* 3 = all eight verified (100%), with a note that verification ≠ validation; 2 = one change missed; 1 = not run; 0 = none.
+**EX075 — Update the map.** *Objective:* maintain traceability. *Inputs:* Lab 14. *Steps:* (1) add T3b (v2 re-test) covering R3 with result "pass" and remove T3's link to R3 as superseded; (2) add T8 demonstration covering R4 with result "pass"; (3) run T6 with result "pass"; recompute. *Expected evidence:* code and output. *Rubric:* 3 = eight of nine verified (88.9%), R9 still listed as untested because no dosing-alarm test exists, with a note that verification ≠ validation; 2 = one change missed; 1 = not run; 0 = none.
 
 **EX076 — Validation plan for N1.** *Objective:* plan stakeholder validation. *Inputs:* N1 "hospital must not lose water > 4 h". *Steps:* propose two validation activities with stakeholders, realistic conditions, observations and success criteria. *Expected evidence:* plan. *Rubric:* 3 = realistic activities (night exercise of local manual with real staffing; planned isolation of PS4 with hospital monitoring), criteria tied to the 4 h buffer, stakeholders named by role; 2 = criteria vague; 1 = tests renamed as validation; 0 = none.
 
@@ -4266,7 +4266,7 @@ Each result shows one defensible answer. Numerical results were produced by runn
 
 ### Chapter 38
 
-**EX075.** With T3b passing for R3, T8 passing for R4 and T6 passing for R8: verified 8/8 (100%). Verification is complete for these requirements; validation of N1 still needs the stakeholder activities of EX076.
+**EX075.** With T3b passing for R3, T8 passing for R4 and T6 passing for R8: untested ['R9'], tested but not passing [], verified 8/9 (88.9%). R9 stays unverified until a test of the independent dosing alarm (for example, stop dosing on the bench and time the alarm on the separate logger against 15 min) is written and passed. Verification is complete for the other eight requirements; validation of N1 still needs the stakeholder activities of EX076.
 
 **EX076.** (1) Night-time exercise: operations staff switch PS3 and PS4 to local manual with real night staffing; observe time and errors; success: manual operation within 1 h and supply pressure maintained. (2) Planned PS4 isolation during low demand with the hospital estates manager monitoring on-site storage and pressure; success: supply maintained via reservoir with storage never below the level giving 4 h of buffer. Stakeholders: operations manager, hospital estates, TMRP engineering.
 
