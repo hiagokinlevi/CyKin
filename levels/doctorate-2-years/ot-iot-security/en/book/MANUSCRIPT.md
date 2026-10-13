@@ -625,7 +625,7 @@ Keep a table with one row per reviewer point: the quotation, your response, the 
 
 Defending instead of testing; hiding the class B failure; claiming generality across plants after two contexts; responding to reviewers without stating changes.
 
-Each error turns critique into defence. Treat each objection as a hypothesis with a test. Put class B in the abstract. Limit generality to the two contexts measured, the Plant A model and Testbed T2. In reviewer letters, state what changed and where, so a reader can verify the revision instead of trusting the claim. Keep the objections table in the thesis.
+Each error turns critique into defence. Answer the slow-ramp objection with the gain sweep, not with reassurance. Put class B in the abstract. Limit generality to the two contexts measured, the Plant A model and Testbed T2. In reviewer letters, state what changed and where, so a reader can verify the revision instead of trusting the claim. Keep the objections table in the thesis.
 
 ### Exercises — chapter 6
 
@@ -829,7 +829,7 @@ Audit every claim, prepare for the six question families, publish in an order th
 
 ## Worked results
 
-Each answer shows one defensible response; the per-exercise rubrics rewards alternatives that meet the same standard of evidence, scope and honesty. All numbers are from the synthetic labs.
+Each answer shows one defensible response; the per-exercise rubrics reward alternatives that meet the same standard of evidence, scope and honesty. All numbers are from the synthetic labs.
 
 ### Chapter 1
 
@@ -907,6 +907,8 @@ Each answer shows one defensible response; the per-exercise rubrics rewards alte
 
 **End of the worked results.** Return to the [course chapter index](../SUBJECTS.md).
 
+<a id="glossary"></a>
+
 ## Glossary
 
 **ATT&CK for ICS.** MITRE knowledge base of adversary tactics and techniques against industrial control systems; documents possibility, not base rates.
@@ -933,6 +935,8 @@ Each answer shows one defensible response; the per-exercise rubrics rewards alte
 
 **TankBench-21.** Prior published benchmark whose point-adjusted scores the thesis re-implements to expose metric effects.
 
+<a id="references"></a>
+
 ## References
 
 Links checked 13 October 2026; re-verify editions before citing.
@@ -946,5 +950,5 @@ Links checked 13 October 2026; re-verify editions before citing.
 - MITRE. ATT&CK for Industrial Control Systems. <https://attack.mitre.org/matrices/ics/>
 - NIST SP 800-82 Rev. 3. Guide to Operational Technology (OT) Security. <https://doi.org/10.6028/NIST.SP.800-82r3>
 - Page, E. S. Continuous Inspection Schemes. *Biometrika* 41(1–2), 1954. <https://doi.org/10.1093/biomet/41.1-2.100>
-- Urbina, D. et al. Limiting the Impact of Stealthy Attacks on Industrial Control Systems. ACM CCS 2016. <https://doi.org/10.1145/2976749.2978389>
+- Urbina, D. et al. Limiting the Impact of Stealthy Attacks on Industrial Control Systems. ACM CCS 2016. <https://doi.org/10.1145/2976749.2978388>
 - U.S. DHS. The Menlo Report: Ethical Principles Guiding Information and Communication Technology Research (2012). <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
