@@ -4,7 +4,7 @@
 
 [Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md) · [Playbooks](../../../../playbooks/quantum-post-quantum-security/README.md)
 
-Esta edição tem um livro principal de estudo. Cada disciplina do currículo é um capítulo com conteúdo didático, exemplos, exercícios e, no apêndice final, resoluções. Os capítulos 1–20 de 30 estão escritos em rascunho no [manuscrito](book/MANUSCRIPT.md); casos, pessoas e organizações são sintéticos, e as saídas dos laboratórios e as citações são idênticas às da edição em inglês.
+Esta edição tem um livro principal de estudo. Cada disciplina do currículo é um capítulo com conteúdo didático, exemplos, exercícios e, no apêndice final, resoluções. Os capítulos 1–30 de 30 estão escritos em rascunho no [manuscrito](book/MANUSCRIPT.md); casos, pessoas e organizações são sintéticos, e as saídas dos laboratórios e as citações são idênticas às da edição em inglês.
 
 O inglês é a edição de referência. A ordem de produção é inglês, português, espanhol, hebraico, francês, russo, alemão, chinês e japonês.
 

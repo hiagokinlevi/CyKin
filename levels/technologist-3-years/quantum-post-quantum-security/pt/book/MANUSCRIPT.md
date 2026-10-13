@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Implementando Serviços Resistentes ao Quântico
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–30 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito; os exercícios EX001–EX060 (dois por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: implementadores e administradores de tecnologia — equipes de sistemas, redes, plataforma e DevOps — que vão configurar, integrar, automatizar, monitorar e passar para as operações serviços pós-quânticos. Conhecimento de entrada: fundamentos de computação e operações de segurança introdutórias.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desenvolve a teoria e as habilidades de pesquisa, e o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta sistemas. **Este livro trata da implementação**: encontrar a criptografia em serviços reais, configurar a troca de chaves híbrida, integrar a PKI e as ferramentas, automatizar verificações, monitorar, diagnosticar problemas e passar o serviço para as operações.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,8 +28,6 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 | Fundamentos | [1 Sistemas computacionais](#ch-01) · [2 Redes e serviços de internet](#ch-02) · [3 Fundamentos de programação](#ch-03) · [4 Modelos de dados](#ch-04) · [5 Letramento em segurança](#ch-05) · [6 Sistemas operacionais e virtualização](#ch-06) · [7 Fundamentos de identidade e acesso](#ch-07) · [8 Fundamentos de arquitetura de segurança](#ch-08) · [9 Evidências e medição](#ch-09) |
 | Núcleo de implementação | [10 Orientação](#ch-10) · [11 Ativos e contexto](#ch-11) · [12 Fluxos de dados](#ch-12) · [13 Cenários de risco](#ch-13) · [14 Métodos I](#ch-14) · [15 Laboratório guiado](#ch-15) · [16 Métodos II](#ch-16) · [17 Ferramentas](#ch-17) · [18 Controles](#ch-18) · [19 Monitoramento](#ch-19) · [20 Diagnóstico de problemas](#ch-20) · [21 Integração de serviços](#ch-21) · [22 Automação](#ch-22) · [23 Avaliação](#ch-23) |
 | Prática e projeto final | [24 Métodos de pesquisa aplicada](#ch-24) · [25 Ateliê de projeto em equipe](#ch-25) · [26 Passagem para as operações](#ch-26) · [27 Implantação e validação](#ch-27) · [28 Prática de campo](#ch-28) · [29 Construção do projeto final](#ch-29) · [30 Avaliação do projeto final](#ch-30) |
-
-Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1611,16 +1609,839 @@ O diagnóstico sistemático, a triagem de logs e as correções documentadas res
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 30
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança quântica e pós-quântica: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar as configurações pós-quânticas nas camadas de CDN, balanceador de carga, ingress, malha e aplicação; (2) coordenar com os provedores de serviços gerenciados; (3) lidar com as integrações de parceiros e clientes; e (4) manter a compatibilidade durante a transição.
+
+### 21.1 Camada por camada
+
+Integração significa que todos os saltos concordam. Na CDN, habilite a troca de chaves híbrida para os clientes e para a origem, onde o provedor a suportar. No balanceador de carga da origem e no ingress, aplique o perfil central. Na malha de serviços, atualize os proxies sidecar e os certificados do plano de controle; o mTLS da malha é interno, mas pode atravessar redes compartilhadas entre zonas de disponibilidade. Nas aplicações, atualize os SDKs que fazem chamadas de saída para parceiros e APIs de nuvem.
+
+Na KLS, a ordem dos saltos no fluxo da API do cliente fixa a ordem do trabalho: primeiro as configurações da CDN, porque o provedor as controla e precisa de antecedência; depois o balanceador de carga e o ingress da própria KLS; depois a malha, no ciclo de versões da plataforma; e os SDKs por último, porque os clientes os adotam no seu próprio ritmo.
+
+### 21.2 Serviços gerenciados
+
+Os bancos de dados, as filas e o armazenamento de objetos gerenciados negociam o TLS com bibliotecas que o provedor controla. Pergunte aos provedores quais grupos os seus endpoints oferecem, se o híbrido está disponível e como exigi-lo. Registre as respostas como evidência de fornecedor e verifique pelos logs do lado do cliente, sempre que possível. Alguns provedores expõem opções pós-quânticas por endpoint ou região; outros só publicam roadmaps.
+
+As perguntas da KLS aos provedores são escritas sempre da mesma forma: quais grupos o endpoint oferece hoje, se há um grupo híbrido disponível e em quais regiões, se a KLS pode exigi-lo e como a KLS pode verificá-lo. As respostas são datadas e guardadas como evidência de fornecedor; um slide de roadmap é registrado como "planejado", nunca como suportado.
+
+### 21.3 Parceiros e clientes
+
+Os parceiros se integram por SFTP, APIs e VPNs. Publique um aviso de compatibilidade: o que a KLS oferece agora, o que a KLS vai exigir e quando, e um endpoint de teste. Mantenha o recuo clássico durante uma janela de transição publicada; defina uma data de término alinhada à política e aos contratos, e acompanhe a adoção pelos parceiros.
+
+A KLS acompanha a adoção pelos parceiros a partir dos seus próprios logs do sshd, que mostram o algoritmo de KEX que o cliente de cada parceiro negocia. Dos seis tipos de cliente vistos, dois eram apenas clássicos no início da janela. Esses parceiros recebem um lembrete direto nas marcas de seis e de nove meses, com o endpoint de teste e a data de término.
+
+### 21.4 Compatibilidade durante a transição
+
+Ofereça o híbrido e o clássico, prefira o híbrido, monitore o recuo e remova o clássico apenas quando a fração de recuo estiver abaixo de um limite acordado por um período acordado e as exceções estiverem documentadas. Para os certificados, use cadeias duplas ou endpoints duplos apenas onde os produtos os suportarem de forma limpa; caso contrário, mantenha os certificados clássicos até que as partes confiantes consigam verificar o ML-DSA.
+
+O limite da KLS para remover os grupos clássicos de um listener é uma fração de recuo abaixo de 1 % por 30 dias consecutivos, com cada cliente restante listado como exceção, com dono e data de expiração. Até lá, o perfil oferece e prefere o híbrido, enquanto ainda aceita o X25519, e o painel mostra a fração de recuo ao lado da fração híbrida.
+
+### 21.5 Caso resolvido
+
+O plano de integração da KLS para a API do cliente: CDN híbrida para os clientes (feito) e para a origem (o provedor a suporta a partir do 1º trimestre; habilitar e verificar nos logs da origem); perfil `kls-modern` no LB da origem e no ingress; sidecars da malha atualizados na próxima versão da plataforma; as chamadas de saída do SDK para o provedor de pagamentos continuam clássicas até que o provedor suporte o híbrido (chamado com o fornecedor). Aviso aos parceiros publicado com um endpoint de homologação e uma janela de doze meses antes que os parceiros apenas clássicos precisem atualizar.
+
+O plano lista cada salto com um dono e a evidência que vai fechá-lo, para que a situação seja contada por salto, e não por esforço. Dois saltos, o enlace da CDN até a origem e as chamadas ao provedor de pagamentos, dependem de terceiros; ambos são acompanhados como pedidos datados, e o fluxo é reportado como parcialmente migrado até que os dois sejam fechados.
+
+### 21.6 Atividade prática
+
+Escreva uma checklist de integração para um fluxo da KLS, cobrindo cada salto, o dono, a evidência de conclusão e as dependências externas.
+
+Para a API do cliente, liste os saltos cliente → CDN, CDN → balanceador de carga da origem, balanceador de carga → ingress, ingress → pods e pod → provedor de pagamentos. Para cada um, dê o dono, a configuração ou a atualização necessária, a evidência que o comprova (um campo de log, o resultado de um teste sintético, uma declaração escrita do provedor) e a dependência externa com o seu contato. Acrescente o teste de ponta a ponta como última linha. Um salto sem evidência continua aberto, por mais confiante que o dono esteja.
+
+### 21.7 Testes de integração
+
+Os testes de integração devem exercitar o caminho inteiro, e não cada salto isoladamente: um cliente sintético em cada região de clientes chama a API pela CDN e registra o grupo negociado na borda e, pelos logs da origem, na origem. Execute o teste depois de cada mudança em qualquer salto. Quando o teste falha num salto, as evidências por salto dizem onde procurar. Essa verificação de ponta a ponta é o que permite à equipe afirmar que um fluxo, e não um componente, está migrado.
+
+### 21.8 Erros comuns e limites
+
+- Migrar os saltos de forma independente, sem verificação de ponta a ponta.
+- Remover o suporte clássico antes que os parceiros estejam prontos.
+- Tratar os roadmaps dos provedores como recursos entregues.
+
+A KLS cometeu o primeiro erro quando o ingress e o balanceador de carga foram migrados em sprints separadas e ninguém testou o caminho; o salto até a origem continuava clássico porque a opção de origem da CDN não tinha sido habilitada. O segundo foi evitado pela janela dos parceiros; uma remoção de teste no host SFTP de homologação mostrou dois tipos de cliente de parceiros falhando ao mesmo tempo. O terceiro é comum: um slide de um provedor que prometia o híbrido "no 1º trimestre" foi citado como concluído num relatório de situação e precisou ser corrigido.
+
+### Exercícios
+
+- **EX041 — Checklist de saltos.** Liste todos os saltos do fluxo da API do cliente da KLS e a evidência de que cada um está migrado. Rubrica: 3 = todos os saltos, com evidências concretas.
+- **EX042 — Aviso aos parceiros.** Redija um aviso de cinco frases aos parceiros sobre a troca de chaves híbrida no SFTP. Rubrica: 3 = o quê, quando, endpoint de teste, janela de recuo, contato.
+
+### Síntese
+
+A integração de serviços alinha todos os saltos, documenta as dependências de provedores e parceiros e mantém a compatibilidade ao longo de uma janela de transição medida, com testes de ponta a ponta.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — capítulo 21 de 30
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança quântica e pós-quântica: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar no CI/CD o inventário, as auditorias de configuração e as verificações de negociação; (2) implementar a seleção de algoritmos orientada por política; (3) evitar regressões com gates; e (4) automatizar a emissão de certificados com consciência dos algoritmos.
+
+### 22.1 Inventário e auditorias nos pipelines
+
+Os pipelines já constroem imagens e implantam configurações; acrescente etapas que extraiam as versões das bibliotecas das imagens, comparem os perfis TLS com o perfil aprovado e atualizem a CBOM. Um pull request que muda um perfil do ingress deve mostrar a sua diferença criptográfica, assim como mostra a diferença de código.
+
+O pipeline da KLS imprime a diferença criptográfica como um comentário no pull request: grupos acrescentados ou removidos, mudanças na ordem de preferência e versões das bibliotecas na nova imagem. Os revisores a aprovam da mesma forma que o código.
+
+### 22.2 Seleção orientada por política
+
+As aplicações que assinam ou cifram dados devem consultar os algoritmos na configuração e registrar os identificadores junto com os dados, para que a migração seja uma mudança de política.
+
+O serviço de assinatura de manifestos da KLS guarda um identificador de algoritmo com cada assinatura, e o verificador lê na configuração quais identificadores são aceitáveis. Quando o ML-DSA estiver disponível na biblioteca de assinatura, a troca será uma edição de política seguida de um canário, e os manifestos antigos continuarão sendo verificados até que o identificador clássico seja aposentado.
+
+Um manifesto assinado antes de os identificadores serem acrescentados é verificado contra uma lista datada de assinaturas legadas, e não supondo ECDSA; qualquer coisa fora dessa lista falha na verificação e vai para a equipe de logística para ser assinada de novo.
+
+### 22.3 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 22): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"shipment manifest 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+O laboratório modela as três fases de uma migração de algoritmo. Na transição, a política produz novas tags com HMAC-SHA3-256 enquanto a lista de aceitação ainda contém o HMAC-SHA256, então a tag antiga é verificada e nada quebra. Depois da aposentadoria, o identificador antigo é removido da lista de aceitação, e a mesma tag antiga válida agora falha. O identificador de algoritmo viaja com a tag, mas o verificador nunca confia nele por si só: ele também precisa estar na lista de aceitação da política, e é isso que impede um atacante de rerrotular uma tag para escolher um algoritmo mais fraco. A mesma estrutura se aplica às assinaturas quando o ML-DSA substituir o ECDSA.
+
+### 22.4 Gates de regressão
+
+Os gates reprovam uma implantação se: o perfil de um listener de nível 1 não tiver o grupo híbrido ou não o preferir; a biblioteca TLS de uma imagem base for mais antiga que o mínimo aprovado; uma nova dependência introduzir um algoritmo clássico fixo no código onde a política exige agilidade. Todo gate precisa de um caminho de exceção com dono e data de expiração.
+
+As exceções da KLS são entradas YAML no repositório do gate: listener, motivo, dono e data de expiração. O gate as lê, aprova o listener listado com um aviso e volta a reprovar automaticamente quando a data de expiração passa. Isso mantém as exceções visíveis e impede que elas se tornem desvios permanentes e silenciosos.
+
+### 22.5 Automação de certificados
+
+O ACME ([RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)) e as APIs internas de emissão automatizam a renovação de certificados. Torne os algoritmos de chave e de assinatura solicitados parâmetros explícitos, para que passar os certificados finais internos para o ML-DSA seja uma mudança de modelo, e não de scripts. Teste a renovação de um certificado pós-quântico em homologação antes de depender dela.
+
+O modelo interno de emissão da KLS já nomeia `ecdsa-p256` como um parâmetro explícito; o piloto de ML-DSA usa o mesmo modelo com `ml-dsa-44`. O teste em homologação verifica se a renovação produz uma cadeia válida e se todas as partes confiantes a aceitam, antes que o modelo mude em produção.
+
+### 22.6 Caso resolvido
+
+A KLS acrescenta um job de CI, `crypto-gate`, que analisa os manifestos Kubernetes renderizados, extrai os grupos TLS do ingress e reprova se um ingress de nível 1 não tiver o `X25519MLKEM768` em primeiro lugar. Na primeira semana, ele bloqueia duas versões que copiaram uma anotação antiga; ambas são corrigidas em minutos, em vez de serem descobertas semanas depois pelo monitoramento.
+
+As duas versões bloqueadas tinham copiado uma anotação de um modelo de serviço antigo. A correção foi ajustar o modelo além dos dois serviços, para que o gate interrompesse o padrão na origem. O gate roda em menos de um minuto e tem um caminho de exceção documentado.
+
+### 22.7 Riscos da automação
+
+A automação multiplica os erros com a mesma eficiência com que multiplica as correções. Proteja a configuração dos pipelines com revisão, assine as definições dos pipelines onde as ferramentas permitirem e encaminhe as mudanças nos perfis centrais pelo mesmo processo de canário do código. Um perfil errado enviado automaticamente para todos os ingresses é uma grande indisponibilidade; o mesmo perfil enviado para um único ingress canário é uma indisponibilidade pequena e informativa.
+
+A KLS aprendeu isso em homologação: uma mudança de perfil mesclada sem a etapa de canário removeu o X25519 de todos os ingresses de homologação ao mesmo tempo, quebrando o cliente de teste Java em todos os serviços. Agora as mudanças de perfil chegam primeiro a um ingress canário, e as definições dos pipelines são revisadas por duas pessoas.
+
+### 22.8 Erros comuns e limites
+
+- Gates sem caminhos de exceção.
+- Automatizar a emissão com algoritmos fixos no código.
+- Enviar as mudanças dos perfis centrais para todos os lugares ao mesmo tempo.
+
+Cada erro volta a automação contra a equipe. Um gate sem caminho de exceção é desabilitado na primeira vez que bloqueia uma versão urgente; o arquivo de exceções da KLS existe para que isso nunca aconteça. Scripts de emissão com um algoritmo fixo numa string teriam de ser reescritos para o ML-DSA, em vez de se mudar um modelo. E um perfil enviado para todos os ingresses ao mesmo tempo transforma um pequeno erro numa indisponibilidade de toda a plataforma, como mostrou o incidente em homologação.
+
+### Exercícios
+
+- **EX043 — Regra do gate.** Escreva o pseudocódigo de um gate que verifique a preferência pelo híbrido nos listeners de nível 1. Rubrica: 3 = analisa a lista, verifica o primeiro elemento, condição de nível, código de saída.
+- **EX044 — Agilidade.** Usando o Laboratório A, explique por que as tags antigas são verificadas durante a transição, mas não depois da aposentadoria. Rubrica: 3 = mudança da lista de aceitação, com identificador autenticado.
+
+### Síntese
+
+A automação incorpora ao pipeline de entrega o inventário, as auditorias, a seleção orientada por política e os gates de regressão, com caminhos de exceção e implantação em etapas das mudanças centrais.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — capítulo 22 de 30
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança quântica e pós-quântica: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar uma implantação em relação aos seus objetivos; (2) medir o impacto no desempenho; (3) avaliar o risco residual e a cobertura; e (4) escrever um relatório de avaliação para as operações e a gestão.
+
+### 23.1 Objetivos
+
+Objetivos típicos: os fluxos de nível 1 negociam a troca de chaves híbrida de ponta a ponta; taxas de falha dentro do orçamento; latência dentro do orçamento; recuo abaixo do limite; riscos residuais documentados; monitoramento e runbooks implantados.
+
+A KLS escreve cada objetivo com um limite e uma fonte, por exemplo "fluxos de nível 1 híbridos em todos os segmentos, segundo os logs por salto".
+
+Outros: taxa de falhas dentro do orçamento de 0,04 ponto, aumento da latência no percentil 99 abaixo de 5 ms, recuo abaixo de 5 % excluindo as exceções listadas e runbooks exercitados uma vez. Cada limite é acordado antes da implantação, para que a avaliação não possa mudar as regras depois.
+
+### 23.2 Desempenho
+
+Meça a latência de handshake na mediana e no percentil 99, a CPU por handshake nos servidores e nos clientes com recursos limitados, e os bytes por handshake. As operações do ML-KEM são rápidas — tipicamente comparáveis ou mais rápidas do que as operações de curvas elípticas nos servidores —, então os custos visíveis costumam ser os bytes e as idas e voltas extras ocasionais, e não a CPU. Meça em caminhos representativos, incluindo as redes móveis e dos armazéns.
+
+A KLS mediu os bytes por handshake diretamente: cerca de 2,3 kB a mais com o híbrido, coerente com os acréscimos de 1.184 bytes e de 1.088 bytes em cada sentido. Na rede do armazém, isso empurrou alguns hellos para um segundo segmento; a CPU no gateway subiu menos do que o ruído da medição.
+
+### 23.3 Cobertura e risco residual
+
+Reporte a fração dos fluxos de nível 1 totalmente migrados (todos os segmentos), parcialmente migrados e desconhecidos. Liste os riscos residuais com os donos. Compare com o início do programa.
+
+A KLS conta um fluxo como totalmente migrado apenas quando todos os segmentos têm evidência de troca de chaves híbrida; um único segmento clássico ou desconhecido o torna parcial ou desconhecido. Depois de seis meses, essa regra deu 9 completos, 4 parciais e 1 desconhecido entre os 14 fluxos de nível 1. A comparação com o início, quando só o segmento do navegador até a CDN era híbrido, é o que a gestão precisava ver para enxergar o progresso de forma honesta.
+
+### 23.4 Relatório
+
+Um relatório de avaliação declara os objetivos, os métodos, os resultados, os desvios, o risco residual e as recomendações, com links para as evidências. As operações precisam de detalhes; a gestão precisa de um resumo de uma página.
+
+O relatório da KLS cabe em duas páginas para as operações e em uma para a gestão. A página da gestão começa pelos números de cobertura, pelos riscos residuais com os donos e pela próxima decisão necessária, o piloto da PKI interna. Cada número tem um link para a consulta que o produziu, para que um leitor possa executá-la de novo.
+
+Os leitores dos armazéns aparecem na primeira página como um desvio: eles continuam clássicos até a renovação de quatro anos do fornecedor, o que, pela estimativa de Mosca, os deixa atrasados para qualquer data de chegada abaixo de catorze anos.
+
+### 23.5 Caso resolvido
+
+Avaliação da KLS (sintética) depois de seis meses: fluxos de nível 1, 9 de 14 totalmente migrados, 4 parcialmente (segmentos de provedores ou parceiros), 1 desconhecido (telemetria das empilhadeiras). Taxa de falhas +0,01 ponto (dentro do orçamento). Handshake da API p50 +0,6 ms, p99 +2,8 ms; leitores dos armazéns não migrados. Residual: certificados clássicos em todo lugar; chamadas ao provedor de pagamentos clássicas. Recomendação: piloto da PKI interna em seguida; continuar acompanhando a adoção pelos parceiros.
+
+O resultado mostra por que a latência mediana sozinha engana: a mediana mudou 0,6 ms, enquanto o percentil 99 mudou 2,8 ms, que é onde aparecem os clientes móveis e as idas e voltas do HelloRetryRequest. A taxa de falhas ficou dentro do orçamento de 0,04 ponto usado nos gates de canário.
+
+### 23.6 Atividade prática
+
+Escreva um resumo de avaliação de uma página para a sua implantação de laboratório, com objetivos, resultados e risco residual.
+
+Use uma implantação de laboratório dos capítulos anteriores: o perfil híbrido num ingress de laboratório com uma matriz de clientes. Declare três objetivos com limites; reporte os resultados com números e fontes, incluindo pelo menos uma mediana e um percentil 99; liste os riscos residuais, como os certificados clássicos e qualquer cliente que tenha negociado o X25519; e termine com uma recomendação e a decisão de que ela precisa. Limite-se a uma página. Se um resultado não tiver linha de base, diga isso e descreva como você capturaria uma.
+
+### 23.7 Comparando com a linha de base
+
+Uma avaliação só tem sentido em relação a uma linha de base capturada antes da mudança: taxas de falha, distribuições de latência, CPU e bytes por handshake em cada caminho. Se não existir linha de base, capture uma agora a partir de um grupo de controle apenas clássico — por exemplo, uma pequena fração do tráfego ou uma réplica de homologação — antes de tirar conclusões. Sem uma linha de base, uma aparente regressão pode ser a variação semanal normal, e uma aparente melhora pode ser uma semana tranquila.
+
+A KLS manteve 5 % do tráfego do portal num listener apenas clássico por duas semanas como grupo de controle e depois o aposentou.
+
+### 23.8 Erros comuns e limites
+
+- Contar os fluxos parcialmente migrados como concluídos.
+- Medir apenas a latência mediana.
+- Avaliações sem linha de base.
+
+O rascunho do relatório da KLS contou primeiro os quatro fluxos parciais como concluídos, porque os seus saltos sob controle da KLS estavam terminados; os saltos externos ainda eram clássicos, então a afirmação estava errada. O seu primeiro número de latência era apenas uma mediana, o que escondia o custo da cauda nos caminhos móveis. E a comparação com o "antes" usou números lembrados em vez de uma linha de base capturada, então a aparente mudança zero nas falhas não pôde ser confiável até que um grupo de controle clássico fosse medido.
+
+### Exercícios
+
+- **EX045 — Número de cobertura.** Expresse a situação de nível 1 da KLS em percentuais dos 14 fluxos. Rubrica: 3 = 64 % completos, 29 % parciais, 7 % desconhecidos.
+- **EX046 — Afirmação de desempenho.** Por que os bytes e as idas e voltas costumam ser mais visíveis do que a CPU no ML-KEM? Rubrica: 3 = operações rápidas vs. mensagens maiores e HRR/segmentos.
+
+### Síntese
+
+A avaliação compara os resultados com os objetivos e com uma linha de base, mede a latência de cauda e os bytes, e reporta a cobertura completa, parcial e desconhecida, com o risco residual.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — capítulo 23 de 30
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular perguntas de pesquisa práticas para as equipes de implementação; (2) projetar pequenos experimentos e estudos de medição; (3) controlar variáveis e repetir execuções; e (4) reportar os resultados com honestidade.
+
+### 24.1 Perguntas práticas
+
+A pesquisa de implementação responde a perguntas como: o grupo híbrido aumenta as falhas na rede do armazém? Quais clientes dos parceiros negociam o SSH híbrido? Quanto uma cadeia ML-DSA-44 acrescenta à latência da malha? Cada uma tem uma população, uma medida e uma decisão.
+
+Escrever a decisão primeiro mantém o estudo pequeno. Para a pergunta do armazém, a KLS decidiu de antemão: se o limite superior da taxa de falhas com o híbrido exceder o do clássico em mais do que o orçamento de 0,04 ponto, os locais dos armazéns recebem um listener separado até que os proxies sejam atualizados; caso contrário, o perfil segue sem mudanças.
+
+### 24.2 Experimentos
+
+Mude uma variável (híbrido ligado/desligado, tipo de cadeia), mantenha as outras fixas (hardware, emulação de rede, versões dos clientes), sorteie a ordem, repita as execuções e registre tudo. Os desenhos pareados, em que cada cliente executa as duas condições, reduzem o ruído.
+
+O laboratório da KLS usa emulação de rede para fixar a perda e o atraso, fixa as versões das bibliotecas dos clientes pelo digest da imagem e deixa um script escolher a ordem das condições a partir de uma semente registrada. Cada execução registra o hash da sua configuração, para que um leitor posterior possa dizer exatamente qual condição produziu cada linha. Um desenho pareado para a pergunta do armazém executa cada tipo de cliente com o híbrido e com o clássico dentro da mesma hora, para que a carga de cada horário do dia afete igualmente as duas condições.
+
+### 24.3 Estudos de medição
+
+Conte propriedades numa população: os grupos negociados pelos clientes SFTP dos parceiros ao longo de um mês, as versões das bibliotecas das imagens em todo o registro. Defina a população e a cobertura; reporte os desconhecidos.
+
+Para o estudo dos parceiros, a KLS definiu a população como toda conta de parceiro com pelo menos uma sessão SFTP numa janela de 30 dias, contou 23 contas e reportou o algoritmo de KEX por conta a partir dos logs do sshd. Dois parceiros inativos não tiveram sessão e foram listados como desconhecidos, e não descartados, já que poderiam se reconectar com um cliente antigo a qualquer momento.
+
+### 24.4 Reportando
+
+Reporte medianas e percentis com intervalos, números de execuções, ambiente e limitações. Compartilhe os scripts. Se um resultado surpreender você, replique-o antes de agir.
+
+O modelo de relatório da KLS tem títulos fixos: pergunta, população ou montagem, número de execuções, resultados com intervalos, ambiente, limitações e decisão. A latência é reportada como mediana e percentil 99, nunca como média, porque os tempos de handshake são distorcidos por alguns clientes lentos. Os scripts e os dados brutos têm links no relatório, e um resultado surpreendente é executado de novo num laboratório reconstruído antes que alguém aja com base nele.
+
+### 24.5 Caso resolvido
+
+Pergunta: o mTLS com ML-DSA-44 aumenta a latência p99 das chamadas na malha? Desenho: cluster de homologação, 10 pares de serviços, 2.000 chamadas por par e por condição, ordem sorteada, três dias. Resultado (sintético): p50 +0,3 ms, p99 +1,9 ms (IC de 95 % 1,2–2,7); CPU inalterada dentro do ruído. Limitação: os padrões de tráfego da homologação são mais simples do que os da produção. Decisão: seguir para um canário em produção.
+
+Cada escolha de desenho remove um fator de confusão. Dez pares de serviços cobrem tamanhos de payload diferentes; a ordem sorteada distribui os efeitos do horário do dia entre as condições; três dias cobrem o padrão diário dos lotes. O intervalo de confiança do p99 exclui o zero, então o aumento é real, mas pequeno, e a limitação é declarada no mesmo lugar da decisão.
+
+### 24.6 Atividade prática
+
+Projete um experimento que compare as taxas de falha de handshake híbrido e clássico numa rede de armazém emulada, com 2 % de perda.
+
+Especifique a rede emulada (2 % de perda, um atraso fixo como 80 ms, uma MTU), as versões das bibliotecas dos clientes, as duas condições (híbrido oferecido e preferido; apenas clássico), o número de handshakes por condição e como você o escolheu, e a ordem em que as execuções acontecem. Use um desenho pareado, para que cada cliente execute as duas condições. Declare a regra de decisão de antemão, por exemplo comparando os limites superiores de 95 % das taxas de falha com um orçamento, e liste uma limitação da emulação em comparação com os enlaces reais do armazém.
+
+### 24.7 Tamanhos de amostra
+
+Para eventos raros, o tamanho da amostra decide se um resultado é informativo. Para mostrar uma taxa de falhas abaixo de 0,1 % com confiança razoável, você precisa de vários milhares de ensaios com poucas falhas; com algumas centenas, mesmo zero falhas deixa um limite superior perto de 1 %. Estime a amostra necessária antes de começar, usando o método de limites de confiança do Capítulo 19, e planeje a duração da execução de acordo, em vez de parar quando o resultado parecer bom.
+
+A KLS planejou o estudo do armazém com 6.000 handshakes por condição por esse motivo.
+
+Com 6.000 handshakes e nenhuma falha, o limite superior é de cerca de 0,05 %, abaixo da meta de 0,1 %; com 600, o mesmo resultado limpo só teria limitado a taxa perto de 0,5 %.
+
+### 24.8 Erros comuns e limites
+
+- Mudar várias variáveis ao mesmo tempo.
+- Parar cedo quando os resultados parecem favoráveis.
+- Reportar médias de latências distorcidas.
+
+O primeiro teste de armazém da KLS mudou a biblioteca do cliente e a lista de grupos juntas, então o seu resultado não podia dizer qual mudança importava. Um canário certa vez foi interrompido depois de uma boa primeira hora, antes do lote da noite que costumava expor as falhas. E um relatório inicial citou a latência média de handshake, que um punhado de conexões lentas de leitores elevou em vários milissegundos; a mediana e o percentil 99 contavam uma história mais clara. Cada erro faz um resultado parecer mais decisivo do que as evidências permitem.
+
+### Exercícios
+
+- **EX047 — Verificação do desenho.** Identifique duas fraquezas num experimento que testa o híbrido na segunda-feira e o clássico na sexta-feira. Rubrica: 3 = confusão pelo tempo, sem pareamento/diferenças de carga.
+- **EX048 — Zero falhas.** Com 300 ensaios e 0 falhas, que limite superior aproximado da taxa de falhas você pode afirmar (regra de três)? Rubrica: 3 = ≈ 1 % (3/300).
+
+### Síntese
+
+A pesquisa prática usa experimentos controlados e repetidos e estudos de medição bem definidos, com relatórios honestos e tamanhos de amostra planejados de antemão.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — capítulo 24 de 30
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar em equipe para planejar e executar uma fatia da migração; (2) dividir o trabalho por camada e por dependência; (3) usar revisões e evidências compartilhadas; e (4) comunicar a situação com clareza.
+
+### 25.1 O enunciado do ateliê
+
+Equipes de quatro pessoas assumem um fluxo da KLS — SFTP dos parceiros, VPN do escritório, API do cliente ou malha interna — e entregam uma réplica migrada em laboratório, com inventário, configuração, testes, monitoramento, runbook e avaliação.
+
+Cada equipe recebe as mesmas restrições: apenas laboratório, dados sintéticos, os perfis da KLS como ponto de partida e cinco semanas. A entrega é julgada como um fluxo inteiro, então uma configuração perfeita sem monitoramento ou sem runbook não é aprovada. As equipes escolhem o seu fluxo na primeira semana e não podem mudá-lo depois que o inventário estiver concluído, o que força decisões cedo sobre o escopo.
+
+### 25.2 Dividindo o trabalho
+
+Divida por camada (rede, plataforma, aplicação, PKI) e por dependência: as tarefas que desbloqueiam as outras (ambiente de laboratório, inventário) vêm primeiro. Mantenha um quadro compartilhado com donos e definições de pronto.
+
+Na equipe do SFTP, o dono do laboratório e do inventário terminou primeiro, porque o trabalho de configuração precisava dos dois; o dono da matriz de clientes preparou os clientes de teste em paralelo. O quadro compartilhado lista cada tarefa com dono, dependência e definição de pronto, para que uma tarefa bloqueada mostre pelo que está esperando.
+
+Quando o dono da matriz de clientes ficou esperando as credenciais de teste de um parceiro, o quadro mostrou a dependência, e a regra de escalonamento de bloqueios em 24 horas da equipe do SFTP (Seção 25.7) levou o pedido ao gerente de parceiros na reunião diária da manhã seguinte.
+
+### 25.3 Revisões
+
+Toda mudança de configuração recebe uma revisão por pares em relação ao perfil central; toda afirmação da avaliação precisa de uma evidência que um revisor possa executar de novo. As revisões apanham a lista de grupos mal ordenada e o controle negativo ausente.
+
+As equipes formam pares de revisores entre camadas, de modo que o especialista em rede revisa o trabalho do dono da PKI e vice-versa. Um comentário de revisão precisa apontar para uma evidência, como o perfil renderizado, uma linha de log ou a saída de um script, e o autor responde com uma mudança ou com um motivo. As revisões são acompanhadas no quadro, com a data em que foram pedidas e respondidas.
+
+### 25.4 Comunicação da situação
+
+Situação semanal: feito, próximo, bloqueado, riscos. Os bloqueios nomeiam o que é necessário e de quem. Evite números de percentual concluído que escondem riscos.
+
+Um bloqueio se lê assim: "Precisamos da imagem do cliente do parceiro v3.2, do gerente de parceiros, até quinta-feira; sem ela, a matriz fica sem dois tipos de cliente." Os riscos nomeiam o que poderia mudar o plano. Um relatório que diz "70 % feito" não diz nada ao leitor sobre se o fluxo estará pronto, então os relatórios do ateliê nunca usam percentuais.
+
+Cada risco é escrito com um gatilho e uma resposta, para que o leitor também saiba o que a equipe faria.
+
+### 25.5 Caso resolvido
+
+Equipe "SFTP": semana 1, laboratório e inventário (dono A); semana 2, atualização do OpenSSH e configuração da KEX (B); semana 3, matriz de clientes dos parceiros — seis tipos de cliente, dois apenas clássicos (C); semana 4, monitoramento e runbook (D); semana 5, avaliação. Bloqueada na semana 3 esperando a imagem do cliente de um parceiro; escalado ao instrutor, no papel de gerente de parceiros; substituída por uma emulação documentada.
+
+A emulação só foi uma substituta razoável porque a equipe documentou os seus limites: o cliente emulado usava a versão da biblioteca do parceiro, mas não o seu proxy, então a avaliação marcou os resultados desse tipo de cliente como de menor confiança.
+
+### 25.6 Atividade prática
+
+Forme uma equipe, escolha um fluxo, escreva o plano e o primeiro relatório de situação.
+
+Escreva o plano como uma lista de tarefas ordenada por dependência, com dono, definição de pronto e o artefato que cada uma produz. Inclua o ambiente de laboratório, o inventário e o rastreamento, a configuração, a matriz de clientes, o monitoramento, o runbook e a avaliação. O primeiro relatório de situação usa os quatro títulos feito, próximo, bloqueado e riscos. Se nada estiver bloqueado na primeira semana, diga o que você espera que fique bloqueado mais tarde e o que está fazendo agora para evitar isso.
+
+### 25.7 Acordos de trabalho
+
+Combine como a equipe vai trabalhar antes de começar: como as decisões são tomadas e registradas, como as revisões são pedidas e com que rapidez são respondidas, como os segredos usados no laboratório são guardados e o que acontece quando alguém fica bloqueado por mais de um dia. Os acordos escritos evitam as falhas mais comuns do ateliê — bloqueios silenciosos e mudanças sem revisão — e espelham a forma como as equipes de plataforma de produção operam.
+
+O acordo da equipe do SFTP fixou as revisões em até um dia útil e o escalonamento de bloqueios depois de 24 horas.
+
+### 25.8 Erros comuns e limites
+
+- Todos trabalhando na mesma camada.
+- Revisões puladas sob pressão de tempo.
+- Relatórios de situação sem bloqueios.
+
+Numa turma do ateliê, uma equipe de quatro pessoas trabalhou inteira na configuração do OpenSSH na segunda semana; ninguém montou a matriz de clientes, e a avaliação ficou sem dados. Outra equipe pulou as revisões na última semana e entregou um perfil com o híbrido listado em segundo lugar, o mesmo erro de ordem que o Laboratório T detecta. Uma terceira reportou "no prazo" toda semana até o prazo final, sem mencionar a imagem de parceiro que faltava. Cada falha é uma falha de processo, não técnica, e é por isso que o ateliê avalia o processo.
+
+### Exercícios
+
+- **EX049 — Ordem de dependências.** Ordene cinco tarefas da equipe do SFTP por dependência e justifique. Rubrica: 3 = laboratório/inventário antes da configuração, configuração antes da matriz, monitoramento antes da avaliação.
+- **EX050 — Relatório de situação.** Escreva um relatório de situação para a semana 3 do caso resolvido. Rubrica: 3 = feito, próximo, bloqueado com pedido, riscos.
+
+### Síntese
+
+Os projetos de ateliê praticam a implementação em equipe: divisão do trabalho atenta às dependências, revisões baseadas em evidências e comunicação clara da situação.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — capítulo 25 de 30
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança quântica e pós-quântica: passagem para as operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um serviço para a passagem às operações; (2) escrever runbooks para as falhas específicas do pós-quântico; (3) definir a responsabilidade pelos perfis, certificados e exceções; e (4) treinar os operadores.
+
+### 26.1 Pacote de passagem
+
+As operações precisam de: a arquitetura e o rastreamento do fluxo; o perfil criptográfico aplicado e a sua versão; as entradas do inventário; os painéis e os alertas; os runbooks; o registro de riscos residuais; a lista de exceções com as datas de expiração; os contatos de fornecedores e parceiros; e o relatório de avaliação.
+
+Cada item é um link no repositório do serviço, e não um anexo, para que as operações sempre vejam a versão atual. O índice do pacote da KLS lista 12 itens, com dono e data da última revisão.
+
+A KLS testou isso na passagem: um SRE que não tinha visto o trabalho do SFTP respondeu a um alerta simulado de "falhas de handshake híbrido acima do limite" apenas com o pacote, usando as etapas de isolar e de exceção do runbook.
+
+### 26.2 Runbooks
+
+Escreva runbooks para: queda da fração híbrida; falhas de handshake por um proxy; `no_shared_group` de um parceiro; falhas de verificação de certificados depois de mudanças na PKI; erros de HSM ou KMS na emissão. Cada um tem sintomas, verificações, ações seguras, reversão e escalonamento.
+
+O runbook da KLS para a queda da fração híbrida começa com as três verificações que resolveram o seu incidente real: a última implantação, as anotações do ingress e o hash do perfil em produção comparado com o aprovado. A ação segura restaura o perfil aprovado sem mexer no código da aplicação; a reversão restaura a versão anterior do perfil; o escalonamento vai para o plantão da plataforma e, nos saltos de provedores, para o contato da CDN. Todo runbook é testado num exercício de mesa antes de contar.
+
+### 26.3 Responsabilidade
+
+Nomeie os donos dos perfis centrais, da AC interna, das aprovações de exceções, das alimentações da CBOM e dos painéis. As lacunas de responsabilidade são onde vivem as regressões.
+
+Na KLS, a Platform Team é dona dos perfis centrais e das alimentações da CBOM, a equipe de PKI é dona da AC interna, o escritório de segurança aprova as exceções e o SRE é dono dos painéis e dos alertas. Cada dono é uma equipe com uma escala de plantão, registrada no catálogo de serviços, nunca uma única pessoa nomeada que pode sair.
+
+A primeira revisão trimestral encontrou a alimentação da CBOM dos appliances de VPN ainda listada sob uma equipe que tinha sido incorporada à Platform Team; a alimentação continuou rodando, mas os seus alertas iam para um canal vazio.
+
+### 26.4 Treinamento
+
+Faça uma sessão curta para os operadores: o que mudou, como ler o painel, o que os runbooks dizem e um exercício de mesa. Registre a presença e as perguntas; atualize os runbooks com as respostas.
+
+A sessão da KLS para o SRE levou 45 minutos: 10 sobre o que mudou, 10 sobre o painel, 10 sobre os runbooks e 15 sobre o exercício de mesa. A pergunta "podemos simplesmente remover o grupo híbrido se os handshakes falharem?" surgiu e agora está respondida no runbook: não, isole o caminho e use uma exceção.
+
+A pergunta sobre o grupo híbrido e a sua resposta têm um link no registro da passagem, junto com os nomes das pessoas do SRE que participaram e uma pergunta ainda em aberto: como ler o painel quando um parceiro só se conecta uma vez por mês.
+
+### 26.5 Caso resolvido
+
+A KLS passa o fluxo da API do cliente para a equipe de SRE com um pacote no repositório do serviço. O exercício de mesa: "a fração híbrida cai para 5 % depois de uma versão". Os operadores seguem o runbook, identificam a anotação, restauram o perfil e confirmam a recuperação em 12 minutos. Uma lacuna encontrada: o runbook supunha acesso a um painel que os SREs não tinham — corrigido antes do aceite.
+
+A recuperação em 12 minutos é a linha de base para os próximos exercícios. A lacuna de acesso é o tipo de constatação para a qual existe um exercício de mesa: no papel, o runbook estava correto; na prática, o seu primeiro passo era impossível para as pessoas que o seguiriam.
+
+### 26.6 Atividade prática
+
+Escreva o índice do pacote de passagem e um runbook para o fluxo do seu ateliê.
+
+O índice lista cada item do pacote de passagem com a sua localização, o dono e a data da última revisão: rastreamento, perfil aplicado e versão, entradas do inventário, painéis, alertas, runbooks, registro de riscos residuais, exceções com datas de expiração, contatos e avaliação. O runbook cobre uma falha que o fluxo do seu ateliê pode produzir, com sintomas, as três primeiras verificações, a ação segura, a reversão e o escalonamento. Teste-o pedindo a um colega de equipe que não o escreveu que o siga no laboratório.
+
+### 26.7 Critérios de aceite
+
+As operações só devem aceitar uma passagem quando os critérios forem atendidos: painéis visíveis para a equipe de plantão, alertas roteados e testados, runbooks exercitados num exercício de mesa, donos nomeados no catálogo de serviços e o registro de riscos residuais revisado. Escrever os critérios transforma a passagem de uma reunião numa checklist, e dá às operações uma base justa para dizer "ainda não".
+
+A equipe de SRE da KLS recusou a primeira passagem porque os alertas eram roteados para o canal da plataforma, e não para o plantão.
+
+A passagem foi aprovada uma semana depois, quando o roteamento foi corrigido e um alerta foi testado de ponta a ponta.
+
+### 26.8 Erros comuns e limites
+
+- Passagens sem runbooks.
+- Perfis ou exceções sem dono.
+- Treinamento sem exercícios.
+
+Antes de a KLS exigir runbooks, um alerta de recuo disparou à noite e o engenheiro de plantão, sem orientação, desabilitou o alerta. Uma exceção para o proxy de um cliente não tinha dono, então passou da data de expiração e ninguém a renovou nem a encerrou. E um treinamento só com slides deixou os operadores sem saber encontrar a verificação do hash do perfil quando precisaram dela. Cada lacuna foi encontrada num incidente, e não na passagem, que é o lugar mais caro para encontrá-la.
+
+### Exercícios
+
+- **EX051 — Runbook.** Escreva um runbook para "um parceiro reporta `no_shared_group` no SFTP". Rubrica: 3 = sintomas, verificações, ações, reversão, escalonamento.
+- **EX052 — Critérios de aceite.** Liste cinco critérios de aceite da passagem. Rubrica: 3 = cinco critérios verificáveis.
+
+### Síntese
+
+Uma passagem completa dá às operações o mapa, os controles, os alarmes, os runbooks, os donos e a prática para manter as proteções pós-quânticas no lugar.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — capítulo 26 de 30
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a implantação em produção com etapas, gates e reversão; (2) validar o comportamento de ponta a ponta em produção; (3) lidar com as exceções durante a implantação; e (4) encerrar uma implantação com evidências.
+
+### 27.1 Etapas e gates
+
+Etapa 1: listener canário ou 1 % do tráfego; etapa 2: 10 %; etapa 3: todos os listeners de nível 1; etapa 4: os listeners restantes. Gates: limite superior da taxa de falhas dentro do orçamento, recuo dentro do esperado, nenhum alerta sem explicação, runbooks prontos. Cada etapa tem uma duração mínima que cobre os padrões semanais.
+
+As etapas da KLS duram pelo menos sete dias, para que os jobs semanais em lote e os envios dos parceiros sejam incluídos. Cada gate é verificado por alguém de fora da equipe que implanta e registrado com os seus números, por exemplo o limite superior de Wilson e a fração de recuo no fim da etapa.
+
+### 27.2 Validação em produção
+
+Valide com clientes sintéticos em cada região e com os logs de negociação de produção; confirme cada segmento dos fluxos de nível 1. Faça amostragens de certificados e configurações de forma independente da equipe que implanta.
+
+A KLS executa clientes sintéticos a partir de cinco regiões a cada 15 minutos, cada um registrando o grupo negociado na borda da CDN, enquanto os logs da origem mostram o grupo no salto seguinte. Um engenheiro de outra equipe faz a amostragem de dez listeners por etapa, comparando o hash do perfil em produção e o algoritmo do certificado com o inventário. As discordâncias interrompem a etapa até serem explicadas.
+
+### 27.3 Exceções
+
+Quando uma população de clientes não consegue lidar com a mudança — um proxy antigo, o cliente de um parceiro —, crie uma exceção: escopo, motivo, controle compensatório, dono, data de expiração. Encaminhe a população para um listener compatível com o clássico, se necessário, em vez de enfraquecer o padrão.
+
+Um listener dedicado mantém o perfil padrão intacto para todos os demais: a população da exceção é encaminhada por faixa de endereços para um listener que ainda aceita apenas o X25519, com o seu próprio monitoramento. A data de expiração da exceção é imposta pelo arquivo de exceções do gate de CI, de modo que a configuração do listener reprova no gate quando a data passa.
+
+### 27.4 Encerramento
+
+Encerre a implantação com um pacote de evidências: as etapas e os resultados dos gates, os resultados da validação, as exceções, o risco residual e o aceite da passagem.
+
+O pacote de encerramento da KLS é uma pasta no registro da mudança com a tabela de etapas, os números de cada gate, os resultados da validação regional, a lista de exceções, as entradas de risco residual e o aceite assinado da passagem pelo SRE. A implantação só é encerrada quando cada item tem um link para a sua evidência. Qualquer pendência vai para um chamado de acompanhamento nomeado, em vez de manter a mudança aberta indefinidamente.
+
+### 27.5 Caso resolvido
+
+A KLS implanta o `kls-modern` em todos os listeners voltados para a internet. A etapa 2 mostra o proxy corporativo de um cliente falhando; é criada uma exceção com um listener dedicado para a faixa de IPs desse cliente, expiração em seis meses, cliente avisado. A etapa 3 passa; a validação a partir de cinco regiões mostra o híbrido na borda e na origem. Pacote de encerramento arquivado; risco residual: certificados clássicos.
+
+A exceção manteve o cliente funcionando sem enfraquecer o perfil de mais ninguém, e o cliente recebeu o endpoint de teste para que a atualização do seu proxy pudesse ser verificada antes da expiração. O pacote de encerramento registrou os certificados clássicos restantes como o próximo item do programa.
+
+### 27.6 Atividade prática
+
+Escreva um plano de implantação com etapas, gates, reversão e processo de exceção para o fluxo do seu ateliê.
+
+Escreva as etapas com a fração de tráfego e a duração mínima; os gates de cada uma, com os limites e a fonte dos dados; a reversão de cada etapa e quanto tempo ela leva; e o processo de exceção, com os campos de que um registro de exceção precisa. Acrescente quem verifica cada gate e como o resultado é registrado. Declare a restrição de calendário do seu fluxo, como evitar o lote de fim de mês de um parceiro no SFTP. Um revisor deve conseguir executar o seu plano sem precisar lhe fazer nenhuma pergunta.
+
+### 27.7 Congelamento de mudanças e calendário
+
+Evite implantar mudanças criptográficas logo antes dos períodos de pico do negócio — para uma plataforma de logística, os picos de embarque de fim de trimestre — ou durante outras grandes mudanças, porque mudanças sobrepostas tornam as falhas difíceis de atribuir. Agende as etapas quando a equipe responsável estiver com pessoal para acompanhar os painéis, e registre o calendário planejado e o real no pacote de encerramento.
+
+A KLS congela as mudanças criptográficas nas duas últimas semanas de cada trimestre e evita as semanas com atualizações da plataforma.
+
+Na KLS, isso também significa nenhuma mudança no SFTP nos primeiros dias do mês, quando os parceiros fazem os seus maiores envios. Os horários planejados e reais são comparados no pacote de encerramento, e qualquer etapa que atrasou explica o porquê.
+
+### 27.8 Erros comuns e limites
+
+- Enfraquecer o padrão para acomodar um único cliente.
+- Etapas mais curtas do que os ciclos semanais.
+- Implantações encerradas sem evidências de validação.
+
+Durante a implantação da KLS, um engenheiro sugeriu tirar o grupo híbrido do perfil padrão para resolver o proxy daquele cliente; o listener dedicado resolveu o problema sem expor todos os outros clientes. Uma etapa planejada para três dias teria perdido o lote semanal dos parceiros que depois produziu as únicas falhas no SFTP. E um encerramento antecipado não tinha validação regional, então uma região da CDN ainda clássica até a origem passou despercebida até que os clientes sintéticos fossem acrescentados.
+
+### Exercícios
+
+- **EX053 — Lista de gates.** Escreva quatro gates para a etapa 3. Rubrica: 3 = gates mensuráveis, com limites.
+- **EX054 — Exceção.** Escreva o registro de exceção para o proxy do cliente do caso resolvido deste capítulo. Rubrica: 3 = escopo, motivo, controle compensatório, dono, data de expiração.
+
+### Síntese
+
+A implantação em etapas, com gates, validação em produção, exceções contidas e um encerramento baseado em evidências, entrega a proteção pós-quântica sem enfraquecer os padrões.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — capítulo 27 de 30
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades de implementação num estágio supervisionado; (2) trabalhar dentro do controle de mudanças e da autorização; (3) contribuir com tarefas de inventário, configuração ou monitoramento; e (4) refletir sobre a prática com evidências.
+
+### 28.1 Tarefas do estágio
+
+Tarefas típicas: estender uma alimentação do inventário, validar um scanner, atualizar um perfil criptográfico em homologação, construir um painel, escrever um runbook, testar em laboratório o suporte ao híbrido do appliance de um fornecedor.
+
+Cada tarefa deve ser pequena o bastante para ser concluída e revisada durante o estágio, produzir um artefato que a organização anfitriã guarde e se ligar a um capítulo deste livro. Um bom estágio dá ao estudante uma tarefa com impacto em produção depois da revisão, como o painel do caso resolvido, e mantém o resto em laboratório ou homologação.
+
+### 28.2 Controle de mudanças e autorização
+
+Siga o processo de mudança da organização anfitriã; obtenha um escopo por escrito para qualquer varredura ou teste; nunca execute ferramentas contra a produção sem aprovação; nunca leve dados para fora dos sistemas aprovados. Comunique imediatamente as constatações graves — como chaves privadas expostas — pelo processo da organização.
+
+O acordo de escopo é assinado antes de qualquer ferramenta rodar e lista os sistemas, os métodos, as janelas, o tratamento dos dados e os contatos. Se uma tarefa sair dele, como um mentor pedindo uma varredura rápida de outra sub-rede, o estudante pede primeiro que o escopo seja alterado por escrito. As constatações fora da tarefa são comunicadas, e não investigadas mais a fundo.
+
+### 28.3 Trabalhando com os mentores
+
+Combine os objetivos com o seu mentor na primeira semana; peça revisão de cada mudança; mantenha um registro do que fez e aprendeu; faça perguntas cedo.
+
+Uma reunião semanal curta com o mentor revisa o registro e as tarefas da semana seguinte. Os estudantes que perguntam cedo, por exemplo "qual lista de hosts está aprovada para o scanner?", evitam os erros de escopo que encerram estágios. Os mentores também revisam os artefatos escritos, porque um runbook escrito por um estudante será usado pelos operadores da organização anfitriã.
+
+Um estudante na KLS que perguntou sobre a lista de hosts do scanner num chamado recebeu uma resposta escrita nomeando os hosts aprovados, o que depois resolveu uma divergência sobre se um proxy de homologação estava no escopo.
+
+### 28.4 Reflexão
+
+Toda semana: tarefa, evidência produzida, surpresa, lição, próximo passo. Ligue as lições aos capítulos deste livro.
+
+Uma entrada útil é específica: "Validei o scanner contra três servidores de laboratório; ele reportou o servidor com o híbrido preferido como clássico; surpresa: a biblioteca embutida era mais antiga do que a data de lançamento do scanner sugeria; lição: registrar as versões das bibliotecas das ferramentas, Capítulo 17; próximo: atualizar e validar de novo." Entradas que só listam tarefas não dão ao avaliador nada para julgar.
+
+Os avaliadores leem as entradas em ordem, procurando lições que mudem o que o estudante faz nas semanas seguintes, em vez de repetir o mesmo erro.
+
+### 28.5 Caso resolvido
+
+Um estudante em estágio numa empresa regional de encomendas (sintética) valida o scanner TLS da empresa contra um servidor de laboratório, descobre que a sua biblioteca é anterior ao suporte ao ML-KEM e documenta a atualização. Com aprovação, ele acrescenta um campo de grupo negociado aos logs do balanceador de carga em homologação e constrói um painel; o mentor o promove para a produção depois da revisão.
+
+As duas contribuições do estudante seguem os hábitos do livro: validar uma ferramenta antes de confiar nela, e acrescentar um campo de log em vez de log de depuração. A revisão do mentor antes da produção faz parte do resultado, não é uma formalidade; é o controle de mudanças da organização anfitriã funcionando como previsto.
+
+### 28.6 Atividade prática
+
+Escreva o seu acordo de escopo do estágio e as duas primeiras entradas semanais de reflexão.
+
+O escopo lista os sistemas em que você pode mexer (laboratório e hosts de homologação nomeados), os métodos e as ferramentas com versões, as janelas de tempo, os dados que você pode guardar e onde, o que você não deve fazer e os contatos para dúvidas e para comunicar constatações graves. Assine-o com o seu mentor. As duas entradas de reflexão usam, cada uma, os títulos tarefa, evidência produzida, surpresa, lição e próximo passo, e cada lição se liga a um capítulo deste livro.
+
+### 28.7 Conduta profissional
+
+Os estágios também são um teste de conduta: respeitar os acordos de confidencialidade, não discutir as fraquezas da organização anfitriã fora dos canais aprovados, dar crédito ao trabalho dos colegas e admitir os erros rapidamente. Um estudante que reporta "rodei a auditoria contra a lista de hosts errada; foi isto o que aconteceu e isto o que fiz" constrói mais confiança do que um cujo erro é descoberto depois por outra pessoa.
+
+A conduta também abrange o que sai do estágio: nenhuma captura de tela dos painéis da organização anfitriã num portfólio sem permissão por escrito.
+
+A KLS só aprovou o relato de um estudante sobre o problema do ClientHello de 1.530 bytes depois que o modelo e a versão de firmware do proxy-b foram removidos, porque eles teriam apontado aos atacantes um dispositivo sem correção.
+
+### 28.8 Erros comuns e limites
+
+- Agir fora do escopo.
+- Mudanças sem revisão.
+- Registros que listam tarefas sem lições.
+
+Um estudante que varre um host porque ele "parecia de homologação" agiu fora do escopo, qualquer que seja o resultado; o acordo existe para evitar exatamente isso. Uma mudança mesclada sem a revisão do mentor, mesmo que seja um campo de log, contorna o controle de mudanças da organização anfitriã. E um registro que diz "segunda: painel; terça: runbook" mostra atividade, mas não aprendizado. Cada um desses erros custa confiança, que é o que os estágios devem construir.
+
+Na KLS, uma estudante que varreu um host SFTP voltado aos parceiros em vez da cópia de laboratório manteve o estágio porque o comunicou em menos de uma hora, e o escritório de segurança registrou o incidente com os logs de varredura que ela forneceu.
+
+### Exercícios
+
+- **EX055 — Escopo.** Escreva um escopo de estágio para validar um scanner TLS. Rubrica: 3 = sistemas, métodos, janela, dados, contatos.
+- **EX056 — Reflexão.** Escreva uma entrada de reflexão para o caso resolvido. Rubrica: 3 = tarefa, evidência, surpresa, lição, próximo passo.
+
+### Síntese
+
+A prática de campo aplica as habilidades de implementação dentro de um controle de mudanças e de uma autorização reais, com revisão do mentor, conduta profissional e reflexão baseada em evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — capítulo 28 de 30
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir em laboratório uma fatia migrada completa de um serviço; (2) integrar inventário, configuração, automação, monitoramento e runbooks; (3) manter tudo reproduzível; e (4) documentar as decisões.
+
+### 29.1 Escopo
+
+Escolha um fluxo do tipo da KLS, de ponta a ponta, com pelo menos três saltos. Entregue: a infraestrutura do laboratório como código; as entradas do inventário e o rastreamento; o perfil criptográfico central aplicado em cada salto; o gate de CI; o registro das negociações e o painel; os runbooks; o registro de exceções e de riscos residuais; os dados da avaliação.
+
+Três saltos é o mínimo porque o projeto final precisa mostrar que cada terminação está configurada e evidenciada, e não só uma. Todas as entregas ficam num único repositório, e os avaliadores julgam a fatia como um todo: um perfil perfeito sem monitoramento está incompleto.
+
+### 29.2 Ordem de construção
+
+Infraestrutura do laboratório → inventário e rastreamento → perfil → gate de automação → monitoramento → runbooks → avaliação. Faça um commit a cada etapa, com um registro de decisão curto.
+
+A ordem segue as dependências: nada pode ser inventariado antes que o laboratório exista, o perfil precisa do inventário para saber onde se aplica, o gate precisa do perfil para verificar contra ele, e o monitoramento precisa de um perfil em execução para observar. Os runbooks precisam do monitoramento para nomear os sintomas, e a avaliação precisa de tudo isso. Cada etapa termina com um commit e um registro de decisão curto, para que o histórico do repositório conte a história da construção. As equipes que começam pelo painel costumam reconstruí-lo depois.
+
+### 29.3 Reprodutibilidade
+
+Qualquer pessoa deve conseguir clonar o repositório, executar um comando para construir o laboratório e reproduzir os números do painel a partir das execuções registradas. Fixe as versões; fixe as sementes aleatórias dos dados sintéticos.
+
+O teste é literal: um avaliador executa o comando de construção numa máquina limpa. Fixe as versões dos pacotes e das imagens pelo digest, mantenha as chaves do laboratório geradas no momento da construção e guarde os logs de sessão registrados, para que o painel possa ser reconstruído a partir deles. Uma semente aleatória fixada no gerador de dados sintéticos torna os números idênticos a cada reconstrução, e é isso que permite a um avaliador compará-los com o relatório.
+
+### 29.4 Registros de decisão
+
+Registre decisões como "híbrido com ML-KEM-768 em vez de ML-KEM-1024 porque a política exige a categoria 3 e o grupo da RFC 10024 usa o -768" ou "certificados clássicos mantidos porque a biblioteca X de uma parte confiante não tem o ML-DSA".
+
+Um registro de decisão tem o contexto, as opções consideradas, a decisão e as suas consequências, e é datado. Os exemplos no estilo da KLS também incluem a evidência por trás da decisão, como o registro de laboratório que mostra uma parte confiante falhando na validação ML-DSA, e a condição que a reabriria. Os registros são curtos; o seu valor é que uma equipe posterior possa ver por que algo é como é.
+
+### 29.5 Caso resolvido
+
+Projeto final (sintético): SFTP dos parceiros através de um bastion e de um processador interno de arquivos. Construção: scripts de laboratório no estilo Terraform, OpenSSH com a KEX híbrida em primeiro lugar, um script de auditoria no CI que verifica o `KexAlgorithms`, um analisador de logs alimentando um painel da fração de KEX, runbooks para `no_shared_group` e para o recuo, uma exceção para um cliente de parceiro legado emulado. Dados de avaliação de 3.000 sessões em seis tipos de cliente.
+
+Os seis tipos de cliente correspondem à matriz de parceiros do ateliê, então a avaliação reaproveita os seus resultados conhecidos. A exceção do cliente legado mostra na prática o registro de exceção completo, e as 3.000 sessões bastam para dar um limite superior significativo para as falhas.
+
+### 29.6 Atividade prática
+
+Crie o repositório do seu projeto final com a ordem de construção como marcos.
+
+Crie um marco por etapa da ordem de construção, com o artefato que o fecha: script de construção do laboratório, arquivos de inventário e de rastreamento, perfil, gate de CI, registro de logs e painel, runbooks e dados da avaliação. Acrescente um README que declare o fluxo, os saltos e como construir. Abra uma issue para cada desconhecido conhecido, como um tipo de cliente que você não consegue emular, para que ele seja acompanhado desde o início, em vez de descoberto na avaliação.
+
+Para a fatia do SFTP, o marco do perfil tem links para o registro que escolheu o grupo híbrido e para o registro que lista quais clientes de parceiros continuam clássicos, para que um examinador possa ver por que o gate os permite.
+
+### 29.7 Segurança da construção
+
+Trate o repositório do projeto final como de nível de produção: nenhum segredo real commitado, chaves de laboratório geradas no momento da construção, acesso limitado à equipe e aos avaliadores, e versões das dependências fixadas. Inclua uma nota de ameaças curta para o próprio laboratório — o que um atacante poderia fazer com o repositório e como você o impediu. Os avaliadores vão procurar isso, e é um hábito que vale a pena manter.
+
+Os avaliadores da KLS verificam o histórico em busca de chaves commitadas com um scanner de segredos.
+
+Eles também confirmam que as chaves do laboratório são regeneradas a cada construção, para que uma chave vazada de um clone antigo seja inútil.
+
+### 29.8 Erros comuns e limites
+
+- Construir sem infraestrutura como código.
+- Pular o gate de CI.
+- Decisões não documentadas.
+
+Um projeto final construído à mão numa máquina de laboratório não pode ser reconstruído pelo avaliador, então os seus números não podem ser verificados. Um projeto final sem o gate de CI torna impossível a etapa "o gate bloqueia uma mudança ruim" da demonstração e perde o critério de automação. E as decisões não documentadas, como por que as chaves de host continuaram clássicas, se transformam em perguntas do examinador que o estudante não consegue responder com evidências. Esses três respondem pela maior parte das notas perdidas.
+
+### Exercícios
+
+- **EX057 — Registro de decisão.** Escreva um registro de decisão para manter as chaves de host clássicas no projeto final do SFTP. Rubrica: 3 = contexto, opções, decisão, consequências.
+- **EX058 — Teste de reprodutibilidade.** Descreva como um avaliador verifica os números do seu painel. Rubrica: 3 = clonar, construir, reproduzir os logs, comparar.
+
+### Síntese
+
+A construção do projeto final integra todas as habilidades de implementação numa fatia de laboratório única, reproduzível, documentada e segura, pronta para a avaliação.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — capítulo 29 de 30
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o seu projeto final em relação aos critérios; (2) demonstrá-lo ao vivo; (3) responder a perguntas técnicas; e (4) entregar os artefatos para reutilização.
+
+### 30.1 Critérios
+
+Critérios de avaliação: completude da fatia; correção da configuração (híbrido preferido, recuo controlado); qualidade da automação e do monitoramento; runbooks exercitados; reprodutibilidade; risco residual e exceções documentados; clareza das decisões e da avaliação.
+
+Cada critério corresponde a uma evidência no repositório: a correção da configuração, ao perfil renderizado e aos logs; a automação, ao gate e ao seu teste; o monitoramento, ao painel reconstruído a partir dos logs registrados; os runbooks, ao registro do exercício de mesa. Os examinadores pontuam cada um de 0 a 3, na mesma escala dos exercícios, para que um candidato possa prever o resultado a partir das evidências.
+
+### 30.2 Demonstração ao vivo
+
+Demonstre: construir o laboratório; mostrar a negociação da KEX híbrida; provocar um recuo revertendo a configuração e mostrar o alerta; seguir o runbook para recuperar; mostrar o gate de CI bloqueando uma mudança ruim.
+
+Cada etapa tem um tempo e um resultado observável: o laboratório é construído sem etapas manuais; os logs mostram o algoritmo híbrido; uma reversão da configuração dispara o alerta de recuo; o runbook restaura o perfil e o alerta se encerra; um pull request com uma lista reordenada reprova no gate. Ensaie as etapas de falha, já que são elas que dão errado ao vivo.
+
+### 30.3 Perguntas
+
+Espere: "Por que a ordem do servidor é importante?", "O que o híbrido não protege?", "Como você migraria as chaves de host?", "O que acontece se o ML-KEM for enfraquecido?", "Como você sabe que o scanner está certo?" Responda com evidências do seu repositório.
+
+As boas respostas citam o repositório. Sobre a ordem: o registro de laboratório que mostra uma lista mal ordenada negociando o X25519. Sobre o que o híbrido não protege: a autenticação, o tráfego passado já gravado e qualquer salto clássico. Sobre um ML-KEM enfraquecido: o combinador mantém a sessão tão forte quanto o X25519. Sobre o scanner: o seu registro de validação contra os três servidores de laboratório.
+
+### 30.4 Entrega
+
+Deixe um README, os registros de decisão, os runbooks e as issues abertas, para que outra equipe possa estender o trabalho.
+
+O README declara o que a fatia faz, como construí-la e o que está fora do escopo. As issues abertas são escritas para alguém que não estava na equipe, com a evidência que motivou cada uma e um primeiro passo sugerido. Os registros de decisão e os runbooks ficam no repositório, para que a próxima equipe herde o raciocínio, e não só a configuração.
+
+Para a fatia do SFTP, a fraqueza do cliente apenas emulado se torna a issue 1, com a linha da matriz e o motivo pelo qual nenhum dispositivo real estava disponível.
+
+### 30.5 Caso resolvido
+
+Avaliação do projeto final do SFTP: construção em 9 minutos; KEX híbrida mostrada nos logs; recuo provocado e alerta disparado em 2 minutos; recuperação pelo runbook em 4 minutos; o gate de CI bloqueou uma linha `KexAlgorithms` reordenada. O examinador pergunta sobre as chaves de host; o estudante explica o calendário de forjar depois, os certificados SSH como passo de agilidade e a espera por algoritmos de chave de host pós-quânticos no OpenSSH.
+
+Os tempos mostram que a fatia é operável, e não só configurada: um alerta em até dois minutos depois do recuo e a recuperação em até quatro pelo runbook. A resposta sobre as chaves de host recebeu a nota máxima porque separou a troca de chaves da autenticação e nomeou um passo de agilidade concreto, em vez de prometer algoritmos futuros.
+
+### 30.6 Atividade prática
+
+Ensaie a sua demonstração com um colega no papel de examinador; cronometre cada etapa.
+
+Execute a demonstração completa de ponta a ponta com um colega que faça as cinco perguntas da lista de avaliação sem aviso. Cronometre cada etapa e anote onde você hesitou ou precisou de um comando manual. Corrija qualquer etapa que dependia de algo que não está no repositório e ensaie de novo. Uma demonstração que roda dentro do seu tempo duas vezes seguidas está pronta; uma que funcionou uma vez, não.
+
+Nos ensaios da KLS, a etapa mais lenta costumava ser reconstruir o laboratório depois da demonstração do gate de CI; uma equipe a reduziu de nove minutos para dois guardando em cache as imagens de contêiner no script de construção do repositório.
+
+### 30.7 Autoavaliação
+
+Antes da avaliação, pontue-se em cada critério, com links para as evidências, e anote uma fraqueza que você corrigiria com mais tempo. Os examinadores valorizam os candidatos que enxergam as próprias lacunas; isso mostra o discernimento de que as equipes de operações dependem. Inclua a autoavaliação na entrega, para que as próximas equipes saibam por onde começar.
+
+Para o projeto final do SFTP, uma nota 3 em verificação tem um link para a execução de avaliação de 3.000 sessões, e não só para o painel.
+
+Nomeie uma fraqueza, a evidência que a mostra e a correção que você faria com mais uma semana. Para o projeto final do SFTP, um exemplo justo é um tipo de cliente testado apenas em emulação. Declare a fraqueza abertamente; os examinadores a tratam como discernimento, e não como nota perdida.
+
+### 30.8 Erros comuns e limites
+
+- Demonstrações que dependem de etapas manuais que não estão no repositório.
+- Afirmar que o híbrido protege a autenticação.
+- Nenhuma entrega.
+
+Uma demonstração que precisa de um comando digitado à mão que não está no repositório reprova na reprodutibilidade na hora. Um candidato que diz que a troca de chaves híbrida protege a identidade do host SFTP confundiu o estabelecimento de chaves com a autenticação; a chave de host continua sendo Ed25519. E um projeto final sem README nem issues abertas deixa a próxima equipe redescobrindo tudo. Cada um desses erros fica visível para um examinador em minutos.
+
+### 30.9 Depois da avaliação
+
+Até uma semana depois da avaliação, o estudante arquiva as perguntas do examinador e as suas respostas junto com o registro do projeto final, corrige qualquer lacuna de documentação que o examinador tenha encontrado e entrega às operações da KLS um resumo de uma página sobre o que o serviço SFTP negocia agora e o que ainda é clássico. Esse resumo é o ponto de partida do próximo passo da migração.
+
+Ele também declara explicitamente o próximo passo: certificados de host para o SSH e, depois, chaves de host pós-quânticas quando estiverem disponíveis.
+
+Esses dois passos se tornam as primeiras issues no repositório da próxima equipe, cada uma com a evidência que a motivou.
+
+### Exercícios
+
+- **EX059 — Roteiro da demonstração.** Escreva um roteiro de demonstração de cinco etapas para o seu projeto final. Rubrica: 3 = construir, mostrar, quebrar, recuperar, gate.
+- **EX060 — Resposta ao examinador.** Responda a "O que o seu projeto final não protege?" Rubrica: 3 = autenticação/chaves de host, clientes de parceiros no clássico, dispositivos desconhecidos.
+
+### Síntese
+
+A avaliação mostra uma fatia funcional, monitorada e recuperável, respostas honestas sobre os seus limites e artefatos que outras pessoas podem reutilizar.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — capítulo 30 de 30
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a KLS são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX060 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a KLS são sintéticos.
 
 **EX001.** Hardware: appliances de balanceamento de carga/hosts na nuvem (provedor). Firmware: inicialização assinada dos hosts (provedor/fornecedor; troca de hardware). Sistema operacional: distribuição dos nós com OpenSSL (equipe de plataforma; atualização de pacote). Biblioteca: TLS da imagem do ingress/NGINX (equipe de plataforma; reconstrução da imagem). Aplicação: cookies de sessão do portal assinados/cifrados (equipe da aplicação; versão). Gerenciado: TLS da borda da CDN (provedor da CDN; configuração).
 
@@ -1701,6 +2522,50 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX039.** A KLS provavelmente removeu a KEX clássica (apenas híbrido) e o cliente do parceiro não tem suporte ao híbrido; restaurar o recuo clássico e avisar o parceiro para atualizar dentro da janela de transição.
 
 **EX040.** Acrescentar `elif f["err"] == "hrr_timeout": c = "HelloRetryRequest latency"`; uma linha de log com `err=hrr_timeout` passa então a ser contada nessa causa.
+
+**EX041.** Cliente → borda da CDN (os logs da CDN mostram o híbrido); CDN → LB da origem (os logs do LB da origem mostram o híbrido); LB → ingress (logs do ingress); ingress → pods/malha (estatísticas dos sidecars); SDK de saída para o provedor (logs do cliente ou declaração do provedor). Resultados do teste sintético de ponta a ponta por região.
+
+**EX042.** "A partir de 1º de março, os servidores SFTP da KLS oferecem troca de chaves pós-quântica híbrida (mlkem768x25519-sha256). Testem o seu cliente contra sftp-test.kls.example até 1º de junho. A troca de chaves clássica continua disponível até 1º de março do ano que vem. Depois disso, os clientes sem suporte ao híbrido não conseguirão se conectar. Para ajuda, contatem platform@kls.example."
+
+**EX043.** `for l in listeners: if l.tier == 1: groups = parse(l.groups); if not groups or groups[0] not in HYBRID: fail(l)`; sair com código diferente de zero se houver alguma falha; imprimir os listeners problemáticos.
+
+**EX044.** Durante a transição, a lista de aceitação contém os dois identificadores, então as tags antigas são verificadas; depois da aposentadoria, o identificador antigo é removido da lista de aceitação e a verificação falha, mesmo que a tag seja válida sob o algoritmo antigo.
+
+**EX045.** 9/14 ≈ 64 % completos; 4/14 ≈ 29 % parciais; 1/14 ≈ 7 % desconhecidos.
+
+**EX046.** As operações do ML-KEM são rápidas nas CPUs modernas, enquanto os ~2,3 kB acrescentados por handshake podem cruzar os limites de pacote/janela inicial e provocar idas e voltas extras ou um HelloRetryRequest.
+
+**EX047.** A carga e as condições de rede de cada dia da semana confundem a comparação; desenho sem pareamento — clientes/condições diferentes em cada dia.
+
+**EX048.** Cerca de 3/300 = 1 % (regra de três, limite superior de ~95 %).
+
+**EX049.** Laboratório + inventário → atualização/configuração do OpenSSH → matriz de clientes dos parceiros → monitoramento/runbook → avaliação. Cada uma exige o artefato anterior.
+
+**EX050.** Feito: KEX híbrida configurada; quatro tipos de cliente testados. Próximo: os dois clientes restantes, painel. Bloqueado: imagem do cliente do parceiro — precisamos dela do gerente de parceiros até quinta-feira. Riscos: a emulação pode não corresponder ao cliente real.
+
+**EX051.** Sintomas: a conexão do parceiro falha com `no_shared_group`. Verificações: versão do cliente do parceiro; `KexAlgorithms` atual; mudanças recentes. Ações: confirmar que o recuo clássico está presente; se foi removido, restaurar o perfil aprovado. Reversão: configuração anterior do sshd. Escalonamento: plantão da plataforma, contato do parceiro.
+
+**EX052.** Painéis visíveis para o plantão; alertas roteados e testados; runbooks exercitados; donos no catálogo de serviços; registro de riscos residuais revisado.
+
+**EX053.** Limite superior da taxa de falhas ≤ linha de base + 0,04 ponto; fração de recuo ≤ 5 % (clientes legados conhecidos); nenhum alerta sem explicação por 7 dias; runbooks e donos confirmados.
+
+**EX054.** Escopo: faixa de IPs do proxy corporativo do cliente X; motivo: o proxy descarta ClientHellos grandes; controle: listener dedicado compatível com o clássico, monitoramento; dono: Platform Team com o gerente de conta; expiração: seis meses.
+
+**EX055.** Sistemas: servidores TLS de laboratório e hosts de homologação aprovados; métodos: execuções do scanner com as opções listadas; janela: semanas 2–3, horário comercial; dados: resultados guardados no repositório, nenhum dado de produção; contatos: mentor e escritório de segurança.
+
+**EX056.** Tarefa: validei o scanner. Evidência: resultados de laboratório mostrando o relato errado. Surpresa: biblioteca embutida antiga. Lição: sempre validar as ferramentas. Próximo: atualizar e validar de novo.
+
+**EX057.** Contexto: as chaves de host do OpenSSH são Ed25519; nenhum algoritmo de chave de host PQ adotado. Opções: manter o clássico; chaves de host PQ experimentais. Decisão: manter, adotar certificados SSH para a rotação. Consequências: risco residual de forjar depois registrado; rotação rápida possível mais tarde.
+
+**EX058.** Clonar o repositório; construir o laboratório com um comando; reproduzir os logs de sessão registrados pelo analisador; comparar os números do painel com o relatório.
+
+**EX059.** Construir o laboratório; mostrar a KEX híbrida nos logs; reverter a configuração para disparar o alerta de recuo; recuperar pelo runbook; enviar uma mudança ruim e mostrar o bloqueio do gate de CI.
+
+**EX060.** Autenticação de host e de usuário (clássica); clientes de parceiros ainda na KEX clássica; dispositivos desconhecidos ou não gerenciados; dados já gravados antes da migração.
+
+## Rota de ensino de trinta disciplinas
+
+Este é o curso de **tecnólogo** para implementadores, acompanhando a sintética **Kestrel Logistics Software (KLS)** desde os fundamentos até serviços pós-quânticos configurados, automatizados, monitorados e passados para as operações.
 
 <a id="references"></a>
 
