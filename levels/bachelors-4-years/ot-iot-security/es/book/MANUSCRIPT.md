@@ -1895,7 +1895,7 @@ Publique el código, las semillas, los parámetros, la versión de Python y el c
 
 ### Ejemplo resuelto (LDHP sintética)
 
-El prerregistro del proyecto final de Maya fija: 300 semillas tranquilas y 300 con ataque, tres pendientes de ataque, umbral elegido en un conjunto de ajuste separado de 50 semillas y después congelado. Resultado principal: detección en 60 muestras. También enuncia qué resultado falsaría H1.
+El prerregistro del proyecto final de Maya fija: 300 semillas tranquilas y 300 con ataque, tres pendientes de ataque, umbral elegido en un conjunto de ajuste separado de 50 semillas y después congelado. Resultado principal: ejecuciones con alguna falsa alarma, la medida fijada en H1; la detección en 60 muestras es un resultado secundario. También enuncia qué resultado falsaría H1.
 
 > **Caso sintético — Lakeside District Heating Plant.** El plan corresponde a un estudio simulado.
 
