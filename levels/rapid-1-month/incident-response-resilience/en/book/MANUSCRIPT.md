@@ -1792,7 +1792,7 @@ The original matrix places multiple urgent issues in one time-sensitivity column
 
 **Containment urgency** concerns whether additional harmful activity is sufficiently plausible or observed to justify prompt consideration of protective options. It depends on signs of continued activity, current impact, confidence in control scope and possible damage from the intervention itself. A short log-retention period does not, by itself, prove a new harmful edit or authorize account restriction.
 
-At 09:20, R15 raises preservation concern: detailed booking-audit records are deleted after 24 hours unless an authorized copy is retained. The **policy anchor is unknown**. The appropriate response is to seek a bounded source-availability/preservation decision and obtain the custodian's explanation promptly, not to publish a precise countdown calculated from R9's event time.
+At 09:20, R15 raises a preservation concern: the booking system keeps its detailed audit trail for only 24 hours, so evidence disappears unless someone with authority saves a copy first. The **policy anchor is unknown**. The appropriate response is to seek a bounded source-availability/preservation decision and obtain the custodian's explanation promptly, not to publish a precise countdown calculated from R9's event time.
 
 At that same checkpoint, R9 and R11 merit investigation and continued review, but there is no **post-09:20 newly verified edit** in the released record. R14's quiet result is limited to an unspecified query range, and cannot establish that no additional activity occurred. The incident lead therefore needs a review trigger and a plan for authorized escalation without describing a containment operation as already needed or performed.
 
@@ -2374,7 +2374,7 @@ This decision does **not** clear or accuse the staff member. It states what is k
 
 #### Worked 09:20 preservation queue
 
-The learner has received R9–R16 at the **simulated 09:20 review**. R9's printed event time is 09:03, but the learner did not have R9 for the earlier 09:05 decision. R15 reports that detailed booking-audit records are deleted after 24 hours unless an authorized copy is retained. It does **not** say whether the clock starts at event creation, ingestion, storage or another policy point; nor does it show that a copy or hold already exists. The queue below is therefore a set of **requests**, not a record of actual collection. It does not add evidence to R9–R16.
+The learner has received R9–R16 at the **simulated 09:20 review**. R9's printed event time is 09:03, but the learner did not have R9 for the earlier 09:05 decision. R15 warns that the detailed booking audit trail has a 24-hour lifespan; without an authorized copy it expires on schedule. It does **not** say whether the clock starts at event creation, ingestion, storage or another policy point; nor does it show that a copy or hold already exists. The queue below is therefore a set of **requests**, not a record of actual collection. It does not add evidence to R9–R16.
 
 | Request and decision value | Loss/coverage question | Owner and proposed minimal scope | State at 09:20 and remaining limit |
 |---|---|---|---|
