@@ -46,7 +46,7 @@ You will (1) explain why AI-security research is unusually exposed to measuremen
 
 ### 1.1 Why integrity is a method, not a courtesy
 
-Research integrity in AI security is not a list of polite habits; it is the set of procedures that make a result true outside the laboratory where it was produced. The field has a documented record of results that did not survive contact with a stronger adversary. Athalye, Carlini and Wagner (arXiv:1802.00420) showed that seven of nine defences accepted at a leading conference relied on *obfuscated gradients*: the defence did not make the model robust, it only broke the attacker's optimisation. Once the attack was adapted, most defences fell. Carlini and colleagues then wrote *On Evaluating Adversarial Robustness* (arXiv:1902.06705), a checklist that turns that lesson into method: state the threat model, use adaptive attacks, report the attack budget, verify that stronger attacks never do worse than weaker ones and release code. Arp et al. (arXiv:2010.09470) catalogued ten pitfalls of machine learning in computer security — sampling bias, label inaccuracy, data snooping, spurious correlations, biased parameter selection, inappropriate baselines and measures, base-rate fallacy, lab-only evaluation, inappropriate threat model and inappropriate performance measures — and found them widespread in top-venue papers. Kapoor and Narayanan (arXiv:2207.07048) showed that *leakage* between training and evaluation data inflated results across many scientific fields that used machine learning. Lipton and Steinhardt (arXiv:1807.03341) described broader "troubling trends": failure to distinguish explanation from speculation, unclear sources of gains and misuse of mathematics.
+Research integrity in AI security is not a list of polite habits; it is the set of procedures that make a result true outside the laboratory where it was produced. The field has a documented record of results that did not survive contact with a stronger adversary. Athalye, Carlini and Wagner (arXiv:1802.00420) showed that seven of nine defences accepted at a leading conference relied on *obfuscated gradients*: the defence did not make the model robust, it only broke the attacker's optimisation. Once the attack was adapted, most defences fell. Carlini and colleagues then wrote *On Evaluating Adversarial Robustness* (arXiv:1902.06705), a checklist that turns that lesson into method: state the threat model, use adaptive attacks, report the attack budget, verify that stronger attacks never do worse than weaker ones and release code. Arp et al. (arXiv:2010.09470) catalogued ten pitfalls of machine learning in computer security — sampling bias, label inaccuracy, data snooping, spurious correlations, biased parameter selection, inappropriate baselines, base-rate fallacy, lab-only evaluation, inappropriate threat model and inappropriate performance measures — and found them widespread in top-venue papers. Kapoor and Narayanan (arXiv:2207.07048) showed that *leakage* between training and evaluation data inflated results across many scientific fields that used machine learning. Lipton and Steinhardt (arXiv:1807.03341) described broader "troubling trends": failure to distinguish explanation from speculation, unclear sources of gains and misuse of mathematics.
 
 A doctoral researcher should treat these papers as a description of the default failure mode. If you do nothing special, your result will probably be optimistic.
 
@@ -109,19 +109,17 @@ Ana's first draft claim was "our separation defence stops prompt injection". Her
 
 ### 1.6 Practice activities
 
-1. Take a recent AI-security paper you admire and rewrite its main claim in adversary–system–property form. 2. Run the Arp et al. pitfall list against your own last experiment. 3. Draft a one-page authorization and data plan for your doctoral testbed.
-
-For the first activity, use the MAAL rewrite as a model: name the adversary's knowledge and budget, bind the system to a version, and give the property a metric and threshold. If the paper does not say enough to fill a part, record that as a gap in the paper. For the second, mark each of the ten pitfalls as present, absent or unknown, with a sentence of evidence. For the third, name models, endpoints, data and dates, and say who approves.
+1. Take a recent AI-security paper you admire and rewrite its main claim in adversary–system–property form. 2. Run the Arp et al. pitfall list against your own last experiment. 3. Draft a one-page authorization and data plan for your doctoral testbed. For the first activity, use the MAAL rewrite as a model: name the adversary's knowledge and budget, bind the system to a version, and give the property a metric and threshold. If the paper does not say enough to fill a part, record that as a gap in the paper. For the second, mark each of the ten pitfalls as present, absent or unknown, with a sentence of evidence. For the third, name models, endpoints, data and dates, and say who approves.
 
 ### 1.7 Errors and limits
+
+Each of the errors listed below makes a result look stronger than it is. The best of many runs hides the spread that Lab S shows across seeds. Tuning on the test set turns it into training data. A defence tested only against older attacks has not met the adaptive adversary in Ana's threat model. No attack found may only mean the search was weak. Exploit strings published early harm users before a fix exists.
 
 - Reporting the best of many runs as "the" result.
 - Tuning prompts or thresholds on the test set.
 - Evaluating a defence only against attacks designed before it existed.
 - Treating "no attack found" as proof of security.
 - Publishing working exploit strings against a live product before the vendor can respond.
-
-Each error makes a result look stronger than it is. The best of many runs hides the spread that Lab S shows across seeds. Tuning on the test set turns it into training data. A defence tested only against older attacks has not met the adaptive adversary in Ana's threat model. No attack found may only mean the search was weak. Exploit strings published early harm users before a fix exists.
 
 ### Exercises
 
@@ -217,9 +215,7 @@ The NIST AI RMF 1.0 (AI 100-1) organises risk work into Govern, Map, Measure and
 
 ### 2.4 Finding open problems
 
-Good frontier questions sit where (a) attacks are cheap and defences are evaluated weakly, (b) theory and practice disagree, or (c) a deployment pattern has outrun evaluation. Current examples include evaluating agent defences under adaptive attackers; measuring residual risk when no certified bound exists; supply-chain integrity of model weights and datasets; and privacy auditing of fine-tuned models. Write each as a gap statement: *what is known*, *what is claimed but untested*, *why it matters*, *what evidence would settle it*.
-
-Ana's gap in the worked example shows the form.
+Good frontier questions sit where (a) attacks are cheap and defences are evaluated weakly, (b) theory and practice disagree, or (c) a deployment pattern has outrun evaluation. Current examples include evaluating agent defences under adaptive attackers; measuring residual risk when no certified bound exists; supply-chain integrity of model weights and datasets; and privacy auditing of fine-tuned models. Write each as a gap statement: *what is known*, *what is claimed but untested*, *why it matters*, *what evidence would settle it*. Ana's gap in the worked example shows the form.
 
 ### 2.5 Worked example (synthetic MAAL case)
 
@@ -227,18 +223,16 @@ Ana mapped 31 papers on prompt-injection defences into a table with columns: thr
 
 ### 2.6 Practice activities
 
-1. Build your own mapping table for twenty papers in your sub-area. 2. Classify three MITRE ATLAS case studies by NIST AI 100-2 attacker goal and capability. 3. Rewrite one open problem as a four-part gap statement.
-
-For the mapping table, use the same columns as Ana: threat model, adaptive attack, metric, utility cost and code release, and count each column at the end. For the ATLAS case studies, note where a case does not fit the NIST categories cleanly; that mismatch is itself useful. For the gap statement, check that the evidence part names an experiment you could actually run within the doctorate.
+1. Build your own mapping table for twenty papers in your sub-area. 2. Classify three MITRE ATLAS case studies by NIST AI 100-2 attacker goal and capability. 3. Rewrite one open problem as a four-part gap statement. For the mapping table, use the same columns as Ana: threat model, adaptive attack, metric, utility cost and code release, and count each column at the end. For the ATLAS case studies, note where a case does not fit the NIST categories cleanly; that mismatch is itself useful. For the gap statement, check that the evidence part names an experiment you could actually run within the doctorate.
 
 ### 2.7 Errors and limits
+
+Each of the confusions listed below leads to the wrong study. A jailbreak defence does not address data that smuggles instructions, which is Ana's problem. A framework category records that a risk exists, not how often it occurs. A certified bound says nothing about injected text or perturbations outside its norm. Loose reading of AI Act dates leads to wrong statements about which obligations apply now. Check your related-work chapter for each.
 
 - Equating jailbreak (policy evasion) with prompt injection (instruction smuggling through data).
 - Citing a framework category as if it were an empirical finding.
 - Treating certified robustness bounds as covering threats outside their norm ball.
 - Reading the EU AI Act's application dates loosely; obligations phase in between 2025 and 2027.
-
-Each confusion leads to the wrong study. A jailbreak defence does not address data that smuggles instructions, which is Ana's problem. A framework category records that a risk exists, not how often it occurs. A certified bound says nothing about injected text or perturbations outside its norm. Loose reading of AI Act dates leads to wrong statements about which obligations apply now. Check your related-work chapter for each.
 
 ### Exercises
 
@@ -333,19 +327,17 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 ### 3.6 Practice activities
 
-1. Write your thesis's contribution type and three hypotheses with decision rules. 2. Draft a one-page threat model with a version number. 3. Draft the ethics and release table for every artefact you expect to create.
-
-Use Ana's proposal as a model. Each hypothesis should name what changes, what is measured, on which tasks and models, the expected effect size and the decision rule, plus what you will publish if the effect is absent. The threat model should fix the adversary's goals, knowledge, capabilities and budget. The release table should list each artefact, its misuse potential and whether it is public, gated or withheld, with a reason.
+1. Write your thesis's contribution type and three hypotheses with decision rules. 2. Draft a one-page threat model with a version number. 3. Draft the ethics and release table for every artefact you expect to create. Use Ana's proposal as a model. Each hypothesis should name what changes, what is measured, on which tasks and models, the expected effect size and the decision rule, plus what you will publish if the effect is absent. The threat model should fix the adversary's goals, knowledge, capabilities and budget. The release table should list each artefact, its misuse potential and whether it is public, gated or withheld, with a reason.
 
 ### 3.7 Errors and limits
+
+Each of the errors listed below lets the committee reject the proposal or, worse, approve a study that cannot answer its question. Without decision rules, any result can be called success. Metrics chosen after results invite bias. A weak baseline makes any defence look good, which is why Ana included allowlisting. Ethics text that lists no artefacts cannot be checked. Lab I is a rule engine, so its clean result says nothing about how a real model behaves.
 
 - Hypotheses without effect sizes or decision rules.
 - Metrics chosen after seeing results.
 - A "baseline" that no competent practitioner would deploy.
 - Ethics sections that do not list artefacts.
 - Overgeneralising from a toy (like the lab) to real LLM behaviour.
-
-Each error lets the committee reject the proposal or, worse, approve a study that cannot answer its question. Without decision rules, any result can be called success. Metrics chosen after results invite bias. A weak baseline makes any defence look good, which is why Ana included allowlisting. Ethics text that lists no artefacts cannot be checked. Lab I is a rule engine, so its clean result says nothing about how a real model behaves.
 
 ### Exercises
 
@@ -378,13 +370,13 @@ Your contribution will be compared with prior work, so you must know what prior 
 
 ### 4.2 A replication protocol
 
+Hosted model APIs complicate replication because the model behind an endpoint can change. Prefer local open-weights checkpoints identified by hash for the main study, and treat API results as time-stamped observations. The five steps below apply to every baseline in the thesis. Steps 1 and 2 make the run identifiable, step 3 gives the comparison point, step 4 explains any difference, and step 5 states the outcome in the terms defined in 4.1. Ana's replication in 4.5 follows them, including the one-factor-at-a-time diagnosis that isolated temperature.
+
 1. **Freeze the target.** Record the paper version, code commit, model checkpoint hashes, dataset version and licence.
 2. **Re-create the environment.** Pin library versions; record hardware and numeric settings; note non-determinism sources (GPU kernels, sampling temperature, API model updates).
 3. **Run as published.** No changes first. Record the result with intervals across at least three seeds.
 4. **Diagnose gaps.** If numbers differ, change one factor at a time and log each run.
 5. **Classify and report.** A result is *reproduced* if your interval overlaps the published value and the qualitative conclusion holds; *partially* if the direction holds but the size differs materially; *not reproduced* otherwise. Contact the authors politely before publishing a failure.
-
-Hosted model APIs complicate replication because the model behind an endpoint can change. Prefer local open-weights checkpoints identified by hash for the main study, and treat API results as time-stamped observations.
 
 ### 4.3 Pilot studies
 
@@ -392,13 +384,11 @@ A pilot is not a small main study; it estimates what you need to design the main
 
 ### 4.4 Harness engineering
 
-An evaluation harness should be deterministic given a seed, write one JSON record per trial (task id, condition, seed, model hash, prompt template version, full transcript reference, tool calls, labels), and keep labels separate from outcomes so graders cannot see condition names. Put the sealed test set behind a separate access step so it cannot be loaded during development. Add *canaries*: payloads that should always succeed against the undefended baseline; if they fail, the harness or environment is broken.
-
-Ana's grader fix is an example.
+An evaluation harness should be deterministic given a seed, write one JSON record per trial (task id, condition, seed, model hash, prompt template version, full transcript reference, tool calls, labels), and keep labels separate from outcomes so graders cannot see condition names. Put the sealed test set behind a separate access step so it cannot be loaded during development. Add *canaries*: payloads that should always succeed against the undefended baseline; if they fail, the harness or environment is broken. Ana's grader fix is an example.
 
 ### 4.5 Worked example (synthetic MAAL case)
 
-Ana replicated a published structural defence. As published, she measured 4.1% ASR against the paper's payload list (paper: 1.0%); with three seeds the interval was 3.2–5.2%, so not reproduced in size. Diagnosis showed the paper used temperature 0 while the released config used 0.7; at temperature 0 she obtained 1.4% (0.9–2.1%), *partially reproduced*. Against her adaptive attacks the defence reached 19% ASR. She emailed the authors, who confirmed the temperature setting and thanked her. The pilot (90 tasks per condition) gave a per-condition SD of about 1.7 points across seeds and a separation effect of roughly 12 points, so she fixed the main study at 900 tasks per condition and five seeds, enlarging the sealed evaluation set from the proposal's 600 tasks and logging the change. The pilot also exposed that her grader counted a tool call as blocked if the final answer contained a refusal; she rewrote the grader to read tool-call logs directly.
+Ana replicated a published structural defence. As published, she measured 4.1% ASR against the paper's payload list (paper: 1.0%); with three seeds the interval was 3.2–5.2%, so not reproduced in size. Diagnosis showed the paper used temperature 0 while the released config used 0.7; at temperature 0 she obtained 1.4% (0.9–2.1%), *reproduced* under the protocol in 4.2, with the setting change logged as a deviation. Against her adaptive attacks the defence reached 19% ASR. She emailed the authors, who confirmed the temperature setting and thanked her. The pilot (90 tasks per condition) gave a per-condition SD of about 1.7 points across seeds and a separation effect of roughly 12 points, so she fixed the main study at 900 tasks per condition and five seeds, enlarging the sealed evaluation set from the proposal's 600 tasks and logging the change. The pilot also exposed that her grader counted a tool call as blocked if the final answer contained a refusal; she rewrote the grader to read tool-call logs directly.
 
 The poisoning lab illustrates why pilots should measure more than one metric: as backdoor points increase, *clean* accuracy barely moves while *attack success* on triggered inputs climbs from 7.5% to 98%. A pilot that tracked only clean accuracy would miss the attack entirely.
 
@@ -456,19 +446,17 @@ backdoor: add n triggered class-1 points labelled 0
 
 ### 4.6 Practice activities
 
-1. Pick one baseline for your thesis and execute steps 1–3 of the protocol. 2. Compute a sample size from your pilot variance. 3. Add canaries and blinded labels to your harness.
-
-For the replication, record the paper version, commit, checkpoint hashes and dataset before running anything, then run as published with at least three seeds. Classify the outcome with the protocol's three categories and write down every deviation. For the sample size, use the formula from the pilot discussion with your own variance and target interval. For the harness, confirm that canaries succeed against the undefended baseline and that graders cannot see condition names.
+1. Pick one baseline for your thesis and execute steps 1–3 of the protocol. 2. Compute a sample size from your pilot variance. 3. Add canaries and blinded labels to your harness. For the replication, record the paper version, commit, checkpoint hashes and dataset before running anything, then run as published with at least three seeds. Classify the outcome with the protocol's three categories and write down every deviation. For the sample size, use the formula from the pilot discussion with your own variance and target interval. For the harness, confirm that canaries succeed against the undefended baseline and that graders cannot see condition names.
 
 ### 4.7 Errors and limits
+
+Each of the errors listed below corrupts evidence. Changing several settings at once would have hidden that temperature alone explained Ana's gap. A failed replication may come from your environment, so contact the authors first. A hosted endpoint can change model without notice, so its results are time-stamped observations. Graders who see condition names may favour the defence. Pilot data in the sealed test set makes the main study partly tuned on its own test.
 
 - Changing several settings at once while diagnosing a gap.
 - Treating a failed replication as proof the original was wrong without contacting the authors.
 - Using a hosted API endpoint as a fixed artefact.
 - Letting graders see condition names.
 - Pilot data leaking into the sealed test set.
-
-Each error corrupts evidence. Changing several settings at once would have hidden that temperature alone explained Ana's gap. A failed replication may come from your environment, so contact the authors first. A hosted endpoint can change model without notice, so its results are time-stamped observations. Graders who see condition names may favour the defence. Pilot data in the sealed test set makes the main study partly tuned on its own test.
 
 ### Exercises
 
@@ -551,19 +539,17 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 5.6 Practice activities
 
-1. Freeze your protocol and open a deviation log. 2. Write three adaptive attacks that target your defence's mechanism. 3. Draft a red-team brief with budget, scope, rules of engagement and reporting terms.
-
-Your protocol should list threat model version, hypotheses, metrics, sample sizes, seeds, model hashes, templates, attack budget and the analysis script, with a date. The adaptive attacks should target how your defence works, as Ana's delimiter-imitating and repetition payloads do. The red-team brief should give the defence and budget but not the sealed tasks, and say in advance how results will be reported if the red team wins.
+1. Freeze your protocol and open a deviation log. 2. Write three adaptive attacks that target your defence's mechanism. 3. Draft a red-team brief with budget, scope, rules of engagement and reporting terms. Your protocol should list threat model version, hypotheses, metrics, sample sizes, seeds, model hashes, templates, attack budget and the analysis script, with a date. The adaptive attacks should target how your defence works, as Ana's delimiter-imitating and repetition payloads do. The red-team brief should give the defence and budget but not the sealed tasks, and say in advance how results will be reported if the red team wins.
 
 ### 5.7 Errors and limits
+
+Each of the errors listed below overstates the defence. A larger tuning budget makes the comparison unfair. One budget point hides whether the defence holds at 200 attempts as well as 20. Pooling hides a model or family where the defence fails. Reporting only significant tests ignores the multiplicity that Holm correction addresses. A red team that fails has shown only that its attempts failed; Ana's red team found a family she had missed.
 
 - Giving your defence a larger tuning budget than baselines.
 - Reporting one budget point.
 - Pooling results across models or attack families when they disagree.
 - Running many tests and reporting only significant ones.
 - Treating red-team failure to break a defence as proof of security.
-
-Each error overstates the defence. A larger tuning budget makes the comparison unfair. One budget point hides whether the defence holds at 200 attempts as well as 20. Pooling hides a model or family where the defence fails. Reporting only significant tests ignores the multiplicity that Holm correction addresses. A red team that fails has shown only that its attempts failed; Ana's red team found a family she had missed.
 
 ### Exercises
 
@@ -600,15 +586,11 @@ Good reviews summarise the paper fairly in a few sentences first, so the authors
 
 ### 6.3 Receiving critique
 
-Sort every comment into four bins: *correct and fixable* (do it), *correct but out of scope* (acknowledge and add a limitation), *misunderstanding* (the text was unclear — rewrite it) and *disagreement* (respond with evidence, respectfully). The third bin is larger than authors expect; if a careful reviewer misread you, other readers will too. A response letter quotes each comment and states what changed and where.
-
-Ana's response to the request for the payload corpus fits the out-of-scope bin: she acknowledged it and explained the gated release. Her retitling fits the first bin. Keep the sorted list with the response letter.
+Sort every comment into four bins: *correct and fixable* (do it), *correct but out of scope* (acknowledge and add a limitation), *misunderstanding* (the text was unclear — rewrite it) and *disagreement* (respond with evidence, respectfully). The third bin is larger than authors expect; if a careful reviewer misread you, other readers will too. A response letter quotes each comment and states what changed and where. Ana's response to the request for the payload corpus fits the out-of-scope bin: she acknowledged it and explained the gated release. Her retitling fits the first bin. Keep the sorted list with the response letter.
 
 ### 6.4 Revising claims to fit evidence
 
-Revision usually narrows claims. Typical edits: replace "robust" with "reduced ASR under the evaluated threat model"; replace "generalises" with "held on two of three models"; move a limitation from the appendix to the abstract; add a figure of ASR versus attack budget; report the red team's best attack. Claims that shrink but survive are stronger than claims that are broad and fragile.
-
-Ana's retitling from "prevents" to "reduces" and her report of a smaller effect on the third model are examples. Check each claim against the table that supports it after every revision.
+Revision usually narrows claims. Typical edits: replace "robust" with "reduced ASR under the evaluated threat model"; replace "generalises" with "held on two of three models"; move a limitation from the appendix to the abstract; add a figure of ASR versus attack budget; report the red team's best attack. Claims that shrink but survive are stronger than claims that are broad and fragile. Ana's retitling from "prevents" to "reduces" and her report of a smaller effect on the third model are examples. Check each claim against the table that supports it after every revision.
 
 ### 6.5 Worked example (synthetic MAAL case)
 
@@ -616,19 +598,17 @@ MAAL's internal review of Ana's draft raised three major issues. (1) "Separation
 
 ### 6.6 Practice activities
 
-1. Review a published paper in your area with the checklist and write a one-page review. 2. Exchange drafts with a peer and write response letters to each other. 3. List every claim in your abstract and the table or figure that supports it.
-
-For the review, use the checklist questions and separate major from minor issues, with what evidence would resolve each major one. For the response letters, quote each comment, sort it into the four bins and state what changed and where. For the claims list, any claim without a supporting table or figure should be removed or narrowed, as Ana's title was.
+1. Review a published paper in your area with the checklist and write a one-page review. 2. Exchange drafts with a peer and write response letters to each other. 3. List every claim in your abstract and the table or figure that supports it. For the review, use the checklist questions and separate major from minor issues, with what evidence would resolve each major one. For the response letters, quote each comment, sort it into the four bins and state what changed and where. For the claims list, any claim without a supporting table or figure should be removed or narrowed, as Ana's title was.
 
 ### 6.7 Errors and limits
+
+Each of the errors listed below wastes the review. Typo lists and praise give authors nothing to act on. Experiments that would not change the decision cost months. Defensive letters leave the problem in place and lose the reviewer's trust. Limitations hidden in appendices mislead readers of the abstract, which is why Ana moved hers forward. Reworking analysis to reach significance is a form of misconduct, however it is described.
 
 - Reviews that only list typos or only praise.
 - Requests for experiments that would not change the decision.
 - Defensive response letters that change nothing.
 - Leaving limitations only in appendices.
 - Revising the analysis to make a weak effect look significant.
-
-Each error wastes the review. Typo lists and praise give authors nothing to act on. Experiments that would not change the decision cost months. Defensive letters leave the problem in place and lose the reviewer's trust. Limitations hidden in appendices mislead readers of the abstract, which is why Ana moved hers forward. Reworking analysis to reach significance is a form of misconduct, however it is described.
 
 ### Exercises
 
@@ -669,9 +649,7 @@ The archive is the artefact that lets another researcher regenerate your figures
 
 ### 7.4 Release decisions
 
-Apply the release table from Chapter 3 to the final artefacts. Defence code, harness, synthetic task generators and analysis scripts are usually public. Adaptive payload corpora may be gated (access on request to verified researchers, with terms). Anything specific to a named live product waits for coordinated disclosure to complete. Do not include personal data. If you redact, say what was redacted and why so that reviewers can judge the effect on reproducibility.
-
-Ana's release followed this pattern: harness and defence public, payload corpus gated, as planned in her proposal.
+Apply the release table from Chapter 3 to the final artefacts. Defence code, harness, synthetic task generators and analysis scripts are usually public. Adaptive payload corpora may be gated (access on request to verified researchers, with terms). Anything specific to a named live product waits for coordinated disclosure to complete. Do not include personal data. If you redact, say what was redacted and why so that reviewers can judge the effect on reproducibility. Ana's release followed this pattern: harness and defence public, payload corpus gated, as planned in her proposal.
 
 ### 7.5 Worked example (synthetic MAAL case)
 
@@ -720,19 +698,17 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 ### 7.6 Practice activities
 
-1. Write your synthesis chapter's contributions and validity table. 2. Build a manifest of your project files with SHA-256 hashes. 3. Ask a peer to reproduce one figure from your README alone, and record what failed.
-
-For the validity table, use the five types and say for each threat what you did and what remains, as Ana did for model families and synthetic tasks. For the manifest, hash every file in the archive and store the list with it. For the peer test, give only the README and a fresh machine; record each failure and fix, as Ana's labmate's run found the tokenizer change.
+1. Write your synthesis chapter's contributions and validity table. 2. Build a manifest of your project files with SHA-256 hashes. 3. Ask a peer to reproduce one figure from your README alone, and record what failed. For the validity table, use the five types and say for each threat what you did and what remains, as Ana did for model families and synthetic tasks. For the manifest, hash every file in the archive and store the list with it. For the peer test, give only the README and a fresh machine; record each failure and fix, as Ana's labmate's run found the tokenizer change.
 
 ### 7.7 Errors and limits
+
+Each of the errors listed below weakens the archive or the argument. Inconsistent metrics make chapters impossible to compare. A limitation without action leaves the reader unsure whether it was addressed. Archives that depend on the author's machine or an unpinned API fail for others, as Ana's tokenizer problem showed. Releases in breach of licences or privacy can force withdrawal. Reproducibility is shown only when someone else reruns the work. A run by a labmate on a fresh machine, like the one in 7.5, is the cheapest check against several of these errors at once.
 
 - Theses whose chapters use inconsistent metrics or threat models.
 - Limitations listed without the action taken.
 - Archives that require the author's home directory or an unpinned API.
 - Releasing weights or data in breach of licences or privacy.
 - Claiming reproducibility without a third-party run.
-
-Each error weakens the archive or the argument. Inconsistent metrics make chapters impossible to compare. A limitation without action leaves the reader unsure whether it was addressed. Archives that depend on the author's machine or an unpinned API fail for others, as Ana's tokenizer problem showed. Releases in breach of licences or privacy can force withdrawal. Reproducibility is shown only when someone else reruns the work.
 
 ### Exercises
 
@@ -762,9 +738,7 @@ You will (1) prepare a defence that presents the argument, evidence and limits i
 
 ### 8.1 The defence talk
 
-A defence talk has one job: let the committee check that your claims follow from your evidence. Structure: problem and gap (10%), research questions and threat model (10%), method and baselines (20%), results with intervals and budget curves (35%), limitations and validity (15%), contributions and future work (10%). Put residual risk on a results slide, not a final "limitations" slide that runs out of time. Rehearse with a mock committee that includes someone outside your sub-field.
-
-Ana's mock defence, which lasted 45 minutes, followed this structure. Time each part in rehearsal.
+A defence talk has one job: let the committee check that your claims follow from your evidence. Structure: problem and gap (10%), research questions and threat model (10%), method and baselines (20%), results with intervals and budget curves (35%), limitations and validity (15%), contributions and future work (10%). Put residual risk on a results slide, not a final "limitations" slide that runs out of time. Rehearse with a mock committee that includes someone outside your sub-field. Ana's mock defence, which lasted 45 minutes, followed this structure. Time each part in rehearsal.
 
 ### 8.2 Anticipating questions
 
@@ -776,9 +750,7 @@ Map chapters to papers. Security venues (for example IEEE S&P, USENIX Security, 
 
 ### 8.4 Impact on governance and practice
 
-Doctoral work in AI security can feed the NIST AI RMF *Measure* function, organisations' ISO/IEC 42001 management systems, conformity work under the EU AI Act's robustness and cybersecurity requirements, OWASP and MITRE ATLAS community resources, and open-source tooling. Contribute evidence, not slogans: an evaluation method with documented limits is more useful to a standards body than a claim that a problem is solved. Never present your result as legal advice or certification.
-
-Ana's practitioner guide is an example: it presents measured reductions and their limits.
+Doctoral work in AI security can feed the NIST AI RMF *Measure* function, organisations' ISO/IEC 42001 management systems, conformity work under the EU AI Act's robustness and cybersecurity requirements, OWASP and MITRE ATLAS community resources, and open-source tooling. Contribute evidence, not slogans: an evaluation method with documented limits is more useful to a standards body than a claim that a problem is solved. Never present your result as legal advice or certification. Ana's practitioner guide is an example: it presents measured reductions and their limits.
 
 ### 8.5 Worked example (synthetic MAAL case)
 
@@ -786,19 +758,17 @@ Ana's mock defence lasted 45 minutes. A committee member asked: "Your strongest 
 
 ### 8.6 Practice activities
 
-1. Draft your defence outline with time proportions. 2. Write answers to the seven predictable questions. 3. Map thesis chapters to venues and a disclosure timeline.
-
-For the outline, use the proportions above and place residual risk on a results slide. For the answers, follow the three-part form and use Ana's e-mail agent answer as a model of a direct answer with a limit. For the publication map, note which venues offer artifact evaluation and where disclosure must come before submission, and give dates.
+1. Draft your defence outline with time proportions. 2. Write answers to the seven predictable questions. 3. Map thesis chapters to venues and a disclosure timeline. For the outline, use the proportions above and place residual risk on a results slide. For the answers, follow the three-part form and use Ana's e-mail agent answer as a model of a direct answer with a limit. For the publication map, note which venues offer artifact evaluation and where disclosure must come before submission, and give dates.
 
 ### 8.7 Errors and limits
+
+Each of the errors listed below weakens the defence or the publication. A talk mostly on background leaves no time to examine evidence. Residual risk at the end may be skipped when time runs out, which is why Ana showed hers with results. Early submission about a live product can breach a disclosure agreement. Overstated impact on standards is easy to refute. Future work should be questions, such as Ana's on tool-chaining attacks and impact bounds.
 
 - Spending most of the talk on background.
 - Hiding residual risk at the end.
 - Submitting a finding about a live product before disclosure is agreed.
 - Overstating standards or regulatory impact.
 - Leaving future work as "more experiments" without questions.
-
-Each error weakens the defence or the publication. A talk mostly on background leaves no time to examine evidence. Residual risk at the end may be skipped when time runs out, which is why Ana showed hers with results. Early submission about a live product can breach a disclosure agreement. Overstated impact on standards is easy to refute. Future work should be questions, such as Ana's on tool-chaining attacks and impact bounds.
 
 ### Exercises
 
@@ -900,7 +870,7 @@ Model answers; any answer meeting the rubric scores equally. The Meridian Applie
 
 **EX038.** "Reviewer 2: 'Does the effect transfer beyond one model family?' We added model C from a different family as a validation-only run (Section 5.4, Table 6). The reduction held in direction but was smaller: 3.1 points (95% CI 1.4–4.9). We now state this in the abstract."
 
-**EX039.** Internal: grader bias → blinded labels and human audit. Construct: ASR may not equal harm → also report impact-weighted outcomes. Adversarial: adaptive attacks written by the author → independent red team with equal budget.
+**EX039.** Internal: grader bias → blinded labels and human audit. Construct: ASR may not equal harm → also report impact-weighted outcomes. Adversarial: adaptive attacks written inside the author's own lab → independent red team with equal budget.
 
 **EX040.** README with commands; environment/lock files; tagged code; run configurations; model identifiers and hashes; datasheets for data; model cards; per-trial logs; analysis scripts; file manifest with hashes; licence; persistent identifier.
 
