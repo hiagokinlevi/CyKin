@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 030, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 12 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–12 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em atividade que migram de funções vizinhas para a prática de arquitetura de segurança.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios ordenam ameaças, rastreiam requisitos até os resultados de testes e comparam permissões com as necessidades dos papéis, sempre sobre dados sintéticos; nada toca um sistema real ou dados pessoais reais. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
-
-Capítulos 9–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -419,11 +417,205 @@ Casos históricos têm evidências faltantes. As retenções podem atrasar reemb
 
 - **EX040 — Retenção do reembolso.** Por quanto tempo o reembolso fica retido após uma mudança bancária? *Rubrica:* 3 = sete dias;; 2 = sete;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicação, ética e relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um relatório de segurança para tomadores de decisão; (2) lidar com honestidade com um dilema ético; (3) comunicar a incerteza.
+
+### 9.1 Escrever o relatório
+
+Owen escreve seu primeiro relatório formal à liderança da Thornbury sobre o trabalho com os reparos e os reembolsos. Ele começa com um resumo de uma página: o que foi encontrado, o que já foi feito, o que falta e que decisões são necessárias. Os detalhes vêm depois, em seções com evidências. Ele evita jargão e explica as consequências em termos que importam aos líderes, como a segurança dos inquilinos e as perdas financeiras. Ines revisa os rascunhos e pede que ele retire dois parágrafos que descrevem longamente seus métodos, que pertencem a um apêndice, e não ao resumo.
+
+### 9.2 Um dilema ético
+
+Ao revisar os acessos, Owen descobre que uma gerente sênior visualizou várias vezes anotações de proteção de inquilinos fora da sua área. Pode ser legítimo ou pode ser uso indevido. Owen não investiga mais por conta própria nem confronta a gerente. Ele relata os fatos, sem acusações, ao encarregado de proteção de dados, como exige a política da Thornbury, e mantém o assunto em sigilo. Ines explica que os profissionais precisam relatar preocupações pelos canais adequados, evitar agir além da sua autoridade e proteger as pessoas envolvidas até que os fatos sejam estabelecidos.
+
+### 9.3 Comunicar a incerteza
+
+Os líderes perguntam se a Thornbury agora está protegida contra fraudes em reembolsos. Owen responde com honestidade: os novos controles bloqueiam o método usado no caso passado, mas criminosos determinados podem tentar outras rotas, como comprometer o e-mail de um inquilino. Ele informa sua confiança em cada controle e explica o que o monitoramento vai mostrar se as tentativas de fraude continuarem. Declarações claras de incerteza ajudam os líderes a tomar decisões sensatas e evitam a decepção e a desconfiança que seguem as afirmações confiantes demais quando algo depois dá errado. Ele coloca esses níveis de confiança numa tabela curta.
+
+### Exemplo resolvido
+
+Owen escreve um relatório à liderança com um resumo de uma página, relata um possível uso indevido de acesso pelos canais adequados e declara a incerteza com honestidade.
+
+> **Caso sintético.** O relatório e os eventos são sintéticos.
+
+### Erros e limites
+
+Os resumos podem omitir ressalvas importantes. Relatar preocupações pode tensionar as relações de trabalho.
+
+### Exercícios
+
+- **EX041 — Conteúdo do resumo.** O que contém o resumo de uma página? *Rubrica:* 3 = achados, ações tomadas, o que falta e decisões necessárias;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX042 — Material de apêndice.** O que Ines pediu que Owen levasse para um apêndice? *Rubrica:* 3 = descrições longas dos métodos;; 2 = métodos;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX043 — Preocupação com acesso.** Como Owen tratou o acesso da gerente às anotações de proteção? *Rubrica:* 3 = relatou os fatos ao encarregado de proteção de dados sem investigar nem confrontar;; 2 = canal adequado;; 1 = confrontou;; 0 = nenhuma.
+
+- **EX044 — Resposta honesta.** Como Owen respondeu se a Thornbury está protegida contra fraude em reembolsos? *Rubrica:* 3 = os controles bloqueiam o método passado, mas restam outras rotas;; 2 = incerteza;; 1 = sim;; 0 = nenhuma.
+
+- **EX045 — Sigilo.** Por que manter em sigilo a preocupação com o acesso? *Rubrica:* 3 = para proteger as pessoas até que os fatos sejam estabelecidos;; 2 = proteger;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Arquitetura e engenharia de segurança: qualidade e solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar a qualidade do trabalho de segurança; (2) solucionar um controle que atrapalha a operação; (3) melhorar sem perder proteção.
+
+### 10.1 Revisão de qualidade
+
+Ines pede a Owen que revise o próprio trabalho anterior como se fosse um auditor. Ele confere se cada achado tem evidência, cada requisito tem um teste, cada decisão tem um responsável e cada documento tem data e versão. Ele encontra duas decisões sem responsável registrado e um requisito testado apenas uma vez, antes de uma atualização do fornecedor. Ele corrige os registros e agenda um novo teste. A autorrevisão regular pega lacunas de qualidade antes que outros as encontrem e cria hábitos que tornam as auditorias posteriores simples.
+
+### 10.2 Um controle que atrapalha
+
+Depois que a retenção dos reembolsos entra em vigor, a central de atendimento relata inquilinos irritados cujos reembolsos legítimos ficam atrasados sete dias após atualizarem os dados bancários, incluindo inquilinos idosos que mudaram de banco depois do fechamento de uma agência. Owen investiga. A retenção funciona como projetado, mas o projeto não considerou os casos legítimos urgentes. Ele se reúne com o financeiro e a central de atendimento para entender o volume: cerca de doze casos legítimos por mês. O controle está certo em princípio, mas rígido demais na prática. Ele registra as reclamações e os volumes como evidência.
+
+### 10.3 Melhorar com segurança
+
+Owen propõe um caminho de exceção: se o inquilino confirmar a mudança por meio de uma ligação de retorno para o telefone cadastrado, feita por outra equipe, a retenção pode ser reduzida para um dia. A exceção exige duas pessoas, preservando a separação de privilégio, e é registrada. O financeiro aceita. As reclamações caem, e nenhuma fraude ocorre pela exceção nos três primeiros meses. Ines observa que bons profissionais ajustam os controles em resposta aos efeitos reais, em vez de defender o projeto original ou remover a proteção sob pressão.
+
+### Exemplo resolvido
+
+Owen revisa o próprio trabalho, investiga as reclamações sobre a retenção dos reembolsos e acrescenta um caminho de exceção com duas pessoas que mantém a proteção.
+
+> **Caso sintético.** Os volumes e os resultados são sintéticos.
+
+### Erros e limites
+
+As exceções podem ser abusadas se as verificações enfraquecerem. Três meses é um período curto de observação.
+
+### Exercícios
+
+- **EX046 — Lacunas da autorrevisão.** O que a autorrevisão de Owen encontrou? *Rubrica:* 3 = duas decisões sem responsável e um requisito testado uma vez antes de uma atualização;; 2 = lacunas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX047 — Casos legítimos.** Quantos casos urgentes legítimos ocorrem por mês? *Rubrica:* 3 = cerca de doze;; 2 = doze;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX048 — Caminho de exceção.** Como a retenção pode ser reduzida? *Rubrica:* 3 = ligação de retorno ao número cadastrado por outra equipe, e então um dia;; 2 = ligação de retorno;; 1 = removida;; 0 = nenhuma.
+
+- **EX049 — Princípio mantido.** Que princípio a exceção preserva? *Rubrica:* 3 = a separação de privilégio, ao exigir duas pessoas;; 2 = duas pessoas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX050 — Primeiros resultados.** O que aconteceu nos três primeiros meses da exceção? *Rubrica:* 3 = as reclamações caíram e nenhuma fraude usou a exceção;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratório supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um laboratório isolado de revisão de acessos; (2) encontrar permissões excessivas; (3) relatar os resultados com cuidado.
+
+### 11.1 O laboratório
+
+Ines propõe um laboratório supervisionado com dados sintéticos modelados no sistema de gestão de casos da Thornbury. A tarefa é comparar as permissões de cada usuário com seu papel no trabalho e identificar o acesso excessivo. O laboratório roda inteiramente offline, sobre nomes e papéis gerados, então nenhum dado de pessoa real está envolvido. Owen primeiro escreve as permissões esperadas para cada papel com a ajuda de uma descrição sintética de papéis, porque uma revisão só é tão boa quanto sua definição do que cada função precisa. Ines aprova as definições de papéis antes que Owen execute a comparação.
+
+### Laboratório — Encontrar permissões além das necessidades do papel
+
+```python
+# Compare user permissions with role needs (synthetic case management data).
+need = {"housing": {"cases"}, "safeguarding": {"cases", "safeguarding"}, "finance": {"rent"}, "temp": {"cases"}}
+users = [("u1", "housing", {"cases"}, True), ("u2", "housing", {"cases", "safeguarding"}, True),
+         ("u3", "housing", {"cases", "safeguarding"}, True), ("u4", "safeguarding", {"cases", "safeguarding"}, True),
+         ("u5", "finance", {"rent", "case-edit"}, True), ("u6", "finance", {"rent"}, True),
+         ("u7", "temp", {"cases"}, False), ("u8", "housing", {"cases"}, True), ("u9", "safeguarding", {"cases", "safeguarding"}, True)]
+found = 0
+for u, role, has, contract_active in users:
+    issues = sorted(has - need[role]) + ([] if contract_active else ["account active after contract end"])
+    if issues: found += 1; print(f"{u} ({role}): {', '.join(issues)}")
+print(f"{found} of {len(users)} users need action")
+```
+
+Execute com `python3 lab_access.py`. Saída verificada:
+
+```text
+u2 (housing): safeguarding
+u3 (housing): safeguarding
+u5 (finance): case-edit
+u7 (temp): account active after contract end
+4 of 9 users need action
+```
+
+### 11.2 Resultados
+
+O laboratório encontra quatro usuários com permissões excessivas: dois agentes de habitação com acesso a anotações de proteção de que não precisam mais depois de mudar de equipe, um assistente financeiro com direitos de edição de casos e um trabalhador temporário cujo contrato terminou, mas cuja conta continua ativa. Owen os ordena por risco: a conta ativa de quem já saiu e o acesso às anotações de proteção primeiro, porque expõem os dados mais sensíveis. Ines confere a ordenação e concorda, observando que ordenar pela sensibilidade ajuda os responsáveis ocupados a agir primeiro nos itens mais importantes.
+
+### 11.3 Relatar com cuidado
+
+Owen escreve o relatório do laboratório como faria no trabalho: nomes de papéis e contagens no texto principal, nomes individuais num apêndice restrito, as ações recomendadas e as evidências de cada uma. Ele observa que o laboratório não conseguia ver as permissões concedidas dentro de documentos ou de pastas compartilhadas fora do sistema. Ines dá uma nota alta ao relatório pelo cuidado com os dados pessoais e pelos limites honestos. Ela o lembra de que uma revisão real também precisaria da confirmação do responsável pelo sistema antes de qualquer acesso ser removido.
+
+### Exemplo resolvido
+
+Owen conduz um laboratório offline de revisão de acessos, encontra quatro permissões excessivas, ordena-as pela sensibilidade e relata com cuidado e com os limites.
+
+> **Caso sintético.** Todos os dados do laboratório são sintéticos.
+
+### Erros e limites
+
+As definições de papéis podem estar erradas. O acesso fora do sistema continua invisível.
+
+### Exercícios
+
+- **EX051 — Definição primeiro.** Por que definir as permissões esperadas antes da revisão? *Rubrica:* 3 = uma revisão só é tão boa quanto sua definição das necessidades;; 2 = referência;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX052 — Número de achados.** Quantos usuários tinham permissões excessivas no laboratório? *Rubrica:* 3 = 4 de 9;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX053 — Maiores riscos.** Que achados ficaram no topo? *Rubrica:* 3 = a conta ativa de quem saiu e o acesso desnecessário às anotações de proteção;; 2 = dois;; 1 = financeiro;; 0 = nenhuma.
+
+- **EX054 — Estrutura do relatório.** Onde ficam os nomes individuais no relatório de Owen? *Rubrica:* 3 = num apêndice restrito;; 2 = apêndice;; 1 = texto principal;; 0 = nenhuma.
+
+- **EX055 — Ponto cego do laboratório.** O que o laboratório não conseguia ver? *Rubrica:* 3 = permissões dentro de documentos ou pastas compartilhadas fora do sistema;; 2 = acesso externo;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portfólio de prática e revisão final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio de trabalho profissional; (2) revisar o que mudou na Thornbury; (3) planejar a prática contínua.
+
+### 12.1 O portfólio
+
+Owen monta seu portfólio: o mapa de serviços e partes interessadas, o modelo de ameaças dos reparos e a ordenação, o fluxo dos contratados, os requisitos com os resultados da verificação, a análise do caso de reembolso, o relatório à liderança, o projeto do caminho de exceção e o relatório do laboratório. Cada item tem uma nota curta explicando o que ele fez, o que aprendeu e o que faria de outro modo. Os dados pessoais são removidos ou substituídos por exemplos sintéticos. O portfólio mostra a empregadores e avaliadores evidências de habilidade aplicada, e não apenas a frequência ao curso.
+
+### 12.2 O que mudou
+
+Owen revisa os resultados. As contas de contratados caíram de duzentas e dez para cento e trinta e cinco, os códigos dos cofres de chaves agora ficam visíveis apenas aos contratados designados nos dias de visita, as mudanças bancárias exigem confirmação e os reembolsos depois de mudanças ficam retidos, com uma exceção segura. Nenhuma fraude em reembolso foi relatada desde então. Ele tem o cuidado de dizer que a ausência de fraude ao longo de alguns meses não prova que o risco desapareceu, e recomenda monitoramento contínuo e uma revisão anual do modelo de ameaças dos reparos.
+
+### 12.3 Prática contínua
+
+A Thornbury cria uma função de arquiteto de segurança e a oferece a Owen. Ele planeja aprofundar seu conhecimento de identidade e segurança em nuvem, entrar numa comunidade profissional e pedir a Kwame um mentor de uma organização parceira. Ele mantém a lista de encaminhamentos do capítulo 1 e anota quais itens agora consegue tratar sozinho. O retorno final de Ines é que a formação de Owen em gestão de projetos se tornou uma força, porque a arquitetura de segurança consiste em grande parte em coordenar pessoas, decisões e evidências ao longo de uma organização. Ele também agenda uma revisão de seis meses com Ines.
+
+### Exemplo resolvido
+
+Owen monta um portfólio comentado, revisa com cautela as mudanças medidas na Thornbury e planeja o desenvolvimento contínuo numa nova função.
+
+> **Caso sintético.** Os itens do portfólio e os resultados são sintéticos.
+
+### Erros e limites
+
+Os portfólios podem exagerar a contribuição individual. Os resultados de curto prazo podem não durar.
+
+### Exercícios
+
+- **EX056 — Notas do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, o que aprendeu e o que mudaria;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Cautela sobre a fraude.** Por que a ausência de fraude relatada não é prova de sucesso? *Rubrica:* 3 = alguns meses sem fraude não provam que o risco desapareceu;; 2 = período curto;; 1 = prova;; 0 = nenhuma.
+
+- **EX058 — Próximo estudo.** O que Owen vai estudar em seguida? *Rubrica:* 3 = identidade e segurança em nuvem;; 2 = identidade;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX059 — Força da formação.** Por que a formação de Owen se tornou uma força? *Rubrica:* 3 = a arquitetura consiste em grande parte em coordenar pessoas, decisões e evidências;; 2 = coordenação;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX060 — Dados no portfólio.** Como os dados pessoais são tratados no portfólio? *Rubrica:* 3 = removidos ou substituídos por exemplos sintéticos;; 2 = removidos;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Owen Hartley, Ines Carvalho, Kwame Asante, a Meridian Professional Academy, a Thornbury Housing Association e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Owen Hartley, Ines Carvalho, Kwame Asante, a Meridian Professional Academy, a Thornbury Housing Association e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Manter as informações dos inquilinos privadas, os registros corretos e os serviços funcionando.
 
@@ -504,6 +696,46 @@ Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em i
 **EX039.** Porque as metas de tempo de atendimento desestimulavam os atendentes de fazer verificações extras.
 
 **EX040.** Sete dias.
+
+**EX041.** O que foi encontrado, o que já foi feito, o que falta e que decisões são necessárias.
+
+**EX042.** Dois parágrafos que descreviam longamente os métodos dele.
+
+**EX043.** Ele relatou os fatos ao encarregado de proteção de dados sem investigar mais nem confrontá-la.
+
+**EX044.** Disse que os controles bloqueiam o método passado, mas que outras rotas, como o e-mail comprometido de um inquilino, continuam possíveis.
+
+**EX045.** Para proteger as pessoas envolvidas até que os fatos sejam estabelecidos.
+
+**EX046.** Duas decisões sem responsável e um requisito testado apenas antes de uma atualização do fornecedor.
+
+**EX047.** Cerca de doze casos legítimos por mês.
+
+**EX048.** Por meio de uma ligação de retorno ao telefone cadastrado, feita por outra equipe, reduzindo a retenção para um dia.
+
+**EX049.** A separação de privilégio, já que são necessárias duas pessoas.
+
+**EX050.** As reclamações caíram e nenhuma fraude ocorreu pela exceção.
+
+**EX051.** Porque uma revisão só é tão boa quanto sua definição do que cada função precisa.
+
+**EX052.** Quatro de nove usuários.
+
+**EX053.** A conta ativa de um contrato encerrado e o acesso desnecessário às anotações de proteção.
+
+**EX054.** Num apêndice restrito, com nomes de papéis e contagens no texto principal.
+
+**EX055.** Permissões concedidas em documentos ou pastas compartilhadas fora do sistema.
+
+**EX056.** O que ele fez, o que aprendeu e o que faria de outro modo.
+
+**EX057.** Porque alguns meses sem fraude não provam que o risco desapareceu.
+
+**EX058.** Identidade e segurança em nuvem.
+
+**EX059.** Porque a arquitetura de segurança consiste em grande parte em coordenar pessoas, decisões e evidências.
+
+**EX060.** São removidos ou substituídos por exemplos sintéticos.
 
 <a id="references"></a>
 ## Referências
