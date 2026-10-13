@@ -2199,57 +2199,89 @@ You will (1) map dependencies; (2) flag unapproved flows; (3) assign owners.
 
 Core API, ledger DB, fraud service, SMS, card processor.
 
+A dependency list for testing is the set of systems the target needs in order to behave normally. Online banking at TRB needs the core API, the ledger database, a fraud-scoring service, an SMS provider for one-time codes and a card processor for payment steps. If any of those is down or out of scope, parts of the application cannot be tested honestly. The list also shows where findings might really belong. A failure that looks like a banking-app bug may be a misconfigured fraud service. Sam confirms each dependency's owner and authorization status before kickoff.
+
 ### 22.2 Flow lab
 
 lab_flows marks web→ledger-db UNAPPROVED.
+
+The lab compares observed traffic with the approved flow register and prints any path that lacks an entry. A direct web-to-ledger path is the classic example: it skips the core API's authorization checks and gives a compromised web host a route into the database. Running the lab is not the finding. The finding is the unapproved path plus the missing change ticket and owner. Testers save the lab output beside the engagement record so that a later dispute about whether the path existed can be answered with a dated artefact.
 
 ### 22.3 Ownership
 
 Each flow has a control owner.
 
+Ownership answers who may approve a change, who receives a finding and who can stop a test that uses the flow. A flow with no owner cannot be safely tested, because nobody can accept the risk or fix what breaks. TRB's register rejects new flows without an owner field, and Sam's pre-engagement check lists any in-scope flows whose owner has left the bank. Replacing a departed owner is a planning task, not a mid-window surprise. Findings filed against unowned flows tend to sit untouched, which is another reason ownership is required up front.
+
 ### 22.4 Third parties
 
 Separate authorization.
+
+Dependencies that belong to other companies need those companies' permission before anyone probes them. TRB's authorization covers TRB systems. The SMS vendor, the card processor and the cloud host each have their own rules. Sam can observe how TRB calls them and whether TRB validates their responses, which tests TRB's code. He cannot run vulnerability scans against their endpoints unless their programmes say so. The distinction is written into the method cards so that a curious tester does not improvise.
 
 ### 22.5 Breaks
 
 Vendor outages are stops, not hammering opportunities.
 
+When a dependency is failing, continuing to send traffic rarely produces useful security evidence and often makes the outage worse. The rules of engagement treat a confirmed vendor outage as a stop condition for methods that need that vendor. Sam records the outage, notifies the engagement lead and moves to methods that do not depend on the broken path. Hammering a down service to see how it fails is a denial-of-service test in disguise and is forbidden unless the ROE explicitly allows it in a dedicated window.
+
 ### 22.6 Secrets
 
 API keys in repos are TRB findings.
 
-### 22.7 22.7 Applied note
+An API key committed to a source repository is a credential in every clone, every backup and often every continuous-integration log. Even after the key is removed from the latest commit, history still holds it. Sam's findings for keys in repos recommend rotating the key, removing it from history where feasible, adding a secret scanner to the pipeline and recording an owner for the new secret in the vault. The finding severity depends on what the key unlocks. A read-only analytics key differs from a key that can move money.
+
+### 22.7 Expiring temporary flows
 
 Kill-dates on temporary flows page both the owner and Sam three days prior. If nobody responds, TrackScope marks the flow expired and denies tests that relied on it until renewed in writing.
 
-### 22.8 22.8 Secret scanning cadence
+Temporary flows without expiry become permanent. The page and the automatic expiry turn temporary into a real time limit. Denying tests that used the expired flow is deliberate. It stops an engagement from quietly relying on a path the bank no longer meant to keep, and it forces a written renewal that restates the business reason.
+
+### 22.8 Scanning TRB-owned repositories
 
 Repo secret scans run on TRB-owned code listed in ROE. Sam opens findings for keys with no owner in the asset model.
 
-### 22.9 22.9 Expiry page text
+The scan covers only repositories the engagement is authorized to examine. Findings distinguish keys that already have vault owners from keys that appear to be orphans. An orphaned key is urgent because nobody is rotating it. Linking each finding to the asset model also shows when a key belongs to a system outside scope, in which case Sam reports it to the system owner without testing further.
+
+### 22.9 Renewals need a reason
 
 Pages for kill-dates include the original business reason. Renewals without reasons are denied.
 
-### 22.10 22.11 Scene
+A renewal that says extend three months teaches nothing and invites eternal temporary rules. Requiring the original reason, and a sentence on why it still applies, makes the owner notice when the project that needed the flow has finished. Denied renewals appear in a weekly list that Sam reviews with the architecture owner. Patterns of denial often point to a project that should either finish or accept a permanent, reviewed conduit.
+
+### 22.10 When the primary owner is on leave
 
 Kill-date pages fire; the owner is on leave. Backup owner renews with a reason. Sam notes the backup-owner field as mandatory going forward — single-owner expiry pages are fragile.
 
-### 22.11 22.12 Extension
+A control that depends on one person being at their desk fails during holidays and illness. The backup owner had already been briefed on the flow's purpose, so the renewal took minutes. Making the backup field mandatory means the next temporary flow cannot be created until two people can speak for it. Fragility removed at registration time does not have to be discovered during a page storm.
+
+### 22.11 A renewal that made risk visible
 
 Expiry without reason was denied; the owner wrote "PCI segmentation project delay". Now the risk is visible, not eternal.
 
-### 22.12 22.14 Note 11
+The sentence did two jobs. It renewed the flow for a bounded time, and it told anyone reading the register why a risky path still existed. Project delays are real; unspoken delays become folklore. When the segmentation project later finished, the same register entry made it obvious that the flow's reason was gone and the kill-date should not be renewed again.
+
+### 22.12 Backup owners must acknowledge
 
 Backup owners must acknowledge in the ticket UI; silence is not acceptance.
 
-### 22.13 22.16 Pad
+Listing someone as backup without their acknowledgement creates a false sense of coverage. The UI requires a click that records the person, the time and the flow. Until that click happens, the temporary flow cannot be approved. The rule has slowed a few registrations and prevented several quiet gaps where the named backup had never heard of the flow.
+
+The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+
+### 22.13 Blocking closeout without a backup
 
 Mandatory backup-owner fields block ticket closeout. Sam loves blocking closeout.
 
-### 22.14 22.18 Final
+Change tickets that open temporary flows cannot close until the backup acknowledgement exists. Blocking closeout is more reliable than sending reminders, because delivery pressure already focuses on closing tickets. The block is visible in the same place project managers already look. Sam's preference for blocks over reminders comes from watching reminder-based processes fail whenever the team is busy.
+
+The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+
+### 22.14 Postmortems for expired flows
 
 Flow expiry postmortems ask whether the original business reason still exists. If the project finished, the flow dies. If the project continues, a new kill-date is mandatory. Eternal temporary rules are renamed findings in the postmortem notes.
+
+The postmortem is short: reason, outcome, next kill-date or deletion. Renaming eternal temporary rules as findings makes the pattern visible to the same people who see other risk. A flow that survives every postmortem without a living reason is a process failure, not a networking necessity. Writing the postmortem the week a flow expires, not months later, keeps the business reason honest.
 
 ### Worked example (synthetic TRB)
 
@@ -2287,57 +2319,87 @@ You will (1) build method cards; (2) bind methods to ROE; (3) set rate limits.
 
 Purpose, ROE clause, tool/settings, stops, evidence.
 
+A method card is the unit of authorized testing work. It states why the method is being run, which clause of the rules of engagement permits it, which tool and settings will be used, what conditions stop the method and what evidence it must produce. Cards stop improvisation. A tester who wants to try something not on a card must propose a new card and get it into the frozen set, or wait for a rules amendment. TrackScope schedules cards, not free-form activity.
+
 ### 23.2 WSTG
 
 Select auth, session, access control themes for online banking staging.
+
+OWASP's Web Security Testing Guide catalogues many test ideas. TRB does not run all of them every engagement. For online banking staging the priority themes are authentication, session management and access control, because failures there move customer data or money. Other themes appear when threat reporting or recent changes justify them. Selecting themes in the plan makes the engagement's depth honest. A report that claims broad web coverage after running only three themes would mislead.
 
 ### 23.3 Rates
 
 Caps protect availability.
 
+Even authorized tests can knock a service over if they send too much traffic. Method cards include rate caps: requests per second, concurrent sessions, total identities tried. The caps are set with the service owner and the SOC, who know what normal looks like. Exceeding a cap is a stop condition, not a suggestion. Sam would rather finish a method slowly across two evenings than explain an outage caused by a test that was supposed to be careful.
+
 ### 23.4 Forbidden
 
 Spraying and DoS remain forbidden.
+
+Password spraying across many accounts and denial-of-service testing are excluded from ordinary TRB windows because their impact is hard to contain and their authorization bar is higher. A tester who discovers that spraying would be interesting still does not do it. They write a note that the method was considered and excluded, which can become a recommendation for a separate, carefully scoped exercise if the risk warrants it. Forbidden means forbidden, not forbidden unless curious.
 
 ### 23.5 Quiet vs noisy
 
 Prefer quiet methods when detection is also under test.
 
+Some methods produce little log noise; others flood the SOC with alerts. When the engagement is also measuring detection, noisy methods drown the signal the SOC needs to show. Quiet methods first let the SOC demonstrate what they catch under realistic conditions. Noisy inventory scrapes belong on separate days, with a noise budget the SOC has signed. Mixing them once produced an alert blizzard that taught nothing about either detection or the inventory.
+
 ### 23.6 Freeze
 
 Method set freezes after kickoff unless ROE amends.
 
-### 23.7 23.7 Applied note
+After kickoff the scheduled cards are fixed. Adding a method mid-window would bypass the review that checked scope, rate limits and stop conditions. If a new method becomes necessary, the rules of engagement are amended in writing and the freeze lifts for that amendment only. The freeze frustrates improvisers and protects everyone else. Clients cannot claim they were surprised by a method that was not on the kickoff list, and testers cannot claim they thought an improvised method was allowed.
+
+### 23.7 Separating quiet and noisy days
 
 Quiet methods are preferred during purple windows so SOC signal is interpretable. Sam schedules noisy inventory scrapes on separate days. Mixing them produced a useless alert blizzard once; the calendar now prevents it.
 
-### 23.8 23.8 Card library ownership
+The calendar block is shared with the SOC. A purple-team day shows quiet cards only. An inventory day shows noisy cards and a higher noise budget. Automatic checks refuse to schedule a noisy card onto a purple day. The blizzard taught the team that calendar design is part of method design.
+
+### 23.8 Every card needs an owner
 
 Each method card has an owner engineer. Unowned cards cannot be scheduled. Sam claims ownership before proposing a card in kickoff.
 
-### 23.9 23.9 Noise budget sheet
+Ownership means someone keeps the card's ROE clause, tool versions and stop conditions current. Unowned cards rot: they cite retired clauses or settings that no longer match the platform. Refusing to schedule them makes ownership a practical requirement rather than a polite field. Claiming ownership before kickoff also means the proposer is volunteering to maintain the card, which reduces drive-by suggestions.
+
+### 23.9 SOC noise budgets
 
 SOC signs a noise budget per window. Exceeding it is a stop condition Sam respects immediately.
 
-### 23.10 23.11 Scene
+The budget is a number of alerts per hour, usually, plus a list of alert types that count. The SOC signs it because they know their staffing and their other work that night. When TrackScope or the SOC says the budget is exhausted, Sam stops noisy cards even if the window has hours left. Immediate respect for the stop builds trust. A tester who negotiates past a SOC stop once will find the next budget conversation much harder.
+
+### 23.10 Splitting a card to fit the budget
 
 SOC noise budget is 30 alerts per hour. Sam's method card would generate about 80. He splits the card across two days. The SOC lead buys him coffee; the window stays green.
 
-### 23.11 23.12 Extension
+Splitting preserved the testing goal and the SOC's ability to respond. The card's evidence requirements were met across both days, with clear labels so nobody thought the method had been abandoned. Coffee is optional. A green window, meaning no emergency caused by testing, is the real reward and the reason budgets exist.
+
+### 23.11 Treating SOC signatures like CISO signatures
 
 Noise budget sheet is signed like a mini-ROE. Sam treats SOC signatures with the same respect as CISO signatures.
 
-### 23.12 23.14 Note 11
+The SOC does not own the overall authorization, but they own the detection environment the test will disturb. Their signature on the noise budget is authorization for that disturbance. Ignoring it would be ignoring a boundary as real as an excluded host. Sam's habit of equal respect also encourages the SOC to sign promptly, because they know the signature will be honoured rather than bargained away.
+
+### 23.12 Automatic pause on overrun
 
 Noise budget overruns trigger an automatic method-card pause flag in TrackScope.
 
-### 23.13 23.16 Pad
+Automation removes the awkward conversation in which a tester argues that just a few more requests will finish the card. The platform counts alerts attributed to the engagement, and when the budget is reached it pauses noisy cards and notifies Sam and the SOC. Finishing then requires a SOC countersignature for an extension, not a unilateral decision. The flag has stopped several polite overruns that would have become impolite outages.
+
+### 23.13 Testers cannot clear their own pause
 
 Pause flags clear only with SOC countersign. Sam cannot clear his own noise overrun.
 
-### 23.14 23.18 Final
+Self-clearing would make the automatic pause theatre. The SOC countersign is a second person asserting that the environment can take more load. Sometimes they refuse and ask for a quieter continuation tomorrow. That refusal is a successful control. Recording who cleared a pause, and when, also helps later reviews understand why a noisy card continued after an overrun.
+
+The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+
+### 23.14 Rotating card audits
 
 Method card librarianship is a rotating duty. Each month a different engineer audits five cards for ROE clause drift. Sam's audit found a card citing a retired ROE section; it was suspended in an hour.
+
+A retired ROE clause on a live card is a quiet authorization bug. The monthly audit catches a few each year, usually after a rules rewrite. Suspending the card immediately prevents anyone from scheduling work under a clause that no longer exists. The rotating duty spreads familiarity with the library across the team. Publishing which five cards were audited each month makes the rotation visible and harder to skip.
 
 ### Worked example (synthetic TRB)
 
