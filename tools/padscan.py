@@ -85,6 +85,7 @@ def scan(path,a,copyidx):
         for k,t in B:
             if k in ('table',): continue
             for x in (sents(t) if k!='list' else t):
+                if re.match(r'\W*EX\d+',x): continue
                 tx=set(toks(x)); vx=tf.vec(x)
                 if len(tx)>=5 and seen:
                     c=max(tf.cos(vx,v) for v in seen); nov=len(tx-seenw)
