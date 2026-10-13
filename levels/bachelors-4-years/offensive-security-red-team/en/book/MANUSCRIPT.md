@@ -2460,7 +2460,7 @@ F4 6 high   Weak MFA enrolment check
 F2 3 medium Verbose error pages
 ```
 
-The product of likelihood and impact is a simple ranking aid, not a law of nature. Ties break by finding id so that the order is reproducible. F1 and F3 both score six and outrank F2's three, which matches the intuition that a shared admin password and a direct web-to-ledger path matter more than verbose error pages. The lab's job is to make the ranking visible before personalities enter the discussion. Once scores are on the table, arguing to demote a finding becomes a visible risk-acceptance decision rather than a quiet reordering.
+The product of likelihood and impact is a simple ranking aid, not a law of nature. Ties break by finding id so that the order is reproducible. F1, F3 and F4 all score six and outrank F2's three, which matches the intuition that a shared admin password, a direct web-to-ledger path and a weak MFA enrolment check matter more than verbose error pages. The lab's job is to make the ranking visible before personalities enter the discussion. Once scores are on the table, arguing to demote a finding becomes a visible risk-acceptance decision rather than a quiet reordering.
 
 ### 24.3 Compensating
 
