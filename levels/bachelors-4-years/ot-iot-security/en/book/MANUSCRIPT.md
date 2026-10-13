@@ -184,7 +184,7 @@ LT-401     57.0 pct   ok
 flagged: TT-102, FT-301
 ```
 
-At LDHP, the two flagged rows print as "TT-102 141.0 above 130 → operator" and "FT-301 −3.0 below 0 → instrumentation", with the input value on the same line as the decision. A change-board reviewer who is a control engineer, not a programmer, can check each line against the instrument index in a minute and does not need to read the script. If a line cannot be traced to a row, the reviewer has no reason to trust it, so the output should never print a summary count without the rows behind it.
+At LDHP, the two flagged rows print as `TT-102    141.0 degC  OUT-OF-RANGE` and `FT-301     -3.0 m3/h  OUT-OF-RANGE`, with the input value on the same line as the decision; routing each flag to the operator or to instrumentation is Maya's judgement in her note, not something the script decides. A change-board reviewer who is a control engineer, not a programmer, can check each line against the instrument index in a minute and does not need to read the script. If a line cannot be traced to a row, the reviewer has no reason to trust it, so the output should never print a summary count without the rows behind it.
 
 ### Worked example (synthetic LDHP)
 
@@ -716,7 +716,7 @@ You will (1) estimate a false-alarm rate with a confidence bound; (2) use the ru
 
 A detector that raised no false alarms in 40 quiet days has a point estimate of 0, but the honest statement is a bound. The rule of three gives an approximate 95 % upper limit of 3/n when zero events are seen in n independent trials; with n = 40 that is 7.5 %.
 
-This is the claim the control engineer made in Chapter 12's case: a new supply-temperature detector that "never false-alarms". Maya's first question was the denominator, 40 days, and her answer was the bound: 0 in 40 is consistent with a true daily false-alarm rate as high as several percent.
+This is the claim the control engineer makes in this chapter's worked example: a new supply-temperature detector that "never false-alarms". Maya's first question was the denominator, 40 days, and her answer was the bound: 0 in 40 is consistent with a true daily false-alarm rate as high as several percent.
 
 ### 12.2 Wilson intervals
 
@@ -1309,7 +1309,7 @@ t=60 level= 57.5% inflow=2.00
 steady-state error ~ 2.5 pct (P-only offset)
 ```
 
-The lab uses kp = 0.8, a setpoint of 60 %, a starting level of 40 % and outflow fixed at 2.0, so the pump runs at its 5.0 limit at first. Its output prints the level every 10 steps: 55.0 % at t = 10, then 57.5 % from t = 20 onward with inflow 2.00. The numbers are invented for LDHP's vessel, but the shape is general: a proportional loop that cannot quite reach its setpoint.
+The lab uses kp = 0.08, scaled by 10 in the inflow line to an effective gain of 0.8, a setpoint of 60 %, a starting level of 40 % and outflow fixed at 2.0, so the pump runs at its 5.0 limit at first. Its output prints the level every 10 steps: 55.0 % at t = 10, then 57.5 % from t = 20 onward with inflow 2.00. The numbers are invented for LDHP's vessel, but the shape is general: a proportional loop that cannot quite reach its setpoint.
 
 ### 21.3 Reading the model
 
@@ -1321,7 +1321,7 @@ For security this offset matters in a way that is easy to miss: an operator used
 
 If an attacker moves the setpoint from 60 % to 95 %, the model predicts how long the level takes to cross a high alarm at 85 %. The same model tells you how a sensor bias of +10 points would make the controller under-fill the vessel. Models connect cyber actions to process time.
 
-To use the lab this way, change the setpoint in a copy of the script from 60 to 95 at a chosen step and print the first step at which the level passes 85; with the pump limited to 5.0 against outflow fixed at 2.0, the level can rise by at most 3 points per step. Record the edit and the output together. A +10 sensor bias works the other way round: the controller sees the level 10 points higher than it is, so it settles about 10 points low, and nobody sees it on HMI-1.
+To use the lab this way, change the setpoint in a copy of the script from 60 to 95 at a chosen step and print the first step at which the level passes 85; with the pump limited to 5.0 against outflow fixed at 2.0, the level can rise by at most (5.0 − 2.0) × 0.5 = 1.5 points per step. Record the edit and the output together. A +10 sensor bias works the other way round: the controller sees the level 10 points higher than it is, so it settles about 10 points low, and nobody sees it on HMI-1.
 
 ### Worked example (synthetic LDHP)
 
@@ -1433,7 +1433,7 @@ At LDHP, a scenario scoring 3 × 4 for a meter gateway takeover and one scoring 
 
 After controls, some risk remains. It must have an owner who accepts it in writing, a review date and the assumptions it rests on.
 
-For S-3, setpoint manipulation, the residual after Chapter 24's controls is a write from HMI-1 itself, the allow-listed source. Maya's capstone later shows it is real: her monitor's one remaining miss was an HMI-originated write. The owner would be LDHP's operations manager, who accepts it in writing on the assumption that named accounts make such writes attributable, with a review date six months later or sooner if the monitor's correlation with operator logins is built.
+For S-3, setpoint manipulation, the residual after Chapter 24's controls has two parts: an insider with engineering access, and a write from HMI-1 itself, the allow-listed source. Maya's capstone later shows the second is real: her monitor's one remaining miss was an HMI-originated write. The owner would be LDHP's plant manager, as in the worked example below, who accepts it in writing on the assumption that named accounts make such writes attributable, with a review date six months later or sooner if the monitor's correlation with operator logins is built.
 
 ### Worked example (synthetic LDHP)
 
@@ -1658,7 +1658,7 @@ You will (1) write test vectors for an allow-list policy; (2) include boundary, 
 
 A firewall or protocol-aware allow-list is code, even when written as rules. Verification means showing, with recorded evidence, that the policy permits what operations need and blocks what it should. IEC 62443-4-1 (secure product development lifecycle) and the system integrator's commissioning activities both expect documented testing.
 
-LDHP's policy for PLC-H is small enough to state in one line: HMI-1 may read and write registers 100–119 with function codes 3 and 6, HIST-1 may read, and every other source and function is blocked. The lab turns that line into six vectors with expected results. A policy that has never been run against vectors like these is a guess about what the firewall does.
+LDHP's policy for PLC-H is small enough to state in one line: HMI-1 may read with function code 3 and write registers 100–119 with function code 6, HIST-1 may read with function codes 3 and 4, and every other source and function is blocked. The lab turns that line into six vectors with expected results. A policy that has never been run against vectors like these is a guess about what the firewall does.
 
 ### 27.2 Designing vectors
 
@@ -1799,13 +1799,13 @@ You will (1) design an OT security monitoring workflow with operators in the loo
 
 Passive network monitoring at LDHP's control switch builds a baseline of who talks to whom. Alerts — a new host talking Modbus, a write from an unexpected source, a firmware download — go to a security analyst who calls the shift lead before anyone touches the plant. NIST SP 800-82r3 stresses that OT incident response must be coordinated with operations because containment actions can themselves cause a process upset.
 
-At LDHP the alert in Chapter 29's tabletop, a Modbus write to register 100 by 10.20.4.17 on the office VLAN, is exactly the "unexpected source" case.
+At LDHP the alert in this chapter's tabletop, a Modbus write to register 100 by 10.20.4.17 on the office VLAN, is exactly the "unexpected source" case.
 
 ### 29.2 Playbook steps
 
 Good OT playbook steps name the decision-maker and the safe state. "Isolate PLC-H from the network" is dangerous if operators lose the HMI. Better: "Shift lead decides whether to move the boiler to local manual control; only then does the analyst block the suspicious source at the firewall."
 
-Chapter 29's tabletop followed this order: the analyst called the shift lead at 02:12, the operator restored the supply setpoint from 30 °C to 90 °C at 02:15, and the shift lead approved blocking 10.20.4.17 at the firewall at 02:18. The block came after the process was safe, not before, and after a named person had decided it.
+This chapter's tabletop followed this order: the analyst called the shift lead at 02:12, the operator restored the supply setpoint from 30 °C to 90 °C at 02:15, and the shift lead approved blocking 10.20.4.17 at the firewall at 02:18. The block came after the process was safe, not before, and after a named person had decided it.
 
 ### 29.3 Patching in windows
 
@@ -1883,8 +1883,6 @@ The lab's three meter models answer a short questionnaire for those four provisi
 
 MTR-A meets all four. MTR-B fails 5.1 only — fixable by forcing unique credentials at installation. MTR-C fails three provisions: no disclosure policy, no update mechanism and no secure communication. The fleet-wide gap list contains all four provisions, which looks alarming but is driven by just two models; report both views.
 
-Maya's remediation table follows directly: MTR-B's passwords are reset during the next meter-read visit, within two weeks; MTR-C is isolated behind the gateway with TLS terminated there, a vendor disclosure contact is requested, and replacement is scheduled within 12 months; MTR-A is re-checked on its next firmware change.
-
 ### 30.3 Prioritising
 
 Severity depends on consequence and fixability. MTR-C's lack of update capability is structural — it cannot be patched — so replacement planning starts now. MTR-B's default password is the classic Mirai vector (Chapter 20) and is urgent but cheap.
@@ -1907,7 +1905,7 @@ Maya's remediation table: MTR-B — reset unique passwords during next meter rea
 
 Change one device's dictionary at a time and rerun, recording the output beside the edit. If two students get different results from the same dictionaries, compare Python versions and the exact file; the script is deterministic and should never differ.
 
-A useful first edit is to set MTR-B's `unique_pw` to true and confirm its line becomes 4/4 while the fleet-wide gap list still shows `unique_pw`'s neighbours from MTR-C; a second is to give MTR-C a disclosure policy and check that only 5.2 disappears from its missing list. If the fleet-wide list does not change the way you predicted, read the script's aggregation before trusting your edit.
+A useful first edit is to set MTR-B's `unique_pw` to true and confirm its line becomes 4/4 while the fleet-wide gap list drops `unique_pw` and keeps MTR-C's three gaps; a second is to give MTR-C a disclosure policy and check that only 5.2 disappears from its missing list. If the fleet-wide list does not change the way you predicted, read the script's aggregation before trusting your edit.
 
 ### Errors and limits
 
@@ -2050,8 +2048,6 @@ You will (1) design a replicable simulation study with pre-registered hypotheses
 ### 33.1 Pre-registration
 
 Writing hypotheses, measures, analysis and stopping rules before running the experiment prevents tuning the analysis to the result. For a detector study: "H1: CUSUM's false-alarm proportion over 300 quiet runs will be lower than the band's; primary measure: runs with any false alarm; analysis: difference in proportions with 95 % interval."
-
-Maya's capstone pre-registration fixes 300 quiet and 300 attack seeds, three attack slopes, a threshold tuned on a separate set of 50 seeds and then frozen, and detection within 60 samples as the primary outcome. It also states in advance what result would falsify H1.
 
 ### 33.2 Sample size for a proportion
 
@@ -2243,8 +2239,6 @@ You will (1) plan a supervised placement or community project with a utility, sc
 
 Small water utilities, schools with building-management systems and community heating co-operatives often lack security staff. A student under supervision can help with documentation-heavy, low-risk work: an asset list from existing records, a review of remote-access arrangements, a password-hygiene checklist, an awareness session for operators. None of these needs touching a live controller.
 
-Maya's placement with a fictional village heating co-operative is an example: a two-page asset list built from invoices and the panel builder's drawings, which found an undocumented cellular router in the boiler house without anyone touching the network.
-
 ### 36.2 The agreement
 
 The placement agreement names the host organisation's responsible person, the supervisor, the deliverables, data-handling rules (what leaves the site, how it is stored and when it is deleted) and an explicit prohibition on scanning, probing or configuration changes. If the host asks for "a quick scan", the student refers the request to the supervisor.
@@ -2254,8 +2248,6 @@ When the co-operative's manager asked Maya to "run a scan to see if we're hacked
 ### 36.3 Working with small operators
 
 Advice must fit their budget and staff. "Deploy a SOC" is useless to a three-person co-operative; "remove the always-on remote-desktop tool and use the vendor's on-demand session feature, enabled by the manager's phone" is actionable. CISA's free resources for small water and wastewater systems are an example of guidance written for this audience.
-
-Maya's recommendation for the co-operative's cellular router follows this: confirm with the panel builder what it is for, disable it if unneeded, and otherwise require the vendor to enable it only on request.
 
 ### 36.4 Reflective journal
 
@@ -2316,8 +2308,6 @@ For Maya's detector study, Giraldo et al. pointed to Urbina et al.'s impact-base
 ### 37.4 Structured peer review
 
 Review format: summary in your own words; main strengths; major concerns (validity, missing comparisons, overreach); minor issues; a recommendation. Comment on the work, not the person.
-
-Maya's review of the classmate's CUSUM report follows this structure. Summary: CUSUM compared with a band on synthetic supply-temperature runs. Strength: a reproducible script with seeds. Major concern: 0 of 40 synthetic runs supports "no false alarms observed, upper bound about 8.8 %", not elimination, and nothing was tested on plant data. Minor: delay is reported in samples, not converted to minutes. Recommendation: revise the claim and add the bound. Nothing in the review mentions the classmate.
 
 ### Worked example (synthetic LDHP)
 
@@ -2392,8 +2382,6 @@ The eight cases include five attacks and three benign writes, among them a maint
 
 Three true positives, one false positive (a maintenance write flagged), two false negatives (one setpoint attack and the drift attack missed), two true negatives. Precision 3/4 = 0.75; recall 3/5 = 0.60. Eight cases are far too few for precise rates — a Wilson interval for 3/5 spans roughly 0.23 to 0.88 — so the honest use of this table is to find failure classes, not to rank tools.
 
-Maya's two misses each lead to a decision record: the drift attack used many small writes inside the allowed range, which needs a cumulative-change rule; the missed setpoint attack came from HMI-1 itself, which needs correlation with operator logins.
-
 ### Worked example (synthetic LDHP)
 
 Maya examines the two misses. The drift attack used many small writes, each within the allow-listed range — a rule-based monitor without a rate or trend rule cannot see it. The missed setpoint attack came from HMI-1 itself, which is allow-listed. Both lead to new decision records: add a cumulative-change rule, and correlate HMI writes with operator login events.
@@ -2430,13 +2418,11 @@ You will (1) evaluate a capstone against its own proposal; (2) separate results,
 
 Return to the acceptance criteria written in Chapter 35. For each, record met, partly met or not met, with evidence. A capstone that misses a criterion but explains why — for example, the drift class could not be detected by rules alone — can still earn a strong grade.
 
-Maya's table: criterion 1, process the 8-case set and report a confusion matrix, met; criterion 2, precision and recall with denominators, met; criterion 3, detect all six attack classes, partly met, five of six after the cumulative rule, with the HMI-originated insider write still missed.
-
 ### 39.2 Results versus interpretation
 
-Results are what the evaluation produced: "recall 4/5 on the extended set". Interpretation is what you think it means: "the cumulative rule addresses slow manipulation". Limitations bound the interpretation: "tested only on synthetic data with one drift profile". Keeping three headings prevents results from silently absorbing opinion.
+Results are what the evaluation produced: "recall 4/5 on the eight-case set". Interpretation is what you think it means: "the cumulative rule addresses slow manipulation". Limitations bound the interpretation: "tested only on synthetic data with one drift profile". Keeping three headings prevents results from silently absorbing opinion.
 
-In Maya's thesis, recall rose to 4/5 on the extended set once the cumulative-change rule caught the drift attack; the HMI-1 write remains the miss. That sentence is a result. "The monitor is suitable for LDHP" would be an interpretation that the limitation, one drift profile on synthetic data, does not yet support.
+In Maya's thesis, recall rose to 4/5 on the eight-case set once the cumulative-change rule caught the drift attack; the HMI-1 write remains the miss. That sentence is a result. "The monitor is suitable for LDHP" would be an interpretation that the limitation, one drift profile on synthetic data, does not yet support.
 
 ### 39.3 Self-assessment rubric
 
