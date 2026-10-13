@@ -130,7 +130,7 @@ Claim: deleting an edge never enlarges a reachable set. Proof: any path in the s
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -505,7 +505,7 @@ If genuine cyber-physical attacks are rare, a detector with even a 1% false-alar
 
 ### 7.4 Errors and limits
 
-Synthetic attacks are not the adversary. Intervals assume independent trials; correlated seeds invalidate them. Never invent a p-value for a table you did not test.
+Synthetic attacks are not the adversary. Intervals assume independent trials; correlated seeds invalidate them.
 
 Lena's pilot reports state that the attacks were synthetic, list the seeds and explain how they were generated. If two seeds produce nearly identical traces, she counts them as one trial, because treating them as independent would make the interval look narrower than the evidence supports. Any statistical test she reports is one she actually ran, with its inputs kept so a reviewer can rerun it.
 
@@ -617,7 +617,7 @@ When someone asks for a "just this once" exception host, require a time-boxed ex
 
 ### 9.1b Schema evolution without downtime
 
-When the finding schema gains a required field, deploy a two-phase change: first accept and persist the field as optional while backfilling; then flip the validator to required. Windows mid-flight must not break because a mobile client is one version behind. Publish the schema version in API responses so clients can refuse to write when incompatible. Bulk imports from scanners must pass the same validation path as interactive creates, including forbidden-field checks, or payloads will sneak in through the trusted import side door.
+When the CNHP finding schema gains a required field, such as the work-permit number, deploy a two-phase change: first accept and persist the field as optional while backfilling; then flip the validator to required. Windows mid-flight must not break because a mobile client is one version behind. Publish the schema version in API responses so the field tablets and the monitor's exporter can refuse to write when incompatible. Bulk imports from scanners must pass the same validation path as interactive creates, including forbidden-field checks, or payloads will sneak in through the trusted import side door.
 
 ### Exercises
 
@@ -899,7 +899,7 @@ Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every a
 
 ### 13.1b Row-level and column-level controls
 
-Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; "we ran SELECT * against an admin role" proves little about analyst exposure. Record each role-and-column result with the account used and the date, so the next review repeats exactly the same checks.
+Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the historian's policy engine version; "we queried the historian as an administrator" proves little about what a CNHP analyst account can see. Record each role-and-column result with the account used and the date, so the next review repeats exactly the same checks.
 
 Lena tests ABP's replica with an analyst account before each review. Results go in the review notes.
 
@@ -961,7 +961,7 @@ Policy repos use the same dual-approval culture as PLC logic downloads. If downl
 
 ### 14.1b Release trains vs hotfixes
 
-Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so a window can pin either the train build or the hotfix SHA with eyes open. Version pins appear in the kickoff checklist beside the work-permit hash; if the pin and the running binary disagree, the window does not start.
+Normal improvements ride a release train with Lab I/II. A hotfix to the monitor or an allow-list may skip features but not verification: the minimal fail-closed regression pack runs before any window uses it. Tag hotfixes clearly so a window can pin either the train build or the hotfix SHA with eyes open. Version pins appear in the kickoff checklist beside the work-permit hash; if the pin and the running binary disagree, the window does not start.
 
 ABP's hotfixes carry their own tag and the regression pack result in the release note, so a window lead can see exactly what was verified.
 
@@ -1023,7 +1023,7 @@ When someone asks for a traffic-light dashboard, offer three lights that mean so
 
 ### 15.1b From property to test
 
-If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket. The re-test result goes into the same ticket as the original finding, with the date and the check used, so closure can be audited later.
+If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, such as a PLC that stops answering polls, validation uses a canary or a synthetic probe on the bench — not a new attack on the line. Lena writes the property, the finding and the re-test method in one paragraph of the CNHP ticket, beside the work-permit number. The re-test result goes into the same ticket as the original finding, with the date and the check used, so closure can be audited later.
 
 At ABP, the FW-12 finding claimed an integrity exposure, so its re-test checked that the office zone could no longer reach SCADA, using the same reachability method.
 
@@ -1165,9 +1165,9 @@ Draw the loop: setpoint, error, controller, actuator, process, sensor, and mark 
 
 ### 17.1b Set-points and human placement
 
-Write the set-point next to the sensor (cycle time ≤ 50 ms). Review set-points when the plant changes recipes or when false pages exceed an agreed rate. Put humans where judgment about authorization is required; put automation where delay is dangerous. Approving a conduit widen is human. Denying an out-of-range write is automation.
+Write the set-point next to the sensor (cycle time ≤ 50 ms). Review set-points when the plant changes recipes or when false pages exceed an agreed rate. On CNHP, people decide what a work permit authorises, and the monitor acts alone where waiting would let an unsafe write reach the process. Approving a conduit widen is human. Denying an out-of-range write is automation.
 
-At ABP, the cycle-time set-point for the serial monitor is 50 ms, and it is reviewed when recipes change. The rule of thumb is simple: automation for fast, well-defined decisions, people for judgments about authorization and risk.
+At ABP, the cycle-time set-point for the serial monitor is 50 ms, and it is reviewed when recipes change. A missed cycle-time set-point is logged with the frame that caused it, so the next review starts from data.
 
 ### Exercises
 
@@ -1213,7 +1213,7 @@ When methods are noisy or the plant is fragile, use a synthetic or digital-twin 
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -1253,7 +1253,7 @@ Engineering jump hosts are high-value: harden them, log session start/stop, forb
 
 
 
-Network diagrams for the assessment zone go into the dossier with the same hash discipline as evidence files. When an auditor asks how traffic reached L2, you show the diagram version that was live, not a newer cleaned-up sketch.
+Lena exports the L2 and DMZ diagrams for each window into the CNHP dossier and hashes them like any evidence file. When an auditor asks how traffic reached L2, you show the diagram version that was live, not a newer cleaned-up sketch.
 
 ### Exercises
 
@@ -1351,7 +1351,7 @@ The programme's outputs are concrete: a zoned network with tested reachability, 
 
 ### 20.3 Safety boundary
 
-No exploit payloads, no unauthorized plant access, no live personal or proprietary batch data in labs, labs on synthetic local data only. Dual-use requests are refused (Chapter 10). Process safety stop conditions always win. This boundary is a requirement on every design review in Chapters 21-50.
+No exploit payloads, no unauthorized plant access, no live personal or proprietary batch data in labs, labs on synthetic local data only. Dual-use requests are refused (Chapter 10). Process safety stop conditions always win. Every CNHP design review in Chapters 21-50 checks the design against this boundary before it checks anything else.
 
 > **Synthetic case — Ashford Batch Plant.** Leadership asked for a red team that hacks the plant. Lena reframed the charter: an authorized hardening programme that enforces zones and measures detection without endangering batches.
 
@@ -1359,9 +1359,9 @@ Lena checks every design against this boundary.
 
 ### 20.4 Errors and limits
 
-Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
+OT standards are revised part by part, so a link that worked for one CNHP document may point to a superseded part a term later. This chapter orients; it does not replace reading the primary sources.
 
-Lena's list of sources records the revision and access date for each standard and paper used in CNHP documents. Before citing a framework in her thesis, she checks whether a newer revision exists and notes any change that affects her argument. The chapter gives only enough orientation to start; reading the primary sources is part of the work.
+Lena's list of sources records the revision and access date for each standard and paper used in CNHP documents. Before citing a framework in her thesis, she checks whether a newer revision exists and notes any change that affects her argument. She keeps a copy of each superseded revision she cited in the dossier, so a reader can see the text her argument relied on.
 
 ### Practice note
 
@@ -1369,9 +1369,9 @@ Keep a one-page "sources we actually use" list in the CNHP binder with access da
 
 ### 20.1b Neighbouring courses and deliverables
 
-This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Each deliverable names its intended reader on its first page.
+This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters and applies them to the CNHP case at Ashford Batch Plant. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Each deliverable names its intended reader on its first page.
 
-Lena's own deliverables at ABP include both kinds. Her runbooks and tickets serve the operators who run the plant each day, while the schemas, tests and decision records serve the engineers who will maintain the tools after her. Assessors look for both.
+Lena's own deliverables at ABP include both kinds. Her runbooks and tickets serve the operators who run the plant each day, while the schemas, tests and decision records serve the engineers who will maintain the tools after her.
 
 ### Exercises
 
@@ -1423,7 +1423,7 @@ When someone asks for a new monitor rule during a batch, Lena records it in the 
 
 ### Practice note
 
-Acceptance tests are named after requirement ids and fail CI when skipped. Orphan Must requirements are either tested or formally deferred with an executive owner.
+CNHP acceptance tests carry the requirement id in their name and fail CI when skipped, so a monitor requirement without a test shows up in the build. Orphan Must requirements are either tested or formally deferred with an executive owner.
 
 ### 21.1b MoSCoW under safety
 
@@ -1439,7 +1439,7 @@ At ABP, S-1 and R-12 are both Must items, and no product decision can move them 
 
 ### Synthesis
 
-Requirements come from people, split into families, and ship with acceptance tests on synthetic fixtures.
+CNHP requirements come from the plant's operators and engineers, split into families, and ship with acceptance tests on synthetic plant fixtures.
 
 ### Continue studying — chapter 21 of 50
 
@@ -1467,7 +1467,7 @@ Lena's schema uses these keys throughout CNHP. A finding about FW-12 kept its id
 
 ### 22.3 Forbidden attributes
 
-No attribute for payload, shellcode or step-by-step attack. EvidenceObject stores bytes in a sealed bucket; the model stores only hash, media type and retention class.
+No attribute for payload, shellcode or step-by-step attack. For a capture from the L2 monitor, EvidenceObject keeps the bytes in a sealed bucket; the model holds only hash, media type and retention class.
 
 > **Synthetic case — Ashford Batch Plant.** An early schema had notes as free text; people pasted engineering passwords. Lena replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
 
@@ -1485,7 +1485,7 @@ Soft-delete findings with actor and reason; hard purge only via retention jobs t
 
 ### 22.1b Attachment limits and time
 
-Evidence objects need size caps and media-type allow-lists. Unbounded uploads become availability attacks and tempt dumping of bulk proprietary data. Every mutable entity needs created_at, created_by, and for state changes updated_at/updated_by or an append-only event. Prefer UTC with explicit offsets in exports.
+Evidence objects need size caps and media-type allow-lists. Unbounded uploads become availability attacks and tempt dumping of bulk proprietary data. Every mutable CNHP entity, from a finding to a conduit record, needs created_at, created_by, and for state changes updated_at/updated_by or an append-only event. Prefer UTC with explicit offsets in exports.
 
 
 
@@ -1583,7 +1583,7 @@ Include jumphost compromised in the model: short-lived credentials, egress allow
 
 ### 23.1b Abuse vs misuse and backlog
 
-Abuse cases are intentional adversary actions against CNHP tools. Misuse cases are honest operators making dangerous mistakes (paste a CIDR that includes a partner). Design controls for both. STRIDE rows become issues with links to requirements. Misuse rows usually become validation rules; abuse rows usually become access controls.
+Abuse cases are intentional adversary actions against CNHP tools. Misuse cases are honest engineers making dangerous mistakes, such as typing a set-point range wider than the recipe allows. Design controls for both. STRIDE rows become issues with links to requirements. Misuse rows usually become validation rules; abuse rows usually become access controls.
 
 
 
@@ -1817,7 +1817,7 @@ At ABP, the allow-list on the serial monitor is preventive, the alert when HMI-1
 
 ### 27.2 Operator skill
 
-Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs custom shellcode to verify is the wrong control for this programme.
+CNHP controls are checked by the site's engineers during permitted windows, not by exploit specialists. A control that needs custom shellcode to verify is the wrong control for this programme.
 
 Lena writes a runbook entry for each CNHP control describing how to check it with ordinary tools, such as replaying a synthetic frame on the bench and reading the decision log. If a control can only be verified by someone writing exploit code, she replaces it with one that can be checked safely by the site's own engineers during routine work.
 
@@ -1865,11 +1865,11 @@ Lena's control register lists every compensating control at ABP with its owner, 
 
 ### Practice note
 
-Schedule a quarterly control-health day: break each preventive control in a synthetic lab and confirm detective controls fire. Untested controls are wishes.
+Once a quarter, Lena books a control-health day on the bench: each preventive CNHP control is broken on synthetic traffic, and the matching monitor alert must fire. Untested controls are wishes.
 
 ### 27.1b Ownership and break-glass detection
 
-Every control has an owner who receives its alerts and a review date. Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design, and each review names who used break-glass and the reason given.
+Every CNHP control, such as the PLC-A trunk allow-list, has an owner who receives its alerts and a review date. Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design, and each review names who used break-glass and the reason given.
 
 
 
@@ -1965,7 +1965,7 @@ The catalogue lists, for each reason code, the clause that emits it and the test
 
 
 
-Code review checklists for predicate changes include: new clause, new tests, reason-code docs, fuzz case, fail-closed on parse error. Reviewers who skip the list are doing social review, not safety review.
+Lena's review checklist for a monitor predicate change covers the new clause, new tests, reason-code docs, a fuzz case and fail-closed behaviour on a parse error. A reviewer who approves a predicate change without the list has checked the author, not the change.
 
 Lena's checklist is attached to every predicate review.
 
@@ -2061,7 +2061,7 @@ Lena never borrows a denominator from another site's plan, because ABP's techniq
 
 ### Practice note
 
-Caption every dashboard widget with the formula and the plant id. A widget without a formula is decoration and should be removed in review.
+Caption every dashboard widget with the formula and the plant id. A widget on the CNHP dashboard without a formula is decoration and is removed in review.
 
 ### 29.1b Sampling and cohort comparisons
 
@@ -2115,7 +2115,7 @@ Use synthetic hosts and benches only. Capture stdout and config hashes. Any safe
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -2153,11 +2153,11 @@ Lena books ABP's bench range for each lab run on the shared calendar, with the r
 
 ### Practice note
 
-Lab I is run by someone who did not implement the change under test. The recorded pass needs an independent green checklist.
+Lab I for a monitor or allow-list change is run by someone who did not implement it. The recorded pass needs an independent green checklist.
 
 ### 30.1b Golden fixtures and inventory
 
-Keep a sealed directory of synthetic fixtures with known expected decisions. Lab runs must hash-match the fixture set before they count as release evidence. Photograph or export the lab environment inventory into the lab report. It passed on my machine without inventory is not transferable evidence.
+Keep a sealed directory of synthetic fixtures with known expected decisions. A bench run counts as release evidence for the monitor only when its fixtures hash-match the sealed set. Photograph or export the lab environment inventory into the lab report. It passed on my machine without inventory is not transferable evidence.
 
 
 
@@ -2198,7 +2198,7 @@ You will (1) add idempotent finding upserts; (2) enforce schema validation on wr
 
 ### 31.1 Upsert
 
-PUT /findings/{id} with full body; same id twice yields one row. Dedup fingerprints propose ids; humans confirm merges across different root causes.
+The CNHP finding API takes PUT /findings/{id} with the full body, so the same id sent twice yields one row.
 
 At ABP, finding ids come from the client on create and are reused on every retry, so a network failure mid-request cannot create a duplicate. Fingerprints suggest when two findings may be the same problem, but a person confirms any merge, because two findings on PLC-A can share a register and still have different causes. Merges are logged with reasons.
 
@@ -2228,7 +2228,7 @@ Bulk import from scanners must pass the same schema validation as interactive cr
 
 ### 31.1b Partial updates and concurrency
 
-PATCH that allows severity changes without evidence references invites silent downgrades. Prefer full PUT of the validated body, or a restricted PATCH that cannot clear evidence hashes or change status to closed without a re-test pointer. Use ETags so two remediators do not clobber each other.
+PATCH that allows severity changes without evidence references invites silent downgrades. For CNHP findings, prefer a full PUT of the validated body, or a restricted PATCH that cannot clear the hashes of monitor captures. Use ETags so two remediators do not clobber each other.
 
 
 
@@ -2299,15 +2299,15 @@ Lena's work permit at ABP states the maximum request rate for any assessment tra
 
 ### Practice note
 
-When the draft queue grows past a threshold, stop starting new discovery methods and page the lead. Untracked scans while findings cannot be recorded create risk.
+When the monitor's draft-finding queue grows past a threshold, the window lead stops starting new discovery methods and is paged. Untracked scans while findings cannot be recorded create risk.
 
 ### 32.1b Error budgets and health checks
 
-Define error budgets for the deny path separately from best-effort UI budgets. Health-check policy storage and event sink at start of window. Starting a window blind and discovering a broken sink mid-scan is an operations failure this chapter is meant to prevent. A failed health check delays the window start; the checks are never shortened to save time.
+The monitor's deny path gets its own error budget, separate from the best-effort budget of the CNHP dashboard. Health-check policy storage and event sink at start of window. Starting a window blind and discovering a broken sink mid-scan is an operations failure this chapter is meant to prevent. A failed health check delays the window start; the checks are never shortened to save time.
 
 
 
-Chaos experiments run only on synthetic ranges, never during a client's signed window. Record experiment ids separately from window ids so metrics do not mix. Publish both deny-path and UI error budgets.
+Chaos experiments run only on synthetic ranges, never during a client's signed window. Record experiment ids separately from window ids so metrics do not mix. Both budgets are published.
 
 ### Field note — queue back-pressure
 
@@ -2342,9 +2342,9 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 ### 33.1 Executable stops
 
-Stop conditions are code: cycle-time canary, process-alarm feed, client kill-switch file, SIS fault input. Humans also call stop; software must not disagree with a human stop.
+Stop conditions are code: cycle-time canary, process-alarm feed, client kill-switch file, SIS fault input.
 
-At ABP, the serial monitor's stop logic reads the cycle-time canary, the process-alarm feed, a kill-switch file and SIS-B's fault input. Any one of them stops assessment activity at once. A human call to stop always wins, and the software has no setting that can override it or delay it until a running job finishes.
+At ABP, the serial monitor's stop logic reads the cycle-time canary, the process-alarm feed, a kill-switch file and SIS-B's fault input. Any one of them stops assessment activity at once. A human call to stop always wins, and the software has no setting that can override it or delay it until a running job finishes. Each stop the monitor logs records which input fired, so the hot review can tell a canary trip from a human call.
 
 ### 33.2 Rollback
 
@@ -2372,7 +2372,7 @@ Pre-write SMS/email templates for stop, resume and rollback. Under stress people
 
 ### 33.1b Secondary contacts and resume authority
 
-Stop conditions that page only one person fail when that person is offline. Maintain primary and secondary contacts with acknowledged handoff. Who may resume after a stop? Name the role in the work permit. The monitor should require a resume token tied to that role and AllowListVersion.
+A stop page that reaches only the window lead fails when the lead is out on the plant floor without signal. Maintain primary and secondary contacts with acknowledged handoff. Who may resume after a stop? Name the role in the work permit. The monitor should require a resume token tied to that role and AllowListVersion.
 
 
 
@@ -2395,7 +2395,7 @@ During firewall cut-over on the L3–L2 conduit, the stop condition reads: "If t
 
 ### Synthesis
 
-Stops you can run, rollbacks you can do, tabletops that update runbooks.
+Stops the monitor can execute, rollbacks the site can perform, tabletops that update CNHP runbooks.
 
 ### Continue studying — chapter 33 of 50
 
@@ -2423,7 +2423,7 @@ Lena tests replay on the bench by feeding a full day's event log through the con
 
 ### 34.3 Contract tests
 
-Fixture JSON for each reason code; consumer tests assert resulting ticket fields. Run in CI on synthetic fixtures.
+Fixture JSON for each monitor reason code, such as register-out-of-range; consumer tests assert the resulting ticket fields. Run in CI on synthetic fixtures.
 
 > **Synthetic case — Ashford Batch Plant.** A replay storm duplicated three tickets until event_id idempotency landed.
 
@@ -2441,7 +2441,7 @@ Poison events (future timestamps, unknown policy versions) go to a dead-letter q
 
 ### 34.1b Dead letters and schema drills
 
-Each dead-lettered event keeps the validation error that rejected it. Operators replay after fixing the producer. Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
+Each dead-lettered event keeps the validation error that rejected it. Operators replay after fixing the producer. Once a term, the CNHP team adds an optional field end-to-end in a bench dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
 
 
 
@@ -2455,7 +2455,7 @@ A producer bug emitted events with timestamps in 2099. Dead-letter quarantine ca
 
 
 
-Include a consumer canary that fails the deploy if poison events are not quarantined within one minute in staging.
+The CNHP consumer canary fails the deploy if poison events from the monitor are not quarantined within one minute in staging.
 
 
 
@@ -2490,7 +2490,7 @@ You will (1) redesign CNHP's coverage UI against under-claim principles; (2) def
 
 ### 35.1 Problem
 
-Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single security score.
+Stakeholders want a big green percentage. Design a CNHP dashboard that shows planned, observed and not-seen techniques and refuses a single security score.
 
 At ABP the plant manager first asked for one percentage that would show whether CNHP was working. Lena's team explained that any single figure would mix observed techniques, conduit drift and SIS-B reachability, which need different owners and different budgets. The resulting screen gives each measure its own line with its denominator visible, and the planned-but-not-seen techniques are listed by id so the manager can ask which ones matter before approving the next phase.
 
@@ -2502,7 +2502,7 @@ Lena's team tested this wording with the plant manager and two shift leads befor
 
 ### 35.3 Review
 
-Reviewers try to force a red/yellow/green risk badge; studio must hold the line with measurement chapter rules.
+Plant reviewers ask for a red/yellow/green badge on each production line; the studio holds to the measurement chapter rules.
 
 > **Synthetic case — Ashford Batch Plant.** Studio II killed the badge; the dashboard lists planned-not-seen techniques by id and SIS reachability separately.
 
@@ -2510,7 +2510,7 @@ Critics in the studio argued that executives would not read a list. Lena's team 
 
 ### 35.4 Errors and limits
 
-Dark patterns (just for executives) reintroduce empty scores — reject in CODEOWNERS for UI.
+A view "just for executives" is how an empty score usually returns, so CNHP dashboard changes need CODEOWNERS approval.
 
 At ABP a later request asked for an executive-only summary view with a single coloured dial. Lena's team declined it during code review, citing the studio decision and the measurement rules, and offered instead a one-page export with the same three numbers and their denominators. Requiring a code owner to approve every change to the dashboard interface means this argument is settled by a named reviewer who knows the history, rather than reopened quietly by whoever edits the screen next.
 
@@ -2520,11 +2520,11 @@ User research task: explain this number to a plant manager without saying we are
 
 ### 35.1b Accessibility and export truth
 
-Under-claiming metrics must still be readable: large type for the fraction, plain language for the caveat, keyboard access to the denominator export. If the UI and the CSV export disagree, the export wins for the report. Build exports first; treat UI as a view.
+CNHP metrics that under-claim must still be readable for the shift supervisor: large type for the fraction, plain language for the caveat, keyboard access to the denominator export. If the dashboard and the CSV export disagree, Lena's report uses the export. Build exports first; treat UI as a view.
 
 
 
-Narrative exports generated from the same query as the UI paste into reports without screenshot ambiguity. Hiding the caveat in a tooltip reintroduces the empty-score problem for anyone who does not hover.
+Narrative exports generated from the same query as the UI paste into reports without screenshot ambiguity. A caveat hidden in a tooltip never appears on the control-room wall screen, where nobody hovers, and the empty score comes back.
 
 Lena checks every release against the export.
 
@@ -2768,7 +2768,7 @@ At ABP the re-test of shared engineering passwords found they were still in use 
 
 ### 38.3 No new methods
 
-Validation uses the method that found the issue, or a weaker read-only check — not a chance to try new attacks.
+Validation inside a CNHP window uses the method that found the issue, or a weaker read-only check such as a passive monitor capture — not a chance to try new attacks.
 
 > **Synthetic case — Ashford Batch Plant.** Re-test of the L4 to L2 rule: reachability now excludes L1-SIS; ticket closed with export hash. A separate finding on shared eng passwords stayed open.
 
@@ -2786,7 +2786,7 @@ Automated re-tests are allow-listed checks with hard timeouts. They never includ
 
 ### 38.1b Evidence of validation and adjudication
 
-Validation tickets link to the original finding, the method used, the timestamp and the hash of the new evidence. Looks good to me without those fields does not close a critical. Disputes escalate to a named adjudicator who compares evidence hashes — they do not re-attack.
+CNHP validation tickets link to the original finding, the method used, the work-permit number, the timestamp and the hash of the new evidence. A supervisor's "looks fine" without those fields does not close a critical finding. Disputes escalate to a named adjudicator who compares evidence hashes — they do not re-attack.
 
 
 
@@ -2857,7 +2857,7 @@ Write a bus-factor note: who can release, who understands permit(), who can rest
 
 ### 39.1b Deprecation and deletion plans
 
-Announce API deprecations with dates; keep dual-run periods. Maintainability includes knowing how to retire a tool: export dossiers, revoke credentials, archive code. Calendar a dependency upgrade month each year so CVE pins do not wait for an emergency.
+Announce API deprecations with dates; keep dual-run periods. Maintainability includes knowing how to retire a tool: export dossiers, revoke credentials, archive code. The CNHP calendar reserves a dependency upgrade month each year, outside the plant's turnaround, so CVE pins do not wait for an emergency.
 
 
 
@@ -2920,7 +2920,7 @@ Kill finding store mid-flow; confirm monitor still denies and drafts queue. Corr
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -2944,7 +2944,7 @@ Lena's Lab II faults also include collector power loss, which raised the visibil
 
 ### 40.3 Sign-off
 
-Release candidate checklist signed by implementer and reviewer; safety rows must be green.
+The monitor release candidate checklist is signed by implementer and reviewer; the process-safety rows must be green.
 
 > **Synthetic case — Ashford Batch Plant.** Lab II found coverage updated before ticket create on retry — fixed ordering with an outbox.
 
@@ -2962,11 +2962,11 @@ Malicious fixture pack: wrong hashes, reordered events, future timestamps, flat 
 
 ### 40.1b Observability and parity
 
-Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug on in window builds can leak secrets. Lab environment mirrors production tool versions and policy signing keys (test keys). A flaky Lab II is a blocker, not a retry-until-green ritual.
+Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug on in window builds can leak secrets. Lab environment mirrors production tool versions and policy signing keys (test keys). A Lab II run that passes only on retry blocks the monitor release; it is not rerun until green.
 
 
 
-A fault script that cannot run is recorded as a failed row, not skipped. Fault-injection scripts are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
+A fault script that cannot run is recorded as a failed row, not skipped. The scripts that inject faults on the bench, such as a dropped policy file, are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
 
 Lena's sign-off checks for parity gaps.
 
@@ -2976,7 +2976,7 @@ Lab II's malicious pack included a flat graph labelled as zoned. The reachabilit
 
 
 
-Seal Lab II logs with the same manifest tool the dossier uses so students practise one hashing workflow.
+Lena seals the Lab II logs with the same manifest tool as the CNHP dossier, so the bench and the plant use one hashing workflow.
 
 
 
@@ -3023,7 +3023,7 @@ In CNHP the allow-list is cached in memory with its version number, and every pu
 
 ### 41.3 Safety veto
 
-Any optimization that skips deny-list checks, shortens audit fields or fails open is rejected regardless of speedup.
+Any monitor optimization that skips allow-list checks, shortens audit fields or fails open is rejected, whatever cycle time it saves.
 
 ```python
 """Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
@@ -3118,7 +3118,7 @@ Lena registered her measures, baseline lengths and threshold before analysing AB
 
 ### 42.3 Disclosure
 
-If research accidentally finds a live issue, follow responsible disclosure — not a class blog.
+If research accidentally finds a live issue in a PLC or a vendor tool, follow coordinated disclosure with the vendor and the plant — not a class blog.
 
 > **Synthetic case — Ashford Batch Plant.** Lena's applied study measured how many days of baseline a new-conduit detector needs before its false alerts fall below one per week (§42.5); pre-registered, synthetic+anonymized.
 
@@ -3132,15 +3132,15 @@ Lena's research at ABP used traffic between devices, not records of what individ
 
 ### Practice note
 
-Preregistered analysis code lives in the repo with a freeze commit before data collection. Amending after peeking requires a logged amendment.
+Lena's preregistered analysis code lives in the CNHP repo with a freeze commit made before the first pilot capture. Amending after peeking requires a logged amendment.
 
 ### 42.1b Data sharing and negative results
 
-Even synthetic-plus-anonymized operational metrics need a written agreement with the host for student theses. Publishable applied research includes negative results. Hiding negatives biases the next cohort toward empty confidence.
+Even synthetic-plus-anonymized metrics from a plant's monitor need a written agreement with the host before they enter a student thesis. Publishable applied research includes negative results. Hiding negatives biases the next cohort toward empty confidence.
 
 
 
-State the dual-use boundary in the thesis ethics section with a concrete refusal example. Negative results get the same figure quality as positive ones in the thesis template.
+The thesis ethics section states the dual-use boundary with a concrete refusal, such as declining to publish the register addresses an attacker would need on PLC-A.
 
 Lena's host agreement for ABP's data was signed before analysis, and her thesis reports the baseline lengths that never reached the threshold with full figures.
 
@@ -3185,7 +3185,7 @@ You will (1) adapt CNHP engineering to a host organization's constraints; (2) wr
 
 ### 43.1 Placement
 
-In industry or public service, work-permit templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
+In industry or public service, work-permit templates, residency and procurement differ.
 
 On her placement at a contract manufacturer, Lena found different permit forms, a different procurement process and stricter rules on where data could be stored than at ABP. She adapted her methods to the host's process instead of importing ABP's forms. What did not change was the core of her practice: tools that stop safely when unsure, measurements with their denominators, and tests run only within the scope the host had approved in writing.
 
@@ -3205,7 +3205,7 @@ In her placement memo, Lena wrote the same laptop finding three ways: for proces
 
 ### 43.4 Errors and limits
 
-"I can't tell you what I did" is not a practice report — use synthetic reconstruction agreed with the host.
+"I can't tell you what I did" is not a practice report, even when the host plant's network details are confidential.
 
 Lena's placement report could not include the host's real network details, so she agreed a synthetic reconstruction with her host mentor that kept the structure of the finding but replaced every identifying detail. Her constraints appendix stated what she had not been allowed to examine. This gave the university something to assess without exposing the host, and it is the standard for any placement where the work itself cannot be described directly.
 
@@ -3260,7 +3260,7 @@ You will (1) propose a capstone that ships a measurable CNHP improvement; (2) de
 
 ### 44.1 Proposal
 
-Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
+A CNHP capstone proposal gives the problem, users, requirements (process safety first), architecture sketch, milestones, verification lab plan and ethics paragraph. Capstones that need exploit work are rejected.
 
 Lena's Capstone I proposal was the policy compiler described in the worked example below. Its requirements put safety first: SIS-B must stay unreachable from every routed zone. Her milestones, lab plan and ethics paragraph were reviewed before coding began. The project needed no exploit work, because its job was to prove that rules match the design, not to break into anything on the plant.
 
@@ -3272,7 +3272,7 @@ Lena's non-goals were written into her proposal and signed by her supervisor: no
 
 ### 44.3 Milestone 1
 
-Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤30s with a test.
+Something demoable on synthetic plant data in week 3: e.g. the monitor honouring the kill-switch file in ≤30 s, with a test.
 
 > **Synthetic case — Ashford Batch Plant.** Capstone I proposals that mentioned auto-pwn were returned; signed allow-list distribution with fail-closed advanced.
 
@@ -3290,7 +3290,7 @@ Proposals that cannot name a Lab I row for each Must requirement return to draft
 
 ### 44.1b Success metrics and checkpoints
 
-Define two metrics you will show at defense (e.g. deny-all time, percent of merges with AUTH tickets). Capstone I has mandatory checkpoints: proposal accepted, milestone 1 demo, mid ethics check. Missing a checkpoint freezes coding until recovered.
+Define two metrics you will show at defense (e.g. time for the monitor to deny all writes when its policy is missing, percent of allow-list merges that cite a work permit). Capstone I has three mandatory checkpoints on the CNHP calendar: proposal accepted, milestone 1 demo on the bench, mid ethics check. Missing a checkpoint freezes coding until recovered.
 
 
 
@@ -3351,7 +3351,7 @@ Lena's checklist at ABP has one line for each item, and each line links to the r
 
 ### 45.3 Dissent
 
-If one reviewer disagrees, record the dissent in the ADR even if overruled — future incidents need that trail.
+If one reviewer disagrees with a conduit or allow-list design, the dissent goes into the ADR even if overruled — a future plant incident review needs that trail.
 
 > **Synthetic case — Ashford Batch Plant.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
@@ -3365,11 +3365,11 @@ At ABP a small change to the alert format was once merged before review because 
 
 ### Practice note
 
-Reviewers run the critical tests locally on synthetic fixtures before the meeting — not only read the diff.
+Reviewers run the monitor's critical tests on the synthetic plant fixtures before the meeting — not only read the diff.
 
 ### 45.1b External reviewers and SLOs
 
-Once per term, invite an engineer from outside the squad to review a safety-critical PR. Reviews complete within an agreed number of business days or the change expires from the merge queue (not auto-merges). Forbid Friday-evening merges before windows unless a safety hotfix with Lab I evidence.
+Once per term, a control engineer from outside the CNHP squad reviews a safety-critical PR. Reviews complete within an agreed number of business days or the change expires from the merge queue (not auto-merges). Forbid Friday-evening merges before windows unless a safety hotfix with Lab I evidence.
 
 
 
@@ -3424,7 +3424,7 @@ Lena's capstone froze at v1.0 of her compiler. After the freeze, she fixed only 
 
 ### 46.2 Verify
 
-Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
+The capstone counts as verified only after it passes Lab II (Chapter 40) on synthetic plant fixtures.
 
 Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The clean machine had no cached build artefacts, so every result came from the tagged source. The checklist was signed by Lena and her reviewer, and the report listed every skipped test with its reason. Lena kept the clean-machine build log beside the v1.0 tag, and it records the stalled vector-loader run as well as the passing one.
 
@@ -3458,7 +3458,7 @@ That team's project was separate from Lena's capstone, the compiler. Her documen
 
 ### 46.4 Errors and limits
 
-Demo magic on a laptop with hand-waved fail-closed does not pass.
+A laptop demo that only describes fail-closed behaviour, without removing the policy on the bench, does not pass.
 
 At Lena's capstone review, a classmate's demo showed a policy tool working on a laptop but could not show what happened when the policy file was missing. The examiners marked the fail-closed requirement as not met. Lena's demo deleted the policy on the bench and showed the denial with its reason code, then restored it, because claims about safe failure must be shown under failure rather than described while everything is working.
 
@@ -3529,7 +3529,7 @@ At ABP the trial measured 45 seconds to deny all writes after the allow-list was
 
 ### 47.3 Corrective actions
 
-Each miss becomes a ticket with owner and due date — not only a lesson-learned slide.
+Each miss in a CNHP drill becomes a ticket with owner and due date — not only a lesson-learned slide.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -3580,13 +3580,11 @@ Celebrate tickets filed — they are the output. A trial with zero tickets usual
 
 ### 47.1b Blameless correction and recurrence
 
-Write corrective tickets against components and runbooks, not against individuals who followed a bad procedure. After a fix, re-run the inject that found the gap. Close the ticket only when the measure meets the SLO twice. Observers rotate so nobody is permanently exempt.
+Corrective tickets name the monitor, conduit or runbook at fault, not the operator who followed a bad procedure. After a fix, re-run the inject that found the gap. Close the ticket only when the measure meets the SLO twice. Observers rotate so nobody is permanently exempt. A ticket that names a person instead of a component goes back to its author for rewording before it is accepted.
 
 
 
 Observers note timings and deviations — they do not fix things live. Their timings are checked against the logs before the scoreboard is photographed. Scoreboard photos go into the dossier.
-
-ABP's tickets follow this rule. Nobody was blamed.
 
 ### Field note — zero-ticket smell
 
@@ -3641,7 +3639,7 @@ At ABP, working data from each window is kept for 90 days, and sealed evidence f
 
 ### 48.3 Exclusions
 
-No payloads, no live credentials, no proprietary batch genealogy. If it cannot be shared with counsel safely, it does not belong.
+No payloads, no live credentials, no proprietary batch genealogy. An item that could not be shown safely to ABP's counsel stays out of the dossier.
 
 > **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
@@ -3659,11 +3657,11 @@ Automate dossier builds from tags. Manual dragging of files is how findings get 
 
 ### 48.1b Reader checklist and redaction log
 
-Include a one-page how to verify this dossier at the top. When redacting, keep a redaction log (what, why, actor) inside the sealed store. Hand the dossier to someone outside the project for a re-hash drill. Manifest generation fails the build if any path matches a forbidden-name regex.
+Include a one-page how to verify this dossier at the top. When Lena redacts a capture or a diagram, the redaction log (what, why, actor) stays inside the sealed store. Someone outside CNHP re-hashes the dossier as a drill. Manifest generation fails the build if any path matches a forbidden-name regex, such as one for PLC project files or password exports.
 
 
 
-Third-party readability: if outsiders cannot find the manifest or the work-permit version, the dossier fails. Test restore from dossier on a clean machine once per term as a graded exercise.
+Third-party readability: if outsiders cannot find the manifest or the work-permit version, the dossier fails. Once per term, restoring the CNHP dossier on a clean machine is run as a graded exercise.
 
 Lena's dossier passes this test each term.
 
@@ -3791,7 +3789,7 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 ### 50.1 Talk structure
 
-Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
+Claim; demo on the synthetic plant model; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
 Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and then gave her reflection on one failure. She closed with her limitations slide and one sentence on what the evidence supports: rules equivalent to the design for nine of nine conduits, and three errors that manual review missed. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
 
@@ -3803,7 +3801,7 @@ Lena practised each question with her supervisor, answering with a pointer to an
 
 ### 50.3 Reflection
 
-End with one design mistake and the fix — examiners trust engineers who saw their own failures.
+End with one design mistake in the monitor or the policy compiler and its fix — examiners trust engineers who saw their own failures.
 
 ```python
 # Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
@@ -3840,15 +3838,15 @@ Lena's defense mentioned no product names and recommended no tools. When an exam
 
 ### Practice note
 
-Twenty minutes means rehearsal with a timer. Cutting the limits slide to save time is the wrong cut — examiners need your honesty more than a fourth demo click.
+Twenty minutes means rehearsal with a timer. Cutting the limits slide to fit one more bench demo is the wrong cut — examiners need your honesty more than a fourth demo click.
 
 ### 50.1b Examiner packet and aftercare
 
-Provide examiners the claim sentence, Lab II summary, failure-trial measure and ethics paragraph one day ahead. After defense, schedule a maintenance review in ninety days: owning squad, pins, corrective tickets. Archive the talk deck next to the dossier with matching hashes.
+The examiner packet holds the claim sentence, the Lab II summary for the compiler, the failure-trial measure and the ethics paragraph, and goes out one day ahead. After defense, schedule a maintenance review in ninety days: owning squad, pins, corrective tickets. Archive the talk deck next to the dossier with matching hashes.
 
 
 
-Keep a parking lot for examiner ideas and process it within a week. Thank operators who ran synthetic trials; defense without their logs is storytelling. The final chapter of the degree is the first chapter of stewardship.
+Keep a parking lot for examiner ideas and process it within a week. Thank the ABP operators who ran the synthetic trials; a defense without their logs is storytelling. The compiler and the monitor stay in service at ABP after the degree ends, so the defense also starts the work of maintaining them.
 
 Lena sent her packet a day early.
 
