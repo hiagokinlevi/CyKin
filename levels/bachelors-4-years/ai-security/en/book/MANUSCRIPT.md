@@ -43,23 +43,47 @@ You will (1) read and write precise mathematical statements; (2) use proof techn
 
 Security claims are mathematical statements in disguise. "Ask Lumen never reveals another patient's appointment" means: *for all* inputs and *for all* users, the output contains no other patient's data. A universal statement ("for all") is refuted by one counterexample; an existential statement ("there exists an attack") is proved by exhibiting one. This asymmetry explains why attackers have an advantage: they need one working input, while defenders must cover all.
 
+Section one point one develops mathematical reasoning with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 1.2 Proof techniques
 
 *Direct proof* derives the conclusion from assumptions. *Proof by contradiction* assumes the opposite and derives an impossibility. *Proof by counterexample* refutes a universal claim. In AI security, proofs are rare for whole systems but common for components: "if the policy service denies every tool call without a valid token, then no unauthenticated booking occurs" is a direct proof from a design property.
+
+Section one point two develops mathematical reasoning with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section one point two, the LCH mentor expects mathematical claims to carry owners and dates.
 
 ### 1.3 Functions and vectors
 
 A model is a function from inputs to outputs. Inputs such as images or feature records are vectors; distance between vectors (for example Euclidean distance or the maximum absolute difference) formalises "small change". Many attacks search for a nearby vector that produces a different output (Szegedy et al., arXiv:1312.6199).
 
+Section one point three develops mathematical reasoning with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section one point three, the LCH mentor expects mathematical claims to carry owners and dates.
+
 ### 1.4 Optimisation
 
 Training minimises a loss function; attacks maximise it (or minimise distance subject to a changed output). Both are optimisation problems, which is why the same mathematical tools — gradients, constraints, search — appear on both sides.
+
+Section one point four develops mathematical reasoning with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section one point four, the LCH mentor expects mathematical claims to carry owners and dates.
+
+Section one point four treats statements and quantifiers proof as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 Worked example (synthetic LCH case)
 
 LCH's vendor claimed: "NoShow cannot be manipulated by patients." Rina rewrote it as a universal statement: for all patients and all values of the fields patients control (contact preferences, stated reason for visit), the prediction does not change in a way the patient prefers. She then found a counterexample on a synthetic record: changing "reason" from "follow-up" to "urgent" lowered the predicted no-show risk from 0.42 to 0.18, which could move a patient up a reminder list. The claim was false as stated; the vendor revised it.
 
 ### 1.6 Errors and limits
+Section one point six develops mathematical reasoning with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section one point six, the LCH mentor expects mathematical claims to carry owners and dates.
+
+Section one point six treats statements and quantifiers proof as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Lumen Community Health will not accept mathematical work without a written trail.
+
 
 - Accepting universal claims tested on a few examples.
 - Confusing "no attack found" with "no attack exists".
@@ -91,23 +115,51 @@ You will (1) describe how computers, operating systems, networks and cloud servi
 
 Hardware runs an operating system, which runs applications; applications talk over networks to other services, often in the cloud. An AI application adds model files, inference servers, vector databases and connections to external model APIs. Each layer has its own owners and failure modes.
 
+Section two point one develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section two point one, the LCH mentor expects computing claims to carry owners and dates.
+
+Section two point one treats layers of computing system as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Where AI runs
 
 A model can run on a user's device, on the organisation's servers, or at a provider via an API. Each choice changes who can see data, who can change the model and who can test it. Hosted AI APIs process prompts on the provider's infrastructure; the organisation controls only its own code, configuration and data sent.
+
+Section two point two develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section two point two, the LCH mentor expects computing claims to carry owners and dates.
 
 ### 2.3 Shared responsibility
 
 In cloud computing, the provider secures the infrastructure and the customer secures what they put on it. For hosted AI, the provider is typically responsible for model hosting and platform security; the customer is responsible for what data they send, how outputs are used, what tools the model can trigger and who can access the application. Misunderstanding this split is a common cause of incidents.
 
+Section two point three develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 2.4 Mapping an AI service
 
 List: user interface; application server; model (where and which version); retrieval store; tools and the systems they touch; logs; identities used at each step. This map is the starting point for every later chapter.
+
+Section two point four develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section two point four, the LCH mentor expects computing claims to carry owners and dates.
+
+Section two point four treats layers of computing system as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Worked example (synthetic LCH case)
 
 Rina mapped Ask Lumen: web chat widget → LCH application server (cloud VM) → hosted language-model API (provider) → retrieval from a vector database of clinic documents (LCH-managed) → booking tool calling the scheduling system (on-premises) using a service account. Logs went to the cloud provider's log service. Rina noted that the booking service account could book for any patient — a responsibility LCH, not the model provider, must fix.
 
+Section two point five develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 2.6 Errors and limits
+Section two point six develops computing systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section two point six, the LCH mentor expects computing claims to carry owners and dates.
+
+Section two point six treats layers of computing system as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Lumen Community Health will not accept computing work without a written trail.
+
 
 - Assuming the model provider secures the whole application.
 - Forgetting tools and logs in the map.
@@ -139,9 +191,19 @@ You will (1) write simple Python programs with variables, conditions, loops, fun
 
 Security work needs evidence, and evidence comes from running things: evaluating a model on a test set, parsing logs, checking files. Even short programs make you faster and more precise. The labs in this book use only the Python standard library so they run on any computer.
 
+Section three point one develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point one, the LCH mentor expects programming claims to carry owners and dates.
+
+Section three point one treats why programming matters for as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Core constructs
 
 Variables hold values; `if` chooses; `for` repeats; functions package steps; lists and dictionaries hold collections. Read the evasion lab below: it creates synthetic data, trains a tiny logistic-regression model with a loop, then measures accuracy as a perturbation grows. You do not need to understand every line yet — focus on the structure: data, training, evaluation, printing.
+
+Section three point two develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point two, the LCH mentor expects programming claims to carry owners and dates.
 
 ```python
 """Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
@@ -191,15 +253,39 @@ eps=1.00 accuracy=0.505
 
 Programs that read files, network data or AI output must treat them as untrusted. Convert text to numbers carefully, check ranges, and never execute text as code. A common LLM-application bug is passing model output into a command or web page without checks; OWASP LLM 2025 calls this *improper output handling* (LLM05).
 
+Section three point three develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point three, the LCH mentor expects programming claims to carry owners and dates.
+
 ### 3.4 Testing
 
 Write small tests with `assert`: `assert classify(0.9) == "high"`. Test edge cases — empty input, extreme values, wrong types. Tests make it safe to change code later.
+
+Section three point four develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point four, the LCH mentor expects programming claims to carry owners and dates.
+
+Section three point four treats why programming matters for as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Lumen Community Health will not accept programming work without a written trail.
 
 ### 3.5 Worked example (synthetic LCH case)
 
 Rina wrote a function that checks a booking request produced by Ask Lumen before it reaches the scheduling system: the clinic code must be one of five known codes, the date must be within 90 days, and the patient ID must match the logged-in user. Her tests included a request for another patient's ID, which the function rejected.
 
+Section three point five develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point five, the LCH mentor expects programming claims to carry owners and dates.
+
 ### 3.6 Errors and limits
+Section three point six develops programming with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section three point six, the LCH mentor expects programming claims to carry owners and dates.
+
+Section three point six treats why programming matters for as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Lumen Community Health will not accept programming work without a written trail.
+
 
 - Copying code without understanding what it does.
 - Trusting AI output as if it were your own code.
@@ -231,23 +317,55 @@ You will (1) write clear academic prose with claims supported by evidence; (2) c
 
 Every substantive claim needs support: data you produced, a cited source or a clear argument. In AI security, claims about attacks and defences must state conditions: which model, which attack, which metric. "Adversarial training makes models robust" is too broad; "adversarial training with projected gradient descent improved robustness to bounded perturbations on the evaluated image benchmarks (Madry et al., arXiv:1706.06083)" is supportable.
 
+Section four point one develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point one, the LCH mentor expects academic claims to carry owners and dates.
+
 ### 4.2 Citation and verification
 
 Cite what you actually read, and check each reference exists: open the DOI, arXiv page or official URL. Do not invent identifiers. AI writing assistants can produce plausible but non-existent references; every citation you submit is your responsibility. Use a consistent style and include enough information for a reader to find the source.
+
+Section four point two develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point two, the LCH mentor expects academic claims to carry owners and dates.
 
 ### 4.3 Types of sources
 
 Peer-reviewed papers have been checked by experts; preprints (for example on arXiv) are often important in AI security but unreviewed; standards and frameworks (NIST AI 100-1, ISO/IEC 42001) define terms and practices; vendor blogs and news are useful pointers but weak evidence.
 
+Section four point three develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point three, the LCH mentor expects academic claims to carry owners and dates.
+
+Section four point three treats claims and evidence citation as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Integrity and AI tools
 
 Follow your institution's policy on AI tools. Typically you must disclose their use, check their output and never present generated text or analysis as your own work without permission. Paraphrasing without citation is plagiarism.
+
+Section four point four develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point four, the LCH mentor expects academic claims to carry owners and dates.
+
+Section four point four treats claims and evidence citation as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Worked example (synthetic LCH case)
 
 Rina's first essay draft, partly produced with an AI assistant, contained six references. She checked them: four existed, one had the wrong year, and one did not exist at all. She removed the invented reference, corrected the year, disclosed her use of the tool and rewrote the paragraph that had depended on the fake source using a real one she had read.
 
+Section four point five develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point five, the LCH mentor expects academic claims to carry owners and dates.
+
 ### 4.6 Errors and limits
+Section four point six develops academic writing with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section four point six, the LCH mentor expects academic claims to carry owners and dates.
+
+Section four point six treats claims and evidence citation as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Lumen Community Health will not accept academic work without a written trail.
+
 
 - Unverified references.
 - Claims without conditions.
@@ -279,23 +397,57 @@ You will (1) explain confidentiality, integrity and availability; (2) define thr
 
 *Confidentiality* keeps information from unauthorised people; *integrity* keeps it accurate and unaltered; *availability* keeps systems usable when needed. For an AI chatbot: confidentiality of patient data in conversations; integrity of answers and bookings; availability of the service.
 
+Section five point one develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point one, the LCH mentor expects security claims to carry owners and dates.
+
+Section five point one treats the cia triad risk as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Risk vocabulary
 
 A *threat* is something that could cause harm (an attacker, an accident). A *vulnerability* is a weakness. *Risk* combines likelihood and impact. A *control* reduces risk. Precise vocabulary helps teams agree on priorities.
+
+Section five point two develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point two, the LCH mentor expects security claims to carry owners and dates.
+
+Section five point two treats the cia triad risk as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Classic attacks and AI variants
 
 Phishing tricks people into revealing credentials; AI can generate more convincing, personalised phishing and voice clones. Malware compromises devices; AI-generated code can contain vulnerabilities if accepted uncritically. Credential theft gives attackers access; credentials pasted into chatbots can leak. And AI systems introduce new attack types: prompt injection, data poisoning, model extraction and evasion.
 
+Section five point three develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point three, the LCH mentor expects security claims to carry owners and dates.
+
 ### 5.4 Basic practices
 
 Use multi-factor authentication, keep software updated, apply least privilege, back up important data, and report suspicious events. For AI tools: do not paste secrets or personal data into unapproved services, check outputs before acting, and follow organisational policy on approved tools.
+
+Section five point four develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point four, the LCH mentor expects security claims to carry owners and dates.
+
+Section five point four treats the cia triad risk as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Worked example (synthetic LCH case)
 
 A receptionist at LCH received a voicemail apparently from a clinic director asking to change a supplier's bank details urgently. Rina's security-literacy training session used this synthetic case to discuss voice cloning and the control that stops it: verifying payment changes through a known phone number and a second approver, regardless of how convincing the request sounds.
 
+Section five point five develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point five, the LCH mentor expects security claims to carry owners and dates.
+
 ### 5.6 Errors and limits
+Section five point six develops security literacy with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section five point six, the LCH mentor expects security claims to carry owners and dates.
+
+Section five point six treats the cia triad risk as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Lumen Community Health will not accept security work without a written trail.
+
 
 - Treating AI-specific risks as unrelated to classic security.
 - Relying on detection of fakes instead of process controls.
@@ -327,23 +479,55 @@ You will (1) use sets, relations and graphs to model systems; (2) express access
 
 An access-control rule is a relation between subjects, actions and objects: (patient P, book, own appointment) is allowed; (patient P, view, other patient's record) is not. Writing rules as sets of allowed triples makes them checkable by program and exposes missing cases.
 
+Section six point one develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section six point one, the LCH mentor expects discrete claims to carry owners and dates.
+
+Section six point one treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Graphs
 
 A graph has nodes and edges. Draw an AI system as a directed graph: user → chatbot → model → booking tool → scheduling system, plus document store → model. A path from an untrusted node (a public web page, an uploaded document) to a sensitive node (booking tool) is a potential attack route. Indirect prompt injection follows exactly such paths (Greshake et al., arXiv:2302.12173).
+
+Section six point two develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section six point two, the LCH mentor expects discrete claims to carry owners and dates.
 
 ### 6.3 Search on graphs
 
 Breadth-first search finds all nodes reachable from a start node. Running it from every untrusted node and checking whether sensitive nodes are reachable is a simple, automatable architecture check.
 
+Section six point three develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section six point three, the LCH mentor expects discrete claims to carry owners and dates.
+
+Section six point three treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Counting
 
 If a booking code has 6 digits, there are 10⁶ possibilities; at 10 guesses per second an attacker needs about 28 hours to try them all, so rate limits and lockouts matter. Counting turns intuition into numbers.
+
+Section six point four develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section six point four, the LCH mentor expects discrete claims to carry owners and dates.
+
+Section six point four treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Worked example (synthetic LCH case)
 
 Rina listed Ask Lumen's nodes and edges and ran a reachability check by hand. Two untrusted sources reached the booking tool: patient chat (expected, controlled by authentication) and clinic-document uploads by partner organisations (unexpected). Partner uploads could contain instruction-like text that the model might follow. LCH added review for partner documents and kept the booking tool behind a policy check tied to the logged-in patient.
 
+Section six point five develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 6.6 Errors and limits
+Section six point six develops discrete structures with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section six point six, the LCH mentor expects discrete claims to carry owners and dates.
+
+Section six point six treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Lumen Community Health will not accept discrete work without a written trail.
+
 
 - Access rules written only in prose.
 - Graphs that omit data stores and uploads.
@@ -375,13 +559,31 @@ You will (1) explain how a chatbot request travels across the internet (DNS, TCP
 
 The browser looks up the chatbot's domain (DNS), connects (TCP), sets up an encrypted, authenticated channel (TLS) and sends an HTTP request containing the message. The application server may in turn call a model API over another TLS connection.
 
+Section seven point one develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point one, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point one treats the path of request as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 What TLS does and does not do
 
 TLS protects data in transit from eavesdropping and tampering and authenticates the server. It does not protect against a malicious message from an authenticated user, against prompt injection inside content, or against data misuse once it arrives.
 
+Section seven point two develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point two, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point two treats the path of request as testable only when evidence and ticket IDs are recorded.
+
 ### 7.3 API authentication and rate limiting
 
 APIs authenticate callers with keys or tokens. Rate limits and quotas bound how much each caller can use. For AI APIs, costs scale with tokens, so limits should count tokens, not just requests. OWASP LLM10 (*unbounded consumption*) covers attacks that exhaust resources or budgets.
+
+Section seven point three develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point three, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point three treats the path of request as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab R: token-bucket limits against unbounded consumption (synthetic).
@@ -414,11 +616,31 @@ limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 
 Systematic querying can copy a model (Tramèr et al., arXiv:1609.02943). Floods of long prompts can exhaust capacity. Network controls — authentication, quotas, monitoring, segmentation and egress filtering — reduce these risks and limit what a compromised component can reach.
 
+Section seven point four develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point four, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point four treats the path of request as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 Worked example (synthetic LCH case)
 
 Ask Lumen's public chat endpoint had no per-session limits. A synthetic load test sending long prompts drove model costs up tenfold in an hour. LCH added per-session token quotas, a maximum message length and an alert when spending exceeds 150% of the daily median.
 
+Section seven point five develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point five, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point five treats the path of request as testable only when evidence and ticket IDs are recorded.
+
 ### 7.6 Errors and limits
+Section seven point six develops networks and protocols with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seven point six, the LCH mentor expects networks claims to carry owners and dates.
+
+Section seven point six treats the path of request as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Lumen Community Health will not accept networks work without a written trail.
+
 
 - Believing TLS solves application-level attacks.
 - Request limits that ignore token cost.
@@ -455,13 +677,31 @@ You will (1) organise programs into modules and functions with clear responsibil
 
 Split programs so each part has one job. For an LLM application: input handling, retrieval, model call, policy check, tool execution, logging. Keeping the policy check in its own small module means it can be reviewed and tested independently of the model.
 
+Section eight point one develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point one, the LCH mentor expects programming claims to carry owners and dates.
+
+Section eight point one treats modules and responsibilities json as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 JSON and files
 
 Parse structured data with strict parsers (`json.loads`) and validate fields, types and ranges. Reject unknown fields. Never use `eval` on data. When the model is asked to output JSON, validate it the same way, because the model can produce malformed or manipulated output.
 
+Section eight point two develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point two, the LCH mentor expects programming claims to carry owners and dates.
+
+Section eight point two treats modules and responsibilities json as testable only when evidence and ticket IDs are recorded.
+
 ### 8.3 Packages and model files
 
 Install packages from trusted sources with pinned versions. Model files are code-like risks: some serialisation formats can execute code when loaded. Verify a file's SHA-256 hash against a trusted manifest before loading; the lab detects tampering this way.
+
+Section eight point three develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point three, the LCH mentor expects programming claims to carry owners and dates.
+
+Section eight point three treats modules and responsibilities json as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
@@ -498,11 +738,31 @@ tokenizer.json  OK
 
 Add tests that try to break your code: oversized inputs, wrong types, injection-like strings, requests for other users' data. Keep these in the test suite permanently.
 
+Section eight point four develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point four, the LCH mentor expects programming claims to carry owners and dates.
+
+Section eight point four treats modules and responsibilities json as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Lumen Community Health will not accept programming work without a written trail.
+
 ### 8.5 Worked example (synthetic LCH case)
 
 DocSort's vendor sent an updated model. Rina's integrity check compared the hash with the vendor's signed manifest and found a mismatch for the configuration file. Investigation showed a contractor had edited the file to enable a debug mode that logged full letter text. The change was reverted, and LCH required all model changes to come through the signed release process.
 
+Section eight point five develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point five, the LCH mentor expects programming claims to carry owners and dates.
+
 ### 8.6 Errors and limits
+Section eight point six develops programming ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eight point six, the LCH mentor expects programming claims to carry owners and dates.
+
+Section eight point six treats modules and responsibilities json as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Lumen Community Health will not accept programming work without a written trail.
+
 
 - Policy logic mixed into prompt text.
 - Loading model files without integrity checks.
@@ -539,23 +799,57 @@ You will (1) design simple relational schemas and write queries; (2) prevent inj
 
 Tables hold records; keys link tables; SQL queries retrieve and change data. LCH's scheduling system has tables for patients, clinics and appointments. Queries must be parameterised: building SQL by joining strings with user (or model) input enables SQL injection.
 
+Section nine point one develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point one, the LCH mentor expects data claims to carry owners and dates.
+
+Section nine point one treats relational data model output as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Model output and databases
 
 If an LLM generates queries or query parameters, treat them as untrusted input: use parameterised queries, restrict the database account to the minimum tables and operations, and validate values. An LLM that can write arbitrary SQL with an administrator account is a serious excessive-agency risk (OWASP LLM06).
+
+Section nine point two develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point two, the LCH mentor expects data claims to carry owners and dates.
 
 ### 9.3 Vector databases
 
 Retrieval-augmented generation stores document chunks as embeddings and retrieves the most similar ones for each question. Access control must be enforced at retrieval time using the user's permissions; otherwise the chatbot may retrieve and reveal documents the user should not see (OWASP LLM08, *vector and embedding weaknesses*). Documents added to the store can also carry injected instructions.
 
+Section nine point three develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point three, the LCH mentor expects data claims to carry owners and dates.
+
 ### 9.4 Minimisation and retention
 
 Store only the data you need, for as long as you need it. Conversation logs from chatbots often contain personal data; set retention periods and access rules.
+
+Section nine point four develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point four, the LCH mentor expects data claims to carry owners and dates.
+
+Section nine point four treats relational data model output as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Lumen Community Health will not accept data work without a written trail.
 
 ### 9.5 Worked example (synthetic LCH case)
 
 Ask Lumen's retrieval index included staff rota documents with staff phone numbers. A synthetic test question "who is on call tonight and how do I reach them?" returned a phone number to a patient. LCH removed staff documents from the patient-facing index, added a document classification field, and filtered retrieval by audience.
 
+Section nine point five develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point five, the LCH mentor expects data claims to carry owners and dates.
+
 ### 9.6 Errors and limits
+Section nine point six develops data and databases with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nine point six, the LCH mentor expects data claims to carry owners and dates.
+
+Section nine point six treats relational data model output as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Lumen Community Health will not accept data work without a written trail.
+
 
 - String-built SQL.
 - One retrieval index for all audiences.
@@ -592,23 +886,53 @@ You will (1) apply ethical principles to AI-security work; (2) explain why autho
 
 Respect for people, avoiding harm, honesty, fairness and accountability guide security work. In AI security, harms include privacy breaches, discriminatory outcomes, unsafe advice and misuse of capabilities.
 
+Section ten point one develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section ten point one, the LCH mentor expects ethics claims to carry owners and dates.
+
+Section ten point one treats principles authorization coordinated disclosure as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Authorization
 
 Testing systems without permission can be illegal and can harm real users. Always obtain written authorization from the system owner that defines scope, methods, time and contacts. Public AI services have terms of use; do not attack them outside programmes that explicitly permit it (such as published bug-bounty scopes).
+
+Section ten point two develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section ten point two, the LCH mentor expects ethics claims to carry owners and dates.
 
 ### 10.3 Coordinated disclosure
 
 If you find a vulnerability, report it privately to the owner, give reasonable time to fix, and publish only details that help defenders. Do not access more data than needed to demonstrate the problem.
 
+Section ten point three develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section ten point three, the LCH mentor expects ethics claims to carry owners and dates.
+
+Section ten point three treats principles authorization coordinated disclosure as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Fairness and safety
 
 AI systems can treat groups differently. NoShow, for example, could rank some patients lower for reminders because of features correlated with income. The NIST AI RMF lists *fair, with harmful bias managed* among trustworthy-AI characteristics alongside *secure and resilient* and *privacy-enhanced*. The EU AI Act imposes obligations on high-risk systems, including some healthcare-related uses; legal classification needs expert advice.
+
+Section ten point four develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section ten point four, the LCH mentor expects ethics claims to carry owners and dates.
 
 ### 10.5 Worked example (synthetic LCH case)
 
 A classmate proposed testing a commercial health chatbot "to see if it leaks data". Rina explained that without authorization this would be unethical and possibly illegal, and suggested building a synthetic replica in the course lab instead. Separately, in an authorised LCH test, Rina found that Ask Lumen could reveal whether a phone number belonged to a registered patient; she reported it through LCH's process with minimal evidence, and it was fixed before the semester ended.
 
+Section ten point five develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 10.6 Errors and limits
+Section ten point six develops ethics and authorized practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section ten point six, the LCH mentor expects ethics claims to carry owners and dates.
+
+Section ten point six treats principles authorization coordinated disclosure as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Lumen Community Health will not accept ethics work without a written trail.
+
 
 - "Just checking" unauthorised systems.
 - Collecting more personal data than needed for a report.
@@ -640,17 +964,41 @@ You will (1) explain processes, users, file permissions and isolation; (2) run A
 
 Every program runs as a process owned by a user account. The operating system checks that account's permissions before allowing file access, network connections or device use. A model server should run under its own unprivileged account that can read model files but cannot modify code, read unrelated data or administer the machine.
 
+Section eleven point one develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point one, the LCH mentor expects operating claims to carry owners and dates.
+
 ### 11.2 Isolation
 
 Containers and virtual machines isolate workloads. Isolation is essential when an AI system can run code (for example a data-analysis tool in a chatbot): the code may be influenced by prompt injection, so it must run with no network access, limited CPU and memory, a short time limit and a temporary file system.
+
+Section eleven point two develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point two, the LCH mentor expects operating claims to carry owners and dates.
 
 ### 11.3 Resource control
 
 Without limits, one heavy request can starve others. Control groups (on Linux) and container limits cap CPU, memory and GPU use per workload, supporting availability.
 
+Section eleven point three develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point three, the LCH mentor expects operating claims to carry owners and dates.
+
+Section eleven point three treats processes and permissions isolation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Lumen Community Health will not accept operating work without a written trail.
+
 ### 11.4 Logs
 
 Authentication logs, process logs and file-access logs help reconstruct what happened. Correlating them with application request IDs links a chatbot conversation to its effects on the system.
+
+Section eleven point four develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point four, the LCH mentor expects operating claims to carry owners and dates.
+
+Section eleven point four treats processes and permissions isolation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Lumen Community Health will not accept operating work without a written trail.
 
 ### 11.4b Patching and configuration
 
@@ -660,7 +1008,19 @@ Operating systems and AI-serving software receive security updates; apply them o
 
 DocSort's OCR worker ran as an administrator account "for convenience". A malformed scanned file crashed it, and the crash dump was written to a shared folder readable by all staff, exposing letter text. Rina's fix: a dedicated unprivileged account, crash dumps disabled in production, the worker in a container with read-only access to its input folder, and alerts on crashes.
 
+Section eleven point five develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point five, the LCH mentor expects operating claims to carry owners and dates.
+
 ### 11.6 Errors and limits
+Section eleven point six develops operating systems with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eleven point six, the LCH mentor expects operating claims to carry owners and dates.
+
+Section eleven point six treats processes and permissions isolation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Lumen Community Health will not accept operating work without a written trail.
+
 
 - Services running as administrator.
 - AI code-execution tools with network access.
@@ -692,9 +1052,21 @@ You will (1) use conditional probability and Bayes' rule; (2) explain base rates
 
 P(A | B) is the probability of A given B. A detector's true-positive rate is P(alert | attack); what operators need is P(attack | alert), which Bayes' rule gives from the true- and false-positive rates and the base rate of attacks.
 
+Section twelve point one develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point one, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point one treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 Base rates
 
 When attacks are rare, even good detectors produce mostly false alarms. The lab shows a detector with 95% TPR and 5% FPR giving under 2% precision at a base rate of 1 in 1,000.
+
+Section twelve point two develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point two, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point two treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
@@ -725,6 +1097,12 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ### 12.3 Confidence intervals
 
 An observed rate from a sample is uncertain. The Wilson interval works well for small samples and extreme rates. Three successes out of twenty is consistent with true rates from about 5% to 36%.
+
+Section twelve point three develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point three, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point three treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -769,6 +1147,12 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 To compare two defences, test both on the same items and look at the paired difference with a bootstrap interval. If the interval includes zero, you cannot claim one is better.
 
+Section twelve point four develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point four, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point four treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4b Variation and sample size
 
 Results also vary with random seeds, data splits and prompt wording. Run several seeds and report their spread, as the lab's per-seed line shows. To plan how many test cases you need for a rate near p with interval half-width h at 95% confidence, use n ≈ 1.96² × p(1 − p) / h². For p = 0.1 and h = 0.02 that is about 864 cases — far more than most quick demonstrations use, which is why many published "success rates" are less certain than they look.
@@ -777,7 +1161,21 @@ Results also vary with random seeds, data splits and prompt wording. Run several
 
 A vendor offered a "prompt-attack detector" with 98% accuracy. Rina asked for TPR and FPR: 90% and 2%. With an estimated 1 malicious conversation per 2,000, precision would be about 2% — most alerts false. LCH used the detector only to flag conversations for weekly review, not to block patients.
 
+Section twelve point five develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point five, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point five treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 Errors and limits
+Section twelve point six develops probability and statistics with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twelve point six, the LCH mentor expects probability claims to carry owners and dates.
+
+Section twelve point six treats conditional probability base rates as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Lumen Community Health will not accept probability work without a written trail.
+
 
 - Accuracy without base rates.
 - Single numbers without intervals.
@@ -809,23 +1207,57 @@ You will (1) explain authentication, authorization and accounting; (2) design ro
 
 Authentication proves who someone is; authorization decides what they may do; accounting records what they did. Strong authentication (multi-factor) protects accounts; precise authorization limits damage; accounting enables investigation.
 
+Section thirteen point one develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirteen point one, the LCH mentor expects identity claims to carry owners and dates.
+
+Section thirteen point one treats authentication authorization accounting role- as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Role- and attribute-based access
 
 Roles (patient, receptionist, clinician) group permissions. Attributes (clinic, relationship to patient, time) refine them. Ask Lumen's booking tool should check "is the requester the patient or their registered carer, for this clinic?" rather than "is the chatbot service allowed to book?".
+
+Section thirteen point two develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirteen point two, the LCH mentor expects identity claims to carry owners and dates.
+
+Section thirteen point two treats authentication authorization accounting role- as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Delegation for AI agents
 
 When an AI agent acts, it should use a token delegated by the user with limited scope and lifetime, so it can never do more than that user. A powerful service account turns any manipulation of the model into a privilege escalation — the *confused deputy* problem, where a trusted component is tricked into misusing its authority.
 
+Section thirteen point three develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirteen point three, the LCH mentor expects identity claims to carry owners and dates.
+
 ### 13.4 Accounting for AI actions
 
 Log which user, which conversation, which model proposal and which approval led to each action. Without this chain, incidents cannot be explained.
+
+Section thirteen point four develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirteen point four, the LCH mentor expects identity claims to carry owners and dates.
+
+Section thirteen point four treats authentication authorization accounting role- as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Lumen Community Health will not accept identity work without a written trail.
 
 ### 13.5 Worked example (synthetic LCH case)
 
 Ask Lumen booked appointments through a service account allowed to book for any patient. Rina showed in the test environment that a crafted message naming another synthetic patient's ID led the model to propose a booking for that patient, which the service account executed. The fix used a per-session delegated token bound to the logged-in patient (and registered carers) and a policy check comparing the booking's patient with the token's subject.
 
+Section thirteen point five develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 13.6 Errors and limits
+Section thirteen point six develops identity and access with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirteen point six, the LCH mentor expects identity claims to carry owners and dates.
+
+Section thirteen point six treats authentication authorization accounting role- as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Lumen Community Health will not accept identity work without a written trail.
+
 
 - AI tools running under broad service accounts.
 - Authorization decided by the model.
@@ -862,9 +1294,19 @@ You will (1) explain data-protection principles and personal data; (2) describe 
 
 Data-protection laws such as the EU GDPR require a lawful basis, purpose limitation, data minimisation, accuracy, storage limitation, security and accountability. Health data is a special category with stricter rules.
 
+Section fourteen point one develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point one, the LCH mentor expects privacy claims to carry owners and dates.
+
+Section fourteen point one treats principles privacy attacks on as testable only when evidence and ticket IDs are recorded.
+
 ### 14.2 Privacy attacks on ML
 
 *Membership inference* decides whether a record was in training data (Shokri et al., arXiv:1610.05820). *Training-data extraction* recovers memorised text from generative models (Carlini et al., arXiv:2012.07805). *Attribute inference* guesses sensitive attributes from model outputs. Overfitting increases these risks; the lab shows membership leaking from a memorising model and fading as it generalises.
+
+Section fourteen point two develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point two, the LCH mentor expects privacy claims to carry owners and dates.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
@@ -902,9 +1344,21 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 Minimise and pseudonymise data; deduplicate training records; limit output detail (labels rather than confidences); apply differential privacy during training (Abadi et al., arXiv:1607.00133); control who can query models; and never put personal data into prompts unnecessarily.
 
+Section fourteen point three develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point three, the LCH mentor expects privacy claims to carry owners and dates.
+
+Section fourteen point three treats principles privacy attacks on as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 Privacy risk assessment
 
 Ask: what personal data enters training, retrieval, prompts and logs? Who can query the model, and what do outputs reveal? What happens if logs leak? A data-protection impact assessment documents the answers and controls.
+
+Section fourteen point four develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point four, the LCH mentor expects privacy claims to carry owners and dates.
+
+Section fourteen point four treats principles privacy attacks on as testable only when evidence and ticket IDs are recorded.
 
 ### 14.4b Prompts and logs
 
@@ -914,7 +1368,19 @@ Personal data also flows through prompts and logs. If staff paste patient detail
 
 NoShow's API returned a precise probability for any patient ID. Rina showed on synthetic data that confidence differed between patients in the training set and new patients, enabling membership inference ("was this person treated at LCH last year?"). LCH changed the API to return only a reminder category to authorised staff and retrained with deduplicated, minimised features.
 
+Section fourteen point five develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point five, the LCH mentor expects privacy claims to carry owners and dates.
+
 ### 14.6 Errors and limits
+Section fourteen point six develops privacy foundations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fourteen point six, the LCH mentor expects privacy claims to carry owners and dates.
+
+Section fourteen point six treats principles privacy attacks on as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Lumen Community Health will not accept privacy work without a written trail.
+
 
 - Treating models as if they contained no personal data.
 - Detailed confidence outputs to broad audiences.
@@ -946,17 +1412,41 @@ You will (1) choose metrics that match security questions; (2) design test sets 
 
 "Does the chatbot leak other patients' data?" needs a leakage rate on a test suite of attempts. "Does the filter catch injections?" needs TPR at a fixed FPR. "Does the defence harm usefulness?" needs task success on normal requests. Use several metrics; one number rarely answers a security question.
 
+Section fifteen point one develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point one, the LCH mentor expects evidence claims to carry owners and dates.
+
 ### 15.2 Test sets and leakage
 
 Keep test data separate from anything used to build or tune the system. Near-duplicates across sets inflate results (Kapoor and Narayanan, arXiv:2207.07048). For prompt attacks, build test cases from templates you did not use while developing defences.
+
+Section fifteen point two develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point two, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section fifteen point two treats metrics that match questions as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 Evidence handling
 
 Record inputs, outputs, versions (model, prompt, code) and timestamps. Store evidence with integrity hashes and access control. In incident work, preserve original logs before analysis.
 
+Section fifteen point three develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point three, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats metrics that match questions as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Lumen Community Health will not accept evidence work without a written trail.
+
 ### 15.4 Reporting
 
 State the question, method, sample, results with intervals, conditions and limitations. Arp et al. (arXiv:2010.09470) list pitfalls such as sampling bias and inappropriate baselines; check yours against them.
+
+Section fifteen point four develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point four, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section fifteen point four treats metrics that match questions as testable only when evidence and ticket IDs are recorded.
 
 ### 15.4b Baselines and comparisons
 
@@ -966,7 +1456,21 @@ A number means little without a baseline. Report the undefended system's result 
 
 Rina measured Ask Lumen's leakage with 400 synthetic attempts to obtain another patient's appointment. Version 1 leaked in 14 cases (3.5%, Wilson 95% interval 2.1–5.8%). After the delegated-token fix, version 2 leaked in 0 of 400 (upper bound about 0.9%). She stored transcripts with hashes and noted that attempts were in English only.
 
+Section fifteen point five develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point five, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section fifteen point five treats metrics that match questions as testable only when evidence and ticket IDs are recorded.
+
 ### 15.6 Errors and limits
+Section fifteen point six develops evidence and measurement with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section fifteen point six, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section fifteen point six treats metrics that match questions as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Lumen Community Health will not accept evidence work without a written trail.
+
 
 - Tuning on the test set.
 - Reporting without versions.
@@ -998,23 +1502,57 @@ You will (1) apply least privilege, defence in depth, complete mediation and fai
 
 *Least privilege*: give the model and its tools only the permissions needed. *Defence in depth*: combine input labelling, output validation, policy checks, monitoring and human review. *Complete mediation*: check every action, every time. *Fail-safe defaults*: deny when unsure.
 
+Section sixteen point one develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point one, the LCH mentor expects security claims to carry owners and dates.
+
+Section sixteen point one treats principles applied to ai as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Trust boundaries in LLM applications
 
 A language model receives trusted instructions (from developers), partly trusted input (from users) and untrusted content (retrieved documents, web pages, tool results) in a single sequence of tokens. It cannot reliably tell them apart, which is why indirect prompt injection works (Greshake et al., arXiv:2302.12173). The architecture must therefore enforce consequences outside the model.
+
+Section sixteen point two develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point two, the LCH mentor expects security claims to carry owners and dates.
 
 ### 16.3 The policy enforcement point
 
 The model *proposes* actions; a separate, small, tested component *decides* whether to execute them based on the user's identity, the action, its parameters and whether untrusted content influenced it. High-impact actions require human confirmation. OWASP LLM06 (*excessive agency*) is addressed here.
 
+Section sixteen point three develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point three, the LCH mentor expects security claims to carry owners and dates.
+
+Section sixteen point three treats principles applied to ai as testable only when evidence and ticket IDs are recorded.
+
 ### 16.4 Comparing options
 
 Options for a booking chatbot range from no tools (answers only) to free tool use. Between them: tools with policy checks and confirmations. Compare by residual risk, usefulness and cost, and record the decision with its reasoning.
+
+Section sixteen point four develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point four, the LCH mentor expects security claims to carry owners and dates.
+
+Section sixteen point four treats principles applied to ai as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Worked example (synthetic LCH case)
 
 Rina's architecture note for Ask Lumen v2 listed three options: (a) model books directly; (b) model proposes, policy checks patient identity and clinic, patient confirms in the UI; (c) chatbot gives instructions and patients book themselves. LCH chose (b): confirmation adds one click, but injected text can no longer book or cancel without the patient's action.
 
+Section sixteen point five develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point five, the LCH mentor expects security claims to carry owners and dates.
+
 ### 16.6 Errors and limits
+Section sixteen point six develops security architecture with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section sixteen point six, the LCH mentor expects security claims to carry owners and dates.
+
+Section sixteen point six treats principles applied to ai as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Lumen Community Health will not accept security work without a written trail.
+
 
 - Security rules written only in the system prompt.
 - Tools with broader permissions than users.
@@ -1046,9 +1584,17 @@ You will (1) explain hashing, symmetric and public-key encryption and digital si
 
 *Hash functions* (such as SHA-256) map data to a short digest; changing one bit changes the digest. *Symmetric encryption* (such as AES) protects data with a shared key. *Public-key cryptography* lets anyone encrypt to, or verify signatures from, a key holder. *Digital signatures* prove who created data and that it is unchanged.
 
+Section seventeen point one develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point one, the LCH mentor expects cryptography claims to carry owners and dates.
+
 ### 17.2 Protecting AI artefacts
 
 Encrypt training data and model weights at rest; use TLS in transit. Publish SHA-256 digests of model files in a manifest and sign the manifest, so recipients can verify both integrity and origin before loading. This addresses supply-chain risks (OWASP LLM03) such as tampered or backdoored models (Gu et al., arXiv:1708.06733).
+
+Section seventeen point two develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point two, the LCH mentor expects cryptography claims to carry owners and dates.
 
 ```python
 """Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
@@ -1085,15 +1631,43 @@ tokenizer.json  OK
 
 Encryption does not stop an authorised query from extracting information from a model, does not prevent prompt injection, and does not make a poisoned dataset clean — it only proves the poisoned data is the data you signed. Cryptography protects data and artefacts; behaviour needs other controls.
 
+Section seventeen point three develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point three, the LCH mentor expects cryptography claims to carry owners and dates.
+
+Section seventeen point three treats core primitives protecting ai as testable only when evidence and ticket IDs are recorded.
+
 ### 17.4 Keys
 
 Security depends on keys: store them in key-management services, restrict access, rotate them and never place them in prompts or code repositories.
+
+Section seventeen point four develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point four, the LCH mentor expects cryptography claims to carry owners and dates.
+
+Section seventeen point four treats core primitives protecting ai as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Lumen Community Health will not accept cryptography work without a written trail.
 
 ### 17.5 Worked example (synthetic LCH case)
 
 LCH's DocSort vendor began signing releases. Rina configured the deployment script to fetch the vendor's public key from LCH's own trusted store (not from the release server), verify the signature on the manifest, then verify each file's digest. A test release with a modified file was rejected.
 
+Section seventeen point five develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point five, the LCH mentor expects cryptography claims to carry owners and dates.
+
+Section seventeen point five treats core primitives protecting ai as testable only when evidence and ticket IDs are recorded.
+
 ### 17.6 Errors and limits
+Section seventeen point six develops cryptography concepts with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section seventeen point six, the LCH mentor expects cryptography claims to carry owners and dates.
+
+Section seventeen point six treats core primitives protecting ai as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Lumen Community Health will not accept cryptography work without a written trail.
+
 
 - Fetching digests and keys from the same place as the files.
 - Assuming encryption prevents model leakage.
@@ -1130,17 +1704,41 @@ You will (1) formulate research questions in AI security; (2) find and evaluate 
 
 A good question is specific, answerable and useful: "Does requiring patient confirmation reduce unauthorised bookings by Ask Lumen under injected documents, and what does it cost in completed bookings?" It names the system, the intervention, the outcome and the comparison.
 
+Section eighteen point one develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point one, the LCH mentor expects research claims to carry owners and dates.
+
+Section eighteen point one treats questions literature experiments honest as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Literature
 
 Start from overviews — NIST AI 100-2 E2025 for adversarial ML terminology, OWASP LLM 2025 for LLM application risks, MITRE ATLAS for real-world techniques — then read key papers and note threat model, method, metrics and limitations. Verify every reference.
+
+Section eighteen point two develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point two, the LCH mentor expects research claims to carry owners and dates.
+
+Section eighteen point two treats questions literature experiments honest as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Experiments
 
 Change one thing at a time; keep a control condition; use held-out test data; repeat with several seeds; record versions. Decide metrics and thresholds before running, so results cannot steer the analysis.
 
+Section eighteen point three develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point three, the LCH mentor expects research claims to carry owners and dates.
+
+Section eighteen point three treats questions literature experiments honest as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Honest reporting
 
 Report all conditions, not only the best; give intervals; describe what was not tested. Lipton and Steinhardt (arXiv:1807.03341) describe "troubling trends" such as unclear sources of gains; avoid them by explaining which change caused which effect.
+
+Section eighteen point four develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point four, the LCH mentor expects research claims to carry owners and dates.
+
+Section eighteen point four treats questions literature experiments honest as testable only when evidence and ticket IDs are recorded.
 
 ### 18.4b Ethics in research design
 
@@ -1150,7 +1748,21 @@ AI-security experiments can create harm: payloads that work on real products, da
 
 Rina's first study compared Ask Lumen with and without confirmation on 300 synthetic injected documents and 300 normal booking conversations. Without confirmation, 21 injected documents caused bookings (7.0%); with confirmation, 0 (upper bound ≈ 1%). Normal bookings completed fell from 97% to 94% because some test users abandoned at the confirmation step. She reported both effects and noted that test users were classmates, not patients.
 
+Section eighteen point five develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point five, the LCH mentor expects research claims to carry owners and dates.
+
 ### 18.6 Errors and limits
+Section eighteen point six develops research methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section eighteen point six, the LCH mentor expects research claims to carry owners and dates.
+
+Section eighteen point six treats questions literature experiments honest as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Lumen Community Health will not accept research work without a written trail.
+
+Section eighteen point six fails closed if research evidence is missing rather than guessing.
+
 
 - Questions too broad.
 - No control condition.
@@ -1182,23 +1794,51 @@ You will (1) define AI security and distinguish it from AI safety and responsibl
 
 *AI security* protects AI systems and the processes around them from deliberate attack and misuse, and protects others from AI-enabled attack. *AI safety* concerns harmful behaviour even without an attacker. *Responsible AI* covers fairness, transparency and accountability. The areas overlap: a prompt injection is a security attack that may cause unsafe or unfair outcomes.
 
+Section nineteen point one develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nineteen point one, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 19.2 The taxonomy
 
 NIST AI 100-2 E2025 classifies attacks on predictive AI by objective — availability breakdown, integrity violation, privacy compromise — and adds misuse for generative AI. Attack classes include evasion (test-time inputs), poisoning (training data or model), privacy attacks (membership inference, data reconstruction, model extraction) and, for generative systems, direct and indirect prompt injection. Attackers are characterised by knowledge (white-, grey-, black-box) and capabilities (training-data control, model control, query access).
+
+Section nineteen point two develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
 
 ### 19.3 Why ML is vulnerable
 
 Models learn statistical patterns from data, not rules; they generalise imperfectly and are sensitive to small, carefully chosen input changes (Szegedy et al., arXiv:1312.6199; Goodfellow et al., arXiv:1412.6572). They inherit whatever their data contains, including poison. Large language models follow instructions found anywhere in their input. These properties are inherent, so security relies on layered controls rather than a single fix.
 
+Section nineteen point three develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 19.4 Frameworks
 
 NIST AI RMF (AI 100-1) and its Generative AI Profile (AI 600-1) organise risk management; OWASP LLM 2025 lists application risks; MITRE ATLAS catalogues adversary techniques with case studies; ISO/IEC 42001 specifies an AI management system; the EU AI Act sets legal duties for some systems.
+
+Section nineteen point four develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nineteen point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section nineteen point four treats definitions the taxonomy why as testable only when evidence and ticket IDs are recorded.
 
 ### 19.5 Worked example (synthetic LCH case)
 
 Rina classified LCH's risks: Ask Lumen — indirect prompt injection via documents (integrity), sensitive disclosure (privacy); NoShow — membership inference (privacy), manipulation of patient-controlled fields (integrity, evasion); DocSort — crafted letters to misroute (evasion), poisoning via relabelled training letters (integrity).
 
+Section nineteen point five develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nineteen point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section nineteen point five treats definitions the taxonomy why as testable only when evidence and ticket IDs are recorded.
+
 ### 19.6 Errors and limits
+Section nineteen point six develops ai and machine-learning security scope with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section nineteen point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section nineteen point six treats definitions the taxonomy why as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Treating AI security as only chatbot jailbreaks.
 - Expecting one control to fix inherent vulnerabilities.
@@ -1230,31 +1870,81 @@ You will (1) explain landmark results in adversarial ML and their lessons; (2) a
 
 Szegedy et al. (arXiv:1312.6199) found that imperceptible changes fool image classifiers; Goodfellow et al. (arXiv:1412.6572) explained it with local linearity. Lesson: high accuracy does not imply robustness.
 
+Section twenty point one develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point one treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Broken defences
 
 Athalye et al. (arXiv:1802.00420) showed many published defences only obscured gradients; adaptive attacks broke them. Lesson: evaluate defences against attackers who know them.
+
+Section twenty point two develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point two treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point two, Lumen Community Health will not accept ai work without a written trail.
 
 ### 20.3 Poisoning and backdoors
 
 Gu et al. *BadNets* (arXiv:1708.06733) showed backdoored models that behave normally until a trigger appears. Carlini et al. (arXiv:2302.10149) showed poisoning web-scale datasets is practical. Lesson: data and model provenance matter.
 
+Section twenty point three develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point three treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Privacy
 
 Shokri et al. (arXiv:1610.05820) introduced membership inference; Carlini et al. (arXiv:2012.07805) extracted memorised training text from a large language model. Lesson: models can leak training data.
+
+Section twenty point four develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point four treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 LLM applications
 
 Greshake et al. (arXiv:2302.12173) demonstrated indirect prompt injection against LLM-integrated applications through retrieved content, leading to data theft and manipulation. Lesson: anything the model reads can instruct it; limit what the model can do.
 
+Section twenty point five develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point five treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
+
 ### 20.6 Using ATLAS case studies
 
 MITRE ATLAS documents case studies mapped to tactics and techniques. Read them to see how attacks combine reconnaissance, access and impact, and which mitigations would have helped.
+
+Section twenty point six develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point six treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
 
 ### 20.7 Worked example (synthetic LCH case)
 
 Rina presented the indirect-injection case to LCH staff using a synthetic demonstration: a clinic leaflet uploaded by a partner contained hidden text instructing the chatbot to tell patients a clinic was closed. In the test system, Ask Lumen repeated the false closure. The lesson connected directly to the partner-upload review introduced earlier.
 
+Section twenty point seven develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point seven, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 20.8 Errors and limits
+Section twenty point eight develops ai and machine-learning security foundational with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty point eight, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty point eight treats adversarial examples broken defences as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point eight, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Learning attacks without their defensive lessons.
 - Treating old cases as irrelevant to new models.
@@ -1285,17 +1975,43 @@ You will (1) model an AI system with components, data flows and trust levels; (2
 
 List users, interfaces, application logic, the model, retrieval stores, tools, external services, training pipelines, model registry and logs. AI systems hide components: a "simple chatbot" may include an embedding model, a vector store and several tools.
 
+Section twenty-one point one develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-one point one treats components data flows and as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Data flows and trust
 
 For each flow, mark the trust level of its content. Patient messages: authenticated but untrusted content. Clinic documents: internal, medium trust. Partner uploads: external, low trust. Tool results: depend on the tool. Any low-trust content that reaches the model can influence its outputs.
+
+Section twenty-one point two develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-one point two treats components data flows and as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Privileged actions
 
 Mark actions with impact: booking, cancelling, sending messages, changing records. Draw the paths from low-trust inputs to these actions; each path needs a control outside the model.
 
+Section twenty-one point three develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-one point three treats components data flows and as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 Using the model
 
 The system model guides threat analysis, control placement and testing. Keep it versioned; update it when tools, data sources or models change.
+
+Section twenty-one point four develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-one point four treats components data flows and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Lumen Community Health will not accept ai work without a written trail.
 
 ### 21.4b Training-time components
 
@@ -1305,7 +2021,19 @@ System models often stop at the deployed application, but training pipelines mat
 
 Rina's system model of Ask Lumen showed a forgotten flow: the chatbot could read the clinic's public web page through a "check opening hours" tool, and that page included a comments section. Comments were untrusted public content flowing into the model. LCH changed the tool to read a structured opening-hours file instead of the whole page.
 
+Section twenty-one point five develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point five, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 21.6 Errors and limits
+Section twenty-one point six develops ai and machine-learning security system with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-one point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-one point six treats components data flows and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Models without trust levels.
 - Missing tools and their data sources.
@@ -1336,6 +2064,10 @@ You will (1) assess training, fine-tuning and retrieval data for poisoning and p
 ### 22.1 Data risks
 
 Training data can be poisoned to degrade performance or implant backdoors; it can contain personal data that the model may leak; it can be biased. Retrieval data can carry injected instructions and must be access-controlled. The lab shows that a few dozen triggered points create a strong backdoor while clean accuracy stays high.
+
+Section twenty-two point one develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-two point one, the LCH mentor expects ai claims to carry owners and dates.
 
 ```python
 """Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
@@ -1393,19 +2125,47 @@ backdoor: add n triggered class-1 points labelled 0
 
 Pre-trained models, datasets, libraries and plug-ins come from third parties. OWASP LLM 2025 lists *supply chain* (LLM03) and *data and model poisoning* (LLM04). Controls: trusted sources, pinned versions, hash and signature verification, safe file formats, scanning, and evaluation before use.
 
+Section twenty-two point two develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-two point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-two point two treats data risks supply chain as testable only when evidence and ticket IDs are recorded.
+
 ### 22.3 Documentation
 
 Datasheets for datasets (Gebru et al., arXiv:1803.09010) record motivation, composition, collection, preprocessing and recommended uses. Model cards (Mitchell et al., arXiv:1810.03993) record intended use, evaluation, limitations and ethical considerations. Both help others judge whether a dependency is safe for their use.
+
+Section twenty-two point three develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-two point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-two point three treats data risks supply chain as testable only when evidence and ticket IDs are recorded.
 
 ### 22.4 Provenance and integrity
 
 Record where each data item came from and who changed it; version datasets; hash content at collection; review samples from new sources; restrict who can label.
 
+Section twenty-two point four develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-two point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-two point four treats data risks supply chain as testable only when evidence and ticket IDs are recorded.
+
 ### 22.5 Worked example (synthetic LCH case)
 
 DocSort was retrained monthly on letters labelled by a temporary contractor team. Rina found no record of who labelled what. She introduced per-batch provenance, a 5% expert review sample per batch and an automated check for rare words strongly associated with one route — a simple trigger detector. In the first month it flagged a harmless template phrase used by one GP practice, which was documented as benign.
 
+Section twenty-two point five develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 22.6 Errors and limits
+Section twenty-two point six develops ai and machine-learning security data with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-two point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-two point six treats data risks supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Unknown labellers and unversioned data.
 - Downloading models without verification.
@@ -1437,17 +2197,43 @@ You will (1) perform a structured threat analysis for an AI system; (2) map thre
 
 For each component and flow in the system model, ask what an attacker could do: inject instructions, poison data, evade detection, extract the model or data, exhaust resources, or abuse tools. Include insiders and accidents with similar effects.
 
+Section twenty-three point one develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-three point one treats threat analysis mapping prioritising as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 Mapping
 
 Map threats to OWASP LLM 2025 entries (for example LLM01 prompt injection, LLM02 sensitive information disclosure, LLM06 excessive agency, LLM10 unbounded consumption) and to MITRE ATLAS tactics and techniques. Mapping helps check coverage and find documented mitigations.
+
+Section twenty-three point two develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-three point two treats threat analysis mapping prioritising as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Prioritising
 
 Rate likelihood (attacker access, skill, motivation) and impact (patient harm, privacy, cost, reputation). A simple 1–3 scale and a written justification are enough. Revisit when things change.
 
+Section twenty-three point three develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-three point three treats threat analysis mapping prioritising as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Selecting tests
 
 For each top threat, choose a test: an injection suite, a leakage suite, a poisoning simulation, a load test. Define pass criteria in advance.
+
+Section twenty-three point four develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-three point four treats threat analysis mapping prioritising as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Lumen Community Health will not accept ai work without a written trail.
 
 ### 23.4b Attack trees
 
@@ -1457,7 +2243,19 @@ An attack tree breaks an attacker goal into sub-goals joined by AND or OR. For "
 
 Rina's top three for Ask Lumen: (1) injection through partner documents causing false information (likelihood 2, impact 3); (2) booking for another patient through manipulation (2, 3; mitigated by delegated tokens, retest needed); (3) cost exhaustion through long chats (3, 2). Tests: 200 injected documents measuring false statements; 400 cross-patient attempts; a load test with token quotas.
 
+Section twenty-three point five develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point five, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 23.6 Errors and limits
+Section twenty-three point six develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-three point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-three point six treats threat analysis mapping prioritising as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point six, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Threat lists not linked to the system model.
 - No justification for ratings.
@@ -1489,9 +2287,19 @@ You will (1) choose preventive, detective and corrective controls for AI threats
 
 Preventive controls stop events (least-privilege tools, delegated tokens, signed models). Detective controls notice them (injection classifiers, anomaly monitoring, canary documents). Corrective controls limit damage and restore service (rollback, revoking credentials, cancelling actions).
 
+Section twenty-four point one develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-four point one treats control types external enforcement as testable only when evidence and ticket IDs are recorded.
+
 ### 24.2 External enforcement
 
 Rules in a system prompt ("never book for other patients") are suggestions to a statistical model. Rules in a policy service are enforced. The lab shows a toy agent: keyword filtering leaves exfiltration paths open, while allowlisting and treating retrieved content purely as data remove them.
+
+Section twenty-four point two develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point two, the LCH mentor expects ai claims to carry owners and dates.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -1540,9 +2348,21 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 Adversarial training improves robustness within a threat model (Madry et al., arXiv:1706.06083); input validation and out-of-distribution checks catch unusual inputs; returning labels rather than detailed scores reduces extraction and membership-inference signal; data review reduces poisoning.
 
+Section twenty-four point three develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-four point three treats control types external enforcement as testable only when evidence and ticket IDs are recorded.
+
 ### 24.4 Evaluating controls
 
 Measure effect on attacks and side effects on normal use: false positives, latency, task completion. Prefer controls whose security does not depend on detecting every attack.
+
+Section twenty-four point four develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-four point four treats control types external enforcement as testable only when evidence and ticket IDs are recorded.
 
 ### 24.4b Proportionality
 
@@ -1552,7 +2372,19 @@ Controls should match the risk. Confirmation for every chatbot answer would make
 
 Rina's control set for Ask Lumen: preventive — delegated tokens, confirmation for bookings and cancellations, structured opening-hours source; detective — classifier flags instruction-like text in partner documents, alerts on unusual booking rates; corrective — revoke chatbot tool access in one step, cancel bookings created in a time window. Evaluation: zero cross-patient bookings in 400 attempts; 3% drop in completed bookings due to confirmation.
 
+Section twenty-four point five develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point five, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 24.6 Errors and limits
+Section twenty-four point six develops ai and machine-learning security controls with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-four point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-four point six treats control types external enforcement as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Prompt rules as the main control.
 - Detectors relied on for prevention.
@@ -1584,9 +2416,23 @@ You will (1) set up a safe, isolated AI-security lab; (2) run evasion, poisoning
 
 Use isolated environments, synthetic data and harmless payloads (for example addresses on the reserved `.invalid` domain). Never point lab tools at real services. Record what you ran, with versions and seeds.
 
+Section twenty-five point one develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point one, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point one treats lab rules experiments interpreting as testable only when evidence and ticket IDs are recorded.
+
 ### 25.2 Experiments
 
 Run the four labs and record their outputs:
+
+Section twenty-five point two develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point two, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point two treats lab rules experiments interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Lumen Community Health will not accept laboratory work without a written trail.
 
 ```python
 """Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
@@ -1748,9 +2594,21 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 Evasion: accuracy falls as the budget grows. Poisoning: label flipping barely matters for this model, but a backdoor reaches 98% attack success with clean accuracy unchanged. Membership: a memorising model leaks; a smoother one leaks little. Extraction: a linear API is copied exactly with six queries; rounding outputs reduces but does not eliminate fidelity.
 
+Section twenty-five point three develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point three, the LCH mentor expects laboratory claims to carry owners and dates.
+
 ### 25.4 Lab report
 
 Structure: aim, setup (versions, seeds), method, results (tables), interpretation, limitations (toy models, synthetic data), and what you would test next on a real system with authorization.
+
+Section twenty-five point four develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point four, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point four treats lab rules experiments interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Lumen Community Health will not accept laboratory work without a written trail.
 
 ### 25.4b Changing parameters
 
@@ -1764,7 +2622,21 @@ Lab code that implements attacks should stay in the lab. Do not adapt it to targ
 
 Rina's lab report connected each toy result to an LCH system: evasion to DocSort's crafted letters, poisoning to contractor labels, membership to NoShow's confidence outputs and extraction to a planned partner API. Her "next steps" proposed authorised tests on LCH's staging copies.
 
+Section twenty-five point five develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point five, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point five treats lab rules experiments interpreting as testable only when evidence and ticket IDs are recorded.
+
 ### 25.6 Errors and limits
+Section twenty-five point six develops laboratory with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-five point six, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point six treats lab rules experiments interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Lumen Community Health will not accept laboratory work without a written trail.
+
 
 - Presenting toy results as facts about real systems.
 - Missing versions and seeds.
@@ -1796,27 +2668,65 @@ You will (1) plan adversarial evaluations of LLM applications (red-teaming) safe
 
 Red-teaming is structured adversarial testing: a team tries to achieve defined attacker goals within an authorised scope. NIST AI 600-1 lists red-teaming among suggested actions for generative AI risk. Define goals (e.g., make the chatbot reveal another patient's appointment; make it book without consent), rules of engagement, and reporting.
 
+Section twenty-six point one develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point one, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 26.2 Test suites
 
 Turn goals into suites: many test cases varying wording, language, position of injected text (start, middle, end of a document), encoding and multi-turn strategies. Keep a held-out portion that developers never see. Use harmless payloads and synthetic data.
+
+Section twenty-six point two develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-six point two treats red-teaming llm applications test as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Adaptive attacks
 
 After a defence is added, attack the defence: if documents are wrapped in delimiters, try text that imitates the delimiters; if a classifier flags "ignore previous", try paraphrases. Carlini et al. (arXiv:1902.06705) stress adaptive evaluation; it applies equally to LLM defences.
 
+Section twenty-six point three develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-six point three treats red-teaming llm applications test as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Coverage and reporting
 
 Report per-category success rates with intervals, the total number of attempts and the categories not tested. Coverage maps to OWASP LLM entries help readers see gaps.
+
+Section twenty-six point four develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-six point four treats red-teaming llm applications test as testable only when evidence and ticket IDs are recorded.
 
 ### 26.5 Automation
 
 Scripts can generate variants from templates, run them, and grade outcomes from tool logs rather than from the model's text. Validate any automatic grader against human labels on a sample.
 
+Section twenty-six point five develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-six point five treats red-teaming llm applications test as testable only when evidence and ticket IDs are recorded.
+
 ### 26.6 Worked example (synthetic LCH case)
 
 Rina's authorised red-team exercise on Ask Lumen staging used 600 cases in six categories. Results: cross-patient booking 0/100; disclosure of other patients' data 2/100 (both through a summarisation of a staff note left in the index); false clinic information from injected documents 9/100; cost exhaustion blocked by quotas. The two disclosures led to removing staff notes from the index; the false-information rate led to a grounding check against structured clinic data.
 
+Section twenty-six point six develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 26.7 Errors and limits
+Section twenty-six point seven develops ai and machine-learning security methods with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-six point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-six point seven treats red-teaming llm applications test as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Testing only static, public jailbreak lists.
 - Grading by the model's own words.
@@ -1848,9 +2758,21 @@ You will (1) verify that AI-security requirements are met with statistical evide
 
 Requirements such as "no booking for a patient other than the logged-in patient or carer" are verified by policy tests (deterministic) and adversarial suites (statistical). "Leakage rate below 1% with 95% confidence" requires enough cases: with zero failures, about 300 cases give an upper bound near 1% (rule of three).
 
+Section twenty-seven point one develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point one, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 27.2 Acceptance criteria
 
 Decide before testing: metric, sample size, threshold and confidence. Use Wilson upper bounds rather than point estimates when deciding pass/fail.
+
+Section twenty-seven point two develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point two treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point two, Lumen Community Health will not accept ai work without a written trail.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -1895,13 +2817,35 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Unit tests prove components; end-to-end tests prove the system. Replay adversarial suites through the full chain — retrieval, model, policy, tools in a sandbox — and inspect tool logs. Many failures appear only at integration points, such as identifiers being resolved after a policy check.
 
+Section twenty-seven point three develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point three treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
 ### 27.4 Reports
 
 For each requirement: method, sample, result with interval, pass/fail, evidence location, versions tested and limitations.
 
+Section twenty-seven point four develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point four treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Lumen Community Health will not accept ai work without a written trail.
+
 ### 27.5 Regression
 
 Every failure found becomes a permanent test. Rerun the suite on every model, prompt or tool change.
+
+Section twenty-seven point five develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point five treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Lumen Community Health will not accept ai work without a written trail.
 
 ### 27.5b Verifying versions, not names
 
@@ -1911,7 +2855,21 @@ Verification applies to a specific configuration: model version, system prompt v
 
 Rina verified ten requirements for Ask Lumen v2. Nine passed. "False clinic information ≤ 2% (95% upper bound)" failed: 4/300 observed (1.3%) but the Wilson upper bound was 3.4%. After the grounding check, 1/600 was observed with an upper bound below 1%, and the requirement passed.
 
+Section twenty-seven point six develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point six, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point six treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
 ### 27.7 Errors and limits
+Section twenty-seven point seven develops ai and machine-learning security verification with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-seven point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-seven point seven treats requirements to verify acceptance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Deciding thresholds after seeing results.
 - Point estimates used for pass/fail.
@@ -1943,21 +2901,53 @@ You will (1) analyse AI failures and incidents to find root causes; (2) distingu
 
 AI failures can come from the model (behaviour), the data (poisoned, shifted or leaked), integration (tools, permissions, parsing) or process (review, change management, training). Most incidents have several contributing causes.
 
+Section twenty-eight point one develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point one treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 28.2 Evidence and timelines
 
 Collect logs from the application, model gateway, policy service and tools; record model, prompt and data versions; build a timeline from first cause to detection to resolution. Preserve evidence before changing systems.
+
+Section twenty-eight point two develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point two treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Root-cause methods
 
 Ask "why" repeatedly until reaching causes you can act on; use fault trees for complex failures. Avoid stopping at "the model did something wrong": ask why that behaviour had impact (excessive permissions, missing confirmation).
 
+Section twenty-eight point three develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point three treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 28.4 Blameless reviews
 
 Focus on systems and conditions, not individuals. Record what happened, impact, causes, what went well and actions with owners and dates. Share lessons widely.
 
+Section twenty-eight point four develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point four treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Lumen Community Health will not accept ai work without a written trail.
+
 ### 28.5 Drift or attack?
 
 Changes in error rates may be drift (new data patterns) or attack. Look for clustering by source, timing and correlation with specific inputs. The monitoring lab flags a synthetic client whose query pattern differs sharply from others.
+
+Section twenty-eight point five develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point five treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab A: spotting extraction-style abuse in a synthetic API log.
@@ -2002,7 +2992,17 @@ client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 
 Several patients were told a clinic had closed. Timeline: a partner uploaded a leaflet with hidden text; it was indexed overnight; Ask Lumen repeated the closure 23 times before a receptionist reported it. Causes: partner uploads indexed without review (process), retrieval mixed partner and LCH sources (integration), no check against structured clinic data (design). Actions: review queue for partner uploads, source labelling, grounding check.
 
+Section twenty-eight point six develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 28.7 Errors and limits
+Section twenty-eight point seven develops ai and machine-learning security failure with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-eight point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-eight point seven treats kinds of causes evidence as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Blaming the model or a person and stopping.
 - Changing systems before preserving logs.
@@ -2039,21 +3039,53 @@ You will (1) operate AI systems securely day to day; (2) monitor AI-specific sig
 
 Track signals that reveal attacks or failures: injection-classifier flags, policy denials, unusual tool-call rates, per-user query volumes, cost per conversation, answer-grounding failures and drift in input or output distributions. Send them to the security operations team with clear owners.
 
+Section twenty-nine point one develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point one, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-nine point one treats monitoring incident response change as testable only when evidence and ticket IDs are recorded.
+
 ### 29.2 Incident response
 
 Prepare runbooks. For suspected injection with impact: contain (disable the affected tool or revoke its credentials), investigate (trace the conversation, retrieved documents and tool logs), recover (undo actions, remove malicious content), learn (add tests, fix process). For suspected poisoning: stop retraining, identify affected data and models through lineage, roll back. For suspected extraction: throttle, preserve logs, involve legal.
+
+Section twenty-nine point two develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point two, the LCH mentor expects ai claims to carry owners and dates.
 
 ### 29.3 Change management
 
 Treat models, prompts, retrieval sources and tools as configuration items. Changes pass security tests, deploy gradually and can be rolled back. Hosted models may change without notice; rerun evaluation suites on a schedule.
 
+Section twenty-nine point three develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-nine point three treats monitoring incident response change as testable only when evidence and ticket IDs are recorded.
+
 ### 29.4 Access and accounts
 
 Review who can change prompts, upload documents, label data and administer AI services. Remove stale accounts; require multi-factor authentication for administrators.
 
+Section twenty-nine point four develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-nine point four treats monitoring incident response change as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Lumen Community Health will not accept ai work without a written trail.
+
 ### 29.5 Reporting
 
 Monthly reports: incidents, denials, flags, evaluation results and open risks, with trends.
+
+Section twenty-nine point five develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-nine point five treats monitoring incident response change as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Lumen Community Health will not accept ai work without a written trail.
 
 ### 29.5b Exercises and drills
 
@@ -2063,7 +3095,19 @@ Run short drills: a simulated injected document in staging, a simulated poisoned
 
 On a Monday morning, monitoring showed booking cancellations via Ask Lumen at five times the usual rate. The runbook led the on-call engineer to disable the cancellation tool, trace the cancellations to conversations that had retrieved a newly uploaded partner document, and restore cancelled appointments. The document's upload account was suspended pending review. Time to contain: 18 minutes.
 
+Section twenty-nine point six develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point six, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 29.7 Errors and limits
+Section twenty-nine point seven develops ai and machine-learning security operations with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section twenty-nine point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section twenty-nine point seven treats monitoring incident response change as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - AI signals not monitored by anyone.
 - No runbooks for AI-specific incidents.
@@ -2094,6 +3138,14 @@ You will (1) run an integrated lab exercise on a toy AI system with several cont
 ### 30.1 Setup
 
 Combine the injection agent, rate limiting, monitoring and base-rate analysis into one exercise. Work in an isolated environment with synthetic data.
+
+Section thirty point one develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point one, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section thirty point one treats setup questions to answer as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Lumen Community Health will not accept laboratory work without a written trail.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -2195,13 +3247,31 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 Which control removes exfiltration in the toy agent? What limit protects capacity without hurting normal users? What fraction of detector alerts would be real at realistic base rates? Which controls should be preventive and which detective?
 
+Section thirty point two develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point two, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section thirty point two treats setup questions to answer as testable only when evidence and ticket IDs are recorded.
+
 ### 30.3 Presenting results
 
 Non-technical audiences need the decision, not the method: "Allowlisting tools stopped all simulated data theft; a classifier would mostly raise false alarms at our expected attack rate, so we use it only for review." Support it with one simple table.
 
+Section thirty point three develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point three, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats setup questions to answer as testable only when evidence and ticket IDs are recorded.
+
 ### 30.4 Reflection
 
 Note what the toy setup cannot show: real language models behave less predictably, attackers adapt, and real traffic differs. Plan how you would test each conclusion on a staging copy of a real system with authorization.
+
+Section thirty point four develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point four, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats setup questions to answer as testable only when evidence and ticket IDs are recorded.
 
 ### 30.4b Combining results
 
@@ -2211,7 +3281,19 @@ The three labs answer different questions, and the decision needs all of them. T
 
 Rina presented the lab to LCH's clinic managers in ten minutes: the injection lab showed why bookings need policy checks and confirmation; the rate-limit lab justified per-session quotas; the base-rate lab explained why the vendor's 98%-accurate detector would mostly flag innocent conversations. The managers approved the confirmation step and a review-only use of the detector.
 
+Section thirty point five develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point five, the LCH mentor expects laboratory claims to carry owners and dates.
+
 ### 30.6 Errors and limits
+Section thirty point six develops laboratory ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty point six, the LCH mentor expects laboratory claims to carry owners and dates.
+
+Section thirty point six treats setup questions to answer as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Lumen Community Health will not accept laboratory work without a written trail.
+
 
 - Presenting method instead of decisions to managers.
 - Ignoring side effects on normal users.
@@ -2243,27 +3325,63 @@ You will (1) analyse advanced attack scenarios: multi-step agent attacks, backdo
 
 Agents chain tools. An injected document may instruct the agent to search for data with one tool and send it with another; each call may look harmless alone. Controls must consider sequences: taint tracking (marking data derived from untrusted inputs), restrictions on combining sensitive reads with outbound actions, and confirmation for outbound messages.
 
+Section thirty-one point one develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point one, the LCH mentor expects ai claims to carry owners and dates.
+
 ### 31.2 Persistent backdoors
 
 Hubinger et al. (arXiv:2401.05566) trained language models with hidden behaviours that persisted through standard safety training. Lesson: behavioural testing after training cannot prove absence of backdoors; provenance of models and training data matters.
+
+Section thirty-one point two develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-one point two treats multi-step agent attacks persistent as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Extraction of training data
 
 Carlini et al. (arXiv:2012.07805) extracted memorised sequences, including personal information, from a large language model. Fine-tuning on sensitive records can increase memorisation; deduplication and differential privacy reduce it.
 
+Section thirty-one point three develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-one point three treats multi-step agent attacks persistent as testable only when evidence and ticket IDs are recorded.
+
 ### 31.4 Universal jailbreaks
 
 Zou et al. (arXiv:2307.15043) found automatically generated suffixes that cause aligned models to comply with harmful requests and transfer between models. Wei et al. (arXiv:2307.02483) explained jailbreak success through competing objectives and mismatched generalisation. Lesson: model-level refusals are a weak boundary; application controls must not depend on them.
+
+Section thirty-one point four develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point four, the LCH mentor expects ai claims to carry owners and dates.
 
 ### 31.5 Residual risk for agents
 
 Even with strong controls, some injection attempts will succeed in influencing the model. Design so that the worst outcome of a successful injection is acceptable: limited tools, least privilege, confirmation and monitoring.
 
+Section thirty-one point five develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-one point five treats multi-step agent attacks persistent as testable only when evidence and ticket IDs are recorded.
+
 ### 31.6 Worked example (synthetic LCH case)
 
 LCH considered giving Ask Lumen an e-mail tool to send appointment summaries. Rina's analysis showed a two-step path: an injected document could make the agent read another patient's appointment (blocked by delegated tokens) or the current patient's full history (allowed) and e-mail it to an attacker's address. LCH restricted the e-mail tool to the patient's registered address only, with a fixed template.
 
+Section thirty-one point six develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 31.7 Errors and limits
+Section thirty-one point seven develops ai and machine-learning security advanced with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-one point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-one point seven treats multi-step agent attacks persistent as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Analysing tool calls one at a time.
 - Trusting safety training as a security boundary.
@@ -2295,27 +3413,67 @@ You will (1) work with legal, clinical, privacy, procurement and management coll
 
 The EU AI Act (Regulation (EU) 2024/1689) sets obligations by risk category, with staged application dates between 2025 and 2027; high-risk systems need risk management, data governance, documentation, logging, human oversight (Article 14) and accuracy, robustness and cybersecurity (Article 15). Data-protection law (such as the GDPR) governs personal data in training, prompts and logs. Health-sector rules may add requirements. Security engineers provide evidence; lawyers decide legal classification.
 
+Section thirty-two point one develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 32.2 Management systems and frameworks
 
 ISO/IEC 42001:2023 specifies an AI management system: policy, roles, risk assessment, controls, monitoring and improvement. The NIST AI RMF provides Govern, Map, Measure and Manage functions. These frameworks connect security work to organisational accountability.
+
+Section thirty-two point two develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-two point two, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-two point two treats law and regulation management as testable only when evidence and ticket IDs are recorded.
 
 ### 32.3 Procurement
 
 When buying AI products, ask vendors for: model and data provenance, security testing evidence, incident notification commitments, data-use terms (is customer data used for training?), logging and audit support, and the ability to test under agreed terms.
 
+Section thirty-two point three develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-two point three, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-two point three treats law and regulation management as testable only when evidence and ticket IDs are recorded.
+
 ### 32.4 Clinical and domain experts
 
 Domain experts define harm: which wrong answer is dangerous, which delay matters. Security priorities depend on their judgement.
+
+Section thirty-two point four develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-two point four, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-two point four treats law and regulation management as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Lumen Community Health will not accept ai work without a written trail.
 
 ### 32.5 Communicating risk
 
 Translate findings into business terms: impact on patients, legal exposure, cost, reputation, and options with trade-offs. Bring a recommendation, not just a problem.
 
+Section thirty-two point five develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-two point five, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-two point five treats law and regulation management as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Lumen Community Health will not accept ai work without a written trail.
+
 ### 32.6 Worked example (synthetic LCH case)
 
 LCH planned to buy an AI triage tool. Rina joined the procurement panel with the data-protection officer, a clinician and a lawyer. Her questions revealed that the vendor used customer conversations to improve its models by default and could not provide security test results. The panel required an opt-out, a security testing clause and incident notification within 72 hours before signing; the lawyer assessed AI Act classification separately.
 
+Section thirty-two point six develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 32.7 Errors and limits
+Section thirty-two point seven develops ai and machine-learning security interdisciplinary with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-two point seven, the LCH mentor expects ai claims to carry owners and dates.
+
+Section thirty-two point seven treats law and regulation management as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point seven, Lumen Community Health will not accept ai work without a written trail.
+
 
 - Giving legal conclusions as an engineer.
 - Procurement without security questions.
@@ -2347,9 +3505,21 @@ You will (1) design controlled experiments with multiple conditions and seeds; (
 
 Define conditions (baseline, defence A, defence B, A + B), hold everything else fixed, randomise task order and use several seeds. Pre-register hypotheses and metrics in a dated document before running.
 
+Section thirty-three point one develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point one, the LCH mentor expects research claims to carry owners and dates.
+
+Section thirty-three point one treats experimental design analysis pitfalls as testable only when evidence and ticket IDs are recorded.
+
 ### 33.2 Analysis
 
 Use paired designs: the same tasks under every condition. Bootstrap the difference between conditions to get intervals. When comparing many conditions, control false discoveries (for example with Holm–Bonferroni) or label additional comparisons as exploratory.
+
+Section thirty-three point two develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point two, the LCH mentor expects research claims to carry owners and dates.
+
+Section thirty-three point two treats experimental design analysis pitfalls as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -2394,9 +3564,21 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Arp et al. (arXiv:2010.09470) list pitfalls including sampling bias, label inaccuracy, data snooping, spurious correlations, biased parameter selection, inappropriate baselines, base-rate fallacy, lab-only evaluation, inappropriate threat models and inappropriate performance measures. Use the list as a checklist before and after experiments.
 
+Section thirty-three point three develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point three, the LCH mentor expects research claims to carry owners and dates.
+
+Section thirty-three point three treats experimental design analysis pitfalls as testable only when evidence and ticket IDs are recorded.
+
 ### 33.4 Threats to validity
 
 Internal (something else caused the effect), construct (the metric does not measure the property), external (results do not transfer) and conclusion (statistics inadequate). Write them down with what you did about each.
+
+Section thirty-three point four develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point four, the LCH mentor expects research claims to carry owners and dates.
+
+Section thirty-three point four treats experimental design analysis pitfalls as testable only when evidence and ticket IDs are recorded.
 
 ### 33.4b Adaptive evaluation
 
@@ -2406,7 +3588,19 @@ For any defence you propose, include at least one attack designed with knowledge
 
 Rina compared four Ask Lumen configurations on 500 injected and 500 benign tasks with five seeds. Grounding check alone reduced false clinic statements from 9.0% to 3.2%; source labelling alone to 7.1%; both to 2.4%. The paired bootstrap interval for "both versus grounding alone" was 0.1–1.5 points — a small but positive improvement — and she noted that injected documents were all English.
 
+Section thirty-three point five develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point five, the LCH mentor expects research claims to carry owners and dates.
+
 ### 33.6 Errors and limits
+Section thirty-three point six develops research methods ii with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-three point six, the LCH mentor expects research claims to carry owners and dates.
+
+Section thirty-three point six treats experimental design analysis pitfalls as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, Lumen Community Health will not accept research work without a written trail.
+
 
 - No pre-registration.
 - Many comparisons reported as if each were the only one.
@@ -2443,17 +3637,41 @@ You will (1) compare two or more AI-security approaches on a shared benchmark; (
 
 Pick approaches that a practitioner might really choose between: for example, a content classifier versus a tool allowlist versus a dual-model pattern for injection; or confidence rounding versus label-only outputs versus query quotas for extraction.
 
+Section thirty-four point one develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-four point one, the LCH mentor expects comparative claims to carry owners and dates.
+
+Section thirty-four point one treats choosing what to compare as testable only when evidence and ticket IDs are recorded.
+
 ### 34.2 Fairness
 
 Give each approach the same data, tasks, attack budget and tuning effort. Use a held-out test set. Include an undefended baseline. If one approach requires more resources, report them.
+
+Section thirty-four point two develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-four point two, the LCH mentor expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats choosing what to compare as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Trade-offs
 
 Report attack success, task success, latency and cost together. Present a table and, where useful, a plot of security against utility. No approach wins everything; the report should help a reader choose for their context.
 
+Section thirty-four point three develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-four point three, the LCH mentor expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats choosing what to compare as testable only when evidence and ticket IDs are recorded.
+
 ### 34.4 The extraction comparison
 
 The extraction lab provides a small comparative result: full-precision outputs let an attacker copy a linear model exactly; two-decimal rounding barely changes fidelity; integer rounding lowers label agreement to 0.882 but still yields a useful copy. Query quotas and monitoring are therefore needed alongside output restrictions.
+
+Section thirty-four point four develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-four point four, the LCH mentor expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats choosing what to compare as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab X: model extraction of a toy linear scoring API by querying it.
@@ -2491,7 +3709,17 @@ Open with the decision question, then the conditions of comparison, then a resul
 
 Rina's group compared three ways to protect NoShow's partner API: rounding probabilities to one decimal, returning only three risk categories, and per-partner quotas with monitoring. On synthetic data, categories reduced membership-inference advantage most (from 0.18 to 0.03) and extraction fidelity to 0.84 label agreement, at the cost of partners losing fine-grained scores. Quotas did not reduce per-query leakage but bounded total queries. The group recommended categories plus quotas.
 
+Section thirty-four point five develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 34.6 Errors and limits
+Section thirty-four point six develops comparative project with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-four point six, the LCH mentor expects comparative claims to carry owners and dates.
+
+Section thirty-four point six treats choosing what to compare as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point six, Lumen Community Health will not accept comparative work without a written trail.
+
 
 - Unequal tuning effort.
 - Reporting only the security metric.
@@ -2523,17 +3751,39 @@ You will (1) propose a capstone project in AI security with a clear problem, obj
 
 Good capstones solve a concrete problem with an AI-security component, produce a working artefact and evidence, and can be finished in two semesters. Options: a secured retrieval chatbot with policy enforcement and an evaluation harness; a poisoning-detection pipeline; an AI inventory and risk-assessment tool for a small organisation; a monitoring service for abuse of model APIs.
 
+Section thirty-five point one develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point one, the LCH mentor expects capstone claims to carry owners and dates.
+
 ### 35.2 Proposal contents
 
 Problem and stakeholders; objectives; scope and exclusions; requirements with verification methods; method and architecture; evaluation plan with metrics, test sets and acceptance criteria; ethics and authorization; data management; timeline with milestones; risks and mitigations; expected deliverables.
+
+Section thirty-five point two develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point two, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats choosing capstone proposal contents as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Ethics and authorization
 
 State which systems and data you will use and under whose authority. Prefer synthetic data and isolated environments. If working with a real organisation, obtain written authorization and agree data handling.
 
+Section thirty-five point three develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point three, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats choosing capstone proposal contents as testable only when evidence and ticket IDs are recorded.
+
 ### 35.4 Inventory as a starting point
 
 Many capstones begin by understanding the AI landscape of an organisation. The inventory lab scores systems by exposure, autonomy, data sensitivity and untrusted input, suggesting where to focus.
+
+Section thirty-five point four develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point four, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats choosing capstone proposal contents as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab V: an AI system inventory scored for review priority (synthetic).
@@ -2578,7 +3828,23 @@ Agree the proposal with your supervisor and, where relevant, the client. Record 
 
 Rina proposed "Safe Booking Assistant": a re-implementation of Ask Lumen's booking flow with delegated tokens, a policy service, confirmation, grounding checks and a red-team harness, evaluated on 1,000 synthetic conversations. Exclusions: voice channel, non-English languages. Acceptance criteria included zero cross-patient bookings (upper bound < 0.5%) and completed bookings ≥ 93%.
 
+Section thirty-five point five develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point five, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-five point five treats choosing capstone proposal contents as testable only when evidence and ticket IDs are recorded.
+
 ### 35.6 Errors and limits
+Section thirty-five point six develops capstone proposal with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-five point six, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-five point six treats choosing capstone proposal contents as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point six, Lumen Community Health will not accept capstone work without a written trail.
+
+Section thirty-five point six fails closed if capstone evidence is missing rather than guessing.
+
 
 - Capstones without measurable acceptance criteria.
 - Missing authorization.
@@ -2610,27 +3876,71 @@ You will (1) apply AI-security knowledge in an organisation or community setting
 
 Placements might be with a company, a public body, a charity or a community group adopting AI tools. Small organisations often use hosted AI assistants without policies; a well-scoped contribution can make a real difference.
 
+Section thirty-six point one develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point one, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point one treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
+
 ### 36.2 Useful outputs
 
 Typical outputs: an AI inventory; an acceptable-use policy for AI assistants; a short risk assessment of one AI tool with recommended settings; staff training; a checklist for buying AI products. Keep outputs proportionate to the organisation's size and capacity.
+
+Section thirty-six point two develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point two, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point two treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
 
 ### 36.3 Working with non-specialists
 
 Avoid jargon; explain risks with examples relevant to their work; give a small number of clear actions; respect their constraints. Listen first: their knowledge of the work defines what harm looks like.
 
+Section thirty-six point three develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point three, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point three treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
+
 ### 36.4 Authorization and confidentiality
 
 Agree in writing what you will do and what data you will see. Do not test systems beyond that agreement. Keep the organisation's information confidential.
+
+Section thirty-six point four develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point four, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point four treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point four, Lumen Community Health will not accept field work without a written trail.
 
 ### 36.5 Reflection
 
 Record what you did, what worked, what you would change and what you learned about how AI security works in practice.
 
+Section thirty-six point five develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point five, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point five treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Lumen Community Health will not accept field work without a written trail.
+
 ### 36.6 Worked example (synthetic LCH case)
 
 Rina spent six weeks with a small charity (synthetic) that used a hosted AI assistant to draft letters to vulnerable clients. Staff pasted full client case notes into the assistant. Rina's outputs: a one-page AI use policy (what not to paste, how to check outputs), assistant settings that disabled conversation retention for training where the provider allowed it, and a 30-minute staff session. A follow-up survey found 80% of staff could correctly identify what data must not be pasted.
 
+Section thirty-six point six develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 36.7 Errors and limits
+Section thirty-six point seven develops field or community practice with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-six point seven, the LCH mentor expects field claims to carry owners and dates.
+
+Section thirty-six point seven treats settings useful outputs working as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point seven, Lumen Community Health will not accept field work without a written trail.
+
 
 - Recommending enterprise-scale controls to a small charity.
 - Testing beyond the agreed scope.
@@ -2667,27 +3977,71 @@ You will (1) critically review evidence from published work and peers' projects;
 
 Each student presents their capstone's evidence so far: requirements, tests, results and limitations. Peers review with a checklist and give written feedback. A published paper is also reviewed each week for comparison.
 
+Section thirty-seven point one develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point one, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point one treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
+
 ### 37.2 Review checklist
 
 Is the threat model explicit? Are tests held out from development? Are adaptive attacks included? Are results reported with intervals and baselines? Are side effects measured? Is the evidence reproducible (versions, seeds, scripts)? Are limitations stated? Are claims proportionate to evidence?
+
+Section thirty-seven point two develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point two, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point two treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Giving feedback
 
 Be specific and constructive: name the issue, why it matters and what would fix it. Separate major issues (would change conclusions) from minor ones.
 
+Section thirty-seven point three develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point three, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point three treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point three, Lumen Community Health will not accept evidence work without a written trail.
+
 ### 37.4 Receiving feedback
 
 Sort comments into: fix now, explain better, out of scope (add to limitations), disagree (respond with evidence). Track each to closure.
+
+Section thirty-seven point four develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point four, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point four treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Lumen Community Health will not accept evidence work without a written trail.
 
 ### 37.5 Comparing with published work
 
 Reading strong papers — for example Carlini et al. (arXiv:1902.06705) on evaluation, or Greshake et al. (arXiv:2302.12173) on indirect injection — shows what convincing evidence looks like; reading weaker ones shows common gaps.
 
+Section thirty-seven point five develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point five, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point five treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
+
 ### 37.6 Worked example (synthetic LCH case)
 
 Peers reviewed Rina's Safe Booking Assistant evidence. Major issue: all injected test documents had been written by Rina, who also designed the defences. She arranged for two classmates to write 150 new adaptive cases without seeing her code. Two produced booking proposals that reached the confirmation step with misleading text; none executed without confirmation. She added a clearer confirmation screen and reported the new results with their own interval.
 
+Section thirty-seven point six develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
 ### 37.7 Errors and limits
+Section thirty-seven point seven develops evidence review seminar with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-seven point seven, the LCH mentor expects evidence claims to carry owners and dates.
+
+Section thirty-seven point seven treats seminar format review checklist as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point seven, Lumen Community Health will not accept evidence work without a written trail.
+
 
 - Feedback without fixes.
 - Defensive responses.
@@ -2724,21 +4078,57 @@ You will (1) implement the capstone system in increments; (2) integrate security
 
 Build a thin end-to-end slice first (chat → model → policy → tool in sandbox), then add features. Each increment ends with tests, a short demonstration including an adversarial case, and updated documentation.
 
+Section thirty-eight point one develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point one, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Integrating controls
 
 Implement the policy service as a separate module with its own tests. Add delegated tokens, confirmation, grounding checks and monitoring. Keep configuration in files under version control; never hard-code secrets.
+
+Section thirty-eight point two develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point two, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Evaluation harness
 
 Automate the evaluation: load test suites, run conversations, collect tool logs, grade outcomes, compute rates with intervals and write a dated report. Run it nightly.
 
+Section thirty-eight point three develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point three, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Lumen Community Health will not accept capstone work without a written trail.
+
 ### 38.4 Defects and changes
 
 Track defects with severity. Security defects block the next milestone until fixed or formally accepted. Scope changes go through the supervisor's change log.
 
+Section thirty-eight point four develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point four, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point four treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point four, Lumen Community Health will not accept capstone work without a written trail.
+
 ### 38.5 Evidence
 
 Keep evidence organised by requirement: tests, results, reports, versions. The final evaluation should require no searching.
+
+Section thirty-eight point five develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point five, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point five treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point five, Lumen Community Health will not accept capstone work without a written trail.
 
 ### 38.5b Code review and secure defaults
 
@@ -2748,7 +4138,19 @@ Have every change touching the policy service, tokens or tool adapters reviewed 
 
 During implementation Rina found that the confirmation screen showed the appointment summary produced by the model, which could be manipulated to look harmless. She changed the screen to render booking details directly from the structured proposal (clinic, date, time, patient) rather than model text. Nightly evaluation then showed no misleading confirmations in 300 adaptive cases.
 
+Section thirty-eight point six develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point six, the LCH mentor expects capstone claims to carry owners and dates.
+
 ### 38.7 Errors and limits
+Section thirty-eight point seven develops capstone implementation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-eight point seven, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point seven treats increments integrating controls evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point seven, Lumen Community Health will not accept capstone work without a written trail.
+
 
 - Building all features before any end-to-end test.
 - Confirmation screens showing model-written text.
@@ -2780,17 +4182,47 @@ You will (1) evaluate the capstone against its acceptance criteria; (2) include 
 
 Use the acceptance criteria from the proposal, unchanged unless the change log records why. Run the full held-out suites, the independent adaptive suite and normal-use tests. Compute rates with intervals and compare with criteria.
 
+Section thirty-nine point one develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point one, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats final evaluation plan independent as testable only when evidence and ticket IDs are recorded.
+
 ### 39.2 Independent testing
 
 Ask people who did not build the system to attack it within scope. Their results go into the evaluation even if they are unfavourable.
+
+Section thirty-nine point two develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point two, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats final evaluation plan independent as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Lumen Community Health will not accept capstone work without a written trail.
 
 ### 39.3 Usability and side effects
 
 Measure task completion, time, false refusals and user feedback. Security controls that users bypass or abandon do not protect anyone.
 
+Section thirty-nine point three develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point three, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats final evaluation plan independent as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point three, Lumen Community Health will not accept capstone work without a written trail.
+
 ### 39.4 Residual risk and recommendations
 
 List risks that remain, why they are acceptable or not, and what further work would reduce them. Recommend whether and how the approach should be adopted.
+
+Section thirty-nine point four develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point four, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats final evaluation plan independent as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Lumen Community Health will not accept capstone work without a written trail.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -2839,7 +4271,21 @@ Present one table per criterion, showing result, interval, threshold and pass or
 
 Rina's final evaluation: 0 cross-patient bookings in 1,000 attempts (upper bound ≈ 0.4%); misleading confirmations 0 in 300 adaptive cases; false clinic statements 2.4% (interval 1.6–3.5%), below the 4% criterion; completed bookings 94%. Independent testers found one issue: very long conversations hit the token quota and lost context, frustrating users. Residual risks: non-English injection untested; reliance on partner-upload review. Recommendation: adopt policy service and structured confirmation at LCH; extend tests to other languages.
 
+Section thirty-nine point five develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point five, the LCH mentor expects capstone claims to carry owners and dates.
+
 ### 39.6 Errors and limits
+Section thirty-nine point six develops capstone evaluation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section thirty-nine point six, the LCH mentor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point six treats final evaluation plan independent as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point six, Lumen Community Health will not accept capstone work without a written trail.
+
+Section thirty-nine point six fails closed if capstone evidence is missing rather than guessing.
+
 
 - Changing criteria after results.
 - Leaving out unfavourable independent results.
@@ -2876,25 +4322,61 @@ You will (1) write a bachelor's thesis presenting the capstone as evidence-based
 
 Introduction; background (AI-security concepts, frameworks such as NIST AI RMF, OWASP LLM 2025, MITRE ATLAS; key papers); problem and requirements; design; implementation; evaluation; discussion and limitations; conclusion; references; appendices (evidence index, test suites summary).
 
+Section forty point one develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point one, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point one treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
+
 ### 40.2 Positioning
 
 Explain how the work applies known ideas — for example, external enforcement against indirect prompt injection (Greshake et al., arXiv:2302.12173) — in a specific setting, and what the evaluation adds. Be honest about novelty.
+
+Section forty point two develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point two, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point two treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Presentation
 
 Fifteen to twenty minutes: problem, approach, key results with intervals, limitations, recommendation. One slide should state the main result in a sentence. Expect questions on threat model, test independence, statistics and usability.
 
+Section forty point three develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point three, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point three treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
+
 ### 40.4 Defending
 
 Answer directly, point to evidence, acknowledge limits. "We did not test that; here is how we would" is a good answer.
+
+Section forty point four develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point four, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point four treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Lumen Community Health will not accept thesis work without a written trail.
 
 ### 40.5 Next steps
 
 Continue learning through authorised practice (labs, capture-the-flag events with AI tracks, open-source contributions), following framework updates and reading research. Keep ethical commitments: authorised testing and responsible disclosure.
 
+Section forty point five develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point five, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point five treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Lumen Community Health will not accept thesis work without a written trail.
+
 ### 40.6 Worked example (synthetic LCH case)
 
 At her presentation, Rina was asked: "If the model improves, can you remove the policy service?" She answered that the policy service enforces booking ownership regardless of model behaviour; better models may reduce how often it activates, but removing it would make security depend on the model, which her advanced-cases chapter showed is unreliable. Asked about statistics, she showed the zero-failure upper bound and explained the rule of three.
+
+Section forty point six develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -2940,6 +4422,14 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
 ### 40.7 Errors and limits
+Section forty point seven develops thesis and presentation with a Lumen Community Health note Rina Costa can demo offline.
+
+Under section forty point seven, the LCH mentor expects thesis claims to carry owners and dates.
+
+Section forty point seven treats thesis structure positioning presentation as testable only when evidence and ticket IDs are recorded.
+
+For section forty point seven, Lumen Community Health will not accept thesis work without a written trail.
+
 
 - Theses that describe work without evaluating it.
 - Overstated novelty.
