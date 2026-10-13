@@ -42,9 +42,7 @@ You will (1) turn a practitioner worry into a researchable question; (2) run a d
 
 ### 1.1 From worry to question
 
-Port security managers in CPSG believe that sharing indicators "helps". Lucía converts that belief into a question with a population, an intervention, a comparison and an outcome: among port operators, does receiving indicators through CPSG's TAXII 2.1 collection shorten the time between an indicator's first publication and a block rule in the member's controls, compared with similar operators outside the group? That structure makes clear what data she needs and what she does not.
-
-The outcome, hours from publication to block, is the part port managers had never measured.
+Port security managers in CPSG believe that sharing indicators "helps". Lucía converts that belief into a question with a population, an intervention, a comparison and an outcome: among port operators, does receiving indicators through CPSG's TAXII 2.1 collection shorten the time between an indicator's first publication and a block rule in the member's controls, compared with similar operators outside the group? That structure makes clear what data she needs and what she does not. The outcome, hours from publication to block, is the part port managers had never measured.
 
 ### 1.2 Search method
 
@@ -114,7 +112,7 @@ Lucía's seminar bulletin about the phishing wave against port agents shows the 
 
 ### 2.3 Models as tools for tasks
 
-Hutchins et al. help decide where to place controls across phases. The Diamond Model helps pivot from one event to related events through shared infrastructure or capability. ATT&CK supplies a common vocabulary — for example T1566 Phishing or T1071 Application Layer Protocol — that lets a sharing group describe behaviour beyond fragile indicators, which Bianco's Pyramid of Pain ranks as more costly for adversaries to change.
+Hutchins et al. help decide where to place controls across phases. The Diamond Model helps pivot from one event to related events through shared infrastructure or capability. ATT&CK supplies a common vocabulary — for example T1566 Phishing or T1071 Application Layer Protocol — that lets a sharing group describe behaviour beyond fragile indicators; Bianco's Pyramid of Pain ranks behaviour as more costly for adversaries to change than hashes, IP addresses or domains.
 
 Lucía's seminar mapping of the port-agent phishing wave to T1566 is the example: the bulletin's domains and IP addresses will be stale within days, but the behaviour description remains useful to members who never saw the original indicators.
 
@@ -194,7 +192,7 @@ Removing names at source means the member's export to Lucía contains only times
 
 Analysis scripts in the standard library, a data dictionary, synthetic sample files and a fixed random seed for any resampling. The plan is part of the proposal.
 
-For Lucía, the synthetic sample files mirror the data dictionary exactly, so an examiner without access to CPSG's AMBER data can still run every script. The fixed seed matters for the bootstrap interval around the medians; without it, a rerun would give a slightly different interval and look like an error. The synthetic files use exactly the fields in her data dictionary, `t_pub`, `t_block`, `ttb_h`, `ioc_type` and `decision`, so the same scripts run on both.
+For Lucía, the synthetic sample files use exactly the fields in her data dictionary, `t_pub`, `t_block`, `ttb_h`, `ioc_type` and `decision`, so the same scripts run on both, and an examiner without access to CPSG's AMBER data can still run every script. The fixed seed matters for the bootstrap interval around the medians; without it, a rerun would give a slightly different interval and look like an error.
 
 ### Worked example
 
@@ -283,7 +281,7 @@ Lucía's ransomware judgment uses that scale: "likely (55–80%)". A member read
 
 Every judgment carries indicators that would change it: evidence of data sale without ransom (would raise H3), or a confession from a disgruntled employee (would raise H2). Writing triggers prevents silent drift.
 
-Lucía's written assessment names one trigger in its last sentence: evidence of data sale without a ransom demand would lower the criminal-crew assessment. Naming the trigger in the product lets a member who later sees such evidence know at once that the judgment should be reopened. Lucía's matrix needs both kinds of trigger because E2, access from a contractor VPN account, fits every hypothesis and cannot settle the question by itself.
+Lucía's written assessment names one trigger in its last sentence: evidence of data sale without a ransom demand would lower the criminal-crew assessment. Naming the trigger in the product lets a member who later sees such evidence know at once that the judgment should be reopened. The current evidence cannot do that work: E2, access from a contractor VPN account, fits every hypothesis, so only new evidence of the kind the triggers name can move the judgment.
 
 ### 4.5 ATT&CK as evidence vocabulary
 
@@ -402,7 +400,7 @@ Lucía's demonstration batch checks three objects, and only one passes. Across t
 ### Lab 2 — STIX property check
 
 ```python
-"""Lab 3 (ch 06): check synthetic STIX 2.1-style objects for common required properties."""
+"""Lab 2 (ch 06): check synthetic STIX 2.1-style objects for common required properties."""
 import json, re
 objs = json.loads("""[
  {"type":"indicator","spec_version":"2.1","id":"indicator--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f",
@@ -439,7 +437,7 @@ Each failure has a different consequence. Without `valid_from`, the indicator ha
 ### Lab 3 — time-to-block medians
 
 ```python
-"""Lab 2 (ch 06): median time-to-block (hours) for synthetic sharing-community members vs non-members."""
+"""Lab 3 (ch 06): median time-to-block (hours) for synthetic sharing-community members vs non-members."""
 from statistics import median
 members = [2.0, 3.5, 1.0, 6.0, 2.5, 4.0, 3.0]
 non_members = [9.0, 14.0, 5.0, 22.0, 11.0, 8.0]
@@ -605,7 +603,7 @@ The brief also carries the data-quality note, which members can act on immediate
 
 Delete raw timings as agreed, archive code and synthetic samples, and record the deletion. If publishing a paper, recheck that the published version still meets the board's conditions.
 
-For Lucía, the deletion record is the last item the board receives: which files were deleted, when, and by whom. Any paper drafted later from the dissertation is rechecked against the three board conditions before submission. Archived code and synthetic samples stay available, so the study can still be rerun after the raw timings are gone. The deletion does not weaken reproducibility, because the archive was designed around synthetic files from the start.
+For Lucía, the deletion record is the last item the board receives: which files were deleted, when, and by whom. Any paper drafted later from the dissertation is rechecked against the three board conditions before submission. Archived code and synthetic samples stay available, so the study can still be rerun after the raw timings are gone; the deletion does not weaken reproducibility, because the archive was designed around synthetic files from the start.
 
 ### Worked example
 
@@ -625,7 +623,7 @@ A friend who helped with analysis is not independent. Presenting to the communit
 - **EX053 — Correction log.** What does a correction-log entry contain? *Rubric:* 3 = what changed, why, date, effect on conclusions; 2 = two; 1 = vague; 0 = none.
 - **EX054 — Community first.** Why present to the board before public defence? *Rubric:* 3 = reciprocity/trust; agreement; chance to check aggregation; 2 = courtesy; 1 = unnecessary; 0 = none.
 - **EX055 — Deletion proof.** After marking, what must Lucía do with raw timings? *Rubric:* 3 = delete as agreed and record deletion; 2 = delete; 1 = keep; 0 = none.
-- **EX056 — Paper recheck.** What must be rechecked before turning the dissertation into a paper? *Rubric:* 3 = board conditions (aggregation, no names) still met in new text/figures; 2 = vague; 1 = vague; 0 = none.
+- **EX056 — Paper recheck.** What must be rechecked before turning the dissertation into a paper? *Rubric:* 3 = board conditions (aggregation, no names) still met in new text/figures; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
