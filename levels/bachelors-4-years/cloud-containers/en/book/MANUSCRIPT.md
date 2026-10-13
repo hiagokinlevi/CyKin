@@ -53,21 +53,53 @@ Samuel Osei is a bachelor's student at the fictional Westmere University. His fi
 
 "StudyHub is secure" cannot be checked. "No registry repository allows anonymous pull" can be checked by listing repositories and their settings. The course trains Samuel to turn vague worries into precise, checkable statements, because only checkable statements lead to fixes and evidence.
 
+Section one point two develops mathematical reasoning with a Westmere University note Samuel Osei can demo offline.
+
+Under section one point two, Tom Becker expects mathematical claims to carry owners and dates.
+
+Section one point two treats the opening case precise as testable only when evidence and ticket IDs are recorded.
+
 ### 1.3 Necessary and sufficient
 
 Turning off anonymous pull is necessary to stop outsiders downloading images, but not sufficient to protect secrets: anyone with internal access could still read a secret baked into an image. Removing secrets from images and using a secret manager is also needed. Mixing up necessary and sufficient conditions leads to fixes that feel complete but are not.
+
+Section one point three develops mathematical reasoning with a Westmere University note Samuel Osei can demo offline.
+
+Under section one point three, Tom Becker expects mathematical claims to carry owners and dates.
 
 ### 1.4 Counterexamples
 
 One counterexample disproves a universal claim. The claim "all our images are private" was disproved by a single anonymous pull test on records-api. Engineers look for counterexamples deliberately rather than waiting for them to appear in an incident.
 
+Section one point four develops mathematical reasoning with a Westmere University note Samuel Osei can demo offline.
+
+Under section one point four, Tom Becker expects mathematical claims to carry owners and dates.
+
+Section one point four treats the opening case precise as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Quantities and units
 
 Exposure is measured in days and resources; costs in money and engineer-hours. Keeping units explicit avoids comparing unlike things.
 
+Section one point five develops mathematical reasoning with a Westmere University note Samuel Osei can demo offline.
+
+Under section one point five, Tom Becker expects mathematical claims to carry owners and dates.
+
+Section one point five treats the opening case precise as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Westmere University will not accept mathematical work without a written trail.
+
 ### 1.6 Logical structure
 
 Claims are combined with and, or and not; access policies, later in the course, follow the same logic.
+
+Section one point six develops mathematical reasoning with a Westmere University note Samuel Osei can demo offline.
+
+Under section one point six, Tom Becker expects mathematical claims to carry owners and dates.
+
+Section one point six treats the opening case precise as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Westmere University will not accept mathematical work without a written trail.
 
 ### Worked example
 
@@ -105,25 +137,67 @@ You will (1) describe the layers of a cloud-hosted application; (2) explain virt
 
 StudyHub runs on physical servers in the provider's data centres, virtualised into machines that form the Kubernetes worker nodes. Containers run on those nodes, each packaged from an image stored in a registry. Managed services provide the database, storage and identity.
 
+Section two point one develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point one, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point one treats layers service models images as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Service models
 
 NIST SP 800-145 (Mell & Grance, 2011) defines infrastructure, platform and software as a service. Managed Kubernetes sits between infrastructure and platform: the provider runs the control plane; Westmere runs the workloads and their configuration.
+
+Section two point two develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point two, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point two treats layers service models images as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Images and registries
 
 An image is a stack of file-system layers plus metadata. The registry stores images and controls who may pull or push them. Whatever goes into a layer stays there, which is why a connection string in records-api remained readable even after the application stopped using it.
 
+Section two point three develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point three, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point three treats layers service models images as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Shared responsibility
 
 The AWS, Microsoft and Google shared responsibility pages agree that customers configure access to registries, storage and identities. The open registry was on Westmere's side.
+
+Section two point four develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point four, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point four treats layers service models images as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Westmere University will not accept computing work without a written trail.
 
 ### 2.5 Managed services
 
 Using a managed database removes patching work but leaves access rules, backups and encryption choices to the customer.
 
+Section two point five develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point five, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point five treats layers service models images as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Westmere University will not accept computing work without a written trail.
+
 ### 2.6 Mapping the case
 
 Samuel draws StudyHub's layers and marks who manages each, then marks where the opening findings sat: registry settings, image content and account logging, all customer-managed.
+
+Section two point six develops computing systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section two point six, Tom Becker expects computing claims to carry owners and dates.
+
+Section two point six treats layers service models images as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Westmere University will not accept computing work without a written trail.
 
 ### Containers versus virtual machines
 
@@ -165,29 +239,87 @@ You will (1) write small Python programs to read and check configuration data; (
 
 The cloud team manages hundreds of resources. Reading each one by hand is slow and error-prone; a short program can check every resource the same way every time.
 
+Section three point one develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point one, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point one treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point one, Westmere University will not accept programming work without a written trail.
+
 ### 3.2 Basics
 
 Variables hold values; lists hold many items; dictionaries map names to settings. A loop visits each repository; an if statement checks a setting; print shows the result.
+
+Section three point two develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point two, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point two treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Westmere University will not accept programming work without a written trail.
 
 ### 3.3 Functions
 
 A function such as check_repo(repo) returns a list of problems. Functions make programs easier to test and reuse.
 
+Section three point three develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point three, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point three treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Westmere University will not accept programming work without a written trail.
+
 ### 3.4 Synthetic data
 
 Samuel writes his first programs against a small, made-up list of repositories, so mistakes cannot affect real systems and anyone can rerun them.
+
+Section three point four develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point four, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point four treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Westmere University will not accept programming work without a written trail.
 
 ### 3.5 Clear output
 
 Each line names the resource and the problem in plain words, so non-programmers can act.
 
+Section three point five develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point five, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point five treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Westmere University will not accept programming work without a written trail.
+
+Section three point five fails closed if programming evidence is missing rather than guessing.
+
 ### 3.6 Standard library
 
 Labs use only Python's standard library, so they run on any machine and are easy to read.
 
+Section three point six develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point six, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point six treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Westmere University will not accept programming work without a written trail.
+
 ### 3.7 Testing
 
 For each check, Samuel writes one example that should pass and one that should fail, and confirms the output.
+
+Section three point seven develops programming with a Westmere University note Samuel Osei can demo offline.
+
+Under section three point seven, Tom Becker expects programming claims to carry owners and dates.
+
+Section three point seven treats why code basics functions as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, Westmere University will not accept programming work without a written trail.
 
 ### Reading exports
 
@@ -229,29 +361,85 @@ You will (1) write clear academic and technical prose about cloud security; (2) 
 
 Samuel's thesis and reports must persuade careful readers with evidence. Academic writing states claims, supports them with sources or data, and acknowledges limits.
 
+Section four point one develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point one, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point one treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, Westmere University will not accept academic work without a written trail.
+
 ### 4.2 Structure
 
 Each paragraph makes one point: a topic sentence, evidence, and a link to the argument. Sections follow a logical order from problem to conclusion.
+
+Section four point two develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point two, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point two treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Westmere University will not accept academic work without a written trail.
 
 ### 4.3 Citing
 
 Standards and papers are cited in a consistent style with links or DOIs. Samuel cites NIST SP 800-190 when discussing container image risks and the Kubernetes documentation when describing Pod Security Standards.
 
+Section four point three develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point three, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point three treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Precision
 
 "Anonymous pull was enabled on two of four repositories" is better than "the registry was insecure".
+
+Section four point four develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point four, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point four treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Westmere University will not accept academic work without a written trail.
 
 ### 4.5 Overstatement
 
 "No evidence of misuse was found in available logs" is accurate; "no misuse occurred" is not, since logging was missing.
 
+Section four point five develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point five, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point five treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Westmere University will not accept academic work without a written trail.
+
 ### 4.6 Revising
 
 Samuel reads drafts aloud, removes unnecessary words and checks every number against its source.
 
+Section four point six develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point six, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point six treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Westmere University will not accept academic work without a written trail.
+
+Section four point six fails closed if academic evidence is missing rather than guessing.
+
 ### 4.7 Feedback
 
 Dr Jensen comments on drafts within a week; Samuel keeps a list of recurring feedback to avoid repeating mistakes.
+
+Section four point seven develops academic writing with a Westmere University note Samuel Osei can demo offline.
+
+Under section four point seven, Tom Becker expects academic claims to carry owners and dates.
+
+Section four point seven treats purpose structure citing precision as testable only when evidence and ticket IDs are recorded.
+
+For section four point seven, Westmere University will not accept academic work without a written trail.
 
 ### Using sources well
 
@@ -293,25 +481,73 @@ You will (1) explain core security ideas in cloud terms; (2) recognise common cl
 
 Confidentiality, integrity and availability; authentication and authorisation; least privilege; defence in depth; logging and accountability. Each has a cloud form: identity policies, encryption settings, multi-zone deployment, audit logs.
 
+Section five point one develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point one, Tom Becker expects security claims to carry owners and dates.
+
+Section five point one treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Westmere University will not accept security work without a written trail.
+
 ### 5.2 Common cloud risks
 
 Misconfigured storage and registries, over-broad identities, leaked credentials, unpatched images, missing logs. Most are configuration choices on the customer's side.
+
+Section five point two develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point two, Tom Becker expects security claims to carry owners and dates.
+
+Section five point two treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Westmere University will not accept security work without a written trail.
 
 ### 5.3 Least privilege
 
 Each person and service gets only the access it needs. If records-api had used a short-lived identity instead of a connection string, there would have been no secret to leak.
 
+Section five point three develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point three, Tom Becker expects security claims to carry owners and dates.
+
+Section five point three treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Westmere University will not accept security work without a written trail.
+
 ### 5.4 Defence in depth
 
 Several layers: private registry, no secrets in images, scanning before push, limited database permissions, logging. Any one could have reduced the opening case's risk.
+
+Section five point four develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point four, Tom Becker expects security claims to carry owners and dates.
+
+Section five point four treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Westmere University will not accept security work without a written trail.
 
 ### 5.5 Guidance
 
 CIS Benchmarks give configuration checklists; CSA CCM v4 lists cloud controls; NIST SP 800-190 covers containers. Samuel learns to check the date and scope of guidance before using it.
 
+Section five point five develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point five, Tom Becker expects security claims to carry owners and dates.
+
+Section five point five treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Westmere University will not accept security work without a written trail.
+
 ### 5.6 Thinking like a defender
 
 Ask what could go wrong, how it would be noticed and how it would be fixed.
+
+Section five point six develops security literacy with a Westmere University note Samuel Osei can demo offline.
+
+Under section five point six, Tom Becker expects security claims to carry owners and dates.
+
+Section five point six treats core ideas common cloud as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Westmere University will not accept security work without a written trail.
 
 ### Reading guidance critically
 
@@ -353,9 +589,19 @@ You will (1) model identities and roles as a graph; (2) find paths to privileged
 
 In the cloud, identities can often assume other roles. Treat each identity and role as a node and each "may assume" permission as a directed edge. A path from a person to an administrator role means that person can become an administrator, even if no single permission says so directly.
 
+Section six point one develops discrete structures with a Westmere University note Samuel Osei can demo offline.
+
+Under section six point one, Tom Becker expects discrete claims to carry owners and dates.
+
 ### 6.2 Breadth-first search
 
 Breadth-first search explores neighbours level by level and finds the shortest path. It is simple to implement with a queue and a set of visited nodes, and it always terminates on a finite graph.
+
+Section six point two develops discrete structures with a Westmere University note Samuel Osei can demo offline.
+
+Under section six point two, Tom Becker expects discrete claims to carry owners and dates.
+
+Section six point two treats graphs for access breadth-first as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — role paths
 
@@ -391,13 +637,33 @@ support-cy  REACHES admin: support-cy -> ticket-bot -> deployer -> cluster-admin
 
 dev-alice reaches cluster-admin through dev-alice -> ci-runner -> deployer -> cluster-admin. support-cy also reaches it through support-cy -> ticket-bot -> deployer -> cluster-admin. analyst-bo cannot reach admin. The surprise is support-cy: a helpdesk account can become cluster administrator through a ticket automation bot.
 
+Section six point three develops discrete structures with a Westmere University note Samuel Osei can demo offline.
+
+Under section six point three, Tom Becker expects discrete claims to carry owners and dates.
+
+Section six point three treats graphs for access breadth-first as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Why chains appear
 
 Roles are added one at a time for convenience. Each edge looks reasonable alone; the risky path only appears when they are combined. NIST SP 800-210 discusses the difficulty of reasoning about combined access rules in cloud systems.
 
+Section six point four develops discrete structures with a Westmere University note Samuel Osei can demo offline.
+
+Under section six point four, Tom Becker expects discrete claims to carry owners and dates.
+
+Section six point four treats graphs for access breadth-first as testable only when evidence and ticket IDs are recorded.
+
 ### 6.5 Using results
 
 Breaking one edge breaks a path. The best edge to remove is one used by many risky paths and needed by few legitimate tasks.
+
+Section six point five develops discrete structures with a Westmere University note Samuel Osei can demo offline.
+
+Under section six point five, Tom Becker expects discrete claims to carry owners and dates.
+
+Section six point five treats graphs for access breadth-first as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Westmere University will not accept discrete work without a written trail.
 
 ### Repeating the analysis
 
@@ -439,29 +705,83 @@ You will (1) explain cloud networking for StudyHub; (2) describe security groups
 
 StudyHub's cluster runs in a private network with subnets for nodes and databases. Only the load balancer is public. The test database accepted connections only from the cluster's subnet, which is why the leaked connection string could not be used from outside.
 
+Section seven point one develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point one, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point one treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Security groups and firewalls
 
 Rules list allowed sources, destinations and ports. Default-deny with specific allows is safer than broad allows with exceptions.
+
+Section seven point two develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point two, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point two treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Westmere University will not accept networks work without a written trail.
 
 ### 7.3 Private endpoints
 
 Managed services such as the registry and storage can be reached through private endpoints inside the network, so traffic need not cross the internet and public access can be disabled.
 
+Section seven point three develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point three, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point three treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Kubernetes networking
 
 Pods can talk to each other freely unless network policies restrict them. Services provide stable names; ingress controllers route external requests.
+
+Section seven point four develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point four, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point four treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Westmere University will not accept networks work without a written trail.
 
 ### 7.5 TLS
 
 Traffic is encrypted with TLS. Certificates are managed automatically and monitored for expiry.
 
+Section seven point five develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point five, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point five treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Westmere University will not accept networks work without a written trail.
+
+Section seven point five fails closed if networks evidence is missing rather than guessing.
+
 ### 7.6 Exposure analysis
 
 For each component, Samuel lists what can reach it: internet, campus network, cluster or specific services.
 
+Section seven point six develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point six, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point six treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Westmere University will not accept networks work without a written trail.
+
 ### 7.7 Change risk
 
 Network changes can break services, so they are tested in the test environment and rolled out gradually.
+
+Section seven point seven develops networks and protocols with a Westmere University note Samuel Osei can demo offline.
+
+Under section seven point seven, Tom Becker expects networks claims to carry owners and dates.
+
+Section seven point seven treats virtual networks security groups as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Westmere University will not accept networks work without a written trail.
 
 ### Documenting flows
 
@@ -503,29 +823,87 @@ You will (1) build a larger configuration checker with modules and tests; (2) pa
 
 Samuel's checker has three parts: loaders for each export type, a set of check functions and a report writer. Adding a new check means adding one function and its tests.
 
+Section eight point one develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point one, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point one treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Westmere University will not accept programming work without a written trail.
+
 ### 8.2 Parsing
 
 Exports from the cloud console and Kubernetes are JSON. Each loader validates required fields and reports malformed records with their position.
+
+Section eight point two develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point two, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point two treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Westmere University will not accept programming work without a written trail.
 
 ### 8.3 Errors
 
 A check that cannot run reports "unable to check" rather than silently passing.
 
+Section eight point three develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point three, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point three treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Westmere University will not accept programming work without a written trail.
+
+Section eight point three fails closed if programming evidence is missing rather than guessing.
+
 ### 8.4 Tests
 
 Each check has tests with synthetic records: one compliant, one non-compliant, one with missing fields. Tests run automatically on every change.
+
+Section eight point four develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point four, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point four treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Westmere University will not accept programming work without a written trail.
 
 ### 8.5 Reports
 
 A detailed report for the cloud team lists every finding; a summary for managers counts findings by severity and account.
 
+Section eight point five develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point five, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point five treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Westmere University will not accept programming work without a written trail.
+
 ### 8.6 Review
 
 Tom's team reviews the code before it runs against real exports, checking that it only reads files.
 
+Section eight point six develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point six, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point six treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Westmere University will not accept programming work without a written trail.
+
 ### 8.7 Version control
 
 The checker lives in a repository with a changelog, so results can be linked to the code version.
+
+Section eight point seven develops programming ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section eight point seven, Tom Becker expects programming claims to carry owners and dates.
+
+Section eight point seven treats design parsing errors tests as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Westmere University will not accept programming work without a written trail.
 
 ### Running regularly
 
@@ -571,21 +949,61 @@ You will (1) classify StudyHub's data; (2) apply access, encryption and retentio
 
 Student records (personal, high), coursework uploads (personal, medium), logs (may contain personal data), test data (should be synthetic). Classification guides controls.
 
+Section nine point one develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point one, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point one treats data classes test data as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Westmere University will not accept data work without a written trail.
+
 ### 9.2 Test data
 
 Test databases should never hold real student data. The opening case's test database held synthetic records only, which limited the impact; Samuel confirms with a check against known synthetic markers.
+
+Section nine point two develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point two, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point two treats data classes test data as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Access
 
 Applications use database roles with only the needed permissions; administrators use separate, audited accounts.
 
+Section nine point three develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point three, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point three treats data classes test data as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Westmere University will not accept data work without a written trail.
+
 ### 9.4 Encryption
 
 Managed databases and storage encrypt at rest; connections require TLS.
 
+Section nine point four develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point four, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point four treats data classes test data as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Westmere University will not accept data work without a written trail.
+
+Section nine point four fails closed if data evidence is missing rather than guessing.
+
 ### 9.5 Retention
 
 Keeping data longer than needed increases risk. Westmere's rules: app logs 90 days, audit logs 365, exam uploads 400, test snapshots 30.
+
+Section nine point five develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point five, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point five treats data classes test data as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Westmere University will not accept data work without a written trail.
 
 ### Lab — Lab — retention check
 
@@ -610,6 +1028,12 @@ test-db-snapshots  age  12 d, limit  30 d  ok
 ### 9.6 Lab result
 
 app-logs at 120 days exceed the 90-day limit. One test-db-snapshot at 210 days exceeds its 30-day limit; another at 12 days is fine. audit-logs (200 of 365) and exam-uploads (380 of 400) are within limits. The 210-day snapshot is a forgotten copy that should have been deleted automatically.
+
+Section nine point six develops data and databases with a Westmere University note Samuel Osei can demo offline.
+
+Under section nine point six, Tom Becker expects data claims to carry owners and dates.
+
+Section nine point six treats data classes test data as testable only when evidence and ticket IDs are recorded.
 
 ### Lifecycle rules
 
@@ -655,25 +1079,75 @@ You will (1) work within authorisation in cloud projects; (2) respect student pr
 
 Samuel's project agreement lists what he may access: read-only exports, a test account and documentation. He may not access production data or test production systems.
 
+Section ten point one develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point one, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point one treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, Westmere University will not accept ethics work without a written trail.
+
 ### 10.2 Privacy
 
 Student records are personal data. Samuel's labs use synthetic data. If he encounters real data by mistake, he stops and reports it.
+
+Section ten point two develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point two, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point two treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Westmere University will not accept ethics work without a written trail.
 
 ### 10.3 Responsible findings
 
 Findings go to Tom and Dr Jensen, not to classmates or public forums. Reports avoid details that would help misuse before fixes are made.
 
+Section ten point three develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point three, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point three treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Westmere University will not accept ethics work without a written trail.
+
 ### 10.4 Defensive purpose
 
 The project checks and improves configurations; it does not attempt to break in. Testing that could affect availability needs explicit approval.
+
+Section ten point four develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point four, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point four treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Westmere University will not accept ethics work without a written trail.
 
 ### 10.5 Conflicts of interest
 
 If a finding concerns a colleague's work, it is reported factually, without blame.
 
+Section ten point five develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point five, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point five treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Westmere University will not accept ethics work without a written trail.
+
 ### 10.6 Escalation
 
 Signs of active misuse go immediately to Westmere's security team.
+
+Section ten point six develops ethics and authorized practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section ten point six, Tom Becker expects ethics claims to carry owners and dates.
+
+Section ten point six treats authorisation privacy responsible findings as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Westmere University will not accept ethics work without a written trail.
+
+Section ten point six fails closed if ethics evidence is missing rather than guessing.
 
 ### Writing it down
 
@@ -719,29 +1193,85 @@ You will (1) explain how containers rely on Linux features; (2) describe users, 
 
 A container is a group of processes isolated by Linux namespaces and limited by control groups. It shares the node's kernel, so settings that weaken isolation affect the whole node.
 
+Section eleven point one develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point one, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point one treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Westmere University will not accept operating work without a written trail.
+
 ### 11.2 Users
 
 Many images run as root by default. Running as a non-root user means that a flaw in the application gives less power inside the container and less chance to affect the node.
+
+Section eleven point two develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point two, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point two treats containers are processes users as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Capabilities
 
 Root powers are split into capabilities. Most web services need none; dropping all and adding only what is required is the secure default recommended by NIST SP 800-190.
 
+Section eleven point three develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point three, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point three treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Westmere University will not accept operating work without a written trail.
+
 ### 11.4 File systems
 
 A read-only root file system prevents changes to the application files at run time; temporary data goes to mounted volumes.
+
+Section eleven point four develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point four, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point four treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Westmere University will not accept operating work without a written trail.
 
 ### 11.5 Pod Security Standards
 
 Kubernetes defines Privileged, Baseline and Restricted profiles. Restricted requires non-root, no privilege escalation, dropped capabilities and a seccomp profile. StudyHub targets Restricted for all application namespaces.
 
+Section eleven point five develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point five, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point five treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Westmere University will not accept operating work without a written trail.
+
 ### 11.6 Patching
 
 Base images include operating system packages that need updates; images are rebuilt regularly from patched bases.
 
+Section eleven point six develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point six, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point six treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Westmere University will not accept operating work without a written trail.
+
 ### 11.7 Checking
 
 Samuel's checker reads pod specifications and reports settings that violate Restricted.
+
+Section eleven point seven develops operating systems with a Westmere University note Samuel Osei can demo offline.
+
+Under section eleven point seven, Tom Becker expects operating claims to carry owners and dates.
+
+Section eleven point seven treats containers are processes users as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Westmere University will not accept operating work without a written trail.
+
+Section eleven point seven fails closed if operating evidence is missing rather than guessing.
 
 ### Admission enforcement
 
@@ -783,6 +1313,14 @@ You will (1) summarise remediation times; (2) distinguish mean and median; (3) e
 
 Times to fix findings are skewed: most are quick, a few take months. The median describes the typical case; the mean is pulled up by long delays.
 
+Section twelve point one develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point one, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point one treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Westmere University will not accept probability work without a written trail.
+
 ### Lab — Lab — remediation statistics
 
 ```python
@@ -806,21 +1344,63 @@ approx 95% interval 0.33-0.77
 
 Across 20 synthetic findings, the mean time to fix is 19.3 days and the median 12.5. Eleven of 20 (0.55) were fixed within the 14-day target. An approximate 95% interval for that proportion is 0.33 to 0.77.
 
+Section twelve point two develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point two, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point two treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Westmere University will not accept probability work without a written trail.
+
 ### 12.3 Interpreting the interval
 
 With only 20 findings, the true on-time rate could plausibly be anywhere from about a third to three quarters. Claims like "we fix 55% on time" should carry this uncertainty.
+
+Section twelve point three develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point three, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point three treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Westmere University will not accept probability work without a written trail.
 
 ### 12.4 Sample size
 
 Quadrupling the sample roughly halves the interval width. Samuel plans to report quarterly once more findings accumulate.
 
+Section twelve point four develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point four, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point four treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Westmere University will not accept probability work without a written trail.
+
 ### 12.5 Comparing periods
 
 Differences between periods need intervals too; a rise from 55% to 65% on small samples may be noise.
 
+Section twelve point five develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point five, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point five treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Westmere University will not accept probability work without a written trail.
+
 ### 12.6 Presenting
 
 Charts show medians and percentiles, with sample sizes labelled.
+
+Section twelve point six develops probability and statistics with a Westmere University note Samuel Osei can demo offline.
+
+Under section twelve point six, Tom Becker expects probability claims to carry owners and dates.
+
+Section twelve point six treats skewed data lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Westmere University will not accept probability work without a written trail.
+
+Section twelve point six fails closed if probability evidence is missing rather than guessing.
 
 ### Why the median matters here
 
@@ -862,9 +1442,25 @@ You will (1) review cloud user accounts and keys; (2) enforce multi-factor authe
 
 Staff sign in through the university's identity provider with multi-factor authentication. Separate cloud console users should not exist except for documented break-glass accounts.
 
+Section thirteen point one develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point one, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point one treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Westmere University will not accept identity work without a written trail.
+
 ### 13.2 Service identities
 
 Services should use workload identity or managed identities that issue short-lived credentials, not long-lived access keys.
+
+Section thirteen point two develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point two, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point two treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Westmere University will not accept identity work without a written trail.
 
 ### Lab — Lab — account review
 
@@ -894,17 +1490,51 @@ s.osei          ok
 
 c.jensen, t.becker and s.osei are ok. svc-backup has an access key 610 days old. old-contractor is a console user without MFA, with a 400-day-old key, inactive for 220 days. old-contractor should be removed; svc-backup should move to a managed identity.
 
+Section thirteen point three develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point three, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point three treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
 ### 13.4 Stale access
 
 Accounts inactive for 90 days are disabled after confirming with owners. Leavers' access is removed through the identity provider, which removes cloud access too when federation is used.
+
+Section thirteen point four develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point four, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point four treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Westmere University will not accept identity work without a written trail.
 
 ### 13.5 Keys
 
 Keys older than 90 days are rotated or, better, replaced by short-lived credentials.
 
+Section thirteen point five develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point five, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point five treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Westmere University will not accept identity work without a written trail.
+
+Section thirteen point five fails closed if identity evidence is missing rather than guessing.
+
 ### 13.6 Reviews
 
 Quarterly access reviews list who has which roles; owners confirm each.
+
+Section thirteen point six develops identity and access with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirteen point six, Tom Becker expects identity claims to carry owners and dates.
+
+Section thirteen point six treats human identities service identities as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Westmere University will not accept identity work without a written trail.
+
+Section thirteen point six fails closed if identity evidence is missing rather than guessing.
 
 ### Break-glass accounts
 
@@ -950,29 +1580,87 @@ You will (1) apply privacy principles to StudyHub; (2) minimise and protect stud
 
 Collect only what is needed, use it only for stated purposes, keep it only as long as needed, keep it accurate and secure, and be transparent with students.
 
+Section fourteen point one develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point one, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point one treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Westmere University will not accept privacy work without a written trail.
+
 ### 14.2 Data location
 
 Where cloud data is stored affects which laws apply. Westmere keeps student data in its home region and records this in its data register.
+
+Section fourteen point two develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point two, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point two treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Westmere University will not accept privacy work without a written trail.
 
 ### 14.3 Minimisation in design
 
 StudyHub's analytics use aggregated data; individual records stay in the records system. Logs mask student IDs.
 
+Section fourteen point three develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point three, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point three treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Westmere University will not accept privacy work without a written trail.
+
 ### 14.4 Rights
 
 Students can ask for their data; systems need a way to find and export it. Knowing where data lives (chapter 9) makes this possible.
+
+Section fourteen point four develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point four, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point four treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Westmere University will not accept privacy work without a written trail.
 
 ### 14.5 Breach duties
 
 Exposure of personal data may need reporting to a regulator and students within strict time limits. Good logging lets Westmere determine what was exposed.
 
+Section fourteen point five develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point five, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point five treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Westmere University will not accept privacy work without a written trail.
+
 ### 14.6 Privacy and security
 
 Security controls protect privacy, but privacy also asks whether data should be collected at all.
 
+Section fourteen point six develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point six, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point six treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Westmere University will not accept privacy work without a written trail.
+
 ### 14.7 Test data
 
 Synthetic test data avoids privacy risk in testing entirely.
+
+Section fourteen point seven develops privacy foundations with a Westmere University note Samuel Osei can demo offline.
+
+Under section fourteen point seven, Tom Becker expects privacy claims to carry owners and dates.
+
+Section fourteen point seven treats principles data location minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point seven, Westmere University will not accept privacy work without a written trail.
+
+Section fourteen point seven fails closed if privacy evidence is missing rather than guessing.
 
 ### Privacy reviews
 
@@ -1014,6 +1702,12 @@ You will (1) gather evidence about cloud controls; (2) check audit logging cover
 
 The opening case could not measure how long the registry was open because logging was off. Audit logs record who changed what and when, and are the main evidence for investigations.
 
+Section fifteen point one develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point one, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point one treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — logging coverage
 
 ```python
@@ -1039,21 +1733,61 @@ logging coverage 3/6
 
 Audit logging is missing in studyhub-test / eu-central and in both regions of research-sandbox. Coverage is 3 of 6 account-region pairs. studyhub-prod is fully covered; the gaps are in test and research accounts, which are exactly where mistakes are often made.
 
+Section fifteen point two develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point two, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point two treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
 ### 15.3 Fixing gaps
 
 An organisation-wide logging configuration turns on audit logs for every account and region, sending them to a separate log account that individual accounts cannot alter.
+
+Section fifteen point three develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point three, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Westmere University will not accept evidence work without a written trail.
 
 ### 15.4 Trustworthy evidence
 
 Logs are stored with integrity protection and restricted access. Evidence collected for reports records source, time and hash.
 
+Section fifteen point four develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point four, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point four treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Westmere University will not accept evidence work without a written trail.
+
 ### 15.5 Measures
 
 Logging coverage, time to fix findings and number of high-risk configurations are tracked monthly.
 
+Section fifteen point five develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point five, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point five treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Westmere University will not accept evidence work without a written trail.
+
 ### 15.6 Limits
 
 Logs show actions, not intentions; missing data must be stated in reports.
+
+Section fifteen point six develops evidence and measurement with a Westmere University note Samuel Osei can demo offline.
+
+Under section fifteen point six, Tom Becker expects evidence claims to carry owners and dates.
+
+Section fifteen point six treats why logs matter lab as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Westmere University will not accept evidence work without a written trail.
+
+Section fifteen point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Evidence log
 
@@ -1099,29 +1833,89 @@ You will (1) design a layered architecture for StudyHub; (2) separate accounts a
 
 Westmere uses separate cloud accounts for production, test, research sandboxes, shared tooling and logs. Accounts are strong boundaries: a mistake in a sandbox cannot change production resources.
 
+Section sixteen point one develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point one, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point one treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point one, Westmere University will not accept security work without a written trail.
+
 ### 16.2 Organisation guardrails
 
 Policies at the organisation level block public storage, restrict regions to the home region and prevent disabling audit logs. Guardrails apply to every account, including ones created in the future.
+
+Section sixteen point two develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point two, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point two treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Westmere University will not accept security work without a written trail.
 
 ### 16.3 Cluster design
 
 Production and test clusters are separate. Within production, namespaces separate services, with default-deny network policies and Restricted pod security.
 
+Section sixteen point three develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point three, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point three treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Westmere University will not accept security work without a written trail.
+
 ### 16.4 Trust boundaries
 
 Internet to load balancer; cluster to managed database; build system to registry; registry to cluster; accounts to log account. Each boundary has authentication and logging.
+
+Section sixteen point four develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point four, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point four treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Westmere University will not accept security work without a written trail.
 
 ### 16.5 Zero trust
 
 Following NIST SP 800-207, services authenticate each other and every request is authorised, rather than trusting anything inside the network.
 
+Section sixteen point five develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point five, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point five treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Westmere University will not accept security work without a written trail.
+
 ### 16.6 Documentation
 
 An architecture diagram and decision records explain each choice.
 
+Section sixteen point six develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point six, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point six treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Westmere University will not accept security work without a written trail.
+
+Section sixteen point six fails closed if security evidence is missing rather than guessing.
+
 ### 16.7 Review
 
 Architecture changes are reviewed by the cloud team and a security reviewer.
+
+Section sixteen point seven develops security architecture with a Westmere University note Samuel Osei can demo offline.
+
+Under section sixteen point seven, Tom Becker expects security claims to carry owners and dates.
+
+Section sixteen point seven treats account structure organisation guardrails as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point seven, Westmere University will not accept security work without a written trail.
+
+Section sixteen point seven fails closed if security evidence is missing rather than guessing.
 
 ### Account creation
 
@@ -1163,29 +1957,85 @@ You will (1) explain encryption at rest and in transit; (2) describe key managem
 
 TLS protects traffic between users and StudyHub and between services. Certificates are issued and renewed automatically.
 
+Section seventeen point one develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point one, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point one treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point one, Westmere University will not accept cryptography work without a written trail.
+
 ### 17.2 Encryption at rest
 
 Managed storage and databases encrypt data at rest. Provider-managed keys are simplest; customer-managed keys in a key service add control over use and rotation, with audit logs of each use.
+
+Section seventeen point two develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point two, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point two treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point two, Westmere University will not accept cryptography work without a written trail.
 
 ### 17.3 Key management
 
 Keys live in a managed key service, never in code or images. Access to use a key is granted to specific identities.
 
+Section seventeen point three develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point three, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point three treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Westmere University will not accept cryptography work without a written trail.
+
 ### 17.4 Hashes
 
 An image digest is a hash of its content. Deploying by digest guarantees the exact image tested is the one running.
+
+Section seventeen point four develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point four, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point four treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Westmere University will not accept cryptography work without a written trail.
 
 ### 17.5 Signatures
 
 The build system signs images; the cluster verifies signatures before running them, so images from elsewhere are refused.
 
+Section seventeen point five develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point five, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point five treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Westmere University will not accept cryptography work without a written trail.
+
 ### 17.6 Mistakes
 
 Hard-coded keys, home-made encryption schemes and disabled certificate checks. All are avoided by using platform services.
 
+Section seventeen point six develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point six, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point six treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Westmere University will not accept cryptography work without a written trail.
+
 ### 17.7 Secrets
 
 Connection strings and passwords belong in a secret manager, delivered to pods at run time, never baked into images like the one in the opening case.
+
+Section seventeen point seven develops cryptography concepts with a Westmere University note Samuel Osei can demo offline.
+
+Under section seventeen point seven, Tom Becker expects cryptography claims to carry owners and dates.
+
+Section seventeen point seven treats encryption in transit encryption as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point seven, Westmere University will not accept cryptography work without a written trail.
 
 ### Rotation
 
@@ -1231,29 +2081,89 @@ You will (1) design a small study of StudyHub's configuration; (2) form a questi
 
 Samuel asks: "Are StudyHub images built from the shared base image less likely to contain high-severity vulnerabilities than images built from public bases?"
 
+Section eighteen point one develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point one, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point one treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point one, Westmere University will not accept research work without a written trail.
+
 ### 18.2 Hypothesis
 
 Images from the shared base, rebuilt weekly, have fewer high-severity findings.
+
+Section eighteen point two develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point two, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point two treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Westmere University will not accept research work without a written trail.
+
+Section eighteen point two fails closed if research evidence is missing rather than guessing.
 
 ### 18.3 Data
 
 Scan reports for 40 images over one month: 22 from the shared base, 18 from public bases.
 
+Section eighteen point three develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point three, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point three treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Westmere University will not accept research work without a written trail.
+
+Section eighteen point three fails closed if research evidence is missing rather than guessing.
+
 ### 18.4 Analysis
 
 Median high-severity findings: 0 for shared-base images, 3 for public-base images. Of public-base images, 12 of 18 had at least one high finding versus 3 of 22 shared-base images.
+
+Section eighteen point four develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point four, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point four treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Westmere University will not accept research work without a written trail.
 
 ### 18.5 Limits
 
 Images were not randomly assigned to bases; teams using public bases may maintain their images less. Shu, Gu and Enck (2017) also found many vulnerable images on public registries, which is consistent but does not prove cause here.
 
+Section eighteen point five develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point five, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point five treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
 ### 18.6 Ethics
 
 Data are scan reports about images, not people; team names are not reported.
 
+Section eighteen point six develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point six, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point six treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Westmere University will not accept research work without a written trail.
+
+Section eighteen point six fails closed if research evidence is missing rather than guessing.
+
 ### 18.7 Report
 
 A three-page report with method, results, limits and recommendation: move all images to the shared base.
+
+Section eighteen point seven develops research methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section eighteen point seven, Tom Becker expects research claims to carry owners and dates.
+
+Section eighteen point seven treats question hypothesis data analysis as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point seven, Westmere University will not accept research work without a written trail.
 
 ### Planning the study
 
@@ -1299,25 +2209,69 @@ You will (1) define cloud and container security; (2) explain the theories behin
 
 Cloud and container security protects workloads, data and identities on shared, on-demand infrastructure and in containerised platforms. NIST SP 800-145 defines the cloud; NIST SP 800-190 sets out container risks: image, registry, orchestrator, container and host.
 
+Section nineteen point one develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point one treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
+
 ### 19.2 Isolation theory
 
 Security depends on separating tenants, workloads and privileges. Clouds use hypervisors and accounts; containers use kernel features; Kubernetes uses namespaces and policies.
+
+Section nineteen point two develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point two treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point two, Westmere University will not accept cloud work without a written trail.
 
 ### 19.3 Least privilege
 
 Every identity has only needed permissions. Sandhu et al. (1996) formalised role-based access control, which cloud identity systems implement at scale.
 
+Section nineteen point three develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point three treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point three, Westmere University will not accept cloud work without a written trail.
+
 ### 19.4 Declarative configuration
 
 Kubernetes and infrastructure-as-code describe the desired state; controllers make reality match. Burns et al. (2016) explain this design. Declarative configuration can be reviewed and checked before it is applied.
+
+Section nineteen point four develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point four treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
 
 ### 19.5 Shared responsibility
 
 Provider and customer responsibilities differ by service model, as provider documentation explains.
 
+Section nineteen point five develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point five treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Westmere University will not accept cloud work without a written trail.
+
 ### 19.6 Scope for the course
 
 Accounts and identity, networks, registries and images, clusters and workloads, data and logging, operations.
+
+Section nineteen point six develops cloud and container security scope with a Westmere University note Samuel Osei can demo offline.
+
+Under section nineteen point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section nineteen point six treats definition isolation theory least as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, Westmere University will not accept cloud work without a written trail.
 
 ### Why theory matters
 
@@ -1359,25 +2313,69 @@ You will (1) study representative cloud security cases; (2) extract causes and l
 
 Common patterns in published incident reviews and research include public storage, leaked credentials in code or images, over-privileged identities and unpatched images. Samuel studies synthetic cases modelled on these patterns.
 
+Section twenty point one develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point one treats case types case public as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Case A: public storage
 
 A synthetic company's bucket of backups was public for months. Cause: a test setting copied to production. Lesson: account-level blocks and checks before deployment.
+
+Section twenty point two develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point two treats case types case public as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point two, Westmere University will not accept cloud work without a written trail.
 
 ### 20.3 Case B: credential in image
 
 A synthetic startup pushed an image with a cloud key to a public registry; the key was used to start costly machines. Cause: no secret scanning and long-lived keys. Lesson: short-lived identities and pre-push scanning.
 
+Section twenty point three develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point three treats case types case public as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Case C: over-privileged pipeline
 
 A build system with administrator rights was misused after its token leaked. Lesson: narrow pipeline permissions.
+
+Section twenty point four develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point four treats case types case public as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Westmere University will not accept cloud work without a written trail.
 
 ### 20.5 Comparing
 
 Westmere's opening case resembles Case B, without misuse, partly because of network restrictions on the database.
 
+Section twenty point five develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point five treats case types case public as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point five, Westmere University will not accept cloud work without a written trail.
+
 ### 20.6 Hindsight
 
 Decisions that look wrong afterwards may have been reasonable with what was known. Reviews focus on systems, not blame.
+
+Section twenty point six develops cloud and container security foundational with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty point six treats case types case public as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, Westmere University will not accept cloud work without a written trail.
 
 ### Sources of cases
 
@@ -1423,29 +2421,85 @@ You will (1) model StudyHub's components, identities and data flows; (2) identif
 
 Load balancer, web front end, records-api, coursework service, message queue, managed database, storage buckets, registry, build system, identity provider, log account.
 
+Section twenty-one point one develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point one treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point one, Westmere University will not accept cloud work without a written trail.
+
 ### 21.2 Identities
 
 Each service has a Kubernetes service account mapped to a cloud identity; people sign in through the identity provider; the build system has its own identity.
+
+Section twenty-one point two develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point two treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point two, Westmere University will not accept cloud work without a written trail.
 
 ### 21.3 Data flows
 
 Students to web; web to records-api; records-api to database; coursework service to storage; build to registry; registry to cluster; all accounts to logs.
 
+Section twenty-one point three develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point three treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point three, Westmere University will not accept cloud work without a written trail.
+
 ### 21.4 Trust boundaries
 
 Marked where flows cross networks, accounts or identity domains. Shostack's (2014) question "what can go wrong?" is asked at each boundary.
+
+Section twenty-one point four develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point four treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Westmere University will not accept cloud work without a written trail.
 
 ### 21.5 Finding gaps
 
 For each flow, Samuel checks authentication, authorisation, encryption and logging. Gaps become backlog items.
 
+Section twenty-one point five develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point five treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Westmere University will not accept cloud work without a written trail.
+
 ### 21.6 Keeping current
 
 The model is stored with the infrastructure code and updated in the same pull request as architecture changes.
 
+Section twenty-one point six develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point six treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Westmere University will not accept cloud work without a written trail.
+
 ### 21.7 Model limits
 
 The model shows intended flows; flow logs show actual flows. Comparing them finds surprises.
+
+Section twenty-one point seven develops cloud and container security system with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-one point seven, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-one point seven treats components identities data flows as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point seven, Westmere University will not accept cloud work without a written trail.
 
 ### Drawing the model
 
@@ -1487,29 +2541,85 @@ You will (1) track images, base layers and library dependencies; (2) understand 
 
 Each image depends on a base image, operating system packages and application libraries. A vulnerability in any of them is a vulnerability in the image.
 
+Section twenty-two point one develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point one treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point one, Westmere University will not accept cloud work without a written trail.
+
 ### 22.2 Base images
 
 A shared, regularly rebuilt base image (chapter 18) reduces vulnerabilities and gives one place to apply fixes.
+
+Section twenty-two point two develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point two treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Westmere University will not accept cloud work without a written trail.
 
 ### 22.3 Inventories
 
 A software bill of materials lists components in each image, so Westmere can answer "which images contain this library?" quickly when an advisory appears.
 
+Section twenty-two point three develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point three treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point three, Westmere University will not accept cloud work without a written trail.
+
 ### 22.4 Third-party images
 
 Images from public registries are mirrored into Westmere's registry after checking their digest and scanning them; the cluster runs only images from the internal registry.
+
+Section twenty-two point four develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point four treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Westmere University will not accept cloud work without a written trail.
 
 ### 22.5 Managed service dependencies
 
 StudyHub depends on the managed database, identity provider and storage. Their availability and security notices are monitored.
 
+Section twenty-two point five develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point five treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point five, Westmere University will not accept cloud work without a written trail.
+
 ### 22.6 Update plan
 
 Base images rebuild weekly; application images rebuild when their base changes; critical advisories trigger immediate rebuilds.
 
+Section twenty-two point six develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point six treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Westmere University will not accept cloud work without a written trail.
+
 ### 22.7 Removing dependencies
 
 Unused libraries and services are removed to shrink what must be tracked.
+
+Section twenty-two point seven develops cloud and container security data with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-two point seven, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-two point seven treats image dependencies base images as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point seven, Westmere University will not accept cloud work without a written trail.
 
 ### Generating inventories
 
@@ -1551,6 +2661,14 @@ You will (1) review registry configuration systematically; (2) check anonymous a
 
 For each repository: is anonymous pull enabled? How old is the newest image? Has it ever been scanned? Who owns it?
 
+Section twenty-three point one develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-three point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-three point one treats method lab result prioritising as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point one, Westmere University will not accept cloud work without a written trail.
+
 ### Lab — Lab — registry review
 
 ```python
@@ -1575,17 +2693,45 @@ tools/base-python        newest image 200 d old
 
 studyhub/web is ok. studyhub/records-api has anonymous pull enabled. studyhub/legacy-import has anonymous pull enabled, its newest image is 540 days old and it was never scanned. tools/base-python's newest image is 200 days old, which matters because many services build on it.
 
+Section twenty-three point two develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-three point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-three point two treats method lab result prioritising as testable only when evidence and ticket IDs are recorded.
+
 ### 23.3 Prioritising
 
 Anonymous pull is fixed first because it exposes images to anyone. The stale base image is next because its age spreads to dependent images. legacy-import is checked for use; unused repositories are archived.
+
+Section twenty-three point three develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-three point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-three point three treats method lab result prioritising as testable only when evidence and ticket IDs are recorded.
 
 ### 23.4 Verifying fixes
 
 After changes, an anonymous pull test from outside the network must be refused, and the review is rerun.
 
+Section twenty-three point four develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-three point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-three point four treats method lab result prioritising as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Westmere University will not accept cloud work without a written trail.
+
 ### 23.5 Prevention
 
 Registry settings are defined in infrastructure code with private access by default; the organisation guardrail rejects public registry settings.
+
+Section twenty-three point five develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-three point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-three point five treats method lab result prioritising as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Westmere University will not accept cloud work without a written trail.
 
 ### Writing the review up
 
@@ -1631,29 +2777,87 @@ You will (1) select and implement controls for StudyHub; (2) cover prevention, d
 
 Organisation guardrails, private registry, admission control for signed images and Restricted pods, default-deny network policies, short-lived identities.
 
+Section twenty-four point one develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point one treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Westmere University will not accept cloud work without a written trail.
+
 ### 24.2 Detective controls
 
 Central audit logs, alerts on high-risk changes, weekly configuration checks, image scanning.
+
+Section twenty-four point two develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point two treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Westmere University will not accept cloud work without a written trail.
 
 ### 24.3 Response controls
 
 Runbooks for credential exposure, public resources and suspicious activity; ability to revoke credentials and isolate namespaces quickly.
 
+Section twenty-four point three develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point three treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Westmere University will not accept cloud work without a written trail.
+
 ### 24.4 Mapping
 
 Each control maps to CSA CCM v4 domains and relevant CIS Benchmark sections, which helps auditors and shows coverage.
+
+Section twenty-four point four develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point four treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Westmere University will not accept cloud work without a written trail.
 
 ### 24.5 Control register
 
 A register lists each control, owner, evidence source, test method and last test date.
 
+Section twenty-four point five develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point five treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Westmere University will not accept cloud work without a written trail.
+
 ### 24.6 Prioritising
 
 Controls addressing the opening case (registry access, secrets in images, logging) come first.
 
+Section twenty-four point six develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point six treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Westmere University will not accept cloud work without a written trail.
+
 ### 24.7 Cost and effort
 
 Most controls use built-in platform features, keeping cost low.
+
+Section twenty-four point seven develops cloud and container security controls with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-four point seven, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-four point seven treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point seven, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-four point seven fails closed if cloud evidence is missing rather than guessing.
 
 ### Testing controls
 
@@ -1703,29 +2907,93 @@ You will (1) practise configuration review on a synthetic environment; (2) apply
 
 A synthetic export set models a small university platform: three accounts, a registry, a cluster and identities. No real systems are involved.
 
+Section twenty-five point one develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point one, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point one treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Westmere University will not accept laboratory work without a written trail.
+
 ### 25.2 Tasks
 
 Run the registry review, the account review and the logging coverage check; build the role graph; list findings by severity.
+
+Section twenty-five point two develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point two, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point two treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Westmere University will not accept laboratory work without a written trail.
 
 ### 25.3 Findings expected
 
 Students should find an anonymous repository, an account without MFA, missing logging in one region and a role path from a support account to an admin role.
 
+Section twenty-five point three develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point three, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point three treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Westmere University will not accept laboratory work without a written trail.
+
 ### 25.4 Report
 
 One page: summary, findings with evidence, recommended fixes and order.
+
+Section twenty-five point four develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point four, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point four treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Westmere University will not accept laboratory work without a written trail.
+
+Section twenty-five point four fails closed if laboratory evidence is missing rather than guessing.
 
 ### 25.5 Assessment
 
 Completeness, accuracy, prioritisation and clarity.
 
+Section twenty-five point five develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point five, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point five treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Westmere University will not accept laboratory work without a written trail.
+
+Section twenty-five point five fails closed if laboratory evidence is missing rather than guessing.
+
 ### 25.6 Safety
 
 All data synthetic; scripts read files only.
 
+Section twenty-five point six develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point six, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point six treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Westmere University will not accept laboratory work without a written trail.
+
+Section twenty-five point six fails closed if laboratory evidence is missing rather than guessing.
+
 ### 25.7 Debrief
 
 Students compare reports and discuss differences in prioritisation.
+
+Section twenty-five point seven develops laboratory with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-five point seven, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section twenty-five point seven treats lab environment tasks findings as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point seven, Westmere University will not accept laboratory work without a written trail.
+
+Section twenty-five point seven fails closed if laboratory evidence is missing rather than guessing.
 
 ### Lab preparation
 
@@ -1775,6 +3043,14 @@ You will (1) assess cloud accounts against a benchmark-style checklist; (2) inte
 
 The CIS Benchmarks provide consensus configuration recommendations for cloud accounts and Kubernetes. Samuel uses a small subset adapted for Westmere, keeping each item's reason.
 
+Section twenty-six point one develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point one treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point one, Westmere University will not accept cloud work without a written trail.
+
 ### Lab — Lab — account checklist
 
 ```python
@@ -1804,21 +3080,61 @@ score 4/7 = 57%
 
 Four of seven checks pass: owner account MFA, no owner access keys, storage public access blocked and log files encrypted. Three fail: audit logging in all regions, password policy length at least 14, and the default network having no open administration ports. The score is 57%.
 
+Section twenty-six point two develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point two treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
+
 ### 26.3 Interpreting
 
 A percentage hides differences in importance. Open administration ports and missing logging matter more than password length, since staff sign in through the identity provider rather than local passwords.
+
+Section twenty-six point three develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point three treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
 
 ### 26.4 Prioritising
 
 Fix open ports first, then logging (already planned centrally), then password policy for the few local accounts.
 
+Section twenty-six point four develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point four treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Westmere University will not accept cloud work without a written trail.
+
 ### 26.5 Tracking
 
 The checklist runs monthly; results are charted per account.
 
+Section twenty-six point five develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point five treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-six point five fails closed if cloud evidence is missing rather than guessing.
+
 ### 26.6 Limits
 
 Benchmarks cover common settings, not Westmere-specific risks such as role paths.
+
+Section twenty-six point six develops cloud and container security methods with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-six point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-six point six treats benchmarks lab result interpreting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point six, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-six point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Adapting the benchmark
 
@@ -1860,6 +3176,14 @@ You will (1) verify that controls behave as intended with safe tests; (2) compar
 
 Configuration can say a control is on while it does not work, for example because of a wrong label or an old version. Verification observes behaviour.
 
+Section twenty-seven point one develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point one treats why verify lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point one, Westmere University will not accept cloud work without a written trail.
+
 ### Lab — Lab — control verification
 
 ```python
@@ -1887,21 +3211,59 @@ PASS  audit log written          expected written   observed written
 
 Four of five tests pass: anonymous pull refused, public bucket blocked, MFA required for console and audit log written. One fails: a privileged test pod was admitted when it should have been rejected.
 
+Section twenty-seven point two develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point two treats why verify lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 27.3 Investigating
 
 The failure traces to the test namespace lacking the label that enforces the Restricted profile. The label is added and the test passes; a check now ensures every application namespace carries it.
+
+Section twenty-seven point three develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point three treats why verify lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 27.4 Safe tests
 
 Tests use synthetic pods and objects in a test namespace or account; they never touch student data.
 
+Section twenty-seven point four develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point four treats why verify lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Westmere University will not accept cloud work without a written trail.
+
 ### 27.5 Evidence
 
 Each test run records date, environment, expected and observed results and the configuration version.
 
+Section twenty-seven point five develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point five treats why verify lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Westmere University will not accept cloud work without a written trail.
+
 ### 27.6 Regular runs
 
 Tests run after changes and monthly.
+
+Section twenty-seven point six develops cloud and container security verification with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-seven point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-seven point six treats why verify lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-seven point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Writing good tests
 
@@ -1943,29 +3305,87 @@ You will (1) analyse how StudyHub controls could fail; (2) consider technical an
 
 For each important control, ask how it could fail, how failure would be noticed and how service would recover.
 
+Section twenty-eight point one develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point one treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point one, Westmere University will not accept cloud work without a written trail.
+
 ### 28.2 Admission control failure
 
 If the admission service is down, deployments may be blocked (fail closed) or allowed without checks (fail open). Westmere chooses fail closed for production with alerts and a runbook.
+
+Section twenty-eight point two develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point two treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Identity provider outage
 
 Staff cannot sign in; break-glass accounts allow emergency access.
 
+Section twenty-eight point three develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point three treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-eight point three fails closed if cloud evidence is missing rather than guessing.
+
 ### 28.4 Logging failure
 
 If log delivery stops, an alert fires when no logs arrive for 30 minutes.
+
+Section twenty-eight point four develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point four treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Westmere University will not accept cloud work without a written trail.
 
 ### 28.5 Human failures
 
 A rushed console change during an incident; a mistaken guardrail exception. Controls: changes through code where possible, exceptions with expiry.
 
+Section twenty-eight point five develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point five treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Westmere University will not accept cloud work without a written trail.
+
 ### 28.6 Prioritising
 
 Failures that would be silent rank highest, because they can last long unnoticed, as in the opening case.
 
+Section twenty-eight point six develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point six treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point six, Westmere University will not accept cloud work without a written trail.
+
 ### 28.7 Exercises
 
 Failure scenarios are rehearsed in the test environment each term.
+
+Section twenty-eight point seven develops cloud and container security failure with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-eight point seven, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-eight point seven treats approach admission control failure as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point seven, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-eight point seven fails closed if cloud evidence is missing rather than guessing.
 
 ### Failure table
 
@@ -2011,6 +3431,16 @@ You will (1) run day-to-day cloud security operations; (2) measure alert quality
 
 The cloud team reviews alerts, check results and exception expiries daily.
 
+Section twenty-nine point one develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point one treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-nine point one fails closed if cloud evidence is missing rather than guessing.
+
 ### Lab — Lab — alert handling
 
 ```python
@@ -2038,21 +3468,63 @@ public-access-change  n 2, actionable 2/2, median ack 7.5 min
 
 logging-disabled: 1 alert, 1 actionable, median 4 minutes to acknowledge. public-access-change: 2 alerts, both actionable, median 7.5 minutes. new-access-key: 2 alerts, 1 actionable, median 22.0 minutes. login-new-country: 3 alerts, none actionable, median 45 minutes. Alerts that are never actionable get slow responses, which risks slow responses to real ones too.
 
+Section twenty-nine point two develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point two treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 29.3 Tuning
 
 login-new-country fires for staff at conferences; it is tuned to exclude known travel from the identity provider's records and to raise severity only for administrator roles.
+
+Section twenty-nine point three develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point three treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point three, Westmere University will not accept cloud work without a written trail.
 
 ### 29.4 Runbooks
 
 Each alert links to a runbook; runbooks are updated after each real alert.
 
+Section twenty-nine point four develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point four treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Westmere University will not accept cloud work without a written trail.
+
 ### 29.5 Measuring
 
 Monthly: alerts by rule, actionable share and acknowledgement time.
 
+Section twenty-nine point five develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point five treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-nine point five fails closed if cloud evidence is missing rather than guessing.
+
 ### 29.6 Workload
 
 Tuning keeps total alerts manageable for a small team.
+
+Section twenty-nine point six develops cloud and container security operations with a Westmere University note Samuel Osei can demo offline.
+
+Under section twenty-nine point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section twenty-nine point six treats daily work lab result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, Westmere University will not accept cloud work without a written trail.
+
+Section twenty-nine point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Runbook quality
 
@@ -2098,29 +3570,91 @@ You will (1) run a combined verification and operations lab; (2) inject syntheti
 
 In the test account, the lab injects synthetic events: a public access change, a new access key, a privileged pod request and a logging disablement attempt.
 
+Section thirty point one develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point one, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point one treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Westmere University will not accept laboratory work without a written trail.
+
 ### 30.2 Expectations
 
 The guardrail blocks the public change and logging disablement; admission rejects the privileged pod; alerts fire for the key and the attempts.
+
+Section thirty point two develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point two, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point two treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Westmere University will not accept laboratory work without a written trail.
 
 ### 30.3 Observing
 
 Students record when each event happened, whether it was blocked, when alerts arrived and whether the runbook worked.
 
+Section thirty point three develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point three, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Westmere University will not accept laboratory work without a written trail.
+
 ### 30.4 Results
 
 All events are blocked or detected; the new-key alert takes 18 minutes, slower than the 15-minute target, because it waits for a batch log export.
+
+Section thirty point four develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point four, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Westmere University will not accept laboratory work without a written trail.
 
 ### 30.5 Report
 
 A short report with timings, a comparison with targets and recommendations.
 
+Section thirty point five develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point five, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point five treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point five, Westmere University will not accept laboratory work without a written trail.
+
+Section thirty point five fails closed if laboratory evidence is missing rather than guessing.
+
 ### 30.6 Safety
 
 Synthetic events only, in a test account, with the cloud team present.
 
+Section thirty point six develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point six, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point six treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Westmere University will not accept laboratory work without a written trail.
+
+Section thirty point six fails closed if laboratory evidence is missing rather than guessing.
+
 ### 30.7 Reflection
 
 Students discuss which detections they would trust in production.
+
+Section thirty point seven develops laboratory ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty point seven, Tom Becker expects laboratory claims to carry owners and dates.
+
+Section thirty point seven treats setup expectations observing results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point seven, Westmere University will not accept laboratory work without a written trail.
+
+Section thirty point seven fails closed if laboratory evidence is missing rather than guessing.
 
 ### Lab roles
 
@@ -2170,25 +3704,71 @@ You will (1) analyse complex cloud and container scenarios involving several wea
 
 Serious incidents often combine several small issues. In a synthetic case, a developer's laptop token with broad rights, a pipeline role that can assume an administrator role and missing alerting on role assumptions together allow an unreviewed change to production.
 
+Section thirty-one point one develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point one treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
+
 ### 31.2 Tracing chains
 
 Samuel uses the role graph (chapter 6), the model (chapter 21) and logs to trace each step. Each link is a separate fix opportunity.
+
+Section thirty-one point two develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point two treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point two, Westmere University will not accept cloud work without a written trail.
 
 ### 31.3 Layered fixes
 
 Short-lived developer tokens; narrowed pipeline role; alerts on administrator role assumption; required review for production changes. Any one breaks the chain; all together make it robust.
 
+Section thirty-one point three develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point three treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point three, Westmere University will not accept cloud work without a written trail.
+
 ### 31.4 Container case
 
 A second synthetic case: a privileged debug pod left running with a host path mount, plus no network policies, plus a service account token mounted by default. Fixes: Restricted pod security, default-deny policies, no automatic token mounting where not needed.
+
+Section thirty-one point four develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point four treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 Communicating
 
 Complex findings are explained as a short story with a diagram, then a table of fixes with owners.
 
+Section thirty-one point five develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point five treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point five, Westmere University will not accept cloud work without a written trail.
+
 ### 31.6 Avoiding blame
 
 The cases show system weaknesses, not individual failure.
+
+Section thirty-one point six develops cloud and container security advanced with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-one point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-one point six treats combining weaknesses tracing chains as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point six, Westmere University will not accept cloud work without a written trail.
+
+Section thirty-one point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Teaching through cases
 
@@ -2230,25 +3810,73 @@ You will (1) work with law, finance, teaching staff and students on cloud securi
 
 The data protection officer needs to know where student data is stored and how breaches would be detected. Samuel provides the data map and logging coverage.
 
+Section thirty-two point one develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point one, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point one treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point one, Westmere University will not accept cloud work without a written trail.
+
 ### 32.2 Finance
 
 Cloud costs are visible per account. Security controls such as logging have costs; Samuel estimates log storage cost and shows retention choices that balance cost and evidence.
+
+Section thirty-two point two develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point two, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point two treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point two, Westmere University will not accept cloud work without a written trail.
 
 ### 32.3 Teaching staff
 
 Lecturers want research sandboxes with freedom to experiment. Guardrails protect against public data exposure without blocking experiments.
 
+Section thirty-two point three develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point three, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point three treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point three, Westmere University will not accept cloud work without a written trail.
+
 ### 32.4 Students
 
 Students expect StudyHub to be available during deadlines. Changes are scheduled away from submission peaks.
+
+Section thirty-two point four develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point four, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point four treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Westmere University will not accept cloud work without a written trail.
 
 ### 32.5 Translating
 
 Each audience gets the same facts in its own terms: risk to students, legal duty, cost, teaching impact.
 
+Section thirty-two point five develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point five, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point five treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Westmere University will not accept cloud work without a written trail.
+
 ### 32.6 Decisions
 
 Conflicts, such as a research group wanting public datasets, go to a small governance group with a documented decision.
+
+Section thirty-two point six develops cloud and container security interdisciplinary with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-two point six, Tom Becker expects cloud claims to carry owners and dates.
+
+Section thirty-two point six treats legal and privacy finance as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point six, Westmere University will not accept cloud work without a written trail.
 
 ### Governance group
 
@@ -2294,25 +3922,73 @@ You will (1) plan a more rigorous study; (2) compare groups fairly; (3) use reli
 
 Samuel asks whether teams that adopted the shared namespace template had fewer configuration findings per service than teams that did not, over one term.
 
+Section thirty-three point one develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point one, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point one treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point one, Westmere University will not accept research work without a written trail.
+
 ### 33.2 Design
 
 Compare 12 adopting services with 12 non-adopting services of similar size and age, matching pairs to reduce confounding.
+
+Section thirty-three point two develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point two, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point two treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point two, Westmere University will not accept research work without a written trail.
 
 ### 33.3 Labels
 
 Findings are labelled real or not by two reviewers independently; agreement is checked with Cohen's kappa, interpreted with Landis and Koch's (1977) bands.
 
+Section thirty-three point three develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point three, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point three treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point three, Westmere University will not accept research work without a written trail.
+
 ### 33.4 Results
 
 Median findings per service: 1 for adopters, 4 for non-adopters. Reviewer kappa is 0.82, almost perfect agreement.
+
+Section thirty-three point four develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point four, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point four treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Westmere University will not accept research work without a written trail.
 
 ### 33.5 Validity
 
 Teams chose whether to adopt; more careful teams may adopt first. Matching helps but cannot remove this. One term is short.
 
+Section thirty-three point five develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point five, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point five treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point five, Westmere University will not accept research work without a written trail.
+
 ### 33.6 Reporting
 
 Results with limits, plus a recommendation to offer the template to all teams and re-measure.
+
+Section thirty-three point six develops research methods ii with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-three point six, Tom Becker expects research claims to carry owners and dates.
+
+Section thirty-three point six treats question design labels results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, Westmere University will not accept research work without a written trail.
 
 ### Choosing pairs
 
@@ -2362,25 +4038,75 @@ You will (1) compare two approaches to a cloud security problem; (2) define crit
 
 How should Westmere detect public storage and registry exposure: periodic scanning of configuration, or real-time alerts on configuration change events?
 
+Section thirty-four point one develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point one, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point one treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point one, Westmere University will not accept comparative work without a written trail.
+
 ### 34.2 Criteria
 
 Time to detect, false alerts, cost, coverage of resources created outside code, and effort to maintain.
+
+Section thirty-four point two develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point two, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point two, Westmere University will not accept comparative work without a written trail.
 
 ### 34.3 Testing
 
 In a test account, Samuel creates 20 synthetic exposure events at random times. Periodic scanning every 24 hours detects all 20 with a median delay of 11 hours. Event-based alerts detect 19 with a median delay of 2 minutes; one is missed because that resource type does not emit the event used.
 
+Section thirty-four point three develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point three, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
 ### 34.4 Comparison
 
 Event alerts are much faster but miss some types; scanning is complete but slow.
+
+Section thirty-four point four develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point four, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point four, Westmere University will not accept comparative work without a written trail.
+
+Section thirty-four point four fails closed if comparative evidence is missing rather than guessing.
 
 ### 34.5 Recommendation
 
 Use both: event alerts for speed, daily scanning as a safety net, plus prevention through guardrails so most events never happen.
 
+Section thirty-four point five develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point five, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point five treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point five, Westmere University will not accept comparative work without a written trail.
+
 ### 34.6 Cost
 
 Both use built-in services; cost is mainly setup time.
+
+Section thirty-four point six develops comparative project with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-four point six, Tom Becker expects comparative claims to carry owners and dates.
+
+Section thirty-four point six treats the problem criteria testing as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point six, Westmere University will not accept comparative work without a written trail.
+
+Section thirty-four point six fails closed if comparative evidence is missing rather than guessing.
 
 ### Writing the comparison
 
@@ -2430,29 +4156,91 @@ You will (1) propose a capstone that improves StudyHub's cloud security; (2) def
 
 Samuel proposes a "cloud posture report" for StudyHub: a weekly automated report combining registry, identity, logging, benchmark and pod security checks, with trends and owners, plus a secret scan in the build pipeline.
 
+Section thirty-five point one develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point one, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point one treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
 ### 35.2 Motivation
 
 The opening case showed that no single view existed; the report gives one, and the scan addresses the root cause.
+
+Section thirty-five point two develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point two, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point two, Westmere University will not accept capstone work without a written trail.
 
 ### 35.3 Scope
 
 Read-only checks over exports; pipeline scan; report generation. Out of scope: automatic fixing.
 
+Section thirty-five point three develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point three, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point three, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-five point three fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.4 Success criteria
 
 All five check families running weekly; zero anonymous repositories; logging 6 of 6; findings median age under 14 days by term end; scan blocking any key-like string except allowed placeholders.
+
+Section thirty-five point four develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point four, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point four, Westmere University will not accept capstone work without a written trail.
 
 ### 35.5 Risks
 
 Noise leading to ignored reports; scanner false positives blocking builds.
 
+Section thirty-five point five develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point five, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point five treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-five point five fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.6 Mitigations
 
 Owners and severity in the report; reviewed allow list for test placeholders.
 
+Section thirty-five point six develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point six, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point six treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point six, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-five point six fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.7 Approval
 
 Tom and Dr Jensen approve, with Tom's team owning the report afterwards.
+
+Section thirty-five point seven develops capstone proposal with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-five point seven, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-five point seven treats proposal motivation scope success as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point seven, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-five point seven fails closed if capstone evidence is missing rather than guessing.
 
 ### Plan and timeline
 
@@ -2502,25 +4290,69 @@ You will (1) apply cloud security skills in a community setting; (2) adapt metho
 
 Samuel volunteers for four weeks with a fictional local charity, Harbourside Youth Trust, which runs a small booking app on a cloud platform with one part-time IT volunteer.
 
+Section thirty-six point one develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point one, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point one treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point one, Westmere University will not accept field work without a written trail.
+
 ### 36.2 Adapting methods
 
 The full university checklist is too much. Samuel picks five checks that matter most for a small account: owner MFA, no owner keys, storage public access blocked, audit logging on, and budget alerts.
+
+Section thirty-six point two develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point two, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point two treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
 
 ### 36.3 Findings
 
 Owner MFA was off; a storage bucket of event photos was public; logging was off. Keys and budgets were fine.
 
+Section thirty-six point three develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point three, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point three treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point three, Westmere University will not accept field work without a written trail.
+
 ### 36.4 Fixes
 
 With the trustees' written permission, the volunteer turns on MFA, blocks public access after moving the intended public photos to the website, and enables logging. Samuel guides; the volunteer makes the changes.
+
+Section thirty-six point four develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point four, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point four treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
 
 ### 36.5 Communication
 
 Samuel explains risks in terms of children's photos and the charity's reputation, not technical jargon.
 
+Section thirty-six point five develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point five, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point five treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Westmere University will not accept field work without a written trail.
+
 ### 36.6 Reflection
 
 Small organisations need short, prioritised advice and someone to help them act on it.
+
+Section thirty-six point six develops field or community practice with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-six point six, Tom Becker expects field claims to carry owners and dates.
+
+Section thirty-six point six treats the placement adapting methods as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point six, Westmere University will not accept field work without a written trail.
 
 ### Leaving it sustainable
 
@@ -2562,25 +4394,69 @@ You will (1) critically review evidence used in cloud security claims; (2) asses
 
 Students bring a claim from a source and assess its evidence: who made it, what data, what method, what limits.
 
+Section thirty-seven point one develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point one, Tom Becker expects evidence claims to carry owners and dates.
+
+Section thirty-seven point one treats purpose example claim research as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point one, Westmere University will not accept evidence work without a written trail.
+
 ### 37.2 Example claim
 
 A vendor report states that "most cloud breaches are caused by misconfiguration". Samuel checks: the report's data come from the vendor's customers, the definition of breach is broad and the method is not described. The claim is plausible and consistent with research on configuration errors (Rahman et al., 2019), but the specific percentage is weakly supported.
+
+Section thirty-seven point two develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point two, Tom Becker expects evidence claims to carry owners and dates.
 
 ### 37.3 Research example
 
 Shu, Gu and Enck (2017) analysed real Docker Hub images with a described method; their findings are stronger evidence for image vulnerability prevalence at that time.
 
+Section thirty-seven point three develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point three, Tom Becker expects evidence claims to carry owners and dates.
+
+Section thirty-seven point three treats purpose example claim research as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point three, Westmere University will not accept evidence work without a written trail.
+
 ### 37.4 Internal data
 
 Samuel's own studies are reviewed by classmates, who point out the short time frames.
+
+Section thirty-seven point four develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point four, Tom Becker expects evidence claims to carry owners and dates.
+
+Section thirty-seven point four treats purpose example claim research as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Westmere University will not accept evidence work without a written trail.
 
 ### 37.5 Presenting
 
 Each student gives a ten-minute critique with a verdict: strong, moderate or weak support.
 
+Section thirty-seven point five develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point five, Tom Becker expects evidence claims to carry owners and dates.
+
+Section thirty-seven point five treats purpose example claim research as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, Westmere University will not accept evidence work without a written trail.
+
 ### 37.6 Using evidence
 
 Weak evidence can still guide action if the action is cheap and sensible; it should not be quoted as fact.
+
+Section thirty-seven point six develops evidence review seminar with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-seven point six, Tom Becker expects evidence claims to carry owners and dates.
+
+Section thirty-seven point six treats purpose example claim research as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point six, Westmere University will not accept evidence work without a written trail.
 
 ### Grading evidence
 
@@ -2626,25 +4502,73 @@ You will (1) build the posture report and pipeline secret scan; (2) test with sy
 
 The report combines the registry, account, logging, benchmark and pod security checks into one weekly document with trends and owners. Each section links to evidence files.
 
+Section thirty-eight point one develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point one, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point one, Westmere University will not accept capstone work without a written trail.
+
 ### 38.2 Pipeline scan
 
 The build pipeline scans image layers for key-like strings using pattern and entropy rules, failing the build on a match unless the string is in a reviewed placeholder allow list.
+
+Section thirty-eight point two develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point two, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point two, Westmere University will not accept capstone work without a written trail.
 
 ### 38.3 Testing
 
 Synthetic exports and images with known problems confirm each check works; compliant inputs confirm no false failures.
 
+Section thirty-eight point three develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point three, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Westmere University will not accept capstone work without a written trail.
+
 ### 38.4 Deployment
 
 The report runs in the shared tooling account with read-only access to exports. The scan is added to the pipeline in warning mode for two weeks, then blocking.
+
+Section thirty-eight point four develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point four, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point four treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point four, Westmere University will not accept capstone work without a written trail.
 
 ### 38.5 Problems
 
 An export format changed mid-project, breaking the identity check; a loader update and test fixed it. Warning mode revealed three test fixtures with realistic-looking fake keys, which were replaced by obvious placeholders.
 
+Section thirty-eight point five develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point five, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point five treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
 ### 38.6 Documentation
 
 A guide explains how to read the report and how to request allow-list entries.
+
+Section thirty-eight point six develops capstone implementation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-eight point six, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-eight point six treats building the report pipeline as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point six, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-eight point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Code review
 
@@ -2686,25 +4610,75 @@ You will (1) evaluate the capstone against success criteria; (2) measure outcome
 
 All five check families run weekly (met). Anonymous repositories: 0 (met). Logging coverage 6 of 6 (met). Median findings age 9 days at term end (met). Scan blocking key-like strings (met, one real key blocked).
 
+Section thirty-nine point one develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point one, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
 ### 39.2 Trend
 
 Total open findings fell from 41 at the start of term to 9.
+
+Section thirty-nine point two develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point two, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-nine point two fails closed if capstone evidence is missing rather than guessing.
 
 ### 39.3 Feedback
 
 The cloud team rates the report useful; they ask for a shorter summary at the top, which Samuel adds.
 
+Section thirty-nine point three develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point three, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point three, Westmere University will not accept capstone work without a written trail.
+
 ### 39.4 Limits
 
 One term of data; configuration state only, not attack resistance; scan may miss secrets that do not look random.
+
+Section thirty-nine point four develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point four, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Westmere University will not accept capstone work without a written trail.
 
 ### 39.5 Independent check
 
 A cloud team member reruns the report from scratch using the guide and gets the same results.
 
+Section thirty-nine point five develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point five, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point five treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point five, Westmere University will not accept capstone work without a written trail.
+
 ### 39.6 What next
 
 Add Kubernetes role-binding analysis to the report; extend the scan to infrastructure code.
+
+Section thirty-nine point six develops capstone evaluation with a Westmere University note Samuel Osei can demo offline.
+
+Under section thirty-nine point six, Tom Becker expects capstone claims to carry owners and dates.
+
+Section thirty-nine point six treats criteria results trend feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point six, Westmere University will not accept capstone work without a written trail.
+
+Section thirty-nine point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Measuring user value
 
@@ -2754,25 +4728,71 @@ You will (1) write and present the bachelor's thesis; (2) integrate the course's
 
 Introduction with the opening case; background on cloud and container security; methods; studies from chapters 18, 33 and 34; capstone design, implementation and evaluation; discussion; limits; conclusion.
 
+Section forty point one develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point one, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point one treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
+
+For section forty point one, Westmere University will not accept thesis work without a written trail.
+
 ### 40.2 Argument
 
 Westmere's exposure came from missing visibility and secrets in images; combining guardrails, pipeline scanning and a weekly posture report closes these gaps measurably.
+
+Section forty point two develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point two, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point two treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
+
+For section forty point two, Westmere University will not accept thesis work without a written trail.
 
 ### 40.3 Presentation
 
 A 20-minute talk with the opening case, three key results and the limits, followed by questions.
 
+Section forty point three develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point three, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point three treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
+
+For section forty point three, Westmere University will not accept thesis work without a written trail.
+
 ### 40.4 Questions
 
 Examiners ask why not buy a commercial posture tool. Samuel answers that built-in services and a small script met the needs, but a tool could be reconsidered if the estate grows. They ask how the report avoids becoming noise; he shows owner assignment and the falling findings trend.
+
+Section forty point four develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point four, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point four treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
 
 ### 40.5 Reflection
 
 Samuel writes that the most important skill was turning a vague worry into checkable statements and evidence.
 
+Section forty point five develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point five, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point five treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Westmere University will not accept thesis work without a written trail.
+
 ### 40.6 Outcome
 
 The thesis passes with a high mark; Westmere's cloud team offers Samuel a graduate role.
+
+Section forty point six develops thesis and presentation with a Westmere University note Samuel Osei can demo offline.
+
+Under section forty point six, Tom Becker expects thesis claims to carry owners and dates.
+
+Section forty point six treats structure argument presentation questions as testable only when evidence and ticket IDs are recorded.
+
+For section forty point six, Westmere University will not accept thesis work without a written trail.
 
 ### Preparing the talk
 
