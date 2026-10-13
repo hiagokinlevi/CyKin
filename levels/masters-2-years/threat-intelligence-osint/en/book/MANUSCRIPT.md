@@ -44,17 +44,25 @@ You will (1) turn a practitioner worry into a researchable question; (2) run a d
 
 Port security managers in CPSG believe that sharing indicators "helps". Lucía converts that belief into a question with a population, an intervention, a comparison and an outcome: among port operators, does receiving indicators through CPSG's TAXII 2.1 collection shorten the time between an indicator's first publication and a block rule in the member's controls, compared with similar operators outside the group? That structure makes clear what data she needs and what she does not.
 
+The outcome, hours from publication to block, is the part port managers had never measured.
+
 ### 1.2 Search method
 
 A literature method states databases, search strings, date limits, languages, and inclusion and exclusion rules. Lucía searches digital libraries for "threat intelligence sharing" AND (effectiveness OR evaluation OR measurement), 2011–2026, English and Spanish. She includes empirical studies and standards; she excludes marketing pages without method.
+
+Her first run of that string returned 412 records. The Spanish-language limb matters for a ports question, because several port authorities in her region publish security guidance only in Spanish; leaving it out would bias the review towards English-speaking operators. The date limit starts in 2011, before STIX and TAXII 2.1, so that early sharing studies are included.
 
 ### 1.3 Grading sources
 
 Standards such as NIST SP 800-150 and the OASIS STIX/TAXII 2.1 specifications define practice and formats. Peer-reviewed studies test claims. Vendor reports describe observations under commercial incentives. Government guidance such as ICD 203 sets analytic norms. A literature chapter should keep these strands distinct so that a reader knows which claims are measured and which are recommended.
 
+Lucía's 19 included works split along these lines: 4 standards, 9 peer-reviewed studies and 6 grey-literature reports. Only 3 of the studies measured an outcome rather than describing a process, so her literature chapter can say exactly how thin the measured evidence is, instead of letting six confident vendor reports stand in for it.
+
 ### 1.4 The search log
 
 Each search gets a row: date, database, string, hits, screened, included, reason for exclusions. The log is an appendix, and it lets an examiner see that the review was not cherry-picked.
+
+Lucía's log shows the funnel in numbers: 412 records, 300 removed on titles, 80 more on abstracts, and 19 included after full-text reading. Each removal step names its reason, such as "no measured outcome" or "marketing page without method". An examiner who doubts an exclusion can find the row and judge it, and another student can rerun the same strings on the same date range and compare the counts.
 
 ### Worked example
 
@@ -96,21 +104,31 @@ You will (1) compare the intelligence cycle with CTI practice in a SOC; (2) expl
 
 Textbook intelligence moves through direction, collection, processing, analysis, dissemination and feedback. In a port SOC the cycle is compressed and noisy: requirements arrive as incident tickets, collection is a feed subscription, and feedback is rare. Seminar discussion should ask where the cycle breaks — usually at direction and feedback.
 
+Lucía's question tests one point where the cycle breaks. CPSG members receive indicators by TAXII subscription, so collection works; what nobody measured was dissemination into controls, the time from publication to a block rule. Her study adds a feedback loop the group never had.
+
 ### 2.2 Three levels
 
 Strategic intelligence informs boards about adversary intent and trends; operational intelligence describes campaigns and their timing; tactical intelligence supplies indicators and technique detail. Lucía's study sits at the tactical–operational boundary: indicators and how quickly they become controls.
+
+Lucía's seminar bulletin about the phishing wave against port agents shows the boundary in practice: its campaign timing is operational, while its indicators are tactical. Her study measures the tactical part, how fast indicators become block rules, and says nothing about whether board-level strategy changed because of CPSG.
 
 ### 2.3 Models as tools for tasks
 
 Hutchins et al. help decide where to place controls across phases. The Diamond Model helps pivot from one event to related events through shared infrastructure or capability. ATT&CK supplies a common vocabulary — for example T1566 Phishing or T1071 Application Layer Protocol — that lets a sharing group describe behaviour beyond fragile indicators, which Bianco's Pyramid of Pain ranks as more costly for adversaries to change.
 
+Lucía's seminar mapping of the port-agent phishing wave to T1566 is the example: the bulletin's domains and IP addresses will be stale within days, but the behaviour description remains useful to members who never saw the original indicators.
+
 ### 2.4 OSINT at seminar depth
 
 Open sources include company filings, ship-tracking broadcasts, public code repositories and news. Using them still raises duties: data-protection law where people are identifiable, platform terms, and the risk of tipping off subjects. Seminar exercises use synthetic profiles only.
 
+For a ports group the risk is concrete. Ship-tracking broadcasts and company filings can be combined to show which agent handled which vessel, and identify the staff targeted by the phishing wave. Lucía's study needs none of that: her data are timings from members' controls, so OSINT on people stays outside the design, and seminar exercises use synthetic profiles instead.
+
 ### 2.5 TLP and sharing culture
 
 FIRST TLP 2.0 defines CLEAR, GREEN, AMBER, AMBER+STRICT and RED. Communities like CPSG depend on members honouring labels; one breach can end sharing for years.
+
+CPSG's collection is TLP:AMBER, which is why Lucía needs the governance board's agreement and why her dissertation, written for the university library, must be TLP:CLEAR. A figure caption naming a port's city would have been such a breach, and the leak reviewer caught one before submission. Lucía's board conditions are the research version of honouring AMBER.
 
 ### Worked example
 
@@ -152,21 +170,31 @@ You will (1) choose between observational and quasi-experimental designs; (2) id
 
 Lucía cannot randomly assign ports to CPSG membership. She can compare members with non-members, but members may differ — larger budgets, more staff — and those differences, not sharing, might explain faster blocking. A design that ignores this is a correlation study dressed as an evaluation.
 
+Lucía's design responds with two comparisons: four ports that joined CPSG in 2025 are compared with themselves before and after joining, and members are compared with six volunteer non-members matched on size. Neither removes all differences, but they fail in different ways, so agreement between them is more convincing than either alone.
+
 ### 3.2 Handling confounders
 
 Options include matching members to non-members of similar size, comparing the same port before and after joining, or adjusting for SOC staffing. Each choice is written into the proposal, not chosen after seeing which gives the nicer result.
+
+Lucía chose both matching on size and a before-and-after stratum for the four ports that joined in 2025, and wrote that choice into the proposal before collecting any timings. If the before-and-after stratum shows a consistent drop on joining, she can speak more strongly than the cross-sectional comparison allows.
 
 ### 3.3 Consent and TLP
 
 CPSG data carries TLP:AMBER. Research use needs explicit agreement from the community's governance board, and each member must be able to opt out. Results will be aggregated so that no single member's timings can be recovered. Non-member data must come from voluntary participants, not from probing their infrastructure.
 
+The governance board approved Lucía's design with three conditions: results aggregated to groups of at least three, no port names, and deletion of raw timings after the dissertation is marked. The six non-member ports supplied their own timings voluntarily; nothing was collected from their infrastructure without their participation.
+
 ### 3.4 Personal data
 
 Time-to-block logs may include analyst user names. Lucía removes them at source; she needs timings, not people. Data-protection law such as the GDPR applies even in security research, and minimisation is the simplest compliance step.
 
+Removing names at source means the member's export to Lucía contains only timestamps, indicator type and decision. If an analyst's name were kept even in a working file, the data would identify the person who was slow to block a particular indicator, a harm to that analyst that the study does not need to risk.
+
 ### 3.5 Reproducibility plan
 
 Analysis scripts in the standard library, a data dictionary, synthetic sample files and a fixed random seed for any resampling. The plan is part of the proposal.
+
+For Lucía, the synthetic sample files mirror the data dictionary exactly, so an examiner without access to CPSG's AMBER data can still run every script. The fixed seed matters for the bootstrap interval around the medians; without it, a rerun would give a slightly different interval and look like an error. Her data dictionary doubles as the schema for those files.
 
 ### Worked example
 
@@ -208,6 +236,8 @@ You will (1) build an analysis-of-competing-hypotheses (ACH) matrix; (2) identif
 
 Analysts tend to settle on the first plausible story. Heuer's method forces several hypotheses onto the table and asks which evidence is inconsistent with each. The hypothesis with the fewest serious inconsistencies survives — provisionally.
 
+Lucía's seminar exercise on the CPSG ransomware incident uses three hypotheses: a criminal ransomware crew (H1), an insider (H2) and state-aligned espionage (H3). Listing all three before reading the evidence stops the most common story, ransomware means criminals, from closing the question too early. Each hypothesis is then scored against the same five evidence items.
+
 ### Lab 1 — ACH matrix
 
 ```python
@@ -241,17 +271,25 @@ diagnostic items: 4 of 5
 
 H1, a criminal ransomware crew, has no inconsistencies; H2, an insider, has two; H3, state-aligned espionage, has three. Item E2 — access from a contractor VPN account — fits every hypothesis and is therefore not diagnostic. Four of five items discriminate. The matrix does not prove H1; it shows H1 is least contradicted by this evidence.
 
+Lucía's written judgment follows directly: it is likely, 55–80% on her scale, that a criminal crew conducted the intrusion, and an insider role cannot be excluded. The non-diagnostic E2 is worth naming in the write-up, because analysts often cite such evidence first.
+
 ### 4.3 Estimative language
 
 ICD 203 asks products to express uncertainty and to distinguish evidence from judgment. Kent's essay on words of estimative probability showed how readers interpret "probable" very differently. A team should publish its own scale — for example "likely" meaning roughly 55–80% — and use it consistently.
+
+Lucía's ransomware judgment uses that scale: "likely (55–80%)". A member reading "likely" in one CPSG bulletin and "likely" in another should take the same meaning from both, which only works if the group publishes its scale and every writer applies it.
 
 ### 4.4 Change triggers
 
 Every judgment carries indicators that would change it: evidence of data sale without ransom (would raise H3), or a confession from a disgruntled employee (would raise H2). Writing triggers prevents silent drift.
 
+Lucía's written assessment names one trigger in its last sentence: evidence of data sale without a ransom demand would lower the criminal-crew assessment. Naming the trigger in the product lets a member who later sees such evidence know at once that the judgment should be reopened. A confession would raise H2 for the opposite reason.
+
 ### 4.5 ATT&CK as evidence vocabulary
 
 Mapping evidence to ATT&CK — staging and T1486 Data Encrypted for Impact for E1 — helps other analysts check whether behaviour matches a known group's profile without overrelying on names.
+
+For the CPSG incident, T1486 describes the encryption itself, and the contractor VPN access in E2 can be mapped to valid-account use. Members comparing that profile with published group reports can see whether the behaviour fits, while the write-up avoids naming a group on the strength of one similarity. The mapping goes into the matrix as an evidence label, not a conclusion.
 
 ### Worked example
 
@@ -293,21 +331,31 @@ You will (1) write a dissertation proposal with measurable aims; (2) define each
 
 Aim 1: measure median time-to-block for indicators received via CPSG. Aim 2: compare with matched non-members. Aim 3: describe how often shared indicators were judged not worth blocking. Each aim names its variable and its analysis.
 
+Aim 3 is easy to forget but matters for interpretation. If members ignore many shared indicators as low-value, a fast median for the blocked ones may hide the fact that most indicators never become controls. Reporting the blocked, monitored and ignored proportions beside the median keeps the result honest.
+
 ### 5.2 Data dictionary
 
 `t_pub`: timestamp the indicator was first published to the TAXII collection (UTC). `t_block`: timestamp a block rule became active in the member's control. `ttb_h`: hours between them. `ioc_type`: domain, ip, hash or url. `decision`: blocked, monitored, ignored. Every field has a type, unit and allowed values.
+
+The dictionary also decides how a missing value is handled: an indicator that was ignored has no `t_block`, so its `ttb_h` is empty rather than zero, and it is counted under Aim 3, not in the median. Fixing that rule before data arrive prevents ignored indicators being treated as instant blocks.
 
 ### 5.3 Pilot
 
 A pilot with one member and two weeks of synthetic-format logs tests whether `t_block` is recorded at all. Many organisations log rule edits only in change tickets with day-level precision, which would make hour-level timings impossible.
 
+Lucía's pilot found exactly this split: the first member's firewall recorded rule activation to the second, while the second member's ticketing tool held dates only. Finding it in the pilot, with two weeks of logs, cost little; finding it after the main collection would have forced a redesign.
+
 ### 5.4 Revising without drifting
 
 If the pilot shows day-level precision only, Lucía can change the unit to days — a measurement revision — but should not change the question to something easier, such as "do members like the feed?" That would be scope drift.
 
+Lucía's revision kept both units: hours for members with precise logs, and days for the others as a separate stratum, with the reduced precision noted as a limitation. The question, time from publication to block, did not change; only how precisely some members could answer it.
+
 ### 5.5 Indicator formats
 
 CPSG publishes STIX 2.1 indicator objects. The pilot confirms that `created` and `valid_from` are populated, giving a trustworthy `t_pub`. Objects missing required properties are logged as data-quality findings for the community.
+
+The data-quality findings are recorded by publishing member class, not by member, following the board's aggregation rule. An indicator without `valid_from` still counts for Aim 3 if a member acted on it, but it cannot contribute a publication time to the median. She also checks that `valid_from` is never later than `created` plus a few minutes.
 
 ### Worked example
 
@@ -349,6 +397,8 @@ You will (1) validate incoming structured data before analysis; (2) compute and 
 
 Members export STIX 2.1 objects from CPSG's TAXII collection with their block logs. Before any statistics, Lucía checks that objects carry required properties and well-formed identifiers. Malformed objects are counted and reported to the community, not silently repaired.
 
+Lucía's demonstration batch checks three objects, and only one passes. Across the full study export, 94% of indicators were valid. Counting failures before analysis tells the reader how much of CPSG's data could contribute timings at all. The invalid objects stay in the count under Aim 3 if a member acted on them.
+
 ### Lab 2 — STIX property check
 
 ```python
@@ -384,6 +434,8 @@ threat-actor--0f9c3a5e-6b1d-4c39-9a8e-2b9f6a7d1c11 PROBLEMS: spec_version
 
 The first indicator passes. The second lacks `pattern` and `valid_from` and has an identifier that is not `type--UUID`. The threat-actor object lacks `spec_version`, which STIX 2.1 requires on domain objects. Only valid objects contribute `t_pub` values.
 
+Each failure has a different consequence. Without `valid_from`, the indicator has no trustworthy publication time, so it cannot contribute to time-to-block. A malformed identifier breaks links between objects. A missing `spec_version` suggests the publishing tool predates STIX 2.1 or is misconfigured, which is useful feedback for that member class.
+
 ### Lab 3 — time-to-block medians
 
 ```python
@@ -409,13 +461,19 @@ difference=7.0h ratio=3.33
 
 Timing data are skewed — a few slow cases dominate means — so medians are reported. Members' median is 3.0 hours, non-members' 10.0 hours: a difference of 7.0 hours, ratio 3.33. With samples of seven and six, uncertainty is wide; a bootstrap interval or a rank-based test would be reported beside the medians.
 
+Lucía's write-up puts the 3.0- and 10.0-hour medians next to their interval, not alone in a sentence. With six non-members, one unusually slow port can move the median by hours, so the interval tells members how much weight the difference can bear.
+
 ### 6.4 Description versus cause
 
 The result describes faster blocking among members in this sample. Given the confounders discussed in Chapter 3, Lucía writes "is associated with" rather than "causes", unless the before-and-after stratum shows a consistent change on joining.
 
+The four ports that joined CPSG in 2025 are the stratum that could support a stronger claim. If each blocked faster after joining than before, under the same staff and tools, the association becomes harder to explain by size or budget, though still not proof of cause.
+
 ### 6.5 Reporting data quality back
 
 The validation counts are themselves a contribution. Lucía sends CPSG a short data-quality note listing how many objects lacked required properties, grouped by publishing member class, so producers can fix their exports. The note follows the same aggregation rule as the dissertation.
+
+With 94% of indicators valid in the full export, the note can tell producers that one object in roughly seventeen could not contribute a publication time. Grouping by member class, not by member, keeps the note within the board's aggregation rule.
 
 ### Worked example
 
@@ -457,21 +515,31 @@ You will (1) structure a dissertation around research questions; (2) write a lim
 
 Introduction states the question and why ports care. Literature shows what is known and the gap. Methods describe design, data dictionary, ethics and validation. Results answer each aim in order. Discussion interprets, compares with literature, and states implications. Conclusion is short. Each results subsection should open with the aim it answers.
 
+Lucía's results chapter has three subsections, one per aim: median time-to-block for members, comparison with matched non-members, and the share of indicators blocked, monitored or ignored. Her discussion then takes up the automation judgment, labelled as such.
+
 ### 7.2 Strong limitations
 
 A strong limitation names the problem, its likely direction of bias, and what was done about it. "Small sample" alone is weak. "With seven members and six non-members, the median difference is imprecise; the bootstrap interval is wide and crosses small effects, so practical significance is uncertain" is strong.
+
+Lucía's day-level stratum gets the same treatment: members with ticket dates only have timings rounded to whole days, which probably overstates their time-to-block; analysing them separately prevents that error from widening the gap between members and non-members.
 
 ### 7.3 Two audiences
 
 Examiners want method and argument. CPSG members want a one-page brief: what the median gap was, what it suggests for staffing and automation, and what it does not show. The brief carries the same caveats in plainer language.
 
+Lucía's brief to the CPSG board says the member median was 3.0 hours against 10.0 for matched non-members, that two members with automated TAXII-to-firewall pipelines accounted for the fastest blocks, and that small samples and self-reported automation limit both points. It does not tell members to buy automation; it suggests what to measure next.
+
 ### 7.4 Restricted data in writing
 
 The dissertation is likely to be public through the university library, so it is written as TLP:CLEAR. No member names, no indicator values from the AMBER collection, no quotations from member bulletins. Synthetic examples illustrate formats.
 
+The leak review caught the one place this failed: a figure caption named a port's city, which would identify the member. Lucía replaced it with "Member C", logged the change and notified the board. Synthetic STIX examples illustrate the format in the methods chapter without carrying any real indicator values.
+
 ### 7.5 Judgment language
 
 When interpreting, separate observation ("members blocked faster in this sample") from judgment ("automation of TAXII ingestion likely explains part of the gap"), as ICD 203 recommends for analytic products. Label the judgment's confidence and basis.
+
+Lucía's discussion labels her automation explanation as a judgment with moderate confidence, because automation status was self-reported by members, and proposes a follow-up study that measures it directly from pipeline logs. The observation sentence carries the 3.0- and 10.0-hour medians and their interval; the judgment sentence carries its confidence and the self-reported basis. A reader who rejects the judgment still has the observation intact.
 
 ### Worked example
 
@@ -513,21 +581,31 @@ You will (1) commission an independent methods review before submission; (2) pre
 
 A colleague outside the project reruns the analysis from the archive using synthetic sample files and checks that every figure matches. A second reader checks that no restricted information leaked into text, tables or figure captions. Both reviews are documented.
 
+In Lucía's case, the figure-checking colleague found that all medians reproduced exactly from the archive. The leak reviewer found one caption that named a port's city. Each finding and its correction went into the change log, so the examiners could see both reviews were real, not formal steps.
+
 ### 8.2 Likely viva questions
 
 Why not a randomised design? How did you handle confounding? What did members consent to? What would change your conclusion? Why medians? Is the STIX validation rule set complete? Practise answers that cite the dissertation's own pages.
+
+For Lucía, the confounding answer cites the matched comparison and the before-and-after stratum; the medians answer cites the skewed timing data; and "what would change your conclusion" cites evidence that the before-and-after stratum shows no drop on joining. Answers rooted in her own design are harder to dislodge.
 
 ### 8.3 Responding to findings
 
 If the reviewer finds a figure that does not match, fix it, record the correction in a change log, and check whether any conclusion changes. Examiners respect a visible correction more than an invisible one discovered later.
 
+Lucía's change log shows the pattern for a different finding, the caption that named a port's city: the change, its date and the board notification are all recorded. Had a median failed to reproduce, the same log would show the corrected value and whether the 7.0-hour gap still held.
+
 ### 8.4 Returning value
 
 CPSG gave data; the community should get results first. Lucía presents the brief to the governance board before public defence, under the agreed aggregation rules. NIST SP 800-150 stresses that sharing relationships rely on trust and reciprocity; research that extracts without returning erodes both.
 
+The brief also carries the data-quality note, which members can act on immediately: by fixing exports that lack `valid_from` or `spec_version`, producers make the next study, and their own consumers' automation, more reliable. The board saw the medians before the examiners did.
+
 ### 8.5 After the defence
 
 Delete raw timings as agreed, archive code and synthetic samples, and record the deletion. If publishing a paper, recheck that the published version still meets the board's conditions.
+
+For Lucía, the deletion record is the last item the board receives: which files were deleted, when, and by whom. Any paper drafted later from the dissertation is rechecked against the three board conditions before submission. Archived code and synthetic samples stay available, so the study can still be rerun after the raw timings are gone. The deletion does not weaken reproducibility, because the archive was designed around synthetic files from the start.
 
 ### Worked example
 
