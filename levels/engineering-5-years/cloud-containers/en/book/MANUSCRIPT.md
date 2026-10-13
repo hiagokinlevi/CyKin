@@ -1760,7 +1760,7 @@ You will (1) analyse threats and failures for meterhub systematically; (2) use S
 
 Using the STRIDE categories Shostack (2014) teaches: spoofing (a fake meter or service), tampering (altered readings or images), repudiation (unlogged admin changes), information disclosure (public buckets, leaked keys), denial of service (ingest floods), elevation of privilege (privileged pods reaching the node).
 
-STRIDE gives a checklist so that threats are considered systematically rather than only the ones people happen to remember. For each component and flow, Elena asks which categories apply. A fake meter is spoofing; altered readings are tampering; a privileged pod reaching the node is elevation of privilege.
+STRIDE gives a checklist so that threats are considered systematically rather than only the ones people happen to remember. For each component and flow, Elena asks which categories apply. Where a category does not apply to a flow, she notes why, so a reviewer can see it was considered rather than forgotten.
 
 ### 23.2 Failure analysis
 
@@ -1863,7 +1863,7 @@ web->db reachable: False
 
 With no policies, all 12 directed pod pairs among web, api, db and metrics are reachable. With default deny plus four allows, only 4 of 12 are: api->db, metrics->api, metrics->db and web->api. web->db is no longer reachable, so a flaw in the web pod could not reach the database directly.
 
-Going from twelve reachable pairs to four removes two-thirds of possible paths. The key result is that web can no longer reach the database directly. If the web pod were compromised, an attacker would have to go through the API, which authenticates requests and limits what can be read.
+Going from twelve reachable pairs to four removes two-thirds of possible paths. If the web pod were compromised, an attacker would have to go through the API, which authenticates requests and limits what can be read.
 
 ### 24.3 Egress too
 
@@ -2284,7 +2284,7 @@ Weights are set with the data protection officer: namespaces handling readings o
 
 ### Reporting cadence
 
-Coverage is reported monthly to the platform lead and quarterly to Solent's risk committee, with the causes of gaps and the plan for each. Reports show trend lines rather than single numbers.
+Coverage is reported monthly to the platform lead and quarterly to Solent's risk committee, with the causes of gaps and the plan for each.
 
 ### Worked example
 
