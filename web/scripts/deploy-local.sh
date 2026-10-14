@@ -95,7 +95,7 @@ for language in pt es he fr ru de zh ja; do
   if [[ "$language" == pt || "$language" == es ]]; then
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F "<html lang=\"${language}\"" > /dev/null
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/about/" | grep -F 'Hiago Kin Levi' > /dev/null
-    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/sitemap.xml" | grep -F "https://${host}/courses/" > /dev/null
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/sitemap.xml" | grep -F "https://${host}/sitemaps/" > /dev/null
   else
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F 'noindex,follow' > /dev/null
   fi
