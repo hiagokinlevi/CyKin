@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4184/4362 | 30/120060 | 4044/4184 | 4184/4184 | 4184/4184 | 4184/4184 |
+| English | 199/207 | 4200/4378 | 30/120060 | 4060/4200 | 4200/4200 | 4200/4200 | 4200/4200 |
 | Português | 124/207 | 2525/4202 | 0/120060 | 2428/2525 | 2525/2525 | 2525/2525 | 2525/2525 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -31,7 +31,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Web3, blockchain and cryptoasset security | [20/20](levels/rapid-1-month/web3-blockchain-security/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/es/book/PLAN.md) |
 | rapid-1-month · Identity and access management | [20/20](levels/rapid-1-month/identity-access/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/identity-access/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/identity-access/es/book/PLAN.md) |
 | rapid-1-month · Network and communications security | [20/20](levels/rapid-1-month/network-communications/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/es/book/PLAN.md) |
-| rapid-1-month · Systems, endpoints and hardware security | [4/4](levels/rapid-1-month/systems-endpoints-hardware/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/es/book/PLAN.md) |
+| rapid-1-month · Systems, endpoints and hardware security | [20/20](levels/rapid-1-month/systems-endpoints-hardware/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/es/book/PLAN.md) |
 | rapid-1-month · Cloud and container security | [4/4](levels/rapid-1-month/cloud-containers/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/es/book/PLAN.md) |
 | rapid-1-month · Application and software supply chain security | [4/4](levels/rapid-1-month/application-supply-chain/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/es/book/PLAN.md) |
 | rapid-1-month · Security operations and blue team | [4/4](levels/rapid-1-month/security-operations-blue-team/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/es/book/PLAN.md) |
