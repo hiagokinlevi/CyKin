@@ -1,16 +1,18 @@
 # Privacy and Data Protection: Rapid Course
 
 - Language: English (`en`); course 004, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX058 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX074 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification, and it is not legal advice.
 - Audience: beginners who need a fast, practical start in privacy and data protection for a small business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab compares fields a synthetic pharmacy loyalty app collects with the fields its stated purposes need. Legal analysis is teaching, not legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+<!-- open-cyber-academy:chapter-lessons -->
 
-Read in order. The four chapters follow one pharmacy assistant through a one-month course: foundations and first decisions, scope and safe practice, systems, data and vendors, and a guided lab that becomes a short action plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics. Each chapter now separates a definition from the test that applies it: whether an item identifies a person, whether it is health data, whether a copy stays inside the signed scope, whether a basis belongs to that purpose, and whether a laboratory field name hides a value the script never reads. EX051–EX058 use those tests on a new shop fact.
+## How to use this book
+
+Read in order. Twenty English chapter-lessons are published. Each numbered chapter is one lesson. The reader may group five consecutive chapters into a study week for pacing, without making a second copy of the text. The first four follow Sofia Mendes through classification, the signed scope, vendors and the loyalty lab. Chapters 5–20 each settle one later question about that same month. Meeting the planning minimum does not close review. Run the lab where it appears, attempt each exercise before the worked results, and score yourself with the rubric. Chapters 1–4 also carry concept tables, data tables and exercises EX051–EX058. Nothing in this book is legal advice.
 
 ### Synthetic running case
 
@@ -29,7 +31,7 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(1), 5, 9 and 28; Lei 13.709/2018 (LGP
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -204,7 +206,7 @@ A receipt shows loyalty number 44021 and no name. Sofia marks it personal data b
 - **EX013 — Checklist use.** How will Sofia use her principle sentences? *Rubric:* 3 = as a checklist for later decisions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue studying — lesson 01 (chapter 01 of 04)
+### Continue studying — lesson 01 (chapter 01 of 20)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -376,7 +378,7 @@ A colleague asks Sofia to photograph a live dispensing screen "so the review can
 - **EX026 — Openness.** What encourages staff to mention problems? *Rubric:* 3 = understanding the aim is improvement, not blame;; 2 = mentions aim;; 1 = vague;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-02 -->
-### Continue studying — lesson 02 (chapter 02 of 04)
+### Continue studying — lesson 02 (chapter 02 of 20)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -552,7 +554,7 @@ The owner wants the loyalty app to text a voucher whenever a member buys insulin
 - **EX038 — Expectation marks.** What did Sofia mark on each flow besides contents? *Rubric:* 3 = whether customers would expect it;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-03 -->
-### Continue studying — lesson 03 (chapter 03 of 04)
+### Continue studying — lesson 03 (chapter 03 of 20)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -762,18 +764,1215 @@ The new form asks for name, email, date of birth, purchase history and the marke
 - **EX050 — Next study.** What does Sofia plan to study next? *Rubric:* 3 = governance, risk and compliance;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-04 -->
-### Continue studying — lesson 04 (chapter 04 of 04)
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Chapter 5 — One clean export is not every later night
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  W["Two-week export: totals and non-medicine categories"] --> L["A later night names insulin"]
+  L --> F["Content check fails. The action stays open"]
+  F --> S["Do not edit the ten-field script"]
+```
+
+One file describes one night.
+
+### Logical drawing
+
+```text
+two-week check
+    form asks for five fields
+    that export has no medicine name
+a later night
+    a line names insulin
+        |
+        +-- the earlier file does not cover this file
+        +-- purchase_history may still be a needed name
+        +-- the script is not rewritten to hide the line
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the two-week export as a result about that file only.
+2. Treat a later insulin line as a failed content check.
+3. Leave the loyalty action open without editing the lab script.
+
+### 5.1 Two exports, two results
+
+Chapter 4 records a check two weeks after the owner asked the vendor to change the app. That form asked for five fields, and that night's till export carried total spend and non-medicine categories. A classmate treats the sentence as a permanent pass. A later night's file then names insulin. The field name `purchase_history` can still sit in the points set while the value inside it is a medicine. Sofia writes that this later file failed the content check and leaves the action open. She does not alter `lab_loyalty.py`, and she does not go back and rewrite the two-week sentence.
+
+### 5.2 Worked example
+
+| What someone cites | Which file it describes | Decision |
+|---|---|---|
+| "The two-week export had no medicine name." | That night | Keep the sentence |
+| "So every later night is clean." | No later file was opened | Refuse the leap |
+| A later line that names insulin | The new file | Content check fails. Leave the action open |
+| "Change the script so the print looks finished." | The original ten-name lab | Refuse the edit |
+
+> **Synthetic case.** The later insulin line is a teaching file. It is not a second run of the published ten-field print.
+
+### Errors and limits
+
+Leaving the action open does not undo the two-week file, and it does not accuse a named patient. This chapter does not decide whether a regulator must be told.
+
+### Apply
+
+- **EX059 — Which night closed?** The two-week export shows totals and non-medicine categories only. A later night's file names insulin. Does the earlier file close the action, and what happens to the script? *Rubric:* 3 = the earlier file does not close the later night; the content check fails and the action stays open; do not edit the script;; 2 = the later night stays open and the script stays;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — Five fields on the form are not a new lab print
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  P["Published run: 10 collected, 5 not needed"] --> F["A later form asks for five names"]
+  F --> R{"Was the ten-name file rerun?"}
+  R -->|No| K["Do not print 5 collected and 0 unneeded"]
+  R -->|Yes| N["Record that run on its own line"]
+```
+
+A shorter form is not a rewrite of the first count.
+
+### Logical drawing
+
+```text
+lab_loyalty.py on the original list
+    fields collected 10; not needed for any stated purpose 5 (50%)
+two-week form
+    five names, a different object
+        |
+        +-- 10 minus 5 is arithmetic, not a new execution
+        +-- the five rejected names stay the finding about the first file
+        +-- the script's collected list is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the published ten-field output as the count of that file.
+2. Reject a replacement print of five collected and none unneeded.
+3. Leave the program's list of names unchanged.
+
+### 6.1 The form changed. The first file did not.
+
+The two-week sign-up asks for five names. That is a check of a later form. The script's print describes the synthetic list of ten names, five of which sit in no purpose set: phone, postcode, prescription items, gender and the location trail. A classmate replaces the lab note with "fields collected 5; not needed 0". Subtracting the rejected names from ten does not execute the program again. Sofia keeps the published lines. If someone runs the script on a new list, that run gets its own line. This lesson does not perform that run, and it does not delete names from `collected`.
+
+### 6.2 Worked example
+
+| Proposed lab note | What was actually run | Decision |
+|---|---|---|
+| "10 collected; 5 not needed (50%)." | The published file | Keep it |
+| "5 collected; 0 not needed." | No new execution | Refuse |
+| "Phone is needed now because the form once had it." | The first file marked phone NOT NEEDED | Refuse |
+| Edit `collected` so the next print is shorter | A change to the teaching file | Refuse |
+
+> **Synthetic case.** The lines `fields collected 10` and `not needed for any stated purpose 5 (50%)` stay the published run.
+
+### Errors and limits
+
+A later form can still fail, which Chapter 18 takes up if a rejected name reappears. This chapter does not claim the five-field form is lawful for every purpose.
+
+### Apply
+
+- **EX060 — Do not replace the print.** Someone writes "this month: 5 fields collected and 0 not needed" because the sign-up form was shortened. What is wrong with both numbers, and which print remains the verified one? *Rubric:* 3 = neither 5 collected nor 0 unneeded was the published run; the verified print is still 10 collected and 5 not needed, 50 percent; do not edit the script;; 2 = reject the new pair and keep the published print;; 1 = one number;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — Draft clauses are not a signed contract
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  D["Mr. Patel drafted clauses"] --> N["Two weeks later the contracts are in negotiation"]
+  N --> Q{"Is there a signed Article 28 contract?"}
+  Q -->|No| R["Do not add a new flow to that vendor"]
+  Q -->|Yes| K["Cite the signed contract"]
+```
+
+A draft is a text. A signature is a different fact.
+
+### Logical drawing
+
+```text
+four vendors
+    dispensing supplier: terms already present
+    newsletter tool: terms already present
+    loyalty firm: standard terms, gap
+    delivery firm: standard terms, gap
+two weeks on
+    clauses drafted, negotiation open
+        |
+        +-- negotiation is not a signature
+        +-- the dispensing contract does not stand in for loyalty
+        +-- no new file goes to the loyalty firm on that basis
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Tell a drafted clause apart from a signed Article 28 contract.
+2. Keep loyalty and delivery as the two gaps while negotiation continues.
+3. Refuse a new flow to either firm until the signed terms exist.
+
+### 7.1 The two-week sentence is about negotiation
+
+Chapter 3 found data-protection terms in the dispensing contract and the newsletter contract, and not in the loyalty or delivery standard terms. Mr. Patel drafted the missing clauses. Two weeks later the file says those contracts are in negotiation. A colleague reads the draft and wants a fresh weekly file sent to the loyalty firm. The draft shows what Juniper hopes to sign. It does not show that the firm has signed instructions, confidentiality, security and deletion. Sofia refuses the new file. She does not borrow the dispensing supplier's contract to cover the loyalty firm. This lesson does not invent a signature.
+
+### 7.2 Worked example
+
+| Claim | Document it points at | Decision |
+|---|---|---|
+| "The clauses have been drafted." | A draft | Keep that fact |
+| "Negotiation means we can send the new file." | No signature | Refuse the file |
+| "The dispensing contract is close enough." | A different vendor | Refuse the substitution |
+| A signed loyalty contract with the four Article 28 duties | Not in the file | Do not pretend it is there |
+
+> **Synthetic case.** No signature date is added for the loyalty firm or the delivery firm.
+
+### Errors and limits
+
+Refusing the new file does not cancel the night-time till flow already mapped. That flow stays a known gap until the signed terms exist. This chapter does not assess damages.
+
+### Apply
+
+- **EX061 — Which paper is the signature?** The loyalty clauses sit in a draft, and the two-week note says negotiation. A colleague wants a new weekly file sent to the loyalty firm because the dispensing supplier's contract is already signed. What do you refuse, and which two vendors are still the gaps? *Rubric:* 3 = refuse the new file; negotiation is not a signature; loyalty and delivery remain the gaps; the dispensing contract does not cover them;; 2 = refuse the file and name the two gaps;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — An approved recommendation is not a retention date
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  A["Owner approved setting three periods"] --> S{"Does the schedule name the end?"}
+  S -->|No| B["The period stays blank"]
+  S -->|Yes| U["Use that written end"]
+  C["CCTV: thirty days"] --> X["Do not copy thirty onto the blank rows"]
+```
+
+Approval starts the task. A number finishes it.
+
+### Logical drawing
+
+```text
+already written
+    prescriptions: professional rules, not Sofia's number
+    CCTV: overwritten after thirty days
+approved, still blank
+    loyalty data
+    delivery records on the driver's phone
+    newsletter addresses that never open a mail
+        |
+        +-- "about a year" is not the owner’s sentence
+        +-- thirty days is the camera rule, not a template
+        +-- this lesson writes no new count of days
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave loyalty, delivery and never-opened newsletter rows blank until the owner writes the ends.
+2. Refuse to copy the thirty-day CCTV rule onto those rows.
+3. Leave the professional prescription period untouched.
+
+### 8.1 The owner agreed to choose. The choice is not on the page.
+
+Chapter 3 records the owner's approval of a recommendation: set periods for loyalty data, delivery records and newsletter subscribers who never open emails. The schedule in the file still has no end for those three. CCTV is overwritten after thirty days, which is a period already found, not a number Sofia may paste onto a blank row. Prescription records follow the professional rules for pharmacies, and she does not replace those rules with a round count of years. A classmate says "a year feels tidy" for loyalty. Feeling is not the sentence the owner still has to write. Until that sentence exists, the three rows stay blank and the data are not given a homemade end.
+
+### 8.2 Worked example
+
+| Proposal | Source of the number | Decision |
+|---|---|---|
+| Keep loyalty "for about a year" | A guess | Refuse. The row stays blank |
+| Use thirty days for the driver's phone because CCTV uses thirty | The camera rule | Refuse the copy |
+| Rewrite prescription keeping as five years | Not the professional rule in the file | Refuse |
+| The owner writes an end for one of the three blank rows | The person the plan names | Then that written end applies to that row |
+
+> **Synthetic case.** No day-count is supplied for loyalty, delivery or unopened newsletter mail.
+
+### Errors and limits
+
+A blank is not permission to keep the data forever without asking. It stops Sofia from inventing the end. The pharmacy's professional period stays outside this invention as well.
+
+### Apply
+
+- **EX062 — Whose number?** The schedule still has no end for loyalty data, delivery records or never-opened newsletter mail. A colleague says "keep them all for thirty days, like the cameras," and another says "a year is plenty for loyalty." What do you refuse, and what do you leave unwritten? *Rubric:* 3 = refuse both numbers; the three rows stay blank until the owner writes them; CCTV remains thirty days; do not invent the prescription period;; 2 = refuse both guesses and leave the three rows blank;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Arranging shredding is not a dated destruction
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  R["Same-day report: place, time, what she saw"] --> L["The owner locks the room"]
+  L --> A["Shredding is arranged for copies past the period"]
+  A --> D{"Is a destruction date in the log?"}
+  D -->|No| O["The arrangement is not the destruction"]
+  D -->|Yes| K["Cite that date"]
+```
+
+A lock limits the room. A date would record the shredding.
+
+### Logical drawing
+
+```text
+Sofia's report
+    place, time, what she saw
+    she does not move the copies
+    she does not read them
+owner
+    locks the room
+    arranges shredding of copies past the retention period
+log
+    no destruction date
+        |
+        +-- "arranged" is not "shredded on this day"
+        +-- she still does not sort the box by reading it
+        +-- the professional period is not invented to choose pages
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the lock and the same-day report as facts already in the file.
+2. Treat a missing destruction date as an open line.
+3. Refuse to read or move the copies in order to decide which ones are old.
+
+### 9.1 The box is still not hers to handle
+
+Sofia found old prescription copies in an unlocked storeroom. She reported the place, the time and what she saw, and she did not move or read them. The owner locked the room and arranged secure shredding of copies past the retention period. A classmate says the action can be ticked because the arrangement was made. The file contains the lock and the arrangement. It does not contain a date on which those copies were destroyed. Sofia leaves that line open. She still does not open the box to guess which copies are past the professional period, because that guess would both read the copies and invent the period Chapter 8 left alone.
+
+### 9.2 Worked example
+
+| Sentence in the log | What it proves | Decision |
+|---|---|---|
+| Place, time and what she saw | The report | Keep it |
+| The room is locked | Access after the finding | Keep it |
+| "Shredding has been arranged." | A plan to destroy | Not a destruction date |
+| "I read a few to see which are old." | Handling the copies | Refuse |
+
+> **Synthetic case.** No destruction date is written into the log by this lesson.
+
+### Errors and limits
+
+An open shredding line does not mean the room should be unlocked. The lock stays. This chapter does not decide that a breach notice was or was not required.
+
+### Apply
+
+- **EX063 — Arranged, or done?** The log shows the same-day report and the lock. Shredding of copies past the retention period has been arranged, and no destruction date is written. A colleague wants to read the box to choose the old copies and then tick the action. What stays open, and what does Sofia still not do? *Rubric:* 3 = the destruction date is open; the arrangement is not that date; she does not move or read the copies; she does not invent which copies are past the professional period;; 2 = the date stays open and she does not read the box;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — A customer-free plan is not the old photo
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  P["Plan: customer-free images"] --> O{"Are customers visible, with no permission in the file?"}
+  O -->|Yes| R["Do not post that photo"]
+  O -->|No customers| K["That image can match the plan"]
+```
+
+The plan names the replacement. It does not bless the picture already refused.
+
+### Logical drawing
+
+```text
+chapter 1 rule, owner agreed
+    no customers in the frame, or clear permission
+plan action
+    replace counter photos with customer-free images
+a last-month counter photo
+    customers visible
+    no permission written down
+        |
+        +-- "the shelves are the point" does not crop the people
+        +-- this lesson does not write a permission
+        +-- the replacement is not dated as finished at every shop
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Apply the counter-photo rule when people are still in the frame.
+2. Refuse to treat the approved plan as permission for the old picture.
+3. Leave a permission, and a completion date for the new images, unwritten when the file lacks them.
+
+### 10.1 The shelves do not hide the people
+
+The owner agreed that shop photos for promotion show no customers, or that the people in them have given clear permission. The five-action plan then says to replace counter photos with customer-free images. A colleague wants last month's counter photo posted because the shelves are "the real subject", even though customers stand at the counter and nobody's permission is in the review file. The purpose is still promotion. The expectation test from Chapter 1 does not flip because a plan exists. Sofia refuses the post. She does not draft a permission in the margin, and she does not tick the photo action as finished for all three shops. The plan names the replacement. This lesson does not date it.
+
+### 10.2 Worked example
+
+| Picture offered | Customers and permission | Decision |
+|---|---|---|
+| Shelves only, no person in the frame | Matches the agreed rule | Can fit the plan |
+| Last month's counter, people visible, no permission | The refused use | Do not post |
+| "The plan was approved, so old photos are fine." | Approval of a replacement | The old photo stays refused |
+| A named customer's written permission | Not in this file | Do not invent it |
+
+> **Synthetic case.** No customer is named as having agreed to appear.
+
+### Errors and limits
+
+Refusing one photograph does not set a campaign for the next month. Each image is judged on who is visible and what permission the file actually holds.
+
+### Apply
+
+- **EX064 — Whose photo is the post?** The plan says customer-free images. A colleague wants to post last month's counter photo because the shelves matter, customers are visible, and the file holds no permission. What do you refuse, and what date do you not invent? *Rubric:* 3 = refuse the post; visible customers and no permission fail the agreed rule; the plan is not that permission; do not date the replacement as finished;; 2 = refuse the post and do not invent a permission;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — One export does not certify the other tills
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  O["The owner approved the plan for Juniper"] --> E["One export was checked"]
+  E --> T{"Has each other shop's till been checked?"}
+  T -->|No| R["Do not copy the first result across"]
+  T -->|Yes| K["Cite each export"]
+```
+
+Three shops do not become one file.
+
+### Logical drawing
+
+```text
+Juniper
+    three shops
+    about 9,000 regular customers, not split in the file
+owner
+    approved the five actions
+two-week file
+    one form, one export
+        |
+        +-- approval is not a check of every till
+        +-- the first export stays the first export
+        +-- shop names are not invented
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the owner's approval as a decision for the business.
+2. Refuse to paste one till export onto the other two shops.
+3. Leave the customer figure unsplit.
+
+### 11.1 Approval and verification are different sentences
+
+The owner approved the five actions for Juniper. The two-week check then describes one sign-up form and one till export. Juniper has three shops. Nothing in the review file says the same export was taken from the other two tills. A classmate writes "all shops passed" beside the first result. Sofia leaves the other two tills unchecked in the log. She does not divide the figure of about 9,000 regular customers by shop, and she does not name the shops. The first export remains evidence about the file she opened.
+
+### 11.2 Worked example
+
+| Note someone wants to add | What the file shows | Decision |
+|---|---|---|
+| "The owner approved the five actions." | The presentation | Keep it |
+| "This export had no medicine name." | One file | Keep it as that file |
+| "So the other two tills match." | No second or third export | Do not write that |
+| A headcount per shop | The file gives one business figure | Do not split it |
+
+> **Synthetic case.** The shops stay unnamed. About 9,000 stays the business figure.
+
+### Errors and limits
+
+Saying a till is unchecked is not a finding that it sends medicine names. That would be a guess. A later export, if taken, is its own line.
+
+### Apply
+
+- **EX065 — How many tills were opened?** The owner approved the plan. One export shows totals and non-medicine categories. The other two shops have no export in the log. What may the note say, and what figure stays whole? *Rubric:* 3 = the approval stands; the one export does not certify the other tills; do not split about 9,000 customers; do not name the shops;; 2 = one export is not three, and the figure stays whole;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — A refused lookup does not expire
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  F["First request refused and logged"] --> S["A later request about the same lookup"]
+  S --> R["Refuse again. Log this request"]
+  R --> N["Do not open the record"]
+```
+
+The first refusal is evidence. It is not a permit for the second ask.
+
+### Logical drawing
+
+```text
+signed page
+    individual customer records are excluded
+first request
+    has a neighbour collected a prescription
+    refused, written in the review log
+a later week
+    the same kind of ask returns
+        |
+        +-- the earlier line does not perform the lookup
+        +-- "they asked me" is not a work reason on the page
+        +-- no name is added to the log beyond the request itself
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Treat a repeated lookup as a new request.
+2. Refuse it under the same exclusion.
+3. Log the new request without opening the record.
+
+### 12.1 The log remembers the refusal. It does not grant the look.
+
+Sofia declined to check whether a neighbour had collected a prescription, because a lookup without a work reason misuses access, and she wrote that request in the review log. The next week a colleague says the person asked again, so the check is now "for them". The signed page still excludes individual customer records. The first log line shows that she refused. It does not show that the page changed. Sofia refuses again and writes this request in the log the same day. She does not open the dispensing record, and she does not add a personal name the file does not contain.
+
+### 12.2 Worked example
+
+| Reason offered the second time | What the page says | Decision |
+|---|---|---|
+| "We already discussed this neighbour." | A refusal was logged | The new ask is still a refusal |
+| "They asked me to check." | Contact and lookup are outside the page | Refuse and log it |
+| "Just say yes or no, not the medicine." | A yes or no still uses the record | Refuse |
+| A work reason the owner adds in writing | Not this lesson | Do not invent the line |
+
+> **Synthetic case.** The neighbour stays unnamed.
+
+### Errors and limits
+
+Logging the request does not notify anyone outside the review. Whether a further report is needed is a separate judgment, and this chapter does not make it.
+
+### Apply
+
+- **EX066 — The second ask.** Last week Sofia refused a neighbour lookup and logged it. This week a colleague says the person asked again, so a yes-or-no answer is now harmless. What does she do with the record, and what does the old log line fail to do? *Rubric:* 3 = refuse again and log this request; do not open the record; the earlier refusal does not authorise the lookup;; 2 = refuse and do not open the record;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — The written phone line has a narrow question
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  W["Owner added the driver's phone in writing"] --> Q["Question: are addresses stored?"]
+  Q --> F["That finding stands: no end date"]
+  F --> C{"A wider use: copy the list, or open one customer?"}
+  C -->|Yes| R["Stop. That use is not the written line"]
+```
+
+The addition authorised a question. It did not empty the phone into Sofia's pocket.
+
+### Logical drawing
+
+```text
+written addition, after the owner spoke with the driver
+    look at whether customer addresses are stored
+finding already made
+    delivery records sit on the phone with no end date
+a new request
+    copy the address list to Sofia's phone
+    or open one named delivery
+        |
+        +-- the written line does not grow by convenience
+        +-- a wider look waits for a new written line
+        +-- no address is copied into this lesson
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the written addition tied to the storage question already answered.
+2. Refuse a copy of the address list onto a personal phone.
+3. Refuse a named customer's delivery without a new written line.
+
+### 13.1 The page grew once, for one question
+
+The driver's phone was outside the original scope. The owner added it in writing after speaking with the driver, so Sofia could see whether customer addresses were stored. She found that delivery records stay on the phone with no end date. That finding stands. A colleague now wants the address list copied to Sofia's phone "so the review can quote it", or wants one regular's deliveries opened. The written line does not say either of those. A personal phone is already outside the way she keeps review notes. A named delivery is an individual record. Sofia stops. A wider look would need a new written line from the owner. This lesson does not write that line, and it does not type an address.
+
+### 13.2 Worked example
+
+| Request | Relation to the written line | Decision |
+|---|---|---|
+| Were addresses stored, and for how long? | The question she was added to answer | Already answered: stored, no end date |
+| Copy the list onto her personal phone | A new copy, off the shop | Refuse |
+| Open one named customer's deliveries | An individual record | Refuse until a new written line |
+| "The owner spoke to the driver, so anything on the phone is in scope." | A conversation is not the later line | Refuse the expansion |
+
+> **Synthetic case.** No street address is written out.
+
+### Errors and limits
+
+Stopping the copy does not delete the phone's contents. Retention for those records is still the blank row in Chapter 8. This lesson does not fill it.
+
+### Apply
+
+- **EX067 — How wide is the line?** The owner added the driver's phone in writing so Sofia could see whether addresses are stored. She has already recorded that they are kept with no end date. A colleague asks her to copy the address list to her own phone and to open one regular's deliveries. What does the written line still support, and what waits? *Rubric:* 3 = the storage finding stands; refuse the personal-phone copy and the named delivery; a wider look needs a new written line, which this lesson does not add;; 2 = refuse both wider uses;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — The test screenshot stays in the shop folder
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX068.
+
+```mermaid
+flowchart TD
+  T["Invented test customer, screenshot in the encrypted shop folder"] --> P["Someone wants it on a personal phone"]
+  P --> R["Refuse. The phone is outside the review"]
+```
+
+An invented person does not make the handset a filing cabinet.
+
+### Logical drawing
+
+```text
+signed handling
+    settings screenshots allowed
+    a real customer screen refused
+    test customer built by the pharmacist
+    screenshot stored in the encrypted folder on the shop computer
+a slide for the owner
+    colleague wants the picture on Sofia's phone
+        |
+        +-- the phone is outside the review either way
+        +-- the invented name is not typed onto the slide
+        +-- "destroy notes afterwards" is not a reason to copy first
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the test screenshot in the encrypted folder on the shop computer.
+2. Refuse a copy on a personal phone.
+3. Leave the invented customer's name out of the slides.
+
+### 14.1 The invention limits the record. It does not change the phone.
+
+When Sofia needed an example of a screen, the pharmacist created a test customer with an invented name, and the screenshot went into the encrypted folder on the shop computer. A colleague wants that picture on Sofia's phone so a slide can be built on the way home. The review already keeps notes off personal phones. The fact that the customer is invented does not move the folder. Sofia refuses the copy. She also does not write the invented name into the slide, because the file never records that name and this lesson will not supply one. Destroying notes at the end of the review is a later clearing of stray copies. It is not a reason to make an extra copy now.
+
+### 14.2 Worked example
+
+| Request | Where the picture would sit | Decision |
+|---|---|---|
+| Leave the screenshot in the encrypted shop folder | The place already chosen | Accept |
+| Send it to her personal phone for a slide | Outside the review | Refuse |
+| Type the test customer's name on the title slide | A name the file does not hold | Do not invent it |
+| Photograph a live screen of a real customer instead | Excluded by the signed page | Refuse |
+
+> **Synthetic case.** The test customer's name is not stated. Do not add one.
+
+### Errors and limits
+
+Refusing the phone copy does not say the encrypted folder has already been emptied. Clearing notes at the end of the review is its own step, and this chapter does not date that clearing.
+
+### Apply
+
+- **EX068 — Where may the slide be built?** The test-customer screenshot is in the encrypted folder on the shop computer. A colleague wants it on Sofia's phone for a presentation and wants the invented name on the title. What do you refuse, and what name do you not write? *Rubric:* 3 = refuse the phone copy; the shop folder remains the place; do not write the invented name; a real customer's screen is still excluded;; 2 = refuse the phone and do not invent the name;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — A points voucher is a new proposal
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  I["Insulin text stays off"] --> P["A voucher when points cross a threshold, no medicine named"]
+  P --> F["That is a new proposal. Start the purpose flow"]
+  F --> S["Do not switch it on while Article 28 is unsigned and loyalty retention is blank"]
+```
+
+Saying no to one message does not say yes to the next.
+
+### Logical drawing
+
+```text
+already refused
+    a text triggered by a named medicine
+    loyalty contract is not that purpose
+    explicit consent for that health purpose is absent
+new proposal
+    a voucher tied to points
+    no medicine named
+still open from earlier chapters
+    loyalty Article 28 terms unsigned
+    loyalty retention row blank
+        |
+        +-- the new proposal starts at the top of the flow
+        +-- this lesson does not write a basis line
+        +-- the voucher stays off
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Tell a points-only voucher apart from the insulin text.
+2. Send the new proposal through the purpose flow from the start.
+3. Leave it switched off while the loyalty contract and the loyalty period are still open.
+
+### 15.1 A different message is not an approved message
+
+The owner once wanted a voucher text whenever a member bought insulin. Sofia left that switch off: the members' contract covers points, not a message triggered by a named medicine, and the shop had not collected explicit consent for that health purpose. The owner now wants a voucher when points cross a threshold, with no medicine in the text. Chapter 3 already said a points-only voucher is a different proposal and has to enter the flow at the beginning. It does not inherit a yes from the insulin refusal. Sofia still cannot record it as approved. The loyalty firm's Article 28 contract is in negotiation, not signed, and the loyalty retention row has no end. Either open gap stops a new flow. This lesson writes no threshold and no new basis line.
+
+### 15.2 Worked example
+
+| Proposal | What it is | Decision |
+|---|---|---|
+| Text a voucher when insulin is sold | Health data, new purpose | Stays off |
+| Voucher at a points threshold, no medicine named | A different proposal | Start the flow. Do not switch it on here |
+| "We refused insulin, so points are automatically allowed." | A leap | Refuse the leap |
+| "Put 500 points in the note so it looks decided." | A number the file does not hold | Do not invent it |
+
+> **Synthetic case.** No points threshold is chosen.
+
+### Errors and limits
+
+Holding the voucher off is not a permanent ban on every points message. A later lesson can record it only after the missing basis, contract and period are actually written. They are not written here.
+
+### Apply
+
+- **EX069 — Does the refusal travel?** The insulin text stays off. The owner proposes a voucher when points cross a threshold and no medicine is named. The loyalty contract is still in negotiation, and the loyalty retention row is blank. What kind of proposal is this, and what do you not switch on? *Rubric:* 3 = it is a new proposal and starts the purpose flow; the insulin refusal is not approval; do not switch it on while Article 28 is unsigned and the loyalty period is blank;; 2 = new proposal, not switched on;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Thirty days is not extended to watch one person
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  C["CCTV overwritten after thirty days"] --> W["Owner wants one employee's images kept longer"]
+  W --> R["Refuse the extension"]
+  R --> S["Changing the recorder is outside Sofia's scope"]
+```
+
+A camera period is not a staff appraisal.
+
+### Logical drawing
+
+```text
+written period
+    counter CCTV overwritten after thirty days
+new wish
+    keep images longer to judge one employee's speed
+        |
+        +-- staff are data subjects
+        +-- the wish is a new purpose
+        +-- Sofia does not change settings
+        +-- she writes no opinion of the person
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the thirty-day overwrite as the period already found.
+2. Treat a longer keep, aimed at one employee, as a new purpose about a data subject.
+3. Refuse to change the recorder, because settings changes are outside the signed scope.
+
+### 16.1 The camera already has a period. Watching a colleague is a new use.
+
+CCTV at the counter is overwritten after thirty days. The owner wants one week's images kept beyond that so the shop can judge how fast one employee works. The images identify a person at work. Staff are data subjects, which Chapter 2 already recorded. A longer keep for that judgment is not the purpose for which the thirty-day period was found. Sofia does not extend the recorder. Changing settings is one of the exclusions on the signed page. She also does not write an opinion of the employee's speed into the review log. If the owner wants that new purpose, it needs its own basis before anyone keeps the images longer. The basis row for that judgment stays absent from her table.
+
+### 16.2 Worked example
+
+| Request | Against which rule | Decision |
+|---|---|---|
+| Leave the overwrite at thirty days | The period already found | Accept |
+| Keep one employee's week past thirty days | A new purpose about a staff member | Refuse |
+| Sofia changes the recorder setting tonight | Scope excludes changing settings | Refuse |
+| "Note that this person is slow." | An opinion about an individual | Do not write it |
+
+> **Synthetic case.** The employee is unnamed. No speed and no extra days are entered.
+
+### Errors and limits
+
+Refusing the extension does not switch the cameras off. They keep the thirty-day cycle already in the file. This chapter is not an employment ruling.
+
+### Apply
+
+- **EX070 — Why keep the week?** CCTV is overwritten after thirty days. The owner wants images of one employee kept longer to judge that person's speed, and asks Sofia to change the recorder. What stays thirty days, and what does she not write? *Rubric:* 3 = the overwrite stays thirty days; the longer keep is a new purpose about a staff data subject; she does not change settings; she writes no opinion and no name;; 2 = thirty days stays and she does not change the recorder;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — A receipt turns the takings into a person
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX071.
+
+```mermaid
+flowchart TD
+  T["Tuesday's total, no receipt"] --> N["Not personal data"]
+  T --> A["The same total with a receipt or with 44021"]
+  A --> P["Personal data. The number still states no illness"]
+```
+
+The figure changes class when a person is attached.
+
+### Logical drawing
+
+```text
+bare total
+    no receipt
+    not about one living person
+attachment
+    a receipt, or loyalty number 44021
+        |
+        +-- Juniper can link 44021 to one customer
+        +-- the number alone still does not state an illness
+        +-- if Sofia cannot tell, she treats the item as personal
+        +-- no money figure is invented
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave a bare shop total outside personal data.
+2. Classify the same total as personal once a receipt or loyalty number is attached.
+3. Keep that number from being called health data when no condition is stated.
+
+### 17.1 The staple is the change. The coins are not.
+
+Chapter 1 used Tuesday's total takings, with no receipt attached, as a shop figure rather than a customer record. A colleague staples a receipt to the same total, or writes loyalty number 44021 beside it, and says it is "still only takings". The attachment is what Chapter 1's link test asks about. Juniper can tie 44021 to one customer, so the stapled page is personal data even though the coins were not. Points on that number still do not state an illness, so the health answer does not flip unless a medicine line is there. Sofia does not invent the amount. If she cannot tell whether a scribble links to a person, she treats the page as personal rather than calling the day's takings a customer record by habit.
+
+### 17.2 Worked example
+
+| Page in her hand | Personal data? | Health data? |
+|---|---|---|
+| Tuesday's total, nothing attached | No | No |
+| The same total plus a receipt | Yes | Only if the receipt states or reveals a condition |
+| The same total plus 44021 and no medicine | Yes | No |
+| "Write a sum so the example looks finished." | Do not invent the sum | Do not invent the sum |
+
+> **Synthetic case.** No takings figure is added.
+
+### Errors and limits
+
+Classifying the stapled page does not decide whether the till may keep it. Purpose, minimisation and retention are the next questions, and this chapter does not answer them for a new use.
+
+### Apply
+
+- **EX071 — What did the staple do?** Tuesday's total has no receipt and is not personal data. Someone writes 44021 beside that total and says the page is still only takings. What class changes, and what class does not? *Rubric:* 3 = the page becomes personal data because Juniper can link 44021 to one customer; the number does not state an illness, so it is not yet health data; the bare total, left bare, stays not personal;; 2 = the attachment makes it personal and not yet health data;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — A returned phone field fails the field check
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX072.
+
+```mermaid
+flowchart TD
+  F["Two-week form: five fields"] --> P["A later screen shows phone again"]
+  P --> X["Field check fails. The action opens"]
+  X --> K["Do not assume the other four rejected names returned"]
+```
+
+One name coming back is a failure. It is not a census of the whole template.
+
+### Logical drawing
+
+```text
+published lab
+    phone marked NOT NEEDED on the ten-name file
+two-week form
+    five fields, phone absent
+later screen
+    phone is on the form again
+        |
+        +-- the field check fails
+        +-- gender, postcode, prescription items and the location trail are not assumed back
+        +-- the ten-and-five print is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Treat a returned phone field as a failed field check.
+2. Leave the action open.
+3. Avoid assuming that every other rejected name returned with it.
+
+### 18.1 The template can grow back one box at a time
+
+Phone was one of the five names the published script marked NOT NEEDED. The two-week form no longer asked for it. A later sign-up screen shows a phone box again, which a colleague blames on the vendor's default template. The field check asks whether the rejected names are absent. Phone is not absent, so this screen fails. Sofia records the returned field and leaves the action open. She does not edit `collected` in the lab so that the historic print changes, and she does not write that gender, postcode, prescription items and the location trail have also returned. Those four are unknown until someone looks. This lesson looks only at the phone box that is actually on the screen.
+
+### 18.2 Worked example
+
+| What the later screen shows | Field check | Decision |
+|---|---|---|
+| The five allowed names, phone absent | Not this failure | Do not invent a pass for other shops |
+| Phone present again | Fails | Leave the action open |
+| "The other four rejected names must be back too." | Not observed | Do not write that |
+| Rewrite the published print as 11 names | The original file | Refuse |
+
+> **Synthetic case.** No telephone number is written on the screen in this lesson.
+
+### Errors and limits
+
+A failed field check does not describe the values inside `purchase_history`. The content check remains its own test, which Chapter 5 keeps tied to the file in front of her.
+
+### Apply
+
+- **EX072 — Which box came back?** The two-week form asked for five fields. A later screen shows phone again. What fails, what stays the published print, and which names do you not assume? *Rubric:* 3 = the field check fails and the action stays open; the published print stays 10 collected and 5 not needed; do not assume gender, postcode, prescription items and the location trail returned;; 2 = phone fails the field check and the print stays;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Contacting a customer is still outside the scope
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  A["Owner asks Sofia to email or call a customer about the loyalty change"] --> S{"Is contacting customers on the signed page?"}
+  S -->|No| R["Do not send. Do not call"]
+  S -->|Only after a new written line| W["This lesson does not write that line"]
+```
+
+The vendor ask belongs to the owner. A message from Sofia belongs to the scope.
+
+### Logical drawing
+
+```text
+signed exclusions
+    reading individual records
+    contacting customers
+    changing settings
+already done by the owner
+    the vendor was asked to change the app
+a new request to Sofia
+    email members, or call one regular
+        |
+        +-- she does not send the mail
+        +-- she does not make the call
+        +-- no customer is named and no medicine is put in a draft she sends
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep contacting customers outside the signed scope.
+2. Separate the owner's request to the vendor from a message Sofia would send.
+3. Leave any scope change that would allow contact unwritten.
+
+### 19.1 The vendor was asked. The customers were not hers to call.
+
+The owner has already asked the loyalty vendor to change the app. That request is the owner's. The signed page still says Sofia does not contact customers. The owner now asks her to email members that the form is shorter, or to call one regular and explain the export. Either message is contact. Sofia does not send it and does not dial. A written addition to the scope would have to come before any call or mail, as it did before she looked at the driver's phone. This lesson does not add that line. She also does not draft the message with a medicine name "so it is accurate", because she is not sending a draft at all.
+
+### 19.2 Worked example
+
+| Ask | Who may do it on the current page | Decision |
+|---|---|---|
+| Ask the vendor to change the fields | The owner already did | Not Sofia contacting a customer |
+| Sofia emails the members | Contact, excluded | Do not send |
+| Sofia calls one regular | Contact, excluded | Do not call |
+| Add contacting customers to the scope in writing | The owner, before any message | Not written here |
+
+> **Synthetic case.** No customer is named and no message text is composed.
+
+### Errors and limits
+
+Refusing the call does not hide the loyalty change from members forever. It keeps Sofia inside the page she signed onto. A later written addition would be a new fact. It is not this fact.
+
+### Apply
+
+- **EX073 — Who sends the news?** The owner asks Sofia to email members about the shorter form, or to call one regular about the export. Contacting customers is excluded from the signed scope. What does she not send, and what line is not added? *Rubric:* 3 = she does not email and does not call; the exclusion stands; this lesson does not add a written permission to contact customers;; 2 = no email and no call;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the review file can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX074.
+
+```mermaid
+flowchart TD
+  N["Leaving note"] --> F["Repeat only the file and the published run"]
+  F --> Q{"Does the sentence add a count, a signature, or a finished status?"}
+  Q -->|Yes| R["Reject it"]
+  Q -->|No| K["The note may cite that line"]
+```
+
+Twenty lessons meet a planning minimum. They do not close the review.
+
+### Logical drawing
+
+```text
+the file may support
+    link, then health, then expectation
+    44021 personal until a medicine line is added
+    signed scope and its exclusions
+    storeroom report, lock, shredding arranged
+    four vendors; loyalty and delivery still in negotiation
+    CCTV thirty days; three retention rows still blank
+    lab print: 10 collected, 5 not needed (50%)
+    two-week form of five fields; that export had no medicine name
+    a later insulin line keeps the content action open
+the note may not support
+    a print of 5 and 0; a signed loyalty contract
+    a homemade year; the insulin text switched on
+    one export certifying three tills
+    "compliant", "certified", or "the course is complete"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat the Juniper decisions the review file and the published run already contain.
+2. Reject counts, signatures and endings the file does not hold.
+3. Say what twenty lessons meet, and which course comes next.
+
+### 20.1 The note repeats the file
+
+A leaving note may say what was already written down. Sofia classifies an item by whether Juniper can link it to a living person, then by whether it states or reveals a condition, then by whether the person would expect the use. Loyalty number 44021 is personal data without a name. It is not health data until a line such as insulin is added. Counter photos need no customers in the frame, or a permission the file actually holds. The signed scope lets her look at settings, the notice, filing method, staff access and CCTV signs. It excludes individual records, contacting customers and changing settings. The storeroom report has place, time and what she saw. The room was locked. Shredding was arranged and has no destruction date in the log. Four vendors are on the map. Dispensing and the newsletter tool had Article 28 terms. Loyalty and delivery are still in negotiation. CCTV is overwritten after thirty days. Loyalty, delivery and never-opened newsletter mail still have no written end, and the professional prescription period is not replaced. The published lab lines stay `fields collected 10; not needed for any stated purpose 5 (50%)`. The two-week form asked for five fields, and that export had totals and non-medicine categories. A later file that names insulin leaves the content action open.
+
+### 20.2 Worked example
+
+| Sentence offered for the note | What the file holds | Decision |
+|---|---|---|
+| "44021 is personal data and, without a medicine, not health data." | Chapter 1 | May stay |
+| "The lab print is now 5 collected and 0 not needed." | The published run was not replaced | Reject it |
+| "The loyalty contract is signed because clauses were drafted." | Negotiation | Reject the signature |
+| "The two-week export closed every later night." | One file | Reject the closure |
+| "Prescriptions are kept for a year Sofia chose." | A professional rule she does not invent | Reject the year |
+| "The insulin text was switched on." | It stays off | Reject it |
+| "All three tills passed." | One export | Reject it |
+| "Juniper is compliant and the course is complete." | A planning minimum, review still open | Reject both labels |
+
+> **Synthetic case.** The note cites the file. It adds no customer name, no signature date, no day-count and no takings figure.
+
+### Errors and limits
+
+Meeting the planning minimum of 20 lessons leaves independent review open. A learner cannot collect a certificate from the chapter count, and these pages do not advise a real pharmacy. There is no maximum: a later decision can add a lesson. These English chapters do not publish another language edition. Chapter 4 named governance, risk and compliance as Sofia's next course. That handoff does not settle Juniper's open lines, and it does not finish this book.
+
+### Apply
+
+- **EX074 — Four claims.** A classmate's leaving note says the lab print is now five fields and none unneeded, that the loyalty contract is signed because the clauses were drafted, that the two-week export closed the content check for good, and that Juniper is compliant because twenty lessons exist. Which claims do you reject, and what do twenty lessons meet? *Rubric:* 3 = reject all four claims; the published print stays 10 collected and 5 not needed, 50 percent; negotiation is not a signature; one clean export is one night; twenty lessons meet the planning minimum and leave review open;; 2 = reject the four claims and keep the published print;; 1 = one claim;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
+
 ## Worked results
 
-Model answers for EX001–EX058. Sofia Mendes, Mr. Raj Patel, Brightwater Community Learning Centre, Juniper Pharmacy and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX074. Sofia Mendes, Mr. Raj Patel, Brightwater Community Learning Centre, Juniper Pharmacy and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** Yes, because Juniper can link it to an identifiable customer.
 
@@ -891,6 +2090,39 @@ Model answers for EX001–EX058. Sofia Mendes, Mr. Raj Patel, Brightwater Commun
 **EX057.** The script tests whether the field name is in the purpose union. It does not read the values inside `purchase_history`. A medicine name in the export is still a failure of the content check.
 
 **EX058.** The field check passed and the content check failed. Sofia does not close the action.
+
+
+**EX059.** The earlier file does not close the later night. The content check fails and the action stays open. Do not edit the script.
+
+**EX060.** Neither 5 collected nor 0 unneeded was the published run. The verified print remains 10 collected and 5 not needed, 50 percent. Do not edit the script.
+
+**EX061.** Refuse the new file. Negotiation is not a signature. Loyalty and delivery remain the gaps. The dispensing contract does not cover them.
+
+**EX062.** Refuse both numbers. The three rows stay blank until the owner writes them. CCTV remains thirty days. Do not invent the prescription period.
+
+**EX063.** The destruction date is open. The arrangement is not that date. She does not move or read the copies. She does not invent which copies are past the professional period.
+
+**EX064.** Refuse the post. Visible customers and no permission fail the agreed rule. The plan is not that permission. Do not date the replacement as finished.
+
+**EX065.** The approval stands. The one export does not certify the other tills. Do not split about 9,000 customers. Do not name the shops.
+
+**EX066.** Refuse again and log this request. Do not open the record. The earlier refusal does not authorise the lookup.
+
+**EX067.** The storage finding stands. Refuse the personal-phone copy and the named delivery. A wider look needs a new written line, which this lesson does not add.
+
+**EX068.** Refuse the phone copy. The shop folder remains the place. Do not write the invented name. A real customer's screen is still excluded.
+
+**EX069.** It is a new proposal and starts the purpose flow. The insulin refusal is not approval. Do not switch it on while Article 28 is unsigned and the loyalty period is blank.
+
+**EX070.** The overwrite stays thirty days. The longer keep is a new purpose about a staff data subject. She does not change settings. She writes no opinion and no name.
+
+**EX071.** The page becomes personal data because Juniper can link 44021 to one customer. The number does not state an illness, so it is not yet health data. The bare total, left bare, stays not personal.
+
+**EX072.** The field check fails and the action stays open. The published print stays 10 collected and 5 not needed. Do not assume gender, postcode, prescription items and the location trail returned.
+
+**EX073.** She does not email and does not call. The exclusion stands. This lesson does not add a written permission to contact customers.
+
+**EX074.** Reject all four claims. The published print stays 10 collected and 5 not needed, 50 percent. Negotiation is not a signature. One clean export is one night. Twenty lessons meet the planning minimum and leave review open. The next course is governance, risk and compliance. This is not legal advice.
 
 <a id="references"></a>
 
