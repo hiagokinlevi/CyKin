@@ -2,6 +2,8 @@
 
 [Home](README.md) · [Edition inventory](LANGUAGE_LESSON_PROGRESS.md) · [Translation standard](BOOK_STANDARD.md#complete-translations-and-cross-language-parity) · [Curriculum baselines](CURRICULUM_GRID.md)
 
+**Latest scoped maintenance:** [14 October 2026 — Portuguese Chapter 2 reconciliation](#pt-ch02-reconciliation-20261014). The catalog tables and earlier findings below remain the historical snapshot named in the next paragraph; this update does not recount the catalog or present those numbers as live translation fidelity.
+
 **Editorial responsibility:** hiagokinlevi. **Measurement snapshot:** `b542b64316b8fd413b764ac4c2710f35b22af1ac`. This is a dated inventory and scoped comparison, not a live counter or approval of any book. The later checked main `2deeac1c795e31830d149628e53dc97f930d2985` changed website files only; it did not change the inventory or the manuscript pair examined here.
 
 ## What the percentages mean
@@ -89,3 +91,34 @@ This report establishes an honest baseline, not translation throughput. The [age
 The next **translation-quality checkpoint** is the same course's Chapter 2 EX014–EX026 and EX053, with both final answer sets, followed by the incomplete map labels. The main **authoring priority** remains Incident Response in the published production order; this sample does not move another area ahead in that queue. For the catalog table, refresh the pinned source, reconcile any changed edition denominators, and keep manuscript presence, daily structure and reviewed source-to-target equivalence separate.
 
 Each subsequent report should state the source and target revisions, new translations actually published, existing translations reconciled, exercises/answers checked, the current table and the difference from the preceding measured snapshot. A changed English reference makes the affected translation units pending comparison; unchanged translations remain available. Until every source unit is mapped and checked, the catalog's faithful-translation percentage remains unmeasured.
+
+<a id="pt-ch02-reconciliation-20261014"></a>
+
+## 14 October 2026 — Existing Portuguese Chapter 2 reconciled
+
+This entry supersedes the earlier next-checkpoint instruction for Chapter 2 and records maintenance actually incorporated into the existing EN/PT manuscripts. It does not supersede the dated catalog inventory or certify a complete translation.
+
+**Base revision:** `a27b199e2fc8c97362ada3f8aa4c57191aa887f1`. English source before correction: `e633a0668e2a9df35ce115a11b072a2714616aaa`; Portuguese before correction: `6aa62199e0ffe7ea73de3a4577174a908a2fc7cd`. The corrected [English manuscript](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md#ch-02) has blob `0b3a1361ae822a4602a8336e1e47ce8cecd6ddc6`; the reconciled [Portuguese manuscript](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#ch-02) has blob `4d7a912d0c5becb92dd4512a7388ff28fa356bf3`. These blob IDs identify the exact compared publication contents. Review responsibility remains hiagokinlevi; no independent human review is asserted.
+
+| Reviewed unit | Source-to-target mapping and result |
+|---|---|
+| Chapter map and logical drawing | `ch-02` to `ch-02`: two Mermaid maps and one text drawing per edition now carry corresponding complete labels; the previous truncated-label finding is corrected in source, while rendered appearance remains unchecked |
+| Objective and section 2.2 | Synthetic interpretation replaces a claim that the script closes shares; authentication language no longer implies universal takeover prevention or an unspecified phishing-resistant protocol |
+| Laboratory explanation | Same complete Python listing and five output lines; corresponding explanation of generated rows, fixed seed, empty input, duplicated rows and absence of cloud operations |
+| Concepts table | Matching distinctions between account attribution and a person, authentication and authorization, and authorized accounts versus building location |
+| Assessment | EX014–EX026, EX053 and EX054: 15 English/Portuguese prompt, 0–3 rubric and final-answer pairs compared; IDs, inputs, requested decisions and original answers preserved |
+| Discovery and navigation | Portuguese plan no longer claims the existing manuscript is unwritten; Portuguese index and final available chapter identify the untranslated continuation rather than implying completion |
+
+**Reproduced tests:** Python 3.13.5; exact baseline `8/140`, `4/60`, `25/80`, `10/20`, total `47/300`. Six additional in-memory variants: empty input `0/0`; duplicated client rows `55/440`; all flags false `0/300`; all flags true `300/300`; finance omitted `43/240`; reversed rows retain `47/300` with a different first-seen folder print order. Code extracted from the staged Markdown matched the original common listing and reproduced the literal output independently in both editions. Markdown parsing and matching map node/edge structure were checked; Mermaid was not rendered. No actual cloud account, permission change or source export was tested.
+
+| This course's measure | Before this maintenance | After this maintenance | Interpretation |
+|---|---:|---:|---|
+| Available Portuguese chapters / current 20 English chapters | 4 / 20 | 4 / 20 | 20% chapter presence, not 20% of all English teaching verified as translated |
+| Available Portuguese exercise IDs / current 74 English exercise IDs | 58 / 74 | 58 / 74 | 78.38% ID presence, not reviewed parity |
+| Existing Chapter 2 pairs explicitly compared | Earlier log recorded EX054 only | EX014–EX026, EX053–EX054: 15 / 15 selected pairs | Fourteen additional IDs compared, with EX054 rechecked; no extrapolation to other chapters |
+| New Portuguese principal manuscripts or numbered lessons | — | 0 | Existing translation maintenance and corresponding technical corrections |
+| Whole-book translation approvals | — | 0 | Complete technical, linguistic and rendering reviews remain open |
+
+Catalog availability and daily-anchor counts were not raised. No other language was edited or re-audited in this maintenance pass. The six later-language zeroes in the historical table must not be presented as a fresh absence audit. The English book still has twenty chapter-lessons and the Portuguese book still has four published chapters. Translated navigation and repaired text are not additional lessons.
+
+**Next Portuguese maintenance checkpoint:** Chapter 3 with EX027–EX038 and EX055–EX056, including their final answers, incomplete figure labels and overly broad MFA claims. Correct source defects explicitly before reconciling the corresponding Portuguese passage; preserve valid manual translations. Chapters 05–20 remain a separate untranslated continuation, not filled by this maintenance. The current production order and whole-collection gates remain unchanged. No current A4 render, site deployment or live-route test was performed.
