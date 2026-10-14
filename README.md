@@ -270,7 +270,7 @@ Read each lesson's worked example before attempting its practice. Then compare t
 
 ## Language sequence
 
-**English → Portuguese → Spanish → Hebrew → French → Russian → German → Chinese → Japanese.** Complete and review the English collection before translating; each later language receives its own technical and linguistic review. Some non-English folders already contain partial manuscripts alongside working outlines; no translation is verified complete.
+**Active production: English → Portuguese → Spanish.** First complete and technically review every English course book and its weekday lessons. Then translate the complete approved teaching into Portuguese and review every edition; repeat for Spanish. **Only after all three collections are independently 100% complete and current** may production begin in Hebrew, French, Russian, German, Chinese and Japanese. Here 100% means all 207 books in that language pass the [full-course publication gate](BOOK_STANDARD.md#sequential-production-order), including lessons, examples, exercises, worked answers, sources and navigation; Portuguese and Spanish also need verified parity with English. The bookshelf's chapter-draft percentages and a manuscript's presence do not count. Existing content in later languages remains public. Some non-English folders contain partial manuscripts alongside working outlines; no translation is verified complete.
 
 ## Existing projects
 

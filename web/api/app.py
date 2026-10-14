@@ -37,6 +37,7 @@ APPENDIX_HEADING = re.compile(
 )
 REFERENCES_HEADING = re.compile(r'^##\s+(?:references|referências|referencias)\b', re.M | re.I)
 MCP_VERSION = "2025-06-18"
+EDITORIAL_POLICY_URI = "open-cyber-academy://editorial-policy"
 ALLOWED_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
 PUBLIC_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy"}
@@ -153,6 +154,14 @@ async def source_text(request: Request, path: str) -> str | None:
         raise
     except Exception as exc:
         raise HTTPException(502, "GitHub source temporarily unavailable") from exc
+
+
+async def editorial_policy(request: Request) -> str:
+    """Serve the current public rule from main, rather than a stale deploy copy."""
+    policy = await source_text(request, "BOOK_STANDARD.md")
+    if policy is None:
+        raise HTTPException(503, "Editorial policy is unavailable")
+    return policy
 
 
 def book_path(level: str, area: str, language: str, filename: str) -> str:
@@ -539,6 +548,7 @@ def rpc_error(identifier: Any, code: int, message: str) -> dict[str, Any]:
 
 
 TOOLS = [
+    {"name": "get_editorial_policy", "description": "Read the current public book standard and language production gate: English, then Portuguese, then Spanish; later languages begin only when all three collections are verified complete.", "inputSchema": {"type": "object", "properties": {}}},
     {"name": "list_courses", "description": "Discover the 207 public OpenCyber Academy courses. Optional language, level, area or title query filters.", "inputSchema": {"type": "object", "properties": {"language": {"type": "string"}, "level": {"type": "string"}, "area": {"type": "string"}, "query": {"type": "string"}}}},
     {"name": "list_lessons", "description": "List planned and authored lessons for one course. Only published=true represents written teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}}, "required": ["level", "area", "language"]}},
     {"name": "read_lesson", "description": "Read the public Markdown for an authored lesson and its worked answers, with its GitHub source URL.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
@@ -579,7 +589,10 @@ async def mcp(request: Request) -> Response:
         if method == "tools/list":
             return JSONResponse(rpc_result(identifier, {"tools": TOOLS}))
         if method == "resources/list":
-            return JSONResponse(rpc_result(identifier, {"resources": [{"uri": "open-cyber-academy://catalog", "name": "OpenCyber Academy course catalog", "mimeType": "application/json", "description": "207 courses in study order"}]}))
+            return JSONResponse(rpc_result(identifier, {"resources": [
+                {"uri": "open-cyber-academy://catalog", "name": "OpenCyber Academy course catalog", "mimeType": "application/json", "description": "207 courses in study order"},
+                {"uri": EDITORIAL_POLICY_URI, "name": "OpenCyber Academy editorial policy", "mimeType": "text/markdown", "description": "Current public book standard and three-language production gate"},
+            ]}))
         if method == "resources/templates/list":
             return JSONResponse(rpc_result(identifier, {"resourceTemplates": [
                 {"uriTemplate": "open-cyber-academy://lesson/{level}/{area}/{language}/{chapter}", "name": "OpenCyber Academy lesson", "mimeType": "text/markdown", "description": "A published daily lesson, or a legacy chapter when this edition has no daily lessons"},
@@ -589,6 +602,8 @@ async def mcp(request: Request) -> Response:
             uri = params.get("uri", "")
             if uri == "open-cyber-academy://catalog":
                 contents = [{"uri": uri, "mimeType": "application/json", "text": json.dumps(await catalog(request), ensure_ascii=False)}]
+            elif uri == EDITORIAL_POLICY_URI:
+                contents = [{"uri": uri, "mimeType": "text/markdown", "text": await editorial_policy(request)}]
             else:
                 match = re.fullmatch(r'open-cyber-academy://(lesson|chapter)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,4})', str(uri))
                 if not match:
@@ -600,7 +615,9 @@ async def mcp(request: Request) -> Response:
             name, args = params.get("name"), params.get("arguments") or {}
             if not isinstance(args, dict):
                 return JSONResponse(rpc_error(identifier, -32602, "Invalid tool arguments"))
-            if name == "list_courses":
+            if name == "get_editorial_policy":
+                result = {"markdown": await editorial_policy(request), "source_url": GITHUB_VIEW + "BOOK_STANDARD.md"}
+            elif name == "list_courses":
                 data = await catalog(request)
                 courses = data["courses"]
                 for key in ("level", "area"):

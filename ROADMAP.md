@@ -20,7 +20,7 @@ Author sequential batches of **five to ten subject-chapters** when that many rem
 
 6. Translate, technically review and edit the full set in **Portuguese** from the approved English editions.
 7. Repeat for **Spanish**.
-8. Continue one language at a time in this order: **Hebrew, French, Russian, German, Chinese and Japanese**.
+8. **Gate:** confirm 100% verified completion of the English, Portuguese and Spanish collections separately: all 207 complete course editions per language, full weekday curricula, publication review, current translation parity and public site/MCP readback. The [book standard](BOOK_STANDARD.md#sequential-production-order) defines the evidence. Only then begin planned work in **Hebrew, French, Russian, German, Chinese and Japanese**, one language at a time. Preserve existing public material in those languages meanwhile.
 
 The public repository contains plans and drafts during production. A skill, folder or public manuscript does not claim a finished book. Course names describe intended study depth and duration, not formal academic recognition.
 
