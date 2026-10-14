@@ -39,9 +39,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const group = document.createElement('section'); group.className = 'book-index-group';
             const heading = document.createElement('a'); heading.className = 'book-index-heading';
             heading.href = `#ch-${String(chapter.chapter).padStart(2, '0')}`;
-            heading.textContent = `Chapter ${String(chapter.chapter).padStart(2, '0')} · ${chapter.title}`;
+            heading.textContent = `${details.chapter_lessons ? 'Day' : 'Chapter'} ${String(chapter.chapter).padStart(2, '0')} · ${chapter.title}`;
             group.append(heading);
-            for (const day of days.filter(item => item.module === chapter.chapter)) addDay(group, day);
+            if (!details.chapter_lessons) for (const day of days.filter(item => item.module === chapter.chapter)) addDay(group, day);
             index.append(group);
           }
         } else {
@@ -67,7 +67,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           const book = await fetch(`/api/books/${level}/${area}/${lang}`);
           if (!book.ok) throw new Error('The book is temporarily unavailable.');
           const markdown = await book.text();
-          status.textContent = `${details.published_chapters} written chapters · ${details.published_lessons} daily lessons · This book is read directly on OpenCyber Academy from the current public manuscript.`;
+          status.textContent = details.chapter_lessons
+            ? `${details.published_lessons} chapter-lessons · This book is read directly on OpenCyber Academy from the current public manuscript.`
+            : `${details.published_chapters} written chapters · ${details.published_lessons} daily lessons · This book is read directly on OpenCyber Academy from the current public manuscript.`;
           await renderMarkdown(content, markdown, sourceUrlFor(`levels/${level}/${area}/${lang}/book/MANUSCRIPT.md`), lang, 'book');
           if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
         }

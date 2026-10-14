@@ -12,7 +12,7 @@ const previous = catalog.courses[position - 1];
 const next = catalog.courses[position + 1];
 const levelName = catalog.level_names[course.level].en;
 type IndexedUnit = { number: number; title: string };
-const lessonIndex = lessonIndexData as Record<string, { lessons: IndexedUnit[]; chapters: IndexedUnit[] }>;
+const lessonIndex = lessonIndexData as Record<string, { lessons: IndexedUnit[]; chapters: IndexedUnit[]; chapter_lessons?: boolean }>;
 const authoredEditions = catalog.languages.map(language => ({ language, units: lessonIndex[`${course.level}/${course.area}/${language}`] })).filter(edition => edition.units);
 const courseUrl = `https://opencyber.academy${coursePath(course.level, course.area)}`;
 const structuredData = [
@@ -43,10 +43,10 @@ const structuredData = [
       <h2 id="published-lessons-title">Published lessons in this course</h2>
       <p>Each link opens the complete lesson on its own permanent page. New manuscript edits appear there after publication.</p>
       {authoredEditions.map(({ language, units }) => <details data-edition={language}>
-        <summary>{language.toUpperCase()} · {units.lessons.length} daily lessons · {units.chapters.length} full chapters</summary>
+        <summary>{units.chapter_lessons ? `${language.toUpperCase()} · ${units.chapters.length} chapter-lessons` : `${language.toUpperCase()} · ${units.lessons.length} daily lessons · ${units.chapters.length} full chapters`}</summary>
         <div class="published-lesson-links">
           {units.lessons.map(unit => <a href={`/courses/${course.level}/${course.area}/lessons/${language}/${unit.number}/`}><span>{`Lesson ${unit.number}:`}</span> {unit.title}</a>)}
-          {units.chapters.map(unit => <a href={`/courses/${course.level}/${course.area}/chapters/${language}/${unit.number}/`}><span>{`Chapter ${unit.number}:`}</span> {unit.title}</a>)}
+          {units.chapters.map(unit => <a href={`/courses/${course.level}/${course.area}/chapters/${language}/${unit.number}/`}><span>{`${units.chapter_lessons ? 'Lesson' : 'Chapter'} ${unit.number}:`}</span> {unit.title}</a>)}
         </div>
       </details>)}
     </section>}

@@ -8,7 +8,7 @@ type CourseDetails = {
   course: { instructional_weeks: number; daily_lesson_target: number };
   lessons: Entry[]; modules: Module[]; daily_slots: Entry[]; legacy_chapters: Entry[];
   published_chapters: number; published_lessons: number; planned_lessons: number;
-  has_daily_lessons: boolean; book_url: string | null;
+  has_daily_lessons: boolean; chapter_lessons: boolean; book_url: string | null;
 };
 type LessonData = {
   chapter: number; title: string; markdown: string; worked_answers: string;
@@ -46,7 +46,7 @@ export async function initCoursePortal(): Promise<void> {
     return location.pathname + '?' + params;
   }
   function pageUrl(unit: Unit): string {
-    const route = unit.kind === 'daily' ? 'lessons' : 'chapters';
+    const route = unit.kind === 'daily' && !details.chapter_lessons ? 'lessons' : 'chapters';
     return `/courses/${level}/${area}/${route}/${language}/${unit.number}/`;
   }
   function bookUrl(anchor?: string): string {
@@ -69,13 +69,14 @@ export async function initCoursePortal(): Promise<void> {
   }
   function weekLabel(week: number): string {
     const module = details.modules.find(item => item.number === week);
-    return module && details.has_daily_lessons ? `Week ${String(week).padStart(2, '0')} · ${module.title}` : `Week ${String(week).padStart(2, '0')}`;
+    return module && details.has_daily_lessons && !details.chapter_lessons ? `Week ${String(week).padStart(2, '0')} · ${module.title}` : `Week ${String(week).padStart(2, '0')}`;
   }
   function renderIndex(): void {
     const nav = el('course-lessons');
     nav.replaceChildren();
     const switches = document.createElement('div'); switches.className = 'course-index-switch';
     for (const [kind, label] of [['daily', 'Daily lessons'], ['chapter', 'Full chapters']] as const) {
+      if (kind === 'chapter' && details.chapter_lessons) continue;
       const button = document.createElement('button'); button.type = 'button'; button.textContent = label;
       button.setAttribute('aria-pressed', String(indexMode === kind));
       button.addEventListener('click', () => { indexMode = kind; renderIndex(); });
@@ -146,7 +147,7 @@ export async function initCoursePortal(): Promise<void> {
       }
       overview.append(grid);
     }
-    if (details.legacy_chapters.some(chapter => chapter.published)) {
+    if (!details.chapter_lessons && details.legacy_chapters.some(chapter => chapter.published)) {
       const chapters = document.createElement('details'); chapters.className = 'course-chapter-browse';
       if (details.published_lessons === 0) chapters.open = true;
       const summary = document.createElement('summary'); summary.textContent = `Browse all ${details.published_chapters} full chapters`;
@@ -179,7 +180,7 @@ export async function initCoursePortal(): Promise<void> {
         if (before) nav.append(link(`← Previous ${unit.kind === 'daily' ? 'lesson' : 'chapter'}`, pageUrl({ kind: unit.kind, number: before.chapter })));
         nav.append(link('Course overview', url(null)));
         if (after) nav.append(link(`Next ${unit.kind === 'daily' ? 'lesson' : 'chapter'} →`, pageUrl({ kind: unit.kind, number: after.chapter })));
-        if (unit.kind === 'daily' && !after) {
+        if (unit.kind === 'daily' && !details.chapter_lessons && !after) {
           const chapter = details.legacy_chapters.find(item => item.published && item.chapter === Math.ceil(unit.number / 5));
           if (chapter) nav.append(link('Read full chapter →', pageUrl({ kind: 'chapter', number: chapter.chapter })));
         }
@@ -273,7 +274,7 @@ export async function initCoursePortal(): Promise<void> {
         await renderMarkdown(el('course-answer-markdown'), lesson.worked_answers, lesson.source_url, language);
         el('course-answers').hidden = false;
       }
-      if (unit.kind === 'daily' || !details.has_daily_lessons) void showProgress(lesson);
+      if (unit.kind === 'daily' || details.chapter_lessons || !details.has_daily_lessons) void showProgress(lesson);
       el('course-status').textContent = `${unit.kind === 'daily' ? 'Lesson' : 'Chapter'} ${unit.number} loaded from the current public book.`;
     } catch (error) { if (id === requestId) el('course-intro').textContent = String(error); }
   }

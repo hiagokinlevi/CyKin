@@ -150,7 +150,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     number = lesson["chapter"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
     chrome = PAGE_CHROME.get(language, PAGE_CHROME["en"])
-    label = ui["lesson" if kind == "lesson" else "chapter"]
+    label = ui["lesson" if kind in {"lesson", "chapter_lesson"} else "chapter"]
     path = lesson_path(level, area, language, number, kind)
     locale_site = site_for_language(language)
     canonical = locale_site + path

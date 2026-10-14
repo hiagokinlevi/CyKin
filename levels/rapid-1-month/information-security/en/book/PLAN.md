@@ -1,6 +1,6 @@
 # Principal book plan — Information security / Rapid course / English
 
-**One book for this course and language.** Twenty English chapters are published. The older index had four subject modules. The rapid planning minimum is 20 lessons, and there is no maximum. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in information security.
+**One book for this course and language.** Twenty English chapter-lessons are published. Each numbered chapter is one study day; five consecutive lessons form one suggested study week. The older index had four subject modules. The rapid planning minimum is 20 lessons, and there is no maximum. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in information security.
 
 **Editorial state:** published English manuscript; technical, language, source, and accessibility review still open. English reference edition. Not a finished qualification. Page count is not the writing target.
 
@@ -18,7 +18,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Information security: foundations and decisions
 
-**Stage 1; 80 planned A4 pages; 13 planned exercises.** [Read the lesson](MANUSCRIPT.md#ch-01)
+**Study day 1; approximately four suggested hours; 13 baseline exercises.** [Read the lesson](MANUSCRIPT.md#ch-01)
 
 This subject teaches **Information security: foundations and decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in information security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary; the lesson is linked above.
 
@@ -28,7 +28,7 @@ This subject teaches **Information security: foundations and decisions** and con
 
 ### Chapter 02 — Scope, permission and safe practice
 
-**Stage 2; 80 planned A4 pages; 13 planned exercises.** [Read the lesson](MANUSCRIPT.md#ch-02)
+**Study day 2; approximately four suggested hours; 13 baseline exercises.** [Read the lesson](MANUSCRIPT.md#ch-02)
 
 This subject teaches **Scope, permission and safe practice** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in information security. The chapter will apply the relevant methods to protect information confidentiality, integrity and availability through policy, classification, controls and assurance. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary; the lesson is linked above.
 
@@ -38,7 +38,7 @@ This subject teaches **Scope, permission and safe practice** and contributes to 
 
 ### Chapter 03 — Information security: systems, data and dependencies
 
-**Stage 3; 80 planned A4 pages; 12 planned exercises.** [Read the lesson](MANUSCRIPT.md#ch-03)
+**Study day 3; approximately four suggested hours; 12 baseline exercises.** [Read the lesson](MANUSCRIPT.md#ch-03)
 
 This subject teaches **Information security: systems, data and dependencies** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in information security. The chapter will apply the relevant methods to protect information confidentiality, integrity and availability through policy, classification, controls and assurance. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary; the lesson is linked above.
 
@@ -48,7 +48,7 @@ This subject teaches **Information security: systems, data and dependencies** an
 
 ### Chapter 04 — Information security: guided lab and applied synthesis
 
-**Stage 4; 80 planned A4 pages; 12 planned exercises.** [Read the lesson](MANUSCRIPT.md#ch-04)
+**Study day 4; approximately four suggested hours; 12 baseline exercises.** [Read the lesson](MANUSCRIPT.md#ch-04)
 
 This subject teaches **Information security: guided lab and applied synthesis** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in information security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary; the lesson is linked above.
 

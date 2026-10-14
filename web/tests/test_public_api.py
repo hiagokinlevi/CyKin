@@ -2,6 +2,7 @@
 
 import json
 import hashlib
+import re
 from pathlib import Path
 
 import pytest
@@ -88,6 +89,42 @@ def test_unwritten_chapter_is_not_served_as_lesson(client):
     missing_info = client.get("/api/lessons/rapid-1-month/information-security/en/21")
     assert missing_info.status_code == 404
     assert missing_info.json()["detail"] == "This chapter is still a plan"
+
+
+def test_information_security_chapter_lessons_use_one_canonical_page_each(client):
+    guide = client.get('/api/courses/rapid-1-month/information-security/en').json()
+    assert guide['chapter_lessons'] is True
+    assert guide['has_daily_lessons'] is True
+    assert guide['daily_schedule_ready'] is True
+    assert guide['published_lessons'] == guide['published_chapters'] == 20
+    assert len(guide['daily_slots']) == 20
+    assert [entry['module'] for entry in guide['daily_slots']] == [week for week in range(1, 5) for _ in range(5)]
+    assert all(entry['published'] for entry in guide['daily_slots'])
+    assert [module['chapters'] for module in guide['modules']] == [list(range(first, first + 5)) for first in (1, 6, 11, 16)]
+    assert guide['daily_slots'][19]['source_url'].endswith('#ch-20')
+
+    for number in range(1, 21):
+        unit = client.get(f'/api/lessons/rapid-1-month/information-security/en/{number}').json()
+        assert unit['exercise_ids']
+        assert {f'<a id="answer-ex{digits}"></a>' for digits in unit['exercise_ids']} <= set(
+            re.findall(r'<a id="answer-ex\d{3,4}"></a>', unit['worked_answers'])
+        )
+
+    lesson = client.get('/api/lessons/rapid-1-month/information-security/en/20').json()
+    assert lesson['content_kind'] == 'chapter_lesson'
+    assert lesson['source_url'].endswith('#ch-20')
+    assert lesson['worked_answers']
+    canonical = client.get('/courses/rapid-1-month/information-security/lessons/en/20/', follow_redirects=False)
+    assert canonical.status_code == 308
+    assert canonical.headers['location'] == '/courses/rapid-1-month/information-security/chapters/en/20/'
+    page = client.get(canonical.headers['location'])
+    assert page.status_code == 200
+    assert 'Lesson 20' in page.text
+    assert 'id="answer-ex074"' in page.text
+
+    portuguese = client.get('/api/courses/rapid-1-month/information-security/pt').json()
+    assert portuguese['chapter_lessons'] is False
+    assert portuguese['published_lessons'] == 0
 
 
 def test_full_book_and_internal_reference_source(client):

@@ -56,7 +56,7 @@ const languages = {en:'English',pt:'Português',es:'Español',he:'עברית',fr
         if(!response.ok) throw new Error('The source index could not be read.');
         const data=await response.json();
         if(data.language!==lang || data.course?.level!==level || data.course?.area!==area || typeof data.has_daily_lessons!=='boolean' || !Array.isArray(data.lessons)) throw new Error('The response does not identify this edition.');
-        result=buildCalendar({start,level,baseline:data.course.daily_lesson_target,availabilityKnown:true,hasDailyLessons:data.has_daily_lessons,lessons:data.lessons});
+        result=buildCalendar({start,level,baseline:data.course.daily_lesson_target,availabilityKnown:true,hasDailyLessons:data.has_daily_lessons || data.chapter_lessons === true,lessons:data.lessons});
       } catch(error) { warning='Availability unknown: '+String(error)+' Calendar dates below use the build-time baseline, not a claim of zero written content.'; }
       finally { clearTimeout(timeout); }
       if(run!==generation)return;

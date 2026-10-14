@@ -6,11 +6,13 @@
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab counts synthetic shared files open to anyone with the link, by folder. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
 
+<!-- open-cyber-academy:chapter-lessons -->
+
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
 ## How to use this book
 
-Read in order. Twenty English chapter-lessons are published. The first four follow Sofia Lindqvist from what the clinic holds, through accounts and sharing, and email fraud, to backups, the incident card and a monthly routine. Chapters 5–20 each settle one later question about that same month. They are not grouped as four weeks of five. Meeting the planning minimum does not close review. Run the lab where it appears, attempt each exercise before the worked results, and score yourself with the rubric. Chapters 1–4 also carry concept tables, data tables and exercises EX051–EX058.
+Read in order. Twenty English chapter-lessons are published. Each numbered chapter is one authored lesson; the reader groups consecutive sets of five into four study weeks for pacing, without creating duplicate teaching pages. The first four follow Sofia Lindqvist from what the clinic holds, through accounts and sharing, and email fraud, to backups, the incident card and a monthly routine. Chapters 5–20 each settle one later question about that same month. Meeting the planning minimum does not close review. Run the lab where it appears, attempt each exercise before the worked results, and score yourself with the rubric. Chapters 1–4 also carry concept tables, data tables and exercises EX051–EX058.
 
 ### Synthetic running case
 

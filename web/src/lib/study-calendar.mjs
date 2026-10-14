@@ -47,7 +47,7 @@ export function dailyIndex(hasDailyLessons, lessons) {
     throw new Error('Invalid daily-source metadata');
   }
   const result = new Map();
-  // Legacy chapter IDs must never be treated as daily lesson IDs.
+  // Only explicit daily anchors or a source-marked chapter-lesson edition can set this flag.
   if (!hasDailyLessons) return result;
   for (const item of lessons) {
     if (!item || typeof item !== 'object') throw new Error('Invalid daily-source entry');

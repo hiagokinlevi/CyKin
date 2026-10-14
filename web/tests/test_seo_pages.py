@@ -84,6 +84,11 @@ def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/" in sitemap
     assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/21/" not in sitemap
     assert index["rapid-1-month/incident-response-resilience/en"]["lessons"][0]["number"] == 1
+    info = index["rapid-1-month/information-security/en"]
+    assert info["chapter_lessons"] is True
+    assert len(info["chapters"]) == 20 and not info["lessons"]
+    assert "https://opencyber.academy/courses/rapid-1-month/information-security/chapters/en/20/" in sitemap
+    assert "https://opencyber.academy/courses/rapid-1-month/information-security/lessons/en/20/" not in sitemap
     assert "https://pt.opencyber.academy/courses/professional-6-months/quantum-post-quantum-security/chapters/pt/1/" in sitemaps["pt"]
     assert "https://es.opencyber.academy/courses/professional-6-months/ot-iot-security/chapters/es/1/" in sitemaps["es"]
     for language, xml in sitemaps.items():

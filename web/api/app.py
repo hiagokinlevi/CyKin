@@ -28,9 +28,10 @@ CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
 LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>\s*$', re.M)
 WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>\s*$', re.M)
+CHAPTER_LESSONS_MARKER = "<!-- open-cyber-academy:chapter-lessons -->"
 EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
 EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
-ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})\s+[—-]\s+.*$', re.M)
+ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})(?:\s+[—-]|\.)[^\n]*$', re.M)
 APPENDIX_HEADING = re.compile(
     r'^##\s+(?:final\s+appendix\s+[—–:-]\s+)?'
     r'(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b',
@@ -291,7 +292,7 @@ def course_schedule(subjects: str) -> tuple[str, dict[int, tuple[int, str]]]:
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
         if len(cells) < 3:
             continue
-        if cells[0] in {"Week", "Month", "Semester", "Term", "Year", "Module"}:
+        if cells[0] in {"Week", "Study day", "Month", "Semester", "Term", "Year", "Module"}:
             period_kind = cells[0]
             continue
         chapter = re.search(r"\[(\d{2,4})\]\(book/PLAN\.md#ch-\d{2,4}\)", cells[1])
@@ -318,18 +319,20 @@ async def course_details(request: Request, level: str, area: str, language: str)
     planned_daily = lesson_sections(plan)
     authored_daily = lesson_sections(book) if book is not None else {}
     has_daily_lessons = bool(planned_daily or authored_daily)
-    daily_schedule_ready = has_daily_lessons and len(planned_daily.keys() | authored_daily.keys()) >= item["daily_lesson_target"]
-    daily_target = max(item["daily_lesson_target"], *(planned_daily.keys() | authored_daily.keys()), 0)
+    chapter_lessons = bool(book and CHAPTER_LESSONS_MARKER in book and not has_daily_lessons)
+    indexed_daily = (planned.keys() | authored.keys()) if chapter_lessons else (planned_daily.keys() | authored_daily.keys())
+    daily_schedule_ready = (has_daily_lessons or chapter_lessons) and len(indexed_daily) >= item["daily_lesson_target"]
+    daily_target = max(item["daily_lesson_target"], *indexed_daily, 0)
     daily_slots: list[dict[str, Any]] = []
     for number in range(1, daily_target + 1):
-        section = authored_daily.get(number) or planned_daily.get(number)
-        period = section.get("chapter") if section else (number - 1) // 5 + 1
-        published = number in authored_daily
-        source_anchor = section.get("anchor") if section else None
+        section = (authored.get(number) or planned.get(number)) if chapter_lessons else (authored_daily.get(number) or planned_daily.get(number))
+        period = (number - 1) // 5 + 1 if chapter_lessons else (section.get("chapter") if section else (number - 1) // 5 + 1)
+        published = number in (authored if chapter_lessons else authored_daily)
+        source_anchor = f"ch-{number:02d}" if chapter_lessons and section else (section.get("anchor") if section else None)
         daily_slots.append({
             "chapter": number,
             "module": period,
-            "title": section["title"] if section else (
+            "title": re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', section["title"]) if chapter_lessons and section else section["title"] if section else (
                 f"Dia de estudo {number} — conteúdo ainda não escrito" if language == "pt" else
                 f"Día de estudio {number} — contenido aún no escrito" if language == "es" else
                 f"Study day {number} — teaching not yet written"
@@ -354,6 +357,9 @@ async def course_details(request: Request, level: str, area: str, language: str)
         if has_daily_lessons:
             period = section.get("chapter") or (number - 1) // 5 + 1
             subject = re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', (authored.get(period) or planned.get(period) or {"title": title})["title"])
+        elif chapter_lessons:
+            period = (number - 1) // 5 + 1
+            subject = f"Study days {(period - 1) * 5 + 1}–{period * 5}"
         else:
             period, subject = schedule.get(number, (1, title))
         lessons.append({
@@ -366,7 +372,7 @@ async def course_details(request: Request, level: str, area: str, language: str)
                 section.get("anchor", f"lesson-{number:02d}") if has_daily_lessons else f"ch-{number:02d}"),
         })
         if not modules or modules[-1]["number"] != period:
-            modules.append({"number": period, "kind": "Chapter" if has_daily_lessons else period_kind, "title": subject, "chapters": []})
+            modules.append({"number": period, "kind": "Week" if chapter_lessons else "Chapter" if has_daily_lessons else period_kind, "title": subject, "chapters": []})
         modules[-1]["chapters"].append(number)
     return {
         "course": item,
@@ -377,9 +383,10 @@ async def course_details(request: Request, level: str, area: str, language: str)
         "legacy_chapters": legacy_chapters,
         "published_chapters": len(authored),
         "planned_chapters": len(planned.keys() | authored.keys()),
-        "published_lessons": len(authored_daily),
+        "published_lessons": len(authored) if chapter_lessons else len(authored_daily),
         "planned_lessons": daily_target,
-        "has_daily_lessons": has_daily_lessons,
+        "has_daily_lessons": has_daily_lessons or chapter_lessons,
+        "chapter_lessons": chapter_lessons,
         "daily_schedule_ready": daily_schedule_ready,
         "book_url": GITHUB_VIEW + manuscript_path if authored else None,
         "source_sha256": hashlib.sha256(book.encode("utf-8")).hexdigest() if book is not None else None,
@@ -408,6 +415,7 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
         prompts = exercise_prompts(book, exercise_ids)
         if prompts:
             markdown += "\n\n### Exercise for this lesson\n\n" + prompts
+    chapter_lesson = CHAPTER_LESSONS_MARKER in book and not daily
     return {
         "course": {"level": level, "area": area, "language": language},
         "chapter": chapter,
@@ -416,7 +424,8 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
         "worked_answers": worked_answers(book, markdown, exercise_ids),
         "exercise_ids": exercise_ids,
         "week_chapter": section.get("chapter"),
-        "content_kind": "legacy_chapter" if legacy or not daily else "daily_lesson",
+        "content_kind": "chapter_lesson" if chapter_lesson else "legacy_chapter" if legacy or not daily else "daily_lesson",
+        "chapter_lesson": chapter_lesson,
         "previous": max((n for n in chapters if n < chapter), default=None),
         "next": min((n for n in chapters if n > chapter), default=None),
         "source_url": GITHUB_VIEW + path + "#" + (section.get("anchor", f"lesson-{chapter:02d}") if daily and not legacy else f"ch-{chapter:02d}"),
@@ -514,7 +523,7 @@ async def public_lesson_page(request: Request, level: str, area: str, language: 
         page = render_planned_lesson_page(course, slot, language, data["level_names"][level].get(language, data["level_names"][level]["en"]), published_chapter)
         return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": language,
                                            "X-Robots-Tag": "noindex, follow", "X-Content-Type-Options": "nosniff"})
-    if lesson["content_kind"] == "legacy_chapter":
+    if lesson["content_kind"] != "daily_lesson":
         return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     return HTMLResponse(render_lesson_page(lesson, course, level_name), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
@@ -526,7 +535,8 @@ async def public_chapter_page(request: Request, level: str, area: str, language:
     course = get_course(data, level, area, language)
     lesson = await lesson_details(request, level, area, language, chapter, legacy=True)
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
-    return HTMLResponse(render_lesson_page(lesson, course, level_name, "chapter"), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+    kind = "chapter_lesson" if lesson["chapter_lesson"] else "chapter"
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, kind), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/api/books/{level}/{area}/{language}")

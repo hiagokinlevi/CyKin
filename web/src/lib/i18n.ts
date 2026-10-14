@@ -428,6 +428,8 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const chapterLessons = english.match(/^([A-Z]{2}) · (\d+) chapter-lessons$/);
+  if (chapterLessons) return lang === 'pt' ? `${chapterLessons[1]} · ${chapterLessons[2]} capítulos-aula` : `${chapterLessons[1]} · ${chapterLessons[2]} capítulos-lección`;
   const editionSummary = english.match(/^([A-Z]{2}) · (\d+) daily lessons · (\d+) full chapters$/);
   if (editionSummary) return lang === 'pt' ? `${editionSummary[1]} · ${editionSummary[2]} aulas diárias · ${editionSummary[3]} capítulos completos` : `${editionSummary[1]} · ${editionSummary[2]} lecciones diarias · ${editionSummary[3]} capítulos completos`;
   const directoryUnit = english.match(/^(Lesson|Chapter) (\d+):$/);

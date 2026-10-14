@@ -69,6 +69,7 @@ INSTRUCTIONAL_WEEKS = {
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>$', re.M)
 LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>$', re.M)
 WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>$', re.M)
+CHAPTER_LESSONS_MARKER = "<!-- open-cyber-academy:chapter-lessons -->"
 NUMBER = re.compile(r'Course\s+(\d{3})\s+of\s+207')
 
 
@@ -98,6 +99,7 @@ def authored_index() -> dict:
             index[f"{level}/{area}/{language}"] = {
                 "lessons": [{"number": number, "title": daily[number]} for number in sorted(daily)],
                 "chapters": [{"number": number, "title": chapters[number]} for number in sorted(chapters)],
+                "chapter_lessons": CHAPTER_LESSONS_MARKER in source and not daily,
             }
     return index
 
