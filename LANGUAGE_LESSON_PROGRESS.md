@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4013/4191 | 20/120060 | 3873/4013 | 4013/4013 | 4013/4013 | 4013/4013 |
+| English | 199/207 | 4014/4192 | 20/120060 | 3874/4014 | 4014/4014 | 4014/4014 | 4014/4014 |
 | Português | 124/207 | 2509/4186 | 0/120060 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -20,7 +20,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 
 | Level · academic area | English | Português | Español |
 |---|---:|---:|---:|
-| rapid-1-month · Cybersecurity | [9/9](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
+| rapid-1-month · Cybersecurity | [10/10](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
 | rapid-1-month · Information security | [4/4](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md) |
 | rapid-1-month · Data governance | [4/4](levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/data-governance/es/book/PLAN.md) |
 | rapid-1-month · Privacy and data protection | [4/4](levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/privacy-data-protection/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md) |

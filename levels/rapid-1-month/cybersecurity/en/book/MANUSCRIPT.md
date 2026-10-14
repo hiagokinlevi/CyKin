@@ -3,7 +3,7 @@
 - Edition: working draft, 11 October 2026
 - Language: English (`en`)
 - Course: rapid, one month; approximately 80 hours of planned study
-- Status: Nine English chapters drafted, with exercises EX001–EX025 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
+- Status: Ten English chapters drafted, with exercises EX001–EX026 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
 - Maintainer: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Original text: [CC0 1.0](../../../../../LICENSE), within the [rights notice](../../../../../RIGHTS.md). External sources linked below retain their own rights.
 
@@ -11,7 +11,7 @@
 
 Read the explanation before attempting an exercise. Work only with the fictional library described here. Keep a short notebook with the facts you observe, the assumptions you make, and the question you would ask next. Compare your responses with the worked results at the end. A plausible alternative can be correct when it identifies its assumptions and supports its decision with evidence.
 
-This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Nine drafted chapters are not that minimum and are not a finished qualification.
+This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Ten drafted chapters are not that minimum and are not a finished qualification.
 
 | Subject-chapter | Authored exercises | Draft status |
 |---|---:|---|
@@ -24,6 +24,7 @@ This is the **one principal book** for the English rapid Cybersecurity course. I
 | 7. A pending queue during an outage | EX023 | Draft |
 | 8. A weak procedure is not yet a vulnerability | EX024 | Draft |
 | 9. A verdict tally is not a severity | EX025 | Draft |
+| 10. A spoken time is not a printout | EX026 | Draft |
 
 <a id="ch-01"></a>
 
@@ -253,7 +254,7 @@ Use the fictional case only. Compare your work with the final worked-results app
 - **Rubric:** Credit for examples that match each function, recognize shared responsibility, and avoid treating the functions as a once-only sequence.
 
 <!-- cykin:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 09
+### Continue studying — chapter 01 of 10
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -456,7 +457,7 @@ Keep every activity within the synthetic paper-exercise boundary. Worked results
 - **Rubric:** Credit for an observable measure, a plausible decision difference, and limits about synthetic data and one-session scope.
 
 <!-- cykin:chapter-navigation:start ch-02 -->
-### Continue studying — chapter 02 of 09
+### Continue studying — chapter 02 of 10
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -711,7 +712,7 @@ Use the model and invented records above; do not test a live service. Worked res
 - **Rubric:** Full credit requires treating the new information as a report, not as independently observed fact; changing the stale-09:00-only conclusion conditionally; and keeping the worker's decision within the approved fallback rule.
 
 <!-- cykin:chapter-navigation:start ch-03 -->
-### Continue studying — chapter 03 of 09
+### Continue studying — chapter 03 of 10
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -946,7 +947,7 @@ Use the program and output in Section 4.4. Do not contact a real library. Worked
 - **Rubric:** Credit when each sentence stays inside the run, the 11:43 line is not redescribed as REFUSE, and the 11:40 report is still unverified.
 
 <!-- cykin:chapter-navigation:start ch-04 -->
-### Continue studying — chapter 04 of 09
+### Continue studying — chapter 04 of 10
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
@@ -1026,7 +1027,7 @@ A true booking state can be shared when it answers the asker's own question. A p
 - **Rubric:** Credit if the slot is described as booked and no person is named or invented.
 
 <!-- cykin:chapter-navigation:start ch-05 -->
-### Continue studying — chapter 05 of 09
+### Continue studying — chapter 05 of 10
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
@@ -1107,7 +1108,7 @@ Changing a snapshot so that a rule would have allowed the action destroys the ev
 - **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
 
 <!-- cykin:chapter-navigation:start ch-06 -->
-### Continue studying — chapter 06 of 09
+### Continue studying — chapter 06 of 10
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
@@ -1190,7 +1191,7 @@ A down page removes one way to see bookings. It does not authorize memory, yeste
 - **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
 
 <!-- cykin:chapter-navigation:start ch-07 -->
-### Continue studying — chapter 07 of 09
+### Continue studying — chapter 07 of 10
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
@@ -1273,7 +1274,7 @@ Harbor Library's exercise shows a stale procedure and the harm that procedure ca
 - **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
 
 <!-- cykin:chapter-navigation:start ch-08 -->
-### Continue studying — chapter 08 of 09
+### Continue studying — chapter 08 of 10
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
@@ -1368,9 +1369,105 @@ The tally is a census of labels on one synthetic log. Equal counts come from the
 - **Rubric:** Credit when the tally stays a count of four labels, the percentage and the rank are both refused, and the pending confirmation is still unresolved. A replacement number does not earn credit.
 
 <!-- cykin:chapter-navigation:start ch-09 -->
-### Continue studying — chapter 09 of 09
+### Continue studying — chapter 09 of 10
 
-[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — A spoken time is not a printout
+
+<!-- cykin:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  S["A person repeats a clock time"] --> Q{"Is the sheet itself here, and did the owner name this sheet?"}
+  Q -->|No| P["Leave Room 2 at 15:00 pending"]
+  Q -->|Yes, then check the sheet| C{"Time reads 11:40 and SYN-002 is on it?"}
+  C -->|Both observed| U["Use only the procedure the owner named"]
+  C -->|Either check fails| P
+```
+
+The spoken time stops at the first question. It never becomes the printout by being repeated.
+
+### Logical drawing
+
+```text
+what the learner is holding
+        |
+        +-- a sentence: "someone said 11:40"
+        |     type: report
+        |     rows visible: none
+        |
+        +-- a sheet of paper
+        |     type: artifact
+        |     usable only after the owner names this sheet
+        |     and the learner records time and SYN-002
+        |
+        +-- the Chapter 4 program
+              still bound to the 09:00 printout
+              do not type a heard time into it
+```
+<!-- cykin:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Classify a repeated clock time as a report rather than as a printout.
+2. Name the two checks that would have to succeed before an 11:40 sheet could replace the 09:00 paper.
+3. Leave the Chapter 4 run unchanged when the only new item is that report.
+
+### 10.1 The rule reads an artifact, not a recollection
+
+Chapter 4 compares a fixed printout clock with the time a booking was created. The published run uses 09:00. `SYN-002` was created at 10:05, so the paper omits it, and the 11:42 confirmation is REFUSE. A sentence such as "the owner mentioned an 11:40 refresh" contains the words for a later clock. It does not contain the sheet, the rows, or a signature that this object is the approved source.
+
+Those are different inputs. The program cannot see a conversation. If a learner types 11:40 because a facilitator spoke it, the learner has invented the input. Chapter 6 already refused a pencil mark on the 09:00 sheet. This chapter refuses a different substitution: replacing the sheet with talk about a sheet.
+
+Chapter 3 recorded the owner's mention of an 11:40 copy as **reported, not verified**. That label still holds. Repeating the mention in the classroom does not verify it. The Chapter 9 tally also stays as printed. This conversation is not one of the four logged actions, so it cannot clear REFUSE or move UNKNOWN.
+
+### 10.2 Worked example
+
+Two gates have to pass before anyone treats a later sheet as the current source. The exercise owner names **this** sheet as the approved current source. A learner then looks at that sheet and writes down two observations: the time on the sheet is 11:40, and `SYN-002` is printed on it. Hearing that both gates "were probably done" is a third report. It completes neither gate.
+
+| What is in front of the learner | Class | May Room 2 at 15:00 be confirmed from it? |
+|---|---|---|
+| Facilitator: "I heard the owner say 11:40 includes SYN-002." | Second-hand report | No |
+| A sheet timed 11:40 with SYN-002 visible, and no statement from the owner that this sheet is the approved source | Checked artifact, authority open | No |
+| The same sheet, after the owner names it and both observations are written down | Approved checked source | Only by the procedure the owner stated |
+| A plan to retype 11:40 into the Chapter 4 program | Invented input | No. Do not start that run |
+
+The useful record is short. The 09:00 result stands. The 15:00 request stays not confirmed. The spoken time is filed as a report beside the paper, not on top of it.
+
+### 10.3 What this chapter does not open
+
+Passing both gates in a later exercise would still be one synthetic check. It would not show how often a real desk refreshes its fallback sheet, and it would not explain the outage. This lesson stops at the report. It does not hand the learner an 11:40 sheet, and it does not ask for a new program run.
+
+### Chapter 10 summary
+
+A clock time that arrives in a sentence is testimony about a source. The confirmation rule needs the source. Until the owner names the sheet and the learner records its time and `SYN-002`, Room 2 at 15:00 stays pending and the published tally stays as it was.
+
+### Chapter 10 exercises
+
+### EX026 — File the sentence beside the paper
+
+- **Objective:** Keep a heard refresh time from becoming the printout.
+- **Input:** A classmate's note says, "The facilitator heard the owner mention 11:40, so confirm Room 2 at 15:00 and clear the REFUSE."
+- **Safe condition:** Stay inside the synthetic exercise. Do not type a new printout time into the Chapter 4 program, and do not open a live site.
+- **Task:** Write three parts: the class of the note, the two checks that are still missing, and the booking state you leave in place.
+- **Expected evidence:** Three parts a reader can check against Chapters 3, 4 and 7.
+- **Rubric:** Credit when the note stays a report, both the owner's naming and the sheet observations are still missing, the 15:00 request stays not confirmed, and the published tally is left unchanged.
+
+<!-- cykin:chapter-navigation:start ch-10 -->
+### Continue studying — chapter 10 of 10
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- cykin:chapter-navigation:end -->
@@ -1393,7 +1490,7 @@ Harbor Library, its services, event log, and worked decisions are original ficti
 
 ## Final appendix — worked results and assessment notes
 
-These results match EX001–EX025. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
+These results match EX001–EX026. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
 
 ### EX001 — Worked result
 
@@ -1494,3 +1591,7 @@ The exercise observed a 09:00 paper that omitted a later synthetic booking, and 
 ### EX025 — Worked result
 
 The program counted one STOP, one OUT OF SCOPE, one REFUSE and one ALLOW on the four-action log, and left UNKNOWN at zero. Fifty percent would turn two of those labels into a harm rate. The printed line does not measure harm, and it does not measure how often staff would trust the stale paper. Medium names a rank this exercise never defined. The Room 2 at 15:00 request stays pending until an approved current source exists. Chapter 8's weak confirmation procedure is unchanged.
+
+### EX026 — Worked result
+
+The classmate's note is a second-hand report of a clock time. It is not the 11:40 sheet. The owner has not named a sheet as the approved current source, and nobody has recorded that the sheet's own time is 11:40 and that `SYN-002` is printed on it. Room 2 at 15:00 stays not confirmed. The Chapter 4 tally remains `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`.
