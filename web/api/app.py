@@ -329,7 +329,11 @@ async def course_details(request: Request, level: str, area: str, language: str)
         daily_slots.append({
             "chapter": number,
             "module": period,
-            "title": section["title"] if section else f"Study day {number} — teaching not yet written",
+            "title": section["title"] if section else (
+                f"Dia de estudo {number} — conteúdo ainda não escrito" if language == "pt" else
+                f"Día de estudio {number} — contenido aún no escrito" if language == "es" else
+                f"Study day {number} — teaching not yet written"
+            ),
             "published": published,
             "source_url": (GITHUB_VIEW + (manuscript_path if published else plan_path) + "#" + source_anchor)
             if source_anchor else None,

@@ -70,6 +70,13 @@ const copy: Record<string, [string, string]> = {
   'Next week': ['Próxima semana', 'Semana siguiente'],
   'Choose study week': ['Escolha a semana de estudo', 'Elige la semana de estudio'],
   'Study guide': ['Guia de estudo', 'Guía de estudio'],
+  'Published lessons in this course': ['Aulas publicadas neste curso', 'Lecciones publicadas en este curso'],
+  'Each link opens the complete lesson on its own permanent page. New manuscript edits appear there after publication.': ['Cada link abre o conteúdo completo em uma página permanente. Alterações no livro aparecem após a publicação.', 'Cada enlace abre el contenido completo en una página permanente. Los cambios en el libro aparecen después de publicarse.'],
+  'Free cybersecurity education for anyone who wants to protect people and technology. Study published lessons, examples and exercises without creating an account.': ['Educação gratuita em cibersegurança para quem deseja proteger pessoas e tecnologias. Estude aulas, exemplos e exercícios publicados sem criar uma conta.', 'Educación gratuita en ciberseguridad para quienes desean proteger a las personas y la tecnología. Estudia lecciones, ejemplos y ejercicios publicados sin crear una cuenta.'],
+  'MONDAY–FRIDAY STUDY PLAN': ['PLANO DE ESTUDO DE SEGUNDA A SEXTA', 'PLAN DE ESTUDIO DE LUNES A VIERNES'],
+  'Read the complete book →': ['Ler o livro completo →', 'Leer el libro completo →'],
+  'Current public syllabus loaded.': ['Programa público atualizado.', 'Programa público actualizado.'],
+  'Loading the current book and lesson guide…': ['Carregando o livro e o guia de aulas…', 'Cargando el libro y la guía de lecciones…'],
   'Choose one study week or browse the complete chapters.': ['Escolha uma semana de estudo ou explore os capítulos completos.', 'Elige una semana de estudio o explora los capítulos completos.'],
   'Daily lessons': ['Aulas diárias', 'Lecciones diarias'],
   'Full chapters': ['Capítulos completos', 'Capítulos completos'],
@@ -421,6 +428,20 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const editionSummary = english.match(/^([A-Z]{2}) · (\d+) daily lessons · (\d+) full chapters$/);
+  if (editionSummary) return lang === 'pt' ? `${editionSummary[1]} · ${editionSummary[2]} aulas diárias · ${editionSummary[3]} capítulos completos` : `${editionSummary[1]} · ${editionSummary[2]} lecciones diarias · ${editionSummary[3]} capítulos completos`;
+  const directoryUnit = english.match(/^(Lesson|Chapter) (\d+):$/);
+  if (directoryUnit) return `${directoryUnit[1] === 'Lesson' ? (lang === 'pt' ? 'Aula' : 'Lección') : 'Capítulo'} ${directoryUnit[2]}:`;
+  const plannedCadence = english.match(/^(\d+) weeks · (\d+) planned daily lessons$/);
+  if (plannedCadence) return lang === 'pt' ? `${plannedCadence[1]} semanas · ${plannedCadence[2]} aulas diárias previstas` : `${plannedCadence[1]} semanas · ${plannedCadence[2]} lecciones diarias previstas`;
+  const writtenFraction = english.match(/^(\d+)\/(\d+) daily lessons written$/);
+  if (writtenFraction) return lang === 'pt' ? `${writtenFraction[1]}/${writtenFraction[2]} aulas diárias escritas` : `${writtenFraction[1]}/${writtenFraction[2]} lecciones diarias escritas`;
+  const courseEdition = english.match(/^(\d+) daily lessons and (\d+) chapters are published in this edition\.$/);
+  if (courseEdition) return lang === 'pt' ? `${courseEdition[1]} aulas diárias e ${courseEdition[2]} capítulos publicados nesta edição.` : `${courseEdition[1]} lecciones diarias y ${courseEdition[2]} capítulos publicados en esta edición.`;
+  const chapterEdition = english.match(/^(\d+) chapters are published in this edition\. Daily study slots are a plan\.$/);
+  if (chapterEdition) return lang === 'pt' ? `${chapterEdition[1]} capítulos publicados nesta edição. Os dias de estudo são apenas um plano.` : `${chapterEdition[1]} capítulos publicados en esta edición. Los días de estudio son solo un plan.`;
+  const linkedExercises = english.match(/^(\d+) linked exercises · (Worked answers available|Worked answer pending)$/);
+  if (linkedExercises) return lang === 'pt' ? `${linkedExercises[1]} exercícios vinculados · ${linkedExercises[2] === 'Worked answers available' ? 'Respostas comentadas disponíveis' : 'Resposta comentada pendente'}` : `${linkedExercises[1]} ejercicios vinculados · ${linkedExercises[2] === 'Worked answers available' ? 'Respuestas desarrolladas disponibles' : 'Respuesta desarrollada pendiente'}`;
   const weekStatus = english.match(/^Week (\d{2}) · (\d+)\/(\d+) written$/);
   if (weekStatus) return lang === 'pt' ? `Semana ${weekStatus[1]} · ${weekStatus[2]}/${weekStatus[3]} escritas` : `Semana ${weekStatus[1]} · ${weekStatus[2]}/${weekStatus[3]} escritas`;
   const weekHeading = english.match(/^Week (\d{2})(?: · (.+))?$/);

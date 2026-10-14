@@ -24,6 +24,9 @@ export async function initCoursePortal(): Promise<void> {
   let language = firstQuery.get('lang') || siteLanguage();
   if (!['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'].includes(language)) language = 'en';
   selector.value = language;
+  for (const edition of document.querySelectorAll<HTMLDetailsElement>('.published-lesson-directory details[data-edition]')) {
+    edition.open = edition.dataset.edition === language;
+  }
   let details: CourseDetails;
   let current: Unit | null = null;
   let requestId = 0;
@@ -128,24 +131,24 @@ export async function initCoursePortal(): Promise<void> {
       cadence.append(action);
     }
 
-    const heading = document.createElement('h3'); heading.textContent = details.has_daily_lessons ? 'This course, week by week' : 'Published course chapters'; overview.append(heading);
-    const grid = document.createElement('div'); grid.className = 'course-module-grid';
-    const weeksWithTeaching = new Set(details.daily_slots.filter(item => item.published).map(item => Math.ceil(item.chapter / 5)));
-    const visibleWeeks = new Set([...weeksWithTeaching, ...Array.from({ length: Math.min(3, details.course.instructional_weeks) }, (_, index) => index + 1)]);
-    for (const week of [...visibleWeeks].sort((a, b) => a - b)) {
-      const days = details.daily_slots.slice((week - 1) * 5, week * 5);
-      if (!days.length) continue;
-      const card = document.createElement('section'); card.className = 'course-module-card';
-      const title = document.createElement('h4'); title.textContent = weekLabel(week);
-      const count = document.createElement('p'); count.textContent = `${days.filter(item => item.published).length} of ${days.length} daily lessons written`;
-      const list = document.createElement('div'); list.className = 'course-module-list';
-      for (const day of days) list.append(unitLink({ kind: 'daily', number: day.chapter }, day, 'course-overview-lesson'));
-      card.append(title, count, list); grid.append(card);
+    const heading = document.createElement('h3'); heading.textContent = details.published_lessons > 0 ? 'This course, week by week' : 'Published course chapters'; overview.append(heading);
+    if (details.published_lessons > 0) {
+      const grid = document.createElement('div'); grid.className = 'course-module-grid';
+      const weeksWithTeaching = new Set(details.daily_slots.filter(item => item.published).map(item => Math.ceil(item.chapter / 5)));
+      for (const week of [...weeksWithTeaching].sort((a, b) => a - b)) {
+        const days = details.daily_slots.slice((week - 1) * 5, week * 5);
+        const card = document.createElement('section'); card.className = 'course-module-card';
+        const title = document.createElement('h4'); title.textContent = weekLabel(week);
+        const count = document.createElement('p'); count.textContent = `${days.filter(item => item.published).length} of ${days.length} daily lessons written`;
+        const list = document.createElement('div'); list.className = 'course-module-list';
+        for (const day of days) list.append(unitLink({ kind: 'daily', number: day.chapter }, day, 'course-overview-lesson'));
+        card.append(title, count, list); grid.append(card);
+      }
+      overview.append(grid);
     }
-    overview.append(grid);
     if (details.legacy_chapters.some(chapter => chapter.published)) {
       const chapters = document.createElement('details'); chapters.className = 'course-chapter-browse';
-      if (!details.has_daily_lessons) chapters.open = true;
+      if (details.published_lessons === 0) chapters.open = true;
       const summary = document.createElement('summary'); summary.textContent = `Browse all ${details.published_chapters} full chapters`;
       const list = document.createElement('div'); list.className = 'course-chapter-list';
       for (const chapter of details.legacy_chapters.filter(item => item.published)) list.append(unitLink({ kind: 'chapter', number: chapter.chapter }, chapter, 'course-overview-lesson'));
@@ -155,7 +158,9 @@ export async function initCoursePortal(): Promise<void> {
   }
   function renderFacts(): void {
     const facts = el('course-facts'); facts.replaceChildren(); facts.hidden = false;
-    for (const value of [`${details.course.instructional_weeks} study weeks`, `${details.published_lessons}/${details.planned_lessons} daily lessons written`, `${details.published_chapters} chapters readable`]) {
+    const values = [`${details.course.instructional_weeks} study weeks`, `${details.published_chapters} chapters readable`];
+    if (details.published_lessons > 0) values.splice(1, 0, `${details.published_lessons}/${details.planned_lessons} daily lessons written`);
+    for (const value of values) {
       const fact = document.createElement('span'); fact.textContent = value; facts.append(fact);
     }
   }
@@ -240,7 +245,9 @@ export async function initCoursePortal(): Promise<void> {
     if (!unit || !item) {
       el('course-kicker').textContent = `COURSE ${String(courseNumber).padStart(3, '0')}`;
       el('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
-      el('course-intro').textContent = `${details.published_lessons} daily lessons and ${details.published_chapters} chapters are published in this edition.`;
+      el('course-intro').textContent = details.published_lessons > 0
+        ? `${details.published_lessons} daily lessons and ${details.published_chapters} chapters are published in this edition.`
+        : `${details.published_chapters} chapters are published in this edition. Daily study slots are a plan.`;
       if (details.book_url) source.append(link('Read the complete book →', bookUrl()));
       renderOverview(); return;
     }
@@ -291,6 +298,7 @@ export async function initCoursePortal(): Promise<void> {
     const response = await fetch(`/api/courses/${level}/${area}/${language}`, { cache: 'no-store' });
     if (!response.ok) throw new Error('The course guide could not be loaded.');
     details = await response.json() as CourseDetails;
+    if (details.published_lessons === 0 && details.published_chapters > 0) indexMode = 'chapter';
     el('course-status').textContent = 'Current public syllabus loaded.';
     renderFacts();
     await openUnit(readUnit(new URLSearchParams(location.search)));
