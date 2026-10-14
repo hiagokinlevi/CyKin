@@ -29,7 +29,11 @@ COOKIE = "__Secure-oca_session"
 SENDER = "login@auth.opencyber.academy"
 CODE_LIFETIME = 600
 SESSION_LIFETIME = 7 * 24 * 60 * 60
-PASSWORD_ITERATIONS = 600_000
+# Production Workers cap one WebCrypto PBKDF2 deriveBits call at 100,000
+# iterations. Chain six independently salted calls to retain the intended
+# total KDF work without crossing that per-call limit.
+PASSWORD_ITERATIONS = 100_000
+PASSWORD_ROUNDS = 6
 PUBLIC_ORIGINS = {site_for_language(language) for language in LANGUAGES} | {"https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 EMAIL_PATTERN = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?\.[A-Za-z]{2,63}$")
 
@@ -87,28 +91,35 @@ def _digest(key: bytes, value: str) -> str:
 
 
 def password_digest(password: str, salt_hex: str) -> str:
-    """OWASP's PBKDF2-HMAC-SHA256 work factor; only the digest enters D1."""
-    return hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), bytes.fromhex(salt_hex), PASSWORD_ITERATIONS).hex()
+    """Six chained PBKDF2-HMAC-SHA256 rounds; only the digest enters D1."""
+    value = password.encode("utf-8")
+    salt = bytes.fromhex(salt_hex)
+    for index in range(PASSWORD_ROUNDS):
+        value = hashlib.pbkdf2_hmac("sha256", value, salt + bytes([index]), PASSWORD_ITERATIONS, dklen=32)
+    return value.hex()
 
 
 async def runtime_password_digest(password: str, salt_hex: str) -> str:
-    """Use native Web Crypto in Python Workers, where hashlib lacks PBKDF2."""
+    """Use native WebCrypto in Python Workers, where hashlib lacks PBKDF2."""
     if hasattr(hashlib, "pbkdf2_hmac"):
         return password_digest(password, salt_hex)
     from js import Object, Uint8Array, crypto  # type: ignore[import-not-found]
     from pyodide.ffi import to_js  # type: ignore[import-not-found]
 
-    password_bytes = password.encode("utf-8")
+    value = password.encode("utf-8")
     salt_bytes = bytes.fromhex(salt_hex)
-    password_array = Uint8Array.new(len(password_bytes))
-    password_array.assign(password_bytes)
-    salt_array = Uint8Array.new(len(salt_bytes))
-    salt_array.assign(salt_bytes)
-    key = await crypto.subtle.importKey("raw", password_array, "PBKDF2", False, to_js(["deriveBits"]))
-    algorithm = to_js({"name": "PBKDF2", "salt": salt_array, "iterations": PASSWORD_ITERATIONS,
-                       "hash": "SHA-256"}, dict_converter=Object.fromEntries)
-    bits = await crypto.subtle.deriveBits(algorithm, key, 256)
-    return Uint8Array.new(bits).to_bytes().hex()
+    for index in range(PASSWORD_ROUNDS):
+        password_array = Uint8Array.new(len(value))
+        password_array.assign(value)
+        salt = salt_bytes + bytes([index])
+        salt_array = Uint8Array.new(len(salt))
+        salt_array.assign(salt)
+        key = await crypto.subtle.importKey("raw", password_array, "PBKDF2", False, to_js(["deriveBits"]))
+        algorithm = to_js({"name": "PBKDF2", "salt": salt_array, "iterations": PASSWORD_ITERATIONS,
+                           "hash": "SHA-256"}, dict_converter=Object.fromEntries)
+        bits = await crypto.subtle.deriveBits(algorithm, key, 256)
+        value = Uint8Array.new(bits).to_bytes()
+    return value.hex()
 
 
 def _email(value: str) -> str:

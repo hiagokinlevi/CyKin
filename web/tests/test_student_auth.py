@@ -19,6 +19,13 @@ student_auth = importlib.import_module("student_auth")
 ORIGIN = {"Origin": "https://opencyber.academy"}
 
 
+def test_provisioned_password_digest_remains_stable():
+    assert student_auth.PASSWORD_ITERATIONS == 100_000
+    assert student_auth.password_digest(
+        "synthetic-local-passphrase", "00112233445566778899aabbccddeeff"
+    ) == "6ad6020e82138280a404d2d85310b359cfcb17222c9004a5d6725e4364086119"
+
+
 class Statement:
     def __init__(self, conn: sqlite3.Connection, query: str, args: tuple = ()):
         self.conn, self.query, self.args = conn, query, args

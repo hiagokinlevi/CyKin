@@ -51,6 +51,10 @@ fi
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/health
 [[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/auth/me)" == 401 ]]
 [[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/student/progress)" == 401 ]]
+[[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" \
+  -H 'Origin: https://opencyber.academy' -H 'Content-Type: application/json' \
+  --data '{"username":"unknown-student","password":"incorrect"}' \
+  https://opencyber.academy/auth/password-login)" == 401 ]]
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/ | grep -F 'OpenCyber Academy' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/levels/ | grep -F 'Browse by level' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/subjects/ | grep -F 'Browse by subject' > /dev/null

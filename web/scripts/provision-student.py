@@ -27,6 +27,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("username")
     parser.add_argument("--dns-fallback", type=Path)
+    parser.add_argument("--rotate", action="store_true", help="replace only this existing username's digest")
     args = parser.parse_args()
     if not re.fullmatch(r"[a-z][a-z0-9_-]{2,39}", args.username):
         return 2
@@ -37,17 +38,6 @@ def main() -> int:
     digest = password_digest(password, salt)
     del password
     os.environ.pop("STUDENT_PASSWORD", None)
-    now = int(time.time())
-    student_id = secrets.token_urlsafe(18)
-    email = f"{args.username}@students.invalid"
-    account_sql = (
-        "INSERT INTO student_accounts (id, email, created_at, last_login_at) "
-        f"VALUES ('{student_id}', '{email}', {now}, {now})"
-    )
-    credential_sql = (
-        "INSERT INTO student_password_credentials (user_id, username, password_salt, password_digest) "
-        f"VALUES ('{student_id}', '{args.username}', '{salt}', '{digest}')"
-    )
     child_env = dict(os.environ)
     if args.dns_fallback:
         if not args.dns_fallback.is_file() or args.dns_fallback.parent != Path("/tmp"):
@@ -60,6 +50,25 @@ def main() -> int:
             timeout=90, check=False,
         ).returncode
 
+    if args.rotate:
+        # The account is checked independently before and after this operation.
+        update_sql = (
+            "UPDATE student_password_credentials SET "
+            f"password_salt = '{salt}', password_digest = '{digest}' "
+            f"WHERE username = '{args.username}'"
+        )
+        return 0 if execute(update_sql) == 0 else 1
+    now = int(time.time())
+    student_id = secrets.token_urlsafe(18)
+    email = f"{args.username}@students.invalid"
+    account_sql = (
+        "INSERT INTO student_accounts (id, email, created_at, last_login_at) "
+        f"VALUES ('{student_id}', '{email}', {now}, {now})"
+    )
+    credential_sql = (
+        "INSERT INTO student_password_credentials (user_id, username, password_salt, password_digest) "
+        f"VALUES ('{student_id}', '{args.username}', '{salt}', '{digest}')"
+    )
     if execute(account_sql) != 0:
         return 1
     if execute(credential_sql) != 0:
