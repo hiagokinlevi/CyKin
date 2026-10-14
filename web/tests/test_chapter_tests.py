@@ -43,7 +43,8 @@ class Database:
     def __init__(self):
         self.connection = sqlite3.connect(":memory:", check_same_thread=False)
         self.connection.row_factory = sqlite3.Row
-        self.connection.executescript((ROOT / "web/migrations/0002_chapter_tests.sql").read_text())
+        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql"):
+            self.connection.executescript((ROOT / "web/migrations" / migration).read_text())
 
     def prepare(self, query: str):
         return Statement(self.connection, query)

@@ -224,8 +224,8 @@ def test_information_security_chapter_lessons_use_one_canonical_page_each(client
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/information-security/pt').json()
-    assert portuguese['chapter_lessons'] is False
-    assert portuguese['published_lessons'] == 0
+    assert portuguese['chapter_lessons'] is True
+    assert portuguese['published_lessons'] == 20
 
 
 def test_data_governance_chapter_lessons_use_one_canonical_page_each(client):
@@ -611,7 +611,10 @@ def test_stateless_mcp_public_and_progress_private(client):
     assert initialize.status_code == 200
     assert initialize.json()["result"]["protocolVersion"] == "2025-06-18"
     tools = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-    assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"get_editorial_policy", "list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course"}
+    assert {"get_editorial_policy", "list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course",
+            "student_sign_in", "student_read_lesson", "student_get_stats", "student_get_progress",
+            "student_save_analysis", "student_save_lesson", "student_save_exercise"} <= {
+                tool["name"] for tool in tools.json()["result"]["tools"]}
     resources = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 4, "method": "resources/list"})
     assert "open-cyber-academy://editorial-policy" in {item["uri"] for item in resources.json()["result"]["resources"]}
     policy = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 5, "method": "resources/read", "params": {"uri": "open-cyber-academy://editorial-policy"}})

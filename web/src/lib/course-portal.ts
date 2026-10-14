@@ -232,6 +232,8 @@ export async function initCoursePortal(): Promise<void> {
       if (!me.ok) throw new Error('Sign-in unavailable');
     } catch { action.append(link('Sign in to save progress →', '/account/')); return; }
     const base = { level, area, language, chapter: lesson.chapter };
+    void fetch('/student/activity', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...base, kind: 'lesson_opened' }) }).catch(() => {});
     const mark = document.createElement('button'); mark.className = 'button gold'; mark.type = 'button'; mark.textContent = 'Mark lesson complete ✓';
     mark.addEventListener('click', async () => {
       const response = await fetch('/student/progress/lesson', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, status: 'completed' }) });
@@ -252,6 +254,25 @@ export async function initCoursePortal(): Promise<void> {
         finally { save.disabled = false; }
       }); forms.append(form);
     }
+    const noteForm = document.createElement('form'); noteForm.className = 'exercise-form';
+    const noteLabel = document.createElement('label'); noteLabel.textContent = language === 'pt' ? 'Sua análise da aula' : language === 'es' ? 'Tu análisis de la lección' : 'Your lesson analysis';
+    const noteInput = document.createElement('textarea'); noteInput.maxLength = 10_000; noteInput.rows = 5;
+    const noteSave = document.createElement('button'); noteSave.type = 'submit'; noteSave.className = 'button secondary';
+    noteSave.textContent = language === 'pt' ? 'Salvar análise' : language === 'es' ? 'Guardar análisis' : 'Save analysis';
+    noteForm.append(noteLabel, noteInput, noteSave); forms.append(noteForm);
+    const query = new URLSearchParams({ ...base, chapter: String(base.chapter) });
+    void fetch(`/student/analysis?${query}`, { credentials: 'same-origin', cache: 'no-store' }).then(async response => {
+      if (response.ok) noteInput.value = (await response.json()).analysis?.note || '';
+    }).catch(() => {});
+    noteForm.addEventListener('submit', async event => {
+      event.preventDefault(); noteSave.disabled = true;
+      try {
+        const response = await fetch('/student/analysis', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...base, note: noteInput.value }) });
+        el('course-progress-status').textContent = response.ok ? 'Analysis saved to your account.' : 'Could not save the analysis.';
+      } catch { el('course-progress-status').textContent = 'Could not save the analysis.'; }
+      finally { noteSave.disabled = false; }
+    });
   }
   async function openUnit(unit: Unit | null, push = false): Promise<void> {
     const id = ++requestId;

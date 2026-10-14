@@ -22,7 +22,10 @@ from access import identity as access_identity
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
-from student_auth import router as student_auth_router, student_identity
+from student_auth import (SESSION_LIFETIME, _limit, basic_credentials, create_session,
+                          password_account, router as student_auth_router, student_identity)
+from student_activity import (course_performance, record as record_activity, rows as activity_rows,
+                              summary as activity_summary)
 
 
 app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
@@ -83,6 +86,15 @@ class CertificateClaim(BaseModel):
     level: str = Field(pattern=r"^[a-z0-9-]+$", max_length=50)
     area: str = Field(pattern=r"^[a-z0-9-]+$", max_length=80)
     language: str = Field(pattern=r"^[a-z]{2}$")
+
+
+class LearningActivity(TestStart):
+    kind: str = Field(pattern=r"^(lesson_opened|lesson_read)$")
+    seconds: int = Field(default=0, ge=0, le=3600)
+
+
+class StudentAnalysis(TestStart):
+    note: str = Field(min_length=1, max_length=10_000)
 
 
 @app.middleware("http")
@@ -511,7 +523,8 @@ async def private_login(request: Request, next: str = "/account/") -> Response:
 @app.get("/student/me")
 async def api_me(request: Request) -> Response:
     user = await identity(request)
-    return JSONResponse({"email": user.get("email"), "student_id": user["sub"]}, headers={"Cache-Control": "no-store"})
+    return JSONResponse({"email": user.get("email"), "username": user.get("username"),
+                         "student_id": user["sub"]}, headers={"Cache-Control": "no-store"})
 
 
 @app.get("/private/progress")
@@ -532,6 +545,8 @@ async def api_progress_lesson(request: Request, payload: LessonProgress) -> Resp
     await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
     db = database(request)
     await db.prepare("INSERT INTO lesson_progress (user_id, level, area, language, chapter, status) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (user_id, level, area, language, chapter) DO UPDATE SET status = excluded.status, updated_at = datetime('now')").bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.status).run()
+    await record_activity(db, user["sub"], "lesson_completed" if payload.status == "completed" else "lesson_opened",
+                          payload.level, payload.area, payload.language, payload.chapter)
     return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
 
 
@@ -545,7 +560,62 @@ async def api_progress_exercise(request: Request, payload: ExerciseAttempt) -> R
         raise HTTPException(404, "Exercise is not in this lesson")
     db = database(request)
     await db.prepare("INSERT INTO exercise_attempts (user_id, level, area, language, chapter, exercise_id, answer, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (user_id, level, area, language, chapter, exercise_id) DO UPDATE SET answer = excluded.answer, status = excluded.status, updated_at = datetime('now')").bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.exercise_id, payload.answer, payload.status).run()
+    await record_activity(db, user["sub"], "exercise_answered", payload.level, payload.area,
+                          payload.language, payload.chapter, exercise_id=payload.exercise_id)
     return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/student/activity")
+async def api_learning_activity(request: Request, payload: LearningActivity) -> Response:
+    same_origin(request)
+    user = await student_identity(request)
+    await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
+    if (payload.kind == "lesson_read") != (payload.seconds > 0):
+        raise HTTPException(422, "Read time must be positive only for lesson_read")
+    db = database(request)
+    now = int(time.time())
+    await _limit(db, f"activity:{user['sub']}:{now // 3600}", (now // 3600 + 1) * 3600, 180)
+    await record_activity(db, user["sub"], payload.kind, payload.level, payload.area,
+                          payload.language, payload.chapter, seconds=payload.seconds)
+    return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/student/analysis")
+async def api_save_analysis(request: Request, payload: StudentAnalysis) -> Response:
+    same_origin(request)
+    user = await student_identity(request)
+    await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
+    db = database(request)
+    await db.prepare(
+        "INSERT INTO student_analysis (user_id, level, area, language, chapter, note) VALUES (?, ?, ?, ?, ?, ?) "
+        "ON CONFLICT(user_id, level, area, language, chapter) DO UPDATE SET note = excluded.note, updated_at = datetime('now')"
+    ).bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.note).run()
+    await record_activity(db, user["sub"], "analysis_saved", payload.level, payload.area, payload.language, payload.chapter)
+    return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/student/analysis")
+async def api_get_analysis(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
+    user = await student_identity(request)
+    get_course(await catalog(request), level, area, language)
+    db = database(request)
+    notes = d1_rows(await db.prepare(
+        "SELECT note, updated_at FROM student_analysis WHERE user_id = ? AND level = ? AND area = ? AND language = ? AND chapter = ?"
+    ).bind(user["sub"], level, area, language, chapter).all())
+    return JSONResponse({"analysis": notes[0] if notes else None}, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/student/stats")
+async def api_student_stats(request: Request) -> Response:
+    user = await student_identity(request)
+    db = database(request)
+    recent = activity_rows(await db.prepare(
+        "SELECT kind, level, area, language, chapter, exercise_id, seconds, score, occurred_at "
+        "FROM student_activity WHERE user_id = ? ORDER BY occurred_at DESC LIMIT 50"
+    ).bind(user["sub"]).all())
+    return JSONResponse({"summary": await activity_summary(db, user["sub"]),
+                         "courses": await course_performance(db, user["sub"]), "recent": recent},
+                        headers={"Cache-Control": "no-store"})
 
 
 async def chapter_test_bank(request: Request, level: str, area: str, language: str, chapter: int,
@@ -580,6 +650,10 @@ async def api_test_catalog(request: Request) -> dict[str, Any]:
 async def api_test_start(request: Request, payload: TestStart) -> Response:
     same_origin(request)
     student = await identity(request)
+    return JSONResponse(await start_test(request, payload, student), headers={"Cache-Control": "no-store"})
+
+
+async def start_test(request: Request, payload: TestStart, student: dict) -> dict:
     bank, digest = await chapter_test_bank(request, payload.level, payload.area, payload.language, payload.chapter, check_source=True)
     db = database(request)
     attempt_id = secrets.token_urlsafe(18)
@@ -588,8 +662,8 @@ async def api_test_start(request: Request, payload: TestStart) -> Response:
     await db.prepare(
         "INSERT INTO chapter_test_attempts (id, user_id, level, area, language, chapter, bank_sha256, deadline_ms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active')"
     ).bind(attempt_id, student["sub"], payload.level, payload.area, payload.language, payload.chapter, digest, deadline_ms).run()
-    return JSONResponse({"attempt_id": attempt_id, "chapter": payload.chapter, "question": public_question(bank, 0, deadline_ms, now_ms)},
-                        headers={"Cache-Control": "no-store"})
+    await record_activity(db, student["sub"], "test_started", payload.level, payload.area, payload.language, payload.chapter)
+    return {"attempt_id": attempt_id, "chapter": payload.chapter, "question": public_question(bank, 0, deadline_ms, now_ms)}
 
 
 @app.post("/private/tests/answer")
@@ -597,6 +671,10 @@ async def api_test_start(request: Request, payload: TestStart) -> Response:
 async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
     same_origin(request)
     student = await identity(request)
+    return JSONResponse(await answer_test(request, payload, student), headers={"Cache-Control": "no-store"})
+
+
+async def answer_test(request: Request, payload: TestAnswer, student: dict) -> dict:
     db = database(request)
     result = await db.prepare(
         "SELECT * FROM chapter_test_attempts WHERE id = ? AND user_id = ?"
@@ -627,18 +705,22 @@ async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
            "complete" if next_index == 10 else "active", payload.attempt_id, student["sub"], index, digest).run()
     if d1_changes(update) != 1:
         raise HTTPException(409, "Another answer already advanced this attempt")
+    await record_activity(db, student["sub"], "test_answered", attempt["level"], attempt["area"],
+                          attempt["language"], int(attempt["chapter"]), score=int(scored["correct"]))
     if next_index < 10:
-        return JSONResponse({"attempt_id": payload.attempt_id, "question": public_question(bank, next_index, next_deadline, now_ms)},
-                            headers={"Cache-Control": "no-store"})
-    return JSONResponse({"attempt_id": payload.attempt_id, "complete": True, "score": new_score, "total": 10,
-                         "perfect": new_score == 10, "feedback": feedback(bank, answers)},
-                        headers={"Cache-Control": "no-store"})
+        return {"attempt_id": payload.attempt_id, "question": public_question(bank, next_index, next_deadline, now_ms)}
+    return {"attempt_id": payload.attempt_id, "complete": True, "score": new_score, "total": 10,
+            "perfect": new_score == 10, "feedback": feedback(bank, answers)}
 
 
 @app.get("/private/tests/state")
 @app.get("/student/tests/state")
 async def api_test_state(request: Request, attempt_id: str = Query(pattern=r"^[A-Za-z0-9_-]{16,80}$")) -> Response:
     student = await identity(request)
+    return JSONResponse(await test_state(request, attempt_id, student), headers={"Cache-Control": "no-store"})
+
+
+async def test_state(request: Request, attempt_id: str, student: dict) -> dict:
     db = database(request)
     found = await db.prepare(
         "SELECT * FROM chapter_test_attempts WHERE id = ? AND user_id = ?"
@@ -652,18 +734,22 @@ async def api_test_state(request: Request, attempt_id: str = Query(pattern=r"^[A
         raise HTTPException(409, "The test changed; start a new attempt")
     if attempt["status"] == "complete":
         score = int(attempt["score"])
-        return JSONResponse({"attempt_id": attempt_id, "complete": True, "score": score, "total": 10,
-                             "perfect": score == 10, "feedback": feedback(bank, json.loads(attempt["answers_json"]))},
-                            headers={"Cache-Control": "no-store"})
+        return {"attempt_id": attempt_id, "complete": True, "score": score, "total": 10,
+                "perfect": score == 10, "feedback": feedback(bank, json.loads(attempt["answers_json"]))}
     now_ms = int(time.time() * 1000)
-    return JSONResponse({"attempt_id": attempt_id, "question": public_question(
-        bank, int(attempt["next_index"]), int(attempt["deadline_ms"]), now_ms)}, headers={"Cache-Control": "no-store"})
+    return {"attempt_id": attempt_id, "question": public_question(
+        bank, int(attempt["next_index"]), int(attempt["deadline_ms"]), now_ms)}
 
 
 @app.get("/private/tests/results")
 @app.get("/student/tests/results")
 async def api_test_results(request: Request, level: str, area: str, language: str) -> Response:
     student = await identity(request)
+    return JSONResponse(await test_results(request, level, area, language, student),
+                        headers={"Cache-Control": "no-store"})
+
+
+async def test_results(request: Request, level: str, area: str, language: str, student: dict) -> dict:
     get_course(await catalog(request), level, area, language)
     db = database(request)
     rows = await db.prepare(
@@ -671,7 +757,7 @@ async def api_test_results(request: Request, level: str, area: str, language: st
         "FROM chapter_test_attempts WHERE user_id = ? AND level = ? AND area = ? AND language = ? AND status = 'complete' "
         "GROUP BY chapter, bank_sha256 ORDER BY chapter"
     ).bind(student["sub"], level, area, language).all()
-    return JSONResponse({"results": d1_rows(rows)}, headers={"Cache-Control": "no-store"})
+    return {"results": d1_rows(rows)}
 
 
 @app.post("/private/tests/certificate")
@@ -741,7 +827,7 @@ async def api_certificate_view(request: Request, certificate_id: str) -> Respons
     item = rows[0]
     course = get_course(await catalog(request), item["level"], item["area"], item["language"])
     title = html.escape(course.get("titles", {}).get(item["language"], course["title"]))
-    learner = html.escape(str(student.get("email") or student["sub"]))
+    learner = html.escape(str(student.get("username") or student.get("email") or student["sub"]))
     issued = html.escape(item["issued_at"])
     verify_url = f"https://opencyber.academy/api/certificates/{certificate_id}"
     page = f"""<!doctype html><html lang="{html.escape(item['language'])}"><head>
@@ -885,6 +971,17 @@ TOOLS = [
     {"name": "read_lesson", "description": "Read the public Markdown for an authored lesson and its worked answers, with its GitHub source URL.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "read_chapter", "description": "Read an authored legacy subject chapter during conversion to weekday lessons; plans are not returned as teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "search_course", "description": "Search within one authored manuscript; returns bounded snippets and chapter numbers.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "query": {"type": "string"}}, "required": ["level", "area", "language", "query"]}},
+    {"name": "student_sign_in", "description": "For a provisioned student, exchange HTTP Basic username/password sent over TLS in the Authorization header for a seven-day bearer session. Never put the password in tool arguments or prompts.", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "student_get_stats", "description": "Read this student's private learning statistics. Requires an Authorization: Bearer session header.", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "student_get_progress", "description": "Read this student's saved lessons and exercise attempts. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "student_read_lesson", "description": "Read an authored lesson as a signed-in student and record the reading visit. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
+    {"name": "student_save_analysis", "description": "Save this student's private analysis of an authored lesson. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "note": {"type": "string", "minLength": 1, "maxLength": 10000}}, "required": ["level", "area", "language", "chapter", "note"]}},
+    {"name": "student_save_lesson", "description": "Mark an authored lesson as in progress or completed for this student. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "status": {"type": "string", "enum": ["in_progress", "completed"]}}, "required": ["level", "area", "language", "chapter", "status"]}},
+    {"name": "student_save_exercise", "description": "Save this student's answer to a published lesson exercise. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "exercise_id": {"type": "string"}, "answer": {"type": "string"}}, "required": ["level", "area", "language", "chapter", "exercise_id", "answer"]}},
+    {"name": "student_start_test", "description": "Start this student's published ten-question chapter test. Each question has a server-enforced deadline of ten seconds plus transit allowance. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}}, "required": ["level", "area", "language", "chapter"]}},
+    {"name": "student_answer_test", "description": "Submit one answer before its server deadline, or null to skip. Returns the next question or completed score. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"attempt_id": {"type": "string"}, "index": {"type": "integer", "minimum": 0, "maximum": 9}, "selected": {"type": ["string", "null"], "enum": ["a", "b", "c", "d", None]}}, "required": ["attempt_id", "index", "selected"]}},
+    {"name": "student_test_state", "description": "Resume this student's timed chapter test or view its result. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"attempt_id": {"type": "string"}}, "required": ["attempt_id"]}},
+    {"name": "student_test_results", "description": "Read this student's best saved chapter-test scores for one course edition. Requires a bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}}, "required": ["level", "area", "language"]}},
 ]
 
 
@@ -946,6 +1043,30 @@ async def mcp(request: Request) -> Response:
             name, args = params.get("name"), params.get("arguments") or {}
             if not isinstance(args, dict):
                 return JSONResponse(rpc_error(identifier, -32602, "Invalid tool arguments"))
+            private_tools = {"student_get_stats", "student_get_progress", "student_read_lesson",
+                             "student_save_analysis", "student_save_lesson", "student_save_exercise",
+                             "student_start_test", "student_answer_test", "student_test_state",
+                             "student_test_results"}
+            student = None
+            if name == "student_sign_in":
+                try:
+                    username, password = basic_credentials(request)
+                    account = await password_account(request, username, password)
+                except HTTPException as exc:
+                    return JSONResponse(rpc_error(identifier, -32001, "Student sign-in failed"),
+                                        status_code=exc.status_code,
+                                        headers={"WWW-Authenticate": 'Basic realm="OpenCyber Academy students"'})
+                token = await create_session(database(request), account["sub"])
+                result = {"student_id": account["sub"], "username": account["username"],
+                          "access_token": token, "token_type": "Bearer", "expires_in": SESSION_LIFETIME}
+                return JSONResponse(rpc_result(identifier, {"content": [{"type": "text", "text": json.dumps(result)}]}))
+            if name in private_tools:
+                try:
+                    student = await student_identity(request)
+                except HTTPException as exc:
+                    return JSONResponse(rpc_error(identifier, -32001, "A student bearer session is required"),
+                                        status_code=exc.status_code,
+                                        headers={"WWW-Authenticate": "Bearer"} if exc.status_code == 401 else {})
             if name == "get_editorial_policy":
                 result = {"markdown": await editorial_policy(request), "source_url": GITHUB_VIEW + "BOOK_STANDARD.md"}
             elif name == "list_courses":
@@ -969,6 +1090,74 @@ async def mcp(request: Request) -> Response:
                 result["total_chars"] = len(text)
             elif name == "search_course":
                 result = await api_search(request, args["level"], args["area"], args["language"], str(args["query"]))
+            elif name == "student_get_stats":
+                result = await activity_summary(database(request), student["sub"])
+                result["courses"] = await course_performance(database(request), student["sub"])
+            elif name == "student_get_progress":
+                db = database(request)
+                lessons = activity_rows(await db.prepare(
+                    "SELECT level, area, language, chapter, status, updated_at FROM lesson_progress WHERE user_id = ? ORDER BY updated_at DESC LIMIT 500"
+                ).bind(student["sub"]).all())
+                exercises = activity_rows(await db.prepare(
+                    "SELECT level, area, language, chapter, exercise_id, answer, status, updated_at FROM exercise_attempts WHERE user_id = ? ORDER BY updated_at DESC LIMIT 500"
+                ).bind(student["sub"]).all())
+                result = {"lessons": lessons, "exercises": exercises}
+            elif name == "student_read_lesson":
+                data = TestStart(**args)
+                result = await lesson_details(request, data.level, data.area, data.language, data.chapter)
+                await record_activity(database(request), student["sub"], "lesson_opened",
+                                      data.level, data.area, data.language, data.chapter)
+                start = max(0, int(args.get("start", 0)))
+                length = min(50_000, max(1000, int(args.get("max_chars", 30000))))
+                markdown = result.pop("markdown")
+                result["markdown"] = markdown[start:start + length]
+                result["next_start"] = start + length if start + length < len(markdown) else None
+                result["total_chars"] = len(markdown)
+            elif name == "student_save_analysis":
+                data = StudentAnalysis(**args)
+                await lesson_details(request, data.level, data.area, data.language, data.chapter)
+                db = database(request)
+                await db.prepare(
+                    "INSERT INTO student_analysis (user_id, level, area, language, chapter, note) VALUES (?, ?, ?, ?, ?, ?) "
+                    "ON CONFLICT(user_id, level, area, language, chapter) DO UPDATE SET note = excluded.note, updated_at = datetime('now')"
+                ).bind(student["sub"], data.level, data.area, data.language, data.chapter, data.note).run()
+                await record_activity(db, student["sub"], "analysis_saved", data.level, data.area, data.language, data.chapter)
+                result = {"saved": True}
+            elif name == "student_save_lesson":
+                data = LessonProgress(**args)
+                await lesson_details(request, data.level, data.area, data.language, data.chapter)
+                db = database(request)
+                await db.prepare(
+                    "INSERT INTO lesson_progress (user_id, level, area, language, chapter, status) VALUES (?, ?, ?, ?, ?, ?) "
+                    "ON CONFLICT(user_id, level, area, language, chapter) DO UPDATE SET status = excluded.status, updated_at = datetime('now')"
+                ).bind(student["sub"], data.level, data.area, data.language, data.chapter, data.status).run()
+                await record_activity(db, student["sub"], "lesson_completed" if data.status == "completed" else "lesson_opened",
+                                      data.level, data.area, data.language, data.chapter)
+                result = {"saved": True}
+            elif name == "student_save_exercise":
+                data = ExerciseAttempt(**{**args, "status": "attempted"})
+                lesson = await lesson_details(request, data.level, data.area, data.language, data.chapter)
+                if data.exercise_id.removeprefix("EX") not in lesson["exercise_ids"]:
+                    raise HTTPException(404, "Exercise is not in this lesson")
+                db = database(request)
+                await db.prepare(
+                    "INSERT INTO exercise_attempts (user_id, level, area, language, chapter, exercise_id, answer, status) "
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, 'attempted') "
+                    "ON CONFLICT(user_id, level, area, language, chapter, exercise_id) DO UPDATE SET "
+                    "answer = excluded.answer, status = excluded.status, updated_at = datetime('now')"
+                ).bind(student["sub"], data.level, data.area, data.language, data.chapter, data.exercise_id, data.answer).run()
+                await record_activity(db, student["sub"], "exercise_answered", data.level, data.area,
+                                      data.language, data.chapter, exercise_id=data.exercise_id)
+                result = {"saved": True}
+            elif name == "student_start_test":
+                result = await start_test(request, TestStart(**args), student)
+            elif name == "student_answer_test":
+                result = await answer_test(request, TestAnswer(**args), student)
+            elif name == "student_test_state":
+                result = await test_state(request, str(args["attempt_id"]), student)
+            elif name == "student_test_results":
+                result = await test_results(request, str(args["level"]), str(args["area"]),
+                                            str(args["language"]), student)
             else:
                 return JSONResponse(rpc_error(identifier, -32602, "Unknown tool"))
             return JSONResponse(rpc_result(identifier, {"content": [{"type": "text", "text": json.dumps(result, ensure_ascii=False)}]}))
