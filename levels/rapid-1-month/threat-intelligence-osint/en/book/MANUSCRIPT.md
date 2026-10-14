@@ -1,16 +1,18 @@
 # Threat Intelligence and OSINT: A Rapid Course Book
 
 - Language: English (`en`); rapid course, one month.
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX066 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification.
 - Audience: beginners who need a safe, practical first month of cyber threat intelligence (CTI) and OSINT for a small organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical boundary: no collection on real private individuals, no terms-of-service evasion, no deanonymisation, no contact with adversary infrastructure. Organisations, people and indicators are **synthetic** unless a sentence cites a public source; addresses use RFC 5737 ranges and domains use `.example`.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+<!-- open-cyber-academy:chapter-lessons -->
 
-Week 1 (chapter 1) covers foundations and decisions. Week 2 (chapter 2) covers scope, permission and safe practice. Week 3 (chapter 3) covers systems, data and dependencies, with a source-dependency lab. Week 4 (chapter 4) is a guided lab that validates shared indicators, matches a mail log and builds a TLP-safe summary. Each chapter has outcomes, teaching, a worked example, a labelled synthetic case, errors and limits, twelve or thirteen exercises scored 0–3, a synthesis and a **Continue studying** block.
+## How to use this book
+
+Read Sam's chapters in order. Each numbered chapter is one English lesson. Sets of five lessons can be paced as weeks. Lessons 1–4 follow the charity's decisions, the permission rules, the source print, and the indicator print. Lessons 5–20 each hold one mechanism those prints do not settle. The mechanisms are list order, the or of two flag tests, the Sam substring, and the independent list form. They continue with the length 3, the rejected octet, and mail order. They finish with a hit that stays inside, the community walk, and the omitted row. A week tally, the outbound paragraph, the four weekdays, exact equality, the two retention windows, and the Elmfield note close the set. Twenty lessons meet the planning minimum. Review stays open. The lessons are not a qualification. Run each lab in its chapter. Try each exercise before the worked result. Score the rubric yourself.
 
 ### Synthetic running case
 
@@ -28,7 +30,7 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -169,9 +171,9 @@ Small organisations cannot follow every threat; choose a few that match your dec
 
 CTI is checked information tied to decisions; learn the vocabulary, stay within realistic scope and act on a few relevant threats.
 
-### Continue studying — chapter 01 of 04
+### Continue studying — lesson 01 (chapter 01 of 20)
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 <a id="ch-02"></a>
 
@@ -291,9 +293,9 @@ Rules differ between countries; when legal questions arise, the trustees seek ad
 
 Work from written permission, follow TLP exactly, protect privacy, respect terms, avoid unsafe contact and report mistakes at once.
 
-### Continue studying — chapter 02 of 04
+### Continue studying — lesson 02 (chapter 02 of 20)
 
-[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 <a id="ch-03"></a>
 
@@ -448,9 +450,9 @@ Free-tier cloud services may offer few logs; note what cannot be checked.
 
 Know your systems and logs, map source dependencies, remove single points of failure and let intelligence choose your first settings.
 
-### Continue studying — chapter 03 of 04
+### Continue studying — lesson 03 (chapter 03 of 20)
 
-[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 <a id="ch-04"></a>
 
@@ -611,15 +613,1351 @@ The lab uses exact matching only; lookalikes need separate watching.
 
 Validate before use, match carefully, act kindly on hits, share only what labels allow and keep a weekly routine.
 
-### Continue studying — chapter 04 of 04
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Chapter 5 — The source print follows the list
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  L["Four source tuples, written order"] --> D["deps grows by first sighting"]
+  D --> P["Two dependency lines, then the independent line"]
+  P --> Q{"Did a sort pick the inbox line?"}
+  Q -->|No| K["Keep the embedded print"]
+```
+
+The walk follows `sources`. Nothing in the file sorts the names.
+
+### Logical drawing
+
+```text
+coordinator inbox: CCC alerts, Donation platform notices -> SINGLE POINT OF FAILURE
+form owner Sam: Volunteer reports -> SINGLE POINT OF FAILURE
+independent sources: ['National charity advisories']
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the order `sources` is written in.
+2. Say why the inbox line prints before the form line.
+3. Refuse a print that leads with the national advisories.
+
+### 5.1 Keys appear when they are first needed. Names append after that.
+
+`lab_sources.py` stores four tuples. Each tuple is a source name, a channel, and a list of needs. The first tuple is CCC alerts, with the need `coordinator inbox`. The second is National charity advisories, with an empty needs list. The third is Donation platform notices, again needing `coordinator inbox`. The fourth is Volunteer reports, needing `form owner Sam`. The loop walks that written order. It never calls `sorted`.
+
+The mapping starts blank.
+
+A key opens at the earliest requirement.
+
+Alerts open the mailbox key.
+
+The donation-page record appends there, so the length is two.
+
+The shared-form record opens the other key alone.
+
+`items()` emits creation sequence.
+
+Mailbox comes before the other key.
+
+The web-page record adds no key.
+
+Its title sits at the bottom because a later statement prints it.
+
+A later decision to name a deputy is a sentence in the notes. It does not reorder these three lines.
+
+| What the walk uses | What it does not use |
+|---|---|
+| Position in `sources` | An alphabetical sort |
+| First sighting of a need | A severity score |
+| Append, for a repeated need | A staff directory |
+
+### 5.2 Worked example
+
+| Offered result | What produced it | Decision |
+|---|---|---|
+| Inbox line, then form line, then the independent line | Insertion, then one extra print | Keep |
+| CCC alerts before Donation platform notices | Append order inside the inbox list | Keep |
+| "The script sorted by channel." | No sort is called | Refuse |
+| "National advisories print first because they are safest." | That tuple is not a `deps` key | Refuse |
+
+> **Synthetic case.** These three lines are the only source-lab output.
+
+### Errors and limits
+
+Do not rebuild `sources` so that a preferred channel prints first.
+
+### Apply
+
+- **EX051 — List order.** The print names the coordinator inbox, then form owner Sam, then the national advisories. May a preference for the independent source, or a later deputy, replace that order? *Rubric:* 3 = no; the dependency lines follow first sighting; names append in source order; the independent line is the last print; do not sort the script;; 2 = the three lines stay and the deputy stays prose;; 1 = one line;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — The flag is an or of two tests
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N["One dependency key"] --> A{"len of names greater than 1?"}
+  N --> B{"Does the key contain Sam?"}
+  A --> F["SINGLE POINT OF FAILURE if either is true"]
+  B --> F
+  F --> Q{"Does this print contain ok?"}
+  Q -->|No| K["The else branch is unused"]
+```
+
+Either test is enough. This run takes neither line to `ok`.
+
+### Logical drawing
+
+```text
+condition
+  len(names) > 1 or "Sam" in the key
+true
+  SINGLE POINT OF FAILURE
+false, unused here
+  ok
+this print
+  two failure lines
+  zero ok lines
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the two tests in the flag expression.
+2. Say which test fires for each printed line.
+3. Refuse an `ok` line that this run does not contain.
+
+### 6.1 One true test selects the failure label. The other test still exists.
+
+The flag line is a conditional expression. The failure label is chosen when `len(names) > 1` is true or when `"Sam" in d` is true. Otherwise the label is the literal `ok`. The inbox key has two names, so the length test alone selects the failure label. The form key has one name, so the length test is false there, and the substring test is what selects the failure label. Both lines print `SINGLE POINT OF FAILURE` for different reasons. The word `or` means the script does not require both tests to be true.
+
+This output contains no `ok` line. A dependency whose name list had length one, and whose key did not contain `Sam`, would print `ok`. No such key is created by these four tuples, so the else branch is real code and an absent result. Adding an `ok` line to "show the other branch" would invent a dependency.
+
+| Key in this print | Test that fires |
+|---|---|
+| coordinator inbox | Length is 2 |
+| form owner Sam | The key contains `Sam` |
+| An `ok` line | Not produced by this run |
+
+### 6.2 Worked example
+
+| Offered reading | What the expression did | Decision |
+|---|---|---|
+| Both printed lines use the failure label | Each key made one test true | Keep |
+| The inbox line does not need the substring | Length 2 is enough | Keep |
+| "Both tests failed, so the label is a score." | `or` is not a sum | Refuse |
+| "The script printed ok for advisories." | Advisories are not a `deps` key | Refuse |
+
+> **Synthetic case.** Two failure lines are the whole flag result.
+
+### Errors and limits
+
+Do not insert an `ok` row in order to illustrate the unused branch.
+
+### Apply
+
+- **EX052 — Two tests.** Why do both dependency lines say `SINGLE POINT OF FAILURE`, and does this print contain `ok`? *Rubric:* 3 = the inbox line fails the length test; the form line fails the substring test; `or` does not add the tests; this print has no `ok` line;; 2 = each line has its own true test and `ok` is absent;; 1 = one line;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — Sam is a substring, not a directory
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  K["Key text form owner Sam"] --> T{"Is the character sequence Sam inside it?"}
+  T -->|Yes| F["Failure label"]
+  T --> Q{"Did the script open a staff list?"}
+  Q -->|No| R["The test is text only"]
+```
+
+The letters decide. A person record is not consulted.
+
+### Logical drawing
+
+```text
+tested string
+  form owner Sam
+sought sequence
+  Sam
+case
+  capital S
+not consulted
+  a staff list
+  a deputy named later
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Point at the characters the test searches.
+2. Separate that search from a staff lookup.
+3. Refuse a deputy's name that the script never stored.
+
+### 7.1 The operator looks for characters. It does not know who Sam is.
+
+`"Sam" in d` is true when the key contains the capital letters S, a, m in that order. The key `form owner Sam` contains them, so the test is true. The same test on `coordinator inbox` is false, which is why that line depends on the length test instead. The comparison is case-sensitive. A key written `form owner sam` would not satisfy this particular search. This file does not contain that lowercase key.
+
+The script has no list of staff, no holiday calendar, and no field for a deputy. Sam Okafor is the volunteer in the case notes. The letters in the key happen to spell his given name. That coincidence is not a query. When the notes later say a second person should own the form, those notes do not edit `d`, and they do not remove the failure label from the embedded print. The lab still shows the single owner it was given.
+
+A key such as a word that merely contained those three letters would also trip the test. This run has no such extra key, and this chapter does not add one. The limit stands: the flag is a text test, not an identity check.
+
+| Object | Role |
+|---|---|
+| `form owner Sam` | The key that contains the sequence |
+| `"Sam" in d` | A case-sensitive character test |
+| A deputy | Prose, not a variable |
+| A staff directory | Absent from the file |
+
+### 7.2 Worked example
+
+| Offered sentence | What the file supports | Decision |
+|---|---|---|
+| "The form line trips because the key contains Sam." | The substring test | Keep |
+| "The inbox key does not contain that sequence." | Length is its reason | Keep |
+| "The script looked Sam up and found he is on holiday." | No directory and no date | Refuse |
+| "Naming a deputy clears the printed flag." | The print is unchanged | Refuse |
+
+> **Synthetic case.** The key is a string in a classroom list.
+
+### Errors and limits
+
+Do not promote a character test into a personnel decision.
+
+### Apply
+
+- **EX053 — Substring.** What makes `form owner Sam` a failure when it has only one source, and does the script store a deputy? *Rubric:* 3 = the key contains the capital sequence Sam; the length test is false for that one name; no staff list and no deputy are stored;; 2 = the flag is a character test and the deputy is absent;; 1 = the name only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — The independent line is a list repr
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08. Map, example, EX054.
+
+```mermaid
+flowchart TD
+  S["Four tuples"] --> E{"Is needs empty?"}
+  E -->|Yes| L["One name in a Python list"]
+  E -->|No| D["A deps key instead"]
+  L --> P["Brackets and single quotes"]
+```
+
+Empty needs select the name. The print then shows Python's list form.
+
+### Logical drawing
+
+```text
+kept
+  National charity advisories
+printed form
+  ['National charity advisories']
+excluded
+  any tuple whose needs list is non-empty
+not shown
+  the word web page
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. State the test `if not needs`.
+2. Read the brackets and quotes as Python's list form.
+3. Refuse a channel word the line does not contain.
+
+### 8.1 Empty means independent. The brackets are part of the print.
+
+The last statement builds a list of names whose needs list is empty. `if not needs` is true for `[]` and false for a list that holds a string. Only National charity advisories has an empty needs list, so the result has one element. `print` of a list uses Python's representation: square brackets, a single-quoted string, and no extra label invented by Sam. The line begins with the words `independent sources:` because that literal is in the format string. The brackets are not a TLP mark.
+
+The channel `web page` is the second field of the tuple. The comprehension keeps `n` and drops the channel. A reader cannot recover `web page` from the independent line. The other three sources are absent here because each has a needs list, not because the script judged them unimportant. Fixing the inbox in prose does not move Donation platform notices onto this line. The embedded list still has one name.
+
+| Piece | What it contributes |
+|---|---|
+| `if not needs` | Selects an empty needs list |
+| List representation | Brackets and single quotes |
+| The channel field | Stored, not printed on this line |
+| A later shared mailbox | Does not edit the list |
+
+### 8.2 Worked example
+
+| Offered reading | What the line shows | Decision |
+|---|---|---|
+| One name, inside brackets and quotes | The list representation | Keep |
+| The other three sources are absent | Their needs lists are non-empty | Keep |
+| "The line says web page." | The channel was not kept | Refuse |
+| "A shared mailbox removes the brackets." | The print is unchanged | Refuse |
+
+> **Synthetic case.** One independent name is the whole list.
+
+### Errors and limits
+
+Do not treat the brackets as a sharing label.
+
+### Apply
+
+- **EX054 — List form.** What does `['National charity advisories']` include, and why are the email sources absent from it? *Rubric:* 3 = one name in Python's list form; email sources have a non-empty needs list; the channel word is not on the line; a later mailbox fix does not edit the print;; 2 = the brackets hold one empty-needs name;; 1 = the name only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Four shared values become three valid
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  F["Four shared tuples"] --> R["One rejected"]
+  R --> V["valid length 3"]
+  V --> Q{"Does 3 mean three shareable values?"}
+  Q -->|No| K["AMBER is still inside valid"]
+```
+
+The count is the length of `valid`. Sharing is a later filter.
+
+### Logical drawing
+
+```text
+shared, in written order
+  donate-elmfield.example
+  198.51.100.400
+  elmfield-giftaid.example
+  203.0.113.9
+rejected
+  198.51.100.400
+remaining in valid
+  the other three, including AMBER
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Count the shared tuples and the rejected one.
+2. Read `valid: 3` as a length.
+3. Refuse the claim that all three are community material.
+
+### 9.1 The length includes the AMBER domain. It excludes only the rejected address.
+
+`shared` has four pairs. The loop appends a pair to `valid` when the value is kept, and it `continue`s past `198.51.100.400` after printing `invalid:`. Three pairs remain, so `print("valid:", len(valid))` writes `valid: 3`. That integer is a length. It is not a list of names, and it is not a count of community items.
+
+The three kept pairs are `donate-elmfield.example` with `TLP:GREEN`, `elmfield-giftaid.example` with `TLP:AMBER`, and `203.0.113.9` with `TLP:CLEAR`. The AMBER pair is inside `valid`. A sentence that reads `valid: 3` as "three things EFBN may send to CCC" has skipped the label. The community filter runs later and drops AMBER. The length line has already been printed by then, and it does not change.
+
+The rejected address is absent from the length. It cannot be one of the three. Quoting `valid: 3` beside the invalid line is consistent: four minus one.
+
+| Figure | Meaning |
+|---|---|
+| 4 shared pairs | The input list |
+| `invalid:` one value | Removed before the length |
+| `valid: 3` | Length of what remained |
+| Community permission | Not this integer |
+
+### 9.2 Worked example
+
+| Offered sentence | Arithmetic | Decision |
+|---|---|---|
+| "Four pairs in, one rejected, length 3." | The loop | Keep |
+| "The AMBER domain is one of the three." | It was appended | Keep |
+| "valid: 3 means three shareable indicators." | The filter has not run | Refuse |
+| "The invalid address is included in the 3." | `continue` skipped it | Refuse |
+
+> **Synthetic case.** The length line is one integer.
+
+### Errors and limits
+
+Do not spend the integer as if it were a permission.
+
+### Apply
+
+- **EX055 — The integer.** What does `valid: 3` count, and is the AMBER domain inside that count? *Rubric:* 3 = three kept pairs; the invalid address is excluded; the AMBER domain is included; the integer is not the community list;; 2 = length 3 includes AMBER and excludes the invalid address;; 1 = the digit only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — 400 is why that address fails
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  V["198.51.100.400"] --> P["ip_address raises"]
+  P --> D{"Digits only after dots are removed?"}
+  D -->|Yes| I["print invalid and skip"]
+  G["203.0.113.9"] --> OK["ip_address accepts"]
+```
+
+One call rejects the broken octet. A different value passes the same call.
+
+### Logical drawing
+
+```text
+rejected
+  198.51.100.400
+  octet 400
+accepted as an address
+  203.0.113.9
+not a lookup
+  no DNS
+  no route
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say which call rejects `198.51.100.400`.
+2. Separate that rejection from a domain.
+3. Refuse a network lookup this file does not make.
+
+### 10.1 The library raises. The digit test then chooses the invalid line.
+
+`ipaddress.ip_address` accepts `203.0.113.9` and raises `ValueError` for `198.51.100.400`, because 400 is above 255. The except branch then removes dots and asks whether the rest is all digits. `19851100400` is all digits, so the script prints `invalid:` and does not append the pair. A domain fails the address call too, but the leftover characters are not all digits, so the domain is appended instead of rejected. The digit test is how this file tells a broken address from a name. It is not a reputation check.
+
+The header of the book already limits addresses to documentation ranges. `203.0.113.9` parses and sits in such a range. `198.51.100.400` does not parse, so it is not a host in `198.51.100.0/24`. The script never asks the network which of them exists. There is no DNS call in `lab_rapid.py`. Visiting either name is outside the lab, and this chapter does not add a lookup.
+
+| Value | Branch |
+|---|---|
+| `203.0.113.9` | Accepted by `ip_address` |
+| `198.51.100.400` | Raised, then classified invalid |
+| A domain with letters | Raised, then appended |
+| A DNS answer | Not requested |
+
+### 10.2 Worked example
+
+| Offered claim | What the branch did | Decision |
+|---|---|---|
+| "400 cannot be an octet, so the line says invalid." | The raise plus the digit test | Keep |
+| "203.0.113.9 is kept by the same call." | No exception | Keep |
+| "The script resolved the name." | No DNS call | Refuse |
+| "The invalid address is a domain because it failed." | The digit test separated it | Refuse |
+
+> **Synthetic case.** Both values are classroom literals.
+
+### Errors and limits
+
+Do not go and look the rejected value up.
+
+### Apply
+
+- **EX056 — The octet.** Why is `198.51.100.400` invalid while `203.0.113.9` is kept, and does the script query DNS? *Rubric:* 3 = 400 is above 255 so ip_address raises; the digit test prints invalid and skips; 203.0.113.9 parses; there is no DNS call;; 2 = the octet fails and the other address parses;; 1 = one value;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Hits follow the mail list
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  M["Three mail rows, written order"] --> S["Membership in the valid set"]
+  S --> H["Two tuples, mail order"]
+  H --> Q{"Did the shared-list order win?"}
+  Q -->|No| K["vol-07 then office"]
+```
+
+The set answers yes or no. The mail list chooses the sequence.
+
+### Logical drawing
+
+```text
+mail order
+  vol-07, donate-elmfield.example
+  vol-12, news.example
+  office, elmfield-giftaid.example
+printed hits
+  vol-07 then office
+not a sort key
+  the order of shared
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read the hit list as mail order.
+2. Say what the set is used for.
+3. Refuse a hit line that starts with the office.
+
+### 11.1 Membership does not reorder. The comprehension walks `mail`.
+
+The hit line keeps a mail row when its domain or address is a member of the set of valid values. A set has no order, so it cannot be the sequence of the result. The comprehension walks `mail` from top to bottom. `vol-07` is first and matches, `vol-12` is second and does not match, and `office` is third and matches. The printed list is therefore vol-07, then office. `news.example` never becomes a tuple in that list.
+
+`shared` listed the GREEN domain first and the AMBER domain later. That writing order is not the hit order, even though both names match. Swapping the hit tuples to follow `shared` would be a different list. The print uses Python's representation of a list of tuples, with single quotes and the parentheses. Those marks are the representation, not extra evidence.
+
+| Choice | Source |
+|---|---|
+| Which rows qualify | Set membership |
+| Which qualified row prints first | Position in `mail` |
+| Whether vol-12 appears | It does not qualify |
+| Shared-list order | Not the hit sequence |
+
+### 11.2 Worked example
+
+| Offered order | Why it is or is not the print | Decision |
+|---|---|---|
+| vol-07 then office | Mail order, with the miss skipped | Keep |
+| Both qualifying names present | Their rows matched | Keep |
+| "Office first, because AMBER is more sensitive." | No severity sort | Refuse |
+| "The hits follow the shared list." | The walk is `mail` | Refuse |
+
+> **Synthetic case.** The hit list has two tuples.
+
+### Errors and limits
+
+Do not let a label's seriousness reorder the mail walk.
+
+### Apply
+
+- **EX057 — Hit order.** The print lists vol-07 and then office. Does that order come from `shared`, and where is `news.example`? *Rubric:* 3 = the order is the mail list; the set only tests membership; news.example is a mail row that does not qualify; do not sort by label;; 2 = mail order, and the third row is not a hit;; 1 = one tuple;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — AMBER can hit and still stay inside
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  A["elmfield-giftaid.example"] --> V["Inside valid"]
+  V --> H["Inside hits"]
+  V --> P{"Label in CLEAR or GREEN?"}
+  P -->|No| S["Absent from the community list"]
+```
+
+A match is an internal fact. The label still governs the outbound list.
+
+### Logical drawing
+
+```text
+in valid
+  yes
+in hits
+  office row
+in shareable with community
+  no
+label
+  TLP:AMBER
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Place the AMBER domain in `valid` and in `hits`.
+2. Keep it out of the community list.
+3. Refuse a feedback line that names it.
+
+### 12.1 The hit test ignores the label. The share test uses only the label.
+
+`hits` asks whether the mail value occurs among the valid values. It never reads `lab`. `elmfield-giftaid.example` is a valid value, and the office row carries that value, so the tuple is kept. `public` asks a different question: is `lab` one of `TLP:CLEAR` or `TLP:GREEN`? `TLP:AMBER` is neither, so the domain is dropped from `shareable with community`. One value, two tests, two different answers.
+
+The office match is still an EFBN action. The chair hears it the same day, and the domain can be blocked in the email provider's settings. Those actions stay inside the organisation. They are not a reason to put the name on the CCC list. TLP:AMBER, in this case, does not travel with the community feedback. Describing the name there would reveal the item the label withheld.
+
+`valid: 3` counted this domain. That count remains compatible with a community list of two. Three kept values, one of them withheld, is two shareable values. The script prints both facts. A note that "corrects" the community list up to three has erased the label.
+
+| Question | Answer for the AMBER domain |
+|---|---|
+| Kept as valid? | Yes |
+| Matched in mail? | Yes, the office row |
+| Shareable with CCC? | No |
+| Blocked inside EFBN? | Yes, in provider settings |
+
+### 12.2 Worked example
+
+| Offered action | Label consequence | Decision |
+|---|---|---|
+| "Block it inside EFBN and tell the chair." | Stays inside | Keep |
+| "Leave it off the community list." | The filter | Keep |
+| "CCC should receive it because the office was hit." | The hit test is not the share test | Refuse |
+| "Drop it from valid so the length becomes 2." | It was valid | Refuse |
+
+> **Synthetic case.** The AMBER label is on a classroom indicator.
+
+### Errors and limits
+
+Do not treat a mailbox hit as a licence to widen the label.
+
+### Apply
+
+- **EX058 — Two answers.** Is `elmfield-giftaid.example` a hit, and is it shareable with the community? *Rubric:* 3 = it is a hit on the office row and it is inside valid; it is not shareable because the label is TLP:AMBER; blocking it stays inside EFBN;; 2 = hit yes, community list no;; 1 = one list;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Community order is the valid walk
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  V["valid, build order"] --> F{"Label is CLEAR or GREEN?"}
+  F -->|Keep| P["GREEN domain, then the address"]
+  F -->|Drop| A["AMBER skipped in between"]
+  P --> Q{"Did CLEAR sort to the front?"}
+  Q -->|No| K["Membership is not a sort"]
+```
+
+The pair `("TLP:CLEAR", "TLP:GREEN")` is a membership test. It does not rank the rows.
+
+### Logical drawing
+
+```text
+valid build order
+  GREEN domain
+  AMBER domain
+  CLEAR address
+community print
+  donate-elmfield.example
+  203.0.113.9
+skipped between them
+  elmfield-giftaid.example
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read the community list from top to bottom.
+2. Explain why the address is second.
+3. Refuse a list that leads with CLEAR because of the label.
+
+### 13.1 The filter keeps a value where `valid` put it. It does not regroup by label.
+
+`public` walks `valid` and keeps a value when its label is in `("TLP:CLEAR", "TLP:GREEN")`. That tuple is the set of allowed labels. Writing CLEAR before GREEN inside the tuple does not sort CLEAR items first. The walk order is the order pairs were appended. The GREEN domain was appended first. The AMBER domain was appended second and then dropped. The CLEAR address was appended third and kept. The printed list is therefore the domain, then `203.0.113.9`.
+
+Python prints that list with brackets and single quotes, after the literal `shareable with community:`. The brackets are the representation. They are not a TLP colour. A classmate who moves the address to the front "because CLEAR is the wider label" has applied a ranking the comprehension does not have. A classmate who puts the AMBER name back to fill the gap has undone the filter.
+
+The invalid address never entered `valid`, so it cannot appear in this gap either. The gap is the dropped AMBER pair, not the rejected octet.
+
+| Position in `valid` | Community list |
+|---|---|
+| GREEN domain, first | Kept, first |
+| AMBER domain, second | Dropped |
+| CLEAR address, third | Kept, second |
+| The invalid address | Never present |
+
+### 13.2 Worked example
+
+| Offered list | What the walk did | Decision |
+|---|---|---|
+| Domain, then `203.0.113.9` | Kept items in build order | Keep |
+| AMBER absent from the middle | The label test | Keep |
+| "CLEAR first, then GREEN." | The tuple is not a sort key | Refuse |
+| "Insert the AMBER name where it was skipped." | The filter removed it | Refuse |
+
+> **Synthetic case.** Two values are the whole community list.
+
+### Errors and limits
+
+Do not reorder labels into a seriousness ranking.
+
+### Apply
+
+- **EX059 — Filter order.** Why does `donate-elmfield.example` print before `203.0.113.9`, and why is the AMBER domain missing between them? *Rubric:* 3 = the walk follows valid build order; CLEAR-before-GREEN in the test tuple is not a sort; AMBER fails the label test and leaves a gap; the invalid address was never in valid;; 2 = build order, and AMBER is filtered out;; 1 = one value;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — vol-12 is a row the hits omit
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  R["Three mail rows"] --> H["Two hit tuples"]
+  R --> M["vol-12 with news.example"]
+  M --> Q{"Does the script print a MISS line?"}
+  Q -->|No| K["Omission is the result"]
+```
+
+Three rows were written. Two qualified. The third stays in the source and off the hit list.
+
+### Logical drawing
+
+```text
+written in mail
+  vol-07
+  vol-12
+  office
+printed under hits
+  vol-07
+  office
+no line
+  MISS: vol-12
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Count the mail rows and the hit tuples.
+2. Name the omitted row.
+3. Refuse a MISS line the script does not print.
+
+### 14.1 The comprehension drops a non-member. It does not announce the drop.
+
+`mail` has three pairs. The comprehension keeps a pair only when the second field is in the valid set. `news.example` is not in that set, so vol-12 contributes nothing to `hits`. The printed list has two tuples. There is no third print that says the row was checked and missed. Absence from `hits` is the only trace of that check.
+
+vol-12 remains in the source list. Deleting the tuple to make the source "match the print" would destroy the evidence of a non-match. Adding `MISS: vol-12` would claim a column the file does not have. The row is also not a lookalike of a listed domain. It is a different name, `news.example`, and the equality test rejects it cleanly.
+
+The two labs stay apart here as well. `lab_sources.py` never sees vol-12, and `lab_rapid.py` never sees the coordinator inbox. A sentence that puts vol-12 on the source-dependency print has welded two files.
+
+| Row | In `hits`? |
+|---|---|
+| vol-07, listed domain | Yes |
+| vol-12, `news.example` | No, and no MISS line |
+| office, AMBER domain | Yes |
+| An invented miss column | Not in the file |
+
+### 14.2 Worked example
+
+| Offered edit | Effect | Decision |
+|---|---|---|
+| "Leave vol-12 in the source and off the hit list." | The comprehension | Keep |
+| "Do not print MISS." | No such label | Keep |
+| "Delete vol-12 so the file shows only hits." | Loses the non-match | Refuse |
+| "The source lab also listed vol-12." | Different script | Refuse |
+
+> **Synthetic case.** vol-12 is a label in a three-row list.
+
+### Errors and limits
+
+Do not fill the silence with a miss column.
+
+### Apply
+
+- **EX060 — Omitted row.** What happened to vol-12, and does either lab print a MISS line? *Rubric:* 3 = vol-12 stays in mail with news.example; it is absent from hits because the value is not valid; neither script prints MISS; do not delete the row;; 2 = the row is a non-match and no MISS line exists;; 1 = the label only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — One week-match is not two lab hits
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  W["First week: one match, one password change"] --> N["A notebook sentence"]
+  L["Lab hits: two tuples"] --> P["A script print"]
+  N --> Q{"Are the counts the same event?"}
+  Q -->|No| K["Keep both numbers"]
+```
+
+The week and the lab are different pages. Their counts do not correct each other.
+
+### Logical drawing
+
+```text
+week sentence
+  3 logged
+  1 match
+  1 password changed
+  1 GREEN feedback
+lab print
+  two hit tuples
+  no password field
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat the week's four counts.
+2. Repeat the lab's two hit tuples.
+3. Refuse a merge that turns one match into two, or two hits into a password.
+
+### 15.1 The notebook counts a week. The script counts a fixture.
+
+Sam's first full week is a sentence: three CCC items logged, one match found, one volunteer password changed, one GREEN feedback note sent. `lab_rapid.py` prints two hit tuples and no password. Nothing in the fixture says which of those tuples, if either, is the week's single match. Treating the week as a retelling of the lab makes `1` and `2` fight. They are different tallies, from different pages, and both stay.
+
+The password change is also absent from the print. The lab has no account field and no secret. The week's "one password changed" is an action Sam recorded. It does not name the new password, and this chapter does not invent one. vol-07 may be asked, kindly, whether a click or an entered detail happened, and a change plus two-step login follows only if the answer is yes. That question is the case procedure. It is not a column beside the hit tuples.
+
+The chair's monthly paragraph is a further addition to the routine. It is not a third hit and not a second password.
+
+| Count | Where it lives |
+|---|---|
+| 3, 1, 1, 1 | The week sentence |
+| Two hit tuples | The lab print |
+| A password value | Nowhere in either |
+| A monthly paragraph | The chair's request, not a hit |
+
+### 15.2 Worked example
+
+| Offered sentence | What it mixes | Decision |
+|---|---|---|
+| "The week recorded one match. The lab printed two hits." | Both, kept apart | Keep |
+| "No password appears in the fixture." | The script | Keep |
+| "The two hits are the week's one match, counted twice." | A merge | Refuse |
+| "The lab stored the new password." | No such field | Refuse |
+
+> **Synthetic case.** The week and the fixture are both invented, and they are not the same tally.
+
+### Errors and limits
+
+Do not average the two counts into a story that neither page told.
+
+### Apply
+
+- **EX061 — Two tallies.** What did the first week count, and what did the hit line count? *Rubric:* 3 = the week counted 3 logged, 1 match, 1 password change, and 1 feedback; the lab counted two hit tuples and printed no password; the tallies stay separate;; 2 = one week-match and two lab hits, unmerged;; 1 = one number;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Feedback names no AMBER domain
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  F["Outbound paragraph"] --> G["GREEN domain only"]
+  F --> C["A count of two, without the AMBER name"]
+  C --> Q{"Does a second reader see the AMBER name?"}
+  Q -->|No| K["Initials, then send"]
+```
+
+The paragraph can say that two indicators matched. It cannot say the withheld name.
+
+### Logical drawing
+
+```text
+may appear outbound
+  the GREEN domain
+  a count that does not name AMBER
+must not appear outbound
+  elmfield-giftaid.example
+check
+  a second reader
+  initials beside the send
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say what the outbound paragraph may name.
+2. Keep the AMBER domain out of it.
+3. Refuse a draft that "explains" the withheld item.
+
+### 16.1 A count is not a name. The second reader is looking for the name.
+
+The CCC paragraph says two indicators from the week's alert reached EFBN mail and that both were blocked, and it names only the GREEN domain. The AMBER domain is the item that must not be spelled. A count of two, with one name, is the shape Sam used. Adding the missing name "so the count makes sense" is the breach. Even a hint that names the giftaid domain tells the community what AMBER was holding back.
+
+A second reader checks the outbound paragraph for that name before it is sent, and initials the GREEN-only paragraph beside the send. Those initials are a check of the text. They are not a new indicator, and they are not a signature on the lab print. The lab's community list already omitted the AMBER value. The human check is there because a later sentence could put the name back in.
+
+The office still hears the AMBER match inside EFBN, by a phone call to the chair the same day. The call is not the CCC paragraph. No phone number is printed in this book, so the note cannot add one.
+
+| Channel | AMBER name |
+|---|---|
+| Community paragraph | Absent |
+| Second-reader check | Looks for that absence |
+| Chair, inside EFBN | May be told |
+| The lab's community list | Already without it |
+
+### 16.2 Worked example
+
+| Draft sentence | Problem or fit | Decision |
+|---|---|---|
+| "Names the GREEN domain and does not spell the other match." | The label | May send |
+| "Second reader initials the GREEN-only text." | The check | Keep |
+| "Both names, so CCC can see the pair." | Reveals AMBER | Reject |
+| "The paragraph includes the chair's phone number." | No number is printed | Reject |
+
+> **Synthetic case.** The paragraph is a classroom feedback note.
+
+### Errors and limits
+
+Do not finish the count by typing the withheld name.
+
+### Apply
+
+- **EX062 — Outbound text.** What may the CCC paragraph name, and what must a second reader confirm is absent? *Rubric:* 3 = it may name the GREEN domain and a count that does not reveal the other name; the AMBER domain must be absent; the chair can still be told inside EFBN; no phone number is printed;; 2 = GREEN may be named and AMBER may not;; 1 = one name;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Monday is not Friday
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  M["Monday: read and log"] --> T["Tuesday: check logs"]
+  T --> W["Wednesday: warn if needed"]
+  W --> F["Friday: feedback and update the log"]
+  F --> Q{"Is the monthly paragraph a fifth weekday?"}
+  Q -->|No| K["The chair added a month, not a day"]
+```
+
+Four weekdays are the routine. Thursday is not one of them. The month is a separate ask.
+
+### Logical drawing
+
+```text
+weekdays in the routine
+  Monday
+  Tuesday
+  Wednesday
+  Friday
+not in the routine
+  Thursday
+added beside it
+  a monthly paragraph for the chair
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the four routine days and their jobs.
+2. Leave Thursday out.
+3. Keep the monthly paragraph off the weekday list.
+
+### 17.1 Each day has one job. The script has none of the days.
+
+Monday is for reading CCC and the advisories and for logging items. Tuesday is for checking mail and sign-in logs against indicators already in hand. Wednesday is for warning volunteers when the check gives a reason. Friday is for feedback to CCC and for updating the log. Thursday is not assigned. A routine that "fills Thursday so the week looks full" has invented a day Sam did not write.
+
+The chair asked for a monthly one-paragraph summary. Sam adds that ask to the routine. A month is not a fifth weekday, and it does not move Friday's feedback. Deputies are meant to be able to run the written rhythm, and one observed run is logged before leave. This book does not print the date of that run, so a note cannot invent one.
+
+Neither lab prints a weekday. `lab_sources.py` prints dependencies. `lab_rapid.py` prints an invalid value, a length, hits, and a community list. A line such as `Monday: donate-elmfield.example` would be a fusion. The days stay on the scope page. The values stay in the fixture.
+
+| Day | Job |
+|---|---|
+| Monday | Read and log |
+| Tuesday | Check logs |
+| Wednesday | Warn if needed |
+| Friday | Feedback and update the log |
+| Thursday | Not in the routine |
+
+### 17.2 Worked example
+
+| Offered calendar | Fit | Decision |
+|---|---|---|
+| "Monday, Tuesday, Wednesday, Friday, with those four jobs." | The routine | Keep |
+| "A monthly paragraph sits beside the week." | The chair's ask | Keep |
+| "Thursday is indicator-hunting day." | Not written | Refuse |
+| "The lab print is dated Monday." | No weekday column | Refuse |
+
+> **Synthetic case.** The rhythm is written for EFBN deputies.
+
+### Errors and limits
+
+Do not invent Thursday in order to make a seven-name week.
+
+### Apply
+
+- **EX063 — Four days.** Which days are in the weekly routine, and what did the chair add that is not a weekday? *Rubric:* 3 = Monday read and log, Tuesday check logs, Wednesday warn, Friday feedback; Thursday is absent; the chair added a monthly paragraph; neither lab prints a day;; 2 = the four days and a separate monthly ask;; 1 = one day;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Equality misses a near name
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  E["d in the set of valid values"] --> Q{"Is the string exactly a member?"}
+  Q -->|Yes| H["A hit"]
+  Q -->|No| N["Not a hit"]
+  N --> L["A near name is not in this mail list"]
+```
+
+The test is equality. This fixture does not contain a near-name row to demonstrate the miss.
+
+### Logical drawing
+
+```text
+test
+  exact membership
+in this mail list
+  news.example, a different name
+  no one-character variant
+not in the file
+  a similarity score
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the test the hit line uses.
+2. Say what this mail list actually uses as a non-match.
+3. Refuse a variant the fixture does not contain.
+
+### 18.1 Exact means the same characters. A lookalike would miss, and this list has none.
+
+The hit test is `d in` a set of the valid strings. Two strings match only when they are the same sequence of characters. `news.example` fails because it is a different sequence, not because it is a sneaky variant of `donate-elmfield.example`. The chapter on limits already says exact matching misses lookalikes. That sentence is a limit of the method. This fixture does not include a lookalike row, so the print cannot be quoted as an example of one. Naming a variant the file never stored would add evidence the run did not produce.
+
+There is no similarity function, no edit-distance, and no "close enough" threshold. A one-character change in a real message would miss for that reason. Sam's notes can say the limit exists. They cannot cite a variant this run did not see. Watching for lookalikes is a separate human task, outside the equality test, and this chapter does not turn that task into a scan of live domains.
+
+`vol-12` remains the demonstration of a clean miss that the file does contain. Using it as a stand-in for a lookalike would blur two different failures: a wrong name, and a near name. Only the wrong name is in the list.
+
+| Situation | In this fixture? |
+|---|---|
+| Exact member | Yes, two rows |
+| Different name, `news.example` | Yes, and it misses |
+| A one-character lookalike | No row |
+| A similarity score | No function |
+
+### 18.2 Worked example
+
+| Offered example | In the file? | Decision |
+|---|---|---|
+| "`news.example` misses by equality." | Yes | Keep |
+| "A lookalike would also miss, and none is listed." | The limit, without a fake row | Keep |
+| "The lab caught a one-character variant." | Not a stored value | Refuse |
+| "The script scores closeness." | No such call | Refuse |
+
+> **Synthetic case.** The miss in the fixture is `news.example`.
+
+### Errors and limits
+
+Do not manufacture a lookalike so the limit has a trophy.
+
+### Apply
+
+- **EX064 — Equality.** What non-match does this mail list actually contain, and may a note add a lookalike domain the file never stored? *Rubric:* 3 = news.example is the stored non-match; the test is exact membership; a lookalike would miss but this list has no such row; do not invent one;; 2 = the stored miss is news.example and no variant is added;; 1 = one domain;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Thirty days is not ninety
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  E["Email sign-in logs: 30 days"] --> N["A note, not a lab column"]
+  D["Donation logins: 90 days"] --> N
+  G["A service with no useful log"] --> S["Record the gap"]
+  S --> Q{"Does silence mean safe?"}
+  Q -->|No| K["A gap is not a clearance"]
+```
+
+The retention figures are prose. Neither script prints them.
+
+### Logical drawing
+
+```text
+prose
+  email sign-ins, 30 days
+  donation logins, 90 days
+labs print
+  neither integer
+gap
+  no useful log means write the gap
+  do not read silence as safety
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Pair each retention figure with its log.
+2. Keep both figures out of the lab prints.
+3. Refuse silence as a proof that nothing happened.
+
+### 19.1 The consoles keep different windows. A missing window is written down.
+
+Email sign-in logs at EFBN last 30 days. Donation-platform login logs last 90 days. Those integers come from Sam's check of the provider consoles. `lab_sources.py` prints dependency names and one independent list. `lab_rapid.py` prints an invalid value, a length, two hits, and a community list. Neither output contains 30 or 90. A note that writes `valid: 30` has pasted a retention figure onto the wrong page.
+
+When a service offers no useful log, Sam records the gap. The absence of rows is not a successful review. Stuffing-alert follow-up, in the earlier chapter, did show failed attempts and no successful login. That is an observation from a log that existed. It is not the same sentence as "this other service has no log, therefore nothing failed." The gap stays a gap. No vendor product name is printed for these consoles, so the note does not add one.
+
+Two-step login and the backup settings were chosen because of intelligence about stolen passwords and ransomware. They are settings. They are not rows in either lab, and they do not change 30 into 90.
+
+| Fact | Page |
+|---|---|
+| 30 days | Email sign-in note |
+| 90 days | Donation login note |
+| `valid: 3` | The indicator lab, not a retention |
+| A missing log | A gap, not a clearance |
+
+### 19.2 Worked example
+
+| Offered line | Page it belongs on | Decision |
+|---|---|---|
+| "Email 30, donation 90." | The console note | Keep |
+| "No useful log is written as a gap." | The limit | Keep |
+| "valid: 3 means the logs last three days." | Wrong page | Refuse |
+| "The quiet free tier proves no failed logins." | Silence is not that proof | Refuse |
+
+> **Synthetic case.** The windows are EFBN's notes about its providers.
+
+### Errors and limits
+
+Do not launder a missing log into a clean bill of health.
+
+### Apply
+
+- **EX065 — Two windows.** How long do the email and donation logs last, and does either lab print those integers? *Rubric:* 3 = email sign-ins 30 days and donation logins 90 days; neither lab prints 30 or 90; a missing log is a gap, not proof of safety;; 2 = the two windows stay prose and silence is not a clearance;; 1 = one number;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the Elmfield note can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  N["An Elmfield note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
+  Q -->|Yes| R["Reject it"]
+  Q -->|No| K["The note may cite that line"]
+```
+
+Twenty lessons meet a planning minimum. They leave Elmfield's open items open.
+
+### Logical drawing
+
+```text
+may stay
+    both lab prints, in their own order
+    valid: 3, with AMBER still inside that length
+    the community list without the AMBER name
+    30 days and 90 days as prose
+    the four weekdays, and the week's 3, 1, 1, 1
+    chapter 4's closing line, quoted once:
+    Validate before use, match carefully, act kindly on hits, share only what labels allow and keep a weekly routine.
+must not be added
+    an ok line, a MISS line, a lookalike domain
+    a password, a phone number, a deputy's name
+    a merged tally, the word secure
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat both embedded prints and the open counts.
+2. Reject a note that replaces a print or fills a blank.
+3. Name the following subject while this review stays open.
+
+### 20.1 A note may quote the files. It may not improve the files.
+
+An Elmfield note may say what was measured. From the source script, keep the inbox line, the form line, and the independent list, with both failure labels and no `ok` line. From the indicator script, keep `invalid: 198.51.100.400`, `valid: 3`, the two hit tuples in mail order, and the community list of `donate-elmfield.example` then `203.0.113.9`. Keep the AMBER domain in the hits and out of that community list. From the notes, keep email logs at 30 days and donation logs at 90, the four weekdays without Thursday, and the week's counts of 3, 1, 1, and 1 as a separate tally from the two lab hits.
+
+The blanks stay blank. No password, no phone number, no deputy's name, no date for the observed deputy run, no vendor product, and no lookalike domain are available to copy. vol-12 stays a non-match without a MISS line. honeypot-foundry is a supplementary repository, and neither script measured a control from it.
+
+Chapter 4 already closed on its own sentence. The drawing above quotes that sentence once. This note does not reopen it as a finished review. Quoting the two prints is the permission the note has. Polishing either script into a neater result sits outside that permission.
+
+### 20.2 Worked example
+
+| Leaving-note sentence | Why it fails or stands | Decision |
+|---|---|---|
+| "Both prints remain, and AMBER is a hit that is not shareable." | The files plus the label | May stay |
+| "The week counted one match. The lab counted two hits." | Separate tallies | May stay |
+| "The labs were merged, an ok line was added, and the password was stored." | Replaces the files | Reject |
+| "Twenty lessons make Elmfield secure." | The review is still open | Reject |
+
+> **Synthetic case.** The note is a classroom page about Elmfield Food Bank Network. It is not a letter to donors.
+
+### Errors and limits
+
+Twenty English lessons meet Elmfield's planning minimum and leave this review open. A fresh Friday-feedback question can still earn its own later Elmfield lesson. These English chapters do not publish another language edition. Threat intelligence stays this course. Authorized offensive security and red team is the learner's following subject, and that subject is not started here. Open items at Elmfield stay open on that turn. These chapters do not call Elmfield finished, and they do not award a credential.
+
+### Apply
+
+- **EX066 — Four claims.** A classmate's Elmfield note adds an `ok` line and a MISS line, puts the AMBER domain on the community list, merges the week's one match with the lab's two hits, prints a password and a phone number, and says twenty lessons make Elmfield secure. Which claims do you reject, and what do twenty lessons meet? *Rubric:* 3 = reject the ok line, the MISS line, the AMBER community listing, the merged tally, the password, the phone number, and the secure claim; keep both prints, valid: 3, the GREEN-then-address community list, 30 and 90 as prose, and the week's counts apart from the two hits; twenty lessons meet the planning minimum and leave review open;; 2 = reject the closings and keep the prints;; 1 = one claim;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Worked results
 
-Model answers for EX001–EX050. Elmfield Food Bank Network, Sam Okafor, the Charity Cyber Circle and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX066. Elmfield Food Bank Network, Sam Okafor, the Charity Cyber Circle and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** Information — it has not been checked or connected to any decision EFBN must make.
 
@@ -720,6 +2058,38 @@ Model answers for EX001–EX050. Elmfield Food Bank Network, Sam Okafor, the Cha
 **EX049.** A short monthly summary paragraph for the chair.
 
 **EX050.** Work offline on synthetic data only, and never visit or connect to the indicator domains.
+
+**EX051.** No. The dependency lines follow first sighting, and names append in source order. The independent line is the last print. A later deputy does not reorder the script.
+
+**EX052.** The inbox line fails because its name list has length 2. The form line fails because the key contains Sam. `or` does not add the tests. This print has no `ok` line.
+
+**EX053.** The key contains the capital sequence Sam, and the length test is false for that single name. The script stores no staff list and no deputy.
+
+**EX054.** The brackets hold one name, National charity advisories, because its needs list is empty. Email sources have a non-empty needs list. The channel word is not on the line, and a later mailbox fix does not edit the print.
+
+**EX055.** `valid: 3` counts three kept pairs. The invalid address is excluded. The AMBER domain is included. The integer is not the community list.
+
+**EX056.** 400 is above 255, so `ip_address` raises, the digit test prints invalid, and the pair is skipped. `203.0.113.9` parses. The script makes no DNS call.
+
+**EX057.** The order is the mail list. The set only tests membership. `news.example` is a mail row that does not qualify. Do not sort by label.
+
+**EX058.** It is a hit on the office row and it is inside `valid`. It is not shareable, because the label is TLP:AMBER. Blocking it stays inside EFBN.
+
+**EX059.** The walk follows valid build order. CLEAR-before-GREEN in the test tuple is not a sort. AMBER fails the label test. The invalid address was never in `valid`.
+
+**EX060.** vol-12 stays in `mail` with `news.example`. It is absent from hits because that value is not valid. Neither script prints MISS. Do not delete the row.
+
+**EX061.** The week counted 3 logged, 1 match, 1 password change, and 1 feedback. The lab counted two hit tuples and printed no password. The tallies stay separate.
+
+**EX062.** The paragraph may name the GREEN domain and a count that does not reveal the other name. The AMBER domain must be absent. The chair can still be told inside EFBN. No phone number is printed.
+
+**EX063.** Monday is read and log, Tuesday is check logs, Wednesday is warn, and Friday is feedback. Thursday is absent. The chair added a monthly paragraph. Neither lab prints a day.
+
+**EX064.** `news.example` is the stored non-match. The test is exact membership. A lookalike would miss, but this list has no such row. Do not invent one.
+
+**EX065.** Email sign-ins last 30 days and donation logins last 90 days. Neither lab prints those integers. A missing log is a gap, not proof of safety.
+
+**EX066.** Reject the ok line, the MISS line, the AMBER community listing, the merged tally, the password, the phone number, and the secure claim. Keep both prints, `valid: 3`, the community list with the GREEN domain then the address, 30 and 90 as prose, and the week's counts apart from the two hits. Twenty lessons meet the planning minimum and leave review open.
 
 <a id="references"></a>
 

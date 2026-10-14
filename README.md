@@ -22,7 +22,7 @@
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
   |    |  SOC   |  |  DFIR  |  |  CTI   |  |  RED   |  |   AI   |    |
-  |    | 15.1%  |  | 23.0%  |  | 16.7%  |  | 22.2%  |  | 30.7%  |    |
+  |    | 15.1%  |  | 23.0%  |  | 17.5%  |  | 22.2%  |  | 30.7%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |                 ________    ________    ________                 |
@@ -38,7 +38,7 @@
 
 | Language edition | Chapter anchors / indexed positions | Structural coverage |
 |---|---:|---:|
-| English (`en`) | 4,264 / 4,442 | 96.0% |
+| English (`en`) | 4,280 / 4,458 | 96.0% |
 | Português (`pt`) | 2,547 / 4,224 | 60.3% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
@@ -47,7 +47,7 @@
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,327 / 37,968** | **19.3%** |
+| **All nine editions** | **7,343 / 37,984** | **19.3%** |
 <!-- open-cyber-academy:multilingual-score:end -->
 
 <!-- open-cyber-academy:onboarding:start -->
@@ -144,11 +144,11 @@ Under the [documented calendar convention](STUDY_CALENDAR.md), **13 October to 1
 
 ## Publication and translation snapshot
 
-**Inventory consulted: 14 October 2026.** The English row matches the [published chapter inventory](LANGUAGE_LESSON_PROGRESS.md) after rapid Cybersecurity, Information security, Data governance, Privacy and data protection, Human factors and cyber policy, Security architecture and engineering, Cryptography and trust services, Web3, blockchain and cryptoasset security, Identity and access management, Network and communications security, Systems, endpoints and hardware security, Cloud and container security, Application and software supply chain security, Security operations and blue team, and Digital forensics and malware analysis each reached chapter 20, and after the English security-governance manuscript also reached chapter 20. Those courses are **20/20**. The security-governance edition line remains a working draft. English anchors are **4,264 / 4,442**. The explicit daily count stays **30 / 120,060** because these books still use chapter anchors, not `lesson-NN`. Portuguese and Spanish rows were regenerated from the manuscripts already on disk and were not re-audited as translations. Rapid privacy Portuguese is **10/10** on its own index after the committed chapters 05–10. The table is a snapshot, not a live counter. A course with a partial manuscript and its principal book are the same availability unit, counted once.
+**Inventory consulted: 14 October 2026.** The English row matches the [published chapter inventory](LANGUAGE_LESSON_PROGRESS.md) after rapid Cybersecurity, Information security, Data governance, Privacy and data protection, Human factors and cyber policy, Security architecture and engineering, Cryptography and trust services, Web3, blockchain and cryptoasset security, Identity and access management, Network and communications security, Systems, endpoints and hardware security, Cloud and container security, Application and software supply chain security, Security operations and blue team, Digital forensics and malware analysis, and Threat intelligence and OSINT each reached chapter 20, and after the English security-governance manuscript also reached chapter 20. Those courses are **20/20**. The security-governance edition line remains a working draft. English anchors are **4,280 / 4,458**. The explicit daily count stays **30 / 120,060** because these books still use chapter anchors, not `lesson-NN`. Portuguese and Spanish rows were regenerated from the manuscripts already on disk and were not re-audited as translations. Rapid privacy Portuguese is **10/10** on its own index after the committed chapters 05–10. The table is a snapshot, not a live counter. A course with a partial manuscript and its principal book are the same availability unit, counted once.
 
 | Language | Courses / books with a manuscript, out of 207 | Availability | Reported chapters / indexed positions | Explicit daily lessons / 120,060 baseline |
 |---|---:|---:|---:|---:|
-| English — reference | 199 / 207 | 96.14% | 4,264 / 4,442 | 30 / 120,060 |
+| English — reference | 199 / 207 | 96.14% | 4,280 / 4,458 | 30 / 120,060 |
 | Português | 124 / 207 | 59.90% | 2,547 / 4,224 | 0 / 120,060 |
 | Español | 27 / 207 | 13.04% | 516 / 4,186 | 0 / 120,060 |
 | עברית | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
@@ -220,7 +220,7 @@ levels/<level>/<area>/
 
 **Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The original English catalog had **4,186 legacy subject-module positions**. The [structure table](#courses-weekly-chapters-and-daily-lessons) explains how an area, a course, a book, a weekly chapter and a daily lesson differ. The multilingual shelf and the English-only course matrix use different denominators and different tests. The daily-lesson baseline is measured separately. These are plans, not finished books. 199 English manuscripts contain public work in progress; **zero books have passed the complete-book gate**.
 
-**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. The original 4,186-position catalog had 336 manually tailored English chapter briefs; the remaining original summaries were template-based. The [nine-language area table](WRITING_PROGRESS.md) gives current chapter-anchor counts and denominators for every area and language; the [EN/PT/ES lesson inventory](LANGUAGE_LESSON_PROGRESS.md) reports additional structural signals and currently lists **4,264 of 4,442** indexed English positions. The [English course table](COURSE_WRITING_PROGRESS.md) retains its separate legacy 300-word draft test and A4 checkpoints. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
+**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. The original 4,186-position catalog had 336 manually tailored English chapter briefs; the remaining original summaries were template-based. The [nine-language area table](WRITING_PROGRESS.md) gives current chapter-anchor counts and denominators for every area and language; the [EN/PT/ES lesson inventory](LANGUAGE_LESSON_PROGRESS.md) reports additional structural signals and currently lists **4,280 of 4,458** indexed English positions. The [English course table](COURSE_WRITING_PROGRESS.md) retains its separate legacy 300-word draft test and A4 checkpoints. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
 
 A finished book must contain the course's substantive teaching, with a worked example, exercise and answer for every authored weekday lesson, and pass technical, source, rights, language and accessibility review. Page count is a measured property of the book, not its writing target or proof of completion. The [book standard](BOOK_STANDARD.md) explains the gate.
 

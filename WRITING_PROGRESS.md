@@ -27,7 +27,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | APP | [Application and software supply chain security](levels/rapid-1-month/application-supply-chain/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
 | SOC | [Security operations and blue team](levels/rapid-1-month/security-operations-blue-team/README.md) | 198/198 (100.0%) | 52/182 (28.6%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 250/1654 (15.1%) |
 | DFIR | [Digital forensics and malware analysis](levels/rapid-1-month/digital-forensics-malware/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
-| CTI | [Threat intelligence and OSINT](levels/rapid-1-month/threat-intelligence-osint/README.md) | 182/182 (100.0%) | 91/182 (50.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 273/1638 (16.7%) |
+| CTI | [Threat intelligence and OSINT](levels/rapid-1-month/threat-intelligence-osint/README.md) | 198/198 (100.0%) | 91/182 (50.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 289/1654 (17.5%) |
 | RED | [Authorized offensive security and red team](levels/rapid-1-month/offensive-security-red-team/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 364/1638 (22.2%) |
 | AI | [AI and machine-learning security](levels/rapid-1-month/ai-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 139/182 (76.4%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 503/1638 (30.7%) |
 | PQC | [Quantum and post-quantum security](levels/rapid-1-month/quantum-post-quantum-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 9/182 (4.9%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 373/1638 (22.8%) |
@@ -38,7 +38,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 
 | Language | Numbered chapters / indexed positions | Structural coverage |
 |---|---:|---:|
-| English (`en`) | 4,264 / 4,442 | 96.0% |
+| English (`en`) | 4,280 / 4,458 | 96.0% |
 | Português (`pt`) | 2,547 / 4,224 | 60.3% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
@@ -47,6 +47,6 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,327 / 37,968** | **19.3%** |
+| **All nine editions** | **7,343 / 37,984** | **19.3%** |
 
 These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).
