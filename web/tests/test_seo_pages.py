@@ -81,6 +81,33 @@ def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     assert client.get("/api/catalog").headers["x-robots-tag"] == "noindex"
 
 
+def test_sitemap_language_alternates_are_reciprocal_and_authored():
+    sitemap_ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    xhtml_link = "{http://www.w3.org/1999/xhtml}link"
+    pages = {}
+    for language in ("en", "pt", "es"):
+        root = ET.fromstring((ROOT / f"web/public/sitemap-{language}.xml").read_text())
+        for page in root.findall(f"{sitemap_ns}url"):
+            pages[page.findtext(f"{sitemap_ns}loc")] = {
+                alternate.attrib["hreflang"]: alternate.attrib["href"]
+                for alternate in page.findall(xhtml_link)
+            }
+
+    base = "/courses/professional-6-months/ot-iot-security/chapters/"
+    variants = {
+        "en": f"https://opencyber.academy{base}en/1/",
+        "pt": f"https://pt.opencyber.academy{base}pt/1/",
+        "es": f"https://es.opencyber.academy{base}es/1/",
+    }
+    assert all(pages[url] == variants for url in variants.values())
+    english_only = "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/"
+    assert pages[english_only] == {}
+    assert all(
+        target in pages and pages[target] == alternates
+        for alternates in pages.values() for target in alternates.values()
+    )
+
+
 def test_language_hosts_and_unwritten_study_slots_are_honest(client):
     redirect = client.get("/", headers={"host": "opencyber.academy", "accept-language": "pt-BR,pt;q=0.9,en;q=0.8"}, follow_redirects=False)
     assert redirect.status_code == 302

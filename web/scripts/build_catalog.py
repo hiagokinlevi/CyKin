@@ -26,12 +26,22 @@ def site_for_language(language: str) -> str:
     return "https://opencyber.academy" if language == "en" else f"https://{language}.opencyber.academy"
 
 
-def sitemap_xml(routes: list[str], language: str) -> str:
+def sitemap_xml(routes: list[str], language: str, alternates: dict[str, dict[str, str]]) -> str:
     site = site_for_language(language)
     urls = dict.fromkeys(site + route for route in routes)
+    xhtml_namespace = (' xmlns:xhtml="http://www.w3.org/1999/xhtml"'
+                       if any(url in alternates for url in urls) else '')
+
+    def entry(url: str) -> str:
+        variants = alternates.get(url, {})
+        links = "".join(
+            f'<xhtml:link rel="alternate" hreflang="{code}" href="{escape(href)}" />'
+            for code, href in variants.items()
+        )
+        return f"  <url><loc>{escape(url)}</loc>{links}</url>\n"
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-            + "".join(f"  <url><loc>{escape(url)}</loc></url>\n" for url in urls)
+            f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"{xhtml_namespace}>\n'
+            + "".join(entry(url) for url in urls)
             + "</urlset>\n")
 LEVELS = {
     "rapid-1-month": {"en": "Rapid course", "pt": "Curso rápido", "es": "Curso rápido"},
@@ -157,8 +167,26 @@ if __name__ == "__main__":
             continue
         by_language[language].extend(f"/courses/{level}/{area}/lessons/{language}/{lesson['number']}/" for lesson in units["lessons"])
         by_language[language].extend(f"/courses/{level}/{area}/chapters/{language}/{chapter['number']}/" for chapter in units["chapters"])
+    translation_groups: dict[tuple[str, ...], dict[str, str]] = {}
+    for language in INDEXED_LANGUAGES:
+        for route in ("/", "/about/"):
+            translation_groups.setdefault((route,), {})[language] = site_for_language(language) + route
+    for course_language, units in index.items():
+        level, area, language = course_language.split("/")
+        if language not in INDEXED_LANGUAGES:
+            continue
+        for kind in ("lessons", "chapters"):
+            for unit in units[kind]:
+                number = unit["number"]
+                route = f"/courses/{level}/{area}/{kind}/{language}/{number}/"
+                translation_groups.setdefault((level, area, kind, str(number)), {})[language] = site_for_language(language) + route
+    alternates = {
+        url: dict(sorted(variants.items()))
+        for variants in translation_groups.values() if len(variants) > 1
+        for url in variants.values()
+    }
     for language, routes in by_language.items():
-        xml = sitemap_xml(routes, language)
+        xml = sitemap_xml(routes, language, alternates)
         OUTPUT.with_name(f"sitemap-{language}.xml").write_text(xml, encoding="utf-8")
         if language == "en":
             SITEMAP.write_text(xml, encoding="utf-8")
