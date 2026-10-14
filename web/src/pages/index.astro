@@ -110,24 +110,13 @@ const areaBridges: Record<string, string> = {
 
   <section class="section start-section" id="comece">
     <div class="shell">
-      <div class="section-head"><div class="eyebrow">START HERE</div><h2>Two ways to find your next lesson.</h2><p>Choose your route. Both paths show every subject in order and open chapters that have teaching text.</p></div>
-      <div class="routes">
-        <form id="route-theme" class="route-card card">
-          <div class="route-top"><span class="route-number">01</span><span class="route-shape">◈</span></div>
-          <h3>I have a subject in mind</h3>
-          <p>Choose a language, subject and level. Open the course and follow its lessons in order.</p>
-          <div class="route-steps"><span>Language</span><span>→</span><span>Subject</span><span>→</span><span>Level</span></div>
-          <div class="route-fields"><div class="field"><label for="language-theme">1. Language</label><select id="language-theme" required><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div><div class="field"><label for="area-theme">2. Subject</label><select id="area-theme" required></select></div><div class="field"><label for="level-theme">3. Level</label><select id="level-theme" required></select></div></div>
-          <button class="button route-button" type="submit">Open course <span>↗</span></button>
-        </form>
-        <form id="route-level" class="route-card card">
-          <div class="route-top"><span class="route-number">02</span><span class="route-shape">▤</span></div>
-          <h3>I want to study a whole level</h3>
-          <p>Choose a language and level. Browse all 23 subjects in curriculum order, with their lesson guides.</p>
-          <div class="route-steps"><span>Language</span><span>→</span><span>Level</span><span>→</span><span>23 subjects</span></div>
-          <div class="route-fields"><div class="field"><label for="language-level">1. Language</label><select id="language-level" required><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div><div class="field"><label for="level-level">2. Level</label><select id="level-level" required></select></div><div class="route-note">Move from the first subject to the last, lesson by lesson, with each book in reach.</div></div>
-          <button class="button secondary route-button" type="submit">View all subjects <span>↗</span></button>
-        </form>
+      <div class="section-head"><div class="eyebrow">START HERE</div><h2>Find your course, one choice at a time.</h2><p>Choose a route, then use the buttons to select your language, subject and level.</p></div>
+      <div class="study-wizard card" id="study-wizard" aria-live="polite">
+        <div class="wizard-top"><span id="wizard-step">STEP 1 OF 4</span><span id="wizard-trail">Your study route</span></div>
+        <h3 id="wizard-question">How would you like to begin?</h3>
+        <p id="wizard-help">Choose a subject or follow every subject in a level.</p>
+        <div class="wizard-choices" id="wizard-choices" role="group" aria-label="Study choices"></div>
+        <div class="wizard-footer"><button id="wizard-back" class="button secondary" type="button" hidden>← Back</button><span id="wizard-note">You can change your choice at any step.</span></div>
       </div>
       <p id="catalog-status" class="catalog-status" role="status">Loading the public catalog…</p>
     </div>
@@ -137,47 +126,77 @@ const areaBridges: Record<string, string> = {
     <div class="shell philosophy-grid"><div><div class="eyebrow">FROM CONCEPT TO PRACTICE</div><h2>Learning you can verify.</h2><p class="muted">Each course has one book. Subjects organize modules, weekly chapters group daily lessons, and each lesson has a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.</p><a class="text-link" href="/read/?path=BOOK_STANDARD.md">Read the editorial standard →</a></div><div class="principles"><div><span>01</span><div><strong>Transparent source</strong><p>Open text with its course and edition identified.</p></div></div><div><span>02</span><div><strong>No entry barrier</strong><p>Read courses, books and exercises without an account.</p></div></div><div><span>03</span><div><strong>Ready for other AIs</strong><p>Public API, Markdown and read-only MCP server.</p></div></div></div></div>
   </section>
 
+  <section class="section home-book"><div class="shell home-book-inner"><div><div class="eyebrow">A BOOK BY OUR FOUNDER</div><h2>Confronto Cibernético</h2><p>Hiago Kin Levi explores how to investigate, contain and respond to advanced persistent threats. The book connects incident response, digital forensics and tactical intelligence, and presents the “black team” approach to coordinated defense.</p></div><a class="button secondary" href="https://confrontocibernetico.com.br/" rel="noopener noreferrer">Discover the book ↗</a></div></section>
+
   <section class="section ai-strip"><div class="shell ai-inner"><div><div class="eyebrow">FOR SYSTEMS AND AGENTS</div><h2>A library other AIs can consult.</h2><p>ChatGPT, Claude, DAI and other tools can discover courses and read lessons through MCP or the open API. Every response identifies its public manuscript.</p></div><a class="button gold" href="/for-ai/">Explore MCP access →</a></div></section>
   <script>
     import { siteLanguage } from '../lib/i18n';
-    type Course = { level: string; area: string; title: string; number: number };
+    type Course = { level: string; area: string; title: string; titles: Record<string,string>; number: number };
     type Catalog = { courses: Course[]; level_order: string[]; level_names: Record<string, Record<string,string>> };
     const status = document.getElementById('catalog-status')!;
-    const fill = (id: string, options: [string,string][]) => {
-      const element = document.getElementById(id) as HTMLSelectElement;
-      element.replaceChildren(...options.map(([value,label]) => { const opt = document.createElement('option'); opt.value=value; opt.textContent=label; return opt; }));
+    const wizard = document.getElementById('wizard-choices')!;
+    const wording = {
+      en: { route: 'How would you like to begin?', routeHelp: 'Choose a subject or follow every subject in a level.', subject: 'I know my subject', subjectHelp: 'Choose a language, then a subject and study level.', levelRoute: 'I want a whole level', levelHelp: 'Choose a language and level, then browse its 23 separate courses.', language: 'Which language would you like to study in?', languageHelp: 'You can switch editions later. Published lesson availability varies by language.', chooseSubject: 'Choose a subject', chooseLevel: 'Choose a study level', chooseCourse: 'Choose a course in this level', subjectHelpStep: 'Each subject has its own course and book.', levelHelpStep: 'Courses in this level are separate; select the one you want to open.', courseHelp: 'Choose one subject to open its course and lesson guide.', back: '← Back', note: 'You can change your choice at any step.', step: 'STEP', of: 'OF', loaded: 'Study routes are ready.', unavailable: 'The course catalog is temporarily unavailable.', browse: 'Browse courses by level →' },
+      pt: { route: 'Como você prefere começar?', routeHelp: 'Escolha um tema ou percorra todos os temas de um nível.', subject: 'Já sei o tema', subjectHelp: 'Escolha o idioma, depois o tema e o nível de estudo.', levelRoute: 'Quero estudar um nível', levelHelp: 'Escolha o idioma e o nível para ver os 23 cursos separados.', language: 'Em qual idioma você quer estudar?', languageHelp: 'Você pode trocar a edição depois. Aulas disponíveis variam conforme o idioma.', chooseSubject: 'Escolha um tema', chooseLevel: 'Escolha um nível de estudo', chooseCourse: 'Escolha um curso deste nível', subjectHelpStep: 'Cada tema tem seu próprio curso e livro.', levelHelpStep: 'Os cursos deste nível são separados; abra aquele que quer estudar.', courseHelp: 'Escolha um tema para abrir o curso e o guia de aulas.', back: '← Voltar', note: 'Você pode alterar sua escolha em qualquer etapa.', step: 'ETAPA', of: 'DE', loaded: 'As trilhas de estudo estão prontas.', unavailable: 'O catálogo de cursos está temporariamente indisponível.', browse: 'Explorar cursos por nível →' },
+      es: { route: '¿Cómo prefieres comenzar?', routeHelp: 'Elige un tema o recorre todos los temas de un nivel.', subject: 'Ya sé el tema', subjectHelp: 'Elige el idioma, luego el tema y el nivel de estudio.', levelRoute: 'Quiero estudiar un nivel', levelHelp: 'Elige el idioma y el nivel para ver los 23 cursos separados.', language: '¿En qué idioma quieres estudiar?', languageHelp: 'Puedes cambiar la edición después. Las lecciones disponibles varían según el idioma.', chooseSubject: 'Elige un tema', chooseLevel: 'Elige un nivel de estudio', chooseCourse: 'Elige un curso de este nivel', subjectHelpStep: 'Cada tema tiene su propio curso y libro.', levelHelpStep: 'Los cursos de este nivel son separados; abre el que quieres estudiar.', courseHelp: 'Elige un tema para abrir el curso y su guía de lecciones.', back: '← Volver', note: 'Puedes cambiar tu elección en cualquier etapa.', step: 'PASO', of: 'DE', loaded: 'Las rutas de estudio están listas.', unavailable: 'El catálogo de cursos no está disponible por ahora.', browse: 'Explorar cursos por nivel →' },
     };
+    const label = wording[siteLanguage()];
+    type Choice = { step: number; mode: 'subject' | 'level' | null; language: string | null; area: string | null; level: string | null };
+    let choice: Choice = { step: 0, mode: null, language: null, area: null, level: null };
+    const history: Choice[] = [];
+    let data: Catalog | null = null;
+    const proceed = (next: Partial<Choice>) => { history.push({ ...choice }); choice = { ...choice, ...next, step: choice.step + 1 }; renderWizard(); };
+    const origin = (language: string) => language === 'en' ? 'https://opencyber.academy' : `https://${language}.opencyber.academy`;
+    function addChoice(text: string, detail: string, action: () => void, href?: string) {
+      const element = document.createElement(href ? 'a' : 'button');
+      element.className = 'wizard-choice';
+      if (href) (element as HTMLAnchorElement).href = href;
+      else { (element as HTMLButtonElement).type = 'button'; element.addEventListener('click', action); }
+      const heading = document.createElement('strong'); heading.textContent = text;
+      const hint = document.createElement('span'); hint.textContent = detail;
+      element.append(heading, hint); wizard.append(element);
+    }
+    function renderWizard() {
+      if (!data) return;
+      wizard.replaceChildren();
+      const question = document.getElementById('wizard-question')!;
+      const help = document.getElementById('wizard-help')!;
+      const trail = document.getElementById('wizard-trail')!;
+      document.getElementById('wizard-step')!.textContent = `${label.step} ${choice.step + 1} ${label.of} 4`;
+      const parts = [choice.mode === 'subject' ? label.subject : choice.mode === 'level' ? label.levelRoute : '', choice.language?.toUpperCase(), choice.area?.replaceAll('-', ' '), choice.level ? data.level_names[choice.level][choice.language || 'en'] : ''].filter(Boolean);
+      trail.textContent = parts.length ? parts.join(' / ') : label.note;
+      (document.getElementById('wizard-back') as HTMLButtonElement).hidden = choice.step === 0;
+      document.getElementById('wizard-note')!.textContent = label.note;
+      if (choice.step === 0) {
+        question.textContent = label.route; help.textContent = label.routeHelp;
+        addChoice(label.subject, label.subjectHelp, () => proceed({ mode: 'subject' }));
+        addChoice(label.levelRoute, label.levelHelp, () => proceed({ mode: 'level' }));
+      } else if (choice.step === 1) {
+        question.textContent = label.language; help.textContent = label.languageHelp;
+        for (const [code, name] of [['en', 'English'], ['pt', 'Português'], ['es', 'Español']]) addChoice(name, code.toUpperCase(), () => proceed({ language: code }));
+      } else if (choice.step === 2 && choice.mode === 'subject') {
+        question.textContent = label.chooseSubject; help.textContent = label.subjectHelpStep;
+        for (const course of data.courses.filter(course => course.level === data!.level_order[0])) addChoice(course.titles[choice.language!] || course.title, String(course.number).padStart(2, '0'), () => proceed({ area: course.area }));
+      } else if (choice.step === 2) {
+        question.textContent = label.chooseLevel; help.textContent = label.levelHelpStep;
+        for (const level of data.level_order) addChoice(data.level_names[level][choice.language!] || data.level_names[level].en, '', () => proceed({ level }));
+      } else if (choice.mode === 'subject') {
+        question.textContent = label.chooseLevel; help.textContent = label.courseHelp;
+        for (const level of data.level_order) addChoice(data.level_names[level][choice.language!] || data.level_names[level].en, '', () => {}, `${origin(choice.language!)}/courses/${level}/${choice.area}/?lang=${choice.language}`);
+      } else {
+        question.textContent = label.chooseCourse; help.textContent = label.levelHelpStep;
+        for (const course of data.courses.filter(course => course.level === choice.level)) addChoice(course.titles[choice.language!] || course.title, String(course.number).padStart(3, '0'), () => {}, `${origin(choice.language!)}/courses/${choice.level}/${course.area}/?lang=${choice.language}`);
+      }
+    }
+    document.getElementById('wizard-back')?.addEventListener('click', () => { const previous = history.pop(); if (previous) { choice = previous; renderWizard(); } });
     try {
       const response = await fetch('/api/catalog');
       if (!response.ok) throw new Error('Catalog unavailable');
-      const data = await response.json() as Catalog;
-      const areas = data.courses.filter(c => c.level === data.level_order[0]).map(c => [c.area, c.title] as [string,string]);
-      fill('area-theme', areas);
-      const setLevels = (select: string, lang: string) => fill(select, data.level_order.map(key => [key, data.level_names[key][lang] || data.level_names[key].en]));
-      const detected = siteLanguage();
-      (document.getElementById('language-theme') as HTMLSelectElement).value = detected;
-      (document.getElementById('language-level') as HTMLSelectElement).value = detected;
-      setLevels('level-theme', detected); setLevels('level-level', detected);
-      document.getElementById('language-theme')?.addEventListener('change', event => setLevels('level-theme', (event.target as HTMLSelectElement).value));
-      document.getElementById('language-level')?.addEventListener('change', event => setLevels('level-level', (event.target as HTMLSelectElement).value));
-      status.textContent = 'Catalog loaded. Each lesson is read from the current public manuscript.';
-      (document.getElementById('route-theme') as HTMLFormElement).addEventListener('submit', event => {
-        event.preventDefault();
-        const lang = (document.getElementById('language-theme') as HTMLSelectElement).value;
-        const area = (document.getElementById('area-theme') as HTMLSelectElement).value;
-        const level = (document.getElementById('level-theme') as HTMLSelectElement).value;
-        const origin = lang === 'en' ? 'https://opencyber.academy' : `https://${lang}.opencyber.academy`;
-        location.href=`${origin}/courses/${level}/${area}/?lang=${lang}`;
-      });
-      (document.getElementById('route-level') as HTMLFormElement).addEventListener('submit', event => {
-        event.preventDefault();
-        const lang = (document.getElementById('language-level') as HTMLSelectElement).value;
-        const level = (document.getElementById('level-level') as HTMLSelectElement).value;
-        const origin = lang === 'en' ? 'https://opencyber.academy' : `https://${lang}.opencyber.academy`;
-        location.href=`${origin}/levels/${level}/?lang=${lang}`;
-      });
+      data = await response.json() as Catalog;
+      renderWizard(); status.textContent = label.loaded;
     } catch {
-      status.innerHTML = 'The site catalog is temporarily unavailable. <a href="/read/?path=README.md">Read the public library guide ↗</a>';
+      status.textContent = label.unavailable;
+      wizard.replaceChildren(); addChoice(label.browse, '', () => {}, '/levels/');
     }
 
     const mapNodes = [...document.querySelectorAll<HTMLAnchorElement>('.map-node')];
@@ -227,10 +246,10 @@ const areaBridges: Record<string, string> = {
 </BaseLayout>
 
 <style>
-  .hero { min-height: 610px; padding: 90px 0 74px; background: linear-gradient(108deg, var(--bg) 15%, var(--bg-2)); border-bottom: 1px solid var(--line); }
+  .hero { min-height: 610px; padding: 90px 0 74px; background: var(--hero-gradient); border-bottom: 1px solid var(--line); }
   .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(30px, 5vw, 76px); align-items: center; }
   .hero-copy { position: relative; z-index: 2; }
-  .hero-copy h1 { font-size: clamp(2.9rem, 5.15vw, 4.8rem); line-height: 1.1; }
+  .hero-copy h1 { font-size: clamp(2.7rem, 4.6vw, 4.35rem); line-height: 1.1; }
   .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); margin-right: 9px; }
   .hero-copy > p { color: var(--muted); font-size: 1.14rem; max-width: 590px; line-height: 1.7; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 29px; }
@@ -285,20 +304,26 @@ const areaBridges: Record<string, string> = {
   .map-progress div { height: 100%; width: 4.35%; background: var(--gold); transition: width .6s ease; }
   .map-focus > small { color: var(--muted); font-size: .7rem; }
   .start-section { background: var(--bg); }
-  .routes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  .route-card { display: flex; flex-direction: column; padding: 31px; box-shadow: none; transition: border-color .2s, transform .2s; }
-  .route-card:hover { border-color: color-mix(in srgb, var(--gold) 55%, var(--line)); transform: translateY(-2px); }
-  .route-top { display: flex; justify-content: space-between; align-items: center; }
-  .route-number { color: var(--gold); font-weight: 600; letter-spacing: .15em; font-size: .9rem; }
-  .route-shape { font-size: 1.65rem; color: var(--gold); }
-  .route-card h3 { font-size: 1.4rem; margin: 16px 0 8px; }
-  .route-card > p { color: var(--muted); min-height: 53px; margin-bottom: 17px; }
-  .route-steps { display: flex; align-items: center; gap: 9px; color: var(--gold); font-size: .77rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 27px; }
-  .route-steps span:nth-child(even) { color: var(--muted); }
-  .route-fields { display: grid; gap: 15px; flex: 1; }
-  .route-note { align-self: start; background: var(--gold-soft); color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 13px 15px; font-size: .84rem; }
-  .route-button { margin-top: 25px; width: 100%; justify-content: space-between; }
+  .study-wizard { max-width: 920px; min-height: 310px; padding: clamp(22px, 4vw, 38px); box-shadow: none; }
+  .wizard-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 15px; margin-bottom: 24px; color: var(--muted); font-size: .78rem; }
+  #wizard-step { color: var(--gold); letter-spacing: .13em; font-weight: 600; }
+  #wizard-trail { text-align: right; }
+  .study-wizard h3 { font-size: clamp(1.45rem, 2.4vw, 2rem); margin: 0 0 7px; }
+  .study-wizard > p { color: var(--muted); font-size: .94rem; }
+  .wizard-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-height: 430px; overflow-y: auto; margin-top: 25px; padding: 2px; }
+  .wizard-choices :global(.wizard-choice) { display: grid; align-content: center; gap: 4px; min-height: 65px; padding: 13px 16px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 3px; color: var(--text); text-align: left; font: inherit; }
+  .wizard-choices :global(.wizard-choice:hover), .wizard-choices :global(.wizard-choice:focus-visible) { border-color: var(--gold); background: var(--gold-soft); color: var(--text); }
+  .wizard-choices :global(.wizard-choice strong) { font-size: .99rem; line-height: 1.25; font-weight: 600; }
+  .wizard-choices :global(.wizard-choice span) { color: var(--muted); font-size: .77rem; }
+  .wizard-footer { min-height: 42px; display: flex; align-items: center; gap: 20px; margin-top: 22px; border-top: 1px solid var(--line); padding-top: 17px; }
+  .wizard-footer .button { padding: 6px 12px; }
+  .wizard-footer span { color: var(--muted); font-size: .82rem; }
   .catalog-status { color: var(--muted); font-size: .78rem; margin: 17px 0 0; }
+  .home-book { background: var(--hero-gradient); border-bottom: 1px solid var(--line); }
+  .home-book-inner { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+  .home-book-inner > div { max-width: 700px; }
+  .home-book-inner p { color: var(--muted); margin-bottom: 0; }
+  .home-book-inner .button { flex: none; }
   .philosophy { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; align-items: center; }
   .philosophy-grid > div:first-child > p { max-width: 540px; }
@@ -329,8 +354,9 @@ const areaBridges: Record<string, string> = {
     .map-intro { align-items: start; flex-direction: column; }
     .map-nodes { grid-template-columns: 1fr; }
     .map-phase { padding: 13px; }
-    .routes, .philosophy-grid { grid-template-columns: 1fr; }
-    .route-card { padding: 24px; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .wizard-choices { grid-template-columns: 1fr; }
+    .home-book-inner { flex-direction: column; align-items: flex-start; }
     .ai-inner { align-items: start; flex-direction: column; }
     .section-head { margin-bottom: 20px; }
   }

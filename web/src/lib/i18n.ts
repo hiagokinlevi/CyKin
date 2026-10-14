@@ -16,6 +16,19 @@ export function editionLanguage(): string {
 // Interface text only. Course manuscripts and quoted reference documents retain
 // the language of their published edition.
 const copy: Record<string, [string, string]> = {
+  'Explore': ['Explorar', 'Explorar'],
+  'Menu': ['Menu', 'Menú'],
+  'Find your course, one choice at a time.': ['Encontre seu curso, uma escolha de cada vez.', 'Encuentra tu curso, una elección a la vez.'],
+  'Choose a route, then use the buttons to select your language, subject and level.': ['Escolha uma trilha e use os botões para selecionar idioma, tema e nível.', 'Elige una ruta y usa los botones para seleccionar idioma, tema y nivel.'],
+  'How would you like to begin?': ['Como você prefere começar?', '¿Cómo prefieres comenzar?'],
+  'Choose a subject or follow every subject in a level.': ['Escolha um tema ou percorra todos os temas de um nível.', 'Elige un tema o recorre todos los temas de un nivel.'],
+  'You can change your choice at any step.': ['Você pode alterar sua escolha em qualquer etapa.', 'Puedes cambiar tu elección en cualquier etapa.'],
+  'A BOOK BY OUR FOUNDER': ['UM LIVRO DO FUNDADOR', 'UN LIBRO DEL FUNDADOR'],
+  'Hiago Kin Levi explores how to investigate, contain and respond to advanced persistent threats. The book connects incident response, digital forensics and tactical intelligence, and presents the “black team” approach to coordinated defense.': ['Hiago Kin Levi aborda a investigação, a contenção e a resposta a ameaças persistentes avançadas. O livro conecta resposta a incidentes, perícia digital e inteligência tática, e apresenta a abordagem de “black team” para uma defesa coordenada.', 'Hiago Kin Levi aborda la investigación, la contención y la respuesta a amenazas persistentes avanzadas. El libro conecta la respuesta a incidentes, la informática forense y la inteligencia táctica, y presenta el enfoque de “black team” para una defensa coordinada.'],
+  'Discover the book ↗': ['Conheça o livro ↗', 'Conoce el libro ↗'],
+  'FROM THE FOUNDER': ['DO FUNDADOR', 'DEL FUNDADOR'],
+  "Hiago Kin Levi's book examines response to advanced persistent threats through forensic investigation, containment and tactical intelligence. It introduces the “black team” concept: coordinated defensive, intelligence and operational capabilities. The book is published by Brasport; its Portuguese-language site offers chapter excerpts and edition details.": ['O livro de Hiago Kin Levi examina a resposta a ameaças persistentes avançadas por meio de investigação forense, contenção e inteligência tática. Apresenta o conceito de “black team”: capacidades defensivas, de inteligência e operacionais coordenadas. Publicado pela Brasport, tem trechos de capítulos e informações sobre as edições em seu site.', 'El libro de Hiago Kin Levi examina la respuesta a amenazas persistentes avanzadas mediante investigación forense, contención e inteligencia táctica. Presenta el concepto de “black team”: capacidades defensivas, de inteligencia y operativas coordinadas. Publicado por Brasport, ofrece fragmentos de capítulos e información sobre las ediciones en su sitio web.'],
+  'Explore the book ↗': ['Explore o livro ↗', 'Explora el libro ↗'],
   'About us': ['Sobre nós', 'Sobre nosotros'],
   'Privacy': ['Privacidade', 'Privacidad'],
   'PRIVACY': ['PRIVACIDADE', 'PRIVACIDAD'],

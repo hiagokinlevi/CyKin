@@ -57,23 +57,26 @@ const schema = structuredData || [
     <dialog id="language-offer" aria-labelledby="language-offer-title" aria-describedby="language-offer-text"><div class="eyebrow">LANGUAGE / IDIOMA</div><h2 id="language-offer-title">Study in your language?</h2><p id="language-offer-text">Your browser language is available on OpenCyber Academy.</p><div class="language-offer-actions"><button class="button gold" id="language-offer-switch" type="button">Switch language</button><button class="button secondary" id="language-offer-stay" type="button">Continue in English</button></div></dialog>
     <header class="site-header">
       <div class="shell nav">
-        <a class="brand" href="/" aria-label="OpenCyber Academy, home"><span class="brand-mark"><img src="/favicon.svg" alt="" width="37" height="37" /></span> OpenCyber Academy</a>
+        <a class="brand" href="/" aria-label="OpenCyber Academy, home"><span class="brand-mark"><img src="/favicon.svg" alt="" width="34" height="34" /></span><span class="brand-name">OpenCyber Academy</span></a>
         <div class="catalog-menus" aria-label="Browse courses">
           <details class="catalog-menu" data-mode="level"><summary>By level</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/levels/" data-language-link>All levels →</a><span>Choose a level, then a course</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
           <details class="catalog-menu" data-mode="subject"><summary>By subject</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/subjects/" data-language-link>All subjects →</a><span>Choose a subject, then a level</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
         </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
-          <a href="/calendar/" data-study-calendar-link aria-current={path === '/calendar/' ? 'page' : undefined}>Study calendar</a>
-          <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
-          <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>About us</a>
-          <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
+          <details class="utility-menu"><summary>Explore</summary><div class="utility-menu-panel">
+            <a href="/calendar/" data-study-calendar-link aria-current={path === '/calendar/' ? 'page' : undefined}>Study calendar</a>
+            <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
+            <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>About us</a>
+            <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
+          </div></details>
         </nav>
         <div class="nav-actions">
           <label class="site-language"><span class="sr-only">Site language</span><select id="site-language" aria-label="Site language"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option><option value="he">HE</option><option value="fr">FR</option><option value="ru">RU</option><option value="de">DE</option><option value="zh">ZH</option><option value="ja">JA</option></select></label>
           <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
-          <a class="button secondary" href="/account/">My area</a>
+          <a class="button secondary account-link" href="/account/">My area</a>
         </div>
+        <details class="mobile-nav"><summary aria-label="Open site menu">Menu</summary><nav class="mobile-nav-panel" aria-label="Mobile navigation"><a href="/levels/">By level</a><a href="/subjects/">By subject</a><a href="/#comece">Start here</a><a href="/calendar/">Study calendar</a><a href="/for-ai/">For AIs</a><a href="/about/">About us</a><a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a><a href="/account/">My area</a></nav></details>
       </div>
     </header>
     <main id="main"><slot /></main>
@@ -87,6 +90,8 @@ const schema = structuredData || [
       import { translatePage, siteLanguage, editionLanguage } from '../lib/i18n';
       import { initializeCourseMenus } from '../lib/course-menu';
       const selector = document.getElementById('site-language') as HTMLSelectElement;
+      const mobileNav = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+      mobileNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { mobileNav.open = false; }));
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
         try { const detected = navigator.language.slice(0, 2).toLowerCase(); localStorage.setItem('open-cyber-academy-language-choice', `${detected}:${selector.value === 'en' ? 'declined' : 'accepted'}`); } catch (_) { /* private mode */ }

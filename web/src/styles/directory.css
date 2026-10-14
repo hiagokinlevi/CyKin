@@ -1,5 +1,5 @@
-.directory-heading { padding: 64px 0 45px; background: linear-gradient(110deg, var(--bg-2), var(--bg)); border-bottom: 1px solid var(--line); }
-.directory-heading h1 { font-size: clamp(2.4rem, 5vw, 4.5rem); margin-bottom: 14px; }
+.directory-heading { padding: 64px 0 45px; background: var(--hero-gradient); border-bottom: 1px solid var(--line); }
+.directory-heading h1 { font-size: clamp(2.2rem, 4.2vw, 3.8rem); margin-bottom: 14px; }
 .directory-heading p { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
 .directory-switch { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 .breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; color: var(--muted); font-size: .84rem; margin-bottom: 28px; }
