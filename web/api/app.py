@@ -206,7 +206,8 @@ def lesson_sections(markdown: str) -> dict[int, dict[str, Any]]:
 
 def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = None) -> str:
     numbers = set(exercise_ids) if exercise_ids is not None else set(EXERCISE.findall(chapter))
-    if not numbers:
+    supplementary = list(dict.fromkeys(re.findall(r'\]\(#(w\d+-answer-\d{2})\)', chapter)))
+    if not numbers and not supplementary:
         return ""
     appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones)\b', book, re.M | re.I)
     if not appendix:
@@ -225,6 +226,13 @@ def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = Non
         digits = match.group(1) or match.group(2)
         piece = re.sub(r'(?:\n\s*<a id="answer-ex\d{3,4}"></a>\s*)+$', '', piece)
         pieces.append(f'<a id="answer-ex{digits}"></a>\n' + piece.strip())
+    for anchor in supplementary:
+        match = re.search(rf'^<a id="{re.escape(anchor)}"></a>\s*$', answers, re.M)
+        if not match:
+            continue
+        tail = answers[match.end():]
+        end = re.search(r'^<a id="w\d+-answer-\d{2}"></a>\s*$|^##\s', tail, re.M)
+        pieces.append((f'<a id="{anchor}"></a>' + tail[:end.start() if end else None]).strip())
     return "\n\n".join(pieces)
 
 

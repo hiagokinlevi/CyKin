@@ -62,6 +62,10 @@ def test_public_guide_and_lesson(client):
     assert lesson.json()["exercise_ids"] == ["001"]
     assert "EX001" in lesson.json()["worked_answers"]
     assert "EX002" not in lesson.json()["worked_answers"]
+    assert "W1-R1 — Worked answer" in lesson.json()["worked_answers"]
+    assert "W1-R2 — Worked answer" not in lesson.json()["worked_answers"]
+    second = client.get("/api/lessons/rapid-1-month/incident-response-resilience/en/2").json()
+    assert "W1-R2 — Worked answer" in second["worked_answers"]
     assert client.get("/api/chapters/rapid-1-month/incident-response-resilience/en/1").status_code == 200
 
 
@@ -99,6 +103,10 @@ def test_stateless_mcp_public_and_progress_private(client):
     assert initialize.json()["result"]["protocolVersion"] == "2025-06-18"
     tools = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
     assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course"}
+    lesson = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "read_lesson", "arguments": {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en", "chapter": 1}}})
+    mcp_lesson = json.loads(lesson.json()["result"]["content"][0]["text"])
+    assert "W1-R1 — Worked answer" in mcp_lesson["worked_answers"]
+    assert "W1-R2 — Worked answer" not in mcp_lesson["worked_answers"]
     assert client.post("/mcp", headers={**headers, "Origin": "https://evil.example"}, json={"jsonrpc": "2.0", "id": 3, "method": "ping"}).status_code == 403
     assert client.get("/private/me").status_code == 503
     assert client.post("/private/progress/lesson", json={"level": "rapid-1-month", "area": "cybersecurity", "language": "en", "chapter": 1, "status": "completed"}).status_code == 403

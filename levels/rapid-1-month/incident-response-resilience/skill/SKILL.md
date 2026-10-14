@@ -36,6 +36,12 @@ This is the **rapid introductory** course. Teach one daily lesson at a time in s
 
 The [daily lesson index](../en/SUBJECTS.md) assigns EX001–EX050 to the 20 lessons. Ask for the lesson's worked checkpoint and assigned exercise artifact before showing the final answer. A later case card may never be used to grade an earlier frozen decision. More daily lessons and weekly chapters may be added whenever comprehension or technical depth requires them.
 
+## Week 1 input-review supplements
+
+The principal book integrates [five review units](../en/book/MANUSCRIPT.md#w1-review-01) into Lessons 01–05. Have the learner distinguish an admissible input frame from a narrow model result (W1-R1), then run the complete BSL1, PATH1 and AR1 listings before their respective input-guard extensions. Use a **fresh Python session for each lab**; AR1 also requires its request-bound approval listing before the type gate. Compare the BSL1 extension's five lines, PATH1 extension's five lines and AR1 extension's eight lines with [W1-R2–W1-R4 worked results](../en/book/MANUSCRIPT.md#w1-review-answers). The PATH1 finite check covers 243 partial assignments within the declared five-component model. W1-R5 corrects an unsupported ordinary-hours qualifier in the case record; it does not establish that the sign-in was ordinary or approved.
+
+Ask for W1-R1–W1-R5 artifacts before showing their supplementary worked answers. These are not new daily lessons or replacements for EX001–EX050. Identifier coverage does not authenticate a source, structural possibility does not prove service correctness, and a typed Boolean does not establish real approval. Keep R1–R8 separate from the BSL1, PATH1 and AR1 fixtures, and never treat a classroom result as production authorization.
+
 ## Chapter 1 claim-review laboratory
 
 Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-claim-lab) only after the learner reads R1–R8 and predicts the six claim classifications. The eight printed output lines are a check of the in-memory teaching fixture, not proof of a real event. Require the learner to explain why R9 is unavailable at 09:05, why the temporary R6 removal changes only the variant, and why a supplied record cannot by itself establish a human actor, a tested restore or absence of transfer. Compare the transcript and six-row claim ledger with the worked interpretation in the chapter. Then deepen EX001, EX003, EX005, EX009, EX012 and EX013 using their matching final-book worked answers; do not create new exercise IDs.

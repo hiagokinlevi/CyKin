@@ -30,7 +30,7 @@ This is one course. It has **one course skill** and **one principal book in each
 | 中文 (`zh`) | [Overview](zh/README.md) · [Materials](zh/MATERIALS.md) | [Chapter index](zh/SUBJECTS.md) | [Book plan](zh/book/PLAN.md) | Working outline; translation pending |
 | 日本語 (`ja`) | [Overview](ja/README.md) · [Materials](ja/MATERIALS.md) | [Chapter index](ja/SUBJECTS.md) | [Book plan](ja/book/PLAN.md) | Working outline; translation pending |
 
-**English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) has SHA-256 `6272943619f307dfae9fb20c832bc9a63528d504354fb0a00c1399461f40f2d2`, **156,067 whitespace-separated words** and **387 A4 pages** in a local Chrome length preflight. This measurement applies to the current source; the book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
+**English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) has SHA-256 `ccc77c4f4fecec3dd60bdc445588ccde834e320e3ab31333354cfe26d52e8a72`, **161,244 whitespace-separated words** and **403 A4 pages** in a local Chrome length preflight. This measurement applies to the current source; the book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
 
 ## English chapter sequence
 
