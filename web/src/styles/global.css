@@ -39,6 +39,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; font-synthesis: none; }
 body { margin: 0; background: var(--page-gradient) fixed; color: var(--text); font-family: 'Titillium Web', sans-serif; line-height: 1.52; }
 button, select, input, textarea, pre, code { font-family: 'Titillium Web', sans-serif; }

@@ -56,7 +56,7 @@ class Database:
     def __init__(self):
         self.conn = sqlite3.connect(":memory:", check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
-        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql"):
+        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql", "0005_student_mcp_keys.sql"):
             self.conn.executescript((ROOT / "web/migrations" / migration).read_text())
 
     def prepare(self, query: str):
@@ -225,6 +225,90 @@ def test_provisioned_password_student_and_private_mcp(monkeypatch):
             assert report["activity"]["test_answered"]["events"] == 10
             assert next(item for item in report["courses"] if item["area"] == "ot-iot-security")["best_correct"] == 10
             assert password not in json.dumps(db.conn.execute("SELECT * FROM student_accounts").fetchall(), default=str)
+    finally:
+        del api.app.state.catalog_override
+        del api.app.state.source_override
+        db.conn.close()
+
+
+def test_student_mcp_keys_are_one_time_scoped_revocable_and_expiring(monkeypatch):
+    db = Database()
+    now = [1_800_000_000]
+    monkeypatch.setattr(student_auth.time, "time", lambda: now[0])
+    env = SimpleNamespace(DB=db, EMAIL=EmailSender(), AUTH_HMAC_KEY="d" * 64)
+    db.conn.executemany(
+        "INSERT INTO student_accounts (id, email, created_at, last_login_at) VALUES (?, ?, 1, 1)",
+        [("student-one", "one@example.test"), ("student-two", "two@example.test")],
+    )
+    db.conn.commit()
+    headers = {"Content-Type": "application/json", "Accept": "application/json, text/event-stream"}
+
+    api.app.state.catalog_override = json.loads((ROOT / "web/public/catalog.json").read_text())
+
+    async def local_source(path):
+        source = ROOT / path
+        return source.read_text(encoding="utf-8") if source.is_file() else None
+
+    api.app.state.source_override = local_source
+
+    def rpc(client, token, name="student_get_stats", args=None):
+        return client.post("/mcp", headers={**headers, "Authorization": f"Bearer {token}"},
+                           json={"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                                 "params": {"name": name, "arguments": args or {}}})
+
+    try:
+        with TestClient(Environment(api.app, env), base_url="https://opencyber.academy") as client:
+            assert client.get("/auth/mcp-keys").status_code == 401
+            cookie_token = "browser-session-for-student-one-token-123"
+            db.conn.execute("INSERT INTO student_sessions (token_digest, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)",
+                            (student_auth.hashlib.sha256(cookie_token.encode()).hexdigest(), "student-one",
+                             now[0], now[0] + student_auth.SESSION_LIFETIME))
+            db.conn.commit()
+            client.cookies.set(student_auth.COOKIE, cookie_token, domain="opencyber.academy")
+            assert client.post("/auth/mcp-keys", json={"label": "DAI"}).status_code == 403
+            assert client.post("/auth/mcp-keys", json={"label": "DAI"}, headers={"Origin": "https://evil.invalid"}).status_code == 403
+            created = client.post("/auth/mcp-keys", json={"label": "DAI"}, headers=ORIGIN)
+            assert created.status_code == 200
+            key = created.json()["token"]
+            key_id = created.json()["id"]
+            assert key.startswith("oca_")
+            stored = dict(db.conn.execute("SELECT * FROM student_mcp_keys WHERE id = ?", (key_id,)).fetchone())
+            assert key not in stored.values()
+            assert stored["token_digest"] == student_auth.hashlib.sha256(key.encode()).hexdigest()
+            listed = client.get("/auth/mcp-keys").json()["keys"]
+            assert listed[0]["label"] == "DAI" and "token" not in listed[0]
+            assert rpc(client, key).status_code == 200
+            lesson = {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en", "chapter": 1}
+            saved_lesson = rpc(client, key, "student_save_lesson", {**lesson, "status": "completed"})
+            assert json.loads(saved_lesson.json()["result"]["content"][0]["text"])["saved"] is True
+            saved_exercise = rpc(client, key, "student_save_exercise", {**lesson, "exercise_id": "EX001", "answer": "Synthetic student answer"})
+            assert json.loads(saved_exercise.json()["result"]["content"][0]["text"])["saved"] is True
+            assert client.get("/student/stats").json()["summary"]["exercises_saved"] == 1
+            assert client.get("/student/progress").json()["lessons"][0]["status"] == "completed"
+            assert client.get("/student/stats", headers={"Authorization": f"Bearer {key}"}).status_code == 401
+            assert client.get("/auth/mcp-keys", headers={"Authorization": f"Bearer {key}"}).status_code == 401
+            assert client.get("/auth/mcp-keys").json()["keys"][0]["use_count"] == 3
+            assert rpc(client, key + "x").status_code == 401
+
+            second_cookie = "browser-session-for-student-two-token-123"
+            db.conn.execute("INSERT INTO student_sessions (token_digest, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)",
+                            (student_auth.hashlib.sha256(second_cookie.encode()).hexdigest(), "student-two",
+                             now[0], now[0] + student_auth.SESSION_LIFETIME))
+            db.conn.commit()
+            client.cookies.set(student_auth.COOKIE, second_cookie, domain="opencyber.academy")
+            assert client.get("/auth/mcp-keys").json()["keys"] == []
+            assert client.get("/student/progress").json() == {"lessons": [], "exercises": []}
+            assert client.delete(f"/auth/mcp-keys/{key_id}", headers=ORIGIN).status_code == 404
+            client.cookies.set(student_auth.COOKIE, cookie_token, domain="opencyber.academy")
+            assert client.delete(f"/auth/mcp-keys/{key_id}", headers=ORIGIN).status_code == 200
+            assert rpc(client, key).status_code == 401
+
+            expiring = client.post("/auth/mcp-keys", json={"label": "Temporary"}, headers=ORIGIN).json()["token"]
+            for index in range(4):
+                assert client.post("/auth/mcp-keys", json={"label": f"Agent {index}"}, headers=ORIGIN).status_code == 200
+            assert client.post("/auth/mcp-keys", json={"label": "Too many"}, headers=ORIGIN).status_code == 409
+            now[0] += student_auth.MCP_KEY_LIFETIME + 1
+            assert rpc(client, expiring).status_code == 401
     finally:
         del api.app.state.catalog_override
         del api.app.state.source_override

@@ -35,6 +35,7 @@ uv run pytest -q
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0002_chapter_tests.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0003_student_auth.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0004_student_password_activity.sql
+npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0005_student_mcp_keys.sql
 uv run pywrangler deploy
 
 curl_options=(--connect-timeout 12)

@@ -65,6 +65,7 @@ const schema = structuredData || [
         <nav class="nav-links" aria-label="Main navigation">
           <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
           <a href="/tests/" aria-current={path === '/tests/' ? 'page' : undefined}>Tests</a>
+          <a href="/account/#connect-ai" data-student-ai-link hidden>Connect your AI</a>
           <details class="utility-menu"><summary>Explore</summary><div class="utility-menu-panel">
             <a href="/calendar/" data-study-calendar-link aria-current={path === '/calendar/' ? 'page' : undefined}>Study calendar</a>
             <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
@@ -77,7 +78,7 @@ const schema = structuredData || [
           <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
           <a class="button secondary account-link" href="/account/">My area</a>
         </div>
-        <details class="mobile-nav"><summary aria-label="Open site menu">Menu</summary><nav class="mobile-nav-panel" aria-label="Mobile navigation"><a href="/levels/">By level</a><a href="/subjects/">By subject</a><a href="/#comece">Start here</a><a href="/tests/">Tests</a><a href="/calendar/">Study calendar</a><a href="/for-ai/">For AIs</a><a href="/about/">About us</a><a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a><a href="/account/">My area</a></nav></details>
+        <details class="mobile-nav"><summary aria-label="Open site menu">Menu</summary><nav class="mobile-nav-panel" aria-label="Mobile navigation"><a href="/levels/">By level</a><a href="/subjects/">By subject</a><a href="/#comece">Start here</a><a href="/tests/">Tests</a><a href="/account/#connect-ai" data-student-ai-link hidden>Connect your AI</a><a href="/calendar/">Study calendar</a><a href="/for-ai/">For AIs</a><a href="/about/">About us</a><a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a><a href="/account/">My area</a></nav></details>
       </div>
     </header>
     <main id="main"><slot /></main>
@@ -102,6 +103,9 @@ const schema = structuredData || [
         location.href = next.href;
       });
       translatePage();
+      void fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store' }).then(session => {
+        for (const link of document.querySelectorAll<HTMLElement>('[data-student-ai-link]')) link.hidden = !session.ok;
+      }).catch(() => { /* Public navigation remains available if account storage is offline. */ });
       if (location.hostname === 'opencyber.academy' || location.hostname === 'www.opencyber.academy') {
         const browserLanguage = navigator.language.slice(0, 2).toLowerCase();
         if (browserLanguage === 'pt' || browserLanguage === 'es') {

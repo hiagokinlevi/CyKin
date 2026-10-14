@@ -29,6 +29,8 @@ COOKIE = "__Secure-oca_session"
 SENDER = "login@auth.opencyber.academy"
 CODE_LIFETIME = 600
 SESSION_LIFETIME = 7 * 24 * 60 * 60
+MCP_KEY_LIFETIME = 180 * 24 * 60 * 60
+MAX_ACTIVE_MCP_KEYS = 5
 # Production Workers cap one WebCrypto PBKDF2 deriveBits call at 100,000
 # iterations. Chain six independently salted calls to retain the intended
 # total KDF work without crossing that per-call limit.
@@ -51,6 +53,10 @@ class CodeVerification(BaseModel):
 class PasswordLogin(BaseModel):
     username: str = Field(pattern=r"^[a-z][a-z0-9_-]{2,39}$")
     password: str = Field(min_length=1, max_length=256)
+
+
+class McpKeyRequest(BaseModel):
+    label: str = Field(min_length=1, max_length=60)
 
 
 def _database(request: Request):
@@ -323,6 +329,96 @@ async def student_identity(request: Request) -> dict:
         raise HTTPException(401, "Sign in to save your progress")
     return {"sub": rows[0]["id"], "email": rows[0]["email"] if rows[0]["username"] is None else None,
             "username": rows[0]["username"]}
+
+
+def _browser_student(request: Request, *, mutation: bool = False) -> None:
+    """Key management requires a signed-in browser, never a bearer token."""
+    if mutation:
+        _origin(request)
+    elif request.headers.get("origin") and request.headers["origin"] not in PUBLIC_ORIGINS:
+        raise HTTPException(403, "Sign-in must begin on OpenCyber Academy")
+    if request.headers.get("authorization") or not request.cookies.get(COOKIE):
+        raise HTTPException(401, "Sign in on the site to manage your AI keys")
+
+
+async def _browser_identity(request: Request, *, mutation: bool = False) -> dict:
+    _browser_student(request, mutation=mutation)
+    return await student_identity(request)
+
+
+@router.get("/auth/mcp-keys")
+async def list_mcp_keys(request: Request) -> Response:
+    user = await _browser_identity(request)
+    rows = _rows(await _database(request).prepare(
+        "SELECT id, label, token_prefix, created_at, expires_at, last_used_at, use_count, revoked_at "
+        "FROM student_mcp_keys WHERE user_id = ? ORDER BY created_at DESC LIMIT 50"
+    ).bind(user["sub"]).all())
+    return JSONResponse({"keys": rows}, headers={"Cache-Control": "no-store"})
+
+
+@router.post("/auth/mcp-keys")
+async def create_mcp_key(request: Request, payload: McpKeyRequest) -> Response:
+    user = await _browser_identity(request, mutation=True)
+    label = payload.label.strip()
+    if not label:
+        raise HTTPException(422, "Enter a key name")
+    db = _database(request)
+    now = int(time.time())
+    await _limit(db, f"mcp-key-create:{user['sub']}:{now // 3600}", (now // 3600 + 1) * 3600, 10)
+    token = "oca_" + secrets.token_urlsafe(32)
+    key_id = secrets.token_urlsafe(12)
+    expires_at = now + MCP_KEY_LIFETIME
+    inserted = await db.prepare(
+        "INSERT INTO student_mcp_keys (id, user_id, label, token_digest, token_prefix, created_at, expires_at) "
+        "SELECT ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM student_mcp_keys "
+        "WHERE user_id = ? AND revoked_at IS NULL AND expires_at > ?) < ?"
+    ).bind(key_id, user["sub"], label, hashlib.sha256(token.encode()).hexdigest(),
+           token[:12], now, expires_at, user["sub"], now, MAX_ACTIVE_MCP_KEYS).run()
+    if _changes(inserted) != 1:
+        raise HTTPException(409, "Revoke an existing key before creating another")
+    return JSONResponse({"id": key_id, "label": label, "token": token, "token_prefix": token[:12],
+                         "created_at": now, "expires_at": expires_at},
+                        headers={"Cache-Control": "no-store"})
+
+
+@router.delete("/auth/mcp-keys/{key_id}")
+async def revoke_mcp_key(request: Request, key_id: str) -> Response:
+    user = await _browser_identity(request, mutation=True)
+    if not re.fullmatch(r"[A-Za-z0-9_-]{12,40}", key_id):
+        raise HTTPException(404, "Key not found")
+    result = await _database(request).prepare(
+        "UPDATE student_mcp_keys SET revoked_at = ? WHERE id = ? AND user_id = ? AND revoked_at IS NULL"
+    ).bind(int(time.time()), key_id, user["sub"]).run()
+    if _changes(result) != 1:
+        raise HTTPException(404, "Key not found")
+    return JSONResponse({"revoked": True}, headers={"Cache-Control": "no-store"})
+
+
+async def mcp_student_identity(request: Request) -> dict:
+    """Accept an owner-scoped MCP key or an existing short-lived student session."""
+    authorization = request.headers.get("authorization", "")
+    if not re.fullmatch(r"Bearer oca_[A-Za-z0-9_-]{43}", authorization):
+        return await student_identity(request)
+    token = authorization[7:]
+    db = _database(request)
+    now = int(time.time())
+    found = _rows(await db.prepare(
+        "SELECT k.id AS key_id, a.id, a.email, p.username FROM student_mcp_keys k "
+        "JOIN student_accounts a ON a.id = k.user_id "
+        "LEFT JOIN student_password_credentials p ON p.user_id = a.id "
+        "WHERE k.token_digest = ? AND k.expires_at > ? AND k.revoked_at IS NULL"
+    ).bind(hashlib.sha256(token.encode()).hexdigest(), now).all())
+    if not found:
+        raise HTTPException(401, "A valid student AI key is required")
+    row = found[0]
+    used = await db.prepare(
+        "UPDATE student_mcp_keys SET last_used_at = ?, use_count = use_count + 1 "
+        "WHERE id = ? AND revoked_at IS NULL AND expires_at > ?"
+    ).bind(now, row["key_id"], now).run()
+    if _changes(used) != 1:
+        raise HTTPException(401, "A valid student AI key is required")
+    return {"sub": row["id"], "email": row["email"] if row["username"] is None else None,
+            "username": row["username"]}
 
 
 @router.get("/auth/me")

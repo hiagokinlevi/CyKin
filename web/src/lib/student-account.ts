@@ -1,11 +1,6 @@
 import { siteLanguage } from './i18n';
-
-type Lesson = { level: string; area: string; language: string; chapter: number; status: string; updated_at: string };
-type Exercise = Lesson & { exercise_id: string };
-type CoursePerformance = { level: string; area: string; language: string; lesson_visits: number; read_seconds: number;
-  lessons_completed: number; exercises_saved: number; analyses_saved: number; chapters_tested: number;
-  best_correct: number; best_possible: number };
-type CatalogCourse = { level: string; area: string; title: string; titles: Record<string, string> };
+import { dashboardCopy, renderStudentDashboard, type CoursePerformance, type StudentProgress, type StudentReport } from './student-dashboard';
+import { initializeStudentMcpKeys } from './student-mcp-keys';
 
 const copy = {
   en: {
@@ -23,7 +18,9 @@ const copy = {
 };
 
 export async function initializeStudentAccount(): Promise<void> {
-  const t = copy[siteLanguage()];
+  const t = { ...copy[siteLanguage()], ...dashboardCopy[siteLanguage()] };
+  document.querySelector<HTMLElement>('.account-jump')?.setAttribute('aria-label', t.jumpNav);
+  document.getElementById('account-metrics')?.setAttribute('aria-label', t.metricsLabel);
   for (const element of document.querySelectorAll<HTMLElement>('[data-account]')) {
     const key = element.dataset.account as keyof typeof t;
     const value = t[key];
@@ -33,7 +30,6 @@ export async function initializeStudentAccount(): Promise<void> {
   const description = document.getElementById('profile-description')!;
   const message = document.getElementById('account-message')!;
   const status = document.getElementById('records-status')!;
-  const list = document.getElementById('records-list')!;
   const emailForm = document.getElementById('email-form') as HTMLFormElement;
   const codeForm = document.getElementById('code-form') as HTMLFormElement;
   const passwordForm = document.getElementById('password-form') as HTMLFormElement;
@@ -43,9 +39,9 @@ export async function initializeStudentAccount(): Promise<void> {
   const usernameInput = document.getElementById('account-username') as HTMLInputElement;
   const passwordInput = document.getElementById('account-password') as HTMLInputElement;
   const logout = document.getElementById('account-logout') as HTMLButtonElement;
-  const stats = document.getElementById('account-stats')!;
-  const courseStats = document.getElementById('account-courses')!;
-  const courseStatsTitle = document.getElementById('account-courses-title')!;
+  const dashboard = document.getElementById('account-dashboard')!;
+  const aiKeys = document.getElementById('connect-ai')!;
+  const keys = initializeStudentMcpKeys();
   const next = new URLSearchParams(location.search).get('next');
   const safeNext = next && /^\/(?:tests|courses)\//.test(next) && !next.includes('\\') ? next : null;
   const returnNotice = document.getElementById('return-after-signin')!;
@@ -54,6 +50,8 @@ export async function initializeStudentAccount(): Promise<void> {
   let flowId = '';
 
   function showEmail(): void {
+    document.body.classList.remove('account-signed-in'); dashboard.hidden = true; aiKeys.hidden = true; keys.clear();
+    for (const link of document.querySelectorAll<HTMLElement>('[data-student-ai-link]')) link.hidden = true;
     emailForm.hidden = false; codeForm.hidden = true; passwordForm.hidden = true;
     methodToggle.hidden = false; methodToggle.textContent = t.passwordMethod; logout.hidden = true;
     title.textContent = t.enterEmail; description.textContent = t.noPassword;
@@ -74,43 +72,18 @@ export async function initializeStudentAccount(): Promise<void> {
     const user = await me.json() as { email: string | null; username: string | null };
     emailForm.hidden = true; codeForm.hidden = true; passwordForm.hidden = true; methodToggle.hidden = true; logout.hidden = false;
     title.textContent = user.username || user.email || t.identity; description.textContent = t.active; message.textContent = '';
-    const response = await fetch('/student/progress', { credentials: 'same-origin', cache: 'no-store' });
-    if (!response.ok) { status.textContent = t.failed; return; }
-    const data = await response.json() as { lessons: Lesson[]; exercises: Exercise[] };
-    status.textContent = data.lessons.length ? t.summary(data.lessons.length, data.exercises.length) : t.empty;
-    const activity = await fetch('/student/stats', { credentials: 'same-origin', cache: 'no-store' });
-    if (activity.ok) {
-      const report = await activity.json() as { summary: { activity: Record<string, { events: number; seconds: number }>; analyses_saved: number; tests_completed: number }; courses: CoursePerformance[] };
-      stats.textContent = t.stats(report.summary.activity.lesson_opened?.events || 0,
-        report.summary.activity.lesson_read?.seconds || 0, report.summary.analyses_saved, report.summary.tests_completed);
-      courseStats.replaceChildren(); courseStatsTitle.hidden = report.courses.length === 0;
-      let titles = new Map<string, string>();
-      try {
-        const catalog = await fetch('/api/catalog', { cache: 'no-store' });
-        if (catalog.ok) {
-          const data = await catalog.json() as { courses: CatalogCourse[] };
-          titles = new Map(data.courses.map(item => [`${item.level}/${item.area}`, item.titles?.[siteLanguage()] || item.title]));
-        }
-      } catch { /* The course slug still identifies it if the catalog is unavailable. */ }
-      for (const item of report.courses) {
-        const anchor = document.createElement('a'); anchor.className = 'record';
-        anchor.href = `/courses/${encodeURIComponent(item.level)}/${encodeURIComponent(item.area)}/?lang=${encodeURIComponent(item.language)}`;
-        const heading = document.createElement('strong');
-        heading.textContent = `${titles.get(`${item.level}/${item.area}`) || item.area.replaceAll('-', ' ')} · ${item.language.toUpperCase()}`;
-        const detail = document.createElement('span'); detail.textContent = t.performance(item);
-        anchor.append(heading, detail); courseStats.append(anchor);
-      }
-    }
-    list.replaceChildren();
-    for (const item of data.lessons) {
-      const anchor = document.createElement('a'); anchor.className = 'record';
-      anchor.href = `/courses/${encodeURIComponent(item.level)}/${encodeURIComponent(item.area)}/?lang=${encodeURIComponent(item.language)}&chapter=${item.chapter}`;
-      const heading = document.createElement('strong');
-      heading.textContent = `${item.area.replaceAll('-', ' ')} · ${t.lesson} ${String(item.chapter).padStart(2, '0')}`;
-      const detail = document.createElement('span');
-      detail.textContent = `${item.language.toUpperCase()} · ${item.status === 'completed' ? t.completed : t.inProgress} · ${item.updated_at}`;
-      anchor.append(heading, detail); list.append(anchor);
-    }
+    document.body.classList.add('account-signed-in'); dashboard.hidden = false; aiKeys.hidden = false;
+    for (const link of document.querySelectorAll<HTMLElement>('[data-student-ai-link]')) link.hidden = false;
+    try {
+      const [progressResponse, activityResponse] = await Promise.all([
+        fetch('/student/progress', { credentials: 'same-origin', cache: 'no-store' }),
+        fetch('/student/stats', { credentials: 'same-origin', cache: 'no-store' }),
+      ]);
+      if (!progressResponse.ok || !activityResponse.ok) throw new Error('dashboard');
+      await renderStudentDashboard(await progressResponse.json() as StudentProgress, await activityResponse.json() as StudentReport);
+    } catch { status.textContent = t.failed; }
+    try { await keys.load(); } catch { document.getElementById('ai-key-message')!.textContent = t.keyError; }
+    if (location.hash === '#connect-ai') aiKeys.scrollIntoView();
   }
   emailForm.addEventListener('submit', async event => {
     event.preventDefault(); if (!emailForm.reportValidity()) return;
@@ -163,8 +136,7 @@ export async function initializeStudentAccount(): Promise<void> {
     try {
       const response = await post('/auth/logout', {});
       if (!response.ok) throw new Error('logout');
-      list.replaceChildren(); courseStats.replaceChildren(); courseStatsTitle.hidden = true;
-      status.textContent = t.pending; stats.textContent = ''; showEmail(); message.textContent = '';
+      status.textContent = t.pending; showEmail(); message.textContent = '';
     } catch { message.textContent = t.failed; }
     finally { logout.disabled = false; }
   });
