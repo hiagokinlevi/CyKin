@@ -12,6 +12,7 @@ import time
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
+from urllib.parse import quote
 from urllib.request import urlopen
 
 from fastapi import FastAPI, HTTPException, Query, Request
@@ -513,10 +514,11 @@ async def health() -> dict[str, str]:
 
 
 @app.get("/private/login")
-async def private_login(request: Request, next: str = "/account/") -> Response:
-    await identity(request)
-    destination = next if (next == "/account/" or next.startswith("/tests/")) and not next.startswith("//") and len(next) < 1000 else "/account/"
-    return RedirectResponse(destination, status_code=302)
+async def private_login(next: str = "/account/") -> Response:
+    # Compatibility for old links. Student sign-in now lives on the branded site.
+    destination = next if next.startswith(("/tests/", "/courses/")) and not next.startswith("//") and "\\" not in next and len(next) < 1000 else None
+    target = "/account/?next=" + quote(destination, safe="") if destination else "/account/"
+    return RedirectResponse(target, status_code=302)
 
 
 @app.get("/private/me")

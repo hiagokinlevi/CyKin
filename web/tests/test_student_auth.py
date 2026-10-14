@@ -19,6 +19,15 @@ student_auth = importlib.import_module("student_auth")
 ORIGIN = {"Origin": "https://opencyber.academy"}
 
 
+def test_legacy_login_points_to_branded_account_without_open_redirect():
+    with TestClient(api.app, base_url="https://opencyber.academy") as client:
+        response = client.get("/private/login?next=%2Ftests%2F%3Flang%3Dpt", follow_redirects=False)
+        assert response.status_code == 302
+        assert response.headers["location"] == "/account/?next=%2Ftests%2F%3Flang%3Dpt"
+        blocked = client.get("/private/login?next=https%3A%2F%2Fexample.invalid", follow_redirects=False)
+        assert blocked.headers["location"] == "/account/"
+
+
 def test_provisioned_password_digest_remains_stable():
     assert student_auth.PASSWORD_ITERATIONS == 100_000
     assert student_auth.password_digest(

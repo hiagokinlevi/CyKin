@@ -63,6 +63,8 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemap.xml | grep -F '/courses/rapid-1-month/incident-response-resilience/lessons/en/1/' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Test yourself' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/account/ | grep -F 'profile-brand' > /dev/null
+[[ "$(curl --silent --output /dev/null --write-out '%{redirect_url}' "${curl_options[@]}" 'https://opencyber.academy/private/login?next=%2Ftests%2F')" == 'https://opencyber.academy/account/?next=%2Ftests%2F' ]]
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | grep -F 'professional-6-months/ot-iot-security/en' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/analytics.js | grep -F 'G-7KDGFR12FS' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
