@@ -14,7 +14,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | CYBR | [Cybersecurity](levels/rapid-1-month/cybersecurity/README.md) | 20/198 (10.1%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 20/1654 (1.2%) |
 | INFO | [Information security](levels/rapid-1-month/information-security/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 4/182 (2.2%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 400/1670 (24.0%) |
 | DATA | [Data governance](levels/rapid-1-month/data-governance/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
-| PRIV | [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/README.md) | 198/198 (100.0%) | 188/188 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 386/1660 (23.3%) |
+| PRIV | [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
 | GRC | [Security governance, risk and compliance](levels/rapid-1-month/security-governance-risk-compliance/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
 | HUMAN | [Human factors and cyber policy](levels/rapid-1-month/human-factors-policy/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
 | ARCH | [Security architecture and engineering](levels/rapid-1-month/security-architecture/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
@@ -29,7 +29,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | DFIR | [Digital forensics and malware analysis](levels/rapid-1-month/digital-forensics-malware/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
 | CTI | [Threat intelligence and OSINT](levels/rapid-1-month/threat-intelligence-osint/README.md) | 198/198 (100.0%) | 91/182 (50.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 289/1654 (17.5%) |
 | RED | [Authorized offensive security and red team](levels/rapid-1-month/offensive-security-red-team/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
-| AI | [AI and machine-learning security](levels/rapid-1-month/ai-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 139/182 (76.4%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 503/1638 (30.7%) |
+| AI | [AI and machine-learning security](levels/rapid-1-month/ai-security/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 139/182 (76.4%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 519/1654 (31.4%) |
 | PQC | [Quantum and post-quantum security](levels/rapid-1-month/quantum-post-quantum-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 9/182 (4.9%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 373/1638 (22.8%) |
 | OT | [OT, IoT and cyber-physical security](levels/rapid-1-month/ot-iot-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 546/1638 (33.3%) |
 | CRIT | [Critical infrastructure and sector security](levels/rapid-1-month/critical-sector-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 546/1638 (33.3%) |
@@ -38,8 +38,8 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 
 | Language | Numbered chapters / indexed positions | Structural coverage |
 |---|---:|---:|
-| English (`en`) | 4,296 / 4,474 | 96.0% |
-| Português (`pt`) | 2,547 / 4,224 | 60.3% |
+| English (`en`) | 4,312 / 4,490 | 96.0% |
+| Português (`pt`) | 2,557 / 4,234 | 60.4% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
 | Français (`fr`) | 0 / 4,186 | 0.0% |
@@ -47,6 +47,6 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,359 / 38,000** | **19.4%** |
+| **All nine editions** | **7,385 / 38,026** | **19.4%** |
 
 These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).

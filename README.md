@@ -7,7 +7,7 @@
   +------------------------------------------------------------------+
   |     ________    ________    ________    ________    ________     |
   |    |   IR   |  |  CYBR  |  |  INFO  |  |  DATA  |  |  PRIV  |    |
-  |    | 11.1%  |  |  1.2%  |  | 24.0%  |  | 23.7%  |  | 23.3%  |    |
+  |    | 11.1%  |  |  1.2%  |  | 24.0%  |  | 23.7%  |  | 23.7%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
@@ -22,7 +22,7 @@
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
   |    |  SOC   |  |  DFIR  |  |  CTI   |  |  RED   |  |   AI   |    |
-  |    | 15.1%  |  | 23.0%  |  | 17.5%  |  | 23.0%  |  | 30.7%  |    |
+  |    | 15.1%  |  | 23.0%  |  | 17.5%  |  | 23.0%  |  | 31.4%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |                 ________    ________    ________                 |
@@ -38,8 +38,8 @@
 
 | Language edition | Chapter anchors / indexed positions | Structural coverage |
 |---|---:|---:|
-| English (`en`) | 4,296 / 4,474 | 96.0% |
-| Português (`pt`) | 2,547 / 4,224 | 60.3% |
+| English (`en`) | 4,312 / 4,490 | 96.0% |
+| Português (`pt`) | 2,557 / 4,234 | 60.4% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
 | Français (`fr`) | 0 / 4,186 | 0.0% |
@@ -47,7 +47,7 @@
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,359 / 38,000** | **19.4%** |
+| **All nine editions** | **7,385 / 38,026** | **19.4%** |
 <!-- open-cyber-academy:multilingual-score:end -->
 
 <!-- open-cyber-academy:onboarding:start -->
@@ -144,12 +144,12 @@ Under the [documented calendar convention](STUDY_CALENDAR.md), **13 October to 1
 
 ## Publication and translation snapshot
 
-**Inventory consulted: 14 October 2026.** The English row matches the [published chapter inventory](LANGUAGE_LESSON_PROGRESS.md) after rapid Cybersecurity, Information security, Data governance, Privacy and data protection, Human factors and cyber policy, Security architecture and engineering, Cryptography and trust services, Web3, blockchain and cryptoasset security, Identity and access management, Network and communications security, Systems, endpoints and hardware security, Cloud and container security, Application and software supply chain security, Security operations and blue team, Digital forensics and malware analysis, Threat intelligence and OSINT, and Authorized offensive security and red team each reached chapter 20, and after the English security-governance manuscript also reached chapter 20. Those courses are **20/20**. The security-governance edition line remains a working draft. English anchors are **4,296 / 4,474**. The explicit daily count stays **30 / 120,060** because these books still use chapter anchors, not `lesson-NN`. Portuguese and Spanish rows were regenerated from the manuscripts already on disk and were not re-audited as translations. Rapid privacy Portuguese is **10/10** on its own index after the committed chapters 05–10. The table is a snapshot, not a live counter. A course with a partial manuscript and its principal book are the same availability unit, counted once.
+**Inventory consulted: 14 October 2026.** The English row matches the [published chapter inventory](LANGUAGE_LESSON_PROGRESS.md) after rapid Cybersecurity, Information security, Data governance, Privacy and data protection, Human factors and cyber policy, Security architecture and engineering, Cryptography and trust services, Web3, blockchain and cryptoasset security, Identity and access management, Network and communications security, Systems, endpoints and hardware security, Cloud and container security, Application and software supply chain security, Security operations and blue team, Digital forensics and malware analysis, Threat intelligence and OSINT, Authorized offensive security and red team, and AI and machine-learning security each reached chapter 20, and after the English security-governance manuscript also reached chapter 20. Those courses are **20/20**. The security-governance edition line remains a working draft. English anchors are **4,312 / 4,490**. The explicit daily count stays **30 / 120,060** because these books still use chapter anchors, not `lesson-NN`. Portuguese and Spanish rows were regenerated from the manuscripts already on disk and were not re-audited as translations. Rapid privacy Portuguese is **20/20** on its own index after the committed chapters 11–20. The table is a snapshot, not a live counter. A course with a partial manuscript and its principal book are the same availability unit, counted once.
 
 | Language | Courses / books with a manuscript, out of 207 | Availability | Reported chapters / indexed positions | Explicit daily lessons / 120,060 baseline |
 |---|---:|---:|---:|---:|
-| English — reference | 199 / 207 | 96.14% | 4,296 / 4,474 | 30 / 120,060 |
-| Português | 124 / 207 | 59.90% | 2,547 / 4,224 | 0 / 120,060 |
+| English — reference | 199 / 207 | 96.14% | 4,312 / 4,490 | 30 / 120,060 |
+| Português | 124 / 207 | 59.90% | 2,557 / 4,234 | 0 / 120,060 |
 | Español | 27 / 207 | 13.04% | 516 / 4,186 | 0 / 120,060 |
 | עברית | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
 | Français | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |

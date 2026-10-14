@@ -281,6 +281,22 @@ def test_unwritten_chapter_is_not_served_as_lesson(client):
     portuguese_offensive_lesson = client.get("/api/lessons/rapid-1-month/offensive-security-red-team/pt/1")
     assert portuguese_offensive_lesson.status_code == 200
 
+    ai_security = client.get("/api/courses/rapid-1-month/ai-security/en").json()
+    assert ai_security["planned_chapters"] == 20
+    assert ai_security["published_chapters"] == 20
+    assert ai_security["lessons"][4]["published"] is True
+    assert ai_security["lessons"][19]["published"] is True
+    assert ai_security["lessons"][19]["title"] == "What the Tallis note can say"
+    missing_ai = client.get("/api/lessons/rapid-1-month/ai-security/en/21")
+    assert missing_ai.status_code == 404
+    assert missing_ai.json()["detail"] == "This chapter is still a plan"
+    portuguese_ai = client.get("/api/courses/rapid-1-month/ai-security/pt").json()
+    assert portuguese_ai["published_chapters"] == 4
+    portuguese_ai_lesson = client.get("/api/lessons/rapid-1-month/ai-security/pt/1")
+    assert portuguese_ai_lesson.status_code == 200
+    assert portuguese_ai["book_url"] is not None
+    assert portuguese_ai["chapter_lessons"] is False
+
 
 def test_information_security_chapter_lessons_use_one_canonical_page_each(client):
     guide = client.get('/api/courses/rapid-1-month/information-security/en').json()
@@ -964,6 +980,47 @@ def test_offensive_security_chapter_lessons_use_one_canonical_page_each(client):
     assert 'id="answer-ex066"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/offensive-security-red-team/pt').json()
+    assert portuguese['chapter_lessons'] is False
+    assert portuguese['published_lessons'] == 0
+    assert portuguese['published_chapters'] == 4
+    assert portuguese['book_url'] is not None
+
+
+def test_ai_security_chapter_lessons_use_one_canonical_page_each(client):
+    guide = client.get('/api/courses/rapid-1-month/ai-security/en').json()
+    assert guide['chapter_lessons'] is True
+    assert guide['has_daily_lessons'] is True
+    assert guide['daily_schedule_ready'] is True
+    assert guide['published_lessons'] == guide['published_chapters'] == 20
+    assert len(guide['daily_slots']) == 20
+    assert [entry['module'] for entry in guide['daily_slots']] == [week for week in range(1, 5) for _ in range(5)]
+    assert all(entry['published'] for entry in guide['daily_slots'])
+    assert [module['chapters'] for module in guide['modules']] == [list(range(first, first + 5)) for first in (1, 6, 11, 16)]
+    assert guide['daily_slots'][19]['source_url'].endswith('#ch-20')
+    assert guide['daily_slots'][19]['title'] == "What the Tallis note can say"
+    assert guide['lessons'][19]['title'] == "What the Tallis note can say"
+
+    for number in range(1, 21):
+        unit = client.get(f'/api/lessons/rapid-1-month/ai-security/en/{number}').json()
+        assert unit['exercise_ids']
+        assert {f'<a id="answer-ex{digits}"></a>' for digits in unit['exercise_ids']} <= set(
+            re.findall(r'<a id="answer-ex\d{3,4}"></a>', unit['worked_answers'])
+        )
+
+    lesson = client.get('/api/lessons/rapid-1-month/ai-security/en/20').json()
+    assert lesson['content_kind'] == 'chapter_lesson'
+    assert lesson['source_url'].endswith('#ch-20')
+    assert lesson['worked_answers']
+    canonical = client.get('/courses/rapid-1-month/ai-security/lessons/en/20/', follow_redirects=False)
+    assert canonical.status_code == 308
+    assert canonical.headers['location'] == '/courses/rapid-1-month/ai-security/chapters/en/20/'
+    page = client.get(canonical.headers['location'])
+    assert page.status_code == 200
+    assert 'Lesson 20' in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert 'id="answer-ex066"' in page.text
+
+    portuguese = client.get('/api/courses/rapid-1-month/ai-security/pt').json()
     assert portuguese['chapter_lessons'] is False
     assert portuguese['published_lessons'] == 0
     assert portuguese['published_chapters'] == 4
