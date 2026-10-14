@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4136/4314 | 30/120060 | 3996/4136 | 4136/4136 | 4136/4136 | 4136/4136 |
+| English | 199/207 | 4152/4330 | 30/120060 | 4012/4152 | 4152/4152 | 4152/4152 | 4152/4152 |
 | Português | 124/207 | 2509/4186 | 0/120060 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -28,7 +28,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Human factors and cyber policy | [20/20](levels/rapid-1-month/human-factors-policy/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/human-factors-policy/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/human-factors-policy/es/book/PLAN.md) |
 | rapid-1-month · Security architecture and engineering | [20/20](levels/rapid-1-month/security-architecture/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/security-architecture/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-architecture/es/book/PLAN.md) |
 | rapid-1-month · Cryptography and trust services | [20/20](levels/rapid-1-month/cryptography-trust/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/cryptography-trust/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cryptography-trust/es/book/PLAN.md) |
-| rapid-1-month · Web3, blockchain and cryptoasset security | [4/4](levels/rapid-1-month/web3-blockchain-security/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/es/book/PLAN.md) |
+| rapid-1-month · Web3, blockchain and cryptoasset security | [20/20](levels/rapid-1-month/web3-blockchain-security/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/es/book/PLAN.md) |
 | rapid-1-month · Identity and access management | [4/4](levels/rapid-1-month/identity-access/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/identity-access/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/identity-access/es/book/PLAN.md) |
 | rapid-1-month · Network and communications security | [4/4](levels/rapid-1-month/network-communications/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/es/book/PLAN.md) |
 | rapid-1-month · Systems, endpoints and hardware security | [4/4](levels/rapid-1-month/systems-endpoints-hardware/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/es/book/PLAN.md) |
