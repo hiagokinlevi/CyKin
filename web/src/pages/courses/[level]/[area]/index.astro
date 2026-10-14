@@ -36,6 +36,7 @@ const structuredData = [
         <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
         <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
+        <a class="button gold" href={`/tests/?level=${course.level}&area=${course.area}`} data-test-link>Test yourself →</a>
       </div>
       <p id="course-status" class="status" role="status">Loading this course…</p>
       <div id="course-facts" class="course-facts" hidden></div>

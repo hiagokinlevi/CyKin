@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import html
 import json
 import re
+import secrets
 import time
 from pathlib import Path
 from typing import Any
@@ -18,6 +20,7 @@ from pydantic import BaseModel, Field
 
 from access import identity
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
+from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
 
 
@@ -25,6 +28,8 @@ app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", do
 GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/OpenCyberAcademy/main/"
 GITHUB_VIEW = "https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
+TEST_INDEX_PATH = CATALOG_PATH.with_name("test-index.json")
+APPROVED_BOOKS_PATH = CATALOG_PATH.with_name("approved-books.json")
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
 LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>\s*$', re.M)
 WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>\s*$', re.M)
@@ -57,6 +62,25 @@ class ExerciseAttempt(LessonProgress):
     exercise_id: str = Field(pattern=r"^EX[0-9]{3,4}$")
     answer: str = Field(default="", max_length=20_000)
     status: str = Field(pattern=r"^(attempted|completed)$")
+
+
+class TestStart(BaseModel):
+    level: str = Field(pattern=r"^[a-z0-9-]+$", max_length=50)
+    area: str = Field(pattern=r"^[a-z0-9-]+$", max_length=80)
+    language: str = Field(pattern=r"^[a-z]{2}$")
+    chapter: int = Field(ge=1, le=9999)
+
+
+class TestAnswer(BaseModel):
+    attempt_id: str = Field(pattern=r"^[A-Za-z0-9_-]{16,80}$")
+    index: int = Field(ge=0, le=9)
+    selected: str | None = Field(default=None, pattern=r"^[a-d]$")
+
+
+class CertificateClaim(BaseModel):
+    level: str = Field(pattern=r"^[a-z0-9-]+$", max_length=50)
+    area: str = Field(pattern=r"^[a-z0-9-]+$", max_length=80)
+    language: str = Field(pattern=r"^[a-z]{2}$")
 
 
 @app.middleware("http")
@@ -98,6 +122,13 @@ def d1_rows(result: Any) -> list[dict]:
     return json.loads(str(JSON.stringify(result))).get("results", [])
 
 
+def d1_changes(result: Any) -> int:
+    if isinstance(result, dict):
+        return int(result.get("meta", {}).get("changes", 0))
+    from js import JSON  # type: ignore[import-not-found]
+    return int(json.loads(str(JSON.stringify(result))).get("meta", {}).get("changes", 0))
+
+
 async def catalog(request: Request) -> dict[str, Any]:
     """The static catalog lists all courses; selected books are fetched live."""
     if override := getattr(app.state, "catalog_override", None):
@@ -109,6 +140,24 @@ async def catalog(request: Request) -> dict[str, Any]:
             raise HTTPException(503, "Catalog asset is unavailable")
         return json.loads(str(await response.text()))
     return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+
+
+async def public_asset_json(request: Request, filename: str, local_path: Path) -> dict[str, Any]:
+    env = request.scope.get("env")
+    if env is not None:
+        response = await env.ASSETS.fetch(f"https://assets.local/{filename}")
+        if int(response.status) != 200:
+            raise HTTPException(503, f"{filename} is unavailable")
+        return json.loads(str(await response.text()))
+    return json.loads(local_path.read_text(encoding="utf-8"))
+
+
+async def test_index(request: Request) -> dict[str, Any]:
+    return await public_asset_json(request, "test-index.json", TEST_INDEX_PATH)
+
+
+async def approved_books(request: Request) -> dict[str, Any]:
+    return await public_asset_json(request, "approved-books.json", APPROVED_BOOKS_PATH)
 
 
 def get_course(data: dict[str, Any], level: str, area: str, language: str) -> dict[str, Any]:
@@ -443,9 +492,10 @@ async def health() -> dict[str, str]:
 
 
 @app.get("/private/login")
-async def private_login(request: Request) -> Response:
+async def private_login(request: Request, next: str = "/account/") -> Response:
     await identity(request)
-    return RedirectResponse("/account/", status_code=302)
+    destination = next if (next == "/account/" or next.startswith("/tests/")) and not next.startswith("//") and len(next) < 1000 else "/account/"
+    return RedirectResponse(destination, status_code=302)
 
 
 @app.get("/private/me")
@@ -483,6 +533,205 @@ async def api_progress_exercise(request: Request, payload: ExerciseAttempt) -> R
     db = database(request)
     await db.prepare("INSERT INTO exercise_attempts (user_id, level, area, language, chapter, exercise_id, answer, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (user_id, level, area, language, chapter, exercise_id) DO UPDATE SET answer = excluded.answer, status = excluded.status, updated_at = datetime('now')").bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.exercise_id, payload.answer, payload.status).run()
     return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+async def chapter_test_bank(request: Request, level: str, area: str, language: str, chapter: int,
+                            check_source: bool = False) -> tuple[dict[str, Any], str]:
+    get_course(await catalog(request), level, area, language)
+    path = f"web/question-banks/{level}/{area}/{language}/{chapter:03d}.json"
+    raw = await source_text(request, path)
+    if raw is None:
+        raise HTTPException(404, "No authored test is published for this chapter")
+    try:
+        bank, digest = validate_bank(raw, level, area, language, chapter)
+    except InvalidBank as exc:
+        raise HTTPException(503, f"Published test failed validation: {exc}") from exc
+    if check_source:
+        book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
+        if book is None:
+            raise HTTPException(409, "The chapter has no published teaching")
+        section = chapter_sections(book).get(chapter)
+        if not section or hashlib.sha256(section["markdown"].encode("utf-8")).hexdigest() != bank["source_sha256"]:
+            raise HTTPException(409, "The chapter changed; its test needs editorial review")
+    return bank, digest
+
+
+@app.get("/api/tests/catalog")
+async def api_test_catalog(request: Request) -> dict[str, Any]:
+    """Show coverage only. Answers are never delivered by this endpoint."""
+    return await test_index(request)
+
+
+@app.post("/private/tests/start")
+async def api_test_start(request: Request, payload: TestStart) -> Response:
+    same_origin(request)
+    student = await identity(request)
+    bank, digest = await chapter_test_bank(request, payload.level, payload.area, payload.language, payload.chapter, check_source=True)
+    db = database(request)
+    attempt_id = secrets.token_urlsafe(18)
+    now_ms = int(time.time() * 1000)
+    deadline_ms = now_ms + 11_000  # ten seconds for the learner plus one second for transit
+    await db.prepare(
+        "INSERT INTO chapter_test_attempts (id, user_id, level, area, language, chapter, bank_sha256, deadline_ms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active')"
+    ).bind(attempt_id, student["sub"], payload.level, payload.area, payload.language, payload.chapter, digest, deadline_ms).run()
+    return JSONResponse({"attempt_id": attempt_id, "chapter": payload.chapter, "question": public_question(bank, 0, deadline_ms, now_ms)},
+                        headers={"Cache-Control": "no-store"})
+
+
+@app.post("/private/tests/answer")
+async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
+    same_origin(request)
+    student = await identity(request)
+    db = database(request)
+    result = await db.prepare(
+        "SELECT * FROM chapter_test_attempts WHERE id = ? AND user_id = ?"
+    ).bind(payload.attempt_id, student["sub"]).all()
+    rows = d1_rows(result)
+    if not rows:
+        raise HTTPException(404, "Test attempt not found")
+    attempt = rows[0]
+    index = int(attempt["next_index"])
+    if attempt["status"] != "active" or index != payload.index or index >= 10:
+        raise HTTPException(409, "This question was already answered")
+    bank, digest = await chapter_test_bank(request, attempt["level"], attempt["area"], attempt["language"], int(attempt["chapter"]))
+    if digest != attempt["bank_sha256"]:
+        raise HTTPException(409, "The test changed; start a new attempt")
+    now_ms = int(time.time() * 1000)
+    scored = score_answer(bank, index, payload.selected, now_ms <= int(attempt["deadline_ms"]))
+    answers = json.loads(attempt["answers_json"])
+    if len(answers) != index:
+        raise HTTPException(409, "Test attempt state is inconsistent")
+    answers.append(scored)
+    new_score = int(attempt["score"]) + int(scored["correct"])
+    next_index = index + 1
+    next_deadline = now_ms + 11_000 if next_index < 10 else 0
+    update = await db.prepare(
+        "UPDATE chapter_test_attempts SET next_index = ?, score = ?, deadline_ms = ?, answers_json = ?, status = ?, updated_at = datetime('now') "
+        "WHERE id = ? AND user_id = ? AND next_index = ? AND status = 'active' AND bank_sha256 = ?"
+    ).bind(next_index, new_score, next_deadline, json.dumps(answers, ensure_ascii=False),
+           "complete" if next_index == 10 else "active", payload.attempt_id, student["sub"], index, digest).run()
+    if d1_changes(update) != 1:
+        raise HTTPException(409, "Another answer already advanced this attempt")
+    if next_index < 10:
+        return JSONResponse({"attempt_id": payload.attempt_id, "question": public_question(bank, next_index, next_deadline, now_ms)},
+                            headers={"Cache-Control": "no-store"})
+    return JSONResponse({"attempt_id": payload.attempt_id, "complete": True, "score": new_score, "total": 10,
+                         "perfect": new_score == 10, "feedback": feedback(bank, answers)},
+                        headers={"Cache-Control": "no-store"})
+
+
+@app.get("/private/tests/results")
+async def api_test_results(request: Request, level: str, area: str, language: str) -> Response:
+    student = await identity(request)
+    get_course(await catalog(request), level, area, language)
+    db = database(request)
+    rows = await db.prepare(
+        "SELECT chapter, bank_sha256, MAX(score) AS best_score, MAX(updated_at) AS last_attempt "
+        "FROM chapter_test_attempts WHERE user_id = ? AND level = ? AND area = ? AND language = ? AND status = 'complete' "
+        "GROUP BY chapter, bank_sha256 ORDER BY chapter"
+    ).bind(student["sub"], level, area, language).all()
+    return JSONResponse({"results": d1_rows(rows)}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/private/tests/certificate")
+async def api_test_certificate(request: Request, payload: CertificateClaim) -> Response:
+    same_origin(request)
+    student = await identity(request)
+    course = get_course(await catalog(request), payload.level, payload.area, payload.language)
+    book = await source_text(request, book_path(payload.level, payload.area, payload.language, "MANUSCRIPT.md"))
+    if book is None:
+        raise HTTPException(409, "This course has no complete authored book")
+    book_sha = hashlib.sha256(book.encode("utf-8")).hexdigest()
+    approvals = await approved_books(request)
+    approved = any(
+        item.get("level") == payload.level and item.get("area") == payload.area
+        and item.get("language") == payload.language and item.get("book_sha256") == book_sha
+        for item in approvals.get("books", [])
+    )
+    if not approved:
+        raise HTTPException(409, "This book has not passed the course-completion editorial gate")
+    published = chapter_sections(book)
+    expected = set(range(1, int(course["planned_chapters"]) + 1))
+    if set(published) != expected:
+        raise HTTPException(409, "Not every planned chapter is authored")
+    coverage = (await test_index(request))["courses"].get(f"{payload.level}/{payload.area}/{payload.language}", [])
+    if {item["chapter"] for item in coverage} != expected:
+        raise HTTPException(409, "Not every chapter has a published test")
+    for item in coverage:
+        section = published[item["chapter"]]["markdown"]
+        if hashlib.sha256(section.encode("utf-8")).hexdigest() != item["source_sha256"]:
+            raise HTTPException(409, "A chapter changed; its test needs editorial review")
+    db = database(request)
+    result = await db.prepare(
+        "SELECT chapter, bank_sha256 FROM chapter_test_attempts WHERE user_id = ? AND level = ? AND area = ? "
+        "AND language = ? AND status = 'complete' AND score = 10"
+    ).bind(student["sub"], payload.level, payload.area, payload.language).all()
+    passed = {(int(row["chapter"]), row["bank_sha256"]) for row in d1_rows(result)}
+    if any((item["chapter"], item["bank_sha256"]) not in passed for item in coverage):
+        raise HTTPException(409, "Complete every chapter test with ten correct answers first")
+    certificate_id = secrets.token_urlsafe(18)
+    await db.prepare(
+        "INSERT OR IGNORE INTO course_certificates (id, user_id, level, area, language, book_sha256) VALUES (?, ?, ?, ?, ?, ?)"
+    ).bind(certificate_id, student["sub"], payload.level, payload.area, payload.language, book_sha).run()
+    issued = await db.prepare(
+        "SELECT id, issued_at FROM course_certificates WHERE user_id = ? AND level = ? AND area = ? AND language = ? AND book_sha256 = ?"
+    ).bind(student["sub"], payload.level, payload.area, payload.language, book_sha).all()
+    certificate = d1_rows(issued)[0]
+    return JSONResponse({"certificate_id": certificate["id"], "issued_at": certificate["issued_at"],
+                         "certificate_url": f"/private/certificates/{certificate['id']}",
+                         "verify_url": f"https://opencyber.academy/api/certificates/{certificate['id']}"},
+                        headers={"Cache-Control": "no-store"})
+
+
+@app.get("/private/certificates/{certificate_id}")
+async def api_certificate_view(request: Request, certificate_id: str) -> Response:
+    student = await identity(request)
+    if not re.fullmatch(r"[A-Za-z0-9_-]{16,80}", certificate_id):
+        raise HTTPException(404, "Certificate not found")
+    db = database(request)
+    found = await db.prepare(
+        "SELECT level, area, language, book_sha256, issued_at FROM course_certificates WHERE id = ? AND user_id = ?"
+    ).bind(certificate_id, student["sub"]).all()
+    rows = d1_rows(found)
+    if not rows:
+        raise HTTPException(404, "Certificate not found")
+    item = rows[0]
+    course = get_course(await catalog(request), item["level"], item["area"], item["language"])
+    title = html.escape(course.get("titles", {}).get(item["language"], course["title"]))
+    learner = html.escape(str(student.get("email") or student["sub"]))
+    issued = html.escape(item["issued_at"])
+    verify_url = f"https://opencyber.academy/api/certificates/{certificate_id}"
+    page = f"""<!doctype html><html lang="{html.escape(item['language'])}"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Course completion · OpenCyber Academy</title>
+<style>body{{font:18px/1.6 system-ui,sans-serif;background:#071123;color:#f7f7f3;margin:0;padding:5vw}}
+main{{max-width:850px;margin:auto;border:2px solid #c9a75e;padding:clamp(24px,5vw,70px);background:#0e1c35}}
+.eyebrow{{color:#d7b76b;letter-spacing:.18em;text-transform:uppercase;font-size:.76rem}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.1}}
+.learner{{font-size:1.5rem;font-weight:600}}a{{color:#e2c27b;overflow-wrap:anywhere}}small{{color:#bdc8d5}}
+@media print{{body{{background:white;color:#141c2c}}main{{background:white;border-color:#876a2d}}.eyebrow,a{{color:#876a2d}}small{{color:#424a58}}button{{display:none}}}}
+</style></head><body><main><div class="eyebrow">OpenCyber Academy · Self-study</div>
+<h1>Course completion certificate</h1><p>This certifies that</p><p class="learner">{learner}</p>
+<p>completed all published chapter assessments with a score of 10/10 in:</p><h2>{title}</h2>
+<p>Issued {issued} UTC · Certificate ID {html.escape(certificate_id)}</p>
+<p><a href="{verify_url}">Verify this certificate</a></p>
+<small>Free self-study credential. This is not an accredited degree or a proctored examination.</small>
+<p><button onclick="window.print()">Print certificate</button></p></main></body></html>"""
+    return HTMLResponse(page, headers={"Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow"})
+
+
+@app.get("/api/certificates/{certificate_id}")
+async def api_certificate_verify(request: Request, certificate_id: str) -> Response:
+    if not re.fullmatch(r"[A-Za-z0-9_-]{16,80}", certificate_id):
+        raise HTTPException(404, "Certificate not found")
+    db = database(request)
+    found = await db.prepare(
+        "SELECT level, area, language, book_sha256, issued_at FROM course_certificates WHERE id = ?"
+    ).bind(certificate_id).all()
+    rows = d1_rows(found)
+    if not rows:
+        raise HTTPException(404, "Certificate not found")
+    return JSONResponse({"issuer": "OpenCyber Academy", "credential": "Self-study course completion",
+                         "accredited_degree": False, **rows[0]}, headers={"Cache-Control": "no-store"})
 
 
 @app.get("/api/catalog")

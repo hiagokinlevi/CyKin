@@ -28,6 +28,7 @@ npm ci
 uv sync --frozen
 npm run build
 uv run pytest -q
+npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0002_chapter_tests.sql
 uv run pywrangler deploy
 
 curl_options=(--connect-timeout 12)
@@ -49,6 +50,8 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/ | grep -F '<meta name="robots" content="index,follow' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemap.xml | grep -F '/courses/rapid-1-month/incident-response-resilience/lessons/en/1/' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Test yourself' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | grep -F 'professional-6-months/ot-iot-security/en' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/analytics.js | grep -F 'G-7KDGFR12FS' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \

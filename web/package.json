@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "catalog": "python3 scripts/build_catalog.py",
+    "catalog": "python3 scripts/build_catalog.py && python3 scripts/build_question_index.py",
     "dev": "npm run catalog && astro dev",
     "build": "npm run catalog && astro build && python3 scripts/localize_static.py && node scripts/build_seo_diagrams.mjs",
     "preview": "astro preview",
