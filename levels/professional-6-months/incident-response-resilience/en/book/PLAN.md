@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapter 1 now contains the first [five applied weekday lessons](MANUSCRIPT.md#week-01-day-01); the other chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapter 1 contains [Week 1](MANUSCRIPT.md#week-01-day-01) and Chapter 2 contains [Week 2](MANUSCRIPT.md#week-02-day-01), each with five applied weekday lessons. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -47,7 +47,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 02 — Authority, scope and response roles
 
-**Stage 1; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
+**Stage 1; 30 planned A4 pages in the earlier outline; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-02) and [Week 2 daily sequence](MANUSCRIPT.md#week-02-day-01). The sequence separates decision rights, a versioned action envelope, proportionate controls, ambiguous approval and a time-bounded handoff. It reuses EX006–EX010 and their worked answers.
 
 **Teaching purpose and relevance:** Make the limits of responder authority operational so urgent work stays reviewable and service owners retain decision rights.
 

@@ -27,6 +27,8 @@ export async function initCoursePortal(): Promise<void> {
   let details: CourseDetails;
   let current: Unit | null = null;
   let requestId = 0;
+  let indexMode: Unit['kind'] = 'daily';
+  let selectedWeek = 1;
 
   function entries(kind: Unit['kind']): Entry[] {
     return kind === 'daily' ? details.daily_slots : details.legacy_chapters;
@@ -48,14 +50,15 @@ export async function initCoursePortal(): Promise<void> {
   function link(label: string, href: string, className = 'button secondary'): HTMLAnchorElement {
     const node = document.createElement('a'); node.href = href; node.className = className; node.textContent = label; return node;
   }
-  function unitLink(unit: Unit, item: Entry, className: string): HTMLAnchorElement {
-    const node = link('', url(unit), className);
+  function unitLink(unit: Unit, item: Entry, className: string): HTMLElement {
+    const node = item.published ? link('', url(unit), className) : document.createElement('div');
+    if (!item.published) node.className = `${className} is-planned`;
     const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(unit.number).padStart(2, '0');
     const title = document.createElement('span'); title.className = 'lesson-subject'; title.textContent = item.title;
     const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on CyKin →' : 'Planned · teaching pending';
     node.append(number, title, state);
     if (current?.kind === unit.kind && current.number === unit.number) { node.classList.add('active'); node.setAttribute('aria-current', 'page'); }
-    node.addEventListener('click', event => { event.preventDefault(); void openUnit(unit, true); });
+    if (item.published) node.addEventListener('click', event => { event.preventDefault(); void openUnit(unit, true); });
     return node;
   }
   function weekLabel(week: number): string {
@@ -64,30 +67,40 @@ export async function initCoursePortal(): Promise<void> {
   }
   function renderIndex(): void {
     const nav = el('course-lessons');
-    const openWeeks = new Set([...nav.querySelectorAll<HTMLDetailsElement>('details[data-week][open]')].map(item => Number(item.dataset.week)));
     nav.replaceChildren();
-    const weekHeading = document.createElement('h3'); weekHeading.className = 'course-index-heading'; weekHeading.textContent = 'Weekly study route'; nav.append(weekHeading);
-    const weeks = Math.ceil(details.daily_slots.length / 5);
-    for (let week = 1; week <= weeks; week++) {
-      const days = details.daily_slots.slice((week - 1) * 5, week * 5);
-      const section = document.createElement('details'); section.className = 'course-module'; section.dataset.week = String(week);
-      const summary = document.createElement('summary');
-      const title = document.createElement('span'); title.textContent = weekLabel(week);
-      const count = document.createElement('span'); count.textContent = `${days.filter(day => day.published).length}/${days.length} written`;
-      summary.append(title, count); section.append(summary);
-      const populate = () => {
-        if (section.dataset.populated) return;
-        section.dataset.populated = 'true';
-        for (const day of days) section.append(unitLink({ kind: 'daily', number: day.chapter }, day, 'course-lesson'));
-      };
-      section.addEventListener('toggle', () => { if (section.open) populate(); });
-      section.open = openWeeks.has(week) || current?.kind === 'daily' && Math.ceil(current.number / 5) === week;
-      if (section.open) populate();
-      nav.append(section);
+    const switches = document.createElement('div'); switches.className = 'course-index-switch';
+    for (const [kind, label] of [['daily', 'Daily lessons'], ['chapter', 'Full chapters']] as const) {
+      const button = document.createElement('button'); button.type = 'button'; button.textContent = label;
+      button.setAttribute('aria-pressed', String(indexMode === kind));
+      button.addEventListener('click', () => { indexMode = kind; renderIndex(); });
+      switches.append(button);
     }
-    if (details.legacy_chapters.length) {
-      const chapterHeading = document.createElement('h3'); chapterHeading.className = 'course-index-heading'; chapterHeading.textContent = details.has_daily_lessons ? 'Complete chapters' : 'Existing subject chapters'; nav.append(chapterHeading);
-      const note = document.createElement('p'); note.className = 'course-index-note'; note.textContent = 'Read each chapter in full. Daily lessons are linked separately above as they are written.'; nav.append(note);
+    nav.append(switches);
+    if (indexMode === 'daily' && details.daily_slots.length) {
+      const weeks = Math.ceil(details.daily_slots.length / 5);
+      selectedWeek = Math.max(1, Math.min(weeks, selectedWeek));
+      const picker = document.createElement('div'); picker.className = 'course-week-picker';
+      const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = '←'; previous.setAttribute('aria-label', 'Previous week'); previous.disabled = selectedWeek === 1;
+      const next = document.createElement('button'); next.type = 'button'; next.textContent = '→'; next.setAttribute('aria-label', 'Next week'); next.disabled = selectedWeek === weeks;
+      const selector = document.createElement('select'); selector.setAttribute('aria-label', 'Choose study week');
+      for (let week = 1; week <= weeks; week++) {
+        const days = details.daily_slots.slice((week - 1) * 5, week * 5);
+        const option = document.createElement('option'); option.value = String(week);
+        option.textContent = `Week ${String(week).padStart(2, '0')} · ${days.filter(day => day.published).length}/${days.length} written`;
+        selector.append(option);
+      }
+      selector.value = String(selectedWeek);
+      selector.addEventListener('change', () => { selectedWeek = Number(selector.value); renderIndex(); });
+      previous.addEventListener('click', () => { selectedWeek--; renderIndex(); });
+      next.addEventListener('click', () => { selectedWeek++; renderIndex(); });
+      picker.append(previous, selector, next); nav.append(picker);
+      const heading = document.createElement('h3'); heading.className = 'course-index-heading'; heading.textContent = weekLabel(selectedWeek); nav.append(heading);
+      const days = details.daily_slots.slice((selectedWeek - 1) * 5, selectedWeek * 5);
+      for (const day of days) nav.append(unitLink({ kind: 'daily', number: day.chapter }, day, 'course-lesson'));
+      const note = document.createElement('p'); note.className = 'course-index-note'; note.textContent = 'Study one written lesson at a time. Planned lessons have no teaching text yet.'; nav.append(note);
+    } else {
+      const heading = document.createElement('h3'); heading.className = 'course-index-heading'; heading.textContent = 'Complete chapters'; nav.append(heading);
+      const note = document.createElement('p'); note.className = 'course-index-note'; note.textContent = 'Read the full subject chapters in this course book.'; nav.append(note);
       for (const chapter of details.legacy_chapters) nav.append(unitLink({ kind: 'chapter', number: chapter.chapter }, chapter, 'course-lesson'));
     }
   }
@@ -103,7 +116,17 @@ export async function initCoursePortal(): Promise<void> {
     availability.textContent = `${details.published_lessons} of ${details.planned_lessons} daily lessons written · ${details.published_chapters} existing subject chapters readable`;
     cadence.append(eyebrow, title, copy, weekdays, availability); overview.append(cadence);
 
-    const heading = document.createElement('h3'); heading.textContent = 'Published lessons and course chapters'; overview.append(heading);
+    const firstDaily = details.daily_slots.find(item => item.published);
+    const firstChapter = details.legacy_chapters.find(item => item.published);
+    if (firstDaily || firstChapter) {
+      const start = firstDaily ? { kind: 'daily' as const, number: firstDaily.chapter } : { kind: 'chapter' as const, number: firstChapter!.chapter };
+      const action = link(firstDaily ? 'Begin with Day 1 →' : 'Begin with Chapter 1 →', url(start), 'button gold');
+      action.classList.add('course-start-action');
+      action.addEventListener('click', event => { event.preventDefault(); void openUnit(start, true); });
+      cadence.append(action);
+    }
+
+    const heading = document.createElement('h3'); heading.textContent = details.has_daily_lessons ? 'This course, week by week' : 'Published course chapters'; overview.append(heading);
     const grid = document.createElement('div'); grid.className = 'course-module-grid';
     const weeksWithTeaching = new Set(details.daily_slots.filter(item => item.published).map(item => Math.ceil(item.chapter / 5)));
     const visibleWeeks = new Set([...weeksWithTeaching, ...Array.from({ length: Math.min(3, details.course.instructional_weeks) }, (_, index) => index + 1)]);
@@ -117,16 +140,16 @@ export async function initCoursePortal(): Promise<void> {
       for (const day of days) list.append(unitLink({ kind: 'daily', number: day.chapter }, day, 'course-overview-lesson'));
       card.append(title, count, list); grid.append(card);
     }
-    for (const chapter of details.legacy_chapters) {
-      if (!chapter.published) continue;
-      const card = document.createElement('section'); card.className = 'course-module-card';
-      const title = document.createElement('h4'); title.textContent = `Chapter ${String(chapter.chapter).padStart(2, '0')}`;
-      const list = document.createElement('div'); list.className = 'course-module-list';
-      list.append(unitLink({ kind: 'chapter', number: chapter.chapter }, chapter, 'course-overview-lesson'));
-      card.append(title, list); grid.append(card);
-    }
     overview.append(grid);
-    const help = document.createElement('p'); help.className = 'course-index-note'; help.textContent = 'Use the syllabus at left to browse every week and every available chapter.'; overview.append(help);
+    if (details.legacy_chapters.some(chapter => chapter.published)) {
+      const chapters = document.createElement('details'); chapters.className = 'course-chapter-browse';
+      if (!details.has_daily_lessons) chapters.open = true;
+      const summary = document.createElement('summary'); summary.textContent = `Browse all ${details.published_chapters} full chapters`;
+      const list = document.createElement('div'); list.className = 'course-chapter-list';
+      for (const chapter of details.legacy_chapters.filter(item => item.published)) list.append(unitLink({ kind: 'chapter', number: chapter.chapter }, chapter, 'course-overview-lesson'));
+      chapters.append(summary, list); overview.append(chapters);
+    }
+    const help = document.createElement('p'); help.className = 'course-index-note'; help.textContent = 'Use the guide at left to choose any week or chapter.'; overview.append(help);
   }
   function renderFacts(): void {
     const facts = el('course-facts'); facts.replaceChildren(); facts.hidden = false;
@@ -204,6 +227,7 @@ export async function initCoursePortal(): Promise<void> {
     const item = unit ? entry(unit) : undefined;
     if (unit && !item) unit = null;
     current = unit;
+    if (unit) { indexMode = unit.kind; if (unit.kind === 'daily') selectedWeek = Math.ceil(unit.number / 5); }
     const target = url(unit);
     if (location.pathname + location.search !== target) history[push ? 'pushState' : 'replaceState'](null, '', target);
     renderIndex(); renderNavigation(unit);

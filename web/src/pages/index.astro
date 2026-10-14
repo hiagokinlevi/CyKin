@@ -1,23 +1,109 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { subjects } from '../lib/catalog';
+const mapPhases = [
+  { title: 'Understand the landscape', range: [1, 6], description: 'Start with shared language, information, people and the decisions that govern security.' },
+  { title: 'Design trustworthy systems', range: [7, 14], description: 'Turn principles into architecture, identity, networks, platforms and software.' },
+  { title: 'Operate, respond and investigate', range: [15, 19], description: 'Detect what changed, contain incidents, examine evidence and test defenses.' },
+  { title: 'Apply to emerging and critical settings', range: [20, 23], description: 'Carry the same reasoning into AI, post-quantum, industrial and critical systems.' },
+];
+const areaRoles: Record<string, string> = {
+  'cybersecurity': 'The common vocabulary for threats, controls and systems.',
+  'information-security': 'Connects cyber controls to information value and handling.',
+  'data-governance': 'Makes ownership, lineage and data decisions explicit.',
+  'privacy-data-protection': 'Adds purpose, rights and protection across the data lifecycle.',
+  'security-governance-risk-compliance': 'Turns technical choices into accountable risk decisions.',
+  'human-factors-policy': 'Connects policies and human behavior to real operating conditions.',
+  'security-architecture': 'Transforms requirements into defensible system boundaries.',
+  'cryptography-trust': 'Gives systems verifiable confidentiality, integrity and trust.',
+  'web3-blockchain-security': 'Applies assurance to decentralized protocols and assets.',
+  'identity-access': 'Decides who can do what, when and with whose authority.',
+  'network-communications': 'Protects the paths that connect identities and systems.',
+  'systems-endpoints-hardware': 'Secures the hosts, devices and execution layers underneath.',
+  'cloud-containers': 'Applies boundaries and ownership to distributed infrastructure.',
+  'application-supply-chain': 'Builds assurance into software and its dependencies.',
+  'security-operations-blue-team': 'Turns telemetry and controls into sustained detection.',
+  'incident-response-resilience': 'Coordinates decisions, evidence, containment and recovery.',
+  'digital-forensics-malware': 'Tests incident hypotheses against preserved artifacts.',
+  'threat-intelligence-osint': 'Adds external context while distinguishing claims from evidence.',
+  'offensive-security-red-team': 'Tests assumptions through authorized, bounded adversarial work.',
+  'ai-security': 'Extends assurance to models, data and AI-enabled workflows.',
+  'quantum-post-quantum-security': 'Plans for changing cryptographic assumptions and migration.',
+  'ot-iot-security': 'Adapts security to physical processes, devices and safety.',
+  'critical-sector-security': 'Integrates the whole path where service failure has broad impact.',
+};
+const areaBridges: Record<string, string> = {
+  'cybersecurity': 'Shared security vocabulary gives Information security a way to name the information worth protecting.',
+  'information-security': 'Information value leads to Data governance: who owns it, where it moves and how it is used.',
+  'data-governance': 'Ownership and lineage make Privacy and data protection decisions more precise.',
+  'privacy-data-protection': 'Data rights and purpose become accountable choices in Security governance, risk and compliance.',
+  'security-governance-risk-compliance': 'Governance needs people who can carry it out; Human factors and policy examines that reality.',
+  'human-factors-policy': 'People and rules set requirements that Security architecture must make operational.',
+  'security-architecture': 'Architecture needs verifiable trust mechanisms; Cryptography supplies some of them.',
+  'cryptography-trust': 'Trust assumptions are stress-tested in decentralized systems and cryptoassets.',
+  'web3-blockchain-security': 'Identity and access connects trust mechanisms to people, services and authority.',
+  'identity-access': 'Authorized identities use communication paths; Network security protects those paths.',
+  'network-communications': 'Network controls depend on the endpoints and hardware at either end.',
+  'systems-endpoints-hardware': 'Host boundaries extend into Cloud and container operations.',
+  'cloud-containers': 'Cloud workloads are built and updated through the Application supply chain.',
+  'application-supply-chain': 'Deployed systems produce the signals that Security operations must interpret.',
+  'security-operations-blue-team': 'Detection becomes useful when Incident response can make bounded, evidenced decisions.',
+  'incident-response-resilience': 'Incident hypotheses need preserved evidence; Digital forensics tests them.',
+  'digital-forensics-malware': 'Forensic observations gain context from Threat intelligence and OSINT.',
+  'threat-intelligence-osint': 'External context becomes testable assumptions in authorized Offensive security exercises.',
+  'offensive-security-red-team': 'The same bounded testing mindset helps examine AI systems and their workflows.',
+  'ai-security': 'AI systems still depend on cryptography; Quantum and post-quantum planning revisits its assumptions.',
+  'quantum-post-quantum-security': 'Migration planning must account for long-lived OT, IoT and physical systems.',
+  'ot-iot-security': 'Physical-process constraints converge in Critical infrastructure and sector security.',
+  'critical-sector-security': 'End of the suggested area route. Revisit any subject at a deeper level or follow its course lessons.',
+};
 ---
 <BaseLayout>
   <section class="hero">
     <div class="shell hero-grid">
       <div class="hero-copy">
         <div class="eyebrow"><span class="live-dot"></span> OPEN LIBRARY · PUBLIC SOURCE</div>
-        <h1>Learn to think about<br /><span class="gold-text">security</span> clearly.</h1>
+        <h1>Learn to think about <span class="gold-text">security</span> clearly.</h1>
         <p>A journey through cybersecurity books, lessons and exercises for people and AI systems. Choose your path and study without an account.</p>
         <div class="hero-actions"><a class="button gold" href="#comece">Start learning <span aria-hidden="true">↗</span></a><a class="button secondary" href="/for-ai/">Connect an AI <span aria-hidden="true">→</span></a></div>
         <div class="hero-metrics"><div><strong>207</strong><span>courses mapped</span></div><div><strong>23</strong><span>subject areas</span></div><div><strong>9</strong><span>study levels</span></div></div>
       </div>
-      <div class="hero-visual" aria-label="Abstract illustration of learning paths">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
-        <div class="central-disc"><div class="disc-grid"></div><span>CyKin</span><small>knowledge network</small></div>
-        <div class="floating-tag tag-one"><span class="tag-icon">◈</span><div><strong>Knowledge</strong><small>technical, open</small></div></div>
-        <div class="floating-tag tag-two"><span class="tag-icon">✦</span><div><strong>One lesson each weekday</strong><small>five in a weekly chapter</small></div></div>
-        <div class="floating-tag tag-three"><span class="tag-icon">↗</span><div><strong>Living source</strong><small>books kept current</small></div></div>
-        <span class="orbit-point p1"></span><span class="orbit-point p2"></span><span class="orbit-point p3"></span><span class="orbit-point p4"></span>
+      <div class="hero-visual" aria-label="A preview of the subject learning map">
+        <div class="preview-top"><span>CYKIN / STUDY ROUTE</span><span>01—23</span></div>
+        <div class="preview-current"><small>BEGIN WITH</small><strong><span>01</span> &nbsp; <span>Cybersecurity</span></strong><p>Learn the common language before specializing.</p></div>
+        <div class="preview-line"><span>FOUNDATIONS</span><i></i><span>DESIGN</span><i></i><span>OPERATIONS</span><i></i><span>APPLICATION</span></div>
+        <div class="preview-steps"><div><span>01</span> Understand the landscape</div><div><span>02</span> Design trustworthy systems</div><div><span>03</span> Operate and investigate</div><div><span>04</span> Apply in critical settings</div></div>
+        <a href="#learning-map" class="preview-link">Explore the 23-area map <span aria-hidden="true">↘</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section map-section" id="learning-map" aria-labelledby="map-title">
+    <div class="shell">
+      <div class="map-intro"><div><div class="eyebrow">THE LEARNING MAP</div><h2 id="map-title">Twenty-three areas. One connected route.</h2><p>Start at 01 and follow the suggested sequence, or open the area you need. Each one adds a different lens to the same security decisions. Choose a study level inside any area.</p></div><div class="map-intro-actions"><a class="button secondary" href="/subjects/">Browse every area ↗</a><button id="map-motion" class="map-motion" type="button" aria-pressed="false">Pause animation</button></div></div>
+      <div class="learning-map">
+        <div class="map-phases">
+          {mapPhases.map((phase, phaseIndex) => <div class="map-phase" data-phase={phaseIndex}>
+            <div class="map-phase-heading"><span class="map-phase-number">0{phaseIndex + 1}</span><div><h3>{phase.title}</h3><p>{phase.description}</p></div></div>
+            <ol class="map-nodes" start={phase.range[0]}>
+              {subjects.slice(phase.range[0] - 1, phase.range[1]).map((subject, subjectIndex) => <li>
+                <a class="map-node" data-map-number={phase.range[0] + subjectIndex} data-map-role={areaRoles[subject.area]} data-map-bridge={areaBridges[subject.area]} data-map-area={subject.area} href={`/subjects/${subject.area}/?lang=en`}>
+                  <span class="map-node-number">{String(phase.range[0] + subjectIndex).padStart(2, '0')}</span><span>{subject.title}</span>
+                  {phase.range[0] + subjectIndex === 1 && <span class="map-node-marker">Start here</span>}
+                  {phase.range[0] + subjectIndex === subjects.length && <span class="map-node-marker">Finish route</span>}
+                  <span class="map-node-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>)}
+            </ol>
+          </div>)}
+        </div>
+        <aside class="map-focus" aria-label="Selected area">
+          <div class="eyebrow">CURRENT STOP <span id="map-position">01 / 23</span></div>
+          <h3 id="map-focus-title">Cybersecurity</h3><p id="map-focus-role">The common vocabulary for threats, controls and systems.</p>
+          <div class="map-focus-bridge"><span>HOW IT CONNECTS</span><p id="map-focus-bridge">Begin with the shared concepts; then use them to understand how information must be protected.</p></div>
+          <a id="map-focus-link" class="button gold" href="/subjects/cybersecurity/?lang=en">Explore this area ↗</a>
+          <div class="map-progress"><div id="map-progress-fill"></div></div><small>Suggested order · explore freely · 9 levels in each area</small>
+        </aside>
       </div>
     </div>
   </section>
@@ -91,53 +177,160 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     } catch {
       status.innerHTML = 'The site catalog is temporarily unavailable. <a href="/read/?path=README.md">Read the public library guide ↗</a>';
     }
+
+    const mapNodes = [...document.querySelectorAll<HTMLAnchorElement>('.map-node')];
+    const mapMotion = document.getElementById('map-motion') as HTMLButtonElement;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeMapIndex = 0;
+    let mapPaused = reducedMotion.matches;
+    let mapInspecting = false;
+    let mapTimer: number | undefined;
+    function selectArea(index: number): void {
+      const node = mapNodes[index];
+      if (!node) return;
+      activeMapIndex = index;
+      mapNodes.forEach((item, position) => item.classList.toggle('is-active', position === index));
+      document.querySelectorAll<HTMLElement>('.map-phase').forEach(phase => phase.classList.toggle('is-active', phase.contains(node)));
+      const title = node.querySelector<HTMLElement>('span:nth-child(2)')?.textContent || '';
+      document.getElementById('map-position')!.textContent = `${String(index + 1).padStart(2, '0')} / ${mapNodes.length}`;
+      document.getElementById('map-focus-title')!.textContent = title;
+      document.getElementById('map-focus-role')!.textContent = node.dataset.mapRole || '';
+      document.getElementById('map-focus-bridge')!.textContent = node.dataset.mapBridge || '';
+      const link = document.getElementById('map-focus-link') as HTMLAnchorElement;
+      link.href = `/subjects/${node.dataset.mapArea}/?lang=${siteLanguage()}`;
+      (document.getElementById('map-progress-fill') as HTMLElement).style.width = `${(index + 1) / mapNodes.length * 100}%`;
+    }
+    function syncMotion(): void {
+      if (mapTimer) window.clearInterval(mapTimer);
+      mapTimer = undefined;
+      mapMotion.textContent = mapPaused ? 'Play animation' : 'Pause animation';
+      mapMotion.setAttribute('aria-pressed', String(mapPaused));
+      if (!mapPaused && !mapInspecting && !document.hidden) mapTimer = window.setInterval(() => selectArea((activeMapIndex + 1) % mapNodes.length), 3300);
+    }
+    mapNodes.forEach((node, index) => {
+      node.addEventListener('pointerenter', () => selectArea(index));
+      node.addEventListener('focus', () => selectArea(index));
+      node.href = `/subjects/${node.dataset.mapArea}/?lang=${siteLanguage()}`;
+    });
+    const map = document.querySelector<HTMLElement>('.learning-map')!;
+    map.addEventListener('pointerenter', () => { mapInspecting = true; syncMotion(); });
+    map.addEventListener('pointerleave', () => { mapInspecting = false; syncMotion(); });
+    map.addEventListener('focusin', () => { mapInspecting = true; syncMotion(); });
+    map.addEventListener('focusout', event => { if (!map.contains(event.relatedTarget as Node)) { mapInspecting = false; syncMotion(); } });
+    mapMotion.addEventListener('click', () => { mapPaused = !mapPaused; syncMotion(); });
+    document.addEventListener('visibilitychange', syncMotion);
+    reducedMotion.addEventListener('change', event => { mapPaused = event.matches; syncMotion(); });
+    selectArea(0); syncMotion();
   </script>
 </BaseLayout>
 
 <style>
-  .hero { min-height: 650px; padding: 104px 0 72px; overflow: hidden; background: radial-gradient(ellipse at 72% 47%, rgba(37,95,204,.20), transparent 42%), linear-gradient(120deg, var(--bg) 18%, var(--bg-2) 100%); }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
+  .hero { min-height: 610px; padding: 90px 0 74px; background: linear-gradient(108deg, var(--bg) 15%, var(--bg-2)); border-bottom: 1px solid var(--line); }
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(30px, 5vw, 76px); align-items: center; }
   .hero-copy { position: relative; z-index: 2; }
+  .hero-copy h1 { font-size: clamp(2.9rem, 5.15vw, 4.8rem); line-height: 1.1; }
   .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); margin-right: 9px; }
   .hero-copy > p { color: var(--muted); font-size: 1.14rem; max-width: 590px; line-height: 1.7; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 29px; }
-  .hero-metrics { display: flex; gap: 34px; margin-top: 61px; }
+  .hero-metrics { display: flex; gap: 34px; margin-top: 47px; }
   .hero-metrics > div { border-left: 1px solid var(--line); padding-left: 18px; display: grid; line-height: 1.25; }
   .hero-metrics strong { font: 600 1.45rem 'Titillium Web', sans-serif; }
   .hero-metrics span { font-size: .78rem; color: var(--muted); margin-top: 5px; }
-  .hero-visual { position: relative; height: 530px; display: grid; place-items: center; isolation: isolate; }
-  .hero-visual::before { content: ''; position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(65,121,246,.18), transparent 66%); filter: blur(6px); }
-  .orbit { position: absolute; border: 1px solid rgba(138,174,240,.25); border-radius: 50%; transform: rotate(-18deg); }
-  .orbit-one { width: 315px; height: 315px; }
-  .orbit-two { width: 435px; height: 435px; border-style: dashed; border-color: rgba(227,189,115,.23); }
-  .orbit-three { width: 515px; height: 515px; border-color: rgba(138,174,240,.1); }
-  .central-disc { position: relative; display: grid; place-content: center; text-align: center; width: 235px; height: 235px; border-radius: 50%; background: linear-gradient(145deg, #1b4fa4, #0d2758 67%, #071938); border: 1px solid rgba(227,189,115,.45); box-shadow: 0 0 0 13px rgba(43,91,170,.15), 0 30px 80px rgba(0,8,26,.5), inset 0 0 45px rgba(95,157,249,.18); overflow: hidden; }
-  .disc-grid { position: absolute; inset: 0; opacity: .27; background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,.12) 1px, transparent 1px); background-size: 26px 26px; transform: rotate(-24deg) scale(1.4); }
-  .central-disc span { position: relative; font: 600 3.15rem 'Titillium Web', sans-serif; letter-spacing: -.05em; color: white; }
-  .central-disc small { position: relative; color: var(--gold); letter-spacing: .19em; text-transform: uppercase; font-size: .52rem; font-weight: 600; }
-  .floating-tag { position: absolute; display: flex; align-items: center; gap: 11px; min-width: 174px; padding: 11px 15px; background: rgba(13,38,80,.95); color: #fff; border: 1px solid rgba(227,189,115,.26); border-radius: 14px; box-shadow: 0 12px 30px rgba(0,7,25,.25); backdrop-filter: blur(10px); }
-  .floating-tag strong { display: block; font-size: .79rem; line-height: 1.2; }
-  .floating-tag small { color: #a9bbd8; font-size: .67rem; }
-  .tag-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: rgba(227,189,115,.13); color: #e3bd73; }
-  .tag-one { left: 0; top: 110px; }.tag-two { right: -12px; top: 90px; }.tag-three { right: -10px; bottom: 86px; }
-  .orbit-point { position: absolute; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 12px var(--gold); }.p1{left: 18%; top: 30%;}.p2{right: 16%; top: 54%;}.p3{left: 24%; bottom: 17%;}.p4{right: 32%; bottom: 9%;}
+  .hero-visual { min-height: 440px; padding: 25px; display: flex; flex-direction: column; border: 1px solid color-mix(in srgb, var(--gold) 32%, var(--line)); border-radius: 5px; background: linear-gradient(150deg, var(--surface), var(--bg-2)); box-shadow: 0 24px 58px rgba(0,3,14,.18); }
+  .preview-top { display: flex; justify-content: space-between; color: var(--muted); font-size: .72rem; font-weight: 600; letter-spacing: .12em; border-bottom: 1px solid var(--line); padding-bottom: 13px; }
+  .preview-current { margin-top: 29px; }
+  .preview-current small { color: var(--gold); font-size: .72rem; letter-spacing: .15em; }
+  .preview-current strong { display: block; font-size: clamp(1.35rem, 2.1vw, 1.9rem); line-height: 1.2; margin: 6px 0; }
+  .preview-current p { color: var(--muted); font-size: .87rem; }
+  .preview-line { display: flex; align-items: center; gap: 7px; margin: 21px 0 22px; }
+  .preview-line span { font-size: .6rem; letter-spacing: .08em; color: var(--gold); white-space: nowrap; }
+  .preview-line i { flex: 1; border-top: 1px solid var(--gold); min-width: 6px; }
+  .preview-steps { display: grid; gap: 8px; }
+  .preview-steps div { display: flex; gap: 13px; align-items: center; padding: 8px 10px; border: 1px solid var(--line); background: var(--bg-2); font-size: .82rem; }
+  .preview-steps span { color: var(--gold); font-weight: 600; }
+  .preview-link { margin-top: auto; padding-top: 21px; color: var(--gold); display: flex; justify-content: space-between; font-size: .87rem; font-weight: 600; }
+  .map-section { background: var(--bg-2); border-bottom: 1px solid var(--line); }
+  .map-intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+  .map-intro > div:first-child { max-width: 740px; }
+  .map-intro p { max-width: 680px; color: var(--muted); margin-bottom: 0; }
+  .map-intro-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .map-motion { border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; background: transparent; color: var(--muted); font-size: .83rem; }
+  .learning-map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(255px, 310px); gap: 20px; align-items: start; }
+  .map-phases { display: grid; gap: 12px; }
+  .map-phase { position: relative; border: 1px solid var(--line); background: var(--surface); border-left: 3px solid var(--line); padding: 16px 18px 18px; transition: border-color .4s, background .4s; }
+  .map-phase.is-active { border-left-color: var(--gold); }
+  .map-phase:not(:last-child)::after { content: '↓'; position: absolute; z-index: 1; left: 14px; bottom: -17px; padding: 0 5px; background: var(--bg-2); color: var(--gold); font-size: .85rem; }
+  .map-phase-heading { display: flex; gap: 15px; align-items: baseline; margin-bottom: 13px; }
+  .map-phase-number { color: var(--gold); font-size: .84rem; font-weight: 600; }
+  .map-phase-heading h3 { font-size: 1.12rem; margin: 0 0 2px; }
+  .map-phase-heading p { color: var(--muted); font-size: .8rem; margin: 0; }
+  .map-nodes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding: 0; margin: 0; list-style: none; }
+  .map-node { display: flex; align-items: center; gap: 10px; min-height: 45px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg-2); font-size: .8rem; line-height: 1.25; transition: border-color .2s, background .2s; }
+  .map-node:hover, .map-node:focus-visible, .map-node.is-active { border-color: color-mix(in srgb, var(--gold) 68%, var(--line)); background: var(--gold-soft); color: var(--text); }
+  .map-node-number { color: var(--gold); font-weight: 600; font-size: .77rem; }
+  .map-node-marker { margin-left: auto; color: var(--gold); font-size: .62rem; font-weight: 600; letter-spacing: .03em; white-space: nowrap; }
+  .map-node:has(.map-node-marker) .map-node-arrow { margin-left: 0; }
+  .map-node-arrow { margin-left: auto; color: var(--gold); }
+  .map-focus { position: sticky; top: 96px; min-height: 284px; border: 1px solid color-mix(in srgb, var(--gold) 36%, var(--line)); background: var(--surface); padding: 23px; }
+  .map-focus .eyebrow { display: flex; justify-content: space-between; gap: 10px; }
+  .map-focus h3 { font-size: 1.58rem; margin: 25px 0 10px; }
+  .map-focus > p { color: var(--muted); min-height: 46px; font-size: .9rem; }
+  .map-focus-bridge { border-top: 1px solid var(--line); padding-top: 13px; margin: 18px 0; }
+  .map-focus-bridge span { color: var(--gold); letter-spacing: .1em; font-size: .69rem; font-weight: 600; }
+  .map-focus-bridge p { color: var(--muted); font-size: .82rem; margin: 6px 0 0; }
+  .map-focus .button { width: 100%; }
+  .map-progress { height: 3px; background: var(--bg-2); margin: 23px 0 9px; }
+  .map-progress div { height: 100%; width: 4.35%; background: var(--gold); transition: width .6s ease; }
+  .map-focus > small { color: var(--muted); font-size: .7rem; }
   .start-section { background: var(--bg); }
   .routes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .route-card { display: flex; flex-direction: column; padding: 31px; box-shadow: none; transition: border-color .2s, transform .2s; }
-  .route-card:hover { border-color: rgba(227,189,115,.55); transform: translateY(-3px); }
+  .route-card:hover { border-color: color-mix(in srgb, var(--gold) 55%, var(--line)); transform: translateY(-2px); }
   .route-top { display: flex; justify-content: space-between; align-items: center; }
-  .route-number { color: var(--gold); font-weight: 600; letter-spacing: .15em; font-size: .9rem; }.route-shape { font-size: 1.65rem; color: var(--gold); }
-  .route-card h3 { font-size: 1.4rem; margin: 16px 0 8px; }.route-card > p { color: var(--muted); min-height: 53px; margin-bottom: 17px; }
+  .route-number { color: var(--gold); font-weight: 600; letter-spacing: .15em; font-size: .9rem; }
+  .route-shape { font-size: 1.65rem; color: var(--gold); }
+  .route-card h3 { font-size: 1.4rem; margin: 16px 0 8px; }
+  .route-card > p { color: var(--muted); min-height: 53px; margin-bottom: 17px; }
   .route-steps { display: flex; align-items: center; gap: 9px; color: var(--gold); font-size: .77rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 27px; }
   .route-steps span:nth-child(even) { color: var(--muted); }
-  .route-fields { display: grid; gap: 15px; flex: 1; }.route-note { align-self: start; background: var(--gold-soft); color: var(--muted); border: 1px solid var(--line); border-radius: 11px; padding: 13px 15px; font-size: .84rem; }
+  .route-fields { display: grid; gap: 15px; flex: 1; }
+  .route-note { align-self: start; background: var(--gold-soft); color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 13px 15px; font-size: .84rem; }
   .route-button { margin-top: 25px; width: 100%; justify-content: space-between; }
   .catalog-status { color: var(--muted); font-size: .78rem; margin: 17px 0 0; }
   .philosophy { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; align-items: center; }
-  .philosophy-grid > div:first-child > p { max-width: 540px; }.text-link { font-weight: 600; color: var(--gold); }
-  .principles { border-top: 1px solid var(--line); }.principles > div { display: flex; gap: 22px; padding: 21px 0; border-bottom: 1px solid var(--line); }.principles span { font: 600 .86rem 'Titillium Web', sans-serif; color: var(--gold); }.principles strong { font: 600 1rem 'Titillium Web', sans-serif; }.principles p { color: var(--muted); margin: 3px 0 0; font-size: .87rem; }
-  .ai-strip { background: radial-gradient(circle at 88% 50%, rgba(47,99,206,.3), transparent 42%), var(--bg); }.ai-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }.ai-inner > div { max-width: 700px; }.ai-inner p { color: var(--muted); max-width: 580px; }
-  @media(max-width: 980px){.hero-grid{grid-template-columns:1fr}.hero-visual{height:450px;max-width:600px;margin:auto}.hero{padding-top:80px}.philosophy-grid{gap:5%}}
-  @media(max-width: 700px){.hero{padding-top:66px}.hero-visual{height:380px;transform:scale(.72);margin:-35px auto -65px}.hero-metrics{gap:10px;margin-top:40px;justify-content:space-between}.hero-metrics>div{padding-left:10px}.routes,.philosophy-grid{grid-template-columns:1fr}.route-card{padding:24px}.ai-inner{align-items:start;flex-direction:column}.section-head{margin-bottom:20px}}
+  .philosophy-grid > div:first-child > p { max-width: 540px; }
+  .text-link { font-weight: 600; color: var(--gold); }
+  .principles { border-top: 1px solid var(--line); }
+  .principles > div { display: flex; gap: 22px; padding: 21px 0; border-bottom: 1px solid var(--line); }
+  .principles span { font: 600 .86rem 'Titillium Web', sans-serif; color: var(--gold); }
+  .principles strong { font: 600 1rem 'Titillium Web', sans-serif; }
+  .principles p { color: var(--muted); margin: 3px 0 0; font-size: .87rem; }
+  .ai-strip { background: var(--bg); }
+  .ai-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .ai-inner > div { max-width: 700px; }
+  .ai-inner p { color: var(--muted); max-width: 580px; }
+  @media(max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { max-width: 650px; width: 100%; margin: 10px auto 0; }
+    .hero { padding-top: 75px; }
+    .learning-map { grid-template-columns: 1fr; }
+    .map-focus { position: static; order: -1; min-height: auto; }
+    .philosophy-grid { gap: 5%; }
+  }
+  @media(max-width: 700px) {
+    .hero { padding-top: 55px; }
+    .hero-visual { padding: 19px; }
+    .preview-line span { font-size: .49rem; }
+    .hero-metrics { gap: 10px; margin-top: 37px; justify-content: space-between; }
+    .hero-metrics > div { padding-left: 10px; }
+    .map-intro { align-items: start; flex-direction: column; }
+    .map-nodes { grid-template-columns: 1fr; }
+    .map-phase { padding: 13px; }
+    .routes, .philosophy-grid { grid-template-columns: 1fr; }
+    .route-card { padding: 24px; }
+    .ai-inner { align-items: start; flex-direction: column; }
+    .section-head { margin-bottom: 20px; }
+  }
+  @media(prefers-reduced-motion:reduce) { .map-phase, .map-node, .map-progress div { transition: none; } }
 </style>

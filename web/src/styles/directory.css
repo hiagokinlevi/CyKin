@@ -1,4 +1,4 @@
-.directory-heading { padding: 64px 0 45px; background: radial-gradient(circle at 80% 12%, rgba(65,121,246,.17), transparent 44%), var(--bg-2); border-bottom: 1px solid var(--line); }
+.directory-heading { padding: 64px 0 45px; background: linear-gradient(110deg, var(--bg-2), var(--bg)); border-bottom: 1px solid var(--line); }
 .directory-heading h1 { font-size: clamp(2.4rem, 5vw, 4.5rem); margin-bottom: 14px; }
 .directory-heading p { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
 .directory-switch { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }

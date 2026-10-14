@@ -159,9 +159,9 @@ def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(clien
     try:
         guide = client.get('/api/courses/professional-6-months/incident-response-resilience/en').json()
         assert guide['planned_lessons'] == 130
-        assert guide['published_lessons'] == 5
+        assert guide['published_lessons'] == 10
         assert guide['published_chapters'] == 12
-        assert [day['published'] for day in guide['daily_slots'][:6]] == [True] * 5 + [False]
+        assert [day['published'] for day in guide['daily_slots'][:11]] == [True] * 10 + [False]
         assert len(guide['legacy_chapters']) == 12
 
         day = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/1')
@@ -178,7 +178,13 @@ def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(clien
         assert chapter.status_code == 200
         assert chapter.json()['content_kind'] == 'legacy_chapter'
         assert 'EX006' in chapter.json()['markdown']
-        assert client.get('/api/lessons/professional-6-months/incident-response-resilience/en/6').status_code == 404
+        second_week = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/6')
+        assert second_week.status_code == 200
+        assert second_week.json()['content_kind'] == 'daily_lesson'
+        assert '#week-02-day-01' in second_week.json()['source_url']
+        assert '<a id="exercise-ex006"></a>' in second_week.json()['markdown']
+        assert '<a id="answer-ex006"></a>' in second_week.json()['worked_answers']
+        assert client.get('/api/lessons/professional-6-months/incident-response-resilience/en/11').status_code == 404
 
         original = (ROOT / path).read_text(encoding='utf-8')
         revised = original.replace('The write path and the observation path have different failure points:', 'The updated write path and observation path have different failure points:', 1)

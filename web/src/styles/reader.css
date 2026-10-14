@@ -2,14 +2,14 @@
 .prose h2 { margin-top: 2.2rem; font-size: 1.6rem; }
 .prose h3 { margin-top: 1.8rem; font-size: 1.25rem; }
 .prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
-.prose pre { background: #071a3b; color: #e9f1ff; padding: 17px; border: 1px solid var(--line); border-radius: 13px; overflow-x: auto; }
+.prose pre { background: var(--bg-2); color: var(--text); padding: 17px; border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; }
 .prose code { background: var(--surface-2); padding: 2px 4px; border-radius: 4px; }
 .prose pre code { background: none; padding: 0; }
 .prose blockquote { margin-inline: 0; border-left: 3px solid var(--gold); padding-left: 18px; color: var(--muted); }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; max-width: 100%; }
 .prose th,.prose td { border: 1px solid var(--line); padding: 8px 11px; text-align: left; }
 .prose img { max-width: 100%; height: auto; }
-.prose .diagram { margin: 1.3rem 0; padding: 12px; background: var(--bg-2); border-radius: 12px; }
+.prose .diagram { margin: 1.3rem 0; padding: 12px; background: var(--bg-2); border-radius: 4px; }
 .diagram-viewport { max-height: min(75vh, 760px); overflow: auto; }
 .diagram-viewport img { display: block; width: 100%; max-width: none; height: auto; margin: 0 auto; }
 .diagram-viewport img.diagram-tall { width: min(100%, 520px); }

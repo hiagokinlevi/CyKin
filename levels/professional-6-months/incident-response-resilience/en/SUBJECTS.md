@@ -1,6 +1,6 @@
 # Subjects and book chapters — Incident response and cyber resilience / Professional course / English
 
-**One course, one principal book, 12 currently authored subject chapters, one course skill.** Chapter 1 also contains [five distinct applied daily lessons for Week 1](book/MANUSCRIPT.md#week-01-day-01), with EX001–EX005 and worked answers. The other subject chapters have not yet been converted into the 26-week/130-day curriculum. A planned chapter is a summary, not a completed lesson.
+**One course, one principal book, 12 currently authored subject chapters, one course skill.** Chapters 1 and 2 also contain [Week 1](book/MANUSCRIPT.md#week-01-day-01) and [Week 2](book/MANUSCRIPT.md#week-02-day-01), with ten distinct daily lessons linked to EX001–EX010 and worked answers. The other subject chapters have not yet been converted into the 26-week/130-day curriculum. A planned chapter is a summary, not a completed lesson.
 
 English is the reference edition.
 
@@ -11,7 +11,7 @@ English is the reference edition.
 | Month | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Incident lifecycle and organizational readiness | 30 | 30 | 5 | [Chapter](book/MANUSCRIPT.md#ch-01) · [Week 1, Day 1–5](book/MANUSCRIPT.md#week-01-day-01) | [02 · Lesson](book/MANUSCRIPT.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Authority, scope and response roles | 30 | 30 | 5 | [Lesson](book/MANUSCRIPT.md#ch-02) | [03 · Lesson](book/MANUSCRIPT.md#ch-03) |
+| 1 | [02](book/PLAN.md#ch-02) | Authority, scope and response roles | 30 | 30 | 5 | [Chapter](book/MANUSCRIPT.md#ch-02) · [Week 2, Day 1–5](book/MANUSCRIPT.md#week-02-day-01) | [03 · Lesson](book/MANUSCRIPT.md#ch-03) |
 | 2 | [03](book/PLAN.md#ch-03) | Alert intake and severity assessment | 30 | 30 | 5 | [Lesson](book/MANUSCRIPT.md#ch-03) | [04 · Lesson](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Evidence preservation and case records | 30 | 30 | 5 | [Lesson](book/MANUSCRIPT.md#ch-04) | [05 · Lesson](book/MANUSCRIPT.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | Investigation, hypotheses and timeline building | 30 | 30 | 5 | [Lesson](book/MANUSCRIPT.md#ch-05) | [06 · Lesson](book/MANUSCRIPT.md#ch-06) |

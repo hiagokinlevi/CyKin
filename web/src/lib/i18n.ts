@@ -13,6 +13,101 @@ export function editionLanguage(): string {
 // Interface text only. Course manuscripts and quoted reference documents retain
 // the language of their published edition.
 const copy: Record<string, [string, string]> = {
+  'A preview of the subject learning map': ['Prévia do mapa de estudos', 'Vista previa del mapa de estudios'],
+  'CYKIN / STUDY ROUTE': ['CYKIN / TRILHA DE ESTUDO', 'CYKIN / RUTA DE ESTUDIO'],
+  'BEGIN WITH': ['COMECE POR', 'EMPIEZA POR'],
+  'Learn the common language before specializing.': ['Aprenda a linguagem comum antes de se especializar.', 'Aprende el lenguaje común antes de especializarte.'],
+  'FOUNDATIONS': ['FUNDAMENTOS', 'FUNDAMENTOS'],
+  'DESIGN': ['PROJETO', 'DISEÑO'],
+  'OPERATIONS': ['OPERAÇÕES', 'OPERACIONES'],
+  'APPLICATION': ['APLICAÇÃO', 'APLICACIÓN'],
+  'Understand the landscape': ['Entenda o cenário', 'Comprende el panorama'],
+  'Design trustworthy systems': ['Projete sistemas confiáveis', 'Diseña sistemas confiables'],
+  'Operate and investigate': ['Opere e investigue', 'Opera e investiga'],
+  'Apply in critical settings': ['Aplique em contextos críticos', 'Aplica en entornos críticos'],
+  'Explore the 23-area map': ['Explore o mapa das 23 áreas', 'Explora el mapa de 23 áreas'],
+  'THE LEARNING MAP': ['MAPA DE ESTUDOS', 'MAPA DE ESTUDIOS'],
+  'Twenty-three areas. One connected route.': ['Vinte e três áreas. Uma trilha conectada.', 'Veintitrés áreas. Una ruta conectada.'],
+  'Start at 01 and follow the suggested sequence, or open the area you need. Each one adds a different lens to the same security decisions. Choose a study level inside any area.': ['Comece pela 01 e siga a sequência sugerida ou abra a área de que precisa. Cada área acrescenta uma perspectiva às mesmas decisões de segurança. Escolha o nível dentro de qualquer área.', 'Empieza por la 01 y sigue la secuencia sugerida o abre el área que necesites. Cada área aporta una perspectiva a las mismas decisiones de seguridad. Elige el nivel dentro de cualquier área.'],
+  'Browse every area ↗': ['Explorar todas as áreas ↗', 'Explorar todas las áreas ↗'],
+  'Pause animation': ['Pausar animação', 'Pausar animación'],
+  'Play animation': ['Reproduzir animação', 'Reproducir animación'],
+  'Finish route': ['Fim da trilha', 'Fin de la ruta'],
+  'Study calendar': ['Calendário de estudos', 'Calendario de estudio'],
+  'Previous week': ['Semana anterior', 'Semana anterior'],
+  'Next week': ['Próxima semana', 'Semana siguiente'],
+  'Choose study week': ['Escolha a semana de estudo', 'Elige la semana de estudio'],
+  'Study guide': ['Guia de estudo', 'Guía de estudio'],
+  'Choose one study week or browse the complete chapters.': ['Escolha uma semana de estudo ou explore os capítulos completos.', 'Elige una semana de estudio o explora los capítulos completos.'],
+  'Daily lessons': ['Aulas diárias', 'Lecciones diarias'],
+  'Full chapters': ['Capítulos completos', 'Capítulos completos'],
+  'Complete chapters': ['Capítulos completos', 'Capítulos completos'],
+  'Read on CyKin →': ['Ler no CyKin →', 'Leer en CyKin →'],
+  'Planned · teaching pending': ['Planejada · conteúdo pendente', 'Planificada · contenido pendiente'],
+  'Study one written lesson at a time. Planned lessons have no teaching text yet.': ['Estude uma aula escrita por vez. Aulas planejadas ainda não têm texto didático.', 'Estudia una lección escrita a la vez. Las lecciones planificadas aún no tienen texto didáctico.'],
+  'Read the full subject chapters in this course book.': ['Leia os capítulos completos deste livro.', 'Lee los capítulos completos de este libro.'],
+  'This course, week by week': ['Este curso, semana a semana', 'Este curso, semana a semana'],
+  'Published course chapters': ['Capítulos publicados do curso', 'Capítulos publicados del curso'],
+  'Begin with Day 1 →': ['Comece pelo Dia 1 →', 'Empieza por el Día 1 →'],
+  'Begin with Chapter 1 →': ['Comece pelo Capítulo 1 →', 'Empieza por el Capítulo 1 →'],
+  'Use the guide at left to choose any week or chapter.': ['Use o guia à esquerda para escolher uma semana ou capítulo.', 'Usa la guía de la izquierda para elegir una semana o capítulo.'],
+  'Start with shared language, information, people and the decisions that govern security.': ['Comece pela linguagem comum, informação, pessoas e decisões que orientam a segurança.', 'Empieza por el lenguaje común, la información, las personas y las decisiones que guían la seguridad.'],
+  'Turn principles into architecture, identity, networks, platforms and software.': ['Transforme princípios em arquitetura, identidade, redes, plataformas e software.', 'Convierte principios en arquitectura, identidad, redes, plataformas y software.'],
+  'Operate, respond and investigate': ['Opere, responda e investigue', 'Opera, responde e investiga'],
+  'Detect what changed, contain incidents, examine evidence and test defenses.': ['Detecte mudanças, contenha incidentes, examine evidências e teste defesas.', 'Detecta cambios, contiene incidentes, examina pruebas y evalúa defensas.'],
+  'Apply to emerging and critical settings': ['Aplique em contextos emergentes e críticos', 'Aplica en entornos emergentes y críticos'],
+  'Carry the same reasoning into AI, post-quantum, industrial and critical systems.': ['Leve o mesmo raciocínio para IA, sistemas pós-quânticos, industriais e críticos.', 'Lleva el mismo razonamiento a IA, sistemas poscuánticos, industriales y críticos.'],
+  'Selected area': ['Área selecionada', 'Área seleccionada'],
+  'CURRENT STOP': ['ETAPA ATUAL', 'ETAPA ACTUAL'],
+  'HOW IT CONNECTS': ['COMO SE CONECTA', 'CÓMO SE CONECTA'],
+  'Explore this area ↗': ['Explorar esta área ↗', 'Explorar esta área ↗'],
+  'Suggested order · explore freely · 9 levels in each area': ['Ordem sugerida · explore livremente · 9 níveis por área', 'Orden sugerido · explora libremente · 9 niveles por área'],
+  'The common vocabulary for threats, controls and systems.': ['O vocabulário comum de ameaças, controles e sistemas.', 'El vocabulario común de amenazas, controles y sistemas.'],
+  'Connects cyber controls to information value and handling.': ['Relaciona os controles cibernéticos ao valor e ao tratamento da informação.', 'Relaciona los controles cibernéticos con el valor y el tratamiento de la información.'],
+  'Makes ownership, lineage and data decisions explicit.': ['Torna explícitas a titularidade, a linhagem e as decisões sobre dados.', 'Hace explícitas la titularidad, el linaje y las decisiones sobre datos.'],
+  'Adds purpose, rights and protection across the data lifecycle.': ['Inclui finalidade, direitos e proteção em todo o ciclo de vida dos dados.', 'Incluye finalidad, derechos y protección en todo el ciclo de vida de los datos.'],
+  'Turns technical choices into accountable risk decisions.': ['Transforma escolhas técnicas em decisões de risco com responsáveis.', 'Convierte decisiones técnicas en decisiones de riesgo con responsables.'],
+  'Connects policies and human behavior to real operating conditions.': ['Relaciona políticas e comportamento humano às condições reais de operação.', 'Relaciona políticas y comportamiento humano con las condiciones reales de operación.'],
+  'Transforms requirements into defensible system boundaries.': ['Transforma requisitos em limites de sistema defensáveis.', 'Convierte requisitos en límites de sistema defendibles.'],
+  'Gives systems verifiable confidentiality, integrity and trust.': ['Dá aos sistemas confidencialidade, integridade e confiança verificáveis.', 'Aporta a los sistemas confidencialidad, integridad y confianza verificables.'],
+  'Applies assurance to decentralized protocols and assets.': ['Aplica garantias a protocolos e ativos descentralizados.', 'Aplica garantías a protocolos y activos descentralizados.'],
+  'Decides who can do what, when and with whose authority.': ['Define quem pode fazer o quê, quando e com qual autoridade.', 'Define quién puede hacer qué, cuándo y con qué autoridad.'],
+  'Protects the paths that connect identities and systems.': ['Protege os caminhos que conectam identidades e sistemas.', 'Protege las rutas que conectan identidades y sistemas.'],
+  'Secures the hosts, devices and execution layers underneath.': ['Protege hosts, dispositivos e as camadas de execução subjacentes.', 'Protege hosts, dispositivos y las capas de ejecución subyacentes.'],
+  'Applies boundaries and ownership to distributed infrastructure.': ['Aplica limites e responsabilidades à infraestrutura distribuída.', 'Aplica límites y responsabilidades a la infraestructura distribuida.'],
+  'Builds assurance into software and its dependencies.': ['Incorpora garantias ao software e às suas dependências.', 'Incorpora garantías al software y a sus dependencias.'],
+  'Turns telemetry and controls into sustained detection.': ['Transforma telemetria e controles em detecção contínua.', 'Convierte telemetría y controles en detección continua.'],
+  'Coordinates decisions, evidence, containment and recovery.': ['Coordena decisões, evidências, contenção e recuperação.', 'Coordina decisiones, pruebas, contención y recuperación.'],
+  'Tests incident hypotheses against preserved artifacts.': ['Testa hipóteses do incidente com artefatos preservados.', 'Contrasta hipótesis del incidente con artefactos preservados.'],
+  'Adds external context while distinguishing claims from evidence.': ['Acrescenta contexto externo distinguindo alegações de evidências.', 'Añade contexto externo distinguiendo afirmaciones de pruebas.'],
+  'Tests assumptions through authorized, bounded adversarial work.': ['Testa premissas por meio de trabalho adversarial autorizado e delimitado.', 'Pone a prueba supuestos mediante trabajo adversarial autorizado y acotado.'],
+  'Extends assurance to models, data and AI-enabled workflows.': ['Estende as garantias a modelos, dados e fluxos com IA.', 'Extiende las garantías a modelos, datos y flujos con IA.'],
+  'Plans for changing cryptographic assumptions and migration.': ['Planeja a migração diante de mudanças nas premissas criptográficas.', 'Planifica la migración ante cambios en los supuestos criptográficos.'],
+  'Adapts security to physical processes, devices and safety.': ['Adapta a segurança a processos físicos, dispositivos e segurança operacional.', 'Adapta la seguridad a procesos físicos, dispositivos y seguridad operativa.'],
+  'Integrates the whole path where service failure has broad impact.': ['Integra toda a trilha onde a falha do serviço tem amplo impacto.', 'Integra toda la ruta donde un fallo del servicio tiene gran impacto.'],
+  'Shared security vocabulary gives Information security a way to name the information worth protecting.': ['O vocabulário de segurança ajuda Segurança da informação a nomear o que merece proteção.', 'El vocabulario de seguridad ayuda a Seguridad de la información a identificar lo que merece protección.'],
+  'Information value leads to Data governance: who owns it, where it moves and how it is used.': ['O valor da informação leva à Governança de dados: quem responde por ela, por onde circula e como é usada.', 'El valor de la información conduce a Gobernanza de datos: quién responde por ella, por dónde circula y cómo se usa.'],
+  'Ownership and lineage make Privacy and data protection decisions more precise.': ['Titularidade e linhagem tornam mais precisas as decisões de Privacidade e proteção de dados.', 'Titularidad y linaje hacen más precisas las decisiones de Privacidad y protección de datos.'],
+  'Data rights and purpose become accountable choices in Security governance, risk and compliance.': ['Direitos e finalidade dos dados tornam-se escolhas com responsáveis em Governança, risco e conformidade.', 'Los derechos y la finalidad de los datos se convierten en decisiones responsables de Gobierno, riesgo y cumplimiento.'],
+  'Governance needs people who can carry it out; Human factors and policy examines that reality.': ['A governança depende de pessoas para executá-la; Fatores humanos e política examina essa realidade.', 'El gobierno depende de personas para llevarlo a cabo; Factores humanos y política examina esa realidad.'],
+  'People and rules set requirements that Security architecture must make operational.': ['Pessoas e regras estabelecem requisitos que a Arquitetura de segurança precisa tornar operacionais.', 'Personas y reglas establecen requisitos que la Arquitectura de seguridad debe llevar a la práctica.'],
+  'Architecture needs verifiable trust mechanisms; Cryptography supplies some of them.': ['A arquitetura precisa de mecanismos verificáveis de confiança; a Criptografia fornece parte deles.', 'La arquitectura necesita mecanismos verificables de confianza; la Criptografía aporta algunos.'],
+  'Trust assumptions are stress-tested in decentralized systems and cryptoassets.': ['Premissas de confiança são testadas em sistemas descentralizados e criptoativos.', 'Los supuestos de confianza se ponen a prueba en sistemas descentralizados y criptoactivos.'],
+  'Identity and access connects trust mechanisms to people, services and authority.': ['Identidade e acesso conectam mecanismos de confiança a pessoas, serviços e autoridade.', 'Identidad y acceso conectan mecanismos de confianza con personas, servicios y autoridad.'],
+  'Authorized identities use communication paths; Network security protects those paths.': ['Identidades autorizadas usam canais de comunicação; Segurança de redes protege esses caminhos.', 'Las identidades autorizadas usan canales de comunicación; Seguridad de redes protege esas rutas.'],
+  'Network controls depend on the endpoints and hardware at either end.': ['Controles de rede dependem dos dispositivos e do hardware em cada ponta.', 'Los controles de red dependen de los dispositivos y del hardware en cada extremo.'],
+  'Host boundaries extend into Cloud and container operations.': ['Os limites dos hosts se estendem às operações em Nuvem e contêineres.', 'Los límites de los hosts se extienden a las operaciones en Nube y contenedores.'],
+  'Cloud workloads are built and updated through the Application supply chain.': ['Cargas de trabalho em nuvem são criadas e atualizadas pela Cadeia de software.', 'Las cargas de trabajo en nube se crean y actualizan mediante la Cadena de software.'],
+  'Deployed systems produce the signals that Security operations must interpret.': ['Sistemas implantados produzem sinais que Operações de segurança precisam interpretar.', 'Los sistemas desplegados producen señales que Operaciones de seguridad debe interpretar.'],
+  'Detection becomes useful when Incident response can make bounded, evidenced decisions.': ['A detecção ganha utilidade quando a Resposta a incidentes toma decisões delimitadas e fundamentadas.', 'La detección resulta útil cuando Respuesta a incidentes toma decisiones acotadas y fundamentadas.'],
+  'Incident hypotheses need preserved evidence; Digital forensics tests them.': ['Hipóteses do incidente precisam de evidências preservadas; Perícia digital as testa.', 'Las hipótesis del incidente requieren pruebas conservadas; Análisis forense digital las evalúa.'],
+  'Forensic observations gain context from Threat intelligence and OSINT.': ['Observações forenses ganham contexto com Inteligência de ameaças e OSINT.', 'Las observaciones forenses ganan contexto con Inteligencia de amenazas y OSINT.'],
+  'External context becomes testable assumptions in authorized Offensive security exercises.': ['O contexto externo vira premissas testáveis em exercícios autorizados de Segurança ofensiva.', 'El contexto externo se convierte en supuestos comprobables en ejercicios autorizados de Seguridad ofensiva.'],
+  'The same bounded testing mindset helps examine AI systems and their workflows.': ['A mesma abordagem de testes delimitados ajuda a examinar sistemas e fluxos de IA.', 'El mismo enfoque de pruebas acotadas ayuda a examinar sistemas y flujos de IA.'],
+  'AI systems still depend on cryptography; Quantum and post-quantum planning revisits its assumptions.': ['Sistemas de IA ainda dependem de criptografia; o planejamento quântico e pós-quântico revisita suas premissas.', 'Los sistemas de IA aún dependen de la criptografía; la planificación cuántica y poscuántica revisa sus supuestos.'],
+  'Migration planning must account for long-lived OT, IoT and physical systems.': ['O planejamento de migração precisa considerar sistemas OT, IoT e físicos de longa vida.', 'La planificación de la migración debe considerar sistemas OT, IoT y físicos de larga duración.'],
+  'Physical-process constraints converge in Critical infrastructure and sector security.': ['As restrições dos processos físicos convergem em Infraestrutura crítica e segurança setorial.', 'Las limitaciones de los procesos físicos convergen en Infraestructura crítica y seguridad sectorial.'],
+  'End of the suggested area route. Revisit any subject at a deeper level or follow its course lessons.': ['Fim da sequência sugerida. Retorne a qualquer tema em um nível mais profundo ou siga as aulas do curso.', 'Final de la secuencia sugerida. Vuelve a cualquier tema en un nivel más profundo o sigue las lecciones del curso.'],
   'Skip to content': ['Pular para o conteúdo', 'Saltar al contenido'],
   'CyKin, home': ['CyKin, início', 'CyKin, inicio'],
   'Main navigation': ['Navegação principal', 'Navegación principal'],
@@ -314,6 +409,20 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const weekStatus = english.match(/^Week (\d{2}) · (\d+)\/(\d+) written$/);
+  if (weekStatus) return lang === 'pt' ? `Semana ${weekStatus[1]} · ${weekStatus[2]}/${weekStatus[3]} escritas` : `Semana ${weekStatus[1]} · ${weekStatus[2]}/${weekStatus[3]} escritas`;
+  const weekHeading = english.match(/^Week (\d{2})(?: · (.+))?$/);
+  if (weekHeading) return `Semana ${weekHeading[1]}${weekHeading[2] ? ` · ${weekHeading[2]}` : ''}`;
+  const dailyAndChapters = english.match(/^(\d+) of (\d+) daily lessons written · (\d+) existing subject chapters readable$/);
+  if (dailyAndChapters) return lang === 'pt' ? `${dailyAndChapters[1]} de ${dailyAndChapters[2]} aulas diárias escritas · ${dailyAndChapters[3]} capítulos de matérias disponíveis` : `${dailyAndChapters[1]} de ${dailyAndChapters[2]} lecciones diarias escritas · ${dailyAndChapters[3]} capítulos de materias disponibles`;
+  const writtenDaily = english.match(/^(\d+) of (\d+) daily lessons written$/);
+  if (writtenDaily) return lang === 'pt' ? `${writtenDaily[1]} de ${writtenDaily[2]} aulas diárias escritas` : `${writtenDaily[1]} de ${writtenDaily[2]} lecciones diarias escritas`;
+  const fullChapters = english.match(/^Browse all (\d+) full chapters$/);
+  if (fullChapters) return lang === 'pt' ? `Explore os ${fullChapters[1]} capítulos completos` : `Explora los ${fullChapters[1]} capítulos completos`;
+  const studyWeeks = english.match(/^(\d+) study weeks$/);
+  if (studyWeeks) return lang === 'pt' ? `${studyWeeks[1]} semanas de estudo` : `${studyWeeks[1]} semanas de estudio`;
+  const readableChapters = english.match(/^(\d+) chapters readable$/);
+  if (readableChapters) return lang === 'pt' ? `${readableChapters[1]} capítulos disponíveis` : `${readableChapters[1]} capítulos disponibles`;
   const chapterLessonPosition = english.match(/^Chapter (\d+) · (.+) · Lesson (\d+) of (\d+)$/);
   if (chapterLessonPosition) return `${lang === 'pt' ? 'Capítulo' : 'Capítulo'} ${chapterLessonPosition[1]} · ${chapterLessonPosition[2]} · ${lang === 'pt' ? 'Aula' : 'Lección'} ${chapterLessonPosition[3]} de ${chapterLessonPosition[4]}`;
   const chapterLabel = english.match(/^Chapter (\d+) · (.+)$/);
