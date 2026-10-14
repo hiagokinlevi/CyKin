@@ -120,7 +120,9 @@ export function initChapterTests(): void {
     try {
       const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
       if (!me.ok || !(me.headers.get('content-type') || '').includes('application/json')) {
-        status.replaceChildren(document.createTextNode(me.status === 503 ? ui.setup + ' ' : ''), signInLink()); return;
+        if (me.status === 503) status.textContent = ui.setup;
+        else status.replaceChildren(signInLink());
+        return;
       }
       const response = await post('/private/tests/start', { level, area, language, chapter });
       const data = await response.json();
