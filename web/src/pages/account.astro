@@ -33,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       if (!data.lessons.length) status.textContent = 'No lessons marked yet. Begin with a published lesson.';
     } catch(error) {
-      title.textContent='Reading always open'; description.textContent=String(error);
+      title.textContent='Reading always open'; description.textContent=error instanceof Error ? error.message : 'Progress could not be loaded now.';
       if (!signInDeferred) action.append(link('/private/login','Sign in with email →'));
       action.append(link('/levels/','Study without an account →'));
       status.textContent='Your history will appear when optional sign-in is available and you sign in.';
