@@ -110,6 +110,10 @@ def test_daily_lesson_uses_distinct_sequential_code(client):
     assert "OCA-016-A001" in response.text
     assert "OCA-016-A002" in response.text
     assert '"identifier":"OCA-016-A001"' in response.text
+    article = response.text.split('<article class="prose" lang="en">', 1)[1].split("</article>", 1)[0]
+    assert "Continue studying — lesson 01" not in article
+    assert "Lesson 01 — Evidence readiness and the first case question" not in article
+    assert '<h1 id="lesson-01">Evidence readiness and the first case question</h1>' in response.text
 
 
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):

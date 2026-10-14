@@ -208,14 +208,14 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     # The book's navigation block is for Markdown readers. This page has its
     # own persistent previous/guide/next navigation above and below the text.
     body_source = re.sub(
-        r'<!-- open-cyber-academy:chapter-navigation:start[^\n]*-->.*?'
-        r'<!-- open-cyber-academy:chapter-navigation:end -->',
+        r'<!-- open-cyber-academy:(chapter|lesson)-navigation:start[^\n]*-->.*?'
+        r'<!-- open-cyber-academy:\1-navigation:end -->',
         '', body_source, flags=re.S,
     )
-    first_heading = re.match(r'\A\s*(?:<a\s+id="(?:ch|lesson)-\d{2,4}"></a>\s*)?#{1,2}\s+([^\n]+)\n', body_source)
+    first_heading = re.match(r'\A\s*(?:<a\s+id="(?:ch|lesson)-\d{2,4}"></a>\s*)?#{1,4}\s+([^\n]+)\n', body_source)
     if first_heading:
         def heading_subject(value: str) -> str:
-            return re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s*[—-]\s*', '', value.strip(), flags=re.I).casefold()
+            return re.sub(r'^(?:Chapter|Capítulo|Lesson|Aula|Lección)\s+\d+\s*[—-]\s*', '', value.strip(), flags=re.I).casefold()
         if heading_subject(first_heading.group(1)) == heading_subject(lesson["title"]):
             body_source = body_source[first_heading.end():]
     body = render_markdown(body_source, lesson["source_url"], level, area, language)
