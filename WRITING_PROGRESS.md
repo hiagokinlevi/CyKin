@@ -38,7 +38,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 
 | Language | Numbered chapters / indexed positions | Structural coverage |
 |---|---:|---:|
-| English (`en`) | 4,216 / 4,394 | 95.9% |
+| English (`en`) | 4,232 / 4,410 | 96.0% |
 | Português (`pt`) | 2,541 / 4,218 | 60.2% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
@@ -47,6 +47,6 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,273 / 37,914** | **19.2%** |
+| **All nine editions** | **7,289 / 37,930** | **19.2%** |
 
 These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).

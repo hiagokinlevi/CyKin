@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4216/4394 | 30/120060 | 4076/4216 | 4216/4216 | 4216/4216 | 4216/4216 |
+| English | 199/207 | 4232/4410 | 30/120060 | 4092/4232 | 4232/4232 | 4232/4232 | 4232/4232 |
 | Português | 124/207 | 2541/4218 | 0/120060 | 2444/2541 | 2541/2541 | 2541/2541 | 2541/2541 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -33,7 +33,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Network and communications security | [20/20](levels/rapid-1-month/network-communications/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/network-communications/es/book/PLAN.md) |
 | rapid-1-month · Systems, endpoints and hardware security | [20/20](levels/rapid-1-month/systems-endpoints-hardware/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/systems-endpoints-hardware/es/book/PLAN.md) |
 | rapid-1-month · Cloud and container security | [20/20](levels/rapid-1-month/cloud-containers/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/es/book/PLAN.md) |
-| rapid-1-month · Application and software supply chain security | [4/4](levels/rapid-1-month/application-supply-chain/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/es/book/PLAN.md) |
+| rapid-1-month · Application and software supply chain security | [20/20](levels/rapid-1-month/application-supply-chain/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/es/book/PLAN.md) |
 | rapid-1-month · Security operations and blue team | [4/4](levels/rapid-1-month/security-operations-blue-team/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/es/book/PLAN.md) |
 | rapid-1-month · Incident response and cyber resilience | [4/4 · 20 daily lessons](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/es/book/PLAN.md) |
 | rapid-1-month · Digital forensics and malware analysis | [4/4](levels/rapid-1-month/digital-forensics-malware/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/digital-forensics-malware/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/digital-forensics-malware/es/book/PLAN.md) |
