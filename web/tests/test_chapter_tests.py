@@ -101,6 +101,9 @@ def test_timeout_duplicate_answer_and_student_isolation(pilot, monkeypatch):
     assert late.status_code == 200
     assert late.json()["question"]["number"] == 2
     assert client.post("/private/tests/answer", json={"attempt_id": attempt_id, "index": 0, "selected": "a"}, headers=ORIGIN).status_code == 409
+    resumed = client.get("/private/tests/state", params={"attempt_id": attempt_id})
+    assert resumed.status_code == 200
+    assert resumed.json()["question"]["number"] == 2
 
     async def other_student(_request):
         return {"sub": "student-2", "email": "other@example.test"}
@@ -123,6 +126,9 @@ def test_perfect_attempt_is_saved_but_certificate_waits_for_editorial_approval(p
             assert response.json()["question"]["number"] == index + 2
     result = response.json()
     assert (result["score"], result["perfect"], len(result["feedback"])) == (10, True, 10)
+    resumed = client.get("/private/tests/state", params={"attempt_id": attempt_id})
+    assert resumed.status_code == 200
+    assert resumed.json()["score"] == 10
     scores = client.get("/private/tests/results", params={key: value for key, value in COURSE.items() if key != "chapter"})
     assert scores.status_code == 200
     assert scores.json()["results"][0]["best_score"] == 10

@@ -620,6 +620,30 @@ async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
                         headers={"Cache-Control": "no-store"})
 
 
+@app.get("/private/tests/state")
+async def api_test_state(request: Request, attempt_id: str = Query(pattern=r"^[A-Za-z0-9_-]{16,80}$")) -> Response:
+    student = await identity(request)
+    db = database(request)
+    found = await db.prepare(
+        "SELECT * FROM chapter_test_attempts WHERE id = ? AND user_id = ?"
+    ).bind(attempt_id, student["sub"]).all()
+    rows = d1_rows(found)
+    if not rows:
+        raise HTTPException(404, "Test attempt not found")
+    attempt = rows[0]
+    bank, digest = await chapter_test_bank(request, attempt["level"], attempt["area"], attempt["language"], int(attempt["chapter"]))
+    if digest != attempt["bank_sha256"]:
+        raise HTTPException(409, "The test changed; start a new attempt")
+    if attempt["status"] == "complete":
+        score = int(attempt["score"])
+        return JSONResponse({"attempt_id": attempt_id, "complete": True, "score": score, "total": 10,
+                             "perfect": score == 10, "feedback": feedback(bank, json.loads(attempt["answers_json"]))},
+                            headers={"Cache-Control": "no-store"})
+    now_ms = int(time.time() * 1000)
+    return JSONResponse({"attempt_id": attempt_id, "question": public_question(
+        bank, int(attempt["next_index"]), int(attempt["deadline_ms"]), now_ms)}, headers={"Cache-Control": "no-store"})
+
+
 @app.get("/private/tests/results")
 async def api_test_results(request: Request, level: str, area: str, language: str) -> Response:
     student = await identity(request)

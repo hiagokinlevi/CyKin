@@ -164,7 +164,18 @@ export function initChapterTests(): void {
       active = data as QuizResponse;
       if (active.question) showQuestion(active.question);
       else if (active.complete) showResult(active);
-    } catch (error) { el('test-feedback-status').textContent = error instanceof Error ? error.message : ui.failed; }
+    } catch (error) {
+      try {
+        const state = await fetch(`/private/tests/state?attempt_id=${encodeURIComponent(active.attempt_id)}`, { credentials: 'same-origin', cache: 'no-store' });
+        if (!state.ok) throw error;
+        active = await state.json() as QuizResponse;
+        if (active.question) showQuestion(active.question);
+        else if (active.complete) showResult(active);
+      } catch {
+        el('test-feedback-status').textContent = error instanceof Error ? error.message : ui.failed;
+        (el('test-submit') as HTMLButtonElement).disabled = false;
+      }
+    }
     finally { busy = false; }
   };
   const showResult = (result: QuizResponse) => {
