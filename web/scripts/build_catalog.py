@@ -95,11 +95,15 @@ def authored_index() -> dict:
         for match in ANCHOR.finditer(source):
             if title := title_after(match, "2,3"):
                 chapters[int(match.group(1))] = title
+        chapter_lessons = CHAPTER_LESSONS_MARKER in source and not daily
+        if chapter_lessons:
+            chapters = {number: re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', title)
+                        for number, title in chapters.items()}
         if daily or chapters:
             index[f"{level}/{area}/{language}"] = {
                 "lessons": [{"number": number, "title": daily[number]} for number in sorted(daily)],
                 "chapters": [{"number": number, "title": chapters[number]} for number in sorted(chapters)],
-                "chapter_lessons": CHAPTER_LESSONS_MARKER in source and not daily,
+                "chapter_lessons": chapter_lessons,
             }
     return index
 

@@ -2,6 +2,7 @@
 
 import json
 import hashlib
+import html
 import re
 from pathlib import Path
 
@@ -102,6 +103,8 @@ def test_information_security_chapter_lessons_use_one_canonical_page_each(client
     assert all(entry['published'] for entry in guide['daily_slots'])
     assert [module['chapters'] for module in guide['modules']] == [list(range(first, first + 5)) for first in (1, 6, 11, 16)]
     assert guide['daily_slots'][19]['source_url'].endswith('#ch-20')
+    assert guide['daily_slots'][19]['title'] == "What the month's log can say"
+    assert guide['lessons'][19]['title'] == "What the month's log can say"
 
     for number in range(1, 21):
         unit = client.get(f'/api/lessons/rapid-1-month/information-security/en/{number}').json()
@@ -120,6 +123,7 @@ def test_information_security_chapter_lessons_use_one_canonical_page_each(client
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
+    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/information-security/pt').json()

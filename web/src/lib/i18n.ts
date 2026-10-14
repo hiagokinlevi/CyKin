@@ -436,6 +436,10 @@ function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null 
   if (directoryUnit) return `${directoryUnit[1] === 'Lesson' ? (lang === 'pt' ? 'Aula' : 'Lección') : 'Capítulo'} ${directoryUnit[2]}:`;
   const plannedCadence = english.match(/^(\d+) weeks · (\d+) planned daily lessons$/);
   if (plannedCadence) return lang === 'pt' ? `${plannedCadence[1]} semanas · ${plannedCadence[2]} aulas diárias previstas` : `${plannedCadence[1]} semanas · ${plannedCadence[2]} lecciones diarias previstas`;
+  const chapterLessonFraction = english.match(/^(\d+)(?: of |\/)(\d+) chapter-lessons written$/);
+  if (chapterLessonFraction) return lang === 'pt' ? `${chapterLessonFraction[1]} de ${chapterLessonFraction[2]} capítulos-aula escritos` : `${chapterLessonFraction[1]} de ${chapterLessonFraction[2]} capítulos-lección escritos`;
+  const chapterLessonEdition = english.match(/^(\d+) chapter-lessons are published in this edition\.$/);
+  if (chapterLessonEdition) return lang === 'pt' ? `${chapterLessonEdition[1]} capítulos-aula publicados nesta edição.` : `${chapterLessonEdition[1]} capítulos-lección publicados en esta edición.`;
   const writtenFraction = english.match(/^(\d+)\/(\d+) daily lessons written$/);
   if (writtenFraction) return lang === 'pt' ? `${writtenFraction[1]}/${writtenFraction[2]} aulas diárias escritas` : `${writtenFraction[1]}/${writtenFraction[2]} lecciones diarias escritas`;
   const courseEdition = english.match(/^(\d+) daily lessons and (\d+) chapters are published in this edition\.$/);

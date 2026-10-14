@@ -120,7 +120,9 @@ export async function initCoursePortal(): Promise<void> {
     const weekdays = document.createElement('div'); weekdays.className = 'course-weekdays';
     for (const day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']) { const chip = document.createElement('span'); chip.textContent = day; weekdays.append(chip); }
     const availability = document.createElement('p'); availability.className = 'course-availability';
-    availability.textContent = `${details.published_lessons} of ${details.planned_lessons} daily lessons written · ${details.published_chapters} existing subject chapters readable`;
+    availability.textContent = details.chapter_lessons
+      ? `${details.published_lessons} of ${details.planned_lessons} chapter-lessons written`
+      : `${details.published_lessons} of ${details.planned_lessons} daily lessons written · ${details.published_chapters} existing subject chapters readable`;
     cadence.append(eyebrow, title, copy, weekdays, availability); overview.append(cadence);
 
     const firstDaily = details.daily_slots.find(item => item.published);
@@ -159,8 +161,11 @@ export async function initCoursePortal(): Promise<void> {
   }
   function renderFacts(): void {
     const facts = el('course-facts'); facts.replaceChildren(); facts.hidden = false;
-    const values = [`${details.course.instructional_weeks} study weeks`, `${details.published_chapters} chapters readable`];
-    if (details.published_lessons > 0) values.splice(1, 0, `${details.published_lessons}/${details.planned_lessons} daily lessons written`);
+    const values = [`${details.course.instructional_weeks} study weeks`];
+    if (details.published_lessons > 0) values.push(details.chapter_lessons
+      ? `${details.published_lessons}/${details.planned_lessons} chapter-lessons written`
+      : `${details.published_lessons}/${details.planned_lessons} daily lessons written`);
+    if (!details.chapter_lessons) values.push(`${details.published_chapters} chapters readable`);
     for (const value of values) {
       const fact = document.createElement('span'); fact.textContent = value; facts.append(fact);
     }
@@ -246,7 +251,9 @@ export async function initCoursePortal(): Promise<void> {
     if (!unit || !item) {
       el('course-kicker').textContent = `COURSE ${String(courseNumber).padStart(3, '0')}`;
       el('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
-      el('course-intro').textContent = details.published_lessons > 0
+      el('course-intro').textContent = details.chapter_lessons
+        ? `${details.published_lessons} chapter-lessons are published in this edition.`
+        : details.published_lessons > 0
         ? `${details.published_lessons} daily lessons and ${details.published_chapters} chapters are published in this edition.`
         : `${details.published_chapters} chapters are published in this edition. Daily study slots are a plan.`;
       if (details.book_url) source.append(link('Read the complete book →', bookUrl()));

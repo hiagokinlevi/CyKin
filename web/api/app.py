@@ -342,7 +342,8 @@ async def course_details(request: Request, level: str, area: str, language: str)
             if source_anchor else None,
         })
     legacy_chapters = [
-        {"chapter": number, "title": (authored.get(number) or planned[number])["title"],
+        {"chapter": number, "title": re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', (authored.get(number) or planned[number])["title"])
+         if chapter_lessons else (authored.get(number) or planned[number])["title"],
          "published": number in authored, "module": schedule.get(number, (1, ""))[0],
          "source_url": GITHUB_VIEW + manuscript_path + f"#ch-{number:02d}" if number in authored else None}
         for number in sorted(planned.keys() | authored.keys())
@@ -353,7 +354,7 @@ async def course_details(request: Request, level: str, area: str, language: str)
     source_authored = authored_daily if has_daily_lessons else authored
     for number in sorted(source_planned.keys() | source_authored.keys()):
         section = source_authored[number] if number in source_authored else source_planned[number]
-        title = section["title"]
+        title = re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', section["title"]) if chapter_lessons else section["title"]
         if has_daily_lessons:
             period = section.get("chapter") or (number - 1) // 5 + 1
             subject = re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', (authored.get(period) or planned.get(period) or {"title": title})["title"])
@@ -419,7 +420,7 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
     return {
         "course": {"level": level, "area": area, "language": language},
         "chapter": chapter,
-        "title": section["title"],
+        "title": re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', section["title"]) if chapter_lesson else section["title"],
         "markdown": markdown,
         "worked_answers": worked_answers(book, markdown, exercise_ids),
         "exercise_ids": exercise_ids,
