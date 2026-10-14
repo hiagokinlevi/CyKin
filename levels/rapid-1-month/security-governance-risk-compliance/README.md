@@ -8,19 +8,19 @@
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in security governance, risk and compliance. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 
-This is one course. It has **one course skill** and **one principal book in each language edition**. Its **4 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
+This is one course. It has **one course skill** and **one principal book in each language edition**. The older index had four subject modules. The English manuscript now has twenty chapter-lessons, which meets the rapid planning minimum of 20. There is no maximum. Worked answers belong at the end of the same book. Page count is not a writing target, and there is no exercise quota. The English edition remains a working draft.
 
 [Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/security-governance-risk-compliance/README.md)
 
 ## Position in the complete study path
 
-**Course 005 of 207.** Read chapters 01–04 in the chosen language's chapter index, then continue to the next course. Previous: [Privacy and data protection / Rapid course](../privacy-data-protection/README.md). Next: [Human factors and cyber policy / Rapid course](../human-factors-policy/README.md).
+**Course 005 of 207.** Read the chosen language's chapter index, then continue to the next course. The English index runs through chapter 20. Previous: [Privacy and data protection / Rapid course](../privacy-data-protection/README.md). Next: [Human factors and cyber policy / Rapid course](../human-factors-policy/README.md).
 
 ## Language editions
 
 | Language | Course materials | Subjects / chapters | Principal book | State |
 |---|---|---|---|---|
-| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Read public book](en/book/MANUSCRIPT.md) | Public manuscript; editorial review pending |
+| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Read public book](en/book/MANUSCRIPT.md) | English lessons through chapter 20; edition remains a working draft; review open |
 | Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Read public book](pt/book/MANUSCRIPT.md) | Public PT-BR manuscript; editorial review pending |
 | Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Book plan](es/book/PLAN.md) | Working outline; translation pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |

@@ -89,7 +89,7 @@ The weekday calendar sets a minimum number of lessons and no maximum. One lesson
 
 | Level | Lesson guide | Begin at chapter 01 | Chapters in manuscript / planned |
 |---|---|---|---:|
-| Rapid course | [Lesson guide](../../levels/rapid-1-month/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
+| Rapid course | [Lesson guide](../../levels/rapid-1-month/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 20/20 |
 | Professional course | [Lesson guide](../../levels/professional-6-months/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/professional-6-months/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 12/12 |
 | Technical course | [Lesson guide](../../levels/technical-18-months/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/technical-18-months/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 18/18 |
 | Technologist course | [Lesson guide](../../levels/technologist-3-years/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/technologist-3-years/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 30/30 |

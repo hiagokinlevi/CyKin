@@ -1,13 +1,11 @@
 # Materials — Security governance, risk and compliance / Rapid course / English
 
-[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/security-governance-risk-compliance/README.md) · [Course skill](../skill/SKILL.md) · [Authored manuscript draft](book/MANUSCRIPT.md)
+[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/security-governance-risk-compliance/README.md) · [Course skill](../skill/SKILL.md) · [Manuscript](book/MANUSCRIPT.md)
 
-**Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
+**Teaching and examples:** chapters 1–20 of the English manuscript are the lessons. The edition remains a working draft, 11 October 2026. Plans describe sequence; the manuscript contains the teaching.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Labs and practice:** two offline labs use the Python 3 standard library on synthetic data. `lab_deps.py` prints `shared by all three: ['identity provider']` and `NONE` for the email relay and the roster spreadsheet. `lab_restore.py` prints `total 245 min`, `MISSED by 5 min`, and a longest step of 70 minutes. Do not replace those lines.
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
+**Exercises and answers:** EX001–EX074 have worked results in the same book's appendix. The exercise baseline in the chapter index is not a quota.
 
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
-
-**References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.
+**References:** verifiable primary sources stay in the manuscript. Northstar Community Services is fictional. Page count is not the writing target. This edition is not a finished qualification.

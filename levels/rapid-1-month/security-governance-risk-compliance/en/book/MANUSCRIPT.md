@@ -3,14 +3,15 @@
 - Edition: working draft, 11 October 2026
 - Language: English
 - Course: rapid, one month
-- Status: four of four subject-chapters drafted; fifty-eight exercises (EX001–EX058) and their worked results drafted. Chapter 1 and EX001–EX005 are the original author's text, kept unchanged; Chapters 2–4 and EX006–EX050 continue the same Northstar case (added 12 October 2026); EX051–EX058 extend that case (added 13 October 2026). The A4 page count has not been verified.
+- Status: chapters 1–20 have hand-written teaching; exercises EX001–EX074 have matching worked results. Chapter 1 and EX001–EX005 stay the original author's text. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. This edition remains a working draft. Independent review remains open. Page count is not the writing target. This is not a finished qualification. The A4 page count has not been verified.
 - Public-domain dedication for original text: [CC0 1.0](../../../../../LICENSE); [scope and exceptions](../../../../../RIGHTS.md)
 
+<!-- open-cyber-academy:chapter-lessons -->
 ## How to use this book
 
 This course teaches a small security team to turn business priorities into a short, testable security strategy. Readers work with a fictional organization so that every exercise can be completed without access to a real company or its confidential records. The final product will be a one-page strategy, a prioritized action plan, and a compact measurement sheet. Readers may use the method for an actual organization only with permission to access its information.
 
-This is the one principal English book for the rapid Security governance, risk and compliance course. It incorporates the earlier Security Strategy draft as its first chapter. Its [subject grade](../SUBJECTS.md) and [book plan](PLAN.md) define four chapters, one per subject. Each chapter will include its own examples and exercises; all worked results belong in the final appendix of this same book. This draft now contains all four chapters and fifty-eight exercises. Chapter 1 sets the strategy; Chapters 2–4 extend it into scope and permission, dependencies and data, and a guided restore exercise with a recorded decision. The page target has not yet been validated.
+This is the one principal English book for the rapid Security governance, risk and compliance course. It incorporates the earlier Security Strategy draft as its first chapter. Chapters 1–20 are hand-written lessons. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. The edition line above remains a working draft. Independent review remains open. Page count is not the writing target. This is not a finished qualification. Chapter 1 sets the strategy. Chapters 2–4 extend it into scope, dependencies and the timed restore. Chapters 5–20 settle later Northstar decisions without replacing the laboratory prints. Worked results stay in the final appendix of this same book.
 
 <a id="ch-01"></a>
 
@@ -238,9 +239,11 @@ The Tuesday brochure from Calder Systems shows a green shield and a readiness fi
 - **EX052 — The blank second sentence.** Sentence 2 of the one-page test cannot be completed. What fact is missing, and may the team treat a platform purchase as the strategy choice? *Rubric:* 3 = the operations director has not accepted the four-hour limit; the missing fact is the next research task; a blank sentence blocks the purchase;; 2 = the limit is unaccepted;; 1 = buy the platform;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 04
+### Continue studying — lesson 01 (chapter 01 of 20)
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
 
 <!-- open-cyber-academy:chapter-navigation:end -->
 
@@ -417,9 +420,11 @@ On Wednesday the operations director signs a page that lets the engineer read ba
 
 Written scope, explicit permission, careful data handling, safe exercise design and a dated record make governance work trustworthy before any finding is made.
 
-### Continue studying — chapter 02 of 04
+### Continue studying — lesson 02 (chapter 02 of 20)
 
-[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
 
 <a id="ch-03"></a>
 
@@ -616,9 +621,11 @@ The engineer sees the case database in the verified listing and reaches for an e
 
 A dependency map turns named services into shared components, owners, data obligations, supplier checks and evidence-backed scenarios.
 
-### Continue studying — chapter 03 of 04
+### Continue studying — lesson 03 (chapter 03 of 20)
 
-[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
 
 <a id="ch-04"></a>
 
@@ -813,9 +820,1214 @@ Someone copies the six published lines onto a notepad and changes the locate ste
 
 A safe, timed exercise turns an assumed service limit into evidence, a recorded decision and a sharper one-page strategy for the next quarter.
 
-### Continue studying — chapter 04 of 04
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+
+<a id="ch-05"></a>
+
+## Chapter 5 — A booked retest is not a second run
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  A["Director approves option 2"] --> B["Improvements due within thirty days"]
+  B --> C["A second exercise is booked"]
+  C --> D{"Is a second log in the file?"}
+  D -->|No| E["Keep MISSED by 5 from the first run"]
+  D -->|Yes| F["That later log would be its own record"]
+```
+
+A booking is not a clock that has already been kept.
+
+### Logical drawing
+
+```text
+first exercise log
+    total 245 min
+    MISSED by 5 min
+    longest step 70 min
+decision record
+    second option approved
+        |
+        +-- thirty days is the due window, not a finished date
+        +-- the second exercise is booked, not run
+        +-- lab_restore.py stays as published
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the published restore print as the first exercise only.
+2. Tell a booked retest apart from a log that exists.
+3. Leave the four-hour limit unconfirmed while the second run is absent.
+
+### 5.1 The approval names a later exercise
+
+Chapter 4 records three options and the operations director's choice of the second: improvements due within thirty days, then another timed exercise. A classmate reads the signature as if the front desk had already sat down again. The file still holds one log. That log totals 245 minutes, prints `MISSED by 5`, and selects the database restore at 70 minutes as the longest step. The thirty-day phrase sets when the improvements are due. Nothing in the record says the window has closed, and nothing in it is a second set of step times. The engineer leaves `lab_restore.py` unchanged. Four hours remains a proposal until a later exercise is actually run.
+
+### 5.2 Worked example
+
+| What someone cites | What the file holds | Decision |
+|---|---|---|
+| The director approved a second exercise | A booking beside the first log | Keep the booking |
+| "The retest therefore already happened." | No second list of minutes | Refuse the leap |
+| `total 245 min` and `MISSED by 5 min` | The first run | Leave both lines |
+| "Edit the program so the sum meets 240." | The published script | Refuse the edit |
+
+> **Synthetic case.** No second timetable is invented here. The minutes are the ones embedded from the first run.
+
+### Errors and limits
+
+A signature can authorise a plan and still leave the plan unexecuted. This lesson does not pick a calendar day for the retest.
+
+### Apply
+
+- **EX059 — Which run is in the file?** The director approved improvements within thirty days and booked a second exercise. The only log still totals 245 minutes and prints `MISSED by 5`. Has the retest happened, and what happens to the script? *Rubric:* 3 = the retest is booked, not run; the first print stays; the thirty-day window is not described as elapsed; do not edit the script;; 2 = booked is not run, and the print stays;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — The longest step is not the five-minute miss
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  T["Total 245 against 240"] --> M["MISSED by 5"]
+  L["Largest single step is 70"] --> D["Database restore"]
+  M --> G{"Does shrinking 70 on paper retire the miss?"}
+  G -->|No| K["The approved work is three other items"]
+```
+
+The maximum and the gap answer different questions.
+
+### Logical drawing
+
+```text
+comparison
+    245 against 240, miss of 5
+maximum
+    restore scheduling database, 70 min
+approved improvements
+    protected place for instructions and credentials
+    scripted web host configuration
+    identity reconnection written into the procedure
+        |
+        +-- none of those three is "cut 5 minutes off the 70"
+        +-- a pencilled 70 does not isolate a copy
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate the five-minute miss from the longest step.
+2. Name the three improvements without adding a fourth.
+3. Refuse a paper cut to the database minutes.
+
+### 6.1 Two readings, and a shortcut that is neither
+
+The running total is what the program compares with 240. The maximum looks only at each step's own minutes and lands on restoring the scheduling database. A classmate proposes to write 65 over that 70 so the miss disappears. That edit is not one of the three improvements the director accepted. Those are a known protected place for the instructions and the backup credentials, a scripted web host configuration, and the identity reconnection written into the procedure. None of them is a homemade reduction of the database line. The engineer does not replace 70 in the published output.
+
+### 6.2 Worked example
+
+| Proposal | Which question it pretends to close | Decision |
+|---|---|---|
+| Leave 70 as the longest step | The maximum | Accept the reading |
+| Treat 70 as the reason the sum missed | The comparison, which uses every step | Refuse the swap |
+| Write 65 in place of 70 | A paper total | Refuse |
+| Do the three named improvements, then retest | The approved option | Still future work |
+
+> **Synthetic case.** The figure 65 is a classmate's mark. It is not a timed database restore.
+
+### Errors and limits
+
+Naming the longest step still matters for the procedure. It does not, by itself, explain the five minutes.
+
+### Apply
+
+- **EX060 — Which number would you rewrite?** Someone says the miss is the database step, and writes 65 where the log says 70. Which comparison actually produced the miss, and which three improvements stay the approved work? *Rubric:* 3 = the miss is 245 against 240; the maximum is the 70-minute database restore and is a different fact; the approved work is the protected location, the scripted web host and the written identity step; do not replace 70;; 2 = the miss and the maximum stay distinct;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — A decision-list line is not an owner in the listing
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N["Listing prints NONE"] --> L["Relay and roster go on the director's list"]
+  L --> W{"Did someone type a team name into the lab?"}
+  W -->|Yes| R["Refuse. The print still says NONE"]
+  W -->|No| K["The list is a request for a later decision"]
+```
+
+Asking for an owner does not fill the owner field.
+
+### Logical drawing
+
+```text
+lab_deps.py
+    email relay: owner NONE
+    roster spreadsheet: owner NONE
+    shared by all three: ['identity provider']
+director's decision list
+    owners still to be named
+        |
+        +-- "IT will look at it" is not the owner cell
+        +-- no personal name is invented
+        +-- the relay is not reconfigured
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep `NONE` until an owner is written into the listing's facts.
+2. Refuse a spoken team name as that owner.
+3. Leave the relay and the spreadsheet unedited.
+
+### 7.1 The list asks. The print has not changed.
+
+Chapter 3 put the email relay and the roster spreadsheet on the operations director's decision list because both owners print `NONE`. Chapter 4 then named "owners for the email relay and roster" among the quarter's outcomes. A classmate types IT beside the relay and says the outcome is met. IT is already the owner of other components. It is not what the program printed for these two. A sentence in a meeting is not a new run of `lab_deps.py`. The engineer invents no person's name, does not reconfigure the relay, and does not edit the spreadsheet. The identity provider remains the only component shared by all three services.
+
+### 7.2 Worked example
+
+| Claim | Source | Decision |
+|---|---|---|
+| Relay owner is `NONE` | The verified listing | Keep it |
+| "Put IT on the relay; IT owns the web host." | A different row | Refuse the copy |
+| Roster owner is `NONE` | The same listing | Keep it |
+| "We discussed an owner, so the cell is filled." | Talk, not a new print | Refuse |
+
+> **Synthetic case.** No colleague is given a personal name in order to fill either cell.
+
+### Errors and limits
+
+The decision list is still the right place to ask. Closing it in the margin does not create the appointment the director has not written.
+
+### Apply
+
+- **EX061 — Whose name went into the cell?** The quarter's outcomes include owners for the email relay and the roster. A teammate writes IT on the relay because IT owns the web host. What does the listing still print, and what must the engineer not change? *Rubric:* 3 = both still print `NONE`; a spoken or copied team name is not that cell; do not reconfigure the relay or edit the spreadsheet; invent no personal name; the identity provider stays the only component shared by all three;; 2 = `NONE` stays and the relay is not reconfigured;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — A quarter outcome is not a mail already cleaned
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  F["Confirmations include the appointment reason"] --> O["Removal is a quarter outcome"]
+  O --> S{"Is a cleaned sample in the file?"}
+  S -->|No| R["A later mail that still carries the reason fails the change"]
+  S -->|Yes| K["That sample would be its own evidence"]
+```
+
+Intending a cheaper mail is not proof the cheaper mail went out.
+
+### Logical drawing
+
+```text
+current finding
+    appointment reason may show health or financial hardship
+    confirmations still carry that reason
+quarter outcome
+    remove the reason from those mails
+        |
+        +-- the outcome is named, not evidenced as done
+        +-- no sample message is invented
+        +-- the relay is still not reconfigured in this lesson
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the appointment reason as a finding about the mail that was described.
+2. Treat removal as a quarter outcome rather than a completed send.
+3. Refuse a claim that a later confirmation is already clean.
+
+### 8.1 The cheap change is still ahead of the evidence
+
+Chapter 3 found that appointment confirmations include the reason, which can reveal health or financial hardship, and that dropping that content would lower privacy risk without stopping the booking. Chapter 4 listed the removal among the quarter's outcomes. A classmate points at that list and says clients no longer receive the reason. The file contains no cleaned sample and no date on which the template changed. A confirmation that still shows the reason is the old content. The engineer does not invent a message body, and this lesson does not reconfigure the email relay.
+
+### 8.2 Worked example
+
+| Sentence | What would support it | Decision |
+|---|---|---|
+| "The reason can reveal too much." | Chapter 3's finding | May stay |
+| "We will remove it this quarter." | The outcome list | May stay as an intention |
+| "Clients already get a mail without the reason." | No sample | Refuse |
+| "Reconfigure the relay tonight so the line is gone." | No written change, and the relay still has no owner | Refuse |
+
+> **Synthetic case.** No client message is drafted. The reason stays a type of content, not a quoted illness.
+
+### Errors and limits
+
+Leaving the outcome open does not mean the extra content is harmless. It means the file has not yet shown the change.
+
+### Apply
+
+- **EX062 — Which mail was cleaned?** Removal of appointment reasons is on the quarter's outcome list. A teammate says the confirmations no longer include the reason. What is still only an intention, and what do you not reconfigure? *Rubric:* 3 = removal is an outcome, not a cleaned sample; a mail that still shows the reason is the old content; do not invent a message; do not reconfigure the relay;; 2 = the outcome is not evidence that the mail changed;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Next quarter has not moved the exclusion
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  S["First scope excludes case management and the roster"] --> N["Review named for next quarter"]
+  N --> Q{"Does the file date that quarter as arrived?"}
+  Q -->|No| K["Keep the case-database row and leave it closed"]
+  Q -->|Yes| R["A dated review would be a new page"]
+```
+
+A note about later is not a page that says later has started.
+
+### Logical drawing
+
+```text
+included now
+    appointment portal, scheduling database, identity provider, backup service
+excluded for now
+    case management and the volunteer roster
+    review next quarter
+listing
+    case database row stays, owner Casework
+        |
+        +-- the row is not a key
+        +-- no suspicious account is invented
+        +-- no calendar date is supplied
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave case management and the volunteer roster outside the first scope.
+2. Keep the case-database row without opening it.
+3. Refuse an undated claim that next quarter has arrived.
+
+### 9.1 The exclusion is still written in the present
+
+The first scope covers the appointment portal, its scheduling database, the identity provider and the backup service. Both case management and the volunteer roster remain outside that inclusion list, pending the review the scope postponed. A classmate says the course has gone on long enough that the quarter must have turned, and opens the case database because its row is in the listing. The file never dates that turn. The row stays so the identity provider's support of every service remains visible, including a service outside the scope. The engineer does not open the database and does not invent a suspicious account to report. There is still nothing new to hand to that system's owner.
+
+### 9.2 Worked example
+
+| Proposal | Clock it assumes | Decision |
+|---|---|---|
+| Keep case management excluded | The note says next quarter | Accept |
+| "Enough lessons have passed, so open the case database." | No date | Refuse |
+| Delete the case-database row | The listing's job | Refuse |
+| Report a suspicious account | No such account in this file | Do not invent one |
+
+> **Synthetic case.** The quarter's arrival is not given a date. Casework remains the printed owner label, not a person.
+
+### Errors and limits
+
+Holding the exclusion does not cancel the later review. It refuses to pretend the review has already been held.
+
+### Apply
+
+- **EX063 — Has the exclusion expired?** The scope says case management and the volunteer roster will be reviewed next quarter. A teammate opens the case database because its row is listed. What stays closed, and what date is missing? *Rubric:* 3 = the exclusion stands because the file does not date the new quarter; keep the row; do not open the database; do not invent a suspicious account;; 2 = closed, and no date was supplied;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — The decision record is not a production permission
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  D["Decision record filed"] --> O["Option 2: improve, then retest"]
+  O --> P{"Does that filing name a live restore?"}
+  P -->|No| S["The next run still needs the safe-test rules"]
+  P -->|Yes| X["A production verb would be a different page"]
+```
+
+Approving a limit's path is not permission to touch the live portal.
+
+### Logical drawing
+
+```text
+first exercise
+    isolated copy
+    outbound mail blocked
+    named person able to stop it
+    separate credentials
+    live portal not touched
+decision record
+    whether to accept four hours
+    option 2 approved
+        |
+        +-- the record is not a new verb for production
+        +-- a later run repeats the safeguards
+        +-- opening hours are not waived here
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read the decision record as a choice about the four-hour proposal.
+2. Refuse to treat that choice as permission to restore over production.
+3. Require the same safe-test rules of any later exercise.
+
+### 10.1 The filed reasoning picks an option. It does not name a live target.
+
+The decision record states the question, the evidence, the options and the recommendation. The question is whether to accept a four-hour interruption limit for the appointment portal. The director approved the path of improvements and a second test. A classmate takes the filed page into the server room and starts a restore of the live database, because the director has "signed." The page does not name that verb or that target. The first exercise used an isolated copy, blocked outbound mail, a person who could stop the work, and separate credentials, and nobody touched the live portal. A later exercise needs those safeguards again. The engineer stops the live attempt. This lesson does not write a new permission line.
+
+### 10.2 Worked example
+
+| Action | Page that would have to allow it | Decision |
+|---|---|---|
+| Accept the improve-and-retest path | The decision record | Already the approved option |
+| Restore over the live database tonight | A permission page naming that verb and target | Not this record |
+| Skip the outbound-mail block because the first exercise blocked it | Each exercise's own plan | Refuse |
+| Touch the live portal because last time nobody did | The earlier restraint | That restraint is not a licence |
+
+> **Synthetic case.** The server-room attempt is a teaching refusal. No production system is described as changed.
+
+### Errors and limits
+
+Stopping the live attempt does not cancel the booked retest. It keeps the retest inside the rules the first exercise already used.
+
+### Apply
+
+- **EX064 — Which page was signed?** The decision record approves improvements and a second test. A teammate restores the live database because the director signed. What did the signature decide, and which safeguards does a later exercise still need? *Rubric:* 3 = the signature chose the improve-and-retest option, not a live restore; a later exercise still needs an isolated copy, the outbound-mail block, a named stopper and separate credentials; do not touch the live portal on the strength of this record;; 2 = the record is not production permission;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — An unconfirmed inventory is not a count of zero
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  U["No confirmed inventory of third-party integrations"] --> Z{"Does someone write 0?"}
+  Z -->|Yes| R["Refuse. Unconfirmed is not a census"]
+  K["Web host, identity provider, email relay"] --> N["Named component suppliers"]
+  N --> C["Those names do not close the inventory"]
+```
+
+Known suppliers of named parts are not the whole unknown list.
+
+### Logical drawing
+
+```text
+Chapter 1 gap
+    third-party integrations: no confirmed inventory
+named suppliers of components
+    web host, identity provider, email relay
+refused purchase
+    Calder Systems platform, not adopted
+        |
+        +-- do not write 0
+        +-- do not add a fourth firm
+        +-- do not treat Calder's brochure as a live integration
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave the integration inventory unconfirmed.
+2. Keep the three named suppliers as component facts, not as a finished census.
+3. Leave the refused Calder platform off the live list.
+
+### 11.1 Absence of a list is not a list of absences
+
+Northstar has no confirmed inventory of third-party integrations. The dependency work did name three suppliers that run components: the web host, the identity provider and the email relay. A classmate writes "integrations: 0" because a full inventory was never confirmed, then adds Calder Systems because a brochure arrived. Zero would be a census. The file does not contain one. The three suppliers answer a narrower question, which components they run, and they do not close the wider gap. Calder's platform was refused when sentence 2 was still blank. A refused catalogue order is not an integration Northstar operates. The engineer adds no fourth firm and does not inspect any supplier's machines.
+
+### 11.2 Worked example
+
+| Entry someone wants | What it actually is | Decision |
+|---|---|---|
+| "Integrations: 0" | A number the file never counted | Refuse |
+| Web host, identity provider, email relay | Suppliers of named components | May stay, as that narrower fact |
+| Calder Systems as a live integration | A brochure whose purchase was refused | Leave it off |
+| "Log into the supplier and finish the inventory." | An inspection the team cannot treat as its check | Refuse |
+
+> **Synthetic case.** No extra supplier is named. Calder remains the brochure vendor from Chapter 1.
+
+### Errors and limits
+
+Keeping the gap open does not mean the three known suppliers are unimportant. It means their names are not a substitute for the missing inventory.
+
+### Apply
+
+- **EX065 — What number is not in the file?** There is no confirmed inventory of third-party integrations. The web host, the identity provider and the email relay are named as component suppliers. A teammate writes 0, then adds Calder Systems. What do you refuse, and what narrower fact may stay? *Rubric:* 3 = refuse 0 and refuse Calder as a live integration; the three names stay suppliers of components and do not close the inventory; add no fourth firm;; 2 = unconfirmed is not zero, and Calder stays off;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — A status page is not a tested fallback
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  G["Evidence gap: no tested fallback sign-in"] --> S["A supplier page says operational"]
+  S --> R["That page is not a fallback test"]
+  E["Exercise reconnected identity in 25 min"] --> N["That step is part of the restore, not a fallback"]
+```
+
+Being able to sign in again on the restored copy is not a plan for when sign-in itself is gone.
+
+### Logical drawing
+
+```text
+scenario
+    identity provider unavailable
+    staff cannot reach any service
+    fallback sign-in: not tested
+exercise step
+    reconnect identity provider: 25 min
+        |
+        +-- 25 min is a step in the first log
+        +-- it assumes the provider can be reconnected
+        +-- no fallback product is named
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the fallback sign-in untested.
+2. Refuse a supplier status page as that test.
+3. Keep the 25-minute reconnect inside the restore log.
+
+### 12.1 Reconnection assumes the provider is still there to reconnect
+
+The identity scenario's evidence gap is that Northstar has not tested a fallback sign-in. If the provider is unavailable, staff cannot reach any of the three services. A classmate pastes a supplier status page that says the service is operational and calls the gap closed. A status line is not a fallback, and it is not a test Northstar ran. The exercise did include "reconnect identity provider" at 25 minutes. That step is how the restored portal was signed into during the first log. It does not show what the front desk would do if the provider could not be reconnected at all. The engineer names no fallback product and does not mark the gap as tested.
+
+### 12.2 Worked example
+
+| Offering | Question it answers | Decision |
+|---|---|---|
+| Supplier status: operational | The supplier's own notice | Not a Northstar test |
+| Reconnect step, 25 min | A line in the first restore | Keep it as that line |
+| "So fallback sign-in is proven." | A different gap | Refuse |
+| Buy a second identity product tonight | No product is in the file | Do not invent one |
+
+> **Synthetic case.** The status page is a classmate's printout. No uptime percentage is added.
+
+### Errors and limits
+
+Leaving the fallback untested does not make the 25-minute step unimportant. It keeps that step from answering a question it never asked.
+
+### Apply
+
+- **EX066 — What did 25 minutes show?** The identity provider was reconnected in 25 minutes during the restore. A teammate treats a supplier status page, plus that step, as a tested fallback sign-in. What gap remains, and what do you not name? *Rubric:* 3 = fallback sign-in stays untested; a status page is not that test; the 25 minutes stay a restore step; name no fallback product;; 2 = the gap stays open;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — The roster sharing list has not arrived
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  R["Roster access has never been reviewed"] --> E["Evidence requested: the sharing list"]
+  E --> V{"Is the list in the file?"}
+  V -->|No| K["A guess about who can open it is not the list"]
+  V -->|Yes| S["The list would be the evidence"]
+```
+
+An assumption about departed volunteers stays an assumption until the list is read.
+
+### Logical drawing
+
+```text
+roster spreadsheet
+    owner NONE
+    contact details of volunteers
+    access: never reviewed
+requested evidence
+    the sharing list
+        |
+        +-- "about three people" is not the list
+        +-- a leaver's access is not stated as fact
+        +-- the spreadsheet is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the roster access review as something that has not happened.
+2. Refuse a guessed headcount in place of the sharing list.
+3. Leave a departed volunteer's access unasserted.
+
+### 13.1 The scenario asked for a list. The file still does not hold one.
+
+Wide sharing could expose the volunteers' contact details, and the access review the scenario called for has not been carried out. The evidence request is the sharing list. A classmate says only a handful of people can open the file, so the review can be marked done, and adds that leavers have already lost access. Chapter 1's roster scenario treated lingering access as an assumption to test, not as a fact. A handful is not the list, and this lesson does not count the people. The engineer does not edit the spreadsheet and does not write that any named volunteer was removed. No volunteer is named.
+
+### 13.2 Worked example
+
+| Statement | Status in the file | Decision |
+|---|---|---|
+| Access has never been reviewed | Chapter 3 | May stay |
+| The sharing list was requested | The evidence line | May stay as a request |
+| "Only a handful still have it." | No list | Refuse |
+| "Leavers are already removed." | An assumption, not a test | Do not state it as fact |
+| Edit the sharing settings tonight | No owner, and no list | Refuse |
+
+> **Synthetic case.** No volunteer name and no headcount are supplied.
+
+### Errors and limits
+
+Waiting for the list does not make wide sharing safe. It refuses a review that nobody has performed.
+
+### Apply
+
+- **EX067 — What would the list have shown?** Roster access has never been reviewed, and the sharing list was the evidence asked for. A teammate says a handful of people remain and that leavers are already gone. What is still missing, and what do you not edit? *Rubric:* 3 = the sharing list is not in the file; a guessed handful is not that list; lingering access stays an assumption; do not edit the spreadsheet; name no volunteer;; 2 = the list is missing and the sheet is not edited;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — One exercise log is not a month of signals
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14. Map, example, EX068.
+
+```mermaid
+flowchart TD
+  S["Monthly signals named"] --> R["Restore time is one of them"]
+  R --> L["The file holds one restore total: 245"]
+  L --> N["One total is not a month of readings"]
+  B["Backup failures and privileged changes"] --> U["No counts are in the file"]
+```
+
+A signal's name is the thing to collect. It is not the collection.
+
+### Logical drawing
+
+```text
+signals to review monthly
+    restore time
+    backup failures
+    privileged changes
+    overdue owner actions
+what the file actually holds
+    one restore total, 245 min
+    relay and roster owners still NONE
+        |
+        +-- no failure count
+        +-- no privileged-change count
+        +-- 245 is not rewritten as a monthly average
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the four monthly signals as a review list.
+2. Treat 245 minutes as one restore reading.
+3. Refuse invented counts for the signals that have no figures.
+
+### 14.1 The strategy names what to look at. It does not fill the columns.
+
+Chapter 4 says the signals reviewed monthly are restore time, backup failures, privileged changes and overdue owner actions. A classmate builds a one-row dashboard, copies 245 into "average restore time," and types zero backup failures because nobody handed over a failure log. The exercise produced one total. An average needs more than one reading, and a missing failure log is not a count of zero. Privileged changes are in the same position: named, not counted. Overdue owner actions can point at a fact the listing already prints, the relay and the roster still show `NONE`, without turning that fact into a tally of tickets. The engineer writes no new integers.
+
+### 14.2 Worked example
+
+| Cell | Honest content | Decision |
+|---|---|---|
+| Restore time | One exercise, 245 min | Do not relabel it as a monthly average |
+| Backup failures | No count in the file | Leave the cell empty |
+| Privileged changes | No count in the file | Leave the cell empty |
+| Overdue owner actions | Relay and roster still `NONE` | May cite that listing |
+| "All four signals are green." | Three cells were never measured | Refuse |
+
+> **Synthetic case.** The dashboard row is a classmate's sheet. No failure total is created.
+
+### Errors and limits
+
+Empty cells are not a comfort. They show which of the four signals the file can already support.
+
+### Apply
+
+- **EX068 — Which cells are empty?** The monthly signals are restore time, backup failures, privileged changes and overdue owner actions. The only restore figure is 245 minutes. A teammate records that figure as the monthly average and writes zero failures. What may the sheet say? *Rubric:* 3 = 245 is one reading, not an average; backup failures and privileged changes have no counts; overdue owner actions may cite the relay and roster still printing `NONE`; write no new integers;; 2 = one total is not a month, and the missing counts stay missing;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — Six hours was the option not taken
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  O["Three options"] --> A["Accept four hours now"]
+  O --> B["Accept after improvements and a retest"]
+  O --> C["Raise the limit to six hours and staff manual booking"]
+  B --> Y["This is the approved option"]
+  C --> N["Do not start the manual process"]
+```
+
+Missing by five minutes does not promote the option the director did not choose.
+
+### Logical drawing
+
+```text
+option 1
+    accept four hours now
+    not chosen
+option 2
+    improvements, then a second test
+    approved
+option 3
+    six hours, plus a staffed manual booking process
+    not chosen
+        |
+        +-- the miss of 5 does not switch the choice
+        +-- no staffing number is invented
+        +-- the target is not rewritten to 360
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the option the director approved.
+2. Leave the six-hour manual process unstarted.
+3. Resist moving the target because the first sum missed.
+
+### 15.1 The third option remains on the page as a road not taken
+
+The decision record offered three ways forward. Accept the four-hour limit now. Accept it after improvements and a second test. Or raise the limit to six hours and staff a manual booking process. The director approved the second. A classmate, looking at the five-minute miss, starts recruiting the front desk onto a manual process and writes 360 minutes where the target says 240. That is the third option, and it is also the temptation to change the target instead of the process. The engineer does not invent how many people the manual process would need. Four hours stays the proposal under test. Six hours stays unchosen.
+
+### 15.2 Worked example
+
+| Move | Which option it is | Decision |
+|---|---|---|
+| Keep the improve-and-retest path | Option 2 | Accept |
+| Treat the five-minute miss as acceptance of four hours today | Option 1 | Refuse |
+| Staff manual booking because 245 exceeded 240 | Option 3 | Refuse |
+| Replace 240 with 360 | A new target | Refuse |
+
+> **Synthetic case.** No rota of front-desk staff is written. Six hours stays a rejected alternative.
+
+### Errors and limits
+
+Recording that the third option exists is not the same as starting it. The record keeps the alternative visible so a later decision can revisit it on purpose.
+
+### Apply
+
+- **EX069 — Which door was opened?** The exercise missed 240 by five minutes. A teammate starts a manual booking process and changes the target to six hours. Which option did the director approve, and what stays unstarted? *Rubric:* 3 = option 2 was approved; the six-hour manual process was not; do not start it; do not replace 240 with 360; invent no staffing number;; 2 = the manual process stays unstarted;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — A possible saving is not a measured minute
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  L["Locate step: 55 min"] --> P["A protected place could save most of that search"]
+  P --> M{"Did anyone measure the saving?"}
+  M -->|No| R["Refuse 40, 50, or any other homemade minute"]
+  M -->|Yes| K["That measurement would be a new log"]
+```
+
+"Most" is not a number the team may write into the result.
+
+### Logical drawing
+
+```text
+published locate step
+    55 min
+comment in the book
+    a known protected location could save most of those minutes
+what is not in the file
+    a measured saving
+    a completed move of the instructions
+        |
+        +-- 55 stays 55
+        +-- "most" is not 40 and not 50
+        +-- the improvement is not dated as done
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the locate step at 55 minutes.
+2. Refuse a guessed saving presented as a measurement.
+3. Leave the protected location as an improvement not yet shown as done.
+
+### 16.1 The book allowed a hope. It did not record a stopwatch.
+
+Keeping restore instructions and backup credentials in a known protected place could save most of the 55 minutes spent finding them. A classmate writes "saved 40" under that sentence, and another writes "saved 50," each claiming the search is practically gone. The book states no measured saving. Forty and fifty are both outside the file. The locate line remains 55 minutes in the published log. The protected place is one of the three improvements due within thirty days. This lesson does not date that place as finished, and it does not subtract a homemade figure from 55.
+
+### 16.2 Worked example
+
+| Figure | Where it would have to come from | Decision |
+|---|---|---|
+| 55 minutes locating the backup and credentials | The published log | Keep |
+| "Could save most of that" | The book's comment | Keep as a comment |
+| Saved 40 | Nowhere | Refuse |
+| Saved 50 | Nowhere | Refuse |
+| "The instructions have already been moved." | No completion note | Leave the improvement open |
+
+> **Synthetic case.** Forty and fifty are refused guesses. They are not a second timing.
+
+### Errors and limits
+
+Refusing the guesses does not mock the idea of a protected place. It waits for a later exercise to show what that place actually changed.
+
+### Apply
+
+- **EX070 — Which minute was measured?** The locate step took 55 minutes. The book says a protected place could save most of that search. Two classmates write saved 40 and saved 50. What stays 55, and what is not dated as done? *Rubric:* 3 = refuse both guesses; the locate line stays 55; no measured saving is in the file; the protected place is not dated as finished;; 2 = 55 stays and both guesses go;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Test bookings are not client bookings
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17. Map, example, EX071.
+
+```mermaid
+flowchart TD
+  S["Success was defined in advance"] --> F["Front-desk staff make test bookings"]
+  F --> I["Isolated copy, outbound mail blocked"]
+  I --> C{"Did a client receive a booking?"}
+  C -->|No| K["The 20 minutes are a step length, not a client count"]
+```
+
+The front desk practised on a copy. Clients were kept outside that practice.
+
+### Logical drawing
+
+```text
+success definition
+    test bookings in the restored portal
+safeguards
+    isolated copy
+    outbound email blocked so test bookings cannot reach clients
+    live portal not touched
+step
+    front-desk test bookings: 20 min
+        |
+        +-- 20 is minutes, not a number of clients
+        +-- no client is named
+        +-- the blocked mail is why the practice stayed inside
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read the front-desk step as test bookings on the isolated copy.
+2. Refuse a claim that clients were booked.
+3. Keep 20 minutes as a duration.
+
+### 17.1 The success test was a rehearsal with the door shut
+
+Success was defined before the exercise as front-desk staff making test bookings in the restored portal. The plan blocked outbound email so those bookings could not reach clients, and nobody touched the live portal. A classmate says the service outcome is met because the front desk booked for twenty minutes, so clients were seen. The twenty minutes are the length of the step, not a count of people. The bookings were tests on the isolated copy. The block on outbound mail is the reason a client should not have received one. The engineer names no client and does not convert 20 into a headcount.
+
+### 17.2 Worked example
+
+| Claim | What the step actually was | Decision |
+|---|---|---|
+| Front-desk staff made test bookings | The success definition | May stay |
+| The step took 20 minutes | The log | May stay |
+| "Clients were booked during that time." | The mail was blocked, and the copy was isolated | Refuse |
+| "Twenty clients were seen." | A duration read as a census | Refuse |
+
+> **Synthetic case.** No client name and no appointment count are added.
+
+### Errors and limits
+
+A successful rehearsal is evidence about the copy. It is not yet evidence that a client can still book when the live portal is down.
+
+### Apply
+
+- **EX071 — Who was booked?** The front-desk step took 20 minutes and the success definition was test bookings on the restored portal. Outbound mail was blocked. A teammate says twenty clients were seen. What stays a duration, and who was not booked? *Rubric:* 3 = 20 minutes is the step length, not a client count; the bookings were tests on the isolated copy; clients were not booked; name no client;; 2 = duration, not clients;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — A shared sign-in does not widen the first scope
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18. Map, example, EX072.
+
+```mermaid
+flowchart TD
+  I["Identity provider supports all three services"] --> R["It joins the appointment restore"]
+  R --> S["First scope still excludes case management and the roster"]
+  S --> N["Do not open those services because sign-in is shared"]
+```
+
+One component can enter an exercise while the other services stay outside the page.
+
+### Logical drawing
+
+```text
+why identity joins the restore
+    without sign-in a restored portal still cannot reopen
+first scope
+    portal, scheduling database, identity provider, backup service
+still excluded
+    case management
+    volunteer roster
+        |
+        +-- reconnecting identity is not a case-note review
+        +-- the case database stays closed
+        +-- the roster spreadsheet stays unedited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Explain why the identity provider is inside the restore.
+2. Keep that reason from pulling case management or the roster into scope.
+3. Leave the case database closed and the roster unedited.
+
+### 18.1 Shared support explains the exercise. It does not rewrite the inclusion list.
+
+The listing shows the identity provider shared by all three services, which is why a restore of the portal includes reconnecting it: staff who cannot sign in still cannot reopen appointments. A classmate treats that shared support as a new scope. If identity is in the exercise, they argue, case notes and the volunteer roster are in it too, because both depend on the same sign-in. The first scope still names the appointment portal, the scheduling database, the identity provider and the backup service. Case management and the roster remain excluded until next quarter. Reconnecting identity during the portal exercise is not permission to read case notes. The engineer leaves the case database closed and does not edit the roster spreadsheet.
+
+### 18.2 Worked example
+
+| Leap | Fact it starts from | Decision |
+|---|---|---|
+| Identity joins the appointment restore | Support of all three, and sign-in is required to reopen | Accept that narrow addition |
+| "Then open case management." | The same shared row | Refuse |
+| "Then review the roster while we are signed in." | The same shared row | Refuse |
+| Delete the case-database row so the question goes away | The listing's purpose | Refuse |
+
+> **Synthetic case.** No case note is read. The shared line stays `shared by all three: ['identity provider']`.
+
+### Errors and limits
+
+Keeping the other services out does not hide the dependency. The row stays in the listing so the dependency can be seen without being investigated.
+
+### Apply
+
+- **EX072 — What did the shared row authorise?** The identity provider supports all three services and was reconnected during the appointment restore. A teammate opens case management and the roster because they use the same sign-in. What addition was justified, and what stays excluded? *Rubric:* 3 = identity joins the portal restore because sign-in is required to reopen it; case management and the roster stay excluded; do not open the case database; do not edit the roster;; 2 = shared sign-in is not a wider scope;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Attendance at the exercise is not the month-end review
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  A["Director attends the start and the end"] --> E["That attendance witnesses the exercise"]
+  M["Activity log reviewed at the end of the month"] --> R{"Is that review entered?"}
+  R -->|No| K["Filing the decision record does not replace it"]
+```
+
+Being in the room for a test is one event. Reading the month's log is another.
+
+### Logical drawing
+
+```text
+exercise attendance
+    operations director at the start and at the end
+    the result tests the four-hour assumption
+activity record
+    date, person, approval reference, what changed, evidence kept
+    reviewed by the director at the end of the month
+decision record
+    filed with the evidence
+        |
+        +-- filing is not the monthly review
+        +-- attendance is not that review either
+        +-- no finding from a month-end reading is invented
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate exercise attendance from the month-end review of the activity log.
+2. Keep the filed decision record as its own document.
+3. Refuse a finding that the month-end review never produced.
+
+### 19.1 Two appearances by the same person are not the same control
+
+The operations director attended the start and the end of the restore because the result would test the four-hour assumption that director owns. Separately, the activity log in the restricted folder is reviewed by that director at the end of the month. A classmate writes "monthly review: done" because the director was present for the exercise and because the decision record was filed with the evidence. Presence at the test lets the director see that one run. It does not read every other activity line from the month. Filing the decision keeps the reasoning next to the log. It is not the review itself. The engineer invents no month-end finding and does not mark the review complete.
+
+### 19.2 Worked example
+
+| Event | What it shows | Decision |
+|---|---|---|
+| Director at the start and the end | Witness of this exercise | May stay |
+| Decision record filed with the evidence | The reasoning can be checked later | May stay |
+| "The month-end review therefore happened." | No such entry | Refuse |
+| A finding quoted from that review | Nothing was written | Do not invent it |
+
+> **Synthetic case.** No month-end note is composed. The director remains unnamed.
+
+### Errors and limits
+
+Leaving the monthly review open does not erase the exercise attendance. Both facts can sit in the file without being collapsed.
+
+### Apply
+
+- **EX073 — Which review was attended?** The director was present at the start and the end of the restore, and the decision record was filed. A teammate marks the month-end activity-log review as done. What did the attendance cover, and what entry is missing? *Rubric:* 3 = attendance witnesses the exercise; filing is not the month-end review; that review is not entered; invent no finding from it;; 2 = attendance is not the monthly review;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the strategy page can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20. Map, example, EX074.
+
+```mermaid
+flowchart TD
+  N["A leaving note"] --> F["Repeat the prints and the open lines"]
+  F --> Q{"Does the sentence add a new total, an owner, a cleaned mail, or a finished limit?"}
+  Q -->|Yes| R["Reject it"]
+  Q -->|No| K["The note may cite that line"]
+```
+
+Twenty lessons meet a planning minimum. The edition remains a working draft.
+
+### Logical drawing
+
+```text
+may stay
+    total 245 min; MISSED by 5 min; longest step 70 min
+    shared by all three: identity provider
+    relay and roster: NONE
+    second exercise booked, not run
+    case management and the roster still excluded
+must not be added
+    a print of MET
+    an owner typed into a NONE cell
+    appointment reasons already removed
+    four hours confirmed because the chapter count reached 20
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat only the laboratory lines and the decisions the file already holds.
+2. Reject a leaving note that closes open lines.
+3. Hand the next course onward without calling this edition finished.
+
+### 20.1 A note may quote the file. It may not improve it.
+
+A leaving note may say what was already written down. The dependency listing still prints the identity provider as the component shared by all three services, and it still prints `NONE` for the email relay and the roster spreadsheet. The restore log still totals 245 minutes, still prints `MISSED by 5`, and still selects the database restore at 70 minutes. The director approved improvements within thirty days and a second exercise. That exercise is booked, not run, so four hours is not confirmed. Appointment reasons are still a quarter outcome, not a cleaned mail. Case management and the volunteer roster are still outside the first scope. The integration inventory is still unconfirmed. Fallback sign-in is still untested. The roster sharing list is still absent. No measured saving has been taken off the 55-minute search.
+
+### 20.2 Worked example
+
+| Leaving-note sentence | Why it fails or stands | Decision |
+|---|---|---|
+| "The published total is 245 and the result is `MISSED by 5`." | The first log | May stay |
+| "The print now says MET." | No second run | Reject |
+| "The relay has an owner because the decision list asked for one." | The cell still says `NONE` | Reject |
+| "Appointment reasons have already left the mail." | Removal is still an outcome | Reject |
+| "Twenty lessons confirm the four-hour limit." | The limit waits on the retest | Reject |
+
+> **Synthetic case.** The note is a classroom page about Northstar. It is not a certificate and not a client communication.
+
+### Errors and limits
+
+Meeting the planning minimum of 20 lessons leaves this edition a working draft. A later decision can add a lesson, because there is no maximum. These English chapters do not publish another language edition. Human factors and cyber policy is the learner's following subject. Open lines at Northstar stay open when the learner turns that page. These chapters do not certify the organisation, and they do not hand anyone a qualification.
+
+### Apply
+
+- **EX074 — Four claims.** A classmate's leaving note says the restore print is now MET, that the email relay has an owner because the decision list asked for one, that appointment reasons have already been removed, and that twenty lessons confirm the four-hour limit. Which claims do you reject, and what do twenty lessons meet? *Rubric:* 3 = reject all four; the print stays 245 minutes and `MISSED by 5`, with the database restore longest at 70; `NONE` remains on the relay and the roster; removal of the appointment reason is still an outcome; twenty lessons meet the planning minimum and leave this edition a working draft;; 2 = reject the four claims and keep the published print;; 1 = one claim;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 ## Sources for chapters 2–4
 
@@ -828,7 +2040,7 @@ All Northstar details in Chapters 2–4 remain fictional; labs use only the Pyth
 
 ## Final appendix — worked results and assessment notes
 
-The worked results for every chapter are gathered here: EX001–EX005 (Chapter 1) as originally written, followed by EX006–EX050 (Chapters 2–4) and by EX051–EX058, two further exercises in each chapter.
+The worked results for every chapter are gathered here: EX001–EX005 (Chapter 1) as originally written, followed by EX006–EX050 (Chapters 2–4), by EX051–EX058, and by EX059–EX074 for chapters 5–20.
 
 ### EX001 — Worked result
 
@@ -957,3 +2169,35 @@ One acceptable draft is: “We must keep appointment scheduling recoverable for 
 **EX057.** The total 245 compared with `t <= 240` prints `MISSED by 5`. The maximum selects restoring the scheduling database at 70 minutes. The governance gap is the 55-minute search, and that step is not the maximum.
 
 **EX058.** If the locate step were 50 instead of 55, the same addition would print `MET`. That is arithmetic on the published log, not a second exercise. The four-hour limit is confirmed only after the improvements and a retest. One calm announced exercise still overstates readiness.
+
+**EX059.** The retest is booked, not run. The first print stays 245 minutes and `MISSED by 5`. The thirty-day window is not described as elapsed. Do not edit the script.
+
+**EX060.** The miss is 245 against 240. The maximum is the 70-minute database restore and is a different fact. The approved work is the protected location, the scripted web host and the written identity step. Do not replace 70.
+
+**EX061.** Both still print `NONE`. A copied team name is not that cell. Do not reconfigure the relay or edit the spreadsheet. Invent no personal name. The identity provider stays the only component shared by all three.
+
+**EX062.** Removal is an outcome, not a cleaned sample. A mail that still shows the reason is the old content. Do not invent a message. Do not reconfigure the relay.
+
+**EX063.** The exclusion stands because the file does not date the new quarter. Keep the row. Do not open the database. Do not invent a suspicious account.
+
+**EX064.** The signature chose the improve-and-retest option, not a live restore. A later exercise still needs an isolated copy, the outbound-mail block, a named stopper and separate credentials. Do not touch the live portal on the strength of this record.
+
+**EX065.** Refuse 0 and refuse Calder as a live integration. The three names stay suppliers of components and do not close the inventory. Add no fourth firm.
+
+**EX066.** Fallback sign-in stays untested. A status page is not that test. The 25 minutes stay a restore step. Name no fallback product.
+
+**EX067.** The sharing list is not in the file. A guessed handful is not that list. Lingering access stays an assumption. Do not edit the spreadsheet. Name no volunteer.
+
+**EX068.** 245 is one reading, not an average. Backup failures and privileged changes have no counts. Overdue owner actions may cite the relay and roster still printing `NONE`. Write no new integers.
+
+**EX069.** Option 2 was approved. The six-hour manual process was not. Do not start it. Do not replace 240 with 360. Invent no staffing number.
+
+**EX070.** Refuse both guesses. The locate line stays 55. No measured saving is in the file. The protected place is not dated as finished.
+
+**EX071.** 20 minutes is the step length, not a client count. The bookings were tests on the isolated copy. Clients were not booked. Name no client.
+
+**EX072.** Identity joins the portal restore because sign-in is required to reopen it. Case management and the roster stay excluded. Do not open the case database. Do not edit the roster.
+
+**EX073.** Attendance witnesses the exercise. Filing is not the month-end review. That review is not entered. Invent no finding from it.
+
+**EX074.** Reject all four. The print stays 245 minutes and `MISSED by 5`, with the database restore longest at 70. `NONE` remains on the relay and the roster. Removal of the appointment reason is still an outcome. Twenty lessons meet the planning minimum and leave this edition a working draft.
