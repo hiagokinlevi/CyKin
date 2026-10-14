@@ -33,6 +33,11 @@ PAGE_TEXT = {
     "pt": {"lesson": "Aula", "chapter": "Capítulo", "previous": "Anterior", "next": "Próxima", "guide": "Guia do curso", "all": "Todas as aulas", "answers": "Respostas comentadas", "home": "Início", "free": "Ensino gratuito e aberto para quem deseja proteger pessoas e tecnologias. Não é preciso criar uma conta para estudar ou consultar as respostas."},
     "es": {"lesson": "Lección", "chapter": "Capítulo", "previous": "Anterior", "next": "Siguiente", "guide": "Guía del curso", "all": "Todas las lecciones", "answers": "Respuestas desarrolladas", "home": "Inicio", "free": "Aprendizaje gratuito y abierto para quienes desean proteger a las personas y la tecnología. No se necesita una cuenta para estudiar ni consultar las respuestas."},
 }
+PAGE_CHROME = {
+    "en": {"skip": "Skip to lesson", "navigation": "Main navigation", "levels": "Levels", "subjects": "Subjects", "ai": "For AIs", "theme": "Toggle light and dark theme", "lesson_navigation": "Lesson navigation", "next_step": "Next study step", "footer": "Free public cybersecurity education", "api": "Open API and MCP"},
+    "pt": {"skip": "Pular para a aula", "navigation": "Navegação principal", "levels": "Níveis", "subjects": "Temas", "ai": "Para IAs", "theme": "Alternar tema claro e escuro", "lesson_navigation": "Navegação entre aulas", "next_step": "Próxima etapa de estudo", "footer": "Educação pública e gratuita em cibersegurança", "api": "API e MCP abertos"},
+    "es": {"skip": "Saltar a la lección", "navigation": "Navegación principal", "levels": "Niveles", "subjects": "Temas", "ai": "Para IA", "theme": "Cambiar entre tema claro y oscuro", "lesson_navigation": "Navegación entre lecciones", "next_step": "Siguiente etapa de estudio", "footer": "Educación pública y gratuita en ciberseguridad", "api": "API y MCP abiertos"},
+}
 
 
 def lesson_path(level: str, area: str, language: str, number: int, kind: str = "lesson") -> str:
@@ -144,14 +149,20 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     level, area, language = (lesson["course"][key] for key in ("level", "area", "language"))
     number = lesson["chapter"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
+    chrome = PAGE_CHROME.get(language, PAGE_CHROME["en"])
     label = ui["lesson" if kind == "lesson" else "chapter"]
     path = lesson_path(level, area, language, number, kind)
     locale_site = site_for_language(language)
     canonical = locale_site + path
     course_url = locale_site + f"/courses/{level}/{area}/"
-    name = course["title"]
+    name = course.get("titles", {}).get(language, course["title"])
     title = f"{lesson['title']} | {level_name} {name} | OpenCyber Academy"
-    description = plain_description(lesson["markdown"], f"Study {lesson['title']} in the free {name} course. Read the lesson, solve exercises and compare worked answers.")
+    fallback_description = {
+        "en": f"Study {lesson['title']} in the free {name} course. Read the lesson, solve exercises and compare worked answers.",
+        "pt": f"Estude {lesson['title']} no curso gratuito de {name}. Leia a aula, resolva os exercícios e confira as respostas comentadas.",
+        "es": f"Estudia {lesson['title']} en el curso gratuito de {name}. Lee la lección, resuelve los ejercicios y consulta las respuestas desarrolladas.",
+    }
+    description = plain_description(lesson["markdown"], fallback_description.get(language, fallback_description["en"]))
     escaped = {key: html.escape(value, quote=True) for key, value in {"canonical": canonical, "course_url": course_url, "title": title, "description": description, "name": name, "level_name": level_name, "lesson_title": lesson["title"]}.items()}
     structured = [
         {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "description": description, "url": canonical,
@@ -188,19 +199,19 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <link rel="stylesheet" href="/seo-lesson.css"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('open-cyber-academy-theme')||'dark'}}catch(_){{document.documentElement.dataset.theme='dark'}}</script>
   <script src="/seo-lesson.js" defer></script><script src="/analytics.js" defer></script>
 </head>
-<body><a class="skip" href="#lesson-content">Skip to lesson</a>
-<header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a><nav aria-label="Main navigation"><a href="/levels/">Levels</a><a href="/subjects/">Subjects</a><a href="/for-ai/">For AIs</a><button id="theme-toggle" type="button" aria-label="Toggle light and dark theme">◐</button></nav></div></header>
+<body><a class="skip" href="#lesson-content">{chrome['skip']}</a>
+<header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
 <main id="lesson-content" class="shell">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">{ui['home']}</a><span>›</span><a href="{escaped['course_url']}">{escaped['name']}</a><span>›</span><span>{label} {number}</span></nav>
   <div class="eyebrow">{escaped['level_name']} · {label} {number} · {language_name}</div>
   <h1>{escaped['lesson_title']}</h1>
   <p class="intro">{ui['free']}</p>
-  <nav class="lesson-nav" aria-label="Lesson navigation">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
+  <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
   <article class="prose" lang="{html.escape(language)}">{body}</article>
   {answers_html}
-  <nav class="lesson-nav" aria-label="Next study step">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
+  <nav class="lesson-nav" aria-label="{chrome['next_step']}">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
 </main>
-<footer class="footer"><div class="shell">© OpenCyber Academy · Free public cybersecurity education · <a href="/for-ai/">Open API and MCP</a></div></footer>
+<footer class="footer"><div class="shell">© OpenCyber Academy · {chrome['footer']} · <a href="/for-ai/">{chrome['api']}</a></div></footer>
 </body></html>'''
 
 
@@ -210,10 +221,11 @@ def render_planned_lesson_page(course: dict, slot: dict, language: str,
     level, area = course["level"], course["area"]
     number, week = slot["chapter"], slot["module"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
+    chrome = PAGE_CHROME.get(language, PAGE_CHROME["en"])
     site = site_for_language(language)
     path = lesson_path(level, area, language, number)
     title = html.escape(slot["title"])
-    name = html.escape(course["title"])
+    name = html.escape(course.get("titles", {}).get(language, course["title"]))
     course_path = f"/courses/{level}/{area}/"
     messages = {
         "en": ("Planned study day", "This lesson's teaching, example and exercise have not been published yet.", "The course guide records its place in the curriculum. Read a published chapter while the daily lesson is being written.", "Read the published chapter"),
@@ -237,6 +249,6 @@ def render_planned_lesson_page(course: dict, slot: dict, language: str,
 <div class="eyebrow">{html.escape(level_name)} · {html.escape(label)} {number} · {html.escape(language.upper())}</div>
 <h1>{title}</h1><p class="intro">{html.escape(notice)}</p>
 <article class="prose"><p>{html.escape(guidance)}</p><p>{html.escape(label)} {number} · {ui['chapter']} {week} · {name}.</p>{chapter_link}</article>
-<nav class="lesson-nav" aria-label="Lesson navigation">{previous}<a href="{course_path}">{ui['guide']}</a>{following}</nav>
+<nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{course_path}">{ui['guide']}</a>{following}</nav>
 </main><footer class="footer"><div class="shell">© OpenCyber Academy · {html.escape(ui['free'])}</div></footer>
 </body></html>'''

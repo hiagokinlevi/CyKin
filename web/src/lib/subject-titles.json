@@ -1,0 +1,94 @@
+{
+  "Cybersecurity": {
+    "pt": "Cibersegurança",
+    "es": "Ciberseguridad"
+  },
+  "Information security": {
+    "pt": "Segurança da informação",
+    "es": "Seguridad de la información"
+  },
+  "Data governance": {
+    "pt": "Governança de dados",
+    "es": "Gobernanza de datos"
+  },
+  "Privacy and data protection": {
+    "pt": "Privacidade e proteção de dados",
+    "es": "Privacidad y protección de datos"
+  },
+  "Security governance, risk and compliance": {
+    "pt": "Governança de segurança, risco e conformidade",
+    "es": "Gobernanza de seguridad, riesgo y cumplimiento"
+  },
+  "Human factors and cyber policy": {
+    "pt": "Fatores humanos e política cibernética",
+    "es": "Factores humanos y política cibernética"
+  },
+  "Security architecture and engineering": {
+    "pt": "Arquitetura e engenharia de segurança",
+    "es": "Arquitectura e ingeniería de seguridad"
+  },
+  "Cryptography and trust services": {
+    "pt": "Criptografia e serviços de confiança",
+    "es": "Criptografía y servicios de confianza"
+  },
+  "Web3, blockchain and cryptoasset security": {
+    "pt": "Segurança de Web3, blockchain e criptoativos",
+    "es": "Seguridad de Web3, blockchain y criptoactivos"
+  },
+  "Identity and access management": {
+    "pt": "Gestão de identidade e acesso",
+    "es": "Gestión de identidad y acceso"
+  },
+  "Network and communications security": {
+    "pt": "Segurança de redes e comunicações",
+    "es": "Seguridad de redes y comunicaciones"
+  },
+  "Systems, endpoints and hardware security": {
+    "pt": "Segurança de sistemas, dispositivos e hardware",
+    "es": "Seguridad de sistemas, dispositivos y hardware"
+  },
+  "Cloud and container security": {
+    "pt": "Segurança de nuvem e contêineres",
+    "es": "Seguridad de nube y contenedores"
+  },
+  "Application and software supply chain security": {
+    "pt": "Segurança de aplicações e cadeia de software",
+    "es": "Seguridad de aplicaciones y cadena de software"
+  },
+  "Security operations and blue team": {
+    "pt": "Operações de segurança e equipe azul",
+    "es": "Operaciones de seguridad y equipo azul"
+  },
+  "Incident response and cyber resilience": {
+    "pt": "Resposta a incidentes e resiliência cibernética",
+    "es": "Respuesta a incidentes y resiliencia cibernética"
+  },
+  "Digital forensics and malware analysis": {
+    "pt": "Perícia digital e análise de malware",
+    "es": "Informática forense y análisis de malware"
+  },
+  "Threat intelligence and OSINT": {
+    "pt": "Inteligência de ameaças e OSINT",
+    "es": "Inteligencia de amenazas y OSINT"
+  },
+  "Authorized offensive security and red team": {
+    "pt": "Segurança ofensiva autorizada e equipe vermelha",
+    "es": "Seguridad ofensiva autorizada y equipo rojo"
+  },
+  "AI and machine-learning security": {
+    "pt": "Segurança de IA e aprendizado de máquina",
+    "es": "Seguridad de IA y aprendizaje automático"
+  },
+  "Quantum and post-quantum security": {
+    "pt": "Segurança quântica e pós-quântica",
+    "es": "Seguridad cuántica y poscuántica"
+  },
+  "OT, IoT and cyber-physical security": {
+    "pt": "Segurança de OT, IoT e sistemas ciberfísicos",
+    "es": "Seguridad de OT, IoT y sistemas ciberfísicos"
+  },
+  "Critical infrastructure and sector security": {
+    "pt": "Segurança de infraestrutura crítica e setores",
+    "es": "Seguridad de infraestructuras críticas y sectores"
+  }
+}

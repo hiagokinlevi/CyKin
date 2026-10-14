@@ -507,12 +507,12 @@ async def public_lesson_page(request: Request, level: str, area: str, language: 
         slot = guide["daily_slots"][chapter - 1]
         published_chapter = next((item for item in guide["legacy_chapters"]
                                   if item["chapter"] == slot["module"] and item["published"]), None)
-        page = render_planned_lesson_page(course, slot, language, data["level_names"][level].get("en", level), published_chapter)
+        page = render_planned_lesson_page(course, slot, language, data["level_names"][level].get(language, data["level_names"][level]["en"]), published_chapter)
         return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": language,
                                            "X-Robots-Tag": "noindex, follow", "X-Content-Type-Options": "nosniff"})
     if lesson["content_kind"] == "legacy_chapter":
         return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
-    level_name = data["level_names"][level].get("en", level)
+    level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     return HTMLResponse(render_lesson_page(lesson, course, level_name), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
@@ -521,7 +521,7 @@ async def public_chapter_page(request: Request, level: str, area: str, language:
     data = await catalog(request)
     course = get_course(data, level, area, language)
     lesson = await lesson_details(request, level, area, language, chapter, legacy=True)
-    level_name = data["level_names"][level].get("en", level)
+    level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     return HTMLResponse(render_lesson_page(lesson, course, level_name, "chapter"), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 

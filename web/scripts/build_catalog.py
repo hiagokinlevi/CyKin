@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 SITEMAP = OUTPUT.with_name("sitemap.xml")
 LESSON_INDEX = OUTPUT.with_name("lesson-index.json")
+SUBJECT_TITLES = json.loads((ROOT / "web/src/lib/subject-titles.json").read_text(encoding="utf-8"))
 LANGUAGES = ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")
 INDEXED_LANGUAGES = {"en", "pt", "es"}
 
@@ -112,6 +113,8 @@ def build() -> dict:
         if not number_match:
             raise ValueError(f"Missing course number: {home}")
         title = text.splitlines()[0].removeprefix("# ").split(" — ")[0]
+        if title not in SUBJECT_TITLES:
+            raise ValueError(f"Missing translated course title: {title}")
         plan = home.parent / "en" / "book" / "PLAN.md"
         chapters = len(ANCHOR.findall(plan.read_text(encoding="utf-8")))
         if not chapters:
@@ -126,6 +129,7 @@ def build() -> dict:
             "level": level,
             "area": area,
             "title": title,
+            "titles": {"en": title, **SUBJECT_TITLES[title]},
             "planned_chapters": chapters,
             "instructional_weeks": INSTRUCTIONAL_WEEKS[level],
             "study_days_per_week": 5,

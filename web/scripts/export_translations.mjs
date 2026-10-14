@@ -18,4 +18,8 @@ for (const statement of source.statements) {
   }
 }
 if (!dictionary) throw new Error('Could not read interface translations');
+const subjectTitles = JSON.parse(fs.readFileSync('src/lib/subject-titles.json', 'utf8'));
+for (const [english, languages] of Object.entries(subjectTitles)) {
+  dictionary[english] = [languages.pt, languages.es];
+}
 process.stdout.write(JSON.stringify(dictionary));

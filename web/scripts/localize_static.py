@@ -75,17 +75,21 @@ def localized_page(source: str, language: str, route: str) -> str:
     result = result.replace('<meta property="og:url" content="https://opencyber.academy', f'<meta property="og:url" content="{origin}', 1)
     if route not in {"/", "/about/"}:
         result = result.replace('content="index,follow,max-image-preview:large"', 'content="noindex,follow"', 1)
-    else:
-        metadata = {
-            "/": {
-                "pt": ("OpenCyber Academy — cursos gratuitos de cibersegurança", "Cursos, livros e aulas gratuitos de cibersegurança para quem deseja proteger pessoas e tecnologias."),
-                "es": ("OpenCyber Academy — cursos gratuitos de ciberseguridad", "Cursos, libros y lecciones gratuitos de ciberseguridad para quienes desean proteger a las personas y la tecnología."),
-            },
-            "/about/": {
-                "pt": ("Sobre nós · OpenCyber Academy", "Conheça a OpenCyber Academy e seu fundador, Hiago Kin Levi. Livros e aulas gratuitos de cibersegurança para todos."),
-                "es": ("Sobre nosotros · OpenCyber Academy", "Conoce OpenCyber Academy y a su fundador, Hiago Kin Levi. Libros y lecciones gratuitos de ciberseguridad para todos."),
-            },
-        }
+    metadata = {
+        "/": {
+            "pt": ("OpenCyber Academy — cursos gratuitos de cibersegurança", "Cursos, livros e aulas gratuitos de cibersegurança para quem deseja proteger pessoas e tecnologias."),
+            "es": ("OpenCyber Academy — cursos gratuitos de ciberseguridad", "Cursos, libros y lecciones gratuitos de ciberseguridad para quienes desean proteger a las personas y la tecnología."),
+        },
+        "/about/": {
+            "pt": ("Sobre nós · OpenCyber Academy", "Conheça a OpenCyber Academy e seu fundador, Hiago Kin Levi. Livros e aulas gratuitos de cibersegurança para todos."),
+            "es": ("Sobre nosotros · OpenCyber Academy", "Conoce OpenCyber Academy y a su fundador, Hiago Kin Levi. Libros y lecciones gratuitos de ciberseguridad para todos."),
+        },
+        "/privacy/": {
+            "pt": ("Privacidade e análise de uso opcional · OpenCyber Academy", "Estude sem cadastro e escolha se deseja permitir a medição opcional de visitas às aulas públicas."),
+            "es": ("Privacidad y análisis de uso opcional · OpenCyber Academy", "Estudia sin registrarte y elige si deseas permitir la medición opcional de visitas a las lecciones públicas."),
+        },
+    }
+    if route in metadata:
         title, description = metadata[route][language]
         result = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", result, count=1)
         for attribute in ('name="description"', 'property="og:description"', 'name="twitter:description"'):

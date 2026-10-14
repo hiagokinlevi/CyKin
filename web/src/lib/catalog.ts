@@ -6,6 +6,7 @@ export type Course = {
   level: string;
   area: string;
   title: string;
+  titles: Record<'en' | 'pt' | 'es', string>;
   planned_chapters: number;
   instructional_weeks: number;
   study_days_per_week: number;

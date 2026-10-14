@@ -1,4 +1,7 @@
+import subjectTitlesData from './subject-titles.json';
+
 type Language = 'en' | 'pt' | 'es';
+const subjectTitles = subjectTitlesData as Record<string, { pt: string; es: string }>;
 
 export function siteLanguage(): Language {
   const selected = document.documentElement.dataset.language;
@@ -14,6 +17,16 @@ export function editionLanguage(): string {
 // the language of their published edition.
 const copy: Record<string, [string, string]> = {
   'About us': ['Sobre nós', 'Sobre nosotros'],
+  'Privacy': ['Privacidade', 'Privacidad'],
+  'PRIVACY': ['PRIVACIDADE', 'PRIVACIDAD'],
+  'Open study, with optional analytics.': ['Estudo aberto, com análise de uso opcional.', 'Estudio abierto, con análisis de uso opcional.'],
+  'Books, lessons, exercises, the public API and MCP can be used without registering or accepting analytics.': ['Livros, aulas, exercícios, a API pública e o MCP podem ser usados sem cadastro e sem aceitar a análise de uso.', 'Los libros, las lecciones, los ejercicios, la API pública y el MCP pueden utilizarse sin registrarse ni aceptar el análisis de uso.'],
+  'Optional page-view measurement': ['Medição opcional de visualizações', 'Medición opcional de visitas'],
+  'With your permission, the site loads Google Analytics 4 to count page views and understand which public lessons are used. The tag does not load before you choose “Allow analytics”. Page URLs sent from this site omit query parameters. Google may process browser and device information under its own policies.': ['Com sua permissão, o site carrega o Google Analytics 4 para contar visualizações e entender quais aulas públicas são consultadas. A ferramenta não é carregada antes de você escolher “Permitir analytics”. As URLs enviadas por este site não incluem parâmetros de consulta. O Google pode tratar informações do navegador e do dispositivo conforme suas próprias políticas.', 'Con tu permiso, el sitio carga Google Analytics 4 para contar visitas y entender qué lecciones públicas se consultan. La herramienta no se carga antes de elegir “Permitir analytics”. Las URL enviadas por este sitio no incluyen parámetros de consulta. Google puede tratar información del navegador y del dispositivo según sus propias políticas.'],
+  "Your choice is kept in this browser's local storage. You can change it using “Analytics preferences” in the footer. A new opt-out stops later page views from this browser, though it does not erase data previously processed by Google.": ['Sua escolha fica armazenada localmente neste navegador. Você pode alterá-la em “Preferências de analytics” no rodapé. Uma nova recusa interrompe visualizações futuras deste navegador, mas não apaga dados já tratados pelo Google.', 'Tu elección se guarda localmente en este navegador. Puedes cambiarla en “Preferencias de analytics” en el pie de página. Rechazar ahora detiene las visitas posteriores desde este navegador, pero no borra datos ya tratados por Google.'],
+  'Student progress': ['Progresso do estudante', 'Progreso del estudiante'],
+  'Optional account-based progress saving is not currently available. Reading public content does not need a student account.': ['O recurso opcional de salvar o progresso em uma conta ainda não está disponível. A leitura do conteúdo público não exige uma conta de estudante.', 'La función opcional de guardar el progreso en una cuenta aún no está disponible. Leer el contenido público no requiere una cuenta de estudiante.'],
+  'Return to OpenCyber Academy': ['Voltar à OpenCyber Academy', 'Volver a OpenCyber Academy'],
   'About us · OpenCyber Academy': ['Sobre nós · OpenCyber Academy', 'Sobre nosotros · OpenCyber Academy'],
   'ABOUT THE ACADEMY': ['SOBRE A ACADEMIA', 'SOBRE LA ACADEMIA'],
   'Cybersecurity education, open to everyone.': ['Educação em cibersegurança aberta a todos.', 'Educación en ciberseguridad abierta a todos.'],
@@ -217,29 +230,6 @@ const copy: Record<string, [string, string]> = {
   '9 separate courses': ['9 cursos separados', '9 cursos separados'],
   'Browse all courses': ['Explore todos os cursos', 'Explora todos los cursos'],
   'Choose a course using the menus above.': ['Escolha um curso nos menus acima.', 'Elige un curso en los menús de arriba.'],
-  'Cybersecurity': ['Cibersegurança', 'Ciberseguridad'],
-  'Information security': ['Segurança da informação', 'Seguridad de la información'],
-  'Data governance': ['Governança de dados', 'Gobernanza de datos'],
-  'Privacy and data protection': ['Privacidade e proteção de dados', 'Privacidad y protección de datos'],
-  'Security governance, risk and compliance': ['Governança de segurança, risco e conformidade', 'Gobernanza de seguridad, riesgo y cumplimiento'],
-  'Human factors and cyber policy': ['Fatores humanos e política cibernética', 'Factores humanos y política cibernética'],
-  'Security architecture and engineering': ['Arquitetura e engenharia de segurança', 'Arquitectura e ingeniería de seguridad'],
-  'Cryptography and trust services': ['Criptografia e serviços de confiança', 'Criptografía y servicios de confianza'],
-  'Web3, blockchain and cryptoasset security': ['Segurança de Web3, blockchain e criptoativos', 'Seguridad de Web3, blockchain y criptoactivos'],
-  'Identity and access management': ['Gestão de identidade e acesso', 'Gestión de identidad y acceso'],
-  'Network and communications security': ['Segurança de redes e comunicações', 'Seguridad de redes y comunicaciones'],
-  'Systems, endpoints and hardware security': ['Segurança de sistemas, dispositivos e hardware', 'Seguridad de sistemas, dispositivos y hardware'],
-  'Cloud and container security': ['Segurança de nuvem e contêineres', 'Seguridad de nube y contenedores'],
-  'Application and software supply chain security': ['Segurança de aplicações e cadeia de software', 'Seguridad de aplicaciones y cadena de software'],
-  'Security operations and blue team': ['Operações de segurança e equipe azul', 'Operaciones de seguridad y equipo azul'],
-  'Incident response and cyber resilience': ['Resposta a incidentes e resiliência cibernética', 'Respuesta a incidentes y resiliencia cibernética'],
-  'Digital forensics and malware analysis': ['Perícia digital e análise de malware', 'Informática forense y análisis de malware'],
-  'Threat intelligence and OSINT': ['Inteligência de ameaças e OSINT', 'Inteligencia de amenazas y OSINT'],
-  'Authorized offensive security and red team': ['Segurança ofensiva autorizada e equipe vermelha', 'Seguridad ofensiva autorizada y equipo rojo'],
-  'AI and machine-learning security': ['Segurança de IA e aprendizado de máquina', 'Seguridad de IA y aprendizaje automático'],
-  'Quantum and post-quantum security': ['Segurança quântica e pós-quântica', 'Seguridad cuántica y poscuántica'],
-  'OT, IoT and cyber-physical security': ['Segurança de OT, IoT e sistemas ciberfísicos', 'Seguridad de OT, IoT y sistemas ciberfísicos'],
-  'Critical infrastructure and sector security': ['Segurança de infraestrutura crítica e setores', 'Seguridad de infraestructuras críticas y sectores'],
   'For AIs': ['Para IAs', 'Para IA'],
   'Editorial standard': ['Padrão editorial', 'Estándar editorial'],
   'Site language': ['Idioma do site', 'Idioma del sitio'],
@@ -548,7 +538,8 @@ function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null 
 export function ui(english: string): string {
   const pair = copy[english];
   const lang = siteLanguage();
-  return lang === 'en' ? english : pair ? pair[lang === 'pt' ? 0 : 1] : dynamic(english, lang) || english;
+  const subject = subjectTitles[english];
+  return lang === 'en' ? english : subject ? subject[lang] : pair ? pair[lang === 'pt' ? 0 : 1] : dynamic(english, lang) || english;
 }
 
 function translateText(node: Text): void {

@@ -59,6 +59,23 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert chapter_only.headers["location"] == "/courses/rapid-1-month/information-security/chapters/en/1/"
 
 
+def test_translated_chapters_use_localized_course_names_in_search_and_navigation(client):
+    cases = (
+        ("pt", "quantum-post-quantum-security", "Profissionalizante", "Segurança quântica e pós-quântica", "Navegação entre aulas"),
+        ("es", "ot-iot-security", "Profesional", "Seguridad de OT, IoT y sistemas ciberfísicos", "Navegación entre lecciones"),
+    )
+    for language, area, level_name, course_name, navigation in cases:
+        path = f"/courses/professional-6-months/{area}/chapters/{language}/1/"
+        response = client.get(path, headers={"host": f"{language}.opencyber.academy"})
+        assert response.status_code == 200
+        assert f'<html lang="{language}"' in response.text
+        assert f"{level_name} {course_name} | OpenCyber Academy</title>" in response.text
+        assert f'aria-label="{navigation}"' in response.text
+        structured = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', response.text, re.S).group(1))
+        assert structured[0]["isPartOf"]["name"] == course_name
+        assert structured[0]["educationalLevel"] == level_name
+
+
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     sitemaps = {language: (ROOT / f"web/public/sitemap-{language}.xml").read_text()
                 for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}
