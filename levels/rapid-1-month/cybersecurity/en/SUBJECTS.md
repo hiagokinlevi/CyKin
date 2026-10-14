@@ -1,6 +1,6 @@
 # Subjects and book chapters — Cybersecurity / Rapid course / English
 
-**One course, one principal book, one course skill.** Ten English lessons are authored. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open authored teaching; a planned chapter is a summary, not a completed lesson.
+**One course, one principal book, one course skill.** Eleven English lessons are authored. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open authored teaching; a planned chapter is a summary, not a completed lesson.
 
 English is the reference edition.
 
@@ -19,6 +19,7 @@ English is the reference edition.
 | 7 | [07](book/PLAN.md#ch-07) | A pending queue during an outage | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-07) | [08 · Lesson](book/MANUSCRIPT.md#ch-08) |
 | 8 | [08](book/PLAN.md#ch-08) | A weak procedure is not yet a vulnerability | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-08) | [09 · Lesson](book/MANUSCRIPT.md#ch-09) |
 | 9 | [09](book/PLAN.md#ch-09) | A verdict tally is not a severity | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-09) | [10 · Lesson](book/MANUSCRIPT.md#ch-10) |
-| 10 | [10](book/PLAN.md#ch-10) | A spoken time is not a printout | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-10) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
+| 10 | [10](book/PLAN.md#ch-10) | A spoken time is not a printout | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-10) | [11 · Lesson](book/MANUSCRIPT.md#ch-11) |
+| 11 | [11](book/PLAN.md#ch-11) | A named sheet does not free the room | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-11) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The planning minimum is 20 lessons. Page count is not the publication gate. The [book standard](../../../../BOOK_STANDARD.md) states what a finished edition still requires.
