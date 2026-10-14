@@ -965,7 +965,8 @@ async def public_lesson_page(request: Request, level: str, area: str, language: 
         return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     guide = await course_details(request, level, area, language)
-    return HTMLResponse(render_lesson_page(lesson, course, level_name, guide=guide), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+    available_tests = {item["chapter"] for item in (await test_index(request))["courses"].get(f"{level}/{area}/{language}", [])}
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, guide=guide, available_test_chapters=available_tests), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/courses/{level}/{area}/chapters/{language}/{chapter}/", include_in_schema=False)
@@ -976,7 +977,8 @@ async def public_chapter_page(request: Request, level: str, area: str, language:
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     kind = "chapter_lesson" if lesson["chapter_lesson"] else "chapter"
     guide = await course_details(request, level, area, language)
-    return HTMLResponse(render_lesson_page(lesson, course, level_name, kind, guide), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+    available_tests = {item["chapter"] for item in (await test_index(request))["courses"].get(f"{level}/{area}/{language}", [])}
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, kind, guide, available_tests), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/courses/{level}/{area}/start/", include_in_schema=False)

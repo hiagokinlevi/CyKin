@@ -453,7 +453,7 @@ def test_grc_chapter_lessons_use_one_canonical_page_each(client):
     portuguese = client.get('/api/courses/rapid-1-month/security-governance-risk-compliance/pt').json()
     assert portuguese['chapter_lessons'] is False
     assert portuguese['published_lessons'] == 0
-    assert portuguese['published_chapters'] == 4
+    assert portuguese['published_chapters'] == 20
 
 
 def test_human_factors_chapter_lessons_use_one_canonical_page_each(client):

@@ -39,9 +39,9 @@ PAGE_CHROME = {
     "es": {"skip": "Saltar a la lección", "navigation": "Navegación principal", "levels": "Niveles", "subjects": "Temas", "ai": "Para IA", "theme": "Cambiar entre tema claro y oscuro", "lesson_navigation": "Navegación entre lecciones", "next_step": "Siguiente etapa de estudio", "footer": "Educación pública y gratuita en ciberseguridad", "api": "API y MCP abiertos"},
 }
 STUDY_TEXT = {
-    "en": {"published": "Published lessons", "chapters": "Book chapters", "week": "Week", "progress": "Your progress", "sign_in": "Sign in to track your study", "loading": "Loading your study record…", "completed": "Lessons completed", "exercises": "Exercises saved", "correct": "Correct test answers", "mark": "Mark this lesson complete", "marked": "Lesson completed", "dashboard": "View detailed progress", "tests": "Test yourself", "unavailable": "Progress is unavailable right now."},
-    "pt": {"published": "Aulas publicadas", "chapters": "Capítulos do livro", "week": "Semana", "progress": "Seu progresso", "sign_in": "Entre para acompanhar seus estudos", "loading": "Carregando seu histórico…", "completed": "Aulas concluídas", "exercises": "Exercícios salvos", "correct": "Acertos nos testes", "mark": "Marcar esta aula como concluída", "marked": "Aula concluída", "dashboard": "Ver progresso detalhado", "tests": "Teste você mesmo", "unavailable": "O progresso está indisponível agora."},
-    "es": {"published": "Lecciones publicadas", "chapters": "Capítulos del libro", "week": "Semana", "progress": "Tu progreso", "sign_in": "Inicia sesión para seguir tus estudios", "loading": "Cargando tu historial…", "completed": "Lecciones completadas", "exercises": "Ejercicios guardados", "correct": "Aciertos en las pruebas", "mark": "Marcar esta lección como completada", "marked": "Lección completada", "dashboard": "Ver progreso detallado", "tests": "Ponte a prueba", "unavailable": "El progreso no está disponible ahora."},
+    "en": {"published": "Published lessons", "chapters": "Book chapters", "week": "Week", "progress": "Your progress", "sign_in": "Sign in to track your study", "loading": "Loading your study record…", "completed": "Lessons completed", "exercises": "Exercises saved", "correct": "Correct test answers", "mark": "Mark this lesson complete", "marked": "Lesson completed", "dashboard": "View detailed progress", "tests": "Test this chapter", "tests_unavailable": "A chapter test has not been published yet.", "unavailable": "Progress is unavailable right now."},
+    "pt": {"published": "Aulas publicadas", "chapters": "Capítulos do livro", "week": "Semana", "progress": "Seu progresso", "sign_in": "Entre para acompanhar seus estudos", "loading": "Carregando seu histórico…", "completed": "Aulas concluídas", "exercises": "Exercícios salvos", "correct": "Acertos nos testes", "mark": "Marcar esta aula como concluída", "marked": "Aula concluída", "dashboard": "Ver progresso detalhado", "tests": "Fazer teste do capítulo", "tests_unavailable": "O teste deste capítulo ainda não foi publicado.", "unavailable": "O progresso está indisponível agora."},
+    "es": {"published": "Lecciones publicadas", "chapters": "Capítulos del libro", "week": "Semana", "progress": "Tu progreso", "sign_in": "Inicia sesión para seguir tus estudios", "loading": "Cargando tu historial…", "completed": "Lecciones completadas", "exercises": "Ejercicios guardados", "correct": "Aciertos en las pruebas", "mark": "Marcar esta lección como completada", "marked": "Lección completada", "dashboard": "Ver progreso detallado", "tests": "Hacer la prueba del capítulo", "tests_unavailable": "La prueba de este capítulo aún no se ha publicado.", "unavailable": "El progreso no está disponible ahora."},
 }
 
 
@@ -200,7 +200,7 @@ def render_course_sidebar(guide: dict, level: str, area: str, language: str, num
 
 
 def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = "lesson",
-                       guide: dict | None = None) -> str:
+                       guide: dict | None = None, available_test_chapters: set[int] | None = None) -> str:
     level, area, language = (lesson["course"][key] for key in ("level", "area", "language"))
     number = lesson["chapter"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
@@ -252,7 +252,13 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     study = STUDY_TEXT.get(language, STUDY_TEXT["en"])
     course_navigation = render_course_sidebar(guide, level, area, language, number, kind, course_code) if guide else ""
     sign_in_url = f"/account/?next={quote(path, safe='')}"
-    test_url = f"/tests/?lang={quote(language)}&amp;area={quote(area)}&amp;level={quote(level)}"
+    test_chapter = lesson.get("week_chapter") if kind == "lesson" else number
+    test_chapter = test_chapter or number
+    test_url = (f"/tests/?lang={quote(language)}&amp;area={quote(area)}&amp;level={quote(level)}"
+                f"&amp;chapter={test_chapter}")
+    test_action = (f'<a href="{test_url}">{html.escape(study["tests"])} →</a>'
+                   if test_chapter in (available_test_chapters or set())
+                   else f'<p class="muted">{html.escape(study["tests_unavailable"])}</p>')
     can_mark = kind in {"lesson", "chapter_lesson"} or not (guide and guide["has_daily_lessons"])
     mark_button = f'<button id="mark-lesson-complete" type="button" hidden>{html.escape(study["mark"])}</button>' if can_mark else ""
     body_source = lesson["markdown"]
@@ -327,7 +333,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
       {mark_button}
       <a id="progress-signin" href="{sign_in_url}" hidden>{html.escape(study['sign_in'])} →</a>
       <a id="progress-dashboard" href="/account/" hidden>{html.escape(study['dashboard'])} →</a>
-      <a href="{test_url}">{html.escape(study['tests'])} →</a>
+      {test_action}
     </div>
   </aside>
   </div>

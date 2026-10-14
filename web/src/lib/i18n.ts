@@ -24,6 +24,8 @@ const copy: Record<string, [string, string]> = {
   'Choose a subject': ['Escolha um tema', 'Elige un tema'],
   'Choose a level': ['Escolha um nível', 'Elige un nivel'],
   'Published chapter tests': ['Testes publicados por capítulo', 'Pruebas publicadas por capítulo'],
+  'Available tests now': ['Testes disponíveis agora', 'Pruebas disponibles ahora'],
+  'Only reviewed questions tied to a published chapter appear here. Choose one to open its course assessment.': ['Aqui aparecem apenas perguntas revisadas de capítulos publicados. Escolha uma para abrir a avaliação do curso.', 'Aquí solo aparecen preguntas revisadas de capítulos publicados. Elige una para abrir la evaluación del curso.'],
   'TEN SECONDS PER QUESTION': ['DEZ SEGUNDOS POR PERGUNTA', 'DIEZ SEGUNDOS POR PREGUNTA'],
   'ATTEMPT COMPLETE': ['TENTATIVA CONCLUÍDA', 'INTENTO COMPLETADO'],
   'Try again': ['Tentar novamente', 'Intentarlo de nuevo'],

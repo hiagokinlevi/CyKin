@@ -89,6 +89,22 @@ def test_question_bank_is_pinned_to_authored_text_and_has_no_duplicate_prompts()
         validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 1)
 
 
+def test_rapid_incident_response_bank_covers_first_week_and_starts(pilot):
+    path = ROOT / "web/question-banks/rapid-1-month/incident-response-resilience/en/001.json"
+    bank, _digest = validate_bank(path.read_text(), "rapid-1-month", "incident-response-resilience", "en", 1)
+    manuscript = (ROOT / "levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md").read_text()
+    chapter = api.chapter_sections(manuscript)[1]["markdown"]
+    assert bank["source_sha256"] == hashlib.sha256(chapter.encode()).hexdigest()
+    assert len({item["prompt"].casefold() for item in bank["questions"]}) == 10
+    client, _db, _now = pilot
+    response = client.post("/student/tests/start", json={
+        "level": "rapid-1-month", "area": "incident-response-resilience", "language": "en", "chapter": 1,
+    }, headers=ORIGIN)
+    assert response.status_code == 200
+    assert response.json()["question"]["seconds"] == 10
+    assert "correct" not in response.json()["question"]
+
+
 def test_timeout_duplicate_answer_and_student_isolation(pilot, monkeypatch):
     client, _db, now = pilot
     started = client.post("/private/tests/start", json=COURSE, headers=ORIGIN)

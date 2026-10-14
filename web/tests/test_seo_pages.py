@@ -53,6 +53,7 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert '<link rel="next" href="https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/2/">' in response.text
     assert 'id="progress-metrics" hidden' in response.text
     assert 'data-published="20"' in response.text
+    assert 'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter=1"' in response.text
     assert 'OCA-016-A001 · ' in response.text
     assert "An incident response team does more than react" in response.text
     assert 'id="exercise-ex001"' in response.text
@@ -64,6 +65,14 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     chapter_only = client.get("/courses/rapid-1-month/information-security/lessons/en/1/", follow_redirects=False)
     assert chapter_only.status_code == 308
     assert chapter_only.headers["location"] == "/courses/rapid-1-month/information-security/chapters/en/1/"
+
+
+def test_lesson_test_link_uses_its_week_and_unpublished_chapters_are_honest(client):
+    lesson_five = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/5/")
+    assert 'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter=1"' in lesson_five.text
+    lesson_six = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/6/")
+    assert "A chapter test has not been published yet." in lesson_six.text
+    assert 'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter=2"' not in lesson_six.text
 
 
 def test_translated_chapters_use_localized_course_names_in_search_and_navigation(client):

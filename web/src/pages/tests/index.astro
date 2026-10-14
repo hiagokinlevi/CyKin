@@ -10,6 +10,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div></section>
 
   <section class="section"><div class="shell test-shell">
+    <section class="test-step" aria-labelledby="published-tests-heading">
+      <div class="test-step-heading"><h2 id="published-tests-heading">Available tests now</h2></div>
+      <p class="muted">Only reviewed questions tied to a published chapter appear here. Choose one to open its course assessment.</p>
+      <div id="test-available" class="test-chapters"></div>
+    </section>
     <div class="test-step"><div class="test-step-heading"><span class="test-step-number">1</span><h2>Choose your language</h2></div><div id="test-languages" class="test-choices" role="group" aria-label="Test language"></div></div>
     <div class="test-step"><div class="test-step-heading"><span class="test-step-number">2</span><h2>Choose a subject</h2></div><div id="test-subjects" class="test-choices subject-choices" role="group" aria-label="Course subject"></div></div>
     <div class="test-step"><div class="test-step-heading"><span class="test-step-number">3</span><h2>Choose a level</h2></div><div id="test-levels" class="test-choices" role="group" aria-label="Course level"></div></div>
