@@ -4216,6 +4216,21 @@ The VQ2 scenarios ask a *hypothetical custodian* whether a claim of no additiona
 
 The fixture includes an artificial returned teaching identifier, `VQ-01`. This is **not** R9, is not authenticated to R9, and must not be merged with canonical Harbor Library events. A hypothetical ingestion watermark claims coverage through a specified event-time boundary. Even a passing result remains conditional on the custodian's attestation that the source, metadata, clock, collection health and query actually mean what the manifest claims.
 
+A watermark is a **claim about ingest progression**, not a custody receipt or producer-completeness proof. Treat a quiet-query decision as a sequence of separate checks:
+    
+~~~text
+Expected producer events and source health
+    → transport / collector continuity
+    → ingestion and indexing progress at the declared cutoff
+    → query source + account + closed-open UTC time interval
+    → actual returned identifiers and query execution receipt
+    → narrowly worded inference, with a recheck trigger
+~~~
+
+**Text alternative:** The arrow chain shows six necessary inquiries, not six verified controls in the classroom fixture. The code below checks only declared syntax, time ordering, query scope and returned markers. It does **not** verify producer events, gaps during transport, a collector's health, trustworthy ingestion metadata, the execution receipt or an independently attested query. A passing toy result therefore remains `CONDITIONAL_IF_ATTESTED`, never proof that no change occurred. A duplicated identifier is not a second independently collected event.
+
+**Primary-source context, not certification of VQ2:** [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) (final, April 2025) treats incident response in the context of cybersecurity risk management; [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) (September 2006) concerns enterprise log-management practices; the multi-agency [Best practices for event logging and threat detection](https://www.cyber.gov.au/publication/best-practices-for-event-logging-and-threat-detection) (22 August 2024) covers collection, storage and analysis. Their broad guidance supports scrutinizing evidence coverage; the exact fixture fields, status labels, clock values and expected outputs below are **original synthetic teaching conventions**, not prescribed NIST/CISA algorithms.
+
 **Pre-run predictions:**
 
 - The original R14 record has no complete query manifest, so the program cannot certify its scope.
@@ -4273,6 +4288,20 @@ variants = [
 def assess(manifest):
     if manifest is None:
         return "UNKNOWN_MANIFEST"
+    if not isinstance(manifest, dict):
+        return "INVALID_MANIFEST"
+    required = ("source", "account", "start", "end", "run", "watermark", "returned")
+    if any(key not in manifest for key in required):
+        return "INCOMPLETE_MANIFEST"
+    if not isinstance(manifest["source"], str) or not isinstance(manifest["account"], str):
+        return "INVALID_SCOPE_FIELDS"
+    returned = manifest["returned"]
+    if not isinstance(returned, tuple):
+        return "INVALID_RESULT_TYPE"
+    if any(not isinstance(value, str) or not value for value in returned):
+        return "INVALID_RESULT_VALUE"
+    if len(returned) != len(set(returned)):
+        return "DUPLICATE_RESULTS"
     try:
         run = minute(manifest["run"])
         watermark = minute(manifest["watermark"])
@@ -4307,6 +4336,21 @@ assert assess(variants[2][1]) == "CONDITIONAL_IF_ATTESTED"
 assert policy["anchor"] is None
 print("BAD_CLOCK:", assess({**base, "run": "25:99"}))
 assert assess({**base, "run": "25:99"}) == "INVALID_CLOCK"
+
+# Additional adversarial teaching manifests. None changes canonical R1–R16.
+negative_controls = [
+    ("MISSING_SOURCE", {key: value for key, value in base.items() if key != "source"}, "INCOMPLETE_MANIFEST"),
+    ("MISSING_RESULTS", {key: value for key, value in base.items() if key != "returned"}, "INCOMPLETE_MANIFEST"),
+    ("NOT_A_MAPPING", "application-audit", "INVALID_MANIFEST"),
+    ("BAD_RESULT_TYPE", {**base, "returned": ["VQ-01"]}, "INVALID_RESULT_TYPE"),
+    ("BAD_RESULT_VALUE", {**base, "returned": ("VQ-01", None)}, "INVALID_RESULT_VALUE"),
+    ("DUPLICATE_RESULT", {**base, "returned": ("VQ-01", "VQ-01")}, "DUPLICATE_RESULTS"),
+    ("EXTRA_RESULT", {**base, "returned": ("VQ-01", "VQ-02")}, "RESULT_NOT_AS_ASSUMED"),
+]
+for name, manifest, expected in negative_controls:
+    actual = assess(manifest)
+    print(f"{name}: {actual}")
+    assert actual == expected, (name, expected, actual)
 ~~~
 
 ##### Exact expected output — executed against the displayed fixture
@@ -4320,7 +4364,16 @@ OTHER_ACCOUNT: SCOPE_MISMATCH
 IMPOSSIBLE_WATERMARK: INCONSISTENT_METADATA
 R15_DEADLINE: UNKNOWN
 BAD_CLOCK: INVALID_CLOCK
+MISSING_SOURCE: INCOMPLETE_MANIFEST
+MISSING_RESULTS: INCOMPLETE_MANIFEST
+NOT_A_MAPPING: INVALID_MANIFEST
+BAD_RESULT_TYPE: INVALID_RESULT_TYPE
+BAD_RESULT_VALUE: INVALID_RESULT_VALUE
+DUPLICATE_RESULT: DUPLICATE_RESULTS
+EXTRA_RESULT: RESULT_NOT_AS_ASSUMED
 ~~~
+
+The **first eight output lines are unchanged** from the original VQ2 transcript; the following seven are the new adversarial results. The complete displayed Python listing was validated as one program on a synthetic, in-memory fixture with Python 3.13.5. This is a local execution check, not independent expert review, an operational ingestion test or verification of the whole manuscript.
 
 ##### Annotated results and negative controls
 
@@ -4332,11 +4385,25 @@ BAD_CLOCK: INVALID_CLOCK
 - `IMPOSSIBLE_WATERMARK` rejects contradictory classroom metadata rather than silently treating a future watermark as a real guarantee.
 - `R15_DEADLINE` remains **UNKNOWN**. The program intentionally cannot turn a period into a deletion instant while the policy anchor is absent.
 
+
+**Adversarial input diagnosis (same artificial query contract):**
+
+| Control | Reason for refusal | Appropriate analyst response |
+|---|---|---|
+| `MISSING_SOURCE`, `MISSING_RESULTS` | A mandatory query scope or result field is absent; the former listing raised `KeyError` instead of giving the learner a bounded outcome. | Request the complete original manifest rather than assuming a zero-hit search. |
+| `NOT_A_MAPPING` | Free text is not a structured manifest. | Identify the missing document and ask for its custodian. |
+| `BAD_RESULT_TYPE` | A list was supplied where **this fixture** requires a tuple; real log APIs can legitimately use other formats. | Validate the source's actual schema; do not generalize the toy tuple rule to production. |
+| `BAD_RESULT_VALUE` | The returned marker tuple contains a non-string; this fixture cannot interpret it as a record identifier. | Request a typed, documented result and execution receipt. |
+| `DUPLICATE_RESULT` | A repeated marker is not independent corroboration. | Preserve the original rows and investigate duplication in the collection/query path. |
+| `EXTRA_RESULT` | `VQ-02` violates this fixture's assumption that only `VQ-01` is returned. | Reopen the previously bounded claim and validate the newly reported row; do not call it a real incident event. |
+
+**Counterexample and decision boundary:** Two scenarios can print the same single marker even though one collector silently missed a producer event and the other retained every producer event. The toy program cannot distinguish them because the manifest does not carry independently verified production, transport and indexing receipts. Formally, let `S` mean "query scope matches" and `W` mean "watermark covers the end". `S ∧ W` is **necessary under this lab's assumption but insufficient** to prove event completeness. A custodian must separately attest source health, transport continuity, indexing and execution, and disclose remaining gaps. Even such an attestation supports only a scoped observation, not universal absence or a named actor. This is an original illustrative inference, not a numerical probability estimate.
+
 **Lab limitations:** The `minute` helper handles only single-day HH:MM timestamps; it is not a timezone or multi-day event parser. It does not authenticate query metadata or establish clock correctness. `VQ-01` is a synthetic result marker, not an application audit of R9. A conditional pass tests the *logic of the stated envelope*; it cannot prove producer completeness, an authorized export or a real incident.
 
-**Required submission:** Provide the seven baseline lines and the added clock-control line, a manifest-assessment table naming one uncertainty for each scenario, a two-sentence explanation of why the 09:05 decision cannot cite R9, and a preservation request that leaves R15's exact deletion deadline unknown. Add a proposed falsifier: identify the metadata or new qualifying row that would invalidate your current quiet-query conclusion. A syntactically plausible but out-of-range clock is not evidence of ingestion coverage.
+**Required submission:** Provide the eight original baseline lines **and** the seven adversarial-control lines, a manifest-assessment table naming one uncertainty for each scenario, a two-sentence explanation of why the 09:05 decision cannot cite R9, and a preservation request that leaves R15's exact deletion deadline unknown. Add a proposed falsifier: identify the metadata or new qualifying row that would invalidate your current quiet-query conclusion. A syntactically plausible but out-of-range clock is not evidence of ingestion coverage.
 
-**Pass criteria:** Exact reproducibility; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
+**Pass criteria:** Exact reproducibility of all 15 output lines, including missing-field refusals without exceptions; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
 
 #### 2.11 Contrastive 09:20 decision example
 
