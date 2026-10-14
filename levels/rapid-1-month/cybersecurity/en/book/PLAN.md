@@ -1,6 +1,6 @@
 # Principal book plan — Cybersecurity / Rapid course / English
 
-**One book for this course and language.** Eleven English chapters are authored. The older index had four subject modules. The rapid-course planning minimum is 20 lessons, and there is no maximum. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in cybersecurity.
+**One book for this course and language.** Twelve English chapters are authored. The older index had four subject modules. The rapid-course planning minimum is 20 lessons, and there is no maximum. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in cybersecurity.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -40,7 +40,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 11 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
+**Continue studying — chapter 01 of 12 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -60,7 +60,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 11 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
+**Continue studying — chapter 02 of 12 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
@@ -80,7 +80,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 11 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
+**Continue studying — chapter 03 of 12 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -100,7 +100,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix. Read the authored chapter for the teaching.
 
-**Continue studying — chapter 04 of 11 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
+**Continue studying — chapter 04 of 12 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
@@ -108,7 +108,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-05). A resident may learn that a slot is booked without receiving another person's name. The exercise stores no names.
 
-**Continue studying — chapter 05 of 11 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
+**Continue studying — chapter 05 of 12 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -116,7 +116,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-06). Pencil on the 09:00 sheet destroys the snapshot. It is not an authorized refresh.
 
-**Continue studying — chapter 06 of 11 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
+**Continue studying — chapter 06 of 12 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
@@ -124,7 +124,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-07). The booking view can be down while a four-field pending line still prevents a false confirmation.
 
-**Continue studying — chapter 07 of 11 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
+**Continue studying — chapter 07 of 12 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
@@ -132,7 +132,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-08). The stale-paper habit is a weakness in the exercise. The book does not establish a software vulnerability or an incident.
 
-**Continue studying — chapter 08 of 11 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
+**Continue studying — chapter 08 of 12 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
 
 <a id="ch-09"></a>
 
@@ -140,7 +140,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-09). The Chapter 4 line `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0` counts labels on one synthetic log. Equal counts are not a severity, a likelihood, or a reason to close the exercise.
 
-**Continue studying — chapter 09 of 11 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](MANUSCRIPT.md#ch-10)
+**Continue studying — chapter 09 of 12 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](MANUSCRIPT.md#ch-10)
 
 <a id="ch-10"></a>
 
@@ -148,7 +148,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-10). A repeated claim that the owner mentioned 11:40 is a report. It does not replace the 09:00 printout, clear the Chapter 4 tally, or confirm Room 2 at 15:00.
 
-**Continue studying — chapter 10 of 11 (outline):** [← Chapter 09 (draft)](MANUSCRIPT.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](MANUSCRIPT.md#ch-11)
+**Continue studying — chapter 10 of 12 (outline):** [← Chapter 09 (draft)](MANUSCRIPT.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](MANUSCRIPT.md#ch-11)
 
 <a id="ch-11"></a>
 
@@ -156,7 +156,15 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-11). A named synthetic 11:40 page that prints `SYN-002` shows Room 2 at 15:00 is booked. It does not free the room, clear the Chapter 4 tally, or set the rule for a later outage.
 
-**Continue studying — chapter 11 of 11 (outline):** [← Chapter 10 (draft)](MANUSCRIPT.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 11 of 12 (outline):** [← Chapter 10 (draft)](MANUSCRIPT.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (draft) →](MANUSCRIPT.md#ch-12)
+
+<a id="ch-12"></a>
+
+### Chapter 12 — A missing row is not a free room
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-12). The named 11:40 page has no row for Room 4 at 15:00. That silence is not availability, and the Chapter 4 ALLOW label does not fill the gap.
+
+**Continue studying — chapter 12 of 12 (outline):** [← Chapter 11 (draft)](MANUSCRIPT.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

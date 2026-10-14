@@ -25,7 +25,7 @@ The weekday calendar sets a minimum number of lessons and no maximum. One lesson
 
 | Level | Lesson guide | Begin at chapter 01 | Chapters in manuscript / planned |
 |---|---|---|---:|
-| Rapid course | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 11/11 |
+| Rapid course | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 12/12 |
 | Professional course | [Lesson guide](../../levels/professional-6-months/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/professional-6-months/cybersecurity/en/book/PLAN.md#ch-01) | 0/12 |
 | Technical course | [Lesson guide](../../levels/technical-18-months/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/technical-18-months/cybersecurity/en/book/PLAN.md#ch-01) | 0/18 |
 | Technologist course | [Lesson guide](../../levels/technologist-3-years/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/technologist-3-years/cybersecurity/en/book/PLAN.md#ch-01) | 0/30 |

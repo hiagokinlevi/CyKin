@@ -3,7 +3,7 @@
 - Edition: working draft, 11 October 2026
 - Language: English (`en`)
 - Course: rapid, one month; approximately 80 hours of planned study
-- Status: Eleven English chapters drafted, with exercises EX001–EX027 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
+- Status: Twelve English chapters drafted, with exercises EX001–EX028 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
 - Maintainer: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Original text: [CC0 1.0](../../../../../LICENSE), within the [rights notice](../../../../../RIGHTS.md). External sources linked below retain their own rights.
 
@@ -11,7 +11,7 @@
 
 Read the explanation before attempting an exercise. Work only with the fictional library described here. Keep a short notebook with the facts you observe, the assumptions you make, and the question you would ask next. Compare your responses with the worked results at the end. A plausible alternative can be correct when it identifies its assumptions and supports its decision with evidence.
 
-This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Eleven drafted chapters are not that minimum and are not a finished qualification.
+This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Twelve drafted chapters are not that minimum and are not a finished qualification.
 
 | Subject-chapter | Authored exercises | Draft status |
 |---|---:|---|
@@ -26,6 +26,7 @@ This is the **one principal book** for the English rapid Cybersecurity course. I
 | 9. A verdict tally is not a severity | EX025 | Draft |
 | 10. A spoken time is not a printout | EX026 | Draft |
 | 11. A named sheet does not free the room | EX027 | Draft |
+| 12. A missing row is not a free room | EX028 | Draft |
 
 <a id="ch-01"></a>
 
@@ -255,7 +256,7 @@ Use the fictional case only. Compare your work with the final worked-results app
 - **Rubric:** Credit for examples that match each function, recognize shared responsibility, and avoid treating the functions as a once-only sequence.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 11
+### Continue studying — chapter 01 of 12
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -458,7 +459,7 @@ Keep every activity within the synthetic paper-exercise boundary. Worked results
 - **Rubric:** Credit for an observable measure, a plausible decision difference, and limits about synthetic data and one-session scope.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-02 -->
-### Continue studying — chapter 02 of 11
+### Continue studying — chapter 02 of 12
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -713,7 +714,7 @@ Use the model and invented records above; do not test a live service. Worked res
 - **Rubric:** Full credit requires treating the new information as a report, not as independently observed fact; changing the stale-09:00-only conclusion conditionally; and keeping the worker's decision within the approved fallback rule.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-03 -->
-### Continue studying — chapter 03 of 11
+### Continue studying — chapter 03 of 12
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -948,7 +949,7 @@ Use the program and output in Section 4.4. Do not contact a real library. Worked
 - **Rubric:** Credit when each sentence stays inside the run, the 11:43 line is not redescribed as REFUSE, and the 11:40 report is still unverified.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-04 -->
-### Continue studying — chapter 04 of 11
+### Continue studying — chapter 04 of 12
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
@@ -1028,7 +1029,7 @@ A true booking state can be shared when it answers the asker's own question. A p
 - **Rubric:** Credit if the slot is described as booked and no person is named or invented.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-05 -->
-### Continue studying — chapter 05 of 11
+### Continue studying — chapter 05 of 12
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
@@ -1109,7 +1110,7 @@ Changing a snapshot so that a rule would have allowed the action destroys the ev
 - **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-06 -->
-### Continue studying — chapter 06 of 11
+### Continue studying — chapter 06 of 12
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
@@ -1192,7 +1193,7 @@ A down page removes one way to see bookings. It does not authorize memory, yeste
 - **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-07 -->
-### Continue studying — chapter 07 of 11
+### Continue studying — chapter 07 of 12
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
@@ -1275,7 +1276,7 @@ Harbor Library's exercise shows a stale procedure and the harm that procedure ca
 - **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-08 -->
-### Continue studying — chapter 08 of 11
+### Continue studying — chapter 08 of 12
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
@@ -1370,7 +1371,7 @@ The tally is a census of labels on one synthetic log. Equal counts come from the
 - **Rubric:** Credit when the tally stays a count of four labels, the percentage and the rank are both refused, and the pending confirmation is still unresolved. A replacement number does not earn credit.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-09 -->
-### Continue studying — chapter 09 of 11
+### Continue studying — chapter 09 of 12
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
@@ -1466,7 +1467,7 @@ A clock time that arrives in a sentence is testimony about a source. The confirm
 - **Rubric:** Credit when the note stays a report, both the owner's naming and the sheet observations are still missing, the 15:00 request stays not confirmed, and the published tally is left unchanged.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
-### Continue studying — chapter 10 of 11
+### Continue studying — chapter 10 of 12
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
@@ -1569,9 +1570,106 @@ When the owner names this 11:40 page and both observations pass, Room 2 at 15:00
 - **Rubric:** Credit when the slot stays booked, the tally is left as printed, the monthly rule is refused, and no person's name and no live site appear. A new program run does not earn credit.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-11 -->
-### Continue studying — chapter 11 of 11
+### Continue studying — chapter 11 of 12
 
-[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — A missing row is not a free room
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  Q["The question names one room and one start"] --> M{"A printed row has that room and that start?"}
+  M -->|Yes| T["Read the status on that row"]
+  M -->|No| S["This page is silent"]
+  S --> P["Leave the request pending"]
+  P --> F["Do not call the room free"]
+  F --> L["Leave the Chapter 4 ALLOW label on the old log"]
+```
+
+A match reads a row. A miss reads nothing. The miss does not invent availability.
+
+### Logical drawing
+
+```text
+named page: two printed rows, both Room 2
+    Room 2 at 15:00  -> SYN-002 matches -> taken
+    Room 2 at 14:00  -> SYN-001 matches -> taken
+    Room 4 at 15:00  -> no row matches  -> silent
+        |
+        +-- silent means the page does not answer
+        +-- silent does not mean the room is free
+        +-- ALLOW on the 09:00 log is not a row here
+        +-- do not pencil a Room 4 line onto the page
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Match a room-and-start question to a row on the named 11:40 page.
+2. Treat a question with no matching row as silence, not as a free room.
+3. Leave the Chapter 4 ALLOW label and the printed census on the 09:00 log.
+
+### 12.1 Authority is not the same claim as completeness
+
+Chapter 11 used the named page for a question the page can answer. `SYN-002` prints Room 2 at 15:00, so that slot is taken. A new resident question now asks for Room 4 at 15:00. The same page is still on the table. Its two rows are still the whole page. Neither row says Room 4.
+
+Naming gave permission to read this object in this exercise. It did not say that two rows are every booking in the building. Those are separate claims. The first claim is about authority. The second would be about completeness, and the owner has not made it.
+
+Search the page by the pair the resident asked for. Room and start must both match. `SYN-001` matches Room 2 at 14:00, so that slot is taken for its own question. It does not answer Room 4. `SYN-002` matches Room 2 at 15:00. It also does not answer Room 4. After both rows are checked, the matching count for Room 4 at 15:00 is zero. Zero matches is silence. Silence supports neither "taken" nor "free."
+
+The spoken reply is therefore limited: "This page does not list Room 4 at 15:00, so I cannot answer from it." Staff record the request as pending. They do not offer the room.
+
+### 12.2 Worked example
+
+A classmate treats the old ALLOW label as if it were the missing row. In Chapter 4, ALLOW was the label for one logged action: a Room 4 question compared with the 09:00 printout. The reason on that run was that the printout's table had no later booking for the slot. Staff were already told not to announce that Room 4 was free. The 11:40 page is a second object. It does not contain the ALLOW label, and it does not contain a Room 4 row. Moving ALLOW onto this page would forge a row the printer never produced.
+
+| Proposal | What the two rows support | Decision |
+|---|---|---|
+| "Room 4 at 15:00 is absent, so offer it as free." | Zero matching rows | Refuse. Absence is silence |
+| "Chapter 4 printed ALLOW, so the 11:40 page confirms Room 4." | ALLOW belongs to the 09:00 log | Leave that label where it was printed |
+| "Add Room 4 by hand so the page becomes complete." | The page would no longer be the printed object | Refuse. That mark is an alteration |
+| "Room 2 at 15:00 must also be reopened, because Room 4 is unclear." | `SYN-002` still matches Room 2 at 15:00 | Keep the taken reading for that pair |
+| "Look the gap up on the live booking site." | The exercise supplied this page only | Stop. The site stays outside the exercise |
+
+The note to keep is a count. Rows on the page: 2. Rows matching Room 4 at 15:00: 0. Result for that question: pending. Result for Room 2 at 15:00: still taken, from `SYN-002`. Census of the old log: unchanged.
+
+### 12.3 What silence still leaves open
+
+A pending Room 4 request is not a hidden booking. The page did not show a conflict, and it also did not show a vacancy. Another source, named later and checked for a Room 4 row, would be a new exercise. This lesson does not provide that source. It also does not explain the outage, and it does not measure how often a real desk prints a partial fallback.
+
+The Chapter 4 program stays closed. Its census remains a description of the four logged actions against the 09:00 printout. A question asked of the 11:40 page is not a fifth action in that log, so it cannot change ALLOW, REFUSE, or UNKNOWN.
+
+### Chapter 12 summary
+
+On this named page, a question is decided only when a printed row matches its room and its start. Room 4 at 15:00 has no such row. The page is silent, the request stays pending, and the older ALLOW label is not a substitute row.
+
+### Chapter 12 exercises
+
+### EX028 — Do not offer the room the page omits
+
+- **Objective:** Keep a missing row from becoming an offer of a free room.
+- **Input:** A classmate says, "Room 4 is not on the approved 11:40 page, so tell the resident it is free at 15:00 and turn ALLOW into that confirmation."
+- **Safe condition:** Stay with the two printed rows. Do not write a new row onto the page, and do not launch the booking program again.
+- **Task:** Write four sentences: how many rows match Room 4 at 15:00, what you tell the resident, what you do with the ALLOW label, and what remains true of Room 2 at 15:00.
+- **Expected evidence:** Four sentences a reader can check against the two-row page and against the Chapter 4 census.
+- **Rubric:** Credit when the Room 4 request stays pending, ALLOW stays on the old log, the census is not rewritten, and `SYN-002` still makes Room 2 at 15:00 taken. An offer of a free room does not earn credit.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — chapter 12 of 12
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- open-cyber-academy:chapter-navigation:end -->
@@ -1594,7 +1692,7 @@ Harbor Library, its services, event log, and worked decisions are original ficti
 
 ## Final appendix — worked results and assessment notes
 
-These results match EX001–EX027. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
+These results match EX001–EX028. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
 
 ### EX001 — Worked result
 
@@ -1703,3 +1801,7 @@ The classmate's note is a second-hand report of a clock time. It is not the 11:4
 ### EX027 — Worked result
 
 `SYN-002` on the named page is a confirmed booking of Room 2 at 15:00, so the resident is told the slot is taken. The word free contradicts that row. The older program still describes the 09:00 printout, and its line stays `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. An 11:40 heading on one classroom page does not set the fallback for later outages. No personal name is spoken, and the live site is not opened.
+
+### EX028 — Worked result
+
+The named page prints two rows, and both name Room 2. Room 4 at 15:00 matches neither, so the page says nothing about that request. Staff tell the resident they cannot answer from this page and leave the request pending. They do not offer the room. ALLOW remains the label Chapter 4 printed for the 09:00 log. It is not rewritten as a confirmation on the 11:40 page. The census of that log is still `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. `SYN-002` is still on the page, so Room 2 at 15:00 stays booked.
