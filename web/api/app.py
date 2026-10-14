@@ -17,7 +17,8 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTex
 from pydantic import BaseModel, Field
 
 from access import identity
-from seo_pages import lesson_path, render_lesson_page
+from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, preferred_language, site_for_language
+from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
 
 
 app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
@@ -38,9 +39,9 @@ APPENDIX_HEADING = re.compile(
 REFERENCES_HEADING = re.compile(r'^##\s+(?:references|referências|referencias)\b', re.M | re.I)
 MCP_VERSION = "2025-06-18"
 EDITORIAL_POLICY_URI = "open-cyber-academy://editorial-policy"
-ALLOWED_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
+ALLOWED_ORIGINS = {site_for_language(language) for language in LANGUAGES} | {"https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
-PUBLIC_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy"}
+PUBLIC_ORIGINS = {site_for_language(language) for language in LANGUAGES} | {"https://www.opencyber.academy"}
 
 
 class LessonProgress(BaseModel):
@@ -59,8 +60,18 @@ class ExerciseAttempt(LessonProgress):
 
 @app.middleware("http")
 async def canonical_domain(request: Request, call_next):
-    if request.headers.get("host") == "www.opencyber.academy":
+    host = request.headers.get("host", "")
+    if host == "www.opencyber.academy":
         return RedirectResponse("https://opencyber.academy" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
+    host_language = language_for_host(host)
+    if host_language == "en" and request.url.path == "/" and not request.query_params:
+        preferred = preferred_language(request.headers.get("accept-language", ""))
+        if preferred != "en":
+            return RedirectResponse(site_for_language(preferred) + "/", status_code=302,
+                                    headers={"Vary": "Accept-Language", "Cache-Control": "private, no-store"})
+    match = re.fullmatch(r"/courses/[^/]+/[^/]+/(?:lessons|chapters)/([a-z]{2})/\d+/?", request.url.path)
+    if host_language and match and match.group(1) in LANGUAGES and match.group(1) != host_language:
+        return RedirectResponse(site_for_language(match.group(1)) + request.url.path, status_code=308)
     response = await call_next(request)
     if request.url.path.startswith(("/api/", "/mcp")):
         response.headers["Cache-Control"] = "no-store"
@@ -485,7 +496,20 @@ async def api_chapter(request: Request, level: str, area: str, language: str, ch
 async def public_lesson_page(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
     data = await catalog(request)
     course = get_course(data, level, area, language)
-    lesson = await lesson_details(request, level, area, language, chapter)
+    try:
+        lesson = await lesson_details(request, level, area, language, chapter)
+    except HTTPException as exc:
+        if exc.status_code != 404:
+            raise
+        guide = await course_details(request, level, area, language)
+        if chapter < 1 or chapter > guide["planned_lessons"]:
+            raise
+        slot = guide["daily_slots"][chapter - 1]
+        published_chapter = next((item for item in guide["legacy_chapters"]
+                                  if item["chapter"] == slot["module"] and item["published"]), None)
+        page = render_planned_lesson_page(course, slot, language, data["level_names"][level].get("en", level), published_chapter)
+        return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": language,
+                                           "X-Robots-Tag": "noindex, follow", "X-Content-Type-Options": "nosniff"})
     if lesson["content_kind"] == "legacy_chapter":
         return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
     level_name = data["level_names"][level].get("en", level)
@@ -653,18 +677,41 @@ async def mcp_get() -> Response:
     return Response(status_code=405, headers={"Allow": "POST"})
 
 
+@app.get("/robots.txt", include_in_schema=False)
+async def robots(request: Request) -> Response:
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    site = site_for_language(language)
+    return PlainTextResponse(f"User-agent: *\nAllow: /\nSitemap: {site}/sitemap.xml\n")
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+async def localized_sitemap(request: Request) -> Response:
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    return await static_assets(f"sitemap-{language}.xml", request)
+
+
 @app.get("/{path:path}", include_in_schema=False)
 async def static_assets(path: str, request: Request) -> Response:
     asset = path.strip("/")
     if not asset or "." not in asset.rsplit("/", 1)[-1]:
         asset = (asset + "/" if asset else "") + "index.html"
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    if language not in ACTIVE_INTERFACES and asset.endswith("index.html"):
+        if asset != "index.html":
+            return RedirectResponse(site_for_language(language) + "/", status_code=302)
+        asset = f"_locales/{language}/index.html"
+    elif language in {"pt", "es"} and asset.endswith("index.html"):
+        asset = f"_locales/{language}/{asset}"
     env = request.scope.get("env")
     if env is not None:
         response = await env.ASSETS.fetch("https://assets.local/" + asset)
         content = await response.bytes()
-        return Response(content=content, status_code=int(response.status), headers=dict(response.headers))
+        headers = dict(response.headers)
+        if asset.endswith("index.html"):
+            headers["Content-Language"] = language
+        return Response(content=content, status_code=int(response.status), headers=headers)
     root = Path(__file__).resolve().parents[1] / "dist"
     target = (root / asset).resolve()
     if not target.is_relative_to(root.resolve()) or not target.is_file():
         raise HTTPException(404, "Page not found")
-    return FileResponse(target)
+    return FileResponse(target, headers={"Content-Language": language} if asset.endswith("index.html") else None)

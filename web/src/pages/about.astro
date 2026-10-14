@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const structuredData = [
+  { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About OpenCyber Academy', url: 'https://opencyber.academy/about/', isAccessibleForFree: true },
+  { '@context': 'https://schema.org', '@type': 'Person', name: 'Hiago Kin Levi', url: 'https://decripte.com/hiago-kin-levi', jobTitle: 'Founder of OpenCyber Academy' },
+];
+---
+<BaseLayout title="About us · OpenCyber Academy" description="Meet OpenCyber Academy and its founder, Hiago Kin Levi. Free cybersecurity books and lessons for everyone." structuredData={structuredData}>
+  <section class="directory-heading"><div class="shell"><div class="eyebrow">ABOUT THE ACADEMY</div><h1>Cybersecurity education, open to everyone.</h1><p>OpenCyber Academy publishes free courses, books, lessons, examples and exercises for people who want to protect others and the technology they depend on. Reading never requires an account.</p></div></section>
+  <section class="section"><div class="shell philosophy-grid">
+    <div><div class="eyebrow">OUR PURPOSE</div><h2>Learn, practice and verify.</h2><p>Courses are arranged by subject and study level. Each book has its own curriculum, and each authored lesson can be read and cited on this site. A planned study day is labeled as planned until its teaching is published. Editorial review and a complete book are separate milestones.</p><p>The books and their source Markdown are publicly available. An open API and read-only MCP endpoint let students and other AI systems find the material and check its source.</p><a class="text-link" href="/for-ai/">Explore the open learning interface →</a></div>
+    <div class="card"><div class="eyebrow">FOUNDER</div><h2>Hiago Kin Levi</h2><p>Hiago Kin Levi founded OpenCyber Academy. According to his <a href="https://decripte.com/hiago-kin-levi" rel="noopener noreferrer">professional biography at Decripte</a>, he has worked in information security since 2007 and founded Decripte in 2019 to make enterprise cybersecurity more accessible.</p><p>That biography describes his work building and training cybersecurity teams and advising on incident response. It also identifies him as the founder of ABRASECI in 2020 and as president of IBRINC, the Brazilian Institute of Cyber Incident Response.</p><p>At OpenCyber Academy, the aim is to make technical learning public, navigable and usable without registration. Course content is identified by language and source so readers can distinguish published teaching from future plans.</p><a class="text-link" href="https://decripte.com/hiago-kin-levi" rel="noopener noreferrer">Read the founder's full biography ↗</a></div>
+  </div></section>
+</BaseLayout>

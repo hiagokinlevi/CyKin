@@ -13,11 +13,26 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 
+
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 SITEMAP = OUTPUT.with_name("sitemap.xml")
 LESSON_INDEX = OUTPUT.with_name("lesson-index.json")
 LANGUAGES = ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")
+INDEXED_LANGUAGES = {"en", "pt", "es"}
+
+
+def site_for_language(language: str) -> str:
+    return "https://opencyber.academy" if language == "en" else f"https://{language}.opencyber.academy"
+
+
+def sitemap_xml(routes: list[str], language: str) -> str:
+    site = site_for_language(language)
+    urls = dict.fromkeys(site + route for route in routes)
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "".join(f"  <url><loc>{escape(url)}</loc></url>\n" for url in urls)
+            + "</urlset>\n")
 LEVELS = {
     "rapid-1-month": {"en": "Rapid course", "pt": "Curso rápido", "es": "Curso rápido"},
     "professional-6-months": {"en": "Professional", "pt": "Profissionalizante", "es": "Profesional"},
@@ -129,17 +144,22 @@ if __name__ == "__main__":
     index = authored_index()
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     LESSON_INDEX.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    routes = ["/", "/levels/", "/subjects/", "/for-ai/", "/privacy/"]
-    routes.extend(f"/levels/{level}/" for level in data["level_order"])
-    routes.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
-    routes.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
+    common = ["/", "/about/", "/levels/", "/subjects/", "/for-ai/", "/privacy/"]
+    common.extend(f"/levels/{level}/" for level in data["level_order"])
+    common.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
+    common.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
+    by_language = {language: (["/", "/about/"] if language in INDEXED_LANGUAGES else [])
+                   for language in LANGUAGES}
+    by_language["en"] = common
     for course_language, units in index.items():
         level, area, language = course_language.split("/")
-        routes.extend(f"/courses/{level}/{area}/lessons/{language}/{lesson['number']}/" for lesson in units["lessons"])
-        routes.extend(f"/courses/{level}/{area}/chapters/{language}/{chapter['number']}/" for chapter in units["chapters"])
-    routes = list(dict.fromkeys(routes))
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    xml += "".join(f"  <url><loc>{escape('https://opencyber.academy' + route)}</loc></url>\n" for route in routes)
-    xml += "</urlset>\n"
-    SITEMAP.write_text(xml, encoding="utf-8")
-    print(f"Wrote {OUTPUT} with 207 courses and {SITEMAP} with {len(routes)} routes")
+        if language not in INDEXED_LANGUAGES:
+            continue
+        by_language[language].extend(f"/courses/{level}/{area}/lessons/{language}/{lesson['number']}/" for lesson in units["lessons"])
+        by_language[language].extend(f"/courses/{level}/{area}/chapters/{language}/{chapter['number']}/" for chapter in units["chapters"])
+    for language, routes in by_language.items():
+        xml = sitemap_xml(routes, language)
+        OUTPUT.with_name(f"sitemap-{language}.xml").write_text(xml, encoding="utf-8")
+        if language == "en":
+            SITEMAP.write_text(xml, encoding="utf-8")
+        print(f"{language}: {len(dict.fromkeys(routes))} canonical routes at {site_for_language(language)}")

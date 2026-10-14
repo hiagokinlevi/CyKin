@@ -6,7 +6,7 @@
   "scripts": {
     "catalog": "python3 scripts/build_catalog.py",
     "dev": "npm run catalog && astro dev",
-    "build": "npm run catalog && astro build",
+    "build": "npm run catalog && astro build && python3 scripts/localize_static.py",
     "preview": "astro preview",
     "deploy": "npm run build && uv run pywrangler deploy"
   },

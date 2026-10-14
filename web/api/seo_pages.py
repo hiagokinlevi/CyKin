@@ -10,6 +10,7 @@ from urllib.parse import parse_qs, quote, urljoin, urlparse
 
 import bleach
 import markdown
+from locales import site_for_language
 
 
 SITE = "https://opencyber.academy"
@@ -145,8 +146,9 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
     label = ui["lesson" if kind == "lesson" else "chapter"]
     path = lesson_path(level, area, language, number, kind)
-    canonical = SITE + path
-    course_url = SITE + f"/courses/{level}/{area}/"
+    locale_site = site_for_language(language)
+    canonical = locale_site + path
+    course_url = locale_site + f"/courses/{level}/{area}/"
     name = course["title"]
     title = f"{lesson['title']} | {level_name} {name} | OpenCyber Academy"
     description = plain_description(lesson["markdown"], f"Study {lesson['title']} in the free {name} course. Read the lesson, solve exercises and compare worked answers.")
@@ -157,7 +159,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
          "isAccessibleForFree": True, "provider": {"@type": "Organization", "name": "OpenCyber Academy", "url": SITE},
          "isPartOf": {"@type": "Course", "name": name, "url": course_url, "inLanguage": language, "isAccessibleForFree": True}},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "OpenCyber Academy", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 1, "name": "OpenCyber Academy", "item": locale_site + "/"},
             {"@type": "ListItem", "position": 2, "name": name, "item": course_url},
             {"@type": "ListItem", "position": 3, "name": lesson["title"], "item": canonical},
         ]},
@@ -199,4 +201,42 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <nav class="lesson-nav" aria-label="Next study step">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
 </main>
 <footer class="footer"><div class="shell">© OpenCyber Academy · Free public cybersecurity education · <a href="/for-ai/">Open API and MCP</a></div></footer>
+</body></html>'''
+
+
+def render_planned_lesson_page(course: dict, slot: dict, language: str,
+                               level_name: str, published_chapter: dict | None) -> str:
+    """A navigable study slot, explicitly excluded from search until teaching exists."""
+    level, area = course["level"], course["area"]
+    number, week = slot["chapter"], slot["module"]
+    ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
+    site = site_for_language(language)
+    path = lesson_path(level, area, language, number)
+    title = html.escape(slot["title"])
+    name = html.escape(course["title"])
+    course_path = f"/courses/{level}/{area}/"
+    messages = {
+        "en": ("Planned study day", "This lesson's teaching, example and exercise have not been published yet.", "The course guide records its place in the curriculum. Read a published chapter while the daily lesson is being written.", "Read the published chapter"),
+        "pt": ("Dia de estudo planejado", "O conteúdo, o exemplo e o exercício desta aula ainda não foram publicados.", "O guia do curso mostra sua posição no currículo. Leia um capítulo publicado enquanto esta aula é escrita.", "Ler o capítulo publicado"),
+        "es": ("Día de estudio planificado", "La explicación, el ejemplo y el ejercicio de esta lección aún no se han publicado.", "La guía del curso indica su lugar en el programa. Lee un capítulo publicado mientras se redacta esta lección.", "Leer el capítulo publicado"),
+    }
+    label, notice, guidance, chapter_label = messages.get(language, messages["en"])
+    chapter_link = (f'<p><a href="{lesson_path(level, area, language, published_chapter["chapter"], "chapter")}">'
+                    f'{html.escape(chapter_label)}: {html.escape(published_chapter["title"])}</a></p>') if published_chapter else ""
+    previous = f'<a href="{lesson_path(level, area, language, number - 1)}">← {ui["previous"]}</a>' if number > 1 else "<span></span>"
+    following = f'<a href="{lesson_path(level, area, language, number + 1)}">{ui["next"]} →</a>' if number < course["daily_lesson_target"] else "<span></span>"
+    return f'''<!doctype html>
+<html lang="{html.escape(language)}" dir="{'rtl' if language == 'he' else 'ltr'}"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{number}. {title} | {name} | OpenCyber Academy</title>
+<meta name="robots" content="noindex,follow"><meta name="description" content="{html.escape(notice)}">
+<link rel="canonical" href="{site}{path}"><link rel="stylesheet" href="/seo-lesson.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head><body><header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a></div></header>
+<main class="shell"><nav class="breadcrumbs"><a href="/">{ui['home']}</a><span>›</span><a href="{course_path}">{name}</a></nav>
+<div class="eyebrow">{html.escape(level_name)} · {html.escape(label)} {number} · {html.escape(language.upper())}</div>
+<h1>{title}</h1><p class="intro">{html.escape(notice)}</p>
+<article class="prose"><p>{html.escape(guidance)}</p><p>{html.escape(label)} {number} · {ui['chapter']} {week} · {name}.</p>{chapter_link}</article>
+<nav class="lesson-nav" aria-label="Lesson navigation">{previous}<a href="{course_path}">{ui['guide']}</a>{following}</nav>
+</main><footer class="footer"><div class="shell">© OpenCyber Academy · {html.escape(ui['free'])}</div></footer>
 </body></html>'''

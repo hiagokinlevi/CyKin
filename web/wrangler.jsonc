@@ -20,6 +20,14 @@
   ],
   "routes": [
     { "pattern": "opencyber.academy", "custom_domain": true },
-    { "pattern": "www.opencyber.academy", "custom_domain": true }
+    { "pattern": "www.opencyber.academy", "custom_domain": true },
+    { "pattern": "pt.opencyber.academy", "custom_domain": true },
+    { "pattern": "es.opencyber.academy", "custom_domain": true },
+    { "pattern": "he.opencyber.academy", "custom_domain": true },
+    { "pattern": "fr.opencyber.academy", "custom_domain": true },
+    { "pattern": "ru.opencyber.academy", "custom_domain": true },
+    { "pattern": "de.opencyber.academy", "custom_domain": true },
+    { "pattern": "zh.opencyber.academy", "custom_domain": true },
+    { "pattern": "ja.opencyber.academy", "custom_domain": true }
   ]
 }

@@ -55,11 +55,11 @@ export async function initCoursePortal(): Promise<void> {
     const node = document.createElement('a'); node.href = href; node.className = className; node.textContent = label; return node;
   }
   function unitLink(unit: Unit, item: Entry, className: string): HTMLElement {
-    const node = item.published ? link('', pageUrl(unit), className) : document.createElement('div');
+    const node = link('', pageUrl(unit), className);
     if (!item.published) node.className = `${className} is-planned`;
     const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(unit.number).padStart(2, '0');
     const title = document.createElement('span'); title.className = 'lesson-subject'; title.textContent = item.title;
-    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on OpenCyber Academy →' : 'Planned · teaching pending';
+    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on OpenCyber Academy →' : 'View study slot · teaching pending →';
     node.append(number, title, state);
     if (current?.kind === unit.kind && current.number === unit.number) { node.classList.add('active'); node.setAttribute('aria-current', 'page'); }
     return node;
@@ -112,7 +112,7 @@ export async function initCoursePortal(): Promise<void> {
     const cadence = document.createElement('section'); cadence.className = 'course-cadence';
     const eyebrow = document.createElement('div'); eyebrow.className = 'eyebrow'; eyebrow.textContent = 'MONDAY–FRIDAY STUDY PLAN';
     const title = document.createElement('h3'); title.textContent = `${details.course.instructional_weeks} weeks · ${details.course.daily_lesson_target} planned daily lessons`;
-    const copy = document.createElement('p'); copy.textContent = 'One weekday lesson at a time. Read the explanation and worked example, solve the exercise, then compare the answer. A planned slot opens only after its teaching has been written.';
+    const copy = document.createElement('p'); copy.textContent = 'One weekday lesson at a time. Read the explanation and worked example, solve the exercise, then compare the answer. Planned study slots remain clearly marked until teaching is written.';
     const weekdays = document.createElement('div'); weekdays.className = 'course-weekdays';
     for (const day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']) { const chip = document.createElement('span'); chip.textContent = day; weekdays.append(chip); }
     const availability = document.createElement('p'); availability.className = 'course-availability';
@@ -278,9 +278,9 @@ export async function initCoursePortal(): Promise<void> {
   selector.addEventListener('change', () => {
     try { localStorage.setItem('open-cyber-academy-language', selector.value); } catch { /* private mode */ }
     const target = new URLSearchParams({ lang: selector.value });
-    if (firstQuery.has('ui')) target.set('ui', firstQuery.get('ui')!);
     if (current) { target.set('unit', current.kind); target.set('chapter', String(current.number)); }
-    location.href = location.pathname + '?' + target;
+    const origin = selector.value === 'en' ? 'https://opencyber.academy' : `https://${selector.value}.opencyber.academy`;
+    location.href = origin + location.pathname + '?' + target;
   });
   for (const anchor of [el('course-overview-link'), el('course-top-overview')] as HTMLAnchorElement[]) {
     anchor.href = url(null);

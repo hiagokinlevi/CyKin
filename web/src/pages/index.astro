@@ -166,13 +166,15 @@ const areaBridges: Record<string, string> = {
         const lang = (document.getElementById('language-theme') as HTMLSelectElement).value;
         const area = (document.getElementById('area-theme') as HTMLSelectElement).value;
         const level = (document.getElementById('level-theme') as HTMLSelectElement).value;
-        location.href=`/courses/${level}/${area}/?lang=${lang}`;
+        const origin = lang === 'en' ? 'https://opencyber.academy' : `https://${lang}.opencyber.academy`;
+        location.href=`${origin}/courses/${level}/${area}/?lang=${lang}`;
       });
       (document.getElementById('route-level') as HTMLFormElement).addEventListener('submit', event => {
         event.preventDefault();
         const lang = (document.getElementById('language-level') as HTMLSelectElement).value;
         const level = (document.getElementById('level-level') as HTMLSelectElement).value;
-        location.href=`/levels/${level}/?lang=${lang}`;
+        const origin = lang === 'en' ? 'https://opencyber.academy' : `https://${lang}.opencyber.academy`;
+        location.href=`${origin}/levels/${level}/?lang=${lang}`;
       });
     } catch {
       status.innerHTML = 'The site catalog is temporarily unavailable. <a href="/read/?path=README.md">Read the public library guide ↗</a>';

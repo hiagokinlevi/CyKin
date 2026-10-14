@@ -9,8 +9,12 @@ OpenCyber Academy is a public collection of cybersecurity courses and books. Pub
 - AI connection guide: https://opencyber.academy/for-ai/
 - Permanent authored lesson example: https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/
 - Sitemap of authored lesson pages: https://opencyber.academy/sitemap.xml
+- Portuguese edition and sitemap: https://pt.opencyber.academy/ and https://pt.opencyber.academy/sitemap.xml
+- Spanish edition and sitemap: https://es.opencyber.academy/ and https://es.opencyber.academy/sitemap.xml
+- Founder and academy: https://opencyber.academy/about/
 - Source repository: https://github.com/hiagokinlevi/OpenCyberAcademy
 - Book standard: https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/BOOK_STANDARD.md
 - Editorial production order: complete and review all English books first, then Portuguese, then Spanish. Begin other languages only after all three collections independently reach 100% verified completion under the book standard. Read the live rule via MCP resource open-cyber-academy://editorial-policy or tool get_editorial_policy; a manuscript or chapter count does not prove completion.
 
 Use the catalog to choose a level and area, then GET /api/courses/{level}/{area}/{language} to list authored daily lessons and chapters. GET /api/lessons/{level}/{area}/{language}/{chapter} to read one lesson and its worked answers. Public HTML lessons use /courses/{level}/{area}/lessons/{language}/{chapter}/; full legacy chapters use /courses/{level}/{area}/chapters/{language}/{chapter}/. Supported catalog languages are en, pt, es, he, fr, ru, de, zh and ja, but availability differs by edition. Cite the returned original source URL when quoting the manuscript. Do not treat plan-only chapters as published lessons.
+Valid but unwritten study days have navigable HTML guide pages with noindex; they are not lesson content and are excluded from the language sitemaps. The other six language hosts are reserved and show preparation notices until their translated books are ready. The Search Console domain property covers all subdomains, but sitemap discovery is not proof of indexing.

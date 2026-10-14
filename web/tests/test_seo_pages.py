@@ -2,6 +2,7 @@
 
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -59,13 +60,52 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
 
 
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
-    sitemap = (ROOT / "web/public/sitemap.xml").read_text()
+    sitemaps = {language: (ROOT / f"web/public/sitemap-{language}.xml").read_text()
+                for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}
+    sitemap = sitemaps["en"]
     index = json.loads((ROOT / "web/public/lesson-index.json").read_text())
     assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/" in sitemap
     assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/21/" not in sitemap
     assert index["rapid-1-month/incident-response-resilience/en"]["lessons"][0]["number"] == 1
-    assert len(re.findall(r"<url><loc>", sitemap)) > 7000
+    assert "https://pt.opencyber.academy/courses/professional-6-months/quantum-post-quantum-security/chapters/pt/1/" in sitemaps["pt"]
+    assert "https://es.opencyber.academy/courses/professional-6-months/ot-iot-security/chapters/es/1/" in sitemaps["es"]
+    for language, xml in sitemaps.items():
+        urls = [node.text for node in ET.fromstring(xml).iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+        assert len(urls) == len(set(urls))
+        assert all(url.startswith(f"https://{language + '.' if language != 'en' else ''}opencyber.academy/") for url in urls)
+        if language not in {"en", "pt", "es"}:
+            assert not urls  # No translated manuscripts exist yet.
+    assert sum(len(re.findall(r"<url><loc>", xml)) for xml in sitemaps.values()) > 7000
+    assert client.get("/sitemap.xml", headers={"host": "pt.opencyber.academy"}).text == sitemaps["pt"]
+    assert "https://es.opencyber.academy/sitemap.xml" in client.get("/robots.txt", headers={"host": "es.opencyber.academy"}).text
     assert client.get("/api/catalog").headers["x-robots-tag"] == "noindex"
+
+
+def test_language_hosts_and_unwritten_study_slots_are_honest(client):
+    redirect = client.get("/", headers={"host": "opencyber.academy", "accept-language": "pt-BR,pt;q=0.9,en;q=0.8"}, follow_redirects=False)
+    assert redirect.status_code == 302
+    assert redirect.headers["location"] == "https://pt.opencyber.academy/"
+    assert client.get("/", headers={"host": "opencyber.academy", "accept-language": "en-US"}).status_code == 200
+    for language in ("pt", "es"):
+        host = f"{language}.opencyber.academy"
+        home = client.get("/", headers={"host": host})
+        about = client.get("/about/", headers={"host": host})
+        assert home.status_code == about.status_code == 200
+        assert f'<html lang="{language}">' in home.text
+        assert f'https://{host}/about/' in about.text
+        assert 'name="robots" content="index,follow' in home.text
+        assert "Hiago Kin Levi" in about.text
+    french = client.get("/", headers={"host": "fr.opencyber.academy"})
+    assert french.status_code == 200 and 'content="noindex,follow"' in french.text
+    planned = client.get("/courses/professional-6-months/incident-response-resilience/lessons/en/11/", headers={"host": "opencyber.academy"})
+    assert planned.status_code == 200
+    assert planned.headers["x-robots-tag"] == "noindex, follow"
+    assert "have not been published yet" in planned.text
+    assert "/lessons/en/12/" in planned.text
+    assert client.get("/courses/professional-6-months/incident-response-resilience/lessons/en/131/").status_code == 404
+    cross_host = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/pt/1/", headers={"host": "opencyber.academy"}, follow_redirects=False)
+    assert cross_host.status_code == 308
+    assert cross_host.headers["location"].startswith("https://pt.opencyber.academy/")
 
 
 def test_chapter_with_final_appendix_exposes_its_own_worked_answer(client):

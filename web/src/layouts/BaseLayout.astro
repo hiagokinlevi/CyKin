@@ -22,6 +22,8 @@ const schema = structuredData || [
     <meta name="theme-color" content="#070e1c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
+    {(path === '/' || path === '/about/') && ['en', 'pt', 'es'].map(language =>
+      <link rel="alternate" hreflang={language} href={`https://${language === 'en' ? '' : language + '.'}opencyber.academy${path}`} />)}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="OpenCyber Academy" />
     <meta property="og:title" content={title} />
@@ -40,11 +42,13 @@ const schema = structuredData || [
     <script is:inline>
       try { document.documentElement.dataset.theme = localStorage.getItem('open-cyber-academy-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
       const supported = ['en', 'pt', 'es'];
+      const domain = location.hostname.split('.');
+      const hostnameLanguage = domain.length === 3 && domain.slice(1).join('.') === 'opencyber.academy' ? domain[0] : location.hostname === 'opencyber.academy' ? 'en' : null;
       const parameters = new URLSearchParams(location.search);
       const requested = (parameters.get('ui') || parameters.get('lang'))?.slice(0, 2).toLowerCase();
       const saved = (() => { try { return localStorage.getItem('open-cyber-academy-language'); } catch (_) { return null; } })();
       const browser = navigator.languages?.map(value => value.slice(0, 2).toLowerCase()).find(value => supported.includes(value)) || navigator.language.slice(0, 2).toLowerCase();
-      const language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
+      const language = supported.includes(hostnameLanguage) ? hostnameLanguage : supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
       document.documentElement.lang = language;
       document.documentElement.dataset.language = language;
     </script>
@@ -63,10 +67,11 @@ const schema = structuredData || [
           <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
           <a href="/calendar/" data-study-calendar-link aria-current={path === '/calendar/' ? 'page' : undefined}>Study calendar</a>
           <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
+          <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>About us</a>
           <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
         </nav>
         <div class="nav-actions">
-          <label class="site-language"><span class="sr-only">Site language</span><select id="site-language" aria-label="Site language"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option></select></label>
+          <label class="site-language"><span class="sr-only">Site language</span><select id="site-language" aria-label="Site language"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option><option value="he">HE</option><option value="fr">FR</option><option value="ru">RU</option><option value="de">DE</option><option value="zh">ZH</option><option value="ja">JA</option></select></label>
           <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
           <a class="button secondary" href="/account/">My area</a>
         </div>
@@ -76,7 +81,7 @@ const schema = structuredData || [
     <footer class="footer">
       <div class="shell footer-inner">
         <span>© OpenCyber Academy · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
-        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/privacy/">Privacy</a></div>
+        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/about/">About us</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/privacy/">Privacy</a></div>
       </div>
     </footer>
     <script>
@@ -86,8 +91,9 @@ const schema = structuredData || [
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
         try { localStorage.setItem('open-cyber-academy-language', selector.value); } catch (_) { /* private mode */ }
-        const next = new URL(location.href);
-        next.searchParams.set('ui', selector.value);
+        const origin = selector.value === 'en' ? 'https://opencyber.academy' : `https://${selector.value}.opencyber.academy`;
+        const path = ['en', 'pt', 'es'].includes(selector.value) ? location.pathname : '/';
+        const next = new URL(path, origin);
         location.href = next.href;
       });
       translatePage();

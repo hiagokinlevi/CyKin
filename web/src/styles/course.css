@@ -46,8 +46,7 @@
 .course-lesson .lesson-number { color: var(--gold); font-weight: 600; }
 .course-lesson .lesson-state { grid-column: 2; color: var(--muted); font-size: .72rem; margin-top: 2px; }
 .course-lesson.active .lesson-state { color: var(--gold); }
-.course-lesson.is-planned { opacity: .58; cursor: default; }
-.course-lesson.is-planned:hover { background: transparent; color: var(--muted); }
+.course-lesson.is-planned { opacity: .72; }
 .course-reader { min-height: 500px; padding: clamp(25px, 4vw, 50px); }
 .course-reader h2 { font-size: clamp(1.8rem, 3vw, 2.75rem); margin: 8px 0 11px; }
 #course-reader-title { scroll-margin-top: 104px; }
@@ -71,8 +70,7 @@
 .course-module-list { display: grid; gap: 6px; }
 .course-overview-lesson { display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 10px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); padding: 10px 11px; font-size: .83rem; line-height: 1.35; }
 .course-overview-lesson:hover { border-color: var(--gold); color: var(--text); }
-.course-overview-lesson.is-planned { opacity: .55; cursor: default; }
-.course-overview-lesson.is-planned:hover { border-color: var(--line); }
+.course-overview-lesson.is-planned { opacity: .72; }
 .course-chapter-browse { margin-top: 24px; border-top: 1px solid var(--line); }
 .course-chapter-browse summary { padding: 15px 0; color: var(--gold); font-weight: 600; cursor: pointer; }
 .course-chapter-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }

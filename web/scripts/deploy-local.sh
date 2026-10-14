@@ -48,11 +48,28 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/ | grep -F 'incident-response-resilience' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/ | grep -F '<meta name="robots" content="index,follow' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemap.xml | grep -F '/courses/rapid-1-month/incident-response-resilience/lessons/en/1/' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/analytics.js | grep -F 'G-7KDGFR12FS' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
   https://opencyber.academy/mcp | grep -F 'protocolVersion' > /dev/null
+
+public_ip="${public_ip:-$(dig @1.1.1.1 +short A opencyber.academy | head -n 1)}"
+for language in pt es he fr ru de zh ja; do
+  host="${language}.opencyber.academy"
+  host_options=(--connect-timeout 12 --resolve "${host}:443:${public_ip}")
+  curl --fail --show-error --silent "${host_options[@]}" "https://${host}/api/health" > /dev/null
+  curl --fail --show-error --silent "${host_options[@]}" "https://${host}/robots.txt" | grep -F "https://${host}/sitemap.xml" > /dev/null
+  curl --fail --show-error --silent "${host_options[@]}" "https://${host}/analytics.js" | grep -F 'G-7KDGFR12FS' > /dev/null
+  if [[ "$language" == pt || "$language" == es ]]; then
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F "<html lang=\"${language}\"" > /dev/null
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/about/" | grep -F 'Hiago Kin Levi' > /dev/null
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/sitemap.xml" | grep -F "https://${host}/courses/" > /dev/null
+  else
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F 'noindex,follow' > /dev/null
+  fi
+done
 
 echo "OpenCyber Academy deployed and verified from GitHub main $local_sha"
