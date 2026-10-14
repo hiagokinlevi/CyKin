@@ -1,16 +1,18 @@
 # Identity and Access Management: Rapid Course
 
 - Language: English (`en`); course 010, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX066 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification.
 - Audience: newcomers and small-business staff who need safe, practical identity and access basics in one month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only identity systems and accounts you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic accounts, entitlements, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+<!-- open-cyber-academy:chapter-lessons -->
 
-Read in order: the chapters follow one shop worker helping a small florist, from what access control protects and how to choose first steps, through written permission and safe password habits, to listing every account with its users and second-step status, and finally making agreed changes, checking them against a checklist and writing a short report. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics.
+## How to use this book
+
+Read the chapters in order. This English edition publishes twenty lessons, and each numbered chapter is that lesson. Five chapters in a row can be one study week; the grouping does not make a second copy of the text. Mia Clarke's first four lessons cover what the florist accounts protect, the written permission and safe habits, the seven-row account list, and the checklist with the short report. Lessons 5–20 each take one later florist question and leave both laboratory prints where the files already have them. Twenty lessons meet the planning minimum. They do not close this review, and they do not award a qualification. Run each lab where its chapter shows it, try each exercise before the worked result, and score the rubric yourself.
 
 ### Synthetic running case
 
@@ -29,7 +31,7 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -164,9 +166,9 @@ Spending the first week comparing paid products delays free steps that remove mo
 
 Knowing what accounts protect and taking high-value, low-cost steps first is the basis of practical access control.
 
-### Continue studying — chapter 01 of 04
+### Continue studying — lesson 01 (chapter 01 of 20)
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 <a id="ch-02"></a>
 
@@ -295,9 +297,9 @@ Collecting staff passwords to "check" them exposes them and breaks trust.
 
 Written permission, careful password handling and simple habits make access work safe for everyone.
 
-### Continue studying — chapter 02 of 04
+### Continue studying — lesson 02 (chapter 02 of 20)
 
-[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 <a id="ch-03"></a>
 
@@ -463,9 +465,9 @@ Listing only the accounts people remember misses forgotten services set up by fo
 
 A complete account list with owners, users and second-step status shows exactly where to act first.
 
-### Continue studying — chapter 03 of 04
+### Continue studying — lesson 03 (chapter 03 of 20)
 
-[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 <a id="ch-04"></a>
 
@@ -633,15 +635,1215 @@ Turning on second steps for everyone in the middle of a busy day without checkin
 
 Agreed changes, a simple checklist and a short report leave a small business safer and able to keep going alone.
 
-### Continue studying — chapter 04 of 04
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Chapter 5 — The account print is not the checklist
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  A["lab_accounts.py reads seven rows"] --> B["Print: MFA on 3, shared 3"]
+  C["lab_checklist.py reads two sets"] --> D["Print: before 2/8, after 7/8"]
+  B --> E{"May one print replace the other?"}
+  D --> E
+  E -->|No| F["Quote each script's own lines"]
+```
+
+Rosa sees the account output before any change is planned. The checklist is a later page.
+
+### Logical drawing
+
+```text
+account print
+    accounts 7, MFA on 3
+    four no-MFA lines
+    shared accounts: 3
+checklist print
+    before: 2/8
+    after: 7/8
+    still to do: recovery details up to date
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say which question each script answers.
+2. Keep both prints.
+3. Refuse a note that folds them into one score.
+
+### 5.1 Two reads, taken at two moments.
+
+The account script walks the seven-row list and prints how many rows have a second step, which rows do not, and how many are shared. Its embedded run says `accounts 7, MFA on 3`, then four `no MFA` lines, then `shared accounts: 3`. Chapter 3 says Rosa sees that output before any change is planned, and Joseph checks it against the list by hand. The checklist script does not read those rows. It compares two sets of eight yes-or-no items and prints `before: 2/8`, `after: 7/8`, and `still to do: recovery details up to date`. Week four's changes are described in prose and then scored by that second script. A classmate who copies 7/8 onto the account print, or who deletes the four `no MFA` lines because the checklist improved, is answering a question the first script never asked. Leave `lab_accounts.py` and `lab_checklist.py` as the runs that produced these two blocks.
+
+### 5.2 Worked example
+
+Match the sentence to the script that printed it.
+
+| Cited line | Script | Decision |
+|---|---|---|
+| `accounts 7, MFA on 3` | Account list | Keep it on that print |
+| `shared accounts: 3` | Account list | Keep it on that print |
+| `before: 2/8` and `after: 7/8` | Checklist | Keep both counts |
+| "So the account list now scores 7 of 8." | Neither script | Refuse |
+
+> **Synthetic case.** Both prints belong to Willow Lane Florist. Neither is a re-run of the other.
+
+### Errors and limits
+
+A later improvement can be real and still leave the earlier print untouched. The two files are not drafts of one score.
+
+### Apply
+
+- **EX051 — Which print?** The account run says 7 accounts and MFA on 3. The checklist run says before 2/8 and after 7/8, with recovery still to do. May the checklist score replace the account print? *Rubric:* 3 = no; both prints stay; the account lines stay 7 accounts, MFA on 3 and shared 3; the checklist stays 2/8 then 7/8 with recovery still to do; do not edit either script;; 2 = the two prints stay different;; 1 = one print;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — Three with a second step is not seven
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  A["Fourth field true on three rows"] --> B["Print says MFA on 3"]
+  B --> C{"Does 3 mean every account?"}
+  C -->|No| D["Keep the four no-MFA lines"]
+  C -->|Yes| E["That reading invents four flags"]
+```
+
+The count is a tally of one column. It is not a promise about the other rows.
+
+### Logical drawing
+
+```text
+second step on
+    owner email, card payments, accounting
+second step off, and printed
+    orders mailbox, shop admin, social page, supplier portal
+not the same number
+    checklist after: 7/8
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the three rows that already have a second step on the account print.
+2. Keep the four `no MFA` lines.
+3. Refuse to read 3 as 7.
+
+### 6.1 The column counts flags, not wishes.
+
+On the account list, the second-step flag is true for Rosa's own mailbox `owner@shop`, for card payments `rosa.m`, and for accounting `rosa.m`. Those are the three. The print therefore says `MFA on 3` out of `accounts 7`. The other four rows are printed, not implied: the orders mailbox, the online shop admin, the social page, and the supplier portal. Card payments and accounting share the label `rosa.m` and still are two services, both already flagged on, both used by Rosa alone. Nothing in that arithmetic says the four printed gaps grew a second step. The checklist's `after: 7/8` counts checklist items, not these seven rows, so it cannot be substituted for `MFA on 3`. Turning the four false flags to true would be a different list. This run does not contain that list.
+
+### 6.2 Worked example
+
+Say "three rows" when you mean the account column, and "seven items" only for the checklist.
+
+| Claim | What the account print supports | Decision |
+|---|---|---|
+| "Three rows already have a second step." | `MFA on 3` | May stay |
+| "Four named rows are printed without one." | The `no MFA` lines | May stay |
+| "3 of 7 means the same as 7 of 8." | Different denominators | Refuse |
+| "Flip the four flags." | No second run | Refuse |
+
+> **Synthetic case.** The flags are synthetic columns. No second step is being switched on in this lesson.
+
+### Errors and limits
+
+A small numerator is easy to round upward. Here the printed gaps are the point of the count.
+
+### Apply
+
+- **EX052 — What does 3 count?** A classmate says MFA on 3 means every account now has a second step, because the checklist later reached 7 of 8. Which rows does 3 actually count, and which lines stay? *Rubric:* 3 = three rows only, owner email, card payments and accounting; the four no-MFA lines stay; 3 is not 7; the checklist 7/8 does not rewrite the account column;; 2 = keep MFA on 3 and the four lines;; 1 = the count only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — The three shared lines stay on the account print
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  A["Shared flag true on three rows"] --> B["Print: shared accounts: 3"]
+  B --> C{"Does week-four prose edit that flag?"}
+  C -->|No| D["Leave the three shared lines"]
+  C -->|Yes| E["The tuples were not rewritten"]
+```
+
+A later design can be described without pretending the list was re-scored.
+
+### Logical drawing
+
+```text
+shared on the print
+    orders@shop
+    online shop admin
+    shop-page
+not shared on the print
+    owner email, card payments, accounting, supplier portal
+narrative, not a new print
+    personal logins in week four
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the three rows the account print marks shared.
+2. Keep `shared accounts: 3`.
+3. Leave week four's personal logins in the prose, not in a rewritten tuple.
+
+### 7.1 Shared means one password for many people, on this list.
+
+The account script prints `shared accounts: 3`. The rows with that flag are the orders mailbox used by all staff, the online shop admin used by Rosa and Mia, and the social page used by all staff. Chapter 3 says every one of those three also lacks a second step, which is why they were called the riskiest pattern: a password known by many people, and nothing further required to sign in. The supplier portal is not in that trio. Its shared flag is false, and only Rosa is listed as the user. Chapter 4 later describes personal sign-ins, a staff role, and removal of the shared social login. Those sentences sit in the narrative. They do not replace the tuples the first script reads, and they do not change the line `shared accounts: 3`. A note that prints `shared accounts: 0` because the prose moved on has edited a result the file still shows.
+
+### 7.2 Worked example
+
+Use the shared flag, not the later story, when you quote the account print.
+
+| Row | Shared flag on the print | Decision |
+|---|---|---|
+| Orders mailbox, shop admin, social page | True | Keep them in the three |
+| Supplier portal | False | Do not call it shared |
+| `shared accounts: 3` | The tally | Keep the tally |
+| "Week four set the tally to zero." | No new account run | Refuse |
+
+> **Synthetic case.** The shared flags are fields in a synthetic list. No live password is shared in this chapter.
+
+### Errors and limits
+
+Describing a fix is not the same artifact as the list that justified the fix. Both can stand.
+
+### Apply
+
+- **EX053 — How many are shared?** Chapter 4 describes personal logins. The account print still says `shared accounts: 3`. What is the shared count on that print, and which row is not part of it? *Rubric:* 3 = the print stays at 3; the three are the orders mailbox, the shop admin and the social page; the supplier portal stays not shared; week-four prose does not rewrite the tally;; 2 = the tally stays 3;; 1 = the prose only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — The orders mailbox line stays no-MFA and shared
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08. Map, example, EX054.
+
+```mermaid
+flowchart TD
+  A["Print: no MFA: email orders@shop - shared"] --> B["Week four: own sign-ins and an authenticator"]
+  B --> C{"Did the script print that change?"}
+  C -->|No| D["Keep the no-MFA shared line"]
+  C -->|Yes| E["No second account run is embedded"]
+```
+
+The mailbox that receives resets is still the first gap on the week-three list.
+
+### Logical drawing
+
+```text
+account line that stays
+    no MFA: email (orders@shop) - shared
+    used by all staff
+checklist, different claim
+    MFA on email is already in the before pair
+narrative
+    personal sign-ins, authenticator app, old shared password retired
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Quote the orders-mailbox line from the account print.
+2. Keep it apart from the checklist item "MFA on email".
+3. Leave the week-four authenticator story as prose.
+
+### 8.1 The reset mailbox is one row. "MFA on email" is another sentence.
+
+Whoever holds the shop's email can ask other services to reset their passwords. That is why chapter 3 ranks the orders mailbox first: it receives those reset links, and on the account list it is shared by all staff with the second-step flag false. The print says `no MFA: email (orders@shop) - shared`. Rosa's own mailbox is a different row, `owner@shop`, and that row's second-step flag is already true. The checklist's before pair includes the single item "MFA on email". That item does not name `orders@shop`, and it does not erase the printed gap. In week four the narrative says each staff member received a personal sign-in with access to the shared mailbox, plus an authenticator app, and that the old shared password was retired. The account script was not run again. The password itself is never written. Until a new embedded run replaces the line, the gap on this print stays a gap.
+
+### 8.2 Worked example
+
+Point at the address in the line before you decide what the line claims.
+
+| Sentence | Ground | Decision |
+|---|---|---|
+| "`orders@shop` is printed no-MFA and shared." | The account run | May stay |
+| "`owner@shop` already has a second step." | The same list | May stay |
+| "MFA on email was a before-item." | The checklist source | May stay, as that item |
+| "So `orders@shop` dropped off the print." | No new run | Refuse |
+
+> **Synthetic case.** The mailbox addresses are labels in the synthetic list. No message is opened.
+
+### Errors and limits
+
+One true flag on Rosa's mailbox does not cover the mailbox the whole staff share. The authenticator story does not back-fill the print.
+
+### Apply
+
+- **EX054 — Which mailbox changed on the print?** Week four gives staff their own sign-ins and an authenticator for the orders mailbox. What does the account print still say about `orders@shop`? *Rubric:* 3 = the line stays `no MFA: email (orders@shop) - shared`; the week-four story stays prose; "MFA on email" stays a separate checklist item; do not edit the script;; 2 = the printed line stays;; 1 = the story only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — The shop admin line stays the week-three row
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  A["Tuple: admin, Rosa and Mia, no MFA, shared"] --> B["Week four adds a staff role"]
+  B --> C{"Does the role become a new tuple?"}
+  C -->|No| D["Leave Rosa, Mia on the printed row"]
+  C -->|Yes| E["No staff name is in the list"]
+```
+
+Admin rights and a view-only role are a design. The print still shows one shared admin row.
+
+### Logical drawing
+
+```text
+printed row
+    online shop, admin, Rosa and Mia, no MFA, shared
+week-four design
+    staff may view and pack
+    staff may not change prices or payments
+    only Rosa and Mia keep admin
+not printed
+    any other person's name
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read the shop-admin tuple as printed.
+2. Keep the staff role in the narrative.
+3. Refuse to add a name to the row.
+
+### 9.1 The tuple names two people. The role does not add a third.
+
+The account row says the online shop admin is used by Rosa and Mia, the second-step flag is false, and the shared flag is true. The print says `no MFA: online shop (admin) - shared`. That row is why a takeover could change prices or redirect payments, which is the harm chapter 1 names, and why chapter 3 ranks this gap second, after the orders mailbox. Week four describes a staff role that can view and pack orders and cannot change prices or payment settings, with each staff member given a personal login. Only Rosa and Mia keep admin, both with a second step in that narrative. The account list does not gain a row for the staff role, and it does not gain a personal name. Six staff remain an unnamed group. Writing another name into "Rosa, Mia" would invent a user the synthetic list does not contain. The checklist item "MFA on online shop admin" belongs to the other script's after set. It does not delete this `no MFA` line.
+
+### 9.2 Worked example
+
+Quote the users who are written. Stop before the users who are only described as "staff".
+
+| Statement | In the account tuple? | Decision |
+|---|---|---|
+| Users are Rosa and Mia | Yes | May stay |
+| The row is shared and has no second step | Yes, on the print | May stay |
+| A staff role views and packs, not prices | Chapter 4 prose | May stay as prose |
+| A named colleague was added to the tuple | No name | Refuse |
+
+> **Synthetic case.** The admin row is a synthetic tuple. No shop price is changed.
+
+### Errors and limits
+
+A narrower role is a good design and still not a new laboratory line. Unnamed staff stay unnamed.
+
+### Apply
+
+- **EX055 — Who is on the admin row?** Week four creates a view-and-pack role. The account print still has one online-shop line. Who does that line name, and what must you not add? *Rubric:* 3 = the printed users stay Rosa and Mia; the row stays no-MFA and shared; the staff role stays prose; no new name is added;; 2 = Rosa and Mia stay the printed users;; 1 = the role only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — The social page line stays no-MFA and shared
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  A["Print: no MFA: social media shop-page - shared"] --> B["Narrative: helpers join with their own accounts"]
+  B --> C{"Does the print name those helpers?"}
+  C -->|No| D["Keep all staff, and keep the line"]
+  C -->|Yes| E["No helper is named"]
+```
+
+Reputation is why the gap ranks third. The rank is not a new laboratory row.
+
+### Logical drawing
+
+```text
+printed
+    social media, shop-page, all staff, no MFA, shared
+narrative
+    page helpers on their own accounts
+    shared login removed
+unnamed
+    the two former helpers
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Quote the social-page line.
+2. Keep the helper change in the narrative.
+3. Leave the former helpers unnamed.
+
+### 10.1 A takeover of the page harms reputation. The print still shows the old row.
+
+Chapter 3 ranks social media third because a takeover would harm the shop's reputation. On the list the row is `shop-page`, used by all staff, second step false, shared true. The print says `no MFA: social media (shop-page) - shared`. Week four says the service lets people be added as page helpers with their own accounts, and that the shared login is then removed. Two former staff are still listed as helpers in that chapter, and Rosa removes them. The account script does not print those two people, does not print the removal, and does not drop the `no MFA` line. "All staff" stays the user field. Calling the former helpers by name, or printing `shared accounts` without this row, would add facts the run does not contain. The checklist item "MFA on social media" is an after-item on the other script. It is not a rewrite of `shop-page`.
+
+### 10.2 Worked example
+
+Keep the page's risk and the page's printed row in separate sentences.
+
+| What someone says | Where it lives | Decision |
+|---|---|---|
+| "The print shows `shop-page` with no second step, shared." | Account run | May stay |
+| "A takeover would harm reputation." | Chapter 3 | May stay |
+| "Helpers moved to their own accounts." | Chapter 4 prose | May stay as prose |
+| "The two former helpers are named on the print." | No names | Refuse |
+
+> **Synthetic case.** The page is a synthetic row. No post is published from this lesson.
+
+### Errors and limits
+
+Removing a shared login in the story does not rename `all staff` on the list. The former helpers stay an unnamed pair.
+
+### Apply
+
+- **EX056 — What does the social line still say?** The narrative removes the shared social login. What user, second-step flag and shared flag does the account print still show for `shop-page`? *Rubric:* 3 = all staff, no MFA, shared; the helper change stays prose; the former helpers stay unnamed;; 2 = the printed line stays;; 1 = the narrative only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — The supplier portal stays the next account
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  A["Found late: supplier portal willowlane"] --> B["Rosa only, no MFA, not shared"]
+  B --> C["Ranked fourth, if time allows"]
+  C --> D{"Does the report say it is finished?"}
+  D -->|No| E["It stays the next account"]
+```
+
+Fourth in the queue is not a completed change.
+
+### Logical drawing
+
+```text
+how it was found
+    nobody had mentioned it
+printed row
+    supplier portal, willowlane, Rosa, no MFA, not shared
+status in the report
+    the next account to secure
+    not a line marked done
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say how the supplier portal entered the list.
+2. Keep its printed flags.
+3. Leave it as the next account, not a secured one.
+
+### 11.1 A forgotten service is on the list. It is not in the finished set.
+
+Mia finds the supplier portal by looking beyond what people remember: welcome mail and invoices, the browser's saved sites with Rosa present, and questions to staff. Nobody had mentioned it. She adds it with Rosa's confirmation. The row says the account label is `willowlane`, the user is Rosa, the second-step flag is false, and the shared flag is false. The print says `no MFA: supplier portal (willowlane)` and does not add `- shared`. Chapter 3 ranks it fourth. Rosa asks Mia to finish the first three gaps in week four, and the portal only if time allows. Chapter 4's report then names the supplier portal as the next account to secure. "Next" means it is still ahead. The checklist has no supplier line to flip, and the account script does not show a later true flag. Time allowing is not a sentence that the work was done. The label `willowlane` is this portal's account name. It does not become a second shop, and it does not collect a password.
+
+### 11.2 Worked example
+
+Call it next only while the file still calls it next.
+
+| Fact | Status | Decision |
+|---|---|---|
+| Forgotten, then added with Rosa's confirmation | Chapter 3 | May stay |
+| Rosa, no second step, not shared | The print | May stay |
+| Next account in the report | Chapter 4 | May stay |
+| "The portal now has a second step." | Not printed | Refuse |
+
+> **Synthetic case.** The portal is a synthetic find. No supplier order is placed.
+
+### Errors and limits
+
+Finding an account is the start of the record. It is not the second step the row still lacks.
+
+### Apply
+
+- **EX057 — Is the portal finished?** The report lists the supplier portal as the next account. The account print shows `willowlane` with no second step, used by Rosa, not shared. Has that row been secured? *Rubric:* 3 = no; it stays the next account; the printed flags stay Rosa, no MFA and not shared; "if time allows" is not a completed change;; 2 = it stays next and the flags stay;; 1 = the rank only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Recovery details stay the remaining item
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  A["after: 7/8"] --> B["still to do: recovery details up to date"]
+  B --> C["Rosa agrees to update them the following week"]
+  C --> D{"Has that week arrived in the file?"}
+  D -->|No| E["Leave 7/8 and print no phone number"]
+```
+
+Seven is the after count because one item is still open.
+
+### Logical drawing
+
+```text
+printed remainder
+    still to do: recovery details up to date
+known only in prose
+    some accounts
+    a former staff member's phone number
+    Rosa will update them the following week
+not in the file
+    the number itself
+    a finished update
+    after: 8/8
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say which checklist item remains.
+2. Keep `after: 7/8`.
+3. Leave the phone number and the following week unprinted.
+
+### 12.1 Recovery is how a lost sign-in is regained. Wrong details point at the wrong person.
+
+The checklist prints `after: 7/8` and then one remainder: `still to do: recovery details up to date`. Recovery details are the way an account is regained if a password or a phone is lost. Chapter 4 says some accounts still list a former staff member's phone number, so the wrong person might reset an account or lock Rosa out. Rosa agrees to update them the following week. The agreement is a plan. The following week is not described as having happened, and no phone number is written anywhere in the book. The script's after set simply does not include that item, which is why the remainder line exists. Adding the item by hand, printing 8 of 8, or inventing the number would close a gap the file left open on purpose. The other seven checklist items can stand as the after score without this one. A former staff member's number is not the same fact as the three people whose access Rosa removes. Those removals are a different item, and this lesson does not merge them.
+
+### 12.2 Worked example
+
+Quote the remainder line. Do not finish it.
+
+| Sentence | In the file? | Decision |
+|---|---|---|
+| "`after: 7/8`" | The checklist print | May stay |
+| "Recovery details are still to do." | The same print | May stay |
+| "Rosa agrees to update them the following week." | Chapter 4 | May stay as a plan |
+| "The number was changed and the score is 8 of 8." | No | Refuse |
+
+> **Synthetic case.** No recovery number is hidden elsewhere in the chapter. The blank is the evidence.
+
+### Errors and limits
+
+An agreed update is still future. Seven of eight is the score because the eighth item is the one named underneath it.
+
+### Apply
+
+- **EX058 — What remains?** The checklist prints after 7/8 and names recovery details. Rosa says she will update them the following week. What do you print as the phone number, and what is the after score? *Rubric:* 3 = no phone number; the after score stays 7/8; recovery stays still to do; the following week is not shown as done;; 2 = 7/8 stays and no number is added;; 1 = the agreement only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — The before line stays two of eight
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  A["before: 2/8"] --> B["Source marks only the first two items"]
+  B --> C{"May later gains move into before?"}
+  C -->|No| D["Leave the before count at 2"]
+  C -->|Yes| E["That would rewrite the week-one list"]
+```
+
+The before set is what Mia filled in during week one. The after set is the end of week four.
+
+### Logical drawing
+
+```text
+already in the before set
+    every account listed with an owner
+    MFA on email
+not in the before set
+    shop-admin MFA, social MFA
+    no written shared passwords
+    password manager, former staff removed
+    recovery details
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep `before: 2/8`.
+2. Name the two items the source marks as already done.
+3. Refuse to slide the week-four gains backward.
+
+### 13.1 Week one records a short start. Week four must not be pasted over it.
+
+Mia fills the before list during week one and the after list at the end of week four, with Rosa confirming each item. The print says `before: 2/8`. In the script the before set contains only the first two items: every account listed with an owner, and MFA on email. The other six items are absent from that set. Some of them appear in the after set, and recovery does not appear even there. Moving "former staff removed" or "password manager in use" into the before count would pretend the shop started where it finished. It would also hide the work week four describes. "MFA on email" as a before item still does not cancel the account print's `orders@shop` line. One checklist phrase and one mailbox row are different records, and chapter 8 keeps them apart. The before line stays 2. The after line stays 7. Neither number is a monthly average, and neither is printed as 8.
+
+### 13.2 Worked example
+
+Ask which week the item belongs to before you count it.
+
+| Item | Before set | Decision |
+|---|---|---|
+| Every account listed with an owner | Included | Counts toward 2 |
+| MFA on email | Included | Counts toward 2 |
+| Former staff removed | Not included | Do not move it backward |
+| `before: 2/8` | The print | Keep it |
+
+> **Synthetic case.** The before list is a synthetic week-one page. It is not the report Rosa signs later.
+
+### Errors and limits
+
+A strong after score can tempt a reader to improve the start. The start is what made the change visible.
+
+### Apply
+
+- **EX059 — What was already true?** The print says `before: 2/8`. Which two items does the source count, and may "former staff removed" join them? *Rubric:* 3 = only every account listed with an owner, and MFA on email; the before line stays 2/8; later items stay out of the before set;; 2 = the before count stays 2 and the two items stay those two;; 1 = the count only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — Three former staff, and no removal date is printed
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  A["Mia asks who left in two years"] --> B["Two social helpers and one shop login"]
+  B --> C["Rosa removes them"]
+  C --> D{"Is the removal date printed?"}
+  D -->|No| E["Keep three people and a blank date"]
+```
+
+The checklist can mark the removal item done without dating it.
+
+### Logical drawing
+
+```text
+counted
+    two social-media helpers
+    one online-shop login
+    three in total
+done in the story
+    Rosa removes them
+    Mia records each removal and the date
+not printed
+    the date
+    any of their names
+    a fourth person
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Count the former staff who still had access.
+2. Keep their names and the removal dates unprinted.
+3. Leave "former staff removed" as a checklist item, not a calendar entry.
+
+### 14.1 The count is three roles, not three named people.
+
+Mia asks Rosa who has left in the past two years. Two former staff are still helpers on the social page, and one still has a login to the online shop. Rosa removes them. That is three people, matching the worked result in chapter 4. Mia records each removal and the date, and she adds leaving to the habits list so the next departure is reported. The manuscript never prints the date and never prints a name. The account rows still say "all staff" or "Rosa, Mia". They do not list the people who left. The checklist's after set includes "former staff removed", which is why that item is not on the `still to do` line. A ticked item is not a dated register. Shared passwords, while they existed, might also have been remembered by people who had left. That is why the move to personal logins matters. It does not add a fourth leaver, and it does not fill in the blank date. Two years is the question Mia asked. It is not a pair of calendar years written on the page.
+
+### 14.2 Worked example
+
+Count the access that was still open. Do not invent the diary entry.
+
+| Record | What is shown | Decision |
+|---|---|---|
+| Two social helpers and one shop login | Chapter 4 | May stay |
+| Rosa removes them | The same chapter | May stay |
+| A removal date | Recorded, not printed | Do not invent it |
+| A fourth leaver | Not in the count | Refuse |
+
+> **Synthetic case.** The former staff stay unnamed. No diary page is reproduced.
+
+### Errors and limits
+
+Recording a date in a note the book does not show is not the same as the date being available to copy. Three stays three.
+
+### Apply
+
+- **EX060 — What do you date?** Rosa removes two social helpers and one shop login. Mia records the dates. Which date do you print, and how many people were removed? *Rubric:* 3 = three people, and no date is printed; no name is added; "former staff removed" stays a checklist item rather than a calendar line;; 2 = the count stays three and the date stays blank;; 1 = the count only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — No password is written, and the till note is not restored
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  A["Passwords never enter Mia's notes"] --> B["The till note is shredded once the old passwords fail"]
+  B --> C{"May a lesson print one password to illustrate?"}
+  C -->|No| D["Describe the handling and stop"]
+```
+
+The absence of a password is the safety rule, not a missing detail.
+
+### Logical drawing
+
+```text
+never collected
+    staff passwords
+moved, without being printed
+    shop passwords into the manager
+    shared fallback changed when someone leaves
+gone in the story
+    the till note, after the old passwords stopped working
+still unwritten
+    every password
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. State the rule that Mia never asks for a password.
+2. Keep the till note shredded in the story and absent as text.
+3. Refuse to type a password into the lesson.
+
+### 15.1 The manager stores secrets. This book does not repeat them.
+
+Mia must never ask staff for their passwords, write them on paper, or send them by message. When something must be set up, the account holder signs in while she guides them. Rosa already uses a password manager. Mia helps move the shop's passwords into it. Where a service cannot give separate accounts, the shared password goes into that manager and is changed when anyone leaves. The till note, which held the shared passwords where anyone could see it, is shredded once those old passwords no longer work. None of those passwords is printed. The checklist before set does not include "no shared passwords written down"; the after set does. That shift records the habit. It does not reveal a secret, and it does not put the note back by the till. A classmate who types an example password so the shredding "makes sense" breaks the rule the chapter is teaching. Joseph checks that Mia follows the rule. The check does not produce a password either.
+
+### 15.2 Worked example
+
+Describe the container. Do not open it.
+
+| Object | What the file shows | Decision |
+|---|---|---|
+| Staff asked for their passwords | Never | Keep that ban |
+| Shop passwords | Moved into the manager | Do not quote them |
+| Till note | Shredded after the old passwords failed | Do not restore it |
+| An example password | Not in the book | Do not add one |
+
+> **Synthetic case.** No practice password is supplied. The manager is named only as an app.
+
+### Errors and limits
+
+Shredding is told, not dated. A missing date does not mean the note is still beside the till.
+
+### Apply
+
+- **EX061 — What do you type?** The till note was shredded after the old passwords stopped working, and Mia never collects staff passwords. Which password do you add so a classmate can see the idea? *Rubric:* 3 = none; no password is written; the till note stays shredded in the story and is not restored; the manager stays the store;; 2 = no secret is typed and the note stays gone;; 1 = the rule only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — The permission dates stay off the page
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  A["Rosa signs a permission note"] --> B["Payments stay hers"]
+  B --> C["Stop cases go to Rosa, not into an investigation"]
+  C --> D{"Are the calendar dates printed?"}
+  D -->|No| E["Keep the signature and omit the days"]
+```
+
+A signed boundary still binds when the days are missing.
+
+### Logical drawing
+
+```text
+on the note, in prose
+    accounts Mia may look at
+    second steps she may help turn on
+    payments Rosa does herself
+    Rosa's signature
+not printed
+    the calendar dates she agreed
+stop rule
+    break-in, odd payment, threat
+    Mia tells Rosa and stops
+    Rosa calls the provider or the bank
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say what the permission note allows and what it reserves.
+2. Keep the stop cases with Rosa.
+3. Leave the shop-calendar dates unprinted.
+
+### 16.1 Permission is a signed limit. The calendar entry is not copied here.
+
+Before any change, Mia writes a short note: which accounts she may look at, which changes she may make, such as turning on second steps, and which changes Rosa must do herself, such as anything involving payments. Rosa signs it. Mia keeps the signed note with her course notes. The signature lets Mia show she acted as asked. It does not let her cross into payments or into an investigation. If she suspects a break-in, sees a payment that looks wrong, or meets a message that threatens the shop, she stops, tells Rosa, and does not investigate alone. Rosa contacts the provider or the bank. Chapter 1 says Rosa agrees the week's dates and adds them to the shop calendar. Those dates are not printed. "Dates" as something a plan can have does not invent a day, a month, or a year for this shop. Finishing the checklist does not widen the note, and it does not move a stop case onto Mia's list of jobs. Working without the signature, even with good intentions, can cause confusion and harm. The file shows the signature. It does not show the calendar.
+
+### 16.2 Worked example
+
+Copy the boundary. Leave the unpublished days unpublished.
+
+| Element | Shown? | Decision |
+|---|---|---|
+| Rosa's signature | Yes | Keep it |
+| Payments reserved to Rosa | Yes | Keep the reserve |
+| Stop, then Rosa calls the provider or bank | Yes | Keep the stop |
+| A calendar date | Not printed | Do not invent one |
+
+> **Synthetic case.** The permission note is not reproduced as a filled form. The shop calendar stays off the page.
+
+### Errors and limits
+
+An undated signature can still limit the work. Missing days do not make a payment change into Mia's task.
+
+### Apply
+
+- **EX062 — What do you add to the note?** Rosa has signed. A payment looks wrong, and the checklist is finished. Which date do you write, and who contacts the bank? *Rubric:* 3 = no date is printed; Rosa stays the person who contacts the provider or the bank; payments stay hers; Mia stops and does not investigate; finishing the checklist does not widen the note;; 2 = no date and Rosa keeps the escalation;; 1 = the signature only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — The three-month check is a habit, not a second run
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  A["Report signed and stored with the list"] --> B["Habit: check the list every three months"]
+  B --> C{"Has that later check been run?"}
+  C -->|No| D["Keep one account print and one checklist print"]
+```
+
+A habit tells the shop what to repeat. It is not evidence that the repetition already happened.
+
+### Logical drawing
+
+```text
+the report contains
+    what was found, what changed
+    score from 2 to 7 of 8
+    recovery still open
+    supplier portal next
+    three habits
+stored
+    in the password manager, with the list
+    Rosa signs, Joseph has reviewed
+not shown
+    a second account run three months later
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. List what the one-page report is allowed to say.
+2. Keep the three-month check as a habit.
+3. Leave the supplier portal as the next account.
+
+### 17.1 The report points at the prints. It does not replace them.
+
+Mia's one-page report uses plain words: what was found, what was changed, the checklist score from 2 to 7 of 8, what remains, and three habits. The habits are to add and remove people promptly, to keep a second step on every account, and to check the account list every three months. Joseph reviews the report. Rosa signs it and keeps it in the password manager beside the account list, so the next person who opens the list also sees what was agreed. Chapter 3 saved the account output with a date so a later check could be compared. That date is not printed, and the comparison is not shown. "Every three months" is an instruction in the report. It is not a second embedded run, and it does not change `accounts 7, MFA on 3` or `shared accounts: 3`. The supplier portal remains the next account inside that same report. Storing the page does not secure the portal, and signing it does not complete the recovery update. Whoever next reads the list should still see the open items.
+
+### 17.2 Worked example
+
+Let the report cite the score it was given. Do not let it improve the score.
+
+| Report line | Standing | Decision |
+|---|---|---|
+| Score from 2 of 8 to 7 of 8 | Matches the checklist print | May stay |
+| Three habits, including a three-month look | Written as habits | May stay |
+| Supplier portal next | Still next | May stay |
+| "The three-month check has already been run." | No second print | Refuse |
+
+> **Synthetic case.** The report is a synthetic page in a synthetic manager. It is not a notice to customers.
+
+### Errors and limits
+
+A signed page can still contain future work. Storage beside the list makes the open items easier to find. It does not close them.
+
+### Apply
+
+- **EX063 — Has the later check happened?** The report says to check the account list every three months, and Rosa signs it. The supplier portal is named as next. Which later run do you attach, and is the portal finished? *Rubric:* 3 = no later run is in the file; the habit stays a habit; the portal stays next; the stored report does not change either print;; 2 = no second run and the portal stays next;; 1 = the signature only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Six staff and one shop stay the size
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  A["One shop, six staff"] --> B["Two rows say all staff"]
+  B --> C{"May a note name the six or add a seventh?"}
+  C -->|No| D["Leave the headcount and the phrase"]
+```
+
+The size of the business is not a list of people.
+
+### Logical drawing
+
+```text
+printed size
+    one shop
+    six staff
+user field on two rows
+    all staff
+not available
+    the six names
+    a second shop
+    a seventh person
+    Mia's hours
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. State the shop's size as the book states it.
+2. Keep "all staff" where the list says "all staff".
+3. Refuse a named roster or a second shop.
+
+### 18.1 Headcount is a boundary. It is not a roll call.
+
+Willow Lane Florist is one shop with six staff, run by its owner, Rosa. Mia works there part-time and is on the rapid course. The account list never spells the six names. Where a row is used by the whole group, the user field says "all staff": the orders mailbox and the social page. Inventing five colleagues, splitting six into Rosa plus six, or adding a second shop because the supplier label says `willowlane` would change the case. Mia's part-time work does not print an hour count and does not add a seventh person. The three former staff are people who had left. They are not a revision of the six. Rosa remains the owner who signs the permission note and the report. Joseph remains the coach at Eastgate Skills Centre, not a member of the shop staff. A leaving note may repeat "six" and "one shop". It may not turn either figure into a roster.
+
+### 18.2 Worked example
+
+Repeat the size. Do not staff it with new people.
+
+| Figure | Meaning | Decision |
+|---|---|---|
+| Six staff, one shop | The business | May stay |
+| "all staff" on two rows | The printed user field | May stay |
+| Mia works part-time | Her role | Do not convert it into hours or a seventh head |
+| A second shop, or six names | Not written | Refuse |
+
+> **Synthetic case.** No staff rota is attached. The shop has no street address in this book.
+
+### Errors and limits
+
+A small number is not an invitation to fill seats. Unnamed people stay an unnamed group.
+
+### Apply
+
+- **EX064 — How big is the shop?** The case says one shop and six staff. A classmate adds a second branch and names the six. What size do you keep, and what do you refuse to write? *Rubric:* 3 = one shop and six staff stay; no second shop; no names for the six; "all staff" stays the user field where the list uses it; part-time does not add a person;; 2 = the size stays and no names are added;; 1 = the size only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Admin stays with Rosa and Mia
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  A["Staff role: view and pack"] --> B["Not prices, not payment settings"]
+  B --> C["Admin remains Rosa and Mia"]
+  C --> D{"Does the book record a lockout?"}
+  D -->|No| E["Keep the check, and keep the pair"]
+```
+
+Checking each sign-in is how the change stays reversible. It is not a record that someone was locked out.
+
+### Logical drawing
+
+```text
+staff may
+    view orders
+    pack orders
+staff may not
+    change prices
+    change payment settings
+admin, in the narrative
+    Rosa and Mia, each with a second step
+account tuple, still
+    Rosa, Mia
+not recorded
+    a lockout
+    the name of a busy day
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate the staff role from admin.
+2. Keep Rosa and Mia as the admin pair.
+3. Leave payments with Rosa, and leave any lockout unrecorded.
+
+### 19.1 Fewer admins is the control. The pair is named, and the day is not.
+
+Authorisation is what a person may do after signing in. Giving everyone admin breaks that idea, which is why most staff need only to view orders. Week four makes the limit concrete: the staff role can view and pack, and it cannot change prices or payment settings. Only Rosa and Mia keep admin, and the narrative says both have a second step. The account tuple still reads "Rosa, Mia". Dropping Mia because she is a learner, or adding the other staff because they now have logins, would rewrite either the tuple or the role. Payment settings stay inside the changes Rosa must do herself. Mia checks each sign-in before she moves on, so a busy day does not become a lockout. The book does not say that anyone was locked out, and it does not name the day. The check is a precaution that was followed. It is not an incident report. A note that grants the staff role the right to change prices, or that says the busy day ended in a lockout, adds an event the file does not contain.
+
+### 19.2 Worked example
+
+Say what the role can do, then stop at the boundary the chapter drew.
+
+| Power | Who has it | Decision |
+|---|---|---|
+| View and pack orders | Staff role | May stay |
+| Change prices or payment settings | Not the staff role | Keep it off that role |
+| Admin | Rosa and Mia | Keep the pair |
+| A recorded lockout | Not in the file | Do not add one |
+
+> **Synthetic case.** No order is packed in this lesson. The busy day stays undated.
+
+### Errors and limits
+
+A careful sequence can still be told without a casualty. The absence of a lockout is not permission to skip the check.
+
+### Apply
+
+- **EX065 — Who may change a price?** The staff role views and packs orders. Admin stays with Rosa and Mia, and Mia checks each sign-in before moving on. May the staff role change prices, and was anyone locked out? *Rubric:* 3 = the staff role may not change prices or payment settings; admin stays Rosa and Mia; no lockout is recorded; payments stay Rosa's;; 2 = the role stays narrow and no lockout is added;; 1 = the pair only;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the florist note can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  N["A leaving note"] --> F["Quote both prints and the open items"]
+  F --> Q{"Does the sentence replace a print or close an open item?"}
+  Q -->|Yes| R["Reject it"]
+  Q -->|No| K["The note may cite that line"]
+```
+
+Twenty lessons meet a planning minimum. They leave the florist's open items open.
+
+### Logical drawing
+
+```text
+may stay
+    accounts 7, MFA on 3
+    four no-MFA lines
+    shared accounts: 3
+    before: 2/8
+    after: 7/8
+    still to do: recovery details up to date
+must not be added
+    MFA on 7, shared 0, after 8/8
+    a recovery phone number, a secured supplier portal
+    a written password, a second shop, a lockout
+    a claim that the shop is secure
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat both laboratory prints and the open items.
+2. Reject a note that replaces a print or closes an open item.
+3. Name the following subject while this review stays open.
+
+### 20.1 A note may quote the file. It may not improve the file.
+
+A leaving note may say what was already written. From the account run, keep `accounts 7, MFA on 3`, the four `no MFA` lines, and `shared accounts: 3`. From the checklist run, keep `before: 2/8`, `after: 7/8`, and `still to do: recovery details up to date`. The before pair stays the owner line and "MFA on email". The orders mailbox, the shop admin, and the social page stay shared on the account print even though week four tells a later story about personal logins. The supplier portal stays Rosa's, without a second step, and stays the next account. No recovery number, removal date, permission date, or password is available to copy. Six staff and one shop stay the size. Admin in the narrative stays with Rosa and Mia, and the staff role still cannot change prices or payments. No lockout is filed. Chapter 4's synthesis still says the agreed changes, the checklist, and the short report leave a small business safer and able to keep going alone. That sentence stays. It does not finish the recovery item, and it does not call the shop secure.
+
+### 20.2 Worked example
+
+| Leaving-note sentence | Why it fails or stands | Decision |
+|---|---|---|
+| "The account print shows 7 accounts, MFA on 3, and 3 shared." | The first script | May stay |
+| "The checklist moved from 2 of 8 to 7 of 8, and recovery remains." | The second script | May stay |
+| "The account list was re-run and every row has a second step." | No second account run | Reject |
+| "Recovery was updated, the portal is done, and the score is 8 of 8." | All three are still open or unprinted | Reject |
+| "A password, a second shop, and a lockout belong in the note." | None of those is filed | Reject |
+| "Twenty lessons make the florist secure." | The review is still open | Reject |
+
+> **Synthetic case.** The note is a classroom page about Willow Lane Florist. It is not a notice to customers.
+
+### Errors and limits
+
+Twenty English lessons meet Willow Lane Florist's planning minimum and leave this review open. A fresh florist question can still earn its own later Willow Lane Florist lesson. These English chapters do not publish another language edition. Identity and access management stays this course. Network and communications security is the learner's following subject. Open items at the shop stay open on that turn. These chapters do not call the florist secure, and they do not hand anyone a qualification.
+
+### Apply
+
+- **EX066 — Four claims.** A classmate's leaving note says the account print now shows MFA on 7 and shared accounts 0, that the checklist after line is 8/8 and the recovery phone number was updated, that the supplier portal has a second step and a shop password was copied into the note, and that twenty lessons make the florist secure. Which claims do you reject, and what do twenty lessons meet? *Rubric:* 3 = reject the rewritten account print, the 8/8 line, the updated phone number, the finished portal, and the copied password; keep accounts 7, MFA on 3, shared 3, before 2/8, after 7/8, and recovery still to do; twenty lessons meet the planning minimum and leave review open; do not call the florist secure;; 2 = reject the closings and keep both prints;; 1 = one claim;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Worked results
 
-Model answers for EX001–EX050. Mia Clarke, Joseph Mensah, Eastgate Skills Centre, Willow Lane Florist and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX066. Mia Clarke, Joseph Mensah, Eastgate Skills Centre, Willow Lane Florist and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** Six staff in one shop.
 
@@ -742,6 +1944,38 @@ Model answers for EX001–EX050. Mia Clarke, Joseph Mensah, Eastgate Skills Cent
 **EX049.** In the password manager with the account list.
 
 **EX050.** So nobody is locked out during a busy day.
+
+**EX051.** No. Both prints stay. The account lines stay 7 accounts, MFA on 3, and shared 3. The checklist stays before 2/8 and after 7/8, with recovery still to do. Do not edit either script.
+
+**EX052.** Three rows only: the owner email, card payments, and accounting. The four no-MFA lines stay. 3 is not 7. The checklist score of 7/8 does not rewrite the account column.
+
+**EX053.** The print stays at 3: the orders mailbox, the shop admin, and the social page. The supplier portal stays not shared. Week-four prose does not rewrite the tally.
+
+**EX054.** The line stays `no MFA: email (orders@shop) - shared`. The week-four story stays prose. "MFA on email" stays a separate checklist item. Do not edit the script.
+
+**EX055.** The printed users stay Rosa and Mia. The row stays no-MFA and shared. The staff role stays prose. No new name is added.
+
+**EX056.** All staff, no MFA, and shared. The helper change stays prose. The former helpers stay unnamed.
+
+**EX057.** No. It stays the next account. The printed flags stay Rosa, no MFA, and not shared. "If time allows" is not a completed change.
+
+**EX058.** No phone number. The after score stays 7/8. Recovery stays still to do. The following week is not shown as done.
+
+**EX059.** Only "every account listed with an owner" and "MFA on email." The before line stays 2/8. Later items stay out of the before set.
+
+**EX060.** Three people, and no date is printed. No name is added. "Former staff removed" stays a checklist item rather than a calendar line.
+
+**EX061.** None. No password is written. The till note stays shredded in the story and is not restored. The manager stays the store.
+
+**EX062.** No date is printed. Rosa stays the person who contacts the provider or the bank. Payments stay hers. Mia stops and does not investigate. Finishing the checklist does not widen the note.
+
+**EX063.** No later run is in the file. The habit stays a habit. The portal stays next. The stored report does not change either print.
+
+**EX064.** One shop and six staff stay. No second shop. No names for the six. "All staff" stays the user field where the list uses it. Part-time does not add a person.
+
+**EX065.** The staff role may not change prices or payment settings. Admin stays Rosa and Mia. No lockout is recorded. Payments stay Rosa's.
+
+**EX066.** Reject the rewritten account print, the 8/8 line, the updated phone number, the finished portal, and the copied password. Keep accounts 7, MFA on 3, shared 3, before 2/8, after 7/8, and recovery still to do. Twenty lessons meet the planning minimum and leave review open. Do not call the florist secure.
 
 <a id="references"></a>
 
