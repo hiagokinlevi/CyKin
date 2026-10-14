@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#061633"/><rect x="7" y="7" width="50" height="50" rx="6" fill="none" stroke="#e3bd73" stroke-width="3"/><circle cx="32" cy="32" r="16" fill="none" stroke="#e3bd73" stroke-width="5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">OpenCyber Academy globe and lock</title>
+  <rect width="64" height="64" rx="7" fill="#07162d"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#e3bd73" stroke-width="2.5"/>
+  <path d="M9 32h46M13 20h38M13 44h38M32 8c-7.4 6-11 14-11 24s3.6 18 11 24M32 8c7.4 6 11 14 11 24s-3.6 18-11 24" fill="none" stroke="#8daee8" stroke-width="1.45" opacity=".85"/>
+  <path d="M27 31v-4a5 5 0 0 1 10 0v4" fill="none" stroke="#e3bd73" stroke-width="3.2" stroke-linecap="round"/>
+  <rect x="22" y="30" width="20" height="18" rx="2.5" fill="#07162d" stroke="#e3bd73" stroke-width="2.5"/>
+  <circle cx="32" cy="38" r="2" fill="#e3bd73"/>
+  <path d="M32 40v3" stroke="#e3bd73" stroke-width="2" stroke-linecap="round"/>
+</svg>

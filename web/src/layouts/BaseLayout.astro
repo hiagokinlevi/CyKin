@@ -46,9 +46,7 @@ const schema = structuredData || [
       const hostnameLanguage = domain.length === 3 && domain.slice(1).join('.') === 'opencyber.academy' ? domain[0] : location.hostname === 'opencyber.academy' ? 'en' : null;
       const parameters = new URLSearchParams(location.search);
       const requested = (parameters.get('ui') || parameters.get('lang'))?.slice(0, 2).toLowerCase();
-      const saved = (() => { try { return localStorage.getItem('open-cyber-academy-language'); } catch (_) { return null; } })();
-      const browser = navigator.languages?.map(value => value.slice(0, 2).toLowerCase()).find(value => supported.includes(value)) || navigator.language.slice(0, 2).toLowerCase();
-      const language = supported.includes(hostnameLanguage) ? hostnameLanguage : supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
+      const language = supported.includes(hostnameLanguage) ? hostnameLanguage : location.hostname === 'localhost' && supported.includes(requested) ? requested : 'en';
       document.documentElement.lang = language;
       document.documentElement.dataset.language = language;
     </script>
@@ -56,9 +54,10 @@ const schema = structuredData || [
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
+    <dialog id="language-offer" aria-labelledby="language-offer-title" aria-describedby="language-offer-text"><div class="eyebrow">LANGUAGE / IDIOMA</div><h2 id="language-offer-title">Study in your language?</h2><p id="language-offer-text">Your browser language is available on OpenCyber Academy.</p><div class="language-offer-actions"><button class="button gold" id="language-offer-switch" type="button">Switch language</button><button class="button secondary" id="language-offer-stay" type="button">Continue in English</button></div></dialog>
     <header class="site-header">
       <div class="shell nav">
-        <a class="brand" href="/" aria-label="OpenCyber Academy, home"><span class="brand-mark"><span>O</span></span> OpenCyber Academy</a>
+        <a class="brand" href="/" aria-label="OpenCyber Academy, home"><span class="brand-mark"><img src="/favicon.svg" alt="" width="37" height="37" /></span> OpenCyber Academy</a>
         <div class="catalog-menus" aria-label="Browse courses">
           <details class="catalog-menu" data-mode="level"><summary>By level</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/levels/" data-language-link>All levels →</a><span>Choose a level, then a course</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
           <details class="catalog-menu" data-mode="subject"><summary>By subject</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/subjects/" data-language-link>All subjects →</a><span>Choose a subject, then a level</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
@@ -90,13 +89,31 @@ const schema = structuredData || [
       const selector = document.getElementById('site-language') as HTMLSelectElement;
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
-        try { localStorage.setItem('open-cyber-academy-language', selector.value); } catch (_) { /* private mode */ }
+        try { const detected = navigator.language.slice(0, 2).toLowerCase(); localStorage.setItem('open-cyber-academy-language-choice', `${detected}:${selector.value === 'en' ? 'declined' : 'accepted'}`); } catch (_) { /* private mode */ }
         const origin = selector.value === 'en' ? 'https://opencyber.academy' : `https://${selector.value}.opencyber.academy`;
         const path = ['en', 'pt', 'es'].includes(selector.value) ? location.pathname : '/';
         const next = new URL(path, origin);
         location.href = next.href;
       });
       translatePage();
+      if (location.hostname === 'opencyber.academy' || location.hostname === 'www.opencyber.academy') {
+        const browserLanguage = navigator.language.slice(0, 2).toLowerCase();
+        if (browserLanguage === 'pt' || browserLanguage === 'es') {
+          let choice: string | null = null;
+          try { choice = localStorage.getItem('open-cyber-academy-language-choice'); } catch (_) { /* private mode */ }
+          if (!choice || !choice.startsWith(`${browserLanguage}:`)) {
+            const offer = document.getElementById('language-offer') as HTMLDialogElement;
+            (document.getElementById('language-offer-title') as HTMLElement).textContent = browserLanguage === 'pt' ? 'Quer estudar em português?' : '¿Quieres estudiar en español?';
+            (document.getElementById('language-offer-text') as HTMLElement).textContent = browserLanguage === 'pt' ? 'Detectamos português no seu navegador. Você pode mudar para o site em português ou continuar aqui em inglês.' : 'Detectamos español en tu navegador. Puedes cambiar al sitio en español o continuar aquí en inglés.';
+            (document.getElementById('language-offer-switch') as HTMLElement).textContent = browserLanguage === 'pt' ? 'Ir para o site em português' : 'Ir al sitio en español';
+            (document.getElementById('language-offer-stay') as HTMLElement).textContent = browserLanguage === 'pt' ? 'Continuar em inglês' : 'Continuar en inglés';
+            document.getElementById('language-offer-switch')?.addEventListener('click', () => { try { localStorage.setItem('open-cyber-academy-language-choice', `${browserLanguage}:accepted`); } catch (_) { /* private mode */ } location.assign(`https://${browserLanguage}.opencyber.academy/`); });
+            document.getElementById('language-offer-stay')?.addEventListener('click', () => { try { localStorage.setItem('open-cyber-academy-language-choice', `${browserLanguage}:declined`); } catch (_) { /* private mode */ } offer.close(); });
+            offer.addEventListener('cancel', () => { try { localStorage.setItem('open-cyber-academy-language-choice', `${browserLanguage}:declined`); } catch (_) { /* private mode */ } });
+            offer.showModal();
+          }
+        }
+      }
       for (const anchor of document.querySelectorAll<HTMLAnchorElement>('a[data-language-link]')) {
         const target = new URL(anchor.href); target.searchParams.set('lang', editionLanguage()); target.searchParams.set('ui', siteLanguage()); anchor.href = target.href;
       }

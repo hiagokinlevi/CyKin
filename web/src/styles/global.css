@@ -46,7 +46,8 @@ a:hover { color: var(--gold); }
 .site-header { position: sticky; z-index: 30; top: 0; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 94%, transparent); border-bottom: 1px solid var(--line); }
 .nav { min-height: 76px; display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; font: 600 1.45rem 'Titillium Web', sans-serif; letter-spacing: -.035em; white-space: nowrap; }
-.brand-mark { display: grid; place-items: center; width: 37px; height: 37px; border: 1px solid var(--gold); border-radius: 5px; font-size: .98rem; line-height: 1; color: var(--gold); }
+.brand-mark { display: grid; place-items: center; width: 37px; height: 37px; flex: none; }
+.brand-mark img { display: block; width: 100%; height: 100%; }
 .nav-links { display: flex; gap: 28px; align-items: center; margin-left: auto; color: var(--muted); font-weight: 600; font-size: .89rem; }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .catalog-menus { display: flex; gap: 6px; align-items: center; }
@@ -105,6 +106,11 @@ p { margin-top: 0; }
 #analytics-settings { background: transparent; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: .86rem; }
 .skip { position: absolute; left: -9999px; top: 10px; z-index: 100; background: var(--gold); color: #070e1c; padding: 8px 12px; }
 .skip:focus { left: 10px; }
+#language-offer { width: min(480px, calc(100vw - 32px)); padding: 30px; border: 1px solid var(--gold); border-radius: 6px; background: var(--surface); color: var(--text); box-shadow: 0 30px 90px rgba(0,0,0,.48); }
+#language-offer::backdrop { background: rgba(3, 10, 24, .68); backdrop-filter: blur(4px); }
+#language-offer h2 { margin: 10px 0 14px; font-size: 2rem; }
+#language-offer p { color: var(--muted); }
+.language-offer-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
 :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 @media (max-width: 720px) {
   .shell { width: min(100% - 32px, 1240px); }

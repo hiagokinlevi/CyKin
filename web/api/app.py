@@ -17,7 +17,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTex
 from pydantic import BaseModel, Field
 
 from access import identity
-from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, preferred_language, site_for_language
+from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
 
 
@@ -65,11 +65,6 @@ async def canonical_domain(request: Request, call_next):
     if host == "www.opencyber.academy":
         return RedirectResponse("https://opencyber.academy" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
     host_language = language_for_host(host)
-    if host_language == "en" and request.url.path == "/" and not request.query_params:
-        preferred = preferred_language(request.headers.get("accept-language", ""))
-        if preferred != "en":
-            return RedirectResponse(site_for_language(preferred) + "/", status_code=302,
-                                    headers={"Vary": "Accept-Language", "Cache-Control": "private, no-store"})
     match = re.fullmatch(r"/courses/[^/]+/[^/]+/(?:lessons|chapters)/([a-z]{2})/\d+/?", request.url.path)
     if host_language and match and match.group(1) in LANGUAGES and match.group(1) != host_language:
         return RedirectResponse(site_for_language(match.group(1)) + request.url.path, status_code=308)

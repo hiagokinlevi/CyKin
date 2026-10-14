@@ -131,9 +131,10 @@ def test_sitemap_language_alternates_are_reciprocal_and_authored():
 
 
 def test_language_hosts_and_unwritten_study_slots_are_honest(client):
-    redirect = client.get("/", headers={"host": "opencyber.academy", "accept-language": "pt-BR,pt;q=0.9,en;q=0.8"}, follow_redirects=False)
-    assert redirect.status_code == 302
-    assert redirect.headers["location"] == "https://pt.opencyber.academy/"
+    english_offer = client.get("/", headers={"host": "opencyber.academy", "accept-language": "pt-BR,pt;q=0.9,en;q=0.8"}, follow_redirects=False)
+    assert english_offer.status_code == 200
+    assert '<html lang="en">' in english_offer.text
+    assert 'id="language-offer"' in english_offer.text
     assert client.get("/", headers={"host": "opencyber.academy", "accept-language": "en-US"}).status_code == 200
     for language in ("pt", "es"):
         host = f"{language}.opencyber.academy"
