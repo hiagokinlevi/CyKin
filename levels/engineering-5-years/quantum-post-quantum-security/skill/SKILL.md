@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-engineering-bae97ab4
+name: oca-quantum-post-quantum-security-engineering-bae97ab4
 description: "Tutor the fifty-chapter engineering quantum and post-quantum security course from its English draft: synthetic Brightwater Port Authority migration — lattice/hash foundations, CBOM inventory, PQ/T hybrid architecture, crypto-agility, verification, operations and capstone; 100 exercises with worked answers; enforce authorization and toy-crypto boundaries."
 license: CC0-1.0
 ---

@@ -1,8 +1,8 @@
-# CyKin reference guide for AI assistants and readers
+# OpenCyber Academy reference guide for AI assistants and readers
 
 **Daily lesson model:** The [curriculum grid](CURRICULUM_GRID.md) defines five instructional weekdays per week and one distinct numbered lesson per day, normally five lessons within a weekly chapter. Each authored daily lesson must teach a bounded concept, show a worked example, assign at least one substantive exercise, link its worked answer, and supply previous/index/next navigation. Subjects organize modules; they are not one-day lessons. The 20–1,300 lesson counts are minimum baselines, with **no maximum chapter or lesson length**. Existing subject-chapter indexes and bookshelf percentages describe the older module structure, not completion of the daily sequence. Assess each language edition from its own manuscript, not another edition's availability.
 
-CyKin is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Use the [two onboarding routes](README.md#comece-por-aqui): **language → topic → level → course lesson guide**, or **language → level → all topics and their lesson guides**. Both lead to the existing course editions; the directory hierarchy is not a restriction on how a learner chooses a route. Plans and public drafts must be described with their actual editorial state.
+OpenCyber Academy is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Use the [two onboarding routes](README.md#comece-por-aqui): **language → topic → level → course lesson guide**, or **language → level → all topics and their lesson guides**. Both lead to the existing course editions; the directory hierarchy is not a restriction on how a learner chooses a route. Plans and public drafts must be described with their actual editorial state.
 
 ## Main indexes
 
@@ -65,7 +65,7 @@ The percentages inside the README bookshelf measure **English chapter draft cove
 
 ## Quality-first learning reviews
 
-The purpose of a deeper chapter is to increase what the learner can **explain, distinguish, test and justify**, not merely its word count. Apply the [book standard](BOOK_STANDARD.md) to the text actually present. A high coverage percentage, a large file or a diagram in every chapter cannot establish that a reader understands the subject. The guidance below is a CyKin teaching method, not a NIST, ISO or accreditation requirement, and not a claim that the existing corpus has already passed these checks.
+The purpose of a deeper chapter is to increase what the learner can **explain, distinguish, test and justify**, not merely its word count. Apply the [book standard](BOOK_STANDARD.md) to the text actually present. A high coverage percentage, a large file or a diagram in every chapter cannot establish that a reader understands the subject. The guidance below is a OpenCyber Academy teaching method, not a NIST, ISO or accreditation requirement, and not a claim that the existing corpus has already passed these checks.
 
 ### Review the learning chain
 
@@ -144,4 +144,4 @@ The editorial order is **English → Portuguese → Spanish → Hebrew → Frenc
 
 Link to the exact Markdown file and chapter used. Where a factual claim depends on a cited external work, follow the original source and check that it supports the claim. Identify synthetic or adapted cases, respect [third-party rights](RIGHTS.md), and recommend only authorized or contained practical environments. For a reproducible citation, pin a GitHub link to a commit SHA.
 
-**Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned CyKin text is dedicated under [CC0 1.0](LICENSE); accurate source citation remains an editorial requirement.
+**Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned OpenCyber Academy text is dedicated under [CC0 1.0](LICENSE); accurate source citation remains an editorial requirement.

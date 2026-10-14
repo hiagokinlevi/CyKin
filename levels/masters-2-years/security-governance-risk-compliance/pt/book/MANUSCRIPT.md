@@ -37,7 +37,7 @@ ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) e 27002:2022; NIST [
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -131,19 +131,19 @@ Desenhos observacionais não provam causa. Logs de busca deixam escapar a litera
 
 Uma pergunta precisa e respondível e uma busca reproduzível vêm antes de quaisquer dados.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 08)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: seminário avançado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -195,7 +195,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -267,19 +267,19 @@ Percentuais de cobertura escondem a qualidade dos controles. Os frameworks mudam
 
 Os frameworks se sobrepõem; uma cobertura demonstrável exige evidências, e não apenas mapeamentos.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 08)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -326,7 +326,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -372,19 +372,19 @@ Fatores de confusão medidos não eliminam os não medidos. A qualidade do catá
 
 Desenhos observacionais precisam de fatores de confusão registrados, aprovações e um plano pré-registrado.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 08)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: explicações concorrentes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -431,7 +431,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -477,19 +477,19 @@ Algumas rivais não podem ser testadas. As medidas de diligência são grosseira
 
 Listar e verificar explicações rivais é o núcleo da pesquisa observacional honesta.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 08)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -536,7 +536,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -610,19 +610,19 @@ A amostragem não detecta falhas sistemáticas raras. As taxas toleráveis são 
 
 Os pilotos definem tamanhos de amostra realistas e aprimoram as definições antes do estudo principal.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 08)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -674,7 +674,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -745,19 +745,19 @@ A diligência continua sendo uma rival parcial. A relação custo-benefício dep
 
 Uma análise pré-registrada produz uma diferença incerta, mas real, relatada junto com as explicações rivais e o custo.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 08)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -804,7 +804,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -850,19 +850,19 @@ Resumos para profissionais podem simplificar demais. As ligações com os framew
 
 Boas dissertações tornam as afirmações rastreáveis, os limites consequentes e os resumos justos.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 08)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -909,7 +909,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -955,13 +955,13 @@ A reprodução confere o código, não a verdade. Os resultados do estudo seguin
 
 Reprodução independente, defesa franca e acompanhamento planejado completam um estudo de mestrado.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 08)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

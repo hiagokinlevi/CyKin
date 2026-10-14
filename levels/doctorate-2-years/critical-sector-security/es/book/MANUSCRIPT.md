@@ -55,7 +55,7 @@ Los [resultados resueltos](#worked-results) contienen EX001–EX050. Un [glosari
 
 ## Capítulo 1 — Integridad y métodos avanzados de investigación
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -117,7 +117,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -425,19 +425,19 @@ El límite de este capítulo es que las salvaguardas de integridad reducen, pero
 
 La investigación sobre infraestructura estudia las consecuencias para las personas a través de cadenas de mecanismos físicos, cibernéticos y organizativos que el investigador rara vez observa directamente. Su evidencia proviene de incidentes raros y reportados de forma selectiva, de datos operativos protegidos, de bancos de pruebas pequeños, de modelos y de personas; cada fuente tiene sesgos característicos y debe triangularse. Las salvaguardas de integridad —preespecificación, registros de desviaciones, declaración— son necesarias porque los socios están regulados, los financiadores tienen intereses y las simulaciones son flexibles. Los riesgos de seguridad y de doble uso son reales: nunca pruebe en producción, simule primero, separe la capacidad de la consecuencia al publicar y nombre una autoridad de detención. La información sobre dependencias y reservas es sensible aunque sea aproximada. Las métricas de resiliencia incorporan juicios de valor; elíjalas según la decisión que se va a tomar y muestre si las conclusiones resisten las alternativas. El protocolo es el contrato que hace auditable todo esto.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 08
 
 [← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Infraestructura crítica y seguridad sectorial: frontera de investigación
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX008.
@@ -499,7 +499,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -718,19 +718,19 @@ El enunciado del Estudio Cascada (que se refinará en el capítulo 3): *En inter
 
 La frontera de la seguridad de la infraestructura está repartida en cinco literaturas con vocabularios distintos; una búsqueda doctoral debe cruzarlas deliberadamente y documentar cómo lo hace. Las normas y regulaciones son hipótesis sobre lo que reduce la consecuencia, y la evidencia de resultados sobre ellas es escasa. Los modelos de interdependencia se agrupan en familias que sustentan afirmaciones distintas; los resultados topológicos dan comprensión estructural, los modelos insumo-producto dan economía a nivel sectorial y los modelos de flujo o de cosimulación dan tiempos de ingeniería, y ninguno sustituye a la validación. La investigación sobre detección está mejorando su práctica de evaluación; para la IC, la detección importa como reserva medida frente al tiempo hasta la consecuencia. Evalúe la independencia y la validación, no los recuentos. El vacío del Estudio Cascada —el orden de restablecimiento consciente de las dependencias se propone a menudo y se prueba débilmente— está abierto, es importante, es factible y puede hacerse falsable.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 08
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Propuesta de contribución original
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX015.
@@ -792,7 +792,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1012,19 +1012,19 @@ Esta es la decisión de diseño más importante del libro: **elija la comparaci�
 
 Una contribución doctoral debe decir de qué tipo es y debe superar a la práctica actual más fuerte, no a un hombre de paja. El orden de restablecimiento es un problema de programación: la regla de Smith hace que «más clientes primero» sea óptimo para las horas-cliente, mientras que los servicios críticos limitados por reservas crean un objetivo de retraso ponderado para el cual las reglas simples son heurísticas. Esa teoría predice la compensación, aporta una cota oráculo y expone la debilidad de la regla propuesta. Los grafos de dependencias con reservas revelan caminos indirectos que dominan los tiempos, pero hay que nombrar su semántica «O», sus reservas fijas y las dependencias humanas y de la dirección de la recuperación que les faltan. El mecanismo predice un patrón —beneficio solo donde los tiempos y el número de clientes discrepan, ninguno cuando las reservas son largas, un costo en horas-cliente y fragilidad ante errores del mapa— y las hipótesis, las líneas de base, los rivales y las condiciones de fracaso se redactan para que cada parte de ese patrón pueda demostrarse falsa.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 08
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicación de líneas de base y piloto
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX021.
@@ -1086,7 +1086,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1332,19 +1332,19 @@ En el piloto del ejercicio de mesa, P02 preguntó por qué la reserva del genera
 
 Antes de comparar métodos, asegúrese de que los números significan lo que afirman. Reproduzca las líneas de base con una tolerancia fijada de antemano, compruebe más de una salida y registre las convenciones: una matriz traspuesta produjo una respuesta plausible y errónea que coincidía en el único valor que comprobaría quien replica con prisa. Diagnostique las discrepancias por entradas, semántica, numérica y aleatoriedad. Verifique los simuladores con invariantes, pruebas unitarias y una implementación independiente antes de validarlos. Trate con suspicacia las líneas de base de detección que dependen del ajuste por punto, de divisiones aleatorias o de un solo banco de pruebas, y prefiera para la infraestructura la latencia relativa al tiempo hasta el impacto. Obtenga los parámetros con su incertidumbre y su procedencia. Use el piloto para ajustar procedimientos e instrumentos, nunca para estimar efectos.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 08
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudio principal y validación independiente
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX028.
@@ -1406,7 +1406,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX028]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1695,19 +1695,19 @@ Reporte, como mínimo: el prerregistro y todas las enmiendas con sus fechas; la 
 
 El estudio principal comparó cuatro órdenes sobre extracciones pareadas con una cota oráculo. El orden consciente de la criticidad, de cualquier tipo, protegió los servicios críticos de manera drástica en comparación con el restablecimiento de clientes primero y costó muchas más horas-cliente que el margen declarado de antemano: una compensación para las políticas, no una ganancia gratuita. La información de tiempos no añadió nada sobre una lista de clientes críticos en Riverbend y añadió mucho en Port Halvard; la explicación *post hoc* (pesos y ramificación ignorados por una regla de tiempo más temprano) es una hipótesis nueva, no un rescate. Un ejercicio de mesa a ciegas mostró que una visualización del tiempo hasta el impacto puede desplazar las elecciones de los operadores hacia una menor consecuencia modelada y sacó a la luz variables omitidas, como el tiempo de desplazamiento de las cuadrillas. La validación estableció que el modelo es adecuado para clasificar órdenes en casos conocidos y que es conservador porque omite las reservas humanas. Los intervalos de Monte Carlo describieron solo el ruido de la simulación; la incertidumbre de los parámetros, la estructural y la de valores quedan para el capítulo 6.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Siga estudiando — capítulo 05 de 08
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica entre pares y revisión
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX034.
@@ -1769,7 +1769,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1964,19 +1964,19 @@ Una buena carta de respuesta cita cada comentario, indica si se acepta, se acept
 
 La crítica forma parte del método. Las objeciones del red team se convirtieron en hipótesis y pruebas. La circularidad se sostuvo en una forma más fuerte —toda política consciente de la criticidad depende de un mapa de dependencias exacto—, que se convirtió en una condición previa medible y en una recomendación defensiva. Las reservas cortas se confirmaron como una condición de contorno predicha por el mecanismo, y las reservas muy cortas expusieron la debilidad de la heurística. Un análisis de 200 regiones sustentó el mecanismo en contextos no elegidos para él, a la vez que recordó que un generador es un modelo. La afirmación acotada enuncia condiciones medibles, reporta el margen incumplido y separa el hallazgo robusto de la contribución condicional. La revisión de doble uso mostró que un hallazgo de resiliencia también puede ser un hallazgo sobre la superficie de ataque y decidió qué publicar y con qué nivel de detalle.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 08
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX034.
@@ -2038,7 +2038,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2235,19 +2235,19 @@ El primer plan de archivo del candidato colocaba todo en T2 «por seguridad». E
 
 La tesis es un argumento: afirmación, datos, garantía, respaldo, cualificador y refutaciones, cada uno aportado por una parte identificable del trabajo. La investigación sobre infraestructura debe conciliar la reproducibilidad con la protección de la infraestructura estudiada y de las personas implicadas; los archivos por niveles con manifiestos con *hash* lo logran, y los principios FAIR describen el acceso sin implicar apertura. Las herramientas de publicación deben fallar de forma cerrada y comprobar el contenido, no solo los nombres. Los datos sintéticos inventados conllevan poco riesgo de divulgación; los datos sintéticos calibrados necesitan una evaluación explícita del riesgo residual. Documente los modelos, los datos y el cómputo con estructuras reconocidas. Las limitaciones enuncian la dirección y los estudios que las resolverían, lo que las convierte en la siguiente agenda de investigación.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Siga estudiando — capítulo 07 de 08
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defensa y plan de publicación
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX034.
@@ -2309,7 +2309,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2491,13 +2491,13 @@ La respuesta concede lo que es cierto, cita la evidencia específica, reformula 
 
 La defensa examina la independencia: el candidato debe conocer los límites de la contribución mejor que nadie. Un registro de afirmaciones, auditado con un script y con lectura, elimina las afirmaciones exageradas que se acumulan en los resúmenes y las conclusiones. Las preguntas de los examinadores se agrupan en familias previsibles; responda con evidencia y límites, y nombre el estudio que resolvería lo que no sabe. Publique en secuencia para distintas comunidades con artefactos compartidos versionados, y decida sobre la coordinación antes de que cualquier preprint afecte a una superficie de ataque. Encamine de forma distinta las vulnerabilidades, las debilidades propias de una organización y las superficies de ataque a nivel sectorial. Traduzca las afirmaciones acotadas en recomendaciones con niveles de confianza. Las limitaciones se convierten en el siguiente programa de investigación: el final natural de un curso doctoral y de este itinerario de estudio.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 08
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Termine el itinerario de 207 cursos →](../SUBJECTS.md)
 
 Este es el último capítulo de este curso y del itinerario de estudio de 207 cursos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -2770,7 +2770,7 @@ Las normas, los reglamentos y los instrumentos de política cambian. Las version
 - Toulmin, S. E. [The Uses of Argument](https://doi.org/10.1017/CBO9780511840005). Updated edition, Cambridge University Press, 2003 (first published 1958).
 - Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data*, 2016.
 
-Material complementario de CyKin: el [libro doctoral de respuesta a incidentes](../../../incident-response-resilience/en/book/MANUSCRIPT.md) (la escalera de afirmaciones y los métodos de integridad de la investigación que reutiliza el capítulo 1) y el [curso doctoral de seguridad de TO, IoT y sistemas ciberfísicos](../../../ot-iot-security/README.md) (la capa de los sistemas de control).
+Material complementario de OpenCyber Academy: el [libro doctoral de respuesta a incidentes](../../../incident-response-resilience/en/book/MANUSCRIPT.md) (la escalera de afirmaciones y los métodos de integridad de la investigación que reutiliza el capítulo 1) y el [curso doctoral de seguridad de TO, IoT y sistemas ciberfísicos](../../../ot-iot-security/README.md) (la capa de los sistemas de control).
 
 **Límite del caso.** La Región de Riverbend, Port Halvard, Riverbend Electric Cooperative, Riverbend Water Authority, St. Calder Hospital, Meridian Telecom, GridWater-Sim, los estudios P1–P8, los participantes P01–P12, el Estudio Cascada y todos los números que producen los laboratorios son inventados con fines didácticos. Las fuentes respaldan los enunciados generales junto a los que se citan, nunca los detalles sintéticos.
 

@@ -37,7 +37,7 @@ Read in order. The chapters follow one junior analyst at a managed-service provi
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -133,7 +133,7 @@ Practitioners judge each cryptographic control by the goal it serves and its rea
 
 ## Chapter 2 — Cryptography and trust services: service and stakeholder context
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -180,7 +180,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -229,7 +229,7 @@ Cryptographic findings matter only when the right owner understands them, so pra
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -276,7 +276,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -325,7 +325,7 @@ Authorised, minimal and careful evidence handling keeps an engagement lawful and
 
 ## Chapter 4 — Cryptography and trust services: core methods
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -372,7 +372,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -421,7 +421,7 @@ Choosing among encryption, hashes, MACs, signatures and certificates by need is 
 
 ## Chapter 5 — Cryptography and trust services: tools and interpretation
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -473,7 +473,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -557,7 +557,7 @@ Tools produce flags; practitioners turn them into findings by confirming them, a
 
 ## Chapter 6 — Cryptography and trust services: operational workflow
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -604,7 +604,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -653,7 +653,7 @@ A repeatable workflow with verified closure and clear handoffs turns monthly che
 
 ## Chapter 7 — Cryptography and trust services: controls and verification
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -700,7 +700,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -772,7 +772,7 @@ Verification proves specific behaviour under specific tests, and honest statemen
 
 ## Chapter 8 — Cryptography and trust services: supervised case analysis
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -819,7 +819,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -868,7 +868,7 @@ Exposed keys are treated as compromised, recovered by reissue and revocation, an
 
 ## Chapter 9 — Communication, ethics and reporting
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -915,7 +915,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -964,7 +964,7 @@ Clear structure, consistent ratings and honest ethics make cryptographic reports
 
 ## Chapter 10 — Cryptography and trust services: quality and troubleshooting
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1016,7 +1016,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1090,7 +1090,7 @@ Quality comes from verifying fixes with sound methods and from steady review and
 
 ## Chapter 11 — Supervised laboratory
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -1137,7 +1137,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1186,7 +1186,7 @@ Rehearsing changes in a contained lab reduces production risk, provided the lab 
 
 ## Chapter 12 — Practice portfolio and final review
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -1238,7 +1238,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes

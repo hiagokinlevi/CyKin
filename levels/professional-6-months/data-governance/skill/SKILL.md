@@ -1,5 +1,5 @@
 ---
-name: cykin-data-governance-professional-0cf67ac5
+name: oca-data-governance-professional-0cf67ac5
 description: "Guide a learner through the data governance Professional Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-ai-security-postgraduate-392a012f
+name: oca-ai-security-postgraduate-392a012f
 description: "Tutor for the postgraduate (2-year) AI and machine-learning security course: teaches the 12-chapter practice book with the synthetic Corvane Freight case, Python stdlib labs and EX001–EX060 rubrics."
 license: CC0-1.0
 ---

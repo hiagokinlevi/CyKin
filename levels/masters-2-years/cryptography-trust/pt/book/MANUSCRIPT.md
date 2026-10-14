@@ -37,7 +37,7 @@ Leia na ordem. Os capítulos acompanham um mestrando que pergunta por que certif
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -94,7 +94,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -182,19 +182,19 @@ As buscas perdem trabalhos indexados com outras palavras, e a literatura cinzent
 
 Uma pergunta estreita com uma unidade justa, uma busca reproduzível e um registro completo de decisões são a base de um estudo de mestrado crível.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 08)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: seminário avançado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -251,7 +251,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -345,19 +345,19 @@ Uma amostra de oito linhas ilustra; ela não estima uma taxa. As datas de valida
 
 Os certificados são afirmações assinadas e limitadas no tempo que o TLS impõe com rigor; são as operações do ciclo de vida, e não a criptografia, que decidem se eles continuam válidos.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 08)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -414,7 +414,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -502,19 +502,19 @@ Coortes observacionais não conseguem descartar a confusão; só conseguem medir
 
 Um desenho observacional honesto, pseudônimos com chave mantidos pelo parceiro e um pacote de reprodutibilidade testado tornam um estudo de campo ao mesmo tempo ético e verificável.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 08)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Criptografia e serviços de confiança: explicações concorrentes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -571,7 +571,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -657,19 +657,19 @@ Contagens sem denominadores enganam; sempre converta em taxas. Estratificar por 
 
 Explicações rivais preveem padrões diferentes; testá-las exige taxas, estratificação por fatores de confusão medidos e franqueza sobre o que continua sem medida.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 08)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -721,7 +721,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -776,19 +776,19 @@ Um piloto curto demais não consegue estimar taxas e não deve tentar. Mudar as 
 
 Uma proposta específica, somada a um piloto voltado para falhas de extração, torna o conjunto de dados completo consistente antes que qualquer taxa seja calculada.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 08)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -845,7 +845,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -932,19 +932,19 @@ Intervalos por bootstrap a partir de pouquíssimos eventos são instáveis; com 
 
 Taxas, intervalos e estratos, juntos, mostram uma associação robusta entre a automação e menos expirações, e revelam a propriedade e o monitoramento como alavancas independentes.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 08)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -996,7 +996,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -1051,19 +1051,19 @@ Recomendar mais do que as evidências sustentam é a falha mais comum das disser
 
 Uma estrutura guiada pela afirmação, limitações específicas e recomendações graduadas pelas evidências transformam a análise numa dissertação em que os leitores podem confiar e com base na qual podem agir.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 08)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -1115,7 +1115,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1170,13 +1170,13 @@ Respostas defensivas que repetem conclusões não convencem ninguém; mostre as 
 
 Uma nova execução independente, respostas serenas sobre a sensibilidade, a divulgação aos profissionais e uma destruição deliberada de chaves completam um estudo de mestrado que outros podem verificar e usar.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 08)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

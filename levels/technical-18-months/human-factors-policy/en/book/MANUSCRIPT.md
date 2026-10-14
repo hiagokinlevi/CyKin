@@ -37,7 +37,7 @@ Whitten and Tygar (1999), USENIX Security; Reason (1990), [doi:10.1017/CBO978113
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -132,7 +132,7 @@ A baseline of systems and shift pressures shows where human-centred security is 
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -179,7 +179,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -227,7 +227,7 @@ Protocol limits leave staff to judge messages, so simple cues must guide them.
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -279,7 +279,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -341,7 +341,7 @@ Usable identities make the secure option the quickest one.
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -393,7 +393,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -461,7 +461,7 @@ Scripts should be tested, configurable and careful with personal data.
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -508,7 +508,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -556,7 +556,7 @@ Clear scope, permission and evidence protect people and support sound decisions.
 
 ## Chapter 6 — Human factors and cyber policy: system model
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -608,7 +608,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -678,7 +678,7 @@ A step model shows where reports are lost and which fix matters most.
 
 ## Chapter 7 — Human factors and cyber policy: data and telemetry
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -725,7 +725,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -773,7 +773,7 @@ Minimal telemetry, used only for agreed purposes, supports monitoring without er
 
 ## Chapter 8 — Human factors and cyber policy: failure modes
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -820,7 +820,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -868,7 +868,7 @@ Classifying human failures points to defences that fit, beyond more training.
 
 ## Chapter 9 — Human factors and cyber policy: tools and methods
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -920,7 +920,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -985,7 +985,7 @@ Combined methods reveal barriers and test fixes before rollout.
 
 ## Chapter 10 — Human factors and cyber policy: control configuration
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1032,7 +1032,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1080,7 +1080,7 @@ Configured routes and holds make reporting easy and verification routine.
 
 ## Chapter 11 — Human factors and cyber policy: verification
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -1132,7 +1132,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1196,7 +1196,7 @@ Verification from both technical and user sides, with recorded results, proves c
 
 ## Chapter 12 — Contained laboratory I
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -1243,7 +1243,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1306,7 +1306,7 @@ Contained tests show the value of direct reporting routes and need honest limits
 
 ## Chapter 13 — Human factors and cyber policy: troubleshooting
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -1353,7 +1353,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1401,7 +1401,7 @@ Troubleshooting finds technical, design and human causes, and prevention needs a
 
 ## Chapter 14 — Human factors and cyber policy: automation
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -1453,7 +1453,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1515,7 +1515,7 @@ Automation speeds feedback when it handles certainty and leaves judgement to peo
 
 ## Chapter 15 — Human factors and cyber policy: integration and dependencies
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -1562,7 +1562,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1610,7 +1610,7 @@ Integration widens what reporting sees, and backups keep it running.
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -1657,7 +1657,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1705,7 +1705,7 @@ Documentation includes steps, ethics rules and ownership so the service stays sa
 
 ## Chapter 17 — Contained laboratory II
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -1757,7 +1757,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1819,7 +1819,7 @@ Contained exercises can support simple, cheap improvements such as fast feedback
 
 ## Chapter 18 — Supervised technical project
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -1871,7 +1871,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes

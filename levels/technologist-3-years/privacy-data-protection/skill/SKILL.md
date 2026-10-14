@@ -1,5 +1,5 @@
 ---
-name: cykin-privacy-data-protection-technologist-79a21c0e
+name: oca-privacy-data-protection-technologist-79a21c0e
 description: "Guide a learner through the privacy Technologist Course draft: 30 chapters, stdlib labs and EX001–EX090 with worked answers."
 license: CC0-1.0
 ---

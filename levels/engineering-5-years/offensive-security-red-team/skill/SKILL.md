@@ -1,5 +1,5 @@
 ---
-name: cykin-offensive-security-red-team-engineering-6a7372e9
+name: oca-offensive-security-red-team-engineering-6a7372e9
 description: "Tutor for the engineering Authorized offensive security and red team course: teaches the 50-chapter design book with the synthetic Riverstone Transit case, safe stdlib labs and EX001–EX150 rubrics."
 license: CC0-1.0
 ---

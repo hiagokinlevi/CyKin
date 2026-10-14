@@ -38,7 +38,7 @@ The [worked results](#worked-results) contain EX001–EX060. A [glossary](#gloss
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -100,7 +100,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -232,19 +232,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Specialist decisions are won in framing: one owner, several options including staged ones, criteria from appetite, thresholds approved in advance, effort spent on uncertainty that can change the choice, robustness checks, accepted residual risk and explicit revisit triggers.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 12
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Current practice in enterprise incident command
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -306,7 +306,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -396,19 +396,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Enterprise command needs one commander with trained deputies, sections with clear leads, unity of command agreed in policy, a fixed information rhythm, bounded delegation and handoffs that carry pending decisions and their reasons — tested under shift change and absence.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 12
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Specialist evidence in complex investigations
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -470,7 +470,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -566,19 +566,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Treat specialist reports as layered claims; ask what each expert examined and did not; reconcile disagreements by locating their different evidence; request discriminating evidence precisely; and state conclusions with defined confidence and change conditions.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 12
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -635,7 +635,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -719,19 +719,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Test every investigative request for aim, necessity and proportionality; map competing duties explicitly; prefer targeted, transparent, time-limited measures; do not rely on employee consent; and keep an auditable record of alternatives, safeguards and review.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 12
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Alternatives for coordinated containment
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -793,7 +793,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -874,19 +874,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Coordinate containment: scope enough, contain identity first, map dependants, gate on readiness, define rollback triggers, execute in one window with a single coordinator, verify immediately — and pull forward only actions that stop ongoing harm at low signalling cost.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 12
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Controlled evaluation of recovery strategies
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -938,7 +938,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1033,19 +1033,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Treat recovery choices as controlled comparisons: restore candidates in isolation, validate against independent references, map downstream synchronization, define acceptance and fallback — and prefer a clean base rebuilt from trusted references over a recent but untrusted copy.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 12
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Integration across legal, privacy and operations
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -1107,7 +1107,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1191,19 +1191,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Integrate legal, privacy and operations through one decision log that separates facts, assessments, specialist determinations and decisions; record awareness times; preserve before changing; minimize the investigation's own data; and write records that remain accurate when disclosed.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 12
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Difficult cases with conflicting evidence
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -1255,7 +1255,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1354,19 +1354,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 In conflicting cases, list competing hypotheses including evidence error, focus on diagnostic and inconsistent evidence, verify the assumptions that make evidence diagnostic, seek disconfirmation, and state confidence without conclusions about intent.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 12
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Response leadership and assurance decisions
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -1428,7 +1428,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1514,19 +1514,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Lead upward with fact-limited briefings, evidence-backed assurance claims, measurable closure conditions, residual risk accepted at the right level and a review cadence that outlasts the incident's attention span.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 12
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Research reading and critique
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1578,7 +1578,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1650,19 +1650,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Read every study for population, unit, outcome, comparison and interests; recognize selection, detection and confounding biases typical of industry data; transfer findings only through plausible mechanisms; and convert published claims into local validation questions.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 12
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project: redesign an incident program
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -1719,7 +1719,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -1821,19 +1821,19 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Redesign an incident program from evidence: assess gaps with sources, prioritize recurrent high-impact gaps, compare options, pilot one change with pre-set criteria and a concurrent comparison, evaluate honestly with stop rules, and involve stakeholders at every stage.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 12
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and organizational transfer plan
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -1895,7 +1895,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -1979,13 +1979,13 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 Specialist work counts only when the organization can sustain it: transfer a package with owners, train by practice, measure adoption and outcomes, record residual issues honestly, defend trade-offs with evidence and schedule reassessment with triggers.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

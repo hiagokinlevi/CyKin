@@ -37,7 +37,7 @@ Regulation (EU) 2016/679 (GDPR); Lei 13.709/2018 (LGPD); Sweeney (2002), [doi:10
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -94,7 +94,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -175,7 +175,7 @@ Chapter 1 sets a falsifiable question, integrity rules and a uniqueness baseline
 
 ## Chapter 2 — Privacy and data protection: research frontier
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -232,7 +232,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -291,7 +291,7 @@ Chapter 2 maps theory, models, attacks and differential privacy to a precise gap
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -348,7 +348,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -427,7 +427,7 @@ Chapter 3 fixes hypotheses, a fair k-anonymity baseline and a two-part utility t
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -484,7 +484,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -564,7 +564,7 @@ Chapter 4 replicates the mechanism and exposes small-cell error and budget accou
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -621,7 +621,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -703,7 +703,7 @@ Chapter 5 measures risk under a stated attack and validates it independently. Ch
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -755,7 +755,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -809,7 +809,7 @@ Chapter 6 shows critique sharpening claims. Chapter 7 assembles the thesis and a
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -866,7 +866,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -941,7 +941,7 @@ Chapter 7 produces a bounded claim and a clean archive. Chapter 8 prepares the d
 
 ## Chapter 8 — Defense and publication plan
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -993,7 +993,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes

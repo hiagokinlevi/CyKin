@@ -38,7 +38,7 @@ NIST [SP 800-41r1](https://doi.org/10.6028/NIST.SP.800-41r1), [SP 800-77r1](http
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -90,7 +90,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -142,7 +142,7 @@ Mapping services and paths shows where network security controls are needed.
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -194,7 +194,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -246,7 +246,7 @@ Subnets, gateways and protocols determine what traffic controls can see and filt
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -298,7 +298,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -350,7 +350,7 @@ Hardened hosts, least privilege, named administrator accounts and multi-factor a
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -402,7 +402,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -454,7 +454,7 @@ Simple, safe scripts reading standard formats make routine checks reliable.
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -506,7 +506,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -558,7 +558,7 @@ Clear scope, authorised activity and careful evidence handling are the foundatio
 
 ## Chapter 6 — Network and communications security: system model
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -610,7 +610,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -662,7 +662,7 @@ A zone-and-flow model makes excess access visible and guides safe change.
 
 ## Chapter 7 — Network and communications security: data and telemetry
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -719,7 +719,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -798,7 +798,7 @@ Central telemetry and simple analyses reveal account guessing and other problems
 
 ## Chapter 8 — Network and communications security: failure modes
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -850,7 +850,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -902,7 +902,7 @@ Planning for expiry, silent failure and workarounds keeps controls effective ove
 
 ## Chapter 9 — Network and communications security: tools and methods
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -954,7 +954,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1006,7 +1006,7 @@ Existing tools, a repeatable method, reference standards and good records suppor
 
 ## Chapter 10 — Network and communications security: control configuration
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1063,7 +1063,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1145,7 +1145,7 @@ Default-deny rules for internal and outbound traffic, applied carefully, limit w
 
 ## Chapter 11 — Network and communications security: verification
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -1197,7 +1197,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1249,7 +1249,7 @@ Rule-by-rule comparison, standards checks and independent review confirm control
 
 ## Chapter 12 — Contained laboratory I
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -1306,7 +1306,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1383,7 +1383,7 @@ A contained lab makes failures safe to observe and turns them into practical run
 
 ## Chapter 13 — Network and communications security: troubleshooting
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -1435,7 +1435,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1487,7 +1487,7 @@ Precise questions, logs and layer-by-layer checks lead to narrow, recorded fixes
 
 ## Chapter 14 — Network and communications security: automation
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -1539,7 +1539,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1591,7 +1591,7 @@ Carefully built, read-only automation with short reports saves time and catches 
 
 ## Chapter 15 — Network and communications security: integration and dependencies
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -1643,7 +1643,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1695,7 +1695,7 @@ Managing cloud, supplier and dependency risks keeps integrated services secure a
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -1747,7 +1747,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1799,7 +1799,7 @@ Clear, safe, current documentation preserves knowledge and protects services.
 
 ## Chapter 17 — Contained laboratory II
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -1856,7 +1856,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1936,7 +1936,7 @@ Verified backups and practised restores turn recovery from hope into a tested pr
 
 ## Chapter 18 — Supervised technical project
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -1988,7 +1988,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes

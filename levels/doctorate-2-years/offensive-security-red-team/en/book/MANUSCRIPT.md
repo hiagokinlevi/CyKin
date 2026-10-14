@@ -40,7 +40,7 @@ Sources were checked on 12 October 2026: [NIST SP 800-115](https://doi.org/10.60
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -255,7 +255,7 @@ Doctoral integrity in authorized offensive security means permission, checkable 
 
 ## Chapter 2 — Authorized offensive security and red team: research frontier
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -307,7 +307,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -442,7 +442,7 @@ The research frontier sits where methodology, measurement and ethics meet — no
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -504,7 +504,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -622,7 +622,7 @@ A doctorate proposal commits to a falsifiable question, pre-registered measures,
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -684,7 +684,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -801,7 +801,7 @@ Baseline and pilot produce comparable rates, expose instrument problems and supp
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -863,7 +863,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -980,7 +980,7 @@ The main study follows the plan, quantifies uncertainty, seeks independent eyes 
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -1037,7 +1037,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -1153,7 +1153,7 @@ Critique improves honesty. Revise what the evidence supports; never silently mov
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -1215,7 +1215,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1324,7 +1324,7 @@ Synthesis ties claims to evidence; the archive lets others check you; secrets st
 
 ## Chapter 8 — Defense and publication plan
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -1381,7 +1381,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes

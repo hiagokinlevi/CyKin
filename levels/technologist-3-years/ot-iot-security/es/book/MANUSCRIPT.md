@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Sistemas informáticos
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -83,7 +83,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -132,7 +132,7 @@ Ver todos los ordenadores de una instalación, y saber lo que cuesta el fallo de
 
 ## Capítulo 2 — Redes y servicios de internet
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX004.
@@ -184,7 +184,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -235,7 +235,7 @@ Las direcciones, las VLAN, las reglas y el DNS determinan qué conversaciones so
 
 ## Capítulo 3 — Fundamentos de programación
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX007.
@@ -287,7 +287,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -338,7 +338,7 @@ Los scripts pequeños y legibles que informan de cada fila, incluidas las ausent
 
 ## Capítulo 4 — Modelos de datos
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX010.
@@ -390,7 +390,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -441,7 +441,7 @@ Un modelo de datos pequeño y estable, con claves, relaciones y fechas, es lo qu
 
 ## Capítulo 5 — Alfabetización en seguridad
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX013.
@@ -493,7 +493,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -546,7 +546,7 @@ La alfabetización en seguridad consiste en clasificar las consecuencias con hon
 
 ## Capítulo 6 — Sistemas operativos y virtualización
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX016.
@@ -598,7 +598,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -651,7 +651,7 @@ La seguridad de los sistemas operativos y la virtualización en TO consiste sobr
 
 ## Capítulo 7 — Fundamentos de identidad y acceso
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX019.
@@ -708,7 +708,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -765,7 +765,7 @@ Las cuentas nominativas, los roles ajustados, el acceso de las empresas contrati
 
 ## Capítulo 8 — Fundamentos de arquitectura de seguridad
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX022.
@@ -817,7 +817,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -870,7 +870,7 @@ Las zonas, los conductos y una DMZ convierten «segmentar la red» en un diseño
 
 ## Capítulo 9 — Evidencia y medición
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX025.
@@ -927,7 +927,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -986,7 +986,7 @@ La evidencia se vuelve fiable cuando tiene marca de tiempo y hash, se cuenta fre
 
 ## Capítulo 10 — Seguridad de TO, IoT y sistemas ciberfísicos: orientación
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX028.
@@ -1038,7 +1038,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1089,7 +1089,7 @@ Orientarse significa ver el lazo físico, saber qué orientación corresponde a 
 
 ## Capítulo 11 — Seguridad de TO, IoT y sistemas ciberfísicos: activos y contexto
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX031.
@@ -1141,7 +1141,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1214,7 +1214,7 @@ Un inventario digno de confianza concilia documentos, observación y recorridos 
 
 ## Capítulo 12 — Seguridad de TO, IoT y sistemas ciberfísicos: flujos de datos
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX034.
@@ -1266,7 +1266,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje
@@ -1340,7 +1340,7 @@ Comparar los flujos observados con una matriz aprobada encuentra los caminos que
 
 ## Capítulo 13 — Seguridad de TO, IoT y sistemas ciberfísicos: escenarios de riesgo
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa de la lección
 
 Lección 13 publicada. Mapa, ejemplo, EX037.
@@ -1392,7 +1392,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Resultados de aprendizaje
@@ -1443,7 +1443,7 @@ Los escenarios conectan los caminos cibernéticos con las consecuencias físicas
 
 ## Capítulo 14 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa de la lección
 
 Lección 14 publicada. Mapa, ejemplo, EX040.
@@ -1495,7 +1495,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Resultados de aprendizaje
@@ -1548,7 +1548,7 @@ Los recorridos por la planta, las entrevistas y las revisiones de configuración
 
 ## Capítulo 15 — Seguridad de TO, IoT y sistemas ciberfísicos: laboratorio guiado
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa de la lección
 
 Lección 15 publicada. Mapa, ejemplo, EX043.
@@ -1600,7 +1600,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Resultados de aprendizaje
@@ -1672,7 +1672,7 @@ Un laboratorio guiado convierte lecturas en bruto en una afirmación reproducibl
 
 ## Capítulo 16 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos II
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa de la lección
 
 Lección 16 publicada. Mapa, ejemplo, EX046.
@@ -1724,7 +1724,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Resultados de aprendizaje
@@ -1775,7 +1775,7 @@ Un modelado de amenazas rápido, las preguntas de base y los supuestos por escri
 
 ## Capítulo 17 — Seguridad de TO, IoT y sistemas ciberfísicos: herramientas
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa de la lección
 
 Lección 17 publicada. Mapa, ejemplo, EX049.
@@ -1827,7 +1827,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Resultados de aprendizaje
@@ -1878,7 +1878,7 @@ Las herramientas de TO son pasivas por defecto, se configuran bajo control de ca
 
 ## Capítulo 18 — Seguridad de TO, IoT y sistemas ciberfísicos: controles
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa de la lección
 
 Lección 18 publicada. Mapa, ejemplo, EX052.
@@ -1935,7 +1935,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Resultados de aprendizaje
@@ -1992,7 +1992,7 @@ Los controles se eligen para los escenarios, se contrastan con los días malos, 
 
 ## Capítulo 19 — Seguridad de TO, IoT y sistemas ciberfísicos: supervisión
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Mapa de la lección
 
 Lección 19 publicada. Mapa, ejemplo, EX055.
@@ -2044,7 +2044,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Resultados de aprendizaje
@@ -2115,7 +2115,7 @@ Las líneas base convierten la regularidad de la TO en detección; la clasificac
 
 ## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: resolución de problemas
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Mapa de la lección
 
 Lección 20 publicada. Mapa, ejemplo, EX058.
@@ -2167,7 +2167,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Resultados de aprendizaje
@@ -2218,7 +2218,7 @@ Resuelva los problemas con método, suponga primero una avería, preserve la evi
 
 ## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Mapa de la lección
 
 Lección 21 publicada. Mapa, ejemplo, EX061.
@@ -2270,7 +2270,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Resultados de aprendizaje
@@ -2323,7 +2323,7 @@ La integración da al negocio sus datos mediante copias, caminos unidireccionale
 
 ## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: automatización
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Mapa de la lección
 
 Lección 22 publicada. Mapa, ejemplo, EX064.
@@ -2375,7 +2375,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Resultados de aprendizaje
@@ -2450,7 +2450,7 @@ Automatice las comprobaciones que informan con claridad y fallan de forma ruidos
 
 ## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: evaluación
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Mapa de la lección
 
 Lección 23 publicada. Mapa, ejemplo, EX067.
@@ -2502,7 +2502,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Resultados de aprendizaje
@@ -2553,7 +2553,7 @@ La evaluación convierte «más seguro» en pruebas concretas con resultados esp
 
 ## Capítulo 24 — Métodos de investigación aplicada
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Mapa de la lección
 
 Lección 24 publicada. Mapa, ejemplo, EX070.
@@ -2605,7 +2605,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Resultados de aprendizaje
@@ -2656,7 +2656,7 @@ La investigación aplicada plantea una pregunta real del emplazamiento, mide fre
 
 ## Capítulo 25 — Taller de proyecto en equipo
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Mapa de la lección
 
 Lección 25 publicada. Mapa, ejemplo, EX073.
@@ -2713,7 +2713,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Resultados de aprendizaje
@@ -2768,7 +2768,7 @@ El trabajo de taller sale bien cuando las funciones, las revisiones y las depend
 
 ## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Mapa de la lección
 
 Lección 26 publicada. Mapa, ejemplo, EX076.
@@ -2820,7 +2820,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Resultados de aprendizaje
@@ -2889,7 +2889,7 @@ Un traspaso está completo cuando el paquete está entero, el responsable lo ha 
 
 ## Capítulo 27 — Despliegue y validación
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Mapa de la lección
 
 Lección 27 publicada. Mapa, ejemplo, EX079.
@@ -2941,7 +2941,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Resultados de aprendizaje
@@ -2992,7 +2992,7 @@ En TO, un despliegue se planifica, se valida frente a comprobaciones definidas d
 
 ## Capítulo 28 — Práctica de campo
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Mapa de la lección
 
 Lección 28 publicada. Mapa, ejemplo, EX082.
@@ -3044,7 +3044,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Resultados de aprendizaje
@@ -3095,7 +3095,7 @@ La práctica de campo crea los hábitos que mantienen a salvo a las personas y l
 
 ## Capítulo 29 — Construcción del proyecto final
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Mapa de la lección
 
 Lección 29 publicada. Mapa, ejemplo, EX085.
@@ -3147,7 +3147,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Resultados de aprendizaje
@@ -3198,7 +3198,7 @@ Construir un proyecto final es avanzar por pequeños incrementos, probar los cas
 
 ## Capítulo 30 — Evaluación del proyecto final
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Mapa de la lección
 
 Lección 30 publicada. Mapa, ejemplo, EX088.
@@ -3250,7 +3250,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Resultados de aprendizaje

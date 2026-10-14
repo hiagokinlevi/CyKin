@@ -1,5 +1,5 @@
 ---
-name: cykin-web3-blockchain-security-technical-1c57f13e
+name: oca-web3-blockchain-security-technical-1c57f13e
 description: "WEB3 Technical Course (18 ch / 72 ex)"
 license: CC0-1.0
 ---

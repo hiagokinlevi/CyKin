@@ -55,7 +55,7 @@ Appendices: [Worked results and assessment notes](#worked-results) · [Glossary]
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -117,7 +117,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -302,19 +302,19 @@ The main limit of formal decision analysis is that it is only as good as the opt
 
 Organization-scale security decisions are irreversible, rare-event, multi-objective and multi-stakeholder, and they belong to someone with authority. The specialist's contribution is structure: a decision statement with genuinely different options including defer, objectives in service units, several decision rules reported side by side, belief sets rather than a single probability, thresholds at which the recommendation changes, the value of further information, structural defences against biased judgement and a decision record written at the time. A robust recommendation is one that survives changes of rule and of belief; when it does not, show the threshold and let the accountable person decide knowingly.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 12
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Critical infrastructure and sector security: current practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX007.
@@ -376,7 +376,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -540,19 +540,19 @@ The limit of any baseline is that it describes defences that are common because 
 
 Current practice is the overlap of obligation, guidance and demonstrated peer practice, and each carries different weight. Know the outcome frameworks, the prioritized baselines, the control catalogues and the industrial standards, and know which regimes oblige your organization and what evidence each expects. Do not copy practice across sectors without checking time-to-harm, physics, regulation and workforce. Grade evidence as verified, documented or statement, report the gap honestly, weight practices by consequence, and turn the largest gaps into verification before remediation. Challenge habitual practices by asking which question their evidence answers.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 12
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Critical infrastructure and sector security: specialist evidence
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -614,7 +614,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -776,19 +776,19 @@ The limit is that evidence can narrow explanations but rarely eliminates all but
 
 Specialist evidence is the material decisions and accountability rest on. Know your sources before an incident and fix the weaknesses that matter — time, retention, named accounts and supplier access. Treat time as evidence: choose a reference clock, estimate offsets from anchors, and state residual uncertainty. Preserve without harming the process, least intrusive first, with chain of custody. Generate competing explanations and seek evidence that discriminates. Write findings that keep observation, inference, confidence and consequence apart, and report early in a way later evidence will extend rather than contradict.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 12
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -850,7 +850,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -1000,19 +1000,19 @@ The model's limits are those of its assumptions: Poisson independence ignores ca
 
 Quantify risk as frequency and severity with explicit uncertainty, and read it through the loss exceedance curve, not a single score. Write appetite and tolerance in service units with bounds on the tail and on distribution. Treat expert judgement as evidence that must be elicited carefully and recorded. Show who bears residual risk — per capita and for those least able to cope — because options that are better on average can concentrate harm. Apply recognized ethical principles to choices, testing and disclosure, and keep value judgements visible as judgements for the accountable decision-maker.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 12
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Critical infrastructure and sector security: design alternatives
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -1074,7 +1074,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -1240,19 +1240,19 @@ Graphs are only as complete as the inventory behind them, and barrier labels are
 
 Design from the consequence backwards, and put non-digital limits first. Use established principles — least privilege, complete mediation, zones and conduits, per-session decisions, resilience techniques — to generate alternatives that differ in kind. Represent designs as graphs of permitted paths and compare paths, chokepoints and barriers, including the convenience edges real environments accumulate. Evaluate each design as an operable system, designing for failure of its own controls. Choose with the decision methods of earlier chapters and record the choice in an ADR so that it survives the next change request.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 12
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Critical infrastructure and sector security: controlled evaluation
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -1314,7 +1314,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1444,19 +1444,19 @@ The limit of controlled evaluation is transfer: a rig is not a plant and injecte
 
 Controlled evaluation turns assumed controls into measured ones. Inject known events on rigs and simulators, report detection by family with Wilson intervals, and plan trial counts for the claims you want to make. Measure false alarms over representative periods and express them in operators' units alongside base rates. Evaluate drills with paired comparisons, look at individuals, and design against practice and selection effects. Test near live plant only under written, signed rules of engagement. The honest result of an evaluation is often mixed; say exactly which uses a control is fit for.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 12
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Critical infrastructure and sector security: organizational integration
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -1518,7 +1518,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1677,19 +1677,19 @@ The limit of structural analysis is that integration ultimately depends on relat
 
 Integration is where essential-service security usually fails. Choose an operating model for your size, risk and culture, then make it real with ownership: exactly one accountable role per critical activity and visible handling of conflicts of duty. Measure supplier concentration within the organization and across the region, and prepare exit and continuity plans for common-mode supplier failure. Put cyber response inside emergency and continuity command with a shared, service-based classification. Share information specifically, under agreed handling rules, and build trust by behaviour.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 12
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Critical infrastructure and sector security: difficult cases
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -1751,7 +1751,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1879,19 +1879,19 @@ The limit of analysis in difficult cases is time. The enumeration in Lab 8 takes
 
 Difficult cases have harm in every option, under time pressure, with ambiguous evidence and conflicting duties. Prepare for them: map dependencies and backup clocks; agree restoration weights with emergency management in advance; plan for supplier-caused failures with update rings and independent recovery; structure extortion decisions for the accountable executive; act on access rather than on people in insider cases; and resolve conflicting obligations by never deceiving, putting safety first, withholding only with defensible reasons and recording each decision. Analysis is fast; agreement is slow — do the slow part before the event.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 12
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Critical infrastructure and sector security: leadership and assurance
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -1953,7 +1953,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -2094,19 +2094,19 @@ The limit of indicators and charts is that they summarize. They tell a leader wh
 
 Leading security for an essential service means setting direction tied to consequence, building capability that survives departures, and keeping the trust of operations and the board. Report to the board in service units with few indicators and explicit decisions. Use process-behaviour charts to tell change from noise, with a clean baseline. Build assurance cases that connect each claim to dated evidence of known grade, and report stale or weak evidence as gaps. Use the three lines to keep ownership with operations, challenge with specialists and independent testing with audit.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 12
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Research reading and critique
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -2168,7 +2168,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -2298,19 +2298,19 @@ The limit of critical reading is time. Prioritize sources that could change a de
 
 Read for decisions. Match the source to the question: studies for effect sizes and mechanisms, advisories for techniques and mitigations, vendor reports for hypotheses to verify. Identify design before results and limit claims to what the design supports. Check outcome, denominator, comparison and confounders; stratify or standardize when groups differ, and remember that reported incidents measure detection as much as harm. Ask whether the mechanism transfers to your setting. Record what you learn in evidence briefs that decision records can cite.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 12
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -2372,7 +2372,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -2500,19 +2500,19 @@ With a dozen sites, no evaluation is definitive. The project's evaluation should
 
 An applied project improves a real service and shows credibly whether it did. Choose something consequential, bounded, owned, measurable, safe and evaluable; fix the evaluation in a charter before delivery; deliver through people, with operations' consent and a pre-mortem; evaluate with a comparison group, difference-in-differences, a permutation check and robustness tests; report limitations with their direction; and hand over with owners, assurance evidence and a review trigger.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 12
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -2574,7 +2574,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -2699,13 +2699,13 @@ Weighted-sum models assume criteria can trade off linearly and that scores are o
 
 The course is one method: frame, baseline, evidence, risk and distribution, design, evaluation, integration, preparation for hard cases, leadership and assurance, critical reading and honest projects — each producing an inspectable artefact. Transfer the method, not the conclusion: re-examine consequence, physics, regulation, people, data and values, and let each sector set its own weights. Report reversal points so leaders debate the judgement that matters. Assess yourself with evidence, plan practice with feedback, and keep sources and decisions under review as the field changes.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

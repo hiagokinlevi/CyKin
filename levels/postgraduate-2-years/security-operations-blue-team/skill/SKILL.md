@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-postgraduate-01b93098
+name: oca-security-operations-blue-team-postgraduate-01b93098
 description: "Postgraduate course (2 years)"
 license: CC0-1.0
 ---

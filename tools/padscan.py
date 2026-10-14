@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Restating-padding detector for CyKin manuscripts.
+"""Restating-padding detector for OpenCyber Academy manuscripts.
 
 Signals per numbered section (### N.M ...):
   SENT  sentence whose TF-IDF cosine to an earlier sentence of the same section is >= --sent (0.45)

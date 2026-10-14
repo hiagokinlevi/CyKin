@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Toma de decisiones avanzada en seguridad
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -88,7 +88,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -164,7 +164,7 @@ Los líderes deciden con la pérdida esperada, el peor caso creíble, responsabl
 
 ## Capítulo 2 — Seguridad de TO, IoT y sistemas ciberfísicos: práctica actual
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX006.
@@ -216,7 +216,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -269,7 +269,7 @@ Las revisiones de la práctica actual comparan la evidencia de lo que se hace, n
 
 ## Capítulo 3 — Seguridad de TO, IoT y sistemas ciberfísicos: evidencia especializada
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX011.
@@ -321,7 +321,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -380,7 +380,7 @@ El trabajo con evidencia especializada triangula fuentes con puntos ciegos conoc
 
 ## Capítulo 4 — Riesgo y ética avanzados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX016.
@@ -432,7 +432,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -508,7 +508,7 @@ El trabajo avanzado de riesgos informa de distribuciones y colas, nombra a quié
 
 ## Capítulo 5 — Seguridad de TO, IoT y sistemas ciberfísicos: alternativas de diseño
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX021.
@@ -560,7 +560,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -617,7 +617,7 @@ Un buen trabajo de diseño produce alternativas reales, las evalúa a lo largo d
 
 ## Capítulo 6 — Seguridad de TO, IoT y sistemas ciberfísicos: evaluación controlada
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX026.
@@ -669,7 +669,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -757,7 +757,7 @@ Una evaluación controlada empareja los tratamientos sobre datos etiquetados id�
 
 ## Capítulo 7 — Seguridad de TO, IoT y sistemas ciberfísicos: integración organizativa
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX031.
@@ -809,7 +809,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -864,7 +864,7 @@ La integración es autoridad explícita, preguntas incorporadas al proceso de ca
 
 ## Capítulo 8 — Seguridad de TO, IoT y sistemas ciberfísicos: casos difíciles
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX036.
@@ -916,7 +916,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -969,7 +969,7 @@ Los casos difíciles exigen una secuencia que mantenga el proceso seguro, equida
 
 ## Capítulo 9 — Seguridad de TO, IoT y sistemas ciberfísicos: liderazgo y aseguramiento
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX041.
@@ -1026,7 +1026,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1114,7 +1114,7 @@ El aseguramiento hace auditables las afirmaciones de la dirección: cada afirmac
 
 ## Capítulo 10 — Lectura y crítica de investigación
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX046.
@@ -1171,7 +1171,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1228,7 +1228,7 @@ La crítica evalúa el modelo de amenazas, el método y el traslado, y después 
 
 ## Capítulo 11 — Proyecto aplicado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX051.
@@ -1285,7 +1285,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1342,7 +1342,7 @@ Un proyecto aplicado cierra una brecha real con restricciones reales, con el éx
 
 ## Capítulo 12 — Revisión final y transferencia
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX056.
@@ -1394,7 +1394,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje

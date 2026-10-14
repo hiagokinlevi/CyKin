@@ -1,5 +1,5 @@
 ---
-name: cykin-systems-endpoints-hardware-technical-9339638a
+name: oca-systems-endpoints-hardware-technical-9339638a
 description: "SYS Technical Course (18 ch / 72 ex)"
 license: CC0-1.0
 ---

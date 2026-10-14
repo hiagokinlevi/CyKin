@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC
 
 ## Chapter 1 — What OT, IoT and cyber-physical security are
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -93,7 +93,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -168,7 +168,7 @@ OT, IoT and CPS join computing to physical equipment; at an energy site safety a
 
 ## Chapter 2 — Assets, networks and exposure
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX014.
@@ -225,7 +225,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -323,7 +323,7 @@ Know every device, fix defaults and old firmware through planned work, separate 
 
 ## Chapter 3 — Recognising and reporting problems
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX027.
@@ -385,7 +385,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -484,7 +484,7 @@ Write down normal, notice what does not fit, describe it plainly with shared nam
 
 ## Chapter 4 — Safe habits, response basics and next steps
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX039.
@@ -536,7 +536,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes

@@ -1,5 +1,5 @@
 ---
-name: cykin-information-security-masters-50723fc6
+name: oca-information-security-masters-50723fc6
 description: "Guide a learner through the information security Master's Course draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

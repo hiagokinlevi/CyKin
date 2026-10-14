@@ -37,7 +37,7 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -128,19 +128,19 @@ Uma pergunta sobre se os funcionários estão seguros não pode ser respondida c
 
 - **EX007 — Número de incluídos.** Quantos estudos são incluídos? *Rubrica:* 3 = vinte e três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 08)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança da informação: seminário avançado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -182,7 +182,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -231,19 +231,19 @@ Presumir que um controle funciona porque uma norma o exige confunde ter com func
 
 - **EX014 — Tamanho esperado.** Que tamanho de efeito Priya espera? *Rubrica:* 3 = alguns pontos percentuais;; 2 = parcialmente correto;; 1 = grande;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 08)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -285,7 +285,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -332,19 +332,19 @@ Usar os resultados das simulações para punir funcionários mina a confiança e
 
 - **EX020 — Método da incerteza.** Como a incerteza é estimada? *Rubrica:* 3 = bootstrap com mil reamostragens e semente fixa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 08)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança da informação: explicações concorrentes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -386,7 +386,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -433,19 +433,19 @@ Ignorar uma queda nos relatos esconderia um efeito colateral prejudicial.
 
 - **EX026 — Propósito do registro antecipado.** Por que registrar de antemão os resultados enfraquecedores? *Rubrica:* 3 = impede a reinterpretação posterior;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 08)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -492,7 +492,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -568,19 +568,19 @@ Contar cliques do scanner como cliques humanos infla o risco medido.
 
 - **EX032 — Novo desfecho.** Qual é o novo desfecho primário? *Rubrica:* 3 = taxa de cliques humanos excluindo os cliques em até dois segundos;; 2 = parcialmente correto;; 1 = bruta;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 08)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -627,7 +627,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -701,19 +701,19 @@ Tratar uma taxa de cliques em simulação como taxa de violações exagera o ach
 
 - **EX038 — Limite do indicador.** Por que não afirmar que o feedback previne violações? *Rubrica:* 3 = os cliques em simulações são um indicador indireto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 08)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -755,7 +755,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -802,19 +802,19 @@ Ressalvas genéricas não ajudam os leitores a julgar um resultado.
 
 - **EX044 — Redação revisada.** Que redação foi revisada? *Rubrica:* 3 = frases que sugeriam descuido;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 08)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -856,7 +856,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -903,13 +903,13 @@ Apresentar um resultado de três departamentos como definitivo exagera a certeza
 
 - **EX050 — Artigo para profissionais.** O que o Dr. Bello recomenda para um artigo voltado a profissionais? *Rubrica:* 3 = o achado do scanner;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 08)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

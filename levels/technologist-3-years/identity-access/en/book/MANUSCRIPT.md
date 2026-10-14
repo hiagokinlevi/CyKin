@@ -39,7 +39,7 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 
 ## Chapter 1 — Computing systems
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -86,7 +86,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -133,7 +133,7 @@ A complete inventory of systems and sign-in methods shows where identity connect
 
 ## Chapter 2 — Networks and internet services
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -180,7 +180,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -227,7 +227,7 @@ HTTPS, DNS and separated Wi-Fi all support safe sign-in to cloud services.
 
 ## Chapter 3 — Programming foundations
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -274,7 +274,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -321,7 +321,7 @@ Small, tested, well-structured scripts make account reporting repeatable and cle
 
 ## Chapter 4 — Data models
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -368,7 +368,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -415,7 +415,7 @@ Linking people, accounts, groups and attributes makes access explainable and man
 
 ## Chapter 5 — Security literacy
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -462,7 +462,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -509,7 +509,7 @@ Explaining what access control protects and teaching simple habits makes securit
 
 ## Chapter 6 — Identity and access fundamentals
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -556,7 +556,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -603,7 +603,7 @@ Separating identification, authentication and authorisation, and applying least 
 
 ## Chapter 7 — Passwords and authenticators
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -650,7 +650,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -697,7 +697,7 @@ Guidance-based password policy and phishing-resistant authenticators raise sign-
 
 ## Chapter 8 — Directories and accounts
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -744,7 +744,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -791,7 +791,7 @@ Accurate directory data and owned non-person accounts underpin every access rule
 
 ## Chapter 9 — Single sign-on
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -838,7 +838,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -885,7 +885,7 @@ SSO reduces passwords and centralises control, provided directory sign-in is str
 
 ## Chapter 10 — Groups and roles
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -932,7 +932,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -979,7 +979,7 @@ Role and location groups with owners and shallow nesting keep access traceable.
 
 ## Chapter 11 — Group hygiene lab
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1031,7 +1031,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1101,7 +1101,7 @@ A simple, read-only group check gives a repeatable list for owners to act on.
 
 ## Chapter 12 — Joiners
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1148,7 +1148,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1195,7 +1195,7 @@ HR-triggered joiner processes give correct access on day one with recorded excep
 
 ## Chapter 13 — Movers
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1242,7 +1242,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1289,7 +1289,7 @@ Mover processes that remove old access and are checked afterwards prevent privil
 
 ## Chapter 14 — Leavers
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1336,7 +1336,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1383,7 +1383,7 @@ Leaver checklists covering every system, followed by confirmation, close access 
 
 ## Chapter 15 — Privileged access
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1430,7 +1430,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1477,7 +1477,7 @@ Separate, strongly protected and monitored admin accounts keep privileged access
 
 ## Chapter 16 — Shared workstations
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -1524,7 +1524,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1571,7 +1571,7 @@ Fast individual sign-in on shared devices gives accountability without slowing b
 
 ## Chapter 17 — Device trust
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -1618,7 +1618,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1665,7 +1665,7 @@ Device-aware rules let staff work flexibly while keeping sensitive systems on tr
 
 ## Chapter 18 — Logging and sign-in records
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -1712,7 +1712,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1759,7 +1759,7 @@ Known, retained and protected logs let Fernhill answer access questions responsi
 
 ## Chapter 19 — Sign-in monitoring lab
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -1811,7 +1811,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -1882,7 +1882,7 @@ Simple threshold summaries, checked with local knowledge, find problems and thei
 
 ## Chapter 20 — Recovery and lost devices
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -1929,7 +1929,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -1976,7 +1976,7 @@ Recovery with manager confirmation and one-time passes keeps protection strong w
 
 ## Chapter 21 — Provisioning with SCIM
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2023,7 +2023,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2070,7 +2070,7 @@ Standards-based, staged provisioning reduces manual errors when source data is a
 
 ## Chapter 22 — Onboarding automation lab
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2122,7 +2122,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2190,7 +2190,7 @@ Mapping by table with manual review for unknowns keeps automated onboarding safe
 
 ## Chapter 23 — Access review lab
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -2242,7 +2242,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2312,7 +2312,7 @@ Review summaries by clinic, plus follow-up of gaps, make reviews complete and me
 
 ## Chapter 24 — Supplier and third-party access
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -2359,7 +2359,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -2406,7 +2406,7 @@ Listed, approved and contracted supplier access keeps third parties accountable.
 
 ## Chapter 25 — Privacy and data protection
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -2453,7 +2453,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -2500,7 +2500,7 @@ Minimising identity data and preparing access requests protects staff privacy.
 
 ## Chapter 26 — Incident response for identity
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -2547,7 +2547,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -2594,7 +2594,7 @@ Clear signs, first-step cards and recorded lessons make identity incidents manag
 
 ## Chapter 27 — Documentation and runbooks
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -2641,7 +2641,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -2688,7 +2688,7 @@ Tested, dated runbooks and a rehearsed handover make identity work last.
 
 ## Chapter 28 — Metrics and reporting
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -2735,7 +2735,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -2782,7 +2782,7 @@ A few well-defined risk metrics, reported with trends, drive identity improvemen
 
 ## Chapter 29 — Professional practice
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -2829,7 +2829,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -2876,7 +2876,7 @@ Ethical use of access, clear communication and continued learning are part of pr
 
 ## Chapter 30 — Capstone: three-year identity improvement
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -2923,7 +2923,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes

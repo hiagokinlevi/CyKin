@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-rapid-2dd7bc2a
+name: oca-application-supply-chain-rapid-2dd7bc2a
 description: "APP Rapid course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

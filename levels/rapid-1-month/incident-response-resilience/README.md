@@ -30,7 +30,7 @@ This is one course. It has **one course skill** and **one principal book in each
 | 中文 (`zh`) | [Overview](zh/README.md) · [Materials](zh/MATERIALS.md) | [Chapter index](zh/SUBJECTS.md) | [Book plan](zh/book/PLAN.md) | Working outline; translation pending |
 | 日本語 (`ja`) | [Overview](ja/README.md) · [Materials](ja/MATERIALS.md) | [Chapter index](ja/SUBJECTS.md) | [Book plan](ja/book/PLAN.md) | Working outline; translation pending |
 
-**English manuscript checkpoint (13 October 2026):** The single [principal book](en/book/MANUSCRIPT.md) retains the earlier correction teaching, R1X–R4X offline units and final EX001–EX050 worked-answer appendix. Its four former subject chapters are now organized as **four weekly chapters and 20 authored daily lessons**, with 20 daily navigation blocks and four chapter navigation blocks. The current source, SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`, produced a **386-page A4 local preflight** under A4/25 mm/11 pt/1.3. This verifies length only. External specialist review, exhaustive lab/source verification, layout inspection, accessibility and rights checks remain open. The readable book is not yet approved as complete.
+**English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) has SHA-256 `6272943619f307dfae9fb20c832bc9a63528d504354fb0a00c1399461f40f2d2`, **156,067 whitespace-separated words** and **387 A4 pages** in a local Chrome length preflight. This measurement applies to the current source; the book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
 
 ## English chapter sequence
 
@@ -47,6 +47,6 @@ For each lesson, study its explanation and worked example, attempt the exercises
 
 **Study dates:** four instructional weeks contain 20 lessons. A specific civil month can require a different number of weekdays. Use the [study-calendar convention](../../../STUDY_CALENDAR.md) to show the actual required dates, missing allocations and any extension. Do not repeat exercises or count an empty date as a completed lesson. The fictional incident's timestamps are separate from the learner's calendar.
 
-**Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original CyKin material is dedicated under [CC0 1.0](../../../LICENSE).
+**Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original OpenCyber Academy material is dedicated under [CC0 1.0](../../../LICENSE).
 
 **Editorial status:** a public manuscript is readable while editorial review remains pending; a plan is an outline, not a completed book or recognized qualification.

@@ -1,5 +1,5 @@
 ---
-name: cykin-ot-iot-security-postgraduate-be36cf0c
+name: oca-ot-iot-security-postgraduate-be36cf0c
 description: "Tutor the twelve-chapter postgraduate OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Bayside Water Reclamation Plant decisions, Labs 1/4/6/9, EX001–EX060; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---

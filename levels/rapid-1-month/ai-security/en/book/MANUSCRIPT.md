@@ -33,7 +33,7 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — AI and machine-learning security: foundations and decisions
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -90,7 +90,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -172,7 +172,7 @@ AI systems are models wrapped with instructions, data and tools; they can be ste
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX014.
@@ -229,7 +229,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -345,7 +345,7 @@ Safe practice means permission, clear scope, synthetic data, careful evidence, h
 
 ## Chapter 3 — AI and machine-learning security: systems, data and dependencies
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX027.
@@ -402,7 +402,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -552,7 +552,7 @@ Map where untrusted content enters and where actions leave; limit data access; q
 
 ## Chapter 4 — AI and machine-learning security: guided lab and applied synthesis
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX039.
@@ -614,7 +614,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes

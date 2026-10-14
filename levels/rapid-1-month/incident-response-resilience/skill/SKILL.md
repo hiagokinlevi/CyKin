@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-rapid-3881ddd8
+name: oca-incident-response-resilience-rapid-3881ddd8
 description: "Tutor the four weekly chapters with 20 daily lessons of the rapid Incident Response English book, its synthetic case, 50 exercises and worked answers; enforce evidence-release boundaries."
 license: CC0-1.0
 ---
@@ -129,7 +129,7 @@ The single [English draft manuscript](../en/book/MANUSCRIPT.md) now contains fou
 | [3 · R3X](../en/book/MANUSCRIPT.md#lesson-11) | Protective effect, legitimate service, owner-targeted data, audit actor and queue dispositions are separate mandatory gates. | Six lines: mandatory unknown, data fail, audit fail, queue unreconciled, owner pending, toy scoped pass. W1/MQ3/P1/V1 cannot become R-series facts. |
 | [4 · R4X](../en/book/MANUSCRIPT.md#lesson-16) | A frozen learner artifact is not a worked solution; collection request is not copy receipt; EX048 is 09:45 branch-only, whereas L2 is later all-cards. | Four lines: L2 FAIL_TOTAL_8, early-evidence reject, unsupported-collection reject, synthetic PASS_TOTAL_10. A later revision does not rewrite an earlier score. |
 
-**CH04 integration guidance:** In the existing §4.3 worked path, R15 has **no verified deletion-clock anchor**. A Round B preservation request may be separately simulated as approved, but collection/source hold remain not supplied. At 09:37 R1–R24 justify a **proposal** only; `C-approval-v1` is a new role-play receipt if actually produced, never canonical R data. Branch S/P appears after the Round C freeze. In the [worked-result appendix](../en/book/MANUSCRIPT.md#answers), EX039 includes proposed receiver/read-back states, EX043 explicitly withholds collection, and EX044 separates proposal, role-play approval, execution and later verification. Do not treat message delivery as action approval. The NIST SP 800-84 source supports exercise design/evaluation principles, **not** the CyKin 0–2 or L2 scoring scale.
+**CH04 integration guidance:** In the existing §4.3 worked path, R15 has **no verified deletion-clock anchor**. A Round B preservation request may be separately simulated as approved, but collection/source hold remain not supplied. At 09:37 R1–R24 justify a **proposal** only; `C-approval-v1` is a new role-play receipt if actually produced, never canonical R data. Branch S/P appears after the Round C freeze. In the [worked-result appendix](../en/book/MANUSCRIPT.md#answers), EX039 includes proposed receiver/read-back states, EX043 explicitly withholds collection, and EX044 separates proposal, role-play approval, execution and later verification. Do not treat message delivery as action approval. The NIST SP 800-84 source supports exercise design/evaluation principles, **not** the OpenCyber Academy 0–2 or L2 scoring scale.
 
 ## Tutoring cycle for each subject
 

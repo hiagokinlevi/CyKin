@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-doctorate-90319706
+name: oca-network-communications-doctorate-90319706
 description: "NET Doctoral Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

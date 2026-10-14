@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-bachelor-b22a2301
+name: oca-network-communications-bachelor-b22a2301
 description: "NET Bachelor's Course (40 ch / 120 ex)"
 license: CC0-1.0
 ---

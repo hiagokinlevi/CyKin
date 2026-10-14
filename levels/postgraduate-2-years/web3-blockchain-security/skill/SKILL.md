@@ -1,5 +1,5 @@
 ---
-name: cykin-web3-blockchain-security-postgraduate-4095eec1
+name: oca-web3-blockchain-security-postgraduate-4095eec1
 description: "WEB3 Postgraduate Diploma (12 ch / 60 ex)"
 license: CC0-1.0
 ---

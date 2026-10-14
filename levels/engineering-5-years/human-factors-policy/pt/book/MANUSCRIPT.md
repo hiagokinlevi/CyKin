@@ -37,7 +37,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -118,19 +118,19 @@ Curvas suaves simplificam dados semanais ruidosos. Modelos de exposição ignora
 
 Taxas e acumulação dão uma linguagem precisa para como o comportamento muda e por quanto tempo as pessoas ficam expostas.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 50)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -172,7 +172,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -211,19 +211,19 @@ A lógica captura regras escritas, não a prática informal. As contagens depend
 
 A matemática discreta transforma políticas e permissões em enunciados exatos que revelam conflitos e ônus.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 50)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -265,7 +265,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -304,19 +304,19 @@ Correções ambientais exigem conhecimento de ergonomia. A redução de alarmes 
 
 O ambiente físico e a qualidade do sinal moldam o erro humano; por isso, os engenheiros devem corrigir as condições antes de culpar as pessoas.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 50)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -363,7 +363,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -430,19 +430,19 @@ Médias escondem padrões. Dados pseudonimizados ainda podem identificar pessoas
 
 Programas simples e testados, sobre um mínimo de dados, podem revelar padrões que sustentam decisões práticas.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 50)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -484,7 +484,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -523,19 +523,19 @@ Mensagens simplificadas podem perder ressalvas. Totais por departamento ainda po
 
 Uma comunicação clara, sem culpa e adequada a cada público ajuda as pessoas a agir e as mantém dispostas a reportar.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 50)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -577,7 +577,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -641,19 +641,19 @@ O decaimento exponencial é uma premissa. Medidas de conhecimento podem não ref
 
 Modelos de decaimento baseados em cálculo ajudam a comparar cronogramas, desde que suas premissas e custos sejam declarados.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 50)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -700,7 +700,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -764,19 +764,19 @@ Os intervalos supõem respostas independentes. Fundir grupos esconde diferenças
 
 Taxas de grupos pequenos precisam carregar incerteza e contexto e nunca devem expor indivíduos.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 50)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -813,7 +813,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -852,19 +852,19 @@ Os recursos de hardware variam por modelo. Processos de recuperação podem se t
 
 O hardware pode tornar o caminho seguro o caminho fácil, se a recuperação e as atualizações se ajustarem ao trabalho real.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 50)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -911,7 +911,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -980,19 +980,19 @@ Impressões digitais podem separar variantes de uma mesma campanha. O armazename
 
 Um código de triagem bem estruturado reduz a carga de trabalho e mede a exposição, armazenando apenas o que precisa.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — aula 09 (capítulo 09 de 50)
 
 [← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -1034,7 +1034,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1073,19 +1073,19 @@ Mesmo simulações éticas podem incomodar alguns funcionários. As regras preci
 
 Simulações éticas são aprovadas, transparentes, inofensivas, sem culpados e mantidas longe do trabalho crítico para a segurança física.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 50)
 
 [← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -1127,7 +1127,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1166,19 +1166,19 @@ A detecção de nomes parecidos tem falsos positivos. Avisos perdem força quand
 
 Os protocolos eliminam muitas decisões, e os avisos só funcionam quando são raros, específicos e acionáveis.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — aula 11 (capítulo 11 de 50)
 
 [← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -1220,7 +1220,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1259,19 +1259,19 @@ Atualizações automáticas podem quebrar softwares. Direitos temporários preci
 
 Menos alertas, mais significativos, e um menor privilégio de baixo custo tornam utilizáveis os sistemas operacionais seguros.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — aula 12 (capítulo 12 de 50)
 
 [← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -1313,7 +1313,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1352,19 +1352,19 @@ Reguladores podem exigir registros individuais. Limites de agregação podem ser
 
 O desenho de sistemas de dados codifica como as pessoas são tratadas; por isso, minimize, restrinja e limite o uso de dados de comportamento.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue estudando — aula 13 (capítulo 13 de 50)
 
 [← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -1406,7 +1406,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1445,19 +1445,19 @@ Oito testadores deixam passar problemas raros. Testes em laboratório diferem da
 
 As funcionalidades de segurança precisam de desenho centrado no usuário, testes de usabilidade e acompanhamento de defeitos, como qualquer outro software.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue estudando — aula 14 (capítulo 14 de 50)
 
 [← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -1499,7 +1499,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1538,19 +1538,19 @@ Os princípios de influência explicam, mas não preveem, o comportamento indivi
 
 As pessoas são alvos e defensoras; entender a influência ajuda a projetar controles que reduzam a dependência do julgamento sob pressão.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue estudando — aula 15 (capítulo 15 de 50)
 
 [← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -1592,7 +1592,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1631,19 +1631,19 @@ A alocação de funções muda à medida que as ferramentas melhoram. Limites de
 
 A engenharia de sistemas inclui as pessoas como componentes, distribui as tarefas com bom senso e redige requisitos humanos testáveis.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue estudando — aula 16 (capítulo 16 de 50)
 
 [← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -1690,7 +1690,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -1751,19 +1751,19 @@ Modelos de malha simples omitem as influências sociais. Agradecimentos automát
 
 Fechar o ciclo de retorno com rapidez e gentileza sustenta o reporte, enquanto um retorno punitivo ou excessivo o desestabiliza.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue estudando — aula 17 (capítulo 17 de 50)
 
 [← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -1805,7 +1805,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -1844,19 +1844,19 @@ Camadas acrescentam custo e complexidade. Eliminar a necessidade de vigilância 
 
 Uma arquitetura que tolera o erro humano reduz a pressão sobre os indivíduos e torna a segurança mais confiável.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue estudando — aula 18 (capítulo 18 de 50)
 
 [← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -1898,7 +1898,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -1937,19 +1937,19 @@ Chaves de segurança exigem logística de reposição. Alguns sistemas talvez ai
 
 A autenticação resistente a phishing tira das pessoas um julgamento difícil, se a implantação respeitar a forma como elas trabalham.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue estudando — aula 19 (capítulo 19 de 50)
 
 [← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Fatores humanos e política cibernética: contexto de engenharia
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -1991,7 +1991,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2030,19 +2030,19 @@ Listas de partes interessadas podem omitir grupos discretos, como os terceirizad
 
 Fatores humanos e política cibernética são um campo de engenharia que transforma a política e as necessidades das partes interessadas em desenhos viáveis.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue estudando — aula 20 (capítulo 20 de 50)
 
 [← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Fatores humanos e política cibernética: requisitos
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -2084,7 +2084,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2123,19 +2123,19 @@ Os participantes das oficinas podem não representar os funcionários mais discr
 
 Os requisitos de fatores humanos vêm da experiência da equipe e precisam ser testáveis e priorizados abertamente.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue estudando — aula 21 (capítulo 21 de 50)
 
 [← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Fatores humanos e política cibernética: modelos de sistema e de dados
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -2177,7 +2177,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2216,19 +2216,19 @@ Os modelos omitem canais informais, como mensagens de chat. As configurações p
 
 Modelar o programa como um sistema revela riscos para os dados e os pontos de decisão sob pressão em que os atacantes têm sucesso.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue estudando — aula 22 (capítulo 22 de 50)
 
 [← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Fatores humanos e política cibernética: análise de ameaças e falhas
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -2265,7 +2265,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2304,19 +2304,19 @@ Na prática, as categorias de erro se sobrepõem. Os atacantes se adaptam às et
 
 Classificar as falhas orienta a defesa certa para cada uma, e as violações apontam regras que precisam ser redesenhadas.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue estudando — aula 23 (capítulo 23 de 50)
 
 [← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Fatores humanos e política cibernética: métodos I
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -2363,7 +2363,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -2423,19 +2423,19 @@ Percursos dependem da imaginação do avaliador. Questionários medem percepçõ
 
 Combinar métodos rápidos de avaliação com questionários responsáveis revela problemas tanto de interface quanto de compreensão.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue estudando — aula 24 (capítulo 24 de 50)
 
 [← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -2477,7 +2477,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -2516,19 +2516,19 @@ Projetos de ateliê não sofrem as pressões de uma implantação real. Testes p
 
 A crítica de ateliê feita por quem conhece as restrições reais impulsiona desenhos que se ajustam ao trabalho de fato.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue estudando — aula 25 (capítulo 25 de 50)
 
 [← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Fatores humanos e política cibernética: alternativas de arquitetura
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -2575,7 +2575,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -2634,19 +2634,19 @@ Pontuações são julgamentos. Desenhos híbridos podem perder o foco se não fo
 
 Comparar arquiteturas de programa segundo critérios acordados leva a uma escolha aberta e testada, muitas vezes híbrida.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue estudando — aula 26 (capítulo 26 de 50)
 
 [← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Fatores humanos e política cibernética: projeto de controles
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -2688,7 +2688,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -2727,19 +2727,19 @@ Procedimentos de retorno de ligação falham se os cadastros de fornecedores est
 
 Os controles devem apoiar as pessoas com etapas fáceis e transparentes que eliminem julgamentos solitários sob pressão.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue estudando — aula 27 (capítulo 27 de 50)
 
 [← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Fatores humanos e política cibernética: implementação I
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -2781,7 +2781,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -2820,19 +2820,19 @@ Picos de lançamento podem se dissipar. Canais de ajuda exigem tempo da equipe.
 
 A implementação dá certo quando a configuração técnica é acompanhada de uma gestão de mudanças clara, sem medo, e de suporte desde cedo.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue estudando — aula 28 (capítulo 28 de 50)
 
 [← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Fatores humanos e política cibernética: medição
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -2879,7 +2879,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -2942,19 +2942,19 @@ E-mails não reportados só são encontrados se forem detectados de outra forma.
 
 Medidas centradas na exposição, acompanhadas em pares e mantidas longe de consequências individuais ajudam um programa a aprender.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue estudando — aula 29 (capítulo 29 de 50)
 
 [← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -3001,7 +3001,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -3063,19 +3063,19 @@ Voluntários podem ser mais confiantes do que os funcionários típicos. Os mode
 
 A verificação comprova que os requisitos são atendidos técnica e utilizavelmente, com evidências registradas, inclusive das falhas.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue estudando — aula 30 (capítulo 30 de 50)
 
 [← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Fatores humanos e política cibernética: implementação II
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX091.
@@ -3117,7 +3117,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -3156,19 +3156,19 @@ Segundos analistas podem aprovar sem ligar quando estão ocupados. Fornecedores 
 
 Os controles são implementados dentro dos fluxos de trabalho e apoiados por treinamentos curtos baseados em funções.
 
-<!-- cykin:chapter-navigation:start ch-31 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-31 -->
 ### Continue estudando — aula 31 (capítulo 31 de 50)
 
 [← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Fatores humanos e política cibernética: confiabilidade
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX094.
@@ -3215,7 +3215,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX094]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -3275,19 +3275,19 @@ Taxas reais de falha são difíceis de medir. A independência pode se desgastar
 
 Controles que dependem de pessoas só são confiáveis quando as verificações são genuinamente independentes e as causas comuns são eliminadas no desenho.
 
-<!-- cykin:chapter-navigation:start ch-32 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-32 -->
 ### Continue estudando — aula 32 (capítulo 32 de 50)
 
 [← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Fatores humanos e política cibernética: segurança e resiliência
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX097.
@@ -3329,7 +3329,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -3368,19 +3368,19 @@ Exercícios de mesa podem não revelar problemas práticos. Alertas podem ser ig
 
 Segurança da informação e segurança física compartilham perigos, e a resiliência presume que o engano vai acontecer e ensaia a recuperação abertamente.
 
-<!-- cykin:chapter-navigation:start ch-33 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-33 -->
 ### Continue estudando — aula 33 (capítulo 33 de 50)
 
 [← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Fatores humanos e política cibernética: integração
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX100.
@@ -3422,7 +3422,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX100]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -3461,19 +3461,19 @@ A criação automática de incidentes pode gerar ruído. O mapeamento em framewo
 
 A integração liga o reporte à resposta, o programa à governança e as medidas às decisões de risco.
 
-<!-- cykin:chapter-navigation:start ch-34 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-34 -->
 ### Continue estudando — aula 34 (capítulo 34 de 50)
 
 [← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX103.
@@ -3515,7 +3515,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX103]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -3554,19 +3554,19 @@ Testes pequenos podem não se generalizar. Listas de remetentes legítimos exige
 
 Um redesenho fundamentado em evidências e honesto quanto aos limites mostra como os controles em camadas se cobrem mutuamente.
 
-<!-- cykin:chapter-navigation:start ch-35 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-35 -->
 ### Continue estudando — aula 35 (capítulo 35 de 50)
 
 [← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Fatores humanos e política cibernética: desempenho e escala
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX106.
@@ -3613,7 +3613,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX106]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -3675,19 +3675,19 @@ Chegadas reais se concentram em torno das campanhas. Vereditos automáticos pode
 
 Um retorno rápido em escala precisa de capacidade planejada antes que a utilização se aproxime do limite.
 
-<!-- cykin:chapter-navigation:start ch-36 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-36 -->
 ### Continue estudando — aula 36 (capítulo 36 de 50)
 
 [← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Fatores humanos e política cibernética: operações
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX109.
@@ -3729,7 +3729,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX109]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -3768,19 +3768,19 @@ As exclusões reduzem a cobertura. As bancas podem aprovar iscas limítrofes.
 
 As operações precisam de um calendário estável, regras éticas de simulação e tratamento respeitoso das reclamações.
 
-<!-- cykin:chapter-navigation:start ch-37 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-37 -->
 ### Continue estudando — aula 37 (capítulo 37 de 50)
 
 [← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Fatores humanos e política cibernética: validação
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX112.
@@ -3827,7 +3827,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX112]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -3883,19 +3883,19 @@ Desenhos antes e depois são fracos. Os padrões de ataque mudam de um ano para 
 
 A validação testa o propósito na operação real, com evidências mistas e afirmações cautelosas.
 
-<!-- cykin:chapter-navigation:start ch-38 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-38 -->
 ### Continue estudando — aula 38 (capítulo 38 de 50)
 
 [← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Fatores humanos e política cibernética: manutenibilidade
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX115.
@@ -3942,7 +3942,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX115]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -4000,19 +4000,19 @@ Datas de revisão muitas vezes são perdidas. Pacotes de passagem de bastão fic
 
 Programas sustentáveis têm donos, datas de revisão, esforço planejado e repasses que explicam o porquê.
 
-<!-- cykin:chapter-navigation:start ch-39 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-39 -->
 ### Continue estudando — aula 39 (capítulo 39 de 50)
 
 [← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX118.
@@ -4054,7 +4054,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX118]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -4115,19 +4115,19 @@ Reproduções sintéticas não capturam a confusão real. Verificações ao vivo
 
 A reverificação detecta regressões, os testes de carga verificam a escala e limites honestos orientam a confiança.
 
-<!-- cykin:chapter-navigation:start ch-40 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-40 -->
 ### Continue estudando — aula 40 (capítulo 40 de 50)
 
 [← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Fatores humanos e política cibernética: otimização do sistema
 
-<!-- cykin:lesson-figures:start ch-41 -->
+<!-- open-cyber-academy:lesson-figures:start ch-41 -->
 ### Mapa da aula
 
 Aula 41 publicada. Mapa, exemplo, EX121.
@@ -4174,7 +4174,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX121]
 ```
-<!-- cykin:lesson-figures:end ch-41 -->
+<!-- open-cyber-academy:lesson-figures:end ch-41 -->
 
 
 ### Objetivos de aprendizagem
@@ -4236,19 +4236,19 @@ As estimativas de efeito são incertas. A seleção gulosa nem sempre é ótima.
 
 A otimização pesa o benefício por custo, contabiliza o esforço da equipe e serve às perdas reais, e não a medidas isoladas.
 
-<!-- cykin:chapter-navigation:start ch-41 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-41 -->
 ### Continue estudando — aula 41 (capítulo 41 de 50)
 
 [← Capítulo 40](#ch-40) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Fatores humanos e política cibernética: pesquisa aplicada
 
-<!-- cykin:lesson-figures:start ch-42 -->
+<!-- open-cyber-academy:lesson-figures:start ch-42 -->
 ### Mapa da aula
 
 Aula 42 publicada. Mapa, exemplo, EX124.
@@ -4290,7 +4290,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX124]
 ```
-<!-- cykin:lesson-figures:end ch-42 -->
+<!-- open-cyber-academy:lesson-figures:end ch-42 -->
 
 
 ### Objetivos de aprendizagem
@@ -4329,19 +4329,19 @@ Poucas equipes dão baixo poder estatístico. Pode haver contaminação entre eq
 
 A pesquisa aplicada transforma perguntas operacionais em estudos éticos e relata os resultados com honestidade, inclusive os nulos.
 
-<!-- cykin:chapter-navigation:start ch-42 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-42 -->
 ### Continue estudando — aula 42 (capítulo 42 de 50)
 
 [← Capítulo 41](#ch-41) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- cykin:lesson-figures:start ch-43 -->
+<!-- open-cyber-academy:lesson-figures:start ch-43 -->
 ### Mapa da aula
 
 Aula 43 publicada. Mapa, exemplo, EX127.
@@ -4383,7 +4383,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX127]
 ```
-<!-- cykin:lesson-figures:end ch-43 -->
+<!-- open-cyber-academy:lesson-figures:end ch-43 -->
 
 
 ### Objetivos de aprendizagem
@@ -4422,19 +4422,19 @@ Diários reflexivos podem virar autojustificação. Declarações públicas prec
 
 A prática profissional respeita as restrições do serviço público, envolve reguladores e clientes e reflete com honestidade.
 
-<!-- cykin:chapter-navigation:start ch-43 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-43 -->
 ### Continue estudando — aula 43 (capítulo 43 de 50)
 
 [← Capítulo 42](#ch-42) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- cykin:lesson-figures:start ch-44 -->
+<!-- open-cyber-academy:lesson-figures:start ch-44 -->
 ### Mapa da aula
 
 Aula 44 publicada. Mapa, exemplo, EX130.
@@ -4476,7 +4476,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX130]
 ```
-<!-- cykin:lesson-figures:end ch-44 -->
+<!-- open-cyber-academy:lesson-figures:end ch-44 -->
 
 
 ### Objetivos de aprendizagem
@@ -4515,19 +4515,19 @@ A rotatividade dos terceirizados complica a avaliação. Grupos pequenos geram i
 
 Um projeto final parte de uma lacuna real, levanta as necessidades de quem é afetado e planeja a avaliação com critérios claros.
 
-<!-- cykin:chapter-navigation:start ch-44 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-44 -->
 ### Continue estudando — aula 44 (capítulo 44 de 50)
 
 [← Capítulo 43](#ch-43) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- cykin:lesson-figures:start ch-45 -->
+<!-- open-cyber-academy:lesson-figures:start ch-45 -->
 ### Mapa da aula
 
 Aula 45 publicada. Mapa, exemplo, EX133.
@@ -4574,7 +4574,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX133]
 ```
-<!-- cykin:lesson-figures:end ch-45 -->
+<!-- open-cyber-academy:lesson-figures:end ch-45 -->
 
 
 ### Objetivos de aprendizagem
@@ -4632,19 +4632,19 @@ Os revisores podem deixar passar problemas. Riscos aceitos podem ser esquecidos.
 
 A revisão independente encontra o que os projetistas deixam passar, e os riscos residuais são registrados e têm donos.
 
-<!-- cykin:chapter-navigation:start ch-45 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-45 -->
 ### Continue estudando — aula 45 (capítulo 45 de 50)
 
 [← Capítulo 44](#ch-44) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- cykin:lesson-figures:start ch-46 -->
+<!-- open-cyber-academy:lesson-figures:start ch-46 -->
 ### Mapa da aula
 
 Aula 46 publicada. Mapa, exemplo, EX136.
@@ -4691,7 +4691,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX136]
 ```
-<!-- cykin:lesson-figures:end ch-46 -->
+<!-- open-cyber-academy:lesson-figures:end ch-46 -->
 
 
 ### Objetivos de aprendizagem
@@ -4749,19 +4749,19 @@ Pilotos pequenos não demonstram equivalência com precisão. A rotatividade dos
 
 Pilotos julgados segundo critérios predefinidos sustentam decisões honestas mesmo quando as amostras são pequenas.
 
-<!-- cykin:chapter-navigation:start ch-46 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-46 -->
 ### Continue estudando — aula 46 (capítulo 46 de 50)
 
 [← Capítulo 45](#ch-45) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- cykin:lesson-figures:start ch-47 -->
+<!-- open-cyber-academy:lesson-figures:start ch-47 -->
 ### Mapa da aula
 
 Aula 47 publicada. Mapa, exemplo, EX139.
@@ -4808,7 +4808,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX139]
 ```
-<!-- cykin:lesson-figures:end ch-47 -->
+<!-- open-cyber-academy:lesson-figures:end ch-47 -->
 
 
 ### Objetivos de aprendizagem
@@ -4863,19 +4863,19 @@ Ensaios planejados são menos estressantes do que falhas reais. Ensaios em horá
 
 Testes de falha anunciados encontram fraquezas a baixo custo e devolvem novos requisitos ao desenho.
 
-<!-- cykin:chapter-navigation:start ch-47 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-47 -->
 ### Continue estudando — aula 47 (capítulo 47 de 50)
 
 [← Capítulo 46](#ch-46) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- cykin:lesson-figures:start ch-48 -->
+<!-- open-cyber-academy:lesson-figures:start ch-48 -->
 ### Mapa da aula
 
 Aula 48 publicada. Mapa, exemplo, EX142.
@@ -4917,7 +4917,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX142]
 ```
-<!-- cykin:lesson-figures:end ch-48 -->
+<!-- open-cyber-academy:lesson-figures:end ch-48 -->
 
 
 ### Objetivos de aprendizagem
@@ -4972,19 +4972,19 @@ As classificações de força são julgamentos. Os dossiês ficam desatualizados
 
 Um dossiê de evidências liga cada afirmação a evidências graduadas e nomeia os seus limites.
 
-<!-- cykin:chapter-navigation:start ch-48 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-48 -->
 ### Continue estudando — aula 48 (capítulo 48 de 50)
 
 [← Capítulo 47](#ch-47) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
 
-<!-- cykin:lesson-figures:start ch-49 -->
+<!-- open-cyber-academy:lesson-figures:start ch-49 -->
 ### Mapa da aula
 
 Aula 49 publicada. Mapa, exemplo, EX145.
@@ -5026,7 +5026,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX145]
 ```
-<!-- cykin:lesson-figures:end ch-49 -->
+<!-- open-cyber-academy:lesson-figures:end ch-49 -->
 
 
 ### Objetivos de aprendizagem
@@ -5065,19 +5065,19 @@ Um único caso limita a generalização. A literatura pode não se ajustar ao co
 
 Uma boa tese de engenharia remonta as decisões às evidências e apresenta os resultados com cuidado.
 
-<!-- cykin:chapter-navigation:start ch-49 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-49 -->
 ### Continue estudando — aula 49 (capítulo 49 de 50)
 
 [← Capítulo 48](#ch-48) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
 
-<!-- cykin:lesson-figures:start ch-50 -->
+<!-- open-cyber-academy:lesson-figures:start ch-50 -->
 ### Mapa da aula
 
 Aula 50 publicada. Mapa, exemplo, EX148.
@@ -5119,7 +5119,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX148]
 ```
-<!-- cykin:lesson-figures:end ch-50 -->
+<!-- open-cyber-academy:lesson-figures:end ch-50 -->
 
 
 ### Objetivos de aprendizagem
@@ -5158,13 +5158,13 @@ As defesas testam a comunicação, além da substância. Os próximos passos pre
 
 Uma defesa final demonstra raciocínio, coerência ética e um relato honesto da contribuição.
 
-<!-- cykin:chapter-navigation:start ch-50 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-50 -->
 ### Continue estudando — aula 50 (capítulo 50 de 50)
 
 [← Capítulo 49](#ch-49) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

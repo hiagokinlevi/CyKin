@@ -1,5 +1,5 @@
 ---
-name: cykin-threat-intelligence-osint-engineering-23944a13
+name: oca-threat-intelligence-osint-engineering-23944a13
 description: "Guide a learner through the engineering course in threat intelligence and OSINT: engineering a CTI platform with STIX/TAXII 2.1, TLP-gated dissemination, measurement, reliability, OT safety interlocks and ethical OSINT on synthetic data."
 license: CC0-1.0
 ---

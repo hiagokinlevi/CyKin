@@ -37,7 +37,7 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -99,7 +99,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -160,7 +160,7 @@ Start from decisions, tie requirements to them, reason in bands, weigh informati
 
 ## Chapter 2 — Threat intelligence and OSINT: current practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -222,7 +222,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -283,7 +283,7 @@ Mature practice is requirements-led, technique-centred and selectively automated
 
 ## Chapter 3 — Threat intelligence and OSINT: specialist evidence
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -345,7 +345,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -437,7 +437,7 @@ Test competing hypotheses, seek diagnostic evidence, guard against deception and
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -499,7 +499,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -564,7 +564,7 @@ Anchor risk in intelligence, govern OSINT under data-protection law, refuse unla
 
 ## Chapter 5 — Threat intelligence and OSINT: design alternatives
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -626,7 +626,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -695,7 +695,7 @@ Choose organisational and technical designs against explicit criteria, favour st
 
 ## Chapter 6 — Threat intelligence and OSINT: controlled evaluation
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -757,7 +757,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -849,7 +849,7 @@ Evaluate with labelled data, read both precision and recall, choose by consumer 
 
 ## Chapter 7 — Threat intelligence and OSINT: organizational integration
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -911,7 +911,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1000,7 +1000,7 @@ Integrate CTI at defined points, enforce TLP with a fail-closed gate, agree serv
 
 ## Chapter 8 — Threat intelligence and OSINT: difficult cases
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -1062,7 +1062,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1129,7 +1129,7 @@ Resist premature attribution, route insider matters properly, assess leak claims
 
 ## Chapter 9 — Threat intelligence and OSINT: leadership and assurance
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -1191,7 +1191,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1264,7 +1264,7 @@ Lead through requirements, assure quality with standards-based review and calibr
 
 ## Chapter 10 — Research reading and critique
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1326,7 +1326,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1395,7 +1395,7 @@ Read sources by type, interrogate methods, check transferability and critique co
 
 ## Chapter 11 — Applied project
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -1457,7 +1457,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1530,7 +1530,7 @@ Scope a useful project, use transparent scoring, agree capacity, measure outcome
 
 ## Chapter 12 — Final review and transfer
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -1592,7 +1592,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes

@@ -55,7 +55,7 @@ export async function initCoursePortal(): Promise<void> {
     if (!item.published) node.className = `${className} is-planned`;
     const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(unit.number).padStart(2, '0');
     const title = document.createElement('span'); title.className = 'lesson-subject'; title.textContent = item.title;
-    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on CyKin →' : 'Planned · teaching pending';
+    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on OpenCyber Academy →' : 'Planned · teaching pending';
     node.append(number, title, state);
     if (current?.kind === unit.kind && current.number === unit.number) { node.classList.add('active'); node.setAttribute('aria-current', 'page'); }
     if (item.published) node.addEventListener('click', event => { event.preventDefault(); void openUnit(unit, true); });
@@ -275,7 +275,7 @@ export async function initCoursePortal(): Promise<void> {
     if (link) (el('course-answers').querySelector('details') as HTMLDetailsElement).open = true;
   });
   selector.addEventListener('change', () => {
-    try { localStorage.setItem('cykin-language', selector.value); } catch { /* private mode */ }
+    try { localStorage.setItem('open-cyber-academy-language', selector.value); } catch { /* private mode */ }
     const target = new URLSearchParams({ lang: selector.value });
     if (firstQuery.has('ui')) target.set('ui', firstQuery.get('ui')!);
     if (current) { target.set('unit', current.kind); target.set('chapter', String(current.number)); }

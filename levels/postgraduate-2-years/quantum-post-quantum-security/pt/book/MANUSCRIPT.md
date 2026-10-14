@@ -36,7 +36,7 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 
 ## Capítulo 1 — Tomada de decisão avançada em segurança
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -93,7 +93,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -174,19 +174,19 @@ Cada erro tem uma salvaguarda usada neste capítulo. Varie z ao longo dos cenár
 
 As decisões da migração quântica são tomadas sob incerteza profunda. Os enquadramentos robustos e baseados no arrependimento, os julgamentos de valor explícitos e a compra direcionada de informação produzem decisões que podem ser defendidas quando o futuro chegar.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 12
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança quântica e pós-quântica: prática atual
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX006.
@@ -238,7 +238,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -289,19 +289,19 @@ Cada erro tem uma salvaguarda no resumo da NRHT: um rótulo de situação em cad
 
 A prática atual combina normas finais, orientações de transição em rascunho e uma implantação desigual. Os especialistas mantêm resumos datados e com fontes que separam o que é exigido, proposto, disponível e apenas alegado.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 12
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança quântica e pós-quântica: evidências especializadas
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX011.
@@ -358,7 +358,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -445,19 +445,19 @@ Cada erro tem uma salvaguarda. Gradue as declarações dos fornecedores como D a
 
 As evidências especializadas são graduadas, datadas e atentas aos fornecedores. A cobertura e a parcela de desconhecidos são resultados de primeira classe, e o conselho vê confiança, e não planilhas.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 12
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco e ética avançados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX016.
@@ -514,7 +514,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -575,19 +575,19 @@ Cada erro tem uma salvaguarda. Represente o harvest-now-decrypt-later como expos
 
 O risco quântico é latente, irreversível e às vezes sistêmico. Os especialistas o expressam como exposição acumulada, definem os horizontes pelo dano aos titulares dos dados, protegem os inventários como informação sensível e tornam a aceitação do risco residual explícita e limitada no tempo.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 12
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Segurança quântica e pós-quântica: alternativas de projeto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX021.
@@ -639,7 +639,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -717,19 +717,19 @@ Cada erro tem uma salvaguarda. Mantenha o híbrido a menos que haja um motivo pa
 
 As alternativas de projeto abrangem as abordagens híbrida, pura, aumentada por PSK e de minimização para o estabelecimento de chaves, e as abordagens em estágios, começando pelos ecossistemas fechados, para a autenticação. Uma política de parâmetros explícita e orçamentos de bytes tornam a escolha revisável.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 12
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Segurança quântica e pós-quântica: avaliação controlada
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX026.
@@ -786,7 +786,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -869,19 +869,19 @@ Cada erro tem uma salvaguarda na avaliação do PACS: um limiar acordado antes d
 
 A avaliação controlada fixa os limiares com antecedência, usa limites de confiança, mapeia a interoperabilidade nas populações reais de clientes e relata os limites de validade, para que as decisões de implantação se apoiem em evidências, e não em esperança.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 12
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Segurança quântica e pós-quântica: integração organizacional
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX031.
@@ -943,7 +943,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -1041,19 +1041,19 @@ Cada erro tem uma salvaguarda. Integre as perguntas criptográficas aos processo
 
 A integração transforma a migração numa capacidade organizacional: plataformas orientadas por política, direitos de decisão claros, compras alinhadas aos ciclos de renovação e métricas de resultado.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 12
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Segurança quântica e pós-quântica: casos difíceis
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX036.
@@ -1110,7 +1110,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1173,19 +1173,19 @@ Cada erro tem uma salvaguarda neste capítulo. Acorde as janelas de mudança cl�
 
 Os casos difíceis — dispositivos, PKI, assinaturas com estado, arquivos e quebras de algoritmos — precisam de controles compensatórios, sequenciamento cuidadoso, estado guardado em hardware, renovação no tempo certo e resposta ensaiada.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 12
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Segurança quântica e pós-quântica: liderança e garantia
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX041.
@@ -1242,7 +1242,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1305,19 +1305,19 @@ Cada erro tem uma salvaguarda. Observe de novo os algoritmos negociados em vez d
 
 A liderança mantém um programa plurianual alinhado às evidências; a garantia observa de novo, em vez de ler; os pacotes de evidências surgem das operações normais; e a continuidade é projetada desde o início.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 12
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX046.
@@ -1374,7 +1374,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1437,19 +1437,19 @@ Cada erro tem uma salvaguarda. Pergunte se um novo ataque se aplica aos parâmet
 
 Os especialistas leem as pesquisas pelas suas hipóteses e pela sua aplicabilidade, ponderam as fontes por tipo e reprodutibilidade, e traduzem os achados em implicações calmas e específicas para a prática.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 12
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Projeto aplicado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX051.
@@ -1511,7 +1511,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1578,19 +1578,19 @@ Os projetos aplicados encontram resistência: responsáveis por serviços preocu
 
 Os projetos aplicados apoiam decisões reais, entregam artefatos utilizáveis sob a autorização e a proteção de dados adequadas e medem o impacto segundo critérios definidos com antecedência.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 12
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX056.
@@ -1652,7 +1652,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1719,13 +1719,13 @@ Encerre o portfólio com uma nota reflexiva sobre o seu próprio julgamento: uma
 
 A revisão final demonstra os resultados com evidências, defende as escolhas com honestidade e transfere os métodos e a capacidade, para que as futuras mudanças criptográficas encontrem uma organização preparada.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 12
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

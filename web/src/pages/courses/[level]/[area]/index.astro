@@ -11,7 +11,7 @@ const previous = catalog.courses[position - 1];
 const next = catalog.courses[position + 1];
 const levelName = catalog.level_names[course.level].en;
 ---
-<BaseLayout title={`${levelName} · ${course.title} · CyKin`} description={`Read the ${levelName.toLowerCase()} course in ${course.title}, with its own book, lessons, exercises and navigation.`}>
+<BaseLayout title={`${levelName} · ${course.title} · OpenCyber Academy`} description={`Read the ${levelName.toLowerCase()} course in ${course.title}, with its own book, lessons, exercises and navigation.`}>
   <div id="course-root" data-level={course.level} data-area={course.area} data-number={course.number} data-next={next ? coursePath(next.level, next.area) : ''}>
     <section class="course-heading"><div class="shell">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>

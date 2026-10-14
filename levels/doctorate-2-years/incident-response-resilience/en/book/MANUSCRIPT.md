@@ -50,7 +50,7 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -112,7 +112,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -481,7 +481,7 @@ Two habits distinguish strong protocols. First, they contain **predeclared failu
 *All records are synthetic.* The following Python script uses only the standard library. It computes, for twelve synthetic incidents, (a) a naive mean time-to-contain that drops incidents still open when observation closed, (b) a lower-bound mean that counts open incidents at their observed duration, (c) a Kaplan–Meier median that treats open incidents as censored, (d) Cohen's kappa for two raters who judged each response "adequate" or "inadequate," and (e) positive predictive values at two base rates. Run it offline; it reads and writes no files.
 
 ```python
-"""CyKin doctoral IR, Chapter 1 offline lab. All records are synthetic."""
+"""OpenCyber Academy doctoral IR, Chapter 1 offline lab. All records are synthetic."""
 from collections import Counter
 
 # case_id, hours_to_contain (None = not contained when observation closed), observed_hours, rater_a, rater_b
@@ -600,19 +600,19 @@ The lower-level books in this series built three synthetic cases: Harbor Library
 
 Incident-response research studies events that happen once, are shaped by the response itself, are read with hindsight and are wrapped in legal and ethical restrictions. Those conditions do not excuse weak claims; they demand explicit ones. The researcher's basic tools are the observation–inference–claim distinction, pre-specification with a transparent deviation log, a tiered reproducibility plan that releases what can safely be released, layered authorization and an Ethical Impact Assessment, measures whose validity is argued rather than assumed, and a protocol that states in advance what would count as failure. Chapter 2 uses these tools to read the research literature and locate a question that is genuinely open.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Research frontier in incident response systems
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX012.
@@ -674,7 +674,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX012]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -1019,19 +1019,19 @@ The Handoff Study's choice of rater-scored decision errors against pre-defined d
 
 A research frontier is found, not asserted. It emerges from a documented search, an appraisal that reads each study for the claim it can bear, a map of claims rather than topics, and competing theories that predict different outcomes. The output is a falsifiable gap statement that would change decisions if answered. Chapter 3 turns the Handoff Study's gap statement into a specific contribution with a mechanism, hypotheses, a baseline and predeclared failure conditions.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original response-science contribution proposal
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -1093,7 +1093,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -1375,19 +1375,19 @@ Writing these answers before data collection often reveals design gaps that are 
 
 A strong proposal states a mechanism that predicts a pattern, tests it against a realistic baseline and an active control, lists rival explanations with design features that separate them, sets a smallest effect of interest by practical consequence, and predeclares what results would narrow or refute the claim. The Handoff Study now has hypotheses H1–H3, three conditions and failure conditions F1–F6. Chapter 4 asks whether its baselines can be reproduced and its procedure works before the main study is run.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Replication of baselines and pilot protocol
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -1449,7 +1449,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -1725,19 +1725,19 @@ The general principle, shared with the reproduction of computational baselines, 
 
 Before claiming improvement, establish the reference point. Reproduce the baseline as published, diagnose discrepancies, and choose a deployment-faithful configuration as the real comparison. Plan sample size from the smallest effect of interest with an honest variance range, and pilot for feasibility with predeclared progression criteria. The Handoff Study now has a reproduced, corrected reference for its triage component and a pilot that determines whether F1 and F2 are triggered. Chapter 5 runs the main study.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study of incident decision quality
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -1799,7 +1799,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -2088,19 +2088,19 @@ Harm in the Handoff Study is a decision that would cause avoidable damage relati
 
 A main study earns trust through execution discipline: concealed and counterbalanced assignment, blinded raters with measured agreement, preserved raw decisions, estimates with intervals interpreted against a predeclared smallest effect of interest, and equal rigor for harms. In the synthetic excerpt, SHA reduced comprehension and projection errors with uncertain practical importance, left perception errors unchanged as predicted, and could not exclude a small increase in harmful actions. Chapter 6 asks whether this pattern survives a different organization with different staffing and telemetry.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Independent validation across contexts
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -2162,7 +2162,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -2425,19 +2425,19 @@ None of these invalidates the simulation result. Each is a specific reason the e
 
 A result from one incident-response context is a hypothesis about others. Testing it in a second context is most informative when the mechanism predicts *where* the effect should change and the prediction is registered before data. In the synthetic Handoff Study, the effect shrank in a dense-telemetry context and, within that context, was concentrated in high-gap scenarios — consistent with telemetry completeness as a boundary condition, though two contexts cannot establish it. Chapter 7 submits the combined claims to adversarial critique.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Peer critique and revision of claims
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -2499,7 +2499,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2713,19 +2713,19 @@ If the thesis includes or proposes model-assisted handoffs (§3.15), anticipate 
 
 Critique is the method step that tests the chain from observation to claim with people who do not share the author's commitments. Organized red-team reading, third-party reproduction and adversarial collaboration find weaknesses before publication; concede, defend or test are the honest responses. In the Handoff Study, a reviewer's challenge to the outcome definition showed that most of the effect came from transmitting telemetry gaps, and the contribution was narrowed accordingly. Chapter 8 assembles the narrowed claim, its evidence and its artifacts into a thesis and reproducibility archive.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Thesis synthesis and reproducibility archive
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX050.
@@ -2787,7 +2787,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX050]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2966,7 +2966,7 @@ verify (after edit): ['protocol/deviation_log.csv']
 
 **Interpretation.** A manifest makes silent changes visible. The edit to the deviation log — the very file that records departures from protocol — is detected immediately. In a real archive, any legitimate change produces a new release with a regenerated manifest and a change-log entry explaining it.
 
-The candidate's README states plainly: "This archive lets you run every analysis on schema-matched synthetic data and regenerate every reported aggregate from released aggregate files. Participant-level decision data are available only under a data-use agreement, as permitted by participants' consent (see PERMISSIONS.md). No incident records from any organization were used. Scenario materials are synthetic and derived from the CyKin Harbor Library, Cedar Training Network and Lumen Library Reservations teaching cases."
+The candidate's README states plainly: "This archive lets you run every analysis on schema-matched synthetic data and regenerate every reported aggregate from released aggregate files. Participant-level decision data are available only under a data-use agreement, as permitted by participants' consent (see PERMISSIONS.md). No incident records from any organization were used. Scenario materials are synthetic and derived from the OpenCyber Academy Harbor Library, Cedar Training Network and Lumen Library Reservations teaching cases."
 
 ### 8.8 Practical activity: archive audit
 
@@ -3090,13 +3090,13 @@ Each of these is a thesis-sized problem. A candidate who finishes the Handoff St
 
 A thesis in incident-response research is an argument whose claims are exactly as strong as their evidence, with the narrowing of those claims documented rather than hidden. Its reproducibility archive makes the evidence inspectable within legal and ethical limits, with provenance, integrity manifests, explicit permissions and a plan for stewardship after submission. The Handoff Study ends with a narrow, useful and honest claim, an archive that a stranger can audit, and a list of future studies that begin where its limits do. That is the standard this book has aimed to teach.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 08
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -3438,7 +3438,7 @@ Research methods, decision-making and privacy:
 - Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data*, 2016.
 - Yarkoni, T. [The Generalizability Crisis](https://doi.org/10.1017/S0140525X20001685). *Behavioral and Brain Sciences* 45, 2022 (published online 2020).
 
-Companion CyKin books (synthetic case sources): [rapid](../../../../rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) (Harbor Library), [professional](../../../../professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) (Cedar Training Network) and [technical](../../../../technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md) (Lumen Library Reservations).
+Companion OpenCyber Academy books (synthetic case sources): [rapid](../../../../rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) (Harbor Library), [professional](../../../../professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) (Cedar Training Network) and [technical](../../../../technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md) (Lumen Library Reservations).
 
 **Case boundary.** NMS-CSIRT, KFL-SOC, OpenTriage-S, the Handoff Study, the SHA artifact, all participants, all numbers in the labs and the synthetic studies S1–S3 are invented for teaching. Sources support the general methodological statements beside which they are cited, never the synthetic details.
 

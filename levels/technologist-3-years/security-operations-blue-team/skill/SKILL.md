@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-technologist-08377b03
+name: oca-security-operations-blue-team-technologist-08377b03
 description: "SOC technologist course: 30 chapters, 90 exercises, 7 stdlib labs"
 license: CC0-1.0
 ---

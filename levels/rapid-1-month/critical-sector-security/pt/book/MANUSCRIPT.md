@@ -58,7 +58,7 @@ Toda afirmação factual sobre um framework público, uma lei, uma orientação 
 
 ## Capítulo 1 — Infraestrutura crítica e segurança setorial: fundamentos e decisões
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -120,7 +120,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -258,19 +258,19 @@ Troque as páginas com um colega que escolheu outro serviço e confiram a frase 
 
 A infraestrutura crítica entrega funções de que as pessoas não podem prescindir, e a sua segurança é julgada pela consequência: segurança das pessoas primeiro, depois continuidade, confiabilidade e confidencialidade. Incidentes reais mostram que problemas de computador chegam a pacientes, casas e ruas, e que fraquezas simples muitas vezes bastam. As ferramentas de um iniciante são uma frase de risco clara, uma marcação honesta do que é pressuposto e três decisões: perceber, relatar, deixar a correção com o dono.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 04
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX014.
@@ -332,7 +332,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -481,19 +481,19 @@ Guarde o cartão de limites num lugar onde você o veja e compare-o com o de um 
 
 A permissão vem do dono do sistema, é específica e normalmente é escrita; acesso e boas intenções não são permissão. Em serviços essenciais, "só dar uma conferida" pode perturbar processos reais; por isso, as ações seguras de um iniciante são usar o que lhe foi dado, perceber, relatar rápido e com honestidade por um canal conhecido e compartilhar com cuidado usando rótulos como o TLP. As habilidades são construídas em ambientes sintéticos e de estudo, nunca em serviços em produção.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 04
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Infraestrutura crítica e segurança setorial: sistemas, dados e dependências
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX027.
@@ -555,7 +555,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -707,19 +707,19 @@ Compare o seu esboço com a tabela de dependências da clínica feita por Sam: v
 
 Um serviço essencial é feito de pessoas, TI, tecnologia operacional, dados e fornecedores trabalhando juntos. A TO mede e controla o mundo físico, precisa funcionar continuamente e pode causar dano físico quando falha; é por isso que uma leitura errada pode ser pior do que uma roubada. Os serviços dependem de coisas a montante, atendem pessoas a jusante e compartilham dependências entre si; os pontos únicos de falha e os backups que têm as suas próprias dependências são onde os problemas se escondem. A lista de dependências de um iniciante é um conjunto de boas perguntas para o dono.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 04
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestrutura crítica e segurança setorial: laboratório guiado e síntese aplicada
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX050.
@@ -781,7 +781,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX050]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -972,13 +972,13 @@ Um cartão com 12 pontos ou mais de 15, sem nenhum zero, atende ao padrão do cu
 
 As falhas na infraestrutura crítica se propagam em cascata ao longo das dependências, e os backups protegem apenas a dependência que substituem — e só enquanto as dependências deles próprios se mantêm. Um modelo pequeno e sintético torna as cascatas visíveis e, mais importante, gera boas perguntas; ele nunca substitui o conhecimento do dono. O cartão de serviço reúne o curso numa página honesta: função, ordem de consequências, dependências, frases de risco, pressupostos e o que você não fez.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 04
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

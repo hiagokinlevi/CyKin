@@ -38,7 +38,7 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -100,7 +100,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -189,7 +189,7 @@ Make SOC decisions explicit: estimate probabilities and costs, compare options a
 
 ## Chapter 2 — Security operations and blue team: current practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -251,7 +251,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -320,7 +320,7 @@ Current practice blends engineering, automation and sourcing choices; compare wi
 
 ## Chapter 3 — Security operations and blue team: specialist evidence
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -382,7 +382,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -472,7 +472,7 @@ Specialist evidence enables insider-risk monitoring, but only with fair baseline
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -534,7 +534,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -603,7 +603,7 @@ Treat SOC risk decisions as ethical decisions; use several lenses, resist improp
 
 ## Chapter 5 — Security operations and blue team: design alternatives
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -665,7 +665,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -734,7 +734,7 @@ Generate real alternatives, score them on agreed criteria, test sensitivity and 
 
 ## Chapter 6 — Security operations and blue team: controlled evaluation
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -796,7 +796,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -890,7 +890,7 @@ Controlled operational evaluations need fair assignment, robust statistics, accu
 
 ## Chapter 7 — Security operations and blue team: organizational integration
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -952,7 +952,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1021,7 +1021,7 @@ Integrate the SOC through service levels, escalation paths, risk reporting and s
 
 ## Chapter 8 — Security operations and blue team: difficult cases
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -1083,7 +1083,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1152,7 +1152,7 @@ Difficult cases demand early proportionate action, clear communication of uncert
 
 ## Chapter 9 — Security operations and blue team: leadership and assurance
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -1214,7 +1214,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1301,7 +1301,7 @@ SOC leadership pairs developing people with evidence-based, honest assurance.
 
 ## Chapter 10 — Research reading and critique
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1363,7 +1363,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1432,7 +1432,7 @@ Critical reading tests ideas before adoption and links research findings to meas
 
 ## Chapter 11 — Applied project
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -1494,7 +1494,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1567,7 +1567,7 @@ Applied projects improve SOCs when baselines, interventions, risks and outcomes 
 
 ## Chapter 12 — Final review and transfer
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -1629,7 +1629,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes

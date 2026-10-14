@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-bachelor-c56c2255
+name: oca-incident-response-resilience-bachelor-c56c2255
 description: "Tutor the bachelor's Incident Response draft: 40 chapters of foundations and applied judgement around the synthetic Harbourline Health Cooperative, 12 offline stdlib labs and EX001–EX120 with worked results; keep claims calibrated to evidence."
 license: CC0-1.0
 ---

@@ -1,8 +1,8 @@
-# CyKin — Cybersecurity Academic Books Collection
+# OpenCyber Academy — Cybersecurity Academic Books Collection
 
 ~~~text
   +------------------------------------------------------------------+
-  |         CYKIN / CYBERSECURITY ACADEMIC BOOKS COLLECTION          |
+  |         OPEN CYBER ACADEMY / CYBERSECURITY ACADEMIC BOOKS COLLECTION          |
   +------------------------------------------------------------------+
   |     ________    ________    ________    ________    ________     |
   |    |   IR   |  |  CYBR  |  |  INFO  |  |  DATA  |  |  PRIV  |    |
@@ -33,13 +33,13 @@
   +------------------------------------------------------------------+
 ~~~
 
-<!-- cykin:onboarding:start -->
+<!-- open-cyber-academy:onboarding:start -->
 
 <a id="comece-por-aqui"></a>
 
 ## Start here
 
-**Choose your language, then one of the two routes below.** [Open the CyKin study site](https://cykin.org/) to browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above measures legacy English draft-chapter coverage, not completed courses, daily lessons or translations; [read its method](WRITING_PROGRESS.md).
+**Choose your language, then one of the two routes below.** [Visit the OpenCyber Academy study site](https://opencyber.academy/) to browse [by level](https://opencyber.academy/levels/) or [by subject](https://opencyber.academy/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above measures legacy English draft-chapter coverage, not completed courses, daily lessons or translations; [read its method](WRITING_PROGRESS.md).
 
 **Route 1 — one course:** language → academic area → formation level → that edition's course guide, principal book, weekly chapters and daily lessons.
 
@@ -62,9 +62,9 @@ The site reads book text from this repository's `main` branch; the links below p
 **Your daily study loop:** open the selected edition's `SUBJECTS.md` → read the linked lesson in `MANUSCRIPT.md` → work through its example → attempt its assigned exercise → compare the explained answer in the same book → follow **previous / index / next**. Keep the course, language and lesson number in your checkpoint. A `PLAN.md` entry is an outline, not a lesson; do not silently substitute English for missing translated teaching. [Check actual availability](#publication-and-translation-snapshot) before starting.
 
 **Start with an existing daily sequence:** [Incident Response / Rapid / English — 20-lesson guide](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) · [Lesson 01](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-01) · [Worked answers](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#answers) · [One course skill](levels/rapid-1-month/incident-response-resilience/skill/SKILL.md). The guide reports four weekly chapters; this does not certify the whole volume or its other language editions.
-<!-- cykin:onboarding:end -->
+<!-- open-cyber-academy:onboarding:end -->
 
-<!-- cykin:course-structure:start -->
+<!-- open-cyber-academy:course-structure:start -->
 ## Courses, weekly chapters and daily lessons
 
 The shelf above is one percentage per academic area. This section is the structure those percentages sit on. Read it before treating 4.3% and 100% as the same kind of number.
@@ -123,7 +123,7 @@ The arrows mean organization and containment, not separate files or proof of pub
 
 Under the [documented calendar convention](STUDY_CALENDAR.md), **13 October to 13 November 2026, end excluded, contains 23 Monday–Friday dates**. A 20-lesson edition therefore leaves three dated positions needing an explicit instructional allocation. Holidays and vacations are not silently removed; special calendars need stated exceptions. Additional days require genuine teaching, examples and assessed practice, not repeated exercises or empty placeholders. Source-indexed lessons, required dates and learner completion remain different measures. A calendar or README change is not a verified website deployment.
 
-<!-- cykin:course-structure:end -->
+<!-- open-cyber-academy:course-structure:end -->
 
 ## Publication and translation snapshot
 
@@ -145,9 +145,9 @@ Under the [documented calendar convention](STUDY_CALENDAR.md), **13 October to 1
 
 ## How the study site works
 
-The [CyKin website](https://cykin.org/) is an in-site reader for this public curriculum. Students choose a language and browse **by level** or **by subject**, then open one separate course page for a level–area combination. The course page shows its current modules, published chapters, exercises, worked answers and previous/index/next navigation; the full principal book is also readable on the site. The planning minimum is shown separately from the chapters actually published, and it is not a maximum. A plan or an untranslated outline is never a completed lesson. The site interface starts in English, detects supported browser languages, and lets readers switch among English, Portuguese and Spanish; each book's actual language and editorial state remain independent of that interface choice.
+The [OpenCyber Academy website](https://opencyber.academy/) is an in-site reader for this public curriculum. Students choose a language and browse **by level** or **by subject**, then open one separate course page for a level–area combination. The course page shows its current modules, published chapters, exercises, worked answers and previous/index/next navigation; the full principal book is also readable on the site. The planning minimum is shown separately from the chapters actually published, and it is not a maximum. A plan or an untranslated outline is never a completed lesson. The site interface starts in English, detects supported browser languages, and lets readers switch among English, Portuguese and Spanish; each book's actual language and editorial state remain independent of that interface choice.
 
-The home page has an interactive [23-area learning map](https://cykin.org/#learning-map) in the same order as the public curriculum. Its four visible phases explain how foundational decisions lead into engineering, operations and critical applications. The highlight moves automatically, can be paused and respects reduced-motion preferences. Every area opens a separate subject route and its nine level choices. The suggested order helps orientation; learners may enter at any area.
+The home page has an interactive [23-area learning map](https://opencyber.academy/#learning-map) in the same order as the public curriculum. Its four visible phases explain how foundational decisions lead into engineering, operations and critical applications. The highlight moves automatically, can be paused and respects reduced-motion preferences. Every area opens a separate subject route and its nine level choices. The suggested order helps orientation; learners may enter at any area.
 
 | Layer | Responsibility | Source in this repository |
 |---|---|---|
@@ -155,10 +155,10 @@ The home page has an interactive [23-area learning map](https://cykin.org/#learn
 | Frontend | Astro builds the home page, level and subject directories, 207 separate course pages, book reader and account page; the reader renders Markdown and Mermaid diagrams inside the site | [`web/src/`](web/src/) |
 | Course catalog | A local build extracts 207 courses, language availability and weekday targets into a static JSON catalog; structural changes need a site deploy | [`web/scripts/build_catalog.py`](web/scripts/build_catalog.py) |
 | Public learning API | FastAPI reads the selected public manuscript from this repository's `main` branch and serves the course guide, chapter, book, search and read-only MCP endpoint; new book text becomes available without a frontend build | [`web/api/`](web/api/) and [API guide](web/README.md#public-ai-interface) |
-| Optional progress | Cloudflare Access protects only student progress routes; D1 stores completed lessons and exercise attempts. Books, lessons, API and MCP require no registration | [site operations](web/README.md#student-sign-in-and-progress) |
-| Hosting and publication | One Cloudflare Python Worker serves FastAPI and Astro static assets at `cykin.org`. The maintainer validates and deploys directly from an authorized local computer; GitHub Actions are not used | [`web/scripts/deploy-local.sh`](web/scripts/deploy-local.sh) and [deployment guide](web/README.md#publish-from-an-authorized-local-computer) |
+| Optional progress | D1 is provisioned for completed lessons and exercise attempts; Cloudflare Access still needs configuration for the new domain. Books, lessons, API and MCP require no registration | [site operations](web/README.md#student-sign-in-and-progress) |
+| Hosting and publication | One Cloudflare Python Worker serves FastAPI and Astro static assets at `opencyber.academy`. The maintainer validates and deploys directly from an authorized local computer; GitHub Actions are not used | [`web/scripts/deploy-local.sh`](web/scripts/deploy-local.sh) and [deployment guide](web/README.md#publish-from-an-authorized-local-computer) |
 
-**Lesson synchronization:** edit the relevant lesson in its public `MANUSCRIPT.md` and push the change to `main`. The site and public MCP fetch that book again for the course guide, individual lesson and full-book reader, so the changed lesson appears on CyKin without a manual copy or site rebuild. The site keeps written chapters accessible while their daily lessons are being expanded; unpublished slots are labeled as plans. Changes to the site code, course list or static catalog require the documented local deployment.
+**Lesson synchronization:** edit the relevant lesson in its public `MANUSCRIPT.md` and push the change to `main`. The site and public MCP fetch that book again for the course guide, individual lesson and full-book reader, so the changed lesson appears on OpenCyber Academy without a manual copy or site rebuild. The site keeps written chapters accessible while their daily lessons are being expanded; unpublished slots are labeled as plans. Changes to the site code, course list or static catalog require the documented local deployment.
 
 This architecture keeps the Markdown books as the canonical public source while giving human readers and AI clients stable site routes. The [web application README](web/README.md) contains local development, deployment and endpoint details. The [daily curriculum grid](CURRICULUM_GRID.md) sets minimum baselines of 20 weekday lessons for the rapid month, 130 for six months and 1,300 for five-year engineering. **These are not caps or current completion counts.** A chapter or course may grow as much as sound teaching requires; English books are written and reviewed first, then translated and reviewed edition by edition.
 
@@ -166,7 +166,7 @@ This architecture keeps the Markdown books as the canonical public source while 
 
 **Public lessons in three languages:** [open the English, Portuguese and Spanish lesson coverage table](LANGUAGE_LESSON_PROGRESS.md). It links each existing book or its plan and counts authored chapters, explicit examples, exercises, navigation and diagrams separately. A public manuscript is readable now; books with pending technical, language or A4 review are identified by the [publication gate](BOOK_STANDARD.md).
 
-**Incident Response book-length checkpoints:** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): reported A4 preflight **386 pages** for source SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492` · [Professional](levels/professional-6-months/incident-response-resilience/README.md): **177 pages** for SHA-256 `b037a81ba152b2b7f2dfa8ecfb8cf84f432d7a7653809805933f59d5b57439cb` · [Technical](levels/technical-18-months/incident-response-resilience/README.md): A4 stale after the rename; previous render 124 pages · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): A4 stale after the rename; previous render 122 pages. These length checkpoints are not completion percentages; technical and editorial review still govern book approval.
+**Incident Response book-length checkpoints (13 October 2026):** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): **387 A4 pages** · [Professional](levels/professional-6-months/incident-response-resilience/README.md): **177** · [Technical](levels/technical-18-months/incident-response-resilience/README.md): **141** · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): **130**. Source hashes and the other measured books appear in the [course table](COURSE_WRITING_PROGRESS.md). These are measured lengths, not approved completions.
 
 **Incident Response teaching:** The [single public English rapid book](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) retains the correction units and [HOLD2 review](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ir-rapid-ch02-hold2-binding). Its four weekly chapters contain 20 authored daily lessons. The [daily index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) gives the actual reading order. A scoped teaching integration does not approve the entire volume or another language edition.
 
@@ -252,7 +252,7 @@ Each linked percentage opens one course page with its nine language editions, on
 
 The [rapid Incident Response English book](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) is the first course reorganized into the weekday model: **four weekly chapters, 20 authored daily lessons**, EX001–EX050 and 50 matching worked answers in one final appendix. Its [lesson index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) assigns exercises and links every lesson to the next. Modules preserve the original 1.x–4.x technical section identifiers and the R1–R24 fictional case release boundaries; the daily lesson numbers run 01–20. The diagrams, offline laboratories and source readings remain within the same public book. This is a published book for study, with whole-volume technical, source, rights, accessibility and editorial review still pending. The other Incident Response books remain in their actual published state; the [course writing table](COURSE_WRITING_PROGRESS.md) reports their legacy module coverage, not their weekday lesson completion.
 
-**Recorded A4 length check:** The four-chapter, 20-lesson source (SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`) rendered to **386 A4 pages** on 13 October 2026 with the private Engine's Chrome renderer. That measurement applies only to the stated source hash; it is not a new measurement of later edits. It does not complete the layout, technical, source, rights, accessibility or editorial review required by the [book gate](BOOK_STANDARD.md).
+**Recorded A4 length check:** The rapid book source at SHA-256 `6272943619f307dfae9fb20c832bc9a63528d504354fb0a00c1399461f40f2d2` rendered to **387 A4 pages** on 13 October 2026 using the private Engine Chrome renderer. This verifies length for that exact hash only; technical, source, rights, accessibility and editorial review remain required by the [book gate](BOOK_STANDARD.md).
 
 ### Open the first instructional week
 
@@ -274,11 +274,11 @@ Read each lesson's worked example before attempting its practice. Then compare t
 
 ## Existing projects
 
-**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyKin academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyKin course.
+**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 OpenCyber Academy academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed OpenCyber Academy course.
 
 ### Learning platform · 1
 
-- [CyKin](https://github.com/hiagokinlevi/CyKin) — public curriculum, study plans, books, and learner materials.
+- [OpenCyber Academy](https://github.com/hiagokinlevi/OpenCyberAcademy) — public curriculum, study plans, books, and learner materials.
 
 ### Original security software · 13
 
@@ -292,7 +292,7 @@ Read each lesson's worked example before attempting its practice. Then compare t
 
 ### Study routes from the original projects
 
-Each original project links to a related CyKin course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
+Each original project links to a related OpenCyber Academy course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
 
 | Project | Related course |
 |---|---|

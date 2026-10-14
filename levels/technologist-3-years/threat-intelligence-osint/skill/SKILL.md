@@ -1,5 +1,5 @@
 ---
-name: cykin-threat-intelligence-osint-technologist-73ec917a
+name: oca-threat-intelligence-osint-technologist-73ec917a
 description: "Teach the three-year technologist threat intelligence and OSINT course: thirty subjects following a synthetic municipal IT work-study student, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [série 
 
 ## Capítulo 1 — O que são a segurança de TO, de IoT e ciberfísica
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -88,7 +88,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -155,19 +155,19 @@ Essas definições se sobrepõem; as organizações as usam de maneiras diferent
 
 TO, IoT e SCF unem a computação a equipamentos físicos; numa usina de energia, a segurança física e a integridade dos comandos vêm primeiro.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 04
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Ativos, redes e exposição
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX014.
@@ -219,7 +219,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -309,19 +309,19 @@ Uma lista feita a partir de registros pode deixar dispositivos de fora; as visto
 
 Conheça cada dispositivo, corrija senhas padrão e firmware antigo por meio de trabalho planejado, separe as zonas e mantenha o acesso remoto estreito.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 04
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Reconhecer e relatar problemas
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX027.
@@ -378,7 +378,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -469,19 +469,19 @@ A maioria dos eventos inesperados é engano ou falha; relate-os mesmo assim. Os 
 
 Escreva o normal, perceba o que não se encaixa, descreva-o com clareza usando nomes compartilhados e relate-o sem tocar em nada.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 04
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Hábitos seguros, noções de resposta e próximos passos
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX039.
@@ -528,7 +528,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -594,13 +594,13 @@ Esses hábitos reduzem o risco, mas não conseguem eliminá-lo. Os procedimentos
 
 Bons hábitos, uma resposta praticada, respeito aos limites de segurança física e legais e o estudo contínuo protegem as instalações de TO.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 04
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

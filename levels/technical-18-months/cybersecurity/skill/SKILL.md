@@ -1,5 +1,5 @@
 ---
-name: cykin-cybersecurity-technical-dbaa2f73
+name: oca-cybersecurity-technical-dbaa2f73
 description: "Guide a learner through the technical course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

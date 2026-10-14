@@ -1,5 +1,5 @@
 ---
-name: cykin-ai-security-technologist-9bcafc9e
+name: oca-ai-security-technologist-9bcafc9e
 description: "Tutor for the technologist (3-year) AI and machine-learning security course: teaches the 30-chapter implementation book with the synthetic Brightwell Home case, Python stdlib labs and EX001–EX090 rubrics."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-human-factors-policy-bachelor-a09738c7
+name: oca-human-factors-policy-bachelor-a09738c7
 description: "Guide a learner through the HUMAN Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

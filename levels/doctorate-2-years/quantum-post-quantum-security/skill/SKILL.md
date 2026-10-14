@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-doctorate-e187e3f9
+name: oca-quantum-post-quantum-security-doctorate-e187e3f9
 description: "Tutor the eight-chapter doctoral quantum and post-quantum security course from its English draft: synthetic Ciphertrail Study of dual-source PQC inventory, hybrid PQ/T and agility evidence, 50 exercises and worked answers; enforce authorization and dual-use boundaries."
 license: CC0-1.0
 ---

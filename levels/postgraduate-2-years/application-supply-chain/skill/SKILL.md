@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-postgraduate-8283df86
+name: oca-application-supply-chain-postgraduate-8283df86
 description: "APP postgraduate course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

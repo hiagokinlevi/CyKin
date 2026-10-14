@@ -1,5 +1,5 @@
 ---
-name: cykin-human-factors-policy-masters-95bbeaf1
+name: oca-human-factors-policy-masters-95bbeaf1
 description: "Guide a learner through the HUMAN Master's Course draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

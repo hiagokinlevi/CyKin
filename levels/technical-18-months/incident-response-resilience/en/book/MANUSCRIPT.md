@@ -41,7 +41,7 @@ The worked-results appendix contains EX001–EX072, four per authored chapter. S
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -103,7 +103,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -221,19 +221,19 @@ Now create a graph **variant**, adding an owner-unconfirmed fallback that lets t
 
 A response begins with a service and a falsifiable graph, not an alert label. The offline closure shows what the **model predicts**; the owner and source checks determine what actually happened. Chapter 2 adds protocol and network evidence so a responder can distinguish a broken path from a guessed cause.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 18
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -295,7 +295,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -395,19 +395,19 @@ Produce a four-line decision note: supplied observation; source/coverage conditi
 
 The trace tells us **where an observed request got**, not who caused a failure. By preserving layer, source and time, the responder can request a narrower discriminator than “collect all traffic.” Chapter 3 adds process and identity evidence, where a matching account name can be as misleading as a matching timestamp.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 18
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -469,7 +469,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -565,19 +565,19 @@ Before Chapter 4, state the data-handling consequence: a missing session value m
 
 Host, identity and application records answer different questions. A shared label and close timestamps are starting points for an investigation, not a validated session-to-request edge or a human identity. Chapter 4 adds schema and parser checks so later source comparisons do not quietly discard malformed or ambiguous records.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 18
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -634,7 +634,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -764,19 +764,19 @@ The L4 check order has a subtle effect: an ID enters the seen set **only after i
 
 A parser is part of the evidence chain. It can make source limits visible or erase them. L4 has two accepted and three rejected rows, yet none is a new main-case observation. Chapter 5 takes that separation into authorization, raw-byte preservation and collection receipts.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 18
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -838,7 +838,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -936,19 +936,19 @@ For a proposed r-202 mapping request, compare two paper scopes. Request A asks f
 
 Authority controls what may be collected; provenance controls what may be claimed; a digest controls only a defined byte comparison. A technically clean result can still be outside scope or epistemically weak. Chapter 6 will use these distinctions to model service impact and compare response choices without executing them.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 18
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Response system models and service dependencies
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -1000,7 +1000,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -2315,19 +2315,19 @@ Write a short incident-analysis statement that distinguishes:
 
 Route-level models expose where a blanket action can hurt legitimate users. L6's predicted impact is conditional on invented route assumptions; no control has been approved or executed. Chapter 7 asks which event sources could verify those assumptions and which records might disappear first.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 18
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Event-source mapping and log retention
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -2379,7 +2379,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2456,19 +2456,19 @@ Suppose a later **separate L7 test** has a known synthetic control event at 12:0
 
 Source selection is a technical and authorization decision. The expiry script makes assumptions inspectable; it does not create or extend access. Chapter 8 will use source limits and uncertain clock ordering to compare a network fault, identity denial, host restart and maintenance without inventing a culprit.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 18
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Identity, host and network failure modes
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -2520,7 +2520,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2606,19 +2606,19 @@ A **negative-control variant V8** changes only F82: the IdP custodian now suppli
 
 The packet supports several explanations, each with a different discriminator. Technical response requires source-specific, time-bounded and authorized tests; no code output, status code or calendar entry by itself assigns cause or actor. Chapter 9 starts a separate linked K workshop to practice evidence collection before any change proposal.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 18
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Host and network evidence collection methods
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -2670,7 +2670,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -2746,19 +2746,19 @@ Two negative controls keep the reasoning honest. First, compare a known in-range
 
 Collection starts with a decision and a permitted scope. K9 supplies two byte strings and four producer claims, not a certified incident package. The result is a collection plan and classroom receipt; the reservation outcome remains unknown. Chapter 10 will ask which reversible control could be considered **if** a harmful action is confirmed and authority is granted.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 18
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Containment control configuration in a lab
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -2805,7 +2805,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -2874,19 +2874,19 @@ The ticket should retain a pre-change baseline, who approved the exact version, 
 
 An isolated predicate can make a control's intended scope explicit, but only a source-linked trigger, authorized deployment and service-aware tests can support a real response decision. K10 leaves all real approvals and executions pending. Chapter 11 will examine whether cross-source times and retained bytes could reliably order the claims that would feed such a decision.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 18
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Clock-offset and record-integrity verification
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -2938,7 +2938,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -3026,19 +3026,19 @@ An analyst may create a version 2 timeline when better measurements arrive. Vers
 
 Time conversion and byte comparison are repeatable operations, but they answer only precisely stated questions. K11 does not certify three producer clocks or create a transaction join. Chapter 12 will preserve the raw objects, their validation results and the corrected view in a single inspectable package.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 18
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Laboratory: ingest and preserve synthetic incident records
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -3090,7 +3090,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -3202,19 +3202,19 @@ If an intake tool crashes after the first bad row, later records may be lost. If
 
 K12 produces four accepted and two rejected source rows while retaining three raw objects and one derived view. It does not authenticate the producer, order the events causally or prove a reservation commit. Chapter 13 uses that precise boundary to read two apparently contradictory alerts.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 18
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Troubleshooting conflicting alerts and missing telemetry
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -3266,7 +3266,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes and connection
@@ -3338,19 +3338,19 @@ If a validated producer mapping later proves A1 and I1 belong to the same s-7 na
 
 The K13 alerts report different predicates over a limited and partly rejected record set. They can both be true without settling the reservation outcome. The technical job is to trace each claim through producer, parser, query, rule and business source, then preserve the unresolved branches. Chapter 14 turns these limited inputs into a bounded, reproducible review packet.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 18
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Scripted triage with bounded inputs and audit logs
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -3397,7 +3397,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes and connection
@@ -3496,19 +3496,19 @@ The human review point asks four questions: do the accepted records still match 
 
 The safe product of K14 is a deterministic, reviewable packet with explicit exceptions. Its highest value is exposing the gap between literal flags and an incident decision. Chapter 15 joins partial views while keeping the same provenance and uncertainty boundaries.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 18
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Cross-service incident timeline integration
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -3555,7 +3555,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes and connection
@@ -3618,19 +3618,19 @@ A case handoff needs a version number. If a custodian later supplies a DB row, a
 
 A sorted list is not a causal narrative. K15 gains value by recording the quality of each join, rejected rows and source clocks, then specifying the next owner-approved observation. Chapter 16 turns such a bounded narrative into a procedure another operator can execute or reject safely.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 18
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -3677,7 +3677,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes and connection
@@ -3743,19 +3743,19 @@ The variant reaches READY_FOR_OPERATOR **only in the toy state machine**; it has
 
 Technical documentation is part of the control system: it makes unsafe assumptions visible before they become service changes. K16 ends with a proposed runbook and a stop-state, not a production action. Chapter 17 uses the same acceptance conditions to compare alternatives in an isolated laboratory.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 18
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Laboratory: compare containment and restoration options
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -3807,7 +3807,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes and connection
@@ -3889,19 +3889,19 @@ The work is not finished when a rule is removed or a snapshot boots. The worker'
 
 K17 makes the test outcomes and unknowns comparable while refusing to score away a mandatory failure. A hold, a lab pass and a production-verification result are different states. Chapter 18 asks the learner to build a supervised case dossier from staged evidence and hand it to a new operator.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 18
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical incident case and handoff
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -3963,7 +3963,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes and connection
@@ -4017,13 +4017,13 @@ The course's 18 subject drafts and 72 worked exercises form an initial technical
 
 A technical responder finishes a handoff by making uncertainty usable: another operator knows what was seen, which copy was checked, what was rejected, who may decide, what changed and what to test next. This closes the authored chapter sequence, while substantial expansion and editorial validation remain before the book can be published as complete.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 18
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

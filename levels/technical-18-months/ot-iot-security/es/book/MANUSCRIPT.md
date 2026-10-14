@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Qué es la tecnología operacional en una línea de envasado
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -83,7 +83,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -131,7 +131,7 @@ La seguridad de la TO en una línea parte de la consecuencia física: las person
 
 ## Capítulo 2 — Primero la seguridad: permisos de trabajo, consecuencias y quién decide
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX005.
@@ -183,7 +183,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -235,7 +235,7 @@ Los controles de seguridad funcional son intocables, los permisos dejan constanc
 
 ## Capítulo 3 — Nociones básicas de redes en la línea
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX009.
@@ -292,7 +292,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -348,7 +348,7 @@ Las direcciones, las VLAN y las reglas del cortafuegos deciden quién puede comu
 
 ## Capítulo 4 — Protocolos industriales al nivel del operador
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX013.
@@ -400,7 +400,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -452,7 +452,7 @@ Los protocolos industriales transportan valores del proceso con poca o ninguna a
 
 ## Capítulo 5 — Mantener un registro de activos
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX017.
@@ -509,7 +509,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -593,7 +593,7 @@ Un registro completo, actualizado y protegido es la base sobre la que se apoya c
 
 ## Capítulo 6 — Cuentas y contraseñas en las HMI y las herramientas de ingeniería
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX021.
@@ -650,7 +650,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -706,7 +706,7 @@ Las cuentas nominativas, las credenciales predeterminadas cambiadas y el uso lim
 
 ## Capítulo 7 — Soportes extraíbles y portátiles
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX025.
@@ -758,7 +758,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -812,7 +812,7 @@ Todo archivo que entra en la línea sigue un camino analizado, registrado y cont
 
 ## Capítulo 8 — Acceso remoto de los proveedores
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX029.
@@ -864,7 +864,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -916,7 +916,7 @@ El acceso de los proveedores pasa por una sola pasarela, con cuentas nominativas
 
 ## Capítulo 9 — Leer registros y alarmas
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX033.
@@ -973,7 +973,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1059,7 +1059,7 @@ Las pistas de seguridad están en los registros de inicios de sesión y de cambi
 
 ## Capítulo 10 — Parches y avisos de seguridad
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX037.
@@ -1116,7 +1116,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1172,7 +1172,7 @@ Los avisos se cotejan con el registro, se mitigan rápidamente y el parche se ap
 
 ## Capítulo 11 — Copias de seguridad y restauración
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX041.
@@ -1234,7 +1234,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1315,7 +1315,7 @@ Las copias se guardan sin conexión, etiquetadas, con su hash y con restauracion
 
 ## Capítulo 12 — Segmentación y reglas del cortafuegos
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX045.
@@ -1372,7 +1372,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje
@@ -1428,7 +1428,7 @@ Las zonas se separan mediante conductos documentados y con responsable; las regl
 
 ## Capítulo 13 — Dispositivos IoT en la planta de fabricación
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa de la lección
 
 Lección 13 publicada. Mapa, ejemplo, EX049.
@@ -1480,7 +1480,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Resultados de aprendizaje
@@ -1532,7 +1532,7 @@ La IoT de la planta se contrasta con una base, se aísla para que solo tenga lo 
 
 ## Capítulo 14 — Reconocer el comportamiento anómalo
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa de la lección
 
 Lección 14 publicada. Mapa, ejemplo, EX053.
@@ -1589,7 +1589,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Resultados de aprendizaje
@@ -1645,7 +1645,7 @@ Conocer lo normal permite advertir lo anómalo; responda por la seguridad y la e
 
 ## Capítulo 15 — Notificar un incidente y primeras acciones
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa de la lección
 
 Lección 15 publicada. Mapa, ejemplo, EX057.
@@ -1702,7 +1702,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Resultados de aprendizaje
@@ -1758,7 +1758,7 @@ Primero la seguridad; después, hechos registrados, evidencia preservada y llama
 
 ## Capítulo 16 — Recuperación y vuelta a la producción
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa de la lección
 
 Lección 16 publicada. Mapa, ejemplo, EX061.
@@ -1820,7 +1820,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Resultados de aprendizaje
@@ -1880,7 +1880,7 @@ Recupere en orden, verifique antes de volver a arrancar, vigile después y convi
 
 ## Capítulo 17 — Gestión de cambios y documentación
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa de la lección
 
 Lección 17 publicada. Mapa, ejemplo, EX065.
@@ -1937,7 +1937,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Resultados de aprendizaje
@@ -1993,7 +1993,7 @@ Los cambios solicitados, revisados, reversibles y registrados mantienen la líne
 
 ## Capítulo 18 — Proyecto final: un recorrido de seguridad por la línea
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa de la lección
 
 Lección 18 publicada. Mapa, ejemplo, EX069.
@@ -2055,7 +2055,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Resultados de aprendizaje

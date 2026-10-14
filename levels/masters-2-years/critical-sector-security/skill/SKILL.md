@@ -1,5 +1,5 @@
 ---
-name: cykin-critical-sector-security-masters-ffbd9620
+name: oca-critical-sector-security-masters-ffbd9620
 description: "Tutor the eight-chapter master's Critical Infrastructure and Sector Security course (applied research design and the dissertation) from its English draft, synthetic Spillover Study, offline labs, 50 exercises and worked answers; enforce ethics, safety and infrastructure-information boundaries."
 license: CC0-1.0
 ---

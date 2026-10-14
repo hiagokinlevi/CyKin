@@ -1,10 +1,10 @@
 # Connected public projects
 
-**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyKin academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyKin course.
+**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 OpenCyber Academy academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed OpenCyber Academy course.
 
 ### Learning platform · 1
 
-- [CyKin](https://github.com/hiagokinlevi/CyKin) — public curriculum, study plans, books, and learner materials.
+- [OpenCyber Academy](https://github.com/hiagokinlevi/OpenCyberAcademy) — public curriculum, study plans, books, and learner materials.
 
 ### Original security software · 13
 
@@ -18,7 +18,7 @@
 
 ### Study routes from the original projects
 
-Each original project links to a related CyKin course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
+Each original project links to a related OpenCyber Academy course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
 
 | Project | Related course |
 |---|---|

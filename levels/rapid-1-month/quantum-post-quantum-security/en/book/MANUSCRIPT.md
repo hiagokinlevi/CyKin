@@ -36,7 +36,7 @@ Primary sources were checked on 12 October 2026: NIST [FIPS 203](https://doi.org
 
 ## Chapter 1 — Quantum and post-quantum security: foundations and decisions
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -98,7 +98,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -205,7 +205,7 @@ Quantum computers, if built at scale, would break today's methods for agreeing k
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX014.
@@ -267,7 +267,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -355,7 +355,7 @@ Safe practice starts with permission and a clear scope, collects only what is ne
 
 ## Chapter 3 — Quantum and post-quantum security: systems, data and dependencies
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX027.
@@ -417,7 +417,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -541,7 +541,7 @@ Mapping services, data lifetimes and who controls each service, with sourced fac
 
 ## Chapter 4 — Quantum and post-quantum security: guided lab and applied synthesis
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX040.
@@ -603,7 +603,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Public reference · CyKin" description="Read public CyKin course references on the site.">
+<BaseLayout title="Public reference · OpenCyber Academy" description="Read public OpenCyber Academy course references on the site.">
   <section class="reference-heading"><div class="shell"><div class="eyebrow">OPEN REFERENCE</div><h1 id="reference-title">Course reference</h1><p id="reference-status" role="status">Loading the document…</p><a class="button secondary" href="/levels/">Browse courses →</a></div></section>
   <section class="section"><article id="reference-content" class="shell card prose reference-content"></article></section>
   <script>
@@ -24,7 +24,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const lang = path.match(/\/(en|pt|es|he|fr|ru|de|zh|ja)\//)?.[1] || document.documentElement.lang.slice(0,2) || 'en';
         await renderMarkdown(document.getElementById('reference-content')!, markdown, sourceUrlFor(path), lang, 'reference');
         document.getElementById('reference-title')!.textContent = path.split('/').at(-1)!.replace('.md','').replaceAll('_',' ');
-        status.textContent = 'Public document · linked course references open within CyKin.';
+        status.textContent = 'Public document · linked course references open within OpenCyber Academy.';
         if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
       } catch (error) { status.textContent = String(error); }
     }

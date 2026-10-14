@@ -40,7 +40,7 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 ## Chapter 1 — Mathematical reasoning
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -102,7 +102,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -191,7 +191,7 @@ Use rates with clear denominators, show working and question numbers that compar
 
 ## Chapter 2 — Computing systems
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -253,7 +253,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -334,7 +334,7 @@ Understanding layers and service chains tells analysts where events originate an
 
 ## Chapter 3 — Programming I
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -396,7 +396,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -477,7 +477,7 @@ Small, tested, readable programs answer questions dashboards cannot, as long as 
 
 ## Chapter 4 — Academic writing
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -539,7 +539,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -620,7 +620,7 @@ Academic writing pairs every claim with evidence, cites honestly and keeps claim
 
 ## Chapter 5 — Security literacy
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -682,7 +682,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -763,7 +763,7 @@ Security literacy lets everyone recognise threats and helps the SOC by reporting
 
 ## Chapter 6 — Discrete structures
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -825,7 +825,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -906,7 +906,7 @@ Sets, logic and graphs give precise meaning to compromise candidates and campaig
 
 ## Chapter 7 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -968,7 +968,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1049,7 +1049,7 @@ Protocol knowledge turns network logs into evidence, provided geolocation and vi
 
 ## Chapter 8 — Programming II
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -1111,7 +1111,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1196,7 +1196,7 @@ Structured, tested tools built on the standard library make SOC analysis repeata
 
 ## Chapter 9 — Data and databases
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -1258,7 +1258,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1355,7 +1355,7 @@ Tables and SQL answer investigation questions quickly when data is clean and han
 
 ## Chapter 10 — Ethics and authorized practice
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -1417,7 +1417,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1498,7 +1498,7 @@ Ethical SOC practice means acting within authority, protecting privacy, declarin
 
 ## Chapter 11 — Operating systems
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1560,7 +1560,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1637,7 +1637,7 @@ Operating systems produce useful security events only when configured and forwar
 
 ## Chapter 12 — Probability and statistics
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1699,7 +1699,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1795,7 +1795,7 @@ Statistics compare behaviour with each account's own normal; thresholds must res
 
 ## Chapter 13 — Identity and access
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1857,7 +1857,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1938,7 +1938,7 @@ Identity is central to campus security; lifecycle, MFA and identity signals shap
 
 ## Chapter 14 — Privacy foundations
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -2000,7 +2000,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -2085,7 +2085,7 @@ Privacy principles shape what a SOC collects, how long it keeps it and how it ha
 
 ## Chapter 15 — Evidence and measurement
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -2147,7 +2147,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -2232,7 +2232,7 @@ Preserve evidence with integrity, measure consistently and keep observations sep
 
 ## Chapter 16 — Security architecture
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -2294,7 +2294,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -2375,7 +2375,7 @@ Architecture defines zones and boundaries; monitoring belongs where trust change
 
 ## Chapter 17 — Cryptography concepts
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -2437,7 +2437,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -2518,7 +2518,7 @@ Cryptography underpins authentication, email trust and evidence integrity, but i
 
 ## Chapter 18 — Research methods I
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -2580,7 +2580,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -2661,7 +2661,7 @@ Research methods turn SOC puzzles into questions, chosen methods and ethical, pi
 
 ## Chapter 19 — Security operations and blue team: scope and theory
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -2723,7 +2723,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -2804,7 +2804,7 @@ Security operations theory frames SOC functions, frameworks and maturity, which 
 
 ## Chapter 20 — Security operations and blue team: foundational cases
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -2866,7 +2866,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2947,7 +2947,7 @@ Cases reveal recurring decision points and delays; their lessons guide improveme
 
 ## Chapter 21 — Security operations and blue team: system models
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -3009,7 +3009,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -3086,7 +3086,7 @@ Modelling the SOC as a system shows where time is lost and which changes matter 
 
 ## Chapter 22 — Security operations and blue team: data and dependencies
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -3148,7 +3148,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -3229,7 +3229,7 @@ Know every source, its quality and dependencies, and watch source health so gaps
 
 ## Chapter 23 — Security operations and blue team: methods I
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -3291,7 +3291,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -3385,7 +3385,7 @@ Group identity failures to reveal patterns, choose responses by pattern, and ada
 
 ## Chapter 24 — Security operations and blue team: controls
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -3447,7 +3447,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -3528,7 +3528,7 @@ Pair detections with preventive and responsive controls, test them, and watch fo
 
 ## Chapter 25 — Laboratory I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -3590,7 +3590,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -3687,7 +3687,7 @@ Scored queues keep triage orderly; documented judgement handles what the score c
 
 ## Chapter 26 — Security operations and blue team: methods II
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -3749,7 +3749,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -3830,7 +3830,7 @@ Correlation combines weak signals into strong ones, but windows, delays and depe
 
 ## Chapter 27 — Security operations and blue team: verification
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -3892,7 +3892,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -3990,7 +3990,7 @@ Verify each rule with safe tests and count only tested rules as coverage.
 
 ## Chapter 28 — Security operations and blue team: failure analysis
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -4052,7 +4052,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -4133,7 +4133,7 @@ Blameless failure analysis turns timelines and contributing factors into owned a
 
 ## Chapter 29 — Security operations and blue team: operations
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -4195,7 +4195,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -4280,7 +4280,7 @@ SOC operations combine clear shifts, encouraged escalation, learning paths and a
 
 ## Chapter 30 — Laboratory II
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -4342,7 +4342,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -4439,7 +4439,7 @@ Testing against known cases exposes timing assumptions; fix them and record the 
 
 ## Chapter 31 — Security operations and blue team: advanced cases
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX091.
@@ -4501,7 +4501,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -4582,7 +4582,7 @@ Complex cases need competing explanations, cross-team evidence and honest report
 
 ## Chapter 32 — Security operations and blue team: interdisciplinary interfaces
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX094.
@@ -4644,7 +4644,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX094]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -4725,7 +4725,7 @@ SOC work succeeds through other disciplines; translate findings, respect their d
 
 ## Chapter 33 — Research methods II
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX097.
@@ -4787,7 +4787,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -4872,7 +4872,7 @@ Analyse mixed data carefully, triangulate with logs and report findings with hon
 
 ## Chapter 34 — Comparative project
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX100.
@@ -4934,7 +4934,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX100]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -5019,7 +5019,7 @@ Fair comparisons use shared criteria and comparable evidence, and lead to balanc
 
 ## Chapter 35 — Capstone proposal
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX103.
@@ -5081,7 +5081,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX103]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -5166,7 +5166,7 @@ A capstone proposal links a real need to measurable aims, safe tests and approve
 
 ## Chapter 36 — Field or community practice
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX106.
@@ -5228,7 +5228,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX106]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -5309,7 +5309,7 @@ Community practice adapts SOC thinking to small organisations through simple con
 
 ## Chapter 37 — Evidence review seminar
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX109.
@@ -5371,7 +5371,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX109]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -5456,7 +5456,7 @@ Evidence review seminars sharpen claims, expose gaps and improve projects before
 
 ## Chapter 38 — Capstone implementation
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX112.
@@ -5518,7 +5518,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX112]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -5599,7 +5599,7 @@ Implement with tests, change control and monitor-only stages, adjusting rules fr
 
 ## Chapter 39 — Capstone evaluation
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX115.
@@ -5661,7 +5661,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX115]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -5761,7 +5761,7 @@ Evaluate against each requirement with intervals and honest caveats, and turn mi
 
 ## Chapter 40 — Thesis and presentation
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX118.
@@ -5823,7 +5823,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX118]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes

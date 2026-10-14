@@ -8,7 +8,7 @@
 - Referências antigas a GitHub Actions em outros arquivos são legado e não anulam esta política.
 <!-- /local-deploy-policy-2026-10-12 -->
 
-# CyKin reader guidance for AI agents
+# OpenCyber Academy reader guidance for AI agents
 
 Start at the [home page](README.md). The [study path](STUDY_PATH.md) orders courses 001–207; then use the selected edition's current `SUBJECTS.md` rows from Lesson 01 to its last authored daily lesson, within weekly chapters where available, following **Next step** into the next course in the same language. The path's historic global ranges count legacy module positions, not weekday lessons. The [level index](levels/README.md) supports browsing, and the [AI guide](AI_GUIDE.md) explains the route. Each course links its planned language editions, one [course skill index](SKILLS.md), chapter index, book plan, authored manuscript when present, and [supplementary playbooks](playbooks/README.md).
 

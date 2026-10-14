@@ -1,5 +1,5 @@
 ---
-name: cykin-identity-access-professional-38f23810
+name: oca-identity-access-professional-38f23810
 description: "IAM Professional Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

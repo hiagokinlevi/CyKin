@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-postgraduate-339ffa34
+name: oca-network-communications-postgraduate-339ffa34
 description: "NET Postgraduate Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

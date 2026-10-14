@@ -35,7 +35,7 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 
 ## Capítulo 1 — Sistemas computacionais
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -87,7 +87,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -137,19 +137,19 @@ Cada erro tem um exemplo na KLS. Um desenvolvedor que propõe "corrigir" o bootl
 
 A criptografia vive em todas as camadas, e a camada determina quem pode mudá-la e com que rapidez. Os computadores quânticos ameaçam a troca de chaves e as assinaturas de chave pública, não a cifragem simétrica nem os hashes.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 30
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX003.
@@ -201,7 +201,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX003]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -253,19 +253,19 @@ A troca de chaves híbrida muda apenas a extensão do key share; o certificado e
 
 Cada canal seguro separa o estabelecimento de chaves da autenticação. A troca de chaves híbrida é padronizada para o TLS, está disponível no SSH e é especificada para o IKEv2; ela aumenta os handshakes e pode expor middleboxes antigos.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 30
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fundamentos de programação
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX005.
@@ -322,7 +322,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -388,19 +388,19 @@ Antes de chamar qualquer API criptográfica, leia o que ela promete: qual conjun
 
 Os scripts de implementação precisam tratar bytes e comprimentos com exatidão, usar aleatoriedade segura e comparação em tempo constante, e ser testados tanto na falha quanto no sucesso.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 30
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX007.
@@ -457,7 +457,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -528,19 +528,19 @@ O acesso ao modelo também importa. Um mapa completo de quais serviços ainda us
 
 Um inventário relacional com proveniência e tempos de vida transforma o planejamento da migração em consultas que podem ser executadas de novo sempre que o parque mudar.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 30
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX009.
@@ -597,7 +597,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX009]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -657,19 +657,19 @@ Mantenha a disponibilidade em toda definição de pronto: uma tarefa não está 
 
 Os implementadores precisam pesar os ganhos de confidencialidade e de autenticidade contra o risco de disponibilidade, e distinguir os padrões ligados ao tempo de colher agora, decifrar depois e de forjar depois.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 30
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX011.
@@ -726,7 +726,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -786,19 +786,19 @@ A KLS mediu o atraso no seu registro: idade mediana das imagens base de 140 dias
 
 Os sistemas operacionais fornecem provedores criptográficos, mas os contêineres e os binários compilados trazem os seus próprios; o trabalho de implementação segue as bibliotecas até as imagens e os toolchains.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 30
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX013.
@@ -855,7 +855,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -915,19 +915,19 @@ Os administradores da KLS hoje confiam nas chaves de host por meio de entradas i
 
 As assinaturas sustentam a autenticação no SSO, no mTLS, no SSH e na assinatura de código. A identidade pós-quântica começa pelas raízes internas e pela assinatura de longa duração, depois que os repositórios de confiança estiverem preparados.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 30
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX015.
@@ -984,7 +984,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1044,19 +1044,19 @@ A KLS acrescenta as cinco perguntas ao seu modelo de revisão de projeto. No pri
 
 Os diagramas anotados revelam cada ponto de terminação como uma negociação separada; os recursos de agilidade permitem que os implementadores mudem todos eles a partir de um só lugar.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 30
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidências e medição
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX017.
@@ -1113,7 +1113,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1173,19 +1173,19 @@ Publique também uma métrica de "desconhecidos" ao lado de cada métrica de cob
 
 As medições são tão boas quanto as suas fontes, os seus denominadores e a sua cobertura; os implementadores reportam números com escopo e com os pontos cegos visíveis.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 30
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Segurança quântica e pós-quântica: orientação
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX019.
@@ -1242,7 +1242,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1331,19 +1331,19 @@ Para a KLS, isso significa ML-DSA para a AC interna e a assinatura de versões, 
 
 As normas do NIST definem as substituições; o ML-KEM é um KEM sobre reticulados de módulo, com três conjuntos de parâmetros. Os implementadores configuram implementações verificadas, nunca constroem as suas próprias.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 30
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Segurança quântica e pós-quântica: ativos e contexto
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX021.
@@ -1400,7 +1400,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1458,19 +1458,19 @@ Cada erro distorceu o primeiro registro da KLS. As varreduras de rede encontrara
 
 Um registro de ativos com níveis e donos, com mecanismos de mudança e estimativas do tempo de migração, permite que os implementadores apliquem a desigualdade de Mosca onde ela importa: encolhendo o *y* dos serviços de nível 1.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 30
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Segurança quântica e pós-quântica: fluxos de dados
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX023.
@@ -1527,7 +1527,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX023]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1609,19 +1609,19 @@ As arquiteturas mudam mais rápido do que os diagramas. Refaça o rastreamento d
 
 Os rastreamentos de ponta a ponta e uma CBOM de várias fontes mostram o algoritmo e o controlador de cada segmento; os desconhecidos e os segmentos externos se tornam pedidos explícitos.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 30
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Segurança quântica e pós-quântica: cenários de risco
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX025.
@@ -1678,7 +1678,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1738,19 +1738,19 @@ Revise a lista de cenários depois de cada incidente e de cada grande mudança d
 
 Os cenários implementáveis cobrem os riscos quânticos e de migração, com detecção, controles e testes; o recuo silencioso merece atenção especial porque nada quebra de forma visível.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 30
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Segurança quântica e pós-quântica: métodos I
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX027.
@@ -1807,7 +1807,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1886,19 +1886,19 @@ Os servidores são só metade da negociação. Os clientes escolhem quais key sh
 
 A troca de chaves híbrida concatena e deriva os segredos para que qualquer um dos componentes proteja a sessão. No TLS 1.3, ela é um único grupo configurável; a ordem e o suporte do cliente decidem se ela é usada.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 30
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Segurança quântica e pós-quântica: laboratório guiado
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX029.
@@ -1955,7 +1955,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -2046,19 +2046,19 @@ Por fim, compartilhe o laboratório. Um laboratório que outras equipes podem cl
 
 Laboratórios isolados e reproduzíveis, com testes de resposta conhecida, testes negativos e controles negativos, produzem evidências de que as configurações funcionam como pretendido.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 30
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Segurança quântica e pós-quântica: métodos II
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX031.
@@ -2115,7 +2115,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -2194,19 +2194,19 @@ Os fornecedores de HSM acrescentam algoritmos pós-quânticos em versões de fir
 
 A migração das assinaturas troca tamanho, velocidade, estado e premissas. Os implementadores começam pela PKI interna e pela assinatura de longa duração, depois de confirmar o suporte dos HSMs e das partes confiantes.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 30
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Segurança quântica e pós-quântica: ferramentas
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX033.
@@ -2263,7 +2263,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -2350,19 +2350,19 @@ Sempre que possível, prefira ferramentas passivas e baseadas em configuração 
 
 As ferramentas veem fatias diferentes; os implementadores as validam contra configurações conhecidas, verificam a preferência além da presença e as usam dentro do escopo autorizado.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 30
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Segurança quântica e pós-quântica: controles
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX035.
@@ -2424,7 +2424,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX035]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -2492,19 +2492,19 @@ A mudança do SFTP da KLS seguiu esse caminho: um aviso aos parceiros com um end
 
 Os controles de troca de chaves, de dados e de chaves aplicados por meio de perfis centrais reduzem a exposição quântica; o risco residual é registrado por serviço.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 30
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Segurança quântica e pós-quântica: monitoramento
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX037.
@@ -2561,7 +2561,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -2641,19 +2641,19 @@ Ao compartilhar painéis com fornecedores ou parceiros durante um diagnóstico c
 
 Registrar os algoritmos negociados permite painéis e alertas que apanham o recuo e as falhas; os gates de canário usam limites de confiança, com o atraso e a cobertura visíveis.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue estudando — capítulo 19 de 30
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Segurança quântica e pós-quântica: diagnóstico de problemas
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX039.
@@ -2710,7 +2710,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2801,19 +2801,19 @@ O relatório da KLS sobre o modelo do proxy-b trouxe a versão do firmware, o Cl
 
 O diagnóstico sistemático, a triagem de logs e as correções documentadas resolvem as falhas de handshake pós-quânticas sem abandonar a proteção globalmente.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 30
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança quântica e pós-quântica: integração de serviços
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX041.
@@ -2875,7 +2875,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2939,19 +2939,19 @@ A KLS cometeu o primeiro erro quando o ingress e o balanceador de carga foram mi
 
 A integração de serviços alinha todos os saltos, documenta as dependências de provedores e parceiros e mantém a compatibilidade ao longo de uma janela de transição medida, com testes de ponta a ponta.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue estudando — capítulo 21 de 30
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Segurança quântica e pós-quântica: automação
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX043.
@@ -3013,7 +3013,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -3108,19 +3108,19 @@ Cada erro volta a automação contra a equipe. Um gate sem caminho de exceção 
 
 A automação incorpora ao pipeline de entrega o inventário, as auditorias, a seleção orientada por política e os gates de regressão, com caminhos de exceção e implantação em etapas das mudanças centrais.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 30
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Segurança quântica e pós-quântica: avaliação
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX045.
@@ -3177,7 +3177,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -3247,19 +3247,19 @@ O rascunho do relatório da KLS contou primeiro os quatro fluxos parciais como c
 
 A avaliação compara os resultados com os objetivos e com uma linha de base, mede a latência de cauda e os bytes, e reporta a cobertura completa, parcial e desconhecida, com o risco residual.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue estudando — capítulo 23 de 30
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX047.
@@ -3321,7 +3321,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX047]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -3389,19 +3389,19 @@ O primeiro teste de armazém da KLS mudou a biblioteca do cliente e a lista de g
 
 A pesquisa prática usa experimentos controlados e repetidos e estudos de medição bem definidos, com relatórios honestos e tamanhos de amostra planejados de antemão.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue estudando — capítulo 24 de 30
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX049.
@@ -3463,7 +3463,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -3533,19 +3533,19 @@ Numa turma do ateliê, uma equipe de quatro pessoas trabalhou inteira na configu
 
 Os projetos de ateliê praticam a implementação em equipe: divisão do trabalho atenta às dependências, revisões baseadas em evidências e comunicação clara da situação.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue estudando — capítulo 25 de 30
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Segurança quântica e pós-quântica: passagem para as operações
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX051.
@@ -3607,7 +3607,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -3681,19 +3681,19 @@ Antes de a KLS exigir runbooks, um alerta de recuo disparou à noite e o engenhe
 
 Uma passagem completa dá às operações o mapa, os controles, os alarmes, os runbooks, os donos e a prática para manter as proteções pós-quânticas no lugar.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 30
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX053.
@@ -3755,7 +3755,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -3823,19 +3823,19 @@ Durante a implantação da KLS, um engenheiro sugeriu tirar o grupo híbrido do 
 
 A implantação em etapas, com gates, validação em produção, exceções contidas e um encerramento baseado em evidências, entrega a proteção pós-quântica sem enfraquecer os padrões.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue estudando — capítulo 27 de 30
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Prática de campo
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX055.
@@ -3897,7 +3897,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -3971,19 +3971,19 @@ Na KLS, uma estudante que varreu um host SFTP voltado aos parceiros em vez da c�
 
 A prática de campo aplica as habilidades de implementação dentro de um controle de mudanças e de uma autorização reais, com revisão do mentor, conduta profissional e reflexão baseada em evidências.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue estudando — capítulo 28 de 30
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX057.
@@ -4045,7 +4045,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -4115,19 +4115,19 @@ Um projeto final construído à mão numa máquina de laboratório não pode ser
 
 A construção do projeto final integra todas as habilidades de implementação numa fatia de laboratório única, reproduzível, documentada e segura, pronta para a avaliação.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue estudando — capítulo 29 de 30
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX059.
@@ -4189,7 +4189,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX059]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -4269,13 +4269,13 @@ Esses dois passos se tornam as primeiras issues no repositório da próxima equi
 
 A avaliação mostra uma fatia funcional, monitorada e recuperável, respostas honestas sobre os seus limites e artefatos que outras pessoas podem reutilizar.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 30
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

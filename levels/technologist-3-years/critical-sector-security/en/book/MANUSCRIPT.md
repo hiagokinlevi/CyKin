@@ -88,7 +88,7 @@ Appendices: [Worked results and assessment notes](#worked-results) · [Glossary]
 
 ## Chapter 1 — Computing systems
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -150,7 +150,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -262,19 +262,19 @@ Fourteen samples are a small basis for any forecast. The method's value is that 
 
 A host is a set of finite resources plus a clock. For an essential service the question about each resource is how long until it stops the service and how much warning you will get. Measure utilization, saturation and errors at percentiles over the service's natural rhythm; keep headroom for bad days, recovery and security work; forecast exhaustion with explicit assumptions; and write cheap checks for the quiet failures that actually take services down. When numbers disagree with expectations, as RLY-01's disk did, look for a configuration cause before buying capacity.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 30
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and internet services
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -326,7 +326,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -451,19 +451,19 @@ Flow records show who talked to whom, on which port, how much; they do not show 
 
 Think of the network as zones joined by declared conduits, each with a purpose and an owner. Rules state intentions; flow records state facts. Comparing the two regularly — observed-and-declared, observed-but-undeclared, declared-but-silent, unknown — is cheap, safe and among the most valuable things an implementer does. In critical infrastructure the most consequential undeclared path is the one that reaches the physical process.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 30
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming foundations
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -520,7 +520,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -657,19 +657,19 @@ Validation protects the receiver from malformed and implausible data. It does **
 
 Small code decides what operators see. Treat every message as untrusted, validate it in layers — structure, identity, type, physical meaning, time, order — and give borderline data a quarantine path so that faults are neither hidden nor stored as truth. Keep decisions in small testable functions, make state explicit, fail closed and test bad cases first. Validation is not authentication; that comes later.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 30
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Data models
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -726,7 +726,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -850,19 +850,19 @@ A data model cannot tell you that an asset exists if nobody recorded it. It can 
 
 Operational records are only useful if they stay consistent. Model them as entities with keys, link them with foreign keys instead of free text, and let constraints refuse impossible records. Treat missing values as findings, query for them explicitly, and use left joins in any report about coverage. A good model makes gaps visible; it cannot find assets nobody recorded.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 30
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -919,7 +919,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -999,19 +999,19 @@ Three of these appear in this chapter's status report before it was rewritten. "
 
 Precise vocabulary is a security control: it makes claims checkable. In essential services the continuity and safety of the physical service usually come first, which changes how controls are chosen, timed and allowed to fail. Describe every control by what it prevents, detects or recovers, and by the evidence that it works. Read public incidents for failed assumptions, and keep track of revisions.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 30
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Operating systems and virtualization
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -1073,7 +1073,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1199,19 +1199,19 @@ File integrity detects change; it does not tell you whether the change was malic
 
 Keep servers small and known: remove what the function does not need, run services under dedicated unprivileged accounts, bind listeners to declared addresses, and treat configuration files and their permissions as security-relevant. Baseline the files that matter with a cryptographic hash, protect the baseline, and investigate every unexplained difference. Virtualization simplifies operations but concentrates control in the hypervisor and its administrators; record which zones share a host.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 30
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Identity and access foundations
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -1268,7 +1268,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1393,19 +1393,19 @@ An access review shows the state of accounts at one moment. It does not show how
 
 Identity is a set of records and routines. Authenticate by what an account can do; separate personal, privileged, service and supplier accounts and remove shared ones or control them in a vault; tie accounts to the joiner–mover–leaver process; and review them regularly against an export, a roster and a statement of need. Some review findings — a leaver's account used after leaving — are incidents, and evidence comes before clean-up.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 30
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Security architecture basics
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -1467,7 +1467,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1543,19 +1543,19 @@ A Fallowmere example: the control cards for risk R2 (Chapter 18) would be less i
 
 LANTERN's most important architectural property is the direction of trust: data flows up, commands never flow down through it. Protect that property in every change, keep layers truly independent, put management paths on the diagram, and design degraded modes and emergency access deliberately. Architectures decay through exceptions; record every one with an owner and an expiry, and check them.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 30
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Evidence and measurement
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -1612,7 +1612,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1723,19 +1723,19 @@ In Lab 9 the pooled median shows three of these at once: no denominator, open it
 
 A measure is useful when it states its question, population, numerator, denominator, period, source and exclusions. Report medians with high percentiles for skewed quantities; include open items; do not pool groups with different consequences; and attach intervals to small-sample success rates. The aim is not a flattering number but one that someone else can recompute and act on.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 30
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Critical infrastructure and sector security: orientation
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -1792,7 +1792,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1866,19 +1866,19 @@ Measuring harm only in money would have ranked Water first that night, because i
 
 A service is critical because of what its loss does to people, measured in people and time. Sectors differ in what they protect first and how fast harm arrives, so the same technical fault needs different responses. Shared services such as FSTS create interdependencies through people, tools and suppliers. Operators carry the legal obligations; implementers produce most of the evidence that shows they are met.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 30
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Critical infrastructure and sector security: assets and context
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1940,7 +1940,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -2024,19 +2024,19 @@ PS-07's cellular modem, found only by a site visit, is the case against trusting
 
 An inventory records, for every asset, what it is, where it is, who owns it, what it runs, whether it is supported, what it depends on and when that was last verified. Build it from several sources, discover safely in control networks, treat disagreement between sources as findings, and give every unsupported asset compensating controls and a replacement owner.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 30
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Critical infrastructure and sector security: data flows
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -2093,7 +2093,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -2220,19 +2220,19 @@ The unregistered flow from the clinical gateway to the reports server is the sec
 
 A data-flow register records what data travel where, how they are protected and how long they are kept. Classify data — telemetry, configuration, personal and patient-linked, security logs — and verify the register against what systems actually send and retain. Encryption protects the journey, not the destination. New flows are reviewed before they start, by the data owner, by security and, where personal data are involved, by the privacy function.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 30
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Critical infrastructure and sector security: risk scenarios
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -2289,7 +2289,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes and connection
@@ -2408,19 +2408,19 @@ Leaving out R2 because LANTERN carries no commands would be the sixth error: LAN
 
 Write risks as specific scenarios — cause, path, asset, consequence and controls — so they can be tested and monitored. Measure consequence in people and time, put credible safety effects at the top, and rank consequence first; the likelihood × consequence product can let nuisances outrank harm. Give residual risk an owner, include scenarios your service must detect, and turn the register into tasks.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 30
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Critical infrastructure and sector security: methods I
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -2477,7 +2477,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes and connection
@@ -2554,19 +2554,19 @@ The NTP merge in Chapter 25 is the fourth error in practice: its acceptance crit
 
 Write approved configurations as baselines in version control. Run change control proportionately — standard, normal and emergency — with operations approving changes that can affect the physical process. Plan changes with pre-checks, an agreed window, specific verification and a tested rollback. After every change, the record, the baseline and the system should agree; when they do not, you have a finding.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 30
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Critical infrastructure and sector security: guided lab
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -2628,7 +2628,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes and connection
@@ -2760,19 +2760,19 @@ Each has a LANTERN consequence. A plain hash lets anyone who can reach the relay
 
 Authenticate messages with HMAC over a defined canonical form, compare MACs in constant time, and defeat replay with a time window and per-station sequence numbers carried inside the authenticated body. Authenticate first, then trust and record the contents. A MAC proves origin and integrity, not confidentiality and not sensor correctness. Keys need their own life cycle, and each station should have its own.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 30
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Critical infrastructure and sector security: methods II
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -2834,7 +2834,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes and connection
@@ -2915,19 +2915,19 @@ PS04-PLC's 4.2 would have been marked not applicable by anyone reading only the 
 
 Handle vulnerabilities as a routine: decide applicability from the inventory, prioritize by exploitation, exposure and consequence, apply compensating controls with end dates where patching is slow, and verify fixes on the device. Back up what you need to rebuild, keep a copy that cannot be deleted by the same people who run production, set RTO and RPO, and prove them with timed restore tests.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 30
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Critical infrastructure and sector security: tooling
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -2989,7 +2989,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes and connection
@@ -3109,19 +3109,19 @@ The lab's parser is a teaching simplification of RFC 5424: it does not handle ev
 
 Log what you will need to answer, forward it off the host, and check that forwarding continues. Synchronize clocks, record time with explicit offsets and analyse in UTC. Normalize sources into one structure, count everything you cannot parse, and build small tools with tests and invariants so that their output can be trusted; use established tools for general jobs and never invent cryptography.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 30
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Critical infrastructure and sector security: controls
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -3183,7 +3183,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes and connection
@@ -3263,19 +3263,19 @@ Key rotation for PS-07 was avoided for years for the fourth reason.
 
 Select controls by walking each scenario's path and attaching prevent, detect and recover controls to its steps; use catalogues to check completeness. Implement every control owned, documented, configured as code where possible, testable and monitored. Some controls are processes — key life cycle is the clearest example — and must be rehearsed. "Configured" is never the same as "works".
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 30
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Critical infrastructure and sector security: monitoring
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -3337,7 +3337,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes and connection
@@ -3460,19 +3460,19 @@ Rule B's two pages for one episode on the worked night are the third error.
 
 Derive rules from scenarios, from your own architecture and from known behaviours; give each an owner and a first action. Detect absence as well as presence. Alert per episode with counts and context, track false alarms and response times, and route process-relevant alerts to operations. Monitor the monitoring, because every stage of it can fail silently.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue studying — chapter 19 of 30
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Critical infrastructure and sector security: troubleshooting
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -3529,7 +3529,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes and connection
@@ -3643,19 +3643,19 @@ Calling BayTel for PS-07's gap before checking the relay's reject log would be t
 
 Troubleshoot with a method: precise symptom, safety and impact first, preserve before changing, several hypotheses including a malicious one, cheapest discriminating check first, one change at a time, verify and record. Escalate to an incident when evidence suggests unauthorized activity or exposure. For missing data, the data themselves — sequence, arrival, timestamps, reject counts — usually tell loss, delay, clock error and filtering apart.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue studying — chapter 20 of 30
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Critical infrastructure and sector security: service integration
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -3712,7 +3712,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes and connection
@@ -3783,19 +3783,19 @@ Kell's exclusion from the draft RACI's consulted roles shows the third: a suppli
 
 A service is integrated when every neighbour — operators, the SOC, suppliers, emergency planners — has an agreed interface: what is provided, how fast, to whom, and what happens when it fails. Test responsibility matrices with scenarios until each activity has one accountable role. Bring suppliers into change, vulnerability and incident processes. Agree and exercise the triggers that connect a technical incident to the operator's continuity plans, including the state "up but untrustworthy".
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue studying — chapter 21 of 30
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Critical infrastructure and sector security: automation
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -3852,7 +3852,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes and connection
@@ -3975,19 +3975,19 @@ An auto-fix list that included the debug listener would have removed the evidenc
 
 Express desired state as code, collect actual state read-only, and compute drift. Plan before acting; auto-fix only a short list of low-risk, reversible settings and send everything else — especially anything that may be evidence — to change control. Limit blast radius: one host at a time, stop on failure, halt when drift looks like a bad source of truth. Protect the automation as carefully as the hosts it manages.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue studying — chapter 22 of 30
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Critical infrastructure and sector security: evaluation
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -4044,7 +4044,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes and connection
@@ -4151,19 +4151,19 @@ Tests show how controls respond to the test events you designed. Real adversarie
 
 Test controls against the evidence they promise, using safe, marked test events under signed rules of engagement that protect the physical process. Fix the claim rule before testing, report counts with intervals and time measures, and distinguish "shown effective" from "not yet shown" — and why. Turn every result into improvement or more tests, and re-test on a schedule.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue studying — chapter 23 of 30
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Applied research methods
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -4225,7 +4225,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes and connection
@@ -4308,19 +4308,19 @@ Asking technologists for their opinion after the trial would have added nothing 
 
 Turn operational questions into small studies with a stated population, measure, comparison, period and decision. Prefer comparisons that rule out obvious alternatives — alternation or pairing over before/after — and decide the analysis in advance. Collect data safely and ethically with the operational owner's agreement, analyse simply, check sensitivity, and report counts and limits so that the result is used with the confidence it deserves.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue studying — chapter 24 of 30
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Team project studio
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -4382,7 +4382,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes and connection
@@ -4458,19 +4458,19 @@ The NTP merge shows the first two: a vague acceptance criterion and a review of 
 
 Services are built by teams. Give roles clear responsibility and rotate them so that knowledge and control are not concentrated in one person. Write work items with acceptance criteria that produce evidence. Make review required, specific and recorded, so that it acts as a security control. Plan for operational interruptions, and learn from failures with blameless reviews that change conditions rather than blame people.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue studying — chapter 25 of 30
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Critical infrastructure and sector security: operational handoff
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -4527,7 +4527,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes and connection
@@ -4607,19 +4607,19 @@ The "backups OK" line without a restore date is the third.
 
 A service is finished when others can run it. Hand over a pack with description, ownership, service levels, runbooks, control cards, monitoring, open items and evidence. Write runbooks for a competent colleague at 03:00 and test them with someone other than the author. Provide health evidence that shows effectiveness, not only configuration. Run handover as walk-through, shadowing, reverse shadowing and acceptance with early-life support, and fix the gaps it reveals.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue studying — chapter 26 of 30
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Deployment and validation
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -4676,7 +4676,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes and connection
@@ -4781,19 +4781,19 @@ The open item for the morning peak is how the fourth is handled when the window 
 
 Deploy in stages. Pre-check approvals, operations, backups, rollback and the package's origin. Canary on one host against a control with promotion criteria fixed in advance; roll back on any failure and promote one host at a time on success. Validate functional, security and operational properties after each host, and state honestly what the validation window could not show.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue studying — chapter 27 of 30
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Field practice
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -4855,7 +4855,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes and connection
@@ -4938,19 +4938,19 @@ The unlocked gateway enclosure at PS-07 marks a limit of the visit itself: you c
 
 Field work verifies what remote sources cannot and brings its own risks. Plan visits with the operator, follow site safety rules, work with operations' engineers on control equipment, and collect evidence without disturbing the process or changing anything outside change control. Control field laptops and media strictly. Treat operations staff as partners, and exercise the service's integration with continuity plans in planned, stoppable exercises.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue studying — chapter 28 of 30
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Capstone build
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -5007,7 +5007,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes and connection
@@ -5137,19 +5137,19 @@ An injected forgery built with the station's real key would test nothing; the te
 
 The capstone integrates the course into one monitored service and proves it with injected tests and a checkable evidence record. Counts must add up, the record must be protected by a digest and stored off-host, and its limits must be stated. Integration testing finds defects that component tests miss: here an authentic but implausible message poisoned replay state, a hole visible only when validation, authentication and ordering met.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue studying — chapter 29 of 30
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Capstone assessment
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -5211,7 +5211,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes and connection
@@ -5287,13 +5287,13 @@ Use Team B's summary as the standard for the evidence each score needs. If Rule 
 
 The capstone is assessed through design review, operational evidence and the integration project. Reviewers reward designs that preserve their key properties, controls tested against claim rules stated in advance, evidence that is dated, sourced, consistent and protected, and honesty about what has not been shown. The method of the course — know what must stay true, build for it, check it, notice failure, respond with care, hand it on — transfers across sectors and must be kept current by continuing practice.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue studying — chapter 30 of 30
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

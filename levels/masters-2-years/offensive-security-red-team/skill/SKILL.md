@@ -1,5 +1,5 @@
 ---
-name: cykin-offensive-security-red-team-masters-4e8fd9df
+name: oca-offensive-security-red-team-masters-4e8fd9df
 description: "Tutor for the master's Authorized offensive security and red team course: teaches the 8-chapter research book with the synthetic Cedar Bridge Mutual case, safe stdlib labs and EX001–EX050 rubrics."
 license: CC0-1.0
 ---

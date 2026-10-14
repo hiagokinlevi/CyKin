@@ -40,7 +40,7 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — Research question and literature method
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -194,7 +194,7 @@ A good dissertation starts with a narrow, feasible question and a search that so
 
 ## Chapter 2 — AI and machine-learning security: advanced seminar
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -256,7 +256,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -398,7 +398,7 @@ The seminar builds fluency in the attack classes and in critical reading. Each c
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -455,7 +455,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -557,7 +557,7 @@ Design determines what you can conclude. Controlled variables, matched member/no
 
 ## Chapter 4 — AI and machine-learning security: competing explanations
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -614,7 +614,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -727,7 +727,7 @@ Effects need explanations, and explanations need tests. Ablations, controls and 
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -784,7 +784,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -891,7 +891,7 @@ The proposal fixes what you will do and how you will analyse it; the pilot shows
 
 ## Chapter 6 — Data collection and analysis
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -948,7 +948,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -1048,7 +1048,7 @@ Analysis is where careful design pays off: interleaved runs, quality checks, int
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -1110,7 +1110,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1203,7 +1203,7 @@ A dissertation is judged by how clearly its claims match its evidence. Separatin
 
 ## Chapter 8 — Independent review and defense
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -1260,7 +1260,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes

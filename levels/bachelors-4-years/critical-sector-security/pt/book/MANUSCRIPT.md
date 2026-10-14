@@ -83,7 +83,7 @@ As [resoluções](#worked-results) contêm EX001–EX080. Um [glossário](#gloss
 
 ## Capítulo 1 — Raciocínio matemático
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX002.
@@ -130,7 +130,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX002]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -213,19 +213,19 @@ Cada erro tem um exemplo em Calder. O colega do EX001 multiplicou uma probabilid
 
 As decisões de segurança são comparações sob incerteza. Dê unidades às grandezas, separe a perda esperada do pior dano crível, confira os resultados por estimativa e limitação, e diga quais premissas mudariam a decisão. Um número sem fonte ou sensibilidade declarada é uma opinião disfarçada.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 40
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX003.
@@ -277,7 +277,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX003]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -325,19 +325,19 @@ No CVH, os quatro erros se encontram na IMG-01: ela ainda funciona, então ficou
 
 Os sistemas computacionais são pilhas de confiança, do hardware às pessoas. A TO e os dispositivos médicos controlam resultados físicos, vivem por décadas e nem sempre podem receber patches, então a segurança depende dos termos de aquisição, do posicionamento e dos controles compensatórios. O componente mais antigo e com menos suporte muitas vezes define a exposição real.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 40
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Programação I
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX005.
@@ -384,7 +384,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -470,19 +470,19 @@ No Laboratório 2, o segundo erro teria escondido o VEN-01 do EX005, o terceiro 
 
 Programas curtos e legíveis transformam inventários em decisões. Filtre, conte e reporte — e reporte sempre o que você não conseguiu classificar. Teste contra casos que você conhece, mantenha a lógica em funções e lembre-se de que o programa só é tão verdadeiro quanto os seus dados.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 40
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX007.
@@ -529,7 +529,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -582,19 +582,19 @@ O parágrafo fraco do exemplo resolvido mostra quatro desses erros ao mesmo temp
 
 Uma boa escrita de segurança declara uma afirmação, mostra a evidência, torna o raciocínio explícito e admite os limites — conclusão primeiro, fontes exatas, relato separado da inferência e da recomendação. Escreva como se um especialista fosse conferir cada frase e um tomador de decisão fosse ler só as três primeiras.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 40
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX010.
@@ -641,7 +641,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -691,19 +691,19 @@ O EX010 mostra o primeiro erro: chamar o corte do cabo de vulnerabilidade confun
 
 O letramento em segurança é vocabulário preciso aplicado a consequências reais. Ativos, ameaças, vulnerabilidades, probabilidade, impacto e controles são ideias distintas. Nos serviços críticos, a disponibilidade, a integridade e a safety muitas vezes superam a confidencialidade, e a prioridade certa de um alerta depende da exposição e da exploração, e não apenas de uma nota.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 40
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX012.
@@ -750,7 +750,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX012]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -838,19 +838,19 @@ No Laboratório 3, a linha de convenção `edge u -> v means "v depends on u"` �
 
 Os conjuntos descrevem inventários e permissões; a lógica torna as regras exatas e verificáveis; os grafos tornam as dependências visíveis e calculáveis. Cada modelo responde a uma pergunta mais estreita do que parece: a alcançabilidade mostra exposição, e não falha, e a verificação exaustiva só funciona enquanto o espaço de estados é pequeno.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 40
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redes e protocolos
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX013.
@@ -897,7 +897,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -979,19 +979,19 @@ O Laboratório 4 mostra por quê: uma regra só por porta que permitisse a 502 t
 
 As redes carregam as premissas dos seus protocolos. Os protocolos industriais clássicos confiam em quem consegue alcançá-los, então os serviços críticos impõem a confiança com zonas, conduítes e allowlists — e depois conferem os fluxos observados contra a política. Uma violação é uma pergunta a um dono, e não um veredicto.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 40
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX015.
@@ -1038,7 +1038,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1117,19 +1117,19 @@ Na CW, o terceiro erro é o perigoso: se só a interface de operador confere os 
 
 A análise sintática é uma fronteira de segurança. Defina com precisão a entrada válida, aceite só ela, falhe para um estado que o dono do processo escolheu, registre toda rejeição e teste limites e casos malformados. A validação pega entradas malformadas; ela não prova que uma entrada bem formada veio de alguém autorizado.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 40
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados e bancos de dados
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX017.
@@ -1176,7 +1176,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1263,19 +1263,19 @@ O Laboratório 5 mostra onde três desses erros morderiam. A comparação de ver
 
 Os dados relacionais permitem responder a perguntas de segurança transversais com uma única consulta, se as chaves, os tipos e as junções estiverem certos. Compare as versões numericamente, procure o que as junções descartam, ordene as severidades com números e nunca monte SQL a partir de strings não confiáveis.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 40
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX019.
@@ -1327,7 +1327,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1380,19 +1380,19 @@ O exemplo resolvido da IHM aberta testa os três primeiros. A página estava ace
 
 A autorização define o trabalho de segurança legítimo. Escreva regras de engajamento, pare quando topar com algo real e reporte em privado, e raciocine explicitamente sobre os conflitos entre deveres, registrando quem aceitou qual risco. Nos serviços críticos, um teste descuidado pode ferir pessoas.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 40
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX021.
@@ -1444,7 +1444,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1496,19 +1496,19 @@ A estação de sinalização da CT mostra as alternativas: allowlist e três con
 
 O SO impõe separação, permissões e privilégio; o menor privilégio e a mediação completa são as suas ideias orientadoras. Nos serviços críticos, os dispositivos mais duráveis muitas vezes têm as proteções mais fracas, então o hardening precisa ser verificável e os patches precisam ser baseados em risco, agendados e reversíveis.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 40
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidade e estatística
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX024.
@@ -1555,7 +1555,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX024]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1637,19 +1637,19 @@ O Laboratório 6 dá um número a cada um: 95 % de detecção ainda resulta numa
 
 As regras da probabilidade são simples; as suas premissas, não. As taxas de base decidem se vale a pena ler um alerta, "raro por dia" vira "provável por ano", a redundância é enfraquecida por causas comuns e os dados assimétricos precisam de medianas e percentis. Declare as premissas de independência e teste o que acontece quando elas falham.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 40
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX025.
@@ -1696,7 +1696,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1783,19 +1783,19 @@ No Laboratório 7, o script confirma que a conta de *ana* está "ok" só no sent
 
 A identidade responde a três perguntas diferentes. Use autenticação forte e resistente a phishing para o acesso remoto crítico, conceda permissões por meio de papéis, proíba combinações tóxicas e revise as contas contra fontes autoritativas e o uso real. As contas compartilhadas e de fornecedores precisam de alternativas viáveis, e não apenas de proibições.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 40
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX027.
@@ -1847,7 +1847,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1904,19 +1904,19 @@ Cada um aparece nos exemplos deste capítulo. A cópia original das validações
 
 A privacidade pergunta se o tratamento de dados sobre pessoas é apropriado, e não só se ele é seguro. Aplique a limitação da finalidade, a minimização e a limitação da conservação — especialmente ao próprio monitoramento de segurança —, reconheça que as combinações reidentificam e envolva especialistas em proteção de dados, em vez de oferecer conclusões jurídicas.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 40
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Evidência e medição
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX029.
@@ -1963,7 +1963,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2023,19 +2023,19 @@ A tabela de evidências do CEDC mostra o primeiro: 362 de 365 rotinas bem-sucedi
 
 A evidência tem uma fonte, um método, uma data e um grau de independência. Meça resultados em vez de atividade, reporte os denominadores e use a análise de sensibilidade para decidir se uma evidência incerta é boa o bastante. "Desconhecido, com evidência parcial" é muitas vezes a resposta mais honesta e mais útil.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 40
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX032.
@@ -2087,7 +2087,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX032]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2141,19 +2141,19 @@ No caso da CW, a conexão RDP do Laboratório 4, do corporativo direto para o co
 
 A arquitetura transforma princípios em propriedades impostas: nenhum caminho direto da internet até qualquer coisa que mova o mundo físico. Empilhe controles independentes, fique atento aos modos comuns, aplique o zero trust onde os dispositivos podem participar e segmente onde não podem, e trate o acesso remoto como o conduíte mais importante a projetar bem.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 40
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Conceitos de criptografia
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX033.
@@ -2195,7 +2195,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2279,19 +2279,19 @@ No Laboratório 8, um SHA-256 simples do comando permitiria a quem o altera calc
 
 Cada primitiva garante algo específico: os hashes detectam mudanças só contra uma referência confiável, os MACs e as assinaturas dão autenticidade, os números de sequência dão frescor e a cifração dá sigilo. Nos sistemas de controle, a autenticidade, a integridade e o frescor são o que mais importa, e a segurança real depende da gestão de chaves e de manter as âncoras fora do alcance de um atacante.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 40
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX035.
@@ -2343,7 +2343,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX035]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2398,19 +2398,19 @@ O plano de backup do CEDC evita esses erros ao nomear a população (o serviço 
 
 A pesquisa começa com uma pergunta específica o bastante para ser respondida e contestada. Escolha o desenho de que a pergunta precisa, busque e trie a literatura de um modo que outra pessoa possa repetir e nomeie as ameaças à validade antes que um revisor o faça.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 40
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Infraestrutura crítica e segurança setorial: escopo e teoria
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX037.
@@ -2457,7 +2457,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2509,19 +2509,19 @@ O CEDC mostra o primeiro erro: uma central de despacho quase não tem TO e mesmo
 
 Uma infraestrutura é crítica porque a sociedade depende das suas funções. As jurisdições a organizam de formas diferentes, por setores, funções e leis como a NIS2, a CER e o DORA. O risco, a resiliência e o pensamento sistêmico são lentes complementares, e as características próprias da área — consequência física, longevidade, interdependência, regulação e propriedade mista — explicam por que ela precisa da sua própria disciplina.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue estudando — capítulo 19 de 40
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Infraestrutura crítica e segurança setorial: casos fundadores
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX039.
@@ -2563,7 +2563,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2626,19 +2626,19 @@ Exemplos comuns: afirmar que Oldsmar foi "um hack" sem a revisão de 2023; repet
 
 Os casos fundadores da área ensinam pela comparação: contingência manual, higiene, independência do sistema de safety, governança do acesso remoto, dependência de negócio entre TI e TO e concentração em dependências compartilhadas. Leia as fontes primárias, mantenha as revisões à vista e transfira lições, e não técnicas.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 40
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Infraestrutura crítica e segurança setorial: modelos de sistema
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX041.
@@ -2685,7 +2685,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2735,19 +2735,19 @@ O modelo de alimentador da CPN mostra os dois primeiros: o relé fica no nível 
 
 Os sistemas de controle são malhas de medir, decidir e agir, supervisionadas pelo SCADA e protegidas por sistemas de safety independentes. Os modelos em camadas ajudam a segmentar; as cadeias de serviço com modos degradados mostram por quanto tempo um serviço sobrevive sem automação. As piores consequências surgem onde a manipulação encontra a safety e os procedimentos humanos.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue estudando — capítulo 21 de 40
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Infraestrutura crítica e segurança setorial: dados e dependências
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX024.
@@ -2789,7 +2789,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX024]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2863,19 +2863,19 @@ O Laboratório 9 ilustra os três primeiros: uma autonomia de projeto de 72 hora
 
 Os inventários e os mapas de dependências são evidências com fontes, datas e lacunas. Acrescentar o tempo — a autonomia da reserva — transforma a exposição numa linha do tempo de perdas, expõe elos fracos como uma central só com baterias e revela que um prédio com energia ainda pode estar inutilizável. Teste as afirmações de autonomia e olhe por trás de cada reserva para as suas próprias dependências.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 40
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Infraestrutura crítica e segurança setorial: métodos I
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX045.
@@ -2922,7 +2922,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2971,19 +2971,19 @@ O exemplo do cloro mostra diretamente o terceiro erro: o resultado "monitorar" d
 
 A avaliação de risco estruturada traz disciplina ao escopo, às premissas e ao julgamento; as matrizes de risco simplificam a comunicação, mas distorcem as comparações. Os métodos de consequência primeiro, como a CCE, partem do que não pode acontecer e preferem mitigações de engenharia que limitam o dano, não importa quem seja o atacante. Use os dois e diga qual deles orienta cada recomendação.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue estudando — capítulo 23 de 40
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Infraestrutura crítica e segurança setorial: controles
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX047.
@@ -3030,7 +3030,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX047]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3086,19 +3086,19 @@ O mapa do BMS do CVH evita cada um: não conta controles, mapeia-os a três cen�
 
 Os frameworks organizam os resultados; a análise de risco decide as prioridades; os mapeamentos ligam os controles aos cenários que eles tratam e revelam as lacunas. Prefira combinações de prevenção, detecção e recuperação e, na TO, favoreça os controles de engenharia e físicos, que continuam funcionando quando os computadores não funcionam.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue estudando — capítulo 24 de 40
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX049.
@@ -3150,7 +3150,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3227,19 +3227,19 @@ Uma nota que lista os seis fluxos do Laboratório 4, os cinco dispositivos sem s
 
 O Laboratório I transforma exercícios separados num único julgamento. Rastreie toda constatação até uma saída reprodutível, raciocine a partir das consequências entre operadores, ligue as recomendações às constatações e aos donos e declare explicitamente a confiança e os limites.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue estudando — capítulo 25 de 40
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Infraestrutura crítica e segurança setorial: métodos II
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX051.
@@ -3286,7 +3286,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3340,19 +3340,19 @@ A STPA do CEDC evitou o segundo erro ao nomear ações de controle inseguras, du
 
 A modelagem de ameaças encontra ameaças onde os dados atravessam fronteiras de confiança; a STPA encontra ações de controle inseguras em estruturas sociotécnicas; os exercícios de mesa testam planos e pessoas. Cada um vê o que os outros deixam escapar, então escolha pela pergunta — e lembre-se de que muitos perigos não envolvem adversário algum.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 40
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Infraestrutura crítica e segurança setorial: verificação
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX053.
@@ -3394,7 +3394,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3466,19 +3466,19 @@ O Laboratório 10 mostra numericamente o segundo erro: nunca alertar dá 99,5 % 
 
 A verificação pergunta se um controle funciona como especificado; a validação pergunta se ele alcança a sua finalidade. Projete testes que possam falhar, avalie os detectores com precisão e revocação em limiares escolhidos por custos declarados e reporte as condições e os limites junto com os números.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue estudando — capítulo 27 de 40
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Infraestrutura crítica e segurança setorial: análise de falhas
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX056.
@@ -3520,7 +3520,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX056]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3593,19 +3593,19 @@ O Laboratório 11 supõe a independência entre a falha do gerador e a contamina
 
 As árvores de falhas e a FMEA tornam explícitas as premissas sobre falhas, de cima para baixo e de baixo para cima. Acrescentar caminhos cibernéticos revela eventos únicos que contornam a redundância projetada; a resposta mais forte restaura a independência estrutural, em vez de ajustar uma estimativa. Quando as falhas acontecem, revise o sistema, e não a pessoa.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue estudando — capítulo 28 de 40
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Infraestrutura crítica e segurança setorial: operações
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX057.
@@ -3652,7 +3652,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3725,19 +3725,19 @@ O playbook da CPN evita os dois primeiros ao fazer o supervisor autorizar o isol
 
 Nos serviços críticos, as operações de segurança trabalham lado a lado com as operações: primeiro manter o processo seguro, conter sem cegar os operadores, preservar a evidência e recuperar. Meça com medianas, percentis e tamanhos de amostra, e investigue os valores atípicos que as médias escondem.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue estudando — capítulo 29 de 40
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório II
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX059.
@@ -3789,7 +3789,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX059]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3855,19 +3855,19 @@ Uma equipe que restaura o setpoint rapidamente, mas não consegue dizer quem dec
 
 O Laboratório II combina pessoas e evidências: decidir sob pressão de tempo, reconstruir linhas do tempo a partir de fontes com confiança graduada, verificar a integridade e raciocinar entre setores. As situações mais perigosas muitas vezes surgem da interação de dois eventos que, isoladamente, são gerenciáveis.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 40
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Infraestrutura crítica e segurança setorial: casos avançados
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX061.
@@ -3909,7 +3909,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3967,19 +3967,19 @@ O quarto erro transformaria uma lição do TRITON numa descrição de como alcan
 
 Os casos avançados ensinam por meio das premissas que falharam: o que os operadores veem é real, os sistemas de safety são independentes, o risco é limitado pelos nossos próprios sistemas. Compare os casos por causa, caminho, consequência e premissa; gerencie o risco da cadeia de suprimentos e de concentração em conjunto entre os operadores; e transforme as lições em controles genéricos, e não em conhecimento de técnicas.
 
-<!-- cykin:chapter-navigation:start ch-31 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-31 -->
 ### Continue estudando — capítulo 31 de 40
 
 [← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Infraestrutura crítica e segurança setorial: interfaces interdisciplinares
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX063.
@@ -4026,7 +4026,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX063]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4079,19 +4079,19 @@ O exemplo resolvido evita cada um: a mensagem ao jurídico diz o que foi conferi
 
 A segurança nos serviços críticos fica entre o direito, a economia, a safety, os fatores humanos e a comunicação. Saiba onde estão as obrigações e quando chamar a assessoria jurídica, reconheça os problemas de incentivos, concilie safety e segurança em conjunto, projete para pessoas sob estresse e traduza cada constatação para o público que precisa agir com base nela.
 
-<!-- cykin:chapter-navigation:start ch-32 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-32 -->
 ### Continue estudando — capítulo 32 de 40
 
 [← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX065.
@@ -4138,7 +4138,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX065]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4189,19 +4189,19 @@ No exemplo de codificação, reportar 80 % de concordância em vez do kappa de 0
 
 Os métodos qualitativos respondem ao como e ao por quê; eles precisam de aprovação ética, consentimento e proteção dos participantes e das organizações. Os livros de códigos e o kappa tornam a codificação confiável; os scripts, as sementes e as versões tornam a análise quantitativa reprodutível; os métodos mistos só são tão bons quanto a sua integração.
 
-<!-- cykin:chapter-navigation:start ch-33 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-33 -->
 ### Continue estudando — capítulo 33 de 40
 
 [← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Projeto comparativo
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX068.
@@ -4248,7 +4248,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX068]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4343,19 +4343,19 @@ Apresentar 4,20 como prova seria o quarto.
 
 A comparação é a habilidade central do bacharelado: critérios explícitos, notas ancoradas, evidências, pesos definidos antecipadamente, análise de sensibilidade e condições de reversão declaradas. As restrições e os vetos vêm antes da pontuação, e um total ponderado é um argumento estruturado, e não um veredicto.
 
-<!-- cykin:chapter-navigation:start ch-34 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-34 -->
 ### Continue estudando — capítulo 34 de 40
 
 [← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta do trabalho de conclusão
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX069.
@@ -4397,7 +4397,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX069]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4449,19 +4449,19 @@ Cada erro tem um sintoma típico. Um tema como "o estado da segurança dos dispo
 
 Um trabalho de conclusão de bacharelado responde a um problema de decisão real comparando opções com evidências e terminando numa recomendação delimitada. Uma boa proposta fixa a pergunta, os critérios, o plano de evidências, a ética, os riscos, os critérios de sucesso e o cronograma antes de o trabalho começar.
 
-<!-- cykin:chapter-navigation:start ch-35 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-35 -->
 ### Continue estudando — capítulo 35 de 40
 
 [← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Prática de campo ou comunitária
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX072.
@@ -4513,7 +4513,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX072]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4563,19 +4563,19 @@ A entrada de diário da CW evita os quatro: o estágio tinha um acordo, a propos
 
 A prática de campo e comunitária ancora o curso na realidade. Acorde por escrito o escopo, a confidencialidade, a supervisão e o escalonamento; contribua com olhos novos e tempo; entenda as restrições antes de julgar; mantenha um diário reflexivo sanitizado; e deixe o anfitrião revisar tudo o que sair do local.
 
-<!-- cykin:chapter-navigation:start ch-36 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-36 -->
 ### Continue estudando — capítulo 36 de 40
 
 [← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX074.
@@ -4617,7 +4617,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX074]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4689,19 +4689,19 @@ O Laboratório 14 mostra o primeiro: "85 %" sem "de 20" e sem um intervalo escon
 
 A revisão de evidências é ceticismo estruturado: pergunta, dados, método, resultados, validade, interesses e limites. Reporte os resultados de amostras pequenas com intervalos — Wilson para proporções — e deixe a revisão por pares melhorar o trabalho sendo específica, priorizada e respeitosa.
 
-<!-- cykin:chapter-navigation:start ch-37 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-37 -->
 ### Continue estudando — capítulo 37 de 40
 
 [← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX075.
@@ -4748,7 +4748,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX075]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4794,19 +4794,19 @@ O ponto de controle da semana 14 evita cada um: o script de inventário tem seme
 
 A implementação é uma coleta disciplinada de evidências: registre as decisões, registre as evidências, registre as mudanças, construa modelos pequenos, testados e reprodutíveis, proteja os dados do anfitrião e dos participantes e reporte as surpresas como constatações. A credibilidade do trabalho de conclusão se apoia no rastro de cada afirmação até a sua evidência.
 
-<!-- cykin:chapter-navigation:start ch-38 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-38 -->
 ### Continue estudando — capítulo 38 de 40
 
 [← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do trabalho de conclusão
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX077.
@@ -4853,7 +4853,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX077]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4916,19 +4916,19 @@ A avaliação resolvida evita o primeiro ao usar os critérios da proposta, vari
 
 Avalie contra os critérios que você definiu antes dos resultados, teste a robustez da comparação, declare as limitações com a sua direção e convide uma revisão independente. Uma recomendação frágil rotulada com honestidade é mais útil do que uma de aparência robusta que esconde a sua premissa.
 
-<!-- cykin:chapter-navigation:start ch-39 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-39 -->
 ### Continue estudando — capítulo 39 de 40
 
 [← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Monografia e apresentação
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX079.
@@ -4975,7 +4975,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -5033,13 +5033,13 @@ O candidato responde ao desafio sobre o pessoal a partir da Tabela 6.3: se os al
 
 A monografia relata uma comparação, e não uma história: método, resultados, discussão e uma conclusão que responde exatamente à pergunta feita, com as suas condições. Apresente com clareza a comparação e a sua sensibilidade, prepare-se para toda família de perguntas e responda às difíceis com honestidade — esse é o hábito profissional que este curso existe para construir.
 
-<!-- cykin:chapter-navigation:start ch-40 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-40 -->
 ### Continue estudando — capítulo 40 de 40
 
 [← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

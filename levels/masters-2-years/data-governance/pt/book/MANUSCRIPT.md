@@ -37,7 +37,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-1:2022; Khatri e Brown (2010)
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -122,19 +122,19 @@ Os termos de busca determinam o que é encontrado; teste termos alternativos ant
 - **EX006 — Conferência da orientadora.** Que parcela das decisões a Dra. Solberg conferiu? *Rubrica:* 3 = uma décima parte aleatória;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX007 — Lacuna na literatura.** O que a busca mostrou estar faltando? *Rubrica:* 3 = estudos que medem desfechos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 08)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança de dados: seminário avançado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -176,7 +176,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -219,19 +219,19 @@ Modelos descrevem ideais; prefeituras reais os misturam.
 - **EX013 — Contestação dos colegas.** Que explicação concorrente os colegas levantaram? *Rubrica:* 3 = a cultura da prefeitura;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Condição testável.** Que condição Tomás derivou? *Rubrica:* 3 = curadores precisam de direitos de decisão e de um canal de propagação;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 08)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -273,7 +273,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -315,19 +315,19 @@ Tendências paralelas podem valer antes e falhar depois; fique atento a novos ev
 - **EX019 — Nível ético.** Em que nível o desempenho é analisado? *Rubrica:* 3 = somente no nível do departamento;; 2 = parcialmente correto;; 1 = individual;; 0 = nenhuma.
 - **EX020 — Limiar de relevância.** Que limiar de relevância prática foi fixado? *Rubrica:* 3 = cinco dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 08)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança de dados: explicações concorrentes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -369,7 +369,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -411,19 +411,19 @@ Algumas rivais não podem ser totalmente descartadas; relate-as como limitaçõe
 - **EX025 — Evidência contrária.** Cite um resultado que enfraqueceria a hipótese. *Rubrica:* 3 = melhora só em meses de baixo volume, igual nos dois grupos ou só onde havia compartilhamento;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Falseabilidade.** Por que registrar as condições contrárias com antecedência? *Rubrica:* 3 = para não justificar resultados incômodos depois;; 2 = menciona viés;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 08)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Projeto e piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -470,7 +470,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -544,19 +544,19 @@ Uma normalização agressiva pode fundir endereços diferentes; confira uma amos
 - **EX031 — Novo desfecho.** Como o tempo de correção foi redefinido? *Rubrica:* 3 = dias até ficar correto nos cinco sistemas;; 2 = parcialmente correto;; 1 = encerramento do chamado;; 0 = nenhuma.
 - **EX032 — Mudanças registradas.** Quando as mudanças no projeto foram registradas? *Rubrica:* 3 = antes de coletar os dados reais de desfecho;; 2 = parcialmente correto;; 1 = depois;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 08)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -603,7 +603,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -669,19 +669,19 @@ Um intervalo por *bootstrap* reflete a variação amostral, não o viés do dese
 - **EX037 — Rival cultural.** Por que a rival cultural fica enfraquecida? *Rubrica:* 3 = a tributação melhorou sem compartilhamento prévio;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Mecanismo.** Que mecanismo as entrevistas sugeriram? *Rubrica:* 3 = padrão único de endereço e propagação semanal;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 08)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -723,7 +723,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -765,19 +765,19 @@ Resumos tendem a perder ressalvas; mantenha a principal limitação no resumo.
 - **EX043 — Exemplo de recomendação.** Cite uma recomendação. *Rubrica:* 3 = estender a curadoria, medir até o último sistema, publicar as regras;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Consistência.** Por que o resumo e a dissertação precisam concordar? *Rubrica:* 3 = a inconsistência prejudica a credibilidade;; 2 = menciona credibilidade;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 08)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -819,7 +819,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -861,13 +861,13 @@ Extensões a novos departamentos podem não reproduzir os efeitos do piloto; ava
 - **EX049 — Assistência social.** Por que a assistência social aguarda? *Rubrica:* 3 = revisão de suas obrigações legais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Valor duradouro.** Qual pode ser a parte mais útil do trabalho de Tomás? *Rubrica:* 3 = as definições de medida;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 08)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

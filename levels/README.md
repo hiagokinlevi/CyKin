@@ -2,7 +2,7 @@
 
 Choose a level first. Each level contains the same 23 academic areas; each area folder is one course with a single course skill and nine planned language editions of its principal book. Subjects are modules; the [new daily schedule](../CURRICULUM_GRID.md) calls for one distinct book chapter each instructional weekday, with a worked example and exercise. Existing indexes still show older subject chapters until expanded. A plan is not a completed book.
 
-[CyKin home](../README.md) · [Sequential study path](../STUDY_PATH.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
+[OpenCyber Academy home](../README.md) · [Sequential study path](../STUDY_PATH.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
 
 | Level | Duration | Existing subject modules | Weekday lessons / book target | Courses |
 |---|---:|---:|---:|---:|

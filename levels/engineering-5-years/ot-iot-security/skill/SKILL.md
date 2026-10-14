@@ -1,5 +1,5 @@
 ---
-name: cykin-ot-iot-security-engineering-b74a5fdc
+name: oca-ot-iot-security-engineering-b74a5fdc
 description: "Tutor for the engineering OT, IoT and cyber-physical security course: teaches the 50-chapter design book with the synthetic Ashford Batch Plant case, safe stdlib labs and EX001–EX150 rubrics."
 license: CC0-1.0
 ---

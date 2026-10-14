@@ -1,5 +1,5 @@
 ---
-name: cykin-cybersecurity-bachelor-26fbbbe0
+name: oca-cybersecurity-bachelor-26fbbbe0
 description: "Guide a learner through the bachelor's course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -35,7 +35,7 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Computação e arquitetura de serviços
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -82,7 +82,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -132,7 +132,7 @@ Um serviço de IA é feito de muitos componentes; os técnicos o protegem sobret
 
 ## Capítulo 2 — Redes e protocolos
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX005.
@@ -179,7 +179,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -262,7 +262,7 @@ Proteja os protocolos, segmente a rede para que ferramentas poderosas só sejam 
 
 ## Capítulo 3 — Sistemas operacionais e identidades
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX009.
@@ -314,7 +314,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -401,7 +401,7 @@ Privilégio mínimo, contêineres endurecidos, identidades por cliente e arquivo
 
 ## Capítulo 4 — Scripts e formatos de dados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX013.
@@ -453,7 +453,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -507,7 +507,7 @@ Três erros são comuns: "consertar" um JSON inválido do modelo; montar comando
 
 ## Capítulo 5 — Escopo de segurança e evidências
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX017.
@@ -564,7 +564,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -663,7 +663,7 @@ Trabalhe apenas dentro da autorização, descreva o risco com precisão, colete 
 
 ## Capítulo 6 — Segurança de IA e aprendizado de máquina: modelo do sistema
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX021.
@@ -715,7 +715,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -814,7 +814,7 @@ Um modelo prático do sistema mostra onde entra a entrada não confiável e onde
 
 ## Capítulo 7 — Segurança de IA e aprendizado de máquina: dados e telemetria
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX025.
@@ -861,7 +861,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -965,7 +965,7 @@ Os dados e a telemetria moldam e revelam o comportamento da IA: controle quem al
 
 ## Capítulo 8 — Segurança de IA e aprendizado de máquina: modos de falha
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX029.
@@ -1012,7 +1012,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1118,7 +1118,7 @@ Conhecer os modos de falha, distinguir acidentes de ataques e ter uma primeira r
 
 ## Capítulo 9 — Segurança de IA e aprendizado de máquina: ferramentas e métodos
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX033.
@@ -1170,7 +1170,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1252,7 +1252,7 @@ Baterias estruturadas, um *harness* repetível, canários e o raciocínio sobre 
 
 ## Capítulo 10 — Segurança de IA e aprendizado de máquina: configuração de controles
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX037.
@@ -1294,7 +1294,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1389,7 +1389,7 @@ A configuração é onde os controles de segurança de IA se tornam reais: ferra
 
 ## Capítulo 11 — Segurança de IA e aprendizado de máquina: verificação
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX041.
@@ -1441,7 +1441,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1536,7 +1536,7 @@ A verificação transforma a configuração em evidência: testes positivos e ne
 
 ## Capítulo 12 — Laboratório contido I
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX045.
@@ -1593,7 +1593,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1711,7 +1711,7 @@ Os laboratórios contidos tornam visíveis os ataques de privacidade e de extra�
 
 ## Capítulo 13 — Segurança de IA e aprendizado de máquina: solução de problemas
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX049.
@@ -1763,7 +1763,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1858,7 +1858,7 @@ Diagnosticar serviços de IA é um trabalho sistemático: definir, verificar mud
 
 ## Capítulo 14 — Segurança de IA e aprendizado de máquina: automação
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX053.
@@ -1910,7 +1910,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1997,7 +1997,7 @@ A automação torna as verificações rotineiras e a contenção rápida, desde 
 
 ## Capítulo 15 — Segurança de IA e aprendizado de máquina: integração e dependências
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX057.
@@ -2049,7 +2049,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -2140,7 +2140,7 @@ Os serviços de IA só são tão seguros quanto suas dependências: liste-as, ve
 
 ## Capítulo 16 — Documentação técnica e segurança
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX061.
@@ -2192,7 +2192,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -2275,7 +2275,7 @@ Boa documentação, *runbooks* testados e práticas de trabalho seguras tornam o
 
 ## Capítulo 17 — Laboratório contido II
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX065.
@@ -2337,7 +2337,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -2483,7 +2483,7 @@ Um laboratório de ponta a ponta mostra como a configuração muda resultados me
 
 ## Capítulo 18 — Projeto técnico supervisionado
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX069.
@@ -2545,7 +2545,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem

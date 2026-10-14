@@ -1,5 +1,5 @@
 ---
-name: cykin-threat-intelligence-osint-professional-67d248b3
+name: oca-threat-intelligence-osint-professional-67d248b3
 description: "Teach the six-month professional threat intelligence and OSINT course: twelve subjects following a synthetic IT support lead taking on CTI at an insurance broker, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

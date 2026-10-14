@@ -37,7 +37,7 @@ ISO/IEC 27000:2026; Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](htt
 
 ## Capítulo 1 — Começando no Harborview
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -122,19 +122,19 @@ Praticar em sistemas reais sem permissão pode causar dano e pode ser ilegal.
 
 - **EX004 — Hábito seguro.** Cite uma das três regras do Sr. Appiah. *Rubrica:* 3 = praticar apenas com permissão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 18)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — A informação numa rede de centros de jardinagem
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX005.
@@ -176,7 +176,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -219,19 +219,19 @@ Listas impressas de clientes deixadas nos balcões podem ser lidas por qualquer 
 
 - **EX008 — Problema da pasta.** O que há de errado com a pasta compartilhada? *Rubrica:* 3 = todas as contas da equipe podem abri-la;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 18)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Dispositivos e contas
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX009.
@@ -273,7 +273,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -316,19 +316,19 @@ Os logins compartilhados tornam impossível saber quem fez o quê.
 
 - **EX012 — Menor privilégio.** O que significa o menor privilégio? *Rubrica:* 3 = apenas o acesso necessário para a tarefa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 18)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Senhas e entrada nos sistemas
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX013.
@@ -370,7 +370,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -413,19 +413,19 @@ Redefinir uma senha sem confirmar a identidade pode deixar um atacante entrar.
 
 - **EX016 — Bilhete adesivo.** Onde foi encontrada a senha de administração da loja? *Rubrica:* 3 = num bilhete adesivo no escritório;; 2 = parcialmente correto;; 1 = outro lugar;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 18)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Verificando configurações com Python
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX017.
@@ -467,7 +467,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -510,19 +510,19 @@ Scripts que pulam em silêncio as linhas ruins podem esconder problemas.
 
 - **EX020 — Saída restrita.** Por que manter restritas as listas de dispositivos? *Rubrica:* 3 = poderiam ajudar um atacante;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 18)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Noções básicas de segurança
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX021.
@@ -564,7 +564,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -607,19 +607,19 @@ Depender de um único controle não deixa proteção alguma quando ele falha.
 
 - **EX024 — Princípio da usabilidade.** Que princípio diz que a segurança precisa ser fácil de usar? *Rubrica:* 3 = aceitabilidade psicológica;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 18)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Atualizações na loja
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX025.
@@ -666,7 +666,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -736,19 +736,19 @@ Os dispositivos de reserva mantidos desligados perdem as atualizações sem que 
 
 - **EX028 — Configuração noturna.** Que configuração o Sr. Doyle muda nos tablets? *Rubrica:* 3 = atualizações automáticas à noite durante a carga;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 18)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Identificando o phishing
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX029.
@@ -795,7 +795,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -869,19 +869,19 @@ Tratar uma regra simples como perfeita leva as pessoas a confiar nas mensagens q
 
 - **EX032 — Limiar mais baixo.** O que acontece se o limiar cair para um sinal? *Rubrica:* 3 = mais alarmes falsos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 18)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados pessoais no trabalho
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX033.
@@ -918,7 +918,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -961,19 +961,19 @@ Esconder um erro com dados impede a organização de limitar o dano.
 
 - **EX036 — Resposta ao erro.** O que a equipe deve fazer depois de um e-mail enviado ao destinatário errado? *Rubrica:* 3 = comunicá-lo imediatamente;; 2 = parcialmente correto;; 1 = escondê-lo;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — aula 09 (capítulo 09 de 18)
 
 [← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Mantendo os dados seguros
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX037.
@@ -1015,7 +1015,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1058,19 +1058,19 @@ Presumir que uma mudança de permissão funcionou sem testá-la pode deixar dado
 
 - **EX040 — Configuração da tela.** Que configuração ajuda com as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático depois de alguns minutos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 18)
 
 [← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Noções básicas de redes sem fio e de rede
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX041.
@@ -1112,7 +1112,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1155,19 +1155,19 @@ Dispositivos de visitantes na rede da equipe podem alcançar os caixas e os tabl
 
 - **EX044 — Senha padrão do roteador.** Por que trocar as senhas padrão dos roteadores? *Rubrica:* 3 = são publicadas na internet;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — aula 11 (capítulo 11 de 18)
 
 [← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Backups e recuperação
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX045.
@@ -1209,7 +1209,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1252,19 +1252,19 @@ Os arquivos salvos fora das pastas com backup se perdem se o dispositivo falhar.
 
 - **EX048 — Primeiro passo.** Qual é o primeiro passo se houver suspeita de ransomware? *Rubrica:* 3 = parar de usar o dispositivo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — aula 12 (capítulo 12 de 18)
 
 [← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Comunicando problemas
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX049.
@@ -1306,7 +1306,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1349,19 +1349,19 @@ Comunicações vagas atrasam as pessoas que precisam agir com base nelas.
 
 - **EX052 — Acompanhamento.** Com que frequência Chloe confere as comunicações abertas? *Rubrica:* 3 = toda semana;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue estudando — aula 13 (capítulo 13 de 18)
 
 [← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Documentação simples
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX053.
@@ -1403,7 +1403,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1446,19 +1446,19 @@ Escrever senhas nos documentos as expõe a todos os leitores.
 
 - **EX056 — Datas nos documentos.** Por que acrescentar datas aos documentos? *Rubrica:* 3 = os leitores sabem se estão atualizados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue estudando — aula 14 (capítulo 14 de 18)
 
 [← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Trabalhando com o responsável de TI
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX057.
@@ -1500,7 +1500,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1543,19 +1543,19 @@ Conceder acesso sem aprovação pode dar às pessoas dados que elas não deveria
 
 - **EX060 — Meta do retorno.** Que meta Chloe define? *Rubrica:* 3 = avisá-lo em até um dia se uma tarefa atrasar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue estudando — aula 15 (capítulo 15 de 18)
 
 [← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Prática no local de trabalho
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX061.
@@ -1597,7 +1597,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1640,19 +1640,19 @@ Deixar visitantes inesperados entrarem nas áreas da equipe sem verificação tr
 
 - **EX064 — Ponto a melhorar.** O que Chloe quer melhorar? *Rubrica:* 3 = o entendimento de redes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue estudando — aula 16 (capítulo 16 de 18)
 
 [← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Avaliação prática
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX065.
@@ -1694,7 +1694,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -1737,19 +1737,19 @@ Desativar uma configuração de segurança sem aprovação para fazer algo funci
 
 - **EX068 — Teste oculto.** Qual era o teste oculto? *Rubrica:* 3 = desativar uma configuração de segurança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue estudando — aula 17 (capítulo 17 de 18)
 
 [← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Continue para a próxima aula já escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Revisão e próximos passos
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX069.
@@ -1791,7 +1791,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -1834,13 +1834,13 @@ Depender de fontes antigas sem conferir as edições pode espalhar orientações
 
 - **EX072 — Tema do próximo curso.** O que cobre o curso de governança de dados? *Rubrica:* 3 = quem decide como as informações são coletadas e usadas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue estudando — aula 18 (capítulo 18 de 18)
 
 [← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

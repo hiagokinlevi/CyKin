@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-engineering-f9799bc7
+name: oca-incident-response-resilience-engineering-f9799bc7
 description: "Tutor the fifty-chapter engineering Incident Response and Cyber Resilience course (designing, building and verifying response systems: evidence pipelines, case and workflow platforms, scoped containment, recovery architecture) from its English draft, synthetic HVSS design case, 18 offline labs, 100 exercises and worked answers; enforce authorisation, evidence and safety boundaries."
 license: CC0-1.0
 ---

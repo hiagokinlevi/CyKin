@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-engineering-7541b9e3
+name: oca-network-communications-engineering-7541b9e3
 description: "NET Engineering Course (50 ch / 150 ex)"
 license: CC0-1.0
 ---

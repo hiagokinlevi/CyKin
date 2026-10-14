@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-technical-5a2e6d97
+name: oca-security-operations-blue-team-technical-5a2e6d97
 description: "SOC technical course: 18 chapters, 72 exercises, 4 stdlib labs"
 license: CC0-1.0
 ---

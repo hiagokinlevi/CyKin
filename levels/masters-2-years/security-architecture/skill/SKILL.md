@@ -1,5 +1,5 @@
 ---
-name: cykin-security-architecture-masters-198d04e8
+name: oca-security-architecture-masters-198d04e8
 description: "Guide a learner through the ARCH Master's Course draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-professional-19e11913
+name: oca-incident-response-resilience-professional-19e11913
 description: "Tutor the professional Incident Response course through twelve drafted English subjects, CTN case, 60 exercises and answers; preserve case time, evidence and authority boundaries."
 license: CC0-1.0
 ---
@@ -29,7 +29,7 @@ For Week 2, teach [Day 1](../en/book/MANUSCRIPT.md#week-02-day-01) through [Day 
 
 ## Authored twelve-subject route
 
-This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the book has not met the 300-page A4, independent-review or publication gate. Teach only the actual manuscript as CyKin text and identify any added explanation as supplementary.
+This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the book has not met the 300-page A4, independent-review or publication gate. Teach only the actual manuscript as OpenCyber Academy text and identify any added explanation as supplementary.
 
 | Subject | Read and teach | Learner artifact |
 |---|---|---|

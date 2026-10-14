@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-bachelor-1d858c59
+name: oca-application-supply-chain-bachelor-1d858c59
 description: "APP bachelor's course (40 ch / 120 ex)"
 license: CC0-1.0
 ---

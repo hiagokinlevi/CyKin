@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-bachelor-37bf7d63
+name: oca-quantum-post-quantum-security-bachelor-37bf7d63
 description: "Guide a learner through the bachelor's course in Quantum and post-quantum security: its one authored draft book of 40 chapters (foundations, the quantum threat, ML-KEM/ML-DSA/SLH-DSA, inventory, hybrids, verification, operations, capstone), labs and exercises EX001–EX080 with worked results."
 license: CC0-1.0
 ---

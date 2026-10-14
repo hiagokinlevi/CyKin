@@ -37,7 +37,7 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022; ISO/IEC 27002:2022; NIST SP 800-53 Rev. 
 
 ## Chapter 1 — The practitioner and Moorfield Dental Group
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -125,19 +125,19 @@ Experience without structured methods makes decisions hard to defend.
 - **EX004 — Course addition.** What does the course add to Elena's experience? *Rubric:* 3 = frameworks, measurement and board communication;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX005 — Goal evidence.** What evidence shows the programme goal is met? *Rubric:* 3 = a board-approved programme document;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 12)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Security governance and the management system
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -184,7 +184,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -225,19 +225,19 @@ Activities without records cannot show they happen consistently.
 - **EX009 — Excluded party.** What is excluded from scope? *Rubric:* 3 = the dental laboratory;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX010 — Overview standard.** Which standard gives the family overview? *Rubric:* 3 = ISO/IEC 27000:2026;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 12)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Risk assessment for a clinic network
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -284,7 +284,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -325,19 +325,19 @@ Uncalibrated ratings vary widely between assessors.
 - **EX014 — Misuse treatment.** How is staff misuse treated? *Rubric:* 3 = access reviews and alerts on unusual viewing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Transfer method.** What transfers some financial loss? *Rubric:* 3 = cyber insurance;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 12)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Asset and supplier inventory
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -384,7 +384,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -425,19 +425,19 @@ Devices bought outside central purchasing often escape patching and backup.
 - **EX019 — Supplier fix.** What does Elena recommend for imaging supplier access? *Rubric:* 3 = individual accounts, MFA, session-only access;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Records owner.** Who owns patient records? *Rubric:* 3 = the clinical lead;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 12)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Patch and vulnerability management
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -489,7 +489,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -560,19 +560,19 @@ An overall compliance figure can hide clinics with serious gaps.
 - **EX024 — Schedule fix.** How is update scheduling changed? *Rubric:* 3 = lunchtime with restarts outside appointments;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Imaging control.** How are unpatchable imaging computers protected? *Rubric:* 3 = isolated segment and restricted access;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 12)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Identity and access
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -619,7 +619,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -660,19 +660,19 @@ Copying colleagues' access spreads excess rights across clinics.
 - **EX029 — Admin factor.** What protects administrator accounts? *Rubric:* 3 = hardware security keys;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX030 — Supplier gateway.** How do suppliers connect? *Rubric:* 3 = managed gateway with MFA and recorded sessions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 12)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Phishing and email security
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -724,7 +724,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -796,19 +796,19 @@ Lookalike domains pass a quick glance, so relying on staff spotting them fails.
 - **EX034 — Edit distance.** What does edit distance count? *Rubric:* 3 = single-character changes between strings;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Payment rule.** What is the payment change rule? *Rubric:* 3 = confirm by calling a known number;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 12)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Backup, ransomware and recovery
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -855,7 +855,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -896,19 +896,19 @@ Backups reachable with everyday administrator credentials can be destroyed by ra
 - **EX039 — Second test.** How long did the second test take? *Rubric:* 3 = three hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX040 — Missing forms.** What was missing in the continuity trial? *Rubric:* 3 = paper consent forms;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 12)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Incident response and notification
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -955,7 +955,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -996,19 +996,19 @@ Discovering notification deadlines late can turn an incident into a regulatory b
 - **EX044 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = supplier not required to notify promptly;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Review outcome.** Name one improvement from reviews. *Rubric:* 3 = locum account expiry;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 12)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Metrics, reporting and the board
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1055,7 +1055,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1096,19 +1096,19 @@ Measures that never change decisions waste attention.
 - **EX049 — Imaging decision.** What decision follows the imaging question? *Rubric:* 3 = pressure the supplier jointly with other groups;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Pruning.** What does Elena propose for unused measures? *Rubric:* 3 = stop them;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 12)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Capstone project
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -1155,7 +1155,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1196,19 +1196,19 @@ Claiming a project proves resilience against real attacks overstates evidence.
 - **EX054 — Final recovery.** How long did the final recovery take? *Rubric:* 3 = three hours ten minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX055 — Next step.** What does Elena recommend next? *Rubric:* 3 = an independent incident response test;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 12)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone presentation and next steps
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -1255,7 +1255,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1296,13 +1296,13 @@ Leading with technical detail loses a board audience.
 - **EX059 — Board adoption.** What does the board adopt? *Rubric:* 3 = Elena's measures as quarterly reporting;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Certification driver.** Why consider ISO/IEC 27001 certification? *Rubric:* 3 = insurers have begun to request it;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 12)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

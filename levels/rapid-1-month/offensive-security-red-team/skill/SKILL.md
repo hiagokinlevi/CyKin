@@ -1,5 +1,5 @@
 ---
-name: cykin-offensive-security-red-team-rapid-bcdc3fa9
+name: oca-offensive-security-red-team-rapid-bcdc3fa9
 description: "Tutor the four-chapter rapid authorized offensive security and red team course from its hand-written English draft: synthetic Riverside Civic College, labs in chapters 2 and 4, EX001–EX050; enforce authorization and no-exploit boundaries."
 license: CC0-1.0
 ---

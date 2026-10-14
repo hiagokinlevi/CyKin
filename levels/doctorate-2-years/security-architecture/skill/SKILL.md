@@ -1,5 +1,5 @@
 ---
-name: cykin-security-architecture-doctorate-c49b66c7
+name: oca-security-architecture-doctorate-c49b66c7
 description: "Guide a learner through the ARCH Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-security-governance-risk-compl-bachelor-a3481974
+name: oca-security-governance-risk-compl-bachelor-a3481974
 description: "Guide a learner through the GRC Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

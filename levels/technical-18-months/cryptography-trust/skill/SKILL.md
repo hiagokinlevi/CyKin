@@ -1,5 +1,5 @@
 ---
-name: cykin-cryptography-trust-technical-4fd2c9bb
+name: oca-cryptography-trust-technical-4fd2c9bb
 description: "Guide a learner through the CRYPT technical course draft: 18 chapters following synthetic student Tomás Reyes at Lumen Freight Logistics, seven stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

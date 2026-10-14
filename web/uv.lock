@@ -65,7 +65,7 @@ wheels = [
 ]
 
 [[package]]
-name = "cykin-worker"
+name = "open-cyber-academy-worker"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -1,5 +1,5 @@
 ---
-name: cykin-critical-sector-security-engineering-a6528a31
+name: oca-critical-sector-security-engineering-a6528a31
 description: "Tutor the fifty-chapter engineering Critical Infrastructure and Sector Security course (designing, building and verifying secure, resilient infrastructure systems) from its English draft, synthetic Lowmarsh/TMRP design case, 17 offline labs, 100 exercises and worked answers; enforce safety, authorisation and infrastructure-information boundaries."
 license: CC0-1.0
 ---

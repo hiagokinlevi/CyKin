@@ -65,7 +65,7 @@ Every factual statement about a framework, law, standard, public incident or pub
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -127,7 +127,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -243,19 +243,19 @@ Then hand the page to a colleague and ask them to name the risk owner from your 
 
 An essential service is a function delivered to people, and its security is measured by consequence: safety, continuity, trustworthiness, then confidentiality. The coordinator connects the people who hold parts of the picture, makes sure decisions have owners and records, and keeps evidence. Precise risk statements and a framework used as a map — not as proof — are the first tools of the job.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 12
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Critical infrastructure and sector security: service and stakeholder context
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -312,7 +312,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -413,19 +413,19 @@ Use the hospital table as a model: for each dependency, record the answer, its s
 
 A critical service is a chain of functions with upstream, downstream and shared dependencies, and a set of stakeholders who decide, do, must be told, can help or are affected. Sectors differ in what harm means, so a coordinator translates consequences into the receiving sector's terms. Record the source and confidence of every dependency fact; an unverified assumption behind a decision is a task.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 12
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -487,7 +487,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -607,19 +607,19 @@ Choose a visit that touches a system someone would worry about, such as a mainte
 
 Authorization makes the owner of the consequence agree in advance to exactly what will happen, and lets everyone prove it later. A valid authorization has scope with exclusions, permitted and prohibited activities, named people, a window, stop conditions, data handling and written authority. Decision records capture what was known at the time; governance evidence lives in owned, controlled locations; TLP tells partners how far they may share.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 12
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Critical infrastructure and sector security: core methods
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -671,7 +671,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -820,19 +820,19 @@ Notice where R03 and R05 land in each order, because that is the argument you wo
 
 Risk assessment is a cycle — frame, identify, analyse, decide, monitor — and the register is its memory. Anchor scales in your service's terms, rank by consequence first in essential services, and treat scores as ordinal. Every risk needs an owner with authority, a treatment, dates and evidence; acceptance is legitimate only with matching authority, conditions and expiry.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 12
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Critical infrastructure and sector security: tools and interpretation
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -889,7 +889,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -992,19 +992,19 @@ Write your rewrite in the same form as the coordinator's report on the CPG self-
 
 Frameworks and baselines are yardsticks: pick one primary structure, satisfy the law first, and map the rest. Read every assessment by scope, method, definition, date and decision supported. Measure exposure, timeliness and coverage of what matters, with owners and threshold actions. Make technical findings decision-ready by asking what, how known, how exposed, who acts and what it disrupts.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 12
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Critical infrastructure and sector security: operational workflow
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -1061,7 +1061,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1208,19 +1208,19 @@ Include the supplier as a role and make sure it never approves its own access, w
 
 A programme runs on assigned roles, a RACI with one accountable per activity and a named lead, change governance that keeps security-relevant changes visible, and an escalation path that works offline at night. Check the RACI for structure, ownership of approvals and incident load; review every emergency change after the event.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 12
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Critical infrastructure and sector security: controls and verification
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -1277,7 +1277,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1378,19 +1378,19 @@ For each card, say what the failure signal would look like in practice, such as 
 
 A control is something a manager can own: objective, owner, operation, evidence and failure signal. Assurance rises from stated to documented, observed and tested; aim for tested on controls protecting the worst consequences. Verify proportionately through three lines, authorize tests like any other work, and keep exceptions owned, compensated and time-limited.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 12
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Critical infrastructure and sector security: supervised case analysis
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -1452,7 +1452,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1584,19 +1584,19 @@ Keep each part short and label it, so the supervisor can stop you at any point a
 
 Supplier access is governed across a lifecycle — select, contract, onboard, operate, change, exit — and most failures sit at the joins. An access review reconciles accounts, contracts and sessions; respond proportionately, treat anomalies as questions, and escalate what remains unexplained through the proper path. Turn lessons into checkable contract requirements and present cases with decisions requested and uncertainty labelled.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 12
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communication, ethics and reporting
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -1658,7 +1658,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1788,19 +1788,19 @@ Include contracts and insurance as well as law, since the Saturday incident show
 
 Incidents start several clocks at once; know them in advance, agree what starts each and who records it, and set internal approval deadlines ahead of external ones. Critical customers need practical messages early; the public needs truthful, proportionate holding statements. Communicate without blame or speculation, correct errors visibly, and report to executives with facts, impact, decisions and duties.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 12
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Critical infrastructure and sector security: quality and troubleshooting
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -1857,7 +1857,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1994,19 +1994,19 @@ Write the symptom as a precise fact with times or counts, as in the hospital exa
 
 Coordination programmes fail in recognisable ways — ownership gaps, duplicated responsibility, stale information, paper controls, bottlenecks, action decay and speed without quality. Troubleshoot them like faults, from symptom through hypotheses and evidence to cause, without blame. Measure decision quality, not just speed, and close corrective actions only with verified evidence.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 12
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised laboratory
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -2068,7 +2068,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -2180,19 +2180,19 @@ Base the scenario on public threat information at a general level, as DRY CREEK 
 
 A tabletop exercise is the coordinator's laboratory: safe, cheap and powerful at exposing gaps in roles, information and communication. Design it with observable objectives, a plausible synthetic scenario, injects mapped to objectives, independent evaluators and a safety officer. Facilitate to test plans, not people; evaluate with a hot wash, an after-action report and an improvement plan whose actions are owned and verified.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 12
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX060.
@@ -2254,7 +2254,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX060]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -2368,13 +2368,13 @@ Choose claims that matter, such as "supplier MFA verified by test for two suppli
 
 A professional coordinator shows competence through checkable work products: maps, records, registers, RACIs, control cards, case briefings, notification registers, exercise reports and improvement plans. Brief boards with consequences, evidence and specific requests; start a new role with ownership, information and rehearsal; and assess yourself honestly against the full cycle — frame, decide, organise, verify, communicate, improve.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

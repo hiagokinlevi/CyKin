@@ -1,1 +1,1 @@
-"""CyKin public reading API."""
+"""OpenCyber Academy public reading API."""

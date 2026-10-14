@@ -1,4 +1,4 @@
-# Detailed CyKin area map
+# Detailed OpenCyber Academy area map
 
 Each area is taught at every formation level. The school is a grouping for navigation; the course folder sits under its level. Scope boundaries and prerequisites are editorial guides that require subject-expert review.
 

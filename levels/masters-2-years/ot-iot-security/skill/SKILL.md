@@ -1,5 +1,5 @@
 ---
-name: cykin-ot-iot-security-masters-35a0ad3d
+name: oca-ot-iot-security-masters-35a0ad3d
 description: "Tutor the eight-chapter master's OT, IoT and cyber-physical security course from its English draft: Harbor Loop Study, residual detection of sensor replay, 50 exercises; enforce plant-safety and dual-use boundaries."
 license: CC0-1.0
 ---

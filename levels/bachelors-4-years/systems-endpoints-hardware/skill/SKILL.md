@@ -1,5 +1,5 @@
 ---
-name: cykin-systems-endpoints-hardware-bachelor-c42ef6f0
+name: oca-systems-endpoints-hardware-bachelor-c42ef6f0
 description: "SYS Bachelor's Course (40 ch / 120 ex)"
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-professional-2f79da44
+name: oca-application-supply-chain-professional-2f79da44
 description: "APP Professional course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

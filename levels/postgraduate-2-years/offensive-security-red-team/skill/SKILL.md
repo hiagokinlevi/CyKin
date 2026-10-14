@@ -1,5 +1,5 @@
 ---
-name: cykin-offensive-security-red-team-postgraduate-fb7091b6
+name: oca-offensive-security-red-team-postgraduate-fb7091b6
 description: "Tutor the twelve-chapter postgraduate authorized offensive security and red team course from its hand-written English draft: synthetic Meridian Clearing House, labs in chapters 6, 9 and 10, EX001–EX060; enforce systemic-risk and no-exploit boundaries."
 license: CC0-1.0
 ---

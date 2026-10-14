@@ -73,7 +73,7 @@ Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossári
 
 ## Capítulo 1 — Computação e arquitetura de serviço
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -125,7 +125,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -251,19 +251,19 @@ Use três cores ou três camadas de página, para que um switch ou um host de sa
 
 Um serviço de setor crítico é um conjunto de camadas unidas por três caminhos. Comandos, medições e mudanças percorrem rotas diferentes e falham de modos diferentes; o caminho de gerência concentra o maior privilégio. A varredura de requisição–resposta faz da atualidade uma questão de aritmética, e são os timeouts, não a largura de banda, que costumam decidi-la. Cada capítulo seguinte acrescenta uma técnica a um desses caminhos; mantenha, portanto, o diagrama e o orçamento à mão.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 18
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX005.
@@ -310,7 +310,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -442,19 +442,19 @@ O segundo quadro traz a função 05, uma escrita de bobina única, então regist
 
 Os protocolos industriais clássicos confiam em quem consegue alcançá-los; portanto, a posição na rede é autoridade. Os quadros Modbus/TCP têm uma estrutura fixa e verificável; decodificá-los corretamente — incluindo as verificações de comprimento e de protocolo — é a base de todo filtro e detecção posteriores. Escritas vindas do lugar errado são a primeira regra; funções de identificação e de diagnóstico precisam de contexto; e um decodificador só vê o que o seu ponto de captura vê.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 18
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operacionais e identidades
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX009.
@@ -501,7 +501,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -636,19 +636,19 @@ Registre a versão do OpenSSH e o caminho de cada arquivo que o `sshd -T` mostra
 
 O endurecimento do sistema operacional é verificável: configurações efetivas, UIDs, shells e participação em grupos podem ser lidos e comparados com uma política escrita. Saiba como o daemon realmente lê o seu arquivo, olhe os números em vez dos nomes e ordene as mudanças de modo a nunca trancar do lado de fora as pessoas que operam o serviço.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 18
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Scripts e formatos de dados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX013.
@@ -695,7 +695,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -833,19 +833,19 @@ Rejeite a KW-13 com o seu número de linha e um motivo que nomeie o conjunto per
 
 Os dados operacionais chegam malformados, ambíguos e, às vezes, hostis. Analise com analisadores de verdade, valide numa ordem que falhe fechada, nunca force conversões e relate cada constatação com coordenadas. Rejeite o que não consegue interpretar; ponha em quarentena o que consegue interpretar, mas não deveria acreditar; e mantenha os resumos legíveis por máquina, para que o próprio validador possa ser monitorado.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 18
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo de segurança e evidências
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX017.
@@ -897,7 +897,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -996,19 +996,19 @@ Declare um tamanho máximo de arquivo e um período de retenção, porque um dia
 
 Em ambientes críticos, o escopo protege o processo tanto quanto quem testa. Escreva-o antes de começar, prefira métodos passivos e torne cada evidência verificável por outra pessoa: bruta, com origem, com horário em UTC, atribuída e com hash. Preserve antes de mudar e mantenha separados o observado, o inferido, o feito e o em aberto.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 18
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Infraestrutura crítica e segurança setorial: modelo de sistema
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX021.
@@ -1055,7 +1055,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1139,19 +1139,19 @@ Para o caminho de suporte remoto do fornecedor até a Z3, registre se ele termin
 
 O modelo de sistema une ativos, zonas, conduítes e consequências num único mapa. Ele diz o que deveria acontecer, para que qualquer outra coisa fique visível como constatação. Os setores diferem em protocolos, tempos e em quem pode mudar o quê, e as funções de segurança e de proteção ficam separadas de tudo o que um técnico toca.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 18
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestrutura crítica e segurança setorial: dados e telemetria
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX025.
@@ -1198,7 +1198,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1313,19 +1313,19 @@ Registre o host, a referência, o deslocamento e o horário da medição. Depois
 
 A telemetria é um conjunto de testemunhas parciais. Saiba o que cada fonte consegue ver, analise os formatos com rigor, contando o que não consegue analisar, e corrija cada relógio frente a uma referência antes de ordenar os eventos. Uma linha do tempo construída sobre relógios não corrigidos pode inverter causa e efeito; uma construída sobre relógios corrigidos, com as suas incertezas declaradas, é evidência.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 18
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestrutura crítica e segurança setorial: modos de falha
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX029.
@@ -1377,7 +1377,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1502,19 +1502,19 @@ A subida constante da KW-01 é comportamento do processo enquanto uma bomba ench
 
 A telemetria falha de um pequeno número de modos reconhecíveis, e cada sintoma tem causas comuns e maliciosas. Detecte os sintomas com regras transparentes — lacuna, travado, pico, faixa — cujos limiares venham de dados saudáveis e cujos motivos estejam escritos. Estar dentro da faixa não é o mesmo que ser verdadeiro. Relate o sintoma com precisão e deixe a causa para a investigação.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 18
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Infraestrutura crítica e segurança setorial: ferramentas e métodos
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX033.
@@ -1561,7 +1561,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1689,19 +1689,19 @@ Corrompa um byte no segundo bloco e confirme que só a verificação desse bloco
 
 Escolha o método menos intrusivo que responda à pergunta e valide cada ferramenta antes de confiar nela: testes de resposta conhecida, testes negativos, versões registradas. O CRC da camada de enlace do DNP3 mostra essa disciplina em miniatura — implemente-o a partir dos parâmetros publicados, confira-o frente ao valor de catálogo — e também o seu limite: a detecção de erros prova que os bytes chegaram íntegros, nunca quem os enviou.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 18
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestrutura crítica e segurança setorial: configuração de controles
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX037.
@@ -1753,7 +1753,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1888,19 +1888,19 @@ Ponha cada permissão acima da negação padrão, com chamado e responsável no 
 
 Um conjunto de regras de firewall é um programa de primeira correspondência, e os seus defeitos são defeitos de programa: regras sombreadas que nunca agem, regras redundantes que confundem e regras parecidas que ampliam o acesso. Configure os conduítes com uma regra por propósito declarado e negação padrão, mantenha o acesso de fornecedores desabilitado até ser necessário e planeje cada mudança com os seus testes e a sua reversão. Depois, verifique, que é o assunto do próximo capítulo.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 18
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Infraestrutura crítica e segurança setorial: verificação
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX041.
@@ -1952,7 +1952,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2078,19 +2078,19 @@ Use a mesa de testes identificada e depois consulte o coletor pela negação cor
 
 A verificação transforma uma mudança de configuração num resultado demonstrado. Escreva requisitos que possam falhar, teste cada um com testes positivos e negativos, conte apenas os testes com evidência e relate cada requisito como verificado, falho ou não testado. Em redes de controle, verifique com as menores ações com escopo, e nunca fazendo experiências no processo em produção.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 18
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratório contido I
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX045.
@@ -2147,7 +2147,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2296,19 +2296,19 @@ Registre as quatro respostas em hexadecimal e as linhas de log ao lado delas. Po
 
 Um laboratório contido é aquele em que a segurança é uma propriedade técnica. O Laboratório 12 constrói um respondedor Modbus que aplica uma política de escrita e devolve exceções adequadas, tornando visível o que a maioria dos dispositivos reais esconde: quais requisições foram recusadas, e por quê. Avalie todo laboratório quanto a contenção, reprodutibilidade, evidências e uma declaração franca do que ele não modela.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 18
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Infraestrutura crítica e segurança setorial: resolução de problemas
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX049.
@@ -2360,7 +2360,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2480,19 +2480,19 @@ Se as observações existentes não refutarem a H6, nomeie uma verificação adi
 
 Resolver problemas num serviço crítico é um método, não um palpite: defina o sintoma, observe somente lendo, escreva hipóteses com previsões, elimine-as pelas evidências, preserve, depois mude uma coisa e verifique. Quando uma observação não é explicada por uma atividade aprovada, a falha se tornou um possível incidente; pare, preserve e escalone. O registro que você mantém é, ao mesmo tempo, a passagem de turno e a evidência.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 18
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Infraestrutura crítica e segurança setorial: automação
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX053.
@@ -2544,7 +2544,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2663,19 +2663,19 @@ Grave o registro de preservação antes de imprimir a constatação e inclua na 
 
 Automatize as verificações que nunca mudam: coletar, calcular hash, comparar com um manifesto aprovado e classificar as diferenças. Aja de modo diferente sobre os itens aprovados, não aprovados, novos e ausentes — preserve antes de reverter e restrinja a correção automática a uma lista curta que nunca toque o processo. Proteja a automação como a ferramenta poderosa que ela é.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 18
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Infraestrutura crítica e segurança setorial: integração e dependências
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX057.
@@ -2722,7 +2722,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2841,19 +2841,19 @@ Depois da mudança, registre quais componentes são compartilhados pelos três s
 
 Os serviços falham por meio daquilo de que dependem, e as dependências mais perigosas são as compartilhadas que nenhum dono reivindica. Modele as dependências como um grafo, percorra-o para trás a partir de cada componente e olhe os caminhos, não apenas as contagens. Trate todo ponto de integração — roteadores de estação, operadoras, gateways de fornecedores, exportações, diretório e tempo — como uma fronteira sujeita à mesma disciplina de controle, mudança e monitoramento que o firewall.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 18
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Documentação técnica e segurança
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX052.
@@ -2905,7 +2905,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2997,19 +2997,19 @@ Inclua a preservação da configuração do roteador antes da mudança, testes p
 
 Bons documentos técnicos são executáveis e conferíveis: etapas numeradas com resultados esperados, condições de parada, reversão e evidências. A segurança e a autoridade das operações se sobrepõem a todo plano técnico; os sistemas de proteção e de segurança funcional estão fora dos limites. Notebooks e mídias que se movem entre zonas precisam dos seus próprios controles, e segredos nunca pertencem aos documentos.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 18
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Laboratório contido II
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX067.
@@ -3061,7 +3061,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3211,19 +3211,19 @@ Verificações que pegam esses erros:
 
 Um pipeline de detecção é um pequeno sistema com requisitos próprios: regras rastreáveis até o modelo de sistema, episódios que resumem sem esconder e uma autoverificação que presta contas de cada registro. Construído de forma contida e avaliado com honestidade — incluindo os seus pontos cegos —, ele transforma as técnicas separadas do curso em algo sobre o qual um líder de plantão pode agir.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 18
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX071.
@@ -3285,7 +3285,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX071]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3422,13 +3422,13 @@ Verificações que pegam esses erros:
 
 Um projeto supervisionado demonstra competência técnica como evidência: um escopo assinado, uma linha de base, uma mudança controlada, a verificação de cada requisito, um registro de solução de problemas, documentação executável e um pacote selado. Um selo prova que as evidências não mudaram desde a selagem, se for registrado fora do pacote; não prova que eram verdadeiras. Declare o que está em aberto, quem é o responsável e o que você não conseguiu ver.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 18
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

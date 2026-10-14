@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-technologist-45df67e4
+name: oca-incident-response-resilience-technologist-45df67e4
 description: "Tutor the technologist Incident Response draft: 30 chapters in which the learner builds and runs the incident response service of the synthetic Fernmoor City Services (inventory, evidence flows, triage, case/evidence tooling, tested containment and restores, ITSM integration, automation, measurement, workflow deployment, field simulation, capstone), 5 stdlib labs and EX001–EX090."
 license: CC0-1.0
 ---

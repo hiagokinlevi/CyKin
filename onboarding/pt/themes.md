@@ -2,7 +2,7 @@
 
 Escolha um dos 23 temas. Na seção do tema, selecione o nível para abrir o guia completo de capítulos do curso.
 
-[Início do CyKin](../../README.md) · [Escolher por nível](levels.md)
+[Início do OpenCyber Academy](../../README.md) · [Escolher por nível](levels.md)
 
 O guia de cada curso lista todos os capítulos em ordem. Um capítulo do manuscrito já pode ser lido; um plano é apenas um resumo, não uma aula. A contagem de capítulos no manuscrito não comprova que o livro foi concluído. Pare na primeira aula obrigatória ainda não escrita.
 

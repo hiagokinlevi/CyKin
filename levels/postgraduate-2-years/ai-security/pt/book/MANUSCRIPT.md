@@ -35,7 +35,7 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Tomada de decisão avançada em segurança
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -82,7 +82,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -133,7 +133,7 @@ Decisões seniores de segurança de IA são escolhas entre opções imperfeitas 
 
 ## Capítulo 2 — Segurança de IA e aprendizado de máquina: prática atual
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX006.
@@ -175,7 +175,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -271,7 +271,7 @@ A prática atual combina taxonomias compartilhadas com um mapeamento específico
 
 ## Capítulo 3 — Segurança de IA e aprendizado de máquina: evidências especializadas
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX011.
@@ -318,7 +318,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -410,7 +410,7 @@ Evidências especializadas são graduadas por força, relatadas com intervalos, 
 
 ## Capítulo 4 — Risco e ética avançados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX016.
@@ -457,7 +457,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -508,7 +508,7 @@ O trabalho avançado de risco contabiliza os danos a todos os afetados, usa leis
 
 ## Capítulo 5 — Segurança de IA e aprendizado de máquina: alternativas de projeto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX021.
@@ -555,7 +555,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -606,7 +606,7 @@ Um bom projeto de segurança de IA gera alternativas e as compara abertamente, p
 
 ## Capítulo 6 — Segurança de IA e aprendizado de máquina: avaliação controlada
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX026.
@@ -653,7 +653,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -758,7 +758,7 @@ A avaliação controlada muda uma coisa de cada vez, usa conjuntos adaptativos r
 
 ## Capítulo 7 — Segurança de IA e aprendizado de máquina: integração organizacional
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX031.
@@ -805,7 +805,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -893,7 +893,7 @@ Integração organizacional significa conhecer todo uso de IA, incorporar a IA a
 
 ## Capítulo 8 — Segurança de IA e aprendizado de máquina: casos difíceis
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX036.
@@ -940,7 +940,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1024,7 +1024,7 @@ Casos difíceis exigem compromissos explícitos, desconfiança de toda mensagem 
 
 ## Capítulo 9 — Segurança de IA e aprendizado de máquina: liderança e garantia
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX041.
@@ -1076,7 +1076,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1172,7 +1172,7 @@ A liderança em segurança de IA transforma evidências em casos de garantia, re
 
 ## Capítulo 10 — Leitura e crítica de pesquisa
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX046.
@@ -1219,7 +1219,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1270,7 +1270,7 @@ Profissionais da prática leem pesquisas pelo modelo de ameaça e pelas evidênc
 
 ## Capítulo 11 — Projeto aplicado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX051.
@@ -1322,7 +1322,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1411,7 +1411,7 @@ Projetos aplicados servem a uma decisão real, rodam com segurança sob autoriza
 
 ## Capítulo 12 — Revisão final e transferência
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX056.
@@ -1463,7 +1463,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem

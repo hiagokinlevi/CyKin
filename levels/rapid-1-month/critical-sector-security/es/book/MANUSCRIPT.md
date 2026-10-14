@@ -58,7 +58,7 @@ Toda afirmación factual sobre un marco público, una ley, una orientación o un
 
 ## Capítulo 1 — Infraestructura crítica y seguridad sectorial: fundamentos y decisiones
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -120,7 +120,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -256,19 +256,19 @@ Elija un servicio esencial que use (su empresa de agua, el hospital local, la co
 
 Las infraestructuras críticas prestan funciones de las que las personas no pueden prescindir, y su seguridad se juzga por la consecuencia: primero la seguridad de las personas, después la continuidad, la fiabilidad y la confidencialidad. Los incidentes reales muestran que los problemas informáticos llegan a los pacientes, a los hogares y a las calles, y que a menudo bastan debilidades simples. Las herramientas de un recién llegado son una frase de riesgo clara, una marca honesta en lo que se supone y tres decisiones: darse cuenta, comunicarlo y dejar la corrección en manos del dueño.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 04
 
 [← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Alcance, permiso y práctica segura
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX014.
@@ -330,7 +330,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX014]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -473,19 +473,19 @@ Escriba su propia «tarjeta de límites»: cinco cosas que puede hacer y cinco q
 
 El permiso lo da el dueño del sistema, es concreto y suele constar por escrito; ni el acceso ni las buenas intenciones son permiso. En los servicios esenciales, «solo comprobar» puede perturbar procesos reales, así que las acciones seguras de un recién llegado son usar lo que le dieron, fijarse, comunicarlo rápido y con honestidad por un canal conocido, y compartir con cuidado mediante etiquetas como las del TLP. Las habilidades se adquieren en entornos sintéticos y de estudio, nunca en servicios en funcionamiento.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 04
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Infraestructura crítica y seguridad sectorial: sistemas, datos y dependencias
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX027.
@@ -547,7 +547,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX027]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -697,19 +697,19 @@ Elija un servicio esencial público cercano (o la planta de Larkfield Water desc
 
 Un servicio esencial son personas, TI, tecnología operativa, datos y proveedores que trabajan juntos. La TO mide y controla el mundo físico, debe funcionar sin interrupción y puede causar daños físicos cuando falla, por lo que una lectura errónea puede ser peor que una robada. Los servicios dependen de otros aguas arriba, sirven a personas aguas abajo y comparten dependencias entre sí; los puntos únicos de fallo y los respaldos que tienen sus propias dependencias son donde se esconden los problemas. La lista de dependencias de un recién llegado es un conjunto de buenas preguntas para el dueño.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 04
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestructura crítica y seguridad sectorial: laboratorio guiado y síntesis aplicada
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX050.
@@ -771,7 +771,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX050]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -960,13 +960,13 @@ Una ficha con 12 puntos o más sobre 15, sin ningún cero, alcanza el nivel del 
 
 Los fallos de las infraestructuras críticas se propagan en cascada a lo largo de las dependencias, y los respaldos solo protegen la dependencia que sustituyen, y solo mientras se mantienen sus propias dependencias. Un modelo pequeño y sintético hace visibles las cascadas y, sobre todo, genera buenas preguntas; nunca sustituye el conocimiento del dueño. La ficha del servicio reúne el curso en una página honesta: función, orden de consecuencias, dependencias, frases de riesgo, supuestos y lo que usted no hizo.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 04
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
 
 Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

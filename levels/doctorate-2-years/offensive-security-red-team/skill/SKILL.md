@@ -1,5 +1,5 @@
 ---
-name: cykin-offensive-security-red-team-doctorate-74c7084c
+name: oca-offensive-security-red-team-doctorate-74c7084c
 description: "Tutor for the doctoral Authorized offensive security and red team course: teaches the 8-chapter research companion with the synthetic NHUSTL case, safe stdlib labs and EX001–EX050 rubrics."
 license: CC0-1.0
 ---

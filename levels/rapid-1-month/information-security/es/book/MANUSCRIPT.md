@@ -37,7 +37,7 @@ ISO/IEC 27000:2026. Lista completa en [Referencias](#references).
 
 ## Capítulo 1 — Un mes para corregir lo básico
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX051.
@@ -99,7 +99,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -218,19 +218,19 @@ Una enfermera copia la fotografía de una herida a la carpeta de promoción, par
 
 - **EX013 — Motivo del registro.** ¿Por qué anotar cada cambio? *Rúbrica:* 3 = para que los problemas puedan rastrearse;; 2 = parcialmente correcto;; 1 = vago;; 0 = ninguna.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Siga estudiando — lección 01 (capítulo 01 de 04)
 
 [← Inicio del curso](../../README.md) · [Índice de lecciones](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección ya redactada.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Cuentas, dispositivos y uso compartido
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX053.
@@ -292,7 +292,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX053]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -441,19 +441,19 @@ Un veterinario suplente cubre el lunes y oye que debe usar el inicio de sesión 
 
 - **EX026 — Configuración predeterminada.** ¿Qué valor predeterminado definió el técnico? *Rúbrica:* 3 = uso compartido restringido a la clínica para los usos compartidos nuevos;; 2 = parcialmente correcto;; 1 = otro;; 0 = ninguna.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Siga estudiando — lección 02 (capítulo 02 de 04)
 
 [← Capítulo 01](#ch-01) · [Índice de lecciones](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección ya redactada.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Correo, fraude y personas
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX055.
@@ -515,7 +515,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX055]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -629,19 +629,19 @@ El martes, un correo cita una factura real del laboratorio y dice que la cuenta 
 
 - **EX038 — Contraseña escrita.** ¿Qué hizo Sofia con la contraseña escrita? *Rúbrica:* 3 = la restableció y revisó la cuenta;; 2 = las dos;; 1 = una;; 0 = ninguna.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Siga estudiando — lección 03 (capítulo 03 de 04)
 
 [← Capítulo 02](#ch-02) · [Índice de lecciones](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección ya redactada.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Copias de seguridad, incidentes y el plan que sigue
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX057.
@@ -703,7 +703,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX057]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -823,13 +823,13 @@ El servicio nuevo de copia de seguridad muestra una marca de verificación verde
 
 - **EX050 — Siguiente paso.** ¿Qué curso viene después y por qué? *Rúbrica:* 3 = gobernanza de datos rápido, retención de registros antiguos;; 2 = los dos;; 1 = uno;; 0 = ninguna.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Siga estudiando — lección 04 (capítulo 04 de 04)
 
 [← Capítulo 03](#ch-03) · [Índice de lecciones](../SUBJECTS.md) · [Curso siguiente desde el índice →](../SUBJECTS.md)
 
 El índice lleva al siguiente curso del recorrido de estudios.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

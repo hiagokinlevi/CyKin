@@ -1,5 +1,5 @@
 ---
-name: cykin-security-architecture-rapid-ada7b449
+name: oca-security-architecture-rapid-ada7b449
 description: "Guide a learner through the ARCH Rapid Course draft: 4 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

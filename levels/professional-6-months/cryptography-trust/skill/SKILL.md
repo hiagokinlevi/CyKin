@@ -1,5 +1,5 @@
 ---
-name: cykin-cryptography-trust-professional-a4206bdb
+name: oca-cryptography-trust-professional-a4206bdb
 description: "Guide a learner through the CRYPT professional course draft: 12 chapters following synthetic analyst Dana Whitlock at Copperleaf Managed Services, four stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

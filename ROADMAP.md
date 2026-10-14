@@ -1,6 +1,6 @@
-# CyKin learning and editorial roadmap
+# OpenCyber Academy learning and editorial roadmap
 
-**Authorship and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). This is the public learner-facing plan. Construction tools and migration records remain in the private CyKin Engine.
+**Authorship and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). This is the public learner-facing plan. Construction tools and migration records remain in the private OpenCyber Academy Engine.
 
 ## Current curriculum
 

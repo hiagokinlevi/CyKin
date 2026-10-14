@@ -1,5 +1,5 @@
 ---
-name: cykin-cybersecurity-postgraduate-76355bbd
+name: oca-cybersecurity-postgraduate-76355bbd
 description: "Guide a learner through the postgraduate course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

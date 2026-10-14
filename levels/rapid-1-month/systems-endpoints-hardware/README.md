@@ -34,6 +34,6 @@ This is one course. It has **one course skill** and **one principal book in each
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or public lesson. The book plan summarizes each chapter in full.
 
-**Related project:** [hiagokinlevi/container-defense-stack](https://github.com/hiagokinlevi/container-defense-stack). Its source material is supplementary and retains its own rights. Original CyKin material is dedicated under [CC0 1.0](../../../LICENSE).
+**Related project:** [hiagokinlevi/container-defense-stack](https://github.com/hiagokinlevi/container-defense-stack). Its source material is supplementary and retains its own rights. Original OpenCyber Academy material is dedicated under [CC0 1.0](../../../LICENSE).
 
 **Editorial status:** a public manuscript is readable while editorial review remains pending; a plan is an outline, not a completed book or recognized qualification.

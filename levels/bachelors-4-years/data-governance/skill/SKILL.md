@@ -1,5 +1,5 @@
 ---
-name: cykin-data-governance-bachelor-dea2ce9a
+name: oca-data-governance-bachelor-dea2ce9a
 description: "Guide a learner through the data governance Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

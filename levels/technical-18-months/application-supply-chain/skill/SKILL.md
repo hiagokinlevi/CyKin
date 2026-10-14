@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-technical-9b764083
+name: oca-application-supply-chain-technical-9b764083
 description: "APP Technical course (18 ch / 72 ex)"
 license: CC0-1.0
 ---

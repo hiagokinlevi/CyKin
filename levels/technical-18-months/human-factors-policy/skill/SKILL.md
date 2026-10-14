@@ -1,5 +1,5 @@
 ---
-name: cykin-human-factors-policy-technical-ed246b19
+name: oca-human-factors-policy-technical-ed246b19
 description: "Guide a learner through the HUMAN Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

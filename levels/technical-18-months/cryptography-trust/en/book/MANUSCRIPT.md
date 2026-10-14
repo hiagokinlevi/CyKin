@@ -37,7 +37,7 @@ Read in order. The chapters follow one technical student through computing and n
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -132,7 +132,7 @@ A useful service architecture map names each system, its cryptographic job and w
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -179,7 +179,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -227,7 +227,7 @@ Diagnosing network problems starts with knowing which layer protects what and wh
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -274,7 +274,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -322,7 +322,7 @@ Cryptographic identity is only as strong as the file permissions and account bou
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -374,7 +374,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -443,7 +443,7 @@ Knowing whether data is encoded, hashed or encrypted tells a technician what it 
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -490,7 +490,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -538,7 +538,7 @@ Scope limits what may be tested, evidence makes findings reproducible, and secre
 
 ## Chapter 6 — Cryptography and trust services: system model
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -585,7 +585,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -633,7 +633,7 @@ Trust models make every holder, anchor and verifier explicit, so the weakest lin
 
 ## Chapter 7 — Cryptography and trust services: data and telemetry
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -685,7 +685,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -765,7 +765,7 @@ Telemetry should reveal cryptographic health such as expiry and failures without
 
 ## Chapter 8 — Cryptography and trust services: failure modes
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -812,7 +812,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -860,7 +860,7 @@ Classifying a failure as expiry, mismatch, misconfiguration or compromise tells 
 
 ## Chapter 9 — Cryptography and trust services: tools and methods
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -907,7 +907,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -955,7 +955,7 @@ Inspection tools are safe when they read only public data, keep verification on 
 
 ## Chapter 10 — Cryptography and trust services: control configuration
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1007,7 +1007,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1079,7 +1079,7 @@ Good control configuration keeps verification on, follows published TLS guidance
 
 ## Chapter 11 — Cryptography and trust services: verification
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -1131,7 +1131,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1208,7 +1208,7 @@ Verification combines published vectors, correct comparison and replay checks, a
 
 ## Chapter 12 — Contained laboratory I
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -1255,7 +1255,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1303,7 +1303,7 @@ A contained lab lets technicians reproduce failures safely and ends with all tes
 
 ## Chapter 13 — Cryptography and trust services: troubleshooting
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -1355,7 +1355,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1430,7 +1430,7 @@ Troubleshooting works by testing one hypothesis at a time, using counts to choos
 
 ## Chapter 14 — Cryptography and trust services: automation
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -1482,7 +1482,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1555,7 +1555,7 @@ Automation should renew and plan rotation reliably, fail loudly and run with the
 
 ## Chapter 15 — Cryptography and trust services: integration and dependencies
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -1602,7 +1602,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1650,7 +1650,7 @@ Integrations make keys shared dependencies, so rotations need overlap and every 
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -1697,7 +1697,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1745,7 +1745,7 @@ Documentation makes cryptographic operations repeatable and safe when it is test
 
 ## Chapter 17 — Contained laboratory II
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -1797,7 +1797,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1871,7 +1871,7 @@ Password storage needs slow, salted, standard functions, verified against vector
 
 ## Chapter 18 — Supervised technical project
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -1918,7 +1918,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes

@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-masters-0a10392d
+name: oca-security-operations-blue-team-masters-0a10392d
 description: "Master's course (2 years)"
 license: CC0-1.0
 ---

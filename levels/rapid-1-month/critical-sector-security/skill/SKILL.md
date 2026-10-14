@@ -1,5 +1,5 @@
 ---
-name: cykin-critical-sector-security-rapid-b7e1e8ad
+name: oca-critical-sector-security-rapid-b7e1e8ad
 description: "Guide a new learner through the rapid course in Critical infrastructure and sector security: a first introduction and first safe practice, using its one book, four subject chapters, Lab 4, exercises EX001–EX050 and reviewed sources."
 license: CC0-1.0
 ---

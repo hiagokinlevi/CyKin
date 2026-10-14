@@ -1,5 +1,5 @@
 ---
-name: cykin-information-security-technical-19582262
+name: oca-information-security-technical-19582262
 description: "Guide a learner through the information security Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-ai-security-engineering-820de9ed
+name: oca-ai-security-engineering-820de9ed
 description: "Guide a learner through the five-year engineering course in AI and machine-learning security using its authored English book draft: mathematical and computing foundations, security architecture, AI-security requirements, controls, measurement, verification, operations and a capstone with evidence dossier and defence, with exercises, worked answers and offline labs."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-critical-sector-security-bachelor-f369794c
+name: oca-critical-sector-security-bachelor-f369794c
 description: "Tutor the forty-chapter bachelor's Critical Infrastructure and Sector Security course (foundations, cross-sector dependencies, evidence evaluation, comparison of methods and controls, applied incident and OT practice) from its English draft, synthetic Calder County case, 14 offline labs, 80 exercises and worked answers; enforce authorisation, safety and infrastructure-information boundaries."
 license: CC0-1.0
 ---

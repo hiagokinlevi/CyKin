@@ -67,7 +67,7 @@ Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossári
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -124,7 +124,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -240,19 +240,19 @@ Depois entregue a página a um colega e peça que ele nomeie o dono do risco ape
 
 Um serviço essencial é uma função entregue a pessoas, e a sua segurança se mede pela consequência: segurança das pessoas, continuidade, confiabilidade e, depois, confidencialidade. O coordenador conecta as pessoas que detêm partes do quadro, garante que as decisões tenham donos e registros, e guarda as evidências. Declarações de risco precisas e um framework usado como mapa — e não como prova — são as primeiras ferramentas do trabalho.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 12
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Infraestrutura crítica e segurança setorial: contexto de serviço e de partes interessadas
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX006.
@@ -304,7 +304,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -405,19 +405,19 @@ Use a tabela do hospital como modelo: para cada dependência, registre a respost
 
 Um serviço crítico é uma cadeia de funções com dependências a montante, a jusante e compartilhadas, e um conjunto de partes interessadas que decidem, executam, precisam ser informadas, podem ajudar ou são afetadas. Os setores diferem no que o dano significa; por isso, o coordenador traduz as consequências para os termos do setor que as recebe. Registre a fonte e o grau de confiança de cada fato de dependência; um pressuposto não verificado por trás de uma decisão é uma tarefa.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 12
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e tratamento de evidências
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX011.
@@ -474,7 +474,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -594,19 +594,19 @@ Escolha uma visita que toque um sistema que preocuparia alguém, como uma sessã
 
 A autorização faz o dono da consequência concordar de antemão com exatamente o que vai acontecer e permite que todos o provem depois. Uma autorização válida tem escopo com exclusões, atividades permitidas e proibidas, pessoas nomeadas, uma janela, condições de parada, tratamento de dados e autoridade por escrito. Os registros de decisão capturam o que se sabia na época; as evidências de governança ficam em locais controlados e com dono; o TLP diz aos parceiros até onde podem compartilhar.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 12
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestrutura crítica e segurança setorial: métodos centrais
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX016.
@@ -653,7 +653,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -802,19 +802,19 @@ Observe onde o R03 e o R05 caem em cada ordem, porque esse é o argumento que vo
 
 A avaliação de riscos é um ciclo — enquadrar, identificar, analisar, decidir, monitorar — e o registro é a sua memória. Ancore as escalas nos termos do seu serviço, classifique com a consequência primeiro em serviços essenciais e trate as pontuações como ordinais. Todo risco precisa de um dono com autoridade, um tratamento, datas e evidências; a aceitação só é legítima com autoridade compatível, condições e validade.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 12
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Infraestrutura crítica e segurança setorial: ferramentas e interpretação
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX021.
@@ -866,7 +866,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -969,19 +969,19 @@ Escreva a sua reescrita na mesma forma do relatório da coordenadora sobre a aut
 
 Frameworks e linhas de base são réguas: escolha uma estrutura principal, cumpra a lei primeiro e mapeie o resto. Leia toda avaliação pelo escopo, método, definição, data e decisão apoiada. Meça a exposição, a tempestividade e a cobertura do que importa, com donos e ações nos limiares. Deixe as constatações técnicas prontas para decisão perguntando o quê, como se sabe, quão exposto, quem age e o que é perturbado.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 12
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Infraestrutura crítica e segurança setorial: fluxo operacional
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX026.
@@ -1033,7 +1033,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1180,19 +1180,19 @@ Inclua o fornecedor como papel e garanta que ele nunca aprove o próprio acesso,
 
 Um programa funciona com papéis atribuídos, uma RACI com um aprovador por atividade e um líder nomeado, uma governança de mudanças que mantém visíveis as mudanças relevantes para a segurança e um caminho de escalonamento que funciona offline, de noite. Verifique a estrutura da RACI, a titularidade das aprovações e a carga durante incidentes; revise toda mudança emergencial depois do evento.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 12
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestrutura crítica e segurança setorial: controles e verificação
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX031.
@@ -1244,7 +1244,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1345,19 +1345,19 @@ Para cada cartão, diga como o sinal de falha apareceria na prática, por exempl
 
 Um controle é algo que um gestor pode assumir: objetivo, dono, operação, evidência e sinal de falha. A garantia sobe de declarado para documentado, observado e testado; busque o nível testado nos controles que protegem contra as piores consequências. Verifique de forma proporcional pelas três linhas, autorize os testes como qualquer outro trabalho e mantenha as exceções com dono, compensadas e com prazo.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 12
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestrutura crítica e segurança setorial: análise supervisionada de caso
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX036.
@@ -1414,7 +1414,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1546,19 +1546,19 @@ Mantenha cada parte curta e rotulada, para que o supervisor possa interrompê-lo
 
 O acesso de fornecedores é governado ao longo de um ciclo de vida — selecionar, contratar, integrar, operar, mudar, encerrar —, e a maioria das falhas fica nas junções. Uma revisão de acesso concilia contas, contratos e sessões; responda de forma proporcional, trate as anomalias como perguntas e escale o que continuar inexplicado pelo caminho adequado. Transforme as lições em requisitos contratuais verificáveis e apresente os casos com as decisões solicitadas e a incerteza rotulada.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 12
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relato
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX041.
@@ -1615,7 +1615,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1745,19 +1745,19 @@ Inclua contratos e seguros, além da lei, já que o incidente de sábado mostrou
 
 Os incidentes disparam vários relógios ao mesmo tempo; conheça-os de antemão, combine o que dispara cada um e quem o registra, e fixe prazos internos de aprovação anteriores aos externos. Clientes críticos precisam de mensagens práticas e cedo; o público precisa de declarações provisórias verdadeiras e proporcionais. Comunique sem culpa nem especulação, corrija os erros visivelmente e relate à diretoria com fatos, impacto, decisões e obrigações.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 12
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestrutura crítica e segurança setorial: qualidade e resolução de problemas
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX046.
@@ -1809,7 +1809,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1946,19 +1946,19 @@ Escreva o sintoma como um fato preciso, com horários ou contagens, como no exem
 
 Os programas de coordenação falham de maneiras reconhecíveis — lacunas de titularidade, responsabilidade duplicada, informação desatualizada, controles de papel, gargalos, deterioração das ações e rapidez sem qualidade. Resolva-as como falhas, do sintoma às hipóteses e evidências até a causa, sem culpa. Meça a qualidade das decisões, não só a rapidez, e encerre as ações corretivas apenas com evidências verificadas.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 12
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX051.
@@ -2015,7 +2015,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2127,19 +2127,19 @@ Baseie o cenário em informações públicas sobre ameaças num nível geral, co
 
 Um exercício de mesa é o laboratório do coordenador: seguro, barato e poderoso para expor lacunas de papéis, informação e comunicação. Desenhe-o com objetivos observáveis, um cenário sintético plausível, injeções ligadas aos objetivos, avaliadores independentes e um oficial de segurança. Facilite para testar planos, não pessoas; avalie com um hot wash, um relatório pós-ação e um plano de melhoria cujas ações tenham dono e sejam verificadas.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 12
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX060.
@@ -2201,7 +2201,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX060]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2315,13 +2315,13 @@ Escolha afirmações que importem, como "MFA de fornecedores verificada por test
 
 Um coordenador profissional demonstra competência por meio de produtos de trabalho verificáveis: mapas, registros, cadastros, RACIs, cartões de controle, briefings de casos, registros de notificações, relatórios de exercícios e planos de melhoria. Apresente-se aos conselhos com consequências, evidências e pedidos específicos; comece um novo cargo pela titularidade, pela informação e pelo ensaio; e avalie-se com honestidade em relação ao ciclo completo — enquadrar, decidir, organizar, verificar, comunicar, melhorar.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 12
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

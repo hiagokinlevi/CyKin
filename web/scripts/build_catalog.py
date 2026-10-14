@@ -73,14 +73,14 @@ def build() -> dict:
             "study_days_per_week": 5,
             "daily_lesson_target": INSTRUCTIONAL_WEEKS[level] * 5,
             "editions": editions,
-            "github": f"https://github.com/hiagokinlevi/CyKin/tree/main/levels/{level}/{area}",
+            "github": f"https://github.com/hiagokinlevi/OpenCyberAcademy/tree/main/levels/{level}/{area}",
         })
     courses.sort(key=lambda item: item["number"])
     if [item["number"] for item in courses] != list(range(1, 208)):
         raise ValueError("Expected courses numbered 001–207 exactly once")
     return {
-        "name": "CyKin",
-        "source": "https://github.com/hiagokinlevi/CyKin",
+        "name": "OpenCyber Academy",
+        "source": "https://github.com/hiagokinlevi/OpenCyberAcademy",
         "source_branch": "main",
         "level_order": list(LEVELS),
         "level_names": LEVELS,
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     routes.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
     routes.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    xml += "".join(f"  <url><loc>{escape('https://cykin.org' + route)}</loc></url>\n" for route in routes)
+    xml += "".join(f"  <url><loc>{escape('https://opencyber.academy' + route)}</loc></url>\n" for route in routes)
     xml += "</urlset>\n"
     SITEMAP.write_text(xml, encoding="utf-8")
     print(f"Wrote {OUTPUT} with 207 courses and {SITEMAP} with {len(routes)} routes")

@@ -1,5 +1,5 @@
 ---
-name: cykin-cryptography-trust-doctorate-108918b8
+name: oca-cryptography-trust-doctorate-108918b8
 description: "Guide a learner through the doctoral research track in Cryptography and trust services: a synthetic randomised study of cryptographic misuse in code review, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

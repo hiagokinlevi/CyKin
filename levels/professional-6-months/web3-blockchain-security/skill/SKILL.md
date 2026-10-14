@@ -1,5 +1,5 @@
 ---
-name: cykin-web3-blockchain-security-professional-244bc5b9
+name: oca-web3-blockchain-security-professional-244bc5b9
 description: "WEB3 Professional Programme (12 ch / 60 ex)"
 license: CC0-1.0
 ---

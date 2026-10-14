@@ -52,7 +52,7 @@ Mantenga cinco etiquetas en cada nota: observación, inferencia, afirmación, de
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -99,7 +99,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -197,7 +197,7 @@ Un proyecto de maestría empieza con una pregunta que ya nombra su condición de
 
 ## Capítulo 2 — Seguridad de TO, IoT y sistemas ciberfísicos: seminario avanzado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX008.
@@ -249,7 +249,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -304,7 +304,7 @@ El seminario le da arquitectura, protocolos, familias de detección y evidencia 
 
 ## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX015.
@@ -356,7 +356,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -449,7 +449,7 @@ Diseño antes que datos, simulación antes del compromiso, cota para cada experi
 
 ## Capítulo 4 — Seguridad de TO, IoT y sistemas ciberfísicos: explicaciones rivales
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX021.
@@ -491,7 +491,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -537,7 +537,7 @@ Las rivales con pruebas convierten una comparación en una contribución; las fr
 
 ## Capítulo 5 — Propuesta y piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX027.
@@ -584,7 +584,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -630,7 +630,7 @@ Una propuesta que declara cómo puede fracasar y un piloto que solo pregunta si 
 
 ## Capítulo 6 — Recolección y análisis de datos
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX033.
@@ -682,7 +682,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -771,7 +771,7 @@ Planes congelados, diseños emparejados, barridos de sensibilidad y párrafos ho
 
 ## Capítulo 7 — Redacción del trabajo de fin de máster y limitaciones
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX039.
@@ -823,7 +823,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -873,7 +873,7 @@ Escriba el argumento de modo que un lector escéptico encuentre la evidencia, el
 
 ## Capítulo 8 — Revisión independiente y defensa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX045.
@@ -935,7 +935,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje y conexión

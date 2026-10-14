@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-professional-d1e8bdad
+name: oca-network-communications-professional-d1e8bdad
 description: "NET Professional Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cykin-threat-intelligence-osint-rapid-e4268d35
+name: oca-threat-intelligence-osint-rapid-e4268d35
 description: "Teach the one-month rapid threat intelligence and OSINT course: four subjects following a synthetic charity volunteer IT coordinator, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

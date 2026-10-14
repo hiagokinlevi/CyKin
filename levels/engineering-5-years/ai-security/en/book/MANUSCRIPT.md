@@ -36,7 +36,7 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — Calculus I
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -88,7 +88,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -185,7 +185,7 @@ Derivatives quantify sensitivity. They train models and they also show attackers
 
 ## Chapter 2 — Discrete mathematics
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -237,7 +237,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -300,7 +300,7 @@ Discrete mathematics gives precise language for policies, data flows and search 
 
 ## Chapter 3 — Physics for computing
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -352,7 +352,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -415,7 +415,7 @@ Physics determines what inputs an AI component actually receives. Engineers spec
 
 ## Chapter 4 — Programming I
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -472,7 +472,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -557,7 +557,7 @@ Programming for AI security starts with one habit: treat everything from outside
 
 ## Chapter 5 — Engineering communication
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -614,7 +614,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -683,7 +683,7 @@ Clear, honest communication — conditions, intervals, separated facts and recom
 
 ## Chapter 6 — Calculus II
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -735,7 +735,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -798,7 +798,7 @@ Gradients and norms turn "small change" into a number. They explain why attacks 
 
 ## Chapter 7 — Probability and statistics
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -855,7 +855,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -950,7 +950,7 @@ Probability tells engineers what an alert really means. Base rates, honest inter
 
 ## Chapter 8 — Computer architecture
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -1002,7 +1002,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1065,7 +1065,7 @@ AI runs on real hardware with finite precision, shared resources and firmware. E
 
 ## Chapter 9 — Programming II
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -1117,7 +1117,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1180,7 +1180,7 @@ Good structure puts security decisions in small, testable code outside the model
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -1232,7 +1232,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1295,7 +1295,7 @@ Ethics in AI engineering is concrete: honest limits, safety and security managed
 
 ## Chapter 11 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1342,7 +1342,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1426,7 +1426,7 @@ AI services are network services with expensive requests. TLS, segmentation, egr
 
 ## Chapter 12 — Operating systems
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1478,7 +1478,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1545,7 +1545,7 @@ Operating-system isolation turns "the model might be manipulated" into "a manipu
 
 ## Chapter 13 — Data systems
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1597,7 +1597,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1660,7 +1660,7 @@ Data is the attack surface that trains and informs models. Lineage, write contro
 
 ## Chapter 14 — Software engineering
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1712,7 +1712,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1775,7 +1775,7 @@ AI software engineering treats models, prompts and data as versioned, reviewed a
 
 ## Chapter 15 — Security fundamentals
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1827,7 +1827,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1890,7 +1890,7 @@ Security fundamentals apply directly to AI: CIA for new assets, precise risk lan
 
 ## Chapter 16 — Systems engineering
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -1942,7 +1942,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -2005,7 +2005,7 @@ Systems engineering gives AI security a backbone: decomposed, verifiable require
 
 ## Chapter 17 — Control and feedback basics
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -2057,7 +2057,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -2118,7 +2118,7 @@ Feedback makes systems adaptive and also exploitable. Bounded updates, clean ref
 
 ## Chapter 18 — Security architecture
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -2170,7 +2170,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -2233,7 +2233,7 @@ Architecture is where AI security becomes enforceable: trust boundaries, an exte
 
 ## Chapter 19 — Identity and cryptography
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -2285,7 +2285,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -2379,7 +2379,7 @@ Identity makes agent actions attributable and bounded; hashes, signatures and pr
 
 ## Chapter 20 — AI and machine-learning security: engineering context
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -2431,7 +2431,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2499,7 +2499,7 @@ AI-security engineering starts with the lifecycle, an organising frame and the r
 
 ## Chapter 21 — AI and machine-learning security: requirements
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2551,7 +2551,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2618,7 +2618,7 @@ Good AI-security requirements are measurable statements about behaviour under st
 
 ## Chapter 22 — AI and machine-learning security: system and data models
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2670,7 +2670,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2733,7 +2733,7 @@ System and data models show where untrusted data enters and where it can cause h
 
 ## Chapter 23 — AI and machine-learning security: threat and failure analysis
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -2790,7 +2790,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2859,7 +2859,7 @@ Threat analysis turns the system model into a ranked list of what could go wrong
 
 ## Chapter 24 — AI and machine-learning security: methods I
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -2916,7 +2916,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -3111,7 +3111,7 @@ Basic adversarial evaluation methods — evasion curves, dual-metric poisoning t
 
 ## Chapter 25 — Design studio I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -3168,7 +3168,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -3237,7 +3237,7 @@ The studio practises the core engineering skill: making explicit trade-offs and 
 
 ## Chapter 26 — AI and machine-learning security: architecture alternatives
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -3289,7 +3289,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -3356,7 +3356,7 @@ Architecture choices determine how far untrusted input can reach. Dual-model, pl
 
 ## Chapter 27 — AI and machine-learning security: control design
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -3408,7 +3408,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -3514,7 +3514,7 @@ Control design layers prevention, detection and correction, keeps enforcement ou
 
 ## Chapter 28 — AI and machine-learning security: implementation I
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -3571,7 +3571,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -3655,7 +3655,7 @@ Implementation makes the architecture real: a small, tested enforcement point, l
 
 ## Chapter 29 — AI and machine-learning security: measurement
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -3707,7 +3707,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -3814,7 +3814,7 @@ Measurement turns AI security into decisions: matched metrics with costs, honest
 
 ## Chapter 30 — Verification laboratory I
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -3866,7 +3866,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -4002,7 +4002,7 @@ A verification lab tests requirements in isolation with real rigour and reports 
 
 ## Chapter 31 — AI and machine-learning security: implementation II
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX091.
@@ -4059,7 +4059,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -4167,7 +4167,7 @@ Implementation II adds the detective and integrity controls: robust monitoring, 
 
 ## Chapter 32 — AI and machine-learning security: reliability
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX094.
@@ -4219,7 +4219,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX094]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -4282,7 +4282,7 @@ Reliable AI is calibrated, stratified, redundant in diverse ways and degrades sa
 
 ## Chapter 33 — AI and machine-learning security: safety and resilience
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX097.
@@ -4334,7 +4334,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -4397,7 +4397,7 @@ Safety and resilience assume controls will sometimes fail. Safe states, recovery
 
 ## Chapter 34 — AI and machine-learning security: integration
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX100.
@@ -4454,7 +4454,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX100]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -4523,7 +4523,7 @@ Integration is where AI acquires real power. Delegated identity, data contracts,
 
 ## Chapter 35 — Design studio II
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX103.
@@ -4575,7 +4575,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX103]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -4638,7 +4638,7 @@ Studio II makes the design argue for itself: a safety-and-security case with evi
 
 ## Chapter 36 — AI and machine-learning security: performance and scale
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX106.
@@ -4690,7 +4690,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX106]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -4780,7 +4780,7 @@ Performance and security are coupled. Budgeted controls, compute-aware quotas an
 
 ## Chapter 37 — AI and machine-learning security: operations
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX109.
@@ -4837,7 +4837,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX109]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -4906,7 +4906,7 @@ Operations keep AI security alive after release: telemetry in the SOC, AI-specif
 
 ## Chapter 38 — AI and machine-learning security: validation
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX112.
@@ -4958,7 +4958,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX112]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -5019,7 +5019,7 @@ Validation asks whether the secured system works for real people under real pres
 
 ## Chapter 39 — AI and machine-learning security: maintainability
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX115.
@@ -5076,7 +5076,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX115]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -5145,7 +5145,7 @@ Maintainable AI security assumes change: pinned and gated updates, owned and cur
 
 ## Chapter 40 — Verification laboratory II
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX118.
@@ -5202,7 +5202,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX118]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes
@@ -5336,7 +5336,7 @@ Integrated verification finds failures at the intersections, judges results with
 
 ## Chapter 41 — AI and machine-learning security: system optimization
 
-<!-- cykin:lesson-figures:start ch-41 -->
+<!-- open-cyber-academy:lesson-figures:start ch-41 -->
 ### Lesson map
 
 Lesson 41 published. Map, example, EX121.
@@ -5388,7 +5388,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX121]
 ```
-<!-- cykin:lesson-figures:end ch-41 -->
+<!-- open-cyber-academy:lesson-figures:end ch-41 -->
 
 
 ### Learning outcomes
@@ -5451,7 +5451,7 @@ Optimisation in AI security is multi-objective: find the Pareto front, tune thre
 
 ## Chapter 42 — AI and machine-learning security: applied research
 
-<!-- cykin:lesson-figures:start ch-42 -->
+<!-- open-cyber-academy:lesson-figures:start ch-42 -->
 ### Lesson map
 
 Lesson 42 published. Map, example, EX124.
@@ -5503,7 +5503,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX124]
 ```
-<!-- cykin:lesson-figures:end ch-42 -->
+<!-- open-cyber-academy:lesson-figures:end ch-42 -->
 
 
 ### Learning outcomes
@@ -5566,7 +5566,7 @@ Applied research answers engineering questions with small, valid experiments —
 
 ## Chapter 43 — Industry or public-service practice
 
-<!-- cykin:lesson-figures:start ch-43 -->
+<!-- open-cyber-academy:lesson-figures:start ch-43 -->
 ### Lesson map
 
 Lesson 43 published. Map, example, EX127.
@@ -5623,7 +5623,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX127]
 ```
-<!-- cykin:lesson-figures:end ch-43 -->
+<!-- open-cyber-academy:lesson-figures:end ch-43 -->
 
 
 ### Learning outcomes
@@ -5727,7 +5727,7 @@ Practice reveals how AI security works inside organisations: governance processe
 
 ## Chapter 44 — Engineering capstone I
 
-<!-- cykin:lesson-figures:start ch-44 -->
+<!-- open-cyber-academy:lesson-figures:start ch-44 -->
 ### Lesson map
 
 Lesson 44 published. Map, example, EX130.
@@ -5784,7 +5784,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX130]
 ```
-<!-- cykin:lesson-figures:end ch-44 -->
+<!-- open-cyber-academy:lesson-figures:end ch-44 -->
 
 
 ### Learning outcomes
@@ -5853,7 +5853,7 @@ Capstone I sets a verifiable baseline: a realistic problem, measurable requireme
 
 ## Chapter 45 — Independent design review
 
-<!-- cykin:lesson-figures:start ch-45 -->
+<!-- open-cyber-academy:lesson-figures:start ch-45 -->
 ### Lesson map
 
 Lesson 45 published. Map, example, EX133.
@@ -5910,7 +5910,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX133]
 ```
-<!-- cykin:lesson-figures:end ch-45 -->
+<!-- open-cyber-academy:lesson-figures:end ch-45 -->
 
 
 ### Learning outcomes
@@ -5979,7 +5979,7 @@ Independent review, using structured checklists plus threat-driven questions, pr
 
 ## Chapter 46 — Engineering capstone II
 
-<!-- cykin:lesson-figures:start ch-46 -->
+<!-- open-cyber-academy:lesson-figures:start ch-46 -->
 ### Lesson map
 
 Lesson 46 published. Map, example, EX136.
@@ -6036,7 +6036,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX136]
 ```
-<!-- cykin:lesson-figures:end ch-46 -->
+<!-- open-cyber-academy:lesson-figures:end ch-46 -->
 
 
 ### Learning outcomes
@@ -6105,7 +6105,7 @@ Capstone II builds the system as designed: incremental, traceable, gated by eval
 
 ## Chapter 47 — Failure and recovery trial
 
-<!-- cykin:lesson-figures:start ch-47 -->
+<!-- open-cyber-academy:lesson-figures:start ch-47 -->
 ### Lesson map
 
 Lesson 47 published. Map, example, EX139.
@@ -6162,7 +6162,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX139]
 ```
-<!-- cykin:lesson-figures:end ch-47 -->
+<!-- open-cyber-academy:lesson-figures:end ch-47 -->
 
 
 ### Learning outcomes
@@ -6229,7 +6229,7 @@ Failure-and-recovery trials turn recovery plans into evidence. Measured detectio
 
 ## Chapter 48 — Evidence dossier
 
-<!-- cykin:lesson-figures:start ch-48 -->
+<!-- open-cyber-academy:lesson-figures:start ch-48 -->
 ### Lesson map
 
 Lesson 48 published. Map, example, EX142.
@@ -6281,7 +6281,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX142]
 ```
-<!-- cykin:lesson-figures:end ch-48 -->
+<!-- open-cyber-academy:lesson-figures:end ch-48 -->
 
 
 ### Learning outcomes
@@ -6383,7 +6383,7 @@ The evidence dossier makes the capstone assessable: claims linked to verified, v
 
 ## Chapter 49 — Engineering thesis
 
-<!-- cykin:lesson-figures:start ch-49 -->
+<!-- open-cyber-academy:lesson-figures:start ch-49 -->
 ### Lesson map
 
 Lesson 49 published. Map, example, EX145.
@@ -6435,7 +6435,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX145]
 ```
-<!-- cykin:lesson-figures:end ch-49 -->
+<!-- open-cyber-academy:lesson-figures:end ch-49 -->
 
 
 ### Learning outcomes
@@ -6498,7 +6498,7 @@ The engineering thesis tells the capstone's story as evidence: problem, design, 
 
 ## Chapter 50 — Final defense
 
-<!-- cykin:lesson-figures:start ch-50 -->
+<!-- open-cyber-academy:lesson-figures:start ch-50 -->
 ### Lesson map
 
 Lesson 50 published. Map, example, EX148.
@@ -6545,7 +6545,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX148]
 ```
-<!-- cykin:lesson-figures:end ch-50 -->
+<!-- open-cyber-academy:lesson-figures:end ch-50 -->
 
 
 ### Learning outcomes

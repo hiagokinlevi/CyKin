@@ -2,7 +2,7 @@
 
 Choose one of the nine levels. Its section lists all 23 themes in curricular order; begin with the first course and follow each course guide into the next.
 
-[CyKin home](../../README.md) · [Choose by theme](themes.md)
+[OpenCyber Academy home](../../README.md) · [Choose by theme](themes.md)
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 

@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-technologist-484d0dfc
+name: oca-quantum-post-quantum-security-technologist-484d0dfc
 description: "Guide an implementer through the technologist course in Quantum and post-quantum security: its one authored draft book of 30 chapters on finding cryptography in services, configuring hybrid key exchange in TLS/SSH/IKEv2, PKI, tooling, automation, monitoring, troubleshooting and handoff, with labs and exercises EX001–EX060 with worked results."
 license: CC0-1.0
 ---

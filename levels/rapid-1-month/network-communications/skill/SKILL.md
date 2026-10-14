@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-rapid-74df54f0
+name: oca-network-communications-rapid-74df54f0
 description: "NET Rapid Course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

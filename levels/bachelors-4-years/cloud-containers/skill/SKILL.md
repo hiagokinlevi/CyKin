@@ -1,5 +1,5 @@
 ---
-name: cykin-cloud-containers-bachelor-5d95a195
+name: oca-cloud-containers-bachelor-5d95a195
 description: "CLOUD Bachelor's course (40 ch / 120 ex)"
 license: CC0-1.0
 ---

@@ -35,7 +35,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Sistemas informáticos
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -87,7 +87,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -140,7 +140,7 @@ Los servicios de IA son sistemas por capas. La seguridad empieza por cartografia
 
 ## Capítulo 2 — Redes y servicios de internet
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX004.
@@ -192,7 +192,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -274,7 +274,7 @@ Los puntos de acceso de IA son servicios de internet: proteja DNS, TLS y HTTP, p
 
 ## Capítulo 3 — Fundamentos de programación
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX007.
@@ -326,7 +326,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -429,7 +429,7 @@ Programar alrededor de los modelos significa validar y codificar todo lo que pas
 
 ## Capítulo 4 — Modelos de datos
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX010.
@@ -486,7 +486,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -543,7 +543,7 @@ Los modelos de datos de la IA incluyen documentos y *embeddings*; la seguridad d
 
 ## Capítulo 5 — Alfabetización en seguridad
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX013.
@@ -600,7 +600,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -657,7 +657,7 @@ La alfabetización en seguridad aporta palabras compartidas —tríada CIA, amen
 
 ## Capítulo 6 — Sistemas operativos y virtualización
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX016.
@@ -709,7 +709,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -795,7 +795,7 @@ El aislamiento del sistema operativo limita lo que puede hacer un componente de 
 
 ## Capítulo 7 — Fundamentos de identidad y acceso
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX019.
@@ -852,7 +852,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -909,7 +909,7 @@ Los agentes deben actuar con los derechos delegados, acotados y de corta duraci�
 
 ## Capítulo 8 — Fundamentos de arquitectura de seguridad
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX022.
@@ -966,7 +966,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -1068,7 +1068,7 @@ La arquitectura de seguridad para la IA dibuja las fronteras de confianza, super
 
 ## Capítulo 9 — Evidencia y medición
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX025.
@@ -1130,7 +1130,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1260,7 +1260,7 @@ La buena evidencia cuenta resultados a lo largo de muchos ensayos, muestra la in
 
 ## Capítulo 10 — Seguridad de la IA y del aprendizaje automático: orientación
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX028.
@@ -1312,7 +1312,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1365,7 +1365,7 @@ La seguridad de la IA abarca todo el ciclo de vida y muchas clases de ataques; l
 
 ## Capítulo 11 — Seguridad de la IA y del aprendizaje automático: activos y contexto
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX031.
@@ -1422,7 +1422,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1516,7 +1516,7 @@ Conozca sus activos de IA y el contexto en que funcionan, clasifíquelos según 
 
 ## Capítulo 12 — Seguridad de la IA y del aprendizaje automático: flujos de datos
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX034.
@@ -1573,7 +1573,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje
@@ -1630,7 +1630,7 @@ Los diagramas de flujo de datos revelan cómo un texto no confiable llega a sumi
 
 ## Capítulo 13 — Seguridad de la IA y del aprendizaje automático: escenarios de riesgo
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Mapa de la lección
 
 Lección 13 publicada. Mapa, ejemplo, EX037.
@@ -1692,7 +1692,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Resultados de aprendizaje
@@ -1753,7 +1753,7 @@ Los escenarios concretos y puntuados, vinculados con controles y pruebas, convie
 
 ## Capítulo 14 — Seguridad de la IA y del aprendizaje automático: métodos I
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Mapa de la lección
 
 Lección 14 publicada. Mapa, ejemplo, EX040.
@@ -1805,7 +1805,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Resultados de aprendizaje
@@ -1858,7 +1858,7 @@ Las pruebas básicas de seguridad de la IA varían de forma sistemática las ent
 
 ## Capítulo 15 — Seguridad de la IA y del aprendizaje automático: laboratorio guiado
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Mapa de la lección
 
 Lección 15 publicada. Mapa, ejemplo, EX043.
@@ -1920,7 +1920,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Resultados de aprendizaje
@@ -2136,7 +2136,7 @@ Los laboratorios contenidos hacen medibles los ataques abstractos, y cada uno ap
 
 ## Capítulo 16 — Seguridad de la IA y del aprendizaje automático: métodos II
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Mapa de la lección
 
 Lección 16 publicada. Mapa, ejemplo, EX046.
@@ -2193,7 +2193,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Resultados de aprendizaje
@@ -2250,7 +2250,7 @@ Los métodos II extienden las pruebas a la recuperación, la agencia, la divulga
 
 ## Capítulo 17 — Seguridad de la IA y del aprendizaje automático: herramientas
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Mapa de la lección
 
 Lección 17 publicada. Mapa, ejemplo, EX049.
@@ -2302,7 +2302,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Resultados de aprendizaje
@@ -2355,7 +2355,7 @@ Las herramientas hacen repetible el trabajo de seguridad de la IA: bancos de eva
 
 ## Capítulo 18 — Seguridad de la IA y del aprendizaje automático: controles
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Mapa de la lección
 
 Lección 18 publicada. Mapa, ejemplo, EX052.
@@ -2412,7 +2412,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Resultados de aprendizaje
@@ -2469,7 +2469,7 @@ Los controles que importan son código fuera del modelo (servicios de políticas
 
 ## Capítulo 19 — Seguridad de la IA y del aprendizaje automático: supervisión
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Mapa de la lección
 
 Lección 19 publicada. Mapa, ejemplo, EX055.
@@ -2526,7 +2526,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Resultados de aprendizaje
@@ -2624,7 +2624,7 @@ La supervisión vigila señales específicas de la IA, usa estadística robusta,
 
 ## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: diagnóstico de averías
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Mapa de la lección
 
 Lección 20 publicada. Mapa, ejemplo, EX058.
@@ -2681,7 +2681,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Resultados de aprendizaje
@@ -2738,7 +2738,7 @@ El diagnóstico de averías en sistemas de IA separa las causas de modelo, de da
 
 ## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: integración de servicios
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Mapa de la lección
 
 Lección 21 publicada. Mapa, ejemplo, EX061.
@@ -2795,7 +2795,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Resultados de aprendizaje

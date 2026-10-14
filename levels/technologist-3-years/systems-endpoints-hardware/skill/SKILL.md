@@ -1,5 +1,5 @@
 ---
-name: cykin-systems-endpoints-hardware-technologist-4c6ae7fc
+name: oca-systems-endpoints-hardware-technologist-4c6ae7fc
 description: "SYS Technologist Course (30 ch / 90 ex)"
 license: CC0-1.0
 ---

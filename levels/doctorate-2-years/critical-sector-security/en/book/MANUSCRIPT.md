@@ -55,7 +55,7 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -117,7 +117,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -415,19 +415,19 @@ The limit of this chapter is that integrity safeguards reduce, but do not remove
 
 Infrastructure research studies consequences for people through chains of physical, cyber and organizational mechanisms that the researcher rarely observes directly. Its evidence comes from rare and selectively reported incidents, protected operational data, small testbeds, models and people; each source has characteristic biases and must be triangulated. Integrity safeguards — pre-specification, deviation logs, disclosure — are needed because partners are regulated, funders are interested and simulations are flexible. Safety and dual-use risks are real: never test on production, simulate first, separate capability from consequence in publication, and name a stop authority. Information about dependencies and buffers is sensitive even when approximate. Resilience metrics embed value judgments; choose them for the decision at hand and show whether conclusions survive alternatives. The protocol is the contract that makes all of this auditable.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Critical infrastructure and sector security: research frontier
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -489,7 +489,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -708,19 +708,19 @@ The Cascade Study's statement (to be refined in Chapter 3): *In distribution out
 
 The infrastructure-security frontier is spread across five literatures with different vocabularies; a doctoral search must cross them deliberately and document how. Standards and regulations are hypotheses about what reduces consequence, and outcome evidence for them is scarce. Interdependency models come in families that support different claims; topological results give structural insight, input–output models give sector-level economics, and flow or co-simulation models give engineering timing — none substitutes for validation. Detection research is improving its evaluation practice; for CI, detection matters as a buffer measured against time-to-consequence. Appraise independence and validation, not counts. The Cascade Study's gap — dependency-aware restoration ordering is often proposed and weakly tested — is open, important, feasible and can be made falsifiable.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -782,7 +782,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -1002,19 +1002,19 @@ This is the single most important design decision in the book: **choose the comp
 
 A doctoral contribution must say what kind it is and must beat the strongest current practice, not a straw man. Restoration ordering is a scheduling problem: Smith's rule makes "most customers first" optimal for customer-hours, while buffer-limited critical services create a weighted-tardiness objective for which simple rules are heuristics. That theory predicts the trade-off, provides an oracle bound and exposes the proposed rule's weakness. Dependency graphs with buffers reveal indirect paths that dominate timing, but their OR semantics, fixed buffers and missing human and recovery-direction dependencies must be named. The mechanism predicts a pattern — benefit only where timing and customer counts disagree, none when buffers are long, a cost in customer-hours and fragility to map error — and the hypotheses, baselines, rivals and failure conditions are written so that each part of that pattern could be shown false.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -1076,7 +1076,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -1324,19 +1324,19 @@ In the tabletop pilot, P02 asked why the hospital's generator buffer was shown a
 
 Before comparing methods, make sure the numbers mean what they claim. Reproduce baselines with a tolerance fixed in advance, check more than one output, and record conventions — a transposed matrix produced a plausible, wrong answer that agreed on the one value a hurried replicator would check. Diagnose discrepancies through inputs, semantics, numerics and randomness. Verify simulators with invariants, unit tests and an independent implementation before validating them. Treat detection baselines with suspicion when they rely on point adjustment, random splits or a single testbed, and prefer latency relative to time-to-impact for infrastructure. Elicit parameters with uncertainty and provenance. Use the pilot to fix procedures and instruments, never to estimate effects.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX028.
@@ -1398,7 +1398,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -1687,19 +1687,19 @@ Report, at minimum: the preregistration and all amendments with dates; the devia
 
 The main study compared four orderings on paired draws with an oracle bound. Criticality-aware ordering of any kind protected critical services dramatically compared with customer-first restoration and cost far more customer-hours than the predeclared margin — a trade-off for policy, not a free gain. Timing information added nothing over a critical-customer list in Riverbend and a great deal in Port Halvard; the post hoc explanation (weights and fan-out ignored by an earliest-time rule) is a new hypothesis, not a rescue. A blinded tabletop showed that a time-to-impact display can shift operators' choices toward lower modelled consequence and surfaced omitted variables such as crew travel time. Validation established that the model is adequate for ranking orderings in familiar cases and conservative because it omits human buffers. Monte Carlo intervals described simulation noise only; parameter, structural and value uncertainty remain for Chapter 6.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX034.
@@ -1761,7 +1761,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1956,19 +1956,19 @@ A good response letter quotes each comment, states whether it is accepted, partl
 
 Critique is part of the method. The red team's objections became hypotheses and tests. Circularity was sustained in a stronger form — every criticality-aware policy depends on an accurate dependency map — which became a measurable precondition and a defensive recommendation. Short buffers were confirmed as a boundary condition predicted by the mechanism, and very short buffers exposed the heuristic's weakness. A 200-region analysis supported the mechanism across contexts not chosen for it while reminding us that a generator is a model. The narrowed claim states measurable conditions, reports the failed margin and separates the robust finding from the conditional contribution. Dual-use review showed that a resilience finding can also be an attack-surface finding and decided what to publish at what level.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX034.
@@ -2030,7 +2030,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2227,19 +2227,19 @@ The candidate's first archive plan placed everything at T2 "to be safe". The com
 
 The thesis is an argument: claim, data, warrant, backing, qualifier and rebuttals, each supplied by an identifiable part of the work. Infrastructure research must reconcile reproducibility with protection of the infrastructure studied and of the people involved; tiered archives with hashed manifests do this, and FAIR principles describe access without implying openness. Release tooling should fail closed and check content, not only names. Invented synthetic data carry little disclosure risk; calibrated synthetic data need an explicit residual-risk assessment. Document models, data and computation with recognized structures. Limitations state direction and resolving studies, which turns them into the next research agenda.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX034.
@@ -2301,7 +2301,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2483,13 +2483,13 @@ The answer concedes what is true, cites the specific evidence, restates the narr
 
 The defense examines independence: the candidate must know the contribution's limits better than anyone. A claim register, audited by script and by reading, removes the overclaims that accumulate in abstracts and conclusions. Examiners' questions fall into predictable families; answer with evidence and limits, and name the study that would settle what you do not know. Publish in sequence across communities with versioned shared artifacts, and decide on coordination before any preprint touches an attack surface. Route vulnerabilities, organization-specific weaknesses and sector-level attack surfaces differently. Translate narrowed claims into recommendations with confidence levels. The limitations become the next research program — the natural end of a doctoral course and of this study path.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 08
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Finish the 207-course route →](../SUBJECTS.md)
 
 This is the final chapter of this course and of the 207-course study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -2762,7 +2762,7 @@ Standards, regulations and policy instruments change. Versions and dates below a
 - Toulmin, S. E. [The Uses of Argument](https://doi.org/10.1017/CBO9780511840005). Updated edition, Cambridge University Press, 2003 (first published 1958).
 - Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data*, 2016.
 
-Companion CyKin material: the [doctoral Incident Response book](../../../incident-response-resilience/en/book/MANUSCRIPT.md) (claim ladder and research-integrity methods reused in Chapter 1) and the [doctoral OT, IoT and cyber-physical security course](../../../ot-iot-security/README.md) (control-system layer).
+Companion OpenCyber Academy material: the [doctoral Incident Response book](../../../incident-response-resilience/en/book/MANUSCRIPT.md) (claim ladder and research-integrity methods reused in Chapter 1) and the [doctoral OT, IoT and cyber-physical security course](../../../ot-iot-security/README.md) (control-system layer).
 
 **Case boundary.** The Riverbend Region, Port Halvard, Riverbend Electric Cooperative, Riverbend Water Authority, St. Calder Hospital, Meridian Telecom, GridWater-Sim, studies P1–P8, participants P01–P12, the Cascade Study and every number produced by the labs are invented for teaching. Sources support the general statements beside which they are cited, never the synthetic details.
 

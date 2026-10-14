@@ -65,7 +65,7 @@ Toda afirmación factual sobre un marco, una ley, una norma, un incidente públi
 
 ## Capítulo 1 — Fundamentos de seguridad para profesionales
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -127,7 +127,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -241,19 +241,19 @@ Elija un servicio esencial que conozca (su propio empleador o uno público descr
 
 Un servicio esencial es una función prestada a las personas, y su seguridad se mide por la consecuencia: seguridad de las personas, continuidad, fiabilidad y, después, confidencialidad. El coordinador conecta a las personas que tienen partes del panorama, se asegura de que las decisiones tengan responsables y registros, y conserva la evidencia. Las declaraciones de riesgo precisas y un marco usado como mapa (no como prueba) son las primeras herramientas del oficio.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 12
 
 [← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Infraestructura crítica y seguridad sectorial: contexto del servicio y de las partes interesadas
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX006.
@@ -310,7 +310,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX006]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -407,19 +407,19 @@ Dibuje un mapa de dependencias de un servicio esencial con al menos cinco depend
 
 Un servicio crítico es una cadena de funciones con dependencias aguas arriba, aguas abajo y compartidas, y un conjunto de partes interesadas que deciden, ejecutan, deben ser informadas, pueden ayudar o se ven afectadas. Los sectores difieren en lo que significa el daño, así que un coordinador traduce las consecuencias a los términos del sector que las recibe. Registre la fuente y el grado de confianza de cada dato de dependencia; un supuesto sin verificar detrás de una decisión es una tarea.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 12
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Práctica autorizada y tratamiento de la evidencia
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX011.
@@ -481,7 +481,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -599,19 +599,19 @@ Tome cualquier visita rutinaria de un proveedor en una organización que conozca
 
 La autorización hace que el dueño de la consecuencia acepte de antemano exactamente lo que va a ocurrir y permite que todos lo demuestren después. Una autorización válida tiene un alcance con exclusiones, actividades permitidas y prohibidas, personas con nombre, una ventana, condiciones de parada, tratamiento de los datos y autoridad escrita. Los registros de decisión recogen lo que se sabía en ese momento; la evidencia de gobernanza reside en ubicaciones controladas y con responsable; el TLP indica a los socios hasta dónde pueden compartir.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 12
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestructura crítica y seguridad sectorial: métodos fundamentales
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX016.
@@ -663,7 +663,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -808,19 +808,19 @@ Cambie la clave de clasificación del Lab 4 para ordenar solo por puntuación y 
 
 La evaluación de riesgos es un ciclo (enmarcar, identificar, analizar, decidir, supervisar) y el registro es su memoria. Ancle las escalas en los términos de su servicio, clasifique primero por consecuencia en los servicios esenciales y trate las puntuaciones como ordinales. Todo riesgo necesita un dueño con autoridad, un tratamiento, fechas y evidencia; la aceptación solo es legítima con la autoridad, las condiciones y la caducidad que le corresponden.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 12
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Infraestructura crítica y seguridad sectorial: herramientas e interpretación
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX021.
@@ -877,7 +877,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -978,19 +978,19 @@ Tome cualquier panel público o afirmación de un informe anual sobre cibersegur
 
 Los marcos y las líneas base son varas de medir: elija una estructura principal, cumpla primero la ley y asocie el resto. Lea toda evaluación por su alcance, su método, su definición, su fecha y la decisión que respalda. Mida la exposición, la puntualidad y la cobertura de lo que importa, con responsables y acciones de umbral. Deje los hallazgos técnicos listos para decidir preguntando qué está afectado, cómo se sabe, cuál es la exposición, quién actúa y qué perturba.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Siga estudiando — capítulo 05 de 12
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Infraestructura crítica y seguridad sectorial: flujo de trabajo operativo
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX026.
@@ -1047,7 +1047,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1188,19 +1188,19 @@ Escriba una RACI para «incorporar un nuevo proveedor con acceso remoto» usando
 
 Un programa funciona con funciones asignadas, una RACI con una sola persona que rinde cuentas por actividad y un responsable principal con nombre, una gobernanza de cambios que mantiene visibles los cambios relevantes para la seguridad y una vía de escalado que funciona sin conexión de noche. Compruebe en la RACI la estructura, la titularidad de las aprobaciones y la carga durante los incidentes; revise todo cambio de emergencia después del evento.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 12
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestructura crítica y seguridad sectorial: controles y verificación
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX031.
@@ -1257,7 +1257,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1356,19 +1356,19 @@ Escriba fichas de control (objetivo, dueño, funcionamiento, evidencia, señal d
 
 Un control es algo que un responsable puede asumir: objetivo, dueño, funcionamiento, evidencia y señal de fallo. El aseguramiento sube de declarado a documentado, observado y probado; aspire al nivel probado en los controles que protegen frente a las peores consecuencias. Verifique de forma proporcionada a través de tres líneas, autorice las pruebas como cualquier otro trabajo y mantenga las excepciones con dueño, compensadas y limitadas en el tiempo.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Siga estudiando — capítulo 07 de 12
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestructura crítica y seguridad sectorial: análisis supervisado de un caso
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX036.
@@ -1430,7 +1430,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1558,19 +1558,19 @@ Presente el caso a su supervisor (aquí, E. Varga) en cinco partes: qué se revi
 
 El acceso de proveedores se gobierna a lo largo de un ciclo de vida (seleccionar, contratar, incorporar, operar, cambiar, salir) y la mayoría de los fallos están en las juntas. Una revisión del acceso concilia cuentas, contratos y sesiones; responda de forma proporcionada, trate las anomalías como preguntas y escale por la vía adecuada lo que siga sin explicación. Convierta las lecciones en requisitos contractuales comprobables y presente los casos con las decisiones solicitadas y la incertidumbre etiquetada.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 12
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicación, ética e informes
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX041.
@@ -1632,7 +1632,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1754,19 +1754,19 @@ Redacte un registro de notificaciones para una organización que conozca, con al
 
 Los incidentes ponen en marcha varios relojes a la vez; conózcalos de antemano, acuerde qué pone en marcha cada uno y quién lo registra, y fije plazos internos de aprobación anteriores a los externos. Los clientes críticos necesitan mensajes prácticos y tempranos; el público necesita declaraciones provisionales veraces y proporcionadas. Comunique sin culpar ni especular, corrija los errores de forma visible e informe a la dirección con hechos, impacto, decisiones y obligaciones.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 12
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestructura crítica y seguridad sectorial: calidad y diagnóstico de averías
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX046.
@@ -1823,7 +1823,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1954,19 +1954,19 @@ Tome un fallo reciente de cualquier equipo que conozca (un plazo incumplido, una
 
 Los programas de coordinación fallan de maneras reconocibles: lagunas de titularidad, responsabilidad duplicada, información obsoleta, controles de papel, cuellos de botella, deterioro de las acciones y rapidez sin calidad. Diagnostíquelos como averías, del síntoma a las hipótesis y la evidencia hasta la causa, sin culpar a nadie. Mida la calidad de las decisiones, no solo la rapidez, y cierre las acciones correctivas solo con evidencia verificada.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Siga estudiando — capítulo 10 de 12
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratorio supervisado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX051.
@@ -2028,7 +2028,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2134,19 +2134,19 @@ Diseñe un ejercicio de mesa de 90 minutos para un servicio esencial de su elecc
 
 Un ejercicio de mesa es el laboratorio del coordinador: seguro, barato y eficaz para sacar a la luz lagunas en las funciones, la información y la comunicación. Diséñelo con objetivos observables, un escenario sintético verosímil, inyecciones asociadas a los objetivos, evaluadores independientes y un responsable de seguridad. Condúzcalo para poner a prueba los planes, no a las personas; evalúelo con una puesta en común en caliente, un informe posterior a la acción y un plan de mejora cuyas acciones tengan responsable y se verifiquen.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Siga estudiando — capítulo 11 de 12
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portafolio de práctica y revisión final
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX060.
@@ -2208,7 +2208,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX060]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2320,13 +2320,13 @@ Reúna su portafolio a partir de sus respuestas a los ejercicios. Pida a un cole
 
 Un coordinador profesional demuestra su competencia mediante productos de trabajo comprobables: mapas, registros, RACI, fichas de control, sesiones informativas de casos, registros de notificaciones, informes de ejercicios y planes de mejora. Informe a los consejos con consecuencias, evidencia y peticiones concretas; empiece un puesto nuevo con titularidad, información y ensayo; y evalúese con honestidad frente al ciclo completo: enmarcar, decidir, organizar, verificar, comunicar, mejorar.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Siga estudiando — capítulo 12 de 12
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
 
 Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

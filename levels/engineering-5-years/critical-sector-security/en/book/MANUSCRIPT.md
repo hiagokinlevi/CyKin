@@ -94,7 +94,7 @@ The [worked results](#worked-results) contain EX001–EX100. A [glossary](#gloss
 
 ## Chapter 1 — Calculus I
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -146,7 +146,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -234,19 +234,19 @@ Before trusting the lab, check that its numbers agree with the worked example: t
 
 Infrastructure is stocks and flows. A derivative is a rate you can compare with what equipment can do; an integral is an amount you can compare with a limit that protects people. Hold-up time is an integral solved for its upper bound, usually numerically, and it depends on when the disruption starts. Check numerical results against an exact or finer solution, keep units explicit, and never let an average stand in for a curve when the curve is what the outage will meet.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 50
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX003.
@@ -293,7 +293,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX003]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -381,19 +381,19 @@ At LRWA these mistakes have direct consequences: a graph that mixes arrow direct
 
 Write rules as logic and dependencies as graphs, then let the computer check them. Small interlocks can and should be checked exhaustively; whole systems cannot, and the counting tells you so. Look for shared nodes behind apparently diverse paths, label edges with their type, and ask of every input which ones arrive over a network an adversary might reach.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 50
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Physics for computing
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX006.
@@ -450,7 +450,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -506,19 +506,19 @@ Each of these errors would make R5 look met on paper while failing it in practic
 
 Power, signal and heat are where cyber meets physical. Size backup energy for end-of-life conditions and the full outage the threat model includes; treat radio availability as a matter of signal-to-noise, not cryptography; design cabinets for heat; and remember that physical access opens side channels and fault attacks that no firewall sees.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 50
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX008.
@@ -570,7 +570,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -663,19 +663,19 @@ Each item has a matching test in Lab 3 or EX008. A parser that passes those test
 
 Write code that is explicit about types, boundaries and failure. Implement published algorithms against published test vectors. Treat every parser as a security boundary: length, integrity, shape, then physical meaning, and reject with a reason rather than guess. Keep accidental-error detection (CRC) separate in your mind from adversarial integrity (MACs and signatures).
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 50
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Engineering communication
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX010.
@@ -737,7 +737,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -798,19 +798,19 @@ Most of these errors appear first in requirement sets. A requirement containing 
 
 Write to enable decisions: recommendation first, evidence and assumptions next, conditions for change last. Make every requirement verifiable and traceable; report numbers with units, methods and uncertainty; tailor the message, not the facts, to the reader; and treat infrastructure detail as sensitive information with a defined audience.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 50
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Calculus II
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX011.
@@ -867,7 +867,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -919,19 +919,19 @@ In the chlorine example, a team that used the cool-weather decay constant all ye
 
 When a flow depends on the stock, write an ODE. Linear first-order systems approach equilibrium exponentially with time constant $\tau$; that number becomes a detection and response requirement. Solve numerically with convergence checks and attention to stability. Use sensitivity to find which assumption dominates a margin, and design detection that does not depend on the component under suspicion.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 50
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX013.
@@ -993,7 +993,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1081,19 +1081,19 @@ Each error has an LRWA example. Paging the on-call engineer for every network al
 
 Probability is a model; say which kind. Bayes' rule makes base rates decisive for alarms; redundancy works only to the extent that failures are independent, and common causes — including shared vulnerabilities — usually dominate. Poisson is a starting point for rare events. Describe data with spread, sample size and collection method, and never treat absence of observed failures as proof of safety.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 50
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Computer architecture
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX015.
@@ -1150,7 +1150,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1207,19 +1207,19 @@ The RTU comparison shows these errors in practice. RTU-A is deterministic but ca
 
 Architecture determines both timing and trust. Control needs worst-case, not average, performance. PLCs and RTUs are long-lived, scan-based machines whose security features must still be adequate decades from now. Hardware mechanisms — privilege, memory protection, secure boot, key storage — give specific, limited guarantees; performance features can leak across boundaries. State exactly what each mechanism protects against.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 50
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX017.
@@ -1276,7 +1276,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1333,19 +1333,19 @@ Each error defeats a property of the pump state machine. Scattered flags make it
 
 Decompose around decisions likely to change and state invariants. Make modes explicit as state machines and reject everything not listed. Test boundaries and failures, read coverage as a map of the untested, handle errors deliberately, use the right clock, and give each piece of shared state one owner.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 50
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX019.
@@ -1402,7 +1402,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1457,19 +1457,19 @@ The deadline sign-off in the worked example shows several of these at once: pres
 
 Public safety comes first, honestly reported. Safety and security must be analysed together because each can defeat the other. Test only with written, specific authorisation; report incidental findings privately. Decide under uncertainty with a documented procedure, and treat "not verified" as an answer you are allowed — and obliged — to give.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 50
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX022.
@@ -1526,7 +1526,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -1612,19 +1612,19 @@ LRWA's flow review illustrates the third error directly: the firewall configurat
 
 Each network layer promises something narrow; authenticity has to be added. Industrial protocols vary in security capability, and capability is not configuration. Budget latency with worst cases. Express segmentation as zones and conduits with allowlists, and verify it against observed flows rather than intended configurations.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 50
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Operating systems
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX023.
@@ -1681,7 +1681,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX023]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -1741,19 +1741,19 @@ LRWA's SCADA hardening avoids each of these: named accounts replace shared ones,
 
 The OS determines both timing and the security baseline. Put deadlines on real-time platforms. Apply least privilege, allowlisting, hardening and off-host logging. Patch on assessed risk with tested procedures and compensating controls when you cannot patch yet, and keep a mirror environment to make that possible.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 50
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX025.
@@ -1810,7 +1810,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes and connection
@@ -1897,19 +1897,19 @@ The 4 March investigation depends on avoiding every one of these, from compressi
 
 Model operational data deliberately, know what your historian discards, and use transactions and replication with failover in mind. Every integrity mechanism detects something specific: constraints reject the impossible, hash chains detect edits relative to an independently stored anchor, signatures bind to a key holder — none proves truth. Move data outward to a DMZ and never let reporting become a path into control.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 50
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Software engineering
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX027.
@@ -1971,7 +1971,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes and connection
@@ -2034,19 +2034,19 @@ The TMRP gateway plan was written to avoid each of these. It uses the standard l
 
 Process makes errors visible early and leaves evidence. Use a recognised secure development framework, review with checklists, measure complexity, and treat dependencies and builds as part of your attack surface with SBOMs and provenance. Design releases and updates for decades, with authentication, staging and rollback.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 50
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Security fundamentals
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX029.
@@ -2103,7 +2103,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes and connection
@@ -2165,19 +2165,19 @@ The first TMRP risk table avoids these by naming each consequence in service ter
 
 Infrastructure security protects a physical service: integrity and availability of control and safety lead. Start from consequence, then threats and vulnerabilities, then controls. Apply enduring design principles, layer defences whose failures are independent, assume breach, and use frameworks as structured checklists — not as evidence.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 50
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Systems engineering
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX031.
@@ -2234,7 +2234,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes and connection
@@ -2291,19 +2291,19 @@ In TMRP each of these has a counter-measure: requirements trace to N1 to N4, eac
 
 Systems engineering moves from needs to verified, validated systems through traceable requirements, managed interfaces and controlled configuration. Security belongs inside those processes: protection needs become requirements, requirements become architecture and design, and every security claim needs verification evidence.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 50
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX034.
@@ -2360,7 +2360,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes and connection
@@ -2454,19 +2454,19 @@ For Hollin Hill, EX034 shows the dependence problem plainly: the level sensor an
 
 Feedback makes systems robust and credulous. A biased sensor drives a correct controller to an incorrect physical state. Detect with residuals built from independent physics, use step and cumulative tests for abrupt and slow attacks, set thresholds from measured noise, and remember that independence of measurement paths — not cleverness of the algorithm — is what defeats a capable attacker.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 50
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Security architecture
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX035.
@@ -2528,7 +2528,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX035]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes and connection
@@ -2591,19 +2591,19 @@ At LRWA, the third and first errors are the most likely: a vendor wanting quick 
 
 Use layered models to place assets and conduits, make the DMZ real by allowing no direct crossing, apply zero trust where systems can authenticate and segmentation where they cannot, put all remote access through a controlled gateway, monitor passively without creating paths, and judge the architecture by the consequences it makes hard to cause.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 50
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX018.
@@ -2660,7 +2660,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX018]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes and connection
@@ -2753,19 +2753,19 @@ TMRP's design answers each item: tags are compared in constant time, counters pe
 
 Choose standard primitives for the property you need: hashes for fingerprints, MACs or signatures for authenticity, authenticated encryption for confidentiality with integrity. Add freshness to defeat replay and keep it across restarts. Key management is the real system: per-device keys in hardware, rotation and revocation. Give people and devices distinct, strongly authenticated identities.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue studying — chapter 19 of 50
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Critical infrastructure and sector security: engineering context
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX039.
@@ -2822,7 +2822,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes and connection
@@ -2886,19 +2886,19 @@ LRWA's own context shows why these matter. Its critical status comes from St Bre
 
 Critical infrastructure is defined by consequence. Sectors differ in process, consequence units and technology but share interdependency on power, communications, time and common suppliers. Work within regulations by version and date, learn from incidents only as far as their sources go, and define every security programme by the service and people it protects.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue studying — chapter 20 of 50
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Critical infrastructure and sector security: requirements
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX041.
@@ -2955,7 +2955,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes and connection
@@ -3022,19 +3022,19 @@ TMRP's set avoids the first error by including R4, R5 and R6 for degraded operat
 
 Derive requirements from consequences, stakeholders, regulations, threats and constraints. Specify degraded operation and recovery as carefully as protection. Translate target security levels into concrete component requirements through a documented risk assessment, and record every conflict with options, decision and owner.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue studying — chapter 21 of 50
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Critical infrastructure and sector security: system and data models
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX043.
@@ -3091,7 +3091,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes and connection
@@ -3154,19 +3154,19 @@ The Hollin Hill model shows the last error clearly: treating telemetry loss as l
 
 Build the inventory from several reconciled sources, model the system in functional, physical and data-flow views with trust boundaries, represent degraded modes explicitly, and keep the model current and protected. Good models separate visibility from control and show which property actually protects the service.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue studying — chapter 22 of 50
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Critical infrastructure and sector security: threat and failure analysis
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX045.
@@ -3223,7 +3223,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes and connection
@@ -3313,19 +3313,19 @@ Lab 9 itself assumes independence, so a shared software flaw in both stations' R
 
 Threat models generate what could go wrong at each trust boundary; ATT&CK keeps them realistic. Fault trees and minimal cut sets show failure logic and single points of failure; attack trees and bow-ties show adversary paths and barriers. Combine them by conditioning on what an adversary can cause: what remains is the defence that actually matters.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue studying — chapter 23 of 50
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Critical infrastructure and sector security: methods I
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX047.
@@ -3382,7 +3382,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX047]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes and connection
@@ -3450,19 +3450,19 @@ TMRP's method plan guards against the first error by naming each method's limit,
 
 Match each question to a method that can answer it and know each method's limit. Make risk assessments reproducible with defined scales and rationale; verify and validate simulations for a stated purpose; use exercises to test people and plans, not equipment; and scale the evidence to the decision it supports.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue studying — chapter 24 of 50
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Design studio I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX049.
@@ -3524,7 +3524,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes and connection
@@ -3596,19 +3596,19 @@ Studio I guards against these: its four concepts differ in principle, its weight
 
 A studio turns knowledge into a design under critique. Generate genuinely different alternatives, including extremes; weight criteria before scoring and test sensitivity; present assumptions and unverified claims openly; and treat review findings as design information with recorded responses.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue studying — chapter 25 of 50
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Critical infrastructure and sector security: architecture alternatives
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX051.
@@ -3665,7 +3665,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes and connection
@@ -3738,19 +3738,19 @@ TMRP's table avoids the last error by putting numbers where they exist, such as 
 
 Choose architecture by how it fails and how it can be attacked. Hierarchical control with local safe limits combines operability with graceful degradation. Redundancy protects against independent failures, diversity against common causes; unidirectional flows remove inbound attack paths along with remote control. Quantify where you can and document the residual risk you accept.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue studying — chapter 26 of 50
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Critical infrastructure and sector security: control design
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX053.
@@ -3802,7 +3802,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes and connection
@@ -3863,19 +3863,19 @@ The dosing example avoids each: bounds live in the controller, the analyser alar
 
 Design controls per scenario at prevention, detection and recovery points. Put engineered physical limits on the worst consequences, enforce bounds where the attacker cannot bypass them, make layers independent, and specify each control's performance, dependencies, failure mode, owner and verification.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue studying — chapter 27 of 50
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Critical infrastructure and sector security: implementation I
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX055.
@@ -3932,7 +3932,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes and connection
@@ -3998,19 +3998,19 @@ The setpoint validator's first version shows the third error, and TMRP's dossier
 
 Implement controls from specifications with tests for every "shall". Code the control path defensively: validate fully, compare in constant time, protect keys, reject on any error, bound resources, log usefully. Prefer positive checks of the safe region. Test on a bench that can produce the failures you cannot provoke live, and record evidence as you go.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue studying — chapter 28 of 50
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Critical infrastructure and sector security: measurement
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX057.
@@ -4067,7 +4067,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes and connection
@@ -4144,19 +4144,19 @@ TMRP's acceptance test reports misses and the slowest detection, and its precisi
 
 Measure what changes decisions: control performance, exposure and service resilience. Report precision and recall with base rates and time-to-detect distributions including misses. Represent resilience as performance over time. Distrust metrics that can be gamed or that hide the worst case.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue studying — chapter 29 of 50
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX059.
@@ -4213,7 +4213,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX059]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes and connection
@@ -4315,19 +4315,19 @@ TMRP's T3 record avoids each of these. Its property was written before the run, 
 
 Verification is a planned campaign with criteria fixed in advance. Combine example, boundary, negative, property-based and fault-injection tests; make every run reproducible; and treat failures as information to be fixed and re-verified, never relabelled.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue studying — chapter 30 of 50
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Chapter 31 — Critical infrastructure and sector security: implementation II
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX061.
@@ -4384,7 +4384,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes and connection
@@ -4445,19 +4445,19 @@ TMRP's PS2 pilot avoided these: it had a rollback image, operators were briefed 
 
 Deploy in stages with entry and exit criteria and tested rollback. Manage keys and secrets as lifecycles with auditable ceremonies. Wrap legacy devices with gateways that are themselves treated as security-critical, plus compensating physical controls. A control is in service only after site acceptance and operator handover.
 
-<!-- cykin:chapter-navigation:start ch-31 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-31 -->
 ### Continue studying — chapter 31 of 50
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Chapter 32 — Critical infrastructure and sector security: reliability
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX063.
@@ -4509,7 +4509,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX063]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes and connection
@@ -4584,19 +4584,19 @@ For PS4 the first error halves the predicted downtime, and the third ignores tha
 
 Reliability is measured with failure rates, repair times and availability; series chains are weaker than their weakest link; repairable redundancy depends on repair capacity, which simple formulas ignore. Adversaries induce failures on their schedule, so reliability gives the baseline and recovery capacity, while security must make induced failures require independent compromises.
 
-<!-- cykin:chapter-navigation:start ch-32 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-32 -->
 ### Continue studying — chapter 32 of 50
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Chapter 33 — Critical infrastructure and sector security: safety and resilience
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX034.
@@ -4648,7 +4648,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes and connection
@@ -4698,19 +4698,19 @@ EX066 shows the second error at Fenwick, where the chlorine gas shutdown system 
 
 STPA treats losses as failures of control and finds unsafe control actions arising from interactions, including adversarial ones. Safety instrumented systems must be independent in sensors, logic, networks and engineering access. Resilience — anticipate, withstand, recover, adapt — must be defined against specific threats and engineered through degraded modes, buffers and practised recovery.
 
-<!-- cykin:chapter-navigation:start ch-33 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-33 -->
 ### Continue studying — chapter 33 of 50
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Chapter 34 — Critical infrastructure and sector security: integration
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX067.
@@ -4767,7 +4767,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes and connection
@@ -4828,19 +4828,19 @@ The reconnection burst shows the second and last errors: each component passed i
 
 Integrate incrementally with interface tests and whole-system scenarios, because emergent behaviour appears only in combination. Integrate controls into operations through meaningful alarms, playbooks and training. Make organisational interfaces explicit and measurable; your security depends on organisations you do not control.
 
-<!-- cykin:chapter-navigation:start ch-34 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-34 -->
 ### Continue studying — chapter 34 of 50
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX069.
@@ -4892,7 +4892,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes and connection
@@ -4944,19 +4944,19 @@ EX069 is an example of the first error inside TMRP itself: R6 asks for eight hou
 
 Detailed design makes every earlier number meet. An assurance case connects the top claim to evidence through explicit arguments, with qualifiers and defeaters stated openly. Consistency across analyses and honesty about defeaters are what make a detailed design defensible.
 
-<!-- cykin:chapter-navigation:start ch-35 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-35 -->
 ### Continue studying — chapter 35 of 50
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Chapter 36 — Critical infrastructure and sector security: performance and scale
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX071.
@@ -5013,7 +5013,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX071]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes and connection
@@ -5091,19 +5091,19 @@ TMRP's sizing avoids the first two errors by sizing for storm load and keeping t
 
 Queues govern latency; Little's law and simple queueing models show that delay explodes as utilisation approaches one. Measure the costs of security controls, size for peak, degraded and attack load with priority for alarms, and automate fleet-scale processes from the start.
 
-<!-- cykin:chapter-navigation:start ch-36 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-36 -->
 ### Continue studying — chapter 36 of 50
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Chapter 37 — Critical infrastructure and sector security: operations
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX074.
@@ -5160,7 +5160,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX074]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes and connection
@@ -5218,19 +5218,19 @@ LRWA's playbook design answers these: security alarms reach the control room, wh
 
 OT security operations start with process safety and route escalation through the control room. Playbooks must be short, tested and executable under stress. Daily change, access and vulnerability management keep the system as designed, and blameless learning from incidents and near misses improves the defences.
 
-<!-- cykin:chapter-navigation:start ch-37 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-37 -->
 ### Continue studying — chapter 37 of 50
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Chapter 38 — Critical infrastructure and sector security: validation
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX075.
@@ -5287,7 +5287,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX075]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes and connection
@@ -5367,19 +5367,19 @@ TMRP's map shows the last error itself: the T3 re-test on v2 passed, but the mat
 
 Verification asks whether the system was built right; validation asks whether it is the right system. Use traceability as an evidence map to find untested, unsupported and unvalidated claims, validate with the people the system serves under realistic conditions, and report partial results as partial.
 
-<!-- cykin:chapter-navigation:start ch-38 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-38 -->
 ### Continue studying — chapter 38 of 50
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Chapter 39 — Critical infrastructure and sector security: maintainability
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX078.
@@ -5436,7 +5436,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX078]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes and connection
@@ -5494,19 +5494,19 @@ TMRP's review found the third error in the Lab 8 frame and fixed it with a one-b
 
 Design for decades: replaceable components, updatable software, current documentation, available skills. Record technical debt, manage obsolescence ahead of end of support, build cryptographic agility into formats and update paths with a post-quantum migration plan, and decommission so that nothing — keys, accounts, rules — outlives the device.
 
-<!-- cykin:chapter-navigation:start ch-39 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-39 -->
 ### Continue studying — chapter 39 of 50
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX079.
@@ -5558,7 +5558,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes and connection
@@ -5647,19 +5647,19 @@ TMRP's first campaign showed the first error: drops were silent because the desi
 
 Fault injection exercises the error handling that ordinary tests miss. Define the fault model and oracle in advance, seed and count, classify outcomes and hunt silent failures. Lab 15 shows the typical result: the control rejects what it was designed to reject and is blind to what nobody listed — here, loss of data.
 
-<!-- cykin:chapter-navigation:start ch-40 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-40 -->
 ### Continue studying — chapter 40 of 50
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Chapter 41 — Critical infrastructure and sector security: system optimization
 
-<!-- cykin:lesson-figures:start ch-41 -->
+<!-- open-cyber-academy:lesson-figures:start ch-41 -->
 ### Lesson map
 
 Lesson 41 published. Map, example, EX082.
@@ -5716,7 +5716,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-41 -->
+<!-- open-cyber-academy:lesson-figures:end ch-41 -->
 
 
 ### Learning outcomes and connection
@@ -5798,19 +5798,19 @@ TMRP's portfolio avoids the third error by checking greedy against exhaustive se
 
 Formulate investment choices as optimisation with explicit objectives and constraints, solve small problems exactly and distrust greedy shortcuts, model interactions instead of adding benefits, present Pareto sets and sensitivity, and offer the result as structured support for a human decision.
 
-<!-- cykin:chapter-navigation:start ch-41 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-41 -->
 ### Continue studying — chapter 41 of 50
 
 [← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Chapter 42 — Critical infrastructure and sector security: applied research
 
-<!-- cykin:lesson-figures:start ch-42 -->
+<!-- open-cyber-academy:lesson-figures:start ch-42 -->
 ### Lesson map
 
 Lesson 42 published. Map, example, EX083.
@@ -5867,7 +5867,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX083]
 ```
-<!-- cykin:lesson-figures:end ch-42 -->
+<!-- open-cyber-academy:lesson-figures:end ch-42 -->
 
 
 ### Learning outcomes and connection
@@ -5924,19 +5924,19 @@ The cumulative detector study in the worked example avoids each of these: it inf
 
 Engineering research answers a design question with checkable evidence. Pre-specify the study, control confounders, repeat runs, use public testbeds within their limits, obtain authorisation for anything real, and report results with their boundaries.
 
-<!-- cykin:chapter-navigation:start ch-42 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-42 -->
 ### Continue studying — chapter 42 of 50
 
 [← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
 
-<!-- cykin:lesson-figures:start ch-43 -->
+<!-- open-cyber-academy:lesson-figures:start ch-43 -->
 ### Lesson map
 
 Lesson 43 published. Map, example, EX085.
@@ -5993,7 +5993,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-43 -->
+<!-- open-cyber-academy:lesson-figures:end ch-43 -->
 
 
 ### Learning outcomes and connection
@@ -6053,19 +6053,19 @@ The worked example avoids each: its scope was agreed, its log recorded patterns 
 
 Practice teaches the constraints that shape real designs. Work within a written agreement and the host's authority, log observations, connections, differences and questions without sensitive detail, and deliver value to the host in a form that is safe to share.
 
-<!-- cykin:chapter-navigation:start ch-43 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-43 -->
 ### Continue studying — chapter 43 of 50
 
 [← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
 
-<!-- cykin:lesson-figures:start ch-44 -->
+<!-- open-cyber-academy:lesson-figures:start ch-44 -->
 ### Lesson map
 
 Lesson 44 published. Map, example, EX087.
@@ -6122,7 +6122,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX087]
 ```
-<!-- cykin:lesson-figures:end ch-44 -->
+<!-- open-cyber-academy:lesson-figures:end ch-44 -->
 
 
 ### Learning outcomes and connection
@@ -6184,19 +6184,19 @@ The draft scope in EX087 shows the first two errors: securing water utilities wi
 
 A capstone is a scoped, built and verified system. Define the need, deliverables, constraints and acceptance criteria; plan milestones, risks and verification from the start; and make the environment reproducible so that every result can be traced and re-run.
 
-<!-- cykin:chapter-navigation:start ch-44 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-44 -->
 ### Continue studying — chapter 44 of 50
 
 [← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
 
-<!-- cykin:lesson-figures:start ch-45 -->
+<!-- open-cyber-academy:lesson-figures:start ch-45 -->
 ### Lesson map
 
 Lesson 45 published. Map, example, EX089.
@@ -6253,7 +6253,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX089]
 ```
-<!-- cykin:lesson-figures:end ch-45 -->
+<!-- open-cyber-academy:lesson-figures:end ch-45 -->
 
 
 ### Learning outcomes and connection
@@ -6317,19 +6317,19 @@ The TMRP review avoided these: the reviewer was independent, each finding cited 
 
 Independent review finds what authors cannot see. Review against explicit criteria, write specific, evidenced, actionable findings with honest severities, and respond to each finding with accept, reject or defer — recorded and checked.
 
-<!-- cykin:chapter-navigation:start ch-45 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-45 -->
 ### Continue studying — chapter 45 of 50
 
 [← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Chapter 46 — Engineering capstone II
 
-<!-- cykin:lesson-figures:start ch-46 -->
+<!-- open-cyber-academy:lesson-figures:start ch-46 -->
 ### Lesson map
 
 Lesson 46 published. Map, example, EX080.
@@ -6381,7 +6381,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX080]
 ```
-<!-- cykin:lesson-figures:end ch-46 -->
+<!-- open-cyber-academy:lesson-figures:end ch-46 -->
 
 
 ### Learning outcomes and connection
@@ -6441,19 +6441,19 @@ The TMRP capstone avoided these by freezing scope after review, keeping the rest
 
 Freeze scope, close findings, verify the tagged version completely and keep failure history as evidence. Enter the critical design review with traceability, results, findings and the assurance case, and leave it with an explicit readiness decision.
 
-<!-- cykin:chapter-navigation:start ch-46 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-46 -->
 ### Continue studying — chapter 46 of 50
 
 [← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
 
-<!-- cykin:lesson-figures:start ch-47 -->
+<!-- open-cyber-academy:lesson-figures:start ch-47 -->
 ### Lesson map
 
 Lesson 47 published. Map, example, EX093.
@@ -6505,7 +6505,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX093]
 ```
-<!-- cykin:lesson-figures:end ch-47 -->
+<!-- open-cyber-academy:lesson-figures:end ch-47 -->
 
 
 ### Learning outcomes and connection
@@ -6584,19 +6584,19 @@ TMRP's trial avoided the fourth error by reporting R6 as not met at twelve hours
 
 Recovery must be trialled to be trusted. Design trials with safety boundaries and measurements, find the critical path, improve only what is on it, and report the requirement status the trial actually shows — then change the design or the requirement with stakeholders.
 
-<!-- cykin:chapter-navigation:start ch-47 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-47 -->
 ### Continue studying — chapter 47 of 50
 
 [← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Chapter 48 — Evidence dossier
 
-<!-- cykin:lesson-figures:start ch-48 -->
+<!-- open-cyber-academy:lesson-figures:start ch-48 -->
 ### Lesson map
 
 Lesson 48 published. Map, example, EX095.
@@ -6653,7 +6653,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX095]
 ```
-<!-- cykin:lesson-figures:end ch-48 -->
+<!-- open-cyber-academy:lesson-figures:end ch-48 -->
 
 
 ### Learning outcomes and connection
@@ -6720,19 +6720,19 @@ The TMRP index avoids the first error by organising evidence by claim, and its r
 
 The dossier is the claim-organised, provenance-tracked body of evidence behind the assurance case. Keep restricted and redacted versions with a redaction record, and check consistency of every claim, number and status before anyone else does.
 
-<!-- cykin:chapter-navigation:start ch-48 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-48 -->
 ### Continue studying — chapter 48 of 50
 
 [← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
 
-<!-- cykin:lesson-figures:start ch-49 -->
+<!-- open-cyber-academy:lesson-figures:start ch-49 -->
 ### Lesson map
 
 Lesson 49 published. Map, example, EX097.
@@ -6789,7 +6789,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cykin:lesson-figures:end ch-49 -->
+<!-- open-cyber-academy:lesson-figures:end ch-49 -->
 
 
 ### Learning outcomes and connection
@@ -6858,19 +6858,19 @@ The TMRP thesis avoids each: it is organised by argument, reports R6 as not met,
 
 An engineering thesis argues from need to design to evidence. Structure it for an examiner, report requirement status as it is, give every limitation an affected claim and direction, and keep every number traceable to the dossier.
 
-<!-- cykin:chapter-navigation:start ch-49 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-49 -->
 ### Continue studying — chapter 49 of 50
 
 [← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
 
-<!-- cykin:lesson-figures:start ch-50 -->
+<!-- open-cyber-academy:lesson-figures:start ch-50 -->
 ### Lesson map
 
 Lesson 50 published. Map, example, EX099.
@@ -6932,7 +6932,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX099]
 ```
-<!-- cykin:lesson-figures:end ch-50 -->
+<!-- open-cyber-academy:lesson-figures:end ch-50 -->
 
 
 ### Learning outcomes and connection
@@ -7003,13 +7003,13 @@ The TMRP candidate avoids these by showing the R6 shortfall on a slide, acknowle
 
 The defense tests understanding, judgement and honesty about limits. Present need, design, evidence and status plainly; prepare by question family with dossier references; answer what you know, reason transparently about what you do not, and turn examiner findings into a precise corrections table and a responsible handover.
 
-<!-- cykin:chapter-navigation:start ch-50 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-50 -->
 ### Continue studying — chapter 50 of 50
 
 [← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

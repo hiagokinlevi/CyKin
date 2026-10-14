@@ -5,6 +5,7 @@ dist/
 .venv-workers/
 python_modules/
 .wrangler/
+.cache/
 .dev.vars
 __pycache__/
 *.pyc

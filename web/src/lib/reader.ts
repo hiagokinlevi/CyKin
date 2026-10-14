@@ -1,16 +1,16 @@
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
-const REPO_VIEW = 'https://github.com/hiagokinlevi/CyKin/blob/main/';
-const REPO_RAW = 'https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/';
+const REPO_VIEW = 'https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/';
+const REPO_RAW = 'https://raw.githubusercontent.com/hiagokinlevi/OpenCyberAcademy/main/';
 
 function sourcePath(url: URL): string | null {
   if (url.hostname === 'github.com') {
-    const match = url.pathname.match(/^\/hiagokinlevi\/CyKin\/(?:blob|tree)\/main\/(.+)$/i);
+    const match = url.pathname.match(/^\/hiagokinlevi\/OpenCyberAcademy\/(?:blob|tree)\/main\/(.+)$/i);
     return match ? decodeURIComponent(match[1]) : null;
   }
   if (url.hostname === 'raw.githubusercontent.com') {
-    const match = url.pathname.match(/^\/hiagokinlevi\/CyKin\/main\/(.+)$/i);
+    const match = url.pathname.match(/^\/hiagokinlevi\/OpenCyberAcademy\/main\/(.+)$/i);
     return match ? decodeURIComponent(match[1]) : null;
   }
   return null;

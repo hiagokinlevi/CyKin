@@ -1,5 +1,5 @@
 ---
-name: cykin-data-governance-rapid-393b36d8
+name: oca-data-governance-rapid-393b36d8
 description: "Guide a learner through the data governance Rapid Course draft: 4 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

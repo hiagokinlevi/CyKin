@@ -1,5 +1,5 @@
 ---
-name: cykin-ot-iot-security-bachelor-8a86201e
+name: oca-ot-iot-security-bachelor-8a86201e
 description: "Tutor the forty-chapter bachelor's OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Lakeside District Heating Plant, Labs 25 and 30, EX001–EX120; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---

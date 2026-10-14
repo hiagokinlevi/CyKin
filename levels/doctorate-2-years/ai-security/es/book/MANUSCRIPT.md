@@ -40,7 +40,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Integridad y métodos avanzados de investigación
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -203,7 +203,7 @@ La integridad en la seguridad de la IA es operativa: afirmaciones falsables, dat
 
 ## Capítulo 2 — Seguridad de la IA y del aprendizaje automático: la frontera de la investigación
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX008.
@@ -260,7 +260,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -376,7 +376,7 @@ La frontera está marcada por una década de ataques que avanzan más deprisa qu
 
 ## Capítulo 3 — Propuesta de contribución original
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX015.
@@ -433,7 +433,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -540,7 +540,7 @@ Una propuesta merece la aprobación cuando nombra un tipo de contribución, cong
 
 ## Capítulo 4 — Replicación de líneas de base y estudio piloto
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX021.
@@ -597,7 +597,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -719,7 +719,7 @@ La replicación le dice qué hace realmente el trabajo previo en sus manos; el p
 
 ## Capítulo 5 — Estudio principal y validación independiente
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX027.
@@ -776,7 +776,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -872,7 +872,7 @@ Un estudio principal se gana la confianza con un protocolo congelado, un adversa
 
 ## Capítulo 6 — Crítica entre pares y revisión
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX033.
@@ -929,7 +929,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -991,7 +991,7 @@ La crítica es un instrumento de validez. Revisar a otros le enseña qué eviden
 
 ## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX039.
@@ -1048,7 +1048,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -1154,7 +1154,7 @@ La tesis argumenta; el archivo demuestra. Una tabla de validez clara y un archiv
 
 ## Capítulo 8 — Defensa de la tesis y plan de publicación
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX046.
@@ -1211,7 +1211,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje

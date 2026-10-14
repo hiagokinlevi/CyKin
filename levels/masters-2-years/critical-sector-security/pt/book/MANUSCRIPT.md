@@ -56,7 +56,7 @@ As [resoluções](#worked-results) contêm EX001–EX050. Um [glossário](#gloss
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -118,7 +118,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -400,19 +400,19 @@ O limite de uma revisão de mestrado é o tempo: ela não será exaustiva e não
 
 Uma dissertação se apoia em sua pergunta. Passe do tema ao problema e à pergunta deliberadamente, tornando cada estreitamento defensável; teste a pergunta segundo o FINER e escreva-a numa forma PICOT para infraestrutura, com uma exposição observável e um desfecho de consequência. Classifique a pergunta, porque seu tipo decide o desenho e a alegação mais forte disponível. Defina o estimando antes de ver os dados. Escolha um tipo de revisão que se ajuste ao projeto e diga isso. Busque entre disciplinas e na literatura cinzenta, teste a busca com itens conhecidos, encadeie as citações até um ponto de encerramento declarado com antecedência e registre tudo. Deduplique, trie com um segundo revisor pelo menos numa amostra, use o kappa como diagnóstico de critérios pouco claros e relate o fluxo. Sintetize por conceito: a matriz de conceitos mostra tanto o que se sabe quanto a lacuna que o seu estudo vai preencher.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 08
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Infraestrutura crítica e segurança setorial: seminário avançado
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -474,7 +474,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -677,19 +677,19 @@ O limite de um seminário é que ele lê apenas o que foi publicado. As evidênc
 
 Os setores diferem no que perdem, com que rapidez e para quem; em quem os governa; e em quais evidências chegam à vista do público. Escolha uma unidade de consequência comum ou fique dentro de um setor. Distinga as cascatas de dependências do transbordamento por transferência de carga e meça o mecanismo que você alega. Os catálogos públicos são amostras moldadas pela divulgação dependente da gravidade e pelas mudanças nas regras de notificação: suas médias exageram a gravidade típica e suas tendências podem ser artefatos. Os relatos públicos iniciais são revisados — Oldsmar e Düsseldorf são exemplos documentados —, então codifique as alegações com fonte, data e situação, e verifique-as de novo antes de usá-las. Leia os artigos com um protocolo fixo, resuma com justiça antes de criticar e transforme a crítica no desenho do próximo estudo.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 08
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -746,7 +746,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1026,19 +1026,19 @@ O limite do desenho é que ele só consegue reduzir, e não eliminar, a dependê
 
 Um evento de infraestrutura não planejado não oferece aleatorização, então todo desenho é uma aproximação de um contrafactual, e sua credibilidade se apoia em pressupostos que você precisa declarar. Uma série temporal interrompida controlada remove os choques sazonais compartilhados que um antes e depois ou uma ITS não controlada atribuiriam ao evento; as entrevistas fornecem o mecanismo. Associe cada ameaça à validade a uma característica do desenho, ou admita-a. Simule o desenho antes do acesso aos dados: o Laboratório 3 mostra que um aumento sazonal compartilhado torna um desenho não controlado confiantemente errado — e mais ainda com linhas de base mais longas —, enquanto o desenho controlado é quase não enviesado, mas impreciso demais para detectar um efeito de 10% num único DE. Enquadre o estudo como estimação. A revisão ética precisa cobrir os entrevistados, as organizações e o público, porque as constatações sobre a capacidade regional podem ser sensíveis. Os acordos, os níveis e um projeto reprodutível com um plano de pré-análise registrado vêm antes do primeiro arquivo de dados.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 08
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestrutura crítica e segurança setorial: explicações concorrentes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -1100,7 +1100,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1337,19 +1337,19 @@ O limite das ferramentas deste capítulo é que cada uma se apoia num pressupost
 
 Mantenha várias explicações ao mesmo tempo e procure observações que as separem. Escreva o padrão completo da hipótese principal — tempo, lugar, população, canal, mecanismo — e exija que cada rival explique todo ele. Um diagrama causal mostra por que uma comparação antes e depois é enviesada pela estação e de que pressuposto uma região de comparação precisa. Populações de comparação, controles negativos, datas placebo, dose–resposta e alinhamento temporal discriminam, cada um, sob um pressuposto que você precisa argumentar. Os casos públicos mostram explicações cibernéticas concorrendo com erro do operador, doença subjacente, decisões preventivas e atualizações defeituosas; a lição é registrar o status e modelar as decisões. O Laboratório 4 mostra um método ingênuo encontrando "transbordamento" a 38 km e numa região não afetada, e uma região de comparação revelando um gradiente próximo da verdade.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 08
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -1411,7 +1411,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1672,19 +1672,19 @@ O limite de um piloto é o seu tamanho: passar nele mostra que os procedimentos 
 
 Uma proposta é um contrato: ela fixa a pergunta, os estimandos, o desenho e a análise, declara o que permanece em aberto e diz como os desvios serão registrados. O caminho crítico de um projeto de mestrado passa pelo tempo de outras pessoas — ética, custodiantes, revisão jurídica —, então comece essas frentes cedo e mantenha um registro de riscos vivo. Faça aos custodiantes perguntas precisas, sobretudo sobre mudanças de sistema, lacunas e correções. Um piloto testa a viabilidade, e não os efeitos; nunca estime um efeito a partir dele e, num estudo de evento, nunca olhe para os desfechos em torno do evento. Defina de antemão os critérios de prosseguir/alterar/parar. Audite cada extrato com um script, transforme cada anomalia numa pergunta e trate os dias de indisponibilidade nos próprios hospitais que você estuda como artefatos de medição a sinalizar, e não como linhas a apagar.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 08
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise dos dados
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX034.
@@ -1746,7 +1746,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1980,19 +1980,19 @@ O limite desta análise é que ela se apoia num único evento, numa única regi�
 
 Mantenha a linhagem: cada extrato registrado, auditado, congelado e usado apenas por meio de scripts. A ITS controlada modela a razão logarítmica entre as chegadas de um vizinho e as da região de comparação, com uma tendência, um degrau do desvio e um degrau pós-desvio; exp(β₂) − 1 é a estimativa. Verifique a autocorrelação e use intervalos robustos com uma defasagem pré-especificada e sensibilidade. Os postos placebo são evidências honestas cujo menor valor-p atingível depende do número de janelas. No Spillover Study sintético, as chegadas a Alder Point subiram cerca de um quarto durante o desvio, com um intervalo largo; o resultado de Brookfield é inconclusivo, embora um efeito real existisse; o de Calloway é compatível com nenhum; a estimativa do tempo de espera está confundida pela estação. As entrevistas explicam o gradiente pela geografia viária e revelam a notificação tardia, a sobrecarga noturna e a ligação entre a duração do desvio e a recuperação dos sistemas clínicos. Integre as vertentes num quadro conjunto e relate a discordância como uma constatação.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 08
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -2054,7 +2054,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2255,19 +2255,19 @@ O limite da boa redação é que ela não consegue salvar um desenho fraco; sua 
 
 Dê a cada parte da dissertação uma única função e escreva-as na ordem que mantém as promessas honestas: métodos, resultados, discussão e, depois, introdução e resumo. Mantenha um registro de resultados e alegações para que as alegações não possam crescer no caminho até o resumo. Relate as estimativas com intervalos e com o que elas excluem; evite veredictos de significância; calibre os verbos causais ao desenho e declare os pressupostos junto com eles. Torne cada número rastreável e verifique-o com um script, sabendo que os scripts captam erros de transcrição, mas não alegações erradas. Use STROBE, RECORD, SRQR e COREQ como listas de verificação. Escreva as limitações com direção e resolução. Torne as figuras acessíveis e declare a disponibilidade dos dados com honestidade, dentro das restrições dos acordos, do consentimento e da sensibilidade da infraestrutura.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 08
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -2329,7 +2329,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2529,13 +2529,13 @@ O limite do exame é que ele julga a dissertação, e não o mundo. Ser aprovado
 
 Os examinadores leem em busca de coerência e são influenciados pelo cuidado; torne o resumo, a introdução e a conclusão precisos e consistentes, e as respostas a cada pergunta visíveis. Prepare-se para famílias previsíveis de perguntas com evidências. Responda ao "e se" com uma curva de especificação que mantenha a estimativa pré-especificada como primária e mostre a sua dependência de escolhas razoáveis — lembrando que robustez às escolhas não é acurácia, como mostra a estimativa robustamente inconclusiva de um efeito real em Brookfield. Use as defesas simuladas para encontrar lacunas no trabalho, e não apenas na fala. Responda às correções com uma tabela associada e com razões. Compartilhe primeiro com os parceiros, publique padrões regionais em vez de fraquezas de instalações e encaminhe em privado as constatações de segurança incidentais. As limitações da dissertação tornam-se o próximo estudo.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 08
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -2966,7 +2966,7 @@ Leis, orientações e páginas públicas de incidentes mudam. As versões e data
 - von Elm, E., Altman, D. G., Egger, M., et al. [The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies](https://doi.org/10.1016/S0140-6736(07)61602-X). *The Lancet*, 370(9596), 1453–1457, 2007.
 - Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data*, 3, 160018, 2016.
 
-Material complementar do CyKin: o [livro de doutorado sobre Infraestrutura Crítica](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md), que leva os métodos de pesquisa deste livro a uma contribuição original baseada em simulação.
+Material complementar do OpenCyber Academy: o [livro de doutorado sobre Infraestrutura Crítica](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md), que leva os métodos de pesquisa deste livro a uma contribuição original baseada em simulação.
 
 **Limite do caso.** Tamsin Valley, Kestrel Health, o Alder Point Hospital, o Brookfield Community Hospital, o Calloway General, o Tamsin Valley EMS, a central de despacho do condado, a Tamsin Valley Healthcare Coalition, a região de Wexmoor e seus hospitais, os entrevistados I01–I10, os registros com DOIs começando por 10.9999/syn, o Spillover Study e todos os números produzidos pelos laboratórios foram inventados para o ensino. As fontes apoiam as afirmações gerais ao lado das quais são citadas, nunca os detalhes sintéticos.
 

@@ -16,7 +16,7 @@ This is the one principal English book for the rapid Security governance, risk a
 
 ## Chapter 1 — Security governance, risk and compliance: foundations and decisions
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -78,7 +78,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -237,12 +237,12 @@ The Tuesday brochure from Calder Systems shows a green shield and a readiness fi
 - **EX051 — A decimal on a slide.** Calder Systems presents a readiness score of 9.1. Why does the false-precision rule reject it, and which two measure types can a timed restore speak to? *Rubric:* 3 = nobody can say what decision changes at 9.1; a timed restore can show quality and, if the clock is kept, effect; coverage is a different question;; 2 = rejects the score;; 1 = accepts 9.1;; 0 = none.
 - **EX052 — The blank second sentence.** Sentence 2 of the one-page test cannot be completed. What fact is missing, and may the team treat a platform purchase as the strategy choice? *Rubric:* 3 = the operations director has not accepted the four-hour limit; the missing fact is the next research task; a blank sentence blocks the purchase;; 2 = the limit is unaccepted;; 1 = buy the platform;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
 
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 ## Sources for this chapter
 
@@ -257,7 +257,7 @@ All case details for Northstar Community Services are fictional. The strategic l
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX053.
@@ -319,7 +319,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -425,7 +425,7 @@ Written scope, explicit permission, careful data handling, safe exercise design 
 
 ## Chapter 3 — Security governance, risk and compliance: systems, data and dependencies
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX055.
@@ -487,7 +487,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -624,7 +624,7 @@ A dependency map turns named services into shared components, owners, data oblig
 
 ## Chapter 4 — Security governance, risk and compliance: guided lab and applied synthesis
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX057.
@@ -686,7 +686,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes

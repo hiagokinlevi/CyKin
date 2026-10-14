@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-professional-328e1176
+name: oca-security-operations-blue-team-professional-328e1176
 description: "SOC professional course: 12 chapters, 60 exercises, 3 stdlib labs"
 license: CC0-1.0
 ---

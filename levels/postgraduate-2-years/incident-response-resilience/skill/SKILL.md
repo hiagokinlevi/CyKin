@@ -1,5 +1,5 @@
 ---
-name: cykin-incident-response-resilience-postgraduate-a136e389
+name: oca-incident-response-resilience-postgraduate-a136e389
 description: "Tutor the postgraduate Incident Response draft: 12 specialist-practice chapters (decision framing, enterprise command, expert evidence, proportionality, coordinated containment, recovery evaluation, legal/privacy integration, leadership, program redesign) around the synthetic Calder Group, 4 stdlib labs and EX001–EX060."
 license: CC0-1.0
 ---

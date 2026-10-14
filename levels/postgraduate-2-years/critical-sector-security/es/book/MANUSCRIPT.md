@@ -55,7 +55,7 @@ Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [G
 
 ## Capítulo 1 — Toma de decisiones de seguridad avanzada
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -117,7 +117,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -302,19 +302,19 @@ El principal límite del análisis formal de decisiones es que solo es tan bueno
 
 Las decisiones de seguridad a escala de la organización son irreversibles, de sucesos raros, con varios objetivos y varias partes interesadas, y pertenecen a alguien con autoridad. La contribución del especialista es la estructura: un enunciado de la decisión con opciones realmente distintas, incluida aplazar; objetivos en unidades de servicio; varias reglas de decisión presentadas una junto a otra; conjuntos de creencias en lugar de una única probabilidad; umbrales en los que cambia la recomendación; el valor de obtener más información; defensas estructurales contra el juicio sesgado; y un registro de decisión redactado en el momento. Una recomendación robusta es la que sobrevive a los cambios de regla y de creencias; cuando no lo hace, muestre el umbral y deje que la persona que rinde cuentas decida con conocimiento de causa.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 12
 
 [← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Infraestructura crítica y seguridad sectorial: práctica actual
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX007.
@@ -376,7 +376,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX007]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -540,19 +540,19 @@ El límite de cualquier línea base es que describe defensas que son comunes por
 
 La práctica actual es la intersección de la obligación, la orientación y la práctica demostrada de los homólogos, y cada una tiene un peso distinto. Conozca los marcos de resultados, las líneas base priorizadas, los catálogos de controles y las normas industriales, y sepa qué regímenes obligan a su organización y qué evidencias espera cada uno. No copie prácticas entre sectores sin comprobar el tiempo hasta el daño, la física, la regulación y la plantilla. Califique la evidencia como verificada, documentada o afirmación, informe con honestidad de la diferencia, pondere las prácticas por su consecuencia y convierta las mayores carencias en verificación antes que en corrección. Cuestione las prácticas habituales preguntando a qué pregunta responden sus evidencias.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 12
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Infraestructura crítica y seguridad sectorial: evidencia especializada
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX011.
@@ -614,7 +614,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -776,19 +776,19 @@ El límite es que la evidencia puede reducir las explicaciones, pero rara vez la
 
 La evidencia especializada es el material sobre el que descansan las decisiones y la rendición de cuentas. Conozca sus fuentes antes de un incidente y corrija las debilidades que importan: la hora, la retención, las cuentas nominativas y el acceso a los proveedores. Trate el tiempo como evidencia: elija un reloj de referencia, estime los desfases a partir de anclas e indique la incertidumbre residual. Preserve sin dañar el proceso, lo menos intrusivo primero y con cadena de custodia. Genere explicaciones alternativas y busque la evidencia que discrimine entre ellas. Redacte hallazgos que mantengan separadas la observación, la inferencia, la confianza y la consecuencia, y notifique pronto de un modo que la evidencia posterior amplíe en lugar de contradecir.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 12
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Riesgo y ética avanzados
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX016.
@@ -850,7 +850,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1000,19 +1000,19 @@ Los límites del modelo son los de sus supuestos: la independencia de Poisson ig
 
 Cuantifique el riesgo como frecuencia y gravedad con una incertidumbre explícita, y léalo a través de la curva de excedencia de pérdidas, no de una única puntuación. Formule el apetito y la tolerancia en unidades de servicio, con límites sobre la cola y sobre la distribución. Trate el juicio experto como evidencia que debe obtenerse con cuidado y registrarse. Muestre quién soporta el riesgo residual (per cápita y entre quienes tienen menos capacidad para afrontarlo), porque las opciones que son mejores en promedio pueden concentrar el daño. Aplique principios éticos reconocidos a las elecciones, las pruebas y la divulgación, y mantenga visibles los juicios de valor como juicios que corresponden a quien decide y rinde cuentas.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 12
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Infraestructura crítica y seguridad sectorial: alternativas de diseño
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX021.
@@ -1074,7 +1074,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1240,19 +1240,19 @@ Los grafos solo son tan completos como el inventario que los sustenta, y las eti
 
 Diseñe hacia atrás desde la consecuencia y ponga primero los límites no digitales. Use principios consolidados (mínimo privilegio, mediación completa, zonas y conductos, decisiones por sesión, técnicas de resiliencia) para generar alternativas que difieran en su naturaleza. Represente los diseños como grafos de rutas permitidas y compare las rutas, los puntos de estrangulamiento y las barreras, incluidas las aristas de conveniencia que acumulan los entornos reales. Evalúe cada diseño como un sistema operable y diseñe para el fallo de sus propios controles. Elija con los métodos de decisión de los capítulos anteriores y deje constancia de la elección en un ADR para que sobreviva a la próxima solicitud de cambio.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Siga estudiando — capítulo 05 de 12
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Infraestructura crítica y seguridad sectorial: evaluación controlada
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX026.
@@ -1314,7 +1314,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX026]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1444,19 +1444,19 @@ El límite de la evaluación controlada es la transferencia: una instalación de
 
 La evaluación controlada convierte los controles supuestos en controles medidos. Inyecte eventos conocidos en instalaciones de prueba y simuladores, informe de la detección por familia con intervalos de Wilson y planifique el número de ensayos según las afirmaciones que quiera hacer. Mida las falsas alarmas durante periodos representativos y expréselas en las unidades de los operadores junto a las tasas base. Evalúe los simulacros con comparaciones pareadas, examine a las personas individualmente y diseñe contra los efectos de la práctica y de la selección. Pruebe cerca de la planta en vivo solo con reglas de enfrentamiento escritas y firmadas. El resultado honesto de una evaluación suele ser mixto; indique exactamente para qué usos es adecuado un control.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 12
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestructura crítica y seguridad sectorial: integración organizativa
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX031.
@@ -1518,7 +1518,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1675,19 +1675,19 @@ El límite del análisis estructural es que la integración depende, en última 
 
 La integración es donde suele fallar la seguridad de los servicios esenciales. Elija un modelo operativo adecuado a su tamaño, su riesgo y su cultura, y hágalo realidad con la titularidad: exactamente un rol que rinda cuentas por cada actividad crítica y un tratamiento visible de los conflictos de funciones. Mida la concentración de proveedores dentro de la organización y en la región, y prepare planes de salida y de continuidad para un fallo de modo común de un proveedor. Sitúe la respuesta cibernética dentro del mando de emergencias y de continuidad, con una clasificación compartida basada en el servicio. Comparta información de forma específica, con reglas de tratamiento acordadas, y construya la confianza con el comportamiento.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Siga estudiando — capítulo 07 de 12
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestructura crítica y seguridad sectorial: casos difíciles
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX036.
@@ -1749,7 +1749,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX036]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1877,19 +1877,19 @@ El límite del análisis en los casos difíciles es el tiempo. La enumeración d
 
 Los casos difíciles tienen daño en todas las opciones, con presión del tiempo, evidencia ambigua y deberes en conflicto. Prepárese para ellos: mapee las dependencias y los relojes de respaldo; acuerde de antemano con la gestión de emergencias los pesos del restablecimiento; planifique para los fallos causados por proveedores con anillos de actualización y una recuperación independiente; estructure las decisiones de extorsión para la persona de la dirección que rinde cuentas; actúe sobre el acceso y no sobre las personas en los casos internos; y resuelva las obligaciones en conflicto sin engañar nunca, poniendo la seguridad primero, omitiendo solo con razones defendibles y registrando cada decisión. El análisis es rápido; el acuerdo es lento: haga la parte lenta antes del suceso.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 12
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX041.
@@ -1951,7 +1951,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2090,19 +2090,19 @@ El límite de los indicadores y los gráficos es que resumen. Indican a un líde
 
 Dirigir la seguridad de un servicio esencial significa fijar una dirección vinculada a la consecuencia, desarrollar una capacidad que sobreviva a las marchas y conservar la confianza de operaciones y del consejo. Informe al consejo en unidades de servicio con pocos indicadores y decisiones explícitas. Use gráficos de comportamiento del proceso para distinguir el cambio del ruido, con una referencia limpia. Construya casos de aseguramiento que vinculen cada afirmación con evidencia fechada de grado conocido, e informe de la evidencia caducada o débil como lagunas. Use las tres líneas para mantener la titularidad en operaciones, el cuestionamiento en los especialistas y las pruebas independientes en la auditoría.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 12
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Lectura y crítica de la investigación
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX046.
@@ -2164,7 +2164,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2290,19 +2290,19 @@ El límite de la lectura crítica es el tiempo. Priorice las fuentes que podría
 
 Lea para decidir. Empareje la fuente con la pregunta: los estudios para los tamaños del efecto y los mecanismos, los avisos para las técnicas y las mitigaciones, los informes de proveedores para hipótesis que hay que verificar. Identifique el diseño antes que los resultados y limite las afirmaciones a lo que el diseño respalda. Compruebe el resultado, el denominador, la comparación y los factores de confusión; estratifique o estandarice cuando los grupos difieran, y recuerde que los incidentes comunicados miden tanto la detección como el daño. Pregúntese si el mecanismo es transferible a su contexto. Registre lo que aprenda en fichas de evidencia que los registros de decisiones puedan citar.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Siga estudiando — capítulo 10 de 12
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Proyecto aplicado
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX051.
@@ -2364,7 +2364,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2492,19 +2492,19 @@ Con una docena de emplazamientos, ninguna evaluación es definitiva. La evaluaci
 
 Un proyecto aplicado mejora un servicio real y muestra de forma creíble si lo consiguió. Elija algo trascendente, acotado, con titular, medible, seguro y evaluable; fije la evaluación en un acta antes de la ejecución; ejecútelo a través de las personas, con el consentimiento de operaciones y un pre mortem; evalúelo con un grupo de comparación, diferencias en diferencias, una comprobación por permutación y pruebas de robustez; informe de las limitaciones con su sentido; y haga el traspaso con titulares, evidencia de aseguramiento y un desencadenante de revisión.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Siga estudiando — capítulo 11 de 12
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continúe con la siguiente lección escrita.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisión final y transferencia
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX056.
@@ -2566,7 +2566,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX056]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2691,13 +2691,13 @@ Los modelos de suma ponderada suponen que los criterios pueden compensarse linea
 
 El curso es un único método: plantear, conocer la línea base, aportar evidencia, cuantificar el riesgo y su distribución, diseñar, evaluar, integrar, prepararse para los casos difíciles, dirigir y asegurar, leer con sentido crítico y ejecutar proyectos con honestidad, y cada paso produce un artefacto inspeccionable. Transfiera el método, no la conclusión: reexamine la consecuencia, la física, la regulación, las personas, los datos y los valores, y deje que cada sector fije sus propios pesos. Informe de los puntos de inversión para que los líderes debatan el juicio que importa. Evalúese con evidencia, planifique la práctica con retroalimentación y mantenga en revisión las fuentes y las decisiones a medida que cambia el campo.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Siga estudiando — capítulo 12 de 12
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
 
 Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

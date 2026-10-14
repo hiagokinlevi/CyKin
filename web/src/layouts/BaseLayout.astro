@@ -3,7 +3,7 @@ import '../styles/global.css';
 import '../styles/reader.css';
 import '../styles/directory.css';
 import '../styles/course.css';
-const { title = 'CyKin — open cybersecurity learning', description = 'Open cybersecurity courses, lessons and books for students and AI systems.' } = Astro.props;
+const { title = 'OpenCyber Academy — open cybersecurity learning', description = 'Open cybersecurity courses, lessons and books for students and AI systems.' } = Astro.props;
 const path = Astro.url.pathname;
 ---
 <!doctype html>
@@ -14,14 +14,14 @@ const path = Astro.url.pathname;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#070e1c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={new URL(path, 'https://cykin.org').toString()} />
+    <link rel="canonical" href={new URL(path, 'https://opencyber.academy').toString()} />
     <title>{title}</title>
     <script is:inline>
-      try { document.documentElement.dataset.theme = localStorage.getItem('cykin-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
+      try { document.documentElement.dataset.theme = localStorage.getItem('open-cyber-academy-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
       const supported = ['en', 'pt', 'es'];
       const parameters = new URLSearchParams(location.search);
       const requested = (parameters.get('ui') || parameters.get('lang'))?.slice(0, 2).toLowerCase();
-      const saved = (() => { try { return localStorage.getItem('cykin-language'); } catch (_) { return null; } })();
+      const saved = (() => { try { return localStorage.getItem('open-cyber-academy-language'); } catch (_) { return null; } })();
       const browser = navigator.languages?.map(value => value.slice(0, 2).toLowerCase()).find(value => supported.includes(value)) || navigator.language.slice(0, 2).toLowerCase();
       const language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
       document.documentElement.lang = language;
@@ -32,7 +32,7 @@ const path = Astro.url.pathname;
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="shell nav">
-        <a class="brand" href="/" aria-label="CyKin, home"><span class="brand-mark"><span>C</span></span> CyKin</a>
+        <a class="brand" href="/" aria-label="OpenCyber Academy, home"><span class="brand-mark"><span>O</span></span> OpenCyber Academy</a>
         <div class="catalog-menus" aria-label="Browse courses">
           <details class="catalog-menu" data-mode="level"><summary>By level</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/levels/" data-language-link>All levels →</a><span>Choose a level, then a course</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
           <details class="catalog-menu" data-mode="subject"><summary>By subject</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/subjects/" data-language-link>All subjects →</a><span>Choose a subject, then a level</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
@@ -53,7 +53,7 @@ const path = Astro.url.pathname;
     <main id="main"><slot /></main>
     <footer class="footer">
       <div class="shell footer-inner">
-        <span>© CyKin · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
+        <span>© OpenCyber Academy · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
         <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a></div>
       </div>
     </footer>
@@ -63,7 +63,7 @@ const path = Astro.url.pathname;
       const selector = document.getElementById('site-language') as HTMLSelectElement;
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
-        try { localStorage.setItem('cykin-language', selector.value); } catch (_) { /* private mode */ }
+        try { localStorage.setItem('open-cyber-academy-language', selector.value); } catch (_) { /* private mode */ }
         const next = new URL(location.href);
         next.searchParams.set('ui', selector.value);
         location.href = next.href;
@@ -89,7 +89,7 @@ const path = Astro.url.pathname;
       toggle?.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
         document.documentElement.dataset.theme = next;
-        try { localStorage.setItem('cykin-theme', next); } catch (_) { /* private mode */ }
+        try { localStorage.setItem('open-cyber-academy-theme', next); } catch (_) { /* private mode */ }
       });
     </script>
   </body>

@@ -1,5 +1,5 @@
 ---
-name: cykin-cryptography-trust-postgraduate-3967a9b8
+name: oca-cryptography-trust-postgraduate-3967a9b8
 description: "Guide a learner through the postgraduate course in Cryptography and trust services: a synthetic organisation-scale cryptographic modernisation programme, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

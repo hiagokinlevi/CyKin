@@ -1,5 +1,5 @@
 ---
-name: cykin-web3-blockchain-security-bachelor-dc12cd54
+name: oca-web3-blockchain-security-bachelor-dc12cd54
 description: "WEB3 Bachelor's Degree (40 ch / 120 ex)"
 license: CC0-1.0
 ---

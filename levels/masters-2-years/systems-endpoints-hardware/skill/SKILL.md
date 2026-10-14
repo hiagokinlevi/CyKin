@@ -1,5 +1,5 @@
 ---
-name: cykin-systems-endpoints-hardware-masters-cc60edfe
+name: oca-systems-endpoints-hardware-masters-cc60edfe
 description: "SYS Master's Course (8 ch / 50 ex)"
 license: CC0-1.0
 ---

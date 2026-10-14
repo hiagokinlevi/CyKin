@@ -81,7 +81,7 @@ def test_full_book_and_internal_reference_source(client):
     assert book.status_code == 200
     assert '<a id="ch-01"></a>' in book.text
     assert '<a id="answers"></a>' in book.text
-    assert book.headers['x-cykin-source-sha256'] == hashlib.sha256(book.content).hexdigest()
+    assert book.headers['x-opencyberacademy-source-sha256'] == hashlib.sha256(book.content).hexdigest()
 
     plan = client.get('/api/source', params={
         'path': 'levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md',

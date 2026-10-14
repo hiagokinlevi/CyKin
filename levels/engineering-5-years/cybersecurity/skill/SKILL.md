@@ -1,5 +1,5 @@
 ---
-name: cykin-cybersecurity-engineering-01e3634e
+name: oca-cybersecurity-engineering-01e3634e
 description: "Guide a learner through the engineering course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

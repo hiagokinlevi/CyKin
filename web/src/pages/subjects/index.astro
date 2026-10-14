@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { subjectPath, subjects } from '../../lib/catalog';
 ---
-<BaseLayout title="Subjects · CyKin" description="Browse the 23 CyKin subjects and choose a study level for each course.">
+<BaseLayout title="Subjects · OpenCyber Academy" description="Browse the 23 OpenCyber Academy subjects and choose a study level for each course.">
   <section class="directory-heading"><div class="shell"><div class="eyebrow">COURSE DIRECTORY</div><h1>Browse by subject.</h1><p>Choose a subject, then a level. Each combination opens its own course and lessons.</p><div class="directory-switch"><a class="button secondary" href="/levels/">By level</a><a class="button gold" href="/subjects/" aria-current="page">By subject</a></div></div></section>
   <section class="section"><div class="shell directory-grid">
     {subjects.map((course, index) => <a class="card directory-card" href={subjectPath(course.area)} data-language-link><span class="eyebrow">SUBJECT {String(index + 1).padStart(2, '0')}</span><h2>{course.title}</h2><p>9 separate study levels · Choose the course that fits you.</p><span class="directory-arrow">Choose a level →</span></a>)}

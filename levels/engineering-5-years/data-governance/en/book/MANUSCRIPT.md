@@ -37,7 +37,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri and Brown (201
 
 ## Chapter 1 — Calculus I
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -123,19 +123,19 @@ Linear growth is an assumption; revisit it when meter roll-out plans change.
 - **EX002 — Feed failure.** What might a sudden drop in the reading rate mean? *Rubric:* 3 = a failed data feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX003 — Aggregation effect.** What does aggregating to daily totals after two years do? *Rubric:* 3 = greatly reduces storage;; 2 = mentions reduction;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 50)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -182,7 +182,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -221,19 +221,19 @@ Formal rules can still encode the wrong requirement; validate them with data own
 - **EX005 — Function check.** How many meters mapped to two premises? *Rubric:* 3 = twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX006 — Graph use.** What does following edges backwards from a report show? *Rubric:* 3 = every source it relies on;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 50)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Physics for computing
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -280,7 +280,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -319,19 +319,19 @@ Calibration reduces but does not remove uncertainty; report it.
 - **EX008 — Unit error.** What did the unit confusion do to one district? *Rubric:* 3 = inflated demand a thousandfold;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Metadata fields.** Name three sensor metadata fields. *Rubric:* 3 = identifier, location, type, unit, accuracy, installation, calibration, owner;; 2 = three;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 50)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -378,7 +378,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -417,19 +417,19 @@ Validation rules in code drift from written rules; review both together.
 - **EX011 — Error policy.** What does fail loudly for structure, softly for content mean? *Rubric:* 3 = stop on missing columns, record bad rows and continue;; 2 = both;; 1 = one;; 0 = none.
 - **EX012 — Review find.** What did the code review find? *Rubric:* 3 = an off-by-one timestamp error;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 50)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Engineering communication
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -476,7 +476,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -515,19 +515,19 @@ Short summaries can lose caveats; keep the main limitation visible.
 - **EX014 — Manager decision.** What decision did the manager make? *Rubric:* 3 = approve unit validation for every feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Record contents.** What does a decision record contain? *Rubric:* 3 = date, decision, maker, options, evidence;; 2 = most;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 50)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Calculus II
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -574,7 +574,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -613,19 +613,19 @@ The trapezoidal rule assumes smooth flow between samples; spikes break it.
 - **EX017 — Hourly error.** What error did hourly sampling produce? *Rubric:* 3 = about two percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Reconciliation components.** What does the supplied-minus-billed difference contain? *Rubric:* 3 = leakage, measurement error, timing differences;; 2 = all;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 50)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -672,7 +672,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -711,19 +711,19 @@ Control limits assume stable processes; recalculate after known changes.
 - **EX020 — Target judgement.** Why can the owner not claim the 3 percent target is met? *Rubric:* 3 = interval includes values above 3 percent;; 2 = mentions interval;; 1 = vague;; 0 = none.
 - **EX021 — Control signal.** What caused the out-of-limit day? *Rubric:* 3 = a firmware update on a batch of meters;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 50)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Computer architecture
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -770,7 +770,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -809,19 +809,19 @@ Checksums detect accidents, not tampering; use authentication for origin.
 - **EX023 — Daylight saving.** What problem does daylight saving create? *Rubric:* 3 = apparent duplicate or missing hours;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX024 — Checksum limit.** What does a checksum not prove? *Rubric:* 3 = who sent the data;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 50)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -868,7 +868,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -907,19 +907,19 @@ Tests cover only cases someone thought of; add cases from real incidents.
 - **EX026 — Test catch.** What did the unit test reveal? *Rubric:* 3 = rule wrongly rejected meter replacements;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX027 — Domain review.** What did the metering engineer point out? *Rubric:* 3 = older meters report only daily;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 50)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -961,7 +961,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1000,19 +1000,19 @@ Ethical pressure is often subtle; record decisions and reasons.
 - **EX029 — Register care.** What did Kofi recommend for the priority register? *Rubric:* 3 = yearly confirmation and strict access;; 2 = both;; 1 = one;; 0 = none.
 - **EX030 — Competence.** Why did Kofi refer the water quality change? *Rubric:* 3 = lacked chemistry competence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 50)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1059,7 +1059,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1098,19 +1098,19 @@ Flow documents age quickly; review them after network changes.
 - **EX032 — Industrial gap.** What gap did Kofi find on the industrial network? *Rubric:* 3 = no protocol authentication;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX033 — Late data.** When do late arrivals cluster? *Rubric:* 3 = around storms;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 50)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Operating systems
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1157,7 +1157,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1196,19 +1196,19 @@ Permissions drift after emergency fixes; check them regularly.
 - **EX035 — Job chaining.** How are jobs now protected from bad inputs? *Rubric:* 3 = each checks its predecessor succeeded with expected counts;; 2 = mentions predecessor;; 1 = vague;; 0 = none.
 - **EX036 — Patch catch.** What did the staging test catch? *Rubric:* 3 = a change in timestamp parsing;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 50)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1255,7 +1255,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1294,19 +1294,19 @@ Constraints can block urgent fixes; define a controlled override process.
 - **EX038 — District lists.** How many versions of the district list existed? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX039 — History purpose.** Why keep valid-from and valid-to dates? *Rubric:* 3 = to explain past bills with facts at the time;; 2 = mentions past;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 50)
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Software engineering
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1353,7 +1353,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1392,19 +1392,19 @@ Tolerances set too wide hide real changes; review them with owners.
 - **EX041 — Data test catch.** What did data tests catch? *Rubric:* 3 = a vendor file with a new column order;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX042 — Hard-coded values.** What replaced hard-coded thresholds? *Rubric:* 3 = configuration values reviewed by owners;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 50)
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Security fundamentals
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1451,7 +1451,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1490,19 +1490,19 @@ Pseudonymised data remain personal data; protect them accordingly.
 - **EX044 — Shared account.** What warehouse problem did Kofi fix? *Rubric:* 3 = shared analyst account replaced by named accounts;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Extract rules.** Name two rules for future extracts. *Rubric:* 3 = owner approval, minimal fields, encryption, expiry;; 2 = two;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 50)
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Systems engineering
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -1549,7 +1549,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1588,19 +1588,19 @@ Interface documents fail if partners are not bound by them; reference them in co
 - **EX047 — Interface fields.** What does an interface control document define? *Rubric:* 3 = fields, units, formats, timing, error handling, contacts;; 2 = most;; 1 = few;; 0 = none.
 - **EX048 — Weakest stage.** Which life cycle stage was least defined? *Rubric:* 3 = deletion;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 50)
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -1647,7 +1647,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1686,19 +1686,19 @@ Too many targets overwhelm owners; keep loops focused.
 - **EX050 — Oscillation fix.** How did Kofi stop thresholds swinging? *Rubric:* 3 = weekly reject data and small steps;; 2 = both;; 1 = one;; 0 = none.
 - **EX051 — Loop speed.** How fast were actions recorded after naming owners? *Rubric:* 3 = one week instead of three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — lesson 17 (chapter 17 of 50)
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Security architecture
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -1745,7 +1745,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1784,19 +1784,19 @@ Tags are only as good as their maintenance; audit them.
 - **EX053 — Tag-driven controls.** Why tie controls to metadata tags? *Rubric:* 3 = protections apply automatically and scale;; 2 = mentions automatic;; 1 = vague;; 0 = none.
 - **EX054 — Tag owner.** Who approves classification tags? *Rubric:* 3 = data owners at registration;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — lesson 18 (chapter 18 of 50)
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -1843,7 +1843,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -1882,19 +1882,19 @@ Keyed hashes resist outsiders but not anyone holding the key.
 - **EX056 — Pseudonym status.** Are keyed-hash pseudonyms anonymous? *Rubric:* 3 = no, they remain personal data;; 2 = partly correct;; 1 = yes;; 0 = none.
 - **EX057 — Key location fix.** Where was a key wrongly stored? *Rubric:* 3 = in a script file;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue studying — lesson 19 (chapter 19 of 50)
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Data governance: engineering context
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -1941,7 +1941,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -1980,19 +1980,19 @@ Role charts do not create authority; confirm it in job descriptions.
 - **EX059 — Steward duty.** What do stewards do? *Rubric:* 3 = maintain rules and definitions day to day;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Focus indicator.** Which indicator do later chapters follow? *Rubric:* 3 = the leakage indicator reported to the regulator;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue studying — lesson 20 (chapter 20 of 50)
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Data governance: requirements
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2039,7 +2039,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2078,19 +2078,19 @@ A threshold without a measurement method is not testable; define both.
 - **EX062 — Street conflict.** How was the street-level conflict resolved? *Rubric:* 3 = district aggregation with at least fifty properties;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX063 — Top ranks.** Which requirements ranked highest? *Rubric:* 3 = owner assignment, reconciliation and timeliness;; 2 = most;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue studying — lesson 21 (chapter 21 of 50)
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Data governance: system and data models
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2142,7 +2142,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2211,19 +2211,19 @@ Static lineage misses runtime dependencies; compare with logs.
 - **EX065 — Unowned nodes.** Which nodes had no owner? *Rubric:* 3 = field_app.manual_read and sensors.flow_raw;; 2 = both;; 1 = one;; 0 = none.
 - **EX066 — Drift check.** How does Kofi find dependencies missing from the model? *Rubric:* 3 = quarterly comparison with query logs;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue studying — lesson 22 (chapter 22 of 50)
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Data governance: threat and failure analysis
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -2270,7 +2270,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2309,19 +2309,19 @@ Scores agreed by one person are guesses; agree them with owners.
 - **EX068 — Shared symptoms.** Why should detection serve threats and failures? *Rubric:* 3 = they often produce the same symptoms;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX069 — Sensor mitigation.** What mitigation targets stuck sensors? *Rubric:* 3 = a flat-line detector owned by network operations;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue studying — lesson 23 (chapter 23 of 50)
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Data governance: methods I
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -2368,7 +2368,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -2407,19 +2407,19 @@ Thresholds copied from another utility ignore local conditions.
 - **EX071 — Accuracy method.** How is sensor accuracy checked? *Rubric:* 3 = against a portable reference meter during maintenance;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Validity limit.** What can validity rules not catch? *Rubric:* 3 = plausible but wrong values;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue studying — lesson 24 (chapter 24 of 50)
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Design studio I
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -2466,7 +2466,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -2505,19 +2505,19 @@ Defending a design instead of listening wastes critique.
 - **EX074 — Alert change.** How were owner notifications changed? *Rubric:* 3 = alerts only on breaches plus weekly summary;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX075 — Underweighted.** What had Kofi underweighted? *Rubric:* 3 = failure and human behaviour;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue studying — lesson 25 (chapter 25 of 50)
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Data governance: architecture alternatives
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -2564,7 +2564,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -2603,19 +2603,19 @@ Fashionable architectures may not fit; score against your requirements.
 - **EX077 — Chosen option.** Which architecture was chosen? *Rubric:* 3 = the hybrid;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX078 — Revisit condition.** Give one condition for revisiting the decision. *Rubric:* 3 = domain teams reaching agreed skill levels;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue studying — lesson 26 (chapter 26 of 50)
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Data governance: control design
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -2662,7 +2662,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -2701,19 +2701,19 @@ Controls without evidence cannot be shown to work.
 - **EX080 — Catalogue size.** How many controls are in the catalogue? *Rubric:* 3 = thirty-one;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX081 — Testing method.** How are controls tested each quarter? *Rubric:* 3 = injecting synthetic errors in test;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue studying — lesson 27 (chapter 27 of 50)
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Data governance: implementation I
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -2765,7 +2765,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -2837,19 +2837,19 @@ Averaging rule rates overstates quality; report the all-rules rate.
 - **EX083 — Below-previous cause.** What mainly caused readings below the previous value? *Rubric:* 3 = meter replacements starting at zero;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX084 — Miss handling.** How did Kofi handle missing the target? *Rubric:* 3 = reported it honestly with causes and fixes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue studying — lesson 28 (chapter 28 of 50)
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Data governance: measurement
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -2901,7 +2901,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -2959,19 +2959,19 @@ Averages hide clusters; plot daily values.
 - **EX086 — Cluster cause.** What caused the late week? *Rubric:* 3 = an upgrade's backup job running before the export;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX087 — Scattered days.** How many late days fell outside that week? *Rubric:* 3 = four;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue studying — lesson 29 (chapter 29 of 50)
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -3018,7 +3018,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -3057,19 +3057,19 @@ Passing injected tests does not prove completeness; state limits.
 - **EX089 — Swapped fix.** What check catches swapped columns? *Rubric:* 3 = comparing each column's distribution with history;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Verification versus validation.** What does verification answer? *Rubric:* 3 = whether controls were built right;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue studying — lesson 30 (chapter 30 of 50)
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Chapter 31 — Data governance: implementation II
 
-<!-- cykin:lesson-figures:start ch-31 -->
+<!-- open-cyber-academy:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX091.
@@ -3116,7 +3116,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cykin:lesson-figures:end ch-31 -->
+<!-- open-cyber-academy:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -3155,19 +3155,19 @@ Badges can mislead if rules are weak; link to rule descriptions.
 - **EX092 — Inheritance rule.** What classification does a derived table get? *Rubric:* 3 = never lower than its inputs;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX093 — Badge effect.** How did badges change engineers' behaviour? *Rubric:* 3 = they check badges and ask owners about poor scores;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-31 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-31 -->
 ### Continue studying — lesson 31 (chapter 31 of 50)
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Chapter 32 — Data governance: reliability
 
-<!-- cykin:lesson-figures:start ch-32 -->
+<!-- open-cyber-academy:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX094.
@@ -3219,7 +3219,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX094]
 ```
-<!-- cykin:lesson-figures:end ch-32 -->
+<!-- open-cyber-academy:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -3281,19 +3281,19 @@ Reconciling a system with itself proves nothing; use independent records.
 - **EX095 — Missing reads effect.** How do missing reads affect leakage? *Rubric:* 3 = they overstate it;; 2 = partly correct;; 1 = understate;; 0 = none.
 - **EX096 — Mismatch owner.** Who owns value mismatches? *Rubric:* 3 = billing;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-32 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-32 -->
 ### Continue studying — lesson 32 (chapter 32 of 50)
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Chapter 33 — Data governance: safety and resilience
 
-<!-- cykin:lesson-figures:start ch-33 -->
+<!-- open-cyber-academy:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX097.
@@ -3340,7 +3340,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cykin:lesson-figures:end ch-33 -->
+<!-- open-cyber-academy:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -3379,19 +3379,19 @@ Treating safety data like business data underestimates harm.
 - **EX098 — Dashboard dependency.** Why must incident response not rely on the leakage dashboard? *Rubric:* 3 = it depends on a single warehouse server;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX099 — Tabletop finding.** What did operators point out? *Rubric:* 3 = manual readings need standard forms and units;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-33 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-33 -->
 ### Continue studying — lesson 33 (chapter 33 of 50)
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Chapter 34 — Data governance: integration
 
-<!-- cykin:lesson-figures:start ch-34 -->
+<!-- open-cyber-academy:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX100.
@@ -3438,7 +3438,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX100]
 ```
-<!-- cykin:lesson-figures:end ch-34 -->
+<!-- open-cyber-academy:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -3477,19 +3477,19 @@ Component tests passing does not mean the system works.
 - **EX101 — End-to-end finding.** What did the first end-to-end run reveal? *Rubric:* 3 = reconciliation results did not reach the catalogue;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX102 — Integration owner.** Who owns the end-to-end test? *Rubric:* 3 = the data governance lead;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-34 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-34 -->
 ### Continue studying — lesson 34 (chapter 34 of 50)
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
 
-<!-- cykin:lesson-figures:start ch-35 -->
+<!-- open-cyber-academy:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX103.
@@ -3536,7 +3536,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX103]
 ```
-<!-- cykin:lesson-figures:end ch-35 -->
+<!-- open-cyber-academy:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -3575,19 +3575,19 @@ Vendor assurances need verification; check specifications.
 - **EX104 — Audio check.** Do the loggers record audio? *Rubric:* 3 = no, only frequency summaries;; 2 = partly correct;; 1 = yes;; 0 = none.
 - **EX105 — Panel praise.** What improvement did the panel note? *Rubric:* 3 = anticipating failure and people's concerns;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-35 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-35 -->
 ### Continue studying — lesson 35 (chapter 35 of 50)
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Chapter 36 — Data governance: performance and scale
 
-<!-- cykin:lesson-figures:start ch-36 -->
+<!-- open-cyber-academy:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX106.
@@ -3634,7 +3634,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX106]
 ```
-<!-- cykin:lesson-figures:end ch-36 -->
+<!-- open-cyber-academy:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -3673,19 +3673,19 @@ Retiring silent controls without testing them may remove needed protection.
 - **EX107 — Efficiency change.** Name one efficiency change. *Rubric:* 3 = incremental processing, district partitions or ingestion checks;; 2 = one;; 1 = vague;; 0 = none.
 - **EX108 — Silent controls.** What did Kofi do before retiring silent controls? *Rubric:* 3 = tested them by injection;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-36 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-36 -->
 ### Continue studying — lesson 36 (chapter 36 of 50)
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Chapter 37 — Data governance: operations
 
-<!-- cykin:lesson-figures:start ch-37 -->
+<!-- open-cyber-academy:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX109.
@@ -3732,7 +3732,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX109]
 ```
-<!-- cykin:lesson-figures:end ch-37 -->
+<!-- open-cyber-academy:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -3771,19 +3771,19 @@ Sending estimates silently damages trust; communicate delays.
 - **EX110 — Reporting-day failure.** What did the incident lead do when an extract failed on reporting day? *Rubric:* 3 = told the regulator figures would be a day late;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX111 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a steward who did not write them follows them on a synthetic incident;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-37 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-37 -->
 ### Continue studying — lesson 37 (chapter 37 of 50)
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Chapter 38 — Data governance: validation
 
-<!-- cykin:lesson-figures:start ch-38 -->
+<!-- open-cyber-academy:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX112.
@@ -3830,7 +3830,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX112]
 ```
-<!-- cykin:lesson-figures:end ch-38 -->
+<!-- open-cyber-academy:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -3869,19 +3869,19 @@ User satisfaction alone does not show effectiveness; combine with outcome measur
 - **EX113 — Operations fix.** How did Kofi reach operations staff? *Rubric:* 3 = key catalogue information on the control room display;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX114 — Causal caution.** What did Prof. Varga warn against? *Rubric:* 3 = claiming governance caused better leak finding without stronger evidence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-38 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-38 -->
 ### Continue studying — lesson 38 (chapter 38 of 50)
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Chapter 39 — Data governance: maintainability
 
-<!-- cykin:lesson-figures:start ch-39 -->
+<!-- open-cyber-academy:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX115.
@@ -3928,7 +3928,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX115]
 ```
-<!-- cykin:lesson-figures:end ch-39 -->
+<!-- open-cyber-academy:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -3967,19 +3967,19 @@ Governance relying on a few enthusiasts is fragile; plan for turnover.
 - **EX116 — Leaver trigger.** What triggers successor assignment? *Rubric:* 3 = directory links that remind the governance lead;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX117 — Effort risk.** What risk did concentrated effort create? *Rubric:* 3 = burnout and single points of failure;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-39 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-39 -->
 ### Continue studying — lesson 39 (chapter 39 of 50)
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
 
-<!-- cykin:lesson-figures:start ch-40 -->
+<!-- open-cyber-academy:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX118.
@@ -4026,7 +4026,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX118]
 ```
-<!-- cykin:lesson-figures:end ch-40 -->
+<!-- open-cyber-academy:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes
@@ -4065,19 +4065,19 @@ Testing only the main path misses side routes into governed data.
 - **EX119 — Contact fix.** What replaced the outdated contact list? *Rubric:* 3 = links to the on-call rota;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX120 — Side-route lesson.** Where did both failures come from? *Rubric:* 3 = components outside the main path;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-40 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-40 -->
 ### Continue studying — lesson 40 (chapter 40 of 50)
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Chapter 41 — Data governance: system optimization
 
-<!-- cykin:lesson-figures:start ch-41 -->
+<!-- open-cyber-academy:lesson-figures:start ch-41 -->
 ### Lesson map
 
 Lesson 41 published. Map, example, EX121.
@@ -4124,7 +4124,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX121]
 ```
-<!-- cykin:lesson-figures:end ch-41 -->
+<!-- open-cyber-academy:lesson-figures:end ch-41 -->
 
 
 ### Learning outcomes
@@ -4163,19 +4163,19 @@ Optimising one team's measure can hurt the system; measure the chain.
 - **EX122 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = manual approval of corrections by one supervisor;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX123 — Chain measures.** Name the three chain measures. *Rubric:* 3 = reading-to-figure time, on-schedule share and restatements;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-41 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-41 -->
 ### Continue studying — lesson 41 (chapter 41 of 50)
 
 [← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Chapter 42 — Data governance: applied research
 
-<!-- cykin:lesson-figures:start ch-42 -->
+<!-- open-cyber-academy:lesson-figures:start ch-42 -->
 ### Lesson map
 
 Lesson 42 published. Map, example, EX124.
@@ -4222,7 +4222,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX124]
 ```
-<!-- cykin:lesson-figures:end ch-42 -->
+<!-- open-cyber-academy:lesson-figures:end ch-42 -->
 
 
 ### Learning outcomes
@@ -4261,19 +4261,19 @@ Recovering a planted effect does not prove a real one.
 - **EX125 — Synthetic purpose.** Why use synthetic data with known answers? *Rubric:* 3 = to check the method can find a real effect;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX126 — Alternative explanation.** Name one alternative explanation to check. *Rubric:* 3 = district size;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-42 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-42 -->
 ### Continue studying — lesson 42 (chapter 42 of 50)
 
 [← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
 
-<!-- cykin:lesson-figures:start ch-43 -->
+<!-- open-cyber-academy:lesson-figures:start ch-43 -->
 ### Lesson map
 
 Lesson 43 published. Map, example, EX127.
@@ -4320,7 +4320,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX127]
 ```
-<!-- cykin:lesson-figures:end ch-43 -->
+<!-- open-cyber-academy:lesson-figures:end ch-43 -->
 
 
 ### Learning outcomes
@@ -4359,19 +4359,19 @@ Bypassing controls under deadline pressure erodes them; raise concerns.
 - **EX128 — Regulator question.** What did the regulator's reviewer ask? *Rubric:* 3 = how Tidewater knows flow sensors are accurate;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX129 — Unapproved edit.** How did Kofi handle the unapproved edit? *Rubric:* 3 = raised it privately and the edit went for approval;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-43 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-43 -->
 ### Continue studying — lesson 43 (chapter 43 of 50)
 
 [← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
 
-<!-- cykin:lesson-figures:start ch-44 -->
+<!-- open-cyber-academy:lesson-figures:start ch-44 -->
 ### Lesson map
 
 Lesson 44 published. Map, example, EX130.
@@ -4418,7 +4418,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX130]
 ```
-<!-- cykin:lesson-figures:end ch-44 -->
+<!-- open-cyber-academy:lesson-figures:end ch-44 -->
 
 
 ### Learning outcomes
@@ -4457,19 +4457,19 @@ Unclear scope is the most common capstone failure; write it down.
 - **EX131 — Synthetic risk response.** How will Kofi check synthetic pressure data? *Rubric:* 3 = validate patterns with an operations engineer early;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX132 — Audience criterion.** Who must understand the demonstration? *Rubric:* 3 = an operations audience;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-44 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-44 -->
 ### Continue studying — lesson 44 (chapter 44 of 50)
 
 [← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
 
-<!-- cykin:lesson-figures:start ch-45 -->
+<!-- open-cyber-academy:lesson-figures:start ch-45 -->
 ### Lesson map
 
 Lesson 45 published. Map, example, EX133.
@@ -4516,7 +4516,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX133]
 ```
-<!-- cykin:lesson-figures:end ch-45 -->
+<!-- open-cyber-academy:lesson-figures:end ch-45 -->
 
 
 ### Learning outcomes
@@ -4555,19 +4555,19 @@ Hiding known weaknesses wastes reviewers' time.
 - **EX134 — Ownership change.** How was ownership split? *Rubric:* 3 = operations manager for critical sites, district managers for others;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX135 — Why review.** Why are independent reviewers valuable? *Rubric:* 3 = they lack the designer's assumptions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-45 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-45 -->
 ### Continue studying — lesson 45 (chapter 45 of 50)
 
 [← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Chapter 46 — Engineering capstone II
 
-<!-- cykin:lesson-figures:start ch-46 -->
+<!-- open-cyber-academy:lesson-figures:start ch-46 -->
 ### Lesson map
 
 Lesson 46 published. Map, example, EX136.
@@ -4614,7 +4614,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX136]
 ```
-<!-- cykin:lesson-figures:end ch-46 -->
+<!-- open-cyber-academy:lesson-figures:end ch-46 -->
 
 
 ### Learning outcomes
@@ -4653,19 +4653,19 @@ Demonstrations that hide failures mislead; show the test log.
 - **EX137 — Fix for late detection.** What fixed it? *Rubric:* 3 = hourly completeness checks for critical sites;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX138 — Stated limits.** Name one limit Kofi stated. *Rubric:* 3 = synthetic data or untested long-term operation;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-46 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-46 -->
 ### Continue studying — lesson 46 (chapter 46 of 50)
 
 [← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
 
-<!-- cykin:lesson-figures:start ch-47 -->
+<!-- open-cyber-academy:lesson-figures:start ch-47 -->
 ### Lesson map
 
 Lesson 47 published. Map, example, EX139.
@@ -4712,7 +4712,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX139]
 ```
-<!-- cykin:lesson-figures:end ch-47 -->
+<!-- open-cyber-academy:lesson-figures:end ch-47 -->
 
 
 ### Learning outcomes
@@ -4751,19 +4751,19 @@ Declaring recovery when systems restart ignores lost data; reconcile first.
 - **EX140 — Data gap cause.** What caused the data gap? *Rubric:* 3 = a buffer filled and overwrote older data;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX141 — Recovery definition.** When is recovery complete? *Rubric:* 3 = when data are reconciled;; 2 = partly correct;; 1 = restart;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-47 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-47 -->
 ### Continue studying — lesson 47 (chapter 47 of 50)
 
 [← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Chapter 48 — Evidence dossier
 
-<!-- cykin:lesson-figures:start ch-48 -->
+<!-- open-cyber-academy:lesson-figures:start ch-48 -->
 ### Lesson map
 
 Lesson 48 published. Map, example, EX142.
@@ -4810,7 +4810,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX142]
 ```
-<!-- cykin:lesson-figures:end ch-48 -->
+<!-- open-cyber-academy:lesson-figures:end ch-48 -->
 
 
 ### Learning outcomes
@@ -4849,19 +4849,19 @@ Claims without evidence weaken the whole dossier; remove or support them.
 - **EX143 — Retention gap.** What did the retention claim reveal? *Rubric:* 3 = the rule was never configured for pressure data;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX144 — Navigation test.** How was navigation tested? *Rubric:* 3 = an unfamiliar classmate found evidence for random claims;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-48 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-48 -->
 ### Continue studying — lesson 48 (chapter 48 of 50)
 
 [← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
 
-<!-- cykin:lesson-figures:start ch-49 -->
+<!-- open-cyber-academy:lesson-figures:start ch-49 -->
 ### Lesson map
 
 Lesson 49 published. Map, example, EX145.
@@ -4903,7 +4903,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX145]
 ```
-<!-- cykin:lesson-figures:end ch-49 -->
+<!-- open-cyber-academy:lesson-figures:end ch-49 -->
 
 
 ### Learning outcomes
@@ -4942,19 +4942,19 @@ Theses organised as diaries hide the argument; organise around claims.
 - **EX146 — Future work.** Name one future work item. *Rubric:* 3 = real anonymised data, comparison with other utilities or long-term costs;; 2 = one;; 1 = vague;; 0 = none.
 - **EX147 — Feedback change.** How did feedback change the drafts? *Rubric:* 3 = reorganised around the argument;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-49 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-49 -->
 ### Continue studying — lesson 49 (chapter 49 of 50)
 
 [← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
 
-<!-- cykin:lesson-figures:start ch-50 -->
+<!-- open-cyber-academy:lesson-figures:start ch-50 -->
 ### Lesson map
 
 Lesson 50 published. Map, example, EX148.
@@ -5001,7 +5001,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX148]
 ```
-<!-- cykin:lesson-figures:end ch-50 -->
+<!-- open-cyber-academy:lesson-figures:end ch-50 -->
 
 
 ### Learning outcomes
@@ -5040,13 +5040,13 @@ Defending an overstated claim damages credibility; correct it.
 - **EX149 — Accuracy challenge.** What did the regulator challenge? *Rubric:* 3 = accuracy was claimed but consistency was shown;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX150 — Valued habits.** Which habits does Kofi value most? *Rubric:* 3 = evidence, review and honesty about limits;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-50 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-50 -->
 ### Continue studying — lesson 50 (chapter 50 of 50)
 
 [← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

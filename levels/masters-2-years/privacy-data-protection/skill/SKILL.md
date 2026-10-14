@@ -1,5 +1,5 @@
 ---
-name: cykin-privacy-data-protection-masters-dd6b93a0
+name: oca-privacy-data-protection-masters-dd6b93a0
 description: "Guide a learner through the privacy Master's Course draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

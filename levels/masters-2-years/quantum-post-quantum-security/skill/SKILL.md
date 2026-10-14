@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-masters-4a88f3e7
+name: oca-quantum-post-quantum-security-masters-4a88f3e7
 description: "Tutor the eight-chapter master's quantum and post-quantum security course from its English draft: synthetic Fragment Study of hybrid X25519MLKEM768 handshake failures, competing explanations, 50 exercises and worked answers; enforce testbed-only and disclosure boundaries."
 license: CC0-1.0
 ---

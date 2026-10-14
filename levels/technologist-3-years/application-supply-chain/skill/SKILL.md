@@ -1,5 +1,5 @@
 ---
-name: cykin-application-supply-chain-technologist-7c38314f
+name: oca-application-supply-chain-technologist-7c38314f
 description: "APP Technologist course (30 ch / 90 ex)"
 license: CC0-1.0
 ---

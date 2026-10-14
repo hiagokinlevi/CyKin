@@ -1,5 +1,5 @@
 ---
-name: cykin-security-governance-risk-compl-rapid-8662efd0
+name: oca-security-governance-risk-compl-rapid-8662efd0
 description: "Guide a learner through the GRC rapid draft: 4 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

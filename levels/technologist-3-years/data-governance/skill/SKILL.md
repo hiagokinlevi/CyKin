@@ -1,5 +1,5 @@
 ---
-name: cykin-data-governance-technologist-e15133a5
+name: oca-data-governance-technologist-e15133a5
 description: "Guide a learner through the data governance Technologist Course draft: 30 chapters, stdlib labs and EX001–EX090 with worked answers."
 license: CC0-1.0
 ---

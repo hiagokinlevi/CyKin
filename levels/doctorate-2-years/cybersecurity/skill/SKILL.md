@@ -1,5 +1,5 @@
 ---
-name: cykin-cybersecurity-doctorate-95978dee
+name: oca-cybersecurity-doctorate-95978dee
 description: "Guide a learner through the doctoral research track in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

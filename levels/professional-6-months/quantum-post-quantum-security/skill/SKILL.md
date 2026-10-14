@@ -1,5 +1,5 @@
 ---
-name: cykin-quantum-post-quantum-security-professional-4442426f
+name: oca-quantum-post-quantum-security-professional-4442426f
 description: "Guide a practitioner through the six-month professional course in Quantum and post-quantum security: its one authored draft book of 12 chapters on running and governing a post-quantum migration workflow — scope, graded inventory, prioritisation, tracking, verification, residual risk and reporting — with labs and exercises EX001–EX060 with worked results."
 license: CC0-1.0
 ---

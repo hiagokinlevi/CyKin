@@ -1,5 +1,5 @@
 ---
-name: cykin-network-communications-technologist-1f3a9d0c
+name: oca-network-communications-technologist-1f3a9d0c
 description: "NET Technologist Course (30 ch / 90 ex)"
 license: CC0-1.0
 ---

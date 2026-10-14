@@ -58,7 +58,7 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 
 ## Chapter 1 — Research question and literature method
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -120,7 +120,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -393,19 +393,19 @@ The limit of a master's review is time: it will not be exhaustive, and it should
 
 A dissertation stands on its question. Move from topic to problem to question deliberately, recording the reason for each narrowing. Write the question in a structured form with an observable exposure, a comparison and an outcome that matters; test it against feasibility and ethics before interest. Classify it, because the type fixes the strongest claim. Define the estimand and claim scope before seeing data. Choose and name the review type; search across security, human-factors and safety literatures and grey sources; test the search with known items; deduplicate, dual-screen and use kappa to find unclear criteria. Synthesize by concept so that the gap emerges from the matrix rather than from assertion.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Advanced incident response research seminar
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -467,7 +467,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -653,19 +653,19 @@ The limit of a seminar is that it works with published reports, which omit much 
 
 What counts as effective incident response depends on what response is for: speed, accuracy, harm reduction or resilience. Each model implies a measure, and each measure leaves something out. Speed measures are distorted by censoring, skew, escalation costs and case mix; accuracy measures depend on an independent reference and should separate under- from over-triage. Competing decision theories predict different patterns across case types and experience, and those predictions tell you which subgroups and secondary outcomes to predeclare. Read studies for design before results, grade their evidence for your question, and end a seminar with a precise statement of disagreement that turns into design decisions.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -727,7 +727,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -954,19 +954,19 @@ The limit of design is that every design rests on assumptions. Good design makes
 
 Design is the choice of counterfactual. Historical comparisons are vulnerable to everything that changed alongside the exposure; a controlled crossover tabletop removes stable differences between analysts at the cost of assumptions about carryover, periods and case sets, which must be balanced and checked. Size the study by simulation, reporting power, exaggeration and the false-positive rate at the smallest effect of interest. Treat ethics as design: analysts are participants whose performance data could harm them, and safeguards change recruitment, reporting and storage. Fix outcomes and analysis in a pre-analysis plan, and build a reproducible project before the first datum arrives.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Competing explanations of response outcomes
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -1028,7 +1028,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -1213,19 +1213,19 @@ The limit is that observational adjustment handles only what you measured and mo
 
 An outcome that improves after a change has many possible causes. Hold several working hypotheses, and write each as a mechanism with a distinct prediction and data that can test it. Draw a causal diagram to decide what to adjust for, and avoid adjusting for mediators and colliders. Difference-in-differences removes common shocks and stable differences but not co-interventions; standardization removes only measured confounding; negative controls warn of what remains. When the historical data cannot separate the favoured explanation from its rivals, say so and choose a design that breaks the links — then list the new rivals that design introduces.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot of a bounded incident study
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -1287,7 +1287,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -1496,19 +1496,19 @@ The limit of a pilot is that it is small. It can reveal that something does not 
 
 A proposal is a contract: it fixes the question, design, measures, rivals, ethics and outputs before data. Plan around the critical path of approvals, materials and recruitment, and keep a risk register with observable triggers. A pilot tests feasibility and measurement, never the effect. Predeclare progression criteria with go, amend and stop thresholds, audit the pilot against them, and read disagreement and missingness as diagnostics of the instruments. Record every deviation and revision with versions and dates, and set stop rules that protect participants and data, not the hoped-for result.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Reproducible collection and outcome analysis
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -1570,7 +1570,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1827,19 +1827,19 @@ The limit of the analysis is the design: precise estimates on fictional cases ar
 
 Collect data with lineage: a data dictionary, a cleaning log and read-only raw files. Analyse a crossover within participants, with a resampling interval, a permutation test and period and carryover checks. Report costs beside benefits and test predeclared alternative outcomes, remembering that agreement among specifications is not proof of correctness. Handle missing data by stating assumptions and bounding their effect. Analyse interviews with a documented, reflexive method and integrate the strands in a joint display that reports convergence, complementarity and discordance alike.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Dissertation on response effectiveness and limits
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX035.
@@ -1901,7 +1901,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX035]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2105,19 +2105,19 @@ The limit of writing is that it cannot add evidence. It can only represent the e
 
 Give each dissertation chapter one job and keep results apart from interpretation. Build a results-to-claims register so every claim has evidence, design support, scope and an honest strength. Report estimates with intervals in calibrated language, distinguish negative from inconclusive results, and keep the primary outcome's confirmatory role clear. Check every printed number against the analysis output mechanically. Use reporting guidelines as checklists, write limitations with their direction, design accessible figures, and state data and code availability precisely under the constraints you accepted.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent research review and defense
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -2179,7 +2179,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2384,13 +2384,13 @@ The limit of review is that reviewers see what you show them. A defense is stron
 
 Examiners look for claims larger than evidence, untraceable numbers and unaddressed rivals. Prepare a reproduction package and ask an independent reader to rerun and attack it. Answer "what if" questions with a specification curve of defensible choices, identifying duplicates and shared assumptions. Present your own counterexamples. In the defense, concede valid points, quantify what they change and propose tests. Record corrections with an audit trail and re-check numbers. Share results with participants first, partners with scope and limits, and the profession with materials others can use to replicate.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 08
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -2747,7 +2747,7 @@ Standards, regulations and web pages change. Versions and dates below are those 
 - White, I. R., Horton, N. J., Carpenter, J., and Pocock, S. J. [Strategy for Intention to Treat Analysis in Randomised Trials with Missing Outcome Data](https://doi.org/10.1136/bmj.d40). *BMJ* 342 (2011): d40.
 - Wilkinson, M. D., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data* 3 (2016).
 
-Companion CyKin material: the [doctoral Incident Response book](../../../../doctorate-2-years/incident-response-resilience/en/book/MANUSCRIPT.md), which takes these methods to an original contribution validated across contexts; and the practitioner books at [rapid](../../../../rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [professional](../../../../professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) and [technical](../../../../technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md) level.
+Companion OpenCyber Academy material: the [doctoral Incident Response book](../../../../doctorate-2-years/incident-response-resilience/en/book/MANUSCRIPT.md), which takes these methods to an original contribution validated across contexts; and the practitioner books at [rapid](../../../../rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [professional](../../../../professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) and [technical](../../../../technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md) level.
 
 **Case boundary.** Marlow Regional Shared Services (MRSS), its East and West teams, the SEV-4 rubric, case vignettes C1–C6 and C01–C24, the reference panel, pilot participants P01–P10, main-study analysts A01–A24, observers O1 and O2, interviewees and their quotations, Studies P and Q, records with DOIs beginning 10.9999/syn, the Triage Rubric Study and every number produced by the labs are invented for teaching. Sources support the general statements beside which they are cited, never the synthetic details.
 

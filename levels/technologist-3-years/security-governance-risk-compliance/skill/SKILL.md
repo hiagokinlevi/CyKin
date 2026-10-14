@@ -1,5 +1,5 @@
 ---
-name: cykin-security-governance-risk-compl-technologist-b3e21263
+name: oca-security-governance-risk-compl-technologist-b3e21263
 description: "Guide a learner through the GRC Technologist Course draft: 30 chapters, stdlib labs and EX001–EX090 with worked answers."
 license: CC0-1.0
 ---

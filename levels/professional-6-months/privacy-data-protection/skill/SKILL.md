@@ -1,5 +1,5 @@
 ---
-name: cykin-privacy-data-protection-professional-cad73455
+name: oca-privacy-data-protection-professional-cad73455
 description: "Guide a learner through the privacy Professional Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

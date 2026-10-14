@@ -1,5 +1,5 @@
 ---
-name: cykin-threat-intelligence-osint-technical-bac826f7
+name: oca-threat-intelligence-osint-technical-bac826f7
 description: "Teach the eighteen-month technical threat intelligence and OSINT course: eighteen subjects following a synthetic college IT placement student, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

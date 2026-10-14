@@ -1,4 +1,4 @@
-"""Read-only CyKin REST and stateless MCP API for Cloudflare Python Workers."""
+"""Read-only OpenCyber Academy REST and stateless MCP API for Cloudflare Python Workers."""
 
 from __future__ import annotations
 
@@ -19,9 +19,9 @@ from pydantic import BaseModel, Field
 from access import identity
 
 
-app = FastAPI(title="CyKin public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
-GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/"
-GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
+app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
+GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/OpenCyberAcademy/main/"
+GITHUB_VIEW = "https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
 LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>\s*$', re.M)
@@ -30,9 +30,9 @@ EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
 EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
 ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})\s+[—-]\s+.*$', re.M)
 MCP_VERSION = "2025-06-18"
-ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
+ALLOWED_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
-PUBLIC_ORIGINS = {"https://cykin.org", "https://www.cykin.org"}
+PUBLIC_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy"}
 
 
 class LessonProgress(BaseModel):
@@ -51,8 +51,8 @@ class ExerciseAttempt(LessonProgress):
 
 @app.middleware("http")
 async def canonical_domain(request: Request, call_next):
-    if request.headers.get("host") == "www.cykin.org":
-        return RedirectResponse("https://cykin.org" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
+    if request.headers.get("host") == "www.opencyber.academy":
+        return RedirectResponse("https://opencyber.academy" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
     response = await call_next(request)
     if request.url.path.startswith(("/api/", "/mcp")):
         response.headers["Cache-Control"] = "no-store"
@@ -62,7 +62,7 @@ async def canonical_domain(request: Request, call_next):
 def same_origin(request: Request) -> None:
     origin = request.headers.get("origin", "")
     if origin not in PUBLIC_ORIGINS:
-        raise HTTPException(403, "A progress update must come from the CyKin site")
+        raise HTTPException(403, "A progress update must come from the OpenCyber Academy site")
 
 
 def database(request: Request):
@@ -386,7 +386,7 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
 
 @app.get("/api/health")
 async def health() -> dict[str, str]:
-    return {"service": "CyKin", "status": "ok", "source": "https://github.com/hiagokinlevi/CyKin"}
+    return {"service": "OpenCyber Academy", "status": "ok", "source": "https://github.com/hiagokinlevi/OpenCyberAcademy"}
 
 
 @app.get("/private/login")
@@ -459,12 +459,12 @@ async def api_book(request: Request, level: str, area: str, language: str) -> Re
     book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
     if book is None:
         raise HTTPException(404, "This edition has no authored manuscript yet")
-    return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "no-store", "X-CyKin-Source-SHA256": hashlib.sha256(book.encode("utf-8")).hexdigest()})
+    return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "no-store", "X-OpenCyberAcademy-Source-SHA256": hashlib.sha256(book.encode("utf-8")).hexdigest()})
 
 
 @app.get("/api/source")
 async def api_source(request: Request, path: str = Query(min_length=1, max_length=320)) -> Response:
-    """Serve a public Markdown reference so course navigation stays on CyKin."""
+    """Serve a public Markdown reference so course navigation stays on OpenCyber Academy."""
     if (not path.endswith(".md") or path.startswith("/") or "\\" in path
             or any(part in ("", ".", "..") for part in path.split("/"))
             or not re.fullmatch(r"[\w./-]+", path, re.UNICODE)):
@@ -500,7 +500,7 @@ def rpc_error(identifier: Any, code: int, message: str) -> dict[str, Any]:
 
 
 TOOLS = [
-    {"name": "list_courses", "description": "Discover the 207 public CyKin courses. Optional language, level, area or title query filters.", "inputSchema": {"type": "object", "properties": {"language": {"type": "string"}, "level": {"type": "string"}, "area": {"type": "string"}, "query": {"type": "string"}}}},
+    {"name": "list_courses", "description": "Discover the 207 public OpenCyber Academy courses. Optional language, level, area or title query filters.", "inputSchema": {"type": "object", "properties": {"language": {"type": "string"}, "level": {"type": "string"}, "area": {"type": "string"}, "query": {"type": "string"}}}},
     {"name": "list_lessons", "description": "List planned and authored lessons for one course. Only published=true represents written teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}}, "required": ["level", "area", "language"]}},
     {"name": "read_lesson", "description": "Read the public Markdown for an authored lesson and its worked answers, with its GitHub source URL.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "read_chapter", "description": "Read an authored legacy subject chapter during conversion to weekday lessons; plans are not returned as teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
@@ -534,24 +534,24 @@ async def mcp(request: Request) -> Response:
         return JSONResponse(rpc_error(identifier, -32602, "Invalid params"))
     try:
         if method == "initialize":
-            return JSONResponse(rpc_result(identifier, {"protocolVersion": MCP_VERSION, "capabilities": {"resources": {}, "tools": {}}, "serverInfo": {"name": "CyKin", "version": "0.1.0"}}))
+            return JSONResponse(rpc_result(identifier, {"protocolVersion": MCP_VERSION, "capabilities": {"resources": {}, "tools": {}}, "serverInfo": {"name": "OpenCyber Academy", "version": "0.1.0"}}))
         if method == "ping":
             return JSONResponse(rpc_result(identifier, {}))
         if method == "tools/list":
             return JSONResponse(rpc_result(identifier, {"tools": TOOLS}))
         if method == "resources/list":
-            return JSONResponse(rpc_result(identifier, {"resources": [{"uri": "cykin://catalog", "name": "CyKin course catalog", "mimeType": "application/json", "description": "207 courses in study order"}]}))
+            return JSONResponse(rpc_result(identifier, {"resources": [{"uri": "open-cyber-academy://catalog", "name": "OpenCyber Academy course catalog", "mimeType": "application/json", "description": "207 courses in study order"}]}))
         if method == "resources/templates/list":
             return JSONResponse(rpc_result(identifier, {"resourceTemplates": [
-                {"uriTemplate": "cykin://lesson/{level}/{area}/{language}/{chapter}", "name": "CyKin lesson", "mimeType": "text/markdown", "description": "A published daily lesson, or a legacy chapter when this edition has no daily lessons"},
-                {"uriTemplate": "cykin://chapter/{level}/{area}/{language}/{chapter}", "name": "CyKin subject chapter", "mimeType": "text/markdown", "description": "An authored legacy chapter retained during the daily lesson conversion"},
+                {"uriTemplate": "open-cyber-academy://lesson/{level}/{area}/{language}/{chapter}", "name": "OpenCyber Academy lesson", "mimeType": "text/markdown", "description": "A published daily lesson, or a legacy chapter when this edition has no daily lessons"},
+                {"uriTemplate": "open-cyber-academy://chapter/{level}/{area}/{language}/{chapter}", "name": "OpenCyber Academy subject chapter", "mimeType": "text/markdown", "description": "An authored legacy chapter retained during the daily lesson conversion"},
             ]}))
         if method == "resources/read":
             uri = params.get("uri", "")
-            if uri == "cykin://catalog":
+            if uri == "open-cyber-academy://catalog":
                 contents = [{"uri": uri, "mimeType": "application/json", "text": json.dumps(await catalog(request), ensure_ascii=False)}]
             else:
-                match = re.fullmatch(r'cykin://(lesson|chapter)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,4})', str(uri))
+                match = re.fullmatch(r'open-cyber-academy://(lesson|chapter)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,4})', str(uri))
                 if not match:
                     return JSONResponse(rpc_error(identifier, -32602, "Unknown resource URI"))
                 result = await lesson_details(request, match[2], match[3], match[4], int(match[5]), legacy=match[1] == "chapter")

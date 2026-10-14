@@ -1,5 +1,5 @@
 ---
-name: cykin-security-operations-blue-team-engineering-5448d608
+name: oca-security-operations-blue-team-engineering-5448d608
 description: "Engineering course (5 years)"
 license: CC0-1.0
 ---

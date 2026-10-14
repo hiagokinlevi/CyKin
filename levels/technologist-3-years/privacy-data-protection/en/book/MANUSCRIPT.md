@@ -37,7 +37,7 @@ Regulation (EU) 2016/679 (GDPR) Articles 5, 9, 15, 28, 30, 32, 33 and 35; Lei 13
 
 ## Chapter 1 — Computing systems
 
-<!-- cykin:lesson-figures:start ch-01 -->
+<!-- open-cyber-academy:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- open-cyber-academy:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -123,19 +123,19 @@ A first inventory is incomplete; plan to revisit it.
 - **EX002 — CCTV gap.** What governance gap did the inventory show? *Rubric:* 3 = no central owner for CCTV recorders;; 2 = mentions CCTV;; 1 = vague;; 0 = none.
 - **EX003 — Practice versus policy.** Why do technologists matter for privacy? *Rubric:* 3 = they see how systems behave and can check practice against policy;; 2 = mentions systems;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-01 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 30)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and internet services
 
-<!-- cykin:lesson-figures:start ch-02 -->
+<!-- open-cyber-academy:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -182,7 +182,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -221,19 +221,19 @@ Browser tools show web requests only; apps need separate testing.
 - **EX005 — Third parties.** How did Aisha find third-party services? *Rubric:* 3 = browser developer tools with a test account;; 2 = mentions tools;; 1 = guessed;; 0 = none.
 - **EX006 — Wi-Fi logs.** What retention did Aisha recommend for Wi-Fi login records? *Rubric:* 3 = about thirty days with transparency;; 2 = mentions limit;; 1 = indefinite;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-02 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 30)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming foundations
 
-<!-- cykin:lesson-figures:start ch-03 -->
+<!-- open-cyber-academy:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -280,7 +280,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- open-cyber-academy:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -319,19 +319,19 @@ Synthetic data may miss real-world quirks; add them deliberately.
 - **EX008 — Log content.** What does Aisha log instead of names? *Rubric:* 3 = booking references and counts;; 2 = mentions references;; 1 = names;; 0 = none.
 - **EX009 — Real test data.** Why avoid real member data in testing? *Rubric:* 3 = it is a common cause of breaches;; 2 = mentions risk;; 1 = fine;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-03 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 30)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Data models
 
-<!-- cykin:lesson-figures:start ch-04 -->
+<!-- open-cyber-academy:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -378,7 +378,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -417,19 +417,19 @@ Age bands can still identify people in small classes; combine with other protect
 - **EX011 — Consent fields.** What fields does the consent table hold? *Rubric:* 3 = member, purpose, wording version, date and status;; 2 = most;; 1 = few;; 0 = none.
 - **EX012 — Date of birth.** Why replace date of birth with an age band in the app? *Rubric:* 3 = the app does not need the full date;; 2 = mentions need;; 1 = keep;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-04 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 30)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
 
-<!-- cykin:lesson-figures:start ch-05 -->
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -476,7 +476,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-05 -->
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -515,19 +515,19 @@ Guides need refreshing as threats change.
 - **EX014 — Report timing.** Why must staff report quickly? *Rubric:* 3 = the 72-hour clock starts when Quayside becomes aware;; 2 = mentions deadline;; 1 = vague;; 0 = none.
 - **EX015 — Photographing lists.** Which risky habit does the guide forbid? *Rubric:* 3 = photographing member lists on personal phones;; 2 = mentions phones;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-05 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 30)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Operating systems and virtualization
 
-<!-- cykin:lesson-figures:start ch-06 -->
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -574,7 +574,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cykin:lesson-figures:end ch-06 -->
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -613,19 +613,19 @@ Automatic updates can break club software; test first.
 - **EX017 — VM isolation.** Why give the membership database its own VM? *Rubric:* 3 = isolation limits spread of compromise;; 2 = mentions isolation;; 1 = vague;; 0 = none.
 - **EX018 — Local copies risk.** Why are local spreadsheets risky? *Rubric:* 3 = they escape retention and access controls;; 2 = mentions control;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-06 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 30)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Identity and access foundations
 
-<!-- cykin:lesson-figures:start ch-07 -->
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -672,7 +672,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cykin:lesson-figures:end ch-07 -->
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -711,19 +711,19 @@ Reviews by busy managers can be rubber stamps; sample their answers.
 - **EX020 — Former staff.** How many former-staff accounts were active? *Rubric:* 3 = forty;; 2 = about;; 1 = vague;; 0 = none.
 - **EX021 — MFA scope.** Which accounts get multi-factor authentication? *Rubric:* 3 = head office and managers who can export lists;; 2 = mentions managers;; 1 = all;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-07 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 30)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Security architecture basics
 
-<!-- cykin:lesson-figures:start ch-08 -->
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -770,7 +770,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cykin:lesson-figures:end ch-08 -->
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -809,19 +809,19 @@ Diagrams drift from reality; review after changes.
 - **EX023 — Layered controls.** Why use several layers of controls? *Rubric:* 3 = reduces reliance on any single measure;; 2 = mentions layers;; 1 = one enough;; 0 = none.
 - **EX024 — Vendor mapping.** What does Aisha mark for each vendor? *Rubric:* 3 = whether it receives personal data and has a contract;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-08 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 30)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Evidence and measurement
 
-<!-- cykin:lesson-figures:start ch-09 -->
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -868,7 +868,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cykin:lesson-figures:end ch-09 -->
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -907,19 +907,19 @@ Metrics can miss what is not measured.
 - **EX026 — Unknown CCTV.** How does Aisha treat the unknown CCTV position? *Rubric:* 3 = as a gap to measure;; 2 = mentions gap;; 1 = ignore;; 0 = none.
 - **EX027 — Baseline value.** Why record a baseline? *Rubric:* 3 = to show progress later;; 2 = mentions comparison;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-09 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 30)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Privacy and data protection: orientation
 
-<!-- cykin:lesson-figures:start ch-10 -->
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -966,7 +966,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cykin:lesson-figures:end ch-10 -->
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1005,19 +1005,19 @@ Lawful basis choices depend on facts; review with counsel.
 - **EX029 — Marketing basis.** What lawful basis does marketing email use? *Rubric:* 3 = consent;; 2 = partly correct;; 1 = contract;; 0 = none.
 - **EX030 — Heart-rate condition.** What condition may heart-rate health data need? *Rubric:* 3 = explicit consent under Article 9;; 2 = mentions consent;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-10 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 30)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Privacy and data protection: assets and context
 
-<!-- cykin:lesson-figures:start ch-11 -->
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1064,7 +1064,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cykin:lesson-figures:end ch-11 -->
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1103,19 +1103,19 @@ Twenty volunteers are not representative.
 - **EX032 — Member expectation.** What did most volunteers expect about workout data? *Rubric:* 3 = stays in the app and is deleted on leaving;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX033 — Top priorities.** Which assets rank highest? *Rubric:* 3 = heart-rate and CCTV;; 2 = one;; 1 = wrong;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-11 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 30)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Privacy and data protection: data flows
 
-<!-- cykin:lesson-figures:start ch-12 -->
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1167,7 +1167,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cykin:lesson-figures:end ch-12 -->
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1231,19 +1231,19 @@ Network inspection may miss data sent later or in batches.
 - **EX035 — Social login gap.** What gap does social login have? *Rubric:* 3 = no contract;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — SDK rule.** What rule did Aisha recommend? *Rubric:* 3 = no SDK added without privacy review;; 2 = mentions review;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-12 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 30)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Privacy and data protection: risk scenarios
 
-<!-- cykin:lesson-figures:start ch-13 -->
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1290,7 +1290,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cykin:lesson-figures:end ch-13 -->
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1329,19 +1329,19 @@ Ratings are subjective; discuss them with colleagues.
 - **EX038 — CCTV treatment.** What treatment addresses CCTV misuse? *Rubric:* 3 = access logging;; 2 = mentions logging;; 1 = vague;; 0 = none.
 - **EX039 — Scenario value.** Why use scenarios? *Rubric:* 3 = they help non-specialists understand risks;; 2 = mentions understanding;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-13 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 30)
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Privacy and data protection: methods I
 
-<!-- cykin:lesson-figures:start ch-14 -->
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1393,7 +1393,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cykin:lesson-figures:end ch-14 -->
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1456,19 +1456,19 @@ CCTV footage requires redaction of other people before disclosure.
 - **EX041 — Missed systems.** Name two systems missed. *Rubric:* 3 = workout history, CCTV index, chat support, marketing;; 2 = one;; 1 = vague;; 0 = none.
 - **EX042 — Fix.** What fixed the gap? *Rubric:* 3 = inventory-based checklist with search owners;; 2 = mentions checklist;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-14 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 30)
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Privacy and data protection: guided lab
 
-<!-- cykin:lesson-figures:start ch-15 -->
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1520,7 +1520,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cykin:lesson-figures:end ch-15 -->
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1578,19 +1578,19 @@ One club's result may not represent all forty.
 - **EX044 — Root cause.** Why was footage not deleted? *Rubric:* 3 = a firmware update switched off automatic deletion;; 2 = mentions firmware;; 1 = vague;; 0 = none.
 - **EX045 — Ongoing check.** What ongoing control did Aisha add? *Rubric:* 3 = a monthly retention check;; 2 = mentions monthly;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-15 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 30)
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Privacy and data protection: methods II
 
-<!-- cykin:lesson-figures:start ch-16 -->
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -1637,7 +1637,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cykin:lesson-figures:end ch-16 -->
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1676,19 +1676,19 @@ Assessments must be updated if the feature changes.
 - **EX047 — Key mitigation.** Name one mitigation. *Rubric:* 3 = on-device processing, no sharing, clear explanations;; 2 = one;; 1 = vague;; 0 = none.
 - **EX048 — Consultation result.** What did members ask for? *Rubric:* 3 = an easy off switch;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-16 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 30)
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Privacy and data protection: tooling
 
-<!-- cykin:lesson-figures:start ch-17 -->
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -1735,7 +1735,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cykin:lesson-figures:end ch-17 -->
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1803,19 +1803,19 @@ Regex scanners miss context and unusual formats.
 - **EX050 — Missed data.** What did the scanner miss? *Rubric:* 3 = the knee-injury health note;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX051 — Card file action.** What happened to the refunds file? *Rubric:* 3 = moved to the payment system;; 2 = mentions moved;; 1 = kept;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-17 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — lesson 17 (chapter 17 of 30)
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Privacy and data protection: controls
 
-<!-- cykin:lesson-figures:start ch-18 -->
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -1862,7 +1862,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cykin:lesson-figures:end ch-18 -->
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1901,19 +1901,19 @@ A mapped control is not necessarily effective.
 - **EX053 — Reference standard.** Name one standard used as reference. *Rubric:* 3 = ISO/IEC 27701 or NIST Privacy Framework;; 2 = one;; 1 = vague;; 0 = none.
 - **EX054 — Mapping benefit.** Why map controls to principles? *Rubric:* 3 = shows coverage gaps;; 2 = mentions gaps;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-18 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — lesson 18 (chapter 18 of 30)
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Privacy and data protection: monitoring
 
-<!-- cykin:lesson-figures:start ch-19 -->
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -1960,7 +1960,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cykin:lesson-figures:end ch-19 -->
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -1999,19 +1999,19 @@ Too many alerts cause people to ignore them.
 - **EX056 — Account trend.** How did former-staff accounts change? *Rubric:* 3 = from forty to two;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX057 — Monitoring purpose.** Why monitor fixed controls? *Rubric:* 3 = fixes can silently fail;; 2 = mentions failure;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-19 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue studying — lesson 19 (chapter 19 of 30)
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Privacy and data protection: troubleshooting
 
-<!-- cykin:lesson-figures:start ch-20 -->
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -2058,7 +2058,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cykin:lesson-figures:end ch-20 -->
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2097,19 +2097,19 @@ Fixing the symptom alone invites recurrence.
 - **EX059 — Fix.** What fixes did Aisha add? *Rubric:* 3 = an alert and weekly reconciliation;; 2 = one;; 1 = vague;; 0 = none.
 - **EX060 — Principle.** What does Article 7(3) require? *Rubric:* 3 = withdrawal as easy as giving consent;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-20 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue studying — lesson 20 (chapter 20 of 30)
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Privacy and data protection: service integration
 
-<!-- cykin:lesson-figures:start ch-21 -->
+<!-- open-cyber-academy:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2156,7 +2156,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cykin:lesson-figures:end ch-21 -->
+<!-- open-cyber-academy:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2195,19 +2195,19 @@ Vendors change subprocessors; monitor notices.
 - **EX062 — Shared fields.** What data are shared? *Rubric:* 3 = name, membership number, bookings;; 2 = most;; 1 = health;; 0 = none.
 - **EX063 — Testing data.** What data were used in testing? *Rubric:* 3 = synthetic members;; 2 = partly correct;; 1 = real;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-21 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-21 -->
 ### Continue studying — lesson 21 (chapter 21 of 30)
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Privacy and data protection: automation
 
-<!-- cykin:lesson-figures:start ch-22 -->
+<!-- open-cyber-academy:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2259,7 +2259,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cykin:lesson-figures:end ch-22 -->
+<!-- open-cyber-academy:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2315,19 +2315,19 @@ Deletion must reach backups and vendors over time.
 - **EX065 — Held.** Why are 37 held? *Rubric:* 3 = outstanding debt;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX066 — Verify.** How is deletion verified? *Rubric:* 3 = sampling across systems;; 2 = mentions sampling;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-22 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-22 -->
 ### Continue studying — lesson 22 (chapter 22 of 30)
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Privacy and data protection: evaluation
 
-<!-- cykin:lesson-figures:start ch-23 -->
+<!-- open-cyber-academy:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -2374,7 +2374,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cykin:lesson-figures:end ch-23 -->
+<!-- open-cyber-academy:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2413,19 +2413,19 @@ Improvements may reflect measurement changes.
 - **EX068 — Remaining gap.** Name one remaining gap. *Rubric:* 3 = free-text health notes; manual vendor monitoring;; 2 = one;; 1 = vague;; 0 = none.
 - **EX069 — Priority.** What did Aisha recommend? *Rubric:* 3 = trainer training and automated vendor checks;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-23 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-23 -->
 ### Continue studying — lesson 23 (chapter 23 of 30)
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Applied research methods
 
-<!-- cykin:lesson-figures:start ch-24 -->
+<!-- open-cyber-academy:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -2467,7 +2467,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cykin:lesson-figures:end ch-24 -->
+<!-- open-cyber-academy:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -2506,19 +2506,19 @@ Small samples do not generalise.
 - **EX071 — Ethics.** How was data collected ethically? *Rubric:* 3 = consent and no identifiers;; 2 = one;; 1 = vague;; 0 = none.
 - **EX072 — Limit.** Name one limit. *Rubric:* 3 = small, self-selected sample;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-24 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-24 -->
 ### Continue studying — lesson 24 (chapter 24 of 30)
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Team project studio
 
-<!-- cykin:lesson-figures:start ch-25 -->
+<!-- open-cyber-academy:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -2565,7 +2565,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cykin:lesson-figures:end ch-25 -->
+<!-- open-cyber-academy:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -2604,19 +2604,19 @@ Teams can miss member views; test with members.
 - **EX074 — Roles.** Name two roles. *Rubric:* 3 = research, design, development, testing;; 2 = two;; 1 = one;; 0 = none.
 - **EX075 — Outcome.** What improved? *Rubric:* 3 = explanation of class screen sharing;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-25 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-25 -->
 ### Continue studying — lesson 25 (chapter 25 of 30)
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Privacy and data protection: operational handoff
 
-<!-- cykin:lesson-figures:start ch-26 -->
+<!-- open-cyber-academy:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -2663,7 +2663,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cykin:lesson-figures:end ch-26 -->
+<!-- open-cyber-academy:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -2702,19 +2702,19 @@ Runbooks age; review yearly.
 - **EX077 — Training.** How did Aisha confirm owners could do the tasks? *Rubric:* 3 = watched them run each task;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX078 — Purpose.** Why hand over? *Rubric:* 3 = keeps controls alive after the project;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-26 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-26 -->
 ### Continue studying — lesson 26 (chapter 26 of 30)
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Deployment and validation
 
-<!-- cykin:lesson-figures:start ch-27 -->
+<!-- open-cyber-academy:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -2761,7 +2761,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cykin:lesson-figures:end ch-27 -->
+<!-- open-cyber-academy:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -2800,19 +2800,19 @@ Staged rollouts can mix versions.
 - **EX080 — Rollback.** Why a rollback plan? *Rubric:* 3 = to recover from errors;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX081 — Result.** What did validation confirm? *Rubric:* 3 = no heart-rate data to advertisers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-27 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-27 -->
 ### Continue studying — lesson 27 (chapter 27 of 30)
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Field practice
 
-<!-- cykin:lesson-figures:start ch-28 -->
+<!-- open-cyber-academy:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -2859,7 +2859,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cykin:lesson-figures:end ch-28 -->
+<!-- open-cyber-academy:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -2898,19 +2898,19 @@ Visits are snapshots.
 - **EX083 — Signs.** What was missing in two clubs? *Rubric:* 3 = CCTV signs;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX084 — Value.** Why do field visits matter? *Rubric:* 3 = they find what remote checks miss;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-28 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-28 -->
 ### Continue studying — lesson 28 (chapter 28 of 30)
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Capstone build
 
-<!-- cykin:lesson-figures:start ch-29 -->
+<!-- open-cyber-academy:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -2957,7 +2957,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cykin:lesson-figures:end ch-29 -->
+<!-- open-cyber-academy:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -2996,19 +2996,19 @@ Tools need owners.
 - **EX086 — Docs.** What does each script's documentation include? *Rubric:* 3 = purpose, inputs, outputs, limits;; 2 = most;; 1 = one;; 0 = none.
 - **EX087 — Data.** What data are used for testing? *Rubric:* 3 = synthetic;; 2 = partly correct;; 1 = real;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-29 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-29 -->
 ### Continue studying — lesson 29 (chapter 29 of 30)
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Capstone assessment
 
-<!-- cykin:lesson-figures:start ch-30 -->
+<!-- open-cyber-academy:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -3055,7 +3055,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cykin:lesson-figures:end ch-30 -->
+<!-- open-cyber-academy:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -3094,13 +3094,13 @@ Reflection should be honest about failures.
 - **EX089 — Limit asked.** What limit was asked about? *Rubric:* 3 = free-text health notes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Next.** What does Aisha plan next? *Rubric:* 3 = governance study;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cykin:chapter-navigation:start ch-30 -->
+<!-- open-cyber-academy:chapter-navigation:start ch-30 -->
 ### Continue studying — lesson 30 (chapter 30 of 30)
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cykin:chapter-navigation:end -->
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
