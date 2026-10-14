@@ -30,6 +30,12 @@ WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>\s*$', re
 EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
 EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
 ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})\s+[—-]\s+.*$', re.M)
+APPENDIX_HEADING = re.compile(
+    r'^##\s+(?:final\s+appendix\s+[—–:-]\s+)?'
+    r'(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b',
+    re.M | re.I,
+)
+REFERENCES_HEADING = re.compile(r'^##\s+(?:references|referências|referencias)\b', re.M | re.I)
 MCP_VERSION = "2025-06-18"
 ALLOWED_ORIGINS = {"https://opencyber.academy", "https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
@@ -163,9 +169,10 @@ def chapter_sections(markdown: str) -> dict[int, dict[str, str]]:
         if heading is None:
             continue
         if index == len(anchors) - 1:
-            appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones|Referencias|References)\b', body[heading.end():], re.M | re.I)
-            if appendix:
-                body = body[:heading.end() + appendix.start()].rstrip()
+            tail = body[heading.end():]
+            endings = [found.start() for pattern in (APPENDIX_HEADING, REFERENCES_HEADING) if (found := pattern.search(tail))]
+            if endings:
+                body = body[:heading.end() + min(endings)].rstrip()
         chapters[int(match.group(1))] = {"title": heading.group(1).strip(), "markdown": body}
     return chapters
 
@@ -181,7 +188,7 @@ def lesson_sections(markdown: str) -> dict[int, dict[str, Any]]:
         key=lambda item: item[0].start(),
     )
     chapters = list(ANCHOR.finditer(markdown))
-    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones)\b', markdown, re.M | re.I)
+    appendix = APPENDIX_HEADING.search(markdown)
     for index, (match, number, declared_week, anchor) in enumerate(anchors):
         stops = [chap.start() for chap in chapters if chap.start() > match.start()]
         if index + 1 < len(anchors):
@@ -213,7 +220,7 @@ def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = Non
     supplementary = list(dict.fromkeys(re.findall(r'\]\(#(w\d+-answer-\d{2})\)', chapter)))
     if not numbers and not supplementary:
         return ""
-    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones)\b', book, re.M | re.I)
+    appendix = APPENDIX_HEADING.search(book)
     if not appendix:
         return ""
     answers = book[appendix.end():]
@@ -244,7 +251,7 @@ def exercise_prompts(book: str, exercise_ids: list[str]) -> str:
     """Bring a linked legacy prompt into an individual daily lesson."""
     if not exercise_ids:
         return ""
-    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key)\b', book, re.M | re.I)
+    appendix = APPENDIX_HEADING.search(book)
     teaching = book[:appendix.start()] if appendix else book
     pieces = []
     for digits in exercise_ids:

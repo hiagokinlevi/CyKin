@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from app import app
+from app import app, worked_answers
 from seo_pages import render_lesson_page
 
 
@@ -66,6 +66,22 @@ def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     assert index["rapid-1-month/incident-response-resilience/en"]["lessons"][0]["number"] == 1
     assert len(re.findall(r"<url><loc>", sitemap)) > 7000
     assert client.get("/api/catalog").headers["x-robots-tag"] == "noindex"
+
+
+def test_chapter_with_final_appendix_exposes_its_own_worked_answer(client):
+    path = "/courses/rapid-1-month/cybersecurity/chapters/en/20/"
+    response = client.get(path)
+    assert response.status_code == 200
+    assert 'id="exercise-ex036"' in response.text
+    assert 'id="answer-ex036"' in response.text
+    assert "The outage cause is still not established" in response.text
+    assert 'id="answer-ex035"' not in response.text
+    assert 'href="https://opencyber.academy' + path + '"' in response.text
+    assert "respuesta" in worked_answers(
+        "## Resultados resueltos\n\n### EX001 — Respuesta\n\nUna respuesta.",
+        "### EX001 — Ejercicio",
+        ["001"],
+    ).lower()
 
 
 def test_authored_markdown_cannot_inject_script_or_foreign_click_target():
