@@ -1,6 +1,6 @@
 # Disciplinas e capítulos do livro — Governança de Dados / Rápido / Português
 
-**Um curso, um livro principal, uma skill.** Dez capítulos portugueses estão disponíveis, com EX001–EX064 e resoluções no mesmo manuscrito. Os quatro módulos anteriores e seus 58 pares foram preservados; a continuação 05–10 traduz seis capítulos da referência inglesa. A fonte tem vinte capítulos: a disponibilidade portuguesa é **10/20, ou 50% das posições**, não 50% de equivalência integral revisada. Os capítulos 11–20 ainda não foram traduzidos nesta edição.
+**Um curso, um livro principal, uma skill.** Vinte capítulos portugueses estão disponíveis, com EX001–EX074 e resoluções no mesmo manuscrito. Os quatro módulos anteriores e seus 58 pares foram preservados; o lote 05–10 acrescentou seis capítulos, e a continuação 11–20 acrescenta dez. A fonte fixada tem vinte capítulos: a disponibilidade portuguesa é **20/20 posições** e **74/74 IDs com respostas**. Isso não estabelece 100% de equivalência integral revisada, currículo diário aprovado ou conclusão do livro.
 
 [Início](../../../../README.md) · [Trilha completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill única](../skill/SKILL.md)
 
@@ -17,10 +17,20 @@
 | [07](book/PLAN.md#ch-07) | A saída de alguém no mês passado não encerra a verificação deste mês | EX061 | [Aula traduzida](book/MANUSCRIPT.md#ch-07) | [08](book/MANUSCRIPT.md#ch-08) |
 | [08](book/PLAN.md#ch-08) | Um cancelamento de inscrição gera uma nova linha | EX062 | [Aula traduzida](book/MANUSCRIPT.md#ch-08) | [09](book/MANUSCRIPT.md#ch-09) |
 | [09](book/PLAN.md#ch-09) | Uma pasta trancada não substitui a revisão semestral | EX063 | [Aula traduzida](book/MANUSCRIPT.md#ch-09) | [10](book/MANUSCRIPT.md#ch-10) |
-| [10](book/PLAN.md#ch-10) | Gostar de uma foto não é concordar com um uso mais longo | EX064 | [Aula traduzida](book/MANUSCRIPT.md#ch-10) | [11–20 pendentes](book/PLAN.md#translation-gap) |
+| [10](book/PLAN.md#ch-10) | Gostar de uma foto não é concordar com um uso mais longo | EX064 | [Aula traduzida](book/MANUSCRIPT.md#ch-10) | [11](book/MANUSCRIPT.md#ch-11) |
+| [11](book/PLAN.md#ch-11) | Um prazo em branco não é uma data para destruir documentos | EX065 | [Aula traduzida](book/MANUSCRIPT.md#ch-11) | [12](book/MANUSCRIPT.md#ch-12) |
+| [12](book/PLAN.md#ch-12) | O segundo café precisa da mesma página | EX066 | [Aula traduzida](book/MANUSCRIPT.md#ch-12) | [13](book/MANUSCRIPT.md#ch-13) |
+| [13](book/PLAN.md#ch-13) | Um turno movimentado não restabelece o código compartilhado | EX067 | [Aula traduzida](book/MANUSCRIPT.md#ch-13) | [14](book/MANUSCRIPT.md#ch-14) |
+| [14](book/PLAN.md#ch-14) | Uma folha perdida não é reconstruída de memória | EX068 | [Aula traduzida](book/MANUSCRIPT.md#ch-14) | [15](book/MANUSCRIPT.md#ch-15) |
+| [15](book/PLAN.md#ch-15) | Um formulário do fornecedor não acrescenta um campo de telefone | EX069 | [Aula traduzida](book/MANUSCRIPT.md#ch-15) | [16](book/MANUSCRIPT.md#ch-16) |
+| [16](book/PLAN.md#ch-16) | Um pagamento sem a fatura enviada por e-mail é uma lacuna | EX070 | [Aula traduzida](book/MANUSCRIPT.md#ch-16) | [17](book/MANUSCRIPT.md#ch-17) |
+| [17](book/PLAN.md#ch-17) | A reunião explica a página | EX071 | [Aula traduzida](book/MANUSCRIPT.md#ch-17) | [18](book/MANUSCRIPT.md#ch-18) |
+| [18](book/PLAN.md#ch-18) | Uma exclusão não cobre um novo local | EX072 | [Aula traduzida](book/MANUSCRIPT.md#ch-18) | [19](book/MANUSCRIPT.md#ch-19) |
+| [19](book/PLAN.md#ch-19) | Uma nova folha sem data não é a lista de envio | EX073 | [Aula traduzida](book/MANUSCRIPT.md#ch-19) | [20](book/MANUSCRIPT.md#ch-20) |
+| [20](book/PLAN.md#ch-20) | O que o caderno permite afirmar | EX074 | [Aula traduzida](book/MANUSCRIPT.md#ch-20) | [Curso 004 em português →](../../privacy-data-protection/pt/SUBJECTS.md) |
 
 ## Referência e limites
 
-A tradução 05–10 usa o inglês na revisão `d087ecc50f623e740c9a9092ded79cb37b88a098`, blob `ad3512e8614ace755cbaaab991ef932fceda4818`. A [nota do manuscrito](book/MANUSCRIPT.md#pt-translation-ch05-10) registra as comparações e limites, incluindo o fato de que o script não valida endereços ou consentimentos de forma completa. Não converter prazos sintéticos em regras legais universais. Revisão técnica integral, linguística, de direitos, de fontes e da edição renderizada continua aberta.
+A tradução 05–10 usa o inglês na revisão `d087ecc50f623e740c9a9092ded79cb37b88a098`. O lote 11–20 usa a revisão `dabc0411054775b939fef3ebf3ddcd4c61e430fc`; o blob inglês é o mesmo, `ad3512e8614ace755cbaaab991ef932fceda4818`. A [nota 05–10](book/MANUSCRIPT.md#pt-translation-ch05-10) preserva o histórico; a [nota 11–20](book/MANUSCRIPT.md#pt-translation-ch11-20) mapeia as novas unidades e seus limites. O script não valida endereços ou consentimentos de forma completa. Não converter prazos sintéticos em regras legais universais. Revisão técnica integral, linguística, de direitos, de fontes e da edição renderizada continua aberta.
 
-**Próximo ponto de tradução:** Capítulo 11 / EX065, mantendo as respostas no mesmo livro. A [continuação no catálogo, curso 004 em português](../../privacy-data-protection/pt/SUBJECTS.md), não preenche os capítulos ainda ausentes. O [padrão de livros](../../../../BOOK_STANDARD.md) exige ensino e revisão, não conclusão baseada apenas em contagens.
+**Próximo ponto editorial deste livro:** comparar integralmente as vinte unidades, suplementos, enunciados e respostas com a fonte, começando pela reconciliação dos capítulos antigos ainda não aprovada. A [continuação no catálogo, curso 004 em português](../../privacy-data-protection/pt/SUBJECTS.md), permite avançar na biblioteca, mas não encerra essa revisão. O [padrão de livros](../../../../BOOK_STANDARD.md) exige ensino e revisão, não conclusão baseada apenas em contagens. O [plano](book/PLAN.md#translation-review) mantém a disponibilidade distinta da aprovação.
