@@ -1,6 +1,6 @@
 # Subjects and book chapters — Cybersecurity / Rapid course / English
 
-**One course, one principal book, one course skill.** Twelve English lessons are authored. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open authored teaching; a planned chapter is a summary, not a completed lesson.
+**One course, one principal book, one course skill.** Twenty English lessons are published. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open the published teaching. Review of the book is still open, and the lessons are not a finished qualification.
 
 English is the reference edition.
 
@@ -21,6 +21,14 @@ English is the reference edition.
 | 9 | [09](book/PLAN.md#ch-09) | A verdict tally is not a severity | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-09) | [10 · Lesson](book/MANUSCRIPT.md#ch-10) |
 | 10 | [10](book/PLAN.md#ch-10) | A spoken time is not a printout | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-10) | [11 · Lesson](book/MANUSCRIPT.md#ch-11) |
 | 11 | [11](book/PLAN.md#ch-11) | A named sheet does not free the room | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-11) | [12 · Lesson](book/MANUSCRIPT.md#ch-12) |
-| 12 | [12](book/PLAN.md#ch-12) | A missing row is not a free room | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-12) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
+| 12 | [12](book/PLAN.md#ch-12) | A missing row is not a free room | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-12) | [13 · Lesson](book/MANUSCRIPT.md#ch-13) |
+| 13 | [13](book/PLAN.md#ch-13) | Yesterday's naming does not bind today | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-13) | [14 · Lesson](book/MANUSCRIPT.md#ch-14) |
+| 14 | [14](book/PLAN.md#ch-14) | A new page answers only its own rows | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-14) | [15 · Lesson](book/MANUSCRIPT.md#ch-15) |
+| 15 | [15](book/PLAN.md#ch-15) | Two pages are not one schedule | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-15) | [16 · Lesson](book/MANUSCRIPT.md#ch-16) |
+| 16 | [16](book/PLAN.md#ch-16) | A created time does not erase a printed row | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-16) | [17 · Lesson](book/MANUSCRIPT.md#ch-17) |
+| 17 | [17](book/PLAN.md#ch-17) | Matching rows are not a cause | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-17) | [18 · Lesson](book/MANUSCRIPT.md#ch-18) |
+| 18 | [18](book/PLAN.md#ch-18) | Earlier pages stay in the file | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-18) | [19 · Lesson](book/MANUSCRIPT.md#ch-19) |
+| 19 | [19](book/PLAN.md#ch-19) | A booking page does not open the contact list | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-19) | [20 · Lesson](book/MANUSCRIPT.md#ch-20) |
+| 20 | [20](book/PLAN.md#ch-20) | The note that can leave the room | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-20) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The planning minimum is 20 lessons. Page count is not the publication gate. The [book standard](../../../../BOOK_STANDARD.md) states what a finished edition still requires.

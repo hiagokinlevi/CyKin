@@ -6,17 +6,17 @@ license: CC0-1.0
 
 # Cybersecurity — Rapid course course skill
 
-Use this **one skill for the whole 1 month course**. The course has one principal book per language. Read the English manuscript's authored chapters and never present a plan as a completed lesson. The planning minimum is 20 lessons and there is no maximum; twelve English chapters are drafted, which is not the minimum and not a finished book.
+Use this **one skill for the whole 1 month course**. The course has one principal book per language. Read the English manuscript's authored chapters and never present a plan as a completed lesson. The planning minimum is 20 lessons and there is no maximum. Twenty English chapters are published, which meets that minimum and is not a finished book. Review remains open.
 
 ## Course sources
 
 - [Complete 207-course study path](../../../../STUDY_PATH.md): course 001, chapter order and cross-course continuation.
 - [Course home](../README.md): objectives, prerequisites, all language editions and current state.
-- [English chapter index](../en/SUBJECTS.md): subject order, chapter links and draft status.
+- [English chapter index](../en/SUBJECTS.md): subject order, chapter links and publication state.
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/cybersecurity/README.md): source-linked practice.
-- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
+- [Published English book](../en/book/MANUSCRIPT.md): use the chapters and exercises present there. Review is still open, so do not describe the book as finished or accredited.
 
 ## Navigation rule
 

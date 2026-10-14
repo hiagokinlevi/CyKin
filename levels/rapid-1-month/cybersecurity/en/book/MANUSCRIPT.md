@@ -1,32 +1,40 @@
 # Cybersecurity: A One-Month Guided Course
 
-- Edition: working draft, 11 October 2026
+- Edition: published, 13 October 2026
 - Language: English (`en`)
 - Course: rapid, one month; approximately 80 hours of planned study
-- Status: Twelve English chapters drafted, with exercises EX001–EX028 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
+- Status: Twenty English chapters published, with exercises EX001–EX036 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language, source, and accessibility review are **not complete**. This is not a finished qualification.
 - Maintainer: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Original text: [CC0 1.0](../../../../../LICENSE), within the [rights notice](../../../../../RIGHTS.md). External sources linked below retain their own rights.
 
-## How to study this draft
+## How to study this book
 
 Read the explanation before attempting an exercise. Work only with the fictional library described here. Keep a short notebook with the facts you observe, the assumptions you make, and the question you would ask next. Compare your responses with the worked results at the end. A plausible alternative can be correct when it identifies its assumptions and supports its decision with evidence.
 
-This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Twelve drafted chapters are not that minimum and are not a finished qualification.
+This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy text. Each published chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. These twenty published chapters meet that minimum and are not a finished qualification.
 
-| Subject-chapter | Authored exercises | Draft status |
+| Subject-chapter | Authored exercises | Publication |
 |---|---:|---|
-| 1. Foundations and decisions | EX001–EX005 | Draft |
-| 2. Scope, permission and safe practice | EX006–EX010 | Draft |
-| 3. Systems, data and dependencies | EX011–EX015 | Draft |
-| 4. Guided lab and applied synthesis | EX016–EX020 | Draft |
-| 5. What may be said about a booking | EX021 | Draft |
-| 6. A handwritten change is not a correction | EX022 | Draft |
-| 7. A pending queue during an outage | EX023 | Draft |
-| 8. A weak procedure is not yet a vulnerability | EX024 | Draft |
-| 9. A verdict tally is not a severity | EX025 | Draft |
-| 10. A spoken time is not a printout | EX026 | Draft |
-| 11. A named sheet does not free the room | EX027 | Draft |
-| 12. A missing row is not a free room | EX028 | Draft |
+| 1. Foundations and decisions | EX001–EX005 | Published |
+| 2. Scope, permission and safe practice | EX006–EX010 | Published |
+| 3. Systems, data and dependencies | EX011–EX015 | Published |
+| 4. Guided lab and applied synthesis | EX016–EX020 | Published |
+| 5. What may be said about a booking | EX021 | Published |
+| 6. A handwritten change is not a correction | EX022 | Published |
+| 7. A pending queue during an outage | EX023 | Published |
+| 8. A weak procedure is not yet a vulnerability | EX024 | Published |
+| 9. A verdict tally is not a severity | EX025 | Published |
+| 10. A spoken time is not a printout | EX026 | Published |
+| 11. A named sheet does not free the room | EX027 | Published |
+| 12. A missing row is not a free room | EX028 | Published |
+| 13. Yesterday's naming does not bind today | EX029 | Published |
+| 14. A new page answers only its own rows | EX030 | Published |
+| 15. Two pages are not one schedule | EX031 | Published |
+| 16. A created time does not erase a printed row | EX032 | Published |
+| 17. Matching rows are not a cause | EX033 | Published |
+| 18. Earlier pages stay in the file | EX034 | Published |
+| 19. A booking page does not open the contact list | EX035 | Published |
+| 20. The note that can leave the room | EX036 | Published |
 
 <a id="ch-01"></a>
 
@@ -256,7 +264,7 @@ Use the fictional case only. Compare your work with the final worked-results app
 - **Rubric:** Credit for examples that match each function, recognize shared responsibility, and avoid treating the functions as a once-only sequence.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 12
+### Continue studying — chapter 01 of 20
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -459,7 +467,7 @@ Keep every activity within the synthetic paper-exercise boundary. Worked results
 - **Rubric:** Credit for an observable measure, a plausible decision difference, and limits about synthetic data and one-session scope.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-02 -->
-### Continue studying — chapter 02 of 12
+### Continue studying — chapter 02 of 20
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -714,7 +722,7 @@ Use the model and invented records above; do not test a live service. Worked res
 - **Rubric:** Full credit requires treating the new information as a report, not as independently observed fact; changing the stale-09:00-only conclusion conditionally; and keeping the worker's decision within the approved fallback rule.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-03 -->
-### Continue studying — chapter 03 of 12
+### Continue studying — chapter 03 of 20
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -949,7 +957,7 @@ Use the program and output in Section 4.4. Do not contact a real library. Worked
 - **Rubric:** Credit when each sentence stays inside the run, the 11:43 line is not redescribed as REFUSE, and the 11:40 report is still unverified.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-04 -->
-### Continue studying — chapter 04 of 12
+### Continue studying — chapter 04 of 20
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
@@ -1029,7 +1037,7 @@ A true booking state can be shared when it answers the asker's own question. A p
 - **Rubric:** Credit if the slot is described as booked and no person is named or invented.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-05 -->
-### Continue studying — chapter 05 of 12
+### Continue studying — chapter 05 of 20
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
@@ -1110,7 +1118,7 @@ Changing a snapshot so that a rule would have allowed the action destroys the ev
 - **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-06 -->
-### Continue studying — chapter 06 of 12
+### Continue studying — chapter 06 of 20
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
@@ -1193,7 +1201,7 @@ A down page removes one way to see bookings. It does not authorize memory, yeste
 - **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-07 -->
-### Continue studying — chapter 07 of 12
+### Continue studying — chapter 07 of 20
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
@@ -1276,7 +1284,7 @@ Harbor Library's exercise shows a stale procedure and the harm that procedure ca
 - **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-08 -->
-### Continue studying — chapter 08 of 12
+### Continue studying — chapter 08 of 20
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
@@ -1371,7 +1379,7 @@ The tally is a census of labels on one synthetic log. Equal counts come from the
 - **Rubric:** Credit when the tally stays a count of four labels, the percentage and the rank are both refused, and the pending confirmation is still unresolved. A replacement number does not earn credit.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-09 -->
-### Continue studying — chapter 09 of 12
+### Continue studying — chapter 09 of 20
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
@@ -1467,7 +1475,7 @@ A clock time that arrives in a sentence is testimony about a source. The confirm
 - **Rubric:** Credit when the note stays a report, both the owner's naming and the sheet observations are still missing, the 15:00 request stays not confirmed, and the published tally is left unchanged.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
-### Continue studying — chapter 10 of 12
+### Continue studying — chapter 10 of 20
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
@@ -1570,7 +1578,7 @@ When the owner names this 11:40 page and both observations pass, Room 2 at 15:00
 - **Rubric:** Credit when the slot stays booked, the tally is left as printed, the monthly rule is refused, and no person's name and no live site appear. A new program run does not earn credit.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-11 -->
-### Continue studying — chapter 11 of 12
+### Continue studying — chapter 11 of 20
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
@@ -1667,9 +1675,697 @@ On this named page, a question is decided only when a printed row matches its ro
 - **Rubric:** Credit when the Room 4 request stays pending, ALLOW stays on the old log, the census is not rewritten, and `SYN-002` still makes Room 2 at 15:00 taken. An offer of a free room does not earn credit.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-12 -->
-### Continue studying — chapter 12 of 12
+### Continue studying — chapter 12 of 20
 
-[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Yesterday's naming does not bind today
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  Y["An earlier exercise named a page"] --> E{"Has today's owner named a source for today?"}
+  E -->|No| D["Today's request stays pending"]
+  E -->|Yes| R["Read only the source named today"]
+  D --> K["Do not import yesterday's room answer"]
+```
+
+The old naming is a record of a finished sitting. It is not a permit for the next one.
+
+### Logical drawing
+
+```text
+folder still holds the 11:40 page
+    yesterday: owner named it, for that exercise
+    today 09:12: booking view described as unavailable
+    today's owner: has not named a source
+        |
+        +-- yesterday's "taken" answer stays in yesterday's note
+        +-- today's Room 2 at 15:00 is pending
+        +-- do not announce taken or free from the old page
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate a finished exercise's named page from a later outage.
+2. Leave today's room request pending when today's owner has not named a source.
+3. Keep yesterday's conclusion in yesterday's note.
+
+### 13.1 A naming has a sitting attached
+
+The 11:40 page remains in the exercise folder. Its rows have not been edited. What ended is the sentence that made it the source. That sentence was limited to the sitting in which it was spoken. A new morning, with the booking view described as unavailable at 09:12, is a new decision. The classmate who says "the gates already passed" is quoting a closed exercise.
+
+Until the owner of today's exercise names a source for today, staff have no page they are allowed to read as current. They do not borrow yesterday's speech. They do not tell a resident that Room 2 at 15:00 is taken, and they do not tell the resident it is free. The request is pending. The Chapter 4 census is not a participant in this morning, so it stays printed as it was.
+
+### 13.2 Worked example
+
+| What the classmate relies on | What is actually dated | Decision |
+|---|---|---|
+| "Both checks passed yesterday." | Those checks belong to the earlier sitting | Do not reuse them |
+| "The 11:40 page is still in the folder." | Possession is not today's naming | Leave it filed |
+| "Say Room 2 at 15:00 is taken, as before." | No source has been named today | Pending |
+| "The 09:00 tally can be cleared because a later page once existed." | The tally describes the old log | Leave the line |
+
+The morning note records 09:12, Room 2, start 15:00, state pending, and the reason "no source named for today." It does not copy a resident's name, and it does not explain the outage.
+
+### 13.3 What this limit does not deny
+
+The earlier page is still a real sheet of the earlier exercise. Filing it is allowed. Reading it as today's authority is not. A later sentence, spoken by today's owner about a named object, would open a different lesson. This chapter does not supply that sentence.
+
+### Chapter 13 summary
+
+A page that was named yesterday answers yesterday. Today's outage waits for today's naming. Until that sentence exists, the room request is pending and the old census stays put.
+
+### Chapter 13 exercises
+
+### EX029 — Leave yesterday in yesterday's note
+
+- **Objective:** Stop a closed naming from governing a new morning.
+- **Input:** A classmate says, "The 11:40 page passed both checks yesterday, so confirm today's Room 2 at 15:00 from it and retire the pending slip."
+- **Safe condition:** Use the exercise folder only. Do not open a booking site, and do not feed the old page into the Chapter 4 program.
+- **Task:** Write three sentences: which sitting the naming belonged to, what today's owner has not yet done, and the state of today's request.
+- **Expected evidence:** Three sentences a reader can check against the two dates.
+- **Rubric:** Credit when yesterday's page stays an earlier artifact, today's request stays pending, and the census is untouched. Confirming the room from the old page does not earn credit.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — chapter 13 of 20
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — A new page answers only its own rows
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX030.
+
+```mermaid
+flowchart TD
+  N["Today's owner names the 11:55 page"] --> H{"Heading is 11:55 and the asked row is printed?"}
+  H -->|No| P["That question stays pending"]
+  H -->|Yes| B["Read the status on that row"]
+  B --> S["Say the slot is taken and give no name"]
+  S --> C["Leave the 09:00 census as printed"]
+```
+
+The new page does not edit any older page, and it does not reopen the old program.
+
+### Logical drawing
+
+```text
+named for this exercise: page heading 11:55
+    SYN-001  Room 2  14:00  created 08:20  confirmed
+    SYN-002  Room 2  15:00  created 10:05  confirmed
+    SYN-003  Room 4  15:00  created 11:20  confirmed
+        |
+        +-- Room 4 at 15:00 matches SYN-003 -> taken
+        +-- Room 2 at 15:00 matches SYN-002 -> taken
+        +-- the 11:40 page is not the source of this sitting
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Apply today's naming to the 11:55 page and to no other object.
+2. Read `SYN-003` as a taken Room 4 at 15:00, without offering a person's name.
+3. Leave yesterday's pending conclusion and the Chapter 4 census in their own records.
+
+### 14.1 Today's source is a different object
+
+Today's owner now names one synthetic page, headed 11:55, for this exercise only. You check the heading on the paper and you find three printed rows. `SYN-003` is the new row: Room 4, start 15:00, created 11:20, status confirmed. That pair matches a resident who asks for Room 4 at 15:00. Staff say the slot is taken. The identifier is not a person, and no personal name is printed, so none is spoken.
+
+`SYN-002` is also on this page, so Room 2 at 15:00 is taken here as well. Chapter 12's silence applied to a page that had no Room 4 row. This page has the row. The earlier silence is not a veto over a later, named object. It also is not erased from the earlier note. Two sittings can hold two different facts about what their own pages showed.
+
+The 09:00 program is not given `SYN-003`. ALLOW remains a label on that old log. This sitting does not rewrite it into a confirmation or into a refusal.
+
+### 14.2 Worked example
+
+| Question in this sitting | Row on the 11:55 page | Speech |
+|---|---|---|
+| Room 4 at 15:00 | `SYN-003`, confirmed | Taken. No name |
+| Room 2 at 15:00 | `SYN-002`, confirmed | Taken. No name |
+| Room 4 at 16:00 | No row | Pending. The page is silent |
+| "Clear ALLOW because Room 4 is now listed." | ALLOW is not a row on this page | Refuse the edit |
+
+The 11:40 page stays in the folder as yesterday's artifact. It is not consulted for these answers, because today's owner did not name it.
+
+### 14.3 Limits of the third row
+
+`SYN-003` is an invented booking for this lesson. It does not show that a real library created a reservation at 11:20, and it does not show why the booking view was unavailable. The naming expires when this exercise ends. A month-long rule of "trust 11:55" is not on the page.
+
+### Chapter 14 summary
+
+When today's owner names the 11:55 page, Room 4 at 15:00 is taken because `SYN-003` is printed there. That reading does not rewrite yesterday's note or the 09:00 census.
+
+### Chapter 14 exercises
+
+### EX030 — Read the row this page actually has
+
+- **Objective:** Accept a new named page without dragging an older silence or an older label onto it.
+- **Input:** A classmate says, "Chapter 12 left Room 4 pending, so `SYN-003` cannot count. Keep the room free and clear ALLOW."
+- **Safe condition:** Read the 11:55 page named for this exercise. Do not alter the 11:40 page, and do not start the Chapter 4 program.
+- **Task:** Write three sentences: which page is named today, what `SYN-003` shows, and which two records you refuse to edit.
+- **Expected evidence:** Three sentences a reader can check against the three-row page.
+- **Rubric:** Credit when Room 4 at 15:00 is taken from `SYN-003`, no name is added, yesterday's note is left as yesterday's, and ALLOW stays on the old log.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — chapter 14 of 20
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — Two pages are not one schedule
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  A["Two pages are in the folder"] --> B{"Which page did this exercise's owner name?"}
+  B --> C["Read rows on that page only"]
+  C --> D["Leave the other page unedited"]
+  D --> E["Do not build a third schedule by mixing rows"]
+```
+
+Mixing rows creates an object nobody printed and nobody named.
+
+### Logical drawing
+
+```text
+11:40 page          11:55 page, named today
+SYN-001 Room 2      SYN-001 Room 2
+SYN-002 Room 2      SYN-002 Room 2
+                    SYN-003 Room 4
+        |
+        +-- lawful reading: the named page, whole
+        +-- unlawful reading: SYN-003 glued onto 11:40
+        +-- unlawful reading: drop SYN-002 because an older page felt "more real"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Choose the named page rather than a blend of pages.
+2. Refuse a pencil copy of `SYN-003` onto the 11:40 page.
+3. Keep every row of the named page, including rows an older page also showed.
+
+### 15.1 A schedule is the page in front of you
+
+Staff sometimes want the "best" row from each sheet. That wish builds a third schedule. No printer produced it, and the owner did not name it. In this exercise the owner named the 11:55 page. Its three rows stand together. Dropping `SYN-002` because the older page was handled first would hide a row the named page prints. Copying `SYN-003` onto the 11:40 page would change an artifact whose job is to show what yesterday's sheet contained.
+
+The comparison between the pages can be written beside them: the later page adds `SYN-003`; both print `SYN-002`. The comparison is a note. It is not a new master sheet.
+
+### 15.2 Worked example
+
+| Proposed blend | Object that would result | Decision |
+|---|---|---|
+| Glue `SYN-003` onto the 11:40 page | An altered earlier page | Refuse |
+| Drop `SYN-002` and keep only the new row | A partial named page | Refuse |
+| Answer from the 11:55 page as printed | The named object | Accept |
+| Throw out the 11:40 page so only one sheet remains | A missing earlier record | Refuse. File it |
+
+Room 4 at 15:00 is taken because the named page says so. Room 2 at 15:00 is taken for the same reason. The census of the 09:00 log is not a row in either blend, so it is not updated to match the blend someone wished for.
+
+### 15.3 What a comparison may still say
+
+A facilitator may write that the pages differ by one row. That sentence does not choose a room, does not name a person, and does not declare a cause. The next chapter looks at a different temptation: deleting a printed row because of the clock inside it.
+
+### Chapter 15 summary
+
+Use the page this exercise named, with all of its rows. Do not manufacture a schedule by moving lines between sheets.
+
+### Chapter 15 exercises
+
+### EX031 — Stop the blended schedule
+
+- **Objective:** Keep two artifacts from being merged into a third.
+- **Input:** A classmate says, "Copy `SYN-003` onto the 11:40 page, cross out `SYN-002` on the 11:55 page, and answer from the result."
+- **Safe condition:** Handle paper already in the exercise. Do not add a line to either page.
+- **Task:** Name the page you will read, the two edits you will not make, and the two 15:00 answers those pages' named sheet already supports.
+- **Expected evidence:** A short note a reader can check against both pages.
+- **Rubric:** Credit when the 11:55 page is read whole, both older and newer sheets stay unmarked, and both 15:00 slots that the named page lists are treated as taken.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — chapter 15 of 20
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — A created time does not erase a printed row
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX032.
+
+```mermaid
+flowchart TD
+  R["A row is printed on the named page"] --> Q{"Is the challenge about the row's created time?"}
+  Q -->|Yes| K["Keep the row. The clock does not delete ink"]
+  Q -->|Someone wants that time typed into the 09:00 program| X["Do not start that program"]
+  K --> T["The slot on this page stays taken"]
+```
+
+Created time and page heading answer different questions. Neither one is permission to retype the log.
+
+### Logical drawing
+
+```text
+SYN-003 on the 11:55 page
+    created 11:20  = when the synthetic booking was made
+    heading 11:55  = when this page says it was printed
+    09:00 log      = a different run, already finished
+        |
+        +-- 11:20 is earlier than 11:55, so the row can appear on the page
+        +-- that order is not a reason to drop the row
+        +-- that order is not a reason to rerun Chapter 4
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read a created time as the booking's time and a heading as the page's time.
+2. Keep a printed row when its created time is earlier than the page heading.
+3. Refuse to push that created time into the finished 09:00 run.
+
+### 16.1 Two clocks, one row
+
+`SYN-003` carries created time 11:20. The page heading is 11:55. A classmate argues that a booking made at 11:20 is "already old" by 11:55 and should be ignored, and also that the same booking is "after 09:00" and should be inserted into the Chapter 4 log so ALLOW becomes REFUSE. Both moves misuse a clock.
+
+The heading says when this sheet presents itself. A row created earlier can still be on a later sheet. That is ordinary. Ignoring the row would pretend the printer left it off. Inserting 11:20 into the 09:00 program would pretend that program had seen `SYN-003`. The published run did not. Its census stays `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`.
+
+On the named 11:55 page, Room 4 at 15:00 remains taken.
+
+### 16.2 Worked example
+
+| Claim about 11:20 | Clock it confuses | Decision |
+|---|---|---|
+| "11:20 is before 11:55, so drop `SYN-003`." | Created time with page heading | Keep the row |
+| "11:20 is after 09:00, so rerun the log." | Created time with an older program | Do not rerun |
+| "The heading is later, so the whole page is stale." | A heading is not a verdict by itself | The owner still named this page |
+| "Change ALLOW to REFUSE on paper." | A label from another artifact | Leave the label |
+
+The useful line is: created 11:20, page 11:55, row present, slot taken, old log unchanged.
+
+### 16.3 What the clocks still do not show
+
+Nothing in the two times explains the unavailable booking view. Nothing in them measures how often a desk prints. The next chapter asks what a repeated row can prove, which is a smaller claim than a cause.
+
+### Chapter 16 summary
+
+A created time locates a booking. A heading locates a page. A printed row stays printed. The finished 09:00 census is not rewritten to match a clock from a later sheet.
+
+### Chapter 16 exercises
+
+### EX032 — Keep the row the clock was used to attack
+
+- **Objective:** Stop a created time from deleting `SYN-003` or from reopening the old program.
+- **Input:** A classmate says, "`SYN-003` at 11:20 is both too old for the 11:55 page and late enough to flip ALLOW to REFUSE."
+- **Safe condition:** Compare the clocks on paper. Do not type a time into the booking program.
+- **Task:** State what each clock means, whether the row stays, and what happens to ALLOW.
+- **Expected evidence:** Three statements a reader can check against `SYN-003` and the published census.
+- **Rubric:** Credit when the row stays, Room 4 at 15:00 stays taken on the named page, and ALLOW is not rewritten.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — chapter 16 of 20
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Matching rows are not a cause
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  M["SYN-002 appears on two later pages"] --> W["The exercise printed that row twice"]
+  W --> N["The outage cause is still unrecorded"]
+  N --> R["Do not call the match an attack, a vulnerability, or proof of safety"]
+```
+
+Agreement of one synthetic row is a comparison of pages. It is not a diagnosis.
+
+### Logical drawing
+
+```text
+11:40 page: SYN-002 Room 2 15:00
+11:55 page: SYN-002 Room 2 15:00
+        |
+        +-- supported: both sheets show that row
+        +-- not supported: why the booking view failed
+        +-- not supported: an attack occurred
+        +-- not supported: the library is safe because the rows match
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. State the limited fact when the same synthetic row is on two pages.
+2. Refuse to promote that fact into an attack, a vulnerability, or an incident.
+3. Leave Chapter 8's class, a weak confirmation procedure, where it was.
+
+### 17.1 What the repeat can carry
+
+Put the 11:40 page beside the 11:55 page. `SYN-002` is on both, with the same room, start, created time, and confirmed status. The careful sentence is that this exercise printed that row on two later sheets. The 11:55 page also has `SYN-003`, which the earlier sheet lacks. Sameness and difference can both be listed. Neither list contains a cause for the unavailable view.
+
+Chapter 8 already refused to call the stale-paper habit a proven software weakness or an incident. A second copy of `SYN-002` does not add the missing demonstration. It does not add an owner's incident declaration. A classmate's word "attack" is a new claim with no new evidence. A classmate's word "safe," drawn from the match, is the opposite overclaim. Matching rows do not measure harm or likelihood, so they also do not revive the score rejected in Chapter 9.
+
+### 17.2 Worked example
+
+| Sentence offered for the pair of pages | Evidence it would need | Decision |
+|---|---|---|
+| "Both later pages show `SYN-002` for Room 2 at 15:00." | The two sheets | Keep |
+| "The match shows the outage was an attack." | A demonstrated hostile action | Reject |
+| "The match shows a vulnerability in the booking site." | A demonstrated weakness | Reject |
+| "The match shows the library is safe." | An evaluation this exercise did not perform | Reject |
+| "Raise the tally's UNKNOWN, because the cause is unknown." | UNKNOWN counts unmatched log actions | Reject. The cause was never one of the four actions |
+
+The class of the exercise problem stays a weak confirmation procedure. The census stays the census of the 09:00 log.
+
+### 17.3 The open cause
+
+Staff can still write "cause not established" under the comparison. That phrase blocks a false ending. It does not assign blame, and it does not authorize a live investigation. The following chapter is about whether the older sheets may be destroyed once a newer sheet exists.
+
+### Chapter 17 summary
+
+Two pages that share `SYN-002` support that shared row and nothing causal. The outage stays unexplained. The older labels of procedure, tally, and score stay in their earlier lessons.
+
+### Chapter 17 exercises
+
+### EX033 — Take the diagnosis off the matching row
+
+- **Objective:** Keep a repeated synthetic row from becoming an attack story or a safety claim.
+- **Input:** A classmate writes, "The pages agree on `SYN-002`, therefore the outage was an attack and the exercise can close as safe."
+- **Safe condition:** Compare the two synthetic pages. Do not investigate a real site.
+- **Task:** Replace the note with the fact the pages support, the two claims you reject, and the class Chapter 8 already allowed.
+- **Expected evidence:** Four sentences a reader can check against the pages and Chapters 8 and 9.
+- **Rubric:** Credit when the shared row is stated, attack and safety are both refused, the procedure class is unchanged, and the census is unchanged.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — chapter 17 of 20
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Earlier pages stay in the file
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  F["Three sheets exist"] --> S["File each under its own time"]
+  S --> U["Do not shred an earlier sheet because a later one exists"]
+  U --> N["Do not overwrite one sheet with another"]
+  N --> A["Answer this exercise from the page named for it"]
+```
+
+Retention here is about not destroying a comparison. It is not a claim about a real library's retention schedule.
+
+### Logical drawing
+
+```text
+file, three separate copies
+    09:00 printout   -> input of the recorded run
+    11:40 page       -> yesterday's named sheet, no SYN-003
+    11:55 page       -> named for the current exercise
+        |
+        +-- shredding 09:00 would hide why REFUSE was printed
+        +-- shredding 11:40 would hide yesterday's silence on Room 4
+        +-- overwriting either one is an alteration
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. File the 09:00 printout, the 11:40 page, and the 11:55 page as separate copies.
+2. Explain which comparison is lost if an earlier copy is destroyed.
+3. Keep answering the current exercise from the page named for it.
+
+### 18.1 Newer does not mean solitary
+
+A later page can be the one this exercise named. That role does not make the earlier pages garbage. The 09:00 printout is the artifact the published program read. If it disappears, a reader can no longer see why the 11:42 confirmation was refused. The 11:40 page is the artifact that lacked `SYN-003`. If it disappears, yesterday's silence becomes a story instead of a sheet. The 11:55 page remains the named source for the current room answers.
+
+Filing means three labels: time, what the owner did or did not say about each, and a pointer such as "do not merge." Overwriting the 09:00 printout with 11:55 rows would be the same kind of damage as the pencil mark in Chapter 6, done with a whole page instead of a line.
+
+### 18.2 Worked example
+
+| Proposed cleanup | Comparison that would vanish | Decision |
+|---|---|---|
+| Shred the 09:00 printout | The recorded run's input | Keep and label |
+| Shred the 11:40 page | Yesterday's missing Room 4 row | Keep and label |
+| Replace both with the 11:55 page | The history of what each sheet showed | Refuse |
+| Answer Room 4 from the named 11:55 page while the others stay filed | None | Accept |
+
+No cleanup step reruns the program. The census remains the census of the log that already ran.
+
+### 18.3 Not a retention policy for a real library
+
+This chapter does not set how long Harbor Library, or any real library, must keep paper. It does not cite a statute. The rule is local to the exercise: do not destroy the sheets the reasoning depends on. A real schedule would be an owner's decision with its own authority. That decision is not in the folder.
+
+### Chapter 18 summary
+
+Keep the three sheets, labeled and separate. Use the one named for this exercise when you answer a room. Do not shred or overwrite the others to make the folder look simple.
+
+### Chapter 18 exercises
+
+### EX034 — Stop the cleanup
+
+- **Objective:** Preserve the sheets that make the earlier decisions checkable.
+- **Input:** A classmate says, "The 11:55 page is newest. Shred the 09:00 printout and the 11:40 page so the file has one truth."
+- **Safe condition:** Stay inside the synthetic folder. Do not destroy or mark any sheet.
+- **Task:** For each sheet, give its role and say whether it stays. Then name the sheet you would actually read for Room 4 at 15:00 in this exercise.
+- **Expected evidence:** Four short lines a reader can match to the three times.
+- **Rubric:** Credit when all three sheets stay, their roles differ, the 11:55 page is the one read for the current Room 4 question, and the census is not rerun.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — chapter 18 of 20
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — A booking page does not open the contact list
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX035.
+
+```mermaid
+flowchart TD
+  P["The 11:55 page is named"] --> Q{"Does the request ask about a row on that page?"}
+  Q -->|Yes| R["Answer from that row"]
+  Q -->|It asks for event contacts| O["Out of scope"]
+  O --> S["Do not export, and do not add names to the page"]
+```
+
+A fresh naming widens nothing beyond the object named.
+
+### Logical drawing
+
+```text
+named object: 11:55 booking page
+    in scope: its printed room rows
+    still outside: event-contact export
+        |
+        +-- 11:43 already labeled that export OUT OF SCOPE
+        +-- a later booking page does not move the boundary
+        +-- no resident name is added to make the message "easier"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep a named booking page inside booking questions.
+2. Leave event contacts outside that page's authority.
+3. Refuse to add names so that an out-of-scope message can be sent.
+
+### 19.1 The boundary does not follow the newest sheet
+
+The 11:43 action asked for event contacts and received OUT OF SCOPE, because those contacts are not part of the room decision. A classmate now says the 11:55 page is current, so the export has become allowed, and staff should tell the contact list that rooms changed. The page contains booking rows. It does not contain the contact list, a permission to export it, or a reason to attach personal names.
+
+Today's naming selects which booking sheet may be read. It does not redraw the exercise boundary from Chapter 2 and Chapter 4. Contacts stay outside. Staff do not open an export, live or invented, and they do not write names onto `SYN-003` in order to have someone to notify.
+
+Room answers already made from the named page remain: Room 2 at 15:00 taken, Room 4 at 15:00 taken, no names spoken.
+
+### 19.2 Worked example
+
+| Request after the 11:55 naming | Relation to the named page | Decision |
+|---|---|---|
+| "Is Room 4 at 15:00 taken?" | Matches `SYN-003` | Taken. No name |
+| "Export the event contacts." | Different collection | Out of scope |
+| "Add a name to `SYN-003` so we can call them." | The page has no name field | Refuse the addition |
+| "The new page cancels the 11:43 label." | The label described a different question | Keep OUT OF SCOPE on that action |
+
+The tally is still the four-action census. This request is not a fifth logged line, so UNKNOWN does not move.
+
+### 19.3 Notification can be a real job, under a different authority
+
+A library might someday have a lawful way to tell a patron about a room. This exercise does not provide that way. Wanting to be helpful does not move contacts into the booking sheet. The owner would have to name a different activity, with its own limit. Until then, the contact path stays closed.
+
+### Chapter 19 summary
+
+Naming the 11:55 page authorizes reading its booking rows. It does not authorize an event-contact export or a name written onto a row.
+
+### Chapter 19 exercises
+
+### EX035 — Keep the contacts outside
+
+- **Objective:** Stop a new booking page from being treated as permission to export contacts.
+- **Input:** A classmate says, "The 11:55 page is the approved source, so export the event contacts and add the matching names to `SYN-002` and `SYN-003`."
+- **Safe condition:** Stay with the synthetic booking rows. Do not create a contact list or open a site.
+- **Task:** Separate the room answers you may give from the export you may not, and say what happens to the 11:43 label.
+- **Expected evidence:** A short split note.
+- **Rubric:** Credit when the two 15:00 slots stay taken without names, the export stays out of scope, no name is written on a row, and the census stays as printed.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — chapter 19 of 20
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — The note that can leave the room
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N["One note for this exercise"] --> A["List the sheets and which one was named"]
+  A --> R["State each 15:00 answer from that sheet"]
+  R --> L["State the census you did not change"]
+  L --> O["State the questions still open"]
+  O --> X["Remove any sentence that closes the case, names a person, or frees a room"]
+```
+
+The note is finished when a reader can check every sentence against a sheet or against the printed census. It is not finished when it sounds conclusive.
+
+### Logical drawing
+
+```text
+note that may leave the room
+    sheets: 09:00 kept; 11:40 kept; 11:55 named for this exercise
+    Room 2 at 15:00 on 11:55: taken, SYN-002, no person
+    Room 4 at 15:00 on 11:55: taken, SYN-003, no person
+    census: STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0
+    open: outage cause; how often a real desk reprints; next outage needs a new naming
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Assemble one checkable note from the sheets and the unchanged census.
+2. Include the open questions instead of closing the exercise.
+3. Reject security, safety, blame, and a standing clock rule as sentences this folder cannot support.
+
+### 20.1 What belongs in the note
+
+A facilitator should be able to test the note without trusting the writer's tone. The note names the three sheets and says which one today's owner named. It answers Room 2 at 15:00 and Room 4 at 15:00 from that named page, with the booking identifiers and without personal names. It quotes the Chapter 4 census as unchanged. It lists what remains unknown: the cause of the unavailable view, whether any real desk reprints a fallback on a particular clock, and the fact that another outage will need its own naming.
+
+Sentences that do not belong: "the library is secure," "the room is free," "the resident is named," "11:55 is the rule for this month," "ALLOW was cleared," "the outage was an attack." Each of those fails against a sheet or against the log.
+
+Meeting the rapid course's planning count of 20 lessons does not close those questions, and it does not award a qualification. Review of sources, language, and technical accuracy remains open.
+
+### 20.2 Worked example
+
+| Line proposed for the leaving note | Check | Keep? |
+|---|---|---|
+| "11:55 page named for this exercise; three rows." | The naming and the page | Yes |
+| "Room 4 at 15:00 taken, `SYN-003`, no name." | That row | Yes |
+| "Census unchanged." | The printed line | Yes |
+| "Cause not established." | No cause is on any sheet | Yes |
+| "Harbor risk is low and the exercise is closed." | No scale and no closure condition | No |
+| "Use 11:55 whenever the site fails." | The naming was for this exercise | No |
+
+The note can leave the room. The case cannot be declared finished.
+
+### 20.3 What the twentieth lesson does not finish
+
+Another outage, a real retention rule, or a contact procedure would be further teaching if an owner defined them. They are not implied by reaching lesson 20. Other languages of this course are not published by this English note. Information security is a separate book. Read it when you mean to study that book, not as a substitute for an unanswered Harbor question.
+
+### Chapter 20 summary
+
+The leaving note lists the named sheet, the taken slots, the untouched census, and the open questions. It does not close the case, name a person, free a room, or convert this exercise into a standing rule.
+
+### Chapter 20 exercises
+
+### EX036 — Cut the closing sentence
+
+- **Objective:** Produce a note that a facilitator can check, including what is still open.
+- **Input:** A classmate's closing lines say, "All twenty lessons are done, so Harbor is secure, Room 4 is free after all, and 11:55 will be the fallback every morning this month."
+- **Safe condition:** Use the synthetic folder and the printed census. Do not add a new sheet or open a site.
+- **Task:** Replace that ending with the sheet you rely on, the two 15:00 answers, the census, and one question the folder still cannot answer.
+- **Expected evidence:** Five checkable lines.
+- **Rubric:** Credit when both named-page slots stay taken, the census is quoted unchanged, at least one real open question remains, and the security claim, the free room, and the monthly rule are all gone. Declaring the book finished does not earn credit.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — chapter 20 of 20
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- open-cyber-academy:chapter-navigation:end -->
@@ -1692,7 +2388,7 @@ Harbor Library, its services, event log, and worked decisions are original ficti
 
 ## Final appendix — worked results and assessment notes
 
-These results match EX001–EX028. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
+These results match EX001–EX036. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
 
 ### EX001 — Worked result
 
@@ -1805,3 +2501,35 @@ The classmate's note is a second-hand report of a clock time. It is not the 11:4
 ### EX028 — Worked result
 
 The named page prints two rows, and both name Room 2. Room 4 at 15:00 matches neither, so the page says nothing about that request. Staff tell the resident they cannot answer from this page and leave the request pending. They do not offer the room. ALLOW remains the label Chapter 4 printed for the 09:00 log. It is not rewritten as a confirmation on the 11:40 page. The census of that log is still `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. `SYN-002` is still on the page, so Room 2 at 15:00 stays booked.
+
+### EX029 — Worked result
+
+The naming the classmate cites belonged to the earlier sitting. Today's owner has not named a source for the 09:12 outage. Today's Room 2 at 15:00 request stays pending. The 11:40 page remains filed as an earlier sheet. The Chapter 4 census is not rerun.
+
+### EX030 — Worked result
+
+Today's owner named the 11:55 page. `SYN-003` prints Room 4 at 15:00 as confirmed, so the slot is taken and no personal name is added. Chapter 12's silence stays in that chapter's note about the 11:40 page. ALLOW stays on the 09:00 log.
+
+### EX031 — Worked result
+
+Read the 11:55 page whole. Do not copy `SYN-003` onto the 11:40 page, and do not strike `SYN-002` from the named page. Both 15:00 slots printed on the named page are taken. The sheets stay unmarked.
+
+### EX032 — Worked result
+
+11:20 is when `SYN-003` was created. 11:55 is the page heading. The row is on the named page, so Room 4 at 15:00 stays taken. ALLOW is not flipped. The program is not started again.
+
+### EX033 — Worked result
+
+Both later pages show `SYN-002` for Room 2 at 15:00. That is the supported fact. An attack is not shown. Safety is not shown. The supported class remains a weak confirmation procedure. The census stays the four-label line from the 09:00 log.
+
+### EX034 — Worked result
+
+Keep the 09:00 printout because it is the recorded run's input. Keep the 11:40 page because it shows yesterday's missing Room 4 row. Keep the 11:55 page and use it for the current Room 4 question. Do not shred or overwrite. Do not rerun the census.
+
+### EX035 — Worked result
+
+Room 2 at 15:00 and Room 4 at 15:00 stay taken from the named page, with no names spoken or written. The event-contact export stays out of scope, and the 11:43 label stays OUT OF SCOPE. The census does not gain a fifth action.
+
+### EX036 — Worked result
+
+The note names the 11:55 page for this exercise. Room 2 at 15:00 is taken from `SYN-002`. Room 4 at 15:00 is taken from `SYN-003`. The census remains `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. The outage cause is still not established. The security claim, the free room, and the monthly 11:55 rule are removed. Reaching lesson 20 does not finish the book.
