@@ -16,6 +16,8 @@ flowchart LR
 
 The repository is the canonical source for one `MANUSCRIPT.md` per course and language. `SUBJECTS.md` lists chapters and their daily lessons; `PLAN.md` records the editorial sequence. The default hierarchy is **course → weekly chapter → five weekday lessons → examples, exercise and worked answer**. Longer courses have more and deeper chapters. Astro builds the catalog locally and carries each level's planning baseline of 20–1,300 weekday lessons. That baseline is separate from legacy subject chapters and actually authored lessons. The API reads `ch-NN`, `lesson-NN` and `week-WW-day-DD` anchors. During conversion, the course syllabus shows newly written daily lessons alongside all existing subject chapters, with planned slots clearly labeled. The full book and each individual lesson are rendered on OpenCyber Academy. Source responses are requested without caching so visitors and AI clients receive the latest published `main` text; GitHub's own propagation may still take a short time after a push. Only optional saved progress crosses the Access boundary and uses D1.
 
+The [canonical editorial rule](../BOOK_STANDARD.md#sequential-production-order) makes English the source-writing and review priority, followed by complete Portuguese and then Spanish editions. Planned work in the other six languages begins only after all three collections have independently reached 100% verified completion across all 207 courses. Existing editions remain readable. Interface language, catalog availability and legacy chapter percentages are not completion evidence. The public MCP exposes this live rule through `open-cyber-academy://editorial-policy` and `get_editorial_policy`.
+
 ## Local development
 
 From this directory:
@@ -71,7 +73,7 @@ For a content-only publication, push the Markdown to GitHub; the reader fetches 
 - `GET /api/books/{level}/{area}/{language}` returns the current Markdown manuscript.
 - `GET /api/source?path=...` returns a public Markdown course reference for internal reading routes.
 - `GET /api/search/{level}/{area}/{language}?q=...` searches the current book.
-- `POST /mcp` provides stateless MCP Streamable HTTP discovery, reading and search. `GET /mcp` returns 405 as required when no event stream is offered.
+- `POST /mcp` provides stateless MCP Streamable HTTP discovery, reading and search. Its `get_editorial_policy` tool and `open-cyber-academy://editorial-policy` resource read the current public `BOOK_STANDARD.md` from `main`, including the three-language gate. `GET /mcp` returns 405 as required when no event stream is offered.
 - `GET /llms.txt` gives AI clients a compact entry point.
 
 Published text is not automatically an approved or completed book. The API and reader do not present plan-only chapters as finished lessons.

@@ -103,7 +103,13 @@ def test_stateless_mcp_public_and_progress_private(client):
     assert initialize.status_code == 200
     assert initialize.json()["result"]["protocolVersion"] == "2025-06-18"
     tools = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-    assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course"}
+    assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"get_editorial_policy", "list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course"}
+    resources = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 4, "method": "resources/list"})
+    assert "open-cyber-academy://editorial-policy" in {item["uri"] for item in resources.json()["result"]["resources"]}
+    policy = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 5, "method": "resources/read", "params": {"uri": "open-cyber-academy://editorial-policy"}})
+    assert "all 207 course editions" in policy.json()["result"]["contents"][0]["text"]
+    policy_tool = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 6, "method": "tools/call", "params": {"name": "get_editorial_policy", "arguments": {}}})
+    assert "English → Portuguese → Spanish" in json.loads(policy_tool.json()["result"]["content"][0]["text"])["markdown"]
     lesson = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "read_lesson", "arguments": {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en", "chapter": 1}}})
     mcp_lesson = json.loads(lesson.json()["result"]["content"][0]["text"])
     assert "W1-R1 — Worked answer" in mcp_lesson["worked_answers"]
