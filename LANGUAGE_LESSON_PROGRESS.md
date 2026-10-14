@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4280/4458 | 30/120060 | 4140/4280 | 4280/4280 | 4280/4280 | 4280/4280 |
+| English | 199/207 | 4296/4474 | 30/120060 | 4156/4296 | 4296/4296 | 4296/4296 | 4296/4296 |
 | Português | 124/207 | 2547/4224 | 0/120060 | 2450/2547 | 2547/2547 | 2547/2547 | 2547/2547 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -38,7 +38,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Incident response and cyber resilience | [4/4 · 20 daily lessons](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/es/book/PLAN.md) |
 | rapid-1-month · Digital forensics and malware analysis | [20/20](levels/rapid-1-month/digital-forensics-malware/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/digital-forensics-malware/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/digital-forensics-malware/es/book/PLAN.md) |
 | rapid-1-month · Threat intelligence and OSINT | [20/20](levels/rapid-1-month/threat-intelligence-osint/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/threat-intelligence-osint/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/threat-intelligence-osint/es/book/PLAN.md) |
-| rapid-1-month · Authorized offensive security and red team | [4/4](levels/rapid-1-month/offensive-security-red-team/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/offensive-security-red-team/es/book/PLAN.md) |
+| rapid-1-month · Authorized offensive security and red team | [20/20](levels/rapid-1-month/offensive-security-red-team/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/offensive-security-red-team/es/book/PLAN.md) |
 | rapid-1-month · AI and machine-learning security | [4/4](levels/rapid-1-month/ai-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/ai-security/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/ai-security/es/book/PLAN.md) |
 | rapid-1-month · Quantum and post-quantum security | [4/4](levels/rapid-1-month/quantum-post-quantum-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/quantum-post-quantum-security/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/quantum-post-quantum-security/es/book/PLAN.md) |
 | rapid-1-month · OT, IoT and cyber-physical security | [4/4](levels/rapid-1-month/ot-iot-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/ot-iot-security/pt/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/ot-iot-security/es/book/MANUSCRIPT.md) |

@@ -1,17 +1,18 @@
 # Authorized Offensive Security and Red Team: A Rapid Introduction
 
 - Language: English (`en`); rapid course, one month; approximately 80 hours of planned study.
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX066 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification.
 - Audience: new learners with no prior security role.
-- Relation to neighbouring books: the [professional course book](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) develops each topic into practice. **This book is a four-chapter introduction to authorized testing.**
+- Relation to neighbouring books: the [professional course book](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) develops each topic into practice. **These twenty English lessons introduce authorized testing.** They meet the planning minimum. They are not a finished qualification.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Educational boundary: not an accredited qualification. **No authority to test real systems.** All organisations, people and numbers are **synthetic** unless a sentence cites a public source. Labs teach scoping, ranking and reporting — never weaponised techniques.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+<!-- open-cyber-academy:chapter-lessons -->
+## How to use this book
 
-Chapter 1 defines authorized offensive security and the main frameworks; Chapter 2 covers scope and safe practice; Chapter 3 covers findings and reporting; Chapter 4 is a guided synthesis. Every chapter has outcomes, teaching, a worked example, a labelled synthetic case, errors and limits, twelve or thirteen exercises scored 0–3, a synthesis and a **Continue studying** block. Labs in Chapters 2 and 4 read local data only (`python3 file.py`).
+Maya Chen is a trainee at the fictional Riverside Civic College. Each numbered chapter is one lesson. Lessons 1–4 remain the published introduction. Lessons 5–20 read the two offline scripts: which branch runs first, where the /25 ends, why the rank key puts F1 ahead of F3, and what the college note may quote. The scripts do not send traffic and do not contain exploit code. Review remains open. Page count is not the writing target.
 
 ### Synthetic running case
 
@@ -28,7 +29,8 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -158,9 +160,13 @@ Framework names and editions change; check the current published versions before
 
 Authorized offensive security is permissioned testing done to improve defence; frameworks guide it, and this course stays inside those rules.
 
-### Continue studying — chapter 01 of 04
+<!-- open-cyber-academy:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 20)
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
@@ -305,9 +311,13 @@ A script only checks the list you give it; it cannot discover whether the real n
 
 Written scope, exclusions and stop conditions decide every action; anything unclear is out of bounds.
 
-### Continue studying — chapter 02 of 04
+<!-- open-cyber-academy:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 20)
 
-[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -436,9 +446,13 @@ ATT&CK mappings are aids, not proof of an intrusion. Severity without an agreed 
 
 Findings are specific, evidenced and mapped to shared technique names; reports tell each audience what to do.
 
-### Continue studying — chapter 03 of 04
+<!-- open-cyber-academy:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 20)
 
-[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -599,15 +613,1265 @@ A classroom ranking is not a full professional report. Real engagements need the
 
 A short authorized engagement checks scope, ranks real findings and asks for clear decisions — without crossing the rules.
 
-### Continue studying — chapter 04 of 04
+<!-- open-cyber-academy:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Chapter 5 — The scope print follows the request list
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  R["requested, four strings, written order"] --> L["One pass, no sorted call"]
+  L --> P["Four verdict lines in that same order"]
+  P --> Q{"Did a score pick the first line?"}
+  Q -->|No| K["Keep the embedded print"]
+```
+
+The scope script walks `requested`. It does not rank addresses.
+
+### Logical drawing
+
+```text
+192.0.2.5      in scope
+192.0.2.10     EXCLUDED - do not test
+192.0.2.130    OUT OF SCOPE - do not test
+198.51.100.7   OUT OF SCOPE - do not test
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the four strings in `requested`, in the order they are stored.
+2. Say why `.10` prints second even though its verdict is a refusal.
+3. Refuse a print that leads with the payroll address because it feels more important.
+
+### 5.1 The loop emits `requested`. It does not call `sorted`.
+
+`lab_scope.py` stores four strings. The first is `192.0.2.5`. The second is `192.0.2.10`. The third is `192.0.2.130`. The fourth is `198.51.100.7`. The `for` loop takes them in that stored sequence. Each pass builds one line and prints it before the next pass starts. Nothing in the file sorts those strings, and nothing reorders them after the verdict is chosen.
+
+A refusal is still a line. The payroll address is second in the list, so its refusal is the second line. Putting the two `OUT OF SCOPE` lines first would be a different list. This file does not build that list.
+
+| What chooses the row order | What does not |
+|---|---|
+| Position in `requested` | The verdict word |
+| One forward pass | `sorted` |
+| Print during the pass | A severity score |
+
+### 5.2 Worked example
+
+| Offered result | What produced it | Decision |
+|---|---|---|
+| `.5`, then `.10`, then `.130`, then `198.51.100.7` | The list, top to bottom | Keep |
+| Payroll line second, and still a refusal | Position, not importance | Keep |
+| "The script printed safe rows first." | No such reorder exists | Refuse |
+| "Drop the refused lines so the page looks cleaner." | Those lines are the record | Refuse |
+
+> **Synthetic case.** These four lines are the only scope-lab output.
+
+### Errors and limits
+
+Do not rebuild `requested` so a preferred verdict prints first.
+
+### Apply
+
+- **EX051 — List order.** The print names `.5`, then the payroll address, then `.130`, then `198.51.100.7`. May a preference for "in scope" rows, or a later note, replace that order? *Rubric:* 3 = no; the lines follow `requested`; a refusal still occupies its slot; do not sort the script;; 2 = the four lines stay and the note stays prose;; 1 = one line;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — Exclusion is the first branch
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  A["ip_address of this string"] --> B{"In the excluded set?"}
+  B -->|Yes| E["EXCLUDED - do not test"]
+  B -->|No| C{"Inside 192.0.2.0/25?"}
+  C -->|Yes| I["in scope"]
+  C -->|No| O["OUT OF SCOPE - do not test"]
+```
+
+The set test runs before the network test. `.10` never reaches the second test.
+
+### Logical drawing
+
+```text
+192.0.2.10 is inside the /25
+and inside the excluded set
+first true branch
+  EXCLUDED - do not test
+the elif is not evaluated
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say which test runs first.
+2. Explain why membership in the `/25` does not save `.10`.
+3. Refuse a reading that calls the exclusion a script bug.
+
+### 6.1 `if` then `elif`. The first true branch wins.
+
+The excluded object is a set with one member, `192.0.2.10`. The allowed object is a list with one network, `192.0.2.0/25`. For each string, `ip_address` builds an address, then the `if` asks whether that address is in the set. Only if that test is false does the `elif` ask whether the address sits in any network in the list.
+
+`192.0.2.10` makes the set test true. Python skips the `elif`. The network object still contains that address; the branch structure is what keeps the verdict at `EXCLUDED - do not test`. Reversing the two tests would be a different program. This file does not reverse them.
+
+| Address | In the set? | In the `/25`? | Branch that runs |
+|---|---|---|---|
+| `192.0.2.5` | No | Yes | `elif` → `in scope` |
+| `192.0.2.10` | Yes | Yes, unused | `if` → `EXCLUDED` |
+| `192.0.2.130` | No | No | `else` |
+| `198.51.100.7` | No | No | `else` |
+
+### 6.2 Worked example
+
+| Offered claim | What the branch does | Decision |
+|---|---|---|
+| "Payroll is excluded because the owner said so, and the `if` encodes that." | Set test first | Keep |
+| "`.10` is in the range, so the range line should win." | The `elif` does not run | Refuse |
+| "The set removes `.10` from the network object." | The network is unchanged | Refuse |
+
+> **Synthetic case.** The payroll server is a label in a comment. The set holds the address.
+
+### Errors and limits
+
+Do not treat "inside the range" as permission when the set test is true.
+
+### Apply
+
+- **EX052 — First branch.** `192.0.2.10` is inside `192.0.2.0/25` and inside the excluded set. Which test decides the printed verdict, and does the other test still get evaluated? *Rubric:* 3 = the set test is first and true; the `elif` is skipped; the verdict is `EXCLUDED - do not test`;; 2 = exclusion wins and the range does not override it;; 1 = one fact;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — The /25 ends at .127
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N["192.0.2.0/25"] --> S["128 addresses"]
+  S --> H[".0 through .127"]
+  H --> X[".128 starts the next block"]
+  X --> M[".130 is not a member"]
+```
+
+Prefix 25 leaves seven bits. Seven bits count 128 addresses, and the block stops at `.127`.
+
+### Logical drawing
+
+```text
+192.0.2.0/25
+  first address  192.0.2.0
+  last address   192.0.2.127
+  count          128
+192.0.2.130
+  not a member
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the first and last addresses of `192.0.2.0/25`.
+2. Place `192.0.2.130` in the following block.
+3. Refuse the idea that "130 is close, so the lab should have allowed it."
+
+### 7.1 Prefix length is a count of bits, not a guess about nearby hosts.
+
+`ip_network("192.0.2.0/25")` builds one network. A prefix of 25 means the first 25 bits are fixed and the last 7 bits vary. Two to the power 7 is 128, so the object covers `192.0.2.0` through `192.0.2.127` inclusive. The next address, `192.0.2.128`, is the start of `192.0.2.128/25`. `192.0.2.130` is that later block plus two. Membership is false.
+
+The script never prints `.127` or `.128`. Those two addresses are how you check the object, not extra rows in the output. `.5` and `.10` fall inside the 128. `.130` does not. Closeness of the decimal is not the test `ip in n` uses.
+
+| Address | Inside this object? | Why |
+|---|---|---|
+| `192.0.2.0` | Yes | First address of the object |
+| `192.0.2.127` | Yes | Last address of the object |
+| `192.0.2.128` | No | First address of the next `/25` |
+| `192.0.2.130` | No | Two past that boundary |
+
+### 7.2 Worked example
+
+| Offered claim | Check | Decision |
+|---|---|---|
+| "`.130` is outside because 130 is greater than 127." | The last address is `.127` | Keep |
+| "The script printed a boundary row for `.127`." | No such line exists | Refuse |
+| "A `/24` was what the file stored." | The literal is `/25` | Refuse |
+
+> **Synthetic case.** The boundary is a property of the network object. It is not a fifth printed line.
+
+### Errors and limits
+
+Do not widen the literal to a `/24` so `.130` becomes a member.
+
+### Apply
+
+- **EX053 — Block edge.** Where does `192.0.2.0/25` stop, and why is `192.0.2.130` outside it? *Rubric:* 3 = the object holds 128 addresses, `.0` through `.127`; `.128` starts the next block; `.130` is past that edge; the script does not print the edge;; 2 = `.127` is the last member and `.130` is not;; 1 = one address;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — A second documentation range is still outside
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08. Map, example, EX054.
+
+```mermaid
+flowchart TD
+  D["Both strings are documentation addresses"] --> T["The test is membership"]
+  T --> Y["192.0.2.5 can pass"]
+  T --> N["198.51.100.7 fails"]
+```
+
+Documentation status is not a column. The network object is the test.
+
+### Logical drawing
+
+```text
+198.51.100.7
+  not in the excluded set
+  not in 192.0.2.0/25
+verdict
+  OUT OF SCOPE - do not test
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say what the script compares `198.51.100.7` against.
+2. Explain why "also a documentation address" does not make it in scope.
+3. Refuse a print that treats every RFC 5737 address as allowed.
+
+### 8.1 The allowed object is one network. A cousin range is a miss.
+
+`198.51.100.7` parses as an address. It is not in the excluded set. It is also not inside `192.0.2.0/25`, which lives in `192.0.2.0/24`'s neighbourhood, not in `198.51.100.0/24`. Both the passing address and this one come from documentation ranges. The script never asks "is this documentation?" It asks the set, then the network list. The second answer is no, so the `else` assigns `OUT OF SCOPE - do not test`.
+
+Maya's pack uses documentation addresses so a classroom example cannot be mistaken for a campus she can reach. That reason does not enlarge the network object. An address can be safe to write down and still be a forbidden target.
+
+| Question the script asks | `192.0.2.5` | `198.51.100.7` |
+|---|---|---|
+| In the excluded set? | No | No |
+| In `192.0.2.0/25`? | Yes | No |
+| Printed verdict | `in scope` | `OUT OF SCOPE - do not test` |
+
+### 8.2 Worked example
+
+| Offered claim | What was tested | Decision |
+|---|---|---|
+| "Same RFC family, therefore allowed." | Family is not the predicate | Refuse |
+| "The fourth line is a miss on the network test." | `else` after two false tests | Keep |
+| "The script looked up a host name." | No name is stored | Refuse |
+
+> **Synthetic case.** `198.51.100.7` is a string in `requested`. It is not a host the script contacts.
+
+### Errors and limits
+
+Do not add `198.51.100.0/24` to `in_scope` to make the fourth line pass.
+
+### Apply
+
+- **EX054 — Cousin range.** Why does `198.51.100.7` print `OUT OF SCOPE - do not test` even though it is a documentation address, like `192.0.2.5`? *Rubric:* 3 = the predicate is the excluded set, then `192.0.2.0/25`; this address fails both; documentation status is not a test;; 2 = it is outside the one allowed network;; 1 = one label;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Width 14 does not edit the address
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  S["String from requested"] --> W["Format width 14"]
+  W --> L["Spaces after the digits"]
+  L --> V["Verdict after one more space"]
+```
+
+The width pads the column. `ip_address` already ran on the unpadded string.
+
+### Logical drawing
+
+```text
+format field {t:14}
+  192.0.2.5     is 9 characters
+  192.0.2.130   is 11 characters
+  198.51.100.7  is 12 characters
+pad
+  spaces, not digits
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say what `{t:14}` changes on the line.
+2. Count the characters in `192.0.2.130` before padding.
+3. Refuse a reading that treats the spaces as part of the address.
+
+### 9.1 The format width is a column. The address object is already built.
+
+Each pass prints `f"{t:14} {verdict}"`. For a string, `:14` means a width of at least 14, aligned to the left. `192.0.2.5` has 9 characters, so five spaces follow it inside the field. `192.0.2.10` has 10. `192.0.2.130` has 11. `198.51.100.7` has 12. A further space, the one written between the field and `{verdict}`, separates the column from the words.
+
+Those spaces are not fed back into `ip_address`. The membership tests used the original string. Changing the 14 would move the verdict column. It would not move `.130` into the network, and it would not take `.10` out of the set.
+
+| String | Characters before padding | What the width adds |
+|---|---:|---|
+| `192.0.2.5` | 9 | Spaces to reach 14 |
+| `192.0.2.10` | 10 | Spaces to reach 14 |
+| `192.0.2.130` | 11 | Spaces to reach 14 |
+| `198.51.100.7` | 12 | Spaces to reach 14 |
+
+### 9.2 Worked example
+
+| Offered claim | What the format did | Decision |
+|---|---|---|
+| "The gaps line the verdicts up." | Left pad to 14, then one space | Keep |
+| "The address grew extra zero digits." | Only spaces were added | Refuse |
+| "A shorter field would have changed `EXCLUDED`." | The word was chosen earlier | Refuse |
+
+> **Synthetic case.** Width 14 is presentation. The four verdicts were already chosen.
+
+### Errors and limits
+
+Do not read a space in the column as a digit of the address.
+
+### Apply
+
+- **EX055 — Column width.** What does `{t:14}` change, and what does it leave alone? *Rubric:* 3 = it pads each stored string out to 14 characters with spaces; the address tested by `ip_address` is unchanged; the verdict word is unchanged;; 2 = the spaces are padding and not a new address;; 1 = one fact;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — The else branch sends nothing
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  E["else assigns a string"] --> P["print writes the line"]
+  P --> N["No socket, no DNS, no packet"]
+  N --> K["Two lines use that else"]
+```
+
+The `else` is live code. Its only effect is a line of text.
+
+### Logical drawing
+
+```text
+imports
+  ipaddress only
+calls that are absent
+  socket, DNS, connect
+else runs for
+  192.0.2.130
+  198.51.100.7
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the only import.
+2. Say which two lines come from the `else`.
+3. Refuse a claim that the script probed those addresses.
+
+### 10.1 A verdict string is not a packet.
+
+The file imports `ipaddress` and nothing else. `ip_address` and `ip_network` parse text into objects in memory. The `else` stores the words `OUT OF SCOPE - do not test` and the `print` writes them. There is no socket, no name lookup, and no connection. The comment at the top says no network traffic is sent. The branch structure agrees with that comment: every path ends at `print`.
+
+Two of the four lines take the `else`. That means the branch is used. It is not a leftover. Using it still does not contact `192.0.2.130` or `198.51.100.7`. A later reader who "finishes the lab" by reaching those addresses has left the file.
+
+| Path | Lines that take it | Leaves the machine? |
+|---|---|---|
+| `if` excluded | The payroll line | No |
+| `elif` in network | The `.5` line | No |
+| `else` | `.130` and `198.51.100.7` | No |
+
+### 10.2 Worked example
+
+| Offered claim | What the file contains | Decision |
+|---|---|---|
+| "The miss lines are local prints." | `print` of a string | Keep |
+| "The else is dead, so those rows were typed by hand." | Two inputs take it | Refuse |
+| "Out of scope means the script checked the host and found it down." | No such check | Refuse |
+
+> **Synthetic case.** The classroom pack never leaves the interpreter.
+
+### Errors and limits
+
+Do not add a network call so the refusal "really" checks a host.
+
+### Apply
+
+- **EX056 — No packet.** Which import does the scope script use, which lines take the `else`, and does that branch contact a host? *Rubric:* 3 = `ipaddress` only; `.130` and `198.51.100.7` take the `else`; the branch prints and does not contact a host;; 2 = the miss lines are prints and no packet is sent;; 1 = one fact;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — The rank key is a pair
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  T["Tuple: id, title, likelihood, impact"] --> K["Key: minus product, then id"]
+  K --> S["sorted walks that key"]
+  S --> O["F1, F3, F4, F2"]
+```
+
+The title is printed. It is not part of the key.
+
+### Logical drawing
+
+```text
+key
+  (- likelihood * impact, id)
+F1  (-6, "F1")
+F3  (-6, "F3")
+F4  (-4, "F4")
+F2  (-2, "F2")
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the two parts of the sort key.
+2. Say which tuple indexes supply the product.
+3. Refuse a sort that uses the title text.
+
+### 11.1 Unary minus on the product, then the id string.
+
+Each finding is `(id, title, likelihood, impact)`. `sorted` receives `key=lambda f: (-f[2] * f[3], f[0])`. Index 2 is likelihood. Index 3 is impact. Their product is the score. The unary minus makes a larger product sort first, because `-6` is less than `-4`, and `sorted` goes low to high. The second key component is `f[0]`, the id, with no minus, so ids go in ordinary string order when products match.
+
+The title sits at index 1. The key never reads it. "Staff portal" does not outrank "Shared admin" because of those words. The printed order of this file is F1, F3, F4, F2, which is the order of the four keys `(-6, "F1")`, `(-6, "F3")`, `(-4, "F4")`, `(-2, "F2")`.
+
+| Id | Likelihood | Impact | Key |
+|---|---:|---:|---|
+| F1 | 3 | 2 | `(-6, "F1")` |
+| F3 | 2 | 3 | `(-6, "F3")` |
+| F4 | 2 | 2 | `(-4, "F4")` |
+| F2 | 2 | 1 | `(-2, "F2")` |
+
+### 11.2 Worked example
+
+| Offered claim | What the lambda reads | Decision |
+|---|---|---|
+| "High products first, and the minus is why." | `-f[2] * f[3]` | Keep |
+| "The title's topic sets the order." | Index 1 is unread by the key | Refuse |
+| "F2 is last because it was typed last." | F2 is second in the list and last in the print | Refuse |
+
+> **Synthetic case.** The four tuples are the whole ranking input.
+
+### Errors and limits
+
+Do not sort on the title when the lambda does not read it.
+
+### Apply
+
+- **EX057 — Key pair.** What does the ranking lambda return, and which part of the tuple does it ignore? *Rubric:* 3 = it returns the negated product of indexes 2 and 3, then the id; the title is not in the key;; 2 = score descending, then id; title unused;; 1 = one fact;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — A tie uses the id, and F2 still finishes last
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  P["F1 and F3 share product 6"] --> I["Second key compares F1 and F3"]
+  I --> A["F1 prints before F3"]
+  A --> Z["F2 remains the last line"]
+```
+
+Equal products do not leave the original list order in charge. The id is in the key.
+
+### Logical drawing
+
+```text
+product 6
+  "F1" then "F3"
+product 4
+  F4
+product 2
+  F2 last
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say why F1 prints before F3.
+2. Say where F2 sat in the original list.
+3. Refuse a claim that the print kept written order.
+
+### 12.1 `"F1" < "F3"`. That comparison is the tie. F2 is a different product.
+
+F1 and F3 both produce 6. Their keys are `(-6, "F1")` and `(-6, "F3")`. The first components match, so `sorted` compares the strings. `"F1"` is less than `"F3"`, so F1 comes first. This list has no `F10`. A longer id would be a different string comparison, and this file does not contain one.
+
+F2 is the second tuple in the source and the last line of the print. Written order would have been F1, F2, F3, F4. The print is F1, F3, F4, F2. Those sequences differ at the second line. Quoting the print as "the order Maya typed" would hide the sort.
+
+The id tie happens to agree with F1 appearing before F3 in the source. Agreement is not the mechanism. The mechanism is the second component of the key. Removing that component would make this a different program, even if one run still looked the same.
+
+| Position | Written tuple | Printed line |
+|---|---|---|
+| First | F1 | F1 |
+| Second | F2 | F3 |
+| Third | F3 | F4 |
+| Fourth | F4 | F2 |
+
+### 12.2 Worked example
+
+| Offered claim | Comparison | Decision |
+|---|---|---|
+| "F1 before F3 because the id string says so." | `"F1" < "F3"` | Keep |
+| "The print matches the source line for line." | Second lines differ | Refuse |
+| "F2 finishes last because its title is dull." | Product 2 is the cause | Refuse |
+
+> **Synthetic case.** Four ids, one tie, one reordered tail.
+
+### Errors and limits
+
+Do not invent an id such as F10 and treat it as part of this print.
+
+### Apply
+
+- **EX058 — Tie and tail.** Why does F1 print before F3, and why is F2 last even though it was typed second? *Rubric:* 3 = the shared product defers to the id string, and `"F1"` precedes `"F3"`; F2's product is 2, so its key sorts last; written order is not the print;; 2 = id breaks the tie and the low product finishes last;; 1 = one id;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Six is high and four is medium
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  S["score = likelihood * impact"] --> H{"score >= 6?"}
+  H -->|Yes| A["high"]
+  H -->|No| M{"score >= 4?"}
+  M -->|Yes| B["medium"]
+  M -->|No| C["low"]
+```
+
+The tests are `>=`. A 6 is already high. A 4 is already medium.
+
+### Logical drawing
+
+```text
+F1  6  high
+F3  6  high
+F4  4  medium
+F2  2  low
+not in this print
+  a 5, a 3, a 9
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. State the two thresholds.
+2. Place each printed score in its band.
+3. Refuse a band the file does not compute for a score it does not hold.
+
+### 13.1 The band is computed. `medium` already fills the width.
+
+After the sort, the loop sets `score = lik * imp` again and then chooses a word. `score >= 6` yields `high`. Otherwise `score >= 4` yields `medium`. Otherwise the word is `low`. The tests are inclusive. Six is not "almost high." Four is not low.
+
+This print contains 6, 6, 4, and 2. It does not contain 5, 3, or 9. A 5 would be medium and a 3 would be low, but saying the lab printed those bands would add rows. The format `{band:6}` asks for a width of 6. `medium` is already six letters, so it receives no extra pad. `high` is four letters, so two spaces are added inside the field before the separator space. `low` is three letters, so three spaces are added. The pad is not a second score.
+
+| Score in this print | Test that matches | Word |
+|---:|---|---|
+| 6 | `>= 6` | `high` |
+| 4 | not `>= 6`, then `>= 4` | `medium` |
+| 2 | neither test | `low` |
+
+### 13.2 Worked example
+
+| Offered claim | Threshold | Decision |
+|---|---|---|
+| "F4 is medium because 4 meets the second test." | `>= 4` after `>= 6` failed | Keep |
+| "High starts above 6, so F1 is medium." | 6 passes the first test | Refuse |
+| "The lab printed a score of 9." | No tuple multiplies to 9 | Refuse |
+
+> **Synthetic case.** Four products, three words, no extra row.
+
+### Errors and limits
+
+Do not lower the 6 so that F1 and F3 become medium.
+
+### Apply
+
+- **EX059 — Bands.** Which scores in this print are high, medium, and low, and what would a 5 be if it existed? *Rubric:* 3 = 6 is high, 4 is medium, 2 is low; a 5 would be medium because it fails `>= 6` and meets `>= 4`; this print has no 5;; 2 = the three printed bands are right and no extra score is claimed;; 1 = one band;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — F2 is the product two times one
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  L["likelihood 2"] --> P["product 2"]
+  I["impact 1"] --> P
+  P --> B["low"]
+  B --> R["last line"]
+```
+
+The banner title does not store a score. The last two numbers do.
+
+### Logical drawing
+
+```text
+F2
+  likelihood 2
+  impact 1
+  product 2
+  band low
+  printed last
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Multiply F2's two ratings.
+2. Say why that product is `low`.
+3. Refuse a reading that treats the banner words as the score.
+
+### 14.1 Index 2 is 2. Index 3 is 1. The product is the whole score.
+
+F2's tuple is `("F2", "Old web server banner shows version", 2, 1)`. Likelihood 2 times impact 1 is 2. Two fails both `>= 6` and `>= 4`, so the word is `low`. The key `(-2, "F2")` is the greatest of the four first-components once the minus is applied, meaning it sorts last. The title is evidence language for the page. It is not an integer, and the lambda does not parse it.
+
+A version banner can still matter to an owner. This script does not measure that. It multiplies the two ratings Maya stored. Changing the title without changing `2, 1` would leave the line's score and band alone.
+
+| Field | F2's value | Used in the product? |
+|---|---|---|
+| Id | F2 | Only as the tie key |
+| Title | Old web server banner shows version | No |
+| Likelihood | 2 | Yes |
+| Impact | 1 | Yes |
+
+### 14.2 Worked example
+
+| Offered claim | Arithmetic | Decision |
+|---|---|---|
+| "Score 2, band low, last line." | `2 * 1`, then the thresholds, then the key | Keep |
+| "The word banner lowers the score by itself." | The integers are the product | Refuse |
+| "F2 is medium because 2 is a small high." | 2 fails `>= 4` | Refuse |
+
+> **Synthetic case.** F2 is one tuple. Its harm is not re-scored in the script.
+
+### Errors and limits
+
+Do not edit F2's title and expect the product to move.
+
+### Apply
+
+- **EX060 — Product two.** How does F2 arrive at score 2 and the word `low`? *Rubric:* 3 = likelihood 2 times impact 1 is 2; 2 fails both thresholds, so the word is `low`; the title is not the arithmetic;; 2 = the product is 2 and the band is low;; 1 = one number;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — A changed impact is not this print
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  F["File stores F4 impact 2"] --> P["Printed score 4"]
+  H["A notebook tries impact 3"] --> N["That product would be 6"]
+  N --> D["The embedded print stays the file"]
+```
+
+The hypothetical is a different tuple. The fenced output is this tuple.
+
+### Logical drawing
+
+```text
+on disk
+  F4 impact 2
+  score 4
+  third printed line
+not on disk
+  impact 3
+  product 6
+  id order among the sixes
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read F4's impact from the tuple that was actually sorted.
+2. Compute the product if that impact were 3.
+3. Refuse to replace the embedded print with the hypothetical.
+
+### 15.1 Impact 2 is what `sorted` saw. Impact 3 is a different key.
+
+The stored F4 tuple ends in `2, 2`. Likelihood 2 times impact 2 is 4. The key is `(-4, "F4")`, which sits between the sixes and F2. The third printed line is that result: `F4 score=4 medium`.
+
+If the last integer were 3, the product would be 6 and the key would be `(-6, "F4")`. Three keys would then start with `-6`, and the id strings would order them F1, F3, F4, with F2 still last on product 2. That order is a calculation about a tuple this file does not hold. Pasting it under the lab's output fence would report a run that did not happen.
+
+| | Impact stored | Product | Place in the embedded print |
+|---|---:|---:|---|
+| F4 as written | 2 | 4 | Third line |
+| F4 with the last integer replaced by 3 | 3 | 6 | Not a line in this file |
+
+### 15.2 Worked example
+
+| Offered page | Matches the file? | Decision |
+|---|---|---|
+| F4 on the third line at score 4 | Yes | Keep |
+| "F4 now ties the sixes, so quote that as the lab." | The file was not edited | Refuse |
+| "Delete F4 from the list so the tie goes away." | The tuple stays | Refuse |
+
+> **Synthetic case.** One ranking print. The alternate impact stays in the notebook.
+
+### Errors and limits
+
+Do not overwrite the embedded F4 line with the alternate product.
+
+### Apply
+
+- **EX061 — Unprinted change.** What does this file print for F4, and where would F4 sit if its impact were 3? *Rubric:* 3 = the file prints score 4 in third place; impact 3 would make product 6 and the id order would be F1, F3, F4, then F2; that order is not the embedded print;; 2 = score 4 is the print and the alternate is not;; 1 = one score;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Thirty days is a sentence, not a column
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  R["Rank print has scores and titles"] --> G["The one-pager adds two decisions"]
+  G --> D["Thirty days is prose"]
+  D --> S["Neither script prints 30"]
+```
+
+The director's deadline lives in the page Maya writes. It is not a field in either tuple.
+
+### Logical drawing
+
+```text
+asks
+  named accounts on grading
+  a password-reuse control on the portal
+deadline
+  thirty days
+printed by the labs
+  neither ask, nor the number 30
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the two decisions the one-pager asks for.
+2. Say where "thirty days" is stored.
+3. Refuse a lab line that shows a deadline.
+
+### 16.1 The scripts rank and classify. The page asks for two decisions.
+
+F1 is the reused-password row at score 6. F3 is the shared grading admin row at score 6. Maya's one-pager asks the IT director to approve named accounts for the grading system and a control against password reuse on the staff portal, and it gives those decisions thirty days. That sentence is part of the written page. `lab_scope.py` has no finding tuples. `lab_findings.py` prints id, score, band, and title. Neither format string contains a day count.
+
+The attachment can hold the longer write-up. The scripts do not build that attachment. Calling the college finished because two highs were named would go past both the print and the page. The page asks for decisions. It does not record that the decisions were carried out.
+
+| Item | Where it lives | Printed by a lab? |
+|---|---|---|
+| F1 and F3 at score 6 | Ranking print | Yes |
+| Named grading accounts | One-pager | No |
+| Portal password-reuse control | One-pager | No |
+| Thirty days | One-pager | No |
+
+### 16.2 Worked example
+
+| Offered sentence | Source | Decision |
+|---|---|---|
+| "The page asks for two approvals inside thirty days." | The written summary | Keep |
+| "The ranking print includes `days=30`." | No such field | Refuse |
+| "Naming the highs means the fixes are done." | The page is a request | Refuse |
+
+> **Synthetic case.** Thirty days is a deadline in prose. It is not a measured duration from a clock in the script.
+
+### Errors and limits
+
+Do not insert `30` into either lab's format string.
+
+### Apply
+
+- **EX062 — Deadline.** What two decisions does the one-pager request, and does either lab print the thirty-day figure? *Rubric:* 3 = named grading accounts and a portal password-reuse control; the figure is prose; neither script prints it;; 2 = both decisions are named and the labs do not print the figure;; 1 = one decision;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Two refusals are outside both prints
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  B["Classmate's blog"] --> R["Refused"]
+  C["Clinic server note"] --> M["Removed"]
+  R --> P["Neither string is in the labs"]
+  M --> P
+```
+
+The packet records two nos. The scripts never see those targets.
+
+### Logical drawing
+
+```text
+scope print
+  four documentation addresses
+rank print
+  F1 F3 F4 F2
+packet notes
+  blog refused
+  clinic note removed
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Name the two things Maya turns away.
+2. Say why neither one is a row in the scope print.
+3. Refuse a page that adds either target to `requested`.
+
+### 17.1 The blog and the clinic are notes. They are not elements of either list.
+
+A classmate, who is not given a name in this book, asks Maya to put a personal blog on the target list. She refuses. A draft finding mentions a medical clinic server that is not a college system. She takes that note out. Both decisions go into the packet her manager reviews. The classmate's name, the blog's name, and the clinic's name are not in the file, and this chapter does not invent them.
+
+`requested` holds four addresses. None of them is a blog. `findings` holds F1 through F4. None of them is a clinic. Pressure does not append a fifth string. Listing the clinic "just as a note" would still put another owner's system into the college packet as if it were a target. The recorded act is removal, not a new scope line.
+
+| Item | In `requested`? | In `findings`? | What Maya records |
+|---|---|---|---|
+| Personal blog | No | No | Refusal |
+| Clinic server | No | No | Removal of the note |
+| `192.0.2.5` | Yes | No | The scope line |
+| F3 | No | Yes | The rank line |
+
+### 17.2 Worked example
+
+| Offered addition | In either script? | Decision |
+|---|---|---|
+| "Two refusals sit in the packet, beside the prints." | The prints stay four and four | Keep |
+| "Add the blog as `198.51.100.7`." | That address is already a different row | Refuse |
+| "The clinic is F2." | F2 is the banner tuple | Refuse |
+
+> **Synthetic case.** The classmate stays unnamed. The clinic stays an out-of-scope note.
+
+### Errors and limits
+
+Do not invent a blog host name or a clinic address and call it lab output.
+
+### Apply
+
+- **EX063 — Two nos.** What does Maya refuse, what does she remove, and which script prints either one? *Rubric:* 3 = she refuses the unnamed classmate's blog and removes the clinic note; neither item is in `requested` or `findings`; neither script prints it;; 2 = both decisions stay outside the two prints;; 1 = one decision;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Two calendars are not lab columns
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  A["12–16 October 2026 in the authorization sentence"] --> N["A sentence, not a print"]
+  W["09:00–17:00 on weekdays"] --> N
+  N --> L["Neither script prints a clock"]
+```
+
+The dates and the hours are rules in prose. The labs have no time field.
+
+### Logical drawing
+
+```text
+authorization sentence
+  12–16 October 2026
+weekday window
+  09:00–17:00
+lab columns
+  addresses, ids, scores, bands, titles
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the October dates and the weekday hours as two different rules.
+2. Say that neither rule is a lab column.
+3. Refuse a print that shows a clock the file does not store.
+
+### 18.1 One sentence names five dates. Another sentence names a daily window. The scripts name neither.
+
+The authorization sentence Maya is asked to write names a configuration and policy review of `192.0.2.0/25`, excluding `192.0.2.10`, during 12–16 October 2026, with no live exploitation. A separate rule says testing is allowed from 09:00 to 17:00 on weekdays, and that 20:00 is outside that window until the paper changes. Those are two constraints. The October span says which civil dates were agreed. The clock span says which hours inside a day were agreed. Neither constraint is computed by `ipaddress` or by `sorted`.
+
+A slow staff-portal page is a reason to pause and call the emergency contact. This book does not give that contact a name, a phone number, or a clock time for the pause. Adding any of those would invent a measurement. The scripts print addresses and findings only.
+
+| Rule | What it constrains | Printed by either lab? |
+|---|---|---|
+| 12–16 October 2026 | The agreed dates | No |
+| 09:00–17:00 weekdays | The agreed hours | No |
+| Pause if the portal page slows | A stop condition | No |
+
+### 18.2 Worked example
+
+| Offered line | Stored in a script? | Decision |
+|---|---|---|
+| "Dates and hours stay in the prose rules." | No time field | Keep |
+| "The scope print ends with `09:00`." | The fourth line is an address | Refuse |
+| "The pause happened at a stated minute." | No minute is recorded | Refuse |
+
+> **Synthetic case.** Two calendars, zero time columns.
+
+### Errors and limits
+
+Do not invent a phone number or a minute for the pause.
+
+### Apply
+
+- **EX064 — Calendars.** What do 12–16 October 2026 and 09:00–17:00 each constrain, and does either lab print them? *Rubric:* 3 = the dates are the agreed span and the hours are the daily window; they are different rules; neither script prints a date or a clock;; 2 = both stay prose and the labs print neither;; 1 = one rule;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — T1078 does not multiply
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  N["T1078 Valid Accounts names the behaviour"] --> S["The tuple still holds 2 and 3"]
+  S --> P["Product 6"]
+  P --> K["The technique id is not a key field"]
+```
+
+A shared name helps defenders look up a behaviour. It is not a factor in the product.
+
+### Logical drawing
+
+```text
+F3 prose
+  T1078 Valid Accounts
+F3 tuple
+  likelihood 2
+  impact 3
+  product 6
+absent from the tuple
+  the technique id
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Say which finding the technique name is attached to.
+2. Show that the product uses 2 and 3.
+3. Refuse to treat the technique id as proof or as a score.
+
+### 19.1 The name sits in the paragraph. The integers sit in the tuple.
+
+F3 is the shared admin account on the grading system. The prose links that condition to T1078 Valid Accounts, because a shared credential lets a person act as a legitimate user without a separate name in the log. The tuple does not store `T1078`. It stores likelihood 2 and impact 3. The product is 6, from those two integers. The ranking lambda cannot see a technique id that is not in the tuple, so renaming the technique would not move F3 relative to F1.
+
+The name is also not evidence that an intrusion occurred. It gives the detection team a public label to look up. Maya can write the label beside the finding. She cannot write it into the score, and she cannot treat it as a procedure for using the shared account. This course does not supply that procedure.
+
+| Object | Holds T1078? | Holds the product? |
+|---|---|---|
+| The F3 paragraph | Yes, as a name | No |
+| The F3 tuple | No | Yes, as 2 × 3 |
+| The sort key | No | Yes, as `-6` and then the id |
+
+### 19.2 Worked example
+
+| Offered claim | Where the fact lives | Decision |
+|---|---|---|
+| "T1078 labels F3. The score is still 2 × 3." | Paragraph versus tuple | Keep |
+| "The technique id is why F3 scores 6." | The integers are why | Refuse |
+| "The label proves someone broke in." | A label is not an event | Refuse |
+
+> **Synthetic case.** One technique name, one product, no attack steps.
+
+### Errors and limits
+
+Do not turn T1078 into a score or into a way to use the shared account.
+
+### Apply
+
+- **EX065 — Name versus product.** What does T1078 do for F3, and what does it not do to the ranking? *Rubric:* 3 = it names the shared-account behaviour; the product remains 2 × 3; the id is not in the tuple and is not proof of an intrusion;; 2 = the name and the product stay separate;; 1 = one label;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the college note can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  Q["Quote both prints"] --> R["Keep refusals and deadlines in prose"]
+  R --> N["Do not add a packet, a password, or a secure claim"]
+  N --> O["Review stays open"]
+```
+
+The note may repeat the lines the scripts printed. It may not improve them.
+
+### Logical drawing
+
+```text
+scope print, four lines, list order
+rank print, F1 F3 F4 F2
+prose that is allowed
+  exclusion first, /25 through .127, thirty days, two refusals
+prose that is not a result
+  a sent packet, a finished college, a credential
+```
+
+```text
+A short authorized engagement checks scope, ranks real findings and asks for clear decisions — without crossing the rules.
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Quote the scope print and the rank print without rearranging them.
+2. Keep the deadline, the refusals, and the calendars out of those prints.
+3. Reject a note that calls Riverside Civic College finished.
+
+### 20.1 The note's permission is the two prints, plus the rules that were written beside them.
+
+The scope print is four lines, in list order: `192.0.2.5` in scope, `192.0.2.10` excluded, `192.0.2.130` out of scope, and `198.51.100.7` out of scope. The rank print is F1 at 6 high, F3 at 6 high, F4 at 4 medium, and F2 at 2 low. Those lines are what the scripts emitted. A note can quote them.
+
+Beside the prints, the note can say that the set test runs before the network test, that `192.0.2.0/25` ends at `.127`, that thirty days is a sentence on the one-pager, that the blog was refused and the clinic note was removed, and that 12–16 October 2026 and 09:00–17:00 are rules rather than columns. It can say the work was a configuration and policy review. It cannot say a packet was sent, a password was recovered, or an exploit was run. No script in this book does those things.
+
+`hiagokinlevi/offensive-gvuln` is supplementary reading and was not a control either script measured. Authorized offensive security stays this course. AI and machine-learning security is the learner's following subject, and that subject is not started here.
+
+| The note may quote | The note may not add |
+|---|---|
+| Both embedded prints | A reordered scope list |
+| F4 at score 4 | The alternate impact as if it had printed |
+| Two refusals, as prose | A blog host or a clinic address |
+| Thirty days, as prose | `days=30` inside a lab line |
+| T1078 as a name for F3 | A procedure for using the account |
+
+### 20.2 Worked example
+
+| Sentence in the note | Allowed? | Why |
+|---|---|---|
+| The four scope lines, copied in order | Yes | That is the print |
+| F1 before F3, then F4, then F2 | Yes | That is the other print |
+| "Payroll was tested because it shares the range." | No | The first branch refused it |
+| "The college is secure, and this course awards a credential." | No | The review is open |
+
+> **Synthetic case.** Riverside Civic College and Maya Chen remain invented. The packet is a classroom record.
+
+### Errors and limits
+
+These chapters do not call Riverside Civic College finished, and they do not award a credential. Twenty English lessons meet the college's planning minimum and leave this review open. These English chapters do not publish another language edition. A fresh classroom-packet question can still earn its own later college lesson.
+
+### Apply
+
+- **EX066 — The note.** Which sentences may the college note contain, and which must it reject? *Rubric:* 3 = keep both prints, the first-branch exclusion, the `/25` edge, and the prose for the deadline, the two refusals, and the two calendars; reject a sent packet, the alternate F4 print, a password, a phone number, and a secure or credential claim;; 2 = both prints stay and the false claims stay out;; 1 = one print;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Worked results
 
-Model answers for EX001–EX050. Riverside Civic College, Maya Chen and all figures are synthetic. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX066. Riverside Civic College, Maya Chen and all figures are synthetic. Any answer meeting the rubric scores equally.
 
 **EX001.** Authorized offensive security is looking for weaknesses in systems with the owner's written permission, so the organisation can fix them.
 
@@ -708,6 +1972,38 @@ Model answers for EX001–EX050. Riverside Civic College, Maya Chen and all figu
 **EX049.** Course 020: AI security.
 
 **EX050.** She must not test any real system without written authorization, and she must not use exploit code against systems she does not own.
+
+**EX051.** No. The four lines follow `requested`. The payroll refusal stays in the second slot. A later note does not sort the script.
+
+**EX052.** The set test is first and true, so the `elif` does not run. The verdict is `EXCLUDED - do not test`. The network object still contains the address.
+
+**EX053.** The object holds 128 addresses, from `192.0.2.0` through `192.0.2.127`. `192.0.2.128` starts the next block, and `.130` is past that edge. The script does not print the edge.
+
+**EX054.** The tests are the excluded set and then `192.0.2.0/25`. This address fails both. Being a documentation address is not a test, which is why `192.0.2.5` can pass while this one does not.
+
+**EX055.** `{t:14}` pads the stored string with spaces out to 14 characters. `ip_address` already used the unpadded string. The verdict word is unchanged.
+
+**EX056.** The only import is `ipaddress`. The `else` covers `192.0.2.130` and `198.51.100.7`. That branch prints and does not contact a host.
+
+**EX057.** The lambda returns the negated product of likelihood and impact, then the id. The title is not in the key.
+
+**EX058.** F1 and F3 share product 6, and `"F1"` precedes `"F3"`. F2's product is 2, so it sorts last even though it was typed second.
+
+**EX059.** Scores 6 are high, 4 is medium, and 2 is low. A 5 would be medium. This print has no 5.
+
+**EX060.** Likelihood 2 times impact 1 is 2. That product fails both thresholds, so the word is `low`. The title is not the arithmetic.
+
+**EX061.** The file prints F4 at score 4 in third place. Impact 3 would make product 6, and the id order would be F1, F3, F4, then F2. That order is not the embedded print.
+
+**EX062.** The page asks for named grading accounts and a portal password-reuse control within thirty days. Neither script prints 30.
+
+**EX063.** She refuses the unnamed classmate's blog and removes the clinic note. Neither item is in the two lists, and neither script prints it.
+
+**EX064.** 12–16 October 2026 is the agreed date span. 09:00–17:00 is the daily window. Neither script prints a date or a clock.
+
+**EX065.** T1078 names the shared-account behaviour. The product remains 2 × 3. The technique id is not in the tuple and is not proof of an intrusion.
+
+**EX066.** Keep both prints, the first-branch exclusion, the `/25` edge, and the prose for the deadline, the two refusals, and the two calendars. Reject a sent packet, the alternate F4 print, a password, a phone number, and any claim that the college is finished or that a credential was awarded. Twenty lessons meet the planning minimum and leave review open.
 
 <a id="references"></a>
 
