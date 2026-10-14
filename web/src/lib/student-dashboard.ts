@@ -3,20 +3,24 @@ import { siteLanguage } from './i18n';
 export type Lesson = { level: string; area: string; language: string; chapter: number; status: string; updated_at: string };
 export type Exercise = Lesson & { exercise_id: string; answer: string };
 export type CoursePerformance = { level: string; area: string; language: string; lesson_visits: number; read_seconds: number;
-  lessons_completed: number; exercises_saved: number; analyses_saved: number; chapters_tested: number;
+  lessons_completed: number; exercises_saved: number; analyses_saved: number; ai_actions: number; chapters_tested: number;
   best_correct: number; best_possible: number };
 type Activity = { kind: string; level: string; area: string; language: string; chapter: number;
-  exercise_id: string | null; seconds: number; score: number | null; occurred_at: string };
-type Summary = { activity: Record<string, { events: number; seconds: number }>; lessons_marked: number;
+  exercise_id: string | null; seconds: number; score: number | null; source: 'site' | 'mcp'; occurred_at: string };
+type Summary = { activity: Record<string, { events: number; seconds: number }>; sources: Record<string, number>; lessons_marked: number;
   lessons_completed: number; exercises_saved: number; tests_completed: number; test_answers_correct: number;
   analyses_saved: number };
 export type StudentReport = { summary: Summary; courses: CoursePerformance[]; recent: Activity[] };
 export type StudentProgress = { lessons: Lesson[]; exercises: Exercise[] };
+export type StudentAnalysis = { level: string; area: string; language: string; chapter: number; updated_at: string };
 type CatalogCourse = { level: string; area: string; title: string; titles: Record<string, string> };
 
 export const dashboardCopy = {
   en: {
     dashboardTitle: 'Your study dashboard', recentTitle: 'Recent activity', savedLessonsTitle: 'Latest lessons',
+    analysesTitle: 'Saved analyses', noAnalyses: 'No saved analyses yet.', loadingAnalysis: 'Loading analysis…',
+    analysisError: 'Could not load this analysis.', analysisMissing: 'This analysis is no longer available.',
+    viaAi: 'via AI', onSite: 'on the site', metricAi: 'AI study actions', savedAnswer: 'Your saved answer', openLesson: 'Open lesson →',
     savedExercisesTitle: 'Exercise answers', exercisePrivacy: 'Your saved answers are private. Open a course for its details.',
     courseEyebrow: 'COURSE DETAIL', courseHint: 'Open a course to see lessons, exercises and test results.',
     connectAiEyebrow: 'PRIVATE MCP ACCESS', connectAi: 'Connect your AI',
@@ -46,6 +50,9 @@ export const dashboardCopy = {
   },
   pt: {
     dashboardTitle: 'Seu painel de estudos', recentTitle: 'Atividade recente', savedLessonsTitle: 'Últimas aulas',
+    analysesTitle: 'Análises salvas', noAnalyses: 'Nenhuma análise salva ainda.', loadingAnalysis: 'Carregando análise…',
+    analysisError: 'Não foi possível carregar esta análise.', analysisMissing: 'Esta análise não está mais disponível.',
+    viaAi: 'pela IA', onSite: 'no site', metricAi: 'Ações de estudo pela IA', savedAnswer: 'Sua resposta salva', openLesson: 'Abrir aula →',
     savedExercisesTitle: 'Respostas de exercícios', exercisePrivacy: 'Suas respostas salvas são privadas. Abra um curso para ver os detalhes.',
     courseEyebrow: 'DETALHES DO CURSO', courseHint: 'Abra um curso para ver aulas, exercícios e resultados dos testes.',
     connectAiEyebrow: 'ACESSO MCP PRIVADO', connectAi: 'Conecte sua IA',
@@ -75,6 +82,9 @@ export const dashboardCopy = {
   },
   es: {
     dashboardTitle: 'Tu panel de estudios', recentTitle: 'Actividad reciente', savedLessonsTitle: 'Últimas lecciones',
+    analysesTitle: 'Análisis guardados', noAnalyses: 'Todavía no hay análisis guardados.', loadingAnalysis: 'Cargando análisis…',
+    analysisError: 'No se puede cargar este análisis.', analysisMissing: 'Este análisis ya no está disponible.',
+    viaAi: 'con IA', onSite: 'en el sitio', metricAi: 'Acciones de estudio con IA', savedAnswer: 'Tu respuesta guardada', openLesson: 'Abrir lección →',
     savedExercisesTitle: 'Respuestas de ejercicios', exercisePrivacy: 'Tus respuestas guardadas son privadas. Abre un curso para ver los detalles.',
     courseEyebrow: 'DETALLE DEL CURSO', courseHint: 'Abre un curso para ver lecciones, ejercicios y resultados de pruebas.',
     connectAiEyebrow: 'ACCESO MCP PRIVADO', connectAi: 'Conecta tu IA',
@@ -126,6 +136,17 @@ function record(href: string, heading: string, detail: string): HTMLAnchorElemen
   return anchor;
 }
 
+function exerciseDetail(item: Exercise, heading: string, detail: string, t: Copy): HTMLElement {
+  const disclosure = document.createElement('details'); disclosure.className = 'analysis-detail';
+  const summary = document.createElement('summary'); summary.textContent = `${heading} · ${detail}`;
+  const label = document.createElement('strong'); label.textContent = t.savedAnswer;
+  const answer = document.createElement('p'); answer.className = 'analysis-note'; answer.textContent = item.answer;
+  const link = document.createElement('a'); link.className = 'text-link'; link.href = courseUrl(item.level, item.area, item.language, item.chapter);
+  link.textContent = t.openLesson;
+  disclosure.append(summary, label, answer, link);
+  return disclosure;
+}
+
 function appendLimited(container: HTMLElement, items: HTMLElement[], empty: string, more: string, limit = 8): void {
   container.replaceChildren(...items.slice(0, limit));
   if (!items.length) { const note = document.createElement('p'); note.className = 'empty-note'; note.textContent = empty; container.append(note); }
@@ -146,7 +167,8 @@ function activityLabel(item: Activity, t: Copy): string {
   return `${labels[item.kind] || item.kind}${item.exercise_id ? ` · ${item.exercise_id}` : ''}`;
 }
 
-export async function renderStudentDashboard(progress: StudentProgress, report: StudentReport): Promise<void> {
+export async function renderStudentDashboard(progress: StudentProgress, report: StudentReport,
+                                             analyses: StudentAnalysis[] | null): Promise<void> {
   const language = siteLanguage();
   const t = dashboardCopy[language];
   const summary = report.summary;
@@ -162,7 +184,8 @@ export async function renderStudentDashboard(progress: StudentProgress, report: 
     [t.metricAnswers, event('exercise_answered'), '#account-exercises', `${summary.exercises_saved} ${t.metricSaved.toLowerCase()}`],
     [t.metricTests, Number(summary.tests_completed), '#account-course-section', ''],
     [t.metricCorrect, `${summary.test_answers_correct}/${Number(summary.tests_completed) * 10}`, '#account-course-section', ''],
-    [t.metricAnalyses, Number(summary.analyses_saved), '#account-course-section', ''],
+    [t.metricAnalyses, Number(summary.analyses_saved), '#account-analyses', ''],
+    [t.metricAi, Number(summary.sources?.mcp || 0), '#account-recent', ''],
   ];
   const tiles = document.getElementById('account-metrics')!; tiles.replaceChildren();
   for (const [label, value, href, detail] of metrics) {
@@ -190,17 +213,40 @@ export async function renderStudentDashboard(progress: StudentProgress, report: 
     `${item.language.toUpperCase()} · ${item.status === 'completed' ? t.completed : t.inProgress} · ${dateLabel(item.updated_at, language)}`));
   appendLimited(latest, lessonItems, t.noLessons, t.older);
 
-  const exerciseItems = progress.exercises.map(item => record(
-    courseUrl(item.level, item.area, item.language, item.chapter),
+  const exerciseItems = progress.exercises.map(item => exerciseDetail(item,
     `${item.exercise_id} · ${titleFor(item.level, item.area)}`,
-    `${t.lesson} ${item.chapter} · ${item.language.toUpperCase()} · ${dateLabel(item.updated_at, language)}`));
+    `${t.lesson} ${item.chapter} · ${item.language.toUpperCase()} · ${dateLabel(item.updated_at, language)}`, t));
   appendLimited(document.getElementById('account-exercise-list')!, exerciseItems, t.noExercises, t.older);
 
   const recentItems = report.recent.map(item => record(
     courseUrl(item.level, item.area, item.language, item.chapter),
     activityLabel(item, t),
-    `${titleFor(item.level, item.area)} · ${t.lesson} ${item.chapter} · ${dateLabel(item.occurred_at, language)}`));
+    `${titleFor(item.level, item.area)} · ${t.lesson} ${item.chapter} · ${item.source === 'mcp' ? t.viaAi : t.onSite} · ${dateLabel(item.occurred_at, language)}`));
   appendLimited(document.getElementById('account-recent-list')!, recentItems, t.noActivity, t.older);
+
+  const analysisList = document.getElementById('account-analysis-list')!;
+  const analysisItems = (analyses || []).map(item => {
+    const disclosure = document.createElement('details'); disclosure.className = 'analysis-detail';
+    const heading = document.createElement('summary');
+    heading.textContent = `${titleFor(item.level, item.area)} · ${t.lesson} ${item.chapter} · ${dateLabel(item.updated_at, language)}`;
+    const note = document.createElement('p'); note.className = 'analysis-note'; note.textContent = t.loadingAnalysis;
+    const lessonLink = document.createElement('a'); lessonLink.href = courseUrl(item.level, item.area, item.language, item.chapter);
+    lessonLink.className = 'text-link'; lessonLink.textContent = `${t.lesson} ${item.chapter} →`;
+    disclosure.append(heading, note, lessonLink);
+    disclosure.addEventListener('toggle', async () => {
+      if (!disclosure.open || disclosure.dataset.loaded) return;
+      disclosure.dataset.loaded = 'true';
+      try {
+        const query = new URLSearchParams({ level: item.level, area: item.area, language: item.language, chapter: String(item.chapter) });
+        const response = await fetch(`/student/analysis?${query}`, { credentials: 'same-origin', cache: 'no-store' });
+        if (!response.ok) throw new Error('analysis');
+        const data = await response.json() as { analysis: { note: string } | null };
+        note.textContent = data.analysis?.note || t.analysisMissing;
+      } catch { note.textContent = t.analysisError; delete disclosure.dataset.loaded; }
+    });
+    return disclosure;
+  });
+  appendLimited(analysisList, analysisItems, analyses === null ? t.analysisError : t.noAnalyses, t.older);
 
   const courses = document.getElementById('account-courses')!; courses.replaceChildren();
   for (const item of report.courses) {
@@ -208,7 +254,7 @@ export async function renderStudentDashboard(progress: StudentProgress, report: 
     const heading = document.createElement('summary');
     const name = document.createElement('strong'); name.textContent = `${titleFor(item.level, item.area)} · ${item.language.toUpperCase()}`;
     const facts = document.createElement('span'); facts.className = 'muted';
-    facts.textContent = `${item.lessons_completed} ${t.courseLessons.toLowerCase()} · ${item.exercises_saved} ${t.exercises} · ${item.chapters_tested} ${t.tests}${item.chapters_tested ? ` · ${t.bestScore} ${item.best_correct}/${item.best_possible}` : ''} · ${Math.floor(item.read_seconds / 60)} ${t.minutes}`;
+    facts.textContent = `${item.lessons_completed} ${t.courseLessons.toLowerCase()} · ${item.exercises_saved} ${t.exercises} · ${item.chapters_tested} ${t.tests}${item.chapters_tested ? ` · ${t.bestScore} ${item.best_correct}/${item.best_possible}` : ''} · ${Math.floor(item.read_seconds / 60)} ${t.minutes} · ${item.ai_actions} ${t.viaAi}`;
     heading.append(name, facts);
     const body = document.createElement('div'); body.className = 'course-detail-body';
     const scoped = (title: string, elements: HTMLElement[], empty: string) => {
@@ -219,8 +265,8 @@ export async function renderStudentDashboard(progress: StudentProgress, report: 
     const matches = (row: Lesson | Exercise) => row.level === item.level && row.area === item.area && row.language === item.language;
     const lessons = progress.lessons.filter(matches).map(row => record(courseUrl(row.level, row.area, row.language, row.chapter),
       `${t.lesson} ${row.chapter}`, `${row.status === 'completed' ? t.completed : t.inProgress} · ${dateLabel(row.updated_at, language)}`));
-    const exercises = progress.exercises.filter(matches).map(row => record(courseUrl(row.level, row.area, row.language, row.chapter),
-      row.exercise_id, `${t.lesson} ${row.chapter} · ${dateLabel(row.updated_at, language)}`));
+    const exercises = progress.exercises.filter(matches).map(row => exerciseDetail(row,
+      row.exercise_id, `${t.lesson} ${row.chapter} · ${dateLabel(row.updated_at, language)}`, t));
     const tests = document.createElement('section'); const h3 = document.createElement('h3'); h3.textContent = t.courseTests;
     const results = document.createElement('div'); results.className = 'dashboard-list';
     const note = document.createElement('p'); note.className = 'empty-note'; note.textContent = t.loadingTests;

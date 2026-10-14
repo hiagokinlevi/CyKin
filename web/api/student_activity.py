@@ -16,18 +16,23 @@ def rows(result: Any) -> list[dict]:
 
 async def record(db: Any, user_id: str, kind: str, level: str, area: str,
                  language: str, chapter: int, *, exercise_id: str | None = None,
-                 seconds: int = 0, score: int | None = None) -> None:
+                 seconds: int = 0, score: int | None = None, source: str = "site") -> None:
+    if source not in ("site", "mcp"):
+        raise ValueError("Unknown study activity source")
     await db.prepare(
-        "INSERT INTO student_activity (id, user_id, kind, level, area, language, chapter, exercise_id, seconds, score) "
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        "INSERT INTO student_activity (id, user_id, kind, level, area, language, chapter, exercise_id, seconds, score, source) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     ).bind(secrets.token_urlsafe(18), user_id, kind, level, area, language,
-           chapter, exercise_id, seconds, score).run()
+           chapter, exercise_id, seconds, score, source).run()
 
 
 async def summary(db: Any, user_id: str) -> dict:
     activity = rows(await db.prepare(
         "SELECT kind, COUNT(*) AS events, COALESCE(SUM(seconds), 0) AS seconds "
         "FROM student_activity WHERE user_id = ? GROUP BY kind"
+    ).bind(user_id).all())
+    sources = rows(await db.prepare(
+        "SELECT source, COUNT(*) AS events FROM student_activity WHERE user_id = ? GROUP BY source"
     ).bind(user_id).all())
     lessons = rows(await db.prepare(
         "SELECT COUNT(*) AS total, SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) AS completed "
@@ -45,6 +50,7 @@ async def summary(db: Any, user_id: str) -> dict:
     ).bind(user_id).all())[0]
     return {
         "activity": {item["kind"]: {"events": item["events"], "seconds": item["seconds"]} for item in activity},
+        "sources": {item["source"]: item["events"] for item in sources},
         "lessons_marked": lessons["total"], "lessons_completed": lessons["completed"] or 0,
         "exercises_saved": exercises["total"], "tests_completed": tests["total"],
         "test_answers_correct": tests["correct_answers"], "analyses_saved": notes["total"],
@@ -58,7 +64,7 @@ async def course_performance(db: Any, user_id: str) -> list[dict]:
     def entry(row: dict) -> dict:
         key = (row["level"], row["area"], row["language"])
         return courses.setdefault(key, {"level": key[0], "area": key[1], "language": key[2],
-                                        "lesson_visits": 0, "read_seconds": 0,
+                                        "lesson_visits": 0, "read_seconds": 0, "ai_actions": 0,
                                         "lessons_completed": 0, "exercises_saved": 0,
                                         "analyses_saved": 0, "chapters_tested": 0,
                                         "best_correct": 0, "best_possible": 0})
@@ -66,11 +72,13 @@ async def course_performance(db: Any, user_id: str) -> list[dict]:
     activity = rows(await db.prepare(
         "SELECT level, area, language, "
         "SUM(CASE WHEN kind = 'lesson_opened' THEN 1 ELSE 0 END) AS lesson_visits, "
-        "SUM(CASE WHEN kind = 'lesson_read' THEN seconds ELSE 0 END) AS read_seconds "
+        "SUM(CASE WHEN kind = 'lesson_read' THEN seconds ELSE 0 END) AS read_seconds, "
+        "SUM(CASE WHEN source = 'mcp' THEN 1 ELSE 0 END) AS ai_actions "
         "FROM student_activity WHERE user_id = ? GROUP BY level, area, language"
     ).bind(user_id).all())
     for row in activity:
-        entry(row).update(lesson_visits=row["lesson_visits"], read_seconds=row["read_seconds"])
+        entry(row).update(lesson_visits=row["lesson_visits"], read_seconds=row["read_seconds"],
+                          ai_actions=row["ai_actions"])
 
     for table, field, condition in (
         ("lesson_progress", "lessons_completed", "AND status = 'completed'"),

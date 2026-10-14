@@ -1,5 +1,5 @@
 import { siteLanguage } from './i18n';
-import { dashboardCopy, renderStudentDashboard, type CoursePerformance, type StudentProgress, type StudentReport } from './student-dashboard';
+import { dashboardCopy, renderStudentDashboard, type CoursePerformance, type StudentAnalysis, type StudentProgress, type StudentReport } from './student-dashboard';
 import { initializeStudentMcpKeys } from './student-mcp-keys';
 
 const copy = {
@@ -75,12 +75,15 @@ export async function initializeStudentAccount(): Promise<void> {
     document.body.classList.add('account-signed-in'); dashboard.hidden = false; aiKeys.hidden = false;
     for (const link of document.querySelectorAll<HTMLElement>('[data-student-ai-link]')) link.hidden = false;
     try {
-      const [progressResponse, activityResponse] = await Promise.all([
+      const [progressResponse, activityResponse, analysesResponse] = await Promise.all([
         fetch('/student/progress', { credentials: 'same-origin', cache: 'no-store' }),
         fetch('/student/stats', { credentials: 'same-origin', cache: 'no-store' }),
+        fetch('/student/analyses', { credentials: 'same-origin', cache: 'no-store' }).catch(() => null),
       ]);
       if (!progressResponse.ok || !activityResponse.ok) throw new Error('dashboard');
-      await renderStudentDashboard(await progressResponse.json() as StudentProgress, await activityResponse.json() as StudentReport);
+      const analyses = analysesResponse?.ok ? (await analysesResponse.json() as { analyses: StudentAnalysis[] }).analyses : null;
+      await renderStudentDashboard(await progressResponse.json() as StudentProgress,
+                                   await activityResponse.json() as StudentReport, analyses);
     } catch { status.textContent = t.failed; }
     try { await keys.load(); } catch { document.getElementById('ai-key-message')!.textContent = t.keyError; }
     if (location.hash === '#connect-ai') aiKeys.scrollIntoView();

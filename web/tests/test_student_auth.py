@@ -56,7 +56,7 @@ class Database:
     def __init__(self):
         self.conn = sqlite3.connect(":memory:", check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
-        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql", "0005_student_mcp_keys.sql"):
+        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql", "0005_student_mcp_keys.sql", "0006_student_activity_source.sql"):
             self.conn.executescript((ROOT / "web/migrations" / migration).read_text())
 
     def prepare(self, query: str):
@@ -80,6 +80,20 @@ class Environment:
         await self.app(scope, receive, send)
 
 
+def test_activity_source_migration_preserves_existing_records():
+    connection = sqlite3.connect(":memory:")
+    try:
+        connection.executescript((ROOT / "web/migrations/0004_student_password_activity.sql").read_text())
+        connection.execute(
+            "INSERT INTO student_activity (id, user_id, kind, level, area, language, chapter) "
+            "VALUES ('old', 'student', 'lesson_opened', 'rapid-1-month', 'cybersecurity', 'en', 1)"
+        )
+        connection.executescript((ROOT / "web/migrations/0006_student_activity_source.sql").read_text())
+        assert connection.execute("SELECT source FROM student_activity WHERE id = 'old'").fetchone()[0] == "site"
+    finally:
+        connection.close()
+
+
 def test_email_code_session_and_legacy_boundary(monkeypatch):
     db, sender = Database(), EmailSender()
     now = [1_000_000.0]
@@ -89,6 +103,7 @@ def test_email_code_session_and_legacy_boundary(monkeypatch):
         with TestClient(Environment(api.app, env), base_url="https://opencyber.academy") as client:
             assert client.get("/auth/me").status_code == 401
             assert client.get("/student/progress").status_code == 401
+            assert client.get("/student/analyses").status_code == 401
             assert client.post("/auth/request-code", json={"email": "student@example.test"}, headers={"Origin": "https://attacker.invalid"}).status_code == 403
             created = client.post("/auth/request-code", json={"email": "Student@Example.test", "language": "en"}, headers=ORIGIN)
             assert created.status_code == 200
@@ -188,6 +203,7 @@ def test_provisioned_password_student_and_private_mcp(monkeypatch):
                     "chapter": 1, "note": "Synthetic analysis of authorized scope"}
             assert client.post("/student/analysis", json=note, headers=ORIGIN).status_code == 200
             assert client.get("/student/analysis", params={k: v for k, v in note.items() if k != "note"}).json()["analysis"]["note"] == note["note"]
+            assert len(client.get("/student/analyses").json()["analyses"]) == 1
             assert client.get("/student/stats").json()["summary"]["analyses_saved"] == 1
             assert client.post("/auth/logout", json={}, headers=ORIGIN).status_code == 200
             assert client.get("/student/stats").status_code == 401
@@ -223,6 +239,9 @@ def test_provisioned_password_student_and_private_mcp(monkeypatch):
             report = json.loads(summary.json()["result"]["content"][0]["text"])
             assert report["activity"]["lesson_opened"]["events"] == 2
             assert report["activity"]["test_answered"]["events"] == 10
+            assert report["sources"]["site"] == 2
+            assert report["sources"]["mcp"] == 12
+            assert any(item["source"] == "mcp" for item in report["recent"])
             assert next(item for item in report["courses"] if item["area"] == "ot-iot-security")["best_correct"] == 10
             assert password not in json.dumps(db.conn.execute("SELECT * FROM student_accounts").fetchall(), default=str)
     finally:
@@ -283,11 +302,21 @@ def test_student_mcp_keys_are_one_time_scoped_revocable_and_expiring(monkeypatch
             assert json.loads(saved_lesson.json()["result"]["content"][0]["text"])["saved"] is True
             saved_exercise = rpc(client, key, "student_save_exercise", {**lesson, "exercise_id": "EX001", "answer": "Synthetic student answer"})
             assert json.loads(saved_exercise.json()["result"]["content"][0]["text"])["saved"] is True
+            saved_analysis = rpc(client, key, "student_save_analysis", {**lesson, "note": "Synthetic private analysis"})
+            assert json.loads(saved_analysis.json()["result"]["content"][0]["text"])["saved"] is True
+            listed_analyses = rpc(client, key, "student_list_analyses")
+            assert json.loads(listed_analyses.json()["result"]["content"][0]["text"])["analyses"][0]["chapter"] == 1
+            retrieved_analysis = rpc(client, key, "student_get_analysis", lesson)
+            assert json.loads(retrieved_analysis.json()["result"]["content"][0]["text"])["analysis"]["note"] == "Synthetic private analysis"
             assert client.get("/student/stats").json()["summary"]["exercises_saved"] == 1
+            assert client.get("/student/stats").json()["summary"]["sources"]["mcp"] == 3
+            assert client.get("/student/stats").json()["courses"][0]["ai_actions"] == 3
             assert client.get("/student/progress").json()["lessons"][0]["status"] == "completed"
+            assert client.get("/student/analyses").json()["analyses"][0]["chapter"] == 1
             assert client.get("/student/stats", headers={"Authorization": f"Bearer {key}"}).status_code == 401
+            assert client.get("/student/analyses", headers={"Authorization": f"Bearer {key}"}).status_code == 401
             assert client.get("/auth/mcp-keys", headers={"Authorization": f"Bearer {key}"}).status_code == 401
-            assert client.get("/auth/mcp-keys").json()["keys"][0]["use_count"] == 3
+            assert client.get("/auth/mcp-keys").json()["keys"][0]["use_count"] == 6
             assert rpc(client, key + "x").status_code == 401
 
             second_cookie = "browser-session-for-student-two-token-123"
@@ -298,6 +327,9 @@ def test_student_mcp_keys_are_one_time_scoped_revocable_and_expiring(monkeypatch
             client.cookies.set(student_auth.COOKIE, second_cookie, domain="opencyber.academy")
             assert client.get("/auth/mcp-keys").json()["keys"] == []
             assert client.get("/student/progress").json() == {"lessons": [], "exercises": []}
+            assert client.get("/student/analyses").json() == {"analyses": []}
+            other_key = client.post("/auth/mcp-keys", json={"label": "Another student"}, headers=ORIGIN).json()["token"]
+            assert json.loads(rpc(client, other_key, "student_get_analysis", lesson).json()["result"]["content"][0]["text"])["analysis"] is None
             assert client.delete(f"/auth/mcp-keys/{key_id}", headers=ORIGIN).status_code == 404
             client.cookies.set(student_auth.COOKIE, cookie_token, domain="opencyber.academy")
             assert client.delete(f"/auth/mcp-keys/{key_id}", headers=ORIGIN).status_code == 200
