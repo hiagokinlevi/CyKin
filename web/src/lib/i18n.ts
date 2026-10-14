@@ -250,7 +250,6 @@ const copy: Record<string, [string, string]> = {
   'Toggle theme': ['Alternar tema', 'Cambiar tema'],
   'My area': ['Minha área', 'Mi área'],
   'Open learning library': ['Biblioteca de estudo aberta', 'Biblioteca de estudio abierta'],
-  'Editorial responsibility: hiagokinlevi': ['Responsabilidade editorial: hiagokinlevi', 'Responsabilidad editorial: hiagokinlevi'],
   'Rights': ['Direitos', 'Derechos'],
   'Books and courses': ['Livros e cursos', 'Libros y cursos'],
   'OPEN LIBRARY · PUBLIC SOURCE': ['BIBLIOTECA ABERTA · FONTE PÚBLICA', 'BIBLIOTECA ABIERTA · FUENTE PÚBLICA'],
