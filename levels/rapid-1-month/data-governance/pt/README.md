@@ -1,11 +1,13 @@
-# Governança de dados — Rápido — Português
+# Governança de Dados — Rápido — Português
 
-**Duração:** 1 mês · **Estado editorial:** manuscrito público em português do Brasil; revisão técnica, linguística e A4 pendente.
+**Duração nominal:** 1 mês · **Estado editorial:** manuscrito público em português, com tradução parcial e revisão integral pendente.
 
-[Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md) · [Playbooks](../../../../playbooks/data-governance/README.md)
+[Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill única](../skill/SKILL.md) · [Playbooks](../../../../playbooks/data-governance/README.md)
 
-Esta edição tem um livro principal de estudo. Cada disciplina do currículo é um capítulo com conteúdo didático, exemplos, exercícios e, no apêndice final, resoluções. Os capítulos 1–4 de 4 estão publicados no [manuscrito](book/MANUSCRIPT.md); casos, pessoas e organizações são sintéticos, e as saídas dos laboratórios e as citações são idênticas às da edição em inglês.
+Esta edição tem um único livro principal. Os capítulos 1–4 e seus 58 exercícios com respostas foram preservados; a continuação 05–10 acrescenta seis capítulos traduzidos, seus exemplos, mapas, desenhos textuais e EX059–EX064 com resoluções no apêndice. Há **10/20 posições de capítulo inglesas disponíveis em português** e **64/74 IDs com respostas**. Essas proporções medem presença, não equivalência integral ou conclusão do curso.
 
-O inglês é a edição de referência. Inglês, português e espanhol são prioridades atuais de redação e revisão; cada edição exige avaliação técnica e linguística própria.
+**Leia a continuação:** [Capítulo 05](book/MANUSCRIPT.md#ch-05) · [Capítulo 10](book/MANUSCRIPT.md#ch-10) · [Resoluções](book/MANUSCRIPT.md#worked-results). A sequência 11–20 permanece [pendente de tradução](book/PLAN.md#translation-gap). O índice leva a cada capítulo no mesmo manuscrito, sem criar um livro por semana.
 
-**Critério de publicação:** no mínimo 300 páginas A4 reais, 50 exercícios substantivos com resoluções, fontes verificadas, prática segura e reproduzível, e revisão técnica e linguística. Os títulos dos cursos não conferem credenciamento acadêmico.
+O inglês é a referência. A [nota editorial](book/MANUSCRIPT.md#pt-translation-ch05-10) identifica seu SHA e os limites da tradução e dos testes. Pessoas, organizações e dados do caso são sintéticos. Os prazos do café não são requisitos universais do GDPR ou da LGPD; o programa não é um validador de consentimento jurídico. Nada nesta edição é aconselhamento jurídico ou qualificação acadêmica.
+
+A revisão integral técnica, linguística, de fontes, direitos e acessibilidade permanece aberta. A4 é uma medição específica de uma edição renderizada, não uma quota de escrita. A publicação no repositório não comprova uma implantação no site. Consulte o [padrão de livros](../../../../BOOK_STANDARD.md) antes de declarar o volume concluído.

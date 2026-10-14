@@ -1,6 +1,6 @@
 ---
 name: oca-data-governance-rapid-393b36d8
-description: "Guide a learner through the published rapid data-governance book: twenty English chapters, the sign-up lab, and EX001–EX074. Review is still open. Not legal advice."
+description: "Guide a learner through rapid data governance: twenty English chapters and ten Portuguese chapter positions, with the sign-up lab and same-book worked answers. Complete review and translation parity remain open. Not legal advice."
 license: CC0-1.0
 ---
 
@@ -17,7 +17,7 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/data-governance/README.md): source-linked practice.
 - [Published English book](../en/book/MANUSCRIPT.md): twenty chapters, the sign-up lab, and EX001–EX074. Review is still open, so do not describe the book as finished, compliant, or accredited.
-- [Portuguese (PT-BR) manuscript](../pt/book/MANUSCRIPT.md): that edition's own chapters. Do not treat it as a translation of the twenty English chapters. Where a later English lesson has no Portuguese chapter, do not invent one.
+- [Portuguese (PT-BR) manuscript](../pt/book/MANUSCRIPT.md): Chapters 1–10 and EX001–EX064 with answers; Chapters 05–10 have newly translated teaching. Chapters 11–20 are still absent in Portuguese. Do not silently substitute English or infer complete parity from file presence.
 
 ## Navigation rule
 
@@ -47,6 +47,16 @@ After chapter 20, the next stop is [course 004: Privacy and data protection / Ra
 
 ## Editorial status and language
 
-Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Twenty English chapters and EX001–EX074 are published. Independent review remains open. Page count is not the writing target. Do not treat another language edition as a translation of these twenty chapters. Portuguese publishes its own earlier chapters. Spanish and the remaining languages are outlines.
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Twenty English chapters and EX001–EX074 are published. Independent review remains open. Page count is not the writing target. Portuguese now has ten chapter positions and EX001–EX064, with full-book parity still open. Spanish and the remaining languages are outlines. Check live edition availability rather than extrapolating a translated batch to the whole catalog.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
+
+## Portuguese translation checkpoint — Chapters 05–10
+
+Use the [Portuguese index](../pt/SUBJECTS.md), [new Chapter 05](../pt/book/MANUSCRIPT.md#ch-05), [same-book answers](../pt/book/MANUSCRIPT.md#worked-results) and [pinned translation note](../pt/book/MANUSCRIPT.md#pt-translation-ch05-10). Source: English blob `ad3512e8614ace755cbaaab991ef932fceda4818` at `d087ecc50f623e740c9a9092ded79cb37b88a098`. Keep `ch-05`–`ch-10` and EX059–EX064 aligned. The six translations preserve teaching, 18 objectives, six four-row example tables, six Mermaid maps, six text drawings and the original 0–3 demands. Punctuation was normalized without changing scoring criteria. The first four chapter bodies and original 58 answers remain, not newly approved.
+
+Teach the distinct objects: scheduled meeting versus delivered explanation, notebook finding versus counted file, earlier removal versus current membership, later unsubscribe versus historical print, folder access versus customer review, and the photo period versus a documented exception. The six-month and one-year rules are supplied synthetic policies, not universal legal deadlines. Missing documentation is handled under this fixture's premises and is not a general proof that an event never happened.
+
+The original Python listing reproduced its two-line baseline locally. Four extra inputs examined empty data, removing only a duplicate, a missing at-sign, and the case-sensitive `Yes` tick. With `[("a.b", "yes")]`, the source counts one malformed address but also one member in `ok`: that predicate does not require `@`. Preserve the source output and explain this limitation; do not use the fixture as a production address validator or evidence of legal consent. No real email, deletion, account change or customer review occurred. The graphs' 21 connections were compared structurally; no Mermaid or A4 rendering, site test or independent human review is claimed.
+
+Stop the Portuguese teaching route at the [11–20 translation gap](../pt/book/PLAN.md#translation-gap). The next translation starts at English Chapter 11 / EX065; do not begin Spanish as though the Portuguese collection were complete. Keep all answers in the one book and preserve manual edits on the next pass.
