@@ -4,10 +4,10 @@
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Labs and practice:** the sharing lab is in the published English manuscript. It counts a synthetic export. The seed-2 print remains the counted result until a new export is run. Use synthetic data only.
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
+**Projects and assessment:** score the authored exercises with their 0–3 rubrics. Review of the edition is still open.
 
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
+**Exercises and answers:** EX001–EX074 have worked results in the manuscript appendix. A planned quota is not an authored exercise. There is no exercise quota.
 
 **References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.

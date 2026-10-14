@@ -1,16 +1,16 @@
 # Information Security: Rapid Course
 
 - Language: English (`en`); course 002, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX058 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX074 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification.
 - Audience: managers and staff of very small organisations who need to fix the most common security weaknesses in a month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab counts synthetic shared files open to anyone with the link, by folder. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+## How to use this book
 
-Read in order. The four chapters follow one practice manager from what the clinic holds, through accounts, devices and sharing, and email fraud and people, to backups, incidents and a monthly routine. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics. Each chapter also has a concept table, a data table, a decision flowchart and a second worked example; EX051–EX058 ask you to apply those tools to a new clinic fact before you read the answers.
+Read in order. Twenty English chapter-lessons are published. The first four follow Sofia Lindqvist from what the clinic holds, through accounts and sharing, and email fraud, to backups, the incident card and a monthly routine. Chapters 5–20 each settle one later question about that same month. They are not grouped as four weeks of five. Meeting the planning minimum does not close review. Run the lab where it appears, attempt each exercise before the worked results, and score yourself with the rubric. Chapters 1–4 also carry concept tables, data tables and exercises EX051–EX058.
 
 ### Synthetic running case
 
@@ -29,7 +29,7 @@ ISO/IEC 27000:2026. Full list in [References](#references).
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -207,7 +207,7 @@ A nurse copies a wound photograph into the marketing folder so she can find it o
 - **EX013 — Why log changes.** Why record each change? *Rubric:* 3 = so problems can be traced;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue studying — lesson 01 (chapter 01 of 04)
+### Continue studying — lesson 01 (chapter 01 of 20)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -418,7 +418,7 @@ A locum vet covers Monday and is told to use the reception login "only for this 
 - **EX026 — Default setting.** What default did the technician set? *Rubric:* 3 = clinic-only sharing for new shares;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-02 -->
-### Continue studying — lesson 02 (chapter 02 of 04)
+### Continue studying — lesson 02 (chapter 02 of 20)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -595,7 +595,7 @@ On Tuesday an email quotes a real laboratory invoice and says the laboratory's b
 - **EX038 — Typed password.** What did Sofia do about the typed password? *Rubric:* 3 = reset it and checked the account;; 2 = both;; 1 = one;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-03 -->
-### Continue studying — lesson 03 (chapter 03 of 04)
+### Continue studying — lesson 03 (chapter 03 of 20)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -778,9 +778,1198 @@ The new backup service shows a green dashboard glyph on Thursday. Sofia does not
 - **EX050 — Next step.** What course comes next and why? *Rubric:* 3 = data governance rapid, retention of old records;; 2 = both;; 1 = one;; 0 = none.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-04 -->
-### Continue studying — lesson 04 (chapter 04 of 04)
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Chapter 5 — A reminder is not a fresh list
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  R["A weekly reminder is written"] --> P{"Is a newer locked list in the office?"}
+  P -->|No| O["The three-week list is still the only paper"]
+  O --> U["Do not phone from it as if it were current"]
+  U --> H["Write the urgent call for confirmation when the system returns"]
+  P -->|Yes| C["Use that dated list for urgent calls only"]
+```
+
+A reminder is an intention. The locked page is the evidence.
+
+### Logical drawing
+
+```text
+drill finding: printed client list, three weeks old, new clients missing
+    Sofia writes a weekly reminder
+        |
+        +-- the reminder is not itself a print
+        +-- until a new list is printed and locked, the old list remains old
+        +-- absence from the old list is not "no record"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Tell a calendar reminder apart from the paper it is meant to produce.
+2. Refuse urgent calls from the three-week list while that list is still the one in the drawer.
+3. Record a caller the old list omits, instead of saying the clinic has no record.
+
+### 5.1 The drawer still holds the old page
+
+Chapter 4 ended with a decision to print a fresh list each week and lock it away. The change log, as written in that chapter, records the reminder. It does not record a later print. Reception still has the list the drill used. New clients who registered after that print are missing from it. Phoning only the names on that page repeats the gap the drill found.
+
+Staff who cannot find a caller on the page do not announce that the clinic has no such client. The page is an old extract. They write the caller's name, the time, and "confirm when the practice system returns," on the day's appointment sheet. They do not invent an appointment to be helpful.
+
+### 5.2 Worked example
+
+| What someone points to | What it proves | Decision |
+|---|---|---|
+| "The reminder is in the calendar." | Sofia intends a weekly print | Not a list |
+| "The list in the drawer has names." | Those names were current three weeks ago | Do not treat it as this week |
+| "A caller is missing, so they are new and unregistered." | The old page cannot show later registrations | Write the call down for confirmation |
+| "Reprint from memory before the system returns." | Memory is not the practice system | Refuse |
+
+> **Synthetic case.** No new print is added by this lesson. The three-week age is the drill's finding, not a new measurement.
+
+### Errors and limits
+
+This lesson does not say a fresh list would be useless. It says the fresh list is not in evidence yet. When a dated print is locked, urgent calls may use that print, and only for the names it shows. Clients absent from even a fresh list are still confirmed against the system when it returns. The data-governance course remains the next course for how long old client records are kept. This chapter does not answer retention.
+
+### Apply
+
+- **EX059 — Reminder versus paper.** The calendar reminder exists. The drawer still holds the drill's list. A caller gives a name that is not on it. What do you use, what do you refuse to say, and what do you write? *Rubric:* 3 = do not use the old list as this week's list; do not say the clinic has no record; write the call for confirmation when the system returns;; 2 = refuse the old list and the "no record" sentence;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — The outage paper is the record of those hours
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  D["The practice system returns"] --> S["Collect the paper written while it was down"]
+  S --> C{"Does a system note already describe the same visit?"}
+  C -->|No| E["Enter from the paper"]
+  C -->|Yes| M["Compare the two. Do not create a second visit"]
+  E --> L["Keep the paper in the change-log folder"]
+  M --> L
+```
+
+Memory is not a copy of the paper.
+
+### Logical drawing
+
+```text
+four hours, system treated as down
+    treatments written on paper
+    system returns
+        |
+        +-- entry source: that paper
+        +-- not a source: what a receptionist remembers
+        +-- if a note was saved before the outage, reconcile, do not double
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Use the outage paper as the source for visits that happened while the system was down.
+2. Refuse a reconstruction from memory when the paper is in the folder.
+3. Stop one visit from being entered twice when a pre-outage note and the paper describe the same animal.
+
+### 6.1 Two writings, one visit
+
+The drill's rule was to record treatments on paper for entry later. When the system is back, "later" has arrived. The paper is the writing made at the time. A receptionist who says "I remember the dose" is offering a second account. If it disagrees with the paper, the paper wins unless Dr. Moss records a correction and the reason. A correction is a new log line. It does not throw the paper away.
+
+Some notes may already sit in the system from before the outage. Those notes are not the outage. If the paper and an existing note name the same animal and the same morning, staff compare them and enter only what the paper adds. Creating a second visit would invent a consultation.
+
+### 6.2 Worked example
+
+| Proposed entry | Relation to the paper | Decision |
+|---|---|---|
+| Type the paper into the system, line by line | The paper is the source | Accept |
+| Type what the nurse recalls, because the handwriting is awkward | Recall is not the record | Refuse. Ask for a legible copy of the same paper if needed |
+| Create a new visit although the chart already has this morning's note | Same animal, same morning | Reconcile. Do not double |
+| Discard the paper once the screen looks complete | The paper is how the entry can be checked | File it with the change log |
+
+> **Synthetic case.** No dose, animal name, or client name is supplied. Do not invent one.
+
+### Errors and limits
+
+Filing the paper does not restore the mailbox, and it does not refresh the client list from Chapter 5. Each artefact still answers its own question. This chapter also does not set a legal retention period for the paper.
+
+### Apply
+
+- **EX060 — Which writing is entered?** The system is back. The outage paper lists a treatment. A nurse remembers a different dose, and the chart already has a note for that animal from the same morning. What is entered, and what is not created? *Rubric:* 3 = enter from the paper, record any correction through Dr. Moss, and do not create a second visit;; 2 = use the paper and avoid the duplicate;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — The next share count is a new measurement
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  O["Published run: 47 of 300, seed 2"] --> K["Twelve client and finance files were closed afterward"]
+  K --> N{"Has a new export been run?"}
+  N -->|No| H["Do not print 47 minus 12 as this month's result"]
+  N -->|Yes| R["Record that run's own counts"]
+  H --> S["Leave the published output unchanged"]
+```
+
+Subtraction is not a rerun.
+
+### Logical drawing
+
+```text
+verified script, seed 2
+    all files: 47 of 300
+    client 8 of 140, finance 4 of 60  -> the twelve that were closed
+    monthly routine: rerun the check
+        |
+        +-- 47 - 12 = 35 only if the same 300 files are unchanged and nothing new was shared
+        +-- that assumption is not a measurement
+        +-- the script is not edited to force 35
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the published seed-2 output as the only verified count until a new export is run.
+2. Reject 35 of 300 as this month's result when nobody has rerun the check.
+3. Leave the program and its printed lines unchanged.
+
+### 7.1 Closing files is not the same act as counting them
+
+Sofia closed the eight client files and the four finance files. That action is in the change log. The script's printed total is from the export taken before those closes. The monthly routine says to rerun the check. A classmate subtracts twelve from forty-seven and wants the dashboard to say 35 of 300. That figure would be true only if no file was added, no closed file was shared again, and the other open files stayed as they were. None of those conditions has been measured.
+
+Until the technician produces a new export and the same kind of count is run, the verified line remains `all files: 47 of 300`. Staff do not type 35 into the log as if the program had printed it.
+
+### 7.2 Worked example
+
+| Claim | What was actually done | Decision |
+|---|---|---|
+| "Twelve files were set to clinic-only." | The change log says so | Keep that as a change, not as a new census |
+| "So the open total is now 35." | No new export | Refuse the number |
+| "Edit the script so the next print shows 35." | The script's job is to count the export | Refuse the edit |
+| "Marketing can be ignored because those files may stay open." | Chapter 2 already separated that decision | A new run still has to count them if they are open |
+
+> **Synthetic case.** The counts 47, 300, 8, 4, 25 and 10 stay the published run. This lesson does not invent a second output.
+
+### Errors and limits
+
+A later run might show 35, or 40, or 12 again if a link was reopened. Any of those is a result only after it is counted. This chapter does not perform that count, and it does not change `random.seed(2)`.
+
+### Apply
+
+- **EX061 — Do not subtract a census.** Someone writes "open files this month: 35 of 300" because twelve were closed. What is wrong with the number, and what remains the verified total? *Rubric:* 3 = 35 was not counted; the verified total is still 47 of 300 until a new export is run; do not edit the script;; 2 = reject 35 and keep 47 of 300;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — A locum account ends when the locum ends
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  L["The change log names the locum account to disable"] --> D{"Is the disable recorded?"}
+  D -->|No| F["The account is still a leaver finding"]
+  D -->|Yes| K["The monthly review can cite that log line"]
+  F --> M["A second factor does not replace the disable"]
+```
+
+The monthly review looks for the missing log line. It does not assume the account died on its own.
+
+### Logical drawing
+
+```text
+Monday locum
+    personal account created before the first patient
+    second factor turned on
+    log says which account to disable when the locum leaves
+        |
+        +-- "the week is over" is not a disable
+        +-- a security key left in a drawer is not a disable
+        +-- the review item "leavers' accounts" means check this line
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Treat the log's disable instruction as unfinished until a disable is recorded.
+2. Refuse to leave the locum account enabled because a second factor exists.
+3. Record the disable where Dr. Moss and Sofia can read it.
+
+### 8.1 The second factor is not an off switch
+
+Chapter 2 refused a shared reception login for the locum and created a personal account, with a second factor, before the first patient. The same log says which account to disable when the locum leaves. The monthly routine includes leavers' accounts. A classmate argues the account is safe to keep because sign-in needs the key. The key reduces one path. It does not end the account. A key left at the clinic, or a factor that was never removed, still belongs to an account that should have been closed.
+
+The review question is narrow. Does the change log contain the disable, with a date, after the locum's last day? If it does not, the finding is an open leaver account. Sofia disables it and writes the line. She does not wait for the next incident card to discover a sign-in.
+
+### 8.2 Worked example
+
+| Reason offered for leaving the account | What the log shows | Decision |
+|---|---|---|
+| "The second factor is on." | A control on a live account | Disable anyway, then write it |
+| "The locum might return next month." | No approval from Dr. Moss for a standing account | Disable. A return needs a new approval |
+| "The week ended, so the system will have expired it." | No such expiry is recorded | Do not assume it |
+| "The disable is already in the log, dated after the last day." | The review item is met | Cite that line. Do not disable twice without checking |
+
+> **Synthetic case.** The locum is unnamed. Do not add a personal name.
+
+### Errors and limits
+
+Disabling the locum account does not remove the reception staff's own accounts, and it does not change the twelve closed files. A later locum is a new account, approved again, not a revival of this one unless Dr. Moss writes that decision.
+
+### Apply
+
+- **EX062 — Leaver or leftover?** The locum's last day has passed. The log still only says which account to disable. The second factor remains on. What is the finding, and what line must be added? *Rubric:* 3 = the account is still open; disable it; write the date in the change log; the second factor is not a substitute;; 2 = disable and record it;; 1 = one action;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — One stopped fraud does not retire the rule
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  M["A new bank-detail message arrives"] --> P["Phone the number already held"]
+  P --> S["A second person approves only after that call"]
+  S --> N["Do not use the number printed in the message"]
+  N --> H["The earlier stopped attempt is not a waiver"]
+```
+
+Each request is a new use of the same rule.
+
+### Logical drawing
+
+```text
+rule, agreed with Dr. Moss
+    phone a number the clinic already held
+    a second person approves the change
+    one past attempt was stopped
+        |
+        +-- the next message is not covered by that success
+        +-- a familiar invoice layout does not skip the call
+        +-- the number inside the message is still the wrong telephone
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Apply the phone-back rule to a later message even though an earlier attempt was stopped.
+2. Refuse the telephone number printed in the new message.
+3. Keep the second person's approval behind the call, not ahead of it.
+
+### 9.1 Success is not an exemption
+
+The clinic's rule stopped one fraudulent payment request. That is evidence the rule was used once. It is not evidence that suppliers will not be imitated again. A new message can copy an invoice number, a logo, and a tone of urgency. The criminal still cannot answer the telephone at the real supplier. That is why the call uses a number the clinic already held, from a bill or a contract file, and why a second person approves the change only after the call.
+
+Paying because "we already know this trick" skips the call. Calling the number in the new message uses the sender's telephone. Both mistakes retire the rule without Dr. Moss agreeing to retire it. She has not.
+
+### 9.2 Worked example
+
+| Second message | Tempting shortcut | Decision |
+|---|---|---|
+| Same wholesaler name, new account digits | "We caught one last month." | Phone the number already held |
+| The message says "use this direct line, the office is closed." | The direct line is inside the message | Ignore that line |
+| The second person wants to approve from the email alone | Approval is after the call | Wait for the call |
+| The call to the held number says the account did not change | The supplier contradicted the message | Do not pay the new account |
+
+> **Synthetic case.** No supplier bank account is printed here. Do not invent digits.
+
+### Errors and limits
+
+The rule does not decide how long Hollybank keeps old invoices. Retention stays with the data-governance course. This chapter also leaves the drawer, the next restore line, and later setting changes to the lessons that follow.
+
+### Apply
+
+- **EX063 — The second message.** A new email asks Hollybank to change a wholesaler's bank details and prints a phone number to call. Last month the same kind of request was stopped. What do you call, what do you ignore, and when may the second person approve? *Rubric:* 3 = call the number the clinic already held; ignore the number in the email; the second person approves only after that call; last month's success is not a waiver;; 2 = the held number and the approval order;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — An undated page is not this week's list
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  D["A page of names is in the drawer"] --> Q{"Does the page show a print date, and does the log match it?"}
+  Q -->|No| R["It cannot be shown to be newer than the drill page"]
+  R --> W["Urgent calls do not use it as this week"]
+  Q -->|Yes| U["Urgent calls may use that dated page, names only"]
+```
+
+A stack of names without a date is not a newer extract.
+
+### Logical drawing
+
+```text
+reminder in the calendar
+three-week drill page still known
+someone adds another page, no date, no writer
+    |
+    +-- the new page is not identified as later
+    +-- urgent calling still waits
+    +-- a usable list would carry a print date and a log line
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Reject an undated drawer page as this week's urgent-call list.
+2. Say what a usable print would have to show before anyone phones from it.
+3. Keep a missing caller on today's appointment sheet instead of declaring that Hollybank has no record.
+
+### 10.1 A second stack can still be the old news
+
+Chapter 5 separated the calendar reminder from the drill's list. Staff now face a different object: a page already sitting in the drawer, with client names and no date. Nothing on it shows that it was printed after the drill. Nothing in the change log, which only Sofia and Dr. Moss can write, records a print. Two undated pages cannot be ordered by looking at them. Phoning from the newer-looking handwriting repeats the drill's gap whenever the page is actually the old one, and the staff cannot tell.
+
+A list that urgent calls may use has a print date on the paper and the same date in the change log. This lesson does not place that pair into Hollybank's file.
+
+### 10.2 Worked example
+
+| Object in the office | What it shows | Decision |
+|---|---|---|
+| Page of names, no date, no writer | Cannot be ordered against the drill page | Do not phone from it as this week |
+| Calendar reminder alone | An intention to print | Still not a list |
+| Page dated last Tuesday, same date in the log | A print Sofia or Dr. Moss recorded | Urgent calls may use those names |
+| Caller absent from the undated page | The page may be old | Write the name and time on today's appointment sheet and mark it for a system check |
+
+> **Synthetic case.** No dated print is added. Do not invent client names.
+
+### Errors and limits
+
+A dated page still omits anyone who registered after that morning. Those callers are checked in the practice system when it is up. This chapter does not set how long either paper is kept.
+
+### Apply
+
+- **EX064 — Which page may be phoned from?** The drawer holds a page of names. It has no print date. The change log has the reminder and no print line. A caller is not on the page. What do you refuse, and what do you write? *Rubric:* 3 = refuse the undated page as this week's list; do not say Hollybank has no record; write the caller's name and time on today's appointment sheet for a later system check;; 2 = refuse the page and avoid the "no record" claim;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Next month's restore is a blank line
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  L["The log holds last week's failed restore and the later success"] --> M["The monthly routine asks for one restore test"]
+  M --> B{"Is there a line dated in the new month?"}
+  B -->|No| K["Last week's success does not fill the blank"]
+  B -->|Yes| C["Cite that line, including a failure"]
+```
+
+A passed test belongs to the week it was run.
+
+### Logical drawing
+
+```text
+course month
+    mailbox restore fails, then succeeds into a test area
+    both results are already logged
+last session sets the monthly routine
+    |
+    +-- the next month starts with an empty restore line
+    +-- the earlier success is not copied forward
+    +-- the live mailbox is not overwritten to manufacture a result
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep last week's successful mailbox restore inside the week it was logged.
+2. Leave the next month's restore line blank until that month has its own result.
+3. Refuse a test that writes over the live mailbox.
+
+### 11.1 The routine starts after the session
+
+The change log already contains two results for the separate email-and-files backup: the mailbox restore that failed because the first full copy had not finished, and the successful attempt a week later. Both belong to that effort. At the last session Sofia set a monthly routine that includes one restore test. The routine describes the months that follow the session. It does not rewrite last week's success as if it were every future month.
+
+The next month's line names the copy, the date, the person who watched, and whether the restore into a test area worked. A failure is still a filled line. A blank is not a pass. Restoring on top of the live mailbox would put the clinic's mail at risk in order to decorate the routine, so that action is refused.
+
+### 11.2 Worked example
+
+| Claim about the routine | Evidence | Decision |
+|---|---|---|
+| "We already passed a mailbox restore." | Logged during the course, into a test area | Keep it as that week's result |
+| "So next month's box can be ticked now." | No line dated in the new month | Leave the box blank |
+| "The provider keeps 30 days, so the email test is unnecessary." | Those 30 days are the practice system | The email-and-files copy is a different backup |
+| "Restore the live mailbox so the test feels real." | The earlier tests used a test area | Refuse |
+
+> **Synthetic case.** The next month's result is not invented. The blank stays blank.
+
+### Errors and limits
+
+Filling the line does not rerun the sharing count, and it does not print the client list from Chapter 10. A green dashboard glyph was already rejected in Chapter 4 as a substitute for a restore. This chapter does not repeat that test.
+
+### Apply
+
+- **EX065 — Whose month is the success?** The log shows a failed mailbox restore and a successful one a week later, both during the course. The next calendar month has started. The routine sheet has an empty restore row. May last week's success fill it, and where must the next attempt land? *Rubric:* 3 = last week's success stays in that week; the new row stays empty until its own dated result; the attempt lands in a test area, not on the live mailbox;; 2 = keep the row empty and name the test area;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Three computers are not a patch census
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  T["Three computers had updates off"] --> F["A newer driver, then updates switched on"]
+  F --> S["The month note says updates are back on"]
+  S --> N{"Does the log list a patch check of all nine?"}
+  N -->|No| R["Do not write that all nine are fully patched"]
+  N -->|Yes| K["Cite that check, machine by machine"]
+```
+
+The repair covered the machines that had been switched off.
+
+### Logical drawing
+
+```text
+nine computers
+    three had updates off after a label-printer failure
+    driver replaced, those three switched on
+    six others were not in that note
+        |
+        +-- "updates back on" means those three
+        +-- it is not a patch-level reading of nine machines
+        +-- missing rows are not proof the six are exposed
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read "updates back on" as the three computers that had been switched off.
+2. Refuse a sentence that all nine computers are fully patched when no such check was written.
+3. Avoid treating the missing six rows as evidence that those machines are exposed.
+
+### 12.1 The month note has a smaller subject
+
+Chapter 2 records a narrow repair. An old label printer had broken after an update, so three computers had updates switched off. The technician installed a newer driver and switched updates on again. The month's list then says updates are back on. A classmate expands that phrase to "all nine computers are fully patched." The log never recorded a patch level, a date, or a pass for the other six. Expansion invents a census.
+
+The opposite error is also refused. Absence of six rows does not show that those machines missed updates. They may have been receiving them the whole time. The honest sentence is the one the technician's work supports: the three that were off are on again. A nine-row check, if Sofia later wants one, is a new measurement with its own lines.
+
+### 12.2 Worked example
+
+| Sentence offered for the log | What was done | Decision |
+|---|---|---|
+| "Updates are back on for the three that were off." | Driver installed, those three switched on | Accept |
+| "All nine computers are fully patched." | No nine-row check | Refuse |
+| "The other six must be dangerously behind." | They were outside the printer note | Do not infer exposure |
+| "Skip the three because the month summary already sounds complete." | The summary is only as wide as the repair | Keep the three-machine wording |
+
+> **Synthetic case.** No new patch report is written by this lesson.
+
+### Errors and limits
+
+Switching updates on is not the same control as the tablets' passcode and remote wipe. This chapter does not choose a wipe, and it does not name which three computers.
+
+### Apply
+
+- **EX066 — How wide is the sentence?** The change log says the three computers that had updates off now have them on, after the newer driver. A colleague writes "patch census: all nine computers fully patched." What is wrong with the width, and what do you refuse to infer about the other six? *Rubric:* 3 = the repair covers three machines; nine were not checked; do not call the six exposed merely because they lack rows;; 2 = reject the nine-machine census;; 1 = a vague doubt;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — An open session is still a shared login
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N["A nurse is signed in"] --> H["A helper asks to use that screen"]
+  H --> A{"Would the helper's actions be recorded as the nurse?"}
+  A -->|Yes| F["Refuse the session"]
+  F --> P["A personal account waits for Dr. Moss's log line"]
+  A -->|No| O["Only if the helper has already signed in as themselves"]
+```
+
+The password on the note was removed. The live screen can recreate the same defect.
+
+### Logical drawing
+
+```text
+shared reception login: already refused
+nurse's own account: signed in at the desk
+Saturday helper, unnamed: "only to print the rota"
+    |
+    +-- the print would be attributed to the nurse
+    +-- stepping away does not lend the session
+    +-- a new account is not created in this lesson
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Treat use of another person's signed-in screen as a shared login.
+2. Refuse a one-task exception for printing the rota.
+3. Hold any new helper account until Dr. Moss has approved it in the change log.
+
+### 13.1 The account can be personal while the screen is shared
+
+Chapter 2 removed the reception password from under the keyboard and gave people their own accounts. That repair fails if a signed-in screen is handed over. A Saturday helper, who is not named in this case, asks to use the nurse's session only long enough to print the rota. The practice system would record the helper's clicks as the nurse. A later question about who looked at a record could not be answered. The few seconds it takes to switch users, already timed on a busy morning, are not a reason to skip the switch when the nurse is leaving the chair.
+
+Sofia refuses the borrowed session. If the helper needs an account, it is a personal one, with a second factor, approved by Dr. Moss in the change log before the first use. This lesson does not open that account.
+
+### 13.2 Worked example
+
+| Request | What the log would show | Decision |
+|---|---|---|
+| "I will only print the rota." | The nurse's name on the activity | Refuse |
+| "The nurse said I could, and she is in the room." | Still one session | Refuse until the helper signs in as themselves |
+| "Create me a login now, the printer is waiting." | No approval line | Wait for Dr. Moss's written approval |
+| Helper already has an approved personal account | Their own name on the activity | They sign in as themselves |
+
+> **Synthetic case.** The helper has no personal name. Do not add one.
+
+### Errors and limits
+
+Refusing the session does not disable the nurse's account, and it does not decide the locum's leftover account from Chapter 8. A rota that part-time staff check from home still belongs behind sign-in, as Chapter 2 already placed it.
+
+### Apply
+
+- **EX067 — Whose name is on the print?** A nurse is signed in. An unnamed Saturday helper asks to use that screen only to print the rota while the nurse steps away. What do you refuse, and what must exist before the helper gets an account? *Rubric:* 3 = refuse the borrowed session because actions would be recorded as the nurse; a personal account needs Dr. Moss's approval in the change log before first use; this lesson does not create the account;; 2 = refuse the session and name the approval;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — A new starter does not inherit a key
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX068.
+
+```mermaid
+flowchart TD
+  K["Two nurses received security keys"] --> W["They had declined work apps on personal phones"]
+  W --> R["A new receptionist asks for an app on their own phone"]
+  R --> M{"Has Dr. Moss written the method for this person?"}
+  M -->|No| H["Do not copy the nurses' keys and do not install the app"]
+  M -->|Yes| G["Use the method that line names"]
+```
+
+The keys answer two people's refusal. They are not a template.
+
+### Logical drawing
+
+```text
+second factor, clinic-wide
+    Dr. Moss and office team first
+    two nurses: keys, because they declined personal-phone apps
+new receptionist, method not yet written
+    |
+    +-- the nurses' reason is not this person's reason
+    +-- a third key is a new cost, not an automatic issue
+    +-- an app installed early is a setting change without agreement
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the two security keys attached to the two nurses who declined phone apps.
+2. Refuse both an automatic third key and an unapproved app for a new starter.
+3. Require Dr. Moss's written choice of method before that person uses the account.
+
+### 14.1 A reason does not travel with the hardware
+
+The clinic bought two security keys because two nurses did not want work applications on their own phones. That sentence has subjects: those nurses, that refusal, those keys. A new receptionist starting Monday asks to approve sign-ins with an app on a personal phone. The nurses' refusal does not answer the request, and it also does not force the clinic to buy a third key. Dr. Moss writes which method this person will use. Until that line exists, Sofia neither issues hardware nor installs an app. Installing the app first would change a setting before the written agreement the month's ground rule requires.
+
+The account itself still follows Chapter 2: a personal account, not the old shared reception login. This lesson does not pick the method.
+
+### 14.2 Worked example
+
+| Proposal | Whose decision it copies | Decision |
+|---|---|---|
+| "Give them a key, like the nurses." | A refusal this person has not made | Wait. A third key needs its own agreement |
+| "Install the app today so Monday is easy." | No written method | Refuse the early install |
+| "Dr. Moss wrote 'app on personal phone' for this receptionist." | A line about this person | Follow that line |
+| "Skip the second factor for the first week." | The shared-login exception already refused for the locum | Refuse |
+
+> **Synthetic case.** The new receptionist is not given a personal name. No method is chosen here.
+
+### Errors and limits
+
+Writing the method does not disable anyone else's factor, and it does not prove the person has completed the ten-minute catch-up topics. Those topics are a separate list.
+
+### Apply
+
+- **EX068 — Which method is allowed on Monday?** A new receptionist wants an app on a personal phone. The only keys in the log are the two bought for the nurses. Dr. Moss has not written a method for the new person. What do you refuse to copy, and what do you refuse to install? *Rubric:* 3 = do not issue a key merely because the nurses have keys; do not install the app before Dr. Moss writes this person's method; the account still must not be the shared reception login;; 2 = block both the copied key and the early app;; 1 = one block;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — Wipe is not the first move
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  T["A consult tablet is missing at closing"] --> C["Call Sofia, then Dr. Moss, then the technician"]
+  C --> N{"Are today's notes already in the practice system or on the day's paper?"}
+  N -->|Unknown| H["Do not wipe yet"]
+  N -->|Only on the tablet| D["Wiping would destroy the only copy. Dr. Moss decides after that fact is logged"]
+  N -->|Already copied| W["A wipe can then be considered and logged"]
+```
+
+Remote wipe deletes the device copy. It does not check whether that copy was the only one.
+
+### Logical drawing
+
+```text
+tablets: passcode and remote wipe, already configured
+incident card: lost tablet is an incident
+missing at closing is not yet a logged loss
+    |
+    +-- call order before any wipe command
+    +-- ask where today's notes live
+    +-- this lesson does not send a wipe
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Use the incident-card call order before a remote wipe.
+2. Ask whether today's notes exist anywhere except the missing tablet.
+3. Hold the wipe when the tablet may be the only copy of those notes.
+
+### 15.1 The control can destroy the record it was meant to protect
+
+Consulting-room tablets have a passcode and remote wipe. The incident card lists a lost tablet among the events that start the call order: Sofia, then Dr. Moss, then the technician. At closing, one tablet is not in its room. A classmate wants the wipe sent at once so a stranger cannot read the screen. Wipe removes the copy stored on the device. If the afternoon's notes were typed only there, and were not written on the day's appointment sheet, the wipe throws away the clinical record. Confidentiality of a found tablet and availability of today's notes are in tension. The tension is resolved by looking, not by speed.
+
+Staff ask where the notes are. If nobody can show them in the practice system or on paper, that fact is told to Dr. Moss and written in the change log before any wipe. This lesson does not declare the tablet stolen, and it does not send the command.
+
+### 15.2 Worked example
+
+| Situation at closing | Where the notes are | Decision |
+|---|---|---|
+| Tablet not in the room | Not yet checked | Call in card order. Do not wipe |
+| Notes already in the practice system | A copy exists off the device | A wipe can be considered and must be logged |
+| Notes only on the tablet | Wipe would be the deletion | Stop. Dr. Moss decides after the log records that fact |
+| "Disconnect it from the network" | The device is not here to unplug | The computer step does not apply. Use the call order |
+
+> **Synthetic case.** No animal, client, or dose is on this tablet in the exercise. Do not invent one.
+
+### Errors and limits
+
+Holding a wipe is not a decision to ignore a lost device. The card still makes it an incident once it is reported as lost. This chapter does not estimate how far the tablet travelled, and it does not publish a tracking result.
+
+### Apply
+
+- **EX069 — Wipe or wait?** A consulting-room tablet is missing at closing. Afternoon notes might exist only on it. Nobody has checked the practice system or the day's paper. What is the call order, and why is the wipe held? *Rubric:* 3 = call Sofia, then Dr. Moss, then the technician; hold the wipe until someone shows that today's notes exist off the tablet; if they exist only on the device, Dr. Moss decides after that fact is logged;; 2 = the call order and the hold;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — The log has two writers
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  R["A receptionist finishes a phone-back"] --> W["She wants to type the result into the change log"]
+  W --> P{"Is she Sofia or Dr. Moss?"}
+  P -->|No| T["She reports the result the same day"]
+  T --> S["One of the two writers records it"]
+  P -->|Yes| L["She may write the date and the reason"]
+```
+
+Speed does not add a third writer.
+
+### Logical drawing
+
+```text
+change log
+    open to Sofia and Dr. Moss only
+receptionist
+    completed a check
+    offers to type it "so it is not forgotten"
+        |
+        +-- forgetting is solved by telling a writer today
+        +-- a third login would let the desk edit the review record
+        +-- the result still needs a date and a reason
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep write access to the change log with Sofia and Dr. Moss.
+2. Take a same-day verbal report instead of lending the log.
+3. Still require the date and the reason on the line those two write.
+
+### 16.1 The person who did the check is not automatically the scribe
+
+The ground rule is that each change is written, with the date and the reason, when it happens, in a log only Sofia and Dr. Moss can open. A receptionist who has just finished a phone-back wants to type the outcome herself so the detail is not lost overnight. The motive is sound. The permission is not. If every person who touches a check can edit the log, a later review cannot tell a staff note from the record Dr. Moss relies on. The receptionist tells Sofia the same day: which supplier, that the held number was used, and what the supplier said. Sofia or Dr. Moss writes the line.
+
+This chapter does not move the phone-back rule, and it does not add the receptionist's name as a writer.
+
+### 16.2 Worked example
+
+| Offer | Problem it names | Decision |
+|---|---|---|
+| "I will type it now. You look busy." | Delay | She reports. A writer types |
+| "Give me access for this afternoon only." | A temporary third writer is still a third writer | Refuse |
+| "Sofia is off, so the log cannot be updated." | Dr. Moss is the other writer | Tell Dr. Moss the same day |
+| Sofia writes the date, the reason, and the outcome | The ground rule | Accept |
+
+> **Synthetic case.** No supplier account number is written in the log line described here.
+
+### Errors and limits
+
+Two writers do not mean two optional witnesses for a bank change. The phone-back rule's second person still approves only after the call to the number the clinic already held. That approval is a different role from typing the log.
+
+### Apply
+
+- **EX070 — Who types the outcome?** A receptionist completed a phone-back and offers to enter it in the change log because Sofia is with a client. Who may write, and what must the line contain? *Rubric:* 3 = the receptionist reports the same day and does not receive access; Sofia or Dr. Moss writes; the line has the date and the reason;; 2 = no third writer, and the date is required;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Friday's link change is a new agreement
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX071.
+
+```mermaid
+flowchart TD
+  E["Earlier agreement: new shares clinic-only, twelve files closed"] --> F["Friday proposal: turn off every existing link, including marketing"]
+  F --> A{"Is there a new written agreement for that proposal?"}
+  A -->|No| H["Do not apply it on the way out"]
+  A -->|Yes| R["Apply only what the new line permits, then count again later"]
+```
+
+The old agreement had a scope. Friday is outside it.
+
+### Logical drawing
+
+```text
+already agreed
+    new shares default to clinic-only
+    8 client files and 4 finance files closed
+    marketing images may stay, because already public
+Friday, technician leaving
+    proposal to kill every remaining link
+        |
+        +-- marketing was a separate decision
+        +-- a wider shutdown needs its own written agreement
+        +-- no new export is produced here
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep Friday's proposal to disable every link outside the agreement already on file.
+2. Refuse to apply that proposal without a new written agreement from Dr. Moss.
+3. Leave the published share count unchanged, because no new export is run.
+
+### 17.1 A permission is not a standing licence to go further
+
+Dr. Moss agreed, in writing, to the changes Chapter 2 carried out: new shares default to clinic-only, the eight client files and four finance files come off open links, and the marketing images may stay because they were already public. On Friday the technician offers to switch off every remaining link before the weekend, including those images. The offer is tidier than the agreement. Tidiness is not consent. The ground rule still requires Dr. Moss's written agreement before a setting change. The earlier page does not mention a Friday shutdown of marketing.
+
+Sofia asks the technician to leave the links as they are. If Dr. Moss later writes a wider change, that line states what may be turned off, and a later export is a new count, as Chapter 7 required. This lesson neither closes the marketing files nor edits the seed-2 script.
+
+### 17.2 Worked example
+
+| Friday proposal | Covered by the existing agreement? | Decision |
+|---|---|---|
+| Turn off the links that were already closed | Already done | No further action |
+| Turn off marketing because open links feel untidy | Marketing was allowed to remain | Wait for a new written line |
+| Edit the lab so the print looks smaller tonight | The script counts an export | Refuse |
+| Dr. Moss writes which folders may lose their links | A new agreement | Only then, and only those folders |
+
+> **Synthetic case.** The seed-2 line stays the last counted total. No second total is printed.
+
+### Errors and limits
+
+Leaving marketing open is not a finding that every file in that folder is harmless forever. A later monthly check can still notice a clinical image in the wrong folder, which is the photograph case in Chapter 1. Noticing one wrong file is not the same act as Friday's blanket shutdown.
+
+### Apply
+
+- **EX071 — Does Friday fit the old page?** The technician wants every remaining share link off before the weekend, including marketing. The written agreement covers clinic-only defaults and the twelve closed files. Marketing was left open on purpose. What do you hold, and what count do you refuse to invent? *Rubric:* 3 = hold the blanket shutdown until Dr. Moss writes a new agreement; do not treat the old page as that agreement; do not invent a new open-file total;; 2 = hold the shutdown and keep the old count;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Two papers, two questions
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX072.
+
+```mermaid
+flowchart TD
+  O["The practice system is down"] --> Q{"Which question is being asked?"}
+  Q -->|Who is booked today?| A["Today's appointment sheet"]
+  Q -->|Whom do we phone as urgent?| L["The locked list, under Chapter 5 and Chapter 10 limits"]
+  A --> X["Do not read the locked list as the appointment book"]
+  L --> Y["Do not phone the whole appointment sheet as the urgent list"]
+```
+
+Each paper was made for one job.
+
+### Logical drawing
+
+```text
+outage
+    appointment sheet: this day's visits, already in the office
+    locked list: the urgent-call extract, possibly still the drill page
+        |
+        +-- a name on today's sheet is not an urgent-call duty
+        +-- absence from the locked list is not "no appointment"
+        +-- treatment entry, when the system returns, stays with Chapter 6
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Use today's appointment sheet for who is expected in the building.
+2. Keep the locked client list on the urgent-call question, under the limits already taught.
+3. Refuse to swap the two papers.
+
+### 18.1 The outage does not merge the papers
+
+When the practice system is treated as down, reception already has a paper appointment sheet for the day. Separately, a client list sits locked away for urgent calls, and Chapters 5 and 10 limit when that list may be treated as current. A busy morning invites a shortcut: phone everyone on today's sheet, because those pages are in the hand, or tell a caller they have no booking because the locked list lacks the name. The sheet answers who was expected today. It is not the urgent-call population. The locked list is not the appointment book, even on a morning when it happens to be fresh.
+
+Treatments written while the system is down are still entered from that outage paper when the system returns. This chapter does not perform the entry.
+
+### 18.2 Worked example
+
+| Question at the desk | Paper someone reaches for | Decision |
+|---|---|---|
+| "Is this animal booked this morning?" | Locked urgent list | Wrong paper. Use today's appointment sheet |
+| "Phone the urgent clients." | Every name on today's sheet | Wrong population. The sheet is today's visits |
+| "The locked list has no such client, so cancel them." | An extract that may be stale | Do not cancel from that absence |
+| "Enter the injection the nurse remembers." | Memory | Still the outage paper's job, in Chapter 6 |
+
+> **Synthetic case.** No animal name is required to choose the paper.
+
+### Errors and limits
+
+Choosing the right paper does not refresh a stale list and does not restore the mailbox. If today's sheet itself is missing, staff do not promote the locked list into an appointment book. They say they cannot answer the booking from the papers they hold.
+
+### Apply
+
+- **EX072 — Which paper answers?** The practice system is down. A caller asks whether they are booked this morning. A colleague reaches for the locked client list and, finding no match, wants to say there is no appointment. Which paper answers the booking, and what absence must you refuse to treat as a cancellation? *Rubric:* 3 = today's appointment sheet answers the booking; absence from the locked list is not a cancellation; the locked list remains the urgent-call paper under its existing limits;; 2 = name the sheet and reject the cancellation;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — A ten-minute session does not edit the rule
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  Q["Staff ask whether a normal-looking email can skip the call"] --> S["That question becomes the ten-minute topic"]
+  S --> P["The session rehearses the held-number call"]
+  P --> V{"Does anyone propose a vote to shorten the rule?"}
+  V -->|Yes| R["A vote is not Dr. Moss's written change"]
+  V -->|No| K["The rule leaves the room as it entered"]
+```
+
+The meeting chooses practice. It does not choose policy.
+
+### Logical drawing
+
+```text
+monthly routine: one ten-minute session
+topics come from staff questions
+this month's question: skip the call when the email looks normal
+    |
+    +-- rehearse the call the clinic already knows
+    +-- do not ballot the rule
+    +-- a session note is not a change-log amendment
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Turn a staff question into the month's ten-minute practice without amending the rule.
+2. Refuse a vote, or a session note, as a substitute for Dr. Moss's written change.
+3. Leave the phone-back rule in force after the meeting.
+
+### 19.1 Practice is the authority the slot actually has
+
+Sofia chose short sessions because a clinic of this size remembers a relevant ten minutes better than a long annual lecture. Topics come from questions staff ask. This month the question is whether an email that looks like a normal supplier note can skip the call to a number the clinic already holds. Chapter 9 already applied the rule to a later message. The new point is the meeting's power. The people in the room can practise the pause. They cannot retire the rule by agreement among themselves. Dr. Moss has not written a narrower rule. A line in the session list that says "staff agreed to skip normal emails" would be a topic note pretending to be a control change.
+
+Sofia spends the ten minutes on one rehearsal: find the held number, call it, and keep the second person's approval behind that call. She does not take a vote.
+
+### 19.2 Worked example
+
+| What the session produces | Authority it has | Decision |
+|---|---|---|
+| Staff can demonstrate the held-number call | Practice | Accept as the month's session |
+| "We all think normal emails are fine." | A mood, not a written change | The rule stands |
+| A topic-list entry claiming the rule was shortened | The list records what was practised | Rewrite it as practice, or delete the claim |
+| Dr. Moss later writes a different rule | She is the owner who must agree settings | Only that writing changes the rule |
+
+> **Synthetic case.** The session does not contain a real supplier number.
+
+### Errors and limits
+
+Keeping the rule does not answer how long old invoices are stored. That question remains the reason the next course is data governance. A finished rehearsal is also not this month's restore test.
+
+### Apply
+
+- **EX073 — What can the ten minutes change?** Staff ask to skip the phone-back when the supplier email looks normal. The ten-minute session is the place the question will be handled. What does the session do, and what cannot be shortened by a vote or a topic note? *Rubric:* 3 = the session rehearses the call to the number already held; a vote or a topic note does not amend the rule; Dr. Moss has not written a narrower rule;; 2 = rehearse, and reject the vote;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the month's log can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX074.
+
+```mermaid
+flowchart TD
+  N["One leaving note"] --> E{"Is the sentence backed by a log line or a counted output?"}
+  E -->|Yes| K["The note may say it, with that limit"]
+  E -->|No| R["The note names the gap instead of filling it"]
+  R --> G["Next course: data governance, for retention"]
+```
+
+Twenty lessons meet a planning minimum. They do not close the case file.
+
+### Logical drawing
+
+```text
+the note may carry
+    personal accounts, the three repaired computers, twelve files closed
+    phone-back still in force, backup results already logged, card pinned
+the note may not carry
+    a new share total, a dated fresh list, next month's restore
+    a dated locum disable this book never supplied
+    "the clinic is secure" or "the exercise is closed"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate sentences the change log supports from sentences that would invent a result.
+2. Leave stated gaps as gaps, including where an earlier lesson taught the action but did not date it.
+3. Name data governance as the next course for retention, without calling this book a finished qualification.
+
+### 20.1 A leaving note is a reading of the file
+
+Sofia can leave one note for the person who opens the log next month. The note is allowed to say what the file already shows. Personal accounts replaced the shared reception login. Second factors started with Dr. Moss and the office team, then everyone else over two weeks, and two nurses have security keys because they declined phone apps. The eight client files and four finance files were taken off open links. The phone-back rule stopped one fraudulent request and remains in force. The separate email-and-files backup has a failed mailbox restore and a later success, both logged, into a test area. The incident card is on the wall. The three computers that had updates off had a newer driver and then had updates switched on.
+
+The note is not allowed to improve the file. Chapter 7 left the counted open total at the seed-2 print until a new export. Chapter 10 left the urgent-call list without a dated print. Chapter 11 left next month's restore row empty. Chapter 8 taught that the locum account is disabled and the date written; the exercise still begins from a log that has not recorded that date, and this note does not invent one. Chapter 12 refused a nine-computer patch census. Chapter 17 held a blanket link shutdown. None of those blanks become ticks because the course has reached its twentieth lesson.
+
+### 20.2 Worked example
+
+| Sentence proposed for the leaving note | File behind it | Decision |
+|---|---|---|
+| "Twelve sensitive files were closed. The last counted open total is the seed-2 print." | The closes are logged. The print is the lab output | Accept, with both halves |
+| "Open files are now 35 of 300." | No new export | Refuse |
+| "The locum account was disabled on a date we did not write." | Chapter 8 required the date. The exercise withheld it | Do not supply a date |
+| "Hollybank is secure, and the course is complete." | Review is open. Retention is not decided here | Refuse |
+
+> **Synthetic case.** Reaching the planning minimum of 20 lessons is not a qualification and does not close technical, language, source, or accessibility review.
+
+### Errors and limits
+
+The next course is the data-governance rapid book, because Dr. Moss's next question is how long old client records are kept. That question is not answered by ISO/IEC 27000:2026's three goals, and this chapter is not legal advice. Another language edition is not published by the existence of these English lessons. There is no maximum: a later lesson is added when a new decision needs teaching, not to decorate the count.
+
+### Apply
+
+- **EX074 — What may the note say?** Using only the file this book has already fixed, accept or reject each claim: the seed-2 open total may be replaced by 35; the locum disable already has a date; next month's restore already passed; the clinic is secure because twenty lessons exist. Then name the next course and the question it is for. *Rubric:* 3 = reject all four claims; the next course is data governance; the question is retention of old client records; twenty lessons meet the planning minimum and do not finish review;; 2 = reject the four claims and name data governance;; 1 = one part;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- open-cyber-academy:chapter-navigation:end -->
@@ -789,7 +1978,7 @@ The chapter index leads to the next course in the study path.
 
 ## Worked results
 
-Model answers for EX001–EX058. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Training Centre, Hollybank Veterinary Practice and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Training Centre, Hollybank Veterinary Practice and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** One month, with four weekly sessions.
 
@@ -907,6 +2096,38 @@ Model answers for EX001–EX058. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 **EX057.** Only the separate backup of email and shared files can bring the file back, and only after a restore of that folder has succeeded. The provider's 30 daily days never held a file that was not in the practice system.
 
 **EX058.** Disconnect that computer from the network. Call Sofia, then Dr. Moss, then the technician. Pay nothing shown on the screen. The phone-back rule still applies.
+
+**EX059.** The calendar reminder is not a new list. Do not phone from the three-week page as if it were this week's list, and do not tell the caller the clinic has no record. Write the call on the day's sheet for confirmation when the practice system returns.
+
+**EX060.** Enter the treatment from the outage paper. A remembered dose does not replace that paper; a correction goes through Dr. Moss and is logged. Do not create a second visit when the chart already has the same animal and the same morning.
+
+**EX061.** Thirty-five was not counted. The verified total remains 47 of 300 until a new export is run. Do not edit the seed-2 script to force a lower number.
+
+**EX062.** The locum account is still open because the log never recorded the disable. Disable it and write the date. The second factor does not close the account.
+
+**EX063.** Call the wholesaler on the number the clinic already held. Ignore the number printed in the new email. The second person approves only after that call. Last month's stopped attempt does not waive the rule.
+
+**EX064.** The undated page is not this week's list. Do not say Hollybank has no record of the caller. Write the caller's name and the time on today's appointment sheet and mark the line for a later check in the practice system.
+
+**EX065.** Last week's successful restore stays in that week. The new month's row stays empty until that month has its own dated result. The next attempt is restored into a test area, not onto the live mailbox.
+
+**EX066.** The driver repair and the phrase "updates back on" cover the three computers that had been switched off. Nine machines were not checked, so "fully patched" is too wide. Missing rows do not show that the other six are exposed.
+
+**EX067.** Refuse the borrowed session. The helper's clicks would be recorded as the nurse. A personal account, if needed, waits for Dr. Moss's approval in the change log before first use. This answer does not create the account.
+
+**EX068.** Do not issue a third key just because two nurses have keys. Do not install an app before Dr. Moss writes the method for this receptionist. The account must not be the shared reception login.
+
+**EX069.** Call Sofia, then Dr. Moss, then the technician. Hold the wipe until today's notes are shown in the practice system or on the day's paper. If they exist only on the tablet, Dr. Moss decides after that fact is logged. No wipe is sent by this answer.
+
+**EX070.** The receptionist does not receive log access. She tells Sofia or Dr. Moss the same day. One of those two writes the line, with the date and the reason.
+
+**EX071.** Hold the Friday shutdown of every remaining link, including marketing, until Dr. Moss writes a new agreement. The earlier page does not cover that proposal. Do not invent a new open-file total.
+
+**EX072.** Today's appointment sheet answers whether the caller is booked this morning. Absence from the locked client list is not a cancellation. The locked list stays on the urgent-call question, under the limits in Chapters 5 and 10.
+
+**EX073.** The ten minutes rehearse a call to the number the clinic already holds, with approval still behind that call. A vote or a topic-list sentence does not shorten the rule. Dr. Moss has not written a narrower rule.
+
+**EX074.** Reject 35 as a replacement for the seed-2 total. Reject a locum-disable date the file does not contain. Reject a passed restore for the month that has not been tested. Reject "secure" and "complete." The next course is data governance, for retention of old client records. Twenty lessons meet the planning minimum and leave review open.
 
 <a id="references"></a>
 ## References

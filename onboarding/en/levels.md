@@ -19,7 +19,7 @@ The weekday calendar sets a minimum number of lessons and no maximum. One lesson
 | # | Theme | Lesson guide | Begin at chapter 01 | Chapters in manuscript / planned |
 |---:|---|---|---|---:|
 | 01 | Cybersecurity | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 20/20 |
-| 02 | Information security | [Lesson guide](../../levels/rapid-1-month/information-security/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
+| 02 | Information security | [Lesson guide](../../levels/rapid-1-month/information-security/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md#ch-01) | 20/20 |
 | 03 | Data governance | [Lesson guide](../../levels/rapid-1-month/data-governance/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | 04 | Privacy and data protection | [Lesson guide](../../levels/rapid-1-month/privacy-data-protection/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | 05 | Security governance, risk and compliance | [Lesson guide](../../levels/rapid-1-month/security-governance-risk-compliance/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md#ch-01) | 4/4 |

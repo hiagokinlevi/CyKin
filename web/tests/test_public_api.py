@@ -80,6 +80,15 @@ def test_unwritten_chapter_is_not_served_as_lesson(client):
     assert missing.status_code == 404
     assert missing.json()["detail"] == "This chapter is still a plan"
 
+    info = client.get("/api/courses/rapid-1-month/information-security/en").json()
+    assert info["planned_chapters"] == 20
+    assert info["published_chapters"] == 20
+    assert info["lessons"][8]["published"] is True
+    assert info["lessons"][19]["published"] is True
+    missing_info = client.get("/api/lessons/rapid-1-month/information-security/en/21")
+    assert missing_info.status_code == 404
+    assert missing_info.json()["detail"] == "This chapter is still a plan"
+
 
 def test_full_book_and_internal_reference_source(client):
     book = client.get('/api/books/rapid-1-month/incident-response-resilience/en')
