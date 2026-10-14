@@ -1,0 +1,83 @@
+"""Search pages must expose real authored lessons and safe, stable metadata."""
+
+import json
+import re
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+
+from app import app
+from seo_pages import render_lesson_page
+
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+@pytest.fixture
+def client():
+    app.state.catalog_override = json.loads((ROOT / "web/public/catalog.json").read_text())
+
+    async def local_source(path):
+        file = ROOT / path
+        return file.read_text(encoding="utf-8") if file.is_file() else None
+
+    app.state.source_override = local_source
+    try:
+        yield TestClient(app)
+    finally:
+        del app.state.catalog_override
+        del app.state.source_override
+
+
+def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
+    path = "/courses/rapid-1-month/incident-response-resilience/lessons/en/1/"
+    response = client.get(path)
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert response.headers["content-language"] == "en"
+    assert response.headers["cache-control"] == "no-store"
+    assert f'<link rel="canonical" href="https://opencyber.academy{path}">' in response.text
+    assert '<meta name="robots" content="index,follow' in response.text
+    assert '"@type":"LearningResource"' in response.text
+    assert '"@type":"BreadcrumbList"' in response.text
+    assert '"isAccessibleForFree":true' in response.text
+    structured = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', response.text, re.S).group(1))
+    assert structured[0]["url"] == f"https://opencyber.academy{path}"
+    assert structured[1]["itemListElement"][-1]["item"] == f"https://opencyber.academy{path}"
+    assert '<article class="prose" lang="en">' in response.text
+    assert "An incident response team does more than react" in response.text
+    assert 'id="exercise-ex001"' in response.text
+    assert 'id="answer-ex001"' in response.text
+    assert 'href="#answer-ex001"' in response.text
+    assert '/lessons/en/2/' in response.text
+    assert 'src="/analytics.js"' in response.text
+    assert client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/21/").status_code == 404
+    chapter_only = client.get("/courses/rapid-1-month/information-security/lessons/en/1/", follow_redirects=False)
+    assert chapter_only.status_code == 308
+    assert chapter_only.headers["location"] == "/courses/rapid-1-month/information-security/chapters/en/1/"
+
+
+def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
+    sitemap = (ROOT / "web/public/sitemap.xml").read_text()
+    index = json.loads((ROOT / "web/public/lesson-index.json").read_text())
+    assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/" in sitemap
+    assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/21/" not in sitemap
+    assert index["rapid-1-month/incident-response-resilience/en"]["lessons"][0]["number"] == 1
+    assert len(re.findall(r"<url><loc>", sitemap)) > 7000
+    assert client.get("/api/catalog").headers["x-robots-tag"] == "noindex"
+
+
+def test_authored_markdown_cannot_inject_script_or_foreign_click_target():
+    lesson = {
+        "course": {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en"},
+        "chapter": 1, "title": "A lesson </script><script>alert(1)</script>",
+        "markdown": "### A lesson\n\nTeaching text. <script>alert(1)</script> [bad](javascript:alert(1)) [next](#lesson-02)",
+        "worked_answers": "", "previous": None, "next": 2,
+        "source_url": "https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-01",
+    }
+    page = render_lesson_page(lesson, {"title": "Incident response"}, "Rapid course")
+    assert "<script>alert(1)</script>" not in page
+    assert 'href="javascript:' not in page
+    assert 'href="/courses/rapid-1-month/incident-response-resilience/lessons/en/2/"' in page
+    assert "\\u003c/script>" in page

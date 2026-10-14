@@ -3,8 +3,13 @@ import '../styles/global.css';
 import '../styles/reader.css';
 import '../styles/directory.css';
 import '../styles/course.css';
-const { title = 'OpenCyber Academy — open cybersecurity learning', description = 'Open cybersecurity courses, lessons and books for students and AI systems.' } = Astro.props;
+const { title = 'OpenCyber Academy — free cybersecurity learning', description = 'Free, open cybersecurity courses, lessons and books for anyone who wants to protect people and technology.', structuredData, robots = 'index,follow,max-image-preview:large' } = Astro.props;
 const path = Astro.url.pathname;
+const canonical = new URL(path, 'https://opencyber.academy').toString();
+const schema = structuredData || [
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'OpenCyber Academy', url: 'https://opencyber.academy/' },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OpenCyber Academy', url: 'https://opencyber.academy/', inLanguage: 'en', isAccessibleForFree: true },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -12,9 +17,25 @@ const path = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content="OpenCyber Academy" />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#070e1c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={new URL(path, 'https://opencyber.academy').toString()} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OpenCyber Academy" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://opencyber.academy/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="OpenCyber Academy — free cybersecurity education" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://opencyber.academy/social-card.png" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
     <title>{title}</title>
     <script is:inline>
       try { document.documentElement.dataset.theme = localStorage.getItem('open-cyber-academy-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
@@ -27,6 +48,7 @@ const path = Astro.url.pathname;
       document.documentElement.lang = language;
       document.documentElement.dataset.language = language;
     </script>
+    <script is:inline src="/analytics.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -54,7 +76,7 @@ const path = Astro.url.pathname;
     <footer class="footer">
       <div class="shell footer-inner">
         <span>© OpenCyber Academy · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
-        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a></div>
+        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/privacy/">Privacy</a></div>
       </div>
     </footer>
     <script>

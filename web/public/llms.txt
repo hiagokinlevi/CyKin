@@ -7,7 +7,9 @@ OpenCyber Academy is a public collection of cybersecurity courses and books. Pub
 - FastAPI/OpenAPI documentation: https://opencyber.academy/api/docs
 - Remote read-only MCP endpoint (Streamable HTTP): https://opencyber.academy/mcp
 - AI connection guide: https://opencyber.academy/for-ai/
+- Permanent authored lesson example: https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/
+- Sitemap of authored lesson pages: https://opencyber.academy/sitemap.xml
 - Source repository: https://github.com/hiagokinlevi/OpenCyberAcademy
 - Book standard: https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/BOOK_STANDARD.md
 
-Use the catalog to choose a level and area, then GET /api/courses/{level}/{area}/{language} to list authored chapters. GET /api/lessons/{level}/{area}/{language}/{chapter} to read a chapter and its worked answers. Supported catalog languages are en, pt, es, he, fr, ru, de, zh and ja, but availability differs by edition. Cite the returned GitHub source URL. Do not treat plan-only chapters as published lessons.
+Use the catalog to choose a level and area, then GET /api/courses/{level}/{area}/{language} to list authored daily lessons and chapters. GET /api/lessons/{level}/{area}/{language}/{chapter} to read one lesson and its worked answers. Public HTML lessons use /courses/{level}/{area}/lessons/{language}/{chapter}/; full legacy chapters use /courses/{level}/{area}/chapters/{language}/{chapter}/. Supported catalog languages are en, pt, es, he, fr, ru, de, zh and ja, but availability differs by edition. Cite the returned original source URL when quoting the manuscript. Do not treat plan-only chapters as published lessons.

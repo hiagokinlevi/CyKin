@@ -42,6 +42,10 @@ export async function initCoursePortal(): Promise<void> {
     if (unit) { params.set('unit', unit.kind); params.set('chapter', String(unit.number)); }
     return location.pathname + '?' + params;
   }
+  function pageUrl(unit: Unit): string {
+    const route = unit.kind === 'daily' ? 'lessons' : 'chapters';
+    return `/courses/${level}/${area}/${route}/${language}/${unit.number}/`;
+  }
   function bookUrl(anchor?: string): string {
     const params = new URLSearchParams({ level, area, lang: language });
     if (firstQuery.has('ui')) params.set('ui', firstQuery.get('ui')!);
@@ -51,14 +55,13 @@ export async function initCoursePortal(): Promise<void> {
     const node = document.createElement('a'); node.href = href; node.className = className; node.textContent = label; return node;
   }
   function unitLink(unit: Unit, item: Entry, className: string): HTMLElement {
-    const node = item.published ? link('', url(unit), className) : document.createElement('div');
+    const node = item.published ? link('', pageUrl(unit), className) : document.createElement('div');
     if (!item.published) node.className = `${className} is-planned`;
     const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(unit.number).padStart(2, '0');
     const title = document.createElement('span'); title.className = 'lesson-subject'; title.textContent = item.title;
     const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on OpenCyber Academy →' : 'Planned · teaching pending';
     node.append(number, title, state);
     if (current?.kind === unit.kind && current.number === unit.number) { node.classList.add('active'); node.setAttribute('aria-current', 'page'); }
-    if (item.published) node.addEventListener('click', event => { event.preventDefault(); void openUnit(unit, true); });
     return node;
   }
   function weekLabel(week: number): string {
@@ -120,9 +123,8 @@ export async function initCoursePortal(): Promise<void> {
     const firstChapter = details.legacy_chapters.find(item => item.published);
     if (firstDaily || firstChapter) {
       const start = firstDaily ? { kind: 'daily' as const, number: firstDaily.chapter } : { kind: 'chapter' as const, number: firstChapter!.chapter };
-      const action = link(firstDaily ? 'Begin with Day 1 →' : 'Begin with Chapter 1 →', url(start), 'button gold');
+      const action = link(firstDaily ? 'Begin with Day 1 →' : 'Begin with Chapter 1 →', pageUrl(start), 'button gold');
       action.classList.add('course-start-action');
-      action.addEventListener('click', event => { event.preventDefault(); void openUnit(start, true); });
       cadence.append(action);
     }
 
@@ -163,24 +165,19 @@ export async function initCoursePortal(): Promise<void> {
       if (unit === null) {
         const first = details.daily_slots.find(item => item.published);
         const chapter = details.legacy_chapters.find(item => item.published);
-        if (first) nav.append(link('Start first daily lesson →', url({ kind: 'daily', number: first.chapter }), 'button gold'));
-        else if (chapter) nav.append(link('Start first chapter →', url({ kind: 'chapter', number: chapter.chapter }), 'button gold'));
+        if (first) nav.append(link('Start first daily lesson →', pageUrl({ kind: 'daily', number: first.chapter }), 'button gold'));
+        else if (chapter) nav.append(link('Start first chapter →', pageUrl({ kind: 'chapter', number: chapter.chapter }), 'button gold'));
       } else {
         const published = entries(unit.kind).filter(item => item.published);
         const before = published.filter(item => item.chapter < unit.number).at(-1);
         const after = published.find(item => item.chapter > unit.number);
-        if (before) nav.append(link(`← Previous ${unit.kind === 'daily' ? 'lesson' : 'chapter'}`, url({ kind: unit.kind, number: before.chapter })));
+        if (before) nav.append(link(`← Previous ${unit.kind === 'daily' ? 'lesson' : 'chapter'}`, pageUrl({ kind: unit.kind, number: before.chapter })));
         nav.append(link('Course overview', url(null)));
-        if (after) nav.append(link(`Next ${unit.kind === 'daily' ? 'lesson' : 'chapter'} →`, url({ kind: unit.kind, number: after.chapter })));
+        if (after) nav.append(link(`Next ${unit.kind === 'daily' ? 'lesson' : 'chapter'} →`, pageUrl({ kind: unit.kind, number: after.chapter })));
         if (unit.kind === 'daily' && !after) {
           const chapter = details.legacy_chapters.find(item => item.published && item.chapter === Math.ceil(unit.number / 5));
-          if (chapter) nav.append(link('Read full chapter →', url({ kind: 'chapter', number: chapter.chapter })));
+          if (chapter) nav.append(link('Read full chapter →', pageUrl({ kind: 'chapter', number: chapter.chapter })));
         }
-      }
-      for (const anchor of nav.querySelectorAll<HTMLAnchorElement>('a')) {
-        anchor.addEventListener('click', event => {
-          event.preventDefault(); void openUnit(readUnit(new URL(anchor.href).searchParams), true);
-        });
       }
     }
   }

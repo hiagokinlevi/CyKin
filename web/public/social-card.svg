@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="OpenCyber Academy free cybersecurity education">
+  <rect width="1200" height="630" fill="#070e1c"/>
+  <path d="M0 0h1200v630H0z" fill="none" stroke="#28539b" stroke-width="22"/>
+  <path d="M64 480h1072" stroke="#d6b16f" stroke-width="3"/>
+  <path d="M890 77l196 112v226L890 527 694 415V189z" fill="#10213b" stroke="#d6b16f" stroke-width="4"/>
+  <path d="M890 137l143 82v166L890 467 747 385V219z" fill="none" stroke="#28539b" stroke-width="7"/>
+  <text x="64" y="132" fill="#d6b16f" font-family="Titillium Web,Arial,sans-serif" font-size="31" letter-spacing="6">OPEN LEARNING LIBRARY</text>
+  <text x="64" y="264" fill="#f1f4fa" font-family="Titillium Web,Arial,sans-serif" font-size="80" font-weight="600">OpenCyber</text>
+  <text x="64" y="355" fill="#f1f4fa" font-family="Titillium Web,Arial,sans-serif" font-size="80" font-weight="600">Academy</text>
+  <text x="64" y="440" fill="#adbbd0" font-family="Titillium Web,Arial,sans-serif" font-size="30">Free cybersecurity books and lessons</text>
+  <text x="64" y="550" fill="#d6b16f" font-family="Titillium Web,Arial,sans-serif" font-size="27" letter-spacing="2">PROTECT PEOPLE AND TECHNOLOGY</text>
+</svg>

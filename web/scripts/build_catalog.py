@@ -16,6 +16,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 SITEMAP = OUTPUT.with_name("sitemap.xml")
+LESSON_INDEX = OUTPUT.with_name("lesson-index.json")
 LANGUAGES = ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")
 LEVELS = {
     "rapid-1-month": {"en": "Rapid course", "pt": "Curso rápido", "es": "Curso rápido"},
@@ -40,7 +41,39 @@ INSTRUCTIONAL_WEEKS = {
     "doctorate-2-years": 104,
 }
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>$', re.M)
+LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>$', re.M)
+WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>$', re.M)
 NUMBER = re.compile(r'Course\s+(\d{3})\s+of\s+207')
+
+
+def authored_index() -> dict:
+    """Only source-backed lesson and chapter links belong in discovery maps."""
+    index = {}
+    for book in ROOT.glob("levels/*/*/*/book/MANUSCRIPT.md"):
+        level, area, language = book.parts[-5:-2]
+        if level not in LEVELS or language not in LANGUAGES:
+            continue
+        source = book.read_text(encoding="utf-8")
+        daily: dict[int, str] = {}
+        chapters: dict[int, str] = {}
+        def title_after(match: re.Match, depth: str) -> str:
+            heading = re.search(rf'^#{{{depth}}}\s+(.+)$', source[match.end():match.end() + 600], re.M)
+            return heading.group(1).strip() if heading else ""
+        for match in LESSON_ANCHOR.finditer(source):
+            if title := title_after(match, "3,4"):
+                daily[int(match.group(1))] = title
+        for match in WEEK_DAY_ANCHOR.finditer(source):
+            if 1 <= int(match.group(2)) <= 5 and (title := title_after(match, "3,4")):
+                daily[(int(match.group(1)) - 1) * 5 + int(match.group(2))] = title
+        for match in ANCHOR.finditer(source):
+            if title := title_after(match, "2,3"):
+                chapters[int(match.group(1))] = title
+        if daily or chapters:
+            index[f"{level}/{area}/{language}"] = {
+                "lessons": [{"number": number, "title": daily[number]} for number in sorted(daily)],
+                "chapters": [{"number": number, "title": chapters[number]} for number in sorted(chapters)],
+            }
+    return index
 
 
 def build() -> dict:
@@ -93,11 +126,18 @@ def build() -> dict:
 if __name__ == "__main__":
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     data = build()
+    index = authored_index()
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    routes = ["/", "/levels/", "/subjects/", "/for-ai/"]
+    LESSON_INDEX.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    routes = ["/", "/levels/", "/subjects/", "/for-ai/", "/privacy/"]
     routes.extend(f"/levels/{level}/" for level in data["level_order"])
     routes.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
     routes.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
+    for course_language, units in index.items():
+        level, area, language = course_language.split("/")
+        routes.extend(f"/courses/{level}/{area}/lessons/{language}/{lesson['number']}/" for lesson in units["lessons"])
+        routes.extend(f"/courses/{level}/{area}/chapters/{language}/{chapter['number']}/" for chapter in units["chapters"])
+    routes = list(dict.fromkeys(routes))
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     xml += "".join(f"  <url><loc>{escape('https://opencyber.academy' + route)}</loc></url>\n" for route in routes)
     xml += "</urlset>\n"

@@ -32,11 +32,11 @@ export function internalSourceLink(href: string, sourceUrl: string, language: st
     if (file === 'book/MANUSCRIPT.md') {
       if (mode === 'book' && sourcePath(new URL(sourceUrl)) === path && url.hash) return url.hash;
       const lesson = url.hash.match(/^#lesson-(\d{2,4})$/i);
-      if (lesson) { query.set('unit', 'daily'); query.set('chapter', String(Number(lesson[1]))); return coursePage + '?' + query; }
+      if (lesson) return `${coursePage}lessons/${lang}/${Number(lesson[1])}/`;
       const weekday = url.hash.match(/^#week-(\d{2,4})-day-(\d{2})$/i);
-      if (weekday) { query.set('unit', 'daily'); query.set('chapter', String((Number(weekday[1]) - 1) * 5 + Number(weekday[2]))); return coursePage + '?' + query; }
+      if (weekday) return `${coursePage}lessons/${lang}/${(Number(weekday[1]) - 1) * 5 + Number(weekday[2])}/`;
       const chapter = url.hash.match(/^#ch-(\d{2,4})$/i);
-      if (chapter && mode === 'lesson') { query.set('unit', 'chapter'); query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
+      if (chapter && mode === 'lesson') return `${coursePage}chapters/${lang}/${Number(chapter[1])}/`;
       return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
     }
     if (file === 'SUBJECTS.md' || file === 'README.md') {

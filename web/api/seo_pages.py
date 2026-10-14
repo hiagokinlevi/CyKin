@@ -1,0 +1,202 @@
+"""Server-rendered, canonical HTML for public lessons and chapters."""
+
+from __future__ import annotations
+
+import html
+import json
+import re
+from html.parser import HTMLParser
+from urllib.parse import parse_qs, quote, urljoin, urlparse
+
+import bleach
+import markdown
+
+
+SITE = "https://opencyber.academy"
+REPOSITORY = "hiagokinlevi/OpenCyberAcademy"
+ALLOWED_TAGS = set(bleach.sanitizer.ALLOWED_TAGS) | {
+    "article", "br", "caption", "code", "details", "div", "figure", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6",
+    "hr", "img", "input", "main", "nav", "p", "pre", "section", "span", "summary", "table", "tbody", "td", "th", "thead", "tr",
+}
+ALLOWED_ATTRIBUTES = {
+    "*": ["id", "class", "lang", "dir"],
+    "a": ["href", "title", "id", "class"],
+    "img": ["src", "alt", "title", "width", "height"],
+    "input": ["type", "checked", "disabled"],
+    "th": ["align"],
+    "td": ["align"],
+}
+LANGUAGE_NAMES = {"en": "English", "pt": "Português", "es": "Español", "he": "עברית", "fr": "Français", "ru": "Русский", "de": "Deutsch", "zh": "中文", "ja": "日本語"}
+PAGE_TEXT = {
+    "en": {"lesson": "Lesson", "chapter": "Chapter", "previous": "Previous", "next": "Next", "guide": "Course guide", "all": "All lessons", "answers": "Worked answers", "home": "Home", "free": "Open, free learning for anyone who wants to protect people and technology. No account is required to read this text or its worked answers."},
+    "pt": {"lesson": "Aula", "chapter": "Capítulo", "previous": "Anterior", "next": "Próxima", "guide": "Guia do curso", "all": "Todas as aulas", "answers": "Respostas comentadas", "home": "Início", "free": "Ensino gratuito e aberto para quem deseja proteger pessoas e tecnologias. Não é preciso criar uma conta para estudar ou consultar as respostas."},
+    "es": {"lesson": "Lección", "chapter": "Capítulo", "previous": "Anterior", "next": "Siguiente", "guide": "Guía del curso", "all": "Todas las lecciones", "answers": "Respuestas desarrolladas", "home": "Inicio", "free": "Aprendizaje gratuito y abierto para quienes desean proteger a las personas y la tecnología. No se necesita una cuenta para estudiar ni consultar las respuestas."},
+}
+
+
+def lesson_path(level: str, area: str, language: str, number: int, kind: str = "lesson") -> str:
+    route = "lessons" if kind == "lesson" else "chapters"
+    return f"/courses/{level}/{area}/{route}/{language}/{number}/"
+
+
+def plain_description(source: str, fallback: str) -> str:
+    """Use authored prose, not an outline or a fabricated excerpt."""
+    for paragraph in re.split(r"\n\s*\n", source):
+        if paragraph.lstrip().startswith(("#", "<a ", "**Week ", "**Month ", "```", "|", "- ")):
+            continue
+        paragraph = re.sub(r"<[^>]+>|`+|\[([^]]+)\]\([^)]*\)|[*_#>]", r"\1", paragraph)
+        paragraph = " ".join(paragraph.split())
+        if len(paragraph) >= 55 and not paragraph.startswith(("|", "```", "!")):
+            return paragraph[:157].rstrip(" .,;:") + ("…" if len(paragraph) > 157 else "")
+    return fallback
+
+
+def local_link(href: str, source_url: str, level: str, area: str, language: str) -> str:
+    if match := re.fullmatch(r"#ex(\d{3,4})--worked-result", href, re.I):
+        return f"#answer-ex{match.group(1)}"
+    if href.startswith("#") and not re.fullmatch(r"#(?:ch|lesson)-\d{2,4}|#week-\d{2,4}-day-\d{2}", href):
+        return href
+    resolved = urlparse(urljoin(source_url, href))
+    if resolved.hostname != "github.com":
+        return href if href.startswith("#") else resolved.geturl()
+    match = re.fullmatch(rf"/{REPOSITORY}/blob/main/(.+)", resolved.path)
+    if not match:
+        return resolved.geturl()
+    path = match.group(1)
+    book = re.fullmatch(r"levels/([^/]+)/([^/]+)/([a-z]{2})/book/MANUSCRIPT\.md", path)
+    if book:
+        target_level, target_area, target_lang = book.groups()
+        fragment = resolved.fragment
+        daily = re.fullmatch(r"lesson-(\d{2,4})", fragment)
+        weekday = re.fullmatch(r"week-(\d{2,4})-day-(\d{2})", fragment)
+        chapter = re.fullmatch(r"ch-(\d{2,4})", fragment)
+        if daily:
+            return lesson_path(target_level, target_area, target_lang, int(daily.group(1)))
+        if weekday:
+            number = (int(weekday.group(1)) - 1) * 5 + int(weekday.group(2))
+            return lesson_path(target_level, target_area, target_lang, number)
+        if chapter:
+            return lesson_path(target_level, target_area, target_lang, int(chapter.group(1)), "chapter")
+        return f"/book/?level={quote(target_level)}&area={quote(target_area)}&lang={quote(target_lang)}" + (f"#{quote(fragment)}" if fragment else "")
+    course_doc = re.fullmatch(r"levels/([^/]+)/([^/]+)/(?:[a-z]{2}/)?(?:README|SUBJECTS)\.md", path)
+    if course_doc:
+        return f"/courses/{course_doc.group(1)}/{course_doc.group(2)}/"
+    if path.endswith(".md"):
+        return "/read/?path=" + quote(path) + (f"#{quote(resolved.fragment)}" if resolved.fragment else "")
+    return resolved.geturl()
+
+
+class LocalizeHTML(HTMLParser):
+    def __init__(self, source_url: str, level: str, area: str, language: str):
+        super().__init__(convert_charrefs=False)
+        self.source_url = source_url
+        self.level, self.area, self.language = level, area, language
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        parts = []
+        for key, value in attrs:
+            if value is None:
+                parts.append(key)
+                continue
+            if tag == "a" and key == "href":
+                value = local_link(value, self.source_url, self.level, self.area, self.language)
+            if tag == "img" and key == "src":
+                resolved = urlparse(urljoin(self.source_url, value))
+                prefix = f"/{REPOSITORY}/blob/main/"
+                value = (f"https://raw.githubusercontent.com/{REPOSITORY}/main/" + resolved.path[len(prefix):]) if resolved.hostname == "github.com" and resolved.path.startswith(prefix) else resolved.geturl()
+            parts.append(f'{key}="{html.escape(value, quote=True)}"')
+        self.parts.append("<" + tag + (" " + " ".join(parts) if parts else "") + ">")
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self.handle_starttag(tag, attrs)
+
+    def handle_endtag(self, tag: str) -> None:
+        self.parts.append(f"</{tag}>")
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(html.escape(data))
+
+    def handle_entityref(self, name: str) -> None:
+        self.parts.append(f"&{name};")
+
+    def handle_charref(self, name: str) -> None:
+        self.parts.append(f"&#{name};")
+
+
+def render_markdown(source: str, source_url: str, level: str, area: str, language: str) -> str:
+    for digits in set(re.findall(r'^#{3,6}\s+EX(\d{3,4})\b', source, re.M)):
+        if f'id="exercise-ex{digits}"' not in source:
+            source = re.sub(rf'^(#{{3,6}}\s+EX{digits}\b)', f'<a id="exercise-ex{digits}"></a>\n\\1', source, count=1, flags=re.M)
+    rendered = markdown.markdown(source, extensions=["fenced_code", "tables", "sane_lists"])
+    sanitized = bleach.clean(rendered, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, protocols=["http", "https", "mailto"], strip=True)
+    parser = LocalizeHTML(source_url, level, area, language)
+    parser.feed(sanitized)
+    return "".join(parser.parts)
+
+
+def json_script(value: object) -> str:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+
+
+def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = "lesson") -> str:
+    level, area, language = (lesson["course"][key] for key in ("level", "area", "language"))
+    number = lesson["chapter"]
+    ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
+    label = ui["lesson" if kind == "lesson" else "chapter"]
+    path = lesson_path(level, area, language, number, kind)
+    canonical = SITE + path
+    course_url = SITE + f"/courses/{level}/{area}/"
+    name = course["title"]
+    title = f"{lesson['title']} | {level_name} {name} | OpenCyber Academy"
+    description = plain_description(lesson["markdown"], f"Study {lesson['title']} in the free {name} course. Read the lesson, solve exercises and compare worked answers.")
+    escaped = {key: html.escape(value, quote=True) for key, value in {"canonical": canonical, "course_url": course_url, "title": title, "description": description, "name": name, "level_name": level_name, "lesson_title": lesson["title"]}.items()}
+    structured = [
+        {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "description": description, "url": canonical,
+         "mainEntityOfPage": canonical, "inLanguage": language, "learningResourceType": label, "educationalLevel": level_name,
+         "isAccessibleForFree": True, "provider": {"@type": "Organization", "name": "OpenCyber Academy", "url": SITE},
+         "isPartOf": {"@type": "Course", "name": name, "url": course_url, "inLanguage": language, "isAccessibleForFree": True}},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "OpenCyber Academy", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": name, "item": course_url},
+            {"@type": "ListItem", "position": 3, "name": lesson["title"], "item": canonical},
+        ]},
+    ]
+    previous = f'<a href="{lesson_path(level, area, language, lesson["previous"], kind)}">← {ui["previous"]} {label.lower()}</a>' if lesson["previous"] else "<span></span>"
+    following = f'<a href="{lesson_path(level, area, language, lesson["next"], kind)}">{ui["next"]} {label.lower()} →</a>' if lesson["next"] else "<span></span>"
+    body = render_markdown(lesson["markdown"], lesson["source_url"], level, area, language)
+    answers = render_markdown(lesson["worked_answers"], lesson["source_url"], level, area, language) if lesson["worked_answers"] else ""
+    answers_html = f'<section class="answers"><details><summary>{ui["answers"]}</summary><div class="prose">{answers}</div></details></section>' if answers else ""
+    language_name = html.escape(LANGUAGE_NAMES.get(language, language))
+    return f'''<!doctype html>
+<html lang="{html.escape(language)}" dir="{'rtl' if language == 'he' else 'ltr'}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escaped['title']}</title><meta name="description" content="{escaped['description']}"><meta name="author" content="OpenCyber Academy">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#070e1c"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="{escaped['canonical']}">
+  <meta property="og:type" content="article"><meta property="og:site_name" content="OpenCyber Academy">
+  <meta property="og:title" content="{escaped['title']}"><meta property="og:description" content="{escaped['description']}">
+  <meta property="og:url" content="{escaped['canonical']}"><meta property="og:image" content="{SITE}/social-card.png">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="OpenCyber Academy — free cybersecurity education">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escaped['title']}">
+  <meta name="twitter:description" content="{escaped['description']}"><meta name="twitter:image" content="{SITE}/social-card.png">
+  <script type="application/ld+json">{json_script(structured)}</script>
+  <link rel="stylesheet" href="/seo-lesson.css"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('open-cyber-academy-theme')||'dark'}}catch(_){{document.documentElement.dataset.theme='dark'}}</script>
+  <script src="/seo-lesson.js" defer></script><script src="/analytics.js" defer></script>
+</head>
+<body><a class="skip" href="#lesson-content">Skip to lesson</a>
+<header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a><nav aria-label="Main navigation"><a href="/levels/">Levels</a><a href="/subjects/">Subjects</a><a href="/for-ai/">For AIs</a><button id="theme-toggle" type="button" aria-label="Toggle light and dark theme">◐</button></nav></div></header>
+<main id="lesson-content" class="shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">{ui['home']}</a><span>›</span><a href="{escaped['course_url']}">{escaped['name']}</a><span>›</span><span>{label} {number}</span></nav>
+  <div class="eyebrow">{escaped['level_name']} · {label} {number} · {language_name}</div>
+  <h1>{escaped['lesson_title']}</h1>
+  <p class="intro">{ui['free']}</p>
+  <nav class="lesson-nav" aria-label="Lesson navigation">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
+  <article class="prose" lang="{html.escape(language)}">{body}</article>
+  {answers_html}
+  <nav class="lesson-nav" aria-label="Next study step">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
+</main>
+<footer class="footer"><div class="shell">© OpenCyber Academy · Free public cybersecurity education · <a href="/for-ai/">Open API and MCP</a></div></footer>
+</body></html>'''

@@ -13,10 +13,11 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from fastapi import FastAPI, HTTPException, Query, Request
-from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from pydantic import BaseModel, Field
 
 from access import identity
+from seo_pages import lesson_path, render_lesson_page
 
 
 app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
@@ -56,6 +57,9 @@ async def canonical_domain(request: Request, call_next):
     response = await call_next(request)
     if request.url.path.startswith(("/api/", "/mcp")):
         response.headers["Cache-Control"] = "no-store"
+        response.headers["X-Robots-Tag"] = "noindex"
+    if request.url.path.startswith("/private/"):
+        response.headers["X-Robots-Tag"] = "noindex"
     return response
 
 
@@ -459,6 +463,26 @@ async def api_lesson(request: Request, level: str, area: str, language: str, cha
 async def api_chapter(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
     """Read an authored subject chapter even during a partial daily conversion."""
     return await lesson_details(request, level, area, language, chapter, legacy=True)
+
+
+@app.get("/courses/{level}/{area}/lessons/{language}/{chapter}/", include_in_schema=False)
+async def public_lesson_page(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
+    data = await catalog(request)
+    course = get_course(data, level, area, language)
+    lesson = await lesson_details(request, level, area, language, chapter)
+    if lesson["content_kind"] == "legacy_chapter":
+        return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
+    level_name = data["level_names"][level].get("en", level)
+    return HTMLResponse(render_lesson_page(lesson, course, level_name), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+
+
+@app.get("/courses/{level}/{area}/chapters/{language}/{chapter}/", include_in_schema=False)
+async def public_chapter_page(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
+    data = await catalog(request)
+    course = get_course(data, level, area, language)
+    lesson = await lesson_details(request, level, area, language, chapter, legacy=True)
+    level_name = data["level_names"][level].get("en", level)
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, "chapter"), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/api/books/{level}/{area}/{language}")

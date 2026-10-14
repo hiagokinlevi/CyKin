@@ -97,6 +97,12 @@ p { margin-top: 0; }
 .footer { border-top: 1px solid var(--line); padding: 44px 0; color: var(--muted); font-size: .86rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
 .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+#analytics-consent { position: fixed; z-index: 100; bottom: 16px; left: 16px; width: min(460px, calc(100vw - 32px)); padding: 17px; background: var(--surface-2); border: 1px solid var(--gold); box-shadow: var(--shadow); }
+#analytics-consent p { margin: 0 0 12px; font-size: .9rem; }
+#analytics-consent div { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
+#analytics-consent button { border: 1px solid var(--gold); background: transparent; color: var(--text); padding: 5px 10px; }
+#analytics-consent button + button { background: var(--royal); }
+#analytics-settings { background: transparent; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: .86rem; }
 .skip { position: absolute; left: -9999px; top: 10px; z-index: 100; background: var(--gold); color: #070e1c; padding: 8px 12px; }
 .skip:focus { left: 10px; }
 :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }

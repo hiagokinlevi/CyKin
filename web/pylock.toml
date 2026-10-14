@@ -18,6 +18,11 @@ version = "4.15.1"
 wheels = [{ url = "https://files.pythonhosted.org/packages/12/b8/4bd346e22b28902df4d651910f5242c28d84e4a5c2435ca5c3f797ed7e2e/anyio-4.15.1-py3-none-any.whl", upload-time = 2026-09-05T10:42:37Z, size = 132079, hashes = { sha256 = "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101" } }]
 
 [[packages]]
+name = "bleach"
+version = "6.4.0"
+wheels = [{ url = "https://files.pythonhosted.org/packages/58/9d/40b6267367182187139a4000b82a3b287d84d745bccd808e75d916920e9d/bleach-6.4.0-py3-none-any.whl", upload-time = 2026-06-05T13:01:12Z, size = 165109, hashes = { sha256 = "4b6b6a54fff2e69a3dde9d21cc6301220bee3c3cb792187d11403fd795031081" } }]
+
+[[packages]]
 name = "fastapi"
 version = "0.143.0"
 wheels = [{ url = "https://files.pythonhosted.org/packages/bd/f4/27e386913417ad32aae42bba48b0c0cce40e9ff2fba1a871ca2702c37324/fastapi-0.143.0-py3-none-any.whl", upload-time = 2026-10-08T12:29:44Z, size = 144665, hashes = { sha256 = "3e9395fd35276425b61b516a31fdd7c77fe2af83e41b4da22e30696fb1304c5d" } }]
@@ -26,6 +31,11 @@ wheels = [{ url = "https://files.pythonhosted.org/packages/bd/f4/27e386913417ad3
 name = "idna"
 version = "3.20"
 wheels = [{ url = "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl", upload-time = 2026-09-17T14:11:03Z, size = 69583, hashes = { sha256 = "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c" } }]
+
+[[packages]]
+name = "markdown"
+version = "3.11.1"
+wheels = [{ url = "https://files.pythonhosted.org/packages/75/e6/1c7b7a48aa3f2c2a5d3c71a6c9c90a6c8c2903e5c73663b5f5e38f87257f/markdown-3.11.1-py3-none-any.whl", upload-time = 2026-10-13T19:29:12Z, size = 116774, hashes = { sha256 = "f1fa378ba5d682900c9ecb55ccceacca936016dda7c3b27097e8ae03ff78feb5" } }]
 
 [[packages]]
 name = "opentelemetry-api"
@@ -56,6 +66,11 @@ wheels = [{ url = "https://files.pythonhosted.org/packages/49/d3/b8441a820a491dd
 name = "typing-inspection"
 version = "0.4.4"
 wheels = [{ url = "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl", upload-time = 2026-08-12T12:37:24Z, size = 14750, hashes = { sha256 = "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147" } }]
+
+[[packages]]
+name = "webencodings"
+version = "0.6.1"
+wheels = [{ url = "https://files.pythonhosted.org/packages/77/c6/040cbc72480d789a5f40d63fb484d3106554c4dfa2d2b70ad5022057750f/webencodings-0.6.1-py3-none-any.whl", upload-time = 2026-08-15T14:22:56Z, size = 8745, hashes = { sha256 = "7fab6269c8bf237c657876b52058ccb182e861518d1c695c1a9aaa8c1c105d5b" } }]
 
 [[packages]]
 name = "workers-runtime-sdk"
