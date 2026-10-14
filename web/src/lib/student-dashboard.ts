@@ -156,21 +156,22 @@ export async function renderStudentDashboard(progress: StudentProgress, report: 
     ? t.overview(report.courses.length, Number(summary.lessons_completed), Number(summary.exercises_saved)) : t.noActivity;
 
   const metrics: [string, number | string, string, string][] = [
-    [t.metricVisits, event('lesson_opened'), '#account-recent', t.visits],
-    [t.metricMinutes, minutes, '#account-recent', t.minutes],
-    [t.metricCompleted, Number(summary.lessons_completed), '#account-lessons', t.lesson],
+    [t.metricVisits, event('lesson_opened'), '#account-recent', ''],
+    [t.metricMinutes, minutes, '#account-recent', ''],
+    [t.metricCompleted, Number(summary.lessons_completed), '#account-lessons', ''],
     [t.metricAnswers, event('exercise_answered'), '#account-exercises', `${summary.exercises_saved} ${t.metricSaved.toLowerCase()}`],
-    [t.metricTests, Number(summary.tests_completed), '#account-course-section', t.tests],
-    [t.metricCorrect, `${summary.test_answers_correct}/${Number(summary.tests_completed) * 10}`, '#account-course-section', t.bestScore],
-    [t.metricAnalyses, Number(summary.analyses_saved), '#account-course-section', t.metricAnalyses],
+    [t.metricTests, Number(summary.tests_completed), '#account-course-section', ''],
+    [t.metricCorrect, `${summary.test_answers_correct}/${Number(summary.tests_completed) * 10}`, '#account-course-section', ''],
+    [t.metricAnalyses, Number(summary.analyses_saved), '#account-course-section', ''],
   ];
   const tiles = document.getElementById('account-metrics')!; tiles.replaceChildren();
   for (const [label, value, href, detail] of metrics) {
     const link = document.createElement('a'); link.className = 'metric'; link.href = href;
     const number = document.createElement('span'); number.className = 'metric-value'; number.textContent = String(value);
     const name = document.createElement('span'); name.className = 'metric-label'; name.textContent = label;
-    const caption = document.createElement('span'); caption.className = 'metric-detail'; caption.textContent = detail;
-    link.append(number, name, caption); tiles.append(link);
+    link.append(number, name);
+    if (detail) { const caption = document.createElement('span'); caption.className = 'metric-detail'; caption.textContent = detail; link.append(caption); }
+    tiles.append(link);
   }
 
   const catalogTitles = new Map<string, string>();
