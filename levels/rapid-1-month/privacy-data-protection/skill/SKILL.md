@@ -1,6 +1,6 @@
 ---
 name: oca-privacy-data-protection-rapid-4f7b3a61
-description: "Guide a learner through the published rapid privacy book: twenty English chapters, the loyalty lab, and EX001–EX074. Review is still open. Not legal advice."
+description: "Guide a learner through rapid privacy: twenty English chapters and ten Portuguese chapter positions, the loyalty lab and same-book worked answers. Translation parity and complete review remain open. Not legal advice."
 license: CC0-1.0
 ---
 
@@ -17,7 +17,7 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/privacy-data-protection/README.md): source-linked practice.
 - [Published English book](../en/book/MANUSCRIPT.md): twenty chapters, the loyalty lab, and EX001–EX074. Review is still open, so do not describe the book as finished, compliant, or accredited.
-- [Portuguese (PT-BR) manuscript](../pt/book/MANUSCRIPT.md): that edition's own chapters. Do not treat it as a translation of the twenty English chapters. Where a later English lesson has no Portuguese chapter, do not invent one.
+- [Portuguese (PT-BR) manuscript](../pt/book/MANUSCRIPT.md): Chapters 1–10 and EX001–EX064 with same-book answers. Chapters 05–10 have newly translated teaching. Chapters 11–20 remain absent in Portuguese; never silently substitute English or infer reviewed parity from file presence.
 
 ## Navigation rule
 
@@ -43,10 +43,22 @@ Verified lab facts (synthetic unless cited): 10 collected fields; 5 not needed f
 
 ## Continue the curriculum
 
-After chapter 20, the next stop is [course 005: Security governance, risk and compliance / Rapid course](../../security-governance-risk-compliance/en/SUBJECTS.md). Chapters 5–20 do not close Juniper's open lines, do not sign the loyalty contract, and do not invent a prescription retention period.
+After chapter 20, the next stop is [course 005: Security governance, risk and compliance / Rapid course](../../security-governance-risk-compliance/en/SUBJECTS.md). Chapters 5–20 do not close Juniper's open lines, do not sign the loyalty contract, and do not invent a prescription retention period. For Portuguese, follow that edition's [index](../pt/SUBJECTS.md) and stop at its declared translation gap rather than treating this English route as already translated.
 
 ## Editorial status and language
 
-Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Twenty English chapters and EX001–EX074 are published. Independent review remains open. Page count is not the writing target. Do not treat another language edition as a translation of these twenty chapters. Portuguese publishes its own earlier chapters. Spanish and the remaining languages are outlines.
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Twenty English chapters and EX001–EX074 are published. Independent review remains open. Page count is not the writing target. Portuguese now has ten chapter positions and EX001–EX064 with answers, not complete twenty-chapter parity. Spanish and the remaining languages retain their own availability and must be read before any claim about their teaching. Do not start Spanish on the assumption that this Portuguese batch completes the collection.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
+
+## Portuguese translation checkpoint — Chapters 05–10
+
+Use the [Portuguese index](../pt/SUBJECTS.md), [new Chapter 05](../pt/book/MANUSCRIPT.md#ch-05), [same-book answer EX059](../pt/book/MANUSCRIPT.md#answer-ex059) and [translation record](../pt/book/PLAN.md#translation-review). Source: English blob `39fafd238ba4919f1a1493c6bddc1e8e497cc18c` at `02aa22a36a36484a493b734e58dbc5a724eeb0d5`. Previous Portuguese blob: `420811d6e7877fdc5541b4e127b8b4f8f962194e`; complete integrated manuscript blob: `ec1e89c46605204ff9818f54538053b75dcf64cb`.
+
+Keep `ch-05`–`ch-10`, EX059–EX064 and `answer-ex059`–`answer-ex064` aligned. The batch contains the full source-based teaching, 18 objectives, six four-row example tables, six Mermaid maps with 23 source-corresponding edges, six text drawings and six 0–3 rubric/answer pairs. The original four chapter bodies, 58 assessment pairs, laboratory code and references were retained, not newly approved. A local structural check also rejected a missing answer, duplicate anchor, reversed edge, missing rubric level and changed literal. Those finite checks do not establish semantic or linguistic equivalence by themselves.
+
+Teach the distinctions between an earlier export and a later night's content, a changed form and the old laboratory transcript, draft clauses and signed terms, approval to choose retention and an actual stated period, arranged shredding and observed destruction, and an approved replacement plan and permission for an old customer photo. The supplied thirty-day CCTV period is not a universal legal deadline. The four contractual topics highlighted in the source are not the complete Article 28 requirements; the [separate editorial note](../pt/book/MANUSCRIPT.md#pt-translation-limits-05-10) cites the official EDPB guidance without silently rewriting the learner's task.
+
+The complete published Python listing was transcribed from the pinned English and Portuguese connector reads and reproduced all eleven output lines in Python 3.13.5. Five independent local input controls examined empty data, a shortened list, a duplicate phone, an unknown field and no purposes, without input mutation. Empty input exposes the existing `ZeroDivisionError`; the duplicate is counted as another entry, not a unique name. The shorter-list run is an additional local test, not Juniper's recorded original run. No test inspects the values in `purchase_history` or establishes lawful processing. Preserve the literal identifiers and baseline instead of silently repairing source behavior during translation.
+
+No real data handling, independent human or complete legal review, Mermaid/A4 render, deployment or live site/MCP verification is claimed. The whole first-four-chapter reconciliation remains open. Stop Portuguese study at the [11–20 translation gap](../pt/book/PLAN.md#translation-gap); the next translation begins at Chapter 11 / EX065, with all answers kept in this same book and current manual changes preserved.

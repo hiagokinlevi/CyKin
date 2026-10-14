@@ -1,11 +1,13 @@
-# Privacidade e proteção de dados — Rápido — Português
+# Privacidade e Proteção de Dados — Rápido — Português
 
-**Duração:** 1 mês · **Estado editorial:** manuscrito público em português do Brasil; revisão técnica, linguística e A4 pendente.
+**Duração nominal:** 1 mês · **Estado editorial:** manuscrito público em português, com tradução parcial e revisão integral de equivalência pendente.
 
-[Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md) · [Playbooks](../../../../playbooks/privacy-data-protection/README.md)
+[Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill única](../skill/SKILL.md) · [Playbooks](../../../../playbooks/privacy-data-protection/README.md)
 
-Esta edição tem um livro principal de estudo. Cada disciplina do currículo é um capítulo com conteúdo didático, exemplos, exercícios e, no apêndice final, resoluções. Os capítulos 1–4 de 4 estão publicados no [manuscrito](book/MANUSCRIPT.md); casos, pessoas e organizações são sintéticos, e as saídas dos laboratórios e as citações são idênticas às da edição em inglês.
+Esta edição tem um único livro principal. Os quatro capítulos anteriores e EX001–EX058 com respostas foram preservados. A continuação 05–10 acrescenta seis capítulos traduzidos, seus exemplos, mapas, desenhos textuais e EX059–EX064 com resoluções no apêndice do mesmo manuscrito. Há **10/20 posições de capítulo em português (50%)** e **64/74 IDs com respostas (86,49%)**. Essas proporções medem presença, não equivalência integral, currículo diário aprovado ou conclusão do curso.
 
-O inglês é a edição de referência. Inglês, português e espanhol são prioridades atuais de redação e revisão; cada edição exige avaliação técnica e linguística própria.
+**Leia a continuação:** [Capítulo 05](book/MANUSCRIPT.md#ch-05) · [Capítulo 10](book/MANUSCRIPT.md#ch-10) · [Novas respostas](book/MANUSCRIPT.md#answer-ex059). Os capítulos 11–20 continuam [pendentes de tradução](book/PLAN.md#translation-gap). O plano e o índice mostram o ponto exato, sem apresentar resumos como ensino pronto.
 
-**Critério de publicação:** no mínimo 300 páginas A4 reais, 50 exercícios substantivos com resoluções, fontes verificadas, prática segura e reproduzível, e revisão técnica e linguística. Os títulos dos cursos não conferem credenciamento acadêmico.
+O inglês é a referência. A [nota de tradução](book/MANUSCRIPT.md#pt-translation-ch05-10) fixa a revisão `02aa22a36a36484a493b734e58dbc5a724eeb0d5` e o blob inglês `39fafd238ba4919f1a1493c6bddc1e8e497cc18c`. Os casos, pessoas e dados são sintéticos. O laboratório preserva nomes de campos e saídas literais em inglês porque fazem parte do teste; as explicações e os novos capítulos estão em português. As [notas editoriais](book/MANUSCRIPT.md#pt-translation-limits-05-10) distinguem as regras do caso, as limitações do código e a consulta externa à fonte oficial. As referências portuguesas anteriores, inclusive a referência brasileira à ANPD, foram mantidas, não declaradas idênticas a uma nova auditoria inglesa.
+
+O lote foi comparado com a fonte e passou pelas verificações descritas no [registro](book/PLAN.md#translation-review). Não se declara revisão humana independente, reconciliação integral dos quatro capítulos anteriores, renderização Mermaid ou A4, nem implantação ou leitura ao vivo do site/MCP. A4 é uma medição específica de uma edição, não uma quota de escrita. O [padrão de livros](../../../../BOOK_STANDARD.md) exige ensino e revisão; a presença de texto não aprova o volume. Nada aqui é aconselhamento jurídico, certificação ou credenciamento acadêmico. O próximo lote continua em português antes da etapa espanhola.
