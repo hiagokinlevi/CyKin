@@ -28,7 +28,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     initChapterTests();
   </script>
 </BaseLayout>
-<style>
+<style is:global>
   .test-hero{padding:78px 0 62px;background:linear-gradient(125deg,var(--bg-2),var(--bg));border-bottom:1px solid var(--line)}
   .test-hero h1{font-size:clamp(2.8rem,5vw,5rem);margin:14px 0}.test-hero p{max-width:780px;color:var(--muted);font-size:1.06rem;line-height:1.65}
   .test-hero .test-boundary{font-size:.9rem;border-left:3px solid var(--gold);padding-left:16px;margin-top:22px}
