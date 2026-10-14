@@ -18,6 +18,9 @@
   "d1_databases": [
     { "binding": "DB", "database_name": "open-cyber-academy-progress", "database_id": "9838c800-6de4-423a-af03-dd0c3f231452" }
   ],
+  "send_email": [
+    { "name": "EMAIL", "allowed_sender_addresses": ["login@auth.opencyber.academy"] }
+  ],
   "routes": [
     { "pattern": "opencyber.academy", "custom_domain": true },
     { "pattern": "www.opencyber.academy", "custom_domain": true },

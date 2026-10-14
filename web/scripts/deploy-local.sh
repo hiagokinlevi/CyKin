@@ -23,12 +23,17 @@ if ! npx wrangler whoami | grep -q "$expected_account"; then
   echo 'Unexpected Cloudflare account. Refusing deployment.' >&2
   exit 1
 fi
+if ! npx wrangler secret list | python3 -c 'import json,sys; sys.exit(0 if any(item.get("name") == "AUTH_HMAC_KEY" for item in json.load(sys.stdin)) else 1)'; then
+  echo 'AUTH_HMAC_KEY must be configured as a Worker secret before deployment.' >&2
+  exit 1
+fi
 
 npm ci
 uv sync --frozen
 npm run build
 uv run pytest -q
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0002_chapter_tests.sql
+npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0003_student_auth.sql
 uv run pywrangler deploy
 
 curl_options=(--connect-timeout 12)
@@ -43,6 +48,8 @@ if ! curl --fail --silent --output /dev/null https://opencyber.academy/api/healt
   curl_options=(--resolve "opencyber.academy:443:$public_ip")
 fi
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/health
+[[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/auth/me)" == 401 ]]
+[[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/student/progress)" == 401 ]]
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/ | grep -F 'OpenCyber Academy' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/levels/ | grep -F 'Browse by level' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/subjects/ | grep -F 'Browse by subject' > /dev/null

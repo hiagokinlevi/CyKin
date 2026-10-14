@@ -18,13 +18,15 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from pydantic import BaseModel, Field
 
-from access import identity
+from access import identity as access_identity
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
+from student_auth import router as student_auth_router, student_identity
 
 
 app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
+app.include_router(student_auth_router)
 GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/OpenCyberAcademy/main/"
 GITHUB_VIEW = "https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
@@ -96,9 +98,16 @@ async def canonical_domain(request: Request, call_next):
     if request.url.path.startswith(("/api/", "/mcp")):
         response.headers["Cache-Control"] = "no-store"
         response.headers["X-Robots-Tag"] = "noindex"
-    if request.url.path.startswith("/private/"):
+    if request.url.path.startswith(("/private/", "/student/", "/auth/")):
         response.headers["X-Robots-Tag"] = "noindex"
+        response.headers["Cache-Control"] = "no-store"
     return response
+
+
+async def identity(request: Request) -> dict:
+    if request.url.path.startswith("/student/"):
+        return await student_identity(request)
+    return await access_identity(request)
 
 
 def same_origin(request: Request) -> None:
@@ -499,12 +508,14 @@ async def private_login(request: Request, next: str = "/account/") -> Response:
 
 
 @app.get("/private/me")
+@app.get("/student/me")
 async def api_me(request: Request) -> Response:
     user = await identity(request)
     return JSONResponse({"email": user.get("email"), "student_id": user["sub"]}, headers={"Cache-Control": "no-store"})
 
 
 @app.get("/private/progress")
+@app.get("/student/progress")
 async def api_progress(request: Request) -> Response:
     user = await identity(request)
     db = database(request)
@@ -514,6 +525,7 @@ async def api_progress(request: Request) -> Response:
 
 
 @app.post("/private/progress/lesson")
+@app.post("/student/progress/lesson")
 async def api_progress_lesson(request: Request, payload: LessonProgress) -> Response:
     same_origin(request)
     user = await identity(request)
@@ -524,6 +536,7 @@ async def api_progress_lesson(request: Request, payload: LessonProgress) -> Resp
 
 
 @app.post("/private/progress/exercise")
+@app.post("/student/progress/exercise")
 async def api_progress_exercise(request: Request, payload: ExerciseAttempt) -> Response:
     same_origin(request)
     user = await identity(request)
@@ -563,6 +576,7 @@ async def api_test_catalog(request: Request) -> dict[str, Any]:
 
 
 @app.post("/private/tests/start")
+@app.post("/student/tests/start")
 async def api_test_start(request: Request, payload: TestStart) -> Response:
     same_origin(request)
     student = await identity(request)
@@ -579,6 +593,7 @@ async def api_test_start(request: Request, payload: TestStart) -> Response:
 
 
 @app.post("/private/tests/answer")
+@app.post("/student/tests/answer")
 async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
     same_origin(request)
     student = await identity(request)
@@ -621,6 +636,7 @@ async def api_test_answer(request: Request, payload: TestAnswer) -> Response:
 
 
 @app.get("/private/tests/state")
+@app.get("/student/tests/state")
 async def api_test_state(request: Request, attempt_id: str = Query(pattern=r"^[A-Za-z0-9_-]{16,80}$")) -> Response:
     student = await identity(request)
     db = database(request)
@@ -645,6 +661,7 @@ async def api_test_state(request: Request, attempt_id: str = Query(pattern=r"^[A
 
 
 @app.get("/private/tests/results")
+@app.get("/student/tests/results")
 async def api_test_results(request: Request, level: str, area: str, language: str) -> Response:
     student = await identity(request)
     get_course(await catalog(request), level, area, language)
@@ -658,6 +675,7 @@ async def api_test_results(request: Request, level: str, area: str, language: st
 
 
 @app.post("/private/tests/certificate")
+@app.post("/student/tests/certificate")
 async def api_test_certificate(request: Request, payload: CertificateClaim) -> Response:
     same_origin(request)
     student = await identity(request)
@@ -702,12 +720,13 @@ async def api_test_certificate(request: Request, payload: CertificateClaim) -> R
     ).bind(student["sub"], payload.level, payload.area, payload.language, book_sha).all()
     certificate = d1_rows(issued)[0]
     return JSONResponse({"certificate_id": certificate["id"], "issued_at": certificate["issued_at"],
-                         "certificate_url": f"/private/certificates/{certificate['id']}",
+                         "certificate_url": f"/student/certificates/{certificate['id']}" if request.url.path.startswith("/student/") else f"/private/certificates/{certificate['id']}",
                          "verify_url": f"https://opencyber.academy/api/certificates/{certificate['id']}"},
                         headers={"Cache-Control": "no-store"})
 
 
 @app.get("/private/certificates/{certificate_id}")
+@app.get("/student/certificates/{certificate_id}")
 async def api_certificate_view(request: Request, certificate_id: str) -> Response:
     student = await identity(request)
     if not re.fullmatch(r"[A-Za-z0-9_-]{16,80}", certificate_id):

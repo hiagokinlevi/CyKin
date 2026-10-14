@@ -224,7 +224,7 @@ export async function initCoursePortal(): Promise<void> {
     const tools = el('course-progress'), action = el('course-progress-action'), forms = el('course-exercise-forms');
     tools.hidden = false; action.replaceChildren(); forms.replaceChildren(); el('course-progress-status').textContent = '';
     try {
-      const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      const me = await fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
       if (me.status === 503) {
         el('course-progress-status').textContent = 'Progress saving is coming later. Continue reading without an account.';
         return;
@@ -234,7 +234,7 @@ export async function initCoursePortal(): Promise<void> {
     const base = { level, area, language, chapter: lesson.chapter };
     const mark = document.createElement('button'); mark.className = 'button gold'; mark.type = 'button'; mark.textContent = 'Mark lesson complete ✓';
     mark.addEventListener('click', async () => {
-      const response = await fetch('/private/progress/lesson', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, status: 'completed' }) });
+      const response = await fetch('/student/progress/lesson', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, status: 'completed' }) });
       el('course-progress-status').textContent = response.ok ? 'Lesson completed and saved to your account.' : 'Could not save right now.';
     }); action.append(mark);
     for (const digits of lesson.exercise_ids) {
@@ -246,7 +246,7 @@ export async function initCoursePortal(): Promise<void> {
       form.addEventListener('submit', async event => {
         event.preventDefault(); save.disabled = true;
         try {
-          const response = await fetch('/private/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, exercise_id: exerciseId, answer: input.value, status: 'attempted' }) });
+          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, exercise_id: exerciseId, answer: input.value, status: 'attempted' }) });
           el('course-progress-status').textContent = response.ok ? `${exerciseId} saved to your account.` : `Could not save ${exerciseId}.`;
         } catch { el('course-progress-status').textContent = `Could not save ${exerciseId}.`; }
         finally { save.disabled = false; }

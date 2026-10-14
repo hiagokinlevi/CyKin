@@ -90,10 +90,10 @@ export function initChapterTests(): void {
   const loadResults = async (key: string) => {
     const requestId = ++resultsRequest;
     try {
-      const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      const me = await fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
       if (!me.ok || !(me.headers.get('content-type') || '').includes('application/json')) return;
       const query = new URLSearchParams({ level, area, language });
-      const response = await fetch(`/private/tests/results?${query}`, { credentials: 'same-origin', cache: 'no-store' });
+      const response = await fetch(`/student/tests/results?${query}`, { credentials: 'same-origin', cache: 'no-store' });
       if (!response.ok) return;
       const rows = (await response.json()).results as { chapter: number; bank_sha256: string; best_score: number }[];
       if (requestId !== resultsRequest || key !== courseKey()) return;
@@ -107,7 +107,7 @@ export function initChapterTests(): void {
 
   const signInLink = () => {
     const link = document.createElement('a'); link.className = 'button gold';
-    link.href = `/private/login?next=${encodeURIComponent(location.pathname + location.search)}`;
+    link.href = `/account/?next=${encodeURIComponent(location.pathname + location.search)}`;
     link.textContent = ui.signin; return link;
   };
   const post = async (path: string, payload: unknown): Promise<Response> => fetch(path, {
@@ -118,13 +118,13 @@ export function initChapterTests(): void {
     if (busy) return; busy = true; selectedChapter = chapter; updateUrl();
     const status = el('test-course-status'); status.textContent = ui.sending;
     try {
-      const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      const me = await fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
       if (!me.ok || !(me.headers.get('content-type') || '').includes('application/json')) {
         if (me.status === 503) status.textContent = ui.setup;
         else status.replaceChildren(signInLink());
         return;
       }
-      const response = await post('/private/tests/start', { level, area, language, chapter });
+      const response = await post('/student/tests/start', { level, area, language, chapter });
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || ui.failed);
       active = data as QuizResponse;
@@ -160,7 +160,7 @@ export function initChapterTests(): void {
     if (timer) clearInterval(timer); timer = undefined;
     (el('test-submit') as HTMLButtonElement).disabled = true; el('test-feedback-status').textContent = ui.sending;
     try {
-      const response = await post('/private/tests/answer', { attempt_id: active.attempt_id, index: active.question.number - 1, selected });
+      const response = await post('/student/tests/answer', { attempt_id: active.attempt_id, index: active.question.number - 1, selected });
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || ui.failed);
       active = data as QuizResponse;
@@ -168,7 +168,7 @@ export function initChapterTests(): void {
       else if (active.complete) showResult(active);
     } catch (error) {
       try {
-        const state = await fetch(`/private/tests/state?attempt_id=${encodeURIComponent(active.attempt_id)}`, { credentials: 'same-origin', cache: 'no-store' });
+        const state = await fetch(`/student/tests/state?attempt_id=${encodeURIComponent(active.attempt_id)}`, { credentials: 'same-origin', cache: 'no-store' });
         if (!state.ok) throw error;
         active = await state.json() as QuizResponse;
         if (active.question) showQuestion(active.question);
@@ -209,7 +209,7 @@ export function initChapterTests(): void {
   el('test-certificate').addEventListener('click', async () => {
     const status = el('test-certificate-status'); status.textContent = ui.sending;
     try {
-      const response = await post('/private/tests/certificate', { level, area, language });
+      const response = await post('/student/tests/certificate', { level, area, language });
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || ui.failed);
       const link = document.createElement('a'); link.href = data.certificate_url; link.textContent = `${ui.certificate} →`;
