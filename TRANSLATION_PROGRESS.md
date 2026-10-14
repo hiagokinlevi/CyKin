@@ -2,7 +2,9 @@
 
 [Home](README.md) · [Edition inventory](LANGUAGE_LESSON_PROGRESS.md) · [Translation standard](BOOK_STANDARD.md#complete-translations-and-cross-language-parity) · [Curriculum baselines](CURRICULUM_GRID.md)
 
-**Latest scoped maintenance:** [14 October 2026 — Portuguese Chapter 2 reconciliation](#pt-ch02-reconciliation-20261014). The catalog tables and earlier findings below remain the historical snapshot named in the next paragraph; this update does not recount the catalog or present those numbers as live translation fidelity.
+**Latest integration:** [14 October 2026 — Portuguese Chapters 05–20 incorporated](#pt-ch05-20-integration-20261014): sixteen previously prepared chapter translations and sixteen exercise/answer pairs are incorporated into the existing public Portuguese book. That entry records the source and target blobs, actual checks and scoped increase. Complete-book translation parity remains unapproved. The earlier catalog tables below are historical, not live counters.
+
+**Earlier scoped maintenance:** [14 October 2026 — Portuguese Chapter 2 reconciliation](#pt-ch02-reconciliation-20261014). The catalog tables and earlier findings below remain the historical snapshot named in the next paragraph; that update did not recount the catalog or present those numbers as live translation fidelity.
 
 **Editorial responsibility:** hiagokinlevi. **Measurement snapshot:** `b542b64316b8fd413b764ac4c2710f35b22af1ac`. This is a dated inventory and scoped comparison, not a live counter or approval of any book. The later checked main `2deeac1c795e31830d149628e53dc97f930d2985` changed website files only; it did not change the inventory or the manuscript pair examined here.
 
@@ -122,3 +124,49 @@ This entry supersedes the earlier next-checkpoint instruction for Chapter 2 and 
 Catalog availability and daily-anchor counts were not raised. No other language was edited or re-audited in this maintenance pass. The six later-language zeroes in the historical table must not be presented as a fresh absence audit. The English book still has twenty chapter-lessons and the Portuguese book still has four published chapters. Translated navigation and repaired text are not additional lessons.
 
 **Next Portuguese maintenance checkpoint:** Chapter 3 with EX027–EX038 and EX055–EX056, including their final answers, incomplete figure labels and overly broad MFA claims. Correct source defects explicitly before reconciling the corresponding Portuguese passage; preserve valid manual translations. Chapters 05–20 remain a separate untranslated continuation, not filled by this maintenance. The current production order and whole-collection gates remain unchanged. No current A4 render, site deployment or live-route test was performed.
+
+<a id="pt-ch05-20-integration-20261014"></a>
+
+## 14 October 2026 — Portuguese Chapters 05–20 incorporated
+
+This entry records integration of the previously prepared Portuguese translations requested by the maintainer. It supersedes the earlier statement that Chapters 05–20 are absent from this course's public Portuguese manuscript. It does not claim complete English-collection review, approve the translated book or silently revise the global production rules. No other language manuscript or private Engine file is changed.
+
+**Pinned base:** `0d7712574de969d8a745dc6c9de3d20d5c434412`. **English reference:** `levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md`, blob `0b3a1361ae822a4602a8336e1e47ce8cecd6ddc6`. **Portuguese before:** blob `4d7a912d0c5becb92dd4512a7388ff28fa356bf3`. **Integrated Portuguese:** blob `9b61655266ce147aabb06bf5e59a9a4efdd6dc62`, 151,907 UTF-8 bytes. These are exact content identities, not review scores. Editorial responsibility remains hiagokinlevi; no independent human reviewer is asserted.
+
+[Read Chapter 05](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#ch-05) · [Read Chapter 20](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#ch-20) · [Worked answers](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#worked-results) · [Portuguese course guide](levels/rapid-1-month/information-security/pt/SUBJECTS.md) · [Translation limitations](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#pt-translation-ch11-20)
+
+### Source-to-target mapping
+
+| English source anchors | Portuguese target anchors | Exercise/answer IDs in the same Portuguese book | Integration scope |
+|---|---|---|---|
+| `ch-05`–`ch-10` | `ch-05`–`ch-10` | EX059–EX064 | Six prepared chapter translations, figures, examples, prompts, rubrics and final answers |
+| `ch-11`–`ch-20` | `ch-11`–`ch-20` | EX065–EX074 | Ten prepared chapter translations, figures, examples, prompts, rubrics and final answers |
+| Earlier `ch-01`–`ch-04` | Existing `ch-01`–`ch-04` | EX001–EX058 preserved | No replacement of their teaching or answers; presentation and continuation navigation updated |
+
+The sixteen new chapter bodies and answers match the previously delivered translation-package units. They include 48 stated learning objectives, sixteen worked-example tables with four rows each, sixteen Mermaid diagrams, sixteen logical text drawings and sixteen 0–3 prompt/answer pairs. These are content-presence and integration checks, not an independent linguistic certification. Source defects remain separately identified in the translated book rather than being silently rewritten in the learner's task.
+
+### Verified increase in this book
+
+| Measure | Before integration | After integration | What the increase means |
+|---|---:|---:|---|
+| Portuguese chapter positions / 20 English positions | 4/20 — 20% | 20/20 — 100% of positions | Sixteen newly available translated chapter positions, not 100% reviewed equivalence |
+| Portuguese prompt IDs with final answers / 74 English IDs | 58/74 — 78.38% | 74/74 — 100% of IDs | Sixteen additional IDs and answers; original 58 preserved |
+| Prepared continuation units still awaiting incorporation in this book | 16 | 0 | This package is incorporated, not a second book |
+| New Portuguese book files | 0 | 0 | An existing principal manuscript was completed structurally, not duplicated |
+| New complete-book translation approvals | 0 | 0 | Full technical, linguistic, rights and visual review remains open |
+
+**Catalog delta, not a full recount:** the edition inventory at the pinned base, blob `e5e59418b09649b552c742dc939f64e3004df844`, reported 2,509 Portuguese chapter anchors and 124/207 Portuguese manuscripts. This commit adds sixteen chapter anchors to one existing manuscript: **2,509 + 16 = 2,525** as an inventory-plus-verified-delta ledger. The Portuguese plan also gains sixteen chapter positions, so its analogous indexed denominator is **4,186 + 16 = 4,202**. These derived totals are not a new full-catalog inspection and are not percentages of faithful translation. The existing 124/207 manuscript-availability figure is not increased by extending an existing book. The full edition inventory, root bookshelf, generated website catalog and lesson-index assets were not rebuilt by this integration; their earlier counters must not be silently presented as a new recount.
+
+The manuscript's documented chapter-lesson marker allows a supporting reader to group the twenty positions into four pacing weeks. It creates no duplicate reading pages. The contribution adds sixteen translated chapter lessons, not twenty newly authored lessons; the first four already existed. A detector that only counts `lesson-NN` anchors will not measure this marker's semantics. No global daily-lesson or 120,060-lesson completion percentage is inferred from this update.
+
+### Checks executed for this integration
+
+Python **3.13.5** and markdown-it-py **4.2.0** were used locally. The complete original Portuguese text was recovered and its Git blob recomputed before editing. The candidate's blob matches the integrated blob named above. Direct comparisons confirmed that all four earlier teaching bodies, all 58 original prompts and answers, the executable code and the references remain unchanged. The only earlier-book changes are presentation, contents and navigation needed for the continuation. Twenty ordered unique chapter anchors, 74 unique prompt IDs and 74 unique answer IDs were checked. All twenty chapter navigation blocks are present; **62 in-book fragment destinations** resolve to explicit anchors. This does not claim that every external link was revalidated.
+
+The original complete Chapter 2 program was extracted from the candidate Markdown and executed unchanged. Its five lines matched exactly: clients 8/140, finance 4/60, marketing 25/80, rotas 10/20, total 47/300. Two separate local adverse inputs were run: an empty list produced `all files: 0 of 0`; duplicated client rows produced clients 16/280 and total 55/440, with other folder counts unchanged. These are synthetic controls, not measurements of a real clinic or newly observed source data.
+
+The package's **sixteen integration tests** were rerun successfully in temporary synthetic Git repositories, including refusal of manual edits, changed source or target, missing or repeated context, duplicate/missing exercise or answer IDs, symlink destinations, wrong origin, noncurrent checkout and repeated application. They test the local applicator, not a production deployment. The applicator was not run on a complete real repository checkout. A separate direct integration check used the exact recovered real manuscript and compared the complete resulting text. The package's structural verifier also passed: sixteen graphs with **75 corresponding connections**, original branch topology and required chapter components. Mermaid diagrams were not rendered.
+
+**Limits:** no independent human review, complete semantic review of the first four chapters, resolution of the enumerated source defects, A4 rendering, real account/source operation, website deployment or live-route test is asserted. Source citations retained in the translation were not all externally revalidated in this integration. A successful Markdown parse, matching code or a matched graph is not proof of full linguistic or technical parity.
+
+**Next Portuguese checkpoint:** finish reconciliation of the earlier chapters, starting with Chapter 3 and EX027–EX038, EX055–EX056, and then reconcile the source findings carried by Chapters 05–20. Preserve the now-published continuation instead of re-adding or counting it twice. Continue the Portuguese collection before the Spanish stage; this single-course integration is not collection completion.
