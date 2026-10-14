@@ -171,6 +171,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     unit_letter = "A" if kind in {"lesson", "chapter_lesson"} else "C"
     unit_code = f"{course_code}-{unit_letter}{number:03d}"
     path = lesson_path(level, area, language, number, kind)
+    markdown_path = lesson.get("markdown_url") or path.rstrip("/") + ".md"
     locale_site = site_for_language(language)
     canonical = locale_site + path
     course_url = locale_site + f"/courses/{level}/{area}/"
@@ -231,6 +232,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#070e1c"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="{escaped['canonical']}">
+  <link rel="alternate" type="text/markdown" href="{html.escape(markdown_path, quote=True)}" title="{unit_code} Markdown">
   <meta property="og:type" content="article"><meta property="og:site_name" content="OpenCyber Academy">
   <meta property="og:title" content="{escaped['title']}"><meta property="og:description" content="{escaped['description']}">
   <meta property="og:url" content="{escaped['canonical']}"><meta property="og:image" content="{SITE}/social-card.png">

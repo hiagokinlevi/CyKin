@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import { catalog, coursePath, levelPath, subjectPath } from '../../../../lib/catalog';
-import lessonIndexData from '../../../../../public/lesson-index.json';
 
 export function getStaticPaths() {
   return catalog.courses.map(course => ({ params: { level: course.level, area: course.area }, props: { course } }));
@@ -12,9 +11,6 @@ const previous = catalog.courses[position - 1];
 const next = catalog.courses[position + 1];
 const levelName = catalog.level_names[course.level].en;
 const courseCode = `OCA-${String(course.number).padStart(3, '0')}`;
-type IndexedUnit = { number: number; title: string };
-const lessonIndex = lessonIndexData as Record<string, { lessons: IndexedUnit[]; chapters: IndexedUnit[]; chapter_lessons?: boolean }>;
-const authoredEditions = catalog.languages.map(language => ({ language, units: lessonIndex[`${course.level}/${course.area}/${language}`] })).filter(edition => edition.units);
 const courseUrl = `https://opencyber.academy${coursePath(course.level, course.area)}`;
 const structuredData = [
   { '@context': 'https://schema.org', '@type': 'Course', name: `${levelName} ${course.title}`, courseCode, description: `Free ${levelName.toLowerCase()} cybersecurity learning in ${course.title}, with authored lessons, examples and exercises.`, url: courseUrl, isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'OpenCyber Academy', url: 'https://opencyber.academy/' } },
@@ -41,17 +37,7 @@ const structuredData = [
       <p id="course-status" class="status" role="status">Loading this course…</p>
       <div id="course-facts" class="course-facts" hidden></div>
     </div></section>
-    {authoredEditions.length > 0 && <section class="shell published-lesson-directory" aria-labelledby="published-lessons-title">
-      <h2 id="published-lessons-title">Published lessons in this course</h2>
-      <p>Each link opens the complete lesson on its own permanent page. New manuscript edits appear there after publication.</p>
-      {authoredEditions.map(({ language, units }) => <details data-edition={language}>
-        <summary>{units.chapter_lessons ? `${language.toUpperCase()} · ${units.chapters.length} chapter-lessons` : `${language.toUpperCase()} · ${units.lessons.length} daily lessons · ${units.chapters.length} full chapters`}</summary>
-        <div class="published-lesson-links">
-          {units.lessons.map(unit => <a href={`/courses/${course.level}/${course.area}/lessons/${language}/${unit.number}/`}><span>{`${courseCode}-A${String(unit.number).padStart(3, '0')} · Lesson ${unit.number}:`}</span> {unit.title}</a>)}
-          {units.chapters.map(unit => <a href={`/courses/${course.level}/${course.area}/chapters/${language}/${unit.number}/`}><span>{`${courseCode}-${units.chapter_lessons ? 'A' : 'C'}${String(unit.number).padStart(3, '0')} · ${units.chapter_lessons ? 'Lesson' : 'Chapter'} ${unit.number}:`}</span> {unit.title}</a>)}
-        </div>
-      </details>)}
-    </section>}
+    <div id="live-lesson-directory"></div>
     <section class="course-workspace shell">
       <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Study guide</h2><p>Choose one study week or browse the complete chapters.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
       <div class="card course-reader">

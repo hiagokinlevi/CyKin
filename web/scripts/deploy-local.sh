@@ -32,6 +32,10 @@ npm ci
 uv sync --frozen
 npm run build
 uv run pytest -q
+if [[ -n "$(git status --porcelain)" || "$(git ls-remote origin refs/heads/main | cut -f1)" != "$local_sha" ]]; then
+  echo 'The checkout or published main changed during validation. Refusing deployment.' >&2
+  exit 1
+fi
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0002_chapter_tests.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0003_student_auth.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0004_student_password_activity.sql
@@ -65,7 +69,10 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/subjects/ | grep -F 'Browse by subject' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/ | grep -F 'incident-response-resilience' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/ | grep -F '<meta name="robots" content="index,follow' > /dev/null
-curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemap.xml | grep -F '/courses/rapid-1-month/incident-response-resilience/lessons/en/1/' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemap.xml | grep -F '/sitemaps/rapid-1-month/incident-response-resilience/en.xml' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/sitemaps/rapid-1-month/incident-response-resilience/en.xml | grep -F '/courses/rapid-1-month/incident-response-resilience/lessons/en/1/' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/application-supply-chain/ | grep -F '/chapters/en/20/' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/application-supply-chain/chapters/en/20.md | grep -F 'Chapter 20' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Test yourself' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/account/ | grep -F 'profile-brand' > /dev/null

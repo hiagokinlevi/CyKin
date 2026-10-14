@@ -121,23 +121,24 @@ def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
                 for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}
     sitemap = sitemaps["en"]
     index = json.loads((ROOT / "web/public/lesson-index.json").read_text())
-    assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/" in sitemap
-    assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/21/" not in sitemap
+    assert "https://opencyber.academy/sitemaps/rapid-1-month/incident-response-resilience/en.xml" in sitemap
     assert index["rapid-1-month/incident-response-resilience/en"]["lessons"][0]["number"] == 1
     info = index["rapid-1-month/information-security/en"]
     assert info["chapter_lessons"] is True
     assert len(info["chapters"]) == 20 and not info["lessons"]
-    assert "https://opencyber.academy/courses/rapid-1-month/information-security/chapters/en/20/" in sitemap
-    assert "https://opencyber.academy/courses/rapid-1-month/information-security/lessons/en/20/" not in sitemap
-    assert "https://pt.opencyber.academy/courses/professional-6-months/quantum-post-quantum-security/chapters/pt/1/" in sitemaps["pt"]
-    assert "https://es.opencyber.academy/courses/professional-6-months/ot-iot-security/chapters/es/1/" in sitemaps["es"]
+    assert "https://pt.opencyber.academy/sitemaps/professional-6-months/quantum-post-quantum-security/pt.xml" in sitemaps["pt"]
+    assert "https://es.opencyber.academy/sitemaps/professional-6-months/ot-iot-security/es.xml" in sitemaps["es"]
     for language, xml in sitemaps.items():
         urls = [node.text for node in ET.fromstring(xml).iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
         assert len(urls) == len(set(urls))
         assert all(url.startswith(f"https://{language + '.' if language != 'en' else ''}opencyber.academy/") for url in urls)
         if language not in {"en", "pt", "es"}:
-            assert not urls  # No translated manuscripts exist yet.
-    assert sum(len(re.findall(r"<url><loc>", xml)) for xml in sitemaps.values()) > 7000
+            assert len(urls) == 1  # No translated manuscripts exist yet.
+    assert sum(len(re.findall(r"<sitemap><loc>", xml)) for xml in sitemaps.values()) > 350
+    live = client.get("/sitemaps/rapid-1-month/information-security/en.xml")
+    assert "https://opencyber.academy/courses/rapid-1-month/information-security/chapters/en/20/" in live.text
+    assert "https://opencyber.academy/courses/rapid-1-month/information-security/lessons/en/20/" not in live.text
+    assert "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/21/" not in client.get("/sitemaps/rapid-1-month/incident-response-resilience/en.xml").text
     assert client.get("/sitemap.xml", headers={"host": "pt.opencyber.academy"}).text == sitemaps["pt"]
     assert "https://es.opencyber.academy/sitemap.xml" in client.get("/robots.txt", headers={"host": "es.opencyber.academy"}).text
     assert client.get("/api/catalog").headers["x-robots-tag"] == "noindex"
@@ -148,26 +149,53 @@ def test_sitemap_language_alternates_are_reciprocal_and_authored():
     xhtml_link = "{http://www.w3.org/1999/xhtml}link"
     pages = {}
     for language in ("en", "pt", "es"):
-        root = ET.fromstring((ROOT / f"web/public/sitemap-{language}.xml").read_text())
+        root = ET.fromstring((ROOT / f"web/public/sitemap-{language}-pages.xml").read_text())
         for page in root.findall(f"{sitemap_ns}url"):
             pages[page.findtext(f"{sitemap_ns}loc")] = {
                 alternate.attrib["hreflang"]: alternate.attrib["href"]
                 for alternate in page.findall(xhtml_link)
             }
 
-    base = "/courses/professional-6-months/ot-iot-security/chapters/"
-    variants = {
-        "en": f"https://opencyber.academy{base}en/1/",
-        "pt": f"https://pt.opencyber.academy{base}pt/1/",
-        "es": f"https://es.opencyber.academy{base}es/1/",
-    }
+    variants = {language: f"https://{language + '.' if language != 'en' else ''}opencyber.academy/"
+                for language in ("en", "pt", "es")}
     assert all(pages[url] == variants for url in variants.values())
-    english_only = "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/"
+    english_only = "https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/"
     assert pages[english_only] == {}
     assert all(
         target in pages and pages[target] == alternates
         for alternates in pages.values() for target in alternates.values()
     )
+
+
+def test_course_directory_and_markdown_follow_new_github_text_without_rebuild(client):
+    level, area, language = "rapid-1-month", "application-supply-chain", "en"
+    book_path = f"levels/{level}/{area}/{language}/book/MANUSCRIPT.md"
+    original = app.state.source_override
+
+    async def edited_source(path):
+        text = await original(path)
+        if path == book_path:
+            return text + '\n<a id="ch-21"></a>\n## Chapter 21 — Newly published lesson\n\nA new explanation appears immediately.\n'
+        return text
+
+    app.state.source_override = edited_source
+    try:
+        directory = client.get(f"/courses/{level}/{area}/")
+        assert directory.status_code == 200
+        assert 'OCA-014-A021' in directory.text
+        assert f'/courses/{level}/{area}/chapters/en/21/' in directory.text
+        sitemap = client.get(f"/sitemaps/{level}/{area}/en.xml")
+        assert sitemap.status_code == 200
+        assert f'/courses/{level}/{area}/chapters/en/21/' in sitemap.text
+        markdown = client.get(f"/courses/{level}/{area}/chapters/en/21.md")
+        assert markdown.status_code == 200
+        assert markdown.headers["x-opencyberacademy-unit"] == 'OCA-014-A021'
+        assert "A new explanation appears immediately." in markdown.text
+        html_page = client.get(f"/courses/{level}/{area}/chapters/en/21/")
+        assert html_page.status_code == 200
+        assert f'/courses/{level}/{area}/chapters/en/21.md' in html_page.text
+    finally:
+        app.state.source_override = original
 
 
 def test_language_hosts_and_unwritten_study_slots_are_honest(client):

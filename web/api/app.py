@@ -20,6 +20,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTex
 from pydantic import BaseModel, Field
 
 from access import identity as access_identity
+from course_directory import render_course_directory
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
@@ -501,6 +502,7 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
         "previous": max((n for n in chapters if n < chapter), default=None),
         "next": min((n for n in chapters if n > chapter), default=None),
         "source_url": GITHUB_VIEW + path + "#" + (section.get("anchor", f"lesson-{chapter:02d}") if daily and not legacy else f"ch-{chapter:02d}"),
+        "markdown_url": f"/courses/{level}/{area}/{'chapters' if legacy or not daily else 'lessons'}/{language}/{chapter}.md",
         "source_sha256": hashlib.sha256(book.encode("utf-8")).hexdigest(),
         "content_sha256": hashlib.sha256(markdown.encode("utf-8")).hexdigest(),
         "source_branch": "main",
@@ -902,6 +904,32 @@ async def api_chapter(request: Request, level: str, area: str, language: str, ch
     return await lesson_details(request, level, area, language, chapter, legacy=True)
 
 
+@app.get("/courses/{level}/{area}/lessons/{language}/{chapter}.md", include_in_schema=False)
+async def public_lesson_markdown(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
+    lesson = await lesson_details(request, level, area, language, chapter)
+    if lesson["content_kind"] != "daily_lesson":
+        return RedirectResponse(f"/courses/{level}/{area}/chapters/{language}/{chapter}.md", status_code=308)
+    return lesson_markdown_response(lesson, language)
+
+
+@app.get("/courses/{level}/{area}/chapters/{language}/{chapter}.md", include_in_schema=False)
+async def public_chapter_markdown(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
+    return lesson_markdown_response(await lesson_details(request, level, area, language, chapter, legacy=True), language)
+
+
+def lesson_markdown_response(lesson: dict[str, Any], language: str) -> Response:
+    """A stable Markdown address for one authored unit, backed by the one book."""
+    text = lesson["markdown"]
+    if lesson["worked_answers"]:
+        text += "\n\n## Worked answers\n\n" + lesson["worked_answers"]
+    return PlainTextResponse(text + "\n", media_type="text/markdown; charset=utf-8", headers={
+        "Cache-Control": "no-store", "Content-Language": language,
+        "X-OpenCyberAcademy-Unit": lesson["unit_code"],
+        "X-OpenCyberAcademy-Source-SHA256": lesson["source_sha256"],
+        "X-Content-Type-Options": "nosniff",
+    })
+
+
 @app.get("/courses/{level}/{area}/lessons/{language}/{chapter}/", include_in_schema=False)
 async def public_lesson_page(request: Request, level: str, area: str, language: str, chapter: int) -> Response:
     data = await catalog(request)
@@ -934,6 +962,35 @@ async def public_chapter_page(request: Request, level: str, area: str, language:
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     kind = "chapter_lesson" if lesson["chapter_lesson"] else "chapter"
     return HTMLResponse(render_lesson_page(lesson, course, level_name, kind), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+
+
+@app.get("/courses/{level}/{area}/", include_in_schema=False)
+async def public_course_page(request: Request, level: str, area: str, lang: str | None = None) -> Response:
+    """Keep the course directory in sync with main without rebuilding Astro."""
+    hostname_language = language_for_host(request.headers.get("host", "")) or "en"
+    language = lang if lang in LANGUAGES else hostname_language
+    course = get_course(await catalog(request), level, area, language)
+    asset = f"courses/{level}/{area}/index.html"
+    if hostname_language in {"pt", "es"}:
+        asset = f"_locales/{hostname_language}/{asset}"
+    env = request.scope.get("env")
+    if env is not None:
+        source = await env.ASSETS.fetch("https://assets.local/" + asset)
+        if int(source.status) != 200:
+            raise HTTPException(503, "Course page is unavailable")
+        page = str(await source.text())
+    else:
+        target = Path(__file__).resolve().parents[1] / "dist" / asset
+        if not target.is_file():
+            raise HTTPException(503, "Course page is unavailable")
+        page = target.read_text(encoding="utf-8")
+    guide = await course_details(request, level, area, language)
+    directory = render_course_directory(guide, level, area, language, int(course["number"]))
+    if '<div id="live-lesson-directory"></div>' not in page:
+        raise HTTPException(503, "Course page needs a current deployment")
+    page = page.replace('<div id="live-lesson-directory"></div>', directory, 1)
+    return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": hostname_language,
+                                       "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/api/books/{level}/{area}/{language}")
@@ -1219,6 +1276,30 @@ async def robots(request: Request) -> Response:
 async def localized_sitemap(request: Request) -> Response:
     language = language_for_host(request.headers.get("host", "")) or "en"
     return await static_assets(f"sitemap-{language}.xml", request)
+
+
+@app.get("/sitemaps/{level}/{area}/{language}.xml", include_in_schema=False)
+async def course_sitemap(request: Request, level: str, area: str, language: str) -> Response:
+    """Discover new and edited lessons in an existing book directly from main."""
+    get_course(await catalog(request), level, area, language)
+    if language != (language_for_host(request.headers.get("host", "")) or "en"):
+        return RedirectResponse(site_for_language(language) + f"/sitemaps/{level}/{area}/{language}.xml", status_code=302)
+    book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
+    if book is None:
+        raise HTTPException(404, "This edition has no authored lessons")
+    daily = lesson_sections(book)
+    chapters = chapter_sections(book)
+    if CHAPTER_LESSONS_MARKER in book and not daily:
+        daily = {}
+    base = site_for_language(language) + f"/courses/{level}/{area}/"
+    urls = [f"{base}lessons/{language}/{number}/" for number in sorted(daily)]
+    urls += [f"{base}chapters/{language}/{number}/" for number in sorted(chapters)]
+    if not urls:
+        raise HTTPException(404, "This edition has no authored lessons")
+    body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    body += ''.join(f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls)
+    body += "</urlset>\n"
+    return Response(body, media_type="application/xml", headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/{path:path}", include_in_schema=False)

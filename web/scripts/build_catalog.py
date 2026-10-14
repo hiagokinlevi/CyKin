@@ -44,6 +44,19 @@ def sitemap_xml(routes: list[str], language: str, alternates: dict[str, dict[str
             f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"{xhtml_namespace}>\n'
             + "".join(entry(url) for url in urls)
             + "</urlset>\n")
+
+
+def sitemap_index_xml(language: str, editions: list[str]) -> str:
+    site = site_for_language(language)
+    children = [f"{site}/sitemap-{language}-pages.xml"]
+    for key in editions:
+        level, area, edition_language = key.split("/")
+        if edition_language == language:
+            children.append(f"{site}/sitemaps/{level}/{area}/{language}.xml")
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "".join(f"  <sitemap><loc>{escape(url)}</loc></sitemap>\n" for url in children)
+            + "</sitemapindex>\n")
 LEVELS = {
     "rapid-1-month": {"en": "Rapid course", "pt": "Curso rápido", "es": "Curso rápido"},
     "professional-6-months": {"en": "Professional", "pt": "Profissionalizante", "es": "Profesional"},
@@ -171,33 +184,20 @@ if __name__ == "__main__":
     by_language = {language: (["/", "/about/"] if language in INDEXED_LANGUAGES else [])
                    for language in LANGUAGES}
     by_language["en"] = common
-    for course_language, units in index.items():
-        level, area, language = course_language.split("/")
-        if language not in INDEXED_LANGUAGES:
-            continue
-        by_language[language].extend(f"/courses/{level}/{area}/lessons/{language}/{lesson['number']}/" for lesson in units["lessons"])
-        by_language[language].extend(f"/courses/{level}/{area}/chapters/{language}/{chapter['number']}/" for chapter in units["chapters"])
     translation_groups: dict[tuple[str, ...], dict[str, str]] = {}
     for language in INDEXED_LANGUAGES:
         for route in ("/", "/about/"):
             translation_groups.setdefault((route,), {})[language] = site_for_language(language) + route
-    for course_language, units in index.items():
-        level, area, language = course_language.split("/")
-        if language not in INDEXED_LANGUAGES:
-            continue
-        for kind in ("lessons", "chapters"):
-            for unit in units[kind]:
-                number = unit["number"]
-                route = f"/courses/{level}/{area}/{kind}/{language}/{number}/"
-                translation_groups.setdefault((level, area, kind, str(number)), {})[language] = site_for_language(language) + route
     alternates = {
         url: dict(sorted(variants.items()))
         for variants in translation_groups.values() if len(variants) > 1
         for url in variants.values()
     }
     for language, routes in by_language.items():
-        xml = sitemap_xml(routes, language, alternates)
+        pages_xml = sitemap_xml(routes, language, alternates)
+        OUTPUT.with_name(f"sitemap-{language}-pages.xml").write_text(pages_xml, encoding="utf-8")
+        xml = sitemap_index_xml(language, sorted(index) if language in INDEXED_LANGUAGES else [])
         OUTPUT.with_name(f"sitemap-{language}.xml").write_text(xml, encoding="utf-8")
         if language == "en":
             SITEMAP.write_text(xml, encoding="utf-8")
-        print(f"{language}: {len(dict.fromkeys(routes))} canonical routes at {site_for_language(language)}")
+        print(f"{language}: {len(dict.fromkeys(routes))} shared routes and live course sitemaps at {site_for_language(language)}")
