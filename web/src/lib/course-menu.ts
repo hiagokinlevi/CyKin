@@ -37,7 +37,7 @@ export function initializeCourseMenus(): void {
           const courses: Course[] = data.courses.filter(course => mode === 'level' ? course.level === key : course.area === key);
           for (const course of courses) {
             const item = document.createElement('a'); item.className = 'catalog-menu-course';
-            item.href = `/courses/${course.level}/${course.area}/?lang=${editionLanguage()}&ui=${siteLanguage()}`;
+            item.href = `/courses/${course.level}/${course.area}/start/?lang=${editionLanguage()}&ui=${siteLanguage()}`;
             const number = document.createElement('span'); number.textContent = String(course.number).padStart(3, '0');
             const label = document.createElement('span'); label.textContent = mode === 'level' ? ui(course.title) : data.level_names[course.level][siteLanguage()] || data.level_names[course.level].en;
             item.append(number, label); results.append(item);

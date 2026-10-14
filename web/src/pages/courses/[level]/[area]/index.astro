@@ -29,39 +29,16 @@ const structuredData = [
       <h1>{course.title}</h1>
       <p>Free cybersecurity education for anyone who wants to protect people and technology. Study published lessons, examples and exercises without creating an account.</p>
       <div class="course-heading-actions">
-        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
         <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
         <a class="button gold" href={`/tests/?level=${course.level}&area=${course.area}`} data-test-link>Test yourself →</a>
       </div>
-      <p id="course-status" class="status" role="status">Loading this course…</p>
-      <div id="course-facts" class="course-facts" hidden></div>
     </div></section>
     <div id="live-lesson-directory"></div>
-    <section class="course-workspace shell">
-      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Study guide</h2><p>Choose one study week or browse the complete chapters.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
-      <div class="card course-reader">
-        <div id="course-lesson-top" class="course-lesson-top" hidden><span id="course-position"></span><a id="course-top-overview" href="?lang=en">Course overview</a></div>
-        <div id="course-kicker" class="reader-kicker">{courseCode}</div>
-        <h2 id="course-reader-title">{course.title}</h2>
-        <p id="course-intro" class="muted">Loading the current book and lesson guide…</p>
-        <div id="course-overview" class="course-overview"></div>
-        <nav id="course-lesson-nav-top" class="lesson-nav course-nav-top" aria-label="Lesson navigation at top" hidden></nav>
-        <div id="course-source" class="source-bar"></div>
-        <article id="course-markdown" class="prose" hidden></article>
-        <section id="course-answers" class="answer-section" hidden><details><summary>View worked answers</summary><div id="course-answer-markdown" class="prose"></div></details></section>
-        <section id="course-progress" class="progress-tools" hidden><div class="eyebrow">YOUR PROGRESS · OPTIONAL</div><h3>Save this lesson</h3><p>Reading is open without an account. Saving progress with optional sign-in will be added later.</p><div id="course-progress-action"></div><div id="course-exercise-forms"></div><p id="course-progress-status" role="status"></p></section>
-        <nav id="course-lesson-nav" class="lesson-nav" aria-label="Lesson navigation"></nav>
-      </div>
-    </section>
     <nav class="shell directory-foot" aria-label="Adjacent courses">
-      {previous && <a href={coursePath(previous.level, previous.area)} data-language-link>← Previous course</a>}
+      {previous && <a href={`${coursePath(previous.level, previous.area)}start/`} data-language-link>← Previous course</a>}
       <a href={levelPath(course.level)} data-language-link>All courses at this level</a>
-      {next && <a href={coursePath(next.level, next.area)} data-language-link>Next course →</a>}
+      {next && <a href={`${coursePath(next.level, next.area)}start/`} data-language-link>Next course →</a>}
     </nav>
   </div>
-  <script>
-    import { initCoursePortal } from '../../../../lib/course-portal';
-    void initCoursePortal();
-  </script>
 </BaseLayout>

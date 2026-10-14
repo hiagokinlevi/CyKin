@@ -77,8 +77,8 @@ def localized_page(source: str, language: str, route: str) -> str:
         result = result.replace('content="index,follow,max-image-preview:large"', 'content="noindex,follow"', 1)
     metadata = {
         "/": {
-            "pt": ("OpenCyber Academy — cursos gratuitos de cibersegurança", "Cursos, livros e aulas gratuitos de cibersegurança para quem deseja proteger pessoas e tecnologias."),
-            "es": ("OpenCyber Academy — cursos gratuitos de ciberseguridad", "Cursos, libros y lecciones gratuitos de ciberseguridad para quienes desean proteger a las personas y la tecnología."),
+            "pt": ("OpenCyber Academy — cursos gratuitos online do básico ao doutorado", "Estude cibersegurança online e gratuitamente: cursos e trilhas de nível de graduação, mestrado e doutorado, com aulas, exemplos e exercícios abertos."),
+            "es": ("OpenCyber Academy — cursos gratis en línea hasta nivel doctoral", "Estudia ciberseguridad gratis en línea: cursos y rutas de nivel de grado, máster y doctorado, con lecciones, ejemplos y ejercicios abiertos."),
         },
         "/about/": {
             "pt": ("Sobre nós · OpenCyber Academy", "Conheça a OpenCyber Academy e seu fundador, Hiago Kin Levi. Livros e aulas gratuitos de cibersegurança para todos."),

@@ -38,6 +38,11 @@ PAGE_CHROME = {
     "pt": {"skip": "Pular para a aula", "navigation": "Navegação principal", "levels": "Níveis", "subjects": "Temas", "ai": "Para IAs", "theme": "Alternar tema claro e escuro", "lesson_navigation": "Navegação entre aulas", "next_step": "Próxima etapa de estudo", "footer": "Educação pública e gratuita em cibersegurança", "api": "API e MCP abertos"},
     "es": {"skip": "Saltar a la lección", "navigation": "Navegación principal", "levels": "Niveles", "subjects": "Temas", "ai": "Para IA", "theme": "Cambiar entre tema claro y oscuro", "lesson_navigation": "Navegación entre lecciones", "next_step": "Siguiente etapa de estudio", "footer": "Educación pública y gratuita en ciberseguridad", "api": "API y MCP abiertos"},
 }
+STUDY_TEXT = {
+    "en": {"published": "Published lessons", "chapters": "Book chapters", "week": "Week", "progress": "Your progress", "sign_in": "Sign in to track your study", "loading": "Loading your study record…", "completed": "Lessons completed", "exercises": "Exercises saved", "correct": "Correct test answers", "mark": "Mark this lesson complete", "marked": "Lesson completed", "dashboard": "View detailed progress", "tests": "Test yourself", "unavailable": "Progress is unavailable right now."},
+    "pt": {"published": "Aulas publicadas", "chapters": "Capítulos do livro", "week": "Semana", "progress": "Seu progresso", "sign_in": "Entre para acompanhar seus estudos", "loading": "Carregando seu histórico…", "completed": "Aulas concluídas", "exercises": "Exercícios salvos", "correct": "Acertos nos testes", "mark": "Marcar esta aula como concluída", "marked": "Aula concluída", "dashboard": "Ver progresso detalhado", "tests": "Teste você mesmo", "unavailable": "O progresso está indisponível agora."},
+    "es": {"published": "Lecciones publicadas", "chapters": "Capítulos del libro", "week": "Semana", "progress": "Tu progreso", "sign_in": "Inicia sesión para seguir tus estudios", "loading": "Cargando tu historial…", "completed": "Lecciones completadas", "exercises": "Ejercicios guardados", "correct": "Aciertos en las pruebas", "mark": "Marcar esta lección como completada", "marked": "Lección completada", "dashboard": "Ver progreso detallado", "tests": "Ponte a prueba", "unavailable": "El progreso no está disponible ahora."},
+}
 
 
 def lesson_path(level: str, area: str, language: str, number: int, kind: str = "lesson") -> str:
@@ -161,7 +166,41 @@ def json_script(value: object) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
-def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = "lesson") -> str:
+def render_course_sidebar(guide: dict, level: str, area: str, language: str, number: int, kind: str,
+                          course_code: str) -> str:
+    """Publish actual lesson links in HTML so navigation works without JavaScript."""
+    ui = STUDY_TEXT.get(language, STUDY_TEXT["en"])
+    daily = [] if guide["chapter_lessons"] else [unit for unit in guide["daily_slots"] if unit["published"]]
+    chapters = [unit for unit in guide["legacy_chapters"] if unit["published"]]
+    sections = []
+    for route_kind, units, title, letter in (
+        ("lesson", daily, ui["published"], "A"),
+        ("chapter", chapters, ui["published"] if guide["chapter_lessons"] else ui["chapters"],
+         "A" if guide["chapter_lessons"] else "C"),
+    ):
+        if not units:
+            continue
+        entries = []
+        last_module = None
+        for unit in units:
+            index = int(unit["chapter"])
+            module = unit.get("module")
+            if route_kind == "lesson" and module and module != last_module:
+                entries.append(f'<li class="course-week">{html.escape(ui["week"])} {module}</li>')
+                last_module = module
+            current = index == number and route_kind == ("lesson" if kind == "lesson" else "chapter")
+            href = lesson_path(level, area, language, index, route_kind)
+            current_attr = ' aria-current="page"' if current else ""
+            entries.append(
+                f'<li><a href="{href}"{current_attr}><span class="course-unit-code">'
+                f'{course_code}-{letter}{index:03d}</span><span>{html.escape(unit["title"])}</span></a></li>'
+            )
+        sections.append(f'<h3>{html.escape(title)}</h3><ol>{"".join(entries)}</ol>')
+    return ''.join(sections)
+
+
+def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = "lesson",
+                       guide: dict | None = None) -> str:
     level, area, language = (lesson["course"][key] for key in ("level", "area", "language"))
     number = lesson["chapter"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
@@ -182,7 +221,8 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         "pt": f"Estude {lesson['title']} no curso gratuito de {name}. Leia a aula, resolva os exercícios e confira as respostas comentadas.",
         "es": f"Estudia {lesson['title']} en el curso gratuito de {name}. Lee la lección, resuelve los ejercicios y consulta las respuestas desarrolladas.",
     }
-    description = plain_description(lesson["markdown"], fallback_description.get(language, fallback_description["en"]))
+    excerpt = plain_description(lesson["markdown"], fallback_description.get(language, fallback_description["en"]))
+    description = f"{unit_code} · {lesson['title']}. {excerpt}"[:160].rstrip(" .,;:")
     escaped = {key: html.escape(value, quote=True) for key, value in {"canonical": canonical, "course_url": course_url, "title": title, "description": description, "name": name, "level_name": level_name, "lesson_title": lesson["title"]}.items()}
     structured = [
         {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "identifier": unit_code, "description": description, "url": canonical,
@@ -205,6 +245,16 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
                 f'<small>{course_code}-{unit_letter}{lesson["previous"]:03d}</small><span>← {direction_text("previous")}</span></a>') if lesson["previous"] else "<span></span>"
     following = (f'<a href="{lesson_path(level, area, language, lesson["next"], kind)}">'
                  f'<small>{course_code}-{unit_letter}{lesson["next"]:03d}</small><span>{direction_text("next")} →</span></a>') if lesson["next"] else "<span></span>"
+    previous_link = (f'<link rel="prev" href="{locale_site + lesson_path(level, area, language, lesson["previous"], kind)}">'
+                     if lesson["previous"] else "")
+    next_link = (f'<link rel="next" href="{locale_site + lesson_path(level, area, language, lesson["next"], kind)}">'
+                 if lesson["next"] else "")
+    study = STUDY_TEXT.get(language, STUDY_TEXT["en"])
+    course_navigation = render_course_sidebar(guide, level, area, language, number, kind, course_code) if guide else ""
+    sign_in_url = f"/account/?next={quote(path, safe='')}"
+    test_url = f"/tests/?lang={quote(language)}&amp;area={quote(area)}&amp;level={quote(level)}"
+    can_mark = kind in {"lesson", "chapter_lesson"} or not (guide and guide["has_daily_lessons"])
+    mark_button = f'<button id="mark-lesson-complete" type="button" hidden>{html.escape(study["mark"])}</button>' if can_mark else ""
     body_source = lesson["markdown"]
     # The book's navigation block is for Markdown readers. This page has its
     # own persistent previous/guide/next navigation above and below the text.
@@ -232,6 +282,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#070e1c"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="{escaped['canonical']}">
+  {previous_link}{next_link}
   <link rel="alternate" type="text/markdown" href="{html.escape(markdown_path, quote=True)}" title="{unit_code} Markdown">
   <meta property="og:type" content="article"><meta property="og:site_name" content="OpenCyber Academy">
   <meta property="og:title" content="{escaped['title']}"><meta property="og:description" content="{escaped['description']}">
@@ -252,9 +303,34 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <h1 id="{'lesson' if kind == 'lesson' else 'ch'}-{number:02d}">{escaped['lesson_title']}</h1>
   <p class="intro">{ui['free']}</p>
   <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
+  <div class="lesson-layout">
+  <aside class="course-sidebar" aria-label="{html.escape(study['published'], quote=True)}"><div class="sidebar-inner">
+    <h2>{html.escape(ui['guide'])}</h2><a class="course-home-link" href="{escaped['course_url']}">{escaped['name']}</a>
+    <nav aria-label="{html.escape(study['published'], quote=True)}">{course_navigation}</nav>
+  </div></aside>
+  <div class="lesson-main">
   <article class="prose" lang="{html.escape(language)}">{body}</article>
   {answers_html}
   <nav class="lesson-nav" aria-label="{chrome['next_step']}">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
+  </div>
+  <aside class="progress-sidebar" aria-label="{html.escape(study['progress'], quote=True)}"
+         data-level="{html.escape(level, quote=True)}" data-area="{html.escape(area, quote=True)}"
+         data-language="{html.escape(language, quote=True)}" data-chapter="{number}"
+         data-published="{len([unit for unit in guide['daily_slots'] if unit['published']]) if guide and not guide['chapter_lessons'] else len([unit for unit in guide['legacy_chapters'] if unit['published']]) if guide else 0}">
+    <div class="sidebar-inner"><h2>{html.escape(study['progress'])}</h2>
+      <p id="progress-status">{html.escape(study['loading'])}</p>
+      <div id="progress-metrics" hidden>
+        <p><strong id="progress-completed">0</strong> {html.escape(study['completed'])}</p>
+        <p><strong id="progress-exercises">0</strong> {html.escape(study['exercises'])}</p>
+        <p><strong id="progress-correct">0/0</strong> {html.escape(study['correct'])}</p>
+      </div>
+      {mark_button}
+      <a id="progress-signin" href="{sign_in_url}" hidden>{html.escape(study['sign_in'])} →</a>
+      <a id="progress-dashboard" href="/account/" hidden>{html.escape(study['dashboard'])} →</a>
+      <a href="{test_url}">{html.escape(study['tests'])} →</a>
+    </div>
+  </aside>
+  </div>
 </main>
 <footer class="footer"><div class="shell">© OpenCyber Academy · {chrome['footer']} · <a href="/for-ai/">{chrome['api']}</a></div></footer>
 </body></html>'''

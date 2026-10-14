@@ -58,13 +58,13 @@ const areaBridges: Record<string, string> = {
   'critical-sector-security': 'End of the suggested area route. Revisit any subject at a deeper level or follow its course lessons.',
 };
 ---
-<BaseLayout>
+<BaseLayout title="OpenCyber Academy — free online cybersecurity courses and advanced study" description="Study cybersecurity online for free, from a first course through undergraduate, master's and doctoral levels. Open lessons, examples and exercises for everyone.">
   <section class="hero">
     <div class="shell hero-grid">
       <div class="hero-copy">
         <div class="eyebrow"><span class="live-dot"></span> OPEN LIBRARY · PUBLIC SOURCE</div>
-        <h1>Learn to think about <span class="gold-text">security</span> clearly.</h1>
-        <p>Free cybersecurity books, lessons and exercises for everyone who wants to protect people and technology. Choose your path and study without an account.</p>
+        <h1>Take a course. Study at undergraduate, master's or <span class="gold-text">doctoral level.</span></h1>
+        <p>Online, free and open. Grow your cybersecurity knowledge continuously through lessons, examples and exercises at the level you choose. No account is required to learn.</p>
         <div class="hero-actions"><a class="button gold" href="#comece">Start learning <span aria-hidden="true">↗</span></a><a class="button secondary" href="/for-ai/">Connect an AI <span aria-hidden="true">→</span></a></div>
         <div class="hero-metrics"><div><strong>207</strong><span>courses mapped</span></div><div><strong>23</strong><span>subject areas</span></div><div><strong>9</strong><span>study levels</span></div></div>
       </div>
@@ -180,10 +180,10 @@ const areaBridges: Record<string, string> = {
         for (const level of data.level_order) addChoice(data.level_names[level][choice.language!] || data.level_names[level].en, '', () => proceed({ level }));
       } else if (choice.mode === 'subject') {
         question.textContent = label.chooseLevel; help.textContent = label.courseHelp;
-        for (const level of data.level_order) addChoice(data.level_names[level][choice.language!] || data.level_names[level].en, '', () => {}, `${origin(choice.language!)}/courses/${level}/${choice.area}/?lang=${choice.language}`);
+        for (const level of data.level_order) addChoice(data.level_names[level][choice.language!] || data.level_names[level].en, '', () => {}, `${origin(choice.language!)}/courses/${level}/${choice.area}/start/?lang=${choice.language}`);
       } else {
         question.textContent = label.chooseCourse; help.textContent = label.levelHelpStep;
-        for (const course of data.courses.filter(course => course.level === choice.level)) addChoice(course.titles[choice.language!] || course.title, String(course.number).padStart(3, '0'), () => {}, `${origin(choice.language!)}/courses/${choice.level}/${course.area}/?lang=${choice.language}`);
+        for (const course of data.courses.filter(course => course.level === choice.level)) addChoice(course.titles[choice.language!] || course.title, String(course.number).padStart(3, '0'), () => {}, `${origin(choice.language!)}/courses/${choice.level}/${course.area}/start/?lang=${choice.language}`);
       }
     }
     document.getElementById('wizard-back')?.addEventListener('click', () => { const previous = history.pop(); if (previous) { choice = previous; renderWizard(); } });

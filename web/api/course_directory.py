@@ -1,15 +1,23 @@
-"""Render a course's current authored links from its published manuscript."""
+"""Server-rendered course guide linking only to published, canonical units."""
 
 from __future__ import annotations
 
 import html
+import re
+from itertools import groupby
+
+from seo_pages import lesson_path
 
 
 TEXT = {
-    "en": ("Published lessons in this course", "Each link opens the current lesson on its permanent page.", "Lesson", "Chapter"),
-    "pt": ("Aulas publicadas neste curso", "Cada link abre a aula atual em sua página permanente.", "Aula", "Capítulo"),
-    "es": ("Lecciones publicadas en este curso", "Cada enlace abre la lección actual en su página permanente.", "Lección", "Capítulo"),
+    "en": {"eyebrow": "YOUR COURSE PATH", "title": "Start with the first lesson", "description": "Read each published lesson in order. Every lesson has its own permanent page, examples, exercises and previous/next navigation.", "start": "Start learning", "guide": "Published course guide", "week": "Week", "lesson": "Lesson", "lessons": "lessons", "chapter": "Chapter", "chapters": "chapters", "none": "Lessons for this edition have not been published yet."},
+    "pt": {"eyebrow": "SEU PERCURSO", "title": "Comece pela primeira aula", "description": "Estude as aulas publicadas em sequência. Cada aula tem página própria e permanente, exemplos, exercícios e navegação anterior/próxima.", "start": "Começar a estudar", "guide": "Roteiro do curso publicado", "week": "Semana", "lesson": "Aula", "lessons": "aulas", "chapter": "Capítulo", "chapters": "capítulos", "none": "As aulas desta edição ainda não foram publicadas."},
+    "es": {"eyebrow": "TU RUTA DE ESTUDIO", "title": "Empieza por la primera lección", "description": "Estudia las lecciones publicadas en orden. Cada una tiene su página permanente, ejemplos, ejercicios y navegación anterior/siguiente.", "start": "Empezar a estudiar", "guide": "Guía del curso publicada", "week": "Semana", "lesson": "Lección", "lessons": "lecciones", "chapter": "Capítulo", "chapters": "capítulos", "none": "Todavía no se han publicado las lecciones de esta edición."},
 }
+
+
+def unit_title(value: str) -> str:
+    return re.sub(r"^(?:Chapter|Capítulo|Lesson|Aula|Lección)\s+\d+\s*[—:-]\s*", "", value, flags=re.I).strip()
 
 
 def render_course_directory(guide: dict, level: str, area: str, language: str, course_number: int) -> str:
@@ -17,22 +25,44 @@ def render_course_directory(guide: dict, level: str, area: str, language: str, c
     chapter_lessons = guide["chapter_lessons"]
     daily = [] if chapter_lessons else [unit for unit in guide["daily_slots"] if unit["published"]]
     chapters = [unit for unit in guide["legacy_chapters"] if unit["published"]]
-    if not daily and not chapters:
-        return '<div id="live-lesson-directory"></div>'
-    code = f"OCA-{course_number:03d}"
-    links = []
-    for route, units, letter, label in (
-        ("lessons", daily, "A", ui[2]),
-        ("chapters", chapters, "A" if chapter_lessons else "C", ui[2] if chapter_lessons else ui[3]),
-    ):
-        for unit in units:
-            number = unit["chapter"]
-            title = html.escape(unit["title"])
-            path = f"/courses/{level}/{area}/{route}/{language}/{number}/"
-            links.append(f'<a href="{path}"><span>{code}-{letter}{number:03d} · {label} {number}:</span> {title}</a>')
     source_hash = html.escape(guide.get("source_sha256") or "", quote=True)
+    code = f"OCA-{course_number:03d}"
+    primary = daily if daily else chapters
+    route = "lesson" if daily else "chapter"
+    letter = "A" if daily or chapter_lessons else "C"
+    label_key = "lesson" if daily or chapter_lessons else "chapter"
+    if not primary:
+        return (f'<section id="live-lesson-directory" class="shell published-lesson-directory" '
+                f'data-source-sha256="{source_hash}"><h2>{ui["guide"]}</h2><p>{ui["none"]}</p></section>')
+
+    first = primary[0]
+    first_path = lesson_path(level, area, language, int(first["chapter"]), route)
+    first_title = html.escape(unit_title(first["title"]))
+
+    def link(unit: dict) -> str:
+        number = int(unit["chapter"])
+        target = lesson_path(level, area, language, number, route)
+        title = html.escape(unit_title(unit["title"]))
+        return (f'<li><a href="{target}"><span class="course-map-code">{code}-{letter}{number:03d}</span>'
+                f'<span class="course-map-title">{title}</span><span class="course-map-arrow" aria-hidden="true">→</span></a></li>')
+
+    if daily:
+        sections = []
+        for week, units in groupby(primary, key=lambda unit: int(unit.get("module") or (int(unit["chapter"]) - 1) // 5 + 1)):
+            rows = ''.join(link(unit) for unit in units)
+            sections.append(f'<section class="course-map-group"><h3>{ui["week"]} {week}</h3><ol>{rows}</ol></section>')
+        body = ''.join(sections)
+    else:
+        body = f'<ol class="course-map-list">{"".join(link(unit) for unit in primary)}</ol>'
     return (
         f'<section id="live-lesson-directory" class="shell published-lesson-directory" data-source-sha256="{source_hash}" '
-        f'aria-labelledby="published-lessons-title"><h2 id="published-lessons-title">{ui[0]}</h2>'
-        f'<p>{ui[1]}</p><div class="published-lesson-links">{"".join(links)}</div></section>'
+        f'aria-labelledby="published-lessons-title">'
+        f'<div class="course-entry"><div><div class="eyebrow">{ui["eyebrow"]}</div>'
+        f'<h2 id="published-lessons-title">{ui["title"]}</h2><p>{ui["description"]}</p>'
+        f'<p class="course-entry-first">{code}-{letter}{int(first["chapter"]):03d} · {first_title}</p></div>'
+        f'<a id="course-start-link" class="button gold" href="{first_path}">{ui["start"]} →</a></div>'
+        f'<div class="course-map"><h2>{ui["guide"]}</h2><p>{len(primary)} '
+        f'{ui[label_key if len(primary) == 1 else label_key + "s"].lower()}</p>'
+        f'<div class="course-map-groups">{body}</div></div>'
+        f'</section>'
     )

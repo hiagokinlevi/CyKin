@@ -47,6 +47,13 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert structured[0]["url"] == f"https://opencyber.academy{path}"
     assert structured[1]["itemListElement"][-1]["item"] == f"https://opencyber.academy{path}"
     assert '<article class="prose" lang="en">' in response.text
+    assert '<nav aria-label="Published lessons">' in response.text
+    assert 'href="/courses/rapid-1-month/incident-response-resilience/lessons/en/1/" aria-current="page"' in response.text
+    assert 'href="/courses/rapid-1-month/incident-response-resilience/lessons/en/20/"' in response.text
+    assert '<link rel="next" href="https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/2/">' in response.text
+    assert 'id="progress-metrics" hidden' in response.text
+    assert 'data-published="20"' in response.text
+    assert 'OCA-016-A001 · ' in response.text
     assert "An incident response team does more than react" in response.text
     assert 'id="exercise-ex001"' in response.text
     assert 'id="answer-ex001"' in response.text
@@ -91,6 +98,10 @@ def test_portuguese_chapter_reads_as_a_lesson_on_small_screens(client):
     assert "OCA-003-C002" in page
     assert "Continue estudando — aula 01" not in article
     assert '"courseCode":"OCA-003"' in page
+    assert '<nav aria-label="Aulas publicadas">' in page
+    assert 'href="/courses/rapid-1-month/data-governance/chapters/pt/1/" aria-current="page"' in page
+    assert 'href="/courses/rapid-1-month/data-governance/chapters/pt/2/"' in page
+    assert '<link rel="next" href="https://pt.opencyber.academy/courses/rapid-1-month/data-governance/chapters/pt/2/">' in page
     assert '<script src="/seo-diagrams.js" defer></script>' in page
     assert '<code class="language-mermaid">' in article  # Accessible source before client rendering.
     assert '<div class="table-scroll" role="region" tabindex="0"' in article
@@ -194,8 +205,32 @@ def test_course_directory_and_markdown_follow_new_github_text_without_rebuild(cl
         html_page = client.get(f"/courses/{level}/{area}/chapters/en/21/")
         assert html_page.status_code == 200
         assert f'/courses/{level}/{area}/chapters/en/21.md' in html_page.text
+        assert '<nav aria-label="Published lessons">' in html_page.text
+        assert f'href="/courses/{level}/{area}/chapters/en/20/"' in html_page.text
+        assert 'href="/courses/rapid-1-month/application-supply-chain/chapters/en/21/" aria-current="page"' in html_page.text
     finally:
         app.state.source_override = original
+
+
+def test_course_selection_opens_first_published_lesson_and_course_guide_is_indexable(client):
+    host = {"host": "pt.opencyber.academy"}
+    route = "/courses/technical-18-months/data-governance/"
+    start = client.get(route + "start/?lang=pt", headers=host, follow_redirects=False)
+    assert start.status_code == 302
+    assert start.headers["location"] == "https://pt.opencyber.academy/courses/technical-18-months/data-governance/chapters/pt/1/"
+    course = client.get(route + "?lang=pt", headers=host)
+    assert course.status_code == 200
+    assert '<title>Técnico · Governança de dados · OpenCyber Academy</title>' in course.text
+    assert 'name="description" content="Estude gratuitamente Governança de dados' in course.text
+    assert 'name="robots" content="index,follow' in course.text
+    assert 'id="course-start-link"' in course.text
+    assert 'href="/courses/technical-18-months/data-governance/chapters/pt/1/"' in course.text
+    assert 'href="/courses/technical-18-months/data-governance/chapters/pt/18/"' in course.text
+    assert 'Carregando o livro' not in course.text
+    assert 'id="course-reader-title"' not in course.text
+    schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', course.text, re.S).group(1))
+    assert schema[0]["inLanguage"] == "pt"
+    assert schema[0]["name"] == "Técnico Governança de dados"
 
 
 def test_language_hosts_and_unwritten_study_slots_are_honest(client):

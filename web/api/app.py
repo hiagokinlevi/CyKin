@@ -194,8 +194,17 @@ def get_course(data: dict[str, Any], level: str, area: str, language: str) -> di
 
 async def source_text(request: Request, path: str) -> str | None:
     """Read a fixed public GitHub path; 404 means this edition has only a plan."""
+    # A lesson request renders both the lesson and its course navigation. Keep
+    # those reads on the same source snapshot without caching across requests.
+    cache = getattr(request.state, "source_text_cache", None)
+    if cache is None:
+        cache = request.state.source_text_cache = {}
+    if path in cache:
+        return cache[path]
     if override := getattr(app.state, "source_override", None):
-        return await override(path)
+        result = await override(path)
+        cache[path] = result
+        return result
     # Each read resolves main again. A unique query keeps intermediate CDN caches
     # from serving an older version after a lesson is edited in the repository.
     url = GITHUB_RAW + path + f"?source={time.time_ns()}"
@@ -214,7 +223,9 @@ async def source_text(request: Request, path: str) -> str | None:
                 raise HTTPException(502, "Upstream book exceeds reading limit")
             return data.decode("utf-8")
         try:
-            return await asyncio.to_thread(local_fetch)
+            result = await asyncio.to_thread(local_fetch)
+            cache[path] = result
+            return result
         except HTTPException:
             raise
         except Exception as exc:
@@ -228,6 +239,7 @@ async def source_text(request: Request, path: str) -> str | None:
         text = str(await response.text())
         if len(text) > MAX_SOURCE_CHARS:
             raise HTTPException(502, "Upstream book exceeds reading limit")
+        cache[path] = text
         return text
     except HTTPException:
         raise
@@ -464,7 +476,8 @@ async def course_details(request: Request, level: str, area: str, language: str)
 
 
 async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int, legacy: bool = False) -> dict[str, Any]:
-    course = get_course(await catalog(request), level, area, language)
+    data = await catalog(request)
+    course = get_course(data, level, area, language)
     if chapter < 1 or chapter > 9999:
         raise HTTPException(404, "Unknown chapter")
     path = book_path(level, area, language, "MANUSCRIPT.md")
@@ -951,7 +964,8 @@ async def public_lesson_page(request: Request, level: str, area: str, language: 
     if lesson["content_kind"] != "daily_lesson":
         return RedirectResponse(lesson_path(level, area, language, chapter, "chapter"), status_code=308)
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
-    return HTMLResponse(render_lesson_page(lesson, course, level_name), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+    guide = await course_details(request, level, area, language)
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, guide=guide), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
 
 
 @app.get("/courses/{level}/{area}/chapters/{language}/{chapter}/", include_in_schema=False)
@@ -961,7 +975,22 @@ async def public_chapter_page(request: Request, level: str, area: str, language:
     lesson = await lesson_details(request, level, area, language, chapter, legacy=True)
     level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
     kind = "chapter_lesson" if lesson["chapter_lesson"] else "chapter"
-    return HTMLResponse(render_lesson_page(lesson, course, level_name, kind), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+    guide = await course_details(request, level, area, language)
+    return HTMLResponse(render_lesson_page(lesson, course, level_name, kind, guide), headers={"Cache-Control": "no-store", "Content-Language": language, "X-Content-Type-Options": "nosniff"})
+
+
+@app.get("/courses/{level}/{area}/start/", include_in_schema=False)
+async def public_course_start(request: Request, level: str, area: str, lang: str | None = None) -> Response:
+    """The course selector always opens the first currently authored lesson."""
+    language = lang if lang in LANGUAGES else language_for_host(request.headers.get("host", "")) or "en"
+    guide = await course_details(request, level, area, language)
+    daily = [] if guide["chapter_lessons"] else [unit for unit in guide["daily_slots"] if unit["published"]]
+    chapters = [unit for unit in guide["legacy_chapters"] if unit["published"]]
+    first = daily[0] if daily else chapters[0] if chapters else None
+    target = (lesson_path(level, area, language, int(first["chapter"]), "lesson" if daily else "chapter")
+              if first else f"/courses/{level}/{area}/")
+    return RedirectResponse(site_for_language(language) + target, status_code=302,
+                            headers={"Cache-Control": "no-store"})
 
 
 @app.get("/courses/{level}/{area}/", include_in_schema=False)
@@ -969,7 +998,10 @@ async def public_course_page(request: Request, level: str, area: str, lang: str 
     """Keep the course directory in sync with main without rebuilding Astro."""
     hostname_language = language_for_host(request.headers.get("host", "")) or "en"
     language = lang if lang in LANGUAGES else hostname_language
-    course = get_course(await catalog(request), level, area, language)
+    if language != hostname_language and language in ACTIVE_INTERFACES:
+        return RedirectResponse(site_for_language(language) + f"/courses/{level}/{area}/", status_code=308)
+    data = await catalog(request)
+    course = get_course(data, level, area, language)
     asset = f"courses/{level}/{area}/index.html"
     if hostname_language in {"pt", "es"}:
         asset = f"_locales/{hostname_language}/{asset}"
@@ -989,6 +1021,39 @@ async def public_course_page(request: Request, level: str, area: str, lang: str 
     if '<div id="live-lesson-directory"></div>' not in page:
         raise HTTPException(503, "Course page needs a current deployment")
     page = page.replace('<div id="live-lesson-directory"></div>', directory, 1)
+    if any(unit["published"] for unit in guide["daily_slots"]) or any(unit["published"] for unit in guide["legacy_chapters"]):
+        page = page.replace('<meta name="robots" content="noindex,follow">',
+                            '<meta name="robots" content="index,follow,max-image-preview:large">', 1)
+    level_name = data["level_names"][level].get(language, data["level_names"][level]["en"])
+    course_name = course.get("titles", {}).get(language) or course["title"]
+    localized_title = f"{level_name} · {course_name} · OpenCyber Academy"
+    descriptions = {
+        "en": f"Study the free {level_name.lower()} course in {course_name}. Open the published lessons, examples, exercises and worked answers in order.",
+        "pt": f"Estude gratuitamente {course_name} no nível {level_name.lower()}. Acesse as aulas publicadas em sequência, com exemplos, exercícios e respostas comentadas.",
+        "es": f"Estudia gratis {course_name} en el nivel {level_name.lower()}. Sigue las lecciones publicadas con ejemplos, ejercicios y respuestas desarrolladas.",
+    }
+    description = descriptions.get(language, descriptions["en"])
+    for pattern, value in (
+        (r"<title>[^<]*</title>", f"<title>{html.escape(localized_title)}</title>"),
+        (r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{html.escape(description, quote=True)}">'),
+        (r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{html.escape(localized_title, quote=True)}">'),
+        (r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{html.escape(description, quote=True)}">'),
+        (r'<meta name="twitter:title" content="[^"]*">', f'<meta name="twitter:title" content="{html.escape(localized_title, quote=True)}">'),
+        (r'<meta name="twitter:description" content="[^"]*">', f'<meta name="twitter:description" content="{html.escape(description, quote=True)}">'),
+    ):
+        page = re.sub(pattern, lambda _: value, page, count=1)
+    schema_match = re.search(r'<script type="application/ld\+json">(.*?)</script>', page, flags=re.S)
+    if schema_match:
+        schema = json.loads(schema_match.group(1))
+        course_url = site_for_language(language) + f"/courses/{level}/{area}/"
+        schema[0].update(name=f"{level_name} {course_name}", description=description,
+                         url=course_url, inLanguage=language)
+        crumbs = schema[1]["itemListElement"]
+        crumbs[0]["item"] = site_for_language(language) + "/"
+        crumbs[1].update(name=level_name, item=site_for_language(language) + f"/levels/{level}/")
+        crumbs[2].update(name=course_name, item=course_url)
+        script = '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c") + '</script>'
+        page = page[:schema_match.start()] + script + page[schema_match.end():]
     return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": hostname_language,
                                        "X-Content-Type-Options": "nosniff"})
 
@@ -1291,11 +1356,12 @@ async def course_sitemap(request: Request, level: str, area: str, language: str)
     chapters = chapter_sections(book)
     if CHAPTER_LESSONS_MARKER in book and not daily:
         daily = {}
-    base = site_for_language(language) + f"/courses/{level}/{area}/"
-    urls = [f"{base}lessons/{language}/{number}/" for number in sorted(daily)]
-    urls += [f"{base}chapters/{language}/{number}/" for number in sorted(chapters)]
-    if not urls:
+    if not daily and not chapters:
         raise HTTPException(404, "This edition has no authored lessons")
+    base = site_for_language(language) + f"/courses/{level}/{area}/"
+    urls = [base]
+    urls += [f"{base}lessons/{language}/{number}/" for number in sorted(daily)]
+    urls += [f"{base}chapters/{language}/{number}/" for number in sorted(chapters)]
     body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     body += ''.join(f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls)
     body += "</urlset>\n"
