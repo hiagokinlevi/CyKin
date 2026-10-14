@@ -1,37 +1,52 @@
-# English chapter-writing progress by academic area
+# Chapter coverage by academic area and language
 
-[Home](README.md) · [Academic area map](AREA_MAP.md) · [Book completion gate](BOOK_STANDARD.md)
+[Home](README.md) · [Edition lesson inventory](LANGUAGE_LESSON_PROGRESS.md) · [Book completion gate](BOOK_STANDARD.md)
 
-The README bookshelf is generated locally from the same data as this table whenever the public catalog is built. Each percentage is **authored English chapter drafts ÷ planned English subject-chapters in that area across all nine courses**. A chapter counts only when its `MANUSCRIPT.md` has at least 300 whitespace-separated words of teaching before its exercises; a `PLAN.md` outline, chapter heading alone or generated summary does not count. This is a legacy discovery threshold, not a chapter-size requirement. The percentage measures **draft coverage**, not content depth, A4 book length, technical approval or translation progress. The public books still have their separate release gate.
+The README bookshelf and this table are generated from the same current public `MANUSCRIPT.md` and `PLAN.md` files. A numerator is the count of **distinct numbered chapter anchors** in a principal manuscript. A denominator is the union of that edition's current plan and manuscript chapter numbers, summed across nine courses per area. If a plan has no numbered anchors, the curricular subject count supplies its baseline. A plan alone contributes zero to the numerator. Each cell shows **authored anchors / indexed positions (structural coverage)**. The totals combine edition positions; they do not assume every language has the same denominator.
 
-**Publication update (2026-10-13):** The six early Chapter 2 correction units are consolidated in the [rapid Incident Response English manuscript](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-02). This changes teaching and executable validation, not the chapter or exercise denominator, and does not create a translation. The full 207-course catalog was recounted from current English manuscripts on 2026-10-13; these figures measure draft coverage, not completed books. The rapid book had a 353-page A4 length measurement for prior SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`; the current four-weekly-chapter, 20-lesson source was subsequently rerendered at **386 A4 pages** for SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`; see [the course checkpoint](COURSE_WRITING_PROGRESS.md). This is not editorial approval. No complete-book status is granted by publication alone.
+This is a structural discovery measure. A chapter anchor can exist before its teaching, examples, exercise answers or translation is complete. **100% does not mean an approved book, a complete daily lesson sequence or verified source-to-target equivalence.** A4 length, rights, sources and editorial review are separate. The English-only legacy draft-depth and A4 view remains in [the course writing table](COURSE_WRITING_PROGRESS.md); detailed EN/PT/ES lesson signals are in [the edition inventory](LANGUAGE_LESSON_PROGRESS.md).
 
-| Sigil | Academic area | Drafted / planned English chapters | Draft coverage | Start reading |
-|---|---|---:|---:|---|
-| IR | Incident response and cyber resilience | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/incident-response-resilience/README.md) |
-| CYBR | Cybersecurity | 8 / 186 | 4.3% | [Course](levels/rapid-1-month/cybersecurity/README.md) |
-| INFO | Information security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/information-security/README.md) |
-| DATA | Data governance | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/data-governance/README.md) |
-| PRIV | Privacy and data protection | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/privacy-data-protection/README.md) |
-| GRC | Security governance, risk and compliance | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/security-governance-risk-compliance/README.md) |
-| HUMAN | Human factors and cyber policy | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/human-factors-policy/README.md) |
-| ARCH | Security architecture and engineering | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/security-architecture/README.md) |
-| CRYPT | Cryptography and trust services | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/cryptography-trust/README.md) |
-| WEB3 | Web3, blockchain and cryptoasset security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/web3-blockchain-security/README.md) |
-| IAM | Identity and access management | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/identity-access/README.md) |
-| NET | Network and communications security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/network-communications/README.md) |
-| SYS | Systems, endpoints and hardware security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/systems-endpoints-hardware/README.md) |
-| CLOUD | Cloud and container security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/cloud-containers/README.md) |
-| APP | Application and software supply chain security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/application-supply-chain/README.md) |
-| SOC | Security operations and blue team | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/security-operations-blue-team/README.md) |
-| DFIR | Digital forensics and malware analysis | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/digital-forensics-malware/README.md) |
-| CTI | Threat intelligence and OSINT | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/threat-intelligence-osint/README.md) |
-| RED | Authorized offensive security and red team | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/offensive-security-red-team/README.md) |
-| AI | AI and machine-learning security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/ai-security/README.md) |
-| PQC | Quantum and post-quantum security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/quantum-post-quantum-security/README.md) |
-| OT | OT, IoT and cyber-physical security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/ot-iot-security/README.md) |
-| CRIT | Critical infrastructure and sector security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/critical-sector-security/README.md) |
+## All-language coverage by area
 
-**Total:** 4,012 / 4,190 currently indexed English chapters have draft teaching (95.8%). This is legacy chapter draft coverage, not daily-lesson or complete-book coverage.
+| Sigil | Academic area | English (`en`) | Português (`pt`) | Español (`es`) | עברית (`he`) | Français (`fr`) | Русский (`ru`) | Deutsch (`de`) | 中文 (`zh`) | 日本語 (`ja`) | All nine |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| IR | [Incident response and cyber resilience](levels/rapid-1-month/incident-response-resilience/README.md) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 182/1638 (11.1%) |
+| CYBR | [Cybersecurity](levels/rapid-1-month/cybersecurity/README.md) | 20/198 (10.1%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 20/1654 (1.2%) |
+| INFO | [Information security](levels/rapid-1-month/information-security/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 4/182 (2.2%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 400/1670 (24.0%) |
+| DATA | [Data governance](levels/rapid-1-month/data-governance/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
+| PRIV | [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
+| GRC | [Security governance, risk and compliance](levels/rapid-1-month/security-governance-risk-compliance/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
+| HUMAN | [Human factors and cyber policy](levels/rapid-1-month/human-factors-policy/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
+| ARCH | [Security architecture and engineering](levels/rapid-1-month/security-architecture/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
+| CRYPT | [Cryptography and trust services](levels/rapid-1-month/cryptography-trust/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
+| WEB3 | [Web3, blockchain and cryptoasset security](levels/rapid-1-month/web3-blockchain-security/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
+| IAM | [Identity and access management](levels/rapid-1-month/identity-access/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
+| NET | [Network and communications security](levels/rapid-1-month/network-communications/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
+| SYS | [Systems, endpoints and hardware security](levels/rapid-1-month/systems-endpoints-hardware/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
+| CLOUD | [Cloud and container security](levels/rapid-1-month/cloud-containers/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
+| APP | [Application and software supply chain security](levels/rapid-1-month/application-supply-chain/README.md) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 182/1638 (11.1%) |
+| SOC | [Security operations and blue team](levels/rapid-1-month/security-operations-blue-team/README.md) | 182/182 (100.0%) | 52/182 (28.6%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 234/1638 (14.3%) |
+| DFIR | [Digital forensics and malware analysis](levels/rapid-1-month/digital-forensics-malware/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 364/1638 (22.2%) |
+| CTI | [Threat intelligence and OSINT](levels/rapid-1-month/threat-intelligence-osint/README.md) | 182/182 (100.0%) | 91/182 (50.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 273/1638 (16.7%) |
+| RED | [Authorized offensive security and red team](levels/rapid-1-month/offensive-security-red-team/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 364/1638 (22.2%) |
+| AI | [AI and machine-learning security](levels/rapid-1-month/ai-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 139/182 (76.4%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 503/1638 (30.7%) |
+| PQC | [Quantum and post-quantum security](levels/rapid-1-month/quantum-post-quantum-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 9/182 (4.9%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 373/1638 (22.8%) |
+| OT | [OT, IoT and cyber-physical security](levels/rapid-1-month/ot-iot-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 546/1638 (33.3%) |
+| CRIT | [Critical infrastructure and sector security](levels/rapid-1-month/critical-sector-security/README.md) | 182/182 (100.0%) | 182/182 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 546/1638 (33.3%) |
 
-See [all 207 course percentages](COURSE_WRITING_PROGRESS.md) for the level-by-level view. These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).
+## Totals by language
+
+| Language | Numbered chapters / indexed positions | Structural coverage |
+|---|---:|---:|
+| English (`en`) | 4,216 / 4,394 | 95.9% |
+| Português (`pt`) | 2,541 / 4,218 | 60.2% |
+| Español (`es`) | 516 / 4,186 | 12.3% |
+| עברית (`he`) | 0 / 4,186 | 0.0% |
+| Français (`fr`) | 0 / 4,186 | 0.0% |
+| Русский (`ru`) | 0 / 4,186 | 0.0% |
+| Deutsch (`de`) | 0 / 4,186 | 0.0% |
+| 中文 (`zh`) | 0 / 4,186 | 0.0% |
+| 日本語 (`ja`) | 0 / 4,186 | 0.0% |
+| **All nine editions** | **7,273 / 37,914** | **19.2%** |
+
+These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).

@@ -1,37 +1,54 @@
 # OpenCyber Academy — Cybersecurity Academic Books Collection
 
+<!-- open-cyber-academy:multilingual-score:start -->
 ~~~text
   +------------------------------------------------------------------+
-  |         OPEN CYBER ACADEMY / CYBERSECURITY ACADEMIC BOOKS COLLECTION          |
+  |              OPEN CYBER ACADEMY / CHAPTER COVERAGE               |
   +------------------------------------------------------------------+
   |     ________    ________    ________    ________    ________     |
   |    |   IR   |  |  CYBR  |  |  INFO  |  |  DATA  |  |  PRIV  |    |
-  |    | 100.0% |  |  4.3%  |  | 100.0% |  | 100.0% |  | 100.0% |    |
+  |    | 11.1%  |  |  1.2%  |  | 24.0%  |  | 23.7%  |  | 23.0%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
   |    |  GRC   |  | HUMAN  |  |  ARCH  |  | CRYPT  |  |  WEB3  |    |
-  |    | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |    |
+  |    | 23.0%  |  | 23.0%  |  | 23.0%  |  | 23.0%  |  | 12.0%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
   |    |  IAM   |  |  NET   |  |  SYS   |  | CLOUD  |  |  APP   |    |
-  |    | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |    |
+  |    | 12.0%  |  | 12.0%  |  | 12.0%  |  | 12.0%  |  | 11.1%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |     ________    ________    ________    ________    ________     |
   |    |  SOC   |  |  DFIR  |  |  CTI   |  |  RED   |  |   AI   |    |
-  |    | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |  | 100.0% |    |
+  |    | 14.3%  |  | 22.2%  |  | 16.7%  |  | 22.2%  |  | 30.7%  |    |
   |    |________|  |________|  |________|  |________|  |________|    |
   |==================================================================|
   |                 ________    ________    ________                 |
   |                |  PQC   |  |   OT   |  |  CRIT  |                |
-  |                | 100.0% |  | 100.0% |  | 100.0% |                |
+  |                | 22.8%  |  | 33.3%  |  | 33.3%  |                |
   |                |________|  |________|  |________|                |
   |==================================================================|
-  |            ENGLISH DRAFT CHAPTERS / 23 ACADEMIC AREAS            |
+  |               ALL 9 LANGUAGES / 23 ACADEMIC AREAS                |
   +------------------------------------------------------------------+
 ~~~
+
+**All-language chapter scoreboard.** Each area percentage combines numbered chapter anchors in the nine language editions across all nine levels. A `PLAN.md` outline never counts as an authored chapter. The percentages measure published structure, not lesson depth, translation fidelity or completed books. [Counts and method](WRITING_PROGRESS.md).
+
+| Language edition | Chapter anchors / indexed positions | Structural coverage |
+|---|---:|---:|
+| English (`en`) | 4,216 / 4,394 | 95.9% |
+| Português (`pt`) | 2,541 / 4,218 | 60.2% |
+| Español (`es`) | 516 / 4,186 | 12.3% |
+| עברית (`he`) | 0 / 4,186 | 0.0% |
+| Français (`fr`) | 0 / 4,186 | 0.0% |
+| Русский (`ru`) | 0 / 4,186 | 0.0% |
+| Deutsch (`de`) | 0 / 4,186 | 0.0% |
+| 中文 (`zh`) | 0 / 4,186 | 0.0% |
+| 日本語 (`ja`) | 0 / 4,186 | 0.0% |
+| **All nine editions** | **7,273 / 37,914** | **19.2%** |
+<!-- open-cyber-academy:multilingual-score:end -->
 
 <!-- open-cyber-academy:onboarding:start -->
 
@@ -39,7 +56,7 @@
 
 ## Start here
 
-**Choose your language, then one of the two routes below.** [Visit the OpenCyber Academy study site](https://opencyber.academy/) to browse [by level](https://opencyber.academy/levels/) or [by subject](https://opencyber.academy/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above measures legacy English draft-chapter coverage, not completed courses, daily lessons or translations; [read its method](WRITING_PROGRESS.md).
+**Choose your language, then one of the two routes below.** [Visit the OpenCyber Academy study site](https://opencyber.academy/) to browse [by level](https://opencyber.academy/levels/) or [by subject](https://opencyber.academy/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above combines numbered chapter anchors in all nine language editions; it does not certify completed courses, daily lessons or translations. [Read its method](WRITING_PROGRESS.md).
 
 **Route 1 — one course:** language → academic area → formation level → that edition's course guide, principal book, weekly chapters and daily lessons.
 
@@ -67,7 +84,7 @@ The site reads book text from this repository's `main` branch; the links below p
 <!-- open-cyber-academy:course-structure:start -->
 ## Courses, weekly chapters and daily lessons
 
-The shelf above is one percentage per academic area. This section is the structure those percentages sit on. Read it before treating 4.3% and 100% as the same kind of number.
+The shelf above is one structural chapter percentage per academic area across all nine language editions. The English-only course matrix below uses a different legacy draft-depth test. Read the measure beside each table before comparing its percentages.
 
 **How the library is built**
 
@@ -99,11 +116,11 @@ There is no maximum chapter, lesson, word or page size. Add a lesson when the id
 
 | Meter | Unit it counts | Where to read it | Cybersecurity on 13 October 2026 |
 |---|---|---|---|
-| Shelf above, and the [area writing table](WRITING_PROGRESS.md) | English chapters with at least 300 words of teaching before the exercises, divided by the planned English subject-chapters of **all nine courses in that area**. A plan outline does not count. The 300-word test is a legacy discovery threshold. | The drawing and [WRITING_PROGRESS.md](WRITING_PROGRESS.md) | The drawing still prints **8 / 186 = 4.3%**, from the last catalog recount. The [lesson inventory](LANGUAGE_LESSON_PROGRESS.md) now lists **20/20** English chapters in the rapid course. The other eight Cybersecurity courses have no English manuscript. Rebuild the shelf before reading 4.3% as the live count. The older area index was 182 modules. |
-| Course matrix below | The same 300-word draft test, applied to **one course**. | [Section 2](#2-english-draft-progress-for-every-course) and [COURSE_WRITING_PROGRESS.md](COURSE_WRITING_PROGRESS.md) | Rapid Cybersecurity reads **100%** because that course's original modules have teaching. Professional through doctoral Cybersecurity read **0.0%**. A 100% cell is the legacy module test. The rapid English book now publishes 20 chapter-lessons, which meets that course's planning minimum and is not a finished book. |
+| Shelf above, and the [area-by-language table](WRITING_PROGRESS.md) | Numbered chapter anchors in the principal manuscript divided by indexed chapter positions, summed across **all nine courses and all nine languages** in each area. Plans contribute positions, but no authored anchors. This is structural coverage. | The drawing and [WRITING_PROGRESS.md](WRITING_PROGRESS.md) | Cybersecurity has a published English rapid-course manuscript, while its other editions still need authored chapters. Read the current numerators and denominators in the generated table rather than inferring them from the English course matrix. |
+| Course matrix below | The legacy 300-word English draft test, applied to **one course**. | [Section 2](#2-english-draft-progress-for-every-course) and [COURSE_WRITING_PROGRESS.md](COURSE_WRITING_PROGRESS.md) | Rapid Cybersecurity reads **100%** because that course's original modules have teaching. Professional through doctoral Cybersecurity read **0.0%**. A 100% cell is the legacy module test. The rapid English book now publishes 20 chapter-lessons, which meets that course's planning minimum and is not a finished book. |
 | Daily lessons | Lessons a learner can actually study. Migrated books use `lesson-NN` anchors inside weekly chapters. Books that have not migrated still use one chapter as the lesson and say so in `SUBJECTS.md`. | The edition's [SUBJECTS.md](levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) and the [lesson inventory](LANGUAGE_LESSON_PROGRESS.md) | The [rapid Incident Response English book](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) is the weekday example: four weekly chapters and lessons 01–20. The [rapid Cybersecurity](levels/rapid-1-month/cybersecurity/en/SUBJECTS.md), [Information security](levels/rapid-1-month/information-security/en/SUBJECTS.md), [Data governance](levels/rapid-1-month/data-governance/en/SUBJECTS.md), [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/en/SUBJECTS.md), [Human factors and cyber policy](levels/rapid-1-month/human-factors-policy/en/SUBJECTS.md), [Security architecture and engineering](levels/rapid-1-month/security-architecture/en/SUBJECTS.md), [Cryptography and trust services](levels/rapid-1-month/cryptography-trust/en/SUBJECTS.md), and [Web3, blockchain and cryptoasset security](levels/rapid-1-month/web3-blockchain-security/en/SUBJECTS.md), and [Identity and access management](levels/rapid-1-month/identity-access/en/SUBJECTS.md), and [Network and communications security](levels/rapid-1-month/network-communications/en/SUBJECTS.md), and [Systems, endpoints and hardware security](levels/rapid-1-month/systems-endpoints-hardware/en/SUBJECTS.md), and [Cloud and container security](levels/rapid-1-month/cloud-containers/en/SUBJECTS.md) English books each publish twenty chapter-lessons, which meets the planning minimum of 20. The [Security governance, risk and compliance](levels/rapid-1-month/security-governance-risk-compliance/en/SUBJECTS.md) English manuscript also has twenty chapter-lessons, and its edition line remains a working draft. None of those thirteen uses `lesson-NN` anchors. Review remains open, so the count is not a finished book. |
 
-The shelf percentage moves when the catalog build recounts the manuscripts. A lesson added after that build can be readable in `SUBJECTS.md` while the drawing still shows the previous percentage. Page count is measured separately and is not one of these meters. [STUDY_CALENDAR.md](STUDY_CALENDAR.md) answers a fourth question: how many Monday–Friday dates fall inside a civil duration. Four instructional weeks are 20 study days. A civil month can contain a different number of weekdays. An empty date is not a lesson.
+The shelf percentage moves when the nine-language scoreboard is regenerated from current manuscripts and plans. A new lesson may be readable before that local rebuild, and adding teaching inside an existing chapter may not change its structural percentage. Page count is measured separately. [STUDY_CALENDAR.md](STUDY_CALENDAR.md) answers another question: how many Monday–Friday dates fall inside a civil duration. Four instructional weeks are 20 study days. A civil month can contain a different number of weekdays. An empty date is not a lesson.
 
 English teaching is authored and reviewed first. Each later language needs its own complete teaching and review. The [book standard](BOOK_STANDARD.md) states the writing rule. Zero of the 1,863 editions have passed the complete-book gate.
 ### One book, not one book per week
@@ -162,7 +179,7 @@ The home page has an interactive [23-area learning map](https://opencyber.academ
 
 This architecture keeps the Markdown books as the canonical public source while giving human readers and AI clients stable site routes. The [web application README](web/README.md) contains local development, deployment and endpoint details. The [daily curriculum grid](CURRICULUM_GRID.md) sets minimum baselines of 20 weekday lessons for the rapid month, 130 for six months and 1,300 for five-year engineering. **These are not caps or current completion counts.** A chapter or course may grow as much as sound teaching requires; English books are written and reviewed first, then translated and reviewed edition by edition.
 
-**English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
+**Multilingual chapter coverage:** the bookshelf combines numbered manuscript chapter anchors from all nine languages. It measures structure, not chapter depth, daily lessons, translation quality or approved books. [Sigil key, counts and method](WRITING_PROGRESS.md).
 
 **Public lessons in three languages:** [open the English, Portuguese and Spanish lesson coverage table](LANGUAGE_LESSON_PROGRESS.md). It links each existing book or its plan and counts authored chapters, explicit examples, exercises, navigation and diagrams separately. A public manuscript is readable now; books with pending technical, language or A4 review are identified by the [publication gate](BOOK_STANDARD.md).
 
@@ -201,9 +218,9 @@ levels/<level>/<area>/
         └── MANUSCRIPT.md    actual lessons, examples, exercises and final answers
 ~~~
 
-**Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The original English catalog had **4,186 legacy subject-module positions**. The [structure table](#courses-weekly-chapters-and-daily-lessons) explains how an area, a course, a book, a weekly chapter and a daily lesson differ, and why the shelf can read 4.3% while one matrix cell reads 100%. The daily-lesson baseline is measured separately. These are plans, not finished books. 199 English manuscripts contain public work in progress; **zero books have passed the complete-book gate**.
+**Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The original English catalog had **4,186 legacy subject-module positions**. The [structure table](#courses-weekly-chapters-and-daily-lessons) explains how an area, a course, a book, a weekly chapter and a daily lesson differ. The multilingual shelf and the English-only course matrix use different denominators and different tests. The daily-lesson baseline is measured separately. These are plans, not finished books. 199 English manuscripts contain public work in progress; **zero books have passed the complete-book gate**.
 
-**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. The original 4,186-position catalog had 336 manually tailored English chapter briefs; the remaining original summaries were template-based. The [lesson inventory](LANGUAGE_LESSON_PROGRESS.md) counts chapter anchors and currently lists **4,216 of 4,394** indexed English positions. The [area writing table](WRITING_PROGRESS.md) still prints the previous catalog recount, **4,012 of 4,190 (95.8%)**, using the 300-word draft test. Rebuild that table before treating the shelf percentage as the live count. Per-course percentages are in [COURSE_WRITING_PROGRESS.md](COURSE_WRITING_PROGRESS.md). Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
+**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. The original 4,186-position catalog had 336 manually tailored English chapter briefs; the remaining original summaries were template-based. The [nine-language area table](WRITING_PROGRESS.md) gives current chapter-anchor counts and denominators for every area and language; the [EN/PT/ES lesson inventory](LANGUAGE_LESSON_PROGRESS.md) reports additional structural signals. The [English course table](COURSE_WRITING_PROGRESS.md) retains its separate legacy 300-word draft test and A4 checkpoints. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
 
 A finished book must contain the course's substantive teaching, with a worked example, exercise and answer for every authored weekday lesson, and pass technical, source, rights, language and accessibility review. Page count is a measured property of the book, not its writing target or proof of completion. The [book standard](BOOK_STANDARD.md) explains the gate.
 
@@ -213,7 +230,7 @@ Choose a level from the [course and lesson table](#courses-weekly-chapters-and-d
 
 ## 2. English draft progress for every course
 
-Each linked percentage opens one course page with its nine language editions, one skill, book, chapter index, materials, related project and practice playbooks. This matrix is **one course at a time**. The shelf at the top of this page is **one area across all nine levels**. Both use the legacy test of at least 300 words of authored English teaching. Rapid Cybersecurity can read 100% here while the Cybersecurity shelf reads 4.3%, because the cell covers that course's original modules and the other eight Cybersecurity courses are at 0.0%. Neither number is a daily-lesson count, a page length, a translation, or book approval. **100% here does not mean a complete book.** See the [structure table](#courses-weekly-chapters-and-daily-lessons), the [edition-specific lesson table](LANGUAGE_LESSON_PROGRESS.md), the [course writing table](COURSE_WRITING_PROGRESS.md) and the [book standard](BOOK_STANDARD.md). The five schools are descriptive groupings; the folder hierarchy begins with formation level.
+Each linked percentage opens one course page with its nine language editions, one skill, book, chapter index, materials, related project and practice playbooks. This matrix is **one English course at a time** and keeps the legacy test of at least 300 words of teaching per chapter. The shelf at the top instead combines numbered chapter anchors across **all nine levels and all nine languages** per area. A course can read 100% in this matrix while its multilingual area shelf remains much lower because the denominators and tests differ. Neither number is a daily-lesson count, a page length, a verified translation or book approval. **100% here does not mean a complete book.** See the [multilingual area table](WRITING_PROGRESS.md), [edition-specific lesson inventory](LANGUAGE_LESSON_PROGRESS.md), [English course writing table](COURSE_WRITING_PROGRESS.md) and [book standard](BOOK_STANDARD.md). The five schools are descriptive groupings; the folder hierarchy begins with formation level.
 
 <details>
 <summary>Open all 207 course links and their legacy English coverage</summary>
@@ -270,7 +287,7 @@ Read each lesson's worked example before attempting its practice. Then compare t
 
 ## Language sequence
 
-**Active production: English → Portuguese → Spanish.** First complete and technically review every English course book and its weekday lessons. Then translate the complete approved teaching into Portuguese and review every edition; repeat for Spanish. **Only after all three collections are independently 100% complete and current** may production begin in Hebrew, French, Russian, German, Chinese and Japanese. Here 100% means all 207 books in that language pass the [full-course publication gate](BOOK_STANDARD.md#sequential-production-order), including lessons, examples, exercises, worked answers, sources and navigation; Portuguese and Spanish also need verified parity with English. The bookshelf's chapter-draft percentages and a manuscript's presence do not count. Existing content in later languages remains public. Some non-English folders contain partial manuscripts alongside working outlines; no translation is verified complete.
+**Active production: English → Portuguese → Spanish.** First complete and technically review every English course book and its weekday lessons. Then translate the complete approved teaching into Portuguese and review every edition; repeat for Spanish. **Only after all three collections are independently 100% complete and current** may production begin in Hebrew, French, Russian, German, Chinese and Japanese. Here 100% means all 207 books in that language pass the [full-course publication gate](BOOK_STANDARD.md#sequential-production-order), including lessons, examples, exercises, worked answers, sources and navigation; Portuguese and Spanish also need verified parity with English. The bookshelf's structural chapter percentages and a manuscript's presence do not count. Existing content in later languages remains public. Some non-English folders contain partial manuscripts alongside working outlines; no translation is verified complete.
 
 ## Existing projects
 
