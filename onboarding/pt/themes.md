@@ -57,7 +57,7 @@ O calendário de dias úteis define um mínimo de aulas e não um máximo. Uma a
 
 | Nível | Guia de aulas | Começar no capítulo 01 | Capítulos no manuscrito / previstos |
 |---|---|---|---:|
-| Rápido | [Guia de aulas](../../levels/rapid-1-month/data-governance/pt/SUBJECTS.md) | [Ler capítulo 01](../../levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md#ch-01) | 4/4 |
+| Rápido | [Guia de aulas](../../levels/rapid-1-month/data-governance/pt/SUBJECTS.md) | [Ler capítulo 01](../../levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md#ch-01) | 10/10 |
 | Profissionalizante | [Guia de aulas](../../levels/professional-6-months/data-governance/pt/SUBJECTS.md) | [Ler capítulo 01](../../levels/professional-6-months/data-governance/pt/book/MANUSCRIPT.md#ch-01) | 12/12 |
 | Técnico | [Guia de aulas](../../levels/technical-18-months/data-governance/pt/SUBJECTS.md) | [Ler capítulo 01](../../levels/technical-18-months/data-governance/pt/book/MANUSCRIPT.md#ch-01) | 18/18 |
 | Tecnólogo | [Guia de aulas](../../levels/technologist-3-years/data-governance/pt/SUBJECTS.md) | [Ler capítulo 01](../../levels/technologist-3-years/data-governance/pt/book/MANUSCRIPT.md#ch-01) | 30/30 |
