@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="My area · OpenCyber Academy" description="Track lessons and exercises on OpenCyber Academy. An account is optional; books remain open.">
-  <section class="account-hero"><div class="shell"><div class="eyebrow">OPTIONAL STUDENT AREA</div><h1>Your learning,<br /><span class="gold-text">at your pace.</span></h1><p>Sign in only if you want to save completed lessons and exercise answers. Books, lessons and the API remain open without an account.</p></div></section>
+  <section class="account-hero"><div class="shell"><div class="eyebrow">OPTIONAL STUDENT AREA</div><h1>Your learning,<br /><span class="gold-text">at your pace.</span></h1><p>Books, lessons and the API are open without an account. Optional sign-in for saved progress will be added later.</p></div></section>
   <section class="section"><div class="shell account-grid"><div class="card profile"><div class="eyebrow">IDENTITY</div><h2 id="profile-title">Checking access…</h2><p id="profile-description" class="muted">Sign-in is managed by Cloudflare Access. OpenCyber Academy does not store your password.</p><div id="profile-action"></div></div><div class="card benefits"><div class="eyebrow">YOUR STUDY AREA</div><h2>What you can track</h2><div class="benefit"><span>✓</span><div><strong>Completed lessons</strong><p>Mark a chapter when you finish reading.</p></div></div><div class="benefit"><span>✎</span><div><strong>Exercise attempts</strong><p>Save your answers and continue later.</p></div></div><div class="benefit"><span>◌</span><div><strong>Audio and video</strong><p>Planned for a later stage; reading is already open.</p></div></div></div></div></section>
   <section class="section records"><div class="shell"><div class="eyebrow">MY HISTORY</div><h2>Saved progress</h2><p id="records-status" class="muted">Sign in to view your lessons and attempts.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/levels/">Continue learning →</a></div></section>
   <script>
@@ -15,8 +15,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const list = document.getElementById('records-list')!;
     const link = (href: string, label: string) => { const a = document.createElement('a'); a.href=href; a.className='button gold'; a.textContent=label; return a; };
     const lessonLink = (item: Lesson) => `/courses/${encodeURIComponent(item.level)}/${encodeURIComponent(item.area)}/?lang=${encodeURIComponent(item.language)}&chapter=${item.chapter}`;
+    let signInDeferred = false;
     try {
       const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      signInDeferred = me.status === 503;
       if (!me.ok) throw new Error(me.status === 503 ? 'Optional sign-in is not enabled on this domain yet.' : 'Sign in to save progress.');
       const user = await me.json(); title.textContent = user.email || 'Active session'; description.textContent = 'Your progress belongs only to your account.';
       const response = await fetch('/private/progress', { credentials: 'same-origin', cache: 'no-store' });
@@ -32,7 +34,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (!data.lessons.length) status.textContent = 'No lessons marked yet. Begin with a published lesson.';
     } catch(error) {
       title.textContent='Reading always open'; description.textContent=String(error);
-      action.append(link('/private/login','Sign in with email →'), link('/levels/','Study without an account →'));
+      if (!signInDeferred) action.append(link('/private/login','Sign in with email →'));
+      action.append(link('/levels/','Study without an account →'));
       status.textContent='Your history will appear when optional sign-in is available and you sign in.';
     }
   </script>

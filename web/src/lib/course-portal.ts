@@ -198,6 +198,10 @@ export async function initCoursePortal(): Promise<void> {
     tools.hidden = false; action.replaceChildren(); forms.replaceChildren(); el('course-progress-status').textContent = '';
     try {
       const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      if (me.status === 503) {
+        el('course-progress-status').textContent = 'Progress saving is coming later. Continue reading without an account.';
+        return;
+      }
       if (!me.ok) throw new Error('Sign-in unavailable');
     } catch { action.append(link('Sign in to save progress →', '/account/')); return; }
     const base = { level, area, language, chapter: lesson.chapter };
