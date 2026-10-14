@@ -1,16 +1,18 @@
 # Security Architecture and Engineering: Rapid Course
 
 - Language: English (`en`); course 007, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–20 have hand-written teaching text; exercises EX001–EX066 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. The rapid planning minimum is 20 lessons and there is no maximum. These twenty lessons meet that minimum. Independent review remains open. Page count is not the writing target. This is not a finished qualification.
 - Audience: staff in small organisations who need a fast, practical start in security architecture.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count supplier dependencies and check settings against a baseline, both on synthetic data; nothing touches a real system. Production designs use vetted products and standards; never roll your own cryptography. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
 
 [Course home](../../README.md) · [Chapter index](../SUBJECTS.md) · [Book plan](PLAN.md) · [Course skill](../../skill/SKILL.md) · [Worked results](#worked-results)
 
-## How to use this draft
+<!-- open-cyber-academy:chapter-lessons -->
 
-Read in order. The four chapters follow one operations coordinator at a small credit union: foundations and decisions; scope, permission and safe practice; systems, data and dependencies; and a guided lab with a closing plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics.
+## How to use this book
+
+Read the chapters in order. This English edition publishes twenty lessons, and each numbered chapter is that lesson. Five chapters in a row can be one study week; the grouping does not make a second copy of the text. Leah Brennan's first four lessons cover the design principles, the permitted review, the supplier map and the loan baseline. Lessons 5–20 each take one later Saltmarsh question and leave the laboratory prints where the file already has them. Meeting twenty lessons meets the planning minimum. It does not close review, and it does not award a qualification. Run each lab where the chapter shows it, try the exercise before the worked result, and score the rubric yourself.
 
 ### Synthetic running case
 
@@ -29,7 +31,7 @@ Saltzer and Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.11
 
 | Chapters |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Worked results](#worked-results) · [References](#references)
 
@@ -151,9 +153,11 @@ Principles can conflict, such as acceptability against separation of privilege. 
 
 Security architecture is a written plan grounded in a few durable principles and recorded decisions.
 
-### Continue studying — chapter 01 of 04
+### Continue studying — lesson 01 (chapter 01 of 20)
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
 
 <a id="ch-02"></a>
 
@@ -273,9 +277,11 @@ Scopes can exclude where problems lie. Vendor logs may not show all access.
 
 Scope, permission, safe data handling and stop conditions make reviews useful and safe.
 
-### Continue studying — chapter 02 of 04
+### Continue studying — lesson 02 (chapter 02 of 20)
 
-[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
 
 <a id="ch-03"></a>
 
@@ -424,9 +430,11 @@ Maps go stale without updates. Supplier failures can cascade through fourth part
 
 Mapping systems, data flows and dependencies shows where protection and fallback plans matter most.
 
-### Continue studying — chapter 03 of 04
+### Continue studying — lesson 03 (chapter 03 of 20)
 
-[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
 
 <a id="ch-04"></a>
 
@@ -572,15 +580,1203 @@ Baselines cover only listed settings. Quarterly checks lapse without an owner.
 
 A guided baseline check, prioritised fixes, verification and a short plan turn a month of learning into lasting practice.
 
-### Continue studying — chapter 04 of 04
+### Continue studying — lesson 04 (chapter 04 of 20)
 
-[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+
+<a id="ch-05"></a>
+
+## Chapter 5 — A recorded email choice is not a mailbox already issued
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  A["Decision record selects individual accounts"] --> B["Manager approves the six-month plan"]
+  B --> C{"Does the file show mailboxes issued?"}
+  C -->|No| D["Keep the choice and the plan line"]
+  C -->|Yes| E["That issuance would be its own record"]
+```
+
+A written choice names the work. It does not open the mailboxes.
+
+### Logical drawing
+
+```text
+chapter 1 record
+    choice: individual accounts with shared inbox access
+    reason: member queries traceable to the person who answered
+loan baseline, both exports
+    shared_accounts=0
+        |
+        +-- that key is the loan system, not the branch email
+        +-- the plan still lists the email change
+        +-- no mailbox list is in the file
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the email decision as a recorded choice.
+2. Tell an approved plan line apart from accounts already issued.
+3. Leave `shared_accounts=0` as a loan-system result.
+
+### 5.1 The record selects a design. It does not show the mailboxes.
+
+Chapter 1 writes Leah's choice: individual accounts that can open one shared inbox, so a member query can be traced to the person who answered. Chapter 4 puts that choice on the six-month plan, and her manager approves the page. A classmate reads the approval as proof the tellers already have those accounts, and points at `shared_accounts=0` in the loan export. That key passed in the first loan run and again in the second. It describes the loan system, not the branch email the tellers share. Leah does not invent a mailbox list. The decision and the plan stay. The issuance is not in the file.
+
+### 5.2 Worked example
+
+| What someone cites | What the file holds | Decision |
+|---|---|---|
+| The decision record | Individual accounts with shared inbox access | Keep the choice |
+| The manager approves the plan | The email line is still on that page | Keep the line |
+| `shared_accounts=0` | A loan setting that already passed | Leave it on the loan export |
+| "The mailboxes are therefore open." | No issuance record | Refuse |
+
+> **Synthetic case.** No mailbox is created in this lesson. The branch email gap stays a recorded choice.
+
+### Errors and limits
+
+Leaving the mailboxes unissued does not cancel the accountability reason. It refuses a result the file does not contain.
+
+### Apply
+
+- **EX051 — Which accounts exist?** The decision record selects individual accounts with access to a shared inbox. The manager approves a plan that still lists that change. The loan export shows `shared_accounts=0`. Have the branch mailboxes been issued? *Rubric:* 3 = the choice and the plan line stay; issuance is not in the file; `shared_accounts=0` is the loan system, not the branch email;; 2 = approval is not issuance;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 20)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — Seven of seven is the second loan export
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  A["Before export: 4 of 7"] --> B["After export: 7 of 7"]
+  B --> C{"Does 7 of 7 cover every Saltmarsh system?"}
+  C -->|No| D["Keep both loan lines"]
+  C -->|Yes| E["That claim would need a different export"]
+```
+
+The second line closes the three loan gaps. It does not survey the credit union.
+
+### Logical drawing
+
+```text
+published loan lines
+    before: 4/7 settings meet baseline
+    after: 7/7 settings meet baseline; fails []
+not measured by those lines
+    branch email
+    core banking
+    card processor
+    phone system
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read `after: 7/7` as the second loan export.
+2. Keep the before line beside it.
+3. Refuse a claim that the credit union is secure because that line passed.
+
+### 6.1 The second export speaks for seven loan settings.
+
+Felix's laboratory compares one synthetic loan export with seven rules. The first print says four of seven meet the baseline. The second print says seven of seven, with an empty fail list. Leah keeps both lines in the review folder. A classmate wants the note to say Saltmarsh is secure, and to drop the first line because the second one passed. The second line is the updated loan export only. It does not measure branch email, core banking, the card processor or the phone. Leah does not edit `lab_baseline.py`. Both prints stay.
+
+### 6.2 Worked example
+
+| Claim | File | Decision |
+|---|---|---|
+| "The after line is 7 of 7." | The second export | May stay |
+| "The before line is 4 of 7." | The first export | May stay |
+| "Delete the before line." | Both are kept | Refuse |
+| "Saltmarsh is secure." | No such finding | Refuse |
+
+> **Synthetic case.** The exports are fictitious loan settings. They are not a production certificate.
+
+### Errors and limits
+
+A passing loan export does not retire the habit of checking again. Chapter 4 still gives that reason for a later quarter.
+
+### Apply
+
+- **EX052 — What did 7 of 7 measure?** The after line says 7 of 7 loan settings meet the baseline. A classmate deletes the before line and writes that Saltmarsh is secure. What do the two lines cover, and what do you refuse? *Rubric:* 3 = the after line is the second loan export; the before line stays 4 of 7; the pair does not cover email, core banking, the card processor or the phone; do not call the credit union secure; do not edit the script;; 2 = 7 of 7 is the loan export only;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 20)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — The before line still says 480
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  A["Before fail: session_timeout_min=480"] --> B["Prose reads 480 minutes as eight hours"]
+  B --> C{"May the before line be rewritten as 30?"}
+  C -->|No| D["Keep 480 on the first export"]
+  C -->|Yes| E["That would erase the gap"]
+```
+
+Eight hours is a reading of the first export. It is not a new number to print.
+
+### Logical drawing
+
+```text
+before fail token
+    session_timeout_min=480
+prose
+    eight hours, against a thirty-minute rule
+different control
+    branch PCs lock after five minutes
+        |
+        +-- the five-minute lock is why timeout ranked third
+        +-- it is not the loan session value
+        +-- the after export may say 30; the before token stays 480
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave `session_timeout_min=480` on the before line.
+2. Read eight hours as that token, not as a replacement for it.
+3. Keep the five-minute PC lock as a separate control.
+
+### 7.1 The first export recorded 480 minutes.
+
+The before fail list contains `session_timeout_min=480`. Leah's notes call that eight hours, against a baseline of thirty minutes. The after export meets the rule. A classmate edits the stored before line so that it also says 30, and treats the branch PC lock of five minutes as if it were the loan session. The PC lock is the reason session timeout ranked third. It is not the value in the loan export. Leah keeps the token 480 on the first line. She does not edit `lab_baseline.py`.
+
+### 7.2 Worked example
+
+| Proposal | Result if accepted | Decision |
+|---|---|---|
+| Read 480 minutes as eight hours | Matches the notes | May stay |
+| Rewrite the before token as 30 | Hides the gap | Refuse |
+| Call the five-minute PC lock the loan timeout | Mixes two controls | Refuse |
+| Keep the after export at the passing value | The second run | May stay |
+
+> **Synthetic case.** No new export is taken. The published before token stays 480.
+
+### Errors and limits
+
+Keeping 480 does not undo the second export. It preserves the gap the second export was asked to close.
+
+### Apply
+
+- **EX053 — Which number stays on the first line?** The before fail token is `session_timeout_min=480`. Notes call that eight hours. Branch PCs lock after five minutes. A classmate rewrites the before line as 30. What stays, and what is the PC lock? *Rubric:* 3 = 480 stays on the before line; eight hours is the reading of that token; the five-minute lock is a different control and the reason for third place; do not edit the script;; 2 = 480 stays and the PC lock is separate;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 20)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — Five administrators describe the first export
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08. Map, example, EX054.
+
+```mermaid
+flowchart TD
+  A["Before: admin_count=5"] --> B["Priority: any of five could export documents"]
+  B --> C{"Does the after export still say five?"}
+  C -->|No| D["Keep five on the before line only"]
+  C -->|Yes| E["That would contradict the second run"]
+```
+
+The priority sentence describes the first export. The second export is the check.
+
+### Logical drawing
+
+```text
+before fail
+    admin_count=5
+why it ranked first
+    any of those accounts could change settings or export loan documents
+after
+    the second export meets the two-person baseline
+    fails []
+        |
+        +-- both outputs stay in the review folder
+        +-- five is not the after count
+        +-- no person is named
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep `admin_count=5` on the before line.
+2. Read the priority reason as a statement about that line.
+3. Leave the after export as the check that the count then met the baseline.
+
+### 8.1 Five is the reason for the first ranking, not the later count.
+
+Leah ranks administrator rights first because any of five accounts could change settings or export loan documents. That sentence describes the before export, whose fail token is `admin_count=5`. The baseline is two. The after export meets it, and the fail list is empty. A classmate either erases the before token or writes that five people still hold rights after the confirmed rerun. Leah keeps both outputs. She names nobody. She does not edit `lab_baseline.py`.
+
+### 8.2 Worked example
+
+| Sentence | Which export | Decision |
+|---|---|---|
+| "The before token is admin_count=5." | First | May stay |
+| "That is why rights ranked first." | The notes | May stay |
+| "Five people still hold rights after the rerun." | Contradicts the second export | Refuse |
+| "Delete admin_count=5 from the folder." | Both outputs are kept | Refuse |
+
+> **Synthetic case.** The five accounts are not named. No third export is run.
+
+### Errors and limits
+
+The empty after list shows the listed check passed. It does not name who lost rights, and it does not watch the next staff change.
+
+### Apply
+
+- **EX054 — Where does five belong?** The before token is `admin_count=5`. Leah ranked that gap first. The after export meets the baseline and its fail list is empty. A classmate says five people still hold rights. What stays true of each export? *Rubric:* 3 = five stays on the before line and explains the ranking; the after export meets the baseline; do not say five remain after that check; name nobody; do not edit the script;; 2 = five is the before count;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 20)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — The hour fix is not link expiry
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  A["Public sharing closed within the hour"] --> B["Before export: public_links off"]
+  B --> C{"Does that hour also set expiry?"}
+  C -->|No| D["Expiry is the separate None token"]
+  C -->|Yes| E["The before line would not show None"]
+```
+
+Two link settings. The hour addressed one of them.
+
+### Logical drawing
+
+```text
+stop-condition finding
+    folder viewable by anyone with the link
+    vendor changes that setting within the hour
+    logs: no access by unknown parties
+before export, already
+    public_links passes
+    upload_link_expiry_days=None fails
+after export
+    expiry value 14, which meets the rule of 14 days or fewer
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the within-the-hour change on the public-sharing setting.
+2. Leave `upload_link_expiry_days=None` as the before fail.
+3. Read 14 as the after value that meets the rule, not as a failure.
+
+### 9.1 Public sharing and expiry are different settings.
+
+During the review, uploads sat in a folder anyone with the link could open. Leah stopped. The vendor changed that sharing setting within the hour. The before loan export already has public links off, so that check passes. The same export fails `upload_link_expiry_days=None`. Leah's notes say the earlier fix closed public access and did not set expiry. A classmate writes that the hour also created the 14-day expiry. The after export is the run that shows 14, and 14 meets the rule of 14 days or fewer. Leah does not move 14 onto the before line. She does not edit `lab_baseline.py`.
+
+### 9.2 Worked example
+
+| Statement | Setting it belongs to | Decision |
+|---|---|---|
+| "The vendor changed sharing within the hour." | Public link access | May stay |
+| "public_links passes on the before export." | The first loan run | May stay |
+| "The hour set expiry." | Contradicts the None token | Refuse |
+| "14 failed the rule." | 14 meets a limit of 14 | Refuse |
+
+> **Synthetic case.** No member file is opened. The two settings stay distinct.
+
+### Errors and limits
+
+Passing public links on the first export does not prove who could open an older link before that hour. Expiry is a later check.
+
+### Apply
+
+- **EX055 — Which fix was the hour?** The vendor closed public sharing within the hour. The before export fails `upload_link_expiry_days=None` and passes public links. The after value is 14. Did the hour set expiry, and does 14 fail? *Rubric:* 3 = the hour is the public-sharing change; None stays the before expiry fail; 14 is the after value and it meets the rule; do not edit the script;; 2 = the hour is not expiry;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 20)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — The phone is on the list and off the print
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  A["Written list includes the phone"] --> B["Dependency print has no phone row"]
+  B --> C{"Add a phone row this lesson?"}
+  C -->|No| D["Keep the published six rows"]
+  C -->|Yes| E["That would be a new run"]
+```
+
+Two inventories. This lesson edits neither.
+
+### Logical drawing
+
+```text
+chapter 3 written list includes
+    phone system
+published dependency rows
+    identity 6
+    bureau 4
+    cloud email 2
+    internet 2
+    card processor 1
+    loan vendor 1
+        |
+        +-- no phone row
+        +-- staff intranet and member payments are inside the script
+        +-- lab_deps.py is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Leave the phone on the written system list.
+2. Leave it off the dependency print.
+3. Refuse a new row in this lesson.
+
+### 10.1 The narrative list and the dictionary are not the same list.
+
+Leah's written system list includes the phone. The dependency script does not. Its printed rows are identity 6, bureau 4, cloud email 2, internet 2, card processor 1 and loan vendor 1. The script's services include staff intranet and member payments, which that prose sentence does not name. A classmate adds a phone row so the two lists match, or deletes intranet from the dictionary. Either edit would be a new run. This lesson refuses both, and the dictionary stays the run already printed.
+
+### 10.2 Worked example
+
+| Proposal | What it changes | Decision |
+|---|---|---|
+| "The phone is on the written list." | Nothing in the script | May stay |
+| "The print has no phone row." | The published output | May stay |
+| "Add phone: 1 service." | A new dictionary | Refuse |
+| "Delete staff intranet so the lists match." | The script | Refuse |
+
+> **Synthetic case.** No supplier is named for the phone. No new count is run.
+
+### Errors and limits
+
+Leaving the phone off the print does not mean the phone has no dependencies. It means this run did not count them.
+
+### Apply
+
+- **EX056 — Where is the phone?** The written list includes the phone. The dependency print has six rows and no phone. A classmate adds a phone row. What stays, and what is this lesson not allowed to do? *Rubric:* 3 = the phone stays on the written list; the print stays the six published rows; do not add a row; do not edit the script;; 2 = the print is not rewritten;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 20)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Two providers are not two internet rows
+
+<!-- open-cyber-academy:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  A["Prose: two internet providers"] --> B["Print: one internet row, 2 services"]
+  B --> C{"Split the row into two providers?"}
+  C -->|No| D["Keep internet 2 service(s)"]
+  C -->|Yes| E["The script has one internet key"]
+```
+
+The row counts services that list internet. It does not name providers.
+
+### Logical drawing
+
+```text
+prose
+    two internet providers
+script key
+    internet
+services that list it
+    online banking
+    branch PCs
+print
+    internet       2 service(s)
+        |
+        +-- one row
+        +-- providers are not named
+        +-- lab_deps.py is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-11 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the prose mention of two providers.
+2. Keep one print row, `internet` with 2 services.
+3. Name neither provider.
+
+### 11.1 The row counts a key, not a contract.
+
+The supplier paragraph says Saltmarsh uses two internet providers. The laboratory key is a single word, `internet`. Online banking and branch PCs list that key, so the print says `internet` supports 2 services. A classmate splits the row into two named providers and assigns one service to each. The file names neither provider, and it does not say which service uses which contract. Leah leaves the single row. She does not edit `lab_deps.py`.
+
+### 11.2 Worked example
+
+| Idea | Evidence | Decision |
+|---|---|---|
+| "The prose says two providers." | The supplier paragraph | May stay |
+| "The print has one internet row of 2." | The published output | May stay |
+| "Print two provider names." | No names in the file | Refuse |
+| "Give each provider one service." | The script does not say that | Refuse |
+
+> **Synthetic case.** No carrier is invented. The row stays one line.
+
+### Errors and limits
+
+One row does not prove the two providers are equal, and it does not prove one of them is spare. The file does not say.
+
+### Apply
+
+- **EX057 — How many internet rows?** The prose names two internet providers. The print shows one row, internet with 2 services. A classmate prints two named providers. What do you keep, and what do you not invent? *Rubric:* 3 = two providers stay in the prose; the print stays one row of 2 services; name neither provider; do not edit the script;; 2 = the print stays one row;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 20)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Card services stays off the identity count
+
+<!-- open-cyber-academy:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  A["Prose: identity is used by almost every system"] --> B["Print: identity 6 service(s)"]
+  B --> C{"Add identity to card services?"}
+  C -->|No| D["Card services stays processor and bureau"]
+  C -->|Yes| E["The six would become a new run"]
+```
+
+Almost every system is not the integer 6 rewritten as 7.
+
+### Logical drawing
+
+```text
+identity is listed by
+    online banking, loan system, email, branch PCs,
+    staff intranet, member payments
+card services lists
+    card processor, bureau
+print
+    identity       6 service(s)
+        |
+        +-- card services is the laboratory exception
+        +-- do not add identity to that row
+        +-- lab_deps.py is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-12 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the identity print at 6.
+2. Keep card services on the card processor and the bureau.
+3. Treat "almost every system" as prose, not as a new total.
+
+### 12.1 Six is the count. Card services is the missing name.
+
+The narrative says the identity provider is used by almost every system. In the script, six services list `identity`. Card services lists the card processor and the bureau, and it does not list identity. A classmate adds identity there so the prose word "almost" becomes a clean seven, and wants the print changed from 6 to 7. That would be a different dictionary. Leah keeps identity at 6 and leaves card services as published. She does not edit `lab_deps.py`.
+
+### 12.2 Worked example
+
+| Reading | Count it implies | Decision |
+|---|---|---|
+| "Almost every system uses identity." | Prose, not a print | May stay |
+| "The print says 6." | The run | May stay |
+| "Card services must be the seventh." | An edited dictionary | Refuse |
+| "Bureau is still 4." | Unchanged row | May stay |
+
+> **Synthetic case.** No card product is added. The six stays the verified identity count.
+
+### Errors and limits
+
+Keeping card services off the identity count does not mean card payments ignore sign-in. It means this map did not draw that arrow.
+
+### Apply
+
+- **EX058 — What is six?** The print says identity supports 6 services. Card services depends on the card processor and the bureau. A classmate adds identity to card services and prints 7. What stays? *Rubric:* 3 = identity stays 6; card services stays off that count; almost every system is not a new total; do not edit the script;; 2 = 6 stays;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 20)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Questions before signing are not a new lab row
+
+<!-- open-cyber-academy:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  A["Budgeting app would add a supplier"] --> B["Board asks security questions"]
+  B --> C{"Is there a signature or a new print row?"}
+  C -->|No| D["Keep the questions and the old print"]
+  C -->|Yes| E["The file does not show either"]
+```
+
+The map shaped a decision before money was spent. It did not record a signature.
+
+### Logical drawing
+
+```text
+overview, used before a purchase
+    new supplier would hold transaction data
+    another dependency on the identity provider
+board
+    asks vendor security questions before signing
+not in the file
+    a signature
+    a vendor name
+    a new services-dictionary row
+```
+<!-- open-cyber-academy:lesson-figures:end ch-13 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the budgeting app as an unsigned proposal.
+2. Keep the board's questions as the recorded action.
+3. Leave the dependency print unchanged.
+
+### 13.1 The board asked. The file does not show a signature.
+
+When the board considers a budgeting app, the architecture overview shows a new supplier holding transaction data and another dependency on the identity provider. The board asks the vendor security questions before signing. A classmate treats the questions as a signature, names a vendor, and adds the app to the dependency dictionary so identity moves from 6 to 7. The book records the questions and does not record a signature or a name. Leah does not insert a row. She does not edit `lab_deps.py`. The older print stays the count already run.
+
+### 13.2 Worked example
+
+| Step | In the file | Decision |
+|---|---|---|
+| The app would add a supplier and an identity dependency | The overview discussion | May stay |
+| Questions were asked before signing | The board's action | May stay |
+| "They signed." | No signature | Refuse |
+| "Add the app and print identity 7." | No new run | Refuse |
+
+> **Synthetic case.** No vendor is named. No contract is signed in this lesson.
+
+### Errors and limits
+
+Questions before signing do not answer themselves. The book does not record what the vendor replied.
+
+### Apply
+
+- **EX059 — Did anyone sign?** The board asks security questions about a budgeting app before signing. A classmate says the app was signed and adds it to the dependency print. What happened, and what do you not add? *Rubric:* 3 = questions before signing stay the recorded action; a signature is not in the file; do not name a vendor; do not add a row; do not edit the script;; 2 = asking is not signing;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 20)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — An agreed break-glass account is not this month's exercise
+
+<!-- open-cyber-academy:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14. Map, example, EX060.
+
+```mermaid
+flowchart TD
+  A["Notes agree an offline break-glass account"] --> B["Six-month plan still lists a tested procedure"]
+  B --> C{"Is a dated sign-in exercise in the file?"}
+  C -->|No| D["Keep the agreement and the plan line"]
+  C -->|Yes| E["That date would have to be written"]
+```
+
+Agreement is not a dated exercise. The credential is not written here.
+
+### Logical drawing
+
+```text
+chapter 3 agreement
+    offline break-glass administrator account
+    a sign-in procedure if the identity provider fails
+chapter 4 plan, still listed
+    tested break-glass procedure
+not in the file
+    a date
+    a password
+    a result of an exercise this month
+```
+<!-- open-cyber-academy:lesson-figures:end ch-14 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the agreement for an offline break-glass account.
+2. Keep the procedure on the six-month plan.
+3. Refuse a dated exercise the file does not contain, and write no credential.
+
+### 14.1 The account is agreed. The exercise is not dated.
+
+For the identity provider, Leah and her manager agree a break-glass administrator account stored securely offline, and a procedure for signing in if that provider fails. The six-month plan, which the manager approves, still lists a tested break-glass procedure. A classmate picks a calendar day, writes that the sign-in was exercised, and asks for the credential to be copied into the note. The book shows the agreement and the plan line. It does not show a date or a result for that exercise. Leah writes no password. She does not cross the plan line off.
+
+### 14.2 Worked example
+
+| Note someone wants | File | Decision |
+|---|---|---|
+| "An offline break-glass account was agreed." | Chapter 3 | May stay |
+| "The plan still lists a tested procedure." | Chapter 4 | May stay |
+| "It was exercised on a chosen day." | No date | Refuse |
+| "Copy the credential." | Not in the book | Refuse |
+
+> **Synthetic case.** No secret is created or stored in this lesson.
+
+### Errors and limits
+
+Refusing a date does not cancel the agreement. It keeps the plan item open until a record of the exercise exists.
+
+### Apply
+
+- **EX060 — What was exercised?** The notes agree an offline break-glass account and a sign-in procedure. The approved plan still lists a tested break-glass procedure. A classmate dates the exercise and asks for the credential. What stands, and what do you not write? *Rubric:* 3 = the agreement stays; the plan line stays; no dated exercise is in the file; do not write a credential;; 2 = agreement is not a dated exercise;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 20)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — A calendar owner is not next quarter's run
+
+<!-- open-cyber-academy:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  A["Two loan exports are in the folder"] --> B["Leah's name owns the quarterly check"]
+  B --> C{"Is the next quarter in the file?"}
+  C -->|No| D["Keep the two exports and the open quarter"]
+  C -->|Yes| E["That quarter would be a new export"]
+```
+
+Ownership of the calendar is not a third print.
+
+### Logical drawing
+
+```text
+folder
+    before export
+    after export
+calendar
+    quarterly loan check
+    owner: Leah
+not in the file
+    the next quarter's export
+    a third pair of numbers
+```
+<!-- open-cyber-academy:lesson-figures:end ch-15 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the two published loan exports.
+2. Read Leah's name as ownership of the quarterly check.
+3. Leave the next quarter unrun.
+
+### 15.1 The calendar names an owner. It does not store the next export.
+
+After the second loan run, Felix says vendor updates and staff changes can quietly undo settings, so the check should be repeated each quarter. Leah puts that check on the operations calendar with her own name. A classmate treats her name as proof the next quarter already ran, and writes a fresh 7 of 7 for it. The folder holds the before export and the after export from the guided lab. It does not hold a later quarter. Leah does not invent that export. She does not edit `lab_baseline.py`.
+
+### 15.2 Worked example
+
+| Fact | What it is | Decision |
+|---|---|---|
+| Two loan lines in the folder | The guided lab | May stay |
+| Leah owns the quarterly check | A calendar entry | May stay |
+| "Next quarter already passed 7 of 7." | No export | Refuse |
+| "Ownership means the habit is finished." | The reason for repeating it | Refuse |
+
+> **Synthetic case.** No quarter is dated. No third export is printed.
+
+### Errors and limits
+
+One confirmed after line does not bind the next staff change. That is why the calendar entry exists.
+
+### Apply
+
+- **EX061 — What did the calendar do?** Leah's name is on the quarterly loan check. The folder has the before export and the after export. A classmate adds a result for the next quarter. What is owned, and what has not been run? *Rubric:* 3 = the name owns the check; the two published exports stay; the next quarter is not in the file; do not invent a third result; do not edit the script;; 2 = the calendar is not the next run;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 20)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Core banking stays outside the written scope
+
+<!-- open-cyber-academy:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16. Map, example, EX062.
+
+```mermaid
+flowchart TD
+  A["Loan payment crosses into core banking"] --> B["Written scope excludes core banking"]
+  B --> C{"Does the crossing include it?"}
+  C -->|No| D["Label the crossing and keep the exclusion"]
+  C -->|Yes| E["That would widen the approval"]
+```
+
+A flow can name a system the approval leaves out.
+
+### Logical drawing
+
+```text
+in scope
+    loan system
+    staff PCs that use it
+    document upload
+out of scope
+    core banking at the service bureau
+    card processor
+allowed
+    read settings, interview staff
+not allowed
+    attacks, member files, investigating alone
+```
+<!-- open-cyber-academy:lesson-figures:end ch-16 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep core banking and the card processor outside the written scope.
+2. Label the loan payment as a crossing, not as inclusion.
+3. Leave the approval's dates uninvented.
+
+### 16.1 The arrow crosses a boundary the approval does not move.
+
+A loan approval triggers a payment through core banking. That flow is drawn and marked where it reaches a supplier. The written scope still excludes core banking, run by the service bureau, and the card processor. Leah may read loan settings and interview staff. She may not attempt attacks, open member files, or investigate a stop condition alone. A classmate says the payment arrow puts core banking inside the review, and fills dates on the approval that the book never states. Leah keeps the exclusion. She does not widen the written approval.
+
+### 16.2 Worked example
+
+| Argument | Scope page | Decision |
+|---|---|---|
+| "The payment crosses into core banking." | A labeled flow | May stay |
+| "Core banking is excluded." | The written scope | May stay |
+| "The arrow includes it." | The exclusion still stands | Refuse |
+| "Write the approval dates." | Dates are not in the book | Refuse |
+
+> **Synthetic case.** No attack is run. No member file is opened.
+
+### Errors and limits
+
+An exclusion does not make the excluded system safe. It says this review was not the place to test it.
+
+### Apply
+
+- **EX062 — Does the payment include core banking?** The loan flow pays through core banking. The written scope excludes core banking and the card processor. A classmate widens the approval and writes dates. What stays excluded, and what do you not invent? *Rubric:* 3 = the crossing stays a crossing; core banking and the card processor stay excluded; do not invent approval dates; do not attack or open member files;; 2 = the exclusion stands;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 20)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Vendor logs are not every access
+
+<!-- open-cyber-academy:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  A["Vendor: no access by unknown parties"] --> B["Limit: logs may not show all access"]
+  B --> C{"May the note say nobody could open a file?"}
+  C -->|No| D["Keep the vendor sentence and the limit"]
+  C -->|Yes| E["That claim is wider than the log"]
+```
+
+The report stands. Completeness does not.
+
+### Logical drawing
+
+```text
+recorded vendor result
+    no access by unknown parties
+recorded limit
+    vendor logs may not show all access
+not allowed
+    a member name
+    an invented access
+    "the log saw everything"
+```
+<!-- open-cyber-academy:lesson-figures:end ch-17 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the vendor result as stated.
+2. Keep the limit that logs may miss access.
+3. Invent neither a member nor an extra access.
+
+### 17.1 One sentence from the vendor is not a complete history.
+
+After the public-link finding, the vendor checks access logs and reports no access by unknown parties. The same chapter warns that vendor logs may not show all access. A classmate rewrites the result as proof that nobody opened any file, or invents a member who did. Leah keeps the vendor sentence. She also keeps the limit. She adds no name and no extra event. The hour fix and the log result stay the record of that finding.
+
+### 17.2 Worked example
+
+| Rewrite | Problem | Decision |
+|---|---|---|
+| "No access by unknown parties." | The vendor's report | May stay |
+| "Logs may miss access." | The stated limit | May stay |
+| "Nobody opened any file." | Wider than the report | Refuse |
+| "Member N opened one." | Invented | Refuse |
+
+> **Synthetic case.** No member is named. No log line is fabricated.
+
+### Errors and limits
+
+Holding both sentences is the point. Dropping the limit makes the vendor report sound like a census of every open.
+
+### Apply
+
+- **EX063 — What may the log note say?** The vendor reports no access by unknown parties. The book says vendor logs may not show all access. A classmate writes that nobody opened a file and names a member. What do you keep? *Rubric:* 3 = the vendor sentence stays; the limit stays; do not say the log saw every open; do not invent a member or an access;; 2 = the report is not a complete history;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 20)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Notes wait for an acceptance that is not dated
+
+<!-- open-cyber-academy:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  A["Notes will be deleted after acceptance"] --> B{"Is acceptance dated?"}
+  B -->|No| C["The notes are not shown as gone"]
+  B -->|Yes| D["That date is not in the book"]
+```
+
+A future deletion is not a deletion already done.
+
+### Logical drawing
+
+```text
+handling rules already used
+    vendor test application with fictitious details
+    screenshots checked for member information
+retention rule
+    restricted folder
+    delete after the review is accepted
+not in the file
+    an acceptance date
+    a statement that the notes are already gone
+```
+<!-- open-cyber-academy:lesson-figures:end ch-18 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep the deletion rule tied to acceptance.
+2. Leave that acceptance undated.
+3. Keep the screenshot check as a check, not as a named member.
+
+### 18.1 Acceptance is the condition. The book does not date it.
+
+Leah's notes sit in a restricted folder and are to be deleted after the review is accepted. She used a vendor test application with fictitious details, and she checked screenshots so that no member information appeared. A classmate writes an acceptance date and says the folder is already empty. The book states the condition and does not state the date. Leah does not invent one. She does not claim the notes are gone, and she does not add a member name to a screenshot.
+
+### 18.2 Worked example
+
+| Sentence | Status | Decision |
+|---|---|---|
+| "Deletion follows acceptance." | The written rule | May stay |
+| "Screenshots were checked for member information." | The care she took | May stay |
+| "Accepted on a chosen day." | No date | Refuse |
+| "The folder is already empty." | Not shown | Refuse |
+
+> **Synthetic case.** No acceptance date is created. No member name is added.
+
+### Errors and limits
+
+An undated condition can be mistaken for a finished chore. The condition is still the rule, and the chore is not shown as done.
+
+### Apply
+
+- **EX064 — Are the notes gone?** Notes are deleted after the review is accepted. A classmate dates the acceptance and says the folder is empty. What is the rule, and what is missing? *Rubric:* 3 = deletion waits on acceptance; the acceptance is not dated; the notes are not shown as gone; do not invent a date or a member name;; 2 = the folder is not shown as empty;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 20)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Six thousand members are not seven services
+
+<!-- open-cyber-academy:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  A["Six thousand members, two branches"] --> B["Dependency script lists seven services"]
+  B --> C{"Print 6000 services?"}
+  C -->|No| D["Keep the member figure and the service print"]
+  C -->|Yes| E["Those units are different"]
+```
+
+Members, branches and services answer different questions.
+
+### Logical drawing
+
+```text
+credit union, as introduced
+    six thousand members
+    two branches and a website
+dependency script
+    seven service names
+    printed supplier rows, not a member count
+        |
+        +-- 6000 is not a service total
+        +-- two branches are not a third site
+        +-- lab_deps.py is not edited
+```
+<!-- open-cyber-academy:lesson-figures:end ch-19 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Keep six thousand as the member figure.
+2. Keep two branches as the sites already stated.
+3. Leave the dependency print as a service count.
+
+### 19.1 The introduction and the dictionary count different things.
+
+Saltmarsh serves six thousand members from two branches and a website. The dependency script names seven services and prints how many of those services list each supplier. A classmate adds the members, prints 6000 services, or opens a third branch so the map looks larger. Six thousand is not a row in the laboratory. Two branches are not three. Leah keeps each figure in its own sentence. She does not edit `lab_deps.py`.
+
+### 19.2 Worked example
+
+| Figure | Unit | Decision |
+|---|---|---|
+| Six thousand | Members | May stay |
+| Two branches and a website | The introduction | May stay |
+| Seven names in the script | Services | May stay |
+| "6000 services" or a third branch | A mixed unit | Refuse |
+
+> **Synthetic case.** No branch is opened. No member list is counted again.
+
+### Errors and limits
+
+Separating the units does not say the member figure was audited. It says this book gave it as the size of the fictional credit union.
+
+### Apply
+
+- **EX065 — What is six thousand?** Saltmarsh has six thousand members, two branches and a website. The dependency script names seven services. A classmate prints 6000 services and adds a branch. What figures stay? *Rubric:* 3 = six thousand stays members; two branches stay; the script stays seven services; 6000 is not a service total; do not add a branch; do not edit the script;; 2 = the units stay apart;; 1 = one of those;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 20)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Chapter 20 — What the architecture note can say
+
+<!-- open-cyber-academy:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20. Map, example, EX066.
+
+```mermaid
+flowchart TD
+  N["A leaving note"] --> F["Quote the prints and the open items"]
+  F --> Q{"Does the sentence close an open item or replace a print?"}
+  Q -->|Yes| R["Reject it"]
+  Q -->|No| K["The note may cite that line"]
+```
+
+Twenty lessons meet a planning minimum. They do not close Saltmarsh's open items.
+
+### Logical drawing
+
+```text
+may stay
+    before: 4/7 with 480, expiry None, admin_count 5
+    after: 7/7 and an empty fail list
+    identity 6; bureau 4; one internet row of 2
+    phone on the written list, not on the print
+    questions asked, app not signed
+    break-glass agreed, exercise not dated
+must not be added
+    before line rewritten as 7/7
+    phone row or identity 7
+    a signature or a named vendor
+    a dated break-glass exercise
+    a claim that Saltmarsh is secure
+```
+<!-- open-cyber-academy:lesson-figures:end ch-20 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Repeat the laboratory lines and the open plan items.
+2. Reject a note that replaces a print or closes an open item.
+3. Name the following subject without calling this edition finished.
+
+### 20.1 A note may quote the file. It may not improve the file.
+
+A leaving note may say what was already written down. The loan folder still has a before line of 4 of 7, including `session_timeout_min=480`, `upload_link_expiry_days=None` and `admin_count=5`, and an after line of 7 of 7 with an empty fail list. The dependency print still shows identity at 6, the bureau at 4 and one internet row of 2. The phone remains on the written list and off that print. The board asked questions about the budgeting app and did not sign it here. The break-glass account is agreed, and no dated exercise is in the file. Branch mailboxes are not shown as issued. The next quarterly export is not in the folder. Chapter 1 names complete mediation and does not record a Saltmarsh example of it. The note may say that. It may not invent the example.
+
+### 20.2 Worked example
+
+| Leaving-note sentence | Why it fails or stands | Decision |
+|---|---|---|
+| "The before line is 4 of 7 and the after line is 7 of 7." | The two exports | May stay |
+| "Identity supports 6 services." | The dependency run | May stay |
+| "The before line is now 7 of 7 and 480 is gone." | No new before run | Reject |
+| "The phone was added and identity is 7." | The print was not rerun | Reject |
+| "The app was signed and the break-glass sign-in was dated." | Neither record exists | Reject |
+
+> **Synthetic case.** The note is a classroom page about Saltmarsh. It is not a notice to members.
+
+### Errors and limits
+
+Meeting the planning minimum of 20 lessons leaves independent review open. Saltmarsh can still gain a later lesson when a new question needs one. These English chapters do not publish another language edition. Security architecture stays this course. Cryptography and trust services is the learner's following subject. Open items at the credit union stay open on that turn. These chapters do not certify Saltmarsh, and they do not hand anyone a qualification.
+
+### Apply
+
+- **EX066 — Four claims.** A classmate's leaving note says the before line is now 7 of 7 and `session_timeout_min=480` is gone, that the dependency print gained a phone row and identity moved to 7, that the budgeting app was signed, and that a dated break-glass sign-in was exercised. The note also says twenty lessons make Saltmarsh secure. Which claims do you reject, and what do twenty lessons meet? *Rubric:* 3 = reject the changed before line, the new dependency rows, the signature and the dated exercise; the before line stays 4 of 7 with 480, expiry None and admin_count 5; the after line stays 7 of 7; identity stays 6; the phone stays off the print; the app stays unsigned; the exercise stays undated; twenty lessons meet the planning minimum and leave review open; do not call Saltmarsh secure;; 2 = reject the four closings and keep the prints;; 1 = one claim;; 0 = none.
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 20)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Worked results
 
-Model answers for EX001–EX050. Leah Brennan, Felix Ortega, Northgate Learning Centre, Saltmarsh Community Credit Union and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX066. Leah Brennan, Felix Ortega, Northgate Learning Centre, Saltmarsh Community Credit Union and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** The overall arrangement of protections across people, processes and technology, designed to work together.
 
@@ -681,6 +1877,38 @@ Model answers for EX001–EX050. Leah Brennan, Felix Ortega, Northgate Learning 
 **EX049.** A quarterly baseline check of the loan system and a tested break-glass procedure, among others.
 
 **EX050.** A working habit of mapping, checking and recording, rather than expertise.
+
+**EX051.** The choice and the plan line stay. Issuance is not in the file. `shared_accounts=0` is the loan system, not the branch email.
+
+**EX052.** The after line is the second loan export. The before line stays 4 of 7. The pair does not cover email, core banking, the card processor or the phone. Do not call the credit union secure. Do not edit the script.
+
+**EX053.** 480 stays on the before line. Eight hours is the reading of that token. The five-minute lock is a different control and the reason for third place. Do not edit the script.
+
+**EX054.** Five stays on the before line and explains the ranking. The after export meets the baseline. Do not say five remain after that check. Name nobody. Do not edit the script.
+
+**EX055.** The hour is the public-sharing change. None stays the before expiry fail. 14 is the after value and it meets the rule. Do not edit the script.
+
+**EX056.** The phone stays on the written list. The print stays the six published rows. Do not add a row. Do not edit the script.
+
+**EX057.** Two providers stay in the prose. The print stays one row of 2 services. Name neither provider. Do not edit the script.
+
+**EX058.** Identity stays 6. Card services stays off that count. Almost every system is not a new total. Do not edit the script.
+
+**EX059.** Questions before signing stay the recorded action. A signature is not in the file. Do not name a vendor. Do not add a row. Do not edit the script.
+
+**EX060.** The agreement stays. The plan line stays. No dated exercise is in the file. Do not write a credential.
+
+**EX061.** The name owns the check. The two published exports stay. The next quarter is not in the file. Do not invent a third result. Do not edit the script.
+
+**EX062.** The crossing stays a crossing. Core banking and the card processor stay excluded. Do not invent approval dates. Do not attack or open member files.
+
+**EX063.** The vendor sentence stays. The limit stays. Do not say the log saw every open. Do not invent a member or an access.
+
+**EX064.** Deletion waits on acceptance. The acceptance is not dated. The notes are not shown as gone. Do not invent a date or a member name.
+
+**EX065.** Six thousand stays members. Two branches stay. The script stays seven services. 6000 is not a service total. Do not add a branch. Do not edit the script.
+
+**EX066.** Reject the changed before line, the new dependency rows, the signature and the dated exercise. The before line stays 4 of 7 with 480, expiry None and admin_count 5. The after line stays 7 of 7. Identity stays 6. The phone stays off the print. The app stays unsigned. The exercise stays undated. Twenty lessons meet the planning minimum and leave review open. Do not call Saltmarsh secure.
 
 <a id="references"></a>
 
