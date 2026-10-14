@@ -8,7 +8,7 @@
   "workers_dev": true,
   "vars": {
     "ACCESS_TEAM_DOMAIN": "https://decripte.cloudflareaccess.com",
-    "ACCESS_AUD": ""
+    "ACCESS_AUD": "22dfe518f32b7fd41319089fff0a6f28d15596bb690abda2602bf38978194503"
   },
   "assets": {
     "directory": "./dist",

@@ -48,9 +48,9 @@ Google Analytics 4 uses measurement ID `G-7KDGFR12FS` across all language hosts.
 
 ## Student sign-in and progress
 
-Reading never requires an account. Saved progress is designed for a Cloudflare Access self-hosted application covering only `opencyber.academy/private/*` with a verified one-time email PIN. This application still needs to be configured for the new domain; until then, optional sign-in is unavailable and FastAPI rejects progress requests without a valid Access JWT. FastAPI validates the token's signature, issuer, audience, expiration, not-before time and user ID. The new D1 `open-cyber-academy-progress` database has the progress tables and currently contains no student records. The `/account/` page and all books, lessons, catalog, OpenAPI and MCP routes remain public.
+Reading never requires an account. Saved progress and timed tests use the Cloudflare Access self-hosted application `OpenCyber Academy student tests` (`dd4f1eba-fedc-47c7-9811-b64dfccd1e35`). It protects only `/private/*` on `opencyber.academy` and its language subdomains, using the existing verified-email one-time PIN policy. FastAPI validates the Access token's signature, issuer, audience, expiration, not-before time and user ID. The D1 `open-cyber-academy-progress` database stores progress and test results. The `/account/` page and all books, lessons, catalog, OpenAPI and MCP routes remain public.
 
-The Access application audience and team domain are non-secret Wrangler variables. Once configured, the Access application should use an HTTP-only, path-scoped, SameSite=Lax cookie. Monitor the account's Access seat usage before inviting more students. Audio and video are future features and are not claimed as available.
+The Access application audience and team domain are non-secret Wrangler variables. Its cookie is HTTP-only, path-scoped and SameSite=Lax. Monitor the account's Access seat usage before inviting more students. Audio and video are future features and are not claimed as available.
 
 ## Test yourself and course certificates
 
