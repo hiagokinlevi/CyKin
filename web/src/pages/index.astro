@@ -126,8 +126,6 @@ const areaBridges: Record<string, string> = {
     <div class="shell philosophy-grid"><div><div class="eyebrow">FROM CONCEPT TO PRACTICE</div><h2>Learning you can verify.</h2><p class="muted">Each course has one book. Subjects organize modules, weekly chapters group daily lessons, and each lesson has a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.</p><a class="text-link" href="/read/?path=BOOK_STANDARD.md">Read the editorial standard →</a></div><div class="principles"><div><span>01</span><div><strong>Transparent source</strong><p>Open text with its course and edition identified.</p></div></div><div><span>02</span><div><strong>No entry barrier</strong><p>Read courses, books and exercises without an account.</p></div></div><div><span>03</span><div><strong>Ready for other AIs</strong><p>Public API, Markdown and read-only MCP server.</p></div></div></div></div>
   </section>
 
-  <section class="section home-book"><div class="shell home-book-inner"><div><div class="eyebrow">A BOOK BY OUR FOUNDER</div><h2>Confronto Cibernético</h2><p>Hiago Kin Levi explores how to investigate, contain and respond to advanced persistent threats. The book connects incident response, digital forensics and tactical intelligence, and presents the “black team” approach to coordinated defense.</p></div><a class="button secondary" href="https://confrontocibernetico.com.br/" rel="noopener noreferrer">Discover the book ↗</a></div></section>
-
   <section class="section ai-strip"><div class="shell ai-inner"><div><div class="eyebrow">FOR SYSTEMS AND AGENTS</div><h2>A library other AIs can consult.</h2><p>ChatGPT, Claude, DAI and other tools can discover courses and read lessons through MCP or the open API. Every response identifies its public manuscript.</p></div><a class="button gold" href="/for-ai/">Explore MCP access →</a></div></section>
   <script>
     import { siteLanguage } from '../lib/i18n';
@@ -320,11 +318,6 @@ const areaBridges: Record<string, string> = {
   .wizard-footer .button[hidden] { display: none; }
   .wizard-footer span { color: var(--muted); font-size: .82rem; }
   .catalog-status { color: var(--muted); font-size: .78rem; margin: 17px 0 0; }
-  .home-book { background: var(--hero-gradient); border-bottom: 1px solid var(--line); }
-  .home-book-inner { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
-  .home-book-inner > div { max-width: 700px; }
-  .home-book-inner p { color: var(--muted); margin-bottom: 0; }
-  .home-book-inner .button { flex: none; }
   .philosophy { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; align-items: center; }
   .philosophy-grid > div:first-child > p { max-width: 540px; }
@@ -357,7 +350,6 @@ const areaBridges: Record<string, string> = {
     .map-phase { padding: 13px; }
     .philosophy-grid { grid-template-columns: 1fr; }
     .wizard-choices { grid-template-columns: 1fr; }
-    .home-book-inner { flex-direction: column; align-items: flex-start; }
     .ai-inner { align-items: start; flex-direction: column; }
     .section-head { margin-bottom: 20px; }
   }

@@ -29,9 +29,9 @@ ALLOWED_ATTRIBUTES = {
 }
 LANGUAGE_NAMES = {"en": "English", "pt": "Português", "es": "Español", "he": "עברית", "fr": "Français", "ru": "Русский", "de": "Deutsch", "zh": "中文", "ja": "日本語"}
 PAGE_TEXT = {
-    "en": {"lesson": "Lesson", "chapter": "Chapter", "previous": "Previous", "next": "Next", "guide": "Course guide", "all": "All lessons", "answers": "Worked answers", "home": "Home", "free": "Open, free learning for anyone who wants to protect people and technology. No account is required to read this text or its worked answers."},
-    "pt": {"lesson": "Aula", "chapter": "Capítulo", "previous": "Anterior", "next": "Próxima", "guide": "Guia do curso", "all": "Todas as aulas", "answers": "Respostas comentadas", "home": "Início", "free": "Ensino gratuito e aberto para quem deseja proteger pessoas e tecnologias. Não é preciso criar uma conta para estudar ou consultar as respostas."},
-    "es": {"lesson": "Lección", "chapter": "Capítulo", "previous": "Anterior", "next": "Siguiente", "guide": "Guía del curso", "all": "Todas las lecciones", "answers": "Respuestas desarrolladas", "home": "Inicio", "free": "Aprendizaje gratuito y abierto para quienes desean proteger a las personas y la tecnología. No se necesita una cuenta para estudiar ni consultar las respuestas."},
+    "en": {"lesson": "Lesson", "chapter": "Chapter", "course_code": "Course code", "previous": "Previous", "next": "Next", "guide": "Course guide", "all": "All lessons", "answers": "Worked answers", "criteria": "Show marking criteria", "table": "Lesson table; scroll horizontally to read all columns", "home": "Home", "free": "Open, free learning for anyone who wants to protect people and technology. No account is required to read this text or its worked answers."},
+    "pt": {"lesson": "Aula", "chapter": "Capítulo", "course_code": "Código do curso", "previous": "Anterior", "next": "Próxima", "guide": "Guia do curso", "all": "Todas as aulas", "answers": "Respostas comentadas", "criteria": "Mostrar critérios de avaliação", "table": "Tabela da aula; deslize para ver todas as colunas", "home": "Início", "free": "Ensino gratuito e aberto para quem deseja proteger pessoas e tecnologias. Não é preciso criar uma conta para estudar ou consultar as respostas."},
+    "es": {"lesson": "Lección", "chapter": "Capítulo", "course_code": "Código del curso", "previous": "Anterior", "next": "Siguiente", "guide": "Guía del curso", "all": "Todas las lecciones", "answers": "Respuestas desarrolladas", "criteria": "Mostrar criterios de evaluación", "table": "Tabla de la lección; desplázate para ver todas las columnas", "home": "Inicio", "free": "Aprendizaje gratuito y abierto para quienes desean proteger a las personas y la tecnología. No se necesita una cuenta para estudiar ni consultar las respuestas."},
 }
 PAGE_CHROME = {
     "en": {"skip": "Skip to lesson", "navigation": "Main navigation", "levels": "Levels", "subjects": "Subjects", "ai": "For AIs", "theme": "Toggle light and dark theme", "lesson_navigation": "Lesson navigation", "next_step": "Next study step", "footer": "Free public cybersecurity education", "api": "Open API and MCP"},
@@ -136,6 +136,22 @@ def render_markdown(source: str, source_url: str, level: str, area: str, languag
             source = re.sub(rf'^(#{{3,6}}\s+EX{digits}\b)', f'<a id="exercise-ex{digits}"></a>\n\\1', source, count=1, flags=re.M)
     rendered = markdown.markdown(source, extensions=["fenced_code", "tables", "sane_lists"])
     sanitized = bleach.clean(rendered, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, protocols=["http", "https", "mailto"], strip=True)
+    ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
+    # The manuscript keeps full grading rubrics. On the study page they must not
+    # give away the answer before a learner has attempted the exercise.
+    rubric = re.compile(r'(<li>(?:(?!</li>).)*?)(<em>(?:Rubrica|Rúbrica|Rubric):</em>.*?)(</li>)', re.I | re.S)
+    sanitized = rubric.sub(
+        lambda match: match.group(1) + '<details class="rubric"><summary>'
+        + html.escape(ui["criteria"]) + '</summary><div>' + match.group(2)
+        + '</div></details>' + match.group(3), sanitized,
+    )
+    sanitized = re.sub(
+        r'(<table(?:\s[^>]*)?>.*?</table>)',
+        lambda match: '<p class="table-hint">' + html.escape(ui["table"]) + ' →</p>'
+        + '<div class="table-scroll" role="region" tabindex="0" aria-label="'
+        + html.escape(ui["table"], quote=True) + '">' + match.group(1) + '</div>',
+        sanitized, flags=re.S,
+    )
     parser = LocalizeHTML(source_url, level, area, language)
     parser.feed(sanitized)
     return "".join(parser.parts)
@@ -151,6 +167,9 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
     chrome = PAGE_CHROME.get(language, PAGE_CHROME["en"])
     label = ui["lesson" if kind in {"lesson", "chapter_lesson"} else "chapter"]
+    course_code = f'OCA-{int(course["number"]):03d}'
+    unit_letter = "A" if kind in {"lesson", "chapter_lesson"} else "C"
+    unit_code = f"{course_code}-{unit_letter}{number:03d}"
     path = lesson_path(level, area, language, number, kind)
     locale_site = site_for_language(language)
     canonical = locale_site + path
@@ -165,21 +184,44 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
     description = plain_description(lesson["markdown"], fallback_description.get(language, fallback_description["en"]))
     escaped = {key: html.escape(value, quote=True) for key, value in {"canonical": canonical, "course_url": course_url, "title": title, "description": description, "name": name, "level_name": level_name, "lesson_title": lesson["title"]}.items()}
     structured = [
-        {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "description": description, "url": canonical,
+        {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "identifier": unit_code, "description": description, "url": canonical,
          "mainEntityOfPage": canonical, "inLanguage": language, "learningResourceType": label, "educationalLevel": level_name,
          "isAccessibleForFree": True, "provider": {"@type": "Organization", "name": "OpenCyber Academy", "url": SITE},
-         "isPartOf": {"@type": "Course", "name": name, "url": course_url, "inLanguage": language, "isAccessibleForFree": True}},
+         "isPartOf": {"@type": "Course", "name": name, "courseCode": course_code, "url": course_url, "inLanguage": language, "isAccessibleForFree": True}},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "OpenCyber Academy", "item": locale_site + "/"},
             {"@type": "ListItem", "position": 2, "name": name, "item": course_url},
             {"@type": "ListItem", "position": 3, "name": lesson["title"], "item": canonical},
         ]},
     ]
-    previous = f'<a href="{lesson_path(level, area, language, lesson["previous"], kind)}">← {ui["previous"]} {label.lower()}</a>' if lesson["previous"] else "<span></span>"
-    following = f'<a href="{lesson_path(level, area, language, lesson["next"], kind)}">{ui["next"]} {label.lower()} →</a>' if lesson["next"] else "<span></span>"
-    body = render_markdown(lesson["markdown"], lesson["source_url"], level, area, language)
+    def direction_text(direction: str) -> str:
+        if language == "pt":
+            return f'{label} anterior' if direction == "previous" else f'{"Próxima" if unit_letter == "A" else "Próximo"} {label.lower()}'
+        if language == "es":
+            return f'{label} {"anterior" if direction == "previous" else "siguiente"}'
+        return f'{ui[direction]} {label.lower()}'
+    previous = (f'<a href="{lesson_path(level, area, language, lesson["previous"], kind)}">'
+                f'<small>{course_code}-{unit_letter}{lesson["previous"]:03d}</small><span>← {direction_text("previous")}</span></a>') if lesson["previous"] else "<span></span>"
+    following = (f'<a href="{lesson_path(level, area, language, lesson["next"], kind)}">'
+                 f'<small>{course_code}-{unit_letter}{lesson["next"]:03d}</small><span>{direction_text("next")} →</span></a>') if lesson["next"] else "<span></span>"
+    body_source = lesson["markdown"]
+    # The book's navigation block is for Markdown readers. This page has its
+    # own persistent previous/guide/next navigation above and below the text.
+    body_source = re.sub(
+        r'<!-- open-cyber-academy:chapter-navigation:start[^\n]*-->.*?'
+        r'<!-- open-cyber-academy:chapter-navigation:end -->',
+        '', body_source, flags=re.S,
+    )
+    first_heading = re.match(r'\A\s*(?:<a\s+id="(?:ch|lesson)-\d{2,4}"></a>\s*)?#{1,2}\s+([^\n]+)\n', body_source)
+    if first_heading:
+        def heading_subject(value: str) -> str:
+            return re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s*[—-]\s*', '', value.strip(), flags=re.I).casefold()
+        if heading_subject(first_heading.group(1)) == heading_subject(lesson["title"]):
+            body_source = body_source[first_heading.end():]
+    body = render_markdown(body_source, lesson["source_url"], level, area, language)
     answers = render_markdown(lesson["worked_answers"], lesson["source_url"], level, area, language) if lesson["worked_answers"] else ""
     answers_html = f'<section class="answers"><details><summary>{ui["answers"]}</summary><div class="prose">{answers}</div></details></section>' if answers else ""
+    diagram_script = '<script src="/seo-diagrams.js" defer></script>' if 'class="language-mermaid"' in body or 'class="language-mermaid"' in answers else ''
     language_name = html.escape(LANGUAGE_NAMES.get(language, language))
     return f'''<!doctype html>
 <html lang="{html.escape(language)}" dir="{'rtl' if language == 'he' else 'ltr'}">
@@ -197,14 +239,15 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <meta name="twitter:description" content="{escaped['description']}"><meta name="twitter:image" content="{SITE}/social-card.png">
   <script type="application/ld+json">{json_script(structured)}</script>
   <link rel="stylesheet" href="/seo-lesson.css"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('open-cyber-academy-theme')||'dark'}}catch(_){{document.documentElement.dataset.theme='dark'}}</script>
-  <script src="/seo-lesson.js" defer></script><script src="/analytics.js" defer></script>
+  <script src="/seo-lesson.js" defer></script>{diagram_script}<script src="/analytics.js" defer></script>
 </head>
 <body><a class="skip" href="#lesson-content">{chrome['skip']}</a>
-<header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
+<header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
 <main id="lesson-content" class="shell">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">{ui['home']}</a><span>›</span><a href="{escaped['course_url']}">{escaped['name']}</a><span>›</span><span>{label} {number}</span></nav>
   <div class="eyebrow">{escaped['level_name']} · {label} {number} · {language_name}</div>
-  <h1>{escaped['lesson_title']}</h1>
+  <div class="unit-identity"><span>{ui['course_code']}: <strong>{course_code}</strong></span><span>{label} {number:02d}: <strong>{unit_code}</strong></span></div>
+  <h1 id="{'lesson' if kind == 'lesson' else 'ch'}-{number:02d}">{escaped['lesson_title']}</h1>
   <p class="intro">{ui['free']}</p>
   <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
   <article class="prose" lang="{html.escape(language)}">{body}</article>
@@ -222,6 +265,8 @@ def render_planned_lesson_page(course: dict, slot: dict, language: str,
     number, week = slot["chapter"], slot["module"]
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
     chrome = PAGE_CHROME.get(language, PAGE_CHROME["en"])
+    course_code = f'OCA-{int(course["number"]):03d}'
+    unit_code = f'{course_code}-A{number:03d}'
     site = site_for_language(language)
     path = lesson_path(level, area, language, number)
     title = html.escape(slot["title"])
@@ -235,8 +280,8 @@ def render_planned_lesson_page(course: dict, slot: dict, language: str,
     label, notice, guidance, chapter_label = messages.get(language, messages["en"])
     chapter_link = (f'<p><a href="{lesson_path(level, area, language, published_chapter["chapter"], "chapter")}">'
                     f'{html.escape(chapter_label)}: {html.escape(published_chapter["title"])}</a></p>') if published_chapter else ""
-    previous = f'<a href="{lesson_path(level, area, language, number - 1)}">← {ui["previous"]}</a>' if number > 1 else "<span></span>"
-    following = f'<a href="{lesson_path(level, area, language, number + 1)}">{ui["next"]} →</a>' if number < course["daily_lesson_target"] else "<span></span>"
+    previous = f'<a href="{lesson_path(level, area, language, number - 1)}"><small>{course_code}-A{number - 1:03d}</small><span>← {ui["previous"]}</span></a>' if number > 1 else "<span></span>"
+    following = f'<a href="{lesson_path(level, area, language, number + 1)}"><small>{course_code}-A{number + 1:03d}</small><span>{ui["next"]} →</span></a>' if number < course["daily_lesson_target"] else "<span></span>"
     return f'''<!doctype html>
 <html lang="{html.escape(language)}" dir="{'rtl' if language == 'he' else 'ltr'}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,9 +289,10 @@ def render_planned_lesson_page(course: dict, slot: dict, language: str,
 <meta name="robots" content="noindex,follow"><meta name="description" content="{html.escape(notice)}">
 <link rel="canonical" href="{site}{path}"><link rel="stylesheet" href="/seo-lesson.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-</head><body><header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a></div></header>
+</head><body><header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a></div></header>
 <main class="shell"><nav class="breadcrumbs"><a href="/">{ui['home']}</a><span>›</span><a href="{course_path}">{name}</a></nav>
 <div class="eyebrow">{html.escape(level_name)} · {html.escape(label)} {number} · {html.escape(language.upper())}</div>
+<div class="unit-identity"><span>{ui['course_code']}: <strong>{course_code}</strong></span><span>{ui['lesson']} {number:02d}: <strong>{unit_code}</strong></span></div>
 <h1>{title}</h1><p class="intro">{html.escape(notice)}</p>
 <article class="prose"><p>{html.escape(guidance)}</p><p>{html.escape(label)} {number} · {ui['chapter']} {week} · {name}.</p>{chapter_link}</article>
 <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{course_path}">{ui['guide']}</a>{following}</nav>

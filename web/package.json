@@ -6,7 +6,7 @@
   "scripts": {
     "catalog": "python3 scripts/build_catalog.py",
     "dev": "npm run catalog && astro dev",
-    "build": "npm run catalog && astro build && python3 scripts/localize_static.py",
+    "build": "npm run catalog && astro build && python3 scripts/localize_static.py && node scripts/build_seo_diagrams.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && uv run pywrangler deploy"
   },
@@ -17,6 +17,7 @@
     "mermaid": "^12.2.0"
   },
   "devDependencies": {
+    "esbuild": "^0.27.7",
     "typescript": "^5.9.2"
   }
 }

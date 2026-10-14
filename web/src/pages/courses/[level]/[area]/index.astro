@@ -11,12 +11,13 @@ const position = catalog.courses.findIndex(item => item.number === course.number
 const previous = catalog.courses[position - 1];
 const next = catalog.courses[position + 1];
 const levelName = catalog.level_names[course.level].en;
+const courseCode = `OCA-${String(course.number).padStart(3, '0')}`;
 type IndexedUnit = { number: number; title: string };
 const lessonIndex = lessonIndexData as Record<string, { lessons: IndexedUnit[]; chapters: IndexedUnit[]; chapter_lessons?: boolean }>;
 const authoredEditions = catalog.languages.map(language => ({ language, units: lessonIndex[`${course.level}/${course.area}/${language}`] })).filter(edition => edition.units);
 const courseUrl = `https://opencyber.academy${coursePath(course.level, course.area)}`;
 const structuredData = [
-  { '@context': 'https://schema.org', '@type': 'Course', name: `${levelName} ${course.title}`, description: `Free ${levelName.toLowerCase()} cybersecurity learning in ${course.title}, with authored lessons, examples and exercises.`, url: courseUrl, isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'OpenCyber Academy', url: 'https://opencyber.academy/' } },
+  { '@context': 'https://schema.org', '@type': 'Course', name: `${levelName} ${course.title}`, courseCode, description: `Free ${levelName.toLowerCase()} cybersecurity learning in ${course.title}, with authored lessons, examples and exercises.`, url: courseUrl, isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'OpenCyber Academy', url: 'https://opencyber.academy/' } },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://opencyber.academy/' },
     { '@type': 'ListItem', position: 2, name: levelName, item: `https://opencyber.academy${levelPath(course.level)}` },
@@ -28,7 +29,7 @@ const structuredData = [
   <div id="course-root" data-level={course.level} data-area={course.area} data-number={course.number} data-next={next ? coursePath(next.level, next.area) : ''}>
     <section class="course-heading"><div class="shell">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
-      <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
+      <div class="eyebrow">{courseCode} · <span>{levelName}</span></div>
       <h1>{course.title}</h1>
       <p>Free cybersecurity education for anyone who wants to protect people and technology. Study published lessons, examples and exercises without creating an account.</p>
       <div class="course-heading-actions">
@@ -45,8 +46,8 @@ const structuredData = [
       {authoredEditions.map(({ language, units }) => <details data-edition={language}>
         <summary>{units.chapter_lessons ? `${language.toUpperCase()} · ${units.chapters.length} chapter-lessons` : `${language.toUpperCase()} · ${units.lessons.length} daily lessons · ${units.chapters.length} full chapters`}</summary>
         <div class="published-lesson-links">
-          {units.lessons.map(unit => <a href={`/courses/${course.level}/${course.area}/lessons/${language}/${unit.number}/`}><span>{`Lesson ${unit.number}:`}</span> {unit.title}</a>)}
-          {units.chapters.map(unit => <a href={`/courses/${course.level}/${course.area}/chapters/${language}/${unit.number}/`}><span>{`${units.chapter_lessons ? 'Lesson' : 'Chapter'} ${unit.number}:`}</span> {unit.title}</a>)}
+          {units.lessons.map(unit => <a href={`/courses/${course.level}/${course.area}/lessons/${language}/${unit.number}/`}><span>{`${courseCode}-A${String(unit.number).padStart(3, '0')} · Lesson ${unit.number}:`}</span> {unit.title}</a>)}
+          {units.chapters.map(unit => <a href={`/courses/${course.level}/${course.area}/chapters/${language}/${unit.number}/`}><span>{`${courseCode}-${units.chapter_lessons ? 'A' : 'C'}${String(unit.number).padStart(3, '0')} · ${units.chapter_lessons ? 'Lesson' : 'Chapter'} ${unit.number}:`}</span> {unit.title}</a>)}
         </div>
       </details>)}
     </section>}
@@ -54,7 +55,7 @@ const structuredData = [
       <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Study guide</h2><p>Choose one study week or browse the complete chapters.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
       <div class="card course-reader">
         <div id="course-lesson-top" class="course-lesson-top" hidden><span id="course-position"></span><a id="course-top-overview" href="?lang=en">Course overview</a></div>
-        <div id="course-kicker" class="reader-kicker">COURSE {String(course.number).padStart(3, '0')}</div>
+        <div id="course-kicker" class="reader-kicker">{courseCode}</div>
         <h2 id="course-reader-title">{course.title}</h2>
         <p id="course-intro" class="muted">Loading the current book and lesson guide…</p>
         <div id="course-overview" class="course-overview"></div>

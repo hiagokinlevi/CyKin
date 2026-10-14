@@ -19,10 +19,16 @@ export async function initCoursePortal(): Promise<void> {
   const el = (id: string) => document.getElementById(id)!;
   const root = el('course-root');
   const level = root.dataset.level!, area = root.dataset.area!, courseNumber = Number(root.dataset.number);
+  const courseCode = `OCA-${String(courseNumber).padStart(3, '0')}`;
   const firstQuery = new URLSearchParams(location.search);
   const selector = el('course-language') as HTMLSelectElement;
   let language = firstQuery.get('lang') || siteLanguage();
   if (!['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'].includes(language)) language = 'en';
+  const navigationText = {
+    en: { previous: 'Previous', next: 'Next', lesson: 'lesson', chapter: 'chapter', overview: 'Course overview' },
+    pt: { previous: 'Anterior', next: 'Próxima', lesson: 'aula', chapter: 'capítulo', overview: 'Guia do curso' },
+    es: { previous: 'Anterior', next: 'Siguiente', lesson: 'lección', chapter: 'capítulo', overview: 'Guía del curso' },
+  }[language as 'en' | 'pt' | 'es'] || { previous: 'Previous', next: 'Next', lesson: 'lesson', chapter: 'chapter', overview: 'Course overview' };
   selector.value = language;
   for (const edition of document.querySelectorAll<HTMLDetailsElement>('.published-lesson-directory details[data-edition]')) {
     edition.open = edition.dataset.edition === language;
@@ -38,6 +44,10 @@ export async function initCoursePortal(): Promise<void> {
   }
   function entry(unit: Unit): Entry | undefined {
     return entries(unit.kind).find(item => item.chapter === unit.number);
+  }
+  function unitCode(unit: Unit): string {
+    const type = unit.kind === 'daily' || details.chapter_lessons ? 'A' : 'C';
+    return `${courseCode}-${type}${String(unit.number).padStart(3, '0')}`;
   }
   function url(unit: Unit | null): string {
     const params = new URLSearchParams({ lang: language });
@@ -62,7 +72,7 @@ export async function initCoursePortal(): Promise<void> {
     if (!item.published) node.className = `${className} is-planned`;
     const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(unit.number).padStart(2, '0');
     const title = document.createElement('span'); title.className = 'lesson-subject'; title.textContent = item.title;
-    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = item.published ? 'Read on OpenCyber Academy →' : 'View study slot · teaching pending →';
+    const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = `${unitCode(unit)} · ${item.published ? 'Read lesson →' : 'Teaching pending →'}`;
     node.append(number, title, state);
     if (current?.kind === unit.kind && current.number === unit.number) { node.classList.add('active'); node.setAttribute('aria-current', 'page'); }
     return node;
@@ -182,9 +192,18 @@ export async function initCoursePortal(): Promise<void> {
         const published = entries(unit.kind).filter(item => item.published);
         const before = published.filter(item => item.chapter < unit.number).at(-1);
         const after = published.find(item => item.chapter > unit.number);
-        if (before) nav.append(link(`← Previous ${unit.kind === 'daily' ? 'lesson' : 'chapter'}`, pageUrl({ kind: unit.kind, number: before.chapter })));
-        nav.append(link('Course overview', url(null)));
-        if (after) nav.append(link(`Next ${unit.kind === 'daily' ? 'lesson' : 'chapter'} →`, pageUrl({ kind: unit.kind, number: after.chapter })));
+        if (before) {
+          const earlier = { kind: unit.kind, number: before.chapter };
+          const unitName = unit.kind === 'daily' ? navigationText.lesson : navigationText.chapter;
+          const previousLabel = language === 'pt' || language === 'es' ? `${unitName[0].toUpperCase() + unitName.slice(1)} anterior` : `${navigationText.previous} ${unitName}`;
+          nav.append(link(`← ${unitCode(earlier)} · ${previousLabel}`, pageUrl(earlier)));
+        }
+        nav.append(link(navigationText.overview, url(null)));
+        if (after) {
+          const later = { kind: unit.kind, number: after.chapter };
+          const nextLabel = language === 'pt' && unit.kind === 'chapter' ? 'Próximo' : navigationText.next;
+          nav.append(link(`${nextLabel} ${unit.kind === 'daily' ? navigationText.lesson : navigationText.chapter} · ${unitCode(later)} →`, pageUrl(later)));
+        }
         if (unit.kind === 'daily' && !details.chapter_lessons && !after) {
           const chapter = details.legacy_chapters.find(item => item.published && item.chapter === Math.ceil(unit.number / 5));
           if (chapter) nav.append(link('Read full chapter →', pageUrl({ kind: 'chapter', number: chapter.chapter })));
@@ -249,7 +268,7 @@ export async function initCoursePortal(): Promise<void> {
     const source = el('course-source'); source.replaceChildren();
     if (push) el('course-reader-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (!unit || !item) {
-      el('course-kicker').textContent = `COURSE ${String(courseNumber).padStart(3, '0')}`;
+      el('course-kicker').textContent = courseCode;
       el('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
       el('course-intro').textContent = details.chapter_lessons
         ? `${details.published_lessons} chapter-lessons are published in this edition.`
@@ -260,7 +279,7 @@ export async function initCoursePortal(): Promise<void> {
       renderOverview(); return;
     }
     el('course-position').textContent = unit.kind === 'daily' ? `${weekLabel(Math.ceil(unit.number / 5))} · Day ${(unit.number - 1) % 5 + 1}` : `Chapter ${unit.number} of ${details.legacy_chapters.length}`;
-    el('course-kicker').textContent = `${unit.kind === 'daily' ? 'LESSON' : 'CHAPTER'} ${String(unit.number).padStart(2, '0')} · COURSE ${String(courseNumber).padStart(3, '0')}`;
+    el('course-kicker').textContent = `${unitCode(unit)} · ${unit.kind === 'daily' ? 'LESSON' : 'CHAPTER'} ${String(unit.number).padStart(2, '0')}`;
     el('course-reader-title').textContent = item.title;
     if (item.published && item.source_url) source.append(link('Read in the complete book →', bookUrl(new URL(item.source_url).hash)));
     if (!item.published) { el('course-intro').textContent = 'This study slot is planned. Its teaching has not been published yet. Choose a written lesson or chapter from the syllabus.'; return; }

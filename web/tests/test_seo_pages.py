@@ -76,6 +76,42 @@ def test_translated_chapters_use_localized_course_names_in_search_and_navigation
         assert structured[0]["educationalLevel"] == level_name
 
 
+def test_portuguese_chapter_reads_as_a_lesson_on_small_screens(client):
+    path = "/courses/rapid-1-month/data-governance/chapters/pt/1/"
+    response = client.get(path, headers={"host": "pt.opencyber.academy"})
+    assert response.status_code == 200
+    page = response.text
+    article = page.split('<article class="prose" lang="pt">', 1)[1].split("</article>", 1)[0]
+    assert page.count('<h1 id="ch-01">Capítulo 1 — Governança de dados: fundamentos e primeiras decisões</h1>') == 1
+    assert "<h2>Capítulo 1 — Governança de dados: fundamentos e primeiras decisões</h2>" not in article
+    assert "Próximo capítulo →" in page
+    assert "Próxima capítulo" not in page
+    assert "Código do curso: <strong>OCA-003</strong>" in page
+    assert "Capítulo 01: <strong>OCA-003-C001</strong>" in page
+    assert "OCA-003-C002" in page
+    assert "Continue estudando — aula 01" not in article
+    assert '"courseCode":"OCA-003"' in page
+    assert '<script src="/seo-diagrams.js" defer></script>' in page
+    assert '<code class="language-mermaid">' in article  # Accessible source before client rendering.
+    assert '<div class="table-scroll" role="region" tabindex="0"' in article
+    assert '<details class="rubric"><summary>Mostrar critérios de avaliação</summary>' in article
+    assert "EX001 — Tamanho do negócio." in article
+    assert '<summary>Respostas comentadas</summary>' in page
+    assert 'id="answer-ex001"' in page and 'id="answer-ex051"' in page
+    assert 'id="answer-ex014"' not in page
+    lesson = client.get("/api/chapters/rapid-1-month/data-governance/pt/1").json()
+    assert lesson["course_code"] == "OCA-003"
+    assert lesson["unit_code"] == "OCA-003-C001"
+
+
+def test_daily_lesson_uses_distinct_sequential_code(client):
+    response = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/1/")
+    assert response.status_code == 200
+    assert "OCA-016-A001" in response.text
+    assert "OCA-016-A002" in response.text
+    assert '"identifier":"OCA-016-A001"' in response.text
+
+
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     sitemaps = {language: (ROOT / f"web/public/sitemap-{language}.xml").read_text()
                 for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}
@@ -151,6 +187,8 @@ def test_language_hosts_and_unwritten_study_slots_are_honest(client):
     assert planned.status_code == 200
     assert planned.headers["x-robots-tag"] == "noindex, follow"
     assert "have not been published yet" in planned.text
+    assert "OCA-039-A011" in planned.text
+    assert "OCA-039-A012" in planned.text
     assert "/lessons/en/12/" in planned.text
     assert client.get("/courses/professional-6-months/incident-response-resilience/lessons/en/131/").status_code == 404
     cross_host = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/pt/1/", headers={"host": "opencyber.academy"}, follow_redirects=False)
@@ -182,7 +220,7 @@ def test_authored_markdown_cannot_inject_script_or_foreign_click_target():
         "worked_answers": "", "previous": None, "next": 2,
         "source_url": "https://github.com/hiagokinlevi/OpenCyberAcademy/blob/main/levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-01",
     }
-    page = render_lesson_page(lesson, {"title": "Incident response"}, "Rapid course")
+    page = render_lesson_page(lesson, {"number": 16, "title": "Incident response"}, "Rapid course")
     assert "<script>alert(1)</script>" not in page
     assert 'href="javascript:' not in page
     assert 'href="/courses/rapid-1-month/incident-response-resilience/lessons/en/2/"' in page

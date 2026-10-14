@@ -161,7 +161,7 @@ def test_information_security_chapter_lessons_use_one_canonical_page_each(client
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
-    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/information-security/pt').json()
@@ -200,7 +200,7 @@ def test_data_governance_chapter_lessons_use_one_canonical_page_each(client):
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
-    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/data-governance/pt').json()
@@ -239,7 +239,7 @@ def test_privacy_chapter_lessons_use_one_canonical_page_each(client):
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
-    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/privacy-data-protection/pt').json()
@@ -278,7 +278,7 @@ def test_grc_chapter_lessons_use_one_canonical_page_each(client):
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
-    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex074"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/security-governance-risk-compliance/pt').json()
@@ -318,7 +318,7 @@ def test_human_factors_chapter_lessons_use_one_canonical_page_each(client):
     page = client.get(canonical.headers['location'])
     assert page.status_code == 200
     assert 'Lesson 20' in page.text
-    assert f"<h1>{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
+    assert f"<h1 id=\"ch-20\">{html.escape(guide['lessons'][19]['title'])}</h1>" in page.text
     assert 'id="answer-ex066"' in page.text
 
     portuguese = client.get('/api/courses/rapid-1-month/human-factors-policy/pt').json()

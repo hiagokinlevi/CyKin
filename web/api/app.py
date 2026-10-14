@@ -34,7 +34,7 @@ EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
 ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})(?:\s+[—-]|\.)[^\n]*$', re.M)
 APPENDIX_HEADING = re.compile(
     r'^##\s+(?:final\s+appendix\s+[—–:-]\s+)?'
-    r'(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b',
+    r'(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resoluções|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b',
     re.M | re.I,
 )
 REFERENCES_HEADING = re.compile(r'^##\s+(?:references|referências|referencias)\b', re.M | re.I)
@@ -392,7 +392,7 @@ async def course_details(request: Request, level: str, area: str, language: str)
 
 
 async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int, legacy: bool = False) -> dict[str, Any]:
-    get_course(await catalog(request), level, area, language)
+    course = get_course(await catalog(request), level, area, language)
     if chapter < 1 or chapter > 9999:
         raise HTTPException(404, "Unknown chapter")
     path = book_path(level, area, language, "MANUSCRIPT.md")
@@ -412,8 +412,13 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
         if prompts:
             markdown += "\n\n### Exercise for this lesson\n\n" + prompts
     chapter_lesson = CHAPTER_LESSONS_MARKER in book and not daily
+    course_code = f'OCA-{int(course["number"]):03d}'
+    unit_kind = "A" if (daily and not legacy) or chapter_lesson else "C"
+    unit_code = f'{course_code}-{unit_kind}{chapter:03d}'
     return {
         "course": {"level": level, "area": area, "language": language},
+        "course_code": course_code,
+        "unit_code": unit_code,
         "chapter": chapter,
         "title": re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', section["title"]) if chapter_lesson else section["title"],
         "markdown": markdown,
