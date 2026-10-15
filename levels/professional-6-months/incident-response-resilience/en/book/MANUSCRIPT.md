@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1–8 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01), [Week 6](#week-06-day-01), [Week 7](#week-07-day-01) and [Week 8](#week-08-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Forty authored daily units (40/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–9 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01), [Week 6](#week-06-day-01), [Week 7](#week-07-day-01), [Week 8](#week-08-day-01) and [Week 9](#week-09-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Forty-five authored daily units (45/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -26,7 +26,7 @@ The recommended starting point for organizational incident-response outcomes is 
 6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect; [Week 6: course Days 26–30](#week-06-day-01).
 7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths; [Week 7: course Days 31–35](#week-07-day-01).
 8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate; [Week 8: course Days 36–40](#week-08-day-01).
-9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
+9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals; [Week 9 / Days 41–45](#week-09-day-01).
 10. [Playbook engineering and quality review](#ch-10) — repair and test a supervised decision aid.
 11. [Supervised incident simulation](#ch-11) — run a time-gated tabletop with separate facilitator, responder and observer records.
 12. [Case portfolio and after-action review](#ch-12) — defend decisions from three bounded cases and turn observations into retestable improvements.
@@ -3394,6 +3394,8 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Communications, privacy and legal coordination
 
+**Week 9 / course Days 41–45:** The [five authored daily lessons](#week-09-day-01) supplement the retained chapter's concepts, cards, exercises and original worked answers. They do not complete the professional book or authorize a real send.
+
 ### Learning outcomes and connection
 
 The learner can compose status messages for distinct audiences, preserve the boundary between service facts and an unverified data signal, route restricted-data questions to the correct owner, and version a message when evidence changes. Chapter 8 established a limited service return at 10:45. That did not answer every data question. A new queue observation makes it especially important to avoid either reassuring people without evidence or announcing a breach without one.
@@ -3623,15 +3625,163 @@ Keeping V9 apart protects the 11:00 record from hindsight: whoever judges the 11
 
 In an isolated exercise, assign incident lead, privacy steward, service owner and communications editor. Give each C30–C33 and the two drafts. Ask each to annotate one unsupported phrase and one missing decision owner. Approve, revise or reject the messages *as drafts*; do not send them. The recorder preserves version 1, produces version 2 with rationale and sets a 12:00 checkpoint. This is a coordination exercise, not legal advice.
 
+
+<a id="week-09-index"></a>
+
+### Week 9 — Daily learning sequence (course Days 41–45)
+
+Read the retained Chapter 9 §§9.1–9.16, C31–C33 and C9/C9X laboratory descriptions as the reference for these five **distinct** teaching units. Each day explains a decision mechanism, works one case-bound example and assigns its original EX041–EX045 prompt. Original question texts and appendix answers remain unchanged; daily worked extensions follow those answers. All source cards, people, systems and results are fictional. Day 41–44 evidence stops at 11:00, while Day 45 uses **V9 as a separate 11:20 variant**. C30's additional two hours of monitoring were *assigned*, not observed.
+
+<a id="week-09-day-01"></a>
+
+#### Day 41 — Separate business recovery evidence from possible data impact
+
+**Objective.** Independently substantiate a service-status claim and a data-assessment claim, showing source IDs, as-of time, uncertainty, owner and next discriminating question. Complete [EX041](#exercise-ex041); inspect [its worked explanation](#answer-ex041) only afterward.
+
+**Technical teaching.** A status proposition has a subject, measurable scope, time horizon and evidence producer. A technically sound recovery test concerns whether a *specified service state* satisfies the service owner's acceptance criteria. It does not determine which notification stages occurred, whether personal information was exposed or what a legal duty requires. The fallacy of transferring a successful result from one claim to another can be prevented by a **two-track claim ledger**: record (a) observation and receipt, (b) inference bounded by source coverage, (c) decision owner, and (d) next test. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response within organizational cybersecurity risk management; the ledger and CTN approval assignments are original teaching devices.
+
+**Worked example at 11:00 UTC.** Freeze the case at the moment C33 is released, retaining the original event times:
+
+| Track | Supported observation and decision | Evidence limit | Next accountable action |
+|---|---|---|---|
+| Service | C29 records 10:24 production approval, 10:26 reported operation and 10:30 checks. C30 records **limited** S42 acceptance at 10:45 after 15 minutes of bounded monitoring. | The additional two monitoring hours, incident closure, alternate routes and historical actor identification are not proved. The 101-minute ticket-to-acceptance measurement has no approved RTO target. | Service owner monitors acceptance; incident lead escalates on a new S42 edit, job failure, wrong data or required audit failure. |
+| Possible data effect | C31 reports a batch created at 10:47 and released at 10:48 with **12 pseudonymous tokens**; C32 opens a restricted privacy review at 10:52; C33 at 11:00 reports the scoped internal entries **not-dispatched**. | There is a 10:49–10:51 gateway log gap. Neither 12 people, message contents, external dispatch, nor universal nondispatch is established. | Privacy steward defines purpose and scope; gateway/queue custodian investigates only approved batch and range; legal authority decides duties. |
+
+The two rows do not conflict. C30 supports only a limited operational state; C33 concerns a distinct queue. A gap in a gateway is **missing observation**, not evidence for either “sent” or “never sent.” A pseudonymous token count is not a count of validated data subjects. Importing C33 into an earlier 10:45 service decision would also violate the release chronology. A message's **as-of time** must not be confused with the time stamped inside a source later acquired.
+
+**Counterexample.** “The portal is back, so no data could have left” borrows a recovery conclusion to answer a privacy question. “Twelve customers were breached” invents mapping and transport. Even perfect formatting cannot rescue unsupported premises.
+
+**Independent practice.** For [EX041](#exercise-ex041), produce two rows without copying the table: UTC cutoff, claim, source IDs, uncertainty and source coverage, accountable role, and one falsifiable source request. Add a deliberately rejected claim and state why it is rejected. **Artifacts:** two ledgers, one rejection note. **Rubric 0–2:** 2 for separate support/limits and next owners; 1 for incomplete checkpoint or custodian; 0 for invented exposure, closure, future observation or affected persons. Compare the [existing answer and day extension](#answer-ex041).
+
+**Continue studying — Day 41:** [← Day 40](#week-08-day-05) · [Course index](../SUBJECTS.md) · [Day 42 →](#week-09-day-02)
+
+<a id="week-09-day-02"></a>
+
+#### Day 42 — Build a restricted coordination note as a reproducible decision artifact
+
+**Objective.** Produce an internal, source-pinned and approval-bounded note with the minimal next investigation request, without converting a draft into a sent instruction. Complete [EX042](#exercise-ex042).
+
+**Technical teaching.** A message has two layers: its *claims* and its *release process*. The claims layer records audience, purpose, as-of horizon, source IDs, missing evidence and what a custodian must verify. The process layer records version, restricted classification, technical and privacy reviewers, authorized release role, channel and dispatch receipt. A response lead may own factual coordination without having independent authority to unmask a recipient, issue a legal hold or publish a learner notice. [NIST CSF 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) offers risk-governance and response outcome context, but does not confer CTN's fictional approvals.
+
+A negative query requires a **completeness contract**: event type expected, identifier semantics, producer health, queried window, filters, ingestion lag and provenance. C33's scoped “not-dispatched” entries answer an internal queue-state question. The gateway's missing 10:49–10:51 interval prevents a global external-send negative. Requesting an entire contact database would not close that instrumentation gap and would expand private-data exposure.
+
+**Worked example: internal draft v1, evidence cutoff 11:00 (not dispatched).**
+
+> CTN-IR-014 / restricted coordination DRAFT v1. C29/C30 support limited S42 acceptance at 10:45 with further monitoring assigned. C31 reports one 10:47 staging batch, mail-sync-04, containing 12 pseudonymous tokens. C33 reports the inspected internal queue entries not-dispatched; the gateway window 10:49–10:51 is missing. No external-delivery or personal-data finding is established. Under C32's privacy assessment, request that authorized queue/gateway custodians validate batch correlation, source coverage, retry semantics and preservation receipts without exporting contact mappings. Privacy steward owns this scope decision; incident lead owns the 12:00 status. Communications approval and transmission remain pending.
+
+| Release-manifest field | Correct status |
+|---|---|
+| Audience and data classification | Authorized response group; restricted storage for original evidence |
+| Evidence basis | C30 service outcome; C31–C33 separate data question at 11:00 |
+| Proposed next artifact | Custodian-authenticated gateway/dispatcher query for batch and 10:49–10:51 with field and coverage definitions |
+| Approval and delivery | Internal draft; decision-owner review pending; **no dispatch receipt** |
+
+**Wrong but plausible alternative.** “Service fixed, twelve emails safe, notify everyone” conflates limited service acceptance, a source-bounded queue status, personal-data determination and an unapproved release. An editor must identify which evidence and authorization are missing rather than merely make the language less categorical.
+
+**Independent practice.** [EX042](#exercise-ex042) retains its **100–160-word** internal-note requirement. Write the note with C30–C33, plus the manifest outside the count. Name the exact gateway gap and the custodian's required receipt, not a speculative legal deadline or a completed retrieval. **Artifacts:** restricted v1 note and a review/source-request manifest. **Rubric 0–2:** 2 for a usable bounded handoff with owners and next checkpoint; 1 when evidence is correct but release/request is underspecified; 0 for invented exposure, mapping, legal clearance or transmission. Compare [the model answer](#answer-ex042).
+
+**Continue studying — Day 42:** [← Day 41](#week-09-day-01) · [Course index](../SUBJECTS.md) · [Day 43 →](#week-09-day-03)
+
+<a id="week-09-day-03"></a>
+
+#### Day 43 — A learner-facing update needs an approval and dispatch ledger
+
+**Objective.** Write a useful 60–100-word learner-facing holding message and separately prove its actual release state. Apply the existing C9/C9X negative controls to [EX043](#exercise-ex043).
+
+**Technical teaching.** Audience-specific language is not permission to change evidence. Learners may need a verified enrollment effect, narrow service-return status, next action and update channel; they do not need internal accounts, the pseudonym batch or uncertain gateway details in a service-only update. The designated privacy/legal owner must still assess whether separate data-related messaging is legally or contractually required. [NIST Privacy Framework](https://www.nist.gov/privacy-framework) supports managing privacy risk; it determines neither the legal classification of a CTN token nor a notification deadline.
+
+Treat communication as a **state machine**: DRAFT → technically reviewed → privacy/legal reviewed where applicable → approved for a particular audience and channel → dispatch attempted → transport result recorded → superseded if necessary. Each transition needs a versioned receipt. Approval without a transport record is not dispatch. A transport attempt is not recipient delivery, and delivery does not prove reading. The retained §9.11 C9 lab has two invented unapproved message flags and prints **C9 internal release=BLOCK** and **C9 learner release=BLOCK**. Its “REVIEW” state after a hypothetical local flag change would still not be an external send. The §9.15 C9X INVALID_SENT_UNAPPROVED case rejects a contradictory *simulated* sent=True without approval, not a real CTN event.
+
+**Worked example: proposed public copy (not sent).**
+
+> A class enrollment slot was temporarily unavailable. CTN completed its selected checks and returned that slot to use at 10:45 UTC. We continue to monitor enrollment and review the event. No action is requested from learners based on this service update. We will provide another status by 12:00 UTC through the designated channel.
+
+Attach a **separate** process card: audience “CTN learners”; evidence “C29–C30 only for service assertion”; business reviewer “service owner, pending”; release reviewer “communications owner, pending”; privacy/legal content assessment “refer to authorized specialist if required”; delivery receipt “none”; state **DRAFT/UNSENT**. The 12:00 time obligates another *status*, not a promised conclusion.
+
+**Counterexample.** “We proved no information was disclosed” is unsupported by C33. “Notified all twelve affected people” invents recipient mapping, approval and a dispatch. Even if a draft has a correct service sentence, none of those statements can be smuggled into its release record.
+
+**Independent practice.** Write the original [EX043](#exercise-ex043) learner text (60–100 words) and a six-field process card documenting reviewer, channel, scope, cutoff, approval and actual delivery state. Interpret both C9 BLOCK outputs; name what a genuine approval and transport receipt would require. **Artifacts:** public draft and separate release record. **Rubric 0–2:** 2 for bounded useful wording, no restricted identifiers and explicitly unsent status; 1 for sound copy with incomplete release evidence; 0 for claiming breach/no breach, completed delivery or unapproved disclosure. See [worked answer](#answer-ex043).
+
+**Continue studying — Day 43:** [← Day 42](#week-09-day-02) · [Course index](../SUBJECTS.md) · [Day 44 →](#week-09-day-04)
+
+<a id="week-09-day-04"></a>
+
+#### Day 44 — Minimize a privacy referral without neglecting preservation
+
+**Objective.** Ask five decision-changing questions about C31–C33, distinguish technical preservation from a legal hold, and leave classification/notification to authorized owners. Complete [EX044](#exercise-ex044).
+
+**Technical teaching.** A bounded evidence request begins with an **explicit purpose**. The question “did this particular batch reach a gateway stage?” might be answerable using batch IDs, dispatcher records, source health and transaction timestamps. It may not require mapping any pseudonymous token to a real person. Mapping is a different processing activity, requiring the privacy steward to define need, permission, selected fields, custody and retention. C32 opened an assessment; it did not create blanket mapping rights. A metadata preservation request is not itself an authenticated collection, and a concern about expiring logs is not a legal hold imposed by the analyst.
+
+[NIST's Privacy Framework](https://www.nist.gov/privacy-framework) and [its explanation of roles in the data-processing ecosystem](https://www.nist.gov/privacy-framework/using-privacy-framework-11) offer primary risk-management references. Neither determines whether CTN is regulated in a particular country, which notice threshold applies, whether a contract requires reporting or whether 12 pseudonyms identify people. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) supplies forensic background but is not jurisdiction-specific legal advice.
+
+**Worked example: five questions, each with an owner and evidence boundary.**
+
+| Decision question | Minimum useful proposed evidence | Who may decide or provide it |
+|---|---|---|
+| What exactly did C33 test? | Internal queue-state definition, batch identifier, event/filter range, data quality and copy receipt | Queue custodian; cannot infer all other paths |
+| Does a gateway receipt correlate with the batch? | Authenticated gateway/dispatcher records, join semantics, source completeness and exact 10:49–10:51 gap | Source custodians under bounded approval; unknown remains unknown if gap persists |
+| Is token-to-person mapping necessary? | Named assessment purpose and minimum fields, access/retention conditions | Privacy steward; no automatic bulk export |
+| Which sources risk expiry? | Verified retention and preservation mechanism, scope, custodian and receipt | Authorized records/source custodian; legal-hold decision reserved |
+| What formal notification/preservation duties apply, if any? | Actual governing law, entity role, contracts, verified facts and decision record | Authorized privacy/legal/contract owner; analyst cannot declare a universal time clock |
+
+A good source request states proposed versus received, names collection authorization and records what remains unknown. The external gateway gap is a reason to seek a discriminating independent source, not proof of dispatch or of its absence. A contact-list dump would create another sensitive artifact without necessarily testing the missing event.
+
+**Worked rejection.** “Twelve tokens mean twelve learners were breached, so export all contacts and notify them within 72 hours” invents identity, impact, jurisdiction, deadline and authority. The professional action is to preserve minimal available technical records through the correct custodian and obtain a separate accountable legal/privacy determination.
+
+**Independent practice.** Write [EX044](#exercise-ex044)'s five-question referral; for each state purpose, scoped source, owner, missing evidence and what conclusion is prohibited. Add an explicit “no mapping or legal notice without authorization” line. **Artifact:** referral and preservation-request boundary, *not* collection or legal advice. **Rubric 0–2:** 2 for five testable minimal requests and delegated determinations; 1 for good questions but uncontrolled fields; 0 for a claimed legal duty, disclosure or approved contact export. See [worked answer](#answer-ex044).
+
+**Continue studying — Day 44:** [← Day 43](#week-09-day-03) · [Course index](../SUBJECTS.md) · [Day 45 →](#week-09-day-05)
+
+<a id="week-09-day-05"></a>
+
+#### Day 45 — V9: amend a message without changing the earlier knowledge horizon
+
+**Objective.** Create an immutable 11:00 main-case v1 and a distinct 11:20 V9-only v2, with separate approval requests and no invented delivery. Complete [EX045](#exercise-ex045).
+
+**Technical teaching.** An authenticated *gateway receipt* may demonstrate an event at some gateway stage, but stage definitions, source time, batch join, content, external acceptance, final recipient delivery and human reading are separate claims. In the **optional V9 branch only**, the 11:20 receipt names mail-sync-04; this may be consistent with C33's narrower internal queue status, because systems can describe different stages, retries or identifiers. The gap at 10:49–10:51 in the canonical inspected gateway remains a source limitation, not an invented event. Do not backdate the receipt to 11:00 or import it into CTN's main case. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) supplies the coordinated-response context; [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) supports exercise evaluation. CTN's version protocol is original classroom material.
+
+**Worked example — a claim-level version diff.**
+
+| Item | v1 / canonical 11:00 | v2 / optional V9 11:20 |
+|---|---|---|
+| Supplied evidence | C31 staged, C32 referral, C33 inspected queue not-dispatched and gateway gap | Preserve v1; add the newly authenticated V9 **gateway-stage** receipt |
+| Defensible claim | External delivery unconfirmed; 12 tokens are not known persons | A gateway-stage record names the batch; event semantics and person delivery still require verification |
+| Message state | Internal note and learner holding copy: **drafts** | Proposed restricted amendment and communications/privacy review request: **draft**, no send receipt |
+| Invalid leap | “No other transmission happened” | “All twelve people got a message” or “v1 already knew this” |
+
+**Worked v2 excerpt, V9 simulation only:** “CTN-IR-014, internal draft v2, 11:20. Retain v1's 11:00 queue observation and gateway-source gap. V9 newly supplies an authenticated gateway-stage receipt naming mail-sync-04. Validate field semantics, batch join and recipient scope. Neither end-user delivery nor a legal notice determination is established. Privacy and communications owners must review any amended public text. Nothing in this exercise shows a sent notice.”
+
+The retained C9X classifier's **EARLY_V9** refuses future evidence at 11:00. **UNAPPROVED_EARLY_V9** flags simulated unapproved sending first; it still independently violates V9's release horizon. These are validation-order illustrations, not records of real messages.
+
+**Independent practice.** For [EX045](#exercise-ex045), freeze v1, draft V9-only v2, append a privacy/communications approval request with intended audience and source limits, and keep the 12:00 next-status checkpoint. Treat the learner message as originally unsent. **Artifacts:** version pair, source diff, approval request. **Rubric 0–2:** 2 for distinct source horizons, stage-limited interpretation and unsent status; 1 for accurate v2 without preservation/approval receipt; 0 for rewriting v1, inferring identified recipients or claiming dispatch. Compare [worked answer](#answer-ex045).
+
+**Continue studying — Day 45:** [← Day 44](#week-09-day-04) · [Course index](../SUBJECTS.md) · [Chapter 10 legacy teaching (Day 46 not yet written) →](#ch-10)
+
+<a id="week-09-end"></a>
+
+### Week 9 synthesis and assessment boundary
+
+The five assessable, separately versioned artifacts are EX041's claim ledger, EX042's restricted coordination note, EX043's **unsent** learner-facing draft, EX044's minimal privacy referral and EX045's **V9-only** correction request. Use the existing appendix answers plus the worked extensions below. The retained offline C9/C9X code is the chapter's available lab; this batch does **not** add an unverified executable program, live system interaction or new case observation. Chapter 10 retains authored *legacy subject teaching* but is not Day 46.
+
 ### Exercises — subject 9
+
+<a id="exercise-ex041"></a>
 
 **EX041 — Two-track status ledger.** Inputs: C29–C33. Write separate service and data-assessment lines at 11:00 with source IDs, confidence, owner and next checkpoint. A 2-point result preserves C30's limited service acceptance and C33's incomplete external-delivery picture.
 
+<a id="exercise-ex042"></a>
+
 **EX042 — Restricted coordination note.** Inputs: C30–C33. Draft a 100–160-word internal status note with the 12-token observation, `not-dispatched` status, gateway gap, ownership, evidence request and next update. A 2-point result does not announce an exposure finding.
+
+<a id="exercise-ex043"></a>
 
 **EX043 — Learner-facing draft.** Inputs: C29/C30 and the still-open C31–C33 assessment. Write a 60–100-word holding update with service effect, current status, action required, next update and approval state. A 2-point result contains no internal account or token details and is marked unsent until approved. Apply the fail-closed C9 release fixture in §9.11 and attach the approval/delivery state to your draft record.
 
+<a id="exercise-ex044"></a>
+
 **EX044 — Privacy referral.** Inputs: C31–C33. Produce a five-question, privacy-limited referral to the steward that distinguishes queue status, gateway evidence, mapping need, retention and decision authority. A 2-point result does not itself decide a legal duty or request a full contact-list export.
+
+<a id="exercise-ex045"></a>
 
 **EX045 — Versioned correction.** Variant `V9` supplies a later authenticated gateway receipt for `mail-sync-04` at 11:20, but does not identify recipients; this variant is **not** a main-case C card. Write a version-2 internal note and a message-approval request that correct, rather than erase, the earlier uncertainty. A 2-point result does not backdate the new finding or claim 12 people were affected.
 
@@ -4676,25 +4826,48 @@ The whole snapshot would regress S40/S41, while the supplied current state misse
 
 ### Subject 9: EX041–EX045
 
+<a id="answer-ex041"></a>
+
 **EX041 — Model two-track status.** Service line: “At 10:45 C30 records service-owner acceptance of S42 return after C29's production checks; two-hour monitoring continues. Owner: service owner and application operator. Next checkpoint: scheduled monitoring review or any new S42 write.” Data-assessment line: “At 11:00 C31 shows 12 pseudonymous tokens in an internal staging batch; C33 reports the batch `not-dispatched` but the inspected gateway window has a 10:49–10:51 gap. External delivery and affected identities remain unconfirmed. Owner: privacy steward with queue/gateway custodians. Next checkpoint: approved scoped gateway/source review and 12:00 status.” One line must not borrow the other's confidence.
 
 **Additional professional worked reasoning:** The internal note must distinguish C30's 10:45 limited acceptance from C31's 10:47 staging batch and C33's 11:00 scoped not-dispatched queue status, with the gateway gap expressly unresolved. Name privacy steward and incident lead as different owners. Do not equate an internal queue state with every possible gateway/export path or claim twelve affected learners.
+
+<a id="answer-ex042"></a>
 
 **EX042 — Model restricted note.** “CTN-IR-014, 11:00 draft for the response group: C30 supports a limited S42 return to service at 10:45 after the 10:26 change and monitored checks; the application owner continues the two-hour watch. C31 reports an internal `mail-sync-04` staging batch with 12 pseudonymous recipient tokens, not 12 identified people. C33's scoped queue status says `not-dispatched` for those entries, while the inspected external-gateway records have a 10:49–10:51 gap. No external delivery or data-exposure finding is established. The privacy steward owns a bounded follow-up with the queue and gateway custodians and decides whether token mapping is needed under an approved purpose. Preserve original queue metadata and query limits. The incident lead will provide the next status at 12:00; no unsanctioned contact-list export or public data claim is approved.”
 
 **Additional professional worked reasoning:** For a learner audience, use only supported service status, monitoring, useful action and a next update; withhold internal account labels, recipient tokens, unconfirmed cause and a breach determination. The message remains DRAFT until the designated service/communications review is complete. A 12:00 update time promises another status, not proof the case will be closed by then.
 
+<a id="answer-ex043"></a>
+
 **EX043 — Model learner-facing draft.** “A class enrollment slot was temporarily unavailable. CTN completed service checks and returned that slot to use at 10:45 UTC. We are continuing to monitor enrollment and review the event. Learners do not need to take action based on this update. We plan to post another status by 12:00 UTC through this channel. This is a draft for service-owner and communications review and has not been sent.” The last sentence is an *editorial status line*; a real approved message would omit that sentence when sent and retain the approval receipt separately. It does not assert either exposure or no exposure.
 
 **Additional professional worked reasoning:** A privacy assessment request should identify the C31/C33 batch ID and 10:49–10:51 gap, the custodian for gateway and queue sources, selection constraints, provenance to obtain and the intended decision. Token-to-contact mapping is separate and requires privacy-owner purpose/permission; no legal hold, notification threshold, exposure or mapping result is supplied. C9X rejects inferring twelve actual people from the token count.
+
+<a id="answer-ex044"></a>
 
 **EX044 — Model privacy referral.** Ask the steward: (1) What do C31's token fields actually identify, and is mapping necessary for a specific decision? (2) Does C33's `not-dispatched` status cover only this batch or other paths? (3) Which bounded gateway source and time window could resolve the 10:49–10:51 gap, and who may collect it? (4) What are the verified retention and preservation requirements for the queue and gateway records? (5) Who has authority to classify data impact and decide whether any notice or preservation duty applies? The analyst offers C31–C33 source references and uncertainty, not a full contact-list request or a legal conclusion.
 
 **Additional professional worked reasoning:** At 11:00 separate the supported queue assertion (the selected internal entries are not-dispatched), the untestable global external-delivery claim due to the gateway gap, and the continuing limited service state. An empty window cannot be called a universal non-event. Request a bounded independent gateway or dispatcher record and receipt-namespace semantics. No result is a permission to issue an external message.
 
+<a id="answer-ex045"></a>
+
 **EX045 — Model V9 revision.** “Internal note v2, 11:20 in the **V9 simulation only**: a newly authenticated gateway receipt names `mail-sync-04`. This conflicts with the earlier `not-dispatched` queue view, which was accurate for its inspected source and time. Validate the receipt's event semantics, batch ID, content and recipient scope before concluding delivery to people. Preserve v1 and the new source; privacy steward owns the reconciled assessment.” The separate approval request asks communications and privacy owners whether the earlier learner-facing draft needs revision, what can now be stated and when to update. The new receipt does not backdate knowledge to 11:00, prove that the 10:49–10:51 gap contained a send, or identify 12 people.
 
 **Additional professional worked reasoning:** V9 is an optional 11:20 branch with an authenticated gateway receipt, not main-case C33 evidence. Preserve the original 11:00 message and produce a versioned proposed revision specifying what that gateway receipt proves and what recipient delivery, contact mapping and legal duty remain unknown. Communications and privacy owners separately assess the text; without an actual release receipt the revised note is UNSENT.
+
+
+**Week 9 weekday worked extensions (EX041–EX045).** These are additional explanations; the original five solved answers above remain intact.
+
+**Day 41 / EX041.** Correct service evidence is C29 at 10:24/10:26/10:30 and limited C30 owner acceptance at 10:45. Additional monitoring is *assigned*, not finished; recovery time from 09:04 ticket to 10:45 is 101 minutes with no RTO target. Correct data evidence is C31's 10:47 staging and 10:48 release, C32's 10:52 restricted referral and C33's 11:00 selected queue result. The gateway lacks 10:49–10:51; ask for authenticated source coverage/joins, not a global no-dispatch conclusion. Neither identified-person count nor notice duty is supplied. Each row needs its own owner and review condition.
+
+**Day 42 / EX042.** The model 100–160-word restricted note is a **draft**, not a delivered notification. Attach a manifest identifying restricted response-group audience, 11:00 cutoff, C30 service evidence versus C31–C33 possible-data evidence, pending release review and a precise proposed batch/gateway query for 10:49–10:51. Ask for source-health, identifier-namespace and custody information through queue/gateway custodians with privacy authorization. No collection receipt or token-to-contact mapping has been supplied. A next action is executable as a request only, not proof of response completion.
+
+**Day 43 / EX043.** The original learner-facing copy is limited to the 10:45 service return, continued review, whether any action is required based on that update and the 12:00 status promise. Keep the approval/dispatch record **outside** public prose: service owner pending, communications owner pending, privacy/legal review as applicable, channel proposed, no dispatch receipt, **UNSENT**. C9 prints “C9 internal release=BLOCK” and “C9 learner release=BLOCK”; C9X's sent=True/approved=False row is a contradictory fixture, not a real transport log. A boolean flag cannot substitute for authorization or recipient delivery.
+
+**Day 44 / EX044.** Ask exactly five questions: queue status meaning/scope; bounded gateway/dispatcher join and 10:49–10:51 coverage; steward-authorized purpose and minimum scope of mapping (if needed); verified source retention and authorized preservation receipt; and which privacy/legal/contract authorities determine any actual notification or formal hold. Distinguish *assessment open*, *preservation requested*, *copy collected* and *legal order* as separate states. Nothing in C31–C33 supplies a universal 72-hour clock, confirmed human recipients or an authorized bulk export.
+
+**Day 45 / EX045.** Preserve v1 as-of 11:00 under canonical C31–C33, including internal not-dispatched entries and the gateway gap. In separate V9 only, add v2 at 11:20 reporting an authenticated **gateway-stage** receipt that names mail-sync-04; verify the receipt's field meaning and batch correlation, and leave human delivery/impact unknown. Submit new privacy/communications review request; no learner-facing dispatch is supplied. EARLY_V9 rejects importing the future variant at 11:00, and UNAPPROVED_EARLY_V9 returns INVALID_SENT_UNAPPROVED for a separate contradictory simulated sent flag without erasing the future-time defect.
 
 **C9 draft-release gate — worked laboratory result.**
 
