@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1–6 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01) and [Week 6](#week-06-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Thirty authored daily units (30/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–7 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01), [Week 6](#week-06-day-01) and [Week 7](#week-07-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Thirty-five authored daily units (35/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -24,7 +24,7 @@ The recommended starting point for organizational incident-response outcomes is 
 4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits; [Week 4: course Days 16–20](#week-04-day-01).
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor; [Week 5: course Days 21–25](#week-05-day-01).
 6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect; [Week 6: course Days 26–30](#week-06-day-01).
-7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths.
+7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths; [Week 7: course Days 31–35](#week-07-day-01).
 8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate.
 9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
 10. [Playbook engineering and quality review](#ch-10) — repair and test a supervised decision aid.
@@ -2462,7 +2462,7 @@ At 09:42 the next fixed boundary is 09:47. C17 specifies automatic expiry; there
 
 **Practice and limits.** Finalize the EX029 rollback card begun on Day 29, then submit [EX030](#exercise-ex030) and compare its [worked answer](#answer-ex030), including the V6 verdict, C6/C6X comparison, W6-MISSING and a 09:42 handoff with the failed/unknown coverage branches. A supervisor should be able to trace every affirmative claim to a card and every future action to a pending gate. Chapter 7 may introduce mechanism and new authority evidence, but its daily sequence is still pending. Do not mark it complete, translate an unreleased unit or treat the Week 6 technical checks as independent human approval.
 
-[Previous: Day 29](#week-06-day-04) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 7 reference; daily sequence pending](#ch-07).
+[Previous: Day 29](#week-06-day-04) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Week 7, Day 31](#week-07-day-01).
 
 <a id="week-06-end"></a>
 
@@ -2517,6 +2517,8 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Eradication and verification
+
+**Week 7; course Days 31–35.** Use the [five daily lessons](#week-07-day-01) with the retained C20–C24 reference and §§7.5/7.11/C7X fixtures. Keep request-mechanism validation, unapproved-change classification, human attribution, hold-extension authority and task-only action separate. The final checkpoint is 10:07; later results are unavailable.
 
 ### Learning outcomes and connection
 
@@ -2658,7 +2660,7 @@ C7 outside approved: ['q-144']
 
 The words **unexpected** and **outside approved** are labels relative to this fixture's baseline only. The program has no human-actor fields and therefore cannot infer registration intent, credential theft or a shared actor with C22. It also cannot determine whether the task exists on a runner not represented in the input. A safe extension is to add a fictional second approved run with a source/version annotation, rerun the comparison and explain how the classification changes without rewriting the preserved original input. Changing an approved baseline after seeing a suspicious row, with no record of who approved that change, would defeat the audit purpose.
 
-**Failure injection:** remove the batch-17 entry from the observed mapping. The difference then indicates a missing approved task as well as the unexpected sync-override key, but it does not tell you whether the job actually vanished or the inventory collection was incomplete. The reviewer must request coverage metadata rather than launching a corrective disablement based on the set difference. The laboratory tests reasoning over finite sets; it is not an endpoint detection rule.
+**Failure injection:** remove the batch-17 entry from the observed mapping in a separately labeled run. The two printed forward differences remain unchanged: sync-override is unexpected and q-144 is outside the supplied approved request union. The original program does **not** print missing approved tasks; that requires the reverse key difference, `set(approved) - set(observed)`, which would contain batch-17 in this mutation. Even that result cannot distinguish a vanished job from incomplete inventory collection. Retain both input versions and request coverage metadata before corrective action. Day 34's W7-RELATION demonstrates the reverse direction and association loss using separate training identifiers. This finite-set comparison is not an endpoint detection rule.
 
 ### 7.12 Mechanism, corrective action and durable eradication are different claims
 
@@ -2737,6 +2739,156 @@ At 10:07, the task-specific mechanism is better supported than at 09:26 and the 
 
 Keeping C21 and C24 separate lets a later reviewer see that extending the hold did not by itself authorize action on the task, and that each approval has its own owner and time.
 
+<a id="week-07-index"></a>
+
+### Week 7 — From a demonstrated mechanism to bounded eradication evidence
+
+Study [Day 31](#week-07-day-01), [Day 32](#week-07-day-02), [Day 33](#week-07-day-03), [Day 34](#week-07-day-04) and [Day 35](#week-07-day-05) with the retained Chapter 7 reference and its three Python fixtures. Day 31 stops at C20's 09:46 release. Day 32 adds C21, then C22/C23 through 09:54. Day 33 releases C24 in event order through 10:07; Days 34–35 test and hand off that same bounded record. No later result fills a pending field. The offline W7-RELATION variant is a separate invented teaching fixture, not another CTN card or authorization to operate a scheduler.
+
+<a id="week-07-day-01"></a>
+
+#### Day 31 — Validate a request relationship without inventing a human actor
+
+**Learning task.** Explain why C20 strengthens a mechanism claim while preserving actor and intent uncertainty. A mechanism claim identifies a component and an operation that produced a particular outcome. It requires more than a matching account label or minute. Ask which producer emitted the identifier, its uniqueness scope, whether retries or transformations reuse it, how it reached the other record and which source connects the operation to state. A label copied into a self-reported field is weaker evidence of origin than a producer-supported transaction relationship. Even a trustworthy technical relationship need not identify the person who created the component.
+
+At **09:46**, C20 supplies the preserved `runner-03` scheduler record: `sync-override` registered at 08:47, a run at 09:00, and API request `q-144` for S42. The custodian and application owner compare a known-good request across scheduler and API sources and validate that C20 and C05 refer to the same request in the same namespace. C13 separately connects S42's stored version 19 to the last recorded request `q-144`. This chain supports “the recorded task run issued the S42 edit.” Registration time, run time, API event time and case release remain distinct fields. The run at 09:00 and C05's 09:01 event are different producer observations, not a reason to silently change either timestamp or invent an extra operation.
+
+**Worked contrast.** At 09:26, a defensible graph could draw C12's `batch-17` as a claimed-provenance edge only. At 09:46, version the graph: C14's complete manifest for the particular approved run excludes `q-144`; C20 supplies a different task and a validated request relationship. Add a source-backed task-run→request edge and retain the older hypothesis version. Do not relabel C12 as trusted scheduler metadata or pretend C20 was available to the earlier analyst. A task issuing an API request and a person intentionally installing it are different propositions.
+
+Consider the tempting alternative: “The ID matches, therefore `s-77` registered the task and its user is the attacker.” C20 does not supply a session-to-registration record or a human actor. The shared account and `runner-03` labels cannot fill those missing edges. Nor does a registration at 08:47 establish a link to the separately released 08:52 recovery-method event; that card is not available at this lesson's checkpoint. Maintain unknowns without calling the validated mechanism merely a guess. Evidence can support a strong narrow conclusion and leave a wider conclusion unsupported.
+
+**Evidence design.** A four-part claim record should be reproducible by another responder: claim; source chain; exact scope; a result that would force revision. For this case: C20 scheduler run, custodian namespace validation, C05 request and C13 state support one task/request relationship. A trustworthy contradictory mapping or mismatched transaction would force re-examination. Other runners, copies, registration author and upstream session remain open. The validation described in C20 is a supplied fictional case fact; the learner has not independently rerun a real custodian check. Do not invent a byte digest, request contract document or exact source-query receipt absent from the cards.
+
+**Offline practice.** Draw two versioned edge lists at 09:26 and 09:46. Give each edge a type and source; cross out no raw record. Mark the old job-origin lead weakened for the specified approved run and the new task/request mechanism supported. Then remove C20's namespace validation in a clearly hypothetical third column: the equal `q-144` strings would again require a semantic/provenance check. This adverse case tests what the conclusion depends on; it does not revise C20.
+
+**Limits and decision.** Complete [EX031](#exercise-ex031), including its forbidden actor claim and disconfirming source question, before reading the [worked answer](#answer-ex031). The mechanism justifies preparing a task-specific response contract, not execution. C20 does not renew the expiring hold, authorize task disablement or settle motive.
+
+[Previous: Week 6, Day 30](#week-06-day-05) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Day 32](#week-07-day-02).
+
+<a id="week-07-day-02"></a>
+
+#### Day 32 — Preserve and plan two independent eradication contracts
+
+**Learning task.** Build separate task and identity workstreams at **09:54**, with permission, preservation, checks and pending fields. First account for the intervening authority event: C21 at 09:46:30 is fresh service-owner/incident-lead approval to extend the **S42-only hold to 10:07**, followed by the application operator's 09:46:45 `g-23` receipt. It continues the limited scope, monitoring and rollback ownership and sets a 10:06 review. It is not task-removal authority or an automatic consequence of C20. The longer business interruption has its own impact decision; C16's initial tolerance does not supply it.
+
+Next release C22 at 09:50: a separately retained configuration-audit source reports a recovery-method addition to `svc-enroll` at 08:52, with a blank actor. This is not recovered C08 sign-in detail and carries no inference that all identity evidence shares C08's 10:00 retention limit. An added method may provide a continuing access path, but its active/functioning state is untested. At 09:54 C23 records owner comparisons against the approved task inventory and official change ledger: neither change is approved through that checkpoint. This supports **unapproved configuration change**, not malware, theft, a named actor or a shared author of both changes.
+
+**Mechanism of the contract.** Map each observed concern to a prospective intervention and a test that can contradict it. Baseline preservation must precede destructive modification where the authorized procedure permits it. Preserve the minimum task definition/schedule and bounded run evidence, inventory version, request semantics and source pointers; preserve the identity configuration history and method identifier without publishing secrets. A collection receipt should identify the acquired object, custodian, time, scope and integrity/provenance checks actually performed. A later change receipt must identify what was altered. “Saved and fixed” merges two different evidentiary obligations and hides ordering.
+
+| Contract field at 09:54 | Scheduler task | Identity recovery method |
+|---|---|---|
+| Supported concern | C20 mechanism plus C23 task-inventory comparison. | C22 configuration addition plus C23 approval comparison; functionality untested. |
+| Proposed action | Preserve configuration/run baseline; seek approval to disable only `sync-override`. | Preserve bounded audit/settings; identity owner assesses active state and seeks scoped method/session/credential decisions. |
+| Authority and operation | Task/application/service decision with incident coordination; authorized application operator, rollback plan. | Identity and service owners determine permitted targets, operator and dependency-aware reversal. |
+| Intended effect check | Disabled status and no invocation at a known next scheduled opportunity. | Specific method absent/inactive after approved action; separately scoped session/credential effect where authorized. |
+| Legitimate-service control | Approved `batch-17` S40/S41 path remains functional. | Approved integration still authenticates/operates after any change. |
+| Reopen and gap | Re-registration, unexpected run/write; unseen runners and author remain unknown. | Unexpected method/access or broken integration; other methods/sessions and actor remain unresolved. |
+
+**Worked contrast.** A correct 09:54 worksheet marks both eradication changes **proposed**. It can separately mark the S42 hold extension authorized/reported from C21. A single green “persistence removed” box would invent execution in both tracks. Disabling the whole account to make both rows appear quiet exceeds the narrow proposals, risks approved jobs and prevents distinguishing the task fix from an availability failure. A broader control might later be justified, but it needs a separate decision and evidence.
+
+**Offline practice.** Complete both rows without importing a later result. For each, write the source package, approving capacity, expected operator receipt, effect check, legitimate-service check and an unavailable-result branch. A missing preservation digest remains missing; planned collection does not create a receipt. If immediate harm conflicts with lengthy collection, refer a bounded preservation/action sequence and stop condition to the owners rather than delaying indefinitely or granting yourself access. No recovery secret, live command or test traffic belongs in this exercise.
+
+**Limits and decision.** Submit [EX032](#exercise-ex032), then inspect its [worked answer](#answer-ex032). Task evidence does not prove the identity concern fixed, and method absence would not prove every session invalid. Preserve those two independent completion gates for the later task-only decision.
+
+[Previous: Day 31](#week-07-day-01) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Day 33](#week-07-day-03).
+
+<a id="week-07-day-03"></a>
+
+#### Day 33 — Separate hold renewal, task authority and the expiry risk decision
+
+**Learning task.** Reconstruct which authority enabled which change, then bound what C24 establishes through **10:07**. A temporary protective control and a mechanism-specific correction have different targets, costs and verification questions. Keeping the hold active does not disable the scheduler; disabling one task does not remove a recovery method or prove all write routes safe. A reviewer must be able to follow each approval to its operator record without borrowing authority from a neighboring row.
+
+**Chronological C24 release.** At 09:59 the response lead and service owner approve disabling **only `sync-override`**, after the application custodian preserves its configuration and bounded run record. At 10:03 the authorized application operator records the task disabled, a read-only scheduler status agrees, and no further run is observed through 10:07. These statements support a specific execution report, corroborating immediate state and a short quiet window. The cards do not supply a known next scheduled opportunity, fleet-wide inventory or a completed legitimate `batch-17` functional test. Do not fill these fields with success because the disabled flag is visible.
+
+The hold remains under its own C21 approval. At 10:06 the owner reviews current cost and risk: the task is disabled, no new S42 edits are observed since C19, and further hold time would continue to block legitimate enrollment. The owner chooses no renewal beyond 10:07, with read-only S42 monitoring and escalation for another unexpected edit. That is a documented acceptance of residual exposure under a monitoring/stop rule. It is not proof that recovery-method access, alternate writes or re-registration are impossible. A planned automatic expiry also needs the actual boundary behavior checked; the case's authorized end and monitoring decision should not become an invented all-route post-expiry test.
+
+| Authority or observation | Supported transition | What it cannot authorize or prove |
+|---|---|---|
+| C17 09:37; expiry 09:47 | Initial S42-only hold approval. | Later extension, task disablement or account-wide action. |
+| C18 09:39; C19 09:42 | Reported hold activation; one S42 denial and S40 acceptance. | Continuous enforcement or every route/S41 outcome. |
+| C21 09:46:30 / 09:46:45 | New hold-extension approval / operator receipt to 10:07. | An eradication action or indefinite continuation. |
+| C24 09:59 / 10:03 | Task-only approval after preservation / report and corroborating status. | Method removal, durable nonrecurrence or legitimate-job test success. |
+| C24 10:06 / 10:07 boundary | No further hold renewal; read-only monitoring/escalation decision. | Universal safety or authority to alter business data. |
+
+**Worked interval example.** 09:46:30 precedes C17's 09:47 expiry; the reported extension at 09:46:45 also precedes it. Thus the supplied sequence does not itself show an authorization gap at that boundary. It still does not demonstrate uninterrupted protective effect: receipts are not continuous route tests. The 10:03–10:07 observation lasts four minutes under the supplied clock. “Four minutes without a run” is not a recurrence-test pass unless a known invocation opportunity and reliable source coverage make absence informative. An hourly task could remain quiet while still capable of running later; that schedule is an illustrative possibility, not CTN schedule metadata.
+
+**Contrast.** “C17 approved containment until the incident ends, C20 authorized the task shutdown and C24 eradicated all access” combines three unsupported expansions. The correct timeline assigns the extension to C21, the task-only operation to C24 and the unresolved identity/recurrence questions to pending work. Renewing or rolling back a control needs the applicable owner procedure, not an analyst's desire for a clean ending.
+
+**Offline practice.** Build the five timeline rows above from cards, then hide their model text and reconstruct them. For each, mark authority, operator report and effect evidence in different cells. In a separate hypothetical version move the extension receipt after 09:47; identify a potential implementation continuity question without rewriting approval time or claiming a bypass occurred. The hypothetical receipt is not a case event. Complete [EX033](#exercise-ex033) and compare its [worked answer](#answer-ex033).
+
+**Limits and decision.** At 10:07, hand off task-specific improvement plus residual exposure. Preserve monitoring ownership and escalation on a new unexpected S42 write or task reappearance. No later recovery or identity action is available to justify this decision retrospectively.
+
+[Previous: Day 32](#week-07-day-02) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Day 34](#week-07-day-04).
+
+<a id="week-07-day-04"></a>
+
+#### Day 34 — Test inventory differences and refuse a recurrence pass without opportunity
+
+**Learning task.** Reproduce all three retained fixtures and explain exactly which property each computes. In §7.5, `observed task names − approved task names` finds supplied unexpected keys; the request-union difference finds requests outside the supplied approved runs. Section 7.11 repeats these bounded comparisons with C7 labels. Neither program authenticates a baseline, detects an absent expected task through the reverse difference, or preserves every task/request association after flattening to request sets. Completeness, version, environment, interval and identifier semantics are inputs to review, not facts inferred by set arithmetic.
+
+**Worked transcripts.** Section 7.5 prints `unexpected tasks: ['sync-override']` and `requests outside approved run: ['q-144']`. Section 7.11 prints the same lists under `C7 unexpected tasks:` and `C7 outside approved:`. Remove `batch-17` from the observed mapping in a separate run: these two forward differences still produce those same outputs. The missing approved task requires inspecting `approved − observed`; the original program does not print it. An absent row in a partial export would not prove the job vanished. Preserve the original fixture and label the mutation, rather than quietly treating modified input as a new CTN inventory.
+
+**Offline laboratory W7-RELATION — preserve the association and comparison direction.** Python 3 standard library, in-memory mappings only; the `train-` identifiers are separate synthetic objects. The first observed map assigns the same request label to both the expected and extra task. Predict why a flat request union can miss an extra relation, then reproduce four lines:
+
+~~~python
+approved7 = {"train-approved": {"train-r1"}}
+observed7 = {"train-approved": {"train-r1"}, "train-extra": {"train-r1"}}
+def pairs7(mapping):
+    return {(task, request) for task, requests in mapping.items() for request in requests}
+print("W7 unexpected tasks:", sorted(set(observed7) - set(approved7)))
+print("W7 global request delta:", sorted(set().union(*observed7.values()) - set().union(*approved7.values())))
+print("W7 relation delta:", sorted(pairs7(observed7) - pairs7(approved7)))
+missing7 = {"train-extra": {"train-r1"}}
+print("W7 missing approved tasks:", sorted(set(approved7) - set(missing7)))
+~~~
+
+Exact transcript reproduced in publication validation:
+
+~~~text
+W7 unexpected tasks: ['train-extra']
+W7 global request delta: []
+W7 relation delta: [('train-extra', 'train-r1')]
+W7 missing approved tasks: ['train-approved']
+~~~
+
+The empty global delta is not approval of the extra task/request relation. The typed pair preserves an association lost by union. However, these strings do not establish real namespace authenticity, uniqueness, intent or a complete approved inventory. The final row detects a missing key in the supplied map, not the cause of its absence. Request source coverage before turning a discrepancy into a corrective action.
+
+**C7X recurrence gate.** Run §7.14 unchanged. Its eight outputs distinguish a bounded scheduler check, missing preserved baseline, no approval, no execution receipt, unknown effect, no scheduled opportunity, recurrence and business regression. In particular, `NO_TRIGGER_ELAPSED: NO_EXPECTED_TRIGGER_TESTED` must refuse proof of nonrecurrence. A disabled status and no observed run cannot replace a known next trigger, source health and a legitimate integration control. `BASE` is only `BOUNDED_SCHEDULER_CHECK_NOT_ERADICATION`, even when all declared flags agree.
+
+**Adverse interpretation.** Setting `expected_fire=False` and `new_run=False` must never yield a success claim. Separately, an observed new run is positive evidence requiring review even if no invocation was expected: C7X reports the first failing gate, not an exhaustive list of all inconsistent inputs. Do not use its early label to suppress a supplied recurrence event. The toy function assumes well-formed declared flags; it cannot verify a schedule, receipt, approver or log pipeline. C24 supplies no next-trigger result, so do not populate C7X's BASE from the case and call it tested eradication.
+
+**Practice and limit.** Submit [EX034](#exercise-ex034) with the two original two-line transcripts, W7-RELATION's four lines and C7X's eight, plus source-coverage and scheduled-opportunity limitations. Compare the [worked answer](#answer-ex034). All executed code here reads invented mappings/flags; it does not disable a real task or test a live recovery method.
+
+[Previous: Day 33](#week-07-day-03) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Day 35](#week-07-day-05).
+
+<a id="week-07-day-05"></a>
+
+#### Day 35 — Hand off a task-specific result and unresolved identity risk at 10:07
+
+**Learning task.** Produce a handoff that lets a successor decide what to verify next without inheriting invented closure. An eradication status is a set of source-bound claims about targets and tests, not a single percentage. Keep mechanism evidence, approval classification, authorized change, immediate effect, recurrence opportunity and legitimate-service result in separate fields. A missing field is a follow-up obligation with an owner, not automatic failure of every fact and not permission to mark the whole track complete.
+
+**Worked evidence package.** The mechanism chain is C20's preserved task/run record with validated request semantics, C05's request and C13's stored-state relationship. C23 supports the unapproved classification using owner approval sources. C24 adds task-only approval after preservation at 09:59, operator disablement at 10:03, corroborating read-only status and a short no-run observation through 10:07. These are distinguishable improvements over the 09:54 proposed contract. The next expected scheduled opportunity, source coverage across other runners, re-registration and a permitted `batch-17` functional check remain pending. C22's configuration-audit addition and blank actor remain a separate unresolved identity concern; the case supplies no completed method/session remediation here.
+
+At the same checkpoint, C21's separate hold authority ends at 10:07 following the 10:06 decision not to renew, with read-only monitoring and escalation. Do not describe the control as silently continuing, or claim the expiry proves resumed service safe. A successor needs the expired scope and remaining risk to plan any new action. Restoration of correct S42 business data also requires its own approved comparison and service checks; disabling a task is not a data restore.
+
+**Model handoff — 145 words under whitespace token counting.**
+
+“At 10:07, C20's preserved scheduler record and validated request semantics link sync-override to C05's q-144 S42 edit; C13 supplies the stored-state relationship. C23 classifies the task and C22's separate recovery-method addition as unapproved changes; neither source identifies a human or proves shared intent. C21 separately extended the S42-only hold to 10:07 with a g-23 operator receipt. C24 records preservation before 09:59 task-only approval, operator disablement at 10:03, agreeing read-only status and no later run observed through 10:07. That short window supplies no demonstrated next scheduled opportunity. The owner declined another hold extension at 10:06, retaining read-only monitoring and escalation on an unexpected S42 edit. Identity-method assessment, scoped session decisions, a legitimate batch-17 functional check and recurrence/runner coverage remain pending with the responsible owners. Preserve source and change references; reopen on task reappearance or unexpected writes. No recovery-method removal, human attribution or durable eradication is claimed.”
+
+The label counts only the quoted message, not this explanation; publication validation checks its actual words. The message is a model artifact, not a sent notification. It identifies a pending service test rather than assuming that status agreement means healthy enrollment. An owner must still accept a proposed next observation window and permitted method. The textbook supplies no post-10:07 result and cannot choose an actual trigger time absent schedule metadata.
+
+**Contrast.** “All persistence removed, all sessions revoked, service recovered” invents outcomes for at least three workstreams. “We know nothing because actor is blank” discards the demonstrated task/request mechanism and scoped task action. A useful handoff preserves what improved and what did not. Replace unbounded adjectives with target, source, observation time and limit. An independent reviewer should be able to reject one unsupported sentence without losing the rest of the record.
+
+**Offline review practice.** Write your own 120–180-word [EX035 handoff](#exercise-ex035), then attach two pending contract rows outside the word limit: scheduler recurrence/legitimate service and identity-method assessment. Each needs owner, minimal next source, permitted observation, reopen trigger and unknown result. Mark one evidence item preserved by the cards versus one package enhancement merely requested. Exchange with a peer, who must trace each completed-action claim to C24 and each hold claim to C17/C21. Compare the [worked answer](#answer-ex035) only after that check.
+
+**Limits and next decision.** Technical fixture reproduction is not human approval of the book or authority to run a live change. The next chapter's reference remains readable; its distinct daily lessons are pending. Carry the 10:07 source state and unresolved contracts forward without importing a later result or initiating translation of an unreleased unit.
+
+[Previous: Day 34](#week-07-day-04) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 8 reference; daily sequence pending](#ch-08).
+
+<a id="week-07-end"></a>
+
+**Week 7 checkpoint.** The five lessons add a validated-mechanism ledger, two proposed eradication contracts, an authority/expiry timeline, four reproduced offline programs and a bounded 10:07 handoff. They deepen the existing EX031–EX035 and answers; they do not add case cards, new exercise IDs, a completed recovery result or a complete-book claim.
+
 ### Common errors and limits
 
 - Calling `sync-override` an identified attacker rather than an unapproved task with a validated request link.
@@ -2751,15 +2903,25 @@ One learner submits a cause-to-fix contract at 09:54. Another marks each line **
 
 ### Exercises — subject 7
 
-**EX031 — Mechanism versus actor.** Inputs: C05, C12, C14 and C20. Write a three-column claim ledger: supported mechanism, weakened interpretation and actor statement that remains forbidden. A 2-point result names the validated `q-144` link without joining it to `s-77` or a human.
+<a id="exercise-ex031"></a>
 
-**EX032 — Two-path eradication contract.** Inputs: C20–C23. Produce separate task and recovery-method rows with baseline, proposed change, approval owner, positive/negative test, monitoring and reopen trigger. A 2-point result leaves unexecuted changes pending and preserves configuration evidence.
+**EX031 — Mechanism versus actor.** Objective: defend a validated technical relationship without actor attribution. Inputs: C05/C12/C13/C14 and C20 at 09:46, plus Day 31. Produce a claim/source/scope/discriminator ledger covering the supported task-request-state mechanism, weakened approved-run interpretation and forbidden session/human claim. Preserve registration, run, API and release times; show how removing the namespace premise would weaken a hypothetical join. Use no later card or invented operation. Rubric: 0 = human/session attribution or future evidence; 1 = correct task link but incomplete provenance, time or scope; 2 = validated q-144 chain, bounded exclusion and a meaningful disconfirming check. [Worked answer](#answer-ex031).
 
-**EX033 — Time-bounded hold review.** Inputs: C16–C21 and C24. Build a timeline of initial hold approval, extension approval, execution, 10:06 review and 10:07 expiry. State the residual risk after expiry. A 2-point result does not stretch C17 or C21 beyond their approved scope.
+<a id="exercise-ex032"></a>
 
-**EX034 — Manifest fixture.** Run or hand-compute the Python fixture in §7.5; give the two exact output lists and two limits of the conclusion. A 2-point result does not classify intent or all runners from this two-run comparison. Reproduce the C7 inventory-delta output in §7.11 and state a coverage limitation independent of actor attribution.
+**EX032 — Two-path eradication contract.** Objective: plan distinct task and recovery-method changes with preservation before modification. Inputs: C20–C23 through 09:54 and Day 32. Produce separate rows for source/baseline, proposed target/action, approving capacity, operator/rollback, effect and legitimate-service checks, expected observation opportunity, monitoring and reopen trigger. Distinguish C21's already approved/reported hold extension from both pending eradication operations; do not claim method functionality, removal or secret collection. Rubric: 0 = invented remediation or shared actor; 1 = two paths with missing authority, preservation or verification fields; 2 = usable independent contracts with honest pending results and source-specific limits. [Worked answer](#answer-ex032).
 
-**EX035 — 10:07 eradication handoff.** Inputs: C20–C24. Write a 120–180-word handoff with what was preserved, approved, executed and verified, what still needs identity-owner action, and a stop condition. A 2-point result avoids a “fully eradicated” or “case closed” claim.
+<a id="exercise-ex033"></a>
+
+**EX033 — Time-bounded hold review.** Objective: bind each authorization and receipt to its exact target and window. Inputs: C16–C24 through 10:07 and Day 33. Build the initial hold/activation/one-route timeline, C20 release, C21 new approval and g-23 receipt, C24 preserved task-only approval/execution/status, 10:06 nonrenewal and 10:07 boundary. Calculate the four-minute task observation and distinguish authority continuity from verified protective continuity. State remaining identity, recurrence and service-test gaps without a later result. Rubric: 0 = stretched expiry, borrowed task authority or invented all-route remediation; 1 = accurate events but incomplete scope/interval/residual risk; 2 = source-bound timeline and fixed expiry with every pending gate retained. [Worked answer](#answer-ex033).
+
+<a id="exercise-ex034"></a>
+
+**EX034 — Manifest fixture.** Objective: distinguish finite inventory differences from coverage and recurrence evidence. Inputs: §§7.5/7.11/C7X and Day 34 W7-RELATION. Reproduce all four transcripts (2, 2, 8 and 4 lines respectively); in a separate §7.11 mutation remove batch-17 and explain why its printed lists do not reveal the missing key. Give the reverse difference, the lost-association example and two independent source/actor limits. Demonstrate that no scheduled opportunity cannot pass C7X nonrecurrence and explain its first-failing-gate limitation. No fixture verdict is CTN-wide eradication. Rubric: 0 = invented case outcome, intent or recurrence pass without opportunity; 1 = exact original lists but incomplete adverse controls/limits; 2 = all transcripts and scoped direction, association, service and opportunity reasoning. [Worked answer](#answer-ex034).
+
+<a id="exercise-ex035"></a>
+
+**EX035 — 10:07 eradication handoff.** Objective: transfer a specific improvement with residual obligations. Inputs: C20–C24 through 10:07 and Days 31–35. Write a 120–180-word handoff identifying preserved mechanism evidence, distinct approval classification, C21 hold extension/expiry, C24 task-only authorization/execution/status and short observation, unresolved identity/recurrence/service checks and a stop/escalation condition. Outside the word limit attach two pending contract rows with owner, minimum next source and unknown result. No later card, sent message, human actor or durable-eradication result may be invented. Rubric: 0 = fabricated action, attribution or closure; 1 = accurate summary but missing authority, pending track or actionable trigger; 2 = bounded usable message plus independently sourced pending contracts. [Worked answer](#answer-ex035).
 
 ### Subject synthesis
 
@@ -4217,21 +4379,33 @@ At 09:35 there is a proposal only; at 09:37 approval; at 09:39 reported enableme
 
 ### Subject 7: EX031–EX035
 
-**EX031 — Model claim ledger.** Supported mechanism: C20's preserved scheduler record names `sync-override` run at 09:00 with `q-144`, and the custodian verified that this request ID matches C05's API namespace and C13's S42 change. Weakened interpretation: C12's `batch-17` tag alone suggested the approved job, but C14's complete manifest for that run lists only `q-140` and `q-141`. Forbidden attribution: neither C20's run nor C03/C09's `s-77` fields identifies the person who registered or operated the task. The two configuration changes in C20/C22 may be related, but no supplied source establishes that relation.
+<a id="answer-ex031"></a>
 
-**Additional professional worked reasoning:** The scheduler task-to-q-144 relation is a validated *mechanism*, C23's inventory comparison is an unapproved-change classification, and the registrant's identity and motive remain unknown. The C14 complete approved batch-17 run excludes q-144, not all possible runners; a self-reported batch label is weaker than validated producer/request semantics. Cite C20, C05, C13 and C23 separately rather than compressing them into an attacker narrative.
+**EX031 — Model claim ledger.** Supported mechanism: C20's preserved scheduler record names `sync-override` run at 09:00 with `q-144`, and the custodian verified that this request ID matches C05's API namespace and C13's S42 change. Weakened interpretation: C12's `batch-17` tag alone suggested the approved job, but C14's complete manifest for that run lists only `q-140` and `q-141`. Forbidden attribution: neither C20's run nor C03/C09's `s-77` fields identifies the person who registered or operated the task. At this 09:46 exercise checkpoint, C20 does not identify the task registrant or motive; later identity evidence is not yet available.
+
+**Additional professional worked reasoning:** At 09:46, the scheduler task-to-q-144 relation is a validated *mechanism*, and the registrant's identity and motive remain unknown. For the later full-chapter checkpoint only, C23's 09:54 inventory comparison adds the separate unapproved-change classification; do not use it in the Day 31 decision. The C14 complete approved batch-17 run excludes q-144, not all possible runners; a self-reported batch label is weaker than validated producer/request semantics. Cite C20, C05 and C13 separately; attach C23 only in the later version rather than compressing checkpoints into an attacker narrative.
+
+**Week 7 Day 31 — worked mechanism boundary.** At 09:46, record C20's 08:47 registration, 09:00 run and q-144 emission separately from C05's 09:01 API event and C20 release time. The supplied custodian/owner known-good comparison validates request-ID semantics; C13 adds the state relationship. C14 excludes that request from one complete approved batch-17 run, weakening C12's self-reported origin tag. A hypothetical missing namespace check would reduce the equal strings to a relationship requiring validation; a trusted contradictory mapping/transaction would reopen the mechanism. No source joins s-77 to task registration, names a human, proves intent or renews the hold. Preserve the 09:26 graph and append a 09:46 revision instead of backfilling C20.
+
+<a id="answer-ex032"></a>
 
 **EX032 — Model two-path contract.** Task row: baseline = approved inventory and preserved C20 task/run copy; proposed change = disable `sync-override` only; authority = application/service owners with incident-lead coordination; positive test = scheduler status disabled and no run at next expected interval; negative test = approved `batch-17` S40/S41 path still works; monitor for re-registration or new S42 requests; reopen if either occurs. Recovery-method row: baseline = bounded C22 configuration audit and owner-approved settings; proposed change = remove unapproved method, address credentials/sessions under identity/service-owner approval; positive test = method absent and scoped old session inactive; negative test = approved integration works after change; monitor for new recovery methods; reopen on an unexpected addition. At 09:54 all changes are **proposed**, not executed. Preserve source records before altering them.
 
 **Additional professional worked reasoning:** Task workstream: preserve task and run, obtain a targeted owner decision, observe disabled state at execution and a later expected scheduled opportunity, and verify approved batch-17 S40/S41 still works. Identity workstream: preserve C22 configuration-audit evidence and request a separately authorized method/session/credential decision plus positive removal and negative legitimate-authentication tests. At 09:54 both are plans, not performed remediation.
 
-**EX033 — Model hold timeline.** C16 at 09:35 gives initial ten-minute tolerance, no authorization. C17 at 09:37 approves S42 hold until 09:47; C18 reports activation at 09:39; C19 checks one route at 09:42. C20 arrives 09:46 with task evidence. C21 records new approval at 09:46:30 for extension to 10:07 and operator receipt at 09:46:45. C24 disables the task at 10:03 after 09:59 approval. At 10:06 the owner assesses cost and residual risk and chooses no further extension; hold expires 10:07. Between expiry and C25's identity action, an unresolved recovery method and unverified write routes remain, so monitoring and a stop/escalation trigger are essential. None of these cards makes account disablement approved.
+**Week 7 Day 32 — worked pending contracts.** C21 separately authorizes/reports only the S42 hold extension to 10:07. At 09:54 the scheduler row proposes preserving configuration/schedule, bounded run source and inventory/version, then a targeted task-disable decision, operator/rollback receipt, disabled status, known scheduled-opportunity observation and legitimate batch-17 check. The identity row proposes preserving C22's separate configuration audit/settings without a secret, determining active state, then owner-approved method/session/credential changes with scoped effect and legitimate integration tests. Neither eradication operation is yet executed. C22's blank actor is unknown, not hostile anonymity, and its retained configuration source is not C08 sign-in reconstruction. C23's unapproved classification applies to both changes but does not establish shared author or intent. Unknown source integrity, functionality, observation opportunity and results stay pending.
+
+<a id="answer-ex033"></a>
+
+**EX033 — Model hold timeline.** C16 at 09:35 gives initial ten-minute tolerance, no authorization. C17 at 09:37 approves S42 hold until 09:47; C18 reports activation at 09:39; C19 checks one route at 09:42. C20 arrives 09:46 with task evidence. C21 records new approval at 09:46:30 for extension to 10:07 and operator receipt at 09:46:45. C24 disables the task at 10:03 after 09:59 approval. At 10:06 the owner assesses cost and residual risk and chooses no further extension; hold expires 10:07. At the 10:07 boundary, an unresolved recovery method and unverified write routes remain, so monitoring and a stop/escalation trigger are essential; no later identity action is an available result here. None of these cards makes account disablement approved.
 
 **Additional professional worked reasoning:** C17 expires at 09:47; C21 is new scope-matched authority at 09:46:30 and an operator's 09:46:45 extension receipt to 10:07. C19 is a one-route protective observation only. C24 later authorizes task disablement at 09:59 and reports action at 10:03. At 10:06 the owner chooses no new hold extension. Report pending recurrence and identity questions after the 10:07 expiry, not complete containment.
 
-**EX034 — Model fixture output.** The supplied code prints exactly:
+**Week 7 Day 33 — worked separate authority.** C16 tolerance at 09:35 does not sign C17's 09:37 hold approval; C18 reports activation at 09:39 and C19 observes one route at 09:42. C20 is released 09:46. C21's new approval at 09:46:30 and g-23 operator receipt at 09:46:45 precede the original 09:47 boundary and extend only the hold to 10:07. They do not approve task action. C24 records task evidence preserved before 09:59 task-only approval, then 10:03 operator disablement with agreeing status and no observed run through 10:07. The four-minute window supplies no demonstrated scheduled opportunity or successful batch-17 functional test. At 10:06 the owner declines renewal, preserving monitoring/escalation at expiry. That risk decision neither closes the identity concern nor proves continuous/all-route effect or safe restored data.
 
-**Additional professional worked reasoning:** The original code identifies sync-override and q-144 only in its two supplied inventories. Preserve both inputs, their versions, acquisition limits and request-ID namespace verification. C7X's NO_TRIGGER_ELAPSED illustrates why zero later runs cannot prove a disabled job remains suppressed without a scheduled opportunity. Neither a set difference nor a short quiet log identifies a human.
+<a id="answer-ex034"></a>
+
+**EX034 — Model fixture output.** The supplied code prints exactly:
 
 ```text
 unexpected tasks: ['sync-override']
@@ -4239,6 +4413,12 @@ requests outside approved run: ['q-144']
 ```
 
 This compares the two provided sets only. It cannot prove the job inventory includes every runner, or that a person intentionally installed the unexpected task. If a source record were missing, a set difference could mislead; retain source provenance and the approved inventory's version alongside the output.
+
+**Additional professional worked reasoning:** The original code identifies sync-override and q-144 only in its two supplied inventories. Preserve both inputs, their versions, acquisition limits and request-ID namespace verification. C7X's NO_TRIGGER_ELAPSED illustrates why zero later runs cannot prove a disabled job remains suppressed without a scheduled opportunity. Neither a set difference nor a short quiet log identifies a human.
+
+**Week 7 Day 34 — worked comparison and recurrence controls.** Section 7.5 prints unexpected tasks ['sync-override'] and requests outside approved run ['q-144']; §7.11 prints the same lists under its C7 labels. Removing observed batch-17 in a separately labeled run leaves both printed lists unchanged; the reverse approved-minus-observed key comparison yields ['batch-17']. It cannot explain whether the source was incomplete. W7-RELATION's four lines show train-extra unexpected, an empty global request delta, the extra ('train-extra', 'train-r1') relation and missing train-approved. Association and direction are distinct from request-value membership. C7X's eight row results are BOUNDED_SCHEDULER_CHECK_NOT_ERADICATION, HOLD_BASELINE_UNVERIFIED, PROPOSED_NOT_APPROVED, APPROVED_NOT_EXECUTED, EFFECT_NOT_VERIFIED, NO_EXPECTED_TRIGGER_TESTED, TASK_STILL_EXECUTING and BUSINESS_REGRESSION. In particular expected_fire=False with no new run cannot pass; the classifier's first failing gate is not an exhaustive finding list, so any supplied positive new run must still be investigated. No flag authenticates a schedule or receipt, and no set difference identifies intent, all runners or a human.
+
+<a id="answer-ex035"></a>
 
 **EX035 — Model 10:07 handoff.** “CTN-IR-014: C20's preserved scheduler record and validated request-ID semantics link `sync-override` to C05's `q-144` S42 edit. C22 separately reports an unapproved recovery-method addition with a blank actor. C23's owner checks find neither change in the approved inventory. C21's S42 hold extension was approved to 10:07; its earlier one-route check did not prove full coverage. At 09:59 the owners approved disabling only the task; the operator reported it disabled at 10:03 and no further run was observed through 10:07. The service owner allowed the hold to expire after a 10:06 review, with read-only monitoring and escalation for any new S42 edit. Identity-owner assessment, a scoped credential/session decision and service correction remain. Do not call the actor identified, the recovery method removed or eradication complete.”
 
@@ -4252,6 +4432,8 @@ C7 outside approved: ['q-144']
 ~~~
 
 The toy mappings identify one unexpected task label and one request outside their supplied approved set. This does not establish who registered the task, whether unseen runners exist, or whether the two inventories cover identical intervals. EX034 should cite C20/C14 for the fictional case, record the comparison baseline and its coverage, and avoid using a set difference as an actor finding.
+
+**Week 7 Day 35 — worked residual obligations.** The Day 35 model message preserves the validated task/request/state chain, C23 classification, C21 distinct hold extension, C24 preservation/09:59 approval/10:03 operation and the limited observation to 10:07. Its pending scheduler row should name the application/job and service owners, preserved schedule/next expected opportunity and source health, authorized recurrence and batch-17 service checks, reappearance/write triggers and unknown results. Its pending identity row should name identity/service owners, C22 configuration source and current method state, a proposed scoped authority/effect/integration review, unexpected-access trigger and unknown results. These are proposed follow-ups, not supplied receipts or later remediation. Actual card-preserved configuration/run material must be distinguished from requested package enhancements. The hold was not renewed after the 10:06 review; no method removal, all-session revocation, safe data restoration or durable eradication is claimed.
 
 ### Subject 8: EX036–EX040
 

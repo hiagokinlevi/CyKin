@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "incident-response-resilience",
+  "language": "en",
+  "chapter": 6,
+  "source_anchor": "ch-06",
+  "source_sha256": "9e9d3afe9c14ec830e32c625a88e16ec1736ba25f1871d5d388bbc4c915bcac2",
+  "source_path": "levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md",
+  "editorial_note": "Ten original authored questions; source, key and distractor semantics checked against final Chapter 6 after the Day 30 navigation update. This technical check is not independent human approval or translation release. The site adds the fifth uncertainty choice and ten-second timing.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "C13 finds S42 version 19 unavailable and last request q-144. Which conclusion does that read support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The shared account user was malicious."
+        },
+        {
+          "id": "b",
+          "text": "The screenshot clock was independently verified."
+        },
+        {
+          "id": "c",
+          "text": "The supplied authoritative read supports the stored state and request reference."
+        },
+        {
+          "id": "d",
+          "text": "Every affected learner has been counted."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C confines the result to the custodian's owner-approved state read and its supplied request reference; the separate 08:30 snapshot supports a state difference. A invents human intent. B confuses backend evidence with C10 capture context. D invents an impact denominator. The read does not itself authorize a hold or restore.",
+      "source": "Chapter 6, Week 6 / course Day 26, #week-06-day-01, impact/state paragraphs and four-row practice; §6.2 C13; EX026."
+    },
+    {
+      "id": "Q02",
+      "prompt": "C14 excludes q-144 from a complete manifest for one approved batch-17 run. What is the bounded inference?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That specified run manifest does not contain q-144."
+        },
+        {
+          "id": "b",
+          "text": "No automated task could have issued q-144."
+        },
+        {
+          "id": "c",
+          "text": "A human attacker must have issued q-144."
+        },
+        {
+          "id": "d",
+          "text": "Every scheduler inventory is now complete."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A uses the supplied completeness and API-namespace premise for this one run. B generalizes beyond that source to all automation. C converts a bounded exclusion into human attribution and intent. D enlarges one-run completeness to a system-wide inventory. C12's self-reported tag is weakened as origin evidence without identifying another producer.",
+      "source": "Chapter 6, Week 6 / course Day 26, #week-06-day-01, C14 bounded-manifest paragraph; §6.2 C14; EX026."
+    },
+    {
+      "id": "Q03",
+      "prompt": "At 09:35, C16 says an initial ten-minute S42 hold would be tolerable. What has it supplied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An execution receipt for g-22."
+        },
+        {
+          "id": "b",
+          "text": "Approval to disable svc-enroll."
+        },
+        {
+          "id": "c",
+          "text": "A verified all-route containment result."
+        },
+        {
+          "id": "d",
+          "text": "Initial impact tolerance for a conditional proposal."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D preserves the role of C16 as planning input about legitimate interruption. A requires an operator operation record, supplied later as C18. B broadens the target and invents authority. C requires route-specific observations that tolerance cannot provide. C17 is a distinct later S42-only approval, not implied by C16.",
+      "source": "Chapter 6, Week 6 / course Day 27, #week-06-day-02, worked recommendation and limits; §6.2 C16; EX027."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why might restricting only s-77 fail to prevent another q-144-like S42 write at the 09:35 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Session restrictions can never reduce harm."
+        },
+        {
+          "id": "b",
+          "text": "The supplied records lack a direct session-to-request join."
+        },
+        {
+          "id": "c",
+          "text": "C16 proves the entire account must be disabled."
+        },
+        {
+          "id": "d",
+          "text": "A revoked session automatically repairs S42 state."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B identifies the unsupported benefit premise: even a verified session revocation might not affect the harmful write path. A turns a local uncertainty into a universal rule. C mistakes tolerance for broad authority and ignores shared-account service cost. D confuses credential/session restriction with business-state repair. Compare all three controls against the same harm and independent service gates.",
+      "source": "Chapter 6, Week 6 / course Day 27, #week-06-day-02, causal-path explanation and three-control table; EX027."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which action scope is actually approved by C17 at 09:37?",
+      "options": [
+        {
+          "id": "a",
+          "text": "S42-only write hold expiring at 09:47."
+        },
+        {
+          "id": "b",
+          "text": "Account-wide disablement until attribution is complete."
+        },
+        {
+          "id": "c",
+          "text": "Restoration of the 08:30 slot snapshot."
+        },
+        {
+          "id": "d",
+          "text": "A fresh ten minutes from any eventual deployment time."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A names the target and fixed expiry of the fictional approval, with its operator, monitoring and rollback obligations. B invents a broader target and indefinite duration. C substitutes a data restore for the approved guard. D silently resets expiry rather than obtaining new authority. The approval does not itself prove deployment or effect.",
+      "source": "Chapter 6, Week 6 / course Day 28, #week-06-day-03, four-checkpoint narrative and clock contrast; §6.4 C17; EX028."
+    },
+    {
+      "id": "Q06",
+      "prompt": "C18 reports g-22 enabled at 09:39. Which status should the responder record from that receipt alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every mutation route independently tested."
+        },
+        {
+          "id": "b",
+          "text": "All harmful access permanently removed."
+        },
+        {
+          "id": "c",
+          "text": "Operator-reported enablement; protective effect still needs observation."
+        },
+        {
+          "id": "d",
+          "text": "Actual rollback and service restoration completed."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C identifies an execution report and leaves verification distinct. A requires coverage observations beyond the receipt. B adds durable all-access eradication unsupported by a guard change. D invents reversal and recovery. Even C19's later selective observations establish a narrower result than all-route effectiveness.",
+      "source": "Chapter 6, Week 6 / course Day 28, #week-06-day-03, learning task and worked record; §6.4 C18; EX028."
+    },
+    {
+      "id": "Q07",
+      "prompt": "C19 records q-147/S42 denied on one application route and q-148/S40 accepted. What is still unverified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the supplied S40 request was accepted."
+        },
+        {
+          "id": "b",
+          "text": "Whether the supplied S42 request was denied."
+        },
+        {
+          "id": "c",
+          "text": "Whether C19 contains the two stated observations."
+        },
+        {
+          "id": "d",
+          "text": "Alternate-route coverage and S41 behavior."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D names missing coverage rather than erasing supplied observations. A and B contradict the stated results; C denies the supplied record itself. One S40 success does not establish S41, and one S42 denial does not establish every API/database/job path. Unknown routes are neither proven bypasses nor proven denials.",
+      "source": "Chapter 6, Week 6 / course Day 28, #week-06-day-03, C19 paragraph and worked record; Day 29, #week-06-day-04, denominator contrast; EX028."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Using 09:39 reported enablement and the fixed 09:47 expiry, what does W6-TIME calculate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ten minutes of independently proven protection."
+        },
+        {
+          "id": "b",
+          "text": "Eight minutes in the reported window, without proof of continuous enforcement."
+        },
+        {
+          "id": "c",
+          "text": "A new expiry at 09:49 under the original approval."
+        },
+        {
+          "id": "d",
+          "text": "Coverage that includes an observation exactly at 09:47."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B is the eight-minute arithmetic bound under same-day UTC inputs, not effect evidence. A confuses the approval-to-expiry interval with protection. C resets the fixed expiry. D violates the laboratory's half-open interval: exact expiry is OUTSIDE_REPORTED_WINDOW. Interval membership cannot authenticate authority, activation or route coverage.",
+      "source": "Chapter 6, Week 6 / course Day 28, #week-06-day-03, Offline W6-TIME program, exact transcript and limitation paragraph; EX028."
+    },
+    {
+      "id": "Q09",
+      "prompt": "V6 denies a browser S42 write, accepts a direct API S42 write and passes S40. What is its verdict?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All-route containment passes because S40 works."
+        },
+        {
+          "id": "b",
+          "text": "CTN has a proven API bypass and must disable its account."
+        },
+        {
+          "id": "c",
+          "text": "The isolated all-route S42 property fails despite the service control passing."
+        },
+        {
+          "id": "d",
+          "text": "The untested CTN routes are all proven denied."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C evaluates V6's declared protected-operation criterion: one accepted prohibited route defeats it, independently of the S40 control. A lets business success cancel protection failure. B imports a separate fixture result into CTN and invents authority. D turns unknown coverage into a pass. C6X similarly separates PROTECTION_FAIL from BUSINESS_FAIL; its toy BASE/pass inputs are not production assurance.",
+      "source": "Chapter 6, Week 6 / course Day 29, #week-06-day-04, worked V6 verdict and C6X laboratory review; §§6.5/6.15; EX030."
+    },
+    {
+      "id": "Q10",
+      "prompt": "At 09:42, which rollback-card entry is supported without inventing a later operation or renewal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record 09:47 expiry and owner-governed triggers; leave actual reversal/results pending."
+        },
+        {
+          "id": "b",
+          "text": "Record rollback completed because a timer is scheduled."
+        },
+        {
+          "id": "c",
+          "text": "Extend the hold automatically until the incident closes."
+        },
+        {
+          "id": "d",
+          "text": "Restore the 08:30 database snapshot to undo g-22."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A distinguishes conditional planning from executed reversal and retains scope, preserved evidence, owner/operator roles and post-action checks. B invents a receipt and service result. C invents renewal beyond the fixed authority. D confuses a guard reversal with overwriting business data. A bypass can require urgent re-planning rather than automatic removal of a partly protective control; any expansion needs actual authority.",
+      "source": "Chapter 6, Week 6 / course Day 30, #week-06-day-05, trigger comparison, contrast and 09:42 handoff; EX029."
+    }
+  ]
+}
