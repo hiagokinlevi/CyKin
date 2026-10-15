@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "route": "chapters",
+  "unit": 3,
+  "source_sha256": "d8f0ef439d5310008e7b6d8b012dbf61b696bc5b4631c3835af7972b3a73667d",
+  "questions": [
+    {
+      "exercise_id": "EX011",
+      "prompt": "Which arrangement matches the field layer of the hospital BMS?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensors and actuators are wired to field controllers"
+        },
+        {
+          "id": "b",
+          "text": "The BMS server is wired directly to every sensor without controllers"
+        },
+        {
+          "id": "c",
+          "text": "The corporate email server acts as each air-handling controller"
+        },
+        {
+          "id": "d",
+          "text": "Every lift connects only through the hospital web portal"
+        },
+        {
+          "id": "e",
+          "text": "A drawing alone replaces the physical field connections"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter places sensors and actuators at the field layer, connected by wire to field controllers; the server belongs to the supervisory network."
+    },
+    {
+      "exercise_id": "EX012",
+      "prompt": "What does the chapter say a laptop that can reach classic BACnet/IP controllers may often do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read points and write setpoints without device authentication"
+        },
+        {
+          "id": "b",
+          "text": "Only read a public brochure about the controllers"
+        },
+        {
+          "id": "c",
+          "text": "Change setpoints only after a clinical diagnosis"
+        },
+        {
+          "id": "d",
+          "text": "Prove that a named person authorized every command"
+        },
+        {
+          "id": "e",
+          "text": "Automatically install secure protocol variants on all controllers"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Classic BACnet and Modbus deployments commonly trust network reachability; a laptop on the same network can usually read points and often write setpoints."
+    },
+    {
+      "exercise_id": "EX013",
+      "prompt": "Why is the dual-homed BMS-WS a critical meeting point?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It proves that every device is already compromised"
+        },
+        {
+          "id": "b",
+          "text": "It is disconnected from both the building and corporate networks"
+        },
+        {
+          "id": "c",
+          "text": "It joins corporate access with the building VLAN, creating a route to controllers"
+        },
+        {
+          "id": "d",
+          "text": "It eliminates all need for contractor remote access reviews"
+        },
+        {
+          "id": "e",
+          "text": "It changes the BACnet UDP port automatically"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The workstation has one interface on VLAN 300 and one on the corporate network; compromise can create a path into the controllers that zone design must address."
+    },
+    {
+      "exercise_id": "EX014",
+      "prompt": "Which set contains three meeting points the chapter asks analysts to consider?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Three different theatre temperature sensors"
+        },
+        {
+          "id": "b",
+          "text": "Only the chiller, its motor and its spare part"
+        },
+        {
+          "id": "c",
+          "text": "Only the BMS server and two printed drawings"
+        },
+        {
+          "id": "d",
+          "text": "A dual-homed workstation, contractor remote access and a lift cellular link"
+        },
+        {
+          "id": "e",
+          "text": "Only the three corporate email relays"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The text names a dual-homed BMS workstation, contractor support access and a lift manufacturer's cellular link as distinct routes between networks."
+    },
+    {
+      "exercise_id": "EX015",
+      "prompt": "How should Aisha map controller connectivity without risking older equipment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare estates and contractor drawings with switch and firewall records; do not scan controllers"
+        },
+        {
+          "id": "b",
+          "text": "Run an unapproved network sweep against all field controllers"
+        },
+        {
+          "id": "c",
+          "text": "Treat a contractor drawing as proof of physical cabling"
+        },
+        {
+          "id": "d",
+          "text": "Ignore disagreements between the drawing and network configuration"
+        },
+        {
+          "id": "e",
+          "text": "Change the production controller settings to discover connected hosts"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter warns that older controllers can crash under scans. It calls for drawings, switch and firewall records, provenance for each fact and joint follow-up on discrepancies."
+    }
+  ]
+}

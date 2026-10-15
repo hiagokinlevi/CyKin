@@ -79,7 +79,7 @@ def pilot(monkeypatch):
 def test_question_bank_is_pinned_to_authored_text_and_has_no_duplicate_prompts():
     for language in ("en", "pt", "es"):
         manuscript = (ROOT / f"levels/professional-6-months/ot-iot-security/{language}/book/MANUSCRIPT.md").read_text()
-        for number in (1, 2):
+        for number in (1, 2, 3):
             bank_path = ROOT / f"web/question-banks/professional-6-months/ot-iot-security/{language}/{number:03d}.json"
             bank, _digest = validate_bank(bank_path.read_text(), "professional-6-months", "ot-iot-security", language, number)
             chapter = api.chapter_sections(manuscript)[number]["markdown"]
@@ -87,7 +87,7 @@ def test_question_bank_is_pinned_to_authored_text_and_has_no_duplicate_prompts()
             assert len({item["prompt"].casefold() for item in bank["questions"]}) == 10
     broken = {**bank, "questions": bank["questions"][:9]}
     with pytest.raises(InvalidBank, match="exactly ten"):
-        validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 2)
+        validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 3)
 
 
 def test_source_pin_and_json_format_do_not_change_question_version():

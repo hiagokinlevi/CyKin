@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "pt",
+  "route": "chapters",
+  "unit": 3,
+  "source_sha256": "9b17cb0c648a58e57214d5936bdcbb37c48d3bcb9429f92bd4993bf5fd9d9ff4",
+  "questions": [
+    {
+      "exercise_id": "EX011",
+      "prompt": "Qual arranjo corresponde à camada de campo do BMS hospitalar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensores e atuadores são ligados por fios aos controladores de campo"
+        },
+        {
+          "id": "b",
+          "text": "O servidor BMS liga-se diretamente a cada sensor sem controladores"
+        },
+        {
+          "id": "c",
+          "text": "O servidor de e-mail corporativo atua como controlador de cada unidade de ar"
+        },
+        {
+          "id": "d",
+          "text": "Todo elevador se conecta apenas pelo portal web do hospital"
+        },
+        {
+          "id": "e",
+          "text": "Um desenho substitui sozinho as conexões físicas de campo"
+        }
+      ],
+      "correct": "a",
+      "explanation": "O capítulo coloca sensores e atuadores na camada de campo, ligados por fios aos controladores; o servidor pertence à rede de supervisão."
+    },
+    {
+      "exercise_id": "EX012",
+      "prompt": "O que um notebook que alcança controladores BACnet/IP clássicos pode fazer com frequência?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ler pontos e escrever valores de referência sem autenticação do dispositivo"
+        },
+        {
+          "id": "b",
+          "text": "Apenas ler uma brochura pública dos controladores"
+        },
+        {
+          "id": "c",
+          "text": "Alterar valores só após um diagnóstico clínico"
+        },
+        {
+          "id": "d",
+          "text": "Provar que uma pessoa identificada autorizou cada comando"
+        },
+        {
+          "id": "e",
+          "text": "Instalar automaticamente variantes seguras em todos os controladores"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Instalações clássicas de BACnet e Modbus costumam confiar na alcançabilidade da rede; um notebook na mesma rede normalmente lê pontos e muitas vezes escreve valores."
+    },
+    {
+      "exercise_id": "EX013",
+      "prompt": "Por que a BMS-WS com duas conexões é um ponto de encontro crítico?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ela prova que todos os dispositivos já foram comprometidos"
+        },
+        {
+          "id": "b",
+          "text": "Ela está desligada tanto da rede predial quanto da corporativa"
+        },
+        {
+          "id": "c",
+          "text": "Ela une o acesso corporativo à VLAN predial, criando uma rota aos controladores"
+        },
+        {
+          "id": "d",
+          "text": "Ela dispensa toda revisão de acesso remoto de empreiteiros"
+        },
+        {
+          "id": "e",
+          "text": "Ela muda automaticamente a porta UDP do BACnet"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A estação tem uma interface na VLAN 300 e outra na rede corporativa; seu comprometimento pode abrir um caminho aos controladores que o desenho das zonas deve tratar."
+    },
+    {
+      "exercise_id": "EX014",
+      "prompt": "Que conjunto contém três pontos de encontro que o analista deve considerar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Três sensores de temperatura do mesmo centro cirúrgico"
+        },
+        {
+          "id": "b",
+          "text": "Somente o chiller, seu motor e sua peça de reposição"
+        },
+        {
+          "id": "c",
+          "text": "Somente o servidor BMS e dois desenhos impressos"
+        },
+        {
+          "id": "d",
+          "text": "Estação com duas redes, acesso remoto de empreiteiros e enlace celular do elevador"
+        },
+        {
+          "id": "e",
+          "text": "Somente os três relays de e-mail corporativo"
+        }
+      ],
+      "correct": "d",
+      "explanation": "O texto cita a estação BMS com duas redes, o suporte remoto de empreiteiros e o enlace celular do fabricante do elevador como rotas distintas."
+    },
+    {
+      "exercise_id": "EX015",
+      "prompt": "Como Aisha deve mapear a conectividade sem pôr equipamentos antigos em risco?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Comparar desenhos da manutenção e do empreiteiro com dados de switches e firewall; não varrer controladores"
+        },
+        {
+          "id": "b",
+          "text": "Executar varredura de rede sem aprovação em todos os controladores"
+        },
+        {
+          "id": "c",
+          "text": "Tratar um desenho do empreiteiro como prova do cabeamento físico"
+        },
+        {
+          "id": "d",
+          "text": "Ignorar divergências entre desenho e configuração de rede"
+        },
+        {
+          "id": "e",
+          "text": "Alterar as configurações do controlador de produção para descobrir hosts"
+        }
+      ],
+      "correct": "a",
+      "explanation": "O capítulo alerta que controladores antigos podem travar sob varredura. Pede desenhos, dados de switches e firewall, origem de cada fato e apuração conjunta das divergências."
+    }
+  ]
+}

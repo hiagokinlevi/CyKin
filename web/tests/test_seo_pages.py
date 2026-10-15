@@ -172,6 +172,22 @@ def test_reviewed_practice_matches_the_published_exercise(client):
     assert '<textarea id="attempt-EX062"' not in page
 
 
+@pytest.mark.parametrize("language", ["en", "pt", "es"])
+def test_building_network_exercises_have_reviewed_choices_in_each_language(client, language):
+    route = f"/api/practice/professional-6-months/ot-iot-security/chapters/{language}/3"
+    response = client.get(route)
+    assert response.status_code == 200
+    questions = response.json()["questions"]
+    assert [question["exercise_id"] for question in questions] == [
+        "EX011", "EX012", "EX013", "EX014", "EX015"
+    ]
+    assert all(len(question["options"]) == 5 for question in questions)
+    chapter = client.get(f"/courses/professional-6-months/ot-iot-security/chapters/{language}/3/")
+    assert chapter.status_code == 200
+    for question in questions:
+        assert f'data-exercise-id="{question["exercise_id"]}"' in chapter.text
+
+
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     sitemaps = {language: (ROOT / f"web/public/sitemap-{language}.xml").read_text()
                 for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}

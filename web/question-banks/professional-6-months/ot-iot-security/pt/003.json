@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "pt",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "9b17cb0c648a58e57214d5936bdcbb37c48d3bcb9429f92bd4993bf5fd9d9ff4",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Qual arranjo corresponde à camada de campo do BMS hospitalar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensores e atuadores são ligados por fios aos controladores de campo"
+        },
+        {
+          "id": "b",
+          "text": "O servidor BMS liga-se diretamente a cada sensor sem controladores"
+        },
+        {
+          "id": "c",
+          "text": "O servidor de e-mail corporativo atua como controlador de cada unidade de ar"
+        },
+        {
+          "id": "d",
+          "text": "Todo elevador se conecta apenas pelo portal web do hospital"
+        }
+      ],
+      "correct": "a",
+      "explanation": "O capítulo coloca sensores e atuadores na camada de campo, ligados por fios aos controladores; o servidor pertence à rede de supervisão.",
+      "source": "Capítulo 3, §3.1"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Como os controladores normalmente alcançam o servidor BMS no modelo do capítulo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pelo site público do hospital"
+        },
+        {
+          "id": "b",
+          "text": "Pela rede predial na camada de supervisão"
+        },
+        {
+          "id": "c",
+          "text": "Enviando registros em papel à manutenção"
+        },
+        {
+          "id": "d",
+          "text": "Pela sirene do alarme de gases medicinais"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Os controladores comunicam-se entre si e com o servidor BMS por uma rede predial, distinta das ligações com sensores e atuadores.",
+      "source": "Capítulo 3, §3.1"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Que transporte e porta o capítulo associa ao BACnet/IP como configuração usual?",
+      "options": [
+        {
+          "id": "a",
+          "text": "TCP porta 22"
+        },
+        {
+          "id": "b",
+          "text": "UDP porta 53"
+        },
+        {
+          "id": "c",
+          "text": "UDP porta 47808"
+        },
+        {
+          "id": "d",
+          "text": "TCP porta 443"
+        }
+      ],
+      "correct": "c",
+      "explanation": "O texto indica que BACnet/IP normalmente usa UDP na porta 47808; a instalação real ainda precisa ser confirmada com o integrador.",
+      "source": "Capítulo 3, §3.1 e Erros e limites"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Que protocolo o chiller do Millbrook pode usar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SMTP"
+        },
+        {
+          "id": "b",
+          "text": "Apenas BACnet Secure Connect"
+        },
+        {
+          "id": "c",
+          "text": "HTTPS como único protocolo da instalação"
+        },
+        {
+          "id": "d",
+          "text": "Modbus/TCP"
+        }
+      ],
+      "correct": "d",
+      "explanation": "O capítulo apresenta Modbus/TCP como possibilidade para equipamentos como o chiller, enquanto os controladores do ar cirúrgico reportam por BACnet/IP.",
+      "source": "Capítulo 3, §3.1"
+    },
+    {
+      "id": "Q05",
+      "prompt": "O que um notebook que alcança controladores BACnet/IP clássicos pode fazer com frequência?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ler pontos e escrever valores de referência sem autenticação do dispositivo"
+        },
+        {
+          "id": "b",
+          "text": "Apenas ler uma brochura pública dos controladores"
+        },
+        {
+          "id": "c",
+          "text": "Alterar valores só após um diagnóstico clínico"
+        },
+        {
+          "id": "d",
+          "text": "Provar que uma pessoa identificada autorizou cada comando"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Instalações clássicas de BACnet e Modbus costumam confiar na alcançabilidade da rede; um notebook na mesma rede normalmente lê pontos e muitas vezes escreve valores.",
+      "source": "Capítulo 3, §3.2 e EX012"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Qual é o controle principal para a instalação predial clássica sem autenticação descrita?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uma legenda maior no desenho da rede"
+        },
+        {
+          "id": "b",
+          "text": "Um limite de rede controlado em torno dos equipamentos alcançáveis"
+        },
+        {
+          "id": "c",
+          "text": "Supor que todo controlador já usa uma variante segura"
+        },
+        {
+          "id": "d",
+          "text": "Retirar todos os itens do inventário de dispositivos"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Como instalações clássicas muitas vezes não autenticam comandos, o capítulo trata o limite da rede como controle principal e exige regras para cada caminho até a zona.",
+      "source": "Capítulo 3, §3.2"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Por que a BMS-WS com duas conexões é um ponto de encontro crítico?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ela prova que todos os dispositivos já foram comprometidos"
+        },
+        {
+          "id": "b",
+          "text": "Ela está desligada tanto da rede predial quanto da corporativa"
+        },
+        {
+          "id": "c",
+          "text": "Ela une o acesso corporativo à VLAN predial, criando uma rota aos controladores"
+        },
+        {
+          "id": "d",
+          "text": "Ela dispensa toda revisão de acesso remoto de empreiteiros"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A estação tem uma interface na VLAN 300 e outra na rede corporativa; seu comprometimento pode abrir um caminho aos controladores que o desenho das zonas deve tratar.",
+      "source": "Capítulo 3, §3.3 e Exemplo resolvido"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Que conjunto contém três pontos de encontro que o analista deve considerar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Três sensores de temperatura do mesmo centro cirúrgico"
+        },
+        {
+          "id": "b",
+          "text": "Somente o chiller, seu motor e sua peça de reposição"
+        },
+        {
+          "id": "c",
+          "text": "Somente o servidor BMS e dois desenhos impressos"
+        },
+        {
+          "id": "d",
+          "text": "Estação com duas redes, acesso remoto de empreiteiros e enlace celular do elevador"
+        }
+      ],
+      "correct": "d",
+      "explanation": "O texto cita a estação BMS com duas redes, o suporte remoto de empreiteiros e o enlace celular do fabricante do elevador como rotas distintas.",
+      "source": "Capítulo 3, §3.3 e EX014"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Como Aisha deve mapear a conectividade sem pôr equipamentos antigos em risco?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Comparar desenhos da manutenção e do empreiteiro com dados de switches e firewall; não varrer controladores"
+        },
+        {
+          "id": "b",
+          "text": "Executar varredura de rede sem aprovação em todos os controladores"
+        },
+        {
+          "id": "c",
+          "text": "Tratar um desenho do empreiteiro como prova do cabeamento físico"
+        },
+        {
+          "id": "d",
+          "text": "Ignorar divergências entre desenho e configuração de rede"
+        }
+      ],
+      "correct": "a",
+      "explanation": "O capítulo alerta que controladores antigos podem travar sob varredura. Pede desenhos, dados de switches e firewall, origem de cada fato e apuração conjunta das divergências.",
+      "source": "Capítulo 3, §3.4 e EX015"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Que dados devem ser registrados para um gateway sem fio que alcança a VLAN 300?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apenas a cor da caixa"
+        },
+        {
+          "id": "b",
+          "text": "Localização, rede conectada, responsável pelas chaves e data da última troca"
+        },
+        {
+          "id": "c",
+          "text": "Apenas o nome comercial do fabricante"
+        },
+        {
+          "id": "d",
+          "text": "Nenhum, pois enlaces sem fio ficam fora da zona BMS"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Um gateway que alcança a VLAN 300 faz parte da zona BMS. O inventário deve registrar localização, conexão, responsável pelas chaves e última troca.",
+      "source": "Capítulo 3, §3.5"
+    }
+  ]
+}

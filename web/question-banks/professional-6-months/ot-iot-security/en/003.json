@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "d8f0ef439d5310008e7b6d8b012dbf61b696bc5b4631c3835af7972b3a73667d",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which arrangement matches the field layer of the hospital BMS?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensors and actuators are wired to field controllers"
+        },
+        {
+          "id": "b",
+          "text": "The BMS server is wired directly to every sensor without controllers"
+        },
+        {
+          "id": "c",
+          "text": "The corporate email server acts as each air-handling controller"
+        },
+        {
+          "id": "d",
+          "text": "Every lift connects only through the hospital web portal"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter places sensors and actuators at the field layer, connected by wire to field controllers; the server belongs to the supervisory network.",
+      "source": "Chapter 3, §3.1"
+    },
+    {
+      "id": "Q02",
+      "prompt": "How do controllers normally reach the BMS server in the chapter's model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Through the hospital's public website"
+        },
+        {
+          "id": "b",
+          "text": "Over the building network at the supervisory layer"
+        },
+        {
+          "id": "c",
+          "text": "By sending paper records to the estates office"
+        },
+        {
+          "id": "d",
+          "text": "Through the medical-gas alarm sounder"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Controllers communicate with one another and the BMS server over a building network, distinct from their wired sensor and actuator connections.",
+      "source": "Chapter 3, §3.1"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which transport and port does the chapter associate with BACnet/IP as a usual configuration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "TCP port 22"
+        },
+        {
+          "id": "b",
+          "text": "UDP port 53"
+        },
+        {
+          "id": "c",
+          "text": "UDP port 47808"
+        },
+        {
+          "id": "d",
+          "text": "TCP port 443"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The text says BACnet/IP is usually carried over UDP port 47808; the actual installation must still be checked with its integrator.",
+      "source": "Chapter 3, §3.1 and Errors and limits"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which protocol might the Millbrook chiller use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SMTP"
+        },
+        {
+          "id": "b",
+          "text": "BACnet Secure Connect only"
+        },
+        {
+          "id": "c",
+          "text": "HTTPS as the sole plant protocol"
+        },
+        {
+          "id": "d",
+          "text": "Modbus/TCP"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter gives Modbus/TCP as a possible protocol for plant such as the chiller, while the theatre air-handling controllers report over BACnet/IP.",
+      "source": "Chapter 3, §3.1"
+    },
+    {
+      "id": "Q05",
+      "prompt": "What does the chapter say a laptop that can reach classic BACnet/IP controllers may often do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read points and write setpoints without device authentication"
+        },
+        {
+          "id": "b",
+          "text": "Only read a public brochure about the controllers"
+        },
+        {
+          "id": "c",
+          "text": "Change setpoints only after a clinical diagnosis"
+        },
+        {
+          "id": "d",
+          "text": "Prove that a named person authorized every command"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Classic BACnet and Modbus deployments commonly trust network reachability; a laptop on the same network can usually read points and often write setpoints.",
+      "source": "Chapter 3, §3.2 and EX012"
+    },
+    {
+      "id": "Q06",
+      "prompt": "What is the main control for the classic, unauthenticated building-protocol deployment described?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer label on the network drawing"
+        },
+        {
+          "id": "b",
+          "text": "A controlled network boundary around reachable equipment"
+        },
+        {
+          "id": "c",
+          "text": "Assuming every controller already uses a secure variant"
+        },
+        {
+          "id": "d",
+          "text": "Removing every entry from the device inventory"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Because classic deployments often lack command authentication, the chapter treats the network boundary as the principal control and requires rules for each path into the zone.",
+      "source": "Chapter 3, §3.2"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Why is the dual-homed BMS-WS a critical meeting point?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It proves that every device is already compromised"
+        },
+        {
+          "id": "b",
+          "text": "It is disconnected from both the building and corporate networks"
+        },
+        {
+          "id": "c",
+          "text": "It joins corporate access with the building VLAN, creating a route to controllers"
+        },
+        {
+          "id": "d",
+          "text": "It eliminates all need for contractor remote access reviews"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The workstation has one interface on VLAN 300 and one on the corporate network; compromise can create a path into the controllers that zone design must address.",
+      "source": "Chapter 3, §3.3 and Worked example"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which set contains three meeting points the chapter asks analysts to consider?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Three different theatre temperature sensors"
+        },
+        {
+          "id": "b",
+          "text": "Only the chiller, its motor and its spare part"
+        },
+        {
+          "id": "c",
+          "text": "Only the BMS server and two printed drawings"
+        },
+        {
+          "id": "d",
+          "text": "A dual-homed workstation, contractor remote access and a lift cellular link"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The text names a dual-homed BMS workstation, contractor support access and a lift manufacturer's cellular link as distinct routes between networks.",
+      "source": "Chapter 3, §3.3 and EX014"
+    },
+    {
+      "id": "Q09",
+      "prompt": "How should Aisha map controller connectivity without risking older equipment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare estates and contractor drawings with switch and firewall records; do not scan controllers"
+        },
+        {
+          "id": "b",
+          "text": "Run an unapproved network sweep against all field controllers"
+        },
+        {
+          "id": "c",
+          "text": "Treat a contractor drawing as proof of physical cabling"
+        },
+        {
+          "id": "d",
+          "text": "Ignore disagreements between the drawing and network configuration"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter warns that older controllers can crash under scans. It calls for drawings, switch and firewall records, provenance for each fact and joint follow-up on discrepancies.",
+      "source": "Chapter 3, §3.4 and EX015"
+    },
+    {
+      "id": "Q10",
+      "prompt": "What record is needed for a wireless gateway that can reach VLAN 300?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the colour of its enclosure"
+        },
+        {
+          "id": "b",
+          "text": "Its location, connected network, key owner and last key-change date"
+        },
+        {
+          "id": "c",
+          "text": "Only the vendor's marketing name"
+        },
+        {
+          "id": "d",
+          "text": "No record, because wireless links are outside the BMS zone"
+        }
+      ],
+      "correct": "b",
+      "explanation": "A gateway into VLAN 300 is part of the BMS zone. The inventory must capture its location, network connection, key custodian and last key change.",
+      "source": "Chapter 3, §3.5"
+    }
+  ]
+}

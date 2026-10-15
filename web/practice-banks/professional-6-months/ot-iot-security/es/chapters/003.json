@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "es",
+  "route": "chapters",
+  "unit": 3,
+  "source_sha256": "f3b8f247b1971547ce387cdc30ab7272f1ec961762ede657682a5e40f1396642",
+  "questions": [
+    {
+      "exercise_id": "EX011",
+      "prompt": "¿Qué disposición corresponde a la capa de campo del BMS hospitalario?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Los sensores y actuadores se conectan por cable a los controladores de campo"
+        },
+        {
+          "id": "b",
+          "text": "El servidor BMS se conecta directamente a cada sensor sin controladores"
+        },
+        {
+          "id": "c",
+          "text": "El servidor de correo corporativo actúa como controlador de cada unidad de aire"
+        },
+        {
+          "id": "d",
+          "text": "Todos los ascensores se conectan solo mediante el portal web del hospital"
+        },
+        {
+          "id": "e",
+          "text": "Un plano sustituye por sí solo las conexiones físicas de campo"
+        }
+      ],
+      "correct": "a",
+      "explanation": "El capítulo sitúa sensores y actuadores en la capa de campo, conectados por cable a los controladores; el servidor pertenece a la red de supervisión."
+    },
+    {
+      "exercise_id": "EX012",
+      "prompt": "¿Qué puede hacer a menudo un portátil que llega a controladores BACnet/IP clásicos?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Leer puntos y escribir consignas sin autenticación del dispositivo"
+        },
+        {
+          "id": "b",
+          "text": "Leer únicamente un folleto público de los controladores"
+        },
+        {
+          "id": "c",
+          "text": "Cambiar consignas solo después de un diagnóstico clínico"
+        },
+        {
+          "id": "d",
+          "text": "Demostrar que una persona identificada autorizó cada orden"
+        },
+        {
+          "id": "e",
+          "text": "Instalar automáticamente variantes seguras en todos los controladores"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Las instalaciones clásicas de BACnet y Modbus suelen confiar en el alcance de la red; un portátil en esa red normalmente lee puntos y a menudo escribe consignas."
+    },
+    {
+      "exercise_id": "EX013",
+      "prompt": "¿Por qué BMS-WS, conectada a dos redes, es un punto de encuentro crítico?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Demuestra que todos los dispositivos ya están comprometidos"
+        },
+        {
+          "id": "b",
+          "text": "Está desconectada tanto de la red del edificio como de la corporativa"
+        },
+        {
+          "id": "c",
+          "text": "Une el acceso corporativo con la VLAN del edificio y crea una ruta a los controladores"
+        },
+        {
+          "id": "d",
+          "text": "Elimina toda necesidad de revisar el acceso remoto de contratistas"
+        },
+        {
+          "id": "e",
+          "text": "Cambia automáticamente el puerto UDP de BACnet"
+        }
+      ],
+      "correct": "c",
+      "explanation": "La estación tiene una interfaz en la VLAN 300 y otra en la red corporativa; comprometerla puede abrir una ruta a los controladores que debe tratar el diseño de zonas."
+    },
+    {
+      "exercise_id": "EX014",
+      "prompt": "¿Qué conjunto incluye tres puntos de encuentro que debe considerar el analista?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tres sensores de temperatura del mismo quirófano"
+        },
+        {
+          "id": "b",
+          "text": "Solo la enfriadora, su motor y una pieza de recambio"
+        },
+        {
+          "id": "c",
+          "text": "Solo el servidor BMS y dos planos impresos"
+        },
+        {
+          "id": "d",
+          "text": "Estación con dos redes, acceso remoto de contratistas y enlace celular del ascensor"
+        },
+        {
+          "id": "e",
+          "text": "Solo los tres relés de correo corporativo"
+        }
+      ],
+      "correct": "d",
+      "explanation": "El texto señala la estación BMS con dos redes, el acceso remoto del contratista y el enlace celular del fabricante del ascensor como rutas distintas."
+    },
+    {
+      "exercise_id": "EX015",
+      "prompt": "¿Cómo debe cartografiar Aisha la conectividad sin poner en riesgo los equipos antiguos?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Comparar los planos de mantenimiento y del contratista con datos de conmutadores y cortafuegos; no escanear controladores"
+        },
+        {
+          "id": "b",
+          "text": "Realizar un barrido de red no autorizado de todos los controladores"
+        },
+        {
+          "id": "c",
+          "text": "Tratar el plano del contratista como prueba del cableado físico"
+        },
+        {
+          "id": "d",
+          "text": "Ignorar las discrepancias entre el plano y la configuración de red"
+        },
+        {
+          "id": "e",
+          "text": "Cambiar la configuración de un controlador de producción para descubrir equipos"
+        }
+      ],
+      "correct": "a",
+      "explanation": "El capítulo advierte que los controladores antiguos pueden bloquearse con escaneos. Pide planos, datos de conmutadores y cortafuegos, origen de cada hecho y seguimiento conjunto de discrepancias."
+    }
+  ]
+}
