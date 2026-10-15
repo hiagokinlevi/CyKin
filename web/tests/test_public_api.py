@@ -507,7 +507,11 @@ def test_human_factors_chapter_lessons_use_one_canonical_page_each(client):
     portuguese = client.get('/api/courses/rapid-1-month/human-factors-policy/pt').json()
     assert portuguese['chapter_lessons'] is False
     assert portuguese['published_lessons'] == 0
-    assert portuguese['published_chapters'] == 4
+    assert portuguese['published_chapters'] == 10
+    fifth = client.get('/courses/rapid-1-month/human-factors-policy/chapters/pt/5.md')
+    assert fifth.status_code == 200
+    assert '### Diagrama — Adoção do plano e evidência de execução' in fifth.text
+    assert '```mermaid' in fifth.text and 'Mapa da aula' not in fifth.text
 
 
 def test_security_architecture_chapter_lessons_use_one_canonical_page_each(client):

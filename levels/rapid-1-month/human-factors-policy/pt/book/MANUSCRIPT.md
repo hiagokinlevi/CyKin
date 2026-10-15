@@ -386,10 +386,7 @@ Continue para os capítulos 05–10 traduzidos; o quarto módulo anterior não e
 
 ## Capítulo 5 — Um plano adotado não significa que a segunda semana já foi cumprida
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05. Mapa, exemplo, EX051.
+### Diagrama — Adoção do plano e evidência de execução
 
 ```mermaid
 flowchart TD
@@ -401,7 +398,7 @@ flowchart TD
 
 A adoção define o trabalho. Não executa a segunda semana.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 saída publicada de acessos
@@ -416,7 +413,6 @@ plano, segunda semana
         +-- lab_access.py não é alterado
         +-- nenhuma nova função é acrescentada ao dicionário
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
 
 ### Objetivos de aprendizagem
 
@@ -463,10 +459,7 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 6 — Sete de oito não são oito acertos perfeitos
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06. Mapa, exemplo, EX052.
+### Diagrama — Encaminhamento útil versus contagem de acertos
 
 ```mermaid
 flowchart TD
@@ -479,7 +472,7 @@ flowchart TD
 
 Uma interpretação acolhedora não reescreve a contagem de acertos.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 lab_route.py
@@ -494,7 +487,6 @@ o oitavo indicador
         +-- o 0 não é invertido
         +-- ninguém é identificado pelo nome
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Objetivos de aprendizagem
 
@@ -541,10 +533,7 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 7 — Um alerta de teste não é cada alerta posterior
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07. Mapa, exemplo, EX053.
+### Diagrama — Teste de entrega versus próximo alerta real
 
 ```mermaid
 flowchart TD
@@ -556,7 +545,7 @@ flowchart TD
 
 A conferência do caminho usa uma mensagem. Não é uma promessa sobre a mensagem seguinte.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 destino original
@@ -570,7 +559,6 @@ conferência já realizada
         +-- o teste não é o próximo alerta de fatura
         +-- nenhuma chegada posterior é inventada
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Objetivos de aprendizagem
 
@@ -617,10 +605,7 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 8 — Um pagamento de teste não valida os novos dados do atacadista
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08. Mapa, exemplo, EX054.
+### Diagrama — Pagamento de teste versus autorização de um novo pedido
 
 ```mermaid
 flowchart TD
@@ -632,7 +617,7 @@ flowchart TD
 
 O ensaio de ontem não responde à fatura de hoje.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 conferência já realizada
@@ -649,7 +634,6 @@ isca típica
         +-- nenhum valor é registrado aqui
         +-- a isca não é paga
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Objetivos de aprendizagem
 
@@ -696,10 +680,7 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 9 — A lacuna da escala não se resolve copiando a linha da tesoureira
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09. Mapa, exemplo, EX055.
+### Diagrama — Acesso à escala sem ampliar outros privilégios
 
 ```mermaid
 flowchart TD
@@ -711,7 +692,7 @@ flowchart TD
 
 O sistema que falta é indicado pela função. Isso não é um convite para copiar outra função.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 funcionários que precisam da escala
@@ -727,7 +708,6 @@ lacuna registrada por Ruth
         +-- esta aula também não concede a escala
         +-- a saída não é reescrita
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Objetivos de aprendizagem
 
@@ -774,10 +754,7 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 10 — Um login verificado não é uma senha compartilhada destruída
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10. Mapa, exemplo, EX056.
+### Diagrama — Login individual verificado e lacunas restantes
 
 ```mermaid
 flowchart TD
@@ -789,7 +766,7 @@ flowchart TD
 
 Uma autenticação bem-sucedida em uma conta não comprova todas as outras contas.
 
-### Desenho lógico
+### Dados e limites em texto
 
 ```text
 ponto único anterior
@@ -807,7 +784,6 @@ conferência
         +-- a destruição da senha compartilhada não consta dos documentos
         +-- a senha não é escrita
 ```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Objetivos de aprendizagem
 
