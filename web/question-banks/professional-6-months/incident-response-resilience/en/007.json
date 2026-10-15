@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "incident-response-resilience",
+  "language": "en",
+  "chapter": 7,
+  "source_anchor": "ch-07",
+  "source_sha256": "ac0f2af366af667dbe41d9a7f9eb47bd74727da12d30e17f6f3478f7f8449300",
+  "source_path": "levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md",
+  "editorial_note": "Ten original authored questions; source, key and distractor semantics checked against final Chapter 7 after Day 35 navigation. Technical checks do not constitute independent human approval or translation release. The site generates the fifth uncertainty choice and ten-second timing.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "C20 validates the scheduler/API request-ID relationship for q-144. Which new conclusion is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A named human intentionally registered the task."
+        },
+        {
+          "id": "b",
+          "text": "The recorded sync-override run issued the S42 edit."
+        },
+        {
+          "id": "c",
+          "text": "Session s-77 registered sync-override."
+        },
+        {
+          "id": "d",
+          "text": "The self-reported batch-17 tag now proves approved-job origin."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B uses C20's preserved run, validated request semantics, C05 request and C13 state relationship to support the specific mechanism. A and C require actor or registration/session evidence not supplied. D contradicts the bounded C14 manifest exclusion and treats a self-reported tag as trusted origin. Mechanism confidence can rise while human attribution stays unknown.",
+      "source": "Chapter 7, Week 7 / course Day 31, #week-07-day-01, C20 chain and worked graph contrast; §§7.1/7.2; EX031."
+    },
+    {
+      "id": "Q02",
+      "prompt": "At 09:54, C23 finds neither configuration change in its authoritative approval comparisons. Which classification follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A single attacker made both changes."
+        },
+        {
+          "id": "b",
+          "text": "Both changes were deliberately malicious."
+        },
+        {
+          "id": "c",
+          "text": "Every possible inventory has been searched completely."
+        },
+        {
+          "id": "d",
+          "text": "The supplied owner comparisons classify both changes as unapproved."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D preserves the approval-source scope and checkpoint. A invents a shared actor; B substitutes malicious intent for an unapproved-change finding; C enlarges selected authoritative comparisons into universal coverage. The 08:47 and 08:52 times do not independently connect the initiators. Inventory deviation, mechanism and intent remain separate claims.",
+      "source": "Chapter 7, Week 7 / course Day 32, #week-07-day-02, C22/C23 release and classification paragraphs; §7.7; EX032."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which source does C22 supply for the 08:52 recovery-method addition?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A separately retained configuration-audit source with a blank actor field."
+        },
+        {
+          "id": "b",
+          "text": "A reconstructed copy of C08 detailed sign-in events after their expiry."
+        },
+        {
+          "id": "c",
+          "text": "A validated human registration identity from s-77."
+        },
+        {
+          "id": "d",
+          "text": "A functional test proving the recovery method can still authenticate."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A identifies the supplied producer and its limit. B conflates different sources, retention and fields. C invents attribution from a blank actor. D turns an addition record into a functioning-access test, which remains pending. Its potential access significance warrants an identity-owner contract, not an assertion that every identity path is compromised or fixed.",
+      "source": "Chapter 7, Week 7 / course Day 32, #week-07-day-02, C22 release and identity-contract row; §7.2 C22; EX032."
+    },
+    {
+      "id": "Q04",
+      "prompt": "At the 09:54 contract checkpoint, what is the correct state of task disablement and recovery-method remediation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both are completed because the changes are unapproved."
+        },
+        {
+          "id": "b",
+          "text": "The hold extension authorizes both operations automatically."
+        },
+        {
+          "id": "c",
+          "text": "Both remain proposed eradication operations with separate authority and checks."
+        },
+        {
+          "id": "d",
+          "text": "Neither workstream needs baseline preservation because actor identity is unknown."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C distinguishes the proposed task and identity contracts from C21's already approved/reported hold extension. A invents execution from classification. B borrows a different action's authority. D would discard configuration and run/audit evidence needed to assess the mechanism. Preserve bounded source material, obtain action-specific decisions and keep missing results pending.",
+      "source": "Chapter 7, Week 7 / course Day 32, #week-07-day-02, two-contract table and worked contrast; §§7.3/7.9; EX032."
+    },
+    {
+      "id": "Q05",
+      "prompt": "What does C21 add to the initial C17 hold authority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Permission to disable all uses of svc-enroll."
+        },
+        {
+          "id": "b",
+          "text": "A new S42-only extension approval to 10:07 and a distinct operator receipt."
+        },
+        {
+          "id": "c",
+          "text": "Proof that every write route was blocked continuously."
+        },
+        {
+          "id": "d",
+          "text": "An unlimited extension until the actor is identified."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B captures the separate 09:46:30 owner/incident-lead decision and 09:46:45 g-23 report, with a 10:06 review and 10:07 expiry. A changes the target. C promotes permission/report to continuous effect despite limited route evidence. D erases the fixed boundary. Neither C16 tolerance nor C20 mechanism evidence supplies this renewal automatically.",
+      "source": "Chapter 7, Week 7 / course Day 33, #week-07-day-03, authority table and worked interval example; §7.2 C21; EX033."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which operation does C24 actually authorize at 09:59 after preservation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable only sync-override."
+        },
+        {
+          "id": "b",
+          "text": "Disable the shared svc-enroll account."
+        },
+        {
+          "id": "c",
+          "text": "Remove every identity recovery method."
+        },
+        {
+          "id": "d",
+          "text": "Delete all task evidence and restore business data."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A names the scoped task-only decision; C24 later reports disablement at 10:03 with an agreeing read-only status. B broadens the action to a legitimate shared dependency. C invents identity remediation. D both destroys the preserved baseline and adds an unauthorized data action. The task result does not prove all access paths removed.",
+      "source": "Chapter 7, Week 7 / course Day 33, #week-07-day-03, chronological C24 release and authority table; §7.4; EX033."
+    },
+    {
+      "id": "Q07",
+      "prompt": "No further task run is observed from 10:03 through 10:07. What is needed before calling that a recurrence-test pass?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the task name containing override."
+        },
+        {
+          "id": "b",
+          "text": "An assumption that four quiet minutes cover every schedule."
+        },
+        {
+          "id": "c",
+          "text": "A human attribution statement."
+        },
+        {
+          "id": "d",
+          "text": "A known scheduled opportunity and credible observation coverage."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D makes absence discriminating: expected trigger metadata and source health/scope are needed to test whether the task would have run. A is a label, B invents the schedule denominator and C answers another question. C24 supports immediate disabled status and a short quiet window, not durable nonexecution, all-runner coverage or legitimate-job success.",
+      "source": "Chapter 7, Week 7 / course Day 33, #week-07-day-03, worked interval example; Day 34, #week-07-day-04, C7X recurrence gate; EX033/EX034."
+    },
+    {
+      "id": "Q08",
+      "prompt": "In a separate §7.11 run, observed batch-17 is removed. What happens to the two original printed forward differences?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They now print batch-17 as a missing approved task."
+        },
+        {
+          "id": "b",
+          "text": "Both printed lists become empty."
+        },
+        {
+          "id": "c",
+          "text": "They remain unchanged; a reverse key difference is needed to reveal the missing task."
+        },
+        {
+          "id": "d",
+          "text": "They prove sync-override was installed by an attacker."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C follows the actual program: observed-minus-approved still names sync-override, and the request-union difference still names q-144. A asks the forward calculation to produce its reverse. B ignores the retained unexpected task/request. D invents intent from finite sets. The reverse key difference would identify missing batch-17 in the supplied map, without proving whether the job vanished or collection was incomplete.",
+      "source": "Chapter 7, Week 7 / course Day 34, #week-07-day-04, worked transcripts and W7-RELATION direction control; corrected §7.11 failure injection; EX034."
+    },
+    {
+      "id": "Q09",
+      "prompt": "In C7X, all other BASE flags stay unchanged but expected_fire is False. Which verdict is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "NO_EXPECTED_TRIGGER_TESTED."
+        },
+        {
+          "id": "b",
+          "text": "BOUNDED_SCHEDULER_CHECK_NOT_ERADICATION."
+        },
+        {
+          "id": "c",
+          "text": "Proof that all persistence was removed."
+        },
+        {
+          "id": "d",
+          "text": "Proof that the legitimate batch failed."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A is the exact refusal to treat no invocation opportunity as a successful recurrence test. B requires the declared opportunity gate to pass. C exceeds even BASE's bounded verdict. D invents a service failure from a different input. The function trusts supplied flags and reports its first blocker; it does not authenticate a schedule or real observations.",
+      "source": "Chapter 7, Week 7 / course Day 34, #week-07-day-04, C7X recurrence gate and adverse interpretation; §7.14 NO_TRIGGER_ELAPSED row; EX034."
+    },
+    {
+      "id": "Q10",
+      "prompt": "At 10:07, which handoff respects C24 and the hold-expiry decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All access is revoked and eradication is complete."
+        },
+        {
+          "id": "b",
+          "text": "The S42 hold continues indefinitely under C17."
+        },
+        {
+          "id": "c",
+          "text": "Task-specific improvement is observed; identity, recurrence and service checks remain pending under monitoring."
+        },
+        {
+          "id": "d",
+          "text": "The unknown actor means no technical mechanism has been established."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C preserves C24's task report/short observations, C22's unresolved identity concern, pending scheduled/service coverage and the owner's 10:06 no-renewal decision with monitoring/escalation. A invents universal remediation. B overrides the C21 fixed 10:07 boundary. D discards the validated C20 mechanism merely because human attribution is unknown. No later result belongs in this handoff.",
+      "source": "Chapter 7, Week 7 / course Day 35, #week-07-day-05, worked evidence package and model handoff; §§7.10/7.15; EX035."
+    }
+  ]
+}

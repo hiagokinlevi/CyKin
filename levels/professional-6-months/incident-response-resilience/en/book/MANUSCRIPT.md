@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1–7 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01), [Week 6](#week-06-day-01) and [Week 7](#week-07-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Thirty-five authored daily units (35/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–8 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01), [Week 6](#week-06-day-01), [Week 7](#week-07-day-01) and [Week 8](#week-08-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Forty authored daily units (40/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -25,7 +25,7 @@ The recommended starting point for organizational incident-response outcomes is 
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor; [Week 5: course Days 21–25](#week-05-day-01).
 6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect; [Week 6: course Days 26–30](#week-06-day-01).
 7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths; [Week 7: course Days 31–35](#week-07-day-01).
-8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate.
+8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate; [Week 8: course Days 36–40](#week-08-day-01).
 9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
 10. [Playbook engineering and quality review](#ch-10) — repair and test a supervised decision aid.
 11. [Supervised incident simulation](#ch-11) — run a time-gated tabletop with separate facilitator, responder and observer records.
@@ -2883,7 +2883,7 @@ The label counts only the quoted message, not this explanation; publication vali
 
 **Limits and next decision.** Technical fixture reproduction is not human approval of the book or authority to run a live change. The next chapter's reference remains readable; its distinct daily lessons are pending. Carry the 10:07 source state and unresolved contracts forward without importing a later result or initiating translation of an unreleased unit.
 
-[Previous: Day 34](#week-07-day-04) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 8 reference; daily sequence pending](#ch-08).
+[Previous: Day 34](#week-07-day-04) · [Week 7 index](#week-07-index) · [Course index](../SUBJECTS.md) · [Next: Week 8, Day 36](#week-08-day-01).
 
 <a id="week-07-end"></a>
 
@@ -2938,6 +2938,8 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Recovery, continuity and return to service
+
+**Week 8; course Days 36–40.** Study the [five daily lessons](#week-08-day-01) with the retained C25–C30 reference and §§8.3/8.11/C8X programs. Separate specific identity effect, artifact bytes, owner target, isolated gates, production authority/action/checks and 10:45 limited acceptance. The measured 101-minute interval supplies no RTO target.
 
 ### Learning outcomes and connection
 
@@ -3098,7 +3100,7 @@ For a supervised recovery plan, define the **unit of acceptance** before choosin
 
 The recovery lead can produce an **isolated copy test** without approving production writes. The application owner checks versions, integration routes and audit fidelity. The identity owner checks the separately changed authentication path. The service owner chooses the acceptable returned enrollment functionality, residual restrictions and monitoring. The incident lead coordinates the change and preserves a record of risk, but cannot substitute a technical smoke test for the business acceptance decision.
 
-The chronological CTN chain is instructive. C25's 10:11 check verifies one specific session inactive after a separately approved identity action; it does not prove every identity path closed. C26 supplies the backup/current/target comparison. C27 at 10:16 **fails** the audit actor criterion, despite favorable limited data and manual-function checks. C28 at 10:20 supplies a new **isolated** pass after a mapping adjustment. C29 separately records 10:24 production authorization, 10:26 operator action and 10:30 initial production observations. C30 records a 15-minute monitored interval and **limited** owner acceptance at 10:45, with another two hours of monitoring *assigned*, not completed. No step backdates the next one. The approved 09:04 ticket-to-10:45 receipt interval is 101 minutes; absent a predeclared owner RTO target or verified outage-onset semantics, it is **not** proof that RTO was met. A candidate copy's nominal age is not a verified lost-transaction duration.
+The chronological CTN chain is instructive. C25's 10:11 check verifies one specific session inactive after a separately approved identity action; it does not prove every identity path closed. C26 supplies the backup/current/target comparison. C27 at 10:16 **fails** the audit actor criterion, despite favorable limited data and manual-function checks. C28 at 10:20 supplies a new **isolated** pass after a mapping adjustment. C29 separately records 10:24 production authorization, 10:26 operator action and 10:30 initial production observations. C30 records a 15-minute monitored interval and **limited** owner acceptance at 10:45, with another two hours of monitoring *assigned*, not completed. No step backdates the next one. The measured interval from 09:04 ticket receipt to 10:45 limited acceptance is 101 minutes; absent a predeclared owner RTO target or verified outage-onset semantics, it is **not** proof that RTO was met. A candidate copy's nominal age is not a verified lost-transaction duration.
 
 Treat each gate as **PASS, FAIL or UNKNOWN**. When the audit field is blank, that mandatory gate is FAIL. If scheduled-route behavior was not observed, it is UNKNOWN rather than an invented success. Approval for the isolated test is not production approval; reported production execution is not the owner's acceptance.
 
@@ -3175,6 +3177,173 @@ A recovery candidate may be technically usable yet fail current owner-approved d
 
 Each record keeps its own source, approver and time.
 
+<a id="week-08-index"></a>
+
+### Week 8 — Recover the governed service, not merely a data copy
+
+Read [Day 36](#week-08-day-01), [Day 37](#week-08-day-02), [Day 38](#week-08-day-03), [Day 39](#week-08-day-04) and [Day 40](#week-08-day-05) with the retained Chapter 8 reference. Day 36 releases C25/C26 through 10:12; Day 37 adds C27 then C28 through 10:20; Day 38 designs a correction without a production result. Day 39 releases C29 through 10:30; Day 40 adds C30 at 10:45. The additional W8-CAS and W8-CLOCK programs are isolated teaching fixtures, not extra CTN observations, authority or a live restore. No later information claim is available to this week's decisions.
+
+<a id="week-08-day-01"></a>
+
+#### Day 36 — Separate identity readiness, artifact integrity and the business target
+
+**Learning task.** Select a recovery candidate using the current approved service state rather than the most reassuring artifact label. Recovery involves several independent predicates: the copy has expected bytes; its contents represent the desired transaction history; the application can use it; identity dependencies function through permitted paths; and the owner accepts the tested outcome. None of these predicates implies all the others. A successful backup digest comparison can coexist with a harmful whole restore.
+
+First advance the case in order. **C25**, released 10:11, records a distinct 10:08 identity/service-owner approval to remove the unapproved recovery method, make a scoped credential change and revoke `s-77`. The authorized identity operator reports completion at 10:10; a fresh IdP status query at 10:11 finds **s-77 inactive**. Separate operation report from status observation. The specific method/session work does not establish that every other session, recovery option or copied credential is absent. Nor does it establish that the legitimate scheduled job can use its updated authentication path. That service dependency needs its own check; undoing the credential change to make a failed restart work would require a new decision.
+
+Next inspect **C26** at 10:12: the documented 08:30 snapshot matches the supplied digest baseline, and an isolated read shows S40/S41/S42 all `open`. The scoped current values are S40/S41 `reserved`, S42 `unavailable`; the owner target retains the valid reservations and sets S42 `open`. The later legitimate S40/S41 work changes the restore decision. The digest cannot decide which transactions should survive. A comparison also needs the named baseline and source context: an equal hash does not independently authenticate the source, prove capture completeness or turn a stale business state into current intent.
+
+**Worked comparison.** Whole snapshot restore would correct the supplied S42 value while undoing two approved reservations. Do-nothing retains S40/S41 but leaves the current S42 problem. Targeted reconciliation is therefore the preferred **candidate in this scoped comparison**: change S42 toward owner-approved intent, preserve correct slots and test the application transaction. It still needs a fresh version precondition, evidence preservation, isolated route/audit checks, production authority and rollback. Do not generalize this into “small writes are always safe.” A real enrollment transaction may update capacity, reservations, retry state, audit and notifications together; a raw single-field edit could violate those invariants even while the three visible values look right.
+
+**Contrast.** “The hash matches, so restore everything and mark access clean” combines a byte comparison with two unsupported conclusions. C26's intact copy is the wrong whole-business target, and C25's one-session result does not close identity discovery. The correct ledger lists copy validity, candidate value differences, business authority, service/authentication checks and unresolved source coverage separately. The snapshot remains useful as a preserved reference; rejecting wholesale use does not mean rejecting backups.
+
+**Offline practice and result.** Run §8.3 unchanged. Its first line names `S40:open->reserved, S41:open->reserved`; its second names `S42:unavailable->open`. These are differences from the supplied target, not a list of authorized commands or all database discrepancies. On paper, add permission, service cost, rollback dependency and unknowns for each candidate. Explain why snapshot age is not automatically lost-transaction duration when later valid changes are preserved by reconciliation.
+
+**Limits and decision.** At 10:12 there is no C27 test result, production approval or completed restart. Submit [EX036](#exercise-ex036) and compare the [worked answer](#answer-ex036). Carry a conditional candidate and explicit acceptance criteria to the next lesson; do not carry a restoration receipt that does not exist.
+
+[Previous: Week 7, Day 35](#week-07-day-05) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Day 37](#week-08-day-02).
+
+<a id="week-08-day-02"></a>
+
+#### Day 37 — Enforce mandatory isolated gates without averaging away an audit failure
+
+**Learning task.** Evaluate recovery as a conjunction of mandatory criteria and preserve the difference between failed, unknown and passed. Agree the gate before examining the result: owner-target values; manual and scheduled service behavior; useful new actor/request audit; preserved original evidence; and a known rollback checkpoint/owner. A test score can summarize what was inspected, but cannot compensate for a failed mandatory gate. Missing evidence does not become a pass because another row looks healthy.
+
+**C27** at 10:16 supplies the first isolated candidate: S42 `open`, S40/S41 still `reserved`, manual enrollment works, but an alternate API-route audit record has a **blank actor**. Data correctness and manual function do not neutralize this audit failure. A record without the required actor can make a later incident harder to investigate; the present failure is against the declared classroom criterion, not proof that a malicious actor exploited the route. Keep the test result, query/source pointers actually supplied and the correction request. Do not fill the blank from the shared account name or a nearby session label.
+
+**Worked gate ledger.** At C27, data is passing in the supplied isolated result. The manual subtest passes; scheduled-route success is not established. Audit is FAIL. Do not invent a completed preservation/rollback receipt from the C27 card: the separate §8.11 fixture declares rollback=1 as a modeling premise. The known audit failure is sufficient for **NO-GO**, regardless of the unresolved rows. If a reviewer asks for the “first failed criterion,” name the third criterion, audit; do not convert the earlier service-coverage UNKNOWN into a fabricated failed scheduled job. Unknown and failed can both block release while meaning different things.
+
+Then release **C28** at 10:20. The application owner adjusts the audit mapping **in isolation**, reruns synthetic manual and scheduled tests, obtains target slot values and new actor/request fields, and identifies a rollback copy. The supplied chapter reports an isolated gate pass. Record that result while retaining the absence of raw implementation detail in this public case: no digest, operator signature or production receipt should be invented to make the worksheet look fuller. C28 does not repair historical C05/C09 acquisition gaps or retrospectively make C27 pass. Append the new candidate/result version.
+
+**Contrast.** “Four checks passed, so approve the remaining audit gap” changes the preannounced contract after seeing its failure. “C28 passed, therefore production is deployed” crosses an environment and authority boundary. A defensible review says C27 failed, C28's revised isolated candidate passed its supplied local gate, and a production change remains pending. If the owner elects to change a mandatory criterion in a real case, preserve the original failure and separately document the revised scope, rationale and acceptance; never rewrite the original test.
+
+**Offline practice.** Reproduce §8.11's four lines, ending `C8 C27 NO-GO` and `C8 C28 GO`. Its dictionaries contain declared truthy values and `scheduled=None` for C27; the code does not inspect actual audit content or authenticate a receipt. In separate adverse runs, set each C28 gate to `0`, then to `None`; every such mutation must refuse GO. Keep the unmodified transcript alongside the variants. Explain that the `GO` label means this **isolated fixture gate**, not production permission or incident closure.
+
+**Limits and decision.** Both real-card claims and fixture assumptions need visible provenance. Complete [EX037](#exercise-ex037), then read its [worked answer](#answer-ex037). The next task is to design version-safe reconciliation and reversal, not to promote an isolated result into a live action.
+
+[Previous: Day 36](#week-08-day-01) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Day 38](#week-08-day-03).
+
+<a id="week-08-day-03"></a>
+
+#### Day 38 — Make reconciliation and rollback conditional on the state actually observed
+
+**Learning task.** Explain how an otherwise correct candidate becomes unsafe after a concurrent update. The version captured with a scoped read is a precondition, not a timeless property. A real approved transaction must compare the expected version and perform its mutation atomically; checking in a script and writing later leaves a race. If another accepted transaction changes the state, stop and rebuild the reconciliation argument. Do not overwrite the new value simply because an earlier plan was approved.
+
+At the 10:20 planning boundary, C26's snapshot/current/target comparison and C28's isolated pass support a proposed S42 correction. They do not supply the complete current production version or an actual production mutation receipt. Preserve the bounded pre-change state and source version, confirm which business changes must survive, select the owner-approved application path and bind the proposal to that version. If the application cannot enforce the required invariant, return the design to the owner rather than silently using a direct database path that bypasses audit and dependencies.
+
+**Offline laboratory W8-CAS — stale write and stale rollback controls.** Python 3 standard library, pure in-memory records with **invented version 7/8/9**; these are not CTN version observations. This sequential simulator shows conditional state transitions. It does not implement atomicity against a real database, authenticate the Boolean permission or authorize a live correction. Preserve its before-state and predict seven lines:
+
+~~~python
+from copy import deepcopy
+
+def cas8(record, expected_version, values, permitted):
+    if permitted is not True:
+        return "STOP_NO_AUTHORITY", deepcopy(record)
+    if record["version"] != expected_version:
+        return "STOP_STALE_VERSION", deepcopy(record)
+    return "SIM_APPLIED", {"version": expected_version + 1, "values": dict(values)}
+
+before8 = {"version": 7, "values": {"S40": "reserved", "S41": "reserved", "S42": "unavailable"}}
+target8 = {**before8["values"], "S42": "open"}
+print("W8 NO_AUTH", cas8(before8, 7, target8, False)[0])
+print("W8 STALE", cas8({**before8, "version": 8}, 7, target8, True)[0])
+status8, applied8 = cas8(before8, 7, target8, True)
+print("W8 APPLY", status8, "v" + str(applied8["version"]))
+print("W8 preserved slots", ",".join(k for k in ("S40", "S41") if applied8["values"][k] == before8["values"][k]))
+status8, reverted8 = cas8(applied8, 8, before8["values"], True)
+print("W8 ROLLBACK", status8, "v" + str(reverted8["version"]), "S42=" + reverted8["values"]["S42"])
+print("W8 LATE_ROLLBACK", cas8({**applied8, "version": 9}, 8, before8["values"], True)[0])
+print("W8 baseline", "v" + str(before8["version"]), "S42=" + before8["values"]["S42"])
+~~~
+
+Exact transcript reproduced during publication validation:
+
+~~~text
+W8 NO_AUTH STOP_NO_AUTHORITY
+W8 STALE STOP_STALE_VERSION
+W8 APPLY SIM_APPLIED v8
+W8 preserved slots S40,S41
+W8 ROLLBACK SIM_APPLIED v9 S42=unavailable
+W8 LATE_ROLLBACK STOP_STALE_VERSION
+W8 baseline v7 S42=unavailable
+~~~
+
+**Worked interpretation.** A successful invented correction preserves S40/S41. A stale request and an unapproved request return unchanged copies. Reversal also needs a version precondition: after another accepted update, replaying an old before-state could destroy later work. The simulator creates a new version on reversal rather than pretending version 7 became current again. Its preserved baseline remains unchanged. However, reversing to that baseline makes S42 unavailable again; rollback is not synonymous with acceptable service. The decision owner must weigh the failed-candidate risk, renewed business harm and permitted next recovery path.
+
+**Contrast and limits.** “The rollback file is intact, so replay it after any error” ignores intervening valid updates, configuration versus business-state differences and irreversible external effects. A corrected design checks source/version, scope, trigger, owner, transaction boundary, relevant audit and post-action service. The toy `cas8` would trust arbitrary supplied values and has no row authorization, real locking, cross-record invariants or event delivery. Its success label verifies only the simulated transition; review those omitted controls before any operational implementation.
+
+**Practice.** Complete [EX038](#exercise-ex038) with §8.3/§8.11's original differences, W8-CAS's transcript, one stale-candidate stop rule and one stale-rollback stop rule. Compare the [worked answer](#answer-ex038). No production correction has occurred at this lesson's checkpoint.
+
+[Previous: Day 37](#week-08-day-02) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Day 39](#week-08-day-04).
+
+<a id="week-08-day-04"></a>
+
+#### Day 39 — Carry an isolated pass through separately authorized production checks
+
+**Learning task.** Bind production authority, execution and observation to the tested candidate without merging their receipts. A rehearsal establishes behavior under its own schema, identities, route coverage and simulated dependencies. Production can differ in flags, queues, credential references, audit handlers, version and concurrency. The owner must decide which differences are acceptable and which checks block staged restart. A local pass is evidence for that decision, not permission to deploy itself.
+
+Release **C29** in its internal order. At 10:24 the service owner and incident lead approve a bounded production S42 correction and staged restart with rollback checkpoint. Authorized operators record action at 10:26. At 10:30 read-only checks show S42 `open`, S40/S41 `reserved`, `batch-17` using the approved credential path and new test transactions with useful audit fields. This is a supplied production observation distinct from C28's isolated candidate. The legitimate-job check now addresses a dependency left pending after C25's credential action; it does not establish that every identity path is safe.
+
+**Worked receipt chain.** Use four references: isolated candidate/test version; production approval/target/window and operator/rollback roles; reported production change/version; observation/request/route/time and remaining gaps. C29 supplies the described states and times, not a full public change ticket or actual numeric production revision. Retain missing details as source limitations rather than filling them with W8-CAS's invented values. The four minutes between 10:26 operation and 10:30 check support early function only. The owner has not yet supplied C30 acceptance at this lesson's cutoff.
+
+**Offline C8X review.** Run §8.15 unchanged and reproduce its nine lines. The mismatch rows still reject whole-snapshot S40/S41 regression and identify current S42 mismatch. `C27` and `C28` both print `NO_EXECUTION_RECEIPT` because this *second synthetic contract* asks for a production receipt before later gates. That does not erase C27's isolated audit failure or negate C28's isolated pass. `C29_INITIAL` prints `NO_OWNER_ACCEPTANCE`; the all-true `C30_LIMITED` row is a declared future-state teaching control, not an available Day 39 case result. When reproducing the complete fixture, label that row hypothetical at the 10:30 checkpoint and do not use it in your C29 decision.
+
+The adversarial `STALE`, `AUDIT_BLANK` and `SCHEDULED_DOWN` rows independently reject stale version, bad audit and service regression. Because C8X reports the first blocker, a no-receipt label is not a complete diagnosis of every row. Its `owner`, `receipt` and `version_ok` flags are supplied premises; it cannot authenticate approval or enforce concurrency. Nor does its input include an explicit preserved-evidence/rollback gate. Preserve the larger operational contract rather than assuming a toy success checks everything.
+
+**Contrast.** “C28 passed, so C29 must be effective everywhere and accepted at 10:30” invents authority continuity, environment equivalence, coverage and acceptance. “C8X prints no receipt for C27, so its actor failure did not happen” lets classifier order rewrite an independent observation. A defensible status says production approved, action reported and early selected-scope checks supplied; owner acceptance and sustained monitoring still pending.
+
+**Offline practice.** Build the C29 row of [EX039](#exercise-ex039): 10:24 authority, 10:26 report, 10:30 checks, target and stop conditions. Add four hypothetical failure branches—wrong S42 value, changed S40/S41, scheduled-route failure, blank new actor—and name the owner/rollback review each would require. No branch is a real additional event. Compare the [worked answer](#answer-ex039) only after marking its C30 portion as later evidence to be released on Day 40.
+
+**Limits and decision.** Await the planned observation/owner review; do not announce service acceptance or incident closure from the first production check. Protect preserved case evidence and the rollback precondition while monitoring continues.
+
+[Previous: Day 38](#week-08-day-03) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Day 40](#week-08-day-05).
+
+<a id="week-08-day-05"></a>
+
+#### Day 40 — Accept a bounded service outcome and measure only defined intervals
+
+**Learning task.** Separate limited service acceptance from incident closure and measured elapsed time from a recovery objective. Release **C30** at 10:45: the 15-minute observation after C29 reports no further unexpected S42 edits or scheduled-job failures **in monitored sources**. The service owner accepts a limited return and assigns two more hours of monitoring plus unresolved actor/provenance work. Assigned monitoring is future work, not a completed clean interval. No observed recurrence is stronger when source coverage and health are known; it is still not proof that unobserved routes cannot recur.
+
+**Worked acceptance record.** Keep the data choice (whole restore rejected for S40/S41 regression), C27 audit NO-GO, C28 isolated correction, C29 production authority/action/checks and C30 owner decision as separate rows. The 10:30 first checks cannot be substituted for 10:45 acceptance. C25 supports a specific identity intervention and inactive `s-77`, while the broader identity inventory and human attribution remain limited. Useful new audit does not retroactively repair missing C09 copy provenance or make historical blank actor fields informative.
+
+A measurement needs an explicit start, end, clock basis and meaning. From C02 ticket receipt at 09:04 to limited acceptance at 10:45 the supplied interval is **101 minutes**. From ticket receipt to first production check it is 86 minutes; the C29-check-to-C30-acceptance observation is 15 minutes. These are different metrics. CTN supplies no approved RTO threshold or verified outage-onset definition, so neither RTO compliance nor violation can be derived from 101. Similarly, 08:30 snapshot age is not actual data loss: the chosen reconciliation preserves the later legitimate reservations. Do not invent an RPO target or equate backup age with lost work.
+
+**Offline W8-CLOCK — endpoints without an invented target.** Python 3 standard library, same-date UTC fixture inputs only. This arithmetic is not monitoring or an authenticated receipt. Predict and reproduce four lines:
+
+~~~python
+from datetime import datetime
+def clock8(value):
+    return datetime.strptime(value, "%H:%M")
+def minutes8(start, end):
+    return int((clock8(end) - clock8(start)).total_seconds() / 60)
+print("W8 ticket-to-first-check", minutes8("09:04", "10:30"))
+print("W8 ticket-to-limited-acceptance", minutes8("09:04", "10:45"))
+print("W8 observed-window", minutes8("10:30", "10:45"))
+rto_target8 = None
+print("W8 RTO", "NOT_ASSESSABLE_NO_TARGET" if rto_target8 is None else "COMPARE_DEFINED_ENDPOINTS")
+~~~
+
+Exact transcript reproduced in publication validation:
+
+~~~text
+W8 ticket-to-first-check 86
+W8 ticket-to-limited-acceptance 101
+W8 observed-window 15
+W8 RTO NOT_ASSESSABLE_NO_TARGET
+~~~
+
+**Contrast.** “Recovered within RTO in 86 minutes and two hours clean” changes the acceptance endpoint, invents the objective and records future work as finished. A corrected message names 101 minutes between ticket receipt and **limited** acceptance, keeps the 15-minute observed scope, and lists continued monitoring as assigned. A hypothetical objective could be compared only after specifying approved metric endpoints and threshold; it cannot be added to CTN retrospectively.
+
+**Worked handoff.** “At 10:45, CTN has a limited owner-accepted return after C29's separately approved production correction and selected checks, followed by C30's 15-minute monitored interval. The S42 candidate preserved legitimate S40/S41 reservations; the intact C26 snapshot was not the whole-business target. C27's actor-field failure remained a no-go and C28 passed only after an isolated mapping correction. C25 addressed the specified identity method/credential/session scope, not every possible access path. Continue the assigned two-hour monitoring, preserve source/change references and reopen on unexpected S42 edits, job or audit failure. Human actor and historical provenance questions remain open; 101 minutes is measured ticket-to-acceptance time, not an RTO result.” This is an explanatory model, not a sent message or a completed future-monitoring report.
+
+**Practice and limits.** Complete [EX040](#exercise-ex040) with a 130–190-word handoff and an outside-the-message monitoring card. Finish EX039's C30 timeline portion using the newly released evidence. Compare the [worked answer](#answer-ex040). Name the service/application/identity monitoring responsibilities and next review trigger without inventing a person, telemetry receipt or completed two-hour result. Stop/escalate on wrong values, unexpected writes, scheduled failure or missing required new audit fields under the owner's approved procedure.
+
+[Previous: Day 39](#week-08-day-04) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 9 reference; daily sequence pending](#ch-09).
+
+<a id="week-08-end"></a>
+
+**Week 8 checkpoint.** Five lessons have produced a three-candidate loss comparison, isolated mandatory-gate ledger, version/rollback contract, staged production record and limited-acceptance handoff. They deepen the existing EX036–EX040 with two new isolated programs while preserving §§8.3/8.11/C8X. The book and its human review remain incomplete; no later case outcome or translation release follows from this technical validation.
+
 ### Common errors and limits
 
 - Choosing the most recent backup without comparing its contents to the approved target and later legitimate writes.
@@ -3189,15 +3358,25 @@ Assign recovery custodian, application owner, service owner and observer roles. 
 
 ### Exercises — subject 8
 
-**EX036 — Candidate comparison.** Inputs: C13, C25 and C26. Compare whole snapshot, do-nothing and targeted-reconciliation options for S40/S41/S42 correctness, service impact, permission, rollback and remaining uncertainty. A 2-point result rejects a whole restore as currently specified without rejecting backups in general.
+<a id="exercise-ex036"></a>
 
-**EX037 — Acceptance gates.** Inputs: C27 and C28. Score each against the five criteria in §8.4, name the first failed criterion, and write separate isolated-test decisions. A 2-point result records C27 no-go and C28 isolated pass without claiming production success. Reproduce the C8 isolated gate labels in §8.11 and explain why an unknown scheduled-route result cannot compensate for the failed C27 audit criterion.
+**EX036 — Candidate comparison.** Objective: distinguish specific identity readiness, artifact integrity and business correctness. Inputs: C13/C25/C26 through 10:12 and Day 36. Compare whole snapshot, do-nothing and targeted reconciliation across S40/S41/S42, service/authentication dependencies, authority, version and rollback. Record C25 approval/report/status separately and its discovery limit. Explain why matching bytes and snapshot age do not prove correct business target or actual data loss; no later test or production receipt is available. Rubric: 0 = full restore justified by hash alone, invented identity closure or operation; 1 = correct three candidates but incomplete source/authority/service limits; 2 = scoped target/loss ledger and conditional reconciliation with independent identity checks. [Worked answer](#answer-ex036).
 
-**EX038 — Value-diff fixture.** Run or hand-check the Python fixture in §8.3. Reproduce both exact output lines, state the value implication and one reason the code cannot authorize a real correction. A 2-point result notices both S40/S41 regression risk and S42 mismatch. Compare the two original value-diff lines with the C8 mismatch lists in §8.11; specify a version-precondition stop rule.
+<a id="exercise-ex037"></a>
 
-**EX039 — Staged return record.** Inputs: C29/C30. Produce a timeline of approval, execution, first production checks, 15-minute observation and owner acceptance, with a rollback trigger and 2-hour monitoring owner. A 2-point result does not call 10:30 a sustained-stability result.
+**EX037 — Acceptance gates.** Objective: enforce mandatory isolated criteria while distinguishing FAIL from UNKNOWN. Inputs: C27/C28 through 10:20, §8.4/§8.11 and Day 37. Score the five operational criteria using supplied case evidence, retaining manual versus scheduled subchecks and any missing preservation/rollback detail; distinguish §8.11's declared rollback flag. Name C27's definite failed criterion and record its NO-GO, then C28's revised isolated pass. Reproduce §8.11 and separately inject a false and unknown value into each C28 fixture gate. No fixture flag creates production authority or repairs historical provenance. Rubric: 0 = audit failure averaged away or production invented; 1 = correct decisions but conflated unknown/failed/source assumptions; 2 = source-qualified ledger, exact output, all adverse gate refusals and preserved C27 failure. [Worked answer](#answer-ex037).
 
-**EX040 — Recovery handoff.** Inputs: C20–C30. Write a 130–190-word handoff with data choice, C27 failure and C28 correction, C29/C30 outcome, residual risk, unresolved actor and next checkpoint. A 2-point result distinguishes measured 101-minute interval from an unspecified RTO target.
+<a id="exercise-ex038"></a>
+
+**EX038 — Value-diff fixture.** Objective: preserve valid business changes and reject stale correction or rollback. Inputs: C26/C28, §§8.3/8.11 and Day 38 W8-CAS; no production result yet. Reproduce original differences/mismatch lists and W8-CAS's seven lines. Give the proposed current-version/target/source/authority/transaction/rollback contract and a stop rule for both stale write and stale reversal. Explain why toy version 7/8/9 is not CTN metadata and why a successful reversal can restore an unavailable S42 value. Rubric: 0 = fixture authorizes a live write or stale overwrite; 1 = correct differences but missing concurrency, rollback or environment limit; 2 = exact outputs and a falsifiable owner-governed version/rollback plan preserving S40/S41. [Worked answer](#answer-ex038).
+
+<a id="exercise-ex039"></a>
+
+**EX039 — Staged return record.** Objective: separate isolated evidence, production authority/action/checks and later owner acceptance. Inputs: C25–C29 and Day 39 for Part A at 10:30; add C30 only on Day 40 for Part B. Record C28 isolated pass, C29 10:24 approval/10:26 operation/10:30 checks, then the 15-minute observation and 10:45 limited acceptance with two more monitoring hours assigned. Reproduce C8X's nine lines; distinguish first-blocker labels from C27's audit finding and classify C30_LIMITED as a fixture premise before release. Include four stop/rollback-review branches and named responsible roles, without inventing identities or completed future monitoring. Rubric: 0 = 10:30 acceptance, borrowed approval or erased audit failure; 1 = correct timestamps but incomplete gate/environment/owner limits; 2 = auditable staged record and exact scoped fixture reasoning. [Worked answer](#answer-ex039).
+
+<a id="exercise-ex040"></a>
+
+**EX040 — Recovery handoff.** Objective: transfer limited acceptance with explicit measurement and residual obligations. Inputs: C20–C30 through 10:45, Days 36–40 and W8-CLOCK. Write a 130–190-word handoff covering data choice, C25 scope, C27 failure/C28 isolated correction, C29 production sequence, C30 limited acceptance, unresolved actor/provenance, assigned monitoring and reopen trigger. Outside the message add a monitoring card with responsible roles, sources/coverage questions and unknown future results; reproduce the four clock lines. Distinguish 101 measured minutes from an absent RTO target and snapshot age from actual data loss. No later card or completed two-hour result may be imported. Rubric: 0 = invented objective, closure, source or operation; 1 = accurate summary but missing residual owner/metric boundaries; 2 = usable bounded message, monitoring card and exact arithmetic without RTO/RPO compliance claims. [Worked answer](#answer-ex040).
 
 ### Subject synthesis
 
@@ -4437,17 +4616,25 @@ The toy mappings identify one unexpected task label and one request outside thei
 
 ### Subject 8: EX036–EX040
 
+<a id="answer-ex036"></a>
+
 **EX036 — Model candidate comparison.** Whole 08:30 snapshot: integrity is checked, S42 becomes `open`, but S40/S41 would also become `open`, overwriting later approved reservations; service owner must reject that candidate as currently specified, even if a recovery operator could technically apply it. Do nothing: S40/S41 remain correct, but S42 stays `unavailable`, so the user-facing problem persists. Targeted reconciliation: proposed S42 `open` with S40/S41 preserved as `reserved`; requires service-owner target approval, an isolated two-route/audit test, recorded current version, production change approval and rollback. Its key remaining uncertainty is whether the audited application behaves identically in production. This does not mean backups are useless: the C26 copy helps establish prior values and a recovery fallback, but is not the whole-business target.
 
 **Additional professional worked reasoning:** Compare all three slots with the approved target, not only S42. A whole 08:30 snapshot reopens S40/S41 and would regress accepted reservations; do-nothing preserves them but leaves S42 unavailable. A targeted S42 correction is merely the preferred **candidate**, requiring owner-approved atomic version precondition, staged service/audit tests and rollback. Source correctness and timestamp age do not by themselves establish no lost data.
 
-**EX037 — Model gate scores.** Use pass/fail, not a post hoc average. C27 passes the stated slot values, the tested manual function and the existence of a rollback copy; it **fails criterion 3**, because the alternate API route's new audit actor field is blank. Its isolated release decision is **no-go**, with evidence preserved and an application-owner correction requested. C28 repeats the isolated check after an audit-mapping change; the supplied card reports target data, manual and scheduled routes, actor/request fields and rollback copy present. Its decision is **isolated candidate pass**, not production acceptance. C29's separate approval and result are still needed. A learner who says C27 is 4/5 and therefore “good enough” has silently weakened the preannounced gate.
+**Week 8 Day 36 — worked identity/candidate boundary.** C25 records 10:08 owner approval, 10:10 identity operation report and 10:11 s-77 inactive status, not universal identity closure or a completed new-credential batch test. C26 supplies an intact 08:30 snapshot with all slots open, current S40/S41 reserved and S42 unavailable, and the owner target retaining the reservations while opening S42. Whole restore regresses accepted work, do-nothing retains the current S42 defect, and targeted reconciliation remains a candidate subject to version, authorized transaction path, audit/service gate and rollback. No digest value, data-loss duration or later test is invented. Scope the source and business authority separately from byte consistency.
+
+<a id="answer-ex037"></a>
+
+**EX037 — Model gate scores.** Use pass/fail, not a post hoc average. C27 passes the stated slot values and tested manual function; scheduled-route success and detailed preservation/rollback receipts are not supplied by its card. The separate §8.11 fixture declares rollback present, which is a modeling premise rather than an extra C27 receipt. C27 definitely **fails criterion 3**, because the alternate API route's new audit actor field is blank. Its isolated release decision is **no-go**, with evidence preserved and an application-owner correction requested. C28 repeats the isolated check after an audit-mapping change; the supplied card reports target data, manual and scheduled routes, actor/request fields and rollback copy present. Its decision is **isolated candidate pass**, not production acceptance. C29's separate approval and result are still needed. A learner who assigns unobserved checks as passes or says an average is “good enough” has silently weakened the preannounced gate. C28's reported isolated pass is retained without fabricating raw receipt details; no missing public metadata should be invented.
 
 **Additional professional worked reasoning:** C27's data and manual tests cannot compensate for a blank actor in the alternative route; with the scheduled-route test not established, its five-part isolated gate is NO-GO. C28 is a separate corrected *isolated* pass, not production approval. In C8X C27 returns NO_EXECUTION_RECEIPT because the second contract additionally requires production action; that first-failure label does not erase the independently observed C27 audit failure.
 
-**EX038 — Model value-diff output.** The in-memory code prints exactly:
+**Week 8 Day 37 — worked mandatory-gate ledger.** Criterion 1, data: C27 supplied values pass. Criterion 2, service: manual passes; scheduled is not established. Criterion 3, audit: FAIL because actor is blank on the alternate API record; that alone mandates NO-GO. Criterion 4, preservation: do not invent an extra C27 receipt. Criterion 5, rollback: the §8.11 input supplies a true fixture flag, while C27's card does not independently describe that artifact/owner receipt. C28's narrative supplies a corrected isolated pass, with target values, both routes, new audit fields and rollback copy; retain that supplied result and request raw details rather than manufacturing them. The original fixture prints snapshot mismatch S40,S41; current mismatch S42; C27 NO-GO; C28 GO. In separate mutations, each C28 flag set to 0 or None must produce NO-GO. The first definite failed C27 criterion remains audit; unknown scheduled behavior is not a fabricated scheduled failure. C8X's no-production-receipt label never cancels the audit observation.
 
-**Additional professional worked reasoning:** The original value-diff has snapshot S40/S41: open->reserved and current S42: unavailable->open. C8X prints the same affected slot sets, without authorizing mutation. A real operation must compare the captured expected S42 version atomically before applying the owner-approved correction and stop on mismatch. An isolated program cannot prove production copy provenance or data completeness.
+<a id="answer-ex038"></a>
+
+**EX038 — Model value-diff output.** The in-memory code prints exactly:
 
 ```text
 08:30 snapshot: S40:open->reserved, S41:open->reserved
@@ -4456,9 +4643,19 @@ The toy mappings identify one unexpected task label and one request outside thei
 
 Relative to the owner target, the snapshot would regress two authorized slots; current data needs one bounded correction in this three-slot fixture. The code neither reads a production source nor approves a write. Its values must be checked with a real service owner and custodians before any operational decision.
 
+**Additional professional worked reasoning:** The original value-diff has snapshot S40/S41: open->reserved and current S42: unavailable->open. C8X prints the same affected slot sets, without authorizing mutation. A real operation must compare the captured expected S42 version atomically before applying the owner-approved correction and stop on mismatch. An isolated program cannot prove production copy provenance or data completeness.
+
+**Week 8 Day 38 — worked stale-transition controls.** Reproduce §8.3's two full value-diff lines and §8.11's mismatch lists. W8-CAS prints NO_AUTH STOP_NO_AUTHORITY; STALE STOP_STALE_VERSION; APPLY SIM_APPLIED v8; preserved slots S40,S41; ROLLBACK SIM_APPLIED v9 S42=unavailable; LATE_ROLLBACK STOP_STALE_VERSION; baseline v7 S42=unavailable, each under its W8 prefix. Those versions are invented. The simulator leaves rejected records and its baseline unchanged, increments version on reversal and refuses an old rollback after an intervening version. A real contract must authenticate authority and enforce the version/invariant comparison atomically through the approved transaction path, with source receipt and rollback owner. Reversing the test correction restores the old bad S42 state, so it is not service acceptance. The function trusts supplied values and flags and cannot enforce a production business invariant.
+
+<a id="answer-ex039"></a>
+
 **EX039 — Model staged-return timeline.** 10:24 C29 approval: S42 correction, staged restart, rollback checkpoint and owners named. 10:26 operator receipt: bounded production change performed. 10:30 read-only checks: S42 open, S40/S41 reserved, approved `batch-17` functioning and new audit fields present. 10:45 C30: 15-minute monitored interval with no unexpected S42 edits or job failure in observed sources; service owner accepts limited return and assigns two more hours of monitoring. A mismatch in slot values, route failure or blank new actor field would trigger stop and rollback review by the named operator/owner. The four-minute result at 10:30 is an initial check, not proof of sustained stability.
 
 **Additional professional worked reasoning:** Keep 10:24 C29 approval, 10:26 reported action, 10:30 bounded read-only/service/audit checks, and 10:45 C30 service-owner *limited* acceptance as distinct states. Fifteen minutes of monitored observation is supplied for the selected scope; the additional two-hour monitoring period is a **future assignment**. Reopen on unexpected S42 writes, scheduled-job failure, wrong values or missing audit actor. Do not treat 10:30 as an accepted end time.
+
+**Week 8 Day 39 — worked staged evidence.** At the Day 39 cutoff C29 supplies 10:24 bounded production approval, 10:26 operator action and 10:30 selected data/job/audit checks. C28 remains the earlier isolated pass. The four-minute operational window is not owner acceptance. C8X's exact nine labels are SNAPSHOT_MISMATCH S40,S41; CURRENT_MISMATCH S42; C27 NO_EXECUTION_RECEIPT; C28 NO_EXECUTION_RECEIPT; C29_INITIAL NO_OWNER_ACCEPTANCE; C30_LIMITED BOUNDED_ACCEPTED_NOT_INCIDENT_CLOSURE; STALE STOP_STALE_VERSION; AUDIT_BLANK AUDIT_GATE_FAIL; SCHEDULED_DOWN SERVICE_GATE_FAIL. The C30 row is a declared fixture premise before its case release. C27 has a separate known audit failure despite the first-blocker label. On Day 40 add C30's 10:45 limited acceptance after the 15-minute observed interval, with two hours assigned rather than completed. Wrong values, slot regression, scheduled failure or required audit gaps require stop/escalation and designated rollback review, not invented automatic success.
+
+<a id="answer-ex040"></a>
 
 **EX040 — Model recovery handoff.** “The service owner rejected a whole C26 snapshot restore because it would revert approved S40/S41 reservations. C27's first isolated S42 correction passed visible data checks but failed the preannounced alternate-route audit-actor criterion; no production move followed. C28's revised isolated candidate passed the supplied data, route, audit and rollback checks. C29 then recorded a separate 10:24 production approval, 10:26 execution and 10:30 first checks. C30 reports 15 minutes of observed stability and limited owner acceptance at 10:45, with two more hours of monitoring. C25 confirms only a specific recovery-method/credential action and `s-77` inactive, not every possible access path. The identity of the person behind the unapproved task remains unknown; C09 provenance and broader exposure questions remain assigned. The 09:04-to-10:45 interval is 101 minutes, but CTN supplied no RTO target, so no RTO pass is claimed.”
 
@@ -4474,6 +4671,8 @@ C8 C28 GO
 ~~~
 
 The whole snapshot would regress S40/S41, while the supplied current state misses the target for S42. `C27 NO-GO` follows the preannounced audit-field failure; its scheduled-route outcome is unknown in the modeled input. `C28 GO` is an isolated rehearsal result, not production authority. EX037 and EX038 require the separate C29 approval/action and a stop if the S42 source version differs from the preserved precondition.
+
+**Week 8 Day 40 — worked measurement and monitoring card.** The original model handoff above is within the requested 130–190 words. W8-CLOCK prints ticket-to-first-check 86, ticket-to-limited-acceptance 101, observed-window 15 and RTO NOT_ASSESSABLE_NO_TARGET under W8 prefixes. These same-day arithmetic endpoints are not verified outage onset or an approved RTO comparison; snapshot age is not measured lost work. Outside the message, assign service-owner review with application/job monitoring of S42 values/edits, batch function and required audit fields, plus identity-owner follow-up on remaining access scope. Record source/route/ingestion coverage and a reopen trigger on unexpected edits, regression or missing audit data. C30 assigns two more hours; no completion receipt is supplied. Retain actor/provenance work and distinguish a proposed next observation from a received result. Neither the monitoring plan nor new useful logging repairs historical source gaps or closes the incident.
 
 ### Subject 9: EX041–EX045
 
