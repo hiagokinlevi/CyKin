@@ -983,6 +983,69 @@ When the view returns, the worker compares the pending line with the current rec
 
 One calm pending slip does not measure how long the library can operate this way, how many requests arrive, or whether the view will return. It also does not explain the outage. Availability work at this level is the safe next action during the gap, not a capacity study.
 
+
+### 7.4 Define exactly what "pending" commits to
+
+A **booking** and a **request to consider a booking** are separate records of intent. The pending slip in this lesson is a local continuity aid: it records that someone *asked*, not that the library *accepted*. The distinction matters even when the person at the desk is polite and optimistic. Saying "I have written it down" is defensible; saying "You have Room 2" asserts an allocation that the worker has not checked or been authorized to create. An old paper schedule cannot turn one into the other.
+
+In this classroom, use a deliberately small state vocabulary:
+
+| State label | Evidence needed | What the worker can say | What cannot be inferred |
+|---|---|---|---|
+| **Not confirmed / pending** | A request was heard and written with its time, room and requested start | "I have recorded your request, but the room is not confirmed." | No reservation has been approved merely because the request exists |
+| **Current source checked, outcome unknown** | A proposed check is scheduled or started, but no reliable result has been supplied | "We still need the result of an approved current check." | Do not convert an action plan into a completed observation |
+| **Slot shown occupied** (conditional teaching branch) | An authorized, sufficiently current source is checked and records a conflicting booking | "That slot is already booked." | Neither the prior request nor the check reveals who booked it |
+| **Slot appears available** (conditional teaching branch) | An authorized, sufficiently current source has no relevant conflict within its verified scope | "The checked record has no conflict for that slot." | No new reservation exists until the owner-approved creation/confirmation procedure succeeds |
+| **Confirmed** (not reached in this chapter) | Both the source/eligibility checks and the service owner's required booking decision and confirmation evidence | Only then could a worker communicate a confirmed allocation under the approved rule | Neither the exercise nor a paper slip supplies such a receipt |
+
+"Current source checked" and "confirmed" are not synonymous. The hypothetical no-conflict row is deliberately weaker than a booking: availability is one possible **precondition** for confirmation, never proof of the confirmation step. This chapter does not invent an authorized booking button, ownership matrix or reservation receipt. In a real procedure those must be verified with the service owner.
+
+This is an example of a **fail-safe decision default**: when required evidence is absent, retain the noncommittal state rather than claiming success. A pending queue maintains a useful front-desk function without misrepresenting the unavailable booking view. The [NIST Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29) separates protection, response, recovery and other risk-management outcomes; it does not prescribe this fictional queue or authorize Harbor Library staff to make reservations. The design is a teaching procedure with a clearly limited decision right.
+
+### 7.5 Four clocks must not become one event
+
+The two fictional outages occur on different days. In the first, the provided 09:00 fixed sheet precedes a 10:05 booking and an 11:42 request during an 11:30–11:50 interruption. **The next morning**, a new outage is described from 09:10 to 09:25; a visitor asks at 09:12 for a 15:00 slot *that day*. The 09:00 paper in the drawer is from **the earlier day**. A familiar time-of-day printed on a different day's artifact is not a fresh source.
+
+| Time reference | What the teaching case supplies | Proper interpretation |
+|---|---|---|
+| Previous day's 09:00 | Fixed paper snapshot in the drawer | Historical context from the earlier day; it does not certify today's schedule |
+| Next morning 09:10–09:25 | Described window in which the front-desk view fails again | Availability boundary for the fictional view, **not** evidence of a shared cause |
+| Next morning 09:12 | Visitor's question is heard and the pending entry is made | The request's recorded **intake time**, not a reservation creation time |
+| Next morning 15:00 | Room/start requested by the visitor | A **future requested slot**, not an observation or approval made at 15:00 |
+| After the view returns | A current-source review **should** occur before any new promise | No read result, confirmed booking or completed reconciliation receipt has been supplied |
+
+A useful log keeps **when the request was heard**, **what source was available as of what date and time**, **when a decision was taken**, and **what evidence later justified a changed status** in separate fields when those facts exist. The compact four-field slip records only the intake essentials; the later reconciliation record, *if made under an approved procedure*, would carry the check's source, scope and time. Do not backfill a successful check into the 09:12 note. Do not infer the current booking's creation time from its requested 15:00 start.
+
+One can calculate that the described second outage window spans 15 minutes. That arithmetic is **not** a measured recovery objective, uptime guarantee, full-service disruption time, cause analysis or evidence that the booking state was immediately synchronized at 09:25. The chapter supplies neither a recovery-time target nor a measurement system. The uncertainty to resolve is source authority and freshness at the moment of an actual booking decision.
+
+### 7.6 Worked reconciliation with competing possible outcomes
+
+**Phase A — during the outage.** At 09:12, in the second day's fictional scenario, the worker writes only:
+
+| Heard | Room | Requested start | State |
+|---|---|---|---|
+| 09:12 | Room 2 | 15:00 today | not confirmed |
+
+This row is an **intake artifact**, not evidence that a second booking exists. It contains no resident name, telephone number or fabricated booking identifier. The worker's spoken statement is: "I have noted the Room 2 request for 15:00 today. It is **not confirmed** until the approved schedule and booking procedure are checked." This both helps the visitor and leaves the claim testable. It is stronger than "probably fine" and more informative than "I can do nothing."
+
+**Phase B — the view is reported available again.** Restoration of a screen does not, by itself, establish that its content is approved and current. The owner should define the authoritative source, the date/room/start comparison, any update delays, who may create a reservation, and what constitutes a confirmation receipt. In this exercise these checks are **required follow-up questions**, not observed technical events.
+
+**Phase C — two explicitly hypothetical branches.** In branch **occupied**, assume an owner-approved current check finds a confirmed booking for Room 2 at 15:00 on the second day. The worker reports only "that slot is booked," preserves the original 09:12 pending request as a historical request record, and follows the owner's disposition process. No occupant name is necessary. In branch **no conflict shown**, assume the approved check finds no booking in its verified scope. The worker still must not tell the visitor "you have it": a separate authorized creation and confirmation step is needed, and its result is **not supplied**. Both branches are instructional conditional examples, not additional case cards or claims about what actually happened.
+
+A careless reconciliation might silently erase the pending line after a screen comes back, leaving no record of what was promised or refused. A second error is to submit the same unconfirmed request repeatedly until some screen shows success. The exercise contains no request ID or idempotency contract, so there is no basis to claim duplicate suppression or exactly-once booking. Two requests for the same room/start also cannot automatically be collapsed into one person's request: no identity or cross-reference evidence is provided. Preserve the minimal queue and give unresolved conflicts to the owner under the approved process.
+
+### 7.7 Distinguish continuity evidence from availability claims
+
+The fact that a person can collect requests shows a **limited manual continuity function**; it does not prove that the online booking service or all library operations are available. The fact that a view returns later does not prove that previously submitted reservations were synchronized. Similarly, a pending slip is useful but does not establish capacity, staff coverage, queue safety, the duration for which the fallback remains usable, or the cause of either interruption. Those would need explicit evidence and, in a real institution, testing with its owners.
+
+An evaluator can test this process safely with the invented slips without accessing production. Give one learner the role of worker, another the source steward, and a third a fictional visitor. Hide the hypothetical current-state card from the worker until the owner explicitly "releases" it. Check whether the worker keeps the intake state unconfirmed, distinguishes previous-day paper from current information, and avoids sharing an identity. Release one of the two conditional cards only after the worker names the required checks; record the proposed disposition **without pretending to execute a booking**.
+
+A falsifier for the lesson's claimed success is simple: if the worker says "confirmed" before a checked current source *and* the separately approved confirmation step, the procedure has failed the learning objective—even if a later record happens to show the room free. The matching later outcome cannot retroactively authorize the earlier promise.
+
+### 7.8 Independent practice: reconcile without inventing a receipt
+
+Before consulting the appendix for **EX023**, reproduce the four-field 09:12 slip. Beside it, write a two-row decision matrix for **occupied** and **no conflict shown** as *hypothetical later findings*. For each row name (1) the necessary owner-approved source check, (2) the narrow spoken response, and (3) what remains unconfirmed. Finish with one sentence explaining why the previous day's 09:00 paper and the new outage's end time at 09:25 cannot independently confirm a booking. These are offline reasoning artifacts, not a live-system test or an instruction to collect personal data.
+
 ### Chapter 7 summary
 
 A down page removes one way to see bookings. It does not authorize memory, yesterday's paper, or a verbal yes. A pending line with room, time and "not confirmed" keeps the service honest until a current source exists.
@@ -997,6 +1060,10 @@ A down page removes one way to see bookings. It does not authorize memory, yeste
 - **Task:** Fill the four pending fields and state why yesterday's paper is the wrong source.
 - **Expected evidence:** The four fields and one exclusion.
 - **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
+
+- **Independent extension:** After the four-field entry, distinguish intake time (09:12), the requested slot (15:00), the previous day's 09:00 snapshot, and the described 09:10–09:25 outage. Then write one conditional response for a later **occupied** result and one for a later **no-conflict** result, both subject to owner-approved checks. No branch is a confirmed booking in the supplied story.
+- **Extended rubric:** A strong answer preserves a pending record, separates request from confirmation, names the necessary current-source/authority check, and never invents an actual read, an online booking, a resident identity or a completed reconciliation.
+- **Check your result:** [EX023 worked answer](#answer-ex023).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 20
@@ -1040,6 +1107,63 @@ The useful decision is procedural. Keep the pending rule, stop pencil edits, and
 
 A later, more technical course can examine a software flaw when it has an authorized program, a controlled input and an observed result. This rapid lesson stops before that. If a classmate writes "critical vulnerability, score 9.1" on the dossier from Chapter 4, the number is the false precision Chapter 4 already rejected, and the noun is the wrong class. The dossier stays a record of four synthetic verdicts.
 
+
+### 8.4 A careful definition: a procedure can be a vulnerability, but evidence still matters
+
+There is an important technical distinction within the [NIST vulnerability glossary](https://csrc.nist.gov/glossary/term/vulnerability): vulnerabilities are **not limited to bugs in software**. Weaknesses in system security procedures, internal controls, or implementations can also qualify when they could be exploited or accidentally triggered by a threat source. In other words, "it is a procedure, therefore it cannot be a vulnerability" would be incorrect. The defensible claim about Harbor Library is narrower: this **specific fictional exercise has not established an exploitable or triggerable failure in a verified real procedure**.
+
+A security claim should say *what is weak*, *what event or actor could trigger it*, *what unauthorized or harmful outcome could follow*, and *what evidence connects the steps*. Neither actual attacker exploitation nor a real breach is necessary for all vulnerability analysis; an authorized, repeatable demonstration of a relevant defect under clear preconditions may support a vulnerability finding. However, a classroom model of a possible mistake, with no verified operational process and no reproducible security effect in an in-scope system, supports a **procedural weakness / potential risk scenario**, not an established product flaw or actual incident.
+
+The [NIST threat-source glossary](https://csrc.nist.gov/glossary/term/threat_source) includes circumstances that might *accidentally* trigger a weakness; threat source does not always mean a malicious hacker. Here a staff member relying on a stale page is a possible human-error trigger. That possibility still needs a defensible link to a consequence before claims about impact or severity. Do not equate "a condition could cause harm" with "someone caused harm."
+
+### 8.5 Evidence ladder: observation, hypothesis, finding, incident
+
+Use each label for what the available evidence earns. The ladder is not a mandatory NIST workflow; it is a classroom method for preventing conclusion inflation.
+
+| Label | Minimum justified statement | What remains to be established |
+|---|---|---|
+| **Supplied observation** | In the synthetic fixture, the 09:00 page does not contain SYN-002, created at 10:05. The view is described as unavailable for a bounded interval. | No real application was inspected and no real actor was observed |
+| **Procedural weakness** | A worker who treats an old paper as current **could** make an unsupported booking decision | Whether this is the real organization's approved procedure and whether the bad decision occurs |
+| **Risk scenario / hypothesis** | **If** the worker confirms from a stale sheet **and if** later booking state conflicts, a duplicate allocation or miscommunication **might** result | The trigger frequency, real controls, actual impact and likelihood |
+| **Potential procedural vulnerability** | A defined control or operating rule **might** be triggerable under the specified conditions | Verified authority/scope, relevant weakness mechanism, reproducible check and credible security consequence |
+| **Established vulnerability in an assessed scope** (not achieved here) | A sufficiently evidenced, in-scope weakness can be exploited or triggered, with a bounded impact rationale | Further contextual risk characterization, owners' assessment and any necessary remediation validation |
+| **Security incident** (not established here) | An actual event meets applicable response criteria under authorized assessment | Event records, affected scope, organizational decision and the cause if known; the cause may remain uncertain |
+
+An incident may be recognized on evidence of harmful events **without attributing them to an attacker**. Conversely, an outage is not automatically a security incident simply because it is inconvenient; one must apply the organization's incident criteria to the available evidence. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) positions response within cybersecurity risk management but does not decide whether Harbor Library's fictional interruption qualifies. The narrative supplies no verified owner classification or real-system telemetry.
+
+### 8.6 Worked counterfactuals: identify the missing causal link
+
+Start with the statement "The 09:00 sheet omitted a booking entered at 10:05." That is a **synthetic fact** under the fixed-snapshot assumption. Now compare five conclusions:
+
+1. **Supported:** "A static 09:00 copy cannot show changes made at 10:05." The copy's timestamp and the row's creation time support this narrow claim.
+2. **Reasonable hazard hypothesis:** "If someone uses that copy as a complete current source, they might promise a slot already booked later." The **if** clauses are essential. The fixture demonstrates a route to an incorrect decision, not a record of actual harm.
+3. **Conditional process-vulnerability claim:** "If Harbor Library's approved production procedure actually permits unverified confirmation from stale copies, that control gap could be triggered by an outage and cause conflicts." This specifies a mechanism worth investigating but does **not** establish the premise for a real library.
+4. **Unsupported technical cause:** "Attackers exploited a bug to bring down the booking site at 11:30." No bug, execution, attacker, diagnostic log or causal chain has been supplied. A described service interruption does not fill those gaps.
+5. **Unsupported impact and priority:** "This was a critical, exploited vulnerability causing twelve bad reservations." Neither twelve affected bookings nor any severity analysis appears in this course. Chapter 4's offline verdict count cannot be promoted to affected people, incidents, or a numeric vulnerability score.
+
+**Worked review of the original EX024 sentence.** "The 11:30 outage was an incident caused by a critical vulnerability in the booking site" incorrectly asserts **classification**, **cause**, **criticality** and **site defect** as facts. An appropriate replacement distinguishes (a) the described outage and fixed-paper timing, (b) the procedural confirmation weakness modeled with synthetic records, and (c) the unproved presence of a software vulnerability, attack or owner-declared incident. This correction does not suggest the weakness is harmless; it keeps the investigation decision honest.
+
+### 8.7 What would an authorized vulnerability assessment require?
+
+An assessment of a *real* procedure cannot be inferred from this fictional ledger. A future, separately authorized review would need a bounded plan with all of the following:
+
+- **Asset and rule:** A named service or process, its actual authorized fallback source and the owner-approved decision rule. Without this, "weak" may simply mean "different from the student's invented policy."
+- **Trigger and preconditions:** The exact circumstances under which the source becomes stale or unavailable, whether workers can still issue a confirmation, and which permissions they actually have.
+- **Observable control behavior:** A reviewed design, a controlled and permitted test with synthetic data, or appropriately obtained historical records showing whether a wrong confirmation can occur. Distinguish an *attempted* confirmation from a committed reservation and from a communicated promise.
+- **Competing explanations and negative control:** Repeat the same decision with a verified current source or a correctly applied pending rule; check whether the alleged failure disappears. A script result alone cannot establish what workers do in production.
+- **Impact and confidence:** A credible security or service consequence under the owner's criteria, who could be affected, what is unknown, and what independent evidence would refute the mechanism. No unverified quantities or severity scores.
+- **Decision authority:** A designated owner reviews the evidence and determines the bounded finding, severity and remediation. A learner has neither permission nor evidence to scan or modify the live service to settle the question.
+
+The test's **falsifier** must be written before its result is known. For example, if an authorized controlled exercise shows that the approved procedure always holds post-snapshot requests pending until an owner-checked current source and separately authorized confirmation, the hypothesis that the procedure *allows* unverified confirmation is not supported by that test. One controlled success is not proof that all shifts, channels or future failures behave that way. Conversely, a repeated failure in a verified in-scope procedure might support a process vulnerability without any malware or malicious actor.
+
+This is a hypothetical evidence plan, **not authorization to perform a test**. Chapter 2's scope restriction still applies: do not visit or probe real booking systems, collect resident data, run payloads or claim a technical assessment happened.
+
+### 8.8 Independent evidence test and safer finding note
+
+Using only Chapters 1–7, make a four-row matrix with columns **claim**, **evidence supplied**, **missing verification** and **safe decision**. Include: the old paper's missing row; a worker's possible unsupported confirmation; the described 11:30 outage; and an asserted "critical" site flaw. For each, find the first unsupported leap. Then write the three-sentence correction requested by **EX024** and check it against the following rubric: sentence 1 contains only actual synthetic observations and their time basis; sentence 2 names the procedural weakness conditionally; sentence 3 explicitly withholds the stronger cause, vulnerability, incident and severity claims.
+
+An appropriate short finding note is: "This fictional exercise suggests a risk from relying on a fixed paper snapshot after later bookings exist. The student can test whether the pending rule prevents a wrong **proposed** confirmation under the supplied fixture; no production process or harmful outcome was verified. Before any organizational finding, the owner would have to verify the real procedure, trigger, effect and authorization." That is an assessment of **teaching evidence**, not a deployed vulnerability disclosure, incident report or grading of a real library.
+
 ### Chapter 8 summary
 
 Harbor Library's exercise shows a stale procedure and the harm that procedure can cause inside the story: a wrong confirmation, a disclosure, or a ruined snapshot. It does not show an exploitable product flaw or an attack. Use the smaller word until the evidence grows.
@@ -1054,6 +1178,10 @@ Harbor Library's exercise shows a stale procedure and the harm that procedure ca
 - **Task:** Replace the note with three sentences: what was observed, what class of problem the exercise supports, and which stronger claim remains unproven.
 - **Expected evidence:** Three sentences a reader can check against the book.
 - **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
+
+- **Independent extension:** In an evidence matrix, identify the exact trigger, possible harm, verification still needed, and a falsifier for the **hypothesis** that staff can wrongly confirm from stale paper. Explain why a procedural vulnerability could in principle exist without a software bug but has not been proven in this case.
+- **Extended rubric:** Full reasoning must distinguish observed synthetic data, a procedural weakness, a potential triggerable vulnerability, and an actual incident or severity assessment. An unsupported CVSS number, attacker, bug, affected-person count or real-world test fails the task.
+- **Check your result:** [EX024 worked answer](#answer-ex024).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 20
@@ -1902,13 +2030,30 @@ The pencil mark replaces the 09:00 snapshot with a new, unauthorized line, so th
 
 The correct alternative preserves the changed sheet as **altered**, records the 15:00 request as **not confirmed**, and asks for a separate owner-approved later source with verified time, origin, completeness and relevant row. Even a valid later sheet showing SYN-002 as booked does not license giving that slot away. The pencil may coincide with a true later fact, but coincidence does not make it part of the original snapshot. This exercise does not prove malicious conduct or the cause of a real outage.
 
+<a id="answer-ex023"></a>
 ### EX023 — Worked result
 
 Heard 09:12; room Room 2; start 15:00; state not confirmed. Yesterday's 09:00 paper is a different snapshot, so it cannot show whether today's 15:00 is free. No resident name belongs on the slip, and the outage cause is not part of the entry.
 
+
+**Worked temporal and reconciliation extension (EX023).** The 09:12 entry records when the visitor **asked** on the second morning; 15:00 is the requested future start. The paper in the drawer belongs to the **previous day** at 09:00, and the second day's described 09:10–09:25 view interruption does not prove that the restored screen is authoritative, synchronized or already checked. The record therefore stays **not confirmed**. In a hypothetical **occupied** branch, *after* an owner-approved sufficiently current check, the response is "Room 2 at 15:00 is booked"; this communicates no resident identity and does not pretend the visitor has a reservation. In a hypothetical **no-conflict** branch, the worker may say only that no conflict was found in the approved checked source; creating or confirming a reservation would require a **separate authorized step and evidence** that the book does not supply. Neither outcome is a received case fact. Keep the pending entry's limited history and refer unresolved questions rather than silently deleting or resubmitting it. **Falsifier:** any answer that says "confirmed" on the strength of a slip, an expired paper or merely the page's return has failed the exercise even if the room later proves free.
+
+<a id="answer-ex024"></a>
 ### EX024 — Worked result
 
 The exercise observed a 09:00 paper that omitted a later synthetic booking, and a booking view that was described as unavailable, with no tested cause. The supported class is a weak confirmation procedure. A software vulnerability, an attack, and an incident are unproven: no program flaw was demonstrated, and no owner declared an incident.
+
+
+**Worked evidence matrix and causal boundary (EX024).**
+
+| Claim | Evidence actually supplied | Gap / negative control | Safe judgment |
+|---|---|---|---|
+| The fixed 09:00 paper omitted a 10:05 booking | The synthetic timeline includes SYN-002, created after printing | No real reservation store was inspected | Supported **only for the classroom fixture** |
+| A worker might make a wrong promise from that paper | Hypothetical use of the old snapshot during an interruption | No verified live procedure, worker action or authorized confirmation receipt | Procedural weakness and plausible risk hypothesis |
+| The 11:30 view outage happened | The fictional narrative describes a limited front-desk outage | No diagnostic data, linked cause or owner incident classification | Described service unavailability; cause and security classification open |
+| A critical site vulnerability caused an attack | No source, exploited weakness, product test or severity method supplied | Would need authorized scope, trigger/impact evidence, negative controls and owner review | Unsupported as fact |
+
+A process **can** be vulnerable under NIST terminology if a verified deficiency can be exploited or triggered with a security-relevant effect; a software defect or observed attacker is **not** a prerequisite for every such finding. What is absent here is evidence that the real process permits the failure and evidence linking it to a real security effect. A proper falsifier is an owner-approved controlled comparison showing that a current-source check and pending rule prevent unsupported confirmation under the same synthetic timing. A single test does not certify all future workflows. The classroom does not establish an incident, rate severity or measure how many people were harmed. The three-sentence core answer above remains valid; this table explains why each stronger noun would require additional proof.
 
 ### EX025 — Worked result
 
