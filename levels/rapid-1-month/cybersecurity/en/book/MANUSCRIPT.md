@@ -766,6 +766,50 @@ The second row reuses the stale-paper rule from Chapter 4. The new point is the 
 
 It does not decide that every library must hide reservation names, or that a name is always sensitive. A library could have a posted public program that lists a speaker's name because that person agreed to be listed. Harbor Library's booking exercise has no such agreement and no name field. Staff who need a name for a safety reason ask the owner and record why. They do not borrow a name from the announcement contacts, which Chapter 3 left outside the booking path.
 
+
+### 5.4 Two independent gates: evidence and disclosure authority
+
+A statement can be **true but inappropriate to disclose**, and a statement can be **permitted in principle but unsupported by the available record**. The evidence gate asks whether the claim follows from the available, sufficiently current source. The disclosure gate asks whether this audience, purpose and channel are authorized to receive that category of information. Passing one gate never substitutes for the other. A booking identifier, a slot state and a resident identity are different information categories, even if a later system could connect them.
+
+For the fictional desk interaction, use this sequence:
+
+1. **Identify the question that needs a decision.** A resident asking whether a room can be used needs a slot-state answer. “Who is in that room?” requests a different fact about another person.
+2. **Specify the exact claim before speaking.** “Room 2 at 14:00 is booked” does not contain the same assertion as “A named resident booked Room 2.” Do not blend them into an apparently helpful sentence.
+3. **List the evidence actually available to the worker.** At 09:00, the fixed synthetic sheet can represent SYN-001, created at 08:20. A front-desk worker facing the stated 11:30–11:50 outage must not pretend to have queried an unavailable live view. The instructor may know more from the full teaching fixture than the role-playing worker knows at the desk.
+4. **Apply the scenario's disclosure scope.** The exercise permits a necessary room-state reply. It does not supply identity data, authorization to use event-announcement contacts, consent to identify a resident, or a customer-verification process. In a real library these limits must be confirmed with the responsible owner rather than guessed from a job title.
+5. **Use the minimum supported response.** Say the supported slot state without reading out internal booking IDs. If freshness is insufficient, state that the request cannot be confirmed yet and follow the pending procedure rather than pretending the paper is current.
+6. **Record and refer exceptions.** Route an identity-specific or staff-only request to the authorized service or data owner. Referral is not evidence that the asker is suspicious, and it is not an approval to release the data.
+
+This is an applied least-disclosure practice, not a universal claim that all room schedules are secret. The [NIST CSF 2.0, PR.AA-05 and PR.DS](https://doi.org/10.6028/NIST.CSWP.29) describe organizational outcomes concerning authorization and data protection. They do **not** prescribe Harbor Library's fictional spoken reply, prove a local law applies, or certify this classroom procedure. Authorization comes from the defined case scope, subject to an owner-approved rule in a real service.
+
+### 5.5 Worked claim ledger: what can the sentence actually prove?
+
+| Proposed sentence | Evidence in the exercise | What the speaker may conclude | Boundary to retain |
+|---|---|---|---|
+| “Room 2 at 14:00 is booked.” | SYN-001 is confirmed and predates the 09:00 sheet | The recorded 14:00 slot is taken in the stipulated snapshot | Answer with the room state; omit a person's identity |
+| “Resident A made the 14:00 booking.” | No person field or verified identifier mapping is provided | Nothing about a particular resident | Do not infer a name from an event list or from SYN-001 |
+| “The full synthetic fixture contains a later 15:00 booking.” | SYN-002 is confirmed, created at 10:05 | True of the instructor's supplied fixture | Does not show that the desk worker consulted a live record |
+| “The 09:00 printout proves 15:00 is free.” | SYN-002 arose after the fixed printout | Unsupported: the copy is too old to exclude later entries | Do not promise the room; keep the request pending |
+| “Nobody has booked anything else.” | Only a bounded room/time example is supplied | Unsupported global absence claim | Do not generalize from one sheet or one missing row |
+
+**Worked interaction A — an identity question.** The resident says, “Who has Room 2 at 14:00?” The worker's reply is: “Room 2 at 14:00 is already booked. This record does not identify the person, so I cannot say who.” The first sentence conveys the operational state the exercise permits. The second prevents a fictional identity being created from an internal row ID. It does not imply the worker has searched every possible system for identity data.
+
+**Worked interaction B — an availability question during the outage.** At 11:42 a resident asks to use Room 2 at 15:00. The stipulated full fixture contains the confirmed 10:05 booking SYN-002, but the desk's 09:00 paper is stale. The worker says: “I cannot confirm availability from this 09:00 paper. I can record your request as pending until an approved current source is checked.” The response is not a vague refusal: it names the source limitation and a next step. It neither promises that the room is free nor pretends the worker has live access.
+
+The two sentences illustrate why **the author's omniscient case narrative is not a participant's authenticated observation**. An analyst studying the full fixture may correctly say that SYN-002 exists in that fixture; the fictional worker may not silently borrow an unavailable source to certify a transaction. The same reasoning prevents misleading statements even when no personal information is involved.
+
+### 5.6 Why correct facts may still be the wrong reply
+
+Consider three different audiences. A visiting resident may need the room state; the example grants no reason to receive another resident's identity. A staff lead may have a legitimate operational need to investigate a booking, but the case does not define an identity-access policy or audit trail for that investigation: refer it to the owner rather than assume managerial title equals blanket access. A hypothetical publicly advertised event may list a consenting speaker, but a published event name does not establish who owns this unrelated synthetic room booking. The announcement-contact data are outside the booking-decision path, as Chapter 3 established.
+
+If a caller says “I booked it myself,” that assertion alone does not authenticate the caller or authorize disclosure. This chapter gives no account-validation procedure. The worker should not demand real identity documents as part of the offline exercise or improvise an identity lookup. If the source is insufficient even for slot state, do not offer false reassurance through softer wording such as “probably available.” Uncertainty is not permission to guess.
+
+Avoid the opposite failure as well: “I cannot say anything” withholds the room-state answer even when the permitted source supports it. A proportionate reply combines **useful operational information**, **restricted disclosure**, and **the current limit of evidence**. The data-minimizing reply is the one that meets the legitimate task with no unnecessary fields, not necessarily the shortest possible sentence.
+
+### 5.7 Independent decision rehearsal
+
+Before reading EX021's worked result, draft two spoken replies: one for the 14:00 identity request, and another for the 15:00 request made during the 11:42 outage. Under each, make a brief three-column ledger: **claim**, **source and cutoff**, **reason for disclosure or withholding**. Test the reply against these negative controls: does it invent a person from SYN-001, reveal an internal ID without purpose, or treat the absence of SYN-002 on an old sheet as proof that 15:00 is unbooked? A sound decision survives all three. State explicitly that these are synthetic records and no real permission scheme or application was tested.
+
 ### Chapter 5 summary
 
 A true booking state can be shared when it answers the asker's own question. A person's identity is a different disclosure. This exercise has no names to give, and inventing one is not customer service.
@@ -780,6 +824,9 @@ A true booking state can be shared when it answers the asker's own question. A p
 - **Task:** Write the reply you would say, and name the fact you deliberately leave out.
 - **Expected evidence:** One spoken reply and one withheld item.
 - **Rubric:** Credit if the slot is described as booked and no person is named or invented.
+
+- **Independent extension:** For the 14:00 answer, label the source and timestamp, the authorized slot-state claim, and the unsupported identity claim. Contrast the answer with one 15:00 availability sentence at 11:42 using only the stale front-desk paper.
+- **Extended assessment:** The 15:00 sentence must not turn a missing row into a free-room decision or pretend that the offline exercise inspected a live system. The original reply plus withheld item remain the core graded artifacts.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 20
@@ -821,6 +868,60 @@ The third row is the lesson. Good intent does not restore integrity. If the owne
 
 This chapter does not claim that Harbor Library forbids all handwritten schedules. A designed offline form, with a time, an author and a check, can be an authorized copy. An anonymous pencil mark on yesterday's printout is not that form. The exercise also does not show that anyone at Harbor Library did this. It is a mistake to practice against, using the synthetic sheet only.
 
+
+### 6.4 Three dimensions of integrity, not one convenient match
+
+A document can be historically accurate yet stale for a current decision. Conversely, a handwritten alteration can happen to match a later database row and still lack authority or provenance. Analyze three questions separately:
+
+- **Historical snapshot:** What did the 09:00 paper actually contain when produced? The synthetic exercise says it contained SYN-001 but could not contain SYN-002, created at 10:05. A later pencil line is not evidence that the line existed at printing time.
+- **Current state:** Which reservations exist when a worker needs a decision? The teaching fixture includes SYN-002, but the front-desk view is unavailable in the role-play. The old paper cannot exclude later bookings.
+- **Authorized change:** Which approved actor or process issued a replacement, from what source, at what time, with what scope and checks? A volunteer's statement that the sheet “matches the table” does not establish any of those facts.
+
+This is a **provenance** problem: the marked sheet now combines claims from two times of knowledge without a documented boundary. Another reader may mistakenly treat the new handwriting as original 09:00 output. That does not prove sabotage, an attacker, a real outage cause or destruction of all possible historical copies. No independent original photograph or archival copy is supplied; the marked object by itself is no longer an unchanged reference.
+
+The [NIST SP 800-53 Rev. 5, SI-7](https://doi.org/10.6028/NIST.SP.800-53r5) discusses detection of unauthorized modifications to information. The [NIST CSF 2.0 data-security outcomes](https://doi.org/10.6028/NIST.CSWP.29) concern information protection according to organizational risk. Those primary references help explain *why* integrity and authorized modification matter; they do not establish a Harbor Library requirement to use cryptographic hashes, prove a control was implemented, or turn a fictional pencil into an observed incident.
+
+### 6.5 Three artifacts that must not be merged
+
+| Artifact | Status and time basis | Legitimate use in this exercise | What it cannot establish |
+|---|---|---|---|
+| A: original 09:00 snapshot | Fixed paper record in the supplied case | Explain what the printout knew at 09:00 | Whether a later booking exists |
+| B: a separate pending request line | Written for the 11:42 request with Room 2, 15:00, “not confirmed” | Carry an unconfirmed request until review | That a new reservation was accepted |
+| C: the proposed 11:40 offline schedule | An owner **reported** a later authorized copy in Chapter 3; it has not yet been checked here | Candidate replacement after owner and content verification | That a verified replacement is already available |
+
+Writing SYN-002 on A neither creates C nor converts B into a booking. Relabeling the old sheet “11:40” is equally misleading because it replaces a source claim instead of obtaining that source. A real organization may have a controlled manual-correction form with a writer, time, reason, independent approval and version history. This course does **not** establish that Harbor Library has one. The correct question is what the owner-approved process requires, not whether any handwriting must always be forbidden.
+
+**Worked reconstruction.** The original paper contains SYN-001. Later, the supplied synthetic table contains SYN-002. During the 11:30–11:50 outage, the volunteer pencils a SYN-002 line onto the 09:00 sheet and says it is now up to date. This may reproduce one correct value from the teaching fixture, but it destroys the marked paper's reliability **as an unaltered 09:00 snapshot**. No approved issuance time, completeness check, source record, or reviewer was added by the pencil. The fact that a later entry exists does not authorize rewriting what an earlier artifact said.
+
+Instead, preserve and label the changed exercise sheet as altered; do not silently erase or disguise the pencil, and do not invent a pristine copy. Record the 15:00 request separately as pending and obtain a new source only through the owner's procedure. This protects the history while permitting service continuity without a fabricated authorization.
+
+### 6.6 A conditional gate for the reported 11:40 copy
+
+Chapter 3 introduced an owner's **report** that a new 11:40 schedule may exist. Before replacing the decision basis, make the following checks explicit:
+
+1. **Authority:** Has the responsible owner identified the offline schedule as an approved source for front-desk decisions? A volunteer's assurance or a penciled timestamp is not enough.
+2. **Provenance:** Is this a separate 11:40 copy from the stated issuer, rather than the altered 09:00 sheet? Preserve the older artifact and the claimed origin separately.
+3. **Relevant row:** Does the purported later schedule contain SYN-002, Room 2, 15:00, with an interpretable status? A matching ID alone cannot establish everything about availability.
+4. **Currency and completeness:** Does its generation and update method support the 10:05 change and the requested decision time? The printed number 11:40 is a claim to check, not independent proof of a complete feed.
+5. **Permitted decision:** If the owner accepts the source, what may the worker do with the verified occupied slot? Recognizing an existing booking is not authorization to give it away, identify its holder or alter it.
+6. **Failure branch:** If the source, its authority or the relevant state remains uncertain, keep the request pending and escalate. Do not change the test fixture merely to obtain an ALLOW verdict.
+
+**Conditional worked outcomes (not received case evidence).** In branch A, the owner approves the use of a separate 11:40 sheet and a bounded rehearsal confirms it includes SYN-002 as booked. The worker can avoid confirming that occupied slot for somebody else. In branch B, the source cannot be verified, or the relevant row is uncertain. The worker keeps the request pending. Neither hypothetical branch should be described as an actual check performed at Harbor Library.
+
+### 6.7 A valid test does not edit its baseline to pass
+
+The Chapter 4 offline script evaluates a rule using the stipulated PRINTOUT and synthetic bookings. It is a bounded classifier, **not a booking engine** and not proof of who is permitted to change a reservation. If the learner changes PRINTOUT to a later time, deletes SYN-002 or changes the action to obtain ALLOW, the learner is evaluating a **different input**; the original REFUSE decision was not disproved.
+
+An honest negative control preserves the initial fixture, labels a **separate hypothetical variant**, changes exactly one assumption, predicts the new classification and explains which claim that output supports. For example, one might compare the fixed 09:00 paper with a separately verified current source in an imagined follow-up. The new branch may yield a different outcome, but it cannot retroactively turn an unapproved pencil line into an authorized source. Likewise, a program output does not certify a room as free or authorize a real booking.
+
+### 6.8 Worked handoff: observation, inference, decision and open evidence
+
+A defensible classroom note would read:
+
+> “At the 11:42 simulated checkpoint, the supplied 09:00 schedule did not contain SYN-002. A volunteer's penciled SYN-002 line changed that paper after printing, so we label the sheet altered and cannot treat it alone as an unchanged 09:00 snapshot. The proposed 11:40 replacement has not been checked. The Room 2 / 15:00 request remains not confirmed pending an owner-approved current source.”
+
+The **observation** is the mark; the **inference** is the resulting loss of pristine-snapshot provenance; the **decision** is to withhold confirmation; and the **next evidence** is an appropriately verified replacement. This note does not allege intent, identify a patron, invent an owner approval or convert an unseen later record into a fact. The success criterion is a traceable decision history, not a tidier-looking piece of paper.
+
 ### Chapter 6 summary
 
 Changing a snapshot so that a rule would have allowed the action destroys the evidence the rule needed. Pending, or a checked later copy, keeps the history. A pencil mark does not.
@@ -835,6 +936,9 @@ Changing a snapshot so that a rule would have allowed the action destroys the ev
 - **Task:** Say what the pencil mark did to the 09:00 record, whether confirmation is now allowed, and what you would keep instead.
 - **Expected evidence:** Three judgments.
 - **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
+
+- **Independent extension:** Make a three-row provenance note comparing the 09:00 original, the penciled alteration, and the **reported but unverified** 11:40 replacement. Identify what each can establish and which owner check is missing.
+- **Extended assessment:** Credit requires historical-vs-current state separation, a pending request rather than confirmation, and a conditional verification step for any replacement. The alteration cannot be redescribed as a validated 11:40 printout.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 20
@@ -1780,9 +1884,23 @@ One acceptable note: The exercise classified four synthetic actions against a 09
 
 Say: "Room 2 at 14:00 is already booked. This sheet does not say who, and I will not guess." Leave out any person's name. `SYN-001` identifies a synthetic booking, not a resident, so reading the id aloud is also unnecessary for the asker's question.
 
+
+**Expanded worked reasoning (EX021).** The slot-state statement passes the evidence gate because SYN-001 is confirmed and predates the 09:00 printout; a person-specific claim fails because no identity or permission is supplied. The short spoken reply in the model answer shares the slot state without revealing even an unnecessary internal ID. For a different request, “May I have Room 2 at 15:00?” at 11:42, a properly bounded response is: “I cannot confirm that from the 09:00 sheet; I can record your request as pending until an approved current source is checked.” The instructor can see SYN-002 in the synthetic full table but the simulated desk worker cannot claim that the unavailable live view was read. Reject “the missing paper row proves the room free,” and reject inferring a resident's name from a booking ID or announcement list. An equivalent reply earns credit when the source, permission and uncertainty boundaries are intact.
+
 ### EX022 — Worked result
 
 The pencil mark replaces the 09:00 snapshot with a new, unauthorized line, so the sheet can no longer show what was printed. Confirmation on that altered sheet is still not allowed. Keep the request pending, or wait for a later copy whose time and author the owner can check. Do not treat the pencil as that copy.
+
+
+**Expanded worked provenance note (EX022).**
+
+| Record | Supplied status | Supported claim | Unsupported leap |
+|---|---|---|---|
+| Original 09:00 snapshot | Fixed, SYN-001 only | The stipulated state of that historical copy | No later booking could exist |
+| Pencil addition | Volunteer wrote SYN-002 during the simulated outage | The sheet was changed after printing | The owner issued an authorized new schedule |
+| Reported 11:40 source | Potential later copy described by the owner; not checked here | A verification question exists | The checked replacement is already in hand |
+
+The correct alternative preserves the changed sheet as **altered**, records the 15:00 request as **not confirmed**, and asks for a separate owner-approved later source with verified time, origin, completeness and relevant row. Even a valid later sheet showing SYN-002 as booked does not license giving that slot away. The pencil may coincide with a true later fact, but coincidence does not make it part of the original snapshot. This exercise does not prove malicious conduct or the cause of a real outage.
 
 ### EX023 — Worked result
 
