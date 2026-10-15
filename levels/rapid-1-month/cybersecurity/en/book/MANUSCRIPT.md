@@ -1231,6 +1231,71 @@ The report that survives is the four Chapter 4 decisions, named one by one, plus
 
 A facilitator can still ask which approved source, if any, may replace the 09:00 paper. That question sits outside the tally. Treating the counters as balanced would hide the pending Room 2 at 15:00 request from Chapter 7. The arithmetic of this log is finished. The booking decision is still open.
 
+
+### 9.4 What the five counters actually measure
+
+A **counter** is the number of records assigned a specified label under a specified rule and scope. A **denominator** defines the population over which a ratio is calculated. The Chapter 4 Python program has exactly four **synthetic proposed actions** in its ACTIONS list, not four security incidents, four room bookings or four residents. The five possible verdicts classify the written rule's treatment of those proposed actions. The mapping is deterministic for the fixed synthetic inputs; that repeatability is not proof of validity outside the fixture.
+
+| Label | Which recorded proposal produced it | What the counter says | An inference the counter does not permit |
+|---|---|---|---|
+| STOP = 1 | 11:44, proposed live-site access | One action crossed the classroom authorization boundary | A real intrusion or service breach occurred |
+| OUT OF SCOPE = 1 | 11:43, proposed event-contact export | One action concerned data excluded from this booking-time comparison | A contact list was actually exported or compromised |
+| REFUSE = 1 | 11:42, confirm Room 2 at 15:00 from the 09:00 paper | The fixed rule found the later SYN-002 booking and refused that proposed confirmation | One resident was harmed, or a technical exploit succeeded |
+| ALLOW = 1 | 11:45, mark Room 2 / 15:00 pending | The synthetic fallback rule permits recording an unconfirmed request | A room was reserved or is presently free |
+| UNKNOWN = 0 | No action fell outside the five written rule branches | The four inputs were all classified | The cause of the outage, completeness of logs or safety of the procedure is known |
+
+The counts sum to **four**, not five: UNKNOWN is a zero category within a five-label vocabulary. Each proposal receives one verdict for this run. The tally does not prove that all actions staff might take were observed, that the rule is complete for production, or that its categories are ordered by harm. The STOP and OUT OF SCOPE branches are boundaries of the exercise, not measured negative security outcomes.
+
+A ratio can be **arithmetically correct and semantically invalid**. If somebody *defines* the arbitrary set {STOP, REFUSE}, then two of the four entries have those labels, and 2 / 4 = 50% is a correct share of **this selected label grouping**. Nothing in the rule establishes that STOP and REFUSE are both adverse consequences or that the four authored examples represent the frequency of real operational actions. The dashboard's phrase “50 percent adverse” therefore has no validated numerator or meaning as a harm rate. Separately, “25” is not derived from the published output; no risk-score model or scale was defined.
+
+### 9.5 Distinguish a classifier, an event sample, and an assessed risk
+
+**Classification** maps an input to a predefined label. **Risk** concerns a potential circumstance's adverse impact and likelihood, informed by threats, vulnerabilities, controls and the context of the affected organization. **Severity** may refer to the magnitude of consequences, the priority of an event, or a defined scheme's vulnerability rating; those uses are not interchangeable, and each needs explicit criteria. A high count is not necessarily high impact. A high-impact, rare failure might appear once; a harmless and frequently exercised branch might appear hundreds of times. Without a defined outcome and exposure population, **the rate of verdicts is neither a likelihood estimate nor a severity rating**.
+
+[NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final) provides a systematic framework for risk assessment, and the [NIST risk glossary](https://csrc.nist.gov/glossary/term/risk) explicitly distinguishes possible adverse impact from likelihood. These references support why the two evidence dimensions matter. They do **not** prescribe a numeric Harbor Library dashboard or imply this fictional laboratory has enough observations for one.
+
+To move from a proposed **risk scenario** to an organizational assessment, the service owner would need at least: a precisely defined harm (for example an unauthorized second confirmation of the same slot), an affected service and decision boundary, credible evidence of triggering conditions, existing control performance, impact criteria, exposure or occurrence evidence, and an approved way to express confidence and uncertainty. A **severity** label additionally needs the governing scale and authority. None of that arrives simply by summing STOP, REFUSE or UNKNOWN.
+
+Treat these quantities as separate fields:
+
+| Quantity | Present in this manuscript? | What would be needed to use it |
+|---|---|---|
+| Four authored action inputs and five classifier counters | Yes, fixed reproducible fixture | Retain the exact fixture, mapping and run scope |
+| Number of actual wrong room confirmations | No | Authorized booking/communication records and relevant verification |
+| Number of people harmed | No | Lawful, scoped evidence of an adverse effect; do not invent identities |
+| Probability of a future wrong confirmation | No | Relevant exposure model and observed or justified control behavior |
+| Impact magnitude, severity threshold or numeric risk score | No | Owner-approved impact definitions, data, method and review |
+| Root cause of either fictional outage | No | An authorized investigation and source-supported causal evidence |
+
+The safest conclusion is not “risk is zero.” It is **“risk and severity were not estimated from this exercise.”** The source data are too narrow. An unknown quantity cannot be converted into zero, and an UNKNOWN verdict count of zero cannot substitute for missing organizational evidence.
+
+### 9.6 Contrasting examples and negative controls
+
+**Case A: equal counters, unequal meaning.** In the published four-action log, one REFUSE prevents the simulated worker from confirming a slot already represented by SYN-002 in the full fixture. One OUT OF SCOPE blocks a *different data-purpose proposal*. Neither action is an observed breach, and equal counts do not imply equal consequence. A manager may wish to prioritize correcting stale-paper practice, but even that organizational prioritization would require a named service owner and supporting evidence.
+
+**Case B: different label frequency, same missing risk evidence.** Imagine a **separate hypothetical** offline worksheet with forty mark-pending proposals and one confirm-from-printout proposal. The likely label balance would differ under stated inputs. It still would not provide a real incident frequency, affected-person count or future probability. This is an illustration only; it is **not a second program run**, a changed Chapter 4 tally or an observed library shift.
+
+**Case C: severity claimed from an unmatched count.** UNKNOWN 0 tells us the four written action kinds had branches. A facilitator could add a hypothetical action kind not defined by the rule; it would yield UNKNOWN in a **separate model variant**. That change indicates coverage of the *classifier*, not more harm or a resolved outage cause. No variant is executed or inserted into the published census.
+
+**Negative-control review:** for each candidate statement ask, “If I kept the exact four printed labels but changed the real-world harm, would the statement still be true?” The tally remains true; a harm rate and severity ranking would not be determined. Ask also, “Could a perfectly covered rule set report UNKNOWN 0 while a required human approval or source check remains missing?” Yes: label coverage and operational authority are different questions. These controls challenge the inference, not the source fixture.
+
+### 9.7 Worked replacement for the misleading dashboard
+
+The classmate wrote: “Harbor risk score 25. Two adverse verdicts out of four is 50 percent, so the library is Medium and the exercise can close.”
+
+A checkable replacement preserves the **four-sentence** structure required by EX025:
+
+1. “The fixed four-action Harbor Library exercise returned STOP 1, OUT OF SCOPE 1, REFUSE 1, ALLOW 1 and UNKNOWN 0.”
+2. “Grouping two selected labels into 2/4 is arithmetically possible, but this designed set does not measure adverse events or their frequency, so calling 50% a harm or risk rate is unsupported.”
+3. “No likelihood evidence, impact criteria, severity thresholds or owner-approved scoring method were supplied; neither risk score 25 nor Medium is established.”
+4. “The Room 2 / 15:00 request remains unconfirmed pending an owner-approved current source and the separate booking decision; the reported 11:40 copy is not yet checked.”
+
+This language reports an actual classifier output, distinguishes undefined terminology from valid arithmetic, withholds an unsupported rank and keeps the operational decision open. The classroom verdict REFUSE need not be removed for its purpose to be understood. **No new run, risk assessment or accepted recovery action is claimed.**
+
+### 9.8 Independent practice and self-check
+
+Before opening the [EX025 worked answer](#answer-ex025), produce the four replacement sentences yourself. Add a private-to-the-lesson comparison matrix with columns **claim**, **fixture observation**, **missing organizational evidence**, and **valid next question**. Test the incorrect phrases “25,” “50% adverse,” “Medium,” “UNKNOWN 0 means all is safe,” and “ALLOW means the slot is free.” For each, identify the first unsupported step. Preserve Chapter 4's exact tally and the outstanding pending state. An answer passes if a second reader can distinguish a synthetic counter, a mathematically definable category share, and an unsupported risk inference without assigning another score.
+
 ### Chapter 9 summary
 
 The tally is a census of labels on one synthetic log. Equal counts come from the way that log was built. They do not state a severity, a probability, or permission to stop asking which source is current.
@@ -1245,6 +1310,10 @@ The tally is a census of labels on one synthetic log. Equal counts come from the
 - **Task:** Replace the dashboard with four sentences: what was counted, why 50 percent does not follow, why Medium does not follow, and which decision remains open.
 - **Expected evidence:** Four sentences a reader can check against the printed line and Chapters 4, 7 and 8.
 - **Rubric:** Credit when the tally stays a count of four labels, the percentage and the rank are both refused, and the pending confirmation is still unresolved. A replacement number does not earn credit.
+
+- **Independent extension:** Show why 2 / 4 could equal 50% only for an **explicitly chosen group of labels**, while failing as a harm rate. In a four-column ledger classify each dashboard claim as an arithmetic fact, a semantic assumption, an unsupported risk judgment, or an unresolved operational decision. State which evidence about impact, likelihood, and a defined scoring scale would be needed for an organizational assessment.
+- **Negative-control criterion:** The four sentences must preserve the five original counters, leave UNKNOWN 0 distinct from the outage's unknown cause, not invent a real incident count, and keep the 15:00 request pending. No extra numerical score or program run is authorized.
+- **Self-check:** Compare with the [EX025 worked answer](#answer-ex025).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 20
@@ -1291,6 +1360,71 @@ The useful record is short. The 09:00 result stands. The 15:00 request stays not
 
 Passing both gates in a later exercise would still be one synthetic check. It would not show how often a real desk refreshes its fallback sheet, and it would not explain the outage. This lesson stops at the report. It does not hand the learner an 11:40 sheet, and it does not ask for a new program run.
 
+
+### 10.4 Four different times can appear in one sentence
+
+An accurate security or operational record distinguishes **event time**, **source creation or snapshot time**, **report time** and **decision time**. A sentence can mention a time without providing evidence for the event purported to occur then. Do not silently turn “someone heard that a newer sheet had an 11:40 heading” into “a verified sheet was issued and authorized at 11:40.” The case supplies a *report of a possible 11:40 refresh*, not its receipt or creation log.
+
+| Time and item | Status in Chapters 3–10 | What it supports | What remains unproved |
+|---|---|---|---|
+| SYN-001 creation at 08:20 | Synthetic reservation-row fact | Its creation predates the fixed 09:00 paper | Any resident identity |
+| 09:00 printout | Fixed synthetic copy used in the Chapter 4 run | The source time and scope of the original comparison | Later updates or complete current availability |
+| SYN-002 creation at 10:05 | Synthetic fixture fact | A later confirmed booking exists in the full teaching table | That this later record was on the 09:00 paper |
+| 11:30–11:50 view outage | Described first-day interruption | The front-desk view is unavailable in the stated interval | Cause, actor, incident classification or recovery target |
+| 11:42 confirm-from-printout proposal | Classified action, not an executed booking | REFUSE under the fixed 09:00 rule | That any real booking was refused or confirmed |
+| “11:40 refresh” in the owner's mention | **Reported** time of a proposed other sheet | A candidate source warrants follow-up | That the sheet exists, was inspected, was authorized or contains SYN-002 |
+
+A **spoken time** is testimony about a purported record; a **time printed on an artifact** is an observable attribute of that artifact; a **source-generation or synchronization record** would support a further claim about how that artifact was made. Each is a different evidence layer. The lesson does not provide a certified source-generation receipt, audit chain, signature or independent timestamp validation. Even if a future sheet prints “11:40,” its heading alone would not prove completeness or authority.
+
+The classic log-management concerns of source, timestamp, retention and review are discussed at a high level in [NIST SP 800-92, Guide to Computer Security Log Management](https://csrc.nist.gov/pubs/sp/800/92/final). That publication dates from **2006**; we use its general provenance vocabulary, not dated implementation advice or an assertion that the library has a particular log platform. The four-layer ledger below is an **original classroom evidence method**, not a mandatory NIST form.
+
+### 10.5 Provenance is a chain of claims, not an attractive header
+
+An artifact useful for an operational decision needs a scope: which day, which room and start, what data it represents, when it was produced, which owner approves using it, and which relevant contents were actually checked. The requested current-source question is separate from the authorization to **create** a reservation. The minimum checks from Section 10.2 are:
+
+1. **Owner's identification of the exact source:** The designated exercise owner names **this particular later sheet** as the approved current source for the bounded task. An attendee's recollection of the owner's words does not name a physical artifact now in the worker's possession.
+2. **Direct observations from that same artifact:** The worker sees its **11:40 heading** and the relevant **SYN-002** printed row and records those observations. Merely hearing that both appear is not inspection.
+
+These two gates are **necessary for the later-sheet decision within this story**, not sufficient to declare every future schedule fresh, verify a real digital supply chain or authorize a new booking. The follow-on scope checks still matter: is the record for the correct day, does the row specify Room 2 / 15:00 and confirmed status, is this copy allowed for the requested decision, and has any owner-specified cutoff or superseding update intervened? This course does not provide a later update receipt, so no stronger freshness claim can be manufactured.
+
+**Boundary with Chapter 11:** In Chapter 10, none of those direct artifact observations has happened. Chapter 11 will **separately release** a named synthetic page and supply its two visible rows. Do not backdate Chapter 11's evidence into the earlier chapter or reclassify the first four-action run after the fact.
+
+### 10.6 Worked contrast: the same clock under different evidentiary conditions
+
+| Candidate input to the desk decision | Evidence class | Permitted decision in this chapter |
+|---|---|---|
+| The 09:00 synthetic paper together with its known fixed scope | Original, limited source | The Chapter 4 REFUSE and pending request stand |
+| “I heard the owner say 11:40” | Second-hand report, no sheet | Record a lead for checking; do not confirm |
+| “The facilitator tells me the sheet contains SYN-002” | Another oral report, without direct inspection | Do not silently convert the report into a verified row |
+| A purported 11:40 paper whose heading is visible but has no identified authorized issuer | Observed header, authority and row checks missing | Neither confirmation nor substitution of the old source is justified |
+| An owner-identified copy whose 11:40 heading and SYN-002 row are directly checked | **Conditional future teaching case**, not evidence released here | Use only for the bounded decision its owner authorized; inspect status before saying a slot is taken |
+| Retyping PRINTOUT = 11:40 in the Chapter 4 Python script | Changed model assumption, not an acquired sheet | Does not verify the real world or erase the original REFUSE |
+
+**Worked counterfactual, not an executed test:** Suppose a learner imagines a new PRINTOUT time of 11:40, while retaining the fixture's 10:05 booking creation. The “later than printout” predicate for SYN-002 would no longer be true, so the classifier *might* change the action's label in a separately declared run. That difference would follow **only from altered input**: the original program did not consume the reported page, and no actual owner approval or booking confirmation would follow. The original tally must remain unchanged. This is not a proposal to run modified code as the public source of truth.
+
+There is also a critical **semantic negative control**: if a valid newly inspected sheet includes SYN-002 as a **confirmed 15:00 reservation**, the correct room-state statement is **“already booked,” not “available.”** An authenticated source can narrow uncertainty while ruling out the very confirmation the visitor seeks. Passing a source-validation gate is not the same as passing a transaction-authorization gate.
+
+### 10.7 Preserve chronology when reporting a new source
+
+Write a small ledger with explicit labels rather than inserting a newer time over an old one:
+
+| Entry | Knowledge status at this chapter | Proper follow-up |
+|---|---|---|
+| Chapter 4: 09:00 printout and four-action verdicts | Observed **within synthetic fixture** | Preserve the exact inputs, output and tally |
+| Chapter 3: owner may have an 11:40 offline refresh | **Reported but unverified** | Ask owner to identify the actual candidate sheet |
+| Chapter 10: facilitator repeats what was said | Second-hand report; no new artifact | Do not claim direct inspection or approval |
+| Future: named sheet and row verification | **Not performed in this chapter** | Record separate observation, authority, source and outcome if later released |
+
+This record distinguishes **when a statement became known to the learner** from **when its alleged source was made**. Neither timestamp should be silently overwritten. A second retelling is not a second independent source. The owner might later refute the recollection, provide a different sheet, or define narrower authority; until the evidence arrives, those are open possibilities, not findings.
+
+For a current-day request, the pending queue remains a request queue. A manager's spoken approval of a source (if someday authenticated in the case) would **not** by itself authorize a new booking or prove availability: content and transaction rules remain distinct. The no-live-site rule persists throughout the tabletop; do not search or export names as an alternate shortcut.
+
+### 10.8 Independent rehearsal and falsifier
+
+Before the [EX026 worked answer](#answer-ex026), write a three-part response to the classmate's sentence: (a) classify it precisely as a **second-hand report**; (b) state the two checks that **have not** occurred—owner naming the exact candidate sheet and direct observation of the sheet's 11:40 time plus printed SYN-002 row; (c) leave Room 2 at 15:00 **not confirmed**, with the published Chapter 4 REFUSE and tally intact. Add a one-line evidence ledger separating **heard**, **seen**, **approved** and **executed**. The exercise succeeds only if **seen**, **approved** and **executed** are not fabricated.
+
+Use two negative controls. First, substitute a second person's repetition of the 11:40 claim: it remains hearsay, not independent artifact evidence. Second, imagine that a truly inspected approved 11:40 page shows SYN-002 as confirmed: it **blocks** a new 15:00 allocation; it does not retroactively make the 11:42 paper proposal acceptable. Stop at the report in this chapter and leave the later page for Chapter 11.
+
 ### Chapter 10 summary
 
 A clock time that arrives in a sentence is testimony about a source. The confirmation rule needs the source. Until the owner names the sheet and the learner records its time and `SYN-002`, Room 2 at 15:00 stays pending and the published tally stays as it was.
@@ -1305,6 +1439,10 @@ A clock time that arrives in a sentence is testimony about a source. The confirm
 - **Task:** Write three parts: the class of the note, the two checks that are still missing, and the booking state you leave in place.
 - **Expected evidence:** Three parts a reader can check against Chapters 3, 4 and 7.
 - **Rubric:** Credit when the note stays a report, both the owner's naming and the sheet observations are still missing, the 15:00 request stays not confirmed, and the published tally is left unchanged.
+
+- **Independent extension:** Produce a two-row evidence ledger for (1) the 09:00 paper actually used in Chapter 4 and (2) the **reported, unseen** 11:40 sheet. For each, name the source status, time assertion, missing check and authorized next decision. Contrast an oral repetition with a conditional owner-identified, directly inspected page without pretending the latter has been released yet.
+- **Negative-control criterion:** A repeated verbal 11:40 must not become a confirmed new source; neither a later heading nor a successful source check could make a slot already occupied by SYN-002 free. Preserve the published REFUSE and complete tally.
+- **Self-check:** Compare with the [EX026 worked answer](#answer-ex026).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 20
@@ -2055,13 +2193,40 @@ The exercise observed a 09:00 paper that omitted a later synthetic booking, and 
 
 A process **can** be vulnerable under NIST terminology if a verified deficiency can be exploited or triggered with a security-relevant effect; a software defect or observed attacker is **not** a prerequisite for every such finding. What is absent here is evidence that the real process permits the failure and evidence linking it to a real security effect. A proper falsifier is an owner-approved controlled comparison showing that a current-source check and pending rule prevent unsupported confirmation under the same synthetic timing. A single test does not certify all future workflows. The classroom does not establish an incident, rate severity or measure how many people were harmed. The three-sentence core answer above remains valid; this table explains why each stronger noun would require additional proof.
 
+<a id="answer-ex025"></a>
 ### EX025 — Worked result
 
 The program counted one STOP, one OUT OF SCOPE, one REFUSE and one ALLOW on the four-action log, and left UNKNOWN at zero. Fifty percent would turn two of those labels into a harm rate. The printed line does not measure harm, and it does not measure how often staff would trust the stale paper. Medium names a rank this exercise never defined. The Room 2 at 15:00 request stays pending until an approved current source exists. Chapter 8's weak confirmation procedure is unchanged.
 
+
+**Expanded worked reasoning and evidence boundary (EX025).** The recorded denominator is **four deliberately authored proposals**, not four observed adverse events. A classroom analyst may compute “two of four labels” only after explicitly choosing the arbitrary grouping (for example STOP plus REFUSE). That 2 / 4 calculation is 50% of that **chosen synthetic label set**; nothing justifies calling those two labels actual harms or interpreting their share as operational frequency, likelihood, risk or severity. STOP names an out-of-bounds proposal, OUT OF SCOPE names an excluded data-purpose proposal, REFUSE names a rule-prohibited paper confirmation, and ALLOW permits recording a **pending** request rather than certifying a free room. UNKNOWN 0 demonstrates classification coverage for these four known action kinds, not causal certainty about the outage. The dashboard's **25** and **Medium** have no defined measurement scale, impact criteria or approved owner judgment. The decision still open is which suitable approved current source would be checked before any separate authorization to book Room 2 at 15:00.
+
+| Dashboard proposition | Basis | Disposition |
+|---|---|---|
+| One each STOP, OUT OF SCOPE, REFUSE, ALLOW; zero UNKNOWN | Exact Chapter 4 printed log | Retain as reproducible classifier census |
+| “Two adverse out of four = 50% harm” | Optional arithmetic grouping, with **adverse** undefined | Reject its harm/risk interpretation; arithmetic alone does not supply meaning |
+| “Score 25 / Medium” | No likelihood, impact, severity method or approval | Reject both labels without inventing a replacement number |
+| “Exercise can close” | The synthetic pending request remains and the reported later copy is unverified | Retain unresolved owner/source and booking-decision gates |
+
+**Falsifiers and accepted alternatives.** An acceptable four-sentence answer may explicitly acknowledge the mathematical 50% share of a *declared grouping* while refusing the unsupported meaning “50% adverse.” Reject any answer that equates UNKNOWN 0 with no unknown causes, ALLOW with permission to allocate a room, or REFUSE with an actual harmed resident. If real decision and outcome evidence later existed, it would belong to a separately scoped analysis; the old tally itself would not change.
+
+<a id="answer-ex026"></a>
 ### EX026 — Worked result
 
 The classmate's note is a second-hand report of a clock time. It is not the 11:40 sheet. The owner has not named a sheet as the approved current source, and nobody has recorded that the sheet's own time is 11:40 and that `SYN-002` is printed on it. Room 2 at 15:00 stays not confirmed. The Chapter 4 tally remains `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`.
+
+
+**Expanded worked evidence ledger (EX026).**
+
+| Source or claim | Evidentiary class and time | What remains missing | Decision |
+|---|---|---|---|
+| Original 09:00 paper | Actual fixed source **in the synthetic exercise**; SYN-002 created 10:05 is later | A verified approved current replacement for the 15:00 query | Preserve the 11:42 REFUSE and pending request |
+| “The owner mentioned a refresh at 11:40,” repeated by a facilitator | Second-hand report of a **purported sheet time**, not direct artifact inspection | Owner naming **this** sheet as approved, and direct record of its **11:40 heading plus SYN-002** row | Record a follow-up request; no source substitution or confirmation |
+| A future owner-identified, directly inspected 11:40 sheet | **Hypothetical in Chapter 10**; separate evidence arrives only in Chapter 11 | Its actual limited authority, relevant row/status and any independent booking requirement | Could establish that the 15:00 slot is **already booked** if SYN-002 is confirmed; cannot create a new booking |
+
+The correct three-part reply is: **(1)** the classmate's note is a second-hand report, **(2)** owner approval of an identified physical source and the two observations on that very source are not recorded, and **(3)** Room 2 / 15:00 stays **not confirmed**, with Chapter 4's exact STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0 unchanged. The report contains words about a time, not a source record. The visitor's requested start, the printout's timestamp and the time a booking was created are distinct. A learner who retypes the program's printout time to make REFUSE disappear has changed the fixture without producing evidence. In Chapter 11, separately released evidence may support a new, **bounded** statement that a slot is taken; it cannot backdate knowledge or undo the historical paper classification.
+
+**Negative control.** Repeating the purported 11:40 time from another person fails both gates; a real checked page with SYN-002 confirmed would not justify saying the 15:00 slot is free. Equivalent responses that preserve provenance, time, owner approval and the original four-action run satisfy the task without reproducing this table word for word.
 
 ### EX027 — Worked result
 
