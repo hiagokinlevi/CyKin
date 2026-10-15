@@ -136,6 +136,26 @@ def test_daily_lesson_uses_distinct_sequential_code(client):
     assert '<h1 id="lesson-01">Evidence readiness and the first case question</h1>' in response.text
 
 
+@pytest.mark.parametrize("path,exercise", [
+    ("/courses/professional-6-months/incident-response-resilience/lessons/en/1/", "EX001"),
+    ("/courses/rapid-1-month/security-governance-risk-compliance/chapters/pt/1/", "EX001"),
+    ("/courses/professional-6-months/ot-iot-security/chapters/es/1/", "EX001"),
+])
+def test_published_exercises_have_prompt_answer_and_save_form(client, path, exercise):
+    response = client.get(path)
+    assert response.status_code == 200
+    page = response.text
+    digits = exercise.removeprefix("EX")
+    assert f'id="exercise-ex{digits}"' in page
+    assert page.count(f'id="exercise-ex{digits}"') == 1
+    assert f'id="answer-ex{digits}"' in page
+    assert f'data-exercise-id="{exercise}"' in page
+    assert 'id="lesson-practice"' in page
+    if "/lessons/en/" in path:
+        assert "at least five dependencies" in page
+    assert page.count(f'id="answer-ex{digits}"') == 1
+
+
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):
     sitemaps = {language: (ROOT / f"web/public/sitemap-{language}.xml").read_text()
                 for language in ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")}

@@ -43,9 +43,10 @@ WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>\s*$', re
 CHAPTER_LESSONS_MARKER = "<!-- open-cyber-academy:chapter-lessons -->"
 EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
 EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
+EXERCISE_PROMPT = re.compile(r'^[ \t]*(?:#{3,6}[ \t]+|[-*][ \t]+)?(?:\*\*)?EX(\d{3,4})\b', re.M)
 ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})(?:\s+[—-]|\.)[^\n]*$', re.M)
 APPENDIX_HEADING = re.compile(
-    r'^##\s+(?:final\s+appendix\s+[—–:-]\s+)?'
+    r'^##\s+(?:(?:final\s+appendix|apêndice\s+final|apendice\s+final|apéndice\s+final)\s+[—–:-]\s+)?'
     r'(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resoluções|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b',
     re.M | re.I,
 )
@@ -69,6 +70,7 @@ class ExerciseAttempt(LessonProgress):
     exercise_id: str = Field(pattern=r"^EX[0-9]{3,4}$")
     answer: str = Field(default="", max_length=20_000)
     status: str = Field(pattern=r"^(attempted|completed)$")
+    unit_kind: str = Field(default="lesson", pattern=r"^(lesson|chapter)$")
 
 
 class TestStart(BaseModel):
@@ -326,15 +328,18 @@ def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = Non
     answers = book[appendix.end():]
     matches = list(ANSWER.finditer(answers))
     pieces = []
+    seen: set[str] = set()
     for index, match in enumerate(matches):
-        if (match.group(1) or match.group(2)) not in numbers:
+        digits = match.group(1) or match.group(2)
+        if digits not in numbers or digits in seen:
             continue
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(answers)
+        seen.add(digits)
+        end = next((later.start() for later in matches[index + 1:]
+                    if (later.group(1) or later.group(2)) != digits), len(answers))
         piece = answers[match.start():end]
         next_section = re.search(r'^#{2,3}\s+(?!EX\d{3,4}\b)', piece[match.end() - match.start():], re.M)
         if next_section:
             piece = piece[:match.end() - match.start() + next_section.start()]
-        digits = match.group(1) or match.group(2)
         piece = re.sub(r'(?:\n\s*<a id="answer-ex\d{3,4}"></a>\s*)+$', '', piece)
         pieces.append(f'<a id="answer-ex{digits}"></a>\n' + piece.strip())
     for anchor in supplementary:
@@ -355,9 +360,19 @@ def exercise_prompts(book: str, exercise_ids: list[str]) -> str:
     teaching = book[:appendix.start()] if appendix else book
     pieces = []
     for digits in exercise_ids:
-        match = re.search(rf'^\*\*EX{re.escape(digits)}\s+[—-]\s+[^\n]+|^#{{3,6}}\s+EX{re.escape(digits)}\b[^\n]*', teaching, re.M)
+        match = re.search(
+            rf'^(?:#{{3,6}}\s+|[-*]\s+)?(?:\*\*)?EX{re.escape(digits)}\b[^\n]*',
+            teaching, re.M,
+        )
         if match:
-            pieces.append(f'<a id="exercise-ex{digits}"></a>\n' + match.group(0))
+            prompt = match.group(0)
+            # A heading-style exercise may continue over several paragraphs;
+            # a bold or list entry normally contains its entire task on one line.
+            if prompt.startswith("#"):
+                tail = teaching[match.end():]
+                stop = re.search(r'^#{2,6}\s|^<!-- open-cyber-academy:', tail, re.M)
+                prompt += tail[:stop.start() if stop else None].rstrip()
+            pieces.append(f'<a id="exercise-ex{digits}"></a>\n' + prompt)
     return "\n\n".join(pieces)
 
 
@@ -490,7 +505,7 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
     if section is None:
         raise HTTPException(404, "This chapter is still a plan")
     chapters = sorted(sections)
-    exercise_ids = section.get("exercise_ids", sorted(set(EXERCISE.findall(section["markdown"]))))
+    exercise_ids = section.get("exercise_ids", sorted(set(EXERCISE_PROMPT.findall(section["markdown"]))))
     markdown = section["markdown"]
     if daily and not legacy and not EXERCISE_HEADING.search(markdown):
         prompts = exercise_prompts(book, exercise_ids)
@@ -572,7 +587,8 @@ async def api_progress_lesson(request: Request, payload: LessonProgress) -> Resp
 async def api_progress_exercise(request: Request, payload: ExerciseAttempt) -> Response:
     same_origin(request)
     user = await identity(request)
-    lesson = await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
+    lesson = await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter,
+                                  legacy=payload.unit_kind == "chapter")
     if payload.exercise_id.removeprefix("EX") not in lesson["exercise_ids"]:
         raise HTTPException(404, "Exercise is not in this lesson")
     db = database(request)
@@ -1121,7 +1137,7 @@ TOOLS = [
     {"name": "student_read_lesson", "description": "Read an authored lesson as a student and record the visit. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "student_save_analysis", "description": "Save your private analysis of an authored lesson with a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "note": {"type": "string", "minLength": 1, "maxLength": 10000}}, "required": ["level", "area", "language", "chapter", "note"]}},
     {"name": "student_save_lesson", "description": "Mark an authored lesson as in progress or completed for your account. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "status": {"type": "string", "enum": ["in_progress", "completed"]}}, "required": ["level", "area", "language", "chapter", "status"]}},
-    {"name": "student_save_exercise", "description": "Save your answer to a published lesson exercise. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "exercise_id": {"type": "string"}, "answer": {"type": "string"}}, "required": ["level", "area", "language", "chapter", "exercise_id", "answer"]}},
+    {"name": "student_save_exercise", "description": "Save your answer to a published lesson or chapter exercise. Set unit_kind to chapter when using read_chapter; otherwise lesson. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "unit_kind": {"type": "string", "enum": ["lesson", "chapter"]}, "exercise_id": {"type": "string"}, "answer": {"type": "string"}}, "required": ["level", "area", "language", "chapter", "exercise_id", "answer"]}},
     {"name": "student_start_test", "description": "Start your published ten-question chapter test. Each question has a server-enforced deadline of ten seconds plus transit allowance. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "student_answer_test", "description": "Submit your answer before its server deadline, or null to skip. Returns the next question or completed score. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"attempt_id": {"type": "string"}, "index": {"type": "integer", "minimum": 0, "maximum": 9}, "selected": {"type": ["string", "null"], "enum": ["a", "b", "c", "d", None]}}, "required": ["attempt_id", "index", "selected"]}},
     {"name": "student_test_state", "description": "Resume your timed chapter test or view its result. Requires a personal AI key or student bearer session.", "inputSchema": {"type": "object", "properties": {"attempt_id": {"type": "string"}}, "required": ["attempt_id"]}},
@@ -1295,7 +1311,8 @@ async def mcp(request: Request) -> Response:
                 result = {"saved": True}
             elif name == "student_save_exercise":
                 data = ExerciseAttempt(**{**args, "status": "attempted"})
-                lesson = await lesson_details(request, data.level, data.area, data.language, data.chapter)
+                lesson = await lesson_details(request, data.level, data.area, data.language, data.chapter,
+                                              legacy=data.unit_kind == "chapter")
                 if data.exercise_id.removeprefix("EX") not in lesson["exercise_ids"]:
                     raise HTTPException(404, "Exercise is not in this lesson")
                 db = database(request)

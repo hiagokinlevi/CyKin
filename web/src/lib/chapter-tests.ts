@@ -9,11 +9,13 @@ type QuizResponse = { attempt_id: string; question?: Question; complete?: boolea
 type Course = (typeof catalog.courses)[number];
 
 const names: Record<string, string> = { en: 'English', pt: 'Português', es: 'Español', he: 'עברית', fr: 'Français', ru: 'Русский', de: 'Deutsch', zh: '中文', ja: '日本語' };
-const activeLanguages = ['en', 'pt', 'es'];
+const activeLanguages = ['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'];
+type PublishedUnit = { chapter: number; title: string; published: boolean };
+type PublishedGuide = { daily_slots: PublishedUnit[]; legacy_chapters: PublishedUnit[]; chapter_lessons: boolean };
 const copy = {
-  en: { choose: 'Select a language, subject and level.', none: 'No reviewed chapter tests have been published for this edition yet.', count: (done: number, total: number) => `${done} of ${total} chapters have published tests.`, read: 'Read chapter', take: 'Take test', open: 'Open assessment', chapter: 'Chapter', best: (score: number) => `Best score: ${score}/10`, question: (n: number) => `Question ${n} of 10`, submit: 'Submit answer →', sending: 'Saving your answer…', signin: 'Sign in to take this test →', setup: 'Student sign-in is being configured. Public reading remains open.', failed: 'The test could not be loaded. Please try again.', result: (score: number) => `${score} / 10 correct`, perfect: 'Perfect score for this chapter. Your result was saved.', retry: 'Review the chapter and try again to reach 10/10.', timed: 'Time expired', selected: 'You chose', correct: 'Correct answer', certificate: 'View your certificate', pending: 'A course certificate requires 10/10 on every chapter and a fully reviewed book.' },
-  pt: { choose: 'Escolha idioma, tema e nível.', none: 'Ainda não há testes revisados publicados para esta edição.', count: (done: number, total: number) => `${done} de ${total} capítulos têm testes publicados.`, read: 'Ler capítulo', take: 'Fazer teste', open: 'Abrir avaliação', chapter: 'Capítulo', best: (score: number) => `Melhor nota: ${score}/10`, question: (n: number) => `Pergunta ${n} de 10`, submit: 'Enviar resposta →', sending: 'Salvando sua resposta…', signin: 'Entre para fazer este teste →', setup: 'O cadastro de estudantes está sendo configurado. A leitura pública continua aberta.', failed: 'Não foi possível carregar o teste. Tente novamente.', result: (score: number) => `${score} / 10 corretas`, perfect: 'Aproveitamento integral neste capítulo. Seu resultado foi salvo.', retry: 'Revise o capítulo e tente novamente até obter 10/10.', timed: 'Tempo esgotado', selected: 'Sua escolha', correct: 'Resposta correta', certificate: 'Ver seu certificado', pending: 'O certificado do curso exige 10/10 em todos os capítulos e um livro integralmente revisado.' },
-  es: { choose: 'Elige idioma, tema y nivel.', none: 'Todavía no hay pruebas revisadas publicadas para esta edición.', count: (done: number, total: number) => `${done} de ${total} capítulos tienen pruebas publicadas.`, read: 'Leer capítulo', take: 'Hacer prueba', open: 'Abrir evaluación', chapter: 'Capítulo', best: (score: number) => `Mejor nota: ${score}/10`, question: (n: number) => `Pregunta ${n} de 10`, submit: 'Enviar respuesta →', sending: 'Guardando la respuesta…', signin: 'Inicia sesión para hacer esta prueba →', setup: 'El registro de estudiantes está en preparación. La lectura pública sigue abierta.', failed: 'No se pudo cargar la prueba. Inténtalo de nuevo.', result: (score: number) => `${score} / 10 correctas`, perfect: 'Puntuación perfecta en este capítulo. El resultado se guardó.', retry: 'Repasa el capítulo e inténtalo de nuevo hasta lograr 10/10.', timed: 'Tiempo agotado', selected: 'Tu elección', correct: 'Respuesta correcta', certificate: 'Ver tu certificado', pending: 'El certificado del curso exige 10/10 en todos los capítulos y un libro totalmente revisado.' },
+  en: { choose: 'Select a language, subject and level.', none: 'No reviewed chapter tests have been published for this edition yet.', count: (done: number, total: number) => `${done} of ${total} chapters have published tests.`, read: 'Read chapter', take: 'Take test', open: 'Open assessment', chapter: 'Chapter', best: (score: number) => `Best score: ${score}/10`, question: (n: number) => `Question ${n} of 10`, submit: 'Submit answer →', sending: 'Saving your answer…', signin: 'Sign in to take this test →', setup: 'Student sign-in is being configured. Public reading remains open.', failed: 'The test could not be loaded. Please try again.', result: (score: number) => `${score} / 10 correct`, perfect: 'Perfect score for this chapter. Your result was saved.', retry: 'Review the chapter and try again to reach 10/10.', timed: 'Time expired', selected: 'You chose', correct: 'Correct answer', certificate: 'View your certificate', pending: 'A course certificate requires 10/10 on every chapter and a fully reviewed book.', practiceNone: 'No authored lessons or exercises are available in this edition yet.', practiceCount: (n: number) => `${n} authored units with book exercises available for practice.`, practiceOpen: 'Open exercises', lesson: 'Lesson' },
+  pt: { choose: 'Escolha idioma, tema e nível.', none: 'Ainda não há testes revisados publicados para esta edição.', count: (done: number, total: number) => `${done} de ${total} capítulos têm testes publicados.`, read: 'Ler capítulo', take: 'Fazer teste', open: 'Abrir avaliação', chapter: 'Capítulo', best: (score: number) => `Melhor nota: ${score}/10`, question: (n: number) => `Pergunta ${n} de 10`, submit: 'Enviar resposta →', sending: 'Salvando sua resposta…', signin: 'Entre para fazer este teste →', setup: 'O cadastro de estudantes está sendo configurado. A leitura pública continua aberta.', failed: 'Não foi possível carregar o teste. Tente novamente.', result: (score: number) => `${score} / 10 corretas`, perfect: 'Aproveitamento integral neste capítulo. Seu resultado foi salvo.', retry: 'Revise o capítulo e tente novamente até obter 10/10.', timed: 'Tempo esgotado', selected: 'Sua escolha', correct: 'Resposta correta', certificate: 'Ver seu certificado', pending: 'O certificado do curso exige 10/10 em todos os capítulos e um livro integralmente revisado.', practiceNone: 'Ainda não há aulas e exercícios escritos nesta edição.', practiceCount: (n: number) => `${n} unidades escritas com exercícios do livro para praticar.`, practiceOpen: 'Abrir exercícios', lesson: 'Aula' },
+  es: { choose: 'Elige idioma, tema y nivel.', none: 'Todavía no hay pruebas revisadas publicadas para esta edición.', count: (done: number, total: number) => `${done} de ${total} capítulos tienen pruebas publicadas.`, read: 'Leer capítulo', take: 'Hacer prueba', open: 'Abrir evaluación', chapter: 'Capítulo', best: (score: number) => `Mejor nota: ${score}/10`, question: (n: number) => `Pregunta ${n} de 10`, submit: 'Enviar respuesta →', sending: 'Guardando la respuesta…', signin: 'Inicia sesión para hacer esta prueba →', setup: 'El registro de estudiantes está en preparación. La lectura pública sigue abierta.', failed: 'No se pudo cargar la prueba. Inténtalo de nuevo.', result: (score: number) => `${score} / 10 correctas`, perfect: 'Puntuación perfecta en este capítulo. El resultado se guardó.', retry: 'Repasa el capítulo e inténtalo de nuevo hasta lograr 10/10.', timed: 'Tiempo agotado', selected: 'Tu elección', correct: 'Respuesta correcta', certificate: 'Ver tu certificado', pending: 'El certificado del curso exige 10/10 en todos los capítulos y un libro totalmente revisado.', practiceNone: 'Esta edición todavía no tiene lecciones ni ejercicios redactados.', practiceCount: (n: number) => `${n} unidades redactadas con ejercicios del libro para practicar.`, practiceOpen: 'Abrir ejercicios', lesson: 'Lección' },
 };
 
 const el = (id: string): HTMLElement => document.getElementById(id)!;
@@ -34,6 +36,7 @@ export function initChapterTests(): void {
   let deadline = 0;
   let busy = false;
   let resultsRequest = 0;
+  let practiceRequest = 0;
   const chaptersByCourse = testIndex.courses as Record<string, Chapter[]>;
   const publishedCards: HTMLElement[] = [];
   for (const [key, chapters] of Object.entries(chaptersByCourse)) {
@@ -94,7 +97,7 @@ export function initChapterTests(): void {
     )));
     const status = el('test-course-status'); const list = el('test-chapters'); list.replaceChildren();
     const course = chosenCourse();
-    if (!course) { status.textContent = ui.choose; return; }
+    if (!course) { status.textContent = ui.choose; el('test-practice-status').textContent = ui.choose; el('test-practice').replaceChildren(); return; }
     const chapters = available();
     status.textContent = chapters.length ? ui.count(chapters.length, course.planned_chapters) : ui.none;
     for (const item of chapters) {
@@ -107,6 +110,31 @@ export function initChapterTests(): void {
       card.append(heading, best, link, start); list.append(card);
     }
     void loadResults(courseKey());
+    void renderPractice(courseKey());
+  };
+
+  const renderPractice = async (key: string) => {
+    const requestId = ++practiceRequest;
+    const status = el('test-practice-status'); const list = el('test-practice');
+    list.replaceChildren(); status.textContent = '';
+    try {
+      const response = await fetch(`/api/courses/${level}/${area}/${language}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error('The published course guide is unavailable');
+      const edition = await response.json() as PublishedGuide;
+      if (requestId !== practiceRequest || key !== courseKey()) return;
+      const units = [
+        ...edition.daily_slots.filter(unit => unit.published).map(unit => ({ ...unit, route: 'lessons', label: ui.lesson })),
+        ...edition.legacy_chapters.filter(unit => unit.published).map(unit => ({ ...unit, route: 'chapters', label: edition.chapter_lessons ? ui.lesson : ui.chapter })),
+      ];
+      status.textContent = units.length ? ui.practiceCount(units.length) : ui.practiceNone;
+      for (const unit of units) {
+        const card = document.createElement('article'); card.className = 'test-chapter';
+        const title = document.createElement('strong'); title.textContent = `${unit.label} ${String(unit.chapter).padStart(2, '0')} · ${unit.title}`;
+        const link = document.createElement('a'); link.href = `/courses/${level}/${area}/${unit.route}/${language}/${unit.chapter}/#lesson-practice`;
+        link.textContent = `${ui.practiceOpen} →`;
+        card.append(title, link); list.append(card);
+      }
+    } catch { if (requestId === practiceRequest) status.textContent = ui.failed; }
   };
 
   const loadResults = async (key: string) => {

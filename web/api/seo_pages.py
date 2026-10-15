@@ -135,10 +135,17 @@ class LocalizeHTML(HTMLParser):
         self.parts.append(f"&#{name};")
 
 
-def render_markdown(source: str, source_url: str, level: str, area: str, language: str) -> str:
-    for digits in set(re.findall(r'^#{3,6}\s+EX(\d{3,4})\b', source, re.M)):
+def render_markdown(source: str, source_url: str, level: str, area: str, language: str,
+                    *, exercise_anchors: bool = True) -> str:
+    for digits in (set(re.findall(r'^[ \t]*(?:#{3,6}[ \t]+|[-*][ \t]+)?(?:\*\*)?EX(\d{3,4})\b', source, re.M))
+                   if exercise_anchors else set()):
         if f'id="exercise-ex{digits}"' not in source:
-            source = re.sub(rf'^(#{{3,6}}\s+EX{digits}\b)', f'<a id="exercise-ex{digits}"></a>\n\\1', source, count=1, flags=re.M)
+            bullet = rf'^([ \t]*[-*][ \t]+)((?:\*\*)?EX{digits}\b)'
+            if re.search(bullet, source, re.M):
+                source = re.sub(bullet, rf'\1<a id="exercise-ex{digits}"></a> \2', source, count=1, flags=re.M)
+            else:
+                source = re.sub(rf'^([ \t]*(?:#{{3,6}}[ \t]+)?(?:\*\*)?EX{digits}\b)',
+                                f'<a id="exercise-ex{digits}"></a>\n\\1', source, count=1, flags=re.M)
     rendered = markdown.markdown(source, extensions=["fenced_code", "tables", "sane_lists"])
     sanitized = bleach.clean(rendered, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, protocols=["http", "https", "mailto"], strip=True)
     ui = PAGE_TEXT.get(language, PAGE_TEXT["en"])
@@ -276,8 +283,31 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         if heading_subject(first_heading.group(1)) == heading_subject(lesson["title"]):
             body_source = body_source[first_heading.end():]
     body = render_markdown(body_source, lesson["source_url"], level, area, language)
-    answers = render_markdown(lesson["worked_answers"], lesson["source_url"], level, area, language) if lesson["worked_answers"] else ""
+    answers = render_markdown(lesson["worked_answers"], lesson["source_url"], level, area, language,
+                              exercise_anchors=False) if lesson["worked_answers"] else ""
     answers_html = f'<section class="answers"><details><summary>{ui["answers"]}</summary><div class="prose">{answers}</div></details></section>' if answers else ""
+    practice_copy = {
+        "en": ("Work through the exercises", "Open the prompt", "Your response", "Save my answer", "Compare with the worked answer"),
+        "pt": ("Resolva os exercícios", "Ver o enunciado", "Sua resposta", "Salvar minha resposta", "Comparar com a resposta comentada"),
+        "es": ("Resuelve los ejercicios", "Ver el enunciado", "Tu respuesta", "Guardar mi respuesta", "Comparar con la respuesta desarrollada"),
+    }.get(language, ("Work through the exercises", "Open the prompt", "Your response", "Save my answer", "Compare with the worked answer"))
+    practice_cards = []
+    for digits in lesson.get("exercise_ids", []):
+        exercise_id = f"EX{digits}"
+        prompt_link = (f'<a href="#exercise-ex{digits}">{html.escape(practice_copy[1])} →</a>'
+                       if f'id="exercise-ex{digits}"' in body else "")
+        answer_link = (f'<a href="#answer-ex{digits}">{html.escape(practice_copy[4])} →</a>'
+                       if f'id="answer-ex{digits}"' in answers else "")
+        practice_cards.append(
+            f'<form class="exercise-attempt" data-exercise-id="{exercise_id}">'
+            f'<h3>{exercise_id}</h3><div class="exercise-links">{prompt_link}{answer_link}</div>'
+            f'<label for="attempt-{exercise_id}">{html.escape(practice_copy[2])}</label>'
+            f'<textarea id="attempt-{exercise_id}" name="answer" rows="5" maxlength="20000" required></textarea>'
+            f'<button type="submit">{html.escape(practice_copy[3])}</button>'
+            f'<p class="exercise-attempt-status" role="status"></p></form>'
+        )
+    practice_html = (f'<section id="lesson-practice" class="lesson-practice" aria-label="{html.escape(practice_copy[0], quote=True)}">'
+                     f'<h2>{html.escape(practice_copy[0])}</h2>{"".join(practice_cards)}</section>') if practice_cards else ""
     diagram_script = '<script src="/seo-diagrams.js" defer></script>' if 'class="language-mermaid"' in body or 'class="language-mermaid"' in answers else ''
     language_name = html.escape(LANGUAGE_NAMES.get(language, language))
     return f'''<!doctype html>
@@ -316,6 +346,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   </div></aside>
   <div class="lesson-main">
   <article class="prose" lang="{html.escape(language)}">{body}</article>
+  {practice_html}
   {answers_html}
   <nav class="lesson-nav" aria-label="{chrome['next_step']}">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
   </div>

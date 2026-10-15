@@ -26,6 +26,8 @@ const copy: Record<string, [string, string]> = {
   'Published chapter tests': ['Testes publicados por capítulo', 'Pruebas publicadas por capítulo'],
   'Available tests now': ['Testes disponíveis agora', 'Pruebas disponibles ahora'],
   'Only reviewed questions tied to a published chapter appear here. Choose one to open its course assessment.': ['Aqui aparecem apenas perguntas revisadas de capítulos publicados. Escolha uma para abrir a avaliação do curso.', 'Aquí solo aparecen preguntas revisadas de capítulos publicados. Elige una para abrir la evaluación del curso.'],
+  'Exercises in the public book': ['Exercícios do livro público', 'Ejercicios del libro público'],
+  'Open an authored lesson or chapter to solve its exercises, save your own answer and compare the worked result. Book exercises are open practice; timed multiple-choice tests are separately reviewed and published above.': ['Abra uma aula ou capítulo escrito para resolver os exercícios, salvar sua resposta e comparar com a resolução. Os exercícios do livro são prática aberta; os testes cronometrados de múltipla escolha são revisados e publicados separadamente acima.', 'Abre una lección o capítulo redactado para resolver sus ejercicios, guardar tu respuesta y compararla con la solución. Los ejercicios del libro son práctica abierta; las pruebas cronometradas de opción múltiple se revisan y publican por separado arriba.'],
   'TEN SECONDS PER QUESTION': ['DEZ SEGUNDOS POR PERGUNTA', 'DIEZ SEGUNDOS POR PREGUNTA'],
   'ATTEMPT COMPLETE': ['TENTATIVA CONCLUÍDA', 'INTENTO COMPLETADO'],
   'Try again': ['Tentar novamente', 'Intentarlo de nuevo'],

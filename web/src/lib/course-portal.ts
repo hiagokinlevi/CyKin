@@ -248,7 +248,7 @@ export async function initCoursePortal(): Promise<void> {
       form.addEventListener('submit', async event => {
         event.preventDefault(); save.disabled = true;
         try {
-          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, exercise_id: exerciseId, answer: input.value, status: 'attempted' }) });
+          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, unit_kind: lesson.content_kind === 'legacy_chapter' || lesson.content_kind === 'chapter_lesson' ? 'chapter' : 'lesson', exercise_id: exerciseId, answer: input.value, status: 'attempted' }) });
           el('course-progress-status').textContent = response.ok ? `${exerciseId} saved to your account.` : `Could not save ${exerciseId}.`;
         } catch { el('course-progress-status').textContent = `Could not save ${exerciseId}.`; }
         finally { save.disabled = false; }

@@ -28,7 +28,7 @@ def authored_chapter(markdown: str, number: int) -> str | None:
         if index == len(anchors) - 1:
             tail = body[heading.end():]
             endings = [found.start() for pattern in (
-                re.compile(r'^##\s+(?:final\s+appendix\s+[—–:-]\s+)?(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resoluções|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b', re.M | re.I),
+                re.compile(r'^##\s+(?:(?:final\s+appendix|apêndice\s+final|apendice\s+final|apéndice\s+final)\s+[—–:-]\s+)?(?:worked\s+(?:results|answers)|answer\s+key|gabarito|respostas|resoluções|resultados(?:\s+resueltos)?|soluciones|resoluciones)\b', re.M | re.I),
                 re.compile(r'^##\s+(?:references|referências|referencias)\b', re.M | re.I),
             ) if (found := pattern.search(tail))]
             if endings:

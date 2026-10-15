@@ -151,6 +151,18 @@ def test_rapid_incident_response_banks_cover_four_weeks_and_start(pilot):
         assert "correct" not in response.json()["question"]
 
 
+def test_student_can_save_a_chapter_exercise_during_daily_lesson_expansion(pilot):
+    client, _db, _now = pilot
+    attempt = {"level": "professional-6-months", "area": "incident-response-resilience",
+               "language": "en", "chapter": 2, "exercise_id": "EX006",
+               "answer": "Compare the two approved evidence paths.", "status": "attempted"}
+    assert client.post("/student/progress/exercise", json=attempt, headers=ORIGIN).status_code == 404
+    saved = client.post("/student/progress/exercise", json={**attempt, "unit_kind": "chapter"}, headers=ORIGIN)
+    assert saved.status_code == 200 and saved.json()["saved"] is True
+    rows = client.get("/student/progress").json()["exercises"]
+    assert [(row["chapter"], row["exercise_id"]) for row in rows] == [(2, "EX006")]
+
+
 def test_full_rapid_ir_bank_coverage_does_not_bypass_book_review(pilot):
     client, _db, now = pilot
     course = {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en"}

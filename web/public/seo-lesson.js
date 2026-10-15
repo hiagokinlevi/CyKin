@@ -15,19 +15,40 @@
   revealAnswer();
 
   // Record only signed-in study activity. Anonymous reading never reaches D1.
-  const lesson = location.pathname.match(/^\/courses\/([a-z0-9-]+)\/([a-z0-9-]+)\/(?:lessons|chapters)\/([a-z]{2})\/(\d+)\/?$/);
+  const lesson = location.pathname.match(/^\/courses\/([a-z0-9-]+)\/([a-z0-9-]+)\/(lessons|chapters)\/([a-z]{2})\/(\d+)\/?$/);
   if (lesson) {
-    const payload = { level: lesson[1], area: lesson[2], language: lesson[3], chapter: Number(lesson[4]) };
+    const payload = { level: lesson[1], area: lesson[2], language: lesson[4], chapter: Number(lesson[5]) };
+    const unitKind = lesson[3] === 'chapters' ? 'chapter' : 'lesson';
     const panel = document.querySelector('.progress-sidebar');
     const panelStatus = document.getElementById('progress-status');
     const signIn = document.getElementById('progress-signin');
     const dashboard = document.getElementById('progress-dashboard');
     const markButton = document.getElementById('mark-lesson-complete');
-    const ui = lesson[3] === 'pt'
-      ? { count: (n, total) => `${n} de ${total} aulas publicadas concluídas.`, unavailable: 'O progresso está indisponível agora.', marked: 'Aula concluída.' }
-      : lesson[3] === 'es'
-      ? { count: (n, total) => `${n} de ${total} lecciones publicadas completadas.`, unavailable: 'El progreso no está disponible ahora.', marked: 'Lección completada.' }
-      : { count: (n, total) => `${n} of ${total} published lessons completed.`, unavailable: 'Progress is unavailable right now.', marked: 'Lesson completed.' };
+    const ui = lesson[4] === 'pt'
+      ? { count: (n, total) => `${n} de ${total} aulas publicadas concluídas.`, unavailable: 'O progresso está indisponível agora.', marked: 'Aula concluída.', saved: 'Resposta salva na sua conta.', signIn: 'Entre para salvar sua resposta.', failed: 'Não foi possível salvar a resposta.' }
+      : lesson[4] === 'es'
+      ? { count: (n, total) => `${n} de ${total} lecciones publicadas completadas.`, unavailable: 'El progreso no está disponible ahora.', marked: 'Lección completada.', saved: 'Respuesta guardada en tu cuenta.', signIn: 'Inicia sesión para guardar tu respuesta.', failed: 'No se pudo guardar la respuesta.' }
+      : { count: (n, total) => `${n} of ${total} published lessons completed.`, unavailable: 'Progress is unavailable right now.', marked: 'Lesson completed.', saved: 'Answer saved to your account.', signIn: 'Sign in to save your answer.', failed: 'Could not save the answer.' };
+    for (const form of document.querySelectorAll('.exercise-attempt')) {
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+        const answer = form.querySelector('textarea');
+        const button = form.querySelector('button[type="submit"]');
+        const status = form.querySelector('.exercise-attempt-status');
+        if (!answer?.value.trim() || !button || !status) return;
+        button.disabled = true;
+        try {
+          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...payload, unit_kind: unitKind, exercise_id: form.dataset.exerciseId, answer: answer.value, status: 'attempted' }),
+          });
+          status.textContent = response.ok ? ui.saved : [401, 403].includes(response.status) ? ui.signIn : ui.failed;
+          if (response.ok) void loadProgress();
+          if ([401, 403].includes(response.status) && signIn) signIn.hidden = false;
+        } catch { status.textContent = ui.failed; }
+        finally { button.disabled = false; }
+      });
+    }
     const showGuest = () => { if (panelStatus) panelStatus.textContent = ''; if (signIn) signIn.hidden = false; };
     const loadProgress = async () => {
       if (!panel || !panelStatus) return;
@@ -73,8 +94,8 @@
       if (!response.ok) { showGuest(); return; }
       void loadProgress();
       void send('lesson_opened');
-      const labels = lesson[3] === 'pt' ? ['Sua análise da aula', 'Salvar análise', 'Análise salva.']
-        : lesson[3] === 'es' ? ['Tu análisis de la lección', 'Guardar análisis', 'Análisis guardado.']
+      const labels = lesson[4] === 'pt' ? ['Sua análise da aula', 'Salvar análise', 'Análise salva.']
+        : lesson[4] === 'es' ? ['Tu análisis de la lección', 'Guardar análisis', 'Análisis guardado.']
         : ['Your lesson analysis', 'Save analysis', 'Analysis saved.'];
       const section = document.createElement('section'); section.className = 'student-analysis';
       const heading = document.createElement('h2'); heading.textContent = labels[0];
