@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 5,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "4db1c2d70277861f3b562bb1b19d78a08a53349d",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-05",
+  "source_sha256": "d2875689f23bb5a8f6a851dd854a106cb4e174881ce44261ea387d9d5b027bdc",
+  "case_note": "Millbrook Hospital, its people, devices and accounts are synthetic. Question scenarios apply the authored chapter; they do not record actions on real systems or grant testing authority.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why does reusing one integrator password across hospitals widen exposure after a single disclosure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The disclosure affects only the hospital where it occurred"
+        },
+        {
+          "id": "b",
+          "text": "The disclosed credential is accepted at multiple maintained sites"
+        },
+        {
+          "id": "c",
+          "text": "Each hospital must separately disclose its password before access is possible"
+        },
+        {
+          "id": "d",
+          "text": "Changing one hospital's password automatically protects every other site"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The same credential is reused across the integrator's sites, so knowledge gained at one site can be relevant at the others. The exposure is not confined to the place of disclosure, and a separate secret need not leak at each hospital. Changing a password at one hospital does not change copies used elsewhere. This describes the risk of reuse, not evidence that any hospital has actually been accessed.",
+      "source": "Chapter 5, §5.1 \"Defaults in buildings\" and EX021 \"Why integrator passwords matter\""
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which default-password check follows Chapter 5's scope and authorisation boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Try defaults independently on live devices, then notify the contractor"
+        },
+        {
+          "id": "b",
+          "text": "Check only DOOR-SRV and apply its result to every inventoried controller"
+        },
+        {
+          "id": "c",
+          "text": "Check every interface outside the booked slot to avoid other maintenance"
+        },
+        {
+          "id": "d",
+          "text": "Check inventoried controllers and web interfaces with the contractor in a booked slot"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 5.1 covers every controller and web interface in the inventory, with checks done by or with the contractor during a booked slot. It explicitly rules out trying passwords on live systems on the analyst's own initiative. A result from DOOR-SRV does not establish other devices' results, and moving checks outside the booked slot abandons the stated boundary. Record each actual result and its check date.",
+      "source": "Chapter 5, §5.1 \"Defaults in buildings\", second paragraph"
+    },
+    {
+      "id": "Q03",
+      "prompt": "After an unexpected setpoint change, what do named BMS accounts add compared with one shared shift login?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An account-specific audit or trend-log entry to follow up"
+        },
+        {
+          "id": "b",
+          "text": "Automatic rejection of every unsafe setpoint value"
+        },
+        {
+          "id": "c",
+          "text": "Proof that the recorded change was authorised"
+        },
+        {
+          "id": "d",
+          "text": "Automatic replacement of passwords on downstream controllers"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A named account lets the audit or trend log associate the change with a particular account, giving the investigation a specific user to ask. A shared shift login loses that distinction. Account naming is not a setpoint safety check, proof of authorisation or a mechanism for rotating controller passwords. The benefit taught here is traceability to support investigation, not a conclusion about the reason for the change.",
+      "source": "Chapter 5, §5.2 \"Shared estates accounts\" and EX022 \"Traceable changes\""
+    },
+    {
+      "id": "Q04",
+      "prompt": "A controller has only one account. Which fallback records each engineer's use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Separate vault copies without recording individual use"
+        },
+        {
+          "id": "b",
+          "text": "Shift password rotation with only a shift-level record"
+        },
+        {
+          "id": "c",
+          "text": "A vaulted password with each use logged by engineer name"
+        },
+        {
+          "id": "d",
+          "text": "A vaulted password with only a permitted-user list"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter addresses this limitation by keeping the controller password in the vault and logging every use with the engineer's name. Separate copies of the same credential do not document which engineer used it; a shift label is not an individual use record. A list of permitted users records entitlement, not actual use. This is the stated fallback for a one-account device, not a claim that the controller now provides separate native accounts.",
+      "source": "Chapter 5, §5.2 \"Shared estates accounts\", second paragraph; \"Errors and limits\""
+    },
+    {
+      "id": "Q05",
+      "prompt": "A supplier promises security updates but gives no duration. What procurement evidence is still needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The hardware warranty period, treated as the security-update commitment"
+        },
+        {
+          "id": "b",
+          "text": "A current firmware version number, treated as proof of future updates"
+        },
+        {
+          "id": "c",
+          "text": "A support salesperson's verbal assurance, without a purchase-record entry"
+        },
+        {
+          "id": "d",
+          "text": "A written update-support duration retained with the purchase record"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 5.3 asks how long updates will be provided and requires the supplier's written answers to be kept with the purchase record. A hardware warranty, a firmware version and an unrecorded verbal assurance do not answer that specific question. If the supplier cannot state the duration, that gap remains information for the buyer rather than an assumed commitment. This question tests one procurement field, not the complete baseline.",
+      "source": "Chapter 5, §5.3 \"A procurement baseline\", second paragraph; EX023 \"Contract questions\""
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which is the better component-security reference for an industrial BMS controller in Chapter 5?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IEC 62443-4-2 component requirements"
+        },
+        {
+          "id": "b",
+          "text": "ETSI EN 303 645 consumer IoT baseline"
+        },
+        {
+          "id": "c",
+          "text": "NIST IR 8259 manufacturer activities"
+        },
+        {
+          "id": "d",
+          "text": "Millbrook's local estates password rules"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The Errors and limits section identifies IEC 62443-4-2 component requirements as the better match for industrial-grade building controllers. ETSI EN 303 645 targets consumer IoT; its procurement ideas can be useful without making it the best industrial component reference. Section 5.3 describes NIST IR 8259 as manufacturer activities, a different scope. Millbrook's password rules govern local practice rather than specifying a component standard. Choosing a reference is not evidence of compliance or certification.",
+      "source": "Chapter 5, \"Errors and limits\"; §5.3 \"A procurement baseline\"; EX025 \"Right standard\""
+    },
+    {
+      "id": "Q07",
+      "prompt": "A contractor engineer who knew device passwords leaves. Which response matches the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record the departure and wait for the next routine password review"
+        },
+        {
+          "id": "b",
+          "text": "Disable the named BMS account and leave all known device passwords unchanged"
+        },
+        {
+          "id": "c",
+          "text": "Change affected passwords, update the vault, review access and record the changes"
+        },
+        {
+          "id": "d",
+          "text": "Change vault permissions while leaving the device credentials unchanged"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 5.4 requires password changes when contractor staff leave, and EX024 combines affected-password changes and vault updates with access review and a record. Merely documenting the departure leaves known credentials usable. Disabling one BMS account does not change device passwords already known to the engineer, and removing vault access does not make that knowledge disappear. The rules also need an agreed way for the hospital to learn of departures.",
+      "source": "Chapter 5, §5.4 \"Rules that estates staff can follow\" and EX024 \"Contractor leaver\""
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which recorded results verify credential replacement and operator access within the booked slot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vault updated; controller reachable"
+        },
+        {
+          "id": "b",
+          "text": "Old password rejected; operators can use the new arrangement"
+        },
+        {
+          "id": "c",
+          "text": "Contractor's new login succeeds; old password untested"
+        },
+        {
+          "id": "d",
+          "text": "Old password rejected; operator login deferred"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 5.5 requires both a negative check that the old password fails from the BMS workstation and a positive check that operators can still log in with the new arrangement, in the same booked slot. A vault edit or network response verifies neither requirement. Contractor access alone leaves the old credential and operator access unproven; an old-password failure alone leaves continuity unproven. Record both actual results in the change ticket.",
+      "source": "Chapter 5, §5.5 \"Checking the change worked\""
+    },
+    {
+      "id": "Q09",
+      "prompt": "After a reported password change, both the old and new passwords work. What conclusion does Chapter 5 support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The change is complete because the new password works"
+        },
+        {
+          "id": "b",
+          "text": "The successful old login proves the controller is compromised"
+        },
+        {
+          "id": "c",
+          "text": "The old credential can remain as an undocumented operator fallback"
+        },
+        {
+          "id": "d",
+          "text": "The change is not complete; check whether another account or interface remains"
+        }
+      ],
+      "correct": "d",
+      "explanation": "An accepted old password fails the chapter's required check, even if the new arrangement works. Section 5.5 offers multiple accounts or interfaces as a possible explanation to investigate, not a confirmed cause. New-password success therefore does not establish completion, old-password success does not by itself prove compromise, and retaining the old credential as an undocumented fallback defeats the check. Record the failure in the change ticket and resolve it within the authorised work process.",
+      "source": "Chapter 5, §5.5 \"Checking the change worked\", second paragraph"
+    },
+    {
+      "id": "Q10",
+      "prompt": "What operational check makes a managed password vault usable under Chapter 5's estates rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirm the shifts that need the vault can access it"
+        },
+        {
+          "id": "b",
+          "text": "Allow only the daytime manager to retrieve every operational password"
+        },
+        {
+          "id": "c",
+          "text": "Keep a shared fallback password outside the vault for night shifts"
+        },
+        {
+          "id": "d",
+          "text": "Give every operator permanent administrator rights to avoid vault requests"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 5.4 explicitly says to check vault availability on the shifts that need it. Daytime-only retrieval can leave other required shifts unable to follow the rule. A shared password outside the vault abandons the managed, device-specific arrangement, while permanent administrator rights contradict the rule limiting those rights to planned work. Agree practical rules with the estates manager and review them after an account-related incident.",
+      "source": "Chapter 5, §5.4 \"Rules that estates staff can follow\""
+    }
+  ]
+}
