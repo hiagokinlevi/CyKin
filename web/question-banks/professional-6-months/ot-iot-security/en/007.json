@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 7,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "a08c2ceb6851577643a86bcc0ccd6a8b3704a6f0",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-07",
+  "source_sha256": "6c9fbefae16fdf325eb95bc085863425955e58543b767818e3c75afb2b253a80",
+  "case_note": "Millbrook Hospital, its routes, people and timing are synthetic. Question scenarios are teaching hypotheticals, not new observations. Route existence, recorded use and confirmed compromise are different claims. No question authorises real-system testing or removal of a safety-monitoring link.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A register lists only the gateway and BMS-WS remote desktop. Which missing pair completes the case's four routes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The two theatre air-handling controllers"
+        },
+        {
+          "id": "b",
+          "text": "The lift cellular link and chiller vendor router"
+        },
+        {
+          "id": "c",
+          "text": "The BMS audit log and gateway session log"
+        },
+        {
+          "id": "d",
+          "text": "The contractor's daytime and overnight user accounts"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The worked example includes the lift's cellular link and the chiller vendor's router alongside the gateway and remote desktop tool. Controllers are assets reached through routes; logs are evidence sources; accounts identify access users rather than completing this four-route inventory. Section 7.1 also asks who installed each route, what it reaches and whether it is still used. Listing a route does not establish a session or malicious use.",
+      "source": "Chapter 7, §7.1 \"Many hands\"; \"Worked example (synthetic Millbrook)\"; EX031 \"Counting routes\""
+    },
+    {
+      "id": "Q02",
+      "prompt": "Hypothetical review: an RDP route exists and a log records one session. Does T0886 establish compromise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The installed route alone confirms compromise"
+        },
+        {
+          "id": "b",
+          "text": "The recorded session proves authorised maintenance"
+        },
+        {
+          "id": "c",
+          "text": "No use is evidenced until a setpoint changes"
+        },
+        {
+          "id": "d",
+          "text": "Use is evidenced; unauthorised use is not established"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A route in the inventory establishes a possible path; the supplied session record adds evidence of use. Neither fact by itself establishes authorisation or compromise. Section 7.2 links misuse to T0886 Remote Services, while MITRE describes adversaries leveraging services that also have legitimate operational uses. Review the session against the ticket, account scope and available activity evidence. A setpoint change is not required to establish that a session occurred. This hypothetical adds no finding to Millbrook's source case.",
+      "source": "Chapter 7, §7.1 \"Many hands\", §7.2 \"Lessons from AA21-042A\", §7.3 \"A controlled process\"; EX031 \"Counting routes\" and EX032 \"Applying the advisory\". Primary cross-check: MITRE ATT&CK for ICS, T0886 description, https://attack.mitre.org/techniques/T0886/"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Two contractor engineers share a gateway login with MFA. Which change satisfies the chapter's account design?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give each engineer a named account with MFA"
+        },
+        {
+          "id": "b",
+          "text": "Keep the shared login and add names only to tickets"
+        },
+        {
+          "id": "c",
+          "text": "Create one shared MFA account for each shift"
+        },
+        {
+          "id": "d",
+          "text": "Issue named accounts but drop MFA for convenience"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 7.3 requires a named, multi-factor account for each contractor engineer. A ticket can identify intended work, but adding names to it does not turn a shared login into individual accounts. Shift-based sharing has the same gap. Named accounts without MFA omit the other required control. Individual authentication supports accountability; the ticket still governs enablement and the maintenance remit still limits the systems each account may reach.",
+      "source": "Chapter 7, §7.3 \"A controlled process\", first paragraph; EX032 \"Applying the advisory\" and its worked answer"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A ticketed contractor session ends. What account state follows the chapter's access lifecycle?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enabled until the next weekly account review"
+        },
+        {
+          "id": "b",
+          "text": "Enabled while any maintenance contract remains valid"
+        },
+        {
+          "id": "c",
+          "text": "Disabled, with future enablement tied to a ticket"
+        },
+        {
+          "id": "d",
+          "text": "Enabled if a recording of the session was retained"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The account is disabled when the session ends, matching the disabled-by-default and enabled-per-ticket model in Section 7.3. Weekly review detects mistakes; it does not extend a completed session's permission. An ongoing contract is not a standing access ticket, and a recording provides evidence rather than authority for later access. The signed process should explain both emergency and planned support, not leave permanent access as an undocumented shortcut.",
+      "source": "Chapter 7, §7.3 \"A controlled process\", both paragraphs; EX032 \"Applying the advisory\" (controlled contractor access)"
+    },
+    {
+      "id": "Q05",
+      "prompt": "A chiller engineer passes gateway MFA. Which access scope matches least privilege in this chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every building system because MFA succeeded"
+        },
+        {
+          "id": "b",
+          "text": "Only the system the contractor maintains"
+        },
+        {
+          "id": "c",
+          "text": "Every device sharing the same facilities owner"
+        },
+        {
+          "id": "d",
+          "text": "The door server too, as a precautionary support option"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 7.3 limits access to the specific system the contractor maintains. Authentication through MFA does not expand the maintenance remit. All-building access, access inherited from a common facilities owner and precautionary access to the door server each widen that scope without a stated need. EX033 uses this separation to limit the consequences of a compromised contractor account; it does not claim that compromise within the permitted system becomes impossible.",
+      "source": "Chapter 7, §7.3 \"A controlled process\"; EX033 \"Per-system limits\" and its worked answer"
+    },
+    {
+      "id": "Q06",
+      "prompt": "MFA and strong remote-access passwords are configured. Which additional AA21-042A recommendation still applies?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Audit logs for all remote connection protocols"
+        },
+        {
+          "id": "b",
+          "text": "Review only failed password attempts"
+        },
+        {
+          "id": "c",
+          "text": "Treat successful MFA as approval of subsequent actions"
+        },
+        {
+          "id": "d",
+          "text": "Keep unused RDP ports open for possible support"
+        }
+      ],
+      "correct": "a",
+      "explanation": "AA21-042A separately recommends auditing logs for all remote connection protocols, alongside MFA, strong RDP passwords and closing unused RDP ports. Successful authentication does not approve every action, and reviewing only failures omits other remote activity. Leaving unused ports open contradicts the cited mitigation. Chapter 7 applies these recommendations to contractor access. The original bulletin described desktop-sharing software as a possible entry method, so these recommendations must not be presented as proof of a particular tool's use in that incident.",
+      "source": "Chapter 7, §7.2 \"Lessons from AA21-042A\"; EX032 \"Applying the advisory\". Primary cross-check: CISA AA21-042A, \"Mitigations / General Recommendations\", original CISA bulletin of 11 February 2021, https://content.govdelivery.com/accounts/USDHSCISA/bulletins/2c0cd79"
+    },
+    {
+      "id": "Q07",
+      "prompt": "The gateway account exists but has not been validated with the BMS contractor. What gates retiring the old desktop route?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The account-creation record alone"
+        },
+        {
+          "id": "b",
+          "text": "Completion of the planned first calendar week"
+        },
+        {
+          "id": "c",
+          "text": "Removing the old route to force gateway adoption"
+        },
+        {
+          "id": "d",
+          "text": "Confirmed replacement access and an agreed change slot"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Sections 7.3 and 7.4 require validating the replacement with the contractor and planning withdrawal with estates so support remains available. Account creation is not evidence that the replacement works. The synthetic week-one schedule is not permission to skip that prerequisite, and removing the old route first can strand support during a plant failure. The chiller router follows later in the case; the lift link is restricted rather than blindly removed. This is a decision question, not an instruction to test real systems.",
+      "source": "Chapter 7, §7.3 \"A controlled process\", §7.4 \"Removing the old routes\"; \"Worked example (synthetic Millbrook)\"; EX034 \"Removal timing\""
+    },
+    {
+      "id": "Q08",
+      "prompt": "After an agreed legacy-route removal, which record and follow-up does Chapter 7 require?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The scheduled removal date, without confirmation"
+        },
+        {
+          "id": "b",
+          "text": "A deleted inventory row, with no change history"
+        },
+        {
+          "id": "c",
+          "text": "The removal date and confirmer, followed by an inventory recheck"
+        },
+        {
+          "id": "d",
+          "text": "A successful gateway login, without checking the old route"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 7.4 asks for each removal's date and who confirmed it, followed by checking the route inventory for reappearance. A schedule records intent, not completion. Deleting an entry without retaining the removal record loses accountability. A working replacement does not establish that the old route was retired. The recheck is a separate follow-up, not a claim that a previously removed path can never return; its execution remains within the agreed operational process.",
+      "source": "Chapter 7, §7.4 \"Removing the old routes\", second paragraph; EX034 \"Removal timing\" (replacement and removal are separate checks)"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which treatment matches the lift cellular link in Millbrook's phased plan?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Restrict it to the lift service centre with a ticket requirement"
+        },
+        {
+          "id": "b",
+          "text": "Disconnect it with the BMS desktop tool in week one"
+        },
+        {
+          "id": "c",
+          "text": "Retain unrestricted access because the contractor installed it"
+        },
+        {
+          "id": "d",
+          "text": "Remove it with the chiller router in week two"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The worked example explicitly keeps the lift link restricted to the lift contractor's service centre with a ticket requirement. The BMS desktop tool and chiller router have different retirement steps; their schedules do not authorise disconnecting the lift path. Contractor installation does not justify unrestricted access. The Errors and limits section explains why some lift and fire-alarm links need careful treatment for safety monitoring. The exception is bounded, documented access, not exemption from control.",
+      "source": "Chapter 7, §7.4 \"Removing the old routes\"; \"Worked example (synthetic Millbrook)\"; \"Errors and limits\"; EX035 \"Safety link\""
+    },
+    {
+      "id": "Q10",
+      "prompt": "A cellular route is required for fire-alarm monitoring. How should a gateway-only policy handle it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disconnect it first, then ask whether alarms still arrive"
+        },
+        {
+          "id": "b",
+          "text": "Keep it unrestricted and omit it from the route register"
+        },
+        {
+          "id": "c",
+          "text": "Keep it unchanged and defer the safety-owner review"
+        },
+        {
+          "id": "d",
+          "text": "Review with the safety owner; restrict and document required monitoring"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter's safety exception requires review with the responsible owner, restriction, documentation and continued review of necessary monitoring. EX035's worked answer specifies confirming the monitoring-centre destination with the fire safety owner. Disconnecting first can remove a life-safety function. Unrestricted, unrecorded access and indefinite deferral both leave the risk unmanaged. The general gateway rule must be read with this explicit exception; it is not an instruction to unplug every cellular link or to perform live alarm tests.",
+      "source": "Chapter 7, \"Errors and limits\"; EX035 \"Safety link\" and its worked answer; §7.4 \"Removing the old routes\""
+    }
+  ]
+}
