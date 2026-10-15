@@ -3338,7 +3338,7 @@ W8 RTO NOT_ASSESSABLE_NO_TARGET
 
 **Practice and limits.** Complete [EX040](#exercise-ex040) with a 130–190-word handoff and an outside-the-message monitoring card. Finish EX039's C30 timeline portion using the newly released evidence. Compare the [worked answer](#answer-ex040). Name the service/application/identity monitoring responsibilities and next review trigger without inventing a person, telemetry receipt or completed two-hour result. Stop/escalate on wrong values, unexpected writes, scheduled failure or missing required new audit fields under the owner's approved procedure.
 
-[Previous: Day 39](#week-08-day-04) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 9 reference; daily sequence pending](#ch-09).
+[Previous: Day 39](#week-08-day-04) · [Week 8 index](#week-08-index) · [Course index](../SUBJECTS.md) · [Next: Week 9, Day 41](#week-09-day-01).
 
 <a id="week-08-end"></a>
 
@@ -3667,7 +3667,7 @@ A negative query requires a **completeness contract**: event type expected, iden
 
 **Worked example: internal draft v1, evidence cutoff 11:00 (not dispatched).**
 
-> CTN-IR-014 / restricted coordination DRAFT v1. C29/C30 support limited S42 acceptance at 10:45 with further monitoring assigned. C31 reports one 10:47 staging batch, mail-sync-04, containing 12 pseudonymous tokens. C33 reports the inspected internal queue entries not-dispatched; the gateway window 10:49–10:51 is missing. No external-delivery or personal-data finding is established. Under C32's privacy assessment, request that authorized queue/gateway custodians validate batch correlation, source coverage, retry semantics and preservation receipts without exporting contact mappings. Privacy steward owns this scope decision; incident lead owns the 12:00 status. Communications approval and transmission remain pending.
+> CTN-IR-014 / restricted coordination DRAFT v1. C29/C30 support limited S42 acceptance at 10:45 with further monitoring assigned. C31 reports one 10:47 staging batch, mail-sync-04, containing 12 pseudonymous tokens. C33 reports the inspected internal queue entries not-dispatched; the gateway window 10:49–10:51 is missing. No external-delivery or personal-data finding is established. Under C32's privacy assessment, request that authorized queue/gateway custodians validate batch correlation, source coverage, retry semantics and preservation receipts without exporting contact mappings. Ask which event stage each source actually records, the exact query interval and filters, the time basis and ingestion lag, and whether a separate authenticated dispatcher record could cover the gateway gap. Preserve failed query attempts as limitations, not negative findings. Privacy steward owns this scope decision; incident lead owns the 12:00 status. Communications approval and transmission remain pending.
 
 | Release-manifest field | Correct status |
 |---|---|
@@ -3694,7 +3694,7 @@ Treat communication as a **state machine**: DRAFT → technically reviewed → p
 
 **Worked example: proposed public copy (not sent).**
 
-> A class enrollment slot was temporarily unavailable. CTN completed its selected checks and returned that slot to use at 10:45 UTC. We continue to monitor enrollment and review the event. No action is requested from learners based on this service update. We will provide another status by 12:00 UTC through the designated channel.
+> A class enrollment slot was temporarily unavailable. CTN completed its selected checks and returned that slot to use at 10:45 UTC. We continue to monitor enrollment and review the event. No action is requested from learners based on this service update. We will provide another status by 12:00 UTC through the designated channel. If you encounter a new enrollment error, please contact the usual support desk so our team can investigate that specific report.
 
 Attach a **separate** process card: audience “CTN learners”; evidence “C29–C30 only for service assertion”; business reviewer “service owner, pending”; release reviewer “communications owner, pending”; privacy/legal content assessment “refer to authorized specialist if required”; delivery receipt “none”; state **DRAFT/UNSENT**. The 12:00 time obligates another *status*, not a promised conclusion.
 
