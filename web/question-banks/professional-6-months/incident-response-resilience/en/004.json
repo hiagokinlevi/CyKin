@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "incident-response-resilience",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "c3f723c587e623987134ad9963e5f7e61d1cdfe9c2ec5449bab151d2fa453cff",
+  "source_path": "levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md",
+  "editorial_note": "Original Chapter 4 timed self-assessment with technical and ambiguity checks. Independent human review is not claimed. The site adds the fifth uncertainty choice and ten-second timing. These questions do not replace EX016–EX020 or release any translation unit.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "At 09:14, the proposed svc-enroll export is narrow, but the interface offers all identities. What should the analyst do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Export all identities now and request permission afterward."
+        },
+        {
+          "id": "b",
+          "text": "Stop that transfer and seek a permitted narrower method or explicit amendment."
+        },
+        {
+          "id": "c",
+          "text": "Treat interface access as approval for every available field."
+        },
+        {
+          "id": "d",
+          "text": "Record C09's later 09:16 approval as already available."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B preserves scope and the actual decision boundary: the custodian can propose an authorized narrower method or seek a scope amendment. A performs the unapproved transfer first. C confuses technical capability with permission. D imports a later case approval into the 09:14 request. C08's reported expiry prioritizes attention but does not expand authority.",
+      "source": "Chapter 4, Week 4 / course Day 16, #week-04-day-01, Assumptions and evidence and Worked contrast; EX016."
+    },
+    {
+      "id": "Q02",
+      "prompt": "C09 records copy receipt at 09:18 but supplies no source object ID, byte count or digest. Which statement is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The received export is proved complete because it has two visible rows."
+        },
+        {
+          "id": "b",
+          "text": "The original producer records were all preserved by a source hold."
+        },
+        {
+          "id": "c",
+          "text": "A case copy was reported received; byte integrity and source completeness remain unverified."
+        },
+        {
+          "id": "d",
+          "text": "The missing digest proves that the copy was altered."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C states the observed workflow status without inventing a byte check. A extrapolates from a visible subset to complete source coverage. B substitutes receipt of a copy for an applied source-retention control. D treats an unperformed comparison as a measured mismatch. Missing metadata limits claims; it does not establish that the supplied rows are false.",
+      "source": "Chapter 4, §4.2 and §4.E2; Week 4 / course Day 17, #week-04-day-02, case-copy and missing-fields paragraphs; EX017."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A custodian later supplies a digest absent from the original C09 receipt. How should the record incorporate it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Silently add it to the 09:18 receipt as if measured then."
+        },
+        {
+          "id": "b",
+          "text": "Replace the original receipt and delete its missing-field history."
+        },
+        {
+          "id": "c",
+          "text": "Use V4's digest so that the original form remains complete."
+        },
+        {
+          "id": "d",
+          "text": "Add a dated supplement identifying the object, source and actual check status."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D preserves what was known at receipt and records the later information with its actual provenance. A backdates knowledge and measurement. B erases the earlier evidence-quality gap. C substitutes unrelated classroom bytes for an unknown export. A supplied digest and an independently recomputed comparison are also different observations and must retain separate statuses.",
+      "source": "Chapter 4, §4.E4, manifest supplement paragraph; Week 4 / course Day 17, #week-04-day-02, Custody mechanism; EX017."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The V4 program reproduces its expected 34-byte count and SHA-256 digest. What does that establish about C09?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No C09 byte verification; the result concerns the separate V4 fixture."
+        },
+        {
+          "id": "b",
+          "text": "C09 contains exactly those 34 bytes."
+        },
+        {
+          "id": "c",
+          "text": "C09's two events are authentic producer records."
+        },
+        {
+          "id": "d",
+          "text": "C09's complete collection scope and authority are proved."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A identifies the tested object: V4 is artificial local data, not the missing C09 CSV bytes. B invents byte identity between different objects. C turns fixture reproducibility into producer authentication. D turns a checksum into scope and permission evidence. The measured result is useful only with its actual object and comparison boundary.",
+      "source": "Chapter 4, §4.4 and §4.8; Week 4 / course Day 18, #week-04-day-03, Worked contrast; EX018."
+    },
+    {
+      "id": "Q05",
+      "prompt": "W4-BYTES shows equal splitlines() results for its LF and CRLF representations. Which comparison result is also true?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Their raw bytes and digests must match because the lines look equal."
+        },
+        {
+          "id": "b",
+          "text": "Both representations have the same 34-byte length."
+        },
+        {
+          "id": "c",
+          "text": "Their lengths are 34 and 36; raw bytes and tested digests differ."
+        },
+        {
+          "id": "d",
+          "text": "The difference proves intentional tampering with C09."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C matches the executed fixture: replacing two LF terminators with CRLF adds two bytes, while splitlines() removes the terminators from its returned lines. A confuses a parsed representation with exact bytes. B overlooks the two added carriage returns. D invents a cause and assigns a separate synthetic transformation to C09. The preserved representation and its documented derivative remain different objects.",
+      "source": "Chapter 4, Week 4 / course Day 18, #week-04-day-03, Offline W4-BYTES control and executed output; EX018 worked representation control."
+    },
+    {
+      "id": "Q06",
+      "prompt": "C4X labels a declaration checked=True with digest text sha256:toy. What does that program actually validate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An actual digest was recomputed over a received source export."
+        },
+        {
+          "id": "b",
+          "text": "The declared receipt-state rules; it neither hashes nor authenticates source bytes."
+        },
+        {
+          "id": "c",
+          "text": "The case's handling satisfies every chain-of-custody requirement."
+        },
+        {
+          "id": "d",
+          "text": "The two C09 rows exhaust the producer's relevant events."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B respects the program's explicit scope: it classifies supplied flags and strings, not actual collection or hashing. A invents a computation absent from the listing. C extrapolates a toy state rule to comprehensive custody or admissibility. D confuses a receipt-state declaration with source completeness. The missing-digest control remains unverified even when checked=True.",
+      "source": "Chapter 4, §4.E6, C4X environment and interpretation; Week 4 / course Day 17, #week-04-day-02, Laboratory and decision; EX017."
+    },
+    {
+      "id": "Q07",
+      "prompt": "C10 displays 11:21 UTC+02:00. Which time annotation preserves both the arithmetic and its evidential limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "13:21 UTC, with backend state therefore confirmed."
+        },
+        {
+          "id": "b",
+          "text": "11:21 UTC, because a displayed offset must be ignored."
+        },
+        {
+          "id": "c",
+          "text": "09:21 UTC as an independently verified capture timestamp."
+        },
+        {
+          "id": "d",
+          "text": "Conditional 09:21 UTC; retain the raw display and unverified clock context."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D subtracts the stated two-hour offset while retaining the condition that the displayed clock/offset is correct. A adds rather than subtracts and invents authoritative state. B discards the supplied offset. C computes the right digits but wrongly authenticates capture time. The support receipt remains a separate 09:22 case event.",
+      "source": "Chapter 4, §4.9; Week 4 / course Day 19, #week-04-day-04, Theory and mechanism and C10 arithmetic; EX019."
+    },
+    {
+      "id": "Q08",
+      "prompt": "C10's conditional displayed UTC time is 09:21 and its case receipt is 09:22. What does the one-minute difference measure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No verified capture-to-receipt latency; the displayed clock's meaning and accuracy are unestablished."
+        },
+        {
+          "id": "b",
+          "text": "Exactly one minute of network transfer latency."
+        },
+        {
+          "id": "c",
+          "text": "Exactly one minute of authoritative S42 unavailability."
+        },
+        {
+          "id": "d",
+          "text": "The time since the database slot last changed."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A distinguishes arithmetic between labels from a measurement with validated start and end points. B invents a network start time and transfer measurement. C invents service-duration evidence. D treats a display time as a backend transition record. Capture-device clock, displayed-time semantics, page cache and authoritative state all require their own contextual checks.",
+      "source": "Chapter 4, Week 4 / course Day 19, #week-04-day-04, C10 time comparison and Worked contrast; EX019 worked context annotation."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A later authorized read returns S42's current value and version. Which additional claim does that result alone fail to establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The read returned the reported current value."
+        },
+        {
+          "id": "b",
+          "text": "A version was included in that read result."
+        },
+        {
+          "id": "c",
+          "text": "The authoritative value at the screenshot's claimed historical time was the same."
+        },
+        {
+          "id": "d",
+          "text": "The current read can inform the present impact assessment."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C requires historical records and a validated time/state relationship beyond a current read. A and B restate the hypothetical result supplied in the prompt. D is a bounded decision use of a current-state observation, provided its source and read time are retained. A future read must not silently rewrite the earlier screenshot caption or claim an historical transition time.",
+      "source": "Chapter 4, Week 4 / course Day 19, #week-04-day-04, Decision and limit; Day 20, #week-04-day-05, second request; EX019–EX020."
+    },
+    {
+      "id": "Q10",
+      "prompt": "C09 reports a case copy received, while C08 reports source expiry at 10:00. What follows about a source-preservation hold?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The copy receipt automatically proves producer deletion was suspended."
+        },
+        {
+          "id": "b",
+          "text": "A hold needs its own authority, application and effect evidence; receipt does not establish it."
+        },
+        {
+          "id": "c",
+          "text": "The reported deadline authorizes a tenant-wide export without another decision."
+        },
+        {
+          "id": "d",
+          "text": "A matching local checksum would prove the source cannot expire."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B keeps the source-preservation control ledger separate from the collected-item custody ledger. A treats a retained copy as proof of producer-side retention. C expands a reported loss warning into permission. D substitutes byte consistency for a hold mechanism and its observed effect. The next work is a bounded custodian request under actual scope, not an invented hold or automatic evidence-loss prevention.",
+      "source": "Chapter 4, §4.E3; Week 4 / course Day 20, #week-04-day-05, loss-risk and review/stop paragraphs; EX020."
+    }
+  ]
+}
