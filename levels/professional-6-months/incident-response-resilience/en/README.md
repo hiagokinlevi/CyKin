@@ -6,6 +6,8 @@
 
 This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
 
-English is the reference edition. English, Portuguese and Spanish are current lesson-writing priorities; every edition requires its own technical and language review.
+English remains the active reference-writing edition. Coherent reviewed, revision-pinned English units may later be translated into Portuguese; planned Spanish production follows complete reviewed Portuguese coverage, with the other six languages still gated. Every edition requires its own technical and language review.
 
-**Publication gate:** at least 300 actual A4 pages, 50 substantive exercises with worked results, verified sources, safe reproducible practice, technical and language review. Course titles do not confer accreditation.
+**Current authored daily state:** 45/130 planned weekday lessons across Weeks 1–9, with [Week 9 Days 41–45](SUBJECTS.md#week-9-daily-study--chapter-9-english) and EX041–EX045 linked to their worked answers. Chapters 10–12 are authored **legacy subjects**, not yet converted into daily teaching; the book remains incomplete.
+
+**Publication gate:** full curricular teaching, matched exercises and worked answers, checked primary sources, safe reproducible practice, technical/rights/accessibility/language review and A4 validation of the actual manuscript revision. A4 pages are measured checkpoints, **not a minimum size or completion gate**. Course titles do not confer accreditation.
