@@ -35,66 +35,6 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — AI and machine-learning security: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 How AI systems work, briefly"]
-  N2["1.2 How they fail or are attacked"]
-  N3["1.3 Organising the decision"]
-  N4["1.4 Options"]
-  N5["1.5 Recording the decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 How AI systems work, briefly"]
-  N2["1.2 How they fail or are attacked"]
-  N3["1.3 Organising the decision"]
-  N4["1.4 Options"]
-  N5["1.5 Recording the decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 How AI systems work, briefly]
-    |
-    v
-[1.2 How they fail or are attacked]
-    |
-    v
-[1.3 Organising the decision]
-    |
-    v
-[1.4 Options]
-    |
-    v
-[1.5 Recording the decision]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain in plain terms how AI systems work and fail; (2) name the main attack types and the OWASP LLM Top 10 2025 risks; (3) use the NIST AI RMF functions to organise a decision; (4) compare adoption options including "not now"; and (5) record a decision with owners and review triggers.
@@ -179,66 +119,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Permission"]
-  N2["2.2 Scope and rules"]
-  N3["2.3 Safe environments"]
-  N4["2.4 Evidence and measurement"]
-  N5["2.5 Handling findings"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Permission"]
-  N2["2.2 Scope and rules"]
-  N3["2.3 Safe environments"]
-  N4["2.4 Evidence and measurement"]
-  N5["2.5 Handling findings"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Permission]
-    |
-    v
-[2.2 Scope and rules]
-    |
-    v
-[2.3 Safe environments]
-    |
-    v
-[2.4 Evidence and measurement]
-    |
-    v
-[2.5 Handling findings]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -356,66 +236,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — AI and machine-learning security: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Drawing the flow"]
-  N2["3.2 Untrusted content"]
-  N3["3.3 Data access"]
-  N4["3.4 Dependencies"]
-  N5["3.5 Controls that bound harm"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Drawing the flow"]
-  N2["3.2 Untrusted content"]
-  N3["3.3 Data access"]
-  N4["3.4 Dependencies"]
-  N5["3.5 Controls that bound harm"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Drawing the flow]
-    |
-    v
-[3.2 Untrusted content]
-    |
-    v
-[3.3 Data access]
-    |
-    v
-[3.4 Dependencies]
-    |
-    v
-[3.5 Controls that bound harm]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -567,71 +387,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — AI and machine-learning security: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Lab rules"]
-  N2["4.2 Lab 1 — evasion"]
-  N3["4.4 Lab 3 — base rates"]
-  N4["4.5 Lab 4 — measuring defences"]
-  N5["4.6 The adoption plan"]
-  N6["4.8 Next learning"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Lab rules"]
-  N2["4.2 Lab 1 — evasion"]
-  N3["4.4 Lab 3 — base rates"]
-  N4["4.5 Lab 4 — measuring defences"]
-  N5["4.6 The adoption plan"]
-  N6["4.8 Next learning"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Lab rules]
-    |
-    v
-[4.2 Lab 1 — evasion]
-    |
-    v
-[4.4 Lab 3 — base rates]
-    |
-    v
-[4.5 Lab 4 — measuring defences]
-    |
-    v
-[4.6 The adoption plan]
-    |
-    v
-[4.8 Next learning]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -819,29 +574,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — The same rate has three widths
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  K["k and n enter wilson"] --> P["Printed rate is k/n to three decimals"]
-  P --> D["Denominator grows with n"]
-  D --> W["The bracket gets narrower"]
-```
-
-Three rows share 0.150. Their brackets do not.
-
-### Logical drawing
-
-```text
-successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
-successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
-successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -894,27 +626,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Five seeds are not one rate
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  S["Seeds 0, 1, 2, 3 and 4"] --> B["200 draws each, threshold 0.12"]
-  B --> R["Five printed rates"]
-  R --> M["Mean 0.125 and sample sd 0.017"]
-```
-
-The 0.12 inside the source is a draw threshold. It is not one of the five printed rates.
-
-### Logical drawing
-
-```text
-per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -970,27 +681,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The reduction interval is two sorted slots
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  G["Random 42, 300 baseline draws"] --> D["A success stays only if a second draw is below 0.6"]
-  D --> B["2000 resamples, then sort"]
-  B --> C["Read index 50 and index 1949"]
-```
-
-The printed baseline is the realised rate. The 0.30 in the source is not that rate.
-
-### Logical drawing
-
-```text
-baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1043,30 +733,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Sixteen hex characters are not the digest
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  H["Full SHA-256 hex digest"] --> J["JSON keeps the first 16 characters"]
-  J --> C["The later check still compares the full digest"]
-```
-
-A short prefix can look familiar and still be the wrong object to trust.
-
-### Logical drawing
-
-```text
-{
- "model.bin": "e96760a87768717b",
- "tokenizer.json": "f63d2ddabc61f2d9",
- "config.yaml": "e5bbb570ca0fcb87"
-}
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1116,28 +782,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Sorted names put the config line first
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  I["Dict insertion: model, tokenizer, config"] --> S["sorted(received) reorders the names"]
-  S --> P["config.yaml prints first"]
-```
-
-The check's order is alphabetical. The JSON object's order is not.
-
-### Logical drawing
-
-```text
-config.yaml     MISMATCH
-model.bin       MISMATCH
-tokenizer.json  OK
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -1189,29 +833,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — One flipped bit and one added line
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  M["model.bin index 5000, XOR 1"] --> X["Full digest changes"]
-  C["config.yaml gains one line"] --> X
-  T["tokenizer bytes stay put"] --> K["That line prints OK"]
-```
-
-Either change is enough. The unchanged file is the one that passes.
-
-### Logical drawing
-
-```text
-model.bin index 5000 ^= 1
-config.yaml gains trust_remote_code: true
-tokenizer.json bytes unchanged
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1265,31 +886,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — The corpus is twenty and twenty after the slice
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  B["Loop i from 0 to 19 appends two rows"] --> S["Slice [:10] plus [30:] keeps 20"]
-  S --> N["Twenty policy rows are appended"]
-  N --> D["Every denominator in the print is 20"]
-```
-
-The build makes 40 marked rows. The print never uses that 40 as a denominator.
-
-### Logical drawing
-
-```text
-built inj rows: 40
-after slice: 20 inj
-benign appended: 20
-printed denominators: 20, 20, 20, 20
-benign_calls: 0 on every row
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1346,30 +942,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — Only the none mode sees the spaced verb
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  L["Split the row on '. '"] --> A{"Segment startswith ACTION:"}
-  A -->|Yes| C["A call, in every mode that parses"]
-  A -->|No| N{"Mode is none, and the folded segment startswith action:"}
-  N -->|Yes| C
-  N -->|No| Z["This segment adds nothing"]
-```
-
-The spaced mixed-case form is visible in one branch.
-
-### Logical drawing
-
-```text
-defence=none      exfil_calls=17/20 any_injected_call=20/20
-defence=keyword   exfil_calls=10/20 any_injected_call=10/20
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1425,28 +997,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The allowlist stops email and still counts tag
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  P["Parse calls the same way as a non-none mode"] --> F["Keep a call only if it is in ALLOWED"]
-  F --> E["email is dropped, so exfil is 0"]
-  F --> T["tag remains, so any_injected is 3"]
-```
-
-The zero is padded. The three is the tag count.
-
-### Logical drawing
-
-```text
-ALLOWED = {"summarise", "tag"}
-defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1500,26 +1050,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — Separate returns an empty list
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  P["The parse may have filled calls"] --> R["mode separate assigns calls = []"]
-  R --> Z["Both injected counts print 0"]
-```
-
-Empty comes after the parse. It is not a claim that the parse saw nothing.
-
-### Logical drawing
-
-```text
-defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1572,32 +1102,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — Epsilon is a step on the toy, not a receipt recipe
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  W["Printed weights and bias"] --> E["Five eps values, no sixth"]
-  E --> A["Accuracy falls from 0.985 to 0.505"]
-  A --> R["The receipt rule stays prose"]
-```
-
-The step moves synthetic points. It does not edit a receipt image.
-
-### Logical drawing
-
-```text
-weights w=(1.795, 1.756) b=-0.080
-eps=0.00 accuracy=0.985
-eps=0.25 accuracy=0.950
-eps=0.50 accuracy=0.840
-eps=0.75 accuracy=0.660
-eps=1.00 accuracy=0.505
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Learning outcomes
 
@@ -1653,29 +1157,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — The normal client is fully served until the tight bucket
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  U["90 normal times and 3000 flood times, both sorted"] --> B["Bucket starts full"]
-  B --> R["Refill, then serve if a token remains"]
-  R --> L["Three printed settings"]
-```
-
-The third line is the first line that drops the normal client.
-
-### Logical drawing
-
-```text
-limit=5/s burst=20 normal_served= 90/90 flood_served= 319/3000
-limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
-limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1727,35 +1208,6 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Precision falls when the rare event gets rarer
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  T["tp = tpr times prevalence"] --> P["precision = tp / (tp + fp)"]
-  F["fp = fpr times (1 - prevalence)"] --> P
-  P --> A["alerts = round of 10000 times (tp + fp)"]
-```
-
-Nine lines are the whole experiment. A tenth line would be an invention.
-
-### Logical drawing
-
-```text
-tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
-tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
-tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
-tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
-tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
-tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
-tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
-tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
-tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 ### Learning outcomes
 
@@ -1812,29 +1264,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Six of twenty is a sentence, not a Wilson column
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  P["Prose: 6 of 20 drafts, interval roughly 15 to 52 percent"] --> N["Not a line of Lab S"]
-  L["Lab S first row: successes=3/20"] --> N
-```
-
-The mailbox sentence and the first Wilson row use different numerators.
-
-### Logical drawing
-
-```text
-prose numerator: 6 of 20 drafts
-prose interval words: roughly 15–52%
-Lab S first row: successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
-Lab S does not print 6
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1889,32 +1318,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — The pilot figures are not script columns
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  W["Words in the adoption passage"] --> S["Six scripts, none of which print those words"]
-  S --> K["Keep the words in the plan"]
-  K --> R["Do not paint them into a lab line"]
-```
-
-A figure can be true of the story and still be absent from every stdout.
-
-### Logical drawing
-
-```text
-prose, not a column:
-  10 users, 2,400 drafts, human click to send
-  30-day retention, review above €500
-  admin-switch drill in 3 minutes
-  mailboxes T1–T5, dates 12–26 October
-none of the six scripts prints those tokens
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1968,35 +1371,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the Tallis note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  Q["Quote the six prints"] --> K["Keep pilot figures in sentences"]
-  K --> N["No new payload, weight file, eps, or Bayes row"]
-  N --> O["Review stays open"]
-```
-
-The note may repeat lines the scripts printed. It may not improve them.
-
-### Logical drawing
-
-```text
-keep: three Wilson rows, five seeds, bootstrap slots
-keep: three prefixes, sorted status lines, one bit, one added line
-keep: four defence rows, five eps lines, three buckets, nine precision lines
-reject: a new payload, a real model file, a sixth eps, a tenth Bayes row
-reject: a finished firm, a credential
-```
-
-```text
-The labs make four ideas concrete — crafted inputs, limits, base rates and measurement — and the adoption plan ties them into a decision with controls, monitoring, incident steps and review.
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

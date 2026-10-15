@@ -52,56 +52,6 @@ Mantenga cinco etiquetas en cada nota: observación, inferencia, afirmación, de
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 Del interés a la pregunta"]
-  N2["1.2 Buscar en dos comunidades"]
-  N3["1.3 Cribado y concordancia"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 Del interés a la pregunta"]
-  N2["1.2 Buscar en dos comunidades"]
-  N3["1.3 Cribado y concordancia"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[1.1 Del interés a la pregunta]
-    |
-    v
-[1.2 Buscar en dos comunidades]
-    |
-    v
-[1.3 Cribado y concordancia]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) convertir un interés vago en una pregunta investigable sobre un lazo de control, (2) buscar con sinónimos en publicaciones de ingeniería de control y de seguridad, (3) deduplicar y cribar con métricas de concordancia y (4) redactar un protocolo de revisión de alcance. Prepara el seminario del capítulo 2.
@@ -197,61 +147,6 @@ Un proyecto de maestría empieza con una pregunta que ya nombra su condición de
 
 ## Capítulo 2 — Seguridad de TO, IoT y sistemas ciberfísicos: seminario avanzado
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa de la lección
-
-Lección 02 publicada. Mapa, ejemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Arquitectura: Purdue y zonas"]
-  N2["2.2 Protocolos"]
-  N3["2.3 Familias de detección"]
-  N4["2.4 Evidencia de amenazas"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX008"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Arquitectura: Purdue y zonas"]
-  N2["2.2 Protocolos"]
-  N3["2.3 Familias de detección"]
-  N4["2.4 Evidencia de amenazas"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[2.1 Arquitectura: Purdue y zonas]
-    |
-    v
-[2.2 Protocolos]
-    |
-    v
-[2.3 Familias de detección]
-    |
-    v
-[2.4 Evidencia de amenazas]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) explicar los niveles Purdue y las zonas de ISA/IEC 62443, (2) describir por qué los protocolos industriales clásicos carecen de autenticación, (3) contrastar la detección en red con la detección basada en la física, (4) leer ATT&CK for ICS como evidencia de capacidad y no como evidencia de frecuencia, y (5) extraer una laguna falsable de un mapa de la literatura.
@@ -303,61 +198,6 @@ El seminario le da arquitectura, protocolos, familias de detección y evidencia 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa de la lección
-
-Lección 03 publicada. Mapa, ejemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 El diseño se ajusta a la pregunta"]
-  N2["3.2 Simulación previa a los datos"]
-  N3["3.3 Ética y seguridad"]
-  N4["3.4 Plan de reproducibilidad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX015"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 El diseño se ajusta a la pregunta"]
-  N2["3.2 Simulación previa a los datos"]
-  N3["3.3 Ética y seguridad"]
-  N4["3.4 Plan de reproducibilidad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[3.1 El diseño se ajusta a la pregunta]
-    |
-    v
-[3.2 Simulación previa a los datos]
-    |
-    v
-[3.3 Ética y seguridad]
-    |
-    v
-[3.4 Plan de reproducibilidad]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -449,51 +289,6 @@ Diseño antes que datos, simulación antes del compromiso, cota para cada experi
 
 ## Capítulo 4 — Seguridad de TO, IoT y sistemas ciberfísicos: explicaciones rivales
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa de la lección
-
-Lección 04 publicada. Mapa, ejemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Rivales para una ventaja del CUSUM"]
-  N2["4.2 Rival arquitectónica"]
-  N3["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX021"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Rivales para una ventaja del CUSUM"]
-  N2["4.2 Rival arquitectónica"]
-  N3["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[4.1 Rivales para una ventaja del CUSUM]
-    |
-    v
-[4.2 Rival arquitectónica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) enumerar explicaciones rivales para un resultado de detección, (2) diseñar observaciones que discriminen entre ellas y (3) revisar las afirmaciones cuando una rival sobrevive.
@@ -537,56 +332,6 @@ Las rivales con pruebas convierten una comparación en una contribución; las fr
 
 ## Capítulo 5 — Propuesta y piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa de la lección
-
-Lección 05 publicada. Mapa, ejemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 Esqueleto de la propuesta"]
-  N2["5.2 Propósito del piloto"]
-  N3["5.4 Lista de comprobación de la propuesta antes de l"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX027"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 Esqueleto de la propuesta"]
-  N2["5.2 Propósito del piloto"]
-  N3["5.4 Lista de comprobación de la propuesta antes de l"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[5.1 Esqueleto de la propuesta]
-    |
-    v
-[5.2 Propósito del piloto]
-    |
-    v
-[5.4 Lista de comprobación de la propuesta antes de l]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) redactar una propuesta con hipótesis y condiciones de abandono, (2) definir criterios de continuar o no continuar para un piloto en la instalación y (3) mantener los datos del piloto fuera de las pruebas de hipótesis.
@@ -629,61 +374,6 @@ Una propuesta que declara cómo puede fracasar y un piloto que solo pregunta si 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Recolección y análisis de datos
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa de la lección
-
-Lección 06 publicada. Mapa, ejemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Disciplina de recolección"]
-  N2["6.2 Laboratorio 6: sensibilidad al coeficiente del o"]
-  N3["6.3 Un párrafo de resultados honesto"]
-  N4["6.5 De los números a las afirmaciones"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX033"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Disciplina de recolección"]
-  N2["6.2 Laboratorio 6: sensibilidad al coeficiente del o"]
-  N3["6.3 Un párrafo de resultados honesto"]
-  N4["6.5 De los números a las afirmaciones"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[6.1 Disciplina de recolección]
-    |
-    v
-[6.2 Laboratorio 6: sensibilidad al coeficiente del o]
-    |
-    v
-[6.3 Un párrafo de resultados honesto]
-    |
-    v
-[6.5 De los números a las afirmaciones]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -771,61 +461,6 @@ Planes congelados, diseños emparejados, barridos de sensibilidad y párrafos ho
 
 ## Capítulo 7 — Redacción del trabajo de fin de máster y limitaciones
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa de la lección
-
-Lección 07 publicada. Mapa, ejemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Estructura del argumento"]
-  N2["7.2 Limitaciones con dirección"]
-  N3["7.3 Archivo"]
-  N4["7.5 Cirugía del resumen"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX039"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Estructura del argumento"]
-  N2["7.2 Limitaciones con dirección"]
-  N3["7.3 Archivo"]
-  N4["7.5 Cirugía del resumen"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[7.1 Estructura del argumento]
-    |
-    v
-[7.2 Limitaciones con dirección]
-    |
-    v
-[7.3 Archivo]
-    |
-    v
-[7.5 Cirugía del resumen]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) estructurar el argumento del trabajo de fin de máster, (2) redactar limitaciones con dirección, (3) construir un archivo mínimo por niveles y (4) evitar las afirmaciones exageradas en el resumen.
@@ -872,71 +507,6 @@ Escriba el argumento de modo que un lector escéptico encuentre la evidencia, el
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisión independiente y defensa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa de la lección
-
-Lección 08 publicada. Mapa, ejemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Auditoría de afirmaciones"]
-  N2["8.2 Familias de examinadores"]
-  N3["8.3 Divulgación"]
-  N4["8.4 Informe para operadores"]
-  N5["8.6 Después de la defensa"]
-  N6["Síntesis del capítulo"]
-  N7["Capítulo 1"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX045"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Auditoría de afirmaciones"]
-  N2["8.2 Familias de examinadores"]
-  N3["8.3 Divulgación"]
-  N4["8.4 Informe para operadores"]
-  N5["8.6 Después de la defensa"]
-  N6["Síntesis del capítulo"]
-  N7["Capítulo 1"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[8.1 Auditoría de afirmaciones]
-    |
-    v
-[8.2 Familias de examinadores]
-    |
-    v
-[8.3 Divulgación]
-    |
-    v
-[8.4 Informe para operadores]
-    |
-    v
-[8.6 Después de la defensa]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Capítulo 1]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Resultados de aprendizaje y conexión
 

@@ -36,51 +36,6 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [série 
 
 ## Capítulo 1 — O que é a tecnologia operacional numa linha de embalagem
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 A linha como sistema"]
-  N1["1.2 Por que as prioridades diferem"]
-  N2["1.3 O que um atacante ou um erro pode mudar"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 A linha como sistema"]
-  N1["1.2 Por que as prioridades diferem"]
-  N2["1.3 O que um atacante ou um erro pode mudar"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 A linha como sistema]
-    |
-    v
-[1.2 Por que as prioridades diferem]
-    |
-    v
-[1.3 O que um atacante ou um erro pode mudar]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) nomear os principais componentes de TO numa linha de embalagem de alimentos; (2) explicar por que as prioridades de TO diferem das da TI de escritório; e (3) descrever o que pode dar errado fisicamente quando um sistema de controle se comporta mal.
@@ -133,56 +88,6 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança em primeiro lugar: permissões de trabalho, consequências e quem decide
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX005.
-
-```mermaid
-flowchart TD
-  N0["2.1 Sistemas de segurança física não são ferramentas"]
-  N1["2.2 Permissões de trabalho e bloqueio"]
-  N2["2.3 Quem decide"]
-  N3["2.4 Condições de parada"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX005"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Sistemas de segurança física não são ferramentas"]
-  N1["2.2 Permissões de trabalho e bloqueio"]
-  N2["2.3 Quem decide"]
-  N3["2.4 Condições de parada"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX005"]
-```
-
-```text
-[2.1 Sistemas de segurança física não são ferramentas]
-    |
-    v
-[2.2 Permissões de trabalho e bloqueio]
-    |
-    v
-[2.3 Quem decide]
-    |
-    v
-[2.4 Condições de parada]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -244,61 +149,6 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Noções básicas de rede na linha
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX009.
-
-```mermaid
-flowchart TD
-  N0["3.1 Endereços e sub-redes"]
-  N1["3.2 Switches e VLANs"]
-  N2["3.3 Firewalls"]
-  N3["3.4 Switches não gerenciáveis e redes sem fio"]
-  N4["3.5 Endereços que você não deve presumir"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX009"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Endereços e sub-redes"]
-  N1["3.2 Switches e VLANs"]
-  N2["3.3 Firewalls"]
-  N3["3.4 Switches não gerenciáveis e redes sem fio"]
-  N4["3.5 Endereços que você não deve presumir"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX009"]
-```
-
-```text
-[3.1 Endereços e sub-redes]
-    |
-    v
-[3.2 Switches e VLANs]
-    |
-    v
-[3.3 Firewalls]
-    |
-    v
-[3.4 Switches não gerenciáveis e redes sem fio]
-    |
-    v
-[3.5 Endereços que você não deve presumir]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -367,56 +217,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 4 — Protocolos industriais no nível do operador
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["4.1 O que os protocolos transportam"]
-  N1["4.2 Por que falta autenticação"]
-  N2["4.3 Padrões normais"]
-  N3["4.4 Não faça experimentos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O que os protocolos transportam"]
-  N1["4.2 Por que falta autenticação"]
-  N2["4.3 Padrões normais"]
-  N3["4.4 Não faça experimentos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[4.1 O que os protocolos transportam]
-    |
-    v
-[4.2 Por que falta autenticação]
-    |
-    v
-[4.3 Padrões normais]
-    |
-    v
-[4.4 Não faça experimentos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o que o Modbus/TCP e protocolos industriais semelhantes transportam; (2) explicar por que muitos não têm autenticação; e (3) reconhecer, a partir de uma descrição, o uso normal e o uso incomum de um protocolo.
@@ -477,61 +277,6 @@ Siga para a próxima lição escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Manter um registro de ativos
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX017.
-
-```mermaid
-flowchart TD
-  N0["5.1 O que registrar"]
-  N1["5.2 De onde vêm os dados"]
-  N2["5.3 Lendo o resultado"]
-  N3["5.4 Mantê-lo vivo"]
-  N4["5.5 Reservas e dispositivos desativados"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX017"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O que registrar"]
-  N1["5.2 De onde vêm os dados"]
-  N2["5.3 Lendo o resultado"]
-  N3["5.4 Mantê-lo vivo"]
-  N4["5.5 Reservas e dispositivos desativados"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX017"]
-```
-
-```text
-[5.1 O que registrar]
-    |
-    v
-[5.2 De onde vêm os dados]
-    |
-    v
-[5.3 Lendo o resultado]
-    |
-    v
-[5.4 Mantê-lo vivo]
-    |
-    v
-[5.5 Reservas e dispositivos desativados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -626,61 +371,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 6 — Contas e senhas em IHMs e ferramentas de engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["6.1 Contas compartilhadas"]
-  N1["6.2 Senhas padrão"]
-  N2["6.3 Contas privilegiadas"]
-  N3["6.4 Regras práticas"]
-  N4["6.5 Quando uma senha vaza"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Contas compartilhadas"]
-  N1["6.2 Senhas padrão"]
-  N2["6.3 Contas privilegiadas"]
-  N3["6.4 Regras práticas"]
-  N4["6.5 Quando uma senha vaza"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[6.1 Contas compartilhadas]
-    |
-    v
-[6.2 Senhas padrão]
-    |
-    v
-[6.3 Contas privilegiadas]
-    |
-    v
-[6.4 Regras práticas]
-    |
-    v
-[6.5 Quando uma senha vaza]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar os riscos das contas compartilhadas e padrão; (2) aplicar práticas simples de contas que funcionam no chão de fábrica, em regime de turnos; e (3) lidar corretamente com uma senha esquecida ou vazada.
@@ -748,56 +438,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Mídias removíveis e notebooks
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["7.1 Como o malware atravessa o isolamento"]
-  N1["7.2 Uma rotina para mídias"]
-  N2["7.3 Notebooks"]
-  N3["7.4 Transferir arquivos sem USB"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Como o malware atravessa o isolamento"]
-  N1["7.2 Uma rotina para mídias"]
-  N2["7.3 Notebooks"]
-  N3["7.4 Transferir arquivos sem USB"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[7.1 Como o malware atravessa o isolamento]
-    |
-    v
-[7.2 Uma rotina para mídias]
-    |
-    v
-[7.3 Notebooks]
-    |
-    v
-[7.4 Transferir arquivos sem USB]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar como pen drives e notebooks levam malware para as plantas; (2) aplicar uma rotina de varredura e registro para mídias; e (3) decidir quais notebooks podem se conectar à linha.
@@ -859,56 +499,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Acesso remoto de fornecedores
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["8.1 Por que os fornecedores se conectam"]
-  N1["8.2 O que o alerta constatou"]
-  N2["8.3 Um padrão mais seguro"]
-  N3["8.4 Encerrar a sessão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX029"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Por que os fornecedores se conectam"]
-  N1["8.2 O que o alerta constatou"]
-  N2["8.3 Um padrão mais seguro"]
-  N3["8.4 Encerrar a sessão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
-```
-
-```text
-[8.1 Por que os fornecedores se conectam]
-    |
-    v
-[8.2 O que o alerta constatou]
-    |
-    v
-[8.3 Um padrão mais seguro]
-    |
-    v
-[8.4 Encerrar a sessão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever como os fornecedores chegam remotamente aos sistemas da planta; (2) explicar as lições do alerta de 2021 sobre a estação de água de Oldsmar; e (3) conduzir uma sessão remota seguindo uma lista de verificação simples.
@@ -969,61 +559,6 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Ler registros e alarmes
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["9.1 Dois tipos de mensagens"]
-  N1["9.2 Padrões que importam"]
-  N2["9.3 Lendo a saída"]
-  N3["9.4 Escale, não investigue sozinho"]
-  N4["9.5 O horário importa"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Dois tipos de mensagens"]
-  N1["9.2 Padrões que importam"]
-  N2["9.3 Lendo a saída"]
-  N3["9.4 Escale, não investigue sozinho"]
-  N4["9.5 O horário importa"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[9.1 Dois tipos de mensagens]
-    |
-    v
-[9.2 Padrões que importam]
-    |
-    v
-[9.3 Lendo a saída]
-    |
-    v
-[9.4 Escale, não investigue sozinho]
-    |
-    v
-[9.5 O horário importa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1120,61 +655,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Correções e alertas de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["10.1 De onde vêm os alertas"]
-  N1["10.2 Lendo um alerta"]
-  N2["10.3 Por que não corrigir imediatamente"]
-  N3["10.4 Registrando a decisão"]
-  N4["10.5 Atualizações de IHMs e notebooks"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 De onde vêm os alertas"]
-  N1["10.2 Lendo um alerta"]
-  N2["10.3 Por que não corrigir imediatamente"]
-  N3["10.4 Registrando a decisão"]
-  N4["10.5 Atualizações de IHMs e notebooks"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
-```
-
-```text
-[10.1 De onde vêm os alertas]
-    |
-    v
-[10.2 Lendo um alerta]
-    |
-    v
-[10.3 Por que não corrigir imediatamente]
-    |
-    v
-[10.4 Registrando a decisão]
-    |
-    v
-[10.5 Atualizações de IHMs e notebooks]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) ler um alerta de ICS e encontrar os fatos que importam; (2) cruzar um alerta com o registro de ativos; e (3) explicar por que as plantas muitas vezes mitigam antes de corrigir.
@@ -1241,66 +721,6 @@ Siga para a próxima lição escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Cópias de segurança e restauração
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["11.1 O que copiar"]
-  N1["11.2 Onde guardar as cópias"]
-  N2["11.3 Verificando a integridade"]
-  N3["11.4 Lendo o resultado"]
-  N4["11.5 Testes de restauração"]
-  N5["11.6 Com que frequência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 O que copiar"]
-  N1["11.2 Onde guardar as cópias"]
-  N2["11.3 Verificando a integridade"]
-  N3["11.4 Lendo o resultado"]
-  N4["11.5 Testes de restauração"]
-  N5["11.6 Com que frequência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
-```
-
-```text
-[11.1 O que copiar]
-    |
-    v
-[11.2 Onde guardar as cópias]
-    |
-    v
-[11.3 Verificando a integridade]
-    |
-    v
-[11.4 Lendo o resultado]
-    |
-    v
-[11.5 Testes de restauração]
-    |
-    v
-[11.6 Com que frequência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1394,61 +814,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 12 — Segmentação e regras de firewall
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["12.1 Zonas e conduítes"]
-  N1["12.2 A DMZ"]
-  N2["12.3 Lendo as regras"]
-  N3["12.4 Regras fracas"]
-  N4["12.5 Não edite por conta própria"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Zonas e conduítes"]
-  N1["12.2 A DMZ"]
-  N2["12.3 Lendo as regras"]
-  N3["12.4 Regras fracas"]
-  N4["12.5 Não edite por conta própria"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[12.1 Zonas e conduítes]
-    |
-    v
-[12.2 A DMZ]
-    |
-    v
-[12.3 Lendo as regras]
-    |
-    v
-[12.4 Regras fracas]
-    |
-    v
-[12.5 Não edite por conta própria]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar em palavras simples as zonas e os conduítes da IEC 62443; (2) ler uma tabela de regras de firewall; e (3) identificar regras que enfraquecem a segmentação.
@@ -1516,56 +881,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 13 — Dispositivos IoT no chão de fábrica
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["13.1 O que conta como IoT aqui"]
-  N1["13.2 Uma linha de base para comparar"]
-  N2["13.3 Conectar com segurança"]
-  N3["13.4 Fim do suporte"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 O que conta como IoT aqui"]
-  N1["13.2 Uma linha de base para comparar"]
-  N2["13.3 Conectar com segurança"]
-  N3["13.4 Fim do suporte"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
-```
-
-```text
-[13.1 O que conta como IoT aqui]
-    |
-    v
-[13.2 Uma linha de base para comparar]
-    |
-    v
-[13.3 Conectar com segurança]
-    |
-    v
-[13.4 Fim do suporte]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar os dispositivos IoT numa linha; (2) verificá-los contra uma linha de base com as provisões da ETSI EN 303 645; e (3) decidir como conectá-los com segurança.
@@ -1626,61 +941,6 @@ Siga para a próxima lição escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Reconhecer comportamento anormal
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["14.1 Conhecer o normal"]
-  N1["14.2 Sinais a relatar"]
-  N2["14.3 Dar nome ao que você viu"]
-  N3["14.4 Falha ou ataque?"]
-  N4["14.5 O que não fazer"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Conhecer o normal"]
-  N1["14.2 Sinais a relatar"]
-  N2["14.3 Dar nome ao que você viu"]
-  N3["14.4 Falha ou ataque?"]
-  N4["14.5 O que não fazer"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
-```
-
-```text
-[14.1 Conhecer o normal]
-    |
-    v
-[14.2 Sinais a relatar]
-    |
-    v
-[14.3 Dar nome ao que você viu]
-    |
-    v
-[14.4 Falha ou ataque?]
-    |
-    v
-[14.5 O que não fazer]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1749,61 +1009,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 15 — Relatar um incidente e primeiras ações
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["15.1 Primeiros passos"]
-  N1["15.2 Um bom primeiro relato"]
-  N2["15.3 Preservar as evidências"]
-  N3["15.4 Comunicação"]
-  N4["15.5 Deveres de notificação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Primeiros passos"]
-  N1["15.2 Um bom primeiro relato"]
-  N2["15.3 Preservar as evidências"]
-  N3["15.4 Comunicação"]
-  N4["15.5 Deveres de notificação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX057"]
-```
-
-```text
-[15.1 Primeiros passos]
-    |
-    v
-[15.2 Um bom primeiro relato]
-    |
-    v
-[15.3 Preservar as evidências]
-    |
-    v
-[15.4 Comunicação]
-    |
-    v
-[15.5 Deveres de notificação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) seguir os passos de primeira resposta da HPFL; (2) escrever um primeiro relato claro; e (3) explicar por que as evidências são preservadas antes de a recuperação começar.
@@ -1870,66 +1075,6 @@ Siga para a próxima lição escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Recuperação e retorno à produção
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["16.1 Ordem da recuperação"]
-  N1["16.2 Verificação antes de religar"]
-  N2["16.3 Vigiar depois"]
-  N3["16.4 Lições aprendidas"]
-  N4["16.5 Guarda de registros"]
-  N5["16.6 Comunicar o retorno"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Ordem da recuperação"]
-  N1["16.2 Verificação antes de religar"]
-  N2["16.3 Vigiar depois"]
-  N3["16.4 Lições aprendidas"]
-  N4["16.5 Guarda de registros"]
-  N5["16.6 Comunicar o retorno"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
-```
-
-```text
-[16.1 Ordem da recuperação]
-    |
-    v
-[16.2 Verificação antes de religar]
-    |
-    v
-[16.3 Vigiar depois]
-    |
-    v
-[16.4 Lições aprendidas]
-    |
-    v
-[16.5 Guarda de registros]
-    |
-    v
-[16.6 Comunicar o retorno]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2004,61 +1149,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 17 — Gestão de mudanças e documentação
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  N0["17.1 Por que o controle de mudanças é segurança"]
-  N1["17.2 Uma solicitação de mudança"]
-  N2["17.3 Reversão"]
-  N3["17.4 Manter os documentos atualizados"]
-  N4["17.5 Revisores"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX065"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 Por que o controle de mudanças é segurança"]
-  N1["17.2 Uma solicitação de mudança"]
-  N2["17.3 Reversão"]
-  N3["17.4 Manter os documentos atualizados"]
-  N4["17.5 Revisores"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX065"]
-```
-
-```text
-[17.1 Por que o controle de mudanças é segurança]
-    |
-    v
-[17.2 Uma solicitação de mudança]
-    |
-    v
-[17.3 Reversão]
-    |
-    v
-[17.4 Manter os documentos atualizados]
-    |
-    v
-[17.5 Revisores]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que toda mudança na linha precisa de um chamado; (2) escrever uma solicitação de mudança com um plano de reversão; e (3) manter os desenhos e os registros em dia com a realidade.
@@ -2125,66 +1215,6 @@ Siga para a próxima lição escrita.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto final: uma vistoria de segurança da linha
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  N0["18.1 Planejamento"]
-  N1["18.2 O que verificar"]
-  N2["18.3 Escrever as constatações"]
-  N3["18.4 Priorizar"]
-  N4["18.5 Acompanhamento"]
-  N5["18.6 Apresentar ao supervisor"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX069"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Planejamento"]
-  N1["18.2 O que verificar"]
-  N2["18.3 Escrever as constatações"]
-  N3["18.4 Priorizar"]
-  N4["18.5 Acompanhamento"]
-  N5["18.6 Apresentar ao supervisor"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX069"]
-```
-
-```text
-[18.1 Planejamento]
-    |
-    v
-[18.2 O que verificar]
-    |
-    v
-[18.3 Escrever as constatações]
-    |
-    v
-[18.4 Priorizar]
-    |
-    v
-[18.5 Acompanhamento]
-    |
-    v
-[18.6 Apresentar ao supervisor]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -37,56 +37,6 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri and Brown (201
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The candidate and the question"]
-  N2["1.2 Integrity rules"]
-  N3["1.3 Methods others can repeat"]
-  N4["1.4 Sources and standards"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The candidate and the question"]
-  N2["1.2 Integrity rules"]
-  N3["1.3 Methods others can repeat"]
-  N4["1.4 Sources and standards"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The candidate and the question]
-    |
-    v
-[1.2 Integrity rules]
-    |
-    v
-[1.3 Methods others can repeat]
-    |
-    v
-[1.4 Sources and standards]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame a doctoral question about data governance; (2) set integrity rules for working with linked administrative data; (3) plan methods that others can reproduce.
@@ -138,61 +88,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data governance: research frontier
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 The state of the field"]
-  N2["2.2 Measuring a register"]
-  N3["2.3 Rules are decisions"]
-  N4["2.4 Positioning the contribution"]
-  N5["Lab — Quality dimensions of a synthetic business reg"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 The state of the field"]
-  N2["2.2 Measuring a register"]
-  N3["2.3 Rules are decisions"]
-  N4["2.4 Positioning the contribution"]
-  N5["Lab — Quality dimensions of a synthetic business reg"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 The state of the field]
-    |
-    v
-[2.2 Measuring a register]
-    |
-    v
-[2.3 Rules are decisions]
-    |
-    v
-[2.4 Positioning the contribution]
-    |
-    v
-[Lab — Quality dimensions of a synthetic business reg]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -275,56 +170,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 The proposal"]
-  N2["3.2 Measures"]
-  N3["3.3 Ethics and access"]
-  N4["3.4 Feasibility"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 The proposal"]
-  N2["3.2 Measures"]
-  N3["3.3 Ethics and access"]
-  N4["3.4 Feasibility"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 The proposal]
-    |
-    v
-[3.2 Measures]
-    |
-    v
-[3.3 Ethics and access]
-    |
-    v
-[3.4 Feasibility]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) write a doctoral proposal with testable claims; (2) define measures and decision-rights variables; (3) plan ethics and access.
@@ -375,61 +220,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["4.2 The pilot lab"]
-  N3["4.3 Who chooses the threshold"]
-  N4["4.4 Pilot lessons"]
-  N5["Lab — Match weights, thresholds, precision and recal"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["4.2 The pilot lab"]
-  N3["4.3 Who chooses the threshold"]
-  N4["4.4 Pilot lessons"]
-  N5["Lab — Match weights, thresholds, precision and recal"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why replicate first]
-    |
-    v
-[4.2 The pilot lab]
-    |
-    v
-[4.3 Who chooses the threshold]
-    |
-    v
-[4.4 Pilot lessons]
-    |
-    v
-[Lab — Match weights, thresholds, precision and recal]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -508,56 +298,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Designing the main study"]
-  N2["5.2 Effects on counts"]
-  N3["5.3 Independent validation"]
-  N4["5.4 Interpreting the findings"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Designing the main study"]
-  N2["5.2 Effects on counts"]
-  N3["5.3 Independent validation"]
-  N4["5.4 Interpreting the findings"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Designing the main study]
-    |
-    v
-[5.2 Effects on counts]
-    |
-    v
-[5.3 Independent validation]
-    |
-    v
-[5.4 Interpreting the findings]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) run the main simulation of governance decisions; (2) measure effects on published counts; (3) validate results independently.
@@ -609,56 +349,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 The critique"]
-  N2["6.2 Responding to name variation"]
-  N3["6.3 Responding to interview bias"]
-  N4["6.4 Limiting the documentation claim"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 The critique"]
-  N2["6.2 Responding to name variation"]
-  N3["6.3 Responding to interview bias"]
-  N4["6.4 Limiting the documentation claim"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 The critique]
-    |
-    v
-[6.2 Responding to name variation]
-    |
-    v
-[6.3 Responding to interview bias]
-    |
-    v
-[6.4 Limiting the documentation claim]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) respond to peer critique of governance research; (2) revise analyses transparently; (3) strengthen limitations.
@@ -709,61 +399,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The thesis argument"]
-  N2["7.2 The reproducibility archive"]
-  N3["7.3 Checking FAIR properties"]
-  N4["7.4 Improving the archive"]
-  N5["Lab — FAIR checklist scores for dataset records"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The thesis argument"]
-  N2["7.2 The reproducibility archive"]
-  N3["7.3 Checking FAIR properties"]
-  N4["7.4 Improving the archive"]
-  N5["Lab — FAIR checklist scores for dataset records"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The thesis argument]
-    |
-    v
-[7.2 The reproducibility archive]
-    |
-    v
-[7.3 Checking FAIR properties]
-    |
-    v
-[7.4 Improving the archive]
-    |
-    v
-[Lab — FAIR checklist scores for dataset records]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -844,56 +479,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Preparing the defense"]
-  N2["8.2 The defense"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Transfer to practice"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Preparing the defense"]
-  N2["8.2 The defense"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Transfer to practice"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Preparing the defense]
-    |
-    v
-[8.2 The defense]
-    |
-    v
-[8.3 Publication plan]
-    |
-    v
-[8.4 Transfer to practice]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

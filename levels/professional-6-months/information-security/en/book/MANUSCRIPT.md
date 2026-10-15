@@ -37,56 +37,6 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022; ISO/IEC 27002:2022; NIST SP 800-30 Rev. 
 
 ## Chapter 1 — A working professional returns to study
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The learner"]
-  N2["1.2 The employer"]
-  N3["1.3 How the course runs"]
-  N4["1.4 Ground rules"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The learner"]
-  N2["1.2 The employer"]
-  N3["1.3 How the course runs"]
-  N4["1.4 Ground rules"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The learner]
-    |
-    v
-[1.2 The employer]
-    |
-    v
-[1.3 How the course runs]
-    |
-    v
-[1.4 Ground rules]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe what the six-month professional course covers; (2) meet the running case; (3) agree the ground rules for working with a real employer.
@@ -137,56 +87,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Understanding the firm
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Information inventory"]
-  N2["2.2 Who depends on it"]
-  N3["2.3 Security goals"]
-  N4["2.4 What cannot be lost"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Information inventory"]
-  N2["2.2 Who depends on it"]
-  N3["2.3 Security goals"]
-  N4["2.4 What cannot be lost"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Information inventory]
-    |
-    v
-[2.2 Who depends on it]
-    |
-    v
-[2.3 Security goals]
-    |
-    v
-[2.4 What cannot be lost]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the information a professional firm holds; (2) identify who depends on it; (3) state what the firm cannot afford to lose.
@@ -236,56 +136,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Risk in plain terms
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 What risk means"]
-  N2["3.2 Building the register"]
-  N3["Lab — Ranking a synthetic risk register by likelihoo"]
-  N4["3.3 Reading the ranking"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 What risk means"]
-  N2["3.2 Building the register"]
-  N3["Lab — Ranking a synthetic risk register by likelihoo"]
-  N4["3.3 Reading the ranking"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 What risk means]
-    |
-    v
-[3.2 Building the register]
-    |
-    v
-[Lab — Ranking a synthetic risk register by likelihoo]
-    |
-    v
-[3.3 Reading the ranking]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -372,61 +222,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Accounts and multi-factor sign-in
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why it matters"]
-  N2["4.2 Account types"]
-  N3["Lab — Multi-factor sign-in coverage by account type"]
-  N4["4.3 Reading the results"]
-  N5["4.4 Closing the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why it matters"]
-  N2["4.2 Account types"]
-  N3["Lab — Multi-factor sign-in coverage by account type"]
-  N4["4.3 Reading the results"]
-  N5["4.4 Closing the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why it matters]
-    |
-    v
-[4.2 Account types]
-    |
-    v
-[Lab — Multi-factor sign-in coverage by account type]
-    |
-    v
-[4.3 Reading the results]
-    |
-    v
-[4.4 Closing the gaps]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) explain why multi-factor sign-in matters; (2) measure coverage by account type; (3) plan fixes for gaps.
@@ -505,56 +300,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Devices and data in the office
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Laptop baseline"]
-  N2["5.2 The old file server"]
-  N3["5.3 Paper and media"]
-  N4["5.4 Checking progress"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Laptop baseline"]
-  N2["5.2 The old file server"]
-  N3["5.3 Paper and media"]
-  N4["5.4 Checking progress"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Laptop baseline]
-    |
-    v
-[5.2 The old file server]
-    |
-    v
-[5.3 Paper and media]
-    |
-    v
-[5.4 Checking progress]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) set a baseline for laptops; (2) handle the old file server; (3) reduce paper and removable media risks.
@@ -604,56 +349,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Email and payment fraud
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 How the fraud works"]
-  N2["6.2 Verification checks"]
-  N3["6.3 Email protections"]
-  N4["6.4 Preparing staff"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 How the fraud works"]
-  N2["6.2 Verification checks"]
-  N3["6.3 Email protections"]
-  N4["6.4 Preparing staff"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 How the fraud works]
-    |
-    v
-[6.2 Verification checks]
-    |
-    v
-[6.3 Email protections]
-    |
-    v
-[6.4 Preparing staff]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -705,56 +400,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Suppliers and cloud services
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Supplier list"]
-  N2["7.2 Proportionate questions"]
-  N3["7.3 The support company"]
-  N4["7.4 The vendor risk"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Supplier list"]
-  N2["7.2 Proportionate questions"]
-  N3["7.3 The support company"]
-  N4["7.4 The vendor risk"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Supplier list]
-    |
-    v
-[7.2 Proportionate questions]
-    |
-    v
-[7.3 The support company]
-    |
-    v
-[7.4 The vendor risk]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) list the suppliers that handle firm information; (2) ask proportionate security questions; (3) record what each supplier can reach.
@@ -804,56 +449,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — People and awareness
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Relevant awareness"]
-  N2["8.2 Joiners and leavers"]
-  N3["8.3 A reporting culture"]
-  N4["8.4 Measuring behaviour"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Relevant awareness"]
-  N2["8.2 Joiners and leavers"]
-  N3["8.3 A reporting culture"]
-  N4["8.4 Measuring behaviour"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Relevant awareness]
-    |
-    v
-[8.2 Joiners and leavers]
-    |
-    v
-[8.3 A reporting culture]
-    |
-    v
-[8.4 Measuring behaviour]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
@@ -905,56 +500,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Handling incidents
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 A short procedure"]
-  N2["9.2 A mailbox takeover"]
-  N3["9.3 Deciding on notification"]
-  N4["9.4 Learning afterwards"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 A short procedure"]
-  N2["9.2 A mailbox takeover"]
-  N3["9.3 Deciding on notification"]
-  N4["9.4 Learning afterwards"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 A short procedure]
-    |
-    v
-[9.2 A mailbox takeover]
-    |
-    v
-[9.3 Deciding on notification]
-    |
-    v
-[9.4 Learning afterwards]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) write a short incident procedure; (2) follow it during a synthetic incident; (3) decide when to notify clients or regulators.
@@ -1004,56 +549,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Continuity and backups
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 What must keep running"]
-  N2["10.2 Testing restores"]
-  N3["10.3 A tabletop exercise"]
-  N4["10.4 Writing it down"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 What must keep running"]
-  N2["10.2 Testing restores"]
-  N3["10.3 A tabletop exercise"]
-  N4["10.4 Writing it down"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 What must keep running]
-    |
-    v
-[10.2 Testing restores]
-    |
-    v
-[10.3 A tabletop exercise]
-    |
-    v
-[10.4 Writing it down]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Learning outcomes
 
@@ -1105,56 +600,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Policy and obligations
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 A usable policy"]
-  N2["11.2 Obligations"]
-  N3["11.3 Certification"]
-  N4["11.4 Keeping it current"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 A usable policy"]
-  N2["11.2 Obligations"]
-  N3["11.3 Certification"]
-  N4["11.4 Keeping it current"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 A usable policy]
-    |
-    v
-[11.2 Obligations]
-    |
-    v
-[11.3 Certification]
-    |
-    v
-[11.4 Keeping it current]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) write a short, usable security policy; (2) map the firm's legal and professional obligations; (3) decide whether formal certification is worthwhile.
@@ -1204,56 +649,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Reporting to leadership and next steps
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 A one-page report"]
-  N2["12.2 Six months of progress"]
-  N3["12.3 The next year"]
-  N4["12.4 Further study"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 A one-page report"]
-  N2["12.2 Six months of progress"]
-  N3["12.3 The next year"]
-  N4["12.4 Further study"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 A one-page report]
-    |
-    v
-[12.2 Six months of progress]
-    |
-    v
-[12.3 The next year]
-    |
-    v
-[12.4 Further study]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

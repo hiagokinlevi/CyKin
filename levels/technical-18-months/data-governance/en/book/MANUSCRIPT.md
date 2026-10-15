@@ -37,56 +37,6 @@ Wang and Strong (1996); GDPR. Full list in [References](#references).
 
 ## Chapter 1 — Starting at Southport
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The student"]
-  N2["1.2 Governance for technicians"]
-  N3["1.3 Learning by doing"]
-  N4["1.4 Linkway's needs"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The student"]
-  N2["1.2 Governance for technicians"]
-  N3["1.3 Learning by doing"]
-  N4["1.4 Linkway's needs"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The student]
-    |
-    v
-[1.2 Governance for technicians]
-    |
-    v
-[1.3 Learning by doing]
-    |
-    v
-[1.4 Linkway's needs]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe the technical course and its case; (2) explain what data governance means for a technician; (3) prepare to learn through practice.
@@ -135,56 +85,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data at a bus company
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX005.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Main data"]
-  N2["2.2 How counts are collected"]
-  N3["2.3 Who uses counts"]
-  N4["2.4 Where errors enter"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX005"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Main data"]
-  N2["2.2 How counts are collected"]
-  N3["2.3 Who uses counts"]
-  N4["2.4 Where errors enter"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX005"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Main data]
-    |
-    v
-[2.2 How counts are collected]
-    |
-    v
-[2.3 Who uses counts]
-    |
-    v
-[2.4 Where errors enter]
-    |
-    v
-[Worked example] --> [Exercise EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -235,56 +135,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Records and forms
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX009.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Paper and screen forms"]
-  N2["3.2 Better design"]
-  N3["3.3 Contact details"]
-  N4["3.4 Testing with users"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX009"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Paper and screen forms"]
-  N2["3.2 Better design"]
-  N3["3.3 Contact details"]
-  N4["3.4 Testing with users"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX009"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Paper and screen forms]
-    |
-    v
-[3.2 Better design]
-    |
-    v
-[3.3 Contact details]
-    |
-    v
-[3.4 Testing with users]
-    |
-    v
-[Worked example] --> [Exercise EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) design forms that collect good data; (2) use required fields and lists; (3) check forms with users.
@@ -333,56 +183,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Spreadsheets done safely
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX013.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 A messy spreadsheet"]
-  N2["4.2 Organising"]
-  N3["4.3 Checks"]
-  N4["4.4 Versions"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX013"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 A messy spreadsheet"]
-  N2["4.2 Organising"]
-  N3["4.3 Checks"]
-  N4["4.4 Versions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 A messy spreadsheet]
-    |
-    v
-[4.2 Organising]
-    |
-    v
-[4.3 Checks]
-    |
-    v
-[4.4 Versions]
-    |
-    v
-[Worked example] --> [Exercise EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -433,56 +233,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Checking data with Python
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX017.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Reading a file"]
-  N2["5.2 Simple checks"]
-  N3["5.3 Summaries"]
-  N4["5.4 Saving and sharing"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX017"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Reading a file"]
-  N2["5.2 Simple checks"]
-  N3["5.3 Summaries"]
-  N4["5.4 Saving and sharing"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX017"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Reading a file]
-    |
-    v
-[5.2 Simple checks]
-    |
-    v
-[5.3 Summaries]
-    |
-    v
-[5.4 Saving and sharing]
-    |
-    v
-[Worked example] --> [Exercise EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) read a CSV file in Python; (2) write simple checks; (3) print a clear summary.
@@ -532,56 +282,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Data quality basics
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Dimensions"]
-  N2["6.2 Applying to counts"]
-  N3["6.3 Choosing checks"]
-  N4["6.4 Quality for a purpose"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Dimensions"]
-  N2["6.2 Applying to counts"]
-  N3["6.3 Choosing checks"]
-  N4["6.4 Quality for a purpose"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Dimensions]
-    |
-    v
-[6.2 Applying to counts]
-    |
-    v
-[6.3 Choosing checks]
-    |
-    v
-[6.4 Quality for a purpose]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) name common data quality dimensions; (2) apply them to passenger data; (3) pick the right check for each.
@@ -630,61 +330,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Missing trip counts
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX025.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The check"]
-  N2["Lab — Scheduled trips without passenger count record"]
-  N3["7.2 Results"]
-  N4["7.3 Finding the cause"]
-  N5["7.4 Reporting"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX025"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The check"]
-  N2["Lab — Scheduled trips without passenger count record"]
-  N3["7.2 Results"]
-  N4["7.3 Finding the cause"]
-  N5["7.4 Reporting"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The check]
-    |
-    v
-[Lab — Scheduled trips without passenger count record]
-    |
-    v
-[7.2 Results]
-    |
-    v
-[7.3 Finding the cause]
-    |
-    v
-[7.4 Reporting]
-    |
-    v
-[Worked example] --> [Exercise EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -759,56 +404,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Names, codes and standards
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX029.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Inconsistent stop names"]
-  N2["Lab — Normalising synthetic bus stop names"]
-  N3["8.2 Normalising"]
-  N4["8.4 A standard list"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX029"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Inconsistent stop names"]
-  N2["Lab — Normalising synthetic bus stop names"]
-  N3["8.2 Normalising"]
-  N4["8.4 A standard list"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Inconsistent stop names]
-    |
-    v
-[Lab — Normalising synthetic bus stop names]
-    |
-    v
-[8.2 Normalising]
-    |
-    v
-[8.4 A standard list]
-    |
-    v
-[Worked example] --> [Exercise EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) spot inconsistent names; (2) normalise text with simple rules; (3) agree a standard list with an owner.
@@ -880,56 +475,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Personal data at work
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 What counts"]
-  N2["9.2 Principles"]
-  N3["9.3 Daily care"]
-  N4["9.4 When unsure"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 What counts"]
-  N2["9.2 Principles"]
-  N3["9.3 Daily care"]
-  N4["9.4 When unsure"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 What counts]
-    |
-    v
-[9.2 Principles]
-    |
-    v
-[9.3 Daily care]
-    |
-    v
-[9.4 When unsure]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) recognise personal data; (2) apply basic data protection principles; (3) handle personal data carefully in daily tasks.
@@ -978,56 +523,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Keeping data secure
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX037.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Accounts and passwords"]
-  N2["10.2 Access by need"]
-  N3["10.3 Phishing"]
-  N4["10.4 Devices"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX037"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Accounts and passwords"]
-  N2["10.2 Access by need"]
-  N3["10.3 Phishing"]
-  N4["10.4 Devices"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Accounts and passwords]
-    |
-    v
-[10.2 Access by need]
-    |
-    v
-[10.3 Phishing]
-    |
-    v
-[10.4 Devices]
-    |
-    v
-[Worked example] --> [Exercise EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Learning outcomes
 
@@ -1078,56 +573,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Sharing and requests
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Approved routes"]
-  N2["11.2 Requests from individuals"]
-  N3["11.3 Preparing data for partners"]
-  N4["11.4 Sharing aggregates"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Approved routes"]
-  N2["11.2 Requests from individuals"]
-  N3["11.3 Preparing data for partners"]
-  N4["11.4 Sharing aggregates"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Approved routes]
-    |
-    v
-[11.2 Requests from individuals]
-    |
-    v
-[11.3 Preparing data for partners]
-    |
-    v
-[11.4 Sharing aggregates]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) share data through approved routes; (2) support requests from individuals; (3) prepare data for partners.
@@ -1176,56 +621,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Keeping and deleting records
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 The schedule"]
-  N2["12.2 Finding old records"]
-  N3["12.3 Deleting with approval"]
-  N4["12.4 Making it routine"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 The schedule"]
-  N2["12.2 Finding old records"]
-  N3["12.3 Deleting with approval"]
-  N4["12.4 Making it routine"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 The schedule]
-    |
-    v
-[12.2 Finding old records]
-    |
-    v
-[12.3 Deleting with approval]
-    |
-    v
-[12.4 Making it routine]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 
@@ -1276,56 +671,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Reporting problems
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX049.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["13.1 What makes a good report"]
-  N2["13.2 The issue log"]
-  N3["13.3 Following through"]
-  N4["13.4 Spotting patterns"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX049"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["13.1 What makes a good report"]
-  N2["13.2 The issue log"]
-  N3["13.3 Following through"]
-  N4["13.4 Spotting patterns"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[13.1 What makes a good report]
-    |
-    v
-[13.2 The issue log]
-    |
-    v
-[13.3 Following through]
-    |
-    v
-[13.4 Spotting patterns]
-    |
-    v
-[Worked example] --> [Exercise EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Learning outcomes
 
 You will (1) report data problems clearly; (2) use an issue log; (3) follow problems through to a fix.
@@ -1374,56 +719,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Simple documentation
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["14.1 Dictionary entries"]
-  N2["14.2 A short procedure"]
-  N3["14.3 Testing documents"]
-  N4["14.4 Finding documents"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["14.1 Dictionary entries"]
-  N2["14.2 A short procedure"]
-  N3["14.3 Testing documents"]
-  N4["14.4 Finding documents"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[14.1 Dictionary entries]
-    |
-    v
-[14.2 A short procedure]
-    |
-    v
-[14.3 Testing documents]
-    |
-    v
-[14.4 Finding documents]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Learning outcomes
 
@@ -1474,56 +769,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Working with a steward
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["15.1 The steward's role"]
-  N2["15.2 Regular support"]
-  N3["15.3 Escalating decisions"]
-  N4["15.4 Keeping records"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["15.1 The steward's role"]
-  N2["15.2 Regular support"]
-  N3["15.3 Escalating decisions"]
-  N4["15.4 Keeping records"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[15.1 The steward's role]
-    |
-    v
-[15.2 Regular support]
-    |
-    v
-[15.3 Escalating decisions]
-    |
-    v
-[15.4 Keeping records]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Learning outcomes
 
 You will (1) understand the steward role; (2) support a steward with regular tasks; (3) escalate decisions correctly.
@@ -1572,56 +817,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Workplace practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["16.1 The placement"]
-  N2["16.2 Pressure and shortcuts"]
-  N3["16.3 Communication"]
-  N4["16.4 Reflection"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX061"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["16.1 The placement"]
-  N2["16.2 Pressure and shortcuts"]
-  N3["16.3 Communication"]
-  N4["16.4 Reflection"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[16.1 The placement]
-    |
-    v
-[16.2 Pressure and shortcuts]
-    |
-    v
-[16.3 Communication]
-    |
-    v
-[16.4 Reflection]
-    |
-    v
-[Worked example] --> [Exercise EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 
 ### Learning outcomes
 
@@ -1672,56 +867,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Practical assessment
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["17.1 The task"]
-  N2["17.2 Doing the checks"]
-  N3["17.3 Preparing the file"]
-  N4["17.4 Explaining to the assessor"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX065"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["17.1 The task"]
-  N2["17.2 Doing the checks"]
-  N3["17.3 Preparing the file"]
-  N4["17.4 Explaining to the assessor"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX065"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[17.1 The task]
-    |
-    v
-[17.2 Doing the checks]
-    |
-    v
-[17.3 Preparing the file]
-    |
-    v
-[17.4 Explaining to the assessor]
-    |
-    v
-[Worked example] --> [Exercise EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Learning outcomes
 
 You will (1) complete a practical data task under assessment; (2) document your work; (3) explain your choices to an assessor.
@@ -1770,56 +915,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Review and next steps
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["18.1 Skills gained"]
-  N2["18.2 Feedback"]
-  N3["18.3 Governance at work"]
-  N4["18.4 Next steps"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX069"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["18.1 Skills gained"]
-  N2["18.2 Feedback"]
-  N3["18.3 Governance at work"]
-  N4["18.4 Next steps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX069"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[18.1 Skills gained]
-    |
-    v
-[18.2 Feedback]
-    |
-    v
-[18.3 Governance at work]
-    |
-    v
-[18.4 Next steps]
-    |
-    v
-[Worked example] --> [Exercise EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Learning outcomes
 

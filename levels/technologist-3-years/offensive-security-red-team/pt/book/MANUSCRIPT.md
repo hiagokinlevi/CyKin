@@ -41,56 +41,6 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 ## Capítulo 1 — Sistemas computacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Camadas que um avaliador precisa nomear"]
-  N1["1.2 Por que capacidade e fragilidade importam"]
-  N2["1.3 Infraestrutura compartilhada e virtual"]
-  N3["1.4 O registro de ativo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Camadas que um avaliador precisa nomear"]
-  N1["1.2 Por que capacidade e fragilidade importam"]
-  N2["1.3 Infraestrutura compartilhada e virtual"]
-  N3["1.4 O registro de ativo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[1.1 Camadas que um avaliador precisa nomear]
-    |
-    v
-[1.2 Por que capacidade e fragilidade importam]
-    |
-    v
-[1.3 Infraestrutura compartilhada e virtual]
-    |
-    v
-[1.4 O registro de ativo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever as camadas de hardware, firmware, sistema operacional e aplicação de um computador nos termos de que um avaliador precisa; (2) explicar por que sistemas frágeis ou compartilhados mudam o planejamento de um teste; (3) escrever um registro de ativo que uma reunião de escopo possa usar; (4) reconhecer quando um sistema pertence a alguém que não autorizou testes.
@@ -140,61 +90,6 @@ Nomeie a camada, registre o responsável e a fragilidade, e nunca deixe a condi�
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["2.1 Endereços, prefixos e propriedade"]
-  N1["2.2 Exclusões dentro das faixas"]
-  N2["2.3 Nomes versus números"]
-  N3["2.4 Serviços expostos típicos"]
-  N4["Laboratório A — verificador de escopo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX004"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Endereços, prefixos e propriedade"]
-  N1["2.2 Exclusões dentro das faixas"]
-  N2["2.3 Nomes versus números"]
-  N3["2.4 Serviços expostos típicos"]
-  N4["Laboratório A — verificador de escopo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
-```
-
-```text
-[2.1 Endereços, prefixos e propriedade]
-    |
-    v
-[2.2 Exclusões dentro das faixas]
-    |
-    v
-[2.3 Nomes versus números]
-    |
-    v
-[2.4 Serviços expostos típicos]
-    |
-    v
-[Laboratório A — verificador de escopo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -275,61 +170,6 @@ Pertinência é aritmética, as exclusões vêm primeiro, e todo nome é resolvi
 
 ## Capítulo 3 — Fundamentos de programação
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["3.1 Por que tecnólogos programam"]
-  N1["3.2 Uma função, uma decisão"]
-  N2["3.3 Biblioteca padrão primeiro"]
-  N3["3.4 Falhar fechado"]
-  N4["3.5 Testes como evidência"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Por que tecnólogos programam"]
-  N1["3.2 Uma função, uma decisão"]
-  N2["3.3 Biblioteca padrão primeiro"]
-  N3["3.4 Falhar fechado"]
-  N4["3.5 Testes como evidência"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
-```
-
-```text
-[3.1 Por que tecnólogos programam]
-    |
-    v
-[3.2 Uma função, uma decisão]
-    |
-    v
-[3.3 Biblioteca padrão primeiro]
-    |
-    v
-[3.4 Falhar fechado]
-    |
-    v
-[3.5 Testes como evidência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever funções Python pequenas e legíveis, cada uma tomando uma decisão; (2) usar apenas a biblioteca padrão, para que um laboratório rode em qualquer estação de trabalho aprovada; (3) testar uma função com entradas conhecidas antes de confiar nela; (4) explicar por que as ferramentas de avaliação devem falhar fechadas.
@@ -381,61 +221,6 @@ Funções pequenas, biblioteca padrão, negar por padrão e uma tabela de respos
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["4.1 Do que um registro de achado precisa"]
-  N1["4.2 Vocabulários controlados"]
-  N2["4.3 Identificadores em vez de texto corrido"]
-  N3["4.4 Validação como controle de passagem"]
-  N4["Laboratório B — validador de registros"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX010"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Do que um registro de achado precisa"]
-  N1["4.2 Vocabulários controlados"]
-  N2["4.3 Identificadores em vez de texto corrido"]
-  N3["4.4 Validação como controle de passagem"]
-  N4["Laboratório B — validador de registros"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX010"]
-```
-
-```text
-[4.1 Do que um registro de achado precisa]
-    |
-    v
-[4.2 Vocabulários controlados]
-    |
-    v
-[4.3 Identificadores em vez de texto corrido]
-    |
-    v
-[4.4 Validação como controle de passagem]
-    |
-    v
-[Laboratório B — validador de registros]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -512,56 +297,6 @@ Um achado é uma afirmação estruturada, com vocabulário fixo e um ponteiro de
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["5.1 Três tipos de avaliação"]
-  N1["5.2 CIA em palavras operacionais"]
-  N2["5.3 Existência versus eficácia"]
-  N3["5.4 A autorização é a linha"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Três tipos de avaliação"]
-  N1["5.2 CIA em palavras operacionais"]
-  N2["5.3 Existência versus eficácia"]
-  N3["5.4 A autorização é a linha"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[5.1 Três tipos de avaliação]
-    |
-    v
-[5.2 CIA em palavras operacionais]
-    |
-    v
-[5.3 Existência versus eficácia]
-    |
-    v
-[5.4 A autorização é a linha]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir avaliação de vulnerabilidades, teste de intrusão e red team; (2) enunciar em palavras simples os objetivos de confidencialidade, integridade e disponibilidade; (3) explicar a diferença entre a existência de um controle e sua eficácia; (4) explicar por que é a autorização, e não a habilidade, que separa o teste do crime.
@@ -611,56 +346,6 @@ Escolha o tipo de avaliação pela decisão que ela precisa apoiar, meça a efic
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["6.1 O que um sistema operacional expõe"]
-  N1["6.2 Estado de correções e de configuração"]
-  N2["6.3 Virtualização e destino compartilhado"]
-  N3["6.4 Snapshots para a correção"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 O que um sistema operacional expõe"]
-  N1["6.2 Estado de correções e de configuração"]
-  N2["6.3 Virtualização e destino compartilhado"]
-  N3["6.4 Snapshots para a correção"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[6.1 O que um sistema operacional expõe]
-    |
-    v
-[6.2 Estado de correções e de configuração]
-    |
-    v
-[6.3 Virtualização e destino compartilhado]
-    |
-    v
-[6.4 Snapshots para a correção]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -712,56 +397,6 @@ Prefira exportações, respeite o limite do hipervisor e trate os snapshots ao m
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["7.1 Três decisões"]
-  N1["7.2 Contas compartilhadas e remanescentes"]
-  N2["7.3 Multifator e caminhos de recuperação"]
-  N3["7.4 Privilégio mínimo como lista de verificação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Três decisões"]
-  N1["7.2 Contas compartilhadas e remanescentes"]
-  N2["7.3 Multifator e caminhos de recuperação"]
-  N3["7.4 Privilégio mínimo como lista de verificação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX019"]
-```
-
-```text
-[7.1 Três decisões]
-    |
-    v
-[7.2 Contas compartilhadas e remanescentes]
-    |
-    v
-[7.3 Multifator e caminhos de recuperação]
-    |
-    v
-[7.4 Privilégio mínimo como lista de verificação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever autenticação, autorização e registro de atividades (accounting) como decisões separadas; (2) explicar por que contas compartilhadas e remanescentes aparecem com tanta frequência nas avaliações; (3) mapear fraquezas comuns de identidade para IDs de técnica do ATT&CK; (4) desenhar uma lista de verificação de privilégio mínimo para um portal dos funcionários.
@@ -810,56 +445,6 @@ Separe quem, o quê e o que foi feito; aposente as contas remanescentes; mapeie 
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["8.1 Fronteiras de confiança"]
-  N1["8.2 Defesa em profundidade como camadas com propósit"]
-  N2["8.3 Onde a evidência mora"]
-  N3["8.4 Arquitetura e escopo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX022"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Fronteiras de confiança"]
-  N1["8.2 Defesa em profundidade como camadas com propósit"]
-  N2["8.3 Onde a evidência mora"]
-  N3["8.4 Arquitetura e escopo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
-```
-
-```text
-[8.1 Fronteiras de confiança]
-    |
-    v
-[8.2 Defesa em profundidade como camadas com propósit]
-    |
-    v
-[8.3 Onde a evidência mora]
-    |
-    v
-[8.4 Arquitetura e escopo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar um diagrama de fronteiras de confiança para um serviço pequeno; (2) explicar a defesa em profundidade sem tratá-la como slogan; (3) posicionar controles de rede, de identidade e de aplicação nesse diagrama; (4) identificar onde a evidência da avaliação deve ser coletada.
@@ -907,61 +492,6 @@ Desenhe as fronteiras, confira se as camadas falham de forma independente e cole
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidência e medição
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["9.1 A evidência sustenta uma afirmação"]
-  N1["9.2 Cadeia de custódia"]
-  N2["9.3 Hash como verificação de adulteração"]
-  N3["Laboratório C — manifesto de evidências"]
-  N4["9.4 Medir exige unidades"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 A evidência sustenta uma afirmação"]
-  N1["9.2 Cadeia de custódia"]
-  N2["9.3 Hash como verificação de adulteração"]
-  N3["Laboratório C — manifesto de evidências"]
-  N4["9.4 Medir exige unidades"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
-```
-
-```text
-[9.1 A evidência sustenta uma afirmação]
-    |
-    v
-[9.2 Cadeia de custódia]
-    |
-    v
-[9.3 Hash como verificação de adulteração]
-    |
-    v
-[Laboratório C — manifesto de evidências]
-    |
-    v
-[9.4 Medir exige unidades]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1038,56 +568,6 @@ Minimize, rotule, calcule o hash, meça com unidades e nunca estacione evidênci
 
 ## Capítulo 10 — Segurança ofensiva autorizada e red team: orientação
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["10.1 Um ciclo de vida, não uma lista de ferramentas"]
-  N1["10.2 A permissão é escrita"]
-  N2["10.3 Red, blue e purple"]
-  N3["10.4 O que este livro não fará"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX028"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Um ciclo de vida, não uma lista de ferramentas"]
-  N1["10.2 A permissão é escrita"]
-  N2["10.3 Red, blue e purple"]
-  N3["10.4 O que este livro não fará"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
-```
-
-```text
-[10.1 Um ciclo de vida, não uma lista de ferramentas]
-    |
-    v
-[10.2 A permissão é escrita]
-    |
-    v
-[10.3 Red, blue e purple]
-    |
-    v
-[10.4 O que este livro não fará]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) situar a avaliação de vulnerabilidades, o teste de intrusão e o red team num único ciclo de vida; (2) nomear os documentos que criam a permissão; (3) explicar os papéis das equipes red, blue e purple; (4) enunciar com suas palavras o limite educacional deste livro.
@@ -1137,61 +617,6 @@ Comece pela decisão, escreva a permissão, conheça os papéis e mantenha este 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Segurança ofensiva autorizada e red team: ativos e contexto
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["11.1 Do texto aos objetos"]
-  N1["11.2 O contexto muda o método"]
-  N2["11.3 Listas de parada e janelas"]
-  N3["Laboratório D — verificador de atividades das ROE"]
-  N4["11.4 Equipe branca"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Do texto aos objetos"]
-  N1["11.2 O contexto muda o método"]
-  N2["11.3 Listas de parada e janelas"]
-  N3["Laboratório D — verificador de atividades das ROE"]
-  N4["11.4 Equipe branca"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[11.1 Do texto aos objetos]
-    |
-    v
-[11.2 O contexto muda o método]
-    |
-    v
-[11.3 Listas de parada e janelas]
-    |
-    v
-[Laboratório D — verificador de atividades das ROE]
-    |
-    v
-[11.4 Equipe branca]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1274,56 +699,6 @@ Escopo e ROE são listas que se podem verificar; o contexto escolhe o método; s
 
 ## Capítulo 12 — Segurança ofensiva autorizada e red team: fluxos de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["12.1 Fluxos, não caixas"]
-  N1["12.2 Dados pessoais e operacionais"]
-  N2["12.3 Caminhos transfronteiriços e de fornecedores"]
-  N3["12.4 Relógios de retenção"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX034"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Fluxos, não caixas"]
-  N1["12.2 Dados pessoais e operacionais"]
-  N2["12.3 Caminhos transfronteiriços e de fornecedores"]
-  N3["12.4 Relógios de retenção"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX034"]
-```
-
-```text
-[12.1 Fluxos, não caixas]
-    |
-    v
-[12.2 Dados pessoais e operacionais]
-    |
-    v
-[12.3 Caminhos transfronteiriços e de fornecedores]
-    |
-    v
-[12.4 Relógios de retenção]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar um diagrama de fluxo de dados para um serviço da TRT; (2) marcar onde podem aparecer evidências da avaliação e dados pessoais; (3) aplicar regras de minimização e de ocultação de dados; (4) escolher armazenamento e retenção compatíveis com o acordo.
@@ -1371,66 +746,6 @@ Siga as cópias, minimize e mascare, e encerre o relógio de retenção por escr
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Segurança ofensiva autorizada e red team: cenários de risco
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["13.1 Classificação transparente"]
-  N1["13.2 Cenários ligam os pontos"]
-  N2["13.3 Severidade versus urgência"]
-  N3["Laboratório E — pontuador de achados"]
-  N4["13.4 A linguagem do NIST"]
-  N5["13.5 Comunicar as pontuações para cima"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 Classificação transparente"]
-  N1["13.2 Cenários ligam os pontos"]
-  N2["13.3 Severidade versus urgência"]
-  N3["Laboratório E — pontuador de achados"]
-  N4["13.4 A linguagem do NIST"]
-  N5["13.5 Comunicar as pontuações para cima"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
-```
-
-```text
-[13.1 Classificação transparente]
-    |
-    v
-[13.2 Cenários ligam os pontos]
-    |
-    v
-[13.3 Severidade versus urgência]
-    |
-    v
-[Laboratório E — pontuador de achados]
-    |
-    v
-[13.4 A linguagem do NIST]
-    |
-    v
-[13.5 Comunicar as pontuações para cima]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1511,56 +826,6 @@ Pontue com transparência, narre o cenário e mantenha severidade e urgência co
 
 ## Capítulo 14 — Segurança ofensiva autorizada e red team: métodos I
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["14.1 Dois mapas da mesma jornada"]
-  N1["14.2 Revisão antes da validação"]
-  N2["14.3 Declarações de método"]
-  N3["14.4 ATT&CK no nível de ID"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX040"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Dois mapas da mesma jornada"]
-  N1["14.2 Revisão antes da validação"]
-  N2["14.3 Declarações de método"]
-  N3["14.4 ATT&CK no nível de ID"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
-```
-
-```text
-[14.1 Dois mapas da mesma jornada]
-    |
-    v
-[14.2 Revisão antes da validação]
-    |
-    v
-[14.3 Declarações de método]
-    |
-    v
-[14.4 ATT&CK no nível de ID]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear as fases do engajamento para o NIST SP 800-115 e o PTES; (2) escolher entre técnicas de revisão e de validação com base no risco; (3) escrever uma declaração de método que as ROE possam citar; (4) manter as descrições de técnicas no nível de ID do ATT&CK, sem detalhe operacional.
@@ -1608,61 +873,6 @@ Nomeie a fase, prefira a revisão quando ela responde, escreva o método como li
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Segurança ofensiva autorizada e red team: laboratório guiado
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["15.1 Três controles"]
-  N1["15.2 O registro do operador"]
-  N2["Laboratório F — pipeline guiado"]
-  N3["15.3 HOLD é um recurso"]
-  N4["15.4 Uso pelo revisor"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Três controles"]
-  N1["15.2 O registro do operador"]
-  N2["Laboratório F — pipeline guiado"]
-  N3["15.3 HOLD é um recurso"]
-  N4["15.4 Uso pelo revisor"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
-```
-
-```text
-[15.1 Três controles]
-    |
-    v
-[15.2 O registro do operador]
-    |
-    v
-[Laboratório F — pipeline guiado]
-    |
-    v
-[15.3 HOLD é um recurso]
-    |
-    v
-[15.4 Uso pelo revisor]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1751,56 +961,6 @@ Três controles rígidos, um registro só com o que passou e o julgamento humano
 
 ## Capítulo 16 — Segurança ofensiva autorizada e red team: métodos II
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["16.1 O OWASP WSTG como catálogo"]
-  N1["16.2 Garantia guiada por ameaças"]
-  N2["16.3 Misturar métodos sem misturar escopos"]
-  N3["16.4 Uma redação de exclusão que funciona"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 O OWASP WSTG como catálogo"]
-  N1["16.2 Garantia guiada por ameaças"]
-  N2["16.3 Misturar métodos sem misturar escopos"]
-  N3["16.4 Uma redação de exclusão que funciona"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[16.1 O OWASP WSTG como catálogo]
-    |
-    v
-[16.2 Garantia guiada por ameaças]
-    |
-    v
-[16.3 Misturar métodos sem misturar escopos]
-    |
-    v
-[16.4 Uma redação de exclusão que funciona]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) contrastar o letramento em testes de aplicações web (OWASP WSTG) com métodos centrados em rede; (2) explicar o que os frameworks guiados por ameaças (TIBER-EU, CBEST) acrescentam; (3) escolher uma combinação de métodos para uma operadora de transporte que não é um banco; (4) escrever uma redação de exclusão que resista ao contato com a realidade.
@@ -1849,56 +1009,6 @@ Escolha catálogos para a cobertura, tome emprestada dos frameworks guiados por 
 
 ## Capítulo 17 — Segurança ofensiva autorizada e red team: ferramentas
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["17.1 As ferramentas estão no escopo da governança"]
-  N1["17.2 Controle de mudanças em pleno voo"]
-  N2["17.3 Cadeia de suprimentos das ferramentas"]
-  N3["17.4 Restrição de sala de aula"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 As ferramentas estão no escopo da governança"]
-  N1["17.2 Controle de mudanças em pleno voo"]
-  N2["17.3 Cadeia de suprimentos das ferramentas"]
-  N3["17.4 Restrição de sala de aula"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
-```
-
-```text
-[17.1 As ferramentas estão no escopo da governança]
-    |
-    v
-[17.2 Controle de mudanças em pleno voo]
-    |
-    v
-[17.3 Cadeia de suprimentos das ferramentas]
-    |
-    v
-[17.4 Restrição de sala de aula]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) inventariar as ferramentas de avaliação com responsável, finalidade e dados tratados; (2) aplicar uma nota de controle de mudanças antes de atualizar uma ferramenta no meio do engajamento; (3) explicar o risco de cadeia de suprimentos das ferramentas de avaliação; (4) manter os laboratórios de sala de aula na biblioteca padrão do Python.
@@ -1946,56 +1056,6 @@ Inventarie o kit, fixe as versões, leve a sério a cadeia de suprimentos das fe
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Segurança ofensiva autorizada e red team: controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["18.1 Controles como respostas aos achados"]
-  N1["18.2 Controles compensatórios"]
-  N2["18.3 Detectar e responder também são controles"]
-  N3["18.4 Frases de garantia proibidas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX052"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Controles como respostas aos achados"]
-  N1["18.2 Controles compensatórios"]
-  N2["18.3 Detectar e responder também são controles"]
-  N3["18.4 Frases de garantia proibidas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX052"]
-```
-
-```text
-[18.1 Controles como respostas aos achados]
-    |
-    v
-[18.2 Controles compensatórios]
-    |
-    v
-[18.3 Detectar e responder também são controles]
-    |
-    v
-[18.4 Frases de garantia proibidas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2046,66 +1106,6 @@ Nomeie o controle, o responsável e a verificação; permita compensações temp
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Segurança ofensiva autorizada e red team: monitoramento
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["19.1 Cobertura como conversa"]
-  N1["19.2 Alerted, logged, missed"]
-  N2["Laboratório G — matriz de cobertura"]
-  N3["19.3 Da falha ao backlog"]
-  N4["19.4 Navigator e D3FEND"]
-  N5["19.5 Retestar as mesmas células"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 Cobertura como conversa"]
-  N1["19.2 Alerted, logged, missed"]
-  N2["Laboratório G — matriz de cobertura"]
-  N3["19.3 Da falha ao backlog"]
-  N4["19.4 Navigator e D3FEND"]
-  N5["19.5 Retestar as mesmas células"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX055"]
-```
-
-```text
-[19.1 Cobertura como conversa]
-    |
-    v
-[19.2 Alerted, logged, missed]
-    |
-    v
-[Laboratório G — matriz de cobertura]
-    |
-    v
-[19.3 Da falha ao backlog]
-    |
-    v
-[19.4 Navigator e D3FEND]
-    |
-    v
-[19.5 Retestar as mesmas células]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2193,56 +1193,6 @@ Meça o que este exercício exercitou, diga a verdade sobre as falhas e transfor
 
 ## Capítulo 20 — Segurança ofensiva autorizada e red team: solução de problemas
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["20.1 Sessões falham por motivos banais"]
-  N1["20.2 Três classes de falha"]
-  N2["20.3 Go / no-go"]
-  N3["20.4 Incidente paralelo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX058"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 Sessões falham por motivos banais"]
-  N1["20.2 Três classes de falha"]
-  N2["20.3 Go / no-go"]
-  N3["20.4 Incidente paralelo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX058"]
-```
-
-```text
-[20.1 Sessões falham por motivos banais]
-    |
-    v
-[20.2 Três classes de falha]
-    |
-    v
-[20.3 Go / no-go]
-    |
-    v
-[20.4 Incidente paralelo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) construir uma árvore de falhas para uma sessão de avaliação que falhou; (2) separar falhas de ferramenta, de escopo e de ambiente; (3) escrever uma nota de go/no-go depois de um incidente no meio da janela; (4) manter as notas de solução de problemas como evidência do engajamento.
@@ -2291,56 +1241,6 @@ Primeiro a árvore, depois a classificação, escreva a decisão e recue quando 
 
 ## Capítulo 21 — Segurança ofensiva autorizada e red team: integração de serviços
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["21.1 A avaliação como serviço"]
-  N1["21.2 Interfaces e SLAs"]
-  N2["21.3 Um único controle de riscos"]
-  N3["21.4 TI paralela"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 A avaliação como serviço"]
-  N1["21.2 Interfaces e SLAs"]
-  N2["21.3 Um único controle de riscos"]
-  N3["21.4 TI paralela"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
-```
-
-```text
-[21.1 A avaliação como serviço]
-    |
-    v
-[21.2 Interfaces e SLAs]
-    |
-    v
-[21.3 Um único controle de riscos]
-    |
-    v
-[21.4 TI paralela]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) situar o serviço de avaliação entre os serviços de identidade, logs, chamados e gestão de mudanças; (2) definir interfaces de passagem com responsáveis e SLAs; (3) explicar por que os achados da avaliação precisam entrar no mesmo controle que os demais riscos; (4) evitar TI paralela para evidências e chamados.
@@ -2388,61 +1288,6 @@ Trate a avaliação como um serviço com interfaces nomeadas, um único controle
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Segurança ofensiva autorizada e red team: automação
-
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["22.1 Automatize as partes tediosas e inspecionáveis"]
-  N1["Laboratório H — gerador de relatório"]
-  N2["22.2 Mantenha pessoas nos controles"]
-  N3["22.4 Versione com o engajamento"]
-  N4["22.5 O que não raspar"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX064"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 Automatize as partes tediosas e inspecionáveis"]
-  N1["Laboratório H — gerador de relatório"]
-  N2["22.2 Mantenha pessoas nos controles"]
-  N3["22.4 Versione com o engajamento"]
-  N4["22.5 O que não raspar"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
-```
-
-```text
-[22.1 Automatize as partes tediosas e inspecionáveis]
-    |
-    v
-[Laboratório H — gerador de relatório]
-    |
-    v
-[22.2 Mantenha pessoas nos controles]
-    |
-    v
-[22.4 Versione com o engajamento]
-    |
-    v
-[22.5 O que não raspar]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2528,61 +1373,6 @@ Automatize tabelas e contagens; mantenha a autorização humana; faça ensaio a 
 
 ## Capítulo 23 — Segurança ofensiva autorizada e red team: avaliação
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["23.1 Critérios antes do encerramento"]
-  N1["23.2 Qualidade do processo ≠ contagem de troféus"]
-  N2["23.3 Lições aprendidas"]
-  N3["23.4 Métricas de vaidade"]
-  N4["23.5 Compartilhar os resultados sem vergonha"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX067"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 Critérios antes do encerramento"]
-  N1["23.2 Qualidade do processo ≠ contagem de troféus"]
-  N2["23.3 Lições aprendidas"]
-  N3["23.4 Métricas de vaidade"]
-  N4["23.5 Compartilhar os resultados sem vergonha"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
-```
-
-```text
-[23.1 Critérios antes do encerramento]
-    |
-    v
-[23.2 Qualidade do processo ≠ contagem de troféus]
-    |
-    v
-[23.3 Lições aprendidas]
-    |
-    v
-[23.4 Métricas de vaidade]
-    |
-    v
-[23.5 Compartilhar os resultados sem vergonha]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir os critérios de avaliação antes de um engajamento terminar; (2) pontuar a qualidade do processo separadamente da contagem de achados; (3) conduzir uma revisão de lições aprendidas que produza itens de backlog; (4) recusar métricas de vaidade.
@@ -2634,61 +1424,6 @@ Declare os critérios cedo, pontue a disciplina, converta as lições em chamado
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["24.1 Perguntas que valem a pena"]
-  N1["24.2 Métodos adequados a tecnólogos"]
-  N2["24.3 Ética em primeiro lugar"]
-  N3["24.4 Lista de verificação do resumo"]
-  N4["24.5 Reprodutibilidade para tecnólogos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX070"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.1 Perguntas que valem a pena"]
-  N1["24.2 Métodos adequados a tecnólogos"]
-  N2["24.3 Ética em primeiro lugar"]
-  N3["24.4 Lista de verificação do resumo"]
-  N4["24.5 Reprodutibilidade para tecnólogos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX070"]
-```
-
-```text
-[24.1 Perguntas que valem a pena]
-    |
-    v
-[24.2 Métodos adequados a tecnólogos]
-    |
-    v
-[24.3 Ética em primeiro lugar]
-    |
-    v
-[24.4 Lista de verificação do resumo]
-    |
-    v
-[24.5 Reprodutibilidade para tecnólogos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2742,61 +1477,6 @@ Faça uma pergunta mensurável, escolha um método humilde, ponha a ética no re
 
 ## Capítulo 25 — Estúdio de projeto em equipe
 
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["25.1 Papéis valem mais que heroísmo"]
-  N1["25.2 Lista de verificação de planejamento"]
-  N2["25.3 Revisão no meio do estúdio"]
-  N3["25.4 Conflito sobre o escopo"]
-  N4["25.5 Canais discretos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX073"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 Papéis valem mais que heroísmo"]
-  N1["25.2 Lista de verificação de planejamento"]
-  N2["25.3 Revisão no meio do estúdio"]
-  N3["25.4 Conflito sobre o escopo"]
-  N4["25.5 Canais discretos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX073"]
-```
-
-```text
-[25.1 Papéis valem mais que heroísmo]
-    |
-    v
-[25.2 Lista de verificação de planejamento]
-    |
-    v
-[25.3 Revisão no meio do estúdio]
-    |
-    v
-[25.4 Conflito sobre o escopo]
-    |
-    v
-[25.5 Canais discretos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formar uma pequena equipe com papéis nomeados (líder, evidências, elo de ligação); (2) executar uma lista de verificação de planejamento antes de qualquer trabalho de laboratório; (3) apresentar uma revisão no meio do estúdio com base nos critérios de avaliação do Capítulo 23; (4) praticar a resolução de conflitos quando as opiniões sobre o escopo divergem.
@@ -2849,61 +1529,6 @@ Nomeie os papéis, cumpra a lista de verificação, revise o processo na metade 
 
 ## Capítulo 26 — Segurança ofensiva autorizada e red team: passagem para operação
 
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa da aula
-
-Aula 26 publicada. Mapa, exemplo, EX076.
-
-```mermaid
-flowchart TD
-  N0["26.1 Do que as operações precisam"]
-  N1["26.2 Risco residual e incógnitas"]
-  N2["26.3 Transferência de acesso"]
-  N3["26.4 O reteste na agenda"]
-  N4["26.5 Apresentações calorosas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX076"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["26.1 Do que as operações precisam"]
-  N1["26.2 Risco residual e incógnitas"]
-  N2["26.3 Transferência de acesso"]
-  N3["26.4 O reteste na agenda"]
-  N4["26.5 Apresentações calorosas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX076"]
-```
-
-```text
-[26.1 Do que as operações precisam]
-    |
-    v
-[26.2 Risco residual e incógnitas]
-    |
-    v
-[26.3 Transferência de acesso]
-    |
-    v
-[26.4 O reteste na agenda]
-    |
-    v
-[26.5 Apresentações calorosas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever um pacote de passagem com o qual as operações possam agir sem a presença da equipe de testes; (2) incluir o risco residual e as incógnitas conhecidas; (3) transferir de forma limpa o acesso às evidências; (4) agendar a janela de reteste antes da desmobilização.
@@ -2955,66 +1580,6 @@ Entregue decisões e evidências, diga o que você não testou, mova os acessos 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa da aula
-
-Aula 27 publicada. Mapa, exemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["27.1 A validação é um teste da correção"]
-  N1["Laboratório I — status do reteste"]
-  N2["27.2 Três status"]
-  N3["27.3 A mesma custódia"]
-  N4["27.4 Aceitação de risco"]
-  N5["27.5 Correções parciais"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX079"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["27.1 A validação é um teste da correção"]
-  N1["Laboratório I — status do reteste"]
-  N2["27.2 Três status"]
-  N3["27.3 A mesma custódia"]
-  N4["27.4 Aceitação de risco"]
-  N5["27.5 Correções parciais"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX079"]
-```
-
-```text
-[27.1 A validação é um teste da correção]
-    |
-    v
-[Laboratório I — status do reteste]
-    |
-    v
-[27.2 Três status]
-    |
-    v
-[27.3 A mesma custódia]
-    |
-    v
-[27.4 Aceitação de risco]
-    |
-    v
-[27.5 Correções parciais]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3095,61 +1660,6 @@ Sem declaração de correção, sem reteste; sem evidência, sem encerramento; a
 
 ## Capítulo 28 — Prática de campo
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa da aula
-
-Aula 28 publicada. Mapa, exemplo, EX082.
-
-```mermaid
-flowchart TD
-  N0["28.1 Kit de campo"]
-  N1["28.2 Conduta"]
-  N2["28.3 Eventos inesperados"]
-  N3["28.4 Encerramento com fatos"]
-  N4["28.5 Prática de campo remota"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX082"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["28.1 Kit de campo"]
-  N1["28.2 Conduta"]
-  N2["28.3 Eventos inesperados"]
-  N3["28.4 Encerramento com fatos"]
-  N4["28.5 Prática de campo remota"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
-```
-
-```text
-[28.1 Kit de campo]
-    |
-    v
-[28.2 Conduta]
-    |
-    v
-[28.3 Eventos inesperados]
-    |
-    v
-[28.4 Encerramento com fatos]
-    |
-    v
-[28.5 Prática de campo remota]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) preparar uma lista de verificação do kit de campo para uma sessão supervisionada presencial ou remota; (2) praticar a conduta profissional com a equipe de operações; (3) lidar com um evento inesperado de produção durante uma janela; (4) fazer o encerramento com fatos, não com folclore.
@@ -3201,61 +1711,6 @@ Leve a lista de verificação, comporte-se como convidado, dê lugar aos eventos
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa da aula
-
-Aula 29 publicada. Mapa, exemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["29.1 Os artefatos da construção"]
-  N1["29.2 Opere o que você construiu"]
-  N2["29.3 Nenhum conteúdo de exploração"]
-  N3["29.4 Rubrica da revisão por pares"]
-  N4["29.5 Tempo limitado"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX085"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["29.1 Os artefatos da construção"]
-  N1["29.2 Opere o que você construiu"]
-  N2["29.3 Nenhum conteúdo de exploração"]
-  N3["29.4 Rubrica da revisão por pares"]
-  N4["29.5 Tempo limitado"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
-```
-
-```text
-[29.1 Os artefatos da construção]
-    |
-    v
-[29.2 Opere o que você construiu]
-    |
-    v
-[29.3 Nenhum conteúdo de exploração]
-    |
-    v
-[29.4 Rubrica da revisão por pares]
-    |
-    v
-[29.5 Tempo limitado]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3310,61 +1765,6 @@ Construa o serviço inteiro no papel e nos verificadores; deixe um colega operá
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa da aula
-
-Aula 30 publicada. Mapa, exemplo, EX088.
-
-```mermaid
-flowchart TD
-  N0["30.1 Pauta da banca"]
-  N1["30.2 Defesa com citações"]
-  N2["30.3 A pergunta da recusa"]
-  N3["30.4 Depois da banca"]
-  N4["30.5 Registro no portfólio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX088"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["30.1 Pauta da banca"]
-  N1["30.2 Defesa com citações"]
-  N2["30.3 A pergunta da recusa"]
-  N3["30.4 Depois da banca"]
-  N4["30.5 Registro no portfólio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX088"]
-```
-
-```text
-[30.1 Pauta da banca]
-    |
-    v
-[30.2 Defesa com citações]
-    |
-    v
-[30.3 A pergunta da recusa]
-    |
-    v
-[30.4 Depois da banca]
-    |
-    v
-[30.5 Registro no portfólio]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Objetivos de aprendizagem
 

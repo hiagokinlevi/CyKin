@@ -1,5 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso Prático de Um Mês
 
+**Atualização visual (14/10/2026):** os mapas automáticos de títulos e os desenhos lógicos duplicados mencionados nos registros históricos de tradução abaixo foram removidos deste livro e da referência inglesa. As contagens antigas desses mapas não descrevem o texto atual; o ensino, os exemplos, os exercícios e os diagramas técnicos específicos foram preservados.
+
 - Idioma: português do Brasil (`pt`); curso 005, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
 - Estado editorial: **publicado, com texto nos capítulos 1–20 e revisão de equivalência pendente**. Há EX001–EX074 com resoluções. As vinte posições da referência inglesa fixada têm texto português; isso não aprova a equivalência integral nem conclui o livro. O capítulo 1 e EX001–EX005 continuam preservados como texto do autor original na tradução anterior; os capítulos 2–4 e EX006–EX050 continuam o caso Northstar; EX051–EX058 permanecem com suas rubricas de 0 a 3. Os dois programas offline anteriores e suas saídas literais foram mantidos. A revisão integral técnica, linguística, de fontes, direitos e acessibilidade está aberta; não há nova medição A4.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); [escopo e exceções](../../../../../RIGHTS.md); as obras citadas mantêm seus direitos.
@@ -62,71 +64,6 @@ NIST [Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29); NIST [
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Governança, riscos e compliance de segurança: fundamentos e decisões
-
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O problema de decisão"]
-  N1["1.2 Comece por um serviço, não por um produto"]
-  N2["1.3 Traduza uma ameaça em um cenário de negócio"]
-  N3["1.4 Escolha resultados que possam ser verificados"]
-  N4["1.5 Defina prioridades sob um limite real"]
-  N5["1.6 Um exemplo curto de trabalho"]
-  N6["1.7 O teste da estratégia em uma página"]
-  N7["EX001 — Atividade ou resultado"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O problema de decisão"]
-  N1["1.2 Comece por um serviço, não por um produto"]
-  N2["1.3 Traduza uma ameaça em um cenário de negócio"]
-  N3["1.4 Escolha resultados que possam ser verificados"]
-  N4["1.5 Defina prioridades sob um limite real"]
-  N5["1.6 Um exemplo curto de trabalho"]
-  N6["1.7 O teste da estratégia em uma página"]
-  N7["EX001 — Atividade ou resultado"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[1.1 O problema de decisão]
-    |
-    v
-[1.2 Comece por um serviço, não por um produto]
-    |
-    v
-[1.3 Traduza uma ameaça em um cenário de negócio]
-    |
-    v
-[1.4 Escolha resultados que possam ser verificados]
-    |
-    v
-[1.5 Defina prioridades sob um limite real]
-    |
-    v
-[1.6 Um exemplo curto de trabalho]
-    |
-    v
-[1.7 O teste da estratégia em uma página]
-    |
-    v
-[EX001 — Atividade ou resultado]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -305,71 +242,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["2.1 Por que o escopo vem primeiro"]
-  N1["2.2 Permissão e autoridade"]
-  N2["2.3 Tratar dados pessoais com segurança"]
-  N3["2.4 Desenhar um exercício seguro"]
-  N4["2.5 Registrar o que foi feito"]
-  N5["Conceitos — quatro portões que não se abrem uns aos"]
-  N6["Fluxo de decisão — ler, exportar, restaurar ou parar"]
-  N7["Aplicar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Por que o escopo vem primeiro"]
-  N1["2.2 Permissão e autoridade"]
-  N2["2.3 Tratar dados pessoais com segurança"]
-  N3["2.4 Desenhar um exercício seguro"]
-  N4["2.5 Registrar o que foi feito"]
-  N5["Conceitos — quatro portões que não se abrem uns aos"]
-  N6["Fluxo de decisão — ler, exportar, restaurar ou parar"]
-  N7["Aplicar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[2.1 Por que o escopo vem primeiro]
-    |
-    v
-[2.2 Permissão e autoridade]
-    |
-    v
-[2.3 Tratar dados pessoais com segurança]
-    |
-    v
-[2.4 Desenhar um exercício seguro]
-    |
-    v
-[2.5 Registrar o que foi feito]
-    |
-    v
-[Conceitos — quatro portões que não se abrem uns aos]
-    |
-    v
-[Fluxo de decisão — ler, exportar, restaurar ou parar]
-    |
-    v
-[Aplicar]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir por escrito o escopo de uma revisão de governança; (2) obter e registrar permissão antes de tocar em sistemas ou dados; (3) planejar a coleta de evidências e exercícios que não possam prejudicar serviços nem pessoas.
@@ -476,71 +348,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Governança, riscos e compliance de segurança: sistemas, dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["3.1 De serviços a componentes"]
-  N1["3.2 Como ler o mapa de dependências"]
-  N2["Laboratório — Mapa de dependências e donos da Norths"]
-  N3["3.3 Os dados e para onde eles vão"]
-  N4["3.4 Dependências fora da organização"]
-  N5["3.5 Do mapa aos cenários e às evidências"]
-  N6["Conceitos — a listagem conta nomes, não entrega uma"]
-  N7["Fluxo de decisão — três perguntas, três linhas difer"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 De serviços a componentes"]
-  N1["3.2 Como ler o mapa de dependências"]
-  N2["Laboratório — Mapa de dependências e donos da Norths"]
-  N3["3.3 Os dados e para onde eles vão"]
-  N4["3.4 Dependências fora da organização"]
-  N5["3.5 Do mapa aos cenários e às evidências"]
-  N6["Conceitos — a listagem conta nomes, não entrega uma"]
-  N7["Fluxo de decisão — três perguntas, três linhas difer"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[3.1 De serviços a componentes]
-    |
-    v
-[3.2 Como ler o mapa de dependências]
-    |
-    v
-[Laboratório — Mapa de dependências e donos da Norths]
-    |
-    v
-[3.3 Os dados e para onde eles vão]
-    |
-    v
-[3.4 Dependências fora da organização]
-    |
-    v
-[3.5 Do mapa aos cenários e às evidências]
-    |
-    v
-[Conceitos — a listagem conta nomes, não entrega uma]
-    |
-    v
-[Fluxo de decisão — três perguntas, três linhas difer]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -679,71 +486,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: laboratório guiado e síntese aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["4.1 Executar o exercício"]
-  N1["4.2 Como ler os tempos"]
-  N2["Laboratório — Cronometrando o exercício de restauraç"]
-  N3["4.3 O que o resultado significa"]
-  N4["4.4 Registrar a decisão"]
-  N5["4.5 Atualizar a estratégia de uma página"]
-  N6["Conceitos — dois cálculos, e uma leitura que não é n"]
-  N7["Fluxo de decisão — soma, máximo, lápis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Executar o exercício"]
-  N1["4.2 Como ler os tempos"]
-  N2["Laboratório — Cronometrando o exercício de restauraç"]
-  N3["4.3 O que o resultado significa"]
-  N4["4.4 Registrar a decisão"]
-  N5["4.5 Atualizar a estratégia de uma página"]
-  N6["Conceitos — dois cálculos, e uma leitura que não é n"]
-  N7["Fluxo de decisão — soma, máximo, lápis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[4.1 Executar o exercício]
-    |
-    v
-[4.2 Como ler os tempos]
-    |
-    v
-[Laboratório — Cronometrando o exercício de restauraç]
-    |
-    v
-[4.3 O que o resultado significa]
-    |
-    v
-[4.4 Registrar a decisão]
-    |
-    v
-[4.5 Atualizar a estratégia de uma página]
-    |
-    v
-[Conceitos — dois cálculos, e uma leitura que não é n]
-    |
-    v
-[Fluxo de decisão — soma, máximo, lápis]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -888,38 +630,6 @@ Todos os detalhes da Northstar nos capítulos 2–4 continuam fictícios; os lab
 
 ## Capítulo 5 — Um novo teste agendado não é uma segunda execução
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  A["O diretor aprova a opção 2"] --> B["Melhorias previstas para até trinta dias"]
-  B --> C["Um segundo exercício é agendado"]
-  C --> D{"Há um segundo log nos documentos?"}
-  D -->|Não| E["Mantenha MISSED by 5 da primeira execução"]
-  D -->|Sim| F["Esse log posterior seria um registro próprio"]
-```
-
-Um agendamento não é uma cronometragem já realizada.
-
-### Desenho lógico
-
-```text
-log do primeiro exercício
-    total 245 min
-    MISSED by 5 min
-    etapa mais longa: 70 min
-registro de decisão
-    segunda opção aprovada
-        |
-        +-- trinta dias é o prazo para concluir, não uma data de conclusão
-        +-- o segundo exercício está agendado, não executado
-        +-- lab_restore.py permanece como publicado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -964,38 +674,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — A etapa mais longa não é a diferença de cinco minutos
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06. Mapa, exemplo, EX060.
-
-```mermaid
-flowchart TD
-  T["Total de 245 comparado com 240"] --> M["MISSED by 5"]
-  L["A maior duração de uma etapa é 70"] --> D["Restauração do banco de dados"]
-  M --> G{"Reduzir 70 no papel elimina a diferença observada?"}
-  G -->|Não| K["O trabalho aprovado consiste em três outros itens"]
-```
-
-O máximo e a diferença em relação à meta respondem a perguntas diferentes.
-
-### Desenho lógico
-
-```text
-comparação
-    245 contra 240: cinco minutos além da meta
-máximo
-    restaurar o banco de dados de agendamento: 70 min
-melhorias aprovadas
-    local protegido para instruções e credenciais
-    configuração do web host por script
-    reconexão de identidade escrita no procedimento
-        |
-        +-- nenhuma dessas três é "cortar 5 minutos dos 70"
-        +-- alterar 70 a lápis não isola uma cópia
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Objetivos de aprendizagem
 
@@ -1042,37 +720,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 7 — Uma linha na lista de decisões não preenche o responsável na listagem
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N["A listagem imprime NONE"] --> L["Relay e escala entram na lista do diretor"]
-  L --> W{"Alguém digitou o nome de uma equipe no laboratório?"}
-  W -->|Sim| R["Recuse. A saída ainda diz NONE"]
-  W -->|Não| K["A lista solicita uma decisão posterior"]
-```
-
-Pedir a designação de um responsável não preenche o campo de responsável.
-
-### Desenho lógico
-
-```text
-lab_deps.py
-    relay de e-mail: owner NONE
-    planilha da escala: owner NONE
-    shared by all three: ['identity provider']
-lista de decisões do diretor
-    responsáveis ainda a designar
-        |
-        +-- "a TI vai olhar isso" não é a célula de responsável
-        +-- nenhum nome pessoal é inventado
-        +-- o relay não é reconfigurado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1117,36 +764,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Um resultado previsto para o trimestre não é um e-mail já sem o conteúdo
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08. Mapa, exemplo, EX062.
-
-```mermaid
-flowchart TD
-  F["As confirmações incluem o motivo do agendamento"] --> O["A remoção é um resultado previsto para o trimestre"]
-  O --> S{"Há nos documentos uma amostra sem esse conteúdo?"}
-  S -->|Não| R["Um e-mail posterior que ainda contém o motivo não comprova a mudança"]
-  S -->|Sim| K["Essa amostra constituiria sua própria evidência"]
-```
-
-Pretender uma alteração de baixo custo no e-mail não comprova que o e-mail alterado foi enviado.
-
-### Desenho lógico
-
-```text
-achado atual
-    o motivo do agendamento pode revelar saúde ou dificuldade financeira
-    as confirmações ainda contêm esse motivo
-resultado previsto para o trimestre
-    retirar o motivo desses e-mails
-        |
-        +-- o resultado está definido, não demonstrado como concluído
-        +-- nenhuma mensagem de amostra é inventada
-        +-- o relay continua sem ser reconfigurado nesta aula
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Objetivos de aprendizagem
 
@@ -1193,38 +810,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 9 — A referência ao próximo trimestre não alterou a exclusão
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  S["O primeiro escopo exclui a gestão de casos e a escala"] --> N["Revisão prevista para o próximo trimestre"]
-  N --> Q{"Os documentos registram que esse trimestre chegou?"}
-  Q -->|Não| K["Mantenha a linha do banco de casos e não o abra"]
-  Q -->|Sim| R["Uma revisão datada seria uma nova página"]
-```
-
-Uma nota sobre um momento posterior não é uma página que afirma que esse momento já começou.
-
-### Desenho lógico
-
-```text
-incluídos agora
-    portal de agendamento, banco de agendamento, provedor de identidade, serviço de backup
-excluídos por enquanto
-    gestão de casos e escala de voluntários
-    revisão no próximo trimestre
-listagem
-    a linha do banco de casos permanece, com owner Casework
-        |
-        +-- a linha não é uma chave de acesso
-        +-- nenhuma conta suspeita é inventada
-        +-- nenhuma data de calendário é fornecida
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1269,40 +854,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — O registro de decisão não é uma autorização para produção
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  D["Registro de decisão arquivado"] --> O["Opção 2: melhorar e depois testar novamente"]
-  O --> P{"Esse registro prevê uma restauração em produção?"}
-  P -->|Não| S["A próxima execução ainda exige as regras do teste seguro"]
-  P -->|Sim| X["Uma ação em produção exigiria outra página"]
-```
-
-Aprovar o caminho para confirmar um limite não é autorizar alterações no portal em produção.
-
-### Desenho lógico
-
-```text
-primeiro exercício
-    cópia isolada
-    envio de e-mails bloqueado
-    pessoa designada com autoridade para interromper
-    credenciais separadas
-    portal em produção não alterado
-registro de decisão
-    se o limite de quatro horas deve ser aceito
-    opção 2 aprovada
-        |
-        +-- o registro não acrescenta uma nova ação autorizada em produção
-        +-- uma execução posterior repete as salvaguardas
-        +-- as restrições de horário de atendimento não são dispensadas aqui
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Objetivos de aprendizagem
 
@@ -1349,37 +900,6 @@ Continue para a sequência traduzida dos capítulos 11–20; a revisão integral
 
 ## Capítulo 11 — Um inventário não confirmado não é uma contagem zero
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  U["Não há inventário confirmado das integrações com terceiros"] --> Z{"Alguém registra 0?"}
-  Z -->|Sim| R["Recuse. Não confirmado não é um levantamento completo"]
-  K["Web host, provedor de identidade, relay de e-mail"] --> N["Fornecedores dos componentes identificados"]
-  N --> C["Essas identificações não concluem o inventário"]
-```
-
-Conhecer os fornecedores de componentes identificados não equivale a conhecer toda a lista que ainda falta.
-
-### Desenho lógico
-
-```text
-lacuna do Capítulo 1
-    integrações com terceiros: inventário não confirmado
-fornecedores de componentes identificados
-    web host, provedor de identidade, relay de e-mail
-compra recusada
-    plataforma da Calder Systems, não adotada
-        |
-        +-- não registre 0
-        +-- não acrescente uma quarta empresa
-        +-- não trate o folheto da Calder como integração em operação
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1424,36 +944,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Uma página de status não é uma autenticação de contingência testada
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12. Mapa, exemplo, EX066.
-
-```mermaid
-flowchart TD
-  G["Lacuna de evidência: autenticação de contingência não testada"] --> S["Uma página do fornecedor informa que o serviço está operacional"]
-  S --> R["Essa página não é um teste da contingência"]
-  E["O exercício reconectou o provedor de identidade em 25 min"] --> N["Essa etapa faz parte da restauração, não de uma contingência"]
-```
-
-Conseguir autenticar-se novamente na cópia restaurada não é um plano para quando a própria autenticação fica indisponível.
-
-### Desenho lógico
-
-```text
-cenário
-    provedor de identidade indisponível
-    a equipe não consegue acessar nenhum serviço
-    autenticação de contingência: não testada
-etapa do exercício
-    reconectar o provedor de identidade: 25 min
-        |
-        +-- 25 min é uma etapa do primeiro log
-        +-- pressupõe que o provedor possa ser reconectado
-        +-- nenhum produto de contingência é identificado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Objetivos de aprendizagem
 
@@ -1500,37 +990,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 13 — A lista de compartilhamento da escala ainda não chegou
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  R["O acesso à escala nunca foi revisado"] --> E["Evidência solicitada: a lista de compartilhamento"]
-  E --> V{"A lista está nos documentos?"}
-  V -->|Não| K["Uma suposição sobre quem pode abrir a planilha não é a lista"]
-  V -->|Sim| S["A lista seria a evidência"]
-```
-
-Uma premissa sobre voluntários desligados continua sendo premissa até que a lista seja lida.
-
-### Desenho lógico
-
-```text
-planilha da escala
-    responsável NONE
-    dados de contato dos voluntários
-    acesso: nunca revisado
-evidência solicitada
-    a lista de compartilhamento
-        |
-        +-- "cerca de três pessoas" não é a lista
-        +-- o acesso de alguém desligado não é afirmado como fato
-        +-- a planilha não é alterada
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1576,39 +1035,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — O log de um exercício não é um mês de indicadores
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14. Mapa, exemplo, EX068.
-
-```mermaid
-flowchart TD
-  S["Indicadores mensais definidos"] --> R["O tempo de restauração é um deles"]
-  R --> L["Os documentos contêm um total de restauração: 245"]
-  L --> N["Um total não é um mês de medições"]
-  B["Falhas de backup e mudanças privilegiadas"] --> U["Os documentos não contêm contagens"]
-```
-
-O nome de um indicador identifica o que coletar. Não é a coleta.
-
-### Desenho lógico
-
-```text
-indicadores a revisar mensalmente
-    tempo de restauração
-    falhas de backup
-    mudanças privilegiadas
-    ações atrasadas dos responsáveis
-o que os documentos efetivamente contêm
-    um total de restauração, 245 min
-    responsáveis pelo relay e pela escala ainda NONE
-        |
-        +-- nenhuma contagem de falhas
-        +-- nenhuma contagem de mudanças privilegiadas
-        +-- 245 não é reescrito como média mensal
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Objetivos de aprendizagem
 
@@ -1658,41 +1084,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 15 — Seis horas foi a opção não escolhida
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  O["Três opções"] --> A["Aceitar quatro horas agora"]
-  O --> B["Aceitar após melhorias e novo teste"]
-  O --> C["Elevar o limite para seis horas e alocar equipe ao agendamento manual"]
-  B --> Y["Esta é a opção aprovada"]
-  C --> N["Não inicie o processo manual"]
-```
-
-Ultrapassar a meta em cinco minutos não aprova a opção que o diretor não escolheu.
-
-### Desenho lógico
-
-```text
-opção 1
-    aceitar quatro horas agora
-    não escolhida
-opção 2
-    melhorias, depois um segundo teste
-    aprovada
-opção 3
-    seis horas, com equipe para um processo de agendamento manual
-    não escolhida
-        |
-        +-- a diferença de 5 não muda a escolha
-        +-- nenhuma quantidade de profissionais é inventada
-        +-- a meta não é reescrita como 360
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1737,38 +1128,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Uma economia possível não é um minuto medido
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  L["Etapa de localização: 55 min"] --> P["Um local protegido poderia poupar a maior parte dessa busca"]
-  P --> M{"Alguém mediu a economia?"}
-  M -->|Não| R["Recuse 40, 50 ou qualquer outro valor inventado em minutos"]
-  M -->|Sim| K["Essa medição seria um novo log"]
-```
-
-"A maior parte" não é um número que a equipe possa registrar como resultado.
-
-### Desenho lógico
-
-```text
-etapa de localização publicada
-    55 min
-comentário do livro
-    um local conhecido e protegido poderia poupar a maior parte desses minutos
-o que não está nos documentos
-    uma economia medida
-    a transferência concluída das instruções
-        |
-        +-- 55 permanece 55
-        +-- "a maior parte" não é 40 nem 50
-        +-- a melhoria não recebe uma data de conclusão
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Objetivos de aprendizagem
 
@@ -1816,39 +1175,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 17 — Agendamentos de teste não são agendamentos de clientes
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17. Mapa, exemplo, EX071.
-
-```mermaid
-flowchart TD
-  S["O sucesso foi definido antecipadamente"] --> F["A recepção faz agendamentos de teste"]
-  F --> I["Cópia isolada, e-mails de saída bloqueados"]
-  I --> C{"Algum cliente recebeu um agendamento?"}
-  C -->|Não| K["Os 20 minutos são a duração da etapa, não uma contagem de clientes"]
-```
-
-A recepção praticou em uma cópia. Os clientes ficaram fora dessa prática.
-
-### Desenho lógico
-
-```text
-definição de sucesso
-    agendamentos de teste no portal restaurado
-salvaguardas
-    cópia isolada
-    e-mails de saída bloqueados para os testes não alcançarem clientes
-    portal em produção não alterado
-etapa
-    agendamentos de teste pela recepção: 20 min
-        |
-        +-- 20 são minutos, não quantidade de clientes
-        +-- nenhum cliente é identificado pelo nome
-        +-- o bloqueio de e-mails manteve a prática contida
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1893,37 +1219,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Um serviço de autenticação compartilhado não amplia o primeiro escopo
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18. Mapa, exemplo, EX072.
-
-```mermaid
-flowchart TD
-  I["O provedor de identidade sustenta os três serviços"] --> R["Ele entra na restauração do agendamento"]
-  R --> S["O primeiro escopo ainda exclui a gestão de casos e a escala"]
-  S --> N["Não abra esses serviços porque a autenticação é compartilhada"]
-```
-
-Um componente pode entrar em um exercício enquanto os outros serviços continuam fora do documento de escopo.
-
-### Desenho lógico
-
-```text
-por que a identidade entra na restauração
-    sem autenticação, um portal restaurado ainda não pode reabrir
-primeiro escopo
-    portal, banco de agendamento, provedor de identidade, serviço de backup
-ainda excluídos
-    gestão de casos
-    escala de voluntários
-        |
-        +-- reconectar a identidade não é revisar notas de casos
-        +-- o banco de casos continua fechado
-        +-- a planilha da escala permanece inalterada
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Objetivos de aprendizagem
 
@@ -1970,38 +1265,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 19 — Presença no exercício não é a revisão de fim de mês
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  A["O diretor acompanha o início e o fim"] --> E["Essa presença testemunha o exercício"]
-  M["Log de atividades revisado no fim do mês"] --> R{"Essa revisão foi registrada?"}
-  R -->|Não| K["Arquivar o registro de decisão não a substitui"]
-```
-
-Estar na sala durante um teste é um evento. Ler o log do mês é outro.
-
-### Desenho lógico
-
-```text
-presença no exercício
-    diretor de operações no início e no fim
-    o resultado testa a premissa de quatro horas
-registro de atividades
-    data, pessoa, referência de aprovação, o que mudou, evidência guardada
-    revisado pelo diretor no fim do mês
-registro de decisão
-    arquivado com as evidências
-        |
-        +-- arquivar não é a revisão mensal
-        +-- a presença também não é essa revisão
-        +-- nenhum achado de uma leitura de fim de mês é inventado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -2046,38 +1309,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-20"></a>
 
 ## Capítulo 20 — O que a página de estratégia permite afirmar
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20. Mapa, exemplo, EX074.
-
-```mermaid
-flowchart TD
-  N["Uma nota de encerramento"] --> F["Repita as saídas e as pendências"]
-  F --> Q{"A frase acrescenta novo total, responsável, e-mail alterado ou limite confirmado?"}
-  Q -->|Sim| R["Rejeite"]
-  Q -->|Não| K["A nota pode citar essa linha"]
-```
-
-Vinte aulas atendem a um mínimo de planejamento. A edição continua sendo um rascunho de trabalho.
-
-### Desenho lógico
-
-```text
-podem permanecer
-    total 245 min; MISSED by 5 min; etapa mais longa: 70 min
-    compartilhado pelos três: provedor de identidade
-    relay e escala: NONE
-    segundo exercício agendado, não executado
-    gestão de casos e escala ainda excluídas
-não podem ser acrescentados
-    uma saída MET
-    um responsável digitado em uma célula NONE
-    motivos de agendamento já removidos
-    quatro horas confirmadas porque a contagem de capítulos chegou a 20
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Objetivos de aprendizagem
 

@@ -5,7 +5,7 @@
   "language": "en",
   "chapter": 1,
   "source_anchor": "ch-01",
-  "source_sha256": "3f762e6350dfc9b6d94f5732787bef64ef6b6f555230c811783821a8189460aa",
+  "source_sha256": "2424e2305dc656e218b209bee37a42bd7af0a50a8b3a3f2c2534607de4db0a74",
   "questions": [
     {"id":"Q01","prompt":"Which Millbrook component is the central workstation used to reach several building systems?","options":[{"id":"a","text":"BMS-WS, the building-management workstation"},{"id":"b","text":"MGAS-PANEL, the medical-gas alarm"},{"id":"c","text":"LIFT-CTRL, the lift controller"},{"id":"d","text":"AHU-OT1, a theatre air-handling unit"}],"correct":"a","explanation":"The chapter names BMS-WS as the central workstation through which several building systems can be reached; the other items are controlled systems or alarms.","source":"Chapter 1, §1.1"},
     {"id":"Q02","prompt":"Why does networking an air-handling controller make it a cyber-physical security concern?","options":[{"id":"a","text":"It automatically removes the need for facilities staff"},{"id":"b","text":"A remote command can change physical equipment and clinical conditions"},{"id":"c","text":"It changes only digital records, never the physical environment"},{"id":"d","text":"It proves that the controller has already been compromised"}],"correct":"b","explanation":"A networked controller can turn a screen command into a physical actuator change. Reachability creates a security concern without proving that any compromise occurred.","source":"Chapter 1, §1.2"},

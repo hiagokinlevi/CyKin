@@ -40,6 +40,7 @@ npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0003_student_auth.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0004_student_password_activity.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0005_student_mcp_keys.sql
+npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0007_figure_cleanup_bank_versions.sql
 activity_schema="$(npx wrangler d1 execute open-cyber-academy-progress --remote --command='PRAGMA table_info(student_activity)' --json)"
 if ! python3 -c 'import json,sys; rows=json.load(sys.stdin)[0]["results"]; sys.exit(0 if any(row["name"] == "source" for row in rows) else 1)' <<< "$activity_schema"; then
   npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0006_student_activity_source.sql

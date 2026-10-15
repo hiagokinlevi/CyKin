@@ -39,71 +39,6 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 
 ## Chapter 1 — Identity and access: foundations and first decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Why this course"]
-  N2["1.2 What access control protects"]
-  N3["1.3 Three simple ideas"]
-  N4["1.4 Why email comes first"]
-  N5["1.5 Choosing first steps"]
-  N6["1.6 Guidance worth knowing"]
-  N7["1.7 The plan for the month"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Why this course"]
-  N2["1.2 What access control protects"]
-  N3["1.3 Three simple ideas"]
-  N4["1.4 Why email comes first"]
-  N5["1.5 Choosing first steps"]
-  N6["1.6 Guidance worth knowing"]
-  N7["1.7 The plan for the month"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Why this course]
-    |
-    v
-[1.2 What access control protects]
-    |
-    v
-[1.3 Three simple ideas]
-    |
-    v
-[1.4 Why email comes first]
-    |
-    v
-[1.5 Choosing first steps]
-    |
-    v
-[1.6 Guidance worth knowing]
-    |
-    v
-[1.7 The plan for the month]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what identity and access control protect; (2) describe a small shop's accounts; (3) choose first steps with limited time.
@@ -174,71 +109,6 @@ Knowing what accounts protect and taking high-value, low-cost steps first is the
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Getting permission"]
-  N2["2.2 Handling passwords safely"]
-  N3["2.3 Shared accounts"]
-  N4["2.4 Recognising fake messages"]
-  N5["2.5 Everyday habits"]
-  N6["2.6 When to ask for help"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Getting permission"]
-  N2["2.2 Handling passwords safely"]
-  N3["2.3 Shared accounts"]
-  N4["2.4 Recognising fake messages"]
-  N5["2.5 Everyday habits"]
-  N6["2.6 When to ask for help"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Getting permission]
-    |
-    v
-[2.2 Handling passwords safely]
-    |
-    v
-[2.3 Shared accounts]
-    |
-    v
-[2.4 Recognising fake messages]
-    |
-    v
-[2.5 Everyday habits]
-    |
-    v
-[2.6 When to ask for help]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) agree what Mia may do; (2) handle passwords safely; (3) learn everyday habits that protect accounts.
@@ -304,71 +174,6 @@ Written permission, careful password handling and simple habits make access work
 <a id="ch-03"></a>
 
 ## Chapter 3 — Listing accounts and who uses them
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Why list accounts"]
-  N2["3.2 Finding accounts"]
-  N3["3.3 Owners and users"]
-  N4["3.4 The account check"]
-  N5["Lab — Account check"]
-  N6["3.5 Reading the results"]
-  N7["3.6 Ranking the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Why list accounts"]
-  N2["3.2 Finding accounts"]
-  N3["3.3 Owners and users"]
-  N4["3.4 The account check"]
-  N5["Lab — Account check"]
-  N6["3.5 Reading the results"]
-  N7["3.6 Ranking the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Why list accounts]
-    |
-    v
-[3.2 Finding accounts]
-    |
-    v
-[3.3 Owners and users]
-    |
-    v
-[3.4 The account check]
-    |
-    v
-[Lab — Account check]
-    |
-    v
-[3.5 Reading the results]
-    |
-    v
-[3.6 Ranking the gaps]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -472,71 +277,6 @@ A complete account list with owners, users and second-step status shows exactly 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Making changes, checking them and reporting
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Turning on second steps"]
-  N2["4.2 Fixing shared logins"]
-  N3["4.3 Removing former staff"]
-  N4["4.4 The checklist"]
-  N5["Lab — Checklist score"]
-  N6["4.5 Reading the score"]
-  N7["4.6 The short report"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Turning on second steps"]
-  N2["4.2 Fixing shared logins"]
-  N3["4.3 Removing former staff"]
-  N4["4.4 The checklist"]
-  N5["Lab — Checklist score"]
-  N6["4.5 Reading the score"]
-  N7["4.6 The short report"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Turning on second steps]
-    |
-    v
-[4.2 Fixing shared logins]
-    |
-    v
-[4.3 Removing former staff]
-    |
-    v
-[4.4 The checklist]
-    |
-    v
-[Lab — Checklist score]
-    |
-    v
-[4.5 Reading the score]
-    |
-    v
-[4.6 The short report]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -643,36 +383,6 @@ Agreed changes, a simple checklist and a short report leave a small business saf
 
 ## Chapter 5 — The account print is not the checklist
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["lab_accounts.py reads seven rows"] --> B["Print: MFA on 3, shared 3"]
-  C["lab_checklist.py reads two sets"] --> D["Print: before 2/8, after 7/8"]
-  B --> E{"May one print replace the other?"}
-  D --> E
-  E -->|No| F["Quote each script's own lines"]
-```
-
-Rosa sees the account output before any change is planned. The checklist is a later page.
-
-### Logical drawing
-
-```text
-account print
-    accounts 7, MFA on 3
-    four no-MFA lines
-    shared accounts: 3
-checklist print
-    before: 2/8
-    after: 7/8
-    still to do: recovery details up to date
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -717,33 +427,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Three with a second step is not seven
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  A["Fourth field true on three rows"] --> B["Print says MFA on 3"]
-  B --> C{"Does 3 mean every account?"}
-  C -->|No| D["Keep the four no-MFA lines"]
-  C -->|Yes| E["That reading invents four flags"]
-```
-
-The count is a tally of one column. It is not a promise about the other rows.
-
-### Logical drawing
-
-```text
-second step on
-    owner email, card payments, accounting
-second step off, and printed
-    orders mailbox, shop admin, social page, supplier portal
-not the same number
-    checklist after: 7/8
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -790,35 +473,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The three shared lines stay on the account print
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  A["Shared flag true on three rows"] --> B["Print: shared accounts: 3"]
-  B --> C{"Does week-four prose edit that flag?"}
-  C -->|No| D["Leave the three shared lines"]
-  C -->|Yes| E["The tuples were not rewritten"]
-```
-
-A later design can be described without pretending the list was re-scored.
-
-### Logical drawing
-
-```text
-shared on the print
-    orders@shop
-    online shop admin
-    shop-page
-not shared on the print
-    owner email, card payments, accounting, supplier portal
-narrative, not a new print
-    personal logins in week four
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -863,34 +517,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — The orders mailbox line stays no-MFA and shared
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  A["Print: no MFA: email orders@shop - shared"] --> B["Week four: own sign-ins and an authenticator"]
-  B --> C{"Did the script print that change?"}
-  C -->|No| D["Keep the no-MFA shared line"]
-  C -->|Yes| E["No second account run is embedded"]
-```
-
-The mailbox that receives resets is still the first gap on the week-three list.
-
-### Logical drawing
-
-```text
-account line that stays
-    no MFA: email (orders@shop) - shared
-    used by all staff
-checklist, different claim
-    MFA on email is already in the before pair
-narrative
-    personal sign-ins, authenticator app, old shared password retired
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -937,35 +563,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — The shop admin line stays the week-three row
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  A["Tuple: admin, Rosa and Mia, no MFA, shared"] --> B["Week four adds a staff role"]
-  B --> C{"Does the role become a new tuple?"}
-  C -->|No| D["Leave Rosa, Mia on the printed row"]
-  C -->|Yes| E["No staff name is in the list"]
-```
-
-Admin rights and a view-only role are a design. The print still shows one shared admin row.
-
-### Logical drawing
-
-```text
-printed row
-    online shop, admin, Rosa and Mia, no MFA, shared
-week-four design
-    staff may view and pack
-    staff may not change prices or payments
-    only Rosa and Mia keep admin
-not printed
-    any other person's name
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1010,34 +607,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — The social page line stays no-MFA and shared
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  A["Print: no MFA: social media shop-page - shared"] --> B["Narrative: helpers join with their own accounts"]
-  B --> C{"Does the print name those helpers?"}
-  C -->|No| D["Keep all staff, and keep the line"]
-  C -->|Yes| E["No helper is named"]
-```
-
-Reputation is why the gap ranks third. The rank is not a new laboratory row.
-
-### Logical drawing
-
-```text
-printed
-    social media, shop-page, all staff, no MFA, shared
-narrative
-    page helpers on their own accounts
-    shared login removed
-unnamed
-    the two former helpers
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1084,34 +653,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — The supplier portal stays the next account
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["Found late: supplier portal willowlane"] --> B["Rosa only, no MFA, not shared"]
-  B --> C["Ranked fourth, if time allows"]
-  C --> D{"Does the report say it is finished?"}
-  D -->|No| E["It stays the next account"]
-```
-
-Fourth in the queue is not a completed change.
-
-### Logical drawing
-
-```text
-how it was found
-    nobody had mentioned it
-printed row
-    supplier portal, willowlane, Rosa, no MFA, not shared
-status in the report
-    the next account to secure
-    not a line marked done
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1156,37 +697,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Recovery details stay the remaining item
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  A["after: 7/8"] --> B["still to do: recovery details up to date"]
-  B --> C["Rosa agrees to update them the following week"]
-  C --> D{"Has that week arrived in the file?"}
-  D -->|No| E["Leave 7/8 and print no phone number"]
-```
-
-Seven is the after count because one item is still open.
-
-### Logical drawing
-
-```text
-printed remainder
-    still to do: recovery details up to date
-known only in prose
-    some accounts
-    a former staff member's phone number
-    Rosa will update them the following week
-not in the file
-    the number itself
-    a finished update
-    after: 8/8
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1233,35 +743,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The before line stays two of eight
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["before: 2/8"] --> B["Source marks only the first two items"]
-  B --> C{"May later gains move into before?"}
-  C -->|No| D["Leave the before count at 2"]
-  C -->|Yes| E["That would rewrite the week-one list"]
-```
-
-The before set is what Mia filled in during week one. The after set is the end of week four.
-
-### Logical drawing
-
-```text
-already in the before set
-    every account listed with an owner
-    MFA on email
-not in the before set
-    shop-admin MFA, social MFA
-    no written shared passwords
-    password manager, former staff removed
-    recovery details
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1306,38 +787,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Three former staff, and no removal date is printed
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["Mia asks who left in two years"] --> B["Two social helpers and one shop login"]
-  B --> C["Rosa removes them"]
-  C --> D{"Is the removal date printed?"}
-  D -->|No| E["Keep three people and a blank date"]
-```
-
-The checklist can mark the removal item done without dating it.
-
-### Logical drawing
-
-```text
-counted
-    two social-media helpers
-    one online-shop login
-    three in total
-done in the story
-    Rosa removes them
-    Mia records each removal and the date
-not printed
-    the date
-    any of their names
-    a fourth person
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1384,35 +833,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — No password is written, and the till note is not restored
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  A["Passwords never enter Mia's notes"] --> B["The till note is shredded once the old passwords fail"]
-  B --> C{"May a lesson print one password to illustrate?"}
-  C -->|No| D["Describe the handling and stop"]
-```
-
-The absence of a password is the safety rule, not a missing detail.
-
-### Logical drawing
-
-```text
-never collected
-    staff passwords
-moved, without being printed
-    shop passwords into the manager
-    shared fallback changed when someone leaves
-gone in the story
-    the till note, after the old passwords stopped working
-still unwritten
-    every password
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1457,38 +877,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — The permission dates stay off the page
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["Rosa signs a permission note"] --> B["Payments stay hers"]
-  B --> C["Stop cases go to Rosa, not into an investigation"]
-  C --> D{"Are the calendar dates printed?"}
-  D -->|No| E["Keep the signature and omit the days"]
-```
-
-A signed boundary still binds when the days are missing.
-
-### Logical drawing
-
-```text
-on the note, in prose
-    accounts Mia may look at
-    second steps she may help turn on
-    payments Rosa does herself
-    Rosa's signature
-not printed
-    the calendar dates she agreed
-stop rule
-    break-in, odd payment, threat
-    Mia tells Rosa and stops
-    Rosa calls the provider or the bank
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1535,37 +923,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — The three-month check is a habit, not a second run
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  A["Report signed and stored with the list"] --> B["Habit: check the list every three months"]
-  B --> C{"Has that later check been run?"}
-  C -->|No| D["Keep one account print and one checklist print"]
-```
-
-A habit tells the shop what to repeat. It is not evidence that the repetition already happened.
-
-### Logical drawing
-
-```text
-the report contains
-    what was found, what changed
-    score from 2 to 7 of 8
-    recovery still open
-    supplier portal next
-    three habits
-stored
-    in the password manager, with the list
-    Rosa signs, Joseph has reviewed
-not shown
-    a second account run three months later
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1610,36 +967,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Six staff and one shop stay the size
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  A["One shop, six staff"] --> B["Two rows say all staff"]
-  B --> C{"May a note name the six or add a seventh?"}
-  C -->|No| D["Leave the headcount and the phrase"]
-```
-
-The size of the business is not a list of people.
-
-### Logical drawing
-
-```text
-printed size
-    one shop
-    six staff
-user field on two rows
-    all staff
-not available
-    the six names
-    a second shop
-    a seventh person
-    Mia's hours
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1686,40 +1013,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Admin stays with Rosa and Mia
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  A["Staff role: view and pack"] --> B["Not prices, not payment settings"]
-  B --> C["Admin remains Rosa and Mia"]
-  C --> D{"Does the book record a lockout?"}
-  D -->|No| E["Keep the check, and keep the pair"]
-```
-
-Checking each sign-in is how the change stays reversible. It is not a record that someone was locked out.
-
-### Logical drawing
-
-```text
-staff may
-    view orders
-    pack orders
-staff may not
-    change prices
-    change payment settings
-admin, in the narrative
-    Rosa and Mia, each with a second step
-account tuple, still
-    Rosa, Mia
-not recorded
-    a lockout
-    the name of a busy day
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1764,39 +1057,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the florist note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Quote both prints and the open items"]
-  F --> Q{"Does the sentence replace a print or close an open item?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the florist's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    accounts 7, MFA on 3
-    four no-MFA lines
-    shared accounts: 3
-    before: 2/8
-    after: 7/8
-    still to do: recovery details up to date
-must not be added
-    MFA on 7, shared 0, after 8/8
-    a recovery phone number, a secured supplier portal
-    a written password, a second shop, a lockout
-    a claim that the shop is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

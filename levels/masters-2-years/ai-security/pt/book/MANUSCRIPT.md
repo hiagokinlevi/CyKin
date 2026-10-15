@@ -40,61 +40,6 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Do tema à pergunta"]
-  N1["1.2 Uma busca documentada"]
-  N2["1.3 Extração de evidências"]
-  N3["1.4 Julgamento das fontes"]
-  N4["1.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Do tema à pergunta"]
-  N1["1.2 Uma busca documentada"]
-  N2["1.3 Extração de evidências"]
-  N3["1.4 Julgamento das fontes"]
-  N4["1.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Do tema à pergunta]
-    |
-    v
-[1.2 Uma busca documentada]
-    |
-    v
-[1.3 Extração de evidências]
-    |
-    v
-[1.4 Julgamento das fontes]
-    |
-    v
-[1.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) passar de um tema a uma pergunta pesquisável com uma unidade de análise clara; (2) conduzir uma busca bibliográfica sistemática e documentada em veículos de segurança e de aprendizado de máquina e em servidores de preprints; (3) extrair evidências para uma matriz de comparação; (4) julgar a qualidade das fontes, inclusive preprints e material de fornecedores; e (5) escrever uma seção curta e honesta de estado da arte.
@@ -188,71 +133,6 @@ Uma boa dissertação começa com uma pergunta estreita e viável e uma busca qu
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança de IA e aprendizado de máquina: seminário avançado
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 O formato do seminário"]
-  N1["2.2 Evasão"]
-  N2["2.3 Envenenamento e backdoors"]
-  N3["2.4 Ataques de privacidade"]
-  N4["2.5 Extração de modelo"]
-  N5["2.6 Injeção de prompt e aplicações com LLM"]
-  N6["2.8 Atividades práticas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O formato do seminário"]
-  N1["2.2 Evasão"]
-  N2["2.3 Envenenamento e backdoors"]
-  N3["2.4 Ataques de privacidade"]
-  N4["2.5 Extração de modelo"]
-  N5["2.6 Injeção de prompt e aplicações com LLM"]
-  N6["2.8 Atividades práticas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
-```
-
-```text
-[2.1 O formato do seminário]
-    |
-    v
-[2.2 Evasão]
-    |
-    v
-[2.3 Envenenamento e backdoors]
-    |
-    v
-[2.4 Ataques de privacidade]
-    |
-    v
-[2.5 Extração de modelo]
-    |
-    v
-[2.6 Injeção de prompt e aplicações com LLM]
-    |
-    v
-[2.8 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -393,61 +273,6 @@ O seminário cria fluência nas classes de ataque e na leitura crítica. Cada cl
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Escolha de um desenho"]
-  N1["3.2 Variáveis e controles"]
-  N2["3.3 Ética e proteção de dados"]
-  N3["3.4 Reprodutível por desenho"]
-  N4["3.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Escolha de um desenho"]
-  N1["3.2 Variáveis e controles"]
-  N2["3.3 Ética e proteção de dados"]
-  N3["3.4 Reprodutível por desenho"]
-  N4["3.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[3.1 Escolha de um desenho]
-    |
-    v
-[3.2 Variáveis e controles]
-    |
-    v
-[3.3 Ética e proteção de dados]
-    |
-    v
-[3.4 Reprodutível por desenho]
-    |
-    v
-[3.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher um desenho (experimento controlado, estudo observacional, estudo de caso) adequado à pergunta; (2) definir variáveis, controles, aleatorização e tamanho da amostra; (3) planejar o tratamento dos dados e a ética para dados pessoais ou sensíveis; (4) tornar o estudo reprodutível desde o início; e (5) documentar o plano para que um orientador possa aprová-lo.
@@ -548,61 +373,6 @@ O desenho determina o que você pode concluir. Variáveis controladas, amostrage
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança de IA e aprendizado de máquina: explicações concorrentes
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Por que as explicações concorrentes importam"]
-  N1["4.2 Um catálogo de alternativas em segurança de IA"]
-  N2["4.3 Ablações e controles"]
-  N3["4.4 Raciocinar sobre mecanismos com os laboratórios"]
-  N4["4.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Por que as explicações concorrentes importam"]
-  N1["4.2 Um catálogo de alternativas em segurança de IA"]
-  N2["4.3 Ablações e controles"]
-  N3["4.4 Raciocinar sobre mecanismos com os laboratórios"]
-  N4["4.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[4.1 Por que as explicações concorrentes importam]
-    |
-    v
-[4.2 Um catálogo de alternativas em segurança de IA]
-    |
-    v
-[4.3 Ablações e controles]
-    |
-    v
-[4.4 Raciocinar sobre mecanismos com os laboratórios]
-    |
-    v
-[4.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -714,61 +484,6 @@ Efeitos precisam de explicações, e explicações precisam de testes. Ablaçõe
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 A proposta"]
-  N1["5.2 O piloto"]
-  N2["5.3 Tamanho da amostra e poder"]
-  N3["5.4 Revisão do plano"]
-  N4["5.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 A proposta"]
-  N1["5.2 O piloto"]
-  N2["5.3 Tamanho da amostra e poder"]
-  N3["5.4 Revisão do plano"]
-  N4["5.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[5.1 A proposta]
-    |
-    v
-[5.2 O piloto]
-    |
-    v
-[5.3 Tamanho da amostra e poder]
-    |
-    v
-[5.4 Revisão do plano]
-    |
-    v
-[5.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta de dissertação com pergunta, contexto, desenho, plano de análise, ética, riscos e cronograma; (2) executar um piloto para testar a viabilidade e estimar a variabilidade; (3) calcular tamanhos de amostra; (4) revisar o plano a partir da evidência do piloto; e (5) obter aprovação com um registro claro das decisões.
@@ -873,61 +588,6 @@ A proposta fixa o que você vai fazer e como vai analisar; o piloto mostra se vo
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Execução do estudo principal"]
-  N1["6.2 Verificações de qualidade dos dados"]
-  N2["6.3 Análise primária"]
-  N3["6.4 Desfechos secundários e custos"]
-  N4["6.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Execução do estudo principal"]
-  N1["6.2 Verificações de qualidade dos dados"]
-  N2["6.3 Análise primária"]
-  N3["6.4 Desfechos secundários e custos"]
-  N4["6.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[6.1 Execução do estudo principal]
-    |
-    v
-[6.2 Verificações de qualidade dos dados]
-    |
-    v
-[6.3 Análise primária]
-    |
-    v
-[6.4 Desfechos secundários e custos]
-    |
-    v
-[6.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) executar os experimentos principais exatamente como planejado e registrar os desvios; (2) verificar a qualidade dos dados antes da análise; (3) calcular os desfechos primários com incerteza (intervalos de Wilson, bootstrap, variação entre sementes); (4) analisar comparações pareadas e desfechos secundários; e (5) apresentar os resultados em tabelas e figuras que respondam à pergunta de pesquisa.
@@ -1025,66 +685,6 @@ A análise é onde o desenho cuidadoso compensa: execuções intercaladas, verif
 
 ## Capítulo 7 — Escrita da dissertação e limitações
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 Estrutura"]
-  N1["7.2 Achados versus interpretação"]
-  N2["7.3 Limitações por tipo de validade"]
-  N3["7.4 Escrever sobre ataques com responsabilidade"]
-  N4["7.5 Apêndice de artefatos"]
-  N5["7.7 Atividades práticas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Estrutura"]
-  N1["7.2 Achados versus interpretação"]
-  N2["7.3 Limitações por tipo de validade"]
-  N3["7.4 Escrever sobre ataques com responsabilidade"]
-  N4["7.5 Apêndice de artefatos"]
-  N5["7.7 Atividades práticas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[7.1 Estrutura]
-    |
-    v
-[7.2 Achados versus interpretação]
-    |
-    v
-[7.3 Limitações por tipo de validade]
-    |
-    v
-[7.4 Escrever sobre ataques com responsabilidade]
-    |
-    v
-[7.5 Apêndice de artefatos]
-    |
-    v
-[7.7 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação de modo que cada capítulo sirva à pergunta de pesquisa; (2) escrever resultados e discussão que separem achados de interpretação; (3) escrever uma seção de limitações organizada por tipo de validade; (4) tratar com responsabilidade, na escrita, os detalhes sensíveis para a segurança; e (5) produzir um apêndice de artefatos que sustente a reprodução.
@@ -1174,61 +774,6 @@ Uma dissertação é julgada pela clareza com que as suas alegações correspond
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Revisão independente antes da entrega"]
-  N1["8.2 A apresentação da defesa"]
-  N2["8.3 Respostas aos examinadores"]
-  N3["8.4 Correções e divulgação"]
-  N4["8.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Revisão independente antes da entrega"]
-  N1["8.2 A apresentação da defesa"]
-  N2["8.3 Respostas aos examinadores"]
-  N3["8.4 Correções e divulgação"]
-  N4["8.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[8.1 Revisão independente antes da entrega]
-    |
-    v
-[8.2 A apresentação da defesa]
-    |
-    v
-[8.3 Respostas aos examinadores]
-    |
-    v
-[8.4 Correções e divulgação]
-    |
-    v
-[8.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

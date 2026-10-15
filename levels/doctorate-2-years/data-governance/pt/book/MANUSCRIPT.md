@@ -37,51 +37,6 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 A doutoranda e a pergunta"]
-  N1["1.2 Regras de integridade"]
-  N2["1.3 Métodos que outros possam repetir"]
-  N3["1.4 Fontes e normas"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 A doutoranda e a pergunta"]
-  N1["1.2 Regras de integridade"]
-  N2["1.3 Métodos que outros possam repetir"]
-  N3["1.4 Fontes e normas"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 A doutoranda e a pergunta]
-    |
-    v
-[1.2 Regras de integridade]
-    |
-    v
-[1.3 Métodos que outros possam repetir]
-    |
-    v
-[1.4 Fontes e normas]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta de doutorado sobre governança de dados; (2) definir regras de integridade para trabalhar com dados administrativos vinculados; (3) planejar métodos que outras pessoas possam reproduzir.
@@ -133,56 +88,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança de dados: a fronteira da pesquisa
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 O estado da área"]
-  N1["2.2 Medindo um cadastro"]
-  N2["2.3 Regras são decisões"]
-  N3["2.4 Posicionando a contribuição"]
-  N4["Laboratório — Dimensões de qualidade de um cadastro"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O estado da área"]
-  N1["2.2 Medindo um cadastro"]
-  N2["2.3 Regras são decisões"]
-  N3["2.4 Posicionando a contribuição"]
-  N4["Laboratório — Dimensões de qualidade de um cadastro"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
-```
-
-```text
-[2.1 O estado da área]
-    |
-    v
-[2.2 Medindo um cadastro]
-    |
-    v
-[2.3 Regras são decisões]
-    |
-    v
-[2.4 Posicionando a contribuição]
-    |
-    v
-[Laboratório — Dimensões de qualidade de um cadastro]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -265,51 +170,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Projeto de contribuição original
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 O projeto"]
-  N1["3.2 Medidas"]
-  N2["3.3 Ética e acesso"]
-  N3["3.4 Viabilidade"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 O projeto"]
-  N1["3.2 Medidas"]
-  N2["3.3 Ética e acesso"]
-  N3["3.4 Viabilidade"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX015"]
-```
-
-```text
-[3.1 O projeto]
-    |
-    v
-[3.2 Medidas]
-    |
-    v
-[3.3 Ética e acesso]
-    |
-    v
-[3.4 Viabilidade]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever um projeto de doutorado com afirmações testáveis; (2) definir medidas e variáveis de direitos de decisão; (3) planejar ética e acesso.
@@ -360,56 +220,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e estudo piloto
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Por que replicar primeiro"]
-  N1["4.2 O laboratório piloto"]
-  N2["4.3 Quem escolhe o limiar"]
-  N3["4.4 Lições do piloto"]
-  N4["Laboratório — Pesos de correspondência, limiares, pr"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Por que replicar primeiro"]
-  N1["4.2 O laboratório piloto"]
-  N2["4.3 Quem escolhe o limiar"]
-  N3["4.4 Lições do piloto"]
-  N4["Laboratório — Pesos de correspondência, limiares, pr"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[4.1 Por que replicar primeiro]
-    |
-    v
-[4.2 O laboratório piloto]
-    |
-    v
-[4.3 Quem escolhe o limiar]
-    |
-    v
-[4.4 Lições do piloto]
-    |
-    v
-[Laboratório — Pesos de correspondência, limiares, pr]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -488,51 +298,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 Desenho do estudo principal"]
-  N1["5.2 Efeitos sobre as contagens"]
-  N2["5.3 Validação independente"]
-  N3["5.4 Interpretando os achados"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Desenho do estudo principal"]
-  N1["5.2 Efeitos sobre as contagens"]
-  N2["5.3 Validação independente"]
-  N3["5.4 Interpretando os achados"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX027"]
-```
-
-```text
-[5.1 Desenho do estudo principal]
-    |
-    v
-[5.2 Efeitos sobre as contagens]
-    |
-    v
-[5.3 Validação independente]
-    |
-    v
-[5.4 Interpretando os achados]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) executar a simulação principal das decisões de governança; (2) medir os efeitos sobre as contagens publicadas; (3) validar os resultados de forma independente.
@@ -584,51 +349,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica dos pares e revisão
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 A crítica"]
-  N1["6.2 Respondendo à variação de nomes"]
-  N2["6.3 Respondendo ao viés das entrevistas"]
-  N3["6.4 Limitando a afirmação sobre documentação"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 A crítica"]
-  N1["6.2 Respondendo à variação de nomes"]
-  N2["6.3 Respondendo ao viés das entrevistas"]
-  N3["6.4 Limitando a afirmação sobre documentação"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX033"]
-```
-
-```text
-[6.1 A crítica]
-    |
-    v
-[6.2 Respondendo à variação de nomes]
-    |
-    v
-[6.3 Respondendo ao viés das entrevistas]
-    |
-    v
-[6.4 Limitando a afirmação sobre documentação]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) responder à crítica dos pares sobre pesquisa em governança; (2) revisar análises de forma transparente; (3) fortalecer a seção de limitações.
@@ -679,56 +399,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 O argumento da tese"]
-  N1["7.2 O arquivo de reprodutibilidade"]
-  N2["7.3 Verificando as propriedades FAIR"]
-  N3["7.4 Melhorando o arquivo"]
-  N4["Laboratório — Pontuação FAIR de registros de conjunt"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 O argumento da tese"]
-  N1["7.2 O arquivo de reprodutibilidade"]
-  N2["7.3 Verificando as propriedades FAIR"]
-  N3["7.4 Melhorando o arquivo"]
-  N4["Laboratório — Pontuação FAIR de registros de conjunt"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
-```
-
-```text
-[7.1 O argumento da tese]
-    |
-    v
-[7.2 O arquivo de reprodutibilidade]
-    |
-    v
-[7.3 Verificando as propriedades FAIR]
-    |
-    v
-[7.4 Melhorando o arquivo]
-    |
-    v
-[Laboratório — Pontuação FAIR de registros de conjunt]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -809,51 +479,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Preparando a defesa"]
-  N1["8.2 A defesa"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 Transferência para a prática"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Preparando a defesa"]
-  N1["8.2 A defesa"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 Transferência para a prática"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
-```
-
-```text
-[8.1 Preparando a defesa]
-    |
-    v
-[8.2 A defesa]
-    |
-    v
-[8.3 Plano de publicação]
-    |
-    v
-[8.4 Transferência para a prática]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

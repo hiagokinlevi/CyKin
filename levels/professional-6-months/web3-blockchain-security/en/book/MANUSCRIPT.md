@@ -38,56 +38,6 @@ Nakamoto, [Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf); Wood, [Ethereum
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case and the role"]
-  N2["1.2 Core principles"]
-  N3["1.3 Practice standards"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case and the role"]
-  N2["1.2 Core principles"]
-  N3["1.3 Practice standards"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case and the role]
-    |
-    v
-[1.2 Core principles]
-    |
-    v
-[1.3 Practice standards]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) apply core security principles at work; (2) relate them to cryptoasset custody; (3) set personal practice standards.
@@ -133,56 +83,6 @@ Familiar principles, applied concretely and backed by personal standards, ground
 <a id="ch-02"></a>
 
 ## Chapter 2 — Web3, blockchain and cryptoasset security: service and stakeholder context
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 The donation service"]
-  N2["2.2 Stakeholders"]
-  N3["2.3 Regulatory context"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 The donation service"]
-  N2["2.2 Stakeholders"]
-  N3["2.3 Regulatory context"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 The donation service]
-    |
-    v
-[2.2 Stakeholders]
-    |
-    v
-[2.3 Regulatory context]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -230,56 +130,6 @@ An end-to-end service view and stakeholder needs focus security work where it ma
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Written authorisation"]
-  N2["3.2 Handling evidence"]
-  N3["3.3 Respecting donor privacy"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Written authorisation"]
-  N2["3.2 Handling evidence"]
-  N3["3.3 Respecting donor privacy"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Written authorisation]
-    |
-    v
-[3.2 Handling evidence]
-    |
-    v
-[3.3 Respecting donor privacy]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) obtain and follow written authorisation; (2) handle evidence with integrity; (3) respect privacy of donors.
@@ -326,56 +176,6 @@ Written authorisation, careful evidence and donor privacy define authorised prac
 
 ## Chapter 4 — Web3, blockchain and cryptoasset security: core methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Structured custody review"]
-  N2["4.2 Using recognised guidance"]
-  N3["4.3 Recording findings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Structured custody review"]
-  N2["4.2 Using recognised guidance"]
-  N3["4.3 Recording findings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Structured custody review]
-    |
-    v
-[4.2 Using recognised guidance]
-    |
-    v
-[4.3 Recording findings]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) apply a structured review of custody arrangements; (2) use recognised guidance; (3) record findings consistently.
@@ -421,61 +221,6 @@ Structured reviews grounded in guidance produce findings that managers act on.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Web3, blockchain and cryptoasset security: tools and interpretation
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Reconciling donations"]
-  N2["Lab — Donation reconciliation"]
-  N3["5.2 Interpreting discrepancies"]
-  N4["5.3 Proportionate response"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Reconciling donations"]
-  N2["Lab — Donation reconciliation"]
-  N3["5.2 Interpreting discrepancies"]
-  N4["5.3 Proportionate response"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Reconciling donations]
-    |
-    v
-[Lab — Donation reconciliation]
-    |
-    v
-[5.2 Interpreting discrepancies]
-    |
-    v
-[5.3 Proportionate response]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Learning outcomes
 
@@ -560,56 +305,6 @@ Read-only reconciliation finds differences, and proportionate interpretation exp
 
 ## Chapter 6 — Web3, blockchain and cryptoasset security: operational workflow
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Defining the workflow"]
-  N2["6.2 Verification at each step"]
-  N3["6.3 Roles and timing"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Defining the workflow"]
-  N2["6.2 Verification at each step"]
-  N3["6.3 Roles and timing"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Defining the workflow]
-    |
-    v
-[6.2 Verification at each step]
-    |
-    v
-[6.3 Roles and timing]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) define the monthly conversion workflow; (2) build verification into each step; (3) document roles and timing.
@@ -655,56 +350,6 @@ A written workflow with checks, roles and timing makes conversions safe and repe
 <a id="ch-07"></a>
 
 ## Chapter 7 — Web3, blockchain and cryptoasset security: controls and verification
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Implementing controls"]
-  N2["7.2 Verifying controls"]
-  N3["7.3 Tracking remediation"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Implementing controls"]
-  N2["7.2 Verifying controls"]
-  N3["7.3 Tracking remediation"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Implementing controls]
-    |
-    v
-[7.2 Verifying controls]
-    |
-    v
-[7.3 Tracking remediation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -752,56 +397,6 @@ Implemented, verified and tracked controls turn findings into lasting protection
 
 ## Chapter 8 — Web3, blockchain and cryptoasset security: supervised case analysis
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The synthetic incident"]
-  N2["8.2 Facts and assumptions"]
-  N3["8.3 Lessons and actions"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The synthetic incident"]
-  N2["8.2 Facts and assumptions"]
-  N3["8.3 Lessons and actions"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The synthetic incident]
-    |
-    v
-[8.2 Facts and assumptions]
-    |
-    v
-[8.3 Lessons and actions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) analyse a synthetic incident under supervision; (2) separate facts from assumptions; (3) produce lessons and actions.
@@ -847,56 +442,6 @@ Supervised case analysis turns others' incidents into concrete, proportionate ac
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communication, ethics and reporting
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Reports for decision-makers"]
-  N2["9.2 Ethics with sensitive findings"]
-  N3["9.3 Communicating with donors"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Reports for decision-makers"]
-  N2["9.2 Ethics with sensitive findings"]
-  N3["9.3 Communicating with donors"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Reports for decision-makers]
-    |
-    v
-[9.2 Ethics with sensitive findings]
-    |
-    v
-[9.3 Communicating with donors]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -944,56 +489,6 @@ Clear, fair and honest reporting serves trustees, staff and donors.
 
 ## Chapter 10 — Web3, blockchain and cryptoasset security: quality and troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Monitoring quality"]
-  N2["10.2 Methodical troubleshooting"]
-  N3["10.3 Improving from evidence"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Monitoring quality"]
-  N2["10.2 Methodical troubleshooting"]
-  N3["10.3 Improving from evidence"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Monitoring quality]
-    |
-    v
-[10.2 Methodical troubleshooting]
-    |
-    v
-[10.3 Improving from evidence]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) monitor workflow quality; (2) troubleshoot problems methodically; (3) improve the process from evidence.
@@ -1039,61 +534,6 @@ Quality measures and methodical troubleshooting drive evidence-based improvement
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised laboratory
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Purpose of the check"]
-  N2["Lab — Treasury proposal policy check"]
-  N3["11.2 Interpreting the output"]
-  N4["11.3 Deciding next steps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Purpose of the check"]
-  N2["Lab — Treasury proposal policy check"]
-  N3["11.2 Interpreting the output"]
-  N4["11.3 Deciding next steps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Purpose of the check]
-    |
-    v
-[Lab — Treasury proposal policy check]
-    |
-    v
-[11.2 Interpreting the output]
-    |
-    v
-[11.3 Deciding next steps]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes
 
@@ -1178,56 +618,6 @@ Policy checks reveal unready proposals, and documented processes decide what hap
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Assembling the portfolio"]
-  N2["12.2 Reviewing outcomes"]
-  N3["12.3 Continuing development"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Assembling the portfolio"]
-  N2["12.2 Reviewing outcomes"]
-  N3["12.3 Continuing development"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Assembling the portfolio]
-    |
-    v
-[12.2 Reviewing outcomes]
-    |
-    v
-[12.3 Continuing development]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

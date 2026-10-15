@@ -38,51 +38,6 @@ Saltzer and Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.11
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Starting point"]
-  N2["1.2 Applying the goals"]
-  N3["Synthesis"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Starting point"]
-  N2["1.2 Applying the goals"]
-  N3["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Starting point]
-    |
-    v
-[1.2 Applying the goals]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) state the core goals of security in practical terms; (2) apply them to a housing association's services; (3) recognise the limits of a short course.
@@ -128,56 +83,6 @@ Practitioners start by tying security goals to real services and knowing the lim
 <a id="ch-02"></a>
 
 ## Chapter 2 — Security architecture and engineering: service and stakeholder context
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Services and owners"]
-  N2["2.2 Stakeholder needs"]
-  N3["2.3 Conflicting needs"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Services and owners"]
-  N2["2.2 Stakeholder needs"]
-  N3["2.3 Conflicting needs"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Services and owners]
-    |
-    v
-[2.2 Stakeholder needs]
-    |
-    v
-[2.3 Conflicting needs]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -225,56 +130,6 @@ Mapping services, owners and needs lets designs protect what matters most while 
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Authorisation first"]
-  N2["3.2 Handling evidence"]
-  N3["3.3 Protecting personal data"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Authorisation first"]
-  N2["3.2 Handling evidence"]
-  N3["3.3 Protecting personal data"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Authorisation first]
-    |
-    v
-[3.2 Handling evidence]
-    |
-    v
-[3.3 Protecting personal data]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) obtain authorisation before security work; (2) handle evidence carefully; (3) protect personal data during reviews.
@@ -320,61 +175,6 @@ Authorised work, careful evidence handling and minimal personal data protect bot
 <a id="ch-04"></a>
 
 ## Chapter 4 — Security architecture and engineering: core methods
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Modelling the repairs service"]
-  N2["4.2 Applying STRIDE"]
-  N3["Lab — Ranking repairs threats by likelihood and impa"]
-  N4["4.3 Ranking"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Modelling the repairs service"]
-  N2["4.2 Applying STRIDE"]
-  N3["Lab — Ranking repairs threats by likelihood and impa"]
-  N4["4.3 Ranking"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Modelling the repairs service]
-    |
-    v
-[4.2 Applying STRIDE]
-    |
-    v
-[Lab — Ranking repairs threats by likelihood and impa]
-    |
-    v
-[4.3 Ranking]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -444,56 +244,6 @@ Modelling, STRIDE and simple ranking turn a service into a prioritised list of t
 
 ## Chapter 5 — Security architecture and engineering: tools and interpretation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Tools available"]
-  N2["5.2 Interpreting output"]
-  N3["5.3 Common misreadings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Tools available"]
-  N2["5.2 Interpreting output"]
-  N3["5.3 Common misreadings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Tools available]
-    |
-    v
-[5.2 Interpreting output]
-    |
-    v
-[5.3 Common misreadings]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) use simple tools to examine access and configuration; (2) interpret tool output correctly; (3) avoid common misreadings.
@@ -540,56 +290,6 @@ Tool output needs interpretation in context, with clear notes on what each tool 
 
 ## Chapter 6 — Security architecture and engineering: operational workflow
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Working with existing processes"]
-  N2["6.2 Contractor access workflow"]
-  N3["6.3 Reducing manual effort"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Working with existing processes"]
-  N2["6.2 Contractor access workflow"]
-  N3["6.3 Reducing manual effort"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Working with existing processes]
-    |
-    v
-[6.2 Contractor access workflow]
-    |
-    v
-[6.3 Reducing manual effort]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) fit security checks into existing workflows; (2) design a contractor access workflow; (3) reduce manual effort.
@@ -635,61 +335,6 @@ Security works best woven into existing workflows, with automation keeping the e
 <a id="ch-07"></a>
 
 ## Chapter 7 — Security architecture and engineering: controls and verification
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Selecting controls"]
-  N2["7.2 Verifiable requirements"]
-  N3["Lab — Tracing requirements to verification results"]
-  N4["7.3 Checking they work"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Selecting controls"]
-  N2["7.2 Verifiable requirements"]
-  N3["Lab — Tracing requirements to verification results"]
-  N4["7.3 Checking they work"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Selecting controls]
-    |
-    v
-[7.2 Verifiable requirements]
-    |
-    v
-[Lab — Tracing requirements to verification results]
-    |
-    v
-[7.3 Checking they work]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -762,56 +407,6 @@ Controls become trustworthy when written as testable requirements and verified w
 
 ## Chapter 8 — Security architecture and engineering: supervised case analysis
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The case"]
-  N2["8.2 Causes"]
-  N3["8.3 Recommendations"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The case"]
-  N2["8.2 Causes"]
-  N3["8.3 Recommendations"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The case]
-    |
-    v
-[8.2 Causes]
-    |
-    v
-[8.3 Recommendations]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) analyse an incident under supervision; (2) separate causes from symptoms; (3) recommend design changes.
@@ -857,56 +452,6 @@ Supervised case analysis finds design causes behind incidents and turns them int
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communication, ethics and reporting
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Writing the report"]
-  N2["9.2 An ethical dilemma"]
-  N3["9.3 Communicating uncertainty"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Writing the report"]
-  N2["9.2 An ethical dilemma"]
-  N3["9.3 Communicating uncertainty"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Writing the report]
-    |
-    v
-[9.2 An ethical dilemma]
-    |
-    v
-[9.3 Communicating uncertainty]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -954,56 +499,6 @@ Professional reporting is clear for decision makers, ethical in handling concern
 
 ## Chapter 10 — Security architecture and engineering: quality and troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Quality review"]
-  N2["10.2 A disruptive control"]
-  N3["10.3 Improving safely"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Quality review"]
-  N2["10.2 A disruptive control"]
-  N3["10.3 Improving safely"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Quality review]
-    |
-    v
-[10.2 A disruptive control]
-    |
-    v
-[10.3 Improving safely]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) review the quality of security work; (2) troubleshoot a control that disrupts operations; (3) improve without losing protection.
@@ -1049,61 +544,6 @@ Quality review and responsive troubleshooting improve controls without abandonin
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised laboratory
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 The lab"]
-  N2["Lab — Finding permissions beyond role needs"]
-  N3["11.2 Results"]
-  N4["11.3 Reporting carefully"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 The lab"]
-  N2["Lab — Finding permissions beyond role needs"]
-  N3["11.2 Results"]
-  N4["11.3 Reporting carefully"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 The lab]
-    |
-    v
-[Lab — Finding permissions beyond role needs]
-    |
-    v
-[11.2 Results]
-    |
-    v
-[11.3 Reporting carefully]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes
 
@@ -1176,56 +616,6 @@ A careful access review defines needs first, ranks excess by sensitivity and rep
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 The portfolio"]
-  N2["12.2 What changed"]
-  N3["12.3 Continued practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 The portfolio"]
-  N2["12.2 What changed"]
-  N3["12.3 Continued practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 The portfolio]
-    |
-    v
-[12.2 What changed]
-    |
-    v
-[12.3 Continued practice]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

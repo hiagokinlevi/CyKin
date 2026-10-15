@@ -39,71 +39,6 @@ NIST [SP 800-41r1](https://doi.org/10.6028/NIST.SP.800-41r1), [SP 800-77r1](http
 
 ## Chapter 1 — Network and communications security: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Why this course"]
-  N2["1.2 What network security protects"]
-  N3["1.3 How a small network works"]
-  N4["1.4 Threats to a small business"]
-  N5["1.5 Making decisions with limited time"]
-  N6["1.6 Guidance worth knowing"]
-  N7["1.7 The plan for the month"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Why this course"]
-  N2["1.2 What network security protects"]
-  N3["1.3 How a small network works"]
-  N4["1.4 Threats to a small business"]
-  N5["1.5 Making decisions with limited time"]
-  N6["1.6 Guidance worth knowing"]
-  N7["1.7 The plan for the month"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Why this course]
-    |
-    v
-[1.2 What network security protects]
-    |
-    v
-[1.3 How a small network works]
-    |
-    v
-[1.4 Threats to a small business]
-    |
-    v
-[1.5 Making decisions with limited time]
-    |
-    v
-[1.6 Guidance worth knowing]
-    |
-    v
-[1.7 The plan for the month]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what network security protects; (2) describe a small business network; (3) make first decisions with limited time.
@@ -174,71 +109,6 @@ Understanding what the network protects and choosing high-value, low-cost steps 
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Why permission matters"]
-  N2["2.2 Writing a simple scope"]
-  N3["2.3 Third-party equipment"]
-  N4["2.4 Working safely on a live business"]
-  N5["2.5 Handling information"]
-  N6["2.6 Stopping and asking"]
-  N7["2.7 Recording what was done"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Why permission matters"]
-  N2["2.2 Writing a simple scope"]
-  N3["2.3 Third-party equipment"]
-  N4["2.4 Working safely on a live business"]
-  N5["2.5 Handling information"]
-  N6["2.6 Stopping and asking"]
-  N7["2.7 Recording what was done"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Why permission matters]
-    |
-    v
-[2.2 Writing a simple scope]
-    |
-    v
-[2.3 Third-party equipment]
-    |
-    v
-[2.4 Working safely on a live business]
-    |
-    v
-[2.5 Handling information]
-    |
-    v
-[2.6 Stopping and asking]
-    |
-    v
-[2.7 Recording what was done]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) agree written scope and permission; (2) work safely on a live business; (3) handle information responsibly.
@@ -308,71 +178,6 @@ Written scope, respect for ownership, safe timing and careful records make secur
 <a id="ch-03"></a>
 
 ## Chapter 3 — Network and communications security: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Knowing your devices"]
-  N2["3.2 What the router knows"]
-  N3["Lab — Unknown devices"]
-  N4["3.3 Reading the result"]
-  N5["3.4 Dependencies"]
-  N6["3.5 Where data goes"]
-  N7["3.6 Keeping the list current"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Knowing your devices"]
-  N2["3.2 What the router knows"]
-  N3["Lab — Unknown devices"]
-  N4["3.3 Reading the result"]
-  N5["3.4 Dependencies"]
-  N6["3.5 Where data goes"]
-  N7["3.6 Keeping the list current"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Knowing your devices]
-    |
-    v
-[3.2 What the router knows]
-    |
-    v
-[Lab — Unknown devices]
-    |
-    v
-[3.3 Reading the result]
-    |
-    v
-[3.4 Dependencies]
-    |
-    v
-[3.5 Where data goes]
-    |
-    v
-[3.6 Keeping the list current]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -463,71 +268,6 @@ A current device list, known dependencies and understood data flows show what to
 <a id="ch-04"></a>
 
 ## Chapter 4 — Network and communications security: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The router checklist"]
-  N2["Lab — Router checklist"]
-  N3["4.2 Reading the checklist"]
-  N4["4.3 Making the changes"]
-  N5["4.4 Checking the result"]
-  N6["4.5 Habits for the future"]
-  N7["4.6 The short report"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The router checklist"]
-  N2["Lab — Router checklist"]
-  N3["4.2 Reading the checklist"]
-  N4["4.3 Making the changes"]
-  N5["4.4 Checking the result"]
-  N6["4.5 Habits for the future"]
-  N7["4.6 The short report"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The router checklist]
-    |
-    v
-[Lab — Router checklist]
-    |
-    v
-[4.2 Reading the checklist]
-    |
-    v
-[4.3 Making the changes]
-    |
-    v
-[4.4 Checking the result]
-    |
-    v
-[4.5 Habits for the future]
-    |
-    v
-[4.6 The short report]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -628,37 +368,6 @@ A simple checklist, careful agreed changes, verification and clear habits secure
 
 ## Chapter 5 — The lease print is not the router checklist
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["lab_leases.py compares two sets"] --> B["Seven rows, two UNKNOWN"]
-  C["lab_router.py evaluates seven flags"] --> D["Print: 2 of 7 pass"]
-  B --> E{"May one print answer the other question?"}
-  D --> E
-  E -->|No| F["Quote the script that measured it"]
-```
-
-The lease run is a set comparison. The router run is a list of flags.
-
-### Logical drawing
-
-```text
-lease print
-    seven rows
-    unknown: ['bb:77', 'cc:19']
-    known but not seen: []
-router print
-    PASS  Wi-Fi uses WPA2 or WPA3
-    PASS  guest network enabled
-    five FIX lines
-    2 of 7 pass
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -708,31 +417,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — A hardware address is not a proof of identity
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  P["A label is presented"] --> L["DHCP records a lease"]
-  L --> D{"Is the label in the known dictionary?"}
-  D -->|Yes| N["Print the typed name"]
-  D -->|No| U["Print UNKNOWN"]
-```
-
-The dictionary was typed by a person. The lease was not a credential check.
-
-### Logical drawing
-
-```text
-presented label --> lease row --> dictionary lookup
-aa:01 --> till-1
-bb:77 --> UNKNOWN
-known but not seen: []
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -779,35 +463,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — One leading triplet is not a recorded prefix
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  R["Seven printed addresses"] --> P["Each begins 192.168.1"]
-  P --> Q{"Is the mask in the file?"}
-  Q -->|No| K["Do not invent a prefix length"]
-  P --> N["Private space is not inside isolation"]
-```
-
-The addresses share a leading triplet. The mask is not printed.
-
-### Logical drawing
-
-```text
-192.168.1.10  till-1
-192.168.1.11  till-2
-192.168.1.12  card-reader
-192.168.1.20  office-pc
-192.168.1.30  owner-phone
-192.168.1.41  UNKNOWN
-192.168.1.42  UNKNOWN
-mask: not in the file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -856,31 +511,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — WPA2-Personal is one shared passphrase
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  S["wifi_security = WPA2-Personal"] --> C{"String is WPA2-Personal or WPA3-Personal?"}
-  C -->|Yes| P["PASS"]
-  P --> L["Pass does not rewrite the string to WPA3"]
-  L --> M["Personal mode is not a per-person account"]
-```
-
-The passing check accepts two strings. The dictionary holds one of them.
-
-### Logical drawing
-
-```text
-dictionary: WPA2-Personal
-check: WPA2-Personal or WPA3-Personal
-result: PASS
-not in the file: a passphrase, an authentication server, a per-person account
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -927,30 +557,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — A guest name is not a forwarding barrier
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  G["guest_network = True"] --> P["PASS  guest network enabled"]
-  I["guest_isolated_from_lan = False"] --> F["FIX  guest isolated from business devices"]
-  P --> S["A name can exist while forwarding still joins the LAN"]
-  F --> S
-```
-
-The two booleans are neighbours in the dictionary and opposites in the result.
-
-### Logical drawing
-
-```text
-guest network enabled          PASS
-guest isolated from business   FIX
-speaker and scanner            still on the lease print
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -999,30 +605,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Remote administration is a management path
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  R["remote_admin = True"] --> C["check is not remote_admin"]
-  C --> F["FIX  remote administration off"]
-  F --> M["Management plane is not the guest SSID"]
-```
-
-The predicate fails because the flag is true. No address for that path is printed.
-
-### Logical drawing
-
-```text
-customer Wi-Fi     a path for clients inside or at the shop
-remote admin       a path to the router's settings
-file contains      remote_admin True
-file omits         a host, a port, a URL
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1069,31 +651,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Five hundred and forty days is not a version
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["firmware_age_days = 540"] --> B{"540 <= 180?"}
-  B -->|No| F["FIX  firmware updated within 180 days"]
-  F --> V["No version string is stored"]
-```
-
-The script compares two integers. It does not name a release.
-
-### Logical drawing
-
-```text
-age in the dictionary   540
-threshold in the check  180
-comparison              540 <= 180 is false
-chapter 4 gloss         about eighteen months
-version string          absent
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1142,30 +699,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — UPnP lets a device ask for a mapping
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  U["upnp = True"] --> C["check is not upnp"]
-  C --> F["FIX  UPnP off"]
-  F --> P["A person did not have to write the allow"]
-```
-
-The flag is the evidence. A requested mapping is not printed.
-
-### Logical drawing
-
-```text
-policy shape     deny what is not allowed
-this flag        upnp True
-printed result   FIX
-not printed      a port, a protocol payload, a requesting device
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1212,35 +745,6 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — Two of seven names two passes
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["Seven predicates"] --> B["Two print PASS"]
-  B --> C["Wi-Fi mode and guest existence"]
-  A --> D["Five print FIX"]
-  D --> E["Do not move a FIX into the before set"]
-```
-
-The fraction is a count of these seven lines, once.
-
-### Logical drawing
-
-```text
-FIX   admin password changed from default
-PASS  Wi-Fi uses WPA2 or WPA3
-PASS  guest network enabled
-FIX   guest isolated from business devices
-FIX   remote administration off
-FIX   firmware updated within 180 days
-FIX   UPnP off
-2 of 7 pass
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 ### Learning outcomes
 
@@ -1289,32 +793,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — UNKNOWN is the field; the names came from Ellen
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  S["Set difference"] --> U["bb:77 and cc:19"]
-  U --> A["Stop, write the labels, ask Ellen"]
-  A --> N["Narrative: speaker and scanner"]
-  N --> K["The print still says UNKNOWN"]
-```
-
-The names are an answer to a question. They are not keys in the lease list.
-
-### Logical drawing
-
-```text
-unknown: ['bb:77', 'cc:19']
-known but not seen: []
-narrative names: smart speaker, delivery scanner
-staff name: not printed
-company name: not printed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1361,32 +839,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — Channel protection is not a LAN boundary
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  C["Card reader to provider"] --> E["Encrypted channel"]
-  O["Order site"] --> H["HTTPS"]
-  E --> L["Neither fact splits the shop LAN"]
-  H --> L
-  L --> D["DNS and the resolver stay unprinted"]
-```
-
-Two protected hops are described. The inside network is a third problem.
-
-### Logical drawing
-
-```text
-card data     reader -> provider, encrypted, not the office PC
-orders        email and the platform site, HTTPS
-accounts      office computer and a cloud backup
-resolver      not printed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Learning outcomes
 
@@ -1435,34 +887,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — One permitted check is not a survey
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  T["Ellen permits a simple check"] --> P["Leo's phone on the guest network"]
-  P --> I["Internet reachable"]
-  P --> O["Office computer not reachable"]
-  I --> S["Scope stops there"]
-  O --> S
-```
-
-The check has one client, one target that must fail, and a permission.
-
-### Logical drawing
-
-```text
-client     Leo's phone, guest network
-reaches    the internet
-does not  the office computer
-not tested in this sentence
-           tills, card reader, speaker, scanner
-no capture, no scan procedure, no command
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1510,33 +934,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — A habit is a schedule, not a second run
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  H["Five habits on a printed list"] --> S["No later script"]
-  R["Change record has a date field"] --> B["No date is printed"]
-  S --> K["The embedded prints stay"]
-  B --> K
-```
-
-The list tells Ellen when to look again. It does not contain the next look.
-
-### Logical drawing
-
-```text
-monthly           device list, after closing
-three months      firmware check
-guest passphrase  every few months, and after staff leave
-accounts          password manager and a second step for email and the order platform
-other people's kit  call the provider
-dates printed     none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1583,31 +980,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — The control has an owner, and some owners are not Ellen
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  E["Ellen can change router settings"] --> R["The provider owns the router"]
-  P["The payment company owns the reader"] --> C["Ellen contacts them"]
-  W["Wider routing controls"] --> N["Not a row in this checklist"]
-```
-
-Ownership decides who may change a box. It does not add a second shop.
-
-### Logical drawing
-
-```text
-one shop, one router, one before-picture LAN
-Ellen configures what the provider allows her to configure
-card reader    out of Leo's scope
-not in the seven checks
-    BCP 38, RPKI, an IPsec tunnel, a zero-trust deployment
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1658,38 +1030,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Seven of seven is a later reading
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  B["Embedded dictionary"] --> P["2 of 7 pass"]
-  N["Narrative after closing"] --> A["Password, isolation, remote admin, firmware, UPnP"]
-  A --> S["Prose: seven of seven"]
-  S --> K["The dictionary in the file is not replaced"]
-```
-
-The report may describe a second look. The script still shows the first.
-
-### Logical drawing
-
-```text
-still in the dictionary
-    admin_password_changed False
-    guest_isolated_from_lan False
-    remote_admin True
-    firmware_age_days 540
-    upnp True
-narrative only
-    passphrase stored by Ellen
-    isolation on, two devices moved
-    remote admin off, UPnP off, firmware update run
-    seven of seven
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1736,35 +1076,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the bakery note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the bakery's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    seven lease rows
-    unknown: ['bb:77', 'cc:19']
-    known but not seen: []
-    2 of 7 pass, with the two PASS lines named
-must not be added
-    a rewritten lease, a mask, a passphrase, a firmware version
-    7 of 7 as the embedded print
-    a second shop, a detection rate, a claim the bakery is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

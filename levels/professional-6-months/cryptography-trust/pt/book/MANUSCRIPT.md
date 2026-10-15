@@ -37,51 +37,6 @@ Leia na ordem. Os capítulos acompanham uma analista júnior num provedor de ser
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O caso"]
-  N1["1.2 Três metas"]
-  N2["1.3 Um controle entre muitos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O caso"]
-  N1["1.2 Três metas"]
-  N2["1.3 Um controle entre muitos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 O caso]
-    |
-    v
-[1.2 Três metas]
-    |
-    v
-[1.3 Um controle entre muitos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever as metas de confidencialidade, integridade e autenticidade a que a criptografia serve; (2) situar a criptografia entre os demais controles; (3) conhecer o caso do provedor de serviços gerenciados usado ao longo do livro.
@@ -135,51 +90,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: contexto de serviços e partes interessadas
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Quem se importa com o quê"]
-  N1["2.2 Donos e fornecedores"]
-  N2["2.3 A linguagem das partes interessadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Quem se importa com o quê"]
-  N1["2.2 Donos e fornecedores"]
-  N2["2.3 A linguagem das partes interessadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX006"]
-```
-
-```text
-[2.1 Quem se importa com o quê]
-    |
-    v
-[2.2 Donos e fornecedores]
-    |
-    v
-[2.3 A linguagem das partes interessadas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -235,51 +145,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 Autorização escrita"]
-  N1["3.2 Evidências mínimas"]
-  N2["3.3 Segredos encontrados no trabalho"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Autorização escrita"]
-  N1["3.2 Evidências mínimas"]
-  N2["3.3 Segredos encontrados no trabalho"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX011"]
-```
-
-```text
-[3.1 Autorização escrita]
-    |
-    v
-[3.2 Evidências mínimas]
-    |
-    v
-[3.3 Segredos encontrados no trabalho]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar sob uma autorização escrita; (2) manusear evidências e dados do cliente de forma mínima; (3) proteger segredos descobertos durante um trabalho.
@@ -334,51 +199,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Criptografia e serviços de confiança: métodos centrais
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 Quatro blocos de construção"]
-  N1["4.2 Certificados e cadeias"]
-  N2["4.3 Ligando o método à necessidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Quatro blocos de construção"]
-  N1["4.2 Certificados e cadeias"]
-  N2["4.3 Ligando o método à necessidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
-```
-
-```text
-[4.1 Quatro blocos de construção]
-    |
-    v
-[4.2 Certificados e cadeias]
-    |
-    v
-[4.3 Ligando o método à necessidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar cifração simétrica, hashing, MACs e assinaturas em termos práticos; (2) explicar certificados e cadeias; (3) escolher o método certo para uma necessidade do cliente.
@@ -432,56 +252,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Criptografia e serviços de confiança: ferramentas e interpretação
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 Uma verificação de inventário"]
-  N1["Laboratório — Sinalizações da linha de base"]
-  N2["5.2 Interpretando a saída"]
-  N3["5.3 Ruído e falsos positivos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Uma verificação de inventário"]
-  N1["Laboratório — Sinalizações da linha de base"]
-  N2["5.2 Interpretando a saída"]
-  N3["5.3 Ruído e falsos positivos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[5.1 Uma verificação de inventário]
-    |
-    v
-[Laboratório — Sinalizações da linha de base]
-    |
-    v
-[5.2 Interpretando a saída]
-    |
-    v
-[5.3 Ruído e falsos positivos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -572,51 +342,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Criptografia e serviços de confiança: fluxo operacional
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 O fluxo mensal"]
-  N1["6.2 Acompanhando os achados"]
-  N2["6.3 Repassando as correções"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 O fluxo mensal"]
-  N1["6.2 Acompanhando os achados"]
-  N2["6.3 Repassando as correções"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
-```
-
-```text
-[6.1 O fluxo mensal]
-    |
-    v
-[6.2 Acompanhando os achados]
-    |
-    v
-[6.3 Repassando as correções]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) executar o fluxo mensal de verificação criptográfica da Copperleaf; (2) acompanhar os achados da descoberta ao encerramento; (3) repassar as correções ao dono certo.
@@ -670,51 +395,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Criptografia e serviços de confiança: controles e verificação
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 Verificando as notificações"]
-  N1["Laboratório — Verificação de notificações"]
-  N2["7.2 Verificando as configurações de TLS"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Verificando as notificações"]
-  N1["Laboratório — Verificação de notificações"]
-  N2["7.2 Verificando as configurações de TLS"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
-```
-
-```text
-[7.1 Verificando as notificações]
-    |
-    v
-[Laboratório — Verificação de notificações]
-    |
-    v
-[7.2 Verificando as configurações de TLS]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -793,51 +473,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Criptografia e serviços de confiança: análise de caso supervisionada
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 O incidente"]
-  N1["8.2 Montando a linha do tempo"]
-  N2["8.3 Contenção e recuperação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 O incidente"]
-  N1["8.2 Montando a linha do tempo"]
-  N2["8.3 Contenção e recuperação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX036"]
-```
-
-```text
-[8.1 O incidente]
-    |
-    v
-[8.2 Montando a linha do tempo]
-    |
-    v
-[8.3 Contenção e recuperação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) analisar um incidente sintético envolvendo uma chave exposta; (2) reconstruir uma linha do tempo a partir de evidências; (3) recomendar etapas de contenção e recuperação.
@@ -892,51 +527,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 9 — Comunicação, ética e relatórios
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Estrutura do relatório"]
-  N1["9.2 Classificações consistentes"]
-  N2["9.3 Ética na prática"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Estrutura do relatório"]
-  N1["9.2 Classificações consistentes"]
-  N2["9.3 Ética na prática"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
-```
-
-```text
-[9.1 Estrutura do relatório]
-    |
-    v
-[9.2 Classificações consistentes]
-    |
-    v
-[9.3 Ética na prática]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar um relatório de achados criptográficos; (2) classificar riscos de forma consistente; (3) aplicar a ética profissional à divulgação e à honestidade.
@@ -990,56 +580,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Criptografia e serviços de confiança: qualidade e solução de problemas
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Um achado no portal da equipe"]
-  N1["10.2 Verificando a correção"]
-  N2["Laboratório — PBKDF2 com salt versus hash rápido"]
-  N3["10.3 Qualidade pela revisão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Um achado no portal da equipe"]
-  N1["10.2 Verificando a correção"]
-  N2["Laboratório — PBKDF2 com salt versus hash rápido"]
-  N3["10.3 Qualidade pela revisão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[10.1 Um achado no portal da equipe]
-    |
-    v
-[10.2 Verificando a correção]
-    |
-    v
-[Laboratório — PBKDF2 com salt versus hash rápido]
-    |
-    v
-[10.3 Qualidade pela revisão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1120,51 +660,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Laboratório supervisionado
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Espelhando o serviço"]
-  N1["11.2 Ensaio e reversão"]
-  N2["11.3 Encerrando o laboratório"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Espelhando o serviço"]
-  N1["11.2 Ensaio e reversão"]
-  N2["11.3 Encerrando o laboratório"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX051"]
-```
-
-```text
-[11.1 Espelhando o serviço]
-    |
-    v
-[11.2 Ensaio e reversão]
-    |
-    v
-[11.3 Encerrando o laboratório]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) montar um laboratório contido que espelha um serviço do cliente; (2) ensaiar uma renovação de certificado e sua reversão; (3) encerrar o laboratório sem deixar confiança para trás.
@@ -1218,56 +713,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 Montando o portfólio"]
-  N1["12.2 Tendências do rastreador"]
-  N2["Laboratório — Tendências dos achados"]
-  N3["12.3 Reflexão e próximos passos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Montando o portfólio"]
-  N1["12.2 Tendências do rastreador"]
-  N2["Laboratório — Tendências dos achados"]
-  N3["12.3 Reflexão e próximos passos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[12.1 Montando o portfólio]
-    |
-    v
-[12.2 Tendências do rastreador]
-    |
-    v
-[Laboratório — Tendências dos achados]
-    |
-    v
-[12.3 Reflexão e próximos passos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

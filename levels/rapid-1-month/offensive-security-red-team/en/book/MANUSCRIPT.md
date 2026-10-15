@@ -38,66 +38,6 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 ## Chapter 1 — What authorized offensive security is
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Authorized testing, not hacking for thrills"]
-  N2["1.2 Why organisations pay for it"]
-  N3["1.3 What this course will not teach"]
-  N4["1.4 Who says yes"]
-  N5["1.5 Shared language for techniques"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Authorized testing, not hacking for thrills"]
-  N2["1.2 Why organisations pay for it"]
-  N3["1.3 What this course will not teach"]
-  N4["1.4 Who says yes"]
-  N5["1.5 Shared language for techniques"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Authorized testing, not hacking for thrills]
-    |
-    v
-[1.2 Why organisations pay for it]
-    |
-    v
-[1.3 What this course will not teach]
-    |
-    v
-[1.4 Who says yes]
-    |
-    v
-[1.5 Shared language for techniques]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) define authorized offensive security and red teaming; (2) explain how they differ from crime and from everyday IT work; (3) name the main public frameworks that guide them; and (4) describe who decides when testing is allowed.
@@ -171,61 +111,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 What the paper must say"]
-  N2["2.2 Checking a target list"]
-  N3["2.3 Stop conditions and out of bounds"]
-  N4["2.4 When someone asks you to break the rules"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 What the paper must say"]
-  N2["2.2 Checking a target list"]
-  N3["2.3 Stop conditions and out of bounds"]
-  N4["2.4 When someone asks you to break the rules"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 What the paper must say]
-    |
-    v
-[2.2 Checking a target list]
-    |
-    v
-[2.3 Stop conditions and out of bounds]
-    |
-    v
-[2.4 When someone asks you to break the rules]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -323,66 +208,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Findings, evidence and responsible reporting
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 What a finding is"]
-  N2["3.2 Evidence without harm"]
-  N3["3.3 Naming techniques"]
-  N4["3.4 Honest severity"]
-  N5["3.5 Who reads the report"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 What a finding is"]
-  N2["3.2 Evidence without harm"]
-  N3["3.3 Naming techniques"]
-  N4["3.4 Honest severity"]
-  N5["3.5 Who reads the report"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 What a finding is]
-    |
-    v
-[3.2 Evidence without harm]
-    |
-    v
-[3.3 Naming techniques]
-    |
-    v
-[3.4 Honest severity]
-    |
-    v
-[3.5 Who reads the report]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) describe what makes a useful finding; (2) keep simple evidence without attacking systems; (3) map a finding to an ATT&CK technique name; and (4) write a short, audience-aware report.
@@ -457,71 +282,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided synthesis: plan, check, report
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The classroom engagement"]
-  N2["4.2 Ranking for the summary"]
-  N3["4.3 Writing the page"]
-  N4["4.4 Pressure scenarios"]
-  N5["4.5 After the course"]
-  N6["4.6 Recording the exercise"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The classroom engagement"]
-  N2["4.2 Ranking for the summary"]
-  N3["4.3 Writing the page"]
-  N4["4.4 Pressure scenarios"]
-  N5["4.5 After the course"]
-  N6["4.6 Recording the exercise"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The classroom engagement]
-    |
-    v
-[4.2 Ranking for the summary]
-    |
-    v
-[4.3 Writing the page]
-    |
-    v
-[4.4 Pressure scenarios]
-    |
-    v
-[4.5 After the course]
-    |
-    v
-[4.6 Recording the exercise]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -625,31 +385,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — The scope print follows the request list
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  R["requested, four strings, written order"] --> L["One pass, no sorted call"]
-  L --> P["Four verdict lines in that same order"]
-  P --> Q{"Did a score pick the first line?"}
-  Q -->|No| K["Keep the embedded print"]
-```
-
-The scope script walks `requested`. It does not rank addresses.
-
-### Logical drawing
-
-```text
-192.0.2.5      in scope
-192.0.2.10     EXCLUDED - do not test
-192.0.2.130    OUT OF SCOPE - do not test
-198.51.100.7   OUT OF SCOPE - do not test
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -700,33 +435,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Exclusion is the first branch
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  A["ip_address of this string"] --> B{"In the excluded set?"}
-  B -->|Yes| E["EXCLUDED - do not test"]
-  B -->|No| C{"Inside 192.0.2.0/25?"}
-  C -->|Yes| I["in scope"]
-  C -->|No| O["OUT OF SCOPE - do not test"]
-```
-
-The set test runs before the network test. `.10` never reaches the second test.
-
-### Logical drawing
-
-```text
-192.0.2.10 is inside the /25
-and inside the excluded set
-first true branch
-  EXCLUDED - do not test
-the elif is not evaluated
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -779,33 +487,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The /25 ends at .127
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N["192.0.2.0/25"] --> S["128 addresses"]
-  S --> H[".0 through .127"]
-  H --> X[".128 starts the next block"]
-  X --> M[".130 is not a member"]
-```
-
-Prefix 25 leaves seven bits. Seven bits count 128 addresses, and the block stops at `.127`.
-
-### Logical drawing
-
-```text
-192.0.2.0/25
-  first address  192.0.2.0
-  last address   192.0.2.127
-  count          128
-192.0.2.130
-  not a member
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -857,31 +538,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — A second documentation range is still outside
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  D["Both strings are documentation addresses"] --> T["The test is membership"]
-  T --> Y["192.0.2.5 can pass"]
-  T --> N["198.51.100.7 fails"]
-```
-
-Documentation status is not a column. The network object is the test.
-
-### Logical drawing
-
-```text
-198.51.100.7
-  not in the excluded set
-  not in 192.0.2.0/25
-verdict
-  OUT OF SCOPE - do not test
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -931,32 +587,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Width 14 does not edit the address
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  S["String from requested"] --> W["Format width 14"]
-  W --> L["Spaces after the digits"]
-  L --> V["Verdict after one more space"]
-```
-
-The width pads the column. `ip_address` already ran on the unpadded string.
-
-### Logical drawing
-
-```text
-format field {t:14}
-  192.0.2.5     is 9 characters
-  192.0.2.130   is 11 characters
-  198.51.100.7  is 12 characters
-pad
-  spaces, not digits
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -1009,33 +639,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — The else branch sends nothing
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  E["else assigns a string"] --> P["print writes the line"]
-  P --> N["No socket, no DNS, no packet"]
-  N --> K["Two lines use that else"]
-```
-
-The `else` is live code. Its only effect is a line of text.
-
-### Logical drawing
-
-```text
-imports
-  ipaddress only
-calls that are absent
-  socket, DNS, connect
-else runs for
-  192.0.2.130
-  198.51.100.7
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1085,32 +688,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — The rank key is a pair
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  T["Tuple: id, title, likelihood, impact"] --> K["Key: minus product, then id"]
-  K --> S["sorted walks that key"]
-  S --> O["F1, F3, F4, F2"]
-```
-
-The title is printed. It is not part of the key.
-
-### Logical drawing
-
-```text
-key
-  (- likelihood * impact, id)
-F1  (-6, "F1")
-F3  (-6, "F3")
-F4  (-4, "F4")
-F2  (-2, "F2")
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1162,32 +739,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — A tie uses the id, and F2 still finishes last
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  P["F1 and F3 share product 6"] --> I["Second key compares F1 and F3"]
-  I --> A["F1 prints before F3"]
-  A --> Z["F2 remains the last line"]
-```
-
-Equal products do not leave the original list order in charge. The id is in the key.
-
-### Logical drawing
-
-```text
-product 6
-  "F1" then "F3"
-product 4
-  F4
-product 2
-  F2 last
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1242,34 +793,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Six is high and four is medium
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  S["score = likelihood * impact"] --> H{"score >= 6?"}
-  H -->|Yes| A["high"]
-  H -->|No| M{"score >= 4?"}
-  M -->|Yes| B["medium"]
-  M -->|No| C["low"]
-```
-
-The tests are `>=`. A 6 is already high. A 4 is already medium.
-
-### Logical drawing
-
-```text
-F1  6  high
-F3  6  high
-F4  4  medium
-F2  2  low
-not in this print
-  a 5, a 3, a 9
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1319,33 +842,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — F2 is the product two times one
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  L["likelihood 2"] --> P["product 2"]
-  I["impact 1"] --> P
-  P --> B["low"]
-  B --> R["last line"]
-```
-
-The banner title does not store a score. The last two numbers do.
-
-### Logical drawing
-
-```text
-F2
-  likelihood 2
-  impact 1
-  product 2
-  band low
-  printed last
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1398,34 +894,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — A changed impact is not this print
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  F["File stores F4 impact 2"] --> P["Printed score 4"]
-  H["A notebook tries impact 3"] --> N["That product would be 6"]
-  N --> D["The embedded print stays the file"]
-```
-
-The hypothetical is a different tuple. The fenced output is this tuple.
-
-### Logical drawing
-
-```text
-on disk
-  F4 impact 2
-  score 4
-  third printed line
-not on disk
-  impact 3
-  product 6
-  id order among the sixes
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1474,33 +942,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Thirty days is a sentence, not a column
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  R["Rank print has scores and titles"] --> G["The one-pager adds two decisions"]
-  G --> D["Thirty days is prose"]
-  D --> S["Neither script prints 30"]
-```
-
-The director's deadline lives in the page Maya writes. It is not a field in either tuple.
-
-### Logical drawing
-
-```text
-asks
-  named accounts on grading
-  a password-reuse control on the portal
-deadline
-  thirty days
-printed by the labs
-  neither ask, nor the number 30
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1553,34 +994,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Two refusals are outside both prints
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  B["Classmate's blog"] --> R["Refused"]
-  C["Clinic server note"] --> M["Removed"]
-  R --> P["Neither string is in the labs"]
-  M --> P
-```
-
-The packet records two nos. The scripts never see those targets.
-
-### Logical drawing
-
-```text
-scope print
-  four documentation addresses
-rank print
-  F1 F3 F4 F2
-packet notes
-  blog refused
-  clinic note removed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1632,32 +1045,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Two calendars are not lab columns
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  A["12–16 October 2026 in the authorization sentence"] --> N["A sentence, not a print"]
-  W["09:00–17:00 on weekdays"] --> N
-  N --> L["Neither script prints a clock"]
-```
-
-The dates and the hours are rules in prose. The labs have no time field.
-
-### Logical drawing
-
-```text
-authorization sentence
-  12–16 October 2026
-weekday window
-  09:00–17:00
-lab columns
-  addresses, ids, scores, bands, titles
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1708,34 +1095,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — T1078 does not multiply
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  N["T1078 Valid Accounts names the behaviour"] --> S["The tuple still holds 2 and 3"]
-  S --> P["Product 6"]
-  P --> K["The technique id is not a key field"]
-```
-
-A shared name helps defenders look up a behaviour. It is not a factor in the product.
-
-### Logical drawing
-
-```text
-F3 prose
-  T1078 Valid Accounts
-F3 tuple
-  likelihood 2
-  impact 3
-  product 6
-absent from the tuple
-  the technique id
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1785,36 +1144,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the college note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  Q["Quote both prints"] --> R["Keep refusals and deadlines in prose"]
-  R --> N["Do not add a packet, a password, or a secure claim"]
-  N --> O["Review stays open"]
-```
-
-The note may repeat the lines the scripts printed. It may not improve them.
-
-### Logical drawing
-
-```text
-scope print, four lines, list order
-rank print, F1 F3 F4 F2
-prose that is allowed
-  exclusion first, /25 through .127, thirty days, two refusals
-prose that is not a result
-  a sent packet, a finished college, a credential
-```
-
-```text
-A short authorized engagement checks scope, ranks real findings and asks for clear decisions — without crossing the rules.
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

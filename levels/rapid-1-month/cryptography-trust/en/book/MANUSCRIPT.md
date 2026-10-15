@@ -38,71 +38,6 @@ Read the chapters in order. This English edition publishes twenty lessons, and e
 
 ## Chapter 1 — Cryptography and trust services: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What cryptography protects"]
-  N3["1.3 Four kinds of transformation"]
-  N4["Lab — One letter changes the fingerprint"]
-  N5["1.4 The padlock and the certificate"]
-  N6["1.5 Simple safe decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What cryptography protects"]
-  N3["1.3 Four kinds of transformation"]
-  N4["Lab — One letter changes the fingerprint"]
-  N5["1.4 The padlock and the certificate"]
-  N6["1.5 Simple safe decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 What cryptography protects]
-    |
-    v
-[1.3 Four kinds of transformation]
-    |
-    v
-[Lab — One letter changes the fingerprint]
-    |
-    v
-[1.4 The padlock and the certificate]
-    |
-    v
-[1.5 Simple safe decisions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain in plain words what cryptography protects; (2) tell encoding, hashing, encryption and signatures apart; (3) see what a padlock and a certificate do and do not promise; (4) make simple, safe decisions about cryptographic tools.
@@ -188,61 +123,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Permission first"]
-  N2["2.2 A small, safe scope"]
-  N3["2.3 Personal data and secrets"]
-  N4["2.4 Reporting responsibly"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Permission first"]
-  N2["2.2 A small, safe scope"]
-  N3["2.3 Personal data and secrets"]
-  N4["2.4 Reporting responsibly"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Permission first]
-    |
-    v
-[2.2 A small, safe scope]
-    |
-    v
-[2.3 Personal data and secrets]
-    |
-    v
-[2.4 Reporting responsibly]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) explain why permission comes before any check; (2) define a small, safe scope; (3) handle personal data and secrets with care; (4) report problems responsibly.
@@ -302,66 +182,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cryptography and trust services: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Systems and their cryptography"]
-  N2["3.2 How passwords should be stored"]
-  N3["Lab — Salted password storage"]
-  N4["3.3 Depending on suppliers"]
-  N5["3.4 Why things expire"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Systems and their cryptography"]
-  N2["3.2 How passwords should be stored"]
-  N3["Lab — Salted password storage"]
-  N4["3.3 Depending on suppliers"]
-  N5["3.4 Why things expire"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Systems and their cryptography]
-    |
-    v
-[3.2 How passwords should be stored]
-    |
-    v
-[Lab — Salted password storage]
-    |
-    v
-[3.3 Depending on suppliers]
-    |
-    v
-[3.4 Why things expire]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -447,66 +267,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Cryptography and trust services: guided lab and applied synthesis
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The guided task"]
-  N2["Lab — Checking a download fingerprint"]
-  N3["4.2 Reading the result"]
-  N4["4.3 Summarising for the team"]
-  N5["4.4 What comes next"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The guided task"]
-  N2["Lab — Checking a download fingerprint"]
-  N3["4.2 Reading the result"]
-  N4["4.3 Summarising for the team"]
-  N5["4.4 What comes next"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The guided task]
-    |
-    v
-[Lab — Checking a download fingerprint]
-    |
-    v
-[4.2 Reading the result]
-    |
-    v
-[4.3 Summarising for the team]
-    |
-    v
-[4.4 What comes next]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) complete a guided task verifying a downloaded file with a published fingerprint; (2) interpret the result correctly; (3) write a short plain-language summary for the library team; (4) plan your next learning steps.
@@ -587,34 +347,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — The supervised match is not the lab's only line
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["Lab prints MATCH and MISMATCH"] --> B["Staff summary: the real download matched"]
-  B --> C{"Is the bad lab file the library installer?"}
-  C -->|No| D["Keep both lines and the summary"]
-  C -->|Yes| E["That swap is not in the file"]
-```
-
-The laboratory pair and the supervised check answer different questions.
-
-### Logical drawing
-
-```text
-lab_checkfile.py
-    download_ok.bin MATCH
-    download_bad.bin MISMATCH
-    published prefix stays on that run
-staff summary
-    the supervised catalogue download matched
-    it does not name download_bad.bin
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -657,33 +389,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Twenty-four digits are not the whole fingerprint
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  A["Script slices 24 hex digits"] --> B["Print adds three dots"]
-  B --> C{"May a note fill the rest?"}
-  C -->|No| D["Quote the prefix only"]
-  C -->|Yes| E["That would be a new computation"]
-```
-
-The dots mark digits the embedded output never shows.
-
-### Logical drawing
-
-```text
-published = full SHA-256 of the synthetic bytes
-print uses published[:24] plus "..."
-embedded line
-    published: 215e60edb672063786f8bb92...
-a note that writes further hex
-    is not this output
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -728,35 +433,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The hours strings still print match False
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  A["Two synthetic hour strings"] --> B["match: False"]
-  B --> C{"Did the library change its hours?"}
-  C -->|No| D["Keep the strings and False"]
-  C -->|Yes| E["No timetable decision is filed"]
-```
-
-The inputs are laboratory text. They are not a new opening-hours policy.
-
-### Logical drawing
-
-```text
-string A ends 9-17
-string B ends 9-18
-prints
-    A: 7a5d91566f93af7abf7fc2c33d868004...
-    B: c029501271e71ec3fc765840b69dfabd...
-    match: False
-library timetable
-    not stated by those strings
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -799,31 +475,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Equal passwords still store different values
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  A["Two synthetic accounts, one password"] --> B["same stored value? False"]
-  B --> C["Right checks True, wrong check False"]
-  C --> D["Do not copy the laboratory secrets into notes"]
-```
-
-A shared password in the script is not a shared stored value, and it is not a library secret to write down.
-
-### Logical drawing
-
-```text
-stored-value line stays False
-right-password lines stay True and True
-wrong-password line stays False
-notes
-    no copy of those laboratory passwords
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -868,35 +519,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Laboratory scrypt is not the supplier's algorithm
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  A["Prose names scrypt and Argon2id"] --> B["The script calls scrypt"]
-  B --> C{"Does the supplier's algorithm appear?"}
-  C -->|No| D["Leave the supplier unnamed"]
-  C -->|Yes| E["That name is not in the file"]
-```
-
-An example function and a supplier's function are different claims.
-
-### Logical drawing
-
-```text
-chapter 3 examples
-    scrypt, RFC 7914
-    Argon2id, RFC 9106
-laboratory
-    hashlib.scrypt on synthetic accounts
-e-book supplier
-    stores password hashes
-    algorithm not named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -939,34 +561,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — The policy review has no recorded result
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  A["The note allows a policy review"] --> B["The note forbids trying passwords"]
-  B --> C{"Is a pass or a fail filed?"}
-  C -->|No| D["Leave the result blank"]
-  C -->|Yes| E["That grade is not among the findings"]
-```
-
-Permission to look is not a grade, and it is not permission to guess.
-
-### Logical drawing
-
-```text
-allowed
-    read the e-book password-policy page
-forbidden
-    try passwords
-staff findings
-    sticky note, expiry calendar, warning advice
-    no policy pass and no policy fail
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1011,35 +605,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Two laptop checks have no on/off print
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["Two staff laptops"] --> B["Leo checks disk encryption on both"]
-  B --> C{"Does the file print on or off?"}
-  C -->|No| D["Keep the purpose, not a result"]
-  C -->|Yes| E["That print is not in the chapter"]
-```
-
-The reason for disk encryption is not a reading of the two machines.
-
-### Logical drawing
-
-```text
-library
-    two staff laptops
-purpose
-    a stolen laptop should not expose its files
-worked example
-    Leo checks two laptops
-    no on/off line
-    no serial number
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1082,37 +647,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — The report is not a completed change
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  A["Note the place and the kind"] --> B["Tell Inês the same day"]
-  B --> C{"Does the file show the secret replaced?"}
-  C -->|No| D["Keep the report, not a completion"]
-  C -->|Yes| E["That completion is not written"]
-```
-
-A same-day report asks for a change. It is not the change.
-
-### Logical drawing
-
-```text
-record
-    where the sticky note was
-    that it is a password
-    not the password
-report
-    Inês, the same day
-not in the file
-    the new secret
-    removal of the note
-    a date for the change
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1157,35 +691,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Last year's warning is not this week's incident
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["Last year the renewal failed silently"] --> B["The certificate expired"]
-  B --> C{"Is a warning dated this course?"}
-  C -->|No| D["Keep the advice, not a new incident"]
-  C -->|Yes| E["That date is not in the file"]
-```
-
-The old outage explains the calendar. It does not open a fresh incident.
-
-### Logical drawing
-
-```text
-last year
-    host renewal failed silently
-    certificate expired
-    browsers showed warnings
-    cause is not an intrusion
-this course
-    advice: do not click through
-    no dated warning in the file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1228,36 +733,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — A month-ahead reminder is not a printed date
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["Reminders sit a month ahead"] --> B["Leo adds the website certificate"]
-  B --> C{"Is the expiry date printed?"}
-  C -->|No| D["Keep the row, not a date"]
-  C -->|Yes| E["That date would be invented"]
-```
-
-A calendar habit is not a date, and a row is not a completed renewal.
-
-### Logical drawing
-
-```text
-Inês
-    reminder a month before expiry
-    includes items suppliers renew
-Leo
-    adds the website certificate
-not printed
-    the expiry date
-    the reminder date
-    a completed renewal
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1302,36 +777,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — The shared Wi-Fi secret stays unwritten
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  A["A shared password keeps neighbours out"] --> B["Users on the network are not protected from each other"]
-  B --> C{"Is the password printed?"}
-  C -->|No| D["State the limit without the secret"]
-  C -->|Yes| E["Writing it spreads a secret"]
-```
-
-The limit can be taught without the secret, and the council equipment stays out of scope.
-
-### Logical drawing
-
-```text
-public Wi-Fi
-    shared password
-    not printed
-    blocks casual neighbours
-    does not separate users
-out of scope
-    council Wi-Fi equipment
-    scanning
-    the kiosk stays uncrashed because no scan is recorded
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1374,36 +819,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — The signing key stays with the platform
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["The platform holds the signing key"] --> B["Receivers can check the sender"]
-  B --> C{"Does signing hide the newsletter?"}
-  C -->|No| D["Authenticity stays, secrecy does not"]
-  C -->|Yes| E["That promise was not made"]
-```
-
-The key's home is the supplier. Its promise is about who sent the mail.
-
-### Logical drawing
-
-```text
-newsletter platform
-    holds the email signing key
-    signs outgoing mail
-promise
-    receivers can tell the mail comes from the library
-not the promise
-    the body is secret
-forbidden
-    paste the key into email, chat, or a shared document
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1448,36 +863,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — One laptop, and the version token stays in the lab
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  A["Match is not a safety proof"] --> B["Install on one laptop first"]
-  B --> C{"Does v2.1 leave the laboratory string?"}
-  C -->|No| D["Keep one laptop and the lab token"]
-  C -->|Yes| E["The summary has no version"]
-```
-
-The trial is one machine. The version characters belong to the synthetic bytes.
-
-### Logical drawing
-
-```text
-staff summary
-    matched download
-    install on one laptop first
-    no version number
-laboratory bytes
-    contain "catalogue-tool v2.1"
-    synthetic installer
-other staff laptop
-    does not receive the tool in this file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1520,36 +905,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — A double change is a limit, not an event
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  A["A match means the bytes equal the published file"] --> B["Same-site replacement of both would still match"]
-  B --> C{"Did this book record that attack?"}
-  C -->|No| D["Keep the limit and the supervised match"]
-  C -->|Yes| E["No attack and no project signature are filed"]
-```
-
-The limit explains a weakness of the method. It does not report an attack.
-
-### Logical drawing
-
-```text
-a match
-    file equals the published fingerprint's file
-    does not prove the software is safe
-limit
-    attacker changes file and fingerprint on the same site
-not recorded
-    that attack at this project
-    a signature on this release
-    the project's private key
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1594,34 +949,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — The named week is not a calendar date
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  A["The manager signs a note"] --> B["The note names a week and Inês"]
-  B --> C{"Do the dates appear?"}
-  C -->|No| D["Keep the scope and omit the dates"]
-  C -->|Yes| E["Those dates are not printed"]
-```
-
-Finishing the fingerprint task does not widen the note.
-
-### Logical drawing
-
-```text
-signed by the library manager
-    allowed: certificate details, laptop encryption, password-policy page
-    forbidden: scanning, trying passwords, book supplier, council Wi-Fi
-    week named, dates not printed
-    Inês is the contact
-fingerprint task
-    does not add the forbidden actions
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1664,39 +991,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the library note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Quote the prints and the open items"]
-  F --> Q{"Does the sentence replace a print or close an open item?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave Willow Lane's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    MATCH and MISMATCH
-    prefix 215e60edb672063786f8bb92...
-    hours strings and match False
-    stored value False; right True; wrong False
-    supplier algorithm unnamed
-    one laptop; v2.1 only in the lab bytes
-must not be added
-    a finished digest, a timetable, a policy grade
-    an on/off pair, a written secret, a renewal date
-    an emailed key, a second install, a recorded attack
-    a claim that the library is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

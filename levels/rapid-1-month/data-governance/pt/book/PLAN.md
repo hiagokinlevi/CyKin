@@ -60,7 +60,7 @@ Tema curricular anterior: laboratório guiado e síntese aplicada. Integrar os m
 
 ### Capítulo 05 — Adiar uma reunião não é explicar as regras
 
-**Traduzido:** [ler a aula](MANUSCRIPT.md#ch-05). EX059 e resposta. A reunião transferida para a semana seguinte continua sendo a quinta ação em aberto até que o caderno registre a explicação. A tradução conserva a tabela, o mapa e o desenho lógico da fonte.
+**Traduzido:** [ler a aula](MANUSCRIPT.md#ch-05). EX059 e resposta. A reunião transferida para a semana seguinte continua sendo a quinta ação em aberto até que o caderno registre a explicação. A tradução conserva a tabela e o conteúdo da fonte; os mapas automáticos que apenas repetiam títulos foram removidos de ambas as edições.
 
 **Continue estudando — capítulo 05:** [← Capítulo 04](MANUSCRIPT.md#ch-04) · [Índice](../SUBJECTS.md) · [Capítulo 06 traduzido →](MANUSCRIPT.md#ch-06)
 

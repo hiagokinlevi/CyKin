@@ -5,7 +5,7 @@
   "language": "en",
   "chapter": 1,
   "source_anchor": "ch-01",
-  "source_sha256": "b935654084a84659141f7b2edce1a0966b52d149257496b17b4fd1d589898830",
+  "source_sha256": "8cfa0fdaa885c7a66510b397b333b68ecdbaf6fd26b141cd327c53ad50d63058",
   "questions": [
     {"id":"Q01","prompt":"An unusual staff sign-in is reported. What does the Chapter 1 evidence establish at this point?","options":[{"id":"a","text":"A confirmed account compromise requiring immediate shutdown"},{"id":"b","text":"A signal to assess with service context, evidence and impact"},{"id":"c","text":"Proof that all later booking edits were unauthorized"},{"id":"d","text":"Proof that the booking service is safe to restore"}],"correct":"b","explanation":"A sign-in alert is a signal. The chapter requires context, evidence and impact before classifying a confirmed incident or taking a disruptive action.","source":"Chapter 1, Lesson 01, §1.1"},
     {"id":"Q02","prompt":"Which item makes a proposed booking log an evidence-readiness contract rather than merely a diagram arrow?","options":[{"id":"a","text":"A named producer, field meaning, custodian, retention and authorized rehearsal"},{"id":"b","text":"A claim that every future event will be malicious"},{"id":"c","text":"A vendor logo without a tested retrieval path"},{"id":"d","text":"A decision to collect every patron record by default"}],"correct":"a","explanation":"D1 turns a proposed source into a testable plan by naming its producer and fields, custody, retention, access limits and an authorized check. The plan is not itself collected evidence.","source":"Chapter 1, Lesson 01, §1.2, evidence-readiness contract"},

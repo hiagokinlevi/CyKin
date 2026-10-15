@@ -1,5 +1,7 @@
 # Translation progress — availability and verified equivalence
 
+**Visual-record update (14 October 2026):** Automatic section-title lesson maps and duplicate logical drawings were removed from all published manuscripts. Earlier dated checks of those figures below are historical evidence, not a description of the current lessons. Content-specific technical diagrams remain available where needed.
+
 [Home](README.md) · [Edition inventory](LANGUAGE_LESSON_PROGRESS.md) · [Translation standard](BOOK_STANDARD.md#complete-translations-and-cross-language-parity) · [Curriculum baselines](CURRICULUM_GRID.md)
 
 **Latest integration:** [14 October 2026 — Portuguese Chapters 05–20 incorporated](#pt-ch05-20-integration-20261014): sixteen previously prepared chapter translations and sixteen exercise/answer pairs are incorporated into the existing public Portuguese book. That entry records the source and target blobs, actual checks and scoped increase. Complete-book translation parity remains unapproved. The earlier catalog tables below are historical, not live counters.

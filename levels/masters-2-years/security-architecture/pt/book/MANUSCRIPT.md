@@ -37,66 +37,6 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207), [SP 800-160 Vol. 1 R
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Do interesse à pergunta"]
-  N1["1.2 Por que esta pergunta funciona"]
-  N2["1.3 Desenho da busca"]
-  N3["1.4 Triagem e registro"]
-  N4["Laboratório — Contagens do fluxo de triagem"]
-  N5["1.5 O que diz a literatura"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Do interesse à pergunta"]
-  N1["1.2 Por que esta pergunta funciona"]
-  N2["1.3 Desenho da busca"]
-  N3["1.4 Triagem e registro"]
-  N4["Laboratório — Contagens do fluxo de triagem"]
-  N5["1.5 O que diz a literatura"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[1.1 Do interesse à pergunta]
-    |
-    v
-[1.2 Por que esta pergunta funciona]
-    |
-    v
-[1.3 Desenho da busca]
-    |
-    v
-[1.4 Triagem e registro]
-    |
-    v
-[Laboratório — Contagens do fluxo de triagem]
-    |
-    v
-[1.5 O que diz a literatura]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) transformar um interesse em arquitetura numa pergunta focada e respondível; (2) desenhar uma busca documentada na literatura; (3) fazer a triagem das fontes com critérios explícitos; (4) registrar a busca para que outros possam repeti-la.
@@ -184,61 +124,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: seminário avançado
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Três visões da arquitetura"]
-  N1["2.2 Os princípios por trás da segmentação"]
-  N2["2.3 Crítica a uma afirmação de framework"]
-  N3["2.4 Evidências no argumento do seminário"]
-  N4["2.5 Produto do seminário"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Três visões da arquitetura"]
-  N1["2.2 Os princípios por trás da segmentação"]
-  N2["2.3 Crítica a uma afirmação de framework"]
-  N3["2.4 Evidências no argumento do seminário"]
-  N4["2.5 Produto do seminário"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[2.1 Três visões da arquitetura]
-    |
-    v
-[2.2 Os princípios por trás da segmentação]
-    |
-    v
-[2.3 Crítica a uma afirmação de framework]
-    |
-    v
-[2.4 Evidências no argumento do seminário]
-    |
-    v
-[2.5 Produto do seminário]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar as visões corporativa, de engenharia de sistemas e orientada a ameaças da arquitetura de segurança; (2) relacionar os princípios de design à segmentação; (3) criticar uma afirmação de um framework; (4) apresentar um argumento de seminário com evidências.
@@ -304,66 +189,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Desenho da simulação"]
-  N1["3.2 O modelo de alcançabilidade"]
-  N2["Laboratório — Alcançabilidade sob três políticas"]
-  N3["3.3 Ética com uma parceira real"]
-  N4["3.4 Plano de reprodutibilidade"]
-  N5["3.5 Pré-especificação da análise"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Desenho da simulação"]
-  N1["3.2 O modelo de alcançabilidade"]
-  N2["Laboratório — Alcançabilidade sob três políticas"]
-  N3["3.3 Ética com uma parceira real"]
-  N4["3.4 Plano de reprodutibilidade"]
-  N5["3.5 Pré-especificação da análise"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[3.1 Desenho da simulação]
-    |
-    v
-[3.2 O modelo de alcançabilidade]
-    |
-    v
-[Laboratório — Alcançabilidade sob três políticas]
-    |
-    v
-[3.3 Ética com uma parceira real]
-    |
-    v
-[3.4 Plano de reprodutibilidade]
-    |
-    v
-[3.5 Pré-especificação da análise]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -467,61 +292,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Arquitetura e engenharia de segurança: explicações concorrentes
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Rivais da hipótese principal"]
-  N1["4.2 Verificações que separam as rivais"]
-  N2["4.3 Artefatos de modelagem"]
-  N3["4.4 O que mudaria a conclusão"]
-  N4["4.5 Discussão das rivais com praticantes"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Rivais da hipótese principal"]
-  N1["4.2 Verificações que separam as rivais"]
-  N2["4.3 Artefatos de modelagem"]
-  N3["4.4 O que mudaria a conclusão"]
-  N4["4.5 Discussão das rivais com praticantes"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[4.1 Rivais da hipótese principal]
-    |
-    v
-[4.2 Verificações que separam as rivais]
-    |
-    v
-[4.3 Artefatos de modelagem]
-    |
-    v
-[4.4 O que mudaria a conclusão]
-    |
-    v
-[4.5 Discussão das rivais com praticantes]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) listar as explicações rivais para um resultado esperado; (2) desenhar verificações que as distingam; (3) reconhecer os artefatos das escolhas de modelagem; (4) decidir de antemão o que mudaria sua conclusão.
@@ -586,56 +356,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 A proposta"]
-  N1["5.3 Quantas redes"]
-  N2["5.4 Ajuste do plano"]
-  N3["5.5 Relato do piloto"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 A proposta"]
-  N1["5.3 Quantas redes"]
-  N2["5.4 Ajuste do plano"]
-  N3["5.5 Relato do piloto"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
-```
-
-```text
-[5.1 A proposta]
-    |
-    v
-[5.3 Quantas redes]
-    |
-    v
-[5.4 Ajuste do plano]
-    |
-    v
-[5.5 Relato do piloto]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta de dissertação concisa; (2) conduzir um piloto para testar o código e os parâmetros; (3) estimar quantas redes simuladas são necessárias; (4) ajustar o plano a partir das evidências do piloto.
@@ -699,66 +419,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Execução do estudo principal"]
-  N1["6.2 Comparação por bootstrap"]
-  N2["Laboratório — Comparação das políticas por bootstrap"]
-  N3["6.3 Verificações das rivais"]
-  N4["6.4 O tradeoff da complexidade"]
-  N5["6.5 Apresentar os resultados com honestidade"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Execução do estudo principal"]
-  N1["6.2 Comparação por bootstrap"]
-  N2["Laboratório — Comparação das políticas por bootstrap"]
-  N3["6.3 Verificações das rivais"]
-  N4["6.4 O tradeoff da complexidade"]
-  N5["6.5 Apresentar os resultados com honestidade"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[6.1 Execução do estudo principal]
-    |
-    v
-[6.2 Comparação por bootstrap]
-    |
-    v
-[Laboratório — Comparação das políticas por bootstrap]
-    |
-    v
-[6.3 Verificações das rivais]
-    |
-    v
-[6.4 O tradeoff da complexidade]
-    |
-    v
-[6.5 Apresentar os resultados com honestidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -852,61 +512,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 Estrutura em torno do argumento"]
-  N1["7.2 Limitações específicas"]
-  N2["7.3 Ligação com a prática"]
-  N3["7.4 O resumo para praticantes"]
-  N4["7.5 Processo de escrita"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Estrutura em torno do argumento"]
-  N1["7.2 Limitações específicas"]
-  N2["7.3 Ligação com a prática"]
-  N3["7.4 O resumo para praticantes"]
-  N4["7.5 Processo de escrita"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[7.1 Estrutura em torno do argumento]
-    |
-    v
-[7.2 Limitações específicas]
-    |
-    v
-[7.3 Ligação com a prática]
-    |
-    v
-[7.4 O resumo para praticantes]
-    |
-    v
-[7.5 Processo de escrita]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação em torno do seu argumento; (2) escrever limitações específicas e úteis; (3) ligar os achados à prática de arquitetura com responsabilidade; (4) preparar um resumo para praticantes.
@@ -970,61 +575,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Revisão independente do código"]
-  N1["8.2 Preparação da defesa"]
-  N2["8.3 Resposta às críticas"]
-  N3["8.4 Correções e arquivamento"]
-  N4["8.5 Trabalhos seguintes"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Revisão independente do código"]
-  N1["8.2 Preparação da defesa"]
-  N2["8.3 Resposta às críticas"]
-  N3["8.4 Correções e arquivamento"]
-  N4["8.5 Trabalhos seguintes"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[8.1 Revisão independente do código]
-    |
-    v
-[8.2 Preparação da defesa]
-    |
-    v
-[8.3 Resposta às críticas]
-    |
-    v
-[8.4 Correções e arquivamento]
-    |
-    v
-[8.5 Trabalhos seguintes]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

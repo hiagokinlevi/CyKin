@@ -39,56 +39,6 @@ Nakamoto, [Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf); Wood, [Ethereum
 
 ## Chapter 1 — Web3, blockchain and cryptoasset security: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case and the basics"]
-  N2["1.2 Tokens, keys and contracts"]
-  N3["1.3 Where risk sits and the first decision"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case and the basics"]
-  N2["1.2 Tokens, keys and contracts"]
-  N3["1.3 Where risk sits and the first decision"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case and the basics]
-    |
-    v
-[1.2 Tokens, keys and contracts]
-    |
-    v
-[1.3 Where risk sits and the first decision]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what blockchains, tokens, keys and smart contracts are; (2) recognise where risk sits; (3) make an informed first decision.
@@ -144,56 +94,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Why scope matters"]
-  N2["2.2 Acting only with permission"]
-  N3["2.3 Working safely"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Why scope matters"]
-  N2["2.2 Acting only with permission"]
-  N3["2.3 Working safely"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Why scope matters]
-    |
-    v
-[2.2 Acting only with permission]
-    |
-    v
-[2.3 Working safely]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -251,56 +151,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Web3, blockchain and cryptoasset security: systems, data and dependencies
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Mapping the system"]
-  N2["3.2 Data on and off the ledger"]
-  N3["3.3 Dependencies and their risks"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Mapping the system"]
-  N2["3.2 Data on and off the ledger"]
-  N3["3.3 Dependencies and their risks"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Mapping the system]
-    |
-    v
-[3.2 Data on and off the ledger]
-    |
-    v
-[3.3 Dependencies and their risks]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) map the loyalty system and its data; (2) decide what belongs on the ledger; (3) identify dependencies and their risks.
@@ -355,61 +205,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Web3, blockchain and cryptoasset security: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The checklist"]
-  N2["Lab — Loyalty setup checklist"]
-  N3["4.2 Interpreting the gaps"]
-  N4["4.3 Deciding and planning"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The checklist"]
-  N2["Lab — Loyalty setup checklist"]
-  N3["4.2 Interpreting the gaps"]
-  N4["4.3 Deciding and planning"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The checklist]
-    |
-    v
-[Lab — Loyalty setup checklist]
-    |
-    v
-[4.2 Interpreting the gaps]
-    |
-    v
-[4.3 Deciding and planning]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -501,35 +296,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — The vendor's agreement is not a verified fix
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["Source: three checks still unmet"] --> B["Print: 5 of 8 and three gap lines"]
-  B --> C{"Does the vendor's promise rewrite that print?"}
-  C -->|No| D["Keep the promise and the print apart"]
-  C -->|Yes| E["The file does not show that rewrite"]
-```
-
-A promise about a later setup is not a second run of the checklist.
-
-### Logical drawing
-
-```text
-source booleans
-    three privileged checks unmet
-print
-    passed 5/8 (62.5%)
-    three gap lines
-narrative
-    vendor agrees to fix the three before launch
-    contractor verification is required and not filed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -574,34 +340,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — 62.5 percent is not eight of eight
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  A["Five met checks out of eight"] --> B["Script prints 62.5 percent"]
-  B --> C{"May the percent erase a gap line?"}
-  C -->|No| D["Keep the percent and every gap"]
-  C -->|Yes| E["That erasure is not this run"]
-```
-
-Equal weights in the script are not equal weights in the decision.
-
-### Logical drawing
-
-```text
-arithmetic
-    100 times 5 divided by 8 prints 62.5
-decision
-    one missing privileged control outweighs the percent
-print
-    the percent stays
-    the three gap lines stay
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -648,35 +386,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The 2-of-3 mint stays a pass, not a new threshold
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  A["Prose: a multi-signature arrangement"] --> B["Source: mint held by a 2-of-3 multisig"]
-  B --> C{"May a note retune that threshold?"}
-  C -->|No| D["Leave 2-of-3 as the pass"]
-  C -->|Yes| E["No other threshold is written"]
-```
-
-The mint row is already met. Meeting it does not invite a new design.
-
-### Logical drawing
-
-```text
-mint row
-    source marks it met
-    wording in the source: 2-of-3 multisig
-    prose nearby: multi-signature arrangement
-not in the file
-    key holders' names
-    a different threshold
-    a fresh run
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -721,36 +430,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — No 48-hour timelock is still a gap
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  A["Checklist asks for at least 48 hours"] --> B["Source marks the row unmet"]
-  B --> C{"Does agreeing to add one create it?"}
-  C -->|No| D["The gap line stays"]
-  C -->|Yes| E["No new duration is printed"]
-```
-
-The delay is a control the source does not yet record.
-
-### Logical drawing
-
-```text
-what a timelock is for
-    hold an administrator change
-    so others can notice it
-what this file shows
-    gap: at least 48 h
-    source marks the row unmet
-what this file does not show
-    some other number of hours
-    the delay already in force
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -797,33 +476,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — The 90-day access review is still missing
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  A["Two different rows mention 90 days"] --> B["Backup restore is met"]
-  B --> C["Vendor-access review is not"]
-  C --> D{"May one row close the other?"}
-  D -->|No| E["Keep the access gap and invent no date"]
-```
-
-The shared phrase "90 days" does not make the rows the same check.
-
-### Logical drawing
-
-```text
-met
-    backup restore tested in the last 90 days
-unmet
-    vendor access reviewed in the last 90 days
-absent
-    a calendar date for that review
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -868,35 +520,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Role changes and pauses are still unmonitored
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  A["Monitoring row is unmet"] --> B["Daily reconciliation is already met"]
-  B --> C["Elena adds a monthly check"]
-  C --> D{"Is that monthly check the monitor?"}
-  D -->|No| E["The monitoring gap stays"]
-```
-
-A check she plans to do is not a watch the source already records.
-
-### Logical drawing
-
-```text
-already met
-    daily reconciliation of points issued against purchases
-unmet
-    monitoring of role changes and pauses
-added in the decision
-    a monthly comparison and a look at privileged events
-not shown
-    the monitor already running
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -943,33 +566,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Customer names stay off the ledger
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["Names, emails, purchases: Copperleaf's database"] --> B["Ledger: addresses and point balances"]
-  B --> C["Checklist row is already met"]
-  C --> D{"Does a new-address offer complete a reissue?"}
-  D -->|No| E["Leave names off and the offer unfinished"]
-```
-
-The passing privacy row stays a pass only while the names stay off.
-
-### Logical drawing
-
-```text
-off the ledger
-    customer names, emails, purchase details
-on the ledger
-    pseudonymous addresses and point balances
-offer, not a completed act
-    a new address if a customer requests one
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1014,35 +610,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Three nodes stay the vendor's
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  A["Points service creates the points"] --> B["Three nodes keep the record"]
-  B --> C["Both are the vendor's"]
-  C --> D{"Does Copperleaf run a node?"}
-  D -->|No| E["Leave the map at three vendor nodes"]
-```
-
-Concentration is the fact the map was drawn to show.
-
-### Logical drawing
-
-```text
-six parts
-    app wallets, café tills, points service
-    points contract, three nodes, customer database
-who runs the nodes
-    the vendor, all three
-who does not
-    Copperleaf
-    a fourth node that is not on the map
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1089,38 +656,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The export and the exit plan are requests, not arrivals
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["If the vendor stops, balances must still be honoured"] --> B["Elena asks for two protections"]
-  B --> C["A monthly balance export"]
-  B --> D["A contractual exit plan"]
-  C --> E{"Is either one shown as received?"}
-  D --> E
-  E -->|No| F["Both stay requests"]
-```
-
-Asking is the step the file records. Receiving is a later step it does not record.
-
-### Logical drawing
-
-```text
-need
-    a copy of balances
-    a way to honour points if the vendor stops
-asked for
-    monthly balance export
-    contractual exit plan
-not shown
-    an export that arrived
-    an exit plan that was signed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1165,35 +700,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — The compiler version stays unprinted
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["Outdated compilers are a known weakness class"] --> B["Elena asks for version and review history"]
-  B --> C{"Does the file contain either answer?"}
-  C -->|No| D["Leave both blank"]
-  C -->|Yes| E["That answer is not written here"]
-```
-
-The question is evidence of care. An invented version would be evidence of nothing.
-
-### Logical drawing
-
-```text
-asked
-    compiler version
-    review history
-reason already in the book
-    the SWC registry lists outdated compilers
-not printed
-    a version string
-    a history date
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1240,38 +746,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — One café for three months is not all four
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  A["Business: four cafés, about 3,000 customers"] --> B["Pilot: one café, three months"]
-  B --> C["Only if the conditions hold"]
-  C --> D{"Has the file started that pilot?"}
-  D -->|No| E["Keep the pilot conditional and small"]
-```
-
-The company size and the pilot size are different numbers.
-
-### Logical drawing
-
-```text
-business
-    four cafés
-    about 3,000 regular customers
-pilot, if the conditions hold
-    one café
-    three months
-not in the file
-    a start date
-    a finished third month
-    all four cafés live
-    a per-café split of 3,000
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1316,35 +790,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — The review date stays unprinted
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["One-page note for the owners"] --> B["Benefits, remaining risks, a review date"]
-  B --> C{"Is the date itself in the book?"}
-  C -->|No| D["State that a date belongs on the note"]
-  C -->|Yes| E["No day is available to copy"]
-```
-
-Saying that the note has a date is not the same as printing the date.
-
-### Logical drawing
-
-```text
-the note states
-    benefits
-    remaining risks
-    a review date
-the book prints
-    those three elements as a list
-    not the date
-    not the owners' names
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1391,36 +836,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Test keys stay separate and unwritten
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  A["Synthetic points have no value"] --> B["Test keys are separate and labelled"]
-  B --> C["The live ledger stays outside"]
-  C --> D{"May a note write a real key?"}
-  D -->|No| E["Leave every key unwritten"]
-```
-
-A label is a handling rule. It is not a key printed on the page.
-
-### Logical drawing
-
-```text
-in the test
-    synthetic customers
-    points with no value
-    test keys, separate and clearly labelled
-outside the test
-    the live ledger
-    real customer data
-    the vendor's other clients
-    any written key or address
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1465,38 +880,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — The contractor verifies; the vendor does not grade itself
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  A["Vendor agrees to fix the gaps"] --> B["Clause: vendor confirms fixes in writing"]
-  B --> C["Contractor verifies"]
-  C --> D{"Is any of that filed as done?"}
-  D -->|No| E["Keep three different documents apart"]
-```
-
-Agreement, written confirmation, and independent verification are three states.
-
-### Logical drawing
-
-```text
-promise
-    vendor agrees to fix the three gaps before launch
-clause
-    vendor confirms fixes in writing
-verification
-    the café's IT contractor
-    a log of what he did and when
-not filed
-    the confirmation
-    the contractor's sign-off
-    a new checklist score
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1543,38 +926,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — The scope dates stay unnamed
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  A["A scope can name dates"] --> B["This scope names systems and data"]
-  B --> C["No calendar date is printed"]
-  C --> D{"Does a finished checklist widen the scope?"}
-  D -->|No| E["Exclusions stay excluded"]
-```
-
-Completing a checklist is not a new permission.
-
-### Logical drawing
-
-```text
-inside
-    vendor's test environment
-    read-only configuration and documentation
-    synthetic customer data
-outside
-    live ledger
-    real customer data
-    vendor's other clients
-signature
-    Elena and the vendor
-    no printed dates
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1619,39 +970,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the loyalty note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Quote the print and the open items"]
-  F --> Q{"Does the sentence replace a print or close an open item?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave Copperleaf's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    passed 5/8 (62.5%)
-    gap: Admin changes behind a timelock of at least 48 h
-    gap: Vendor access reviewed in the last 90 days
-    gap: Monitoring of role changes and pauses
-    2-of-3 mint still a pass
-    names off the ledger
-    three vendor nodes
-must not be added
-    an 8-of-8 print, a closed gap, a four-café pilot
-    a compiler version, a received export, a Copperleaf node
-    a claim that the scheme is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

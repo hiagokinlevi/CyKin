@@ -1,5 +1,7 @@
 # Governança de Dados: Curso Rápido
 
+**Atualização visual (14/10/2026):** os mapas automáticos de títulos e os desenhos lógicos duplicados mencionados nos registros históricos de tradução abaixo foram removidos deste livro e da referência inglesa. As contagens antigas desses mapas não descrevem o texto atual; o ensino, os exemplos, os exercícios e os diagramas técnicos específicos foram preservados.
+
 - Idioma: português do Brasil (`pt`); curso 003, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
 - Estado editorial: **publicado, com texto nos capítulos 1–20 e revisão de equivalência pendente**. Esta edição contém EX001–EX074 com resoluções e rubricas de 0 a 3. Há texto português nas vinte posições da referência inglesa fixada; isso não aprova a equivalência integral nem conclui o livro. O laboratório permanece sintético e usa somente a biblioteca padrão do Python. Revisão independente, equivalência integral, revisão linguística e inspeção da edição renderizada continuam abertas. Páginas são uma medição de edição, não uma meta de escrita ou aprovação.
 - Público: iniciantes que precisam de um começo rápido e prático em governança de dados para um pequeno negócio.
@@ -75,71 +77,6 @@ GDPR; LGPD. Lista completa em [Referências](#references).
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Governança de dados: fundamentos e primeiras decisões
-
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["1.1 O aprendiz e o café"]
-  N1["1.2 O que significa governança de dados"]
-  N2["1.3 Os dados da Copperleaf"]
-  N3["1.4 Por que isso importa"]
-  N4["1.5 Três primeiras decisões"]
-  N5["Conceitos — responsabilidade, regras e verificações"]
-  N6["Dados — o que a Copperleaf guarda e o dano que Kwame"]
-  N7["Fluxo de decisão — um fato novo sobre uma pessoa"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O aprendiz e o café"]
-  N1["1.2 O que significa governança de dados"]
-  N2["1.3 Os dados da Copperleaf"]
-  N3["1.4 Por que isso importa"]
-  N4["1.5 Três primeiras decisões"]
-  N5["Conceitos — responsabilidade, regras e verificações"]
-  N6["Dados — o que a Copperleaf guarda e o dano que Kwame"]
-  N7["Fluxo de decisão — um fato novo sobre uma pessoa"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[1.1 O aprendiz e o café]
-    |
-    v
-[1.2 O que significa governança de dados]
-    |
-    v
-[1.3 Os dados da Copperleaf]
-    |
-    v
-[1.4 Por que isso importa]
-    |
-    v
-[1.5 Três primeiras decisões]
-    |
-    v
-[Conceitos — responsabilidade, regras e verificações]
-    |
-    v
-[Dados — o que a Copperleaf guarda e o dano que Kwame]
-    |
-    v
-[Fluxo de decisão — um fato novo sobre uma pessoa]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -254,71 +191,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Responsabilidade, regras e práticas seguras
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["2.1 Regras simples"]
-  N1["2.2 Pedindo só o necessário"]
-  N2["2.3 Hábitos de segurança"]
-  N3["2.4 Guardar e eliminar"]
-  N4["2.5 Obtendo a concordância"]
-  N5["Conceitos — uma regra que a equipe consegue cumprir"]
-  N6["Dados — campos que a folha nova deixa de fora"]
-  N7["Fluxo de decisão — alguém quer mais um campo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Regras simples"]
-  N1["2.2 Pedindo só o necessário"]
-  N2["2.3 Hábitos de segurança"]
-  N3["2.4 Guardar e eliminar"]
-  N4["2.5 Obtendo a concordância"]
-  N5["Conceitos — uma regra que a equipe consegue cumprir"]
-  N6["Dados — campos que a folha nova deixa de fora"]
-  N7["Fluxo de decisão — alguém quer mais um campo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[2.1 Regras simples]
-    |
-    v
-[2.2 Pedindo só o necessário]
-    |
-    v
-[2.3 Hábitos de segurança]
-    |
-    v
-[2.4 Guardar e eliminar]
-    |
-    v
-[2.5 Obtendo a concordância]
-    |
-    v
-[Conceitos — uma regra que a equipe consegue cumprir]
-    |
-    v
-[Dados — campos que a folha nova deixa de fora]
-    |
-    v
-[Fluxo de decisão — alguém quer mais um campo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever regras simples para cada tipo de dado; (2) aplicar hábitos básicos de segurança; (3) decidir por quanto tempo guardar os registros.
@@ -431,71 +303,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Qualidade, sistemas e fornecedores
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["3.1 Qualidade em palavras simples"]
-  N1["3.2 Onde os dados ficam"]
-  N2["3.3 Fornecedores"]
-  N3["3.4 Pagamentos e notas fiscais"]
-  N4["3.5 Verificações simples"]
-  N5["Conceitos — qualidade, lugar e a outra organização"]
-  N6["Dados — onde os dados ficam depois do mapa"]
-  N7["Fluxo de decisão — um fornecedor ou uma segunda cópi"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Qualidade em palavras simples"]
-  N1["3.2 Onde os dados ficam"]
-  N2["3.3 Fornecedores"]
-  N3["3.4 Pagamentos e notas fiscais"]
-  N4["3.5 Verificações simples"]
-  N5["Conceitos — qualidade, lugar e a outra organização"]
-  N6["Dados — onde os dados ficam depois do mapa"]
-  N7["Fluxo de decisão — um fornecedor ou uma segunda cópi"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[3.1 Qualidade em palavras simples]
-    |
-    v
-[3.2 Onde os dados ficam]
-    |
-    v
-[3.3 Fornecedores]
-    |
-    v
-[3.4 Pagamentos e notas fiscais]
-    |
-    v
-[3.5 Verificações simples]
-    |
-    v
-[Conceitos — qualidade, lugar e a outra organização]
-    |
-    v
-[Dados — onde os dados ficam depois do mapa]
-    |
-    v
-[Fluxo de decisão — um fornecedor ou uma segunda cópi]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -611,71 +418,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Laboratório guiado e plano de ação
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["4.1 A lista de inscrições"]
-  N1["4.2 O que o laboratório encontra"]
-  N2["4.3 Decidindo para quem enviar"]
-  N3["4.4 O plano de ação"]
-  N4["4.5 Depois do curso"]
-  N5["Conceitos — uma linha não é uma permissão"]
-  N6["Dados — as cinco ações e a que escorregou"]
-  N7["Fluxo de decisão — este endereço pode receber o bole"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 A lista de inscrições"]
-  N1["4.2 O que o laboratório encontra"]
-  N2["4.3 Decidindo para quem enviar"]
-  N3["4.4 O plano de ação"]
-  N4["4.5 Depois do curso"]
-  N5["Conceitos — uma linha não é uma permissão"]
-  N6["Dados — as cinco ações e a que escorregou"]
-  N7["Fluxo de decisão — este endereço pode receber o bole"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[4.1 A lista de inscrições]
-    |
-    v
-[4.2 O que o laboratório encontra]
-    |
-    v
-[4.3 Decidindo para quem enviar]
-    |
-    v
-[4.4 O plano de ação]
-    |
-    v
-[4.5 Depois do curso]
-    |
-    v
-[Conceitos — uma linha não é uma permissão]
-    |
-    v
-[Dados — as cinco ações e a que escorregou]
-    |
-    v
-[Fluxo de decisão — este endereço pode receber o bole]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -815,33 +557,6 @@ Continue para a nova sequência traduzida; não salte os capítulos 05–10.
 
 ## Capítulo 5 — Adiar uma reunião não é explicar as regras
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  P["Cinco ações; uma reunião adiada em uma semana"] --> Q{"O caderno registra a data da explicação?"}
-  Q -->|Não| R["A quinta ação continua em aberto"]
-  Q -->|Sim| S["Cite essa data. Não reabra uma reunião já realizada"]
-```
-
-Mudar uma data registra um atraso. Não transmite a explicação.
-
-### Desenho lógico
-
-```text
-plano afixado ao lado das regras
-    quatro ações com datas de conclusão
-    reunião da equipe transferida para a semana seguinte
-        |
-        +-- o plano continua com cinco linhas
-        +-- a equipe não ouviu as regras na reunião enquanto ela não ocorreu
-        +-- riscar a linha esconderia o atraso
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -884,36 +599,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Remover uma duplicata não é fazer uma nova contagem completa
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06. Mapa, exemplo, EX060.
-
-```mermaid
-flowchart TD
-  L["Execução publicada: 12 linhas; cinco endereços com a marca yes"] --> N["Caderno: um e-mail duplicado removido"]
-  N --> R{"Uma nova lista digitada foi verificada?"}
-  R -->|Não| K["Não apresente 11 ou 4 como resultado deste mês"]
-  R -->|Sim| C["Registre as linhas de saída dessa própria execução"]
-```
-
-Um achado no caderno não é uma segunda execução do script.
-
-### Desenho lógico
-
-```text
-lab_signups.py sobre o arquivo sintético de doze linhas
-    rows 12; blank email 2; malformed 1; duplicates 2
-    unique valid addresses with a yes tick: 5
-caderno do primeiro mês
-    um e-mail duplicado removido
-        |
-        +-- a remoção é um achado, não uma nova execução
-        +-- 12 menos 1 é aritmética, não uma medição
-        +-- o script não é alterado para forçar uma nova saída
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Objetivos de aprendizagem
 
@@ -958,34 +643,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 7 — A saída de alguém no mês passado não encerra a verificação deste mês
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  M["A verificação do grupo pergunta: quem é membro hoje?"] --> P["No mês passado, um ex-funcionário foi removido"]
-  P --> T{"Outra pessoa que saiu depois ainda está no grupo?"}
-  T -->|Sim| F["Essa pessoa é um achado deste mês"]
-  T -->|Não| K["Cite a lista de hoje, não a frase do mês passado"]
-```
-
-Uma remoção anterior comprova o que aconteceu no mês passado. A composição do grupo é consultada novamente.
-
-### Desenho lógico
-
-```text
-verificação mensal: somente funcionários atuais no grupo pago
-primeiro mês: um ex-integrante removido, com data
-outra pessoa encerra seu trabalho depois
-    |
-    +-- a frase do mês passado não se refere a essa pessoa
-    +-- "já limpamos o grupo" não é uma nova consulta
-    +-- a pessoa continua sendo um achado até que a remoção seja datada
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1028,34 +685,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Um cancelamento de inscrição gera uma nova linha
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08. Mapa, exemplo, EX062.
-
-```mermaid
-flowchart TD
-  U["Uma das cinco pessoas pede para parar de receber"] --> D["Exclua o endereço logo depois e registre a data"]
-  D --> S["Não repita o script de doze linhas para imprimir 4"]
-  S --> K["Os cinco publicados continuam descrevendo aquele arquivo"]
-```
-
-A regra de guarda e o arquivo do laboratório são objetos diferentes.
-
-### Desenho lógico
-
-```text
-regra: o endereço do boletim é guardado enquanto a inscrição permanece ativa
-    excluído logo depois do cancelamento
-arquivo sintético: cinco endereços com a marca yes
-um desses endereços pede posteriormente para parar de receber
-    |
-    +-- o pedido é um novo evento
-    +-- o script não é alterado, e 5 não é reescrito como 4
-    +-- o caderno registra a data da exclusão
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Objetivos de aprendizagem
 
@@ -1100,33 +729,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 9 — Uma pasta trancada não substitui a revisão semestral
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  F["As notas de alergia ficam na pasta trancada"] --> R{"Há uma revisão com o cliente datada nos últimos seis meses?"}
-  R -->|Não| O["A revisão está pendente. A tranca não a substitui"]
-  R -->|Sim| K["Cite essa conversa datada"]
-```
-
-A pasta responde quem pode ver a nota. A revisão responde se ela continua correta.
-
-### Desenho lógico
-
-```text
-regra: notas de alergia trancadas, mostradas apenas a quem prepara aquele pedido
-prazo: revisão com o cliente a cada seis meses
-a pasta continua trancada
-    |
-    +-- uma tranca não é uma conversa
-    +-- "sempre tivemos esta nota" não é uma data
-    +-- nenhum nome de cliente é inventado para preencher a lacuna
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1170,34 +772,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 10 — Gostar de uma foto não é concordar com um uso mais longo
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  P["Uma foto do evento completa um ano"] --> A{"O caderno contém uma concordância com uso mais longo?"}
-  A -->|Não| D["Exclua e registre a data da exclusão"]
-  A -->|Sim| K["Guarde apenas para o uso previsto nessa concordância"]
-  P2["O prazo de um ano ainda não chegou"] --> W["Não exclua antes, nem chame um adiamento de concordância"]
-```
-
-Gostar de uma imagem não prolonga o prazo.
-
-### Desenho lógico
-
-```text
-padrão: fotos de eventos excluídas após um ano
-exceção: as pessoas concordaram com um uso mais longo
-uma foto que a equipe quer manter na parede
-    |
-    +-- "é uma foto bonita" não é a exceção
-    +-- nenhuma concordância é inventada aqui
-    +-- antes de completar um ano, aguardar não é prolongar o prazo
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1240,35 +814,6 @@ Continue para a sequência traduzida dos capítulos 11–20, com respostas no ap
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Um prazo em branco não é uma data para destruir documentos
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  B["Escalas antigas e faturas de fornecedores"] --> A{"O contador informou o término do prazo?"}
-  A -->|Não| H["Não triture nem exclua. O prazo está em branco"]
-  A -->|Sim| S["Use esse término registrado, não um número redondo de anos"]
-```
-
-Kwame não inventa o prazo fiscal nem o prazo de guarda dos registros trabalhistas.
-
-### Desenho lógico
-
-```text
-regras já escritas
-    faturas de fornecedores ficam até o contador informar o término da guarda fiscal
-    escalas antigas ficam pelo prazo trabalhista que o contador confirmar
-caderno
-    esses términos continuam sem definição
-        |
-        +-- "um ano parece suficiente" não é a informação do contador
-        +-- a Sra. Adeyemi é quem consulta o contador
-        +-- esta aula não escreve um número de anos
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Objetivos de aprendizagem
 
@@ -1315,33 +860,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 12 — O segundo café precisa da mesma página
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12. Mapa, exemplo, EX066.
-
-```mermaid
-flowchart TD
-  R["Uma página assinada para a Copperleaf"] --> S{"Essa mesma página está afixada no segundo café?"}
-  S -->|Não| P["Afixe a mesma página. Não escreva uma versão local mais curta"]
-  S -->|Sim| K["Os dois locais seguem uma única página"]
-```
-
-Dois prédios não justificam dois conjuntos de regras.
-
-### Desenho lógico
-
-```text
-Copperleaf: dois cafés, doze funcionários, uma proprietária
-regras assinadas pela Sra. Adeyemi e afixadas em uma sala da equipe
-segundo café
-    |
-    +-- afixar em um local não é afixar no outro
-    +-- uma página "local" mais curta dividiria as decisões
-    +-- regras de alergias, escalas e inscrições seguem na mesma página
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1386,34 +904,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Um turno movimentado não restabelece o código compartilhado
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  B["Fila de sábado no segundo café"] --> C["Alguém pede o antigo código compartilhado do caixa"]
-  C --> R["Recuse. Os logins separados continuam valendo"]
-  R --> L["Bloqueie a tela ao se afastar, também neste turno"]
-```
-
-O hábito foi estabelecido para os momentos movimentados, não para os tranquilos.
-
-### Desenho lógico
-
-```text
-hábito já estabelecido
-    logins separados no caixa, não um código compartilhado
-    bloquear a tela ao se afastar
-sábado, segundo café, fila até a porta
-    |
-    +-- "só neste turno" é a exceção que o hábito proíbe
-    +-- um login emprestado atribui vendas à pessoa errada
-    +-- esta aula não fornece um novo login na hora
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 ### Objetivos de aprendizagem
 
@@ -1460,33 +950,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 14 — Uma folha perdida não é reconstruída de memória
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14. Mapa, exemplo, EX068.
-
-```mermaid
-flowchart TD
-  L["A folha de inscrições do balcão desapareceu"] --> K["Avise Kwame no mesmo dia e date o registro no caderno"]
-  K --> M{"A substituição vem da memória ou do arquivo do laboratório?"}
-  M -->|Sim| R["Não a digite. A lista de envio não é reconstruída"]
-  M -->|Não, o papel foi encontrado| F["Use o papel, não uma lembrança"]
-```
-
-Um relato de perda não é uma nova contagem completa de nomes.
-
-### Desenho lógico
-
-```text
-hábito: papéis perdidos são comunicados a Kwame no mesmo dia
-a folha do balcão sumiu
-    |
-    +-- a memória não é a folha
-    +-- o arquivo de doze linhas do laboratório não é o papel do café
-    +-- nenhum nome perdido é inventado para completar o envio
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1531,33 +994,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Um formulário do fornecedor não acrescenta um campo de telefone
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  F["O formulário do fornecedor acrescenta um campo de telefone"] --> S{"O telefone consta da página assinada?"}
-  S -->|Não| N["Não colete telefone"]
-  S -->|Somente após uma nova assinatura| W["Essa assinatura não é feita aqui"]
-```
-
-Um campo do fornecedor não é uma regra da Copperleaf.
-
-### Desenho lógico
-
-```text
-página assinada: primeiro nome e e-mail
-campos retirados anteriormente: telefone, aniversário, endereço residencial
-formulário do fornecedor: telefone, "para melhorar a entrega"
-    |
-    +-- o formulário não é a assinatura da Sra. Adeyemi
-    +-- nenhum número de telefone é escrito nesta aula
-    +-- uma regra posterior para telefone precisaria de uma pessoa e de um prazo
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Objetivos de aprendizagem
 
@@ -1604,35 +1040,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 16 — Um pagamento sem a fatura enviada por e-mail é uma lacuna
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  C["Verificação mensal: faturas lançadas comparadas com pagamentos"] --> G{"Este pagamento tem sua fatura enviada por e-mail?"}
-  G -->|Não| R["Registre a lacuna e a data. Avise a Sra. Adeyemi"]
-  G -->|Sim| M["Lance uma vez. Não pague uma segunda cópia"]
-  R --> X["Não invente uma fatura em papel. Não marque a verificação como sem pendências"]
-```
-
-Um documento ausente continua ausente até ser encontrado.
-
-### Desenho lógico
-
-```text
-verificação mensal já estabelecida
-    faturas lançadas, comparadas com pagamentos
-neste mês
-    um pagamento, sem a respectiva fatura enviada por e-mail
-        |
-        +-- a lacuna é registrada, com a data
-        +-- uma fatura em papel fabricada falsificaria o registro
-        +-- uma lacuna não é, por si só, prova de furto
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1677,34 +1084,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — A reunião explica a página
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17. Mapa, exemplo, EX071.
-
-```mermaid
-flowchart TD
-  M["A reunião da equipe, quando efetivamente realizada"] --> E["Ela explica a página assinada"]
-  E --> V{"A equipe vota pela volta de um campo?"}
-  V -->|Sim| R["Uma votação não é a assinatura da Sra. Adeyemi"]
-  V -->|Não| K["A explicação pode receber uma data. As regras continuam como foram assinadas"]
-```
-
-Explicar não é reescrever.
-
-### Desenho lógico
-
-```text
-quinta ação: explicar as regras à equipe
-continua em aberto até que o caderno registre a data dessa explicação
-quando a reunião acontecer
-    |
-    +-- a página é lida, não alterada por uma votação de mãos levantadas
-    +-- aniversários só voltam com nova assinatura, uma pessoa e um prazo
-    +-- esta aula não escreve a data de calendário da reunião
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 ### Objetivos de aprendizagem
 
@@ -1751,36 +1130,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 18 — Uma exclusão não cobre um novo local
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18. Mapa, exemplo, EX072.
-
-```mermaid
-flowchart TD
-  S["A planilha do notebook foi excluída depois de uma verificação"] --> U["Um pendrive é encontrado e não está no mapa"]
-  U --> A["Acrescente o pendrive como não verificado"]
-  A --> W["Não apague seu conteúdo nesta aula"]
-```
-
-Uma exclusão concluída tem um escopo. O pendrive está fora dele.
-
-### Desenho lógico
-
-```text
-mapa já utilizado
-    folha de papel, serviço do boletim, provedor do caixa
-    mensagens da equipe, pasta de faturas, pasta de alergias
-    planilha do notebook: verificada e depois excluída
-uma gaveta
-    pendrive não listado
-        |
-        +-- não se presume que um conteúdo desconhecido sejam fotos do evento
-        +-- o pendrive é acrescentado como não verificado
-        +-- apagar seu conteúdo não é a ação desta aula
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1826,35 +1175,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 19 — Uma nova folha sem data não é a lista de envio
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  D["A primeira ação marcou como concluído o formulário: caixa de consentimento e linha de data"] --> C["Cópias preenchidas estão no balcão"]
-  C --> B{"A linha de data está em branco?"}
-  B -->|Sim| H["Não envie a esses endereços. Não os una aos cinco do laboratório"]
-  B -->|Não| K["Uma folha datada pode ser avaliada conforme os campos assinados"]
-```
-
-Elaborar o formulário era a ação marcada como concluída. Usar cópias com campos em branco é outro ato.
-
-### Desenho lógico
-
-```text
-plano, primeira ação: folha curta com uma caixa de consentimento e a data
-uma pilha de cópias
-    nomes, e-mails, marcações
-    linha de data em branco em todas
-        |
-        +-- uma data em branco não é o consentimento que o modelo solicitava
-        +-- os cinco do laboratório continuam descrevendo o arquivo sintético
-        +-- telefone na margem continua sendo o Capítulo 15: não coletar
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1899,38 +1219,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-20"></a>
 
 ## Capítulo 20 — O que o caderno permite afirmar
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20. Mapa, exemplo, EX074.
-
-```mermaid
-flowchart TD
-  N["Nota de encerramento"] --> F["Repita somente o que os registros do caso e a execução publicada já contêm"]
-  F --> Q{"A frase acrescenta uma contagem, uma data ou um estado de conclusão?"}
-  Q -->|Sim| R["Rejeite a frase"]
-  Q -->|Não| K["A nota pode citar essa linha"]
-```
-
-Vinte aulas atendem a um mínimo de planejamento. Elas não encerram o livro.
-
-### Desenho lógico
-
-```text
-os registros do caso podem sustentar
-    Sra. Adeyemi responsável; Kwame cuida do dia a dia
-    uma página assinada para os dois cafés; segunda afixação ainda sem data
-    campos da folha; tranca das alergias; saída do laboratório; achados do primeiro mês
-    quatro ações do plano datadas; explicação à equipe ainda em aberto
-a nota não pode sustentar
-    uma nova saída de 4 ou 11; um ano inventado para triturar documentos
-    uma tranca tratada como a revisão semestral
-    uma foto bonita tratada como concordância com uso mais longo
-    um pendrive apagado; uma pilha sem datas usada para envio
-    "em conformidade", "certificado" ou "o curso está concluído"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Objetivos de aprendizagem
 

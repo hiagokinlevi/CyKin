@@ -40,61 +40,6 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 ## Capítulo 1 — Integridade e métodos de pesquisa avançada
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Por que a integridade é um método, não uma corte"]
-  N1["1.2 Alegações de segurança e alegações de capacidade"]
-  N2["1.3 Métodos que sobrevivem à revisão"]
-  N3["1.4 Autorização, dados e divulgação"]
-  N4["1.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Por que a integridade é um método, não uma corte"]
-  N1["1.2 Alegações de segurança e alegações de capacidade"]
-  N2["1.3 Métodos que sobrevivem à revisão"]
-  N3["1.4 Autorização, dados e divulgação"]
-  N4["1.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Por que a integridade é um método, não uma corte]
-    |
-    v
-[1.2 Alegações de segurança e alegações de capacidade]
-    |
-    v
-[1.3 Métodos que sobrevivem à revisão]
-    |
-    v
-[1.4 Autorização, dados e divulgação]
-    |
-    v
-[1.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que a pesquisa em segurança de IA é excepcionalmente exposta a erro de medição, vazamento de dados e dano de uso dual; (2) separar *alegações de segurança* de *alegações de capacidade* e enunciar cada uma de forma que possa ser falseada; (3) desenhar uma avaliação com um modelo de ameaça declarado, métricas pré-especificadas e um adversário adaptativo; (4) aplicar as regras de autorização, proteção de dados e divulgação responsável que vinculam a pesquisa de segurança sobre modelos e serviços de IA; e (5) relatar a incerteza com intervalos em vez de números isolados.
@@ -199,61 +144,6 @@ A integridade em segurança de IA é operacional: alegações falseáveis, dados
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança de IA e aprendizado de máquina: fronteira da pesquisa
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Quatro famílias clássicas de ataque"]
-  N1["2.2 Sistemas generativos e agênticos"]
-  N2["2.3 A governança como contexto da pesquisa"]
-  N3["2.4 Encontrar problemas em aberto"]
-  N4["2.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Quatro famílias clássicas de ataque"]
-  N1["2.2 Sistemas generativos e agênticos"]
-  N2["2.3 A governança como contexto da pesquisa"]
-  N3["2.4 Encontrar problemas em aberto"]
-  N4["2.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[2.1 Quatro famílias clássicas de ataque]
-    |
-    v
-[2.2 Sistemas generativos e agênticos]
-    |
-    v
-[2.3 A governança como contexto da pesquisa]
-    |
-    v
-[2.4 Encontrar problemas em aberto]
-    |
-    v
-[2.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -368,61 +258,6 @@ A fronteira foi moldada por uma década de ataques que avançaram mais rápido d
 
 ## Capítulo 3 — Proposta de contribuição original
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 O que conta como contribuição original"]
-  N1["3.2 Da lacuna às hipóteses"]
-  N2["3.3 Modelo de ameaça, métricas e linhas de base"]
-  N3["3.4 Risco, ética e uso dual na proposta"]
-  N4["3.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 O que conta como contribuição original"]
-  N1["3.2 Da lacuna às hipóteses"]
-  N2["3.3 Modelo de ameaça, métricas e linhas de base"]
-  N3["3.4 Risco, ética e uso dual na proposta"]
-  N4["3.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[3.1 O que conta como contribuição original]
-    |
-    v
-[3.2 Da lacuna às hipóteses]
-    |
-    v
-[3.3 Modelo de ameaça, métricas e linhas de base]
-    |
-    v
-[3.4 Risco, ética e uso dual na proposta]
-    |
-    v
-[3.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) transformar um enunciado de lacuna em perguntas de pesquisa e hipóteses falseáveis; (2) definir o tipo de contribuição (ataque, defesa, medição, teoria, sistema ou conjunto de dados); (3) especificar modelo de ameaça, métricas, linhas de base e critérios de sucesso antes da coleta de dados; (4) planejar controles de risco, ética e uso dual; e (5) escrever uma proposta que uma banca possa aprovar ou rejeitar com base em evidências.
@@ -526,61 +361,6 @@ Uma proposta merece aprovação quando nomeia um tipo de contribuição, congela
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Por que replicar primeiro"]
-  N1["4.2 Um protocolo de replicação"]
-  N2["4.3 Estudos-piloto"]
-  N3["4.4 Engenharia do arcabouço de avaliação"]
-  N4["4.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Por que replicar primeiro"]
-  N1["4.2 Um protocolo de replicação"]
-  N2["4.3 Estudos-piloto"]
-  N3["4.4 Engenharia do arcabouço de avaliação"]
-  N4["4.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[4.1 Por que replicar primeiro]
-    |
-    v
-[4.2 Um protocolo de replicação]
-    |
-    v
-[4.3 Estudos-piloto]
-    |
-    v
-[4.4 Engenharia do arcabouço de avaliação]
-    |
-    v
-[4.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -701,61 +481,6 @@ A replicação diz o que os trabalhos anteriores realmente fazem nas suas mãos;
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 Executar um estudo pré-registrado"]
-  N1["5.2 Ataque adaptativo sob um orçamento justo"]
-  N2["5.3 Análise"]
-  N3["5.4 Validação independente"]
-  N4["5.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Executar um estudo pré-registrado"]
-  N1["5.2 Ataque adaptativo sob um orçamento justo"]
-  N2["5.3 Análise"]
-  N3["5.4 Validação independente"]
-  N4["5.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[5.1 Executar um estudo pré-registrado]
-    |
-    v
-[5.2 Ataque adaptativo sob um orçamento justo]
-    |
-    v
-[5.3 Análise]
-    |
-    v
-[5.4 Validação independente]
-    |
-    v
-[5.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) executar um estudo principal pré-registrado e manter um registro de desvios; (2) avaliar uma defesa sob ataque adaptativo com um orçamento justo; (3) analisar os resultados com comparações pareadas, intervalos e correção para testes múltiplos; (4) encomendar uma validação independente (red team, segunda implementação ou replicação externa); e (5) relatar o que as evidências sustentam e o que não sustentam.
@@ -849,61 +574,6 @@ Um estudo principal ganha confiança por meio de um protocolo congelado, um adve
 
 ## Capítulo 6 — Crítica de pares e revisão
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Como revisar um artigo de segurança de IA"]
-  N1["6.2 Escrever uma crítica que ajuda"]
-  N2["6.3 Receber críticas"]
-  N3["6.4 Revisar as alegações para caberem nas evidências"]
-  N4["6.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Como revisar um artigo de segurança de IA"]
-  N1["6.2 Escrever uma crítica que ajuda"]
-  N2["6.3 Receber críticas"]
-  N3["6.4 Revisar as alegações para caberem nas evidências"]
-  N4["6.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[6.1 Como revisar um artigo de segurança de IA]
-    |
-    v
-[6.2 Escrever uma crítica que ajuda]
-    |
-    v
-[6.3 Receber críticas]
-    |
-    v
-[6.4 Revisar as alegações para caberem nas evidências]
-    |
-    v
-[6.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) revisar um artigo de segurança de IA com uma lista de verificação estruturada; (2) escrever uma crítica específica, acionável e justa; (3) receber críticas e separar objeções válidas de mal-entendidos; (4) revisar alegações, análises e texto para que as evidências e as palavras coincidam; e (5) escrever uma carta de resposta.
@@ -962,61 +632,6 @@ A crítica é um instrumento de validade. Revisar o trabalho dos outros ensina q
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 A tese como argumento"]
-  N1["7.2 Ameaças à validade"]
-  N2["7.3 O arquivo de reprodutibilidade"]
-  N3["7.4 Decisões de publicação"]
-  N4["7.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 A tese como argumento"]
-  N1["7.2 Ameaças à validade"]
-  N2["7.3 O arquivo de reprodutibilidade"]
-  N3["7.4 Decisões de publicação"]
-  N4["7.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[7.1 A tese como argumento]
-    |
-    v
-[7.2 Ameaças à validade]
-    |
-    v
-[7.3 O arquivo de reprodutibilidade]
-    |
-    v
-[7.4 Decisões de publicação]
-    |
-    v
-[7.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1120,61 +735,6 @@ A tese argumenta; o arquivo prova. Uma tabela de validade clara e um arquivo que
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["8.1 A apresentação da defesa"]
-  N1["8.2 Antecipar perguntas"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 Impacto na governança e na prática"]
-  N4["8.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 A apresentação da defesa"]
-  N1["8.2 Antecipar perguntas"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 Impacto na governança e na prática"]
-  N4["8.6 Atividades práticas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[8.1 A apresentação da defesa]
-    |
-    v
-[8.2 Antecipar perguntas]
-    |
-    v
-[8.3 Plano de publicação]
-    |
-    v
-[8.4 Impacto na governança e na prática]
-    |
-    v
-[8.6 Atividades práticas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

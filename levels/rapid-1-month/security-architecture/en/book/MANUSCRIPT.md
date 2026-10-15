@@ -39,66 +39,6 @@ Saltzer and Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.11
 
 ## Chapter 1 — Security architecture and engineering: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 What architecture means"]
-  N2["1.2 Why it matters to a small organisation"]
-  N3["1.3 Five principles"]
-  N4["1.4 Applying them at Saltmarsh"]
-  N5["1.5 Recording a decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 What architecture means"]
-  N2["1.2 Why it matters to a small organisation"]
-  N3["1.3 Five principles"]
-  N4["1.4 Applying them at Saltmarsh"]
-  N5["1.5 Recording a decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 What architecture means]
-    |
-    v
-[1.2 Why it matters to a small organisation]
-    |
-    v
-[1.3 Five principles]
-    |
-    v
-[1.4 Applying them at Saltmarsh]
-    |
-    v
-[1.5 Recording a decision]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain security architecture in plain terms; (2) apply five design principles to a small credit union; (3) record one decision properly.
@@ -163,66 +103,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Setting scope"]
-  N2["2.2 Written permission"]
-  N3["2.3 Safe handling of member data"]
-  N4["2.4 Stop conditions"]
-  N5["2.5 A finding under scope"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Setting scope"]
-  N2["2.2 Written permission"]
-  N3["2.3 Safe handling of member data"]
-  N4["2.4 Stop conditions"]
-  N5["2.5 A finding under scope"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Setting scope]
-    |
-    v
-[2.2 Written permission]
-    |
-    v
-[2.3 Safe handling of member data]
-    |
-    v
-[2.4 Stop conditions]
-    |
-    v
-[2.5 A finding under scope]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) set the scope of a small security review; (2) obtain written permission; (3) work safely with member data.
@@ -286,71 +166,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security architecture and engineering: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Mapping systems"]
-  N2["3.2 Drawing data flows"]
-  N3["3.3 Suppliers and dependencies"]
-  N4["Lab — Counting services that depend on each supplier"]
-  N5["3.4 Single points of failure"]
-  N6["3.5 Using the map"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Mapping systems"]
-  N2["3.2 Drawing data flows"]
-  N3["3.3 Suppliers and dependencies"]
-  N4["Lab — Counting services that depend on each supplier"]
-  N5["3.4 Single points of failure"]
-  N6["3.5 Using the map"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Mapping systems]
-    |
-    v
-[3.2 Drawing data flows]
-    |
-    v
-[3.3 Suppliers and dependencies]
-    |
-    v
-[Lab — Counting services that depend on each supplier]
-    |
-    v
-[3.4 Single points of failure]
-    |
-    v
-[3.5 Using the map]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -440,71 +255,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Security architecture and engineering: guided lab and applied synthesis
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The guided lab"]
-  N2["Lab — Checking loan system settings against a baseli"]
-  N3["4.2 Reading the results"]
-  N4["4.3 Prioritising actions"]
-  N5["4.4 Verifying the fix"]
-  N6["4.5 Synthesis and plan"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The guided lab"]
-  N2["Lab — Checking loan system settings against a baseli"]
-  N3["4.2 Reading the results"]
-  N4["4.3 Prioritising actions"]
-  N5["4.4 Verifying the fix"]
-  N6["4.5 Synthesis and plan"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The guided lab]
-    |
-    v
-[Lab — Checking loan system settings against a baseli]
-    |
-    v
-[4.2 Reading the results]
-    |
-    v
-[4.3 Prioritising actions]
-    |
-    v
-[4.4 Verifying the fix]
-    |
-    v
-[4.5 Synthesis and plan]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) check a system's settings against a baseline in a guided lab; (2) turn results into prioritised actions; (3) synthesise the month's learning into a short plan.
@@ -590,36 +340,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — A recorded email choice is not a mailbox already issued
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["Decision record selects individual accounts"] --> B["Manager approves the six-month plan"]
-  B --> C{"Does the file show mailboxes issued?"}
-  C -->|No| D["Keep the choice and the plan line"]
-  C -->|Yes| E["That issuance would be its own record"]
-```
-
-A written choice names the work. It does not open the mailboxes.
-
-### Logical drawing
-
-```text
-chapter 1 record
-    choice: individual accounts with shared inbox access
-    reason: member queries traceable to the person who answered
-loan baseline, both exports
-    shared_accounts=0
-        |
-        +-- that key is the loan system, not the branch email
-        +-- the plan still lists the email change
-        +-- no mailbox list is in the file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -662,35 +382,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Seven of seven is the second loan export
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  A["Before export: 4 of 7"] --> B["After export: 7 of 7"]
-  B --> C{"Does 7 of 7 cover every Saltmarsh system?"}
-  C -->|No| D["Keep both loan lines"]
-  C -->|Yes| E["That claim would need a different export"]
-```
-
-The second line closes the three loan gaps. It does not survey the credit union.
-
-### Logical drawing
-
-```text
-published loan lines
-    before: 4/7 settings meet baseline
-    after: 7/7 settings meet baseline; fails []
-not measured by those lines
-    branch email
-    core banking
-    card processor
-    phone system
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -735,37 +426,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The before line still says 480
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  A["Before fail: session_timeout_min=480"] --> B["Prose reads 480 minutes as eight hours"]
-  B --> C{"May the before line be rewritten as 30?"}
-  C -->|No| D["Keep 480 on the first export"]
-  C -->|Yes| E["That would erase the gap"]
-```
-
-Eight hours is a reading of the first export. It is not a new number to print.
-
-### Logical drawing
-
-```text
-before fail token
-    session_timeout_min=480
-prose
-    eight hours, against a thirty-minute rule
-different control
-    branch PCs lock after five minutes
-        |
-        +-- the five-minute lock is why timeout ranked third
-        +-- it is not the loan session value
-        +-- the after export may say 30; the before token stays 480
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -808,38 +468,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Five administrators describe the first export
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  A["Before: admin_count=5"] --> B["Priority: any of five could export documents"]
-  B --> C{"Does the after export still say five?"}
-  C -->|No| D["Keep five on the before line only"]
-  C -->|Yes| E["That would contradict the second run"]
-```
-
-The priority sentence describes the first export. The second export is the check.
-
-### Logical drawing
-
-```text
-before fail
-    admin_count=5
-why it ranked first
-    any of those accounts could change settings or export loan documents
-after
-    the second export meets the two-person baseline
-    fails []
-        |
-        +-- both outputs stay in the review folder
-        +-- five is not the after count
-        +-- no person is named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -884,36 +512,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — The hour fix is not link expiry
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  A["Public sharing closed within the hour"] --> B["Before export: public_links off"]
-  B --> C{"Does that hour also set expiry?"}
-  C -->|No| D["Expiry is the separate None token"]
-  C -->|Yes| E["The before line would not show None"]
-```
-
-Two link settings. The hour addressed one of them.
-
-### Logical drawing
-
-```text
-stop-condition finding
-    folder viewable by anyone with the link
-    vendor changes that setting within the hour
-    logs: no access by unknown parties
-before export, already
-    public_links passes
-    upload_link_expiry_days=None fails
-after export
-    expiry value 14, which meets the rule of 14 days or fewer
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -956,40 +554,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — The phone is on the list and off the print
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  A["Written list includes the phone"] --> B["Dependency print has no phone row"]
-  B --> C{"Add a phone row this lesson?"}
-  C -->|No| D["Keep the published six rows"]
-  C -->|Yes| E["That would be a new run"]
-```
-
-Two inventories. This lesson edits neither.
-
-### Logical drawing
-
-```text
-chapter 3 written list includes
-    phone system
-published dependency rows
-    identity 6
-    bureau 4
-    cloud email 2
-    internet 2
-    card processor 1
-    loan vendor 1
-        |
-        +-- no phone row
-        +-- staff intranet and member payments are inside the script
-        +-- lab_deps.py is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1034,40 +598,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Two providers are not two internet rows
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["Prose: two internet providers"] --> B["Print: one internet row, 2 services"]
-  B --> C{"Split the row into two providers?"}
-  C -->|No| D["Keep internet 2 service(s)"]
-  C -->|Yes| E["The script has one internet key"]
-```
-
-The row counts services that list internet. It does not name providers.
-
-### Logical drawing
-
-```text
-prose
-    two internet providers
-script key
-    internet
-services that list it
-    online banking
-    branch PCs
-print
-    internet       2 service(s)
-        |
-        +-- one row
-        +-- providers are not named
-        +-- lab_deps.py is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1110,38 +640,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Card services stays off the identity count
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  A["Prose: identity is used by almost every system"] --> B["Print: identity 6 service(s)"]
-  B --> C{"Add identity to card services?"}
-  C -->|No| D["Card services stays processor and bureau"]
-  C -->|Yes| E["The six would become a new run"]
-```
-
-Almost every system is not the integer 6 rewritten as 7.
-
-### Logical drawing
-
-```text
-identity is listed by
-    online banking, loan system, email, branch PCs,
-    staff intranet, member payments
-card services lists
-    card processor, bureau
-print
-    identity       6 service(s)
-        |
-        +-- card services is the laboratory exception
-        +-- do not add identity to that row
-        +-- lab_deps.py is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1186,36 +684,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Questions before signing are not a new lab row
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["Budgeting app would add a supplier"] --> B["Board asks security questions"]
-  B --> C{"Is there a signature or a new print row?"}
-  C -->|No| D["Keep the questions and the old print"]
-  C -->|Yes| E["The file does not show either"]
-```
-
-The map shaped a decision before money was spent. It did not record a signature.
-
-### Logical drawing
-
-```text
-overview, used before a purchase
-    new supplier would hold transaction data
-    another dependency on the identity provider
-board
-    asks vendor security questions before signing
-not in the file
-    a signature
-    a vendor name
-    a new services-dictionary row
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1258,36 +726,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — An agreed break-glass account is not this month's exercise
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["Notes agree an offline break-glass account"] --> B["Six-month plan still lists a tested procedure"]
-  B --> C{"Is a dated sign-in exercise in the file?"}
-  C -->|No| D["Keep the agreement and the plan line"]
-  C -->|Yes| E["That date would have to be written"]
-```
-
-Agreement is not a dated exercise. The credential is not written here.
-
-### Logical drawing
-
-```text
-chapter 3 agreement
-    offline break-glass administrator account
-    a sign-in procedure if the identity provider fails
-chapter 4 plan, still listed
-    tested break-glass procedure
-not in the file
-    a date
-    a password
-    a result of an exercise this month
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1332,36 +770,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — A calendar owner is not next quarter's run
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  A["Two loan exports are in the folder"] --> B["Leah's name owns the quarterly check"]
-  B --> C{"Is the next quarter in the file?"}
-  C -->|No| D["Keep the two exports and the open quarter"]
-  C -->|Yes| E["That quarter would be a new export"]
-```
-
-Ownership of the calendar is not a third print.
-
-### Logical drawing
-
-```text
-folder
-    before export
-    after export
-calendar
-    quarterly loan check
-    owner: Leah
-not in the file
-    the next quarter's export
-    a third pair of numbers
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1404,38 +812,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Core banking stays outside the written scope
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["Loan payment crosses into core banking"] --> B["Written scope excludes core banking"]
-  B --> C{"Does the crossing include it?"}
-  C -->|No| D["Label the crossing and keep the exclusion"]
-  C -->|Yes| E["That would widen the approval"]
-```
-
-A flow can name a system the approval leaves out.
-
-### Logical drawing
-
-```text
-in scope
-    loan system
-    staff PCs that use it
-    document upload
-out of scope
-    core banking at the service bureau
-    card processor
-allowed
-    read settings, interview staff
-not allowed
-    attacks, member files, investigating alone
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1480,35 +856,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Vendor logs are not every access
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  A["Vendor: no access by unknown parties"] --> B["Limit: logs may not show all access"]
-  B --> C{"May the note say nobody could open a file?"}
-  C -->|No| D["Keep the vendor sentence and the limit"]
-  C -->|Yes| E["That claim is wider than the log"]
-```
-
-The report stands. Completeness does not.
-
-### Logical drawing
-
-```text
-recorded vendor result
-    no access by unknown parties
-recorded limit
-    vendor logs may not show all access
-not allowed
-    a member name
-    an invented access
-    "the log saw everything"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1551,35 +898,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Notes wait for an acceptance that is not dated
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  A["Notes will be deleted after acceptance"] --> B{"Is acceptance dated?"}
-  B -->|No| C["The notes are not shown as gone"]
-  B -->|Yes| D["That date is not in the book"]
-```
-
-A future deletion is not a deletion already done.
-
-### Logical drawing
-
-```text
-handling rules already used
-    vendor test application with fictitious details
-    screenshots checked for member information
-retention rule
-    restricted folder
-    delete after the review is accepted
-not in the file
-    an acceptance date
-    a statement that the notes are already gone
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1624,37 +942,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Six thousand members are not seven services
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  A["Six thousand members, two branches"] --> B["Dependency script lists seven services"]
-  B --> C{"Print 6000 services?"}
-  C -->|No| D["Keep the member figure and the service print"]
-  C -->|Yes| E["Those units are different"]
-```
-
-Members, branches and services answer different questions.
-
-### Logical drawing
-
-```text
-credit union, as introduced
-    six thousand members
-    two branches and a website
-dependency script
-    seven service names
-    printed supplier rows, not a member count
-        |
-        +-- 6000 is not a service total
-        +-- two branches are not a third site
-        +-- lab_deps.py is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1697,40 +984,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the architecture note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Quote the prints and the open items"]
-  F --> Q{"Does the sentence close an open item or replace a print?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They do not close Saltmarsh's open items.
-
-### Logical drawing
-
-```text
-may stay
-    before: 4/7 with 480, expiry None, admin_count 5
-    after: 7/7 and an empty fail list
-    identity 6; bureau 4; one internet row of 2
-    phone on the written list, not on the print
-    questions asked, app not signed
-    break-glass agreed, exercise not dated
-must not be added
-    before line rewritten as 7/7
-    phone row or identity 7
-    a signature or a named vendor
-    a dated break-glass exercise
-    a claim that Saltmarsh is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

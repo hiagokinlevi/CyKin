@@ -91,56 +91,6 @@ The [worked results](#worked-results) contain EX001–EX100. A [glossary](#gloss
 
 ## Chapter 01 — Calculus I
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["1.1 Why an engineer of response systems needs rates"]
-  N2["1.2 Derivative, rate and sensitivity"]
-  N3["1.4 Where a derivative misleads"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["1.1 Why an engineer of response systems needs rates"]
-  N2["1.2 Derivative, rate and sensitivity"]
-  N3["1.4 Where a derivative misleads"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[1.1 Why an engineer of response systems needs rates]
-    |
-    v
-[1.2 Derivative, rate and sensitivity]
-    |
-    v
-[1.4 Where a derivative misleads]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) describe an incident queue as functions of time with explicit units; (2) use the derivative of the backlog to tell whether a response service is gaining or losing ground; (3) compute the sensitivity of a recovery estimate to its inputs; and (4) say where a smooth derivative misrepresents a queue of discrete cases. It prepares Chapter 6 (accumulation), Chapter 32 (reliability) and Chapter 36 (pipeline capacity).
@@ -240,61 +190,6 @@ Continue to the next authored lesson.
 
 ## Chapter 02 — Discrete mathematics
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX003.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["2.1 States, transitions and relations"]
-  N2["2.2 Invariants and logic"]
-  N3["2.3 Checking by search"]
-  N4["2.6 Common errors"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX003"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["2.1 States, transitions and relations"]
-  N2["2.2 Invariants and logic"]
-  N3["2.3 Checking by search"]
-  N4["2.6 Common errors"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX003"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[2.1 States, transitions and relations]
-    |
-    v
-[2.2 Invariants and logic]
-    |
-    v
-[2.3 Checking by search]
-    |
-    v
-[2.6 Common errors]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX003]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) represent case states and permitted actions as a directed graph and a relation; (2) write invariants in propositional and first-order logic; (3) search a transition graph for paths that violate an invariant; and (4) express separation of duties as a set constraint. It prepares Chapter 25 (intake and authorisation design) and Chapter 31 (workflow orchestration).
@@ -391,56 +286,6 @@ Continue to the next authored lesson.
 
 ## Chapter 03 — Physics for computing
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["3.1 Energy and heat set the budget"]
-  N2["3.2 Storage media"]
-  N3["3.3 Signals, time and measurement error"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["3.1 Energy and heat set the budget"]
-  N2["3.2 Storage media"]
-  N3["3.3 Signals, time and measurement error"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[3.1 Energy and heat set the budget]
-    |
-    v
-[3.2 Storage media]
-    |
-    v
-[3.3 Signals, time and measurement error]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) relate power, heat and throttling to lost telemetry; (2) explain how storage media fail and why that matters for evidence; (3) reason about clock drift and signal timing as measurement error; and (4) turn a physical failure chain into measurable checks. It prepares Chapter 8 (architecture), Chapter 11 (time sources) and Chapter 32 (reliability).
@@ -491,56 +336,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 04 — Programming I
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX007.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["4.1 Programs as evidence handlers"]
-  N2["4.2 Variables, functions and validation"]
-  N3["4.4 Tests that matter"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX007"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["4.1 Programs as evidence handlers"]
-  N2["4.2 Variables, functions and validation"]
-  N3["4.4 Tests that matter"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[4.1 Programs as evidence handlers]
-    |
-    v
-[4.2 Variables, functions and validation]
-    |
-    v
-[4.4 Tests that matter]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes and connection
 
@@ -641,56 +436,6 @@ Continue to the next authored lesson.
 
 ## Chapter 05 — Engineering communication
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX009.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["5.1 Requirements as testable statements"]
-  N2["5.2 Traceability"]
-  N3["5.3 Diagrams and audience"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX009"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["5.1 Requirements as testable statements"]
-  N2["5.2 Traceability"]
-  N3["5.3 Diagrams and audience"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX009"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[5.1 Requirements as testable statements]
-    |
-    v
-[5.2 Traceability]
-    |
-    v
-[5.3 Diagrams and audience]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) rewrite vague claims as testable requirement statements; (2) maintain a traceability table from need to test; (3) draw a context diagram that names owners and trust boundaries; and (4) write risk notes that state assumptions and residual risk for the right audience. It prepares Chapters 16, 21 and 48.
@@ -753,61 +498,6 @@ Continue to the next authored lesson.
 
 ## Chapter 06 — Calculus II
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["6.1 Accumulation"]
-  N2["6.2 Numerical integration"]
-  N3["6.3 Recovery trajectories and model fit"]
-  N4["6.4 Boundary conditions"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["6.1 Accumulation"]
-  N2["6.2 Numerical integration"]
-  N3["6.3 Recovery trajectories and model fit"]
-  N4["6.4 Boundary conditions"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[6.1 Accumulation]
-    |
-    v
-[6.2 Numerical integration]
-    |
-    v
-[6.3 Recovery trajectories and model fit]
-    |
-    v
-[6.4 Boundary conditions]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) compute accumulated backlog and accumulated waiting as integrals; (2) fit a simple recovery model to observations and judge the fit; (3) state boundary conditions that make a model valid; and (4) explain how integral-based measures change capacity decisions. It builds on Chapter 1 and prepares Chapters 29, 32 and 36.
@@ -868,61 +558,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 07 — Probability and statistics
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX013.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["7.1 Distributions and conditional probability"]
-  N2["7.2 Intervals"]
-  N3["7.3 Bias and confounding"]
-  N4["7.5 Significance and its misuse"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX013"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["7.1 Distributions and conditional probability"]
-  N2["7.2 Intervals"]
-  N3["7.3 Bias and confounding"]
-  N4["7.5 Significance and its misuse"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[7.1 Distributions and conditional probability]
-    |
-    v
-[7.2 Intervals]
-    |
-    v
-[7.3 Bias and confounding]
-    |
-    v
-[7.5 Significance and its misuse]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes and connection
 
@@ -1025,61 +660,6 @@ Continue to the next authored lesson.
 
 ## Chapter 08 — Computer architecture
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["8.1 Where state lives"]
-  N2["8.2 Isolation boundaries"]
-  N3["8.3 Shared storage and multi-tenancy"]
-  N4["8.5 Costs"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["8.1 Where state lives"]
-  N2["8.2 Isolation boundaries"]
-  N3["8.3 Shared storage and multi-tenancy"]
-  N4["8.5 Costs"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[8.1 Where state lives]
-    |
-    v
-[8.2 Isolation boundaries]
-    |
-    v
-[8.3 Shared storage and multi-tenancy]
-    |
-    v
-[8.5 Costs]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) locate evidence-bearing state in processors, memory, firmware, storage and virtualisation layers; (2) order collection by volatility and cost; (3) explain how isolation boundaries affect what a responder can see and change; and (4) compare collection options for a virtualised host. It builds on Chapter 3 and prepares Chapters 12, 28 and 34.
@@ -1145,61 +725,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 09 — Programming II
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX018.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["9.1 Structured data and modules"]
-  N2["9.2 Exceptions as data"]
-  N3["9.3 Provenance"]
-  N4["9.4 Property-based testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX018"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["9.1 Structured data and modules"]
-  N2["9.2 Exceptions as data"]
-  N3["9.3 Provenance"]
-  N4["9.4 Property-based testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX018"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[9.1 Structured data and modules]
-    |
-    v
-[9.2 Exceptions as data]
-    |
-    v
-[9.3 Provenance]
-    |
-    v
-[9.4 Property-based testing]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX018]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes and connection
 
@@ -1274,61 +799,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX020.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["10.1 Duties"]
-  N2["10.2 Safety gates and stop criteria"]
-  N3["10.3 Authorisation is not technical capability"]
-  N4["10.5 Consent and testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX020"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["10.1 Duties"]
-  N2["10.2 Safety gates and stop criteria"]
-  N3["10.3 Authorisation is not technical capability"]
-  N4["10.5 Consent and testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX020"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[10.1 Duties]
-    |
-    v
-[10.2 Safety gates and stop criteria]
-    |
-    v
-[10.3 Authorisation is not technical capability]
-    |
-    v
-[10.5 Consent and testing]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX020]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) identify the duties an engineer of response systems holds toward users, data subjects and the public; (2) build authorisation, privacy and service safety into designs and tests; (3) define stop criteria and escalation paths before an intervention; and (4) recognise when a technically correct action is not yours to take. It prepares Chapters 25, 27, 33 and 43.
@@ -1385,56 +855,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX022.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["11.1 Paths and observation points"]
-  N2["11.2 What protocols reveal"]
-  N3["11.3 Loss and sampling"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX022"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["11.1 Paths and observation points"]
-  N2["11.2 What protocols reveal"]
-  N3["11.3 Loss and sampling"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[11.1 Paths and observation points]
-    |
-    v
-[11.2 What protocols reveal]
-    |
-    v
-[11.3 Loss and sampling]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes and connection
 
@@ -1499,56 +919,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — Operating systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX023.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["12.1 Host state"]
-  N2["12.3 Observation points and agent design"]
-  N3["12.4 Baselines"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX023"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["12.1 Host state"]
-  N2["12.3 Observation points and agent design"]
-  N3["12.4 Baselines"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX023"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[12.1 Host state]
-    |
-    v
-[12.3 Observation points and agent design]
-    |
-    v
-[12.4 Baselines]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX023]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) model host state as processes, services, accounts, files, permissions and scheduled tasks; (2) explain what operating-system logs record and what they miss; (3) specify safe observation points for a response agent; and (4) distinguish expected from anomalous behaviour with a documented baseline. It builds on Chapter 8 and prepares Chapters 28 and 34.
@@ -1603,61 +973,6 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["13.1 Transactions, consistency and logs"]
-  N2["13.2 Backups, RPO and RTO"]
-  N3["13.3 Restoration order"]
-  N4["13.5 Integrity checks before reconnecting"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["13.1 Transactions, consistency and logs"]
-  N2["13.2 Backups, RPO and RTO"]
-  N3["13.3 Restoration order"]
-  N4["13.5 Integrity checks before reconnecting"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[13.1 Transactions, consistency and logs]
-    |
-    v
-[13.2 Backups, RPO and RTO]
-    |
-    v
-[13.3 Restoration order]
-    |
-    v
-[13.5 Integrity checks before reconnecting]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 
 ### Learning outcomes and connection
 
@@ -1754,61 +1069,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — Software engineering
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["14.1 Interfaces and versions"]
-  N2["14.2 Tests that protect evidence"]
-  N3["14.3 Review, deployment and rollback"]
-  N4["14.5 Release plan"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["14.1 Interfaces and versions"]
-  N2["14.2 Tests that protect evidence"]
-  N3["14.3 Review, deployment and rollback"]
-  N4["14.5 Release plan"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[14.1 Interfaces and versions]
-    |
-    v
-[14.2 Tests that protect evidence]
-    |
-    v
-[14.3 Review, deployment and rollback]
-    |
-    v
-[14.5 Release plan]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) define interfaces and versioning for response tooling; (2) write acceptance and regression tests that detect evidence loss; (3) design review, deployment and rollback so a change cannot silently erase evidence or bypass controls; and (4) analyse a regression to its root cause. It builds on Chapters 4 and 9 and prepares Chapters 24, 37 and 39.
@@ -1875,61 +1135,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — Security fundamentals
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX029.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["15.1 Assets, adversaries and properties"]
-  N2["15.2 Controls as claims"]
-  N3["15.3 Assurance and evidence"]
-  N4["15.5 Residual risk"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX029"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["15.1 Assets, adversaries and properties"]
-  N2["15.2 Controls as claims"]
-  N3["15.3 Assurance and evidence"]
-  N4["15.5 Residual risk"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX029"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[15.1 Assets, adversaries and properties]
-    |
-    v
-[15.2 Controls as claims]
-    |
-    v
-[15.3 Assurance and evidence]
-    |
-    v
-[15.5 Residual risk]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Learning outcomes and connection
 
@@ -1999,61 +1204,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — Systems engineering
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["16.1 The system and its lifecycle"]
-  N2["16.2 Stakeholders and needs"]
-  N3["16.3 Architecture and interfaces"]
-  N4["16.5 Verification and operations planning"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["16.1 The system and its lifecycle"]
-  N2["16.2 Stakeholders and needs"]
-  N3["16.3 Architecture and interfaces"]
-  N4["16.5 Verification and operations planning"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[16.1 The system and its lifecycle]
-    |
-    v
-[16.2 Stakeholders and needs]
-    |
-    v
-[16.3 Architecture and interfaces]
-    |
-    v
-[16.5 Verification and operations planning]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) identify stakeholders and their needs for a response platform; (2) decompose needs into requirements, architecture and interfaces; (3) build a requirements trace from need to acceptance test; and (4) plan verification and operations as lifecycle stages rather than afterthoughts. It builds on Chapter 5 and prepares Chapters 20, 21, 44 and 48.
@@ -2121,56 +1271,6 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["17.1 Response as feedback"]
-  N2["17.2 Delay, noise and oscillation"]
-  N3["17.3 Stabilising techniques"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["17.1 Response as feedback"]
-  N2["17.2 Delay, noise and oscillation"]
-  N3["17.3 Stabilising techniques"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[17.1 Response as feedback]
-    |
-    v
-[17.2 Delay, noise and oscillation]
-    |
-    v
-[17.3 Stabilising techniques]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Learning outcomes and connection
 
@@ -2260,56 +1360,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Security architecture
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX035.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["18.1 Trust zones and boundaries"]
-  N2["18.2 Planes"]
-  N3["18.3 Logging and recovery paths"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX035"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["18.1 Trust zones and boundaries"]
-  N2["18.2 Planes"]
-  N3["18.3 Logging and recovery paths"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX035"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[18.1 Trust zones and boundaries]
-    |
-    v
-[18.2 Planes]
-    |
-    v
-[18.3 Logging and recovery paths]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX035]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) draw trust zones and boundaries for a response system; (2) separate the control plane, data plane and evidence plane; (3) place logging and recovery paths so that compromise of one zone does not silently corrupt evidence or disable response; and (4) choose between architectures under explicit threat and availability constraints. It builds on Chapter 15 and prepares Chapters 23, 26 and 44.
@@ -2373,61 +1423,6 @@ Continue to the next authored lesson.
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX037.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["19.1 Identity"]
-  N2["19.2 Hashes, MACs and signatures"]
-  N3["19.3 Hash chains and anchors"]
-  N4["19.5 Key lifecycle"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX037"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["19.1 Identity"]
-  N2["19.2 Hashes, MACs and signatures"]
-  N3["19.3 Hash chains and anchors"]
-  N4["19.5 Key lifecycle"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[19.1 Identity]
-    |
-    v
-[19.2 Hashes, MACs and signatures]
-    |
-    v
-[19.3 Hash chains and anchors]
-    |
-    v
-[19.5 Key lifecycle]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Learning outcomes and connection
 
@@ -2526,61 +1521,6 @@ Continue to the next authored lesson.
 
 ## Chapter 20 — Incident response engineering context and constraints
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["20.1 The engineering view"]
-  N2["20.2 Mission and stakeholders"]
-  N3["20.3 Constraints"]
-  N4["20.5 How this book differs"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["20.1 The engineering view"]
-  N2["20.2 Mission and stakeholders"]
-  N3["20.3 Constraints"]
-  N4["20.5 How this book differs"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[20.1 The engineering view]
-    |
-    v
-[20.2 Mission and stakeholders]
-    |
-    v
-[20.3 Constraints]
-    |
-    v
-[20.5 How this book differs]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) frame incident response as a system design problem with a mission, stakeholders and constraints; (2) draw a context diagram for a response capability; (3) build a prioritised constraint register covering authority, time, evidence, safety, regulation and resources; and (4) explain how this engineering view differs from coordination-only or research-only views. It integrates Chapters 1–19 and opens the field core (Chapters 21–42).
@@ -2657,56 +1597,6 @@ Continue to the next authored lesson.
 
 ## Chapter 21 — Response system requirements and service objectives
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Lesson map
-
-Lesson 21 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["21.1 Functional requirements and service objectives"]
-  N2["21.2 Objectives for response systems"]
-  N3["21.3 Conflicts"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["21.1 Functional requirements and service objectives"]
-  N2["21.2 Objectives for response systems"]
-  N3["21.3 Conflicts"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[21.1 Functional requirements and service objectives]
-    |
-    v
-[21.2 Objectives for response systems]
-    |
-    v
-[21.3 Conflicts]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) convert broad response aims into functional requirements and measurable service objectives; (2) define latency, integrity and auditability objectives with measurement methods; (3) detect conflicting objectives and record the decision that resolves them; and (4) write acceptance criteria that a test can pass or fail. It builds on Chapters 5, 16 and 20 and prepares Chapters 29, 44 and 48.
@@ -2773,61 +1663,6 @@ Continue to the next authored lesson.
 
 ## Chapter 22 — Incident data, telemetry and provenance models
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Lesson map
-
-Lesson 22 published. Map, example, EX043.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["22.1 Schema elements"]
-  N2["22.2 Entity resolution"]
-  N3["22.3 Lineage"]
-  N4["22.4 Retention and integrity"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX043"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["22.1 Schema elements"]
-  N2["22.2 Entity resolution"]
-  N3["22.3 Lineage"]
-  N4["22.4 Retention and integrity"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[22.1 Schema elements]
-    |
-    v
-[22.2 Entity resolution]
-    |
-    v
-[22.3 Lineage]
-    |
-    v
-[22.4 Retention and integrity]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) design an event schema with entity keys, multiple timestamps and lineage; (2) write normalisation rules for mismatched identifiers across identity, host and cloud sources; (3) trace a case decision back to the raw records that supported it; and (4) set retention and integrity rules per data class. It builds on Chapters 9, 11 and 13 and prepares Chapters 24, 28 and 34.
@@ -2891,61 +1726,6 @@ Continue to the next authored lesson.
 <a id="ch-23"></a>
 
 ## Chapter 23 — Threat and failure analysis for response systems
-
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Lesson map
-
-Lesson 23 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["23.1 The response system is a target"]
-  N2["23.2 Fault trees"]
-  N3["23.3 Common cause"]
-  N4["23.5 Comparing mitigations"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["23.1 The response system is a target"]
-  N2["23.2 Fault trees"]
-  N3["23.3 Common cause"]
-  N4["23.5 Comparing mitigations"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[23.1 The response system is a target]
-    |
-    v
-[23.2 Fault trees]
-    |
-    v
-[23.3 Common cause]
-    |
-    v
-[23.5 Comparing mitigations]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
 
 ### Learning outcomes and connection
 
@@ -3059,61 +1839,6 @@ Continue to the next authored lesson.
 
 ## Chapter 24 — Evidence pipeline and decision-support methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Lesson map
-
-Lesson 24 published. Map, example, EX047.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["24.1 The evidence path"]
-  N2["24.2 Inspectable scoring"]
-  N3["24.3 Omission is a decision"]
-  N4["24.5 Human review and rollback"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX047"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["24.1 The evidence path"]
-  N2["24.2 Inspectable scoring"]
-  N3["24.3 Omission is a decision"]
-  N4["24.5 Human review and rollback"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX047"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[24.1 The evidence path]
-    |
-    v
-[24.2 Inspectable scoring]
-    |
-    v
-[24.3 Omission is a decision]
-    |
-    v
-[24.5 Human review and rollback]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX047]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) design an evidence path from ingestion through validation, scoring and presentation; (2) make triage recommendations inspectable — every score explained by its inputs; (3) test how omissions in the pipeline change a responder's decision; and (4) design human review and rollback for scoring changes. It builds on Chapters 9, 14 and 22 and prepares Chapters 29, 30 and 36.
@@ -3208,61 +1933,6 @@ Continue to the next authored lesson.
 
 ## Chapter 25 — Design studio: case intake and authorization model
 
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Lesson map
-
-Lesson 25 published. Map, example, EX049.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["25.1 Studio brief synthetic"]
-  N2["25.2 State machine"]
-  N3["25.3 Access matrix"]
-  N4["25.4 Checking the design"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX049"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["25.1 Studio brief synthetic"]
-  N2["25.2 State machine"]
-  N3["25.3 Access matrix"]
-  N4["25.4 Checking the design"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[25.1 Studio brief synthetic]
-    |
-    v
-[25.2 State machine]
-    |
-    v
-[25.3 Access matrix]
-    |
-    v
-[25.4 Checking the design]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
-
 ### Learning outcomes and connection
 
 After this studio you can (1) design a case-intake state machine for a multi-tenant response service; (2) define an access matrix combining role, tenant and case state; (3) specify audit events for every transition; and (4) review a peer's design for illegal transitions and privilege escalation. It integrates Chapters 2, 10, 18 and 21–24 and prepares Chapters 27, 31 and 44.
@@ -3330,56 +2000,6 @@ Continue to the next authored lesson.
 <a id="ch-26"></a>
 
 ## Chapter 26 — Alternative containment and recovery architectures
-
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Lesson map
-
-Lesson 26 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["26.1 Dimensions of a containment architecture"]
-  N2["26.2 Identity-service compromise: the hard case"]
-  N3["26.4 Modelling failure modes"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["26.1 Dimensions of a containment architecture"]
-  N2["26.2 Identity-service compromise: the hard case"]
-  N3["26.4 Modelling failure modes"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[26.1 Dimensions of a containment architecture]
-    |
-    v
-[26.2 Identity-service compromise: the hard case]
-    |
-    v
-[26.4 Modelling failure modes]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
 
 ### Learning outcomes and connection
 
@@ -3451,61 +2071,6 @@ Continue to the next authored lesson.
 <a id="ch-27"></a>
 
 ## Chapter 27 — Control design for scoped intervention
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Lesson map
-
-Lesson 27 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["27.1 Anatomy of a scoped control"]
-  N2["27.2 Why selectors are dangerous"]
-  N3["27.4 Observability and reversibility"]
-  N4["27.5 Testing the control"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["27.1 Anatomy of a scoped control"]
-  N2["27.2 Why selectors are dangerous"]
-  N3["27.4 Observability and reversibility"]
-  N4["27.5 Testing the control"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[27.1 Anatomy of a scoped control]
-    |
-    v
-[27.2 Why selectors are dangerous]
-    |
-    v
-[27.4 Observability and reversibility]
-    |
-    v
-[27.5 Testing the control]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Learning outcomes and connection
 
@@ -3603,56 +2168,6 @@ Continue to the next authored lesson.
 
 ## Chapter 28 — Implementation of evidence capture services
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Lesson map
-
-Lesson 28 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["28.1 Requirements for capture"]
-  N2["28.2 Transfer protocol"]
-  N3["28.3 Implementation sketch stdlib"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["28.1 Requirements for capture"]
-  N2["28.2 Transfer protocol"]
-  N3["28.3 Implementation sketch stdlib"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[28.1 Requirements for capture]
-    |
-    v
-[28.2 Transfer protocol]
-    |
-    v
-[28.3 Implementation sketch stdlib]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) implement a bounded evidence capture path that reads sources without modifying them; (2) produce per-item checksums and an anchored manifest; (3) log every access and transformation; and (4) recover correctly from interrupted transfers without loss or silent duplication. It builds on Chapters 4, 13, 19 and 22 and prepares Chapters 30, 40 and 47.
@@ -3726,61 +2241,6 @@ Continue to the next authored lesson.
 
 ## Chapter 29 — Measure triage accuracy and response latency
 
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Lesson map
-
-Lesson 29 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["29.1 Define before measuring"]
-  N2["29.2 Accuracy measures"]
-  N3["29.3 Latency distributions"]
-  N4["29.4 Before-and-after designs and confounding"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["29.1 Define before measuring"]
-  N2["29.2 Accuracy measures"]
-  N3["29.3 Latency distributions"]
-  N4["29.4 Before-and-after designs and confounding"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[29.1 Define before measuring]
-    |
-    v
-[29.2 Accuracy measures]
-    |
-    v
-[29.3 Latency distributions]
-    |
-    v
-[29.4 Before-and-after designs and confounding]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) define the population and unit of analysis for evaluating a triage workflow; (2) compute precision, recall and latency distributions with uncertainty; (3) handle missing data and case-mix differences honestly; and (4) perform a sensitivity check that tests whether the conclusion survives reasonable alternative choices. It builds on Chapters 7, 21 and 24 and prepares Chapters 41, 42 and 49.
@@ -3843,66 +2303,6 @@ Continue to the next authored lesson.
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification lab: evidence preservation invariants
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Lesson map
-
-Lesson 30 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["30.1 Invariants for an evidence pipeline"]
-  N2["30.2 Fault model"]
-  N3["30.3 The lab"]
-  N4["30.4 Explaining the results"]
-  N5["30.5 From lab to continuous verification"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["30.1 Invariants for an evidence pipeline"]
-  N2["30.2 Fault model"]
-  N3["30.3 The lab"]
-  N4["30.4 Explaining the results"]
-  N5["30.5 From lab to continuous verification"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[30.1 Invariants for an evidence pipeline]
-    |
-    v
-[30.2 Fault model]
-    |
-    v
-[30.3 The lab]
-    |
-    v
-[30.4 Explaining the results]
-    |
-    v
-[30.5 From lab to continuous verification]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Learning outcomes and connection
 
@@ -4022,61 +2422,6 @@ Continue to the next authored lesson.
 
 ## Chapter 31 — Implement incident workflow orchestration
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Lesson map
-
-Lesson 31 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["31.1 Orchestration vs automation"]
-  N2["31.2 Timers, retries and escalation"]
-  N3["31.3 Audit trail"]
-  N4["31.5 Testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX061"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["31.1 Orchestration vs automation"]
-  N2["31.2 Timers, retries and escalation"]
-  N3["31.3 Audit trail"]
-  N4["31.5 Testing"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX061"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[31.1 Orchestration vs automation]
-    |
-    v
-[31.2 Timers, retries and escalation]
-    |
-    v
-[31.3 Audit trail]
-    |
-    v
-[31.5 Testing]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) implement case workflows as explicit state machines with human tasks; (2) design timeouts, retries and escalations that never convert silence into authority; (3) produce an audit trail sufficient to reconstruct every decision; and (4) test workflow behaviour on timeout, refusal and failure. It builds on Chapters 2, 25 and 27 and prepares Chapters 33, 37 and 39.
@@ -4191,61 +2536,6 @@ Continue to the next authored lesson.
 
 ## Chapter 32 — Reliability engineering for response tooling
 
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Lesson map
-
-Lesson 32 published. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["32.1 Availability arithmetic"]
-  N2["32.2 Common cause"]
-  N3["32.3 Correlated demand"]
-  N4["32.5 Testing the degraded mode"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX063"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["32.1 Availability arithmetic"]
-  N2["32.2 Common cause"]
-  N3["32.3 Correlated demand"]
-  N4["32.5 Testing the degraded mode"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX063"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[32.1 Availability arithmetic]
-    |
-    v
-[32.2 Common cause]
-    |
-    v
-[32.3 Correlated demand]
-    |
-    v
-[32.5 Testing the degraded mode]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX063]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) compute availability of response tool chains in series and in parallel; (2) account for common-cause failure in redundancy; (3) design and size a degraded operating mode with queues; and (4) set availability objectives that reflect when the tool is needed most. It builds on Chapters 1, 6, 21 and 23 and prepares Chapters 33, 36 and 40.
@@ -4338,61 +2628,6 @@ Continue to the next authored lesson.
 
 ## Chapter 33 — Safety and resilience under partial failure
 
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Lesson map
-
-Lesson 33 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["33.1 What fail-safe means for response"]
-  N2["33.2 Circuit breakers and bulkheads"]
-  N3["33.3 Expiry and leases"]
-  N4["33.5 Monitoring and manual override"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX065"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["33.1 What fail-safe means for response"]
-  N2["33.2 Circuit breakers and bulkheads"]
-  N3["33.3 Expiry and leases"]
-  N4["33.5 Monitoring and manual override"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX065"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[33.1 What fail-safe means for response]
-    |
-    v
-[33.2 Circuit breakers and bulkheads]
-    |
-    v
-[33.3 Expiry and leases]
-    |
-    v
-[33.5 Monitoring and manual override]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) define fail-safe states for response components whose dependencies fail; (2) apply circuit breakers, isolation and timeouts to prevent cascading harm; (3) design monitoring and manual override for automatic and manual recovery; and (4) test safe behaviour when the policy service or control plane is unreachable. It builds on Chapters 10, 17, 26 and 32 and prepares Chapters 38, 40 and 47.
@@ -4465,56 +2700,6 @@ Continue to the next authored lesson.
 
 ## Chapter 34 — Integrate identity, endpoint and cloud response
 
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Lesson map
-
-Lesson 34 published. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["34.1 Different control planes, different rules"]
-  N2["34.2 Interface design"]
-  N3["34.3 Correlation"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX067"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["34.1 Different control planes, different rules"]
-  N2["34.2 Interface design"]
-  N3["34.3 Correlation"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX067"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[34.1 Different control planes, different rules]
-    |
-    v
-[34.2 Interface design]
-    |
-    v
-[34.3 Correlation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) design integration interfaces across identity, endpoint and cloud control planes; (2) respect each platform's own authorisation, rate limits and evidence rules; (3) correlate events across platforms with explicit entity and time mapping; and (4) validate a cross-platform case trace and its rollback. It builds on Chapters 11, 12, 22 and 27 and prepares Chapters 38 and 44.
@@ -4576,56 +2761,6 @@ Continue to the next authored lesson.
 
 ## Chapter 35 — Design studio: coordinated recovery exercise
 
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Lesson map
-
-Lesson 35 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["35.1 What an exercise must test"]
-  N2["35.2 Studio brief synthetic"]
-  N3["35.3 Exercise plan"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX069"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["35.1 What an exercise must test"]
-  N2["35.2 Studio brief synthetic"]
-  N3["35.3 Exercise plan"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX069"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[35.1 What an exercise must test]
-    |
-    v
-[35.2 Studio brief synthetic]
-    |
-    v
-[35.3 Exercise plan]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
-
 ### Learning outcomes and connection
 
 After this studio you can (1) design a recovery exercise whose success criteria include service and evidence acceptance, not only uptime; (2) order restoration by dependency and restore point; (3) involve business owners in acceptance; and (4) revise a sequence after a simulated failed restore. It builds on Chapters 13, 26 and 32 and prepares Chapters 40, 43 and 47.
@@ -4681,61 +2816,6 @@ Continue to the next authored lesson.
 <a id="ch-36"></a>
 
 ## Chapter 36 — Performance and scale of event pipelines
-
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Lesson map
-
-Lesson 36 published. Map, example, EX071.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["36.1 Capacity basics"]
-  N2["36.2 When the buffer is full"]
-  N3["36.3 Delay changes decisions"]
-  N4["36.5 Testing performance"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX071"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["36.1 Capacity basics"]
-  N2["36.2 When the buffer is full"]
-  N3["36.3 Delay changes decisions"]
-  N4["36.5 Testing performance"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX071"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[36.1 Capacity basics]
-    |
-    v
-[36.2 When the buffer is full]
-    |
-    v
-[36.3 Delay changes decisions]
-    |
-    v
-[36.5 Testing performance]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX071]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
 
 ### Learning outcomes and connection
 
@@ -4832,56 +2912,6 @@ Continue to the next authored lesson.
 
 ## Chapter 37 — Operating a response system with auditability
 
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Lesson map
-
-Lesson 37 published. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["37.1 The platform needs its own operations"]
-  N2["37.2 Change records"]
-  N3["37.3 Reconciliation"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX073"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["37.1 The platform needs its own operations"]
-  N2["37.2 Change records"]
-  N3["37.3 Reconciliation"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX073"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[37.1 The platform needs its own operations]
-    |
-    v
-[37.2 Change records]
-    |
-    v
-[37.3 Reconciliation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) write runbooks and operator roles for a response platform; (2) define service metrics and alerts for the platform itself; (3) run change management that keeps an auditable record; and (4) detect and investigate an unauthorised configuration change. It builds on Chapters 14, 16, 21 and 31 and prepares Chapters 39 and 48.
@@ -4938,56 +2968,6 @@ Continue to the next authored lesson.
 <a id="ch-38"></a>
 
 ## Chapter 38 — Validate containment and restoration claims
-
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Lesson map
-
-Lesson 38 published. Map, example, EX075.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["38.1 Actions are not outcomes"]
-  N2["38.2 Acceptance criteria and negative tests"]
-  N3["38.4 Restoration claims"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX075"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["38.1 Actions are not outcomes"]
-  N2["38.2 Acceptance criteria and negative tests"]
-  N3["38.4 Restoration claims"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX075"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[38.1 Actions are not outcomes]
-    |
-    v
-[38.2 Acceptance criteria and negative tests]
-    |
-    v
-[38.4 Restoration claims]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX075]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
 
 ### Learning outcomes and connection
 
@@ -5080,61 +3060,6 @@ Continue to the next authored lesson.
 
 ## Chapter 39 — Maintainability and change control for playbooks
 
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Lesson map
-
-Lesson 39 published. Map, example, EX077.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["39.1 Why playbooks decay"]
-  N2["39.2 Playbooks as code"]
-  N3["39.3 Triggers and regression tests"]
-  N4["39.5 Deprecation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX077"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["39.1 Why playbooks decay"]
-  N2["39.2 Playbooks as code"]
-  N3["39.3 Triggers and regression tests"]
-  N4["39.5 Deprecation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX077"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[39.1 Why playbooks decay]
-    |
-    v
-[39.2 Playbooks as code]
-    |
-    v
-[39.3 Triggers and regression tests]
-    |
-    v
-[39.5 Deprecation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX077]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) treat response playbooks as versioned, owned, tested artefacts; (2) define triggers that force review; (3) write regression tests for playbook steps against a lab environment; and (4) deprecate outdated procedures safely. It builds on Chapters 14, 31 and 37 and prepares Chapters 40, 46 and 48.
@@ -5191,66 +3116,6 @@ Continue to the next authored lesson.
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification lab: failure injection and recovery
-
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Lesson map
-
-Lesson 40 published. Map, example, EX079.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["40.1 Fault injection as verification"]
-  N2["40.2 Plan for this lab"]
-  N3["40.3 The lab"]
-  N4["40.4 Comparing with claims"]
-  N5["40.5 Reproducibility and reporting"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX079"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["40.1 Fault injection as verification"]
-  N2["40.2 Plan for this lab"]
-  N3["40.3 The lab"]
-  N4["40.4 Comparing with claims"]
-  N5["40.5 Reproducibility and reporting"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX079"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[40.1 Fault injection as verification]
-    |
-    v
-[40.2 Plan for this lab]
-    |
-    v
-[40.3 The lab]
-    |
-    v
-[40.4 Comparing with claims]
-    |
-    v
-[40.5 Reproducibility and reporting]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
 
 ### Learning outcomes and connection
 
@@ -5357,61 +3222,6 @@ Continue to the next authored lesson.
 
 ## Chapter 41 — Optimize decisions with measured tradeoffs
 
-<!-- open-cyber-academy:lesson-figures:start ch-41 -->
-### Lesson map
-
-Lesson 41 published. Map, example, EX081.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["41.1 Beyond a single speed metric"]
-  N2["41.2 Decision tables and weights"]
-  N3["41.3 Sensitivity"]
-  N4["41.5 Presenting decisions"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX081"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["41.1 Beyond a single speed metric"]
-  N2["41.2 Decision tables and weights"]
-  N3["41.3 Sensitivity"]
-  N4["41.5 Presenting decisions"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX081"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[41.1 Beyond a single speed metric]
-    |
-    v
-[41.2 Decision tables and weights]
-    |
-    v
-[41.3 Sensitivity]
-    |
-    v
-[41.5 Presenting decisions]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX081]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-41 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) express a response-policy choice as a multi-objective decision with explicit costs of error; (2) build a decision table from measured or modelled quantities; (3) run a sensitivity analysis that finds where the choice reverses; and (4) present the decision with its assumptions to accountable owners. It builds on Chapters 7, 26, 29 and 36 and prepares Chapters 42 and 49.
@@ -5504,61 +3314,6 @@ Continue to the next authored lesson.
 <a id="ch-42"></a>
 
 ## Chapter 42 — Applied research on response-system limits
-
-<!-- open-cyber-academy:lesson-figures:start ch-42 -->
-### Lesson map
-
-Lesson 42 published. Map, example, EX083.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["42.1 Limit claims"]
-  N2["42.2 Experiment design"]
-  N3["42.4 External validity"]
-  N4["42.5 Reproducibility"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX083"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["42.1 Limit claims"]
-  N2["42.2 Experiment design"]
-  N3["42.4 External validity"]
-  N4["42.5 Reproducibility"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX083"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[42.1 Limit claims]
-    |
-    v
-[42.2 Experiment design]
-    |
-    v
-[42.4 External validity]
-    |
-    v
-[42.5 Reproducibility]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX083]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-42 -->
-
 
 ### Learning outcomes and connection
 
@@ -5654,56 +3409,6 @@ Continue to the next authored lesson.
 
 ## Chapter 43 — Industry or public-service response practicum
 
-<!-- open-cyber-academy:lesson-figures:start ch-43 -->
-### Lesson map
-
-Lesson 43 published. Map, example, EX085.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["43.1 Working in a real setting"]
-  N2["43.2 Scope agreement"]
-  N3["43.3 Observation and feedback"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX085"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["43.1 Working in a real setting"]
-  N2["43.2 Scope agreement"]
-  N3["43.3 Observation and feedback"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX085"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[43.1 Working in a real setting]
-    |
-    v
-[43.2 Scope agreement]
-    |
-    v
-[43.3 Observation and feedback]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-43 -->
-
-
 ### Learning outcomes and connection
 
 After this practicum you can (1) agree a written scope with service owners for an authorised exercise; (2) identify stakeholder needs and safeguards in a real organisational setting; (3) execute a supervised simulation and record observations; and (4) turn operational feedback into engineering changes. It builds on Chapters 10, 20, 35 and 40 and prepares Chapters 44–46.
@@ -5758,61 +3463,6 @@ Continue to the next authored lesson.
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone: design and build
-
-<!-- open-cyber-academy:lesson-figures:start ch-44 -->
-### Lesson map
-
-Lesson 44 published. Map, example, EX087.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["44.1 Capstone brief synthetic"]
-  N2["44.2 Design dossier"]
-  N3["44.3 Scoping for buildability"]
-  N4["44.4 Implementation discipline"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX087"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["44.1 Capstone brief synthetic"]
-  N2["44.2 Design dossier"]
-  N3["44.3 Scoping for buildability"]
-  N4["44.4 Implementation discipline"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX087"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[44.1 Capstone brief synthetic]
-    |
-    v
-[44.2 Design dossier]
-    |
-    v
-[44.3 Scoping for buildability]
-    |
-    v
-[44.4 Implementation discipline]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX087]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-44 -->
-
 
 ### Learning outcomes and connection
 
@@ -5872,61 +3522,6 @@ Continue to the next authored lesson.
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent review of security and safety claims
-
-<!-- open-cyber-academy:lesson-figures:start ch-45 -->
-### Lesson map
-
-Lesson 45 published. Map, example, EX089.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["45.1 Why independent review"]
-  N2["45.2 Claim-evidence matrix and assurance cases"]
-  N3["45.3 Review checklist extract"]
-  N4["45.5 Triage"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX089"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["45.1 Why independent review"]
-  N2["45.2 Claim-evidence matrix and assurance cases"]
-  N3["45.3 Review checklist extract"]
-  N4["45.5 Triage"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX089"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[45.1 Why independent review]
-    |
-    v
-[45.2 Claim-evidence matrix and assurance cases]
-    |
-    v
-[45.3 Review checklist extract]
-    |
-    v
-[45.5 Triage]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX089]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-45 -->
-
 
 ### Learning outcomes and connection
 
@@ -6002,61 +3597,6 @@ Continue to the next authored lesson.
 
 ## Chapter 46 — Engineering capstone: trial and iteration
 
-<!-- open-cyber-academy:lesson-figures:start ch-46 -->
-### Lesson map
-
-Lesson 46 published. Map, example, EX091.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["46.1 Trial protocol"]
-  N2["46.2 Scenarios for response systems"]
-  N3["46.3 Instrumentation"]
-  N4["46.4 Defects and prioritisation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX091"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["46.1 Trial protocol"]
-  N2["46.2 Scenarios for response systems"]
-  N3["46.3 Instrumentation"]
-  N4["46.4 Defects and prioritisation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX091"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[46.1 Trial protocol]
-    |
-    v
-[46.2 Scenarios for response systems]
-    |
-    v
-[46.3 Instrumentation]
-    |
-    v
-[46.4 Defects and prioritisation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX091]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-46 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) write a trial protocol for a capstone response system under controlled scenarios; (2) instrument the system to measure what the protocol requires; (3) classify and prioritise defects found in trials; and (4) iterate the design and rerun acceptance tests with change-impact analysis. It builds on Chapters 29, 40, 44 and 45 and prepares Chapters 47–50.
@@ -6119,61 +3659,6 @@ Continue to the next authored lesson.
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial with reproducible data
-
-<!-- open-cyber-academy:lesson-figures:start ch-47 -->
-### Lesson map
-
-Lesson 47 published. Map, example, EX093.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["47.1 From fault injection to recovery trial"]
-  N2["47.2 Reproducible inputs"]
-  N3["47.4 Comparing with objectives"]
-  N4["47.5 Reproducibility check"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX093"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["47.1 From fault injection to recovery trial"]
-  N2["47.2 Reproducible inputs"]
-  N3["47.4 Comparing with objectives"]
-  N4["47.5 Reproducibility check"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX093"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[47.1 From fault injection to recovery trial]
-    |
-    v
-[47.2 Reproducible inputs]
-    |
-    v
-[47.4 Comparing with objectives]
-    |
-    v
-[47.5 Reproducibility check]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX093]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-47 -->
-
 
 ### Learning outcomes and connection
 
@@ -6245,56 +3730,6 @@ Continue to the next authored lesson.
 <a id="ch-48"></a>
 
 ## Chapter 48 — Evidence dossier and acceptance tests
-
-<!-- open-cyber-academy:lesson-figures:start ch-48 -->
-### Lesson map
-
-Lesson 48 published. Map, example, EX095.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["48.1 Purpose"]
-  N2["48.2 Structure"]
-  N3["48.3 Standards for adequate proof"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX095"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["48.1 Purpose"]
-  N2["48.2 Structure"]
-  N3["48.3 Standards for adequate proof"]
-  N4["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX095"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[48.1 Purpose]
-    |
-    v
-[48.2 Structure]
-    |
-    v
-[48.3 Standards for adequate proof]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX095]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-48 -->
-
 
 ### Learning outcomes and connection
 
@@ -6368,61 +3803,6 @@ Continue to the next authored lesson.
 
 ## Chapter 49 — Engineering thesis on response performance
 
-<!-- open-cyber-academy:lesson-figures:start ch-49 -->
-### Lesson map
-
-Lesson 49 published. Map, example, EX097.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["49.1 What an engineering thesis is"]
-  N2["49.2 Structure"]
-  N3["49.3 Baselines and attribution"]
-  N4["49.4 Uncertainty and validity"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX097"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["49.1 What an engineering thesis is"]
-  N2["49.2 Structure"]
-  N3["49.3 Baselines and attribution"]
-  N4["49.4 Uncertainty and validity"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX097"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[49.1 What an engineering thesis is]
-    |
-    v
-[49.2 Structure]
-    |
-    v
-[49.3 Baselines and attribution]
-    |
-    v
-[49.4 Uncertainty and validity]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX097]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-49 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) structure an engineering thesis that links design decisions to measured outcomes; (2) report method, baseline, results and uncertainty; (3) discuss generalisability and limits honestly; and (4) write about failures as contributions. It builds on Chapters 29, 41, 42 and 44–48 and prepares Chapter 50.
@@ -6493,71 +3873,6 @@ Continue to the next authored lesson.
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense of design and measured results
-
-<!-- open-cyber-academy:lesson-figures:start ch-50 -->
-### Lesson map
-
-Lesson 50 published. Map, example, EX099.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["50.1 What the defense tests"]
-  N2["50.2 Preparing"]
-  N3["50.3 Answering counterexamples"]
-  N4["50.5 Revisions"]
-  N5["Chapter synthesis"]
-  N6["Chapter 1"]
-  N7["Chapter 2"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX099"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["50.1 What the defense tests"]
-  N2["50.2 Preparing"]
-  N3["50.3 Answering counterexamples"]
-  N4["50.5 Revisions"]
-  N5["Chapter synthesis"]
-  N6["Chapter 1"]
-  N7["Chapter 2"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX099"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[50.1 What the defense tests]
-    |
-    v
-[50.2 Preparing]
-    |
-    v
-[50.3 Answering counterexamples]
-    |
-    v
-[50.5 Revisions]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Chapter 1]
-    |
-    v
-[Chapter 2]
-    |
-    v
-[Worked example] --> [Exercise EX099]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-50 -->
-
 
 ### Learning outcomes and connection
 

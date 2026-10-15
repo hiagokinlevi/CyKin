@@ -1,5 +1,7 @@
 # Segurança da Informação: Curso Rápido
 
+**Atualização visual (14/10/2026):** os mapas automáticos de títulos e os desenhos lógicos duplicados mencionados nos registros históricos de tradução abaixo foram removidos deste livro e da referência inglesa. As contagens antigas desses mapas não descrevem o texto atual; o ensino, os exemplos, os exercícios e os diagramas técnicos específicos foram preservados.
+
 - Idioma: português do Brasil (`pt`); curso 002, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
 - Estado editorial: **publicado, com revisão de equivalência pendente**. Esta edição contém os capítulos 1–20 e EX001–EX074 com resoluções e rubricas de 0 a 3. A referência inglesa consultada contém capítulos 1–20; os capítulos 05–20 têm tradução incorporada neste texto, sem aprovação integral de equivalência. O laboratório usa apenas a biblioteca padrão do Python 3 e dados sintéticos. A reconciliação descrita abaixo não aprova o volume inteiro. Revisão independente, revisão linguística integral e renderização A4 atualizada permanecem em aberto; páginas não são meta de escrita nem critério isolado de conclusão.
 - Público: gestores e funcionários de organizações muito pequenas que precisam corrigir em um mês as fraquezas de segurança mais comuns.
@@ -67,71 +69,6 @@ ISO/IEC 27000:2026. Lista completa em [Referências](#references).
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Um mês para acertar o básico
-
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["1.1 A aluna"]
-  N1["1.2 A clínica"]
-  N2["1.3 O que a clínica guarda"]
-  N3["1.4 O que não pode ser perdido"]
-  N4["1.5 Regras básicas"]
-  N5["Dados — onde está a informação da Hollybank"]
-  N6["Fluxo de decisão — marcar um item"]
-  N7["Aplicar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 A aluna"]
-  N1["1.2 A clínica"]
-  N2["1.3 O que a clínica guarda"]
-  N3["1.4 O que não pode ser perdido"]
-  N4["1.5 Regras básicas"]
-  N5["Dados — onde está a informação da Hollybank"]
-  N6["Fluxo de decisão — marcar um item"]
-  N7["Aplicar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[1.1 A aluna]
-    |
-    v
-[1.2 A clínica]
-    |
-    v
-[1.3 O que a clínica guarda]
-    |
-    v
-[1.4 O que não pode ser perdido]
-    |
-    v
-[1.5 Regras básicas]
-    |
-    v
-[Dados — onde está a informação da Hollybank]
-    |
-    v
-[Fluxo de decisão — marcar um item]
-    |
-    v
-[Aplicar]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -260,75 +197,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Contas, dispositivos e compartilhamento
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["Objetivos de aprendizagem"]
-  N1["2.1 Contas próprias"]
-  N2["2.2 Segundo fator"]
-  N3["2.3 Dispositivos"]
-  N4["Laboratório — Contagem por pasta dos arquivos abertos por link"]
-  N5["2.4 Arquivos compartilhados em excesso"]
-  N6["2.5 Fechando as lacunas"]
-  N7["Conceitos — identidade, posse e exposição"]
-  N8["Dados — a contagem sintética, em ordem de dano"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8
-  N8 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["Objetivos de aprendizagem"]
-  N1["2.1 Contas próprias"]
-  N2["2.2 Segundo fator"]
-  N3["2.3 Dispositivos"]
-  N4["Laboratório — Contagem por pasta dos arquivos abertos por link"]
-  N5["2.4 Arquivos compartilhados em excesso"]
-  N6["2.5 Fechando as lacunas"]
-  N7["Conceitos — identidade, posse e exposição"]
-  N8["Dados — a contagem sintética, em ordem de dano"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> Q["EX053"]
-```
-
-```text
-[Objetivos de aprendizagem]
-    |
-    v
-[2.1 Contas próprias]
-    |
-    v
-[2.2 Segundo fator]
-    |
-    v
-[2.3 Dispositivos]
-    |
-    v
-[Laboratório — Contagem por pasta dos arquivos abertos por link]
-    |
-    v
-[2.4 Arquivos compartilhados em excesso]
-    |
-    v
-[2.5 Fechando as lacunas]
-    |
-    v
-[Conceitos — identidade, posse e exposição]
-    |
-    v
-[Dados — a contagem sintética, em ordem de dano]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 As setas mostram uma sequência de leitura, não uma prova de que um controle funcionou. Os mapas cobrem os mesmos nove rótulos de seção nas duas edições; o desenho textual oferece a mesma sequência sem depender da renderização de um diagrama.
 
@@ -497,71 +365,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — E-mail, fraude e pessoas
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["3.1 Sinais de phishing"]
-  N1["3.2 Fraude de faturas"]
-  N2["3.3 A regra em ação"]
-  N3["3.4 Treinamento curto"]
-  N4["3.5 Comunicação sem culpa"]
-  N5["Conceitos — sinal, canal e relato"]
-  N6["Dados — uma tentativa de pagamento e o ritmo do trei"]
-  N7["Fluxo de decisão — uma mensagem pede dinheiro ou um"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Sinais de phishing"]
-  N1["3.2 Fraude de faturas"]
-  N2["3.3 A regra em ação"]
-  N3["3.4 Treinamento curto"]
-  N4["3.5 Comunicação sem culpa"]
-  N5["Conceitos — sinal, canal e relato"]
-  N6["Dados — uma tentativa de pagamento e o ritmo do trei"]
-  N7["Fluxo de decisão — uma mensagem pede dinheiro ou um"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[3.1 Sinais de phishing]
-    |
-    v
-[3.2 Fraude de faturas]
-    |
-    v
-[3.3 A regra em ação]
-    |
-    v
-[3.4 Treinamento curto]
-    |
-    v
-[3.5 Comunicação sem culpa]
-    |
-    v
-[Conceitos — sinal, canal e relato]
-    |
-    v
-[Dados — uma tentativa de pagamento e o ritmo do trei]
-    |
-    v
-[Fluxo de decisão — uma mensagem pede dinheiro ou um]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) reconhecer o phishing e a fraude de faturas; (2) definir uma regra de verificação de pagamentos; (3) criar um hábito curto e sem culpa de comunicação.
@@ -684,71 +487,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Backups, incidentes e o plano adiante
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["4.1 Backups"]
-  N1["4.2 Teste de uma restauração"]
-  N2["4.3 Um cartão de incidentes"]
-  N3["4.4 Um exercício prático"]
-  N4["4.5 O plano adiante"]
-  N5["Conceitos — uma cópia, um teste, um cartão, um exerc"]
-  N6["Dados — evidência da restauração e o plano B de segu"]
-  N7["Fluxo de decisão — o sistema está fora, ou a tela pe"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Backups"]
-  N1["4.2 Teste de uma restauração"]
-  N2["4.3 Um cartão de incidentes"]
-  N3["4.4 Um exercício prático"]
-  N4["4.5 O plano adiante"]
-  N5["Conceitos — uma cópia, um teste, um cartão, um exerc"]
-  N6["Dados — evidência da restauração e o plano B de segu"]
-  N7["Fluxo de decisão — o sistema está fora, ou a tela pe"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[4.1 Backups]
-    |
-    v
-[4.2 Teste de uma restauração]
-    |
-    v
-[4.3 Um cartão de incidentes]
-    |
-    v
-[4.4 Um exercício prático]
-    |
-    v
-[4.5 O plano adiante]
-    |
-    v
-[Conceitos — uma cópia, um teste, um cartão, um exerc]
-    |
-    v
-[Dados — evidência da restauração e o plano B de segu]
-    |
-    v
-[Fluxo de decisão — o sistema está fora, ou a tela pe]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -879,34 +617,6 @@ Continue para o Capítulo 05 traduzido. A revisão de equivalência integral con
 
 ## Capítulo 5 — Um lembrete não é uma lista atualizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 traduzida. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  R["Um lembrete semanal é registrado"] --> P{"Há no escritório uma lista mais recente, guardada sob chave?"}
-  P -->|Não| O["A lista de três semanas atrás continua sendo o único papel"]
-  O --> U["Não telefone a partir dela como se estivesse atualizada"]
-  U --> H["Registre a ligação urgente para confirmação quando o sistema voltar"]
-  P -->|Sim| C["Use essa lista datada somente para ligações urgentes"]
-```
-
-Um lembrete é uma intenção. A folha guardada sob chave é a evidência.
-
-### Desenho lógico
-
-```text
-constatação do exercício: lista impressa de três semanas atrás, sem os clientes novos
-    Sofia registra um lembrete semanal
-        |
-        +-- o lembrete não é, por si só, uma impressão
-        +-- até que uma lista nova seja impressa e guardada sob chave, a antiga continua antiga
-        +-- ausência na lista antiga não significa "não há registro"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -951,36 +661,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — O papel da indisponibilidade registra aquelas horas
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 traduzida. Mapa, exemplo, EX060.
-
-```mermaid
-flowchart TD
-  D["O sistema da clínica volta"] --> S["Reúna o papel preenchido enquanto ele estava indisponível"]
-  S --> C{"Uma anotação no sistema já descreve o mesmo atendimento?"}
-  C -->|Não| E["Faça o lançamento a partir do papel"]
-  C -->|Sim| M["Compare os dois. Não crie um segundo atendimento"]
-  E --> L["Guarde o papel na pasta do registro de mudanças"]
-  M --> L
-```
-
-A memória não é uma cópia do papel.
-
-### Desenho lógico
-
-```text
-quatro horas, com o sistema tratado como indisponível
-    tratamentos anotados em papel
-    o sistema volta
-        |
-        +-- fonte do lançamento: aquele papel
-        +-- não é fonte: o que uma recepcionista lembra
-        +-- se uma anotação foi salva antes da indisponibilidade, concilie; não duplique
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Objetivos de aprendizagem
 
@@ -1027,36 +707,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 7 — A próxima contagem de compartilhamentos é uma nova medição
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 traduzida. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  O["Execução publicada: 47 de 300, semente 2"] --> K["Doze arquivos de clientes e do financeiro tiveram o acesso restringido depois"]
-  K --> N{"Foi executada a contagem de uma nova exportação?"}
-  N -->|Não| H["Não apresente 47 menos 12 como resultado deste mês"]
-  N -->|Sim| R["Registre as contagens próprias daquela execução"]
-  H --> S["Mantenha a saída publicada inalterada"]
-```
-
-Subtrair não é executar novamente.
-
-### Desenho lógico
-
-```text
-script verificado, semente 2
-    all files: 47 of 300
-    clientes: 8 de 140; financeiro: 4 de 60 -> os doze que tiveram o acesso restringido
-    rotina mensal: repetir a verificação
-        |
-        +-- 47 - 12 = 35 apenas se os mesmos 300 arquivos não mudaram e nada novo foi compartilhado
-        +-- essa suposição não é uma medição
-        +-- o script não é editado para forçar 35
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1101,35 +751,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — A conta do substituto termina quando o trabalho dele termina
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 traduzida. Mapa, exemplo, EX062.
-
-```mermaid
-flowchart TD
-  L["O registro de mudanças identifica a conta do substituto a desativar"] --> D{"A desativação está registrada?"}
-  D -->|Não| F["A conta continua sendo uma pendência de desligamento"]
-  D -->|Sim| K["A revisão mensal pode citar aquela linha do registro"]
-  F --> M["Um segundo fator não substitui a desativação"]
-```
-
-A revisão mensal procura a linha que falta no registro. Não presume que a conta tenha deixado de funcionar sozinha.
-
-### Desenho lógico
-
-```text
-substituto de segunda-feira
-    conta pessoal criada antes do primeiro paciente
-    segundo fator ativado
-    registro identifica qual conta desativar quando o substituto sair
-        |
-        +-- "a semana acabou" não é uma desativação
-        +-- uma chave de segurança deixada na gaveta não é uma desativação
-        +-- o item "contas de quem saiu", na revisão, significa conferir essa linha
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Objetivos de aprendizagem
 
@@ -1176,35 +797,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 9 — Impedir uma fraude não aposenta a regra
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 traduzida. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  M["Chega uma nova mensagem com dados bancários"] --> P["Telefone para o número que a clínica já tinha"]
-  P --> S["Uma segunda pessoa aprova somente depois daquela ligação"]
-  S --> N["Não use o número impresso na mensagem"]
-  N --> H["A tentativa impedida anteriormente não dispensa a regra"]
-```
-
-Cada solicitação é uma nova aplicação da mesma regra.
-
-### Desenho lógico
-
-```text
-regra acordada com a Dra. Moss
-    telefonar para um número que a clínica já tinha
-    uma segunda pessoa aprova a mudança
-    uma tentativa anterior foi impedida
-        |
-        +-- esse sucesso não cobre a próxima mensagem
-        +-- um formato conhecido de fatura não dispensa a ligação
-        +-- o número dentro da mensagem continua sendo o telefone errado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1249,34 +841,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Uma folha sem data não é a lista desta semana
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 traduzida. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  D["Uma folha com nomes está na gaveta"] --> Q{"A folha mostra a data de impressão e o registro corresponde a ela?"}
-  Q -->|Não| R["Não se pode demonstrar que é mais recente que a folha do exercício"]
-  R --> W["As ligações urgentes não a usam como lista desta semana"]
-  Q -->|Sim| U["As ligações urgentes podem usar aquela folha datada, somente os nomes que ela contém"]
-```
-
-Um conjunto de nomes sem data não é uma extração mais recente.
-
-### Desenho lógico
-
-```text
-lembrete no calendário
-a folha de três semanas atrás, usada no exercício, continua conhecida
-alguém acrescenta outra folha, sem data, sem identificação de quem a escreveu
-    |
-    +-- a folha nova não está identificada como posterior
-    +-- as ligações urgentes continuam aguardando
-    +-- uma lista utilizável teria uma data de impressão e uma linha no registro
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Objetivos de aprendizagem
 
@@ -1323,35 +887,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 11 — A restauração do próximo mês é uma linha em branco
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 traduzida. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  L["O registro contém a restauração que falhou na semana passada e o sucesso posterior"] --> M["A rotina mensal pede um teste de restauração"]
-  M --> B{"Há uma linha datada no novo mês?"}
-  B -->|Não| K["O sucesso da semana passada não preenche a lacuna"]
-  B -->|Sim| C["Cite essa linha, mesmo que registre uma falha"]
-```
-
-Um teste aprovado pertence à semana em que foi executado.
-
-### Desenho lógico
-
-```text
-mês do curso
-    a restauração da caixa postal falha e depois funciona em uma área de teste
-    os dois resultados já estão registrados
-a última sessão define a rotina mensal
-    |
-    +-- o próximo mês começa com uma linha de restauração vazia
-    +-- o sucesso anterior não é copiado para o mês seguinte
-    +-- a caixa postal em produção não é sobrescrita para fabricar um resultado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1396,36 +931,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Três computadores não são um levantamento completo de atualizações
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 traduzida. Mapa, exemplo, EX066.
-
-```mermaid
-flowchart TD
-  T["Três computadores estavam com as atualizações desativadas"] --> F["Um driver mais novo e, depois, atualizações reativadas"]
-  F --> S["A nota do mês diz que as atualizações foram reativadas"]
-  S --> N{"O registro apresenta uma verificação das atualizações dos nove computadores?"}
-  N -->|Não| R["Não escreva que todos os nove estão totalmente atualizados"]
-  N -->|Sim| K["Cite essa verificação, computador por computador"]
-```
-
-O reparo abrangeu os computadores cujas atualizações haviam sido desativadas.
-
-### Desenho lógico
-
-```text
-nove computadores
-    três estavam com as atualizações desativadas após uma falha da impressora de etiquetas
-    o driver foi substituído e as atualizações desses três foram reativadas
-    os outros seis não estavam naquela nota
-        |
-        +-- "atualizações reativadas" diz respeito àqueles três
-        +-- não é uma leitura do nível de atualização de nove computadores
-        +-- a falta de linhas não prova que os seis estejam expostos
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Objetivos de aprendizagem
 
@@ -1472,35 +977,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 13 — Uma sessão aberta continua sendo um login compartilhado
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 traduzida. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N["Uma enfermeira está conectada"] --> H["Uma pessoa de apoio pede para usar aquela tela"]
-  H --> A{"As ações da pessoa de apoio seriam registradas como sendo da enfermeira?"}
-  A -->|Sim| F["Recuse o empréstimo da sessão"]
-  F --> P["Uma conta pessoal aguarda o registro da Dra. Moss"]
-  A -->|Não| O["Somente se a pessoa de apoio já tiver entrado com a própria conta"]
-```
-
-A senha no bilhete foi removida. A tela conectada pode recriar o mesmo problema.
-
-### Desenho lógico
-
-```text
-login compartilhado da recepção: já recusado
-conta própria da enfermeira: conectada no balcão
-pessoa de apoio aos sábados, sem nome: "só para imprimir a escala"
-    |
-    +-- a impressão seria atribuída à enfermeira
-    +-- afastar-se não autoriza emprestar a sessão
-    +-- esta aula não cria uma nova conta
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1545,36 +1021,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Quem chega não herda uma chave de segurança
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 traduzida. Mapa, exemplo, EX068.
-
-```mermaid
-flowchart TD
-  K["Dois enfermeiros receberam chaves de segurança"] --> W["Eles haviam recusado aplicativos de trabalho em celulares pessoais"]
-  W --> R["Uma nova pessoa na recepção pede um aplicativo no próprio celular"]
-  R --> M{"A Dra. Moss registrou o método para essa pessoa?"}
-  M -->|Não| H["Não replique a entrega de chaves dos enfermeiros nem instale o aplicativo"]
-  M -->|Sim| G["Use o método indicado naquela linha"]
-```
-
-As chaves respondem à recusa de duas pessoas. Elas não são um modelo a ser copiado automaticamente.
-
-### Desenho lógico
-
-```text
-segundo fator em toda a clínica
-    Dra. Moss e equipe do escritório primeiro
-    dois enfermeiros: chaves, pois recusaram aplicativos em celulares pessoais
-nova pessoa na recepção, método ainda não registrado
-    |
-    +-- o motivo dos enfermeiros não é o motivo dessa pessoa
-    +-- uma terceira chave é um novo custo, não uma entrega automática
-    +-- instalar um aplicativo antes da hora é mudar uma configuração sem acordo
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Objetivos de aprendizagem
 
@@ -1621,35 +1067,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 15 — O apagamento não é o primeiro passo
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 traduzida. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  T["Um tablet de consulta não é encontrado no fechamento"] --> C["Ligue para Sofia, depois a Dra. Moss, depois o técnico"]
-  C --> N{"As anotações de hoje já estão no sistema da clínica ou no papel do dia?"}
-  N -->|Desconhecido| H["Ainda não apague"]
-  N -->|Somente no tablet| D["O apagamento destruiria a única cópia. A Dra. Moss decide depois que esse fato é registrado"]
-  N -->|Já copiadas| W["Um apagamento pode então ser considerado e registrado"]
-```
-
-O apagamento remoto exclui a cópia do dispositivo. Ele não verifica se aquela era a única cópia.
-
-### Desenho lógico
-
-```text
-tablets: senha de acesso e apagamento remoto já configurados
-cartão de incidentes: perder um tablet é um incidente
-não encontrá-lo no fechamento ainda não é uma perda registrada
-    |
-    +-- seguir a ordem das ligações antes de qualquer comando de apagamento
-    +-- perguntar onde estão as anotações de hoje
-    +-- esta aula não envia um apagamento
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1694,37 +1111,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Duas pessoas podem escrever no registro
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 traduzida. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  R["Uma recepcionista conclui uma confirmação por telefone"] --> W["Ela quer digitar o resultado no registro de mudanças"]
-  W --> P{"Ela é Sofia ou a Dra. Moss?"}
-  P -->|Não| T["Ela comunica o resultado no mesmo dia"]
-  T --> S["Uma das duas pessoas autorizadas faz o registro"]
-  P -->|Sim| L["Ela pode escrever a data e o motivo"]
-```
-
-A rapidez não acrescenta uma terceira pessoa autorizada a escrever.
-
-### Desenho lógico
-
-```text
-registro de mudanças
-    acessível apenas a Sofia e à Dra. Moss
-recepcionista
-    concluiu uma verificação
-    oferece-se para digitar "para não esquecer"
-        |
-        +-- o risco de esquecer é resolvido comunicando hoje a uma pessoa autorizada
-        +-- um terceiro login permitiria à recepção editar o registro usado na revisão
-        +-- o resultado ainda precisa de data e motivo
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Objetivos de aprendizagem
 
@@ -1771,37 +1157,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 17 — A mudança dos links na sexta-feira exige um novo acordo
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 traduzida. Mapa, exemplo, EX071.
-
-```mermaid
-flowchart TD
-  E["Acordo anterior: novos compartilhamentos restritos à clínica e doze arquivos fechados"] --> F["Proposta de sexta-feira: desativar todos os links existentes, inclusive os de marketing"]
-  F --> A{"Há um novo acordo escrito para essa proposta?"}
-  A -->|Não| H["Não execute a mudança na hora de sair"]
-  A -->|Sim| R["Execute somente o que a nova linha permite e faça outra contagem depois"]
-```
-
-O acordo anterior tinha um escopo. A proposta de sexta-feira está fora dele.
-
-### Desenho lógico
-
-```text
-já acordado
-    novos compartilhamentos restritos à clínica por padrão
-    8 arquivos de clientes e 4 do financeiro fechados
-    imagens de marketing podem permanecer abertas porque já são públicas
-sexta-feira, técnico de saída
-    proposta de desativar todos os links restantes
-        |
-        +-- marketing foi objeto de uma decisão separada
-        +-- uma desativação mais ampla exige seu próprio acordo escrito
-        +-- nenhuma nova exportação é produzida aqui
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1846,35 +1201,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Dois papéis, duas perguntas
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 traduzida. Mapa, exemplo, EX072.
-
-```mermaid
-flowchart TD
-  O["O sistema da clínica está indisponível"] --> Q{"Qual pergunta está sendo feita?"}
-  Q -->|Quem está agendado para hoje?| A["Folha de consultas de hoje"]
-  Q -->|Para quem ligamos em caráter urgente?| L["Lista guardada sob chave, com os limites dos Capítulos 5 e 10"]
-  A --> X["Não leia a lista guardada sob chave como se fosse a agenda de consultas"]
-  L --> Y["Não telefone para toda a folha de consultas como se ela fosse a lista de urgências"]
-```
-
-Cada papel foi produzido para uma finalidade.
-
-### Desenho lógico
-
-```text
-indisponibilidade
-    folha de consultas: atendimentos deste dia, já disponível no escritório
-    lista guardada sob chave: extração para ligações urgentes, talvez ainda a folha do exercício
-        |
-        +-- um nome na folha de hoje não cria uma obrigação de ligação urgente
-        +-- ausência na lista guardada sob chave não significa "não há consulta"
-        +-- o lançamento dos tratamentos, quando o sistema voltar, continua no Capítulo 6
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Objetivos de aprendizagem
 
@@ -1921,35 +1247,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 19 — Uma sessão de dez minutos não altera a regra
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 traduzida. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  Q["A equipe pergunta se um e-mail de aparência normal pode dispensar a ligação"] --> S["Essa pergunta vira o tema dos dez minutos"]
-  S --> P["A sessão pratica a ligação para o número já conhecido"]
-  P --> V{"Alguém propõe uma votação para reduzir a regra?"}
-  V -->|Sim| R["Uma votação não é uma mudança escrita da Dra. Moss"]
-  V -->|Não| K["A regra sai da sala como entrou"]
-```
-
-A reunião escolhe o que praticar. Ela não decide a política.
-
-### Desenho lógico
-
-```text
-rotina mensal: uma sessão de dez minutos
-os temas vêm de perguntas da equipe
-pergunta deste mês: dispensar a ligação quando o e-mail parece normal
-    |
-    +-- praticar a ligação que a clínica já conhece
-    +-- não colocar a regra em votação
-    +-- uma nota da sessão não é uma alteração no registro de mudanças
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá ser capaz de:
@@ -1994,34 +1291,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-20"></a>
 
 ## Capítulo 20 — O que o registro do mês pode afirmar
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 traduzida. Mapa, exemplo, EX074.
-
-```mermaid
-flowchart TD
-  N["Uma nota de passagem"] --> E{"A frase é sustentada por uma linha do registro ou por uma saída de contagem?"}
-  E -->|Sim| K["A nota pode afirmá-la, com aquele limite"]
-  E -->|Não| R["A nota identifica a lacuna em vez de preenchê-la"]
-  R --> G["Próximo curso: Governança de Dados, para tratar da retenção"]
-```
-
-Vinte aulas atendem a um mínimo de planejamento. Elas não encerram o conjunto de registros do caso.
-
-### Desenho lógico
-
-```text
-a nota pode conter
-    contas pessoais, os três computadores reparados, doze arquivos fechados
-    confirmação por telefone ainda em vigor, resultados de backup já registrados, cartão afixado
-a nota não pode conter
-    um novo total de compartilhamentos, uma lista atualizada com data, a restauração do próximo mês
-    uma data de desativação da conta do substituto que este livro nunca forneceu
-    "a clínica está segura" ou "o exercício está encerrado"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Objetivos de aprendizagem
 

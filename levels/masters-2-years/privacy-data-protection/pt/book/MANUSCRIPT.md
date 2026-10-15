@@ -37,61 +37,6 @@ Regulamento (UE) 2016/679 (GDPR), artigos 12 e 15; Lei nº 13.709/2018 (LGPD), a
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Da reclamação à pergunta"]
-  N1["1.2 Por que um desfecho mensurável"]
-  N2["1.3 Método de revisão da literatura"]
-  N3["1.4 Desempenho de base"]
-  N4["Laboratório — Tempos de conclusão de base por canal"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Da reclamação à pergunta"]
-  N1["1.2 Por que um desfecho mensurável"]
-  N2["1.3 Método de revisão da literatura"]
-  N3["1.4 Desempenho de base"]
-  N4["Laboratório — Tempos de conclusão de base por canal"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Da reclamação à pergunta]
-    |
-    v
-[1.2 Por que um desfecho mensurável]
-    |
-    v
-[1.3 Método de revisão da literatura]
-    |
-    v
-[1.4 Desempenho de base]
-    |
-    v
-[Laboratório — Tempos de conclusão de base por canal]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) transformar um problema de conformidade em uma pergunta pesquisável; (2) conduzir uma busca estruturada na literatura; (3) descrever o desempenho de base de um processo de atendimento aos direitos dos titulares.
@@ -175,56 +120,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Privacidade e proteção de dados: seminário avançado
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Para que serve o acesso"]
-  N1["2.2 Acesso e teoria da privacidade"]
-  N2["2.3 Verificação de identidade"]
-  N3["2.4 Debate no seminário"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Para que serve o acesso"]
-  N1["2.2 Acesso e teoria da privacidade"]
-  N2["2.3 Verificação de identidade"]
-  N3["2.4 Debate no seminário"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
-```
-
-```text
-[2.1 Para que serve o acesso]
-    |
-    v
-[2.2 Acesso e teoria da privacidade]
-    |
-    v
-[2.3 Verificação de identidade]
-    |
-    v
-[2.4 Debate no seminário]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar o propósito do direito de acesso; (2) ligar os direitos de acesso à teoria da privacidade; (3) avaliar onde a velocidade entra em conflito com a segurança.
@@ -281,56 +176,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Escolhendo o desenho"]
-  N1["3.2 A ética de estudar pedidos"]
-  N2["3.3 Análise reproduzível"]
-  N3["3.4 Definindo a complexidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Escolhendo o desenho"]
-  N1["3.2 A ética de estudar pedidos"]
-  N2["3.3 Análise reproduzível"]
-  N3["3.4 Definindo a complexidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
-```
-
-```text
-[3.1 Escolhendo o desenho]
-    |
-    v
-[3.2 A ética de estudar pedidos]
-    |
-    v
-[3.3 Análise reproduzível]
-    |
-    v
-[3.4 Definindo a complexidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher um desenho quase experimental para uma mudança operacional; (2) planejar a ética de uma pesquisa sobre pedidos de direitos; (3) preparar uma análise reproduzível.
@@ -386,56 +231,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Privacidade e proteção de dados: explicações concorrentes
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Primeira concorrente: uma composição mais simple"]
-  N1["4.2 Segunda concorrente: mais pessoal"]
-  N2["4.3 Terceira concorrente: regressão e atenção"]
-  N3["4.4 Quarta concorrente: troca por qualidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Primeira concorrente: uma composição mais simple"]
-  N1["4.2 Segunda concorrente: mais pessoal"]
-  N2["4.3 Terceira concorrente: regressão e atenção"]
-  N3["4.4 Quarta concorrente: troca por qualidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[4.1 Primeira concorrente: uma composição mais simple]
-    |
-    v
-[4.2 Segunda concorrente: mais pessoal]
-    |
-    v
-[4.3 Terceira concorrente: regressão e atenção]
-    |
-    v
-[4.4 Quarta concorrente: troca por qualidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) listar explicações concorrentes para uma melhora aparente; (2) desenhar verificações para cada uma; (3) decidir quais explicações concorrentes o estudo consegue ou não excluir.
@@ -490,61 +285,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Projeto e piloto
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 Quantos pedidos"]
-  N1["5.2 A extração piloto"]
-  N2["5.3 Escrevendo o projeto"]
-  N3["5.4 Valor para a decisão"]
-  N4["Laboratório — Pedidos necessários para detectar uma"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Quantos pedidos"]
-  N1["5.2 A extração piloto"]
-  N2["5.3 Escrevendo o projeto"]
-  N3["5.4 Valor para a decisão"]
-  N4["Laboratório — Pedidos necessários para detectar uma"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[5.1 Quantos pedidos]
-    |
-    v
-[5.2 A extração piloto]
-    |
-    v
-[5.3 Escrevendo o projeto]
-    |
-    v
-[5.4 Valor para a decisão]
-    |
-    v
-[Laboratório — Pedidos necessários para detectar uma]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -621,61 +361,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Resultado principal"]
-  N1["6.2 Dentro dos estratos"]
-  N2["6.3 Qualidade e segurança"]
-  N3["6.4 O que continua incerto"]
-  N4["Laboratório — Diferença por bootstrap e taxas estrat"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Resultado principal"]
-  N1["6.2 Dentro dos estratos"]
-  N2["6.3 Qualidade e segurança"]
-  N3["6.4 O que continua incerto"]
-  N4["Laboratório — Diferença por bootstrap e taxas estrat"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[6.1 Resultado principal]
-    |
-    v
-[6.2 Dentro dos estratos]
-    |
-    v
-[6.3 Qualidade e segurança]
-    |
-    v
-[6.4 O que continua incerto]
-    |
-    v
-[Laboratório — Diferença por bootstrap e taxas estrat]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -766,56 +451,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 Estrutura em torno de uma afirmação"]
-  N1["7.2 Limitações que importam"]
-  N2["7.3 Relatando as salvaguardas"]
-  N3["7.4 Escrevendo para dois públicos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Estrutura em torno de uma afirmação"]
-  N1["7.2 Limitações que importam"]
-  N2["7.3 Relatando as salvaguardas"]
-  N3["7.4 Escrevendo para dois públicos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
-```
-
-```text
-[7.1 Estrutura em torno de uma afirmação]
-    |
-    v
-[7.2 Limitações que importam]
-    |
-    v
-[7.3 Relatando as salvaguardas]
-    |
-    v
-[7.4 Escrevendo para dois públicos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação em torno de uma afirmação; (2) escrever limitações que orientem decisões; (3) relatar as salvaguardas de privacidade usadas na pesquisa.
@@ -870,56 +505,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Revisão independente"]
-  N1["8.2 A defesa"]
-  N2["8.3 Acompanhamento com a Brookfield"]
-  N3["8.4 Reflexão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Revisão independente"]
-  N1["8.2 A defesa"]
-  N2["8.3 Acompanhamento com a Brookfield"]
-  N3["8.4 Reflexão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[8.1 Revisão independente]
-    |
-    v
-[8.2 A defesa]
-    |
-    v
-[8.3 Acompanhamento com a Brookfield]
-    |
-    v
-[8.4 Reflexão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

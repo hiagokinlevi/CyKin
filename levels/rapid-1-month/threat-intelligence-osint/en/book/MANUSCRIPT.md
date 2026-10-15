@@ -38,71 +38,6 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 ## Chapter 1 — Threat intelligence and OSINT: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 What CTI is"]
-  N2["1.2 Decisions first"]
-  N3["1.3 Threats to charities"]
-  N4["1.4 Vocabulary"]
-  N5["1.5 The cycle in one page"]
-  N6["1.6 Realistic scope"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 What CTI is"]
-  N2["1.2 Decisions first"]
-  N3["1.3 Threats to charities"]
-  N4["1.4 Vocabulary"]
-  N5["1.5 The cycle in one page"]
-  N6["1.6 Realistic scope"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 What CTI is]
-    |
-    v
-[1.2 Decisions first]
-    |
-    v
-[1.3 Threats to charities]
-    |
-    v
-[1.4 Vocabulary]
-    |
-    v
-[1.5 The cycle in one page]
-    |
-    v
-[1.6 Realistic scope]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what cyber threat intelligence is and is not; (2) connect intelligence to small-organisation decisions; (3) recognise the main threats to charities; (4) use the core vocabulary — ATT&CK, the kill chain, the Diamond Model, STIX, TAXII and TLP — at a beginner level.
@@ -179,56 +114,6 @@ CTI is checked information tied to decisions; learn the vocabulary, stay within 
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Written permission and TLP"]
-  N2["2.2 Privacy and terms of service"]
-  N3["2.3 Unsafe actions and mistakes"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Written permission and TLP"]
-  N2["2.2 Privacy and terms of service"]
-  N3["2.3 Unsafe actions and mistakes"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Written permission and TLP]
-    |
-    v
-[2.2 Privacy and terms of service]
-    |
-    v
-[2.3 Unsafe actions and mistakes]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) set written scope and permission for CTI tasks in a small organisation; (2) apply TLP 2.0 when receiving and sharing; (3) collect OSINT lawfully, respecting privacy and terms of service; (4) recognise actions that are unsafe or need someone else's authority.
@@ -300,66 +185,6 @@ Work from written permission, follow TLP exactly, protect privacy, respect terms
 <a id="ch-03"></a>
 
 ## Chapter 3 — Threat intelligence and OSINT: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Systems and sources"]
-  N2["Lab — source dependencies"]
-  N3["3.2 Reading the result"]
-  N4["3.3 Data to keep"]
-  N5["3.4 Settings and supplier dependencies"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Systems and sources"]
-  N2["Lab — source dependencies"]
-  N3["3.2 Reading the result"]
-  N4["3.3 Data to keep"]
-  N5["3.4 Settings and supplier dependencies"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Systems and sources]
-    |
-    v
-[Lab — source dependencies]
-    |
-    v
-[3.2 Reading the result]
-    |
-    v
-[3.3 Data to keep]
-    |
-    v
-[3.4 Settings and supplier dependencies]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -457,66 +282,6 @@ Know your systems and logs, map source dependencies, remove single points of fai
 <a id="ch-04"></a>
 
 ## Chapter 4 — Threat intelligence and OSINT: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Lab rules"]
-  N2["Lab — validate, match and filter"]
-  N3["4.2 Reading and acting on the result"]
-  N4["4.3 The summary and the weekly routine"]
-  N5["4.4 Synthesis of the month"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Lab rules"]
-  N2["Lab — validate, match and filter"]
-  N3["4.2 Reading and acting on the result"]
-  N4["4.3 The summary and the weekly routine"]
-  N5["4.4 Synthesis of the month"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Lab rules]
-    |
-    v
-[Lab — validate, match and filter]
-    |
-    v
-[4.2 Reading and acting on the result]
-    |
-    v
-[4.3 The summary and the weekly routine]
-    |
-    v
-[4.4 Synthesis of the month]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -621,30 +386,6 @@ Validate before use, match carefully, act kindly on hits, share only what labels
 
 ## Chapter 5 — The source print follows the list
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  L["Four source tuples, written order"] --> D["deps grows by first sighting"]
-  D --> P["Two dependency lines, then the independent line"]
-  P --> Q{"Did a sort pick the inbox line?"}
-  Q -->|No| K["Keep the embedded print"]
-```
-
-The walk follows `sources`. Nothing in the file sorts the names.
-
-### Logical drawing
-
-```text
-coordinator inbox: CCC alerts, Donation platform notices -> SINGLE POINT OF FAILURE
-form owner Sam: Volunteer reports -> SINGLE POINT OF FAILURE
-independent sources: ['National charity advisories']
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -714,38 +455,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — The flag is an or of two tests
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  N["One dependency key"] --> A{"len of names greater than 1?"}
-  N --> B{"Does the key contain Sam?"}
-  A --> F["SINGLE POINT OF FAILURE if either is true"]
-  B --> F
-  F --> Q{"Does this print contain ok?"}
-  Q -->|No| K["The else branch is unused"]
-```
-
-Either test is enough. This run takes neither line to `ok`.
-
-### Logical drawing
-
-```text
-condition
-  len(names) > 1 or "Sam" in the key
-true
-  SINGLE POINT OF FAILURE
-false, unused here
-  ok
-this print
-  two failure lines
-  zero ok lines
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -796,36 +505,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Sam is a substring, not a directory
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  K["Key text form owner Sam"] --> T{"Is the character sequence Sam inside it?"}
-  T -->|Yes| F["Failure label"]
-  T --> Q{"Did the script open a staff list?"}
-  Q -->|No| R["The test is text only"]
-```
-
-The letters decide. A person record is not consulted.
-
-### Logical drawing
-
-```text
-tested string
-  form owner Sam
-sought sequence
-  Sam
-case
-  capital S
-not consulted
-  a staff list
-  a deputy named later
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -881,35 +560,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — The independent line is a list repr
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  S["Four tuples"] --> E{"Is needs empty?"}
-  E -->|Yes| L["One name in a Python list"]
-  E -->|No| D["A deps key instead"]
-  L --> P["Brackets and single quotes"]
-```
-
-Empty needs select the name. The print then shows Python's list form.
-
-### Logical drawing
-
-```text
-kept
-  National charity advisories
-printed form
-  ['National charity advisories']
-excluded
-  any tuple whose needs list is non-empty
-not shown
-  the word web page
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -961,36 +611,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Four shared values become three valid
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  F["Four shared tuples"] --> R["One rejected"]
-  R --> V["valid length 3"]
-  V --> Q{"Does 3 mean three shareable values?"}
-  Q -->|No| K["AMBER is still inside valid"]
-```
-
-The count is the length of `valid`. Sharing is a later filter.
-
-### Logical drawing
-
-```text
-shared, in written order
-  donate-elmfield.example
-  198.51.100.400
-  elmfield-giftaid.example
-  203.0.113.9
-rejected
-  198.51.100.400
-remaining in valid
-  the other three, including AMBER
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -1046,35 +666,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — 400 is why that address fails
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  V["198.51.100.400"] --> P["ip_address raises"]
-  P --> D{"Digits only after dots are removed?"}
-  D -->|Yes| I["print invalid and skip"]
-  G["203.0.113.9"] --> OK["ip_address accepts"]
-```
-
-One call rejects the broken octet. A different value passes the same call.
-
-### Logical drawing
-
-```text
-rejected
-  198.51.100.400
-  octet 400
-accepted as an address
-  203.0.113.9
-not a lookup
-  no DNS
-  no route
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1127,35 +718,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Hits follow the mail list
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  M["Three mail rows, written order"] --> S["Membership in the valid set"]
-  S --> H["Two tuples, mail order"]
-  H --> Q{"Did the shared-list order win?"}
-  Q -->|No| K["vol-07 then office"]
-```
-
-The set answers yes or no. The mail list chooses the sequence.
-
-### Logical drawing
-
-```text
-mail order
-  vol-07, donate-elmfield.example
-  vol-12, news.example
-  office, elmfield-giftaid.example
-printed hits
-  vol-07 then office
-not a sort key
-  the order of shared
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1207,35 +769,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — AMBER can hit and still stay inside
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  A["elmfield-giftaid.example"] --> V["Inside valid"]
-  V --> H["Inside hits"]
-  V --> P{"Label in CLEAR or GREEN?"}
-  P -->|No| S["Absent from the community list"]
-```
-
-A match is an internal fact. The label still governs the outbound list.
-
-### Logical drawing
-
-```text
-in valid
-  yes
-in hits
-  office row
-in shareable with community
-  no
-label
-  TLP:AMBER
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1291,37 +824,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Community order is the valid walk
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  V["valid, build order"] --> F{"Label is CLEAR or GREEN?"}
-  F -->|Keep| P["GREEN domain, then the address"]
-  F -->|Drop| A["AMBER skipped in between"]
-  P --> Q{"Did CLEAR sort to the front?"}
-  Q -->|No| K["Membership is not a sort"]
-```
-
-The pair `("TLP:CLEAR", "TLP:GREEN")` is a membership test. It does not rank the rows.
-
-### Logical drawing
-
-```text
-valid build order
-  GREEN domain
-  AMBER domain
-  CLEAR address
-community print
-  donate-elmfield.example
-  203.0.113.9
-skipped between them
-  elmfield-giftaid.example
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1375,36 +877,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — vol-12 is a row the hits omit
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  R["Three mail rows"] --> H["Two hit tuples"]
-  R --> M["vol-12 with news.example"]
-  M --> Q{"Does the script print a MISS line?"}
-  Q -->|No| K["Omission is the result"]
-```
-
-Three rows were written. Two qualified. The third stays in the source and off the hit list.
-
-### Logical drawing
-
-```text
-written in mail
-  vol-07
-  vol-12
-  office
-printed under hits
-  vol-07
-  office
-no line
-  MISS: vol-12
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1460,35 +932,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — One week-match is not two lab hits
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  W["First week: one match, one password change"] --> N["A notebook sentence"]
-  L["Lab hits: two tuples"] --> P["A script print"]
-  N --> Q{"Are the counts the same event?"}
-  Q -->|No| K["Keep both numbers"]
-```
-
-The week and the lab are different pages. Their counts do not correct each other.
-
-### Logical drawing
-
-```text
-week sentence
-  3 logged
-  1 match
-  1 password changed
-  1 GREEN feedback
-lab print
-  two hit tuples
-  no password field
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1543,35 +986,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — Feedback names no AMBER domain
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  F["Outbound paragraph"] --> G["GREEN domain only"]
-  F --> C["A count of two, without the AMBER name"]
-  C --> Q{"Does a second reader see the AMBER name?"}
-  Q -->|No| K["Initials, then send"]
-```
-
-The paragraph can say that two indicators matched. It cannot say the withheld name.
-
-### Logical drawing
-
-```text
-may appear outbound
-  the GREEN domain
-  a count that does not name AMBER
-must not appear outbound
-  elmfield-giftaid.example
-check
-  a second reader
-  initials beside the send
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1625,37 +1039,6 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Monday is not Friday
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  M["Monday: read and log"] --> T["Tuesday: check logs"]
-  T --> W["Wednesday: warn if needed"]
-  W --> F["Friday: feedback and update the log"]
-  F --> Q{"Is the monthly paragraph a fifth weekday?"}
-  Q -->|No| K["The chair added a month, not a day"]
-```
-
-Four weekdays are the routine. Thursday is not one of them. The month is a separate ask.
-
-### Logical drawing
-
-```text
-weekdays in the routine
-  Monday
-  Tuesday
-  Wednesday
-  Friday
-not in the routine
-  Thursday
-added beside it
-  a monthly paragraph for the chair
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 ### Learning outcomes
 
@@ -1712,34 +1095,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Equality misses a near name
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  E["d in the set of valid values"] --> Q{"Is the string exactly a member?"}
-  Q -->|Yes| H["A hit"]
-  Q -->|No| N["Not a hit"]
-  N --> L["A near name is not in this mail list"]
-```
-
-The test is equality. This fixture does not contain a near-name row to demonstrate the miss.
-
-### Logical drawing
-
-```text
-test
-  exact membership
-in this mail list
-  news.example, a different name
-  no one-character variant
-not in the file
-  a similarity score
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1794,36 +1149,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Thirty days is not ninety
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  E["Email sign-in logs: 30 days"] --> N["A note, not a lab column"]
-  D["Donation logins: 90 days"] --> N
-  G["A service with no useful log"] --> S["Record the gap"]
-  S --> Q{"Does silence mean safe?"}
-  Q -->|No| K["A gap is not a clearance"]
-```
-
-The retention figures are prose. Neither script prints them.
-
-### Logical drawing
-
-```text
-prose
-  email sign-ins, 30 days
-  donation logins, 90 days
-labs print
-  neither integer
-gap
-  no useful log means write the gap
-  do not read silence as safety
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1877,38 +1202,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the Elmfield note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["An Elmfield note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave Elmfield's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    both lab prints, in their own order
-    valid: 3, with AMBER still inside that length
-    the community list without the AMBER name
-    30 days and 90 days as prose
-    the four weekdays, and the week's 3, 1, 1, 1
-    chapter 4's closing line, quoted once:
-    Validate before use, match carefully, act kindly on hits, share only what labels allow and keep a weekly routine.
-must not be added
-    an ok line, a MISS line, a lookalike domain
-    a password, a phone number, a deputy's name
-    a merged tally, the word secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

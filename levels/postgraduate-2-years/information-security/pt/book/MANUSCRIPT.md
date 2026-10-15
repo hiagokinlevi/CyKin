@@ -37,46 +37,6 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 ## Capítulo 1 — A profissional e o Moorfield Dental Group
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 A profissional"]
-  N1["1.2 A organização"]
-  N2["1.3 O que o curso acrescenta"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 A profissional"]
-  N1["1.2 A organização"]
-  N2["1.3 O que o curso acrescenta"]
-  N0 --> N1 --> N2 --> Q["EX001"]
-```
-
-```text
-[1.1 A profissional]
-    |
-    v
-[1.2 A organização]
-    |
-    v
-[1.3 O que o curso acrescenta]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o caso da profissional; (2) identificar o que um curso de pós-graduação acrescenta à experiência; (3) definir metas de aprendizagem ligadas a problemas do ambiente de trabalho.
@@ -130,51 +90,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança de segurança e o sistema de gestão
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Estrutura de governança"]
-  N1["2.2 Conceitos de sistema de gestão"]
-  N2["2.3 Apetite a risco"]
-  N3["2.4 Escopo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Estrutura de governança"]
-  N1["2.2 Conceitos de sistema de gestão"]
-  N2["2.3 Apetite a risco"]
-  N3["2.4 Escopo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX006"]
-```
-
-```text
-[2.1 Estrutura de governança]
-    |
-    v
-[2.2 Conceitos de sistema de gestão]
-    |
-    v
-[2.3 Apetite a risco]
-    |
-    v
-[2.4 Escopo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -230,51 +145,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Avaliação de riscos para uma rede de clínicas
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 Método"]
-  N1["3.2 Classificações coerentes"]
-  N2["3.3 Resultados"]
-  N3["3.4 Tratamento"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Método"]
-  N1["3.2 Classificações coerentes"]
-  N2["3.3 Resultados"]
-  N3["3.4 Tratamento"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX011"]
-```
-
-```text
-[3.1 Método]
-    |
-    v
-[3.2 Classificações coerentes]
-    |
-    v
-[3.3 Resultados]
-    |
-    v
-[3.4 Tratamento]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir uma avaliação de riscos estruturada; (2) classificar a probabilidade e o impacto de forma coerente; (3) escolher tratamentos alinhados ao apetite.
@@ -329,51 +199,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Inventário de ativos e de fornecedores
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 Ativos entre as unidades"]
-  N1["4.2 Classificando a informação"]
-  N2["4.3 Fornecedores"]
-  N3["4.4 Responsabilidade"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Ativos entre as unidades"]
-  N1["4.2 Classificando a informação"]
-  N2["4.3 Fornecedores"]
-  N3["4.4 Responsabilidade"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
-```
-
-```text
-[4.1 Ativos entre as unidades]
-    |
-    v
-[4.2 Classificando a informação]
-    |
-    v
-[4.3 Fornecedores]
-    |
-    v
-[4.4 Responsabilidade]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) montar um inventário de ativos confiável entre as unidades; (2) identificar os fornecedores com acesso a dados; (3) atribuir donos e classificações.
@@ -427,56 +252,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Gestão de correções e de vulnerabilidades
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 Medindo a conformidade"]
-  N1["5.2 O laboratório de correções"]
-  N2["Laboratório — Conformidade com as correções críticas"]
-  N3["5.3 Causas e apoio"]
-  N4["5.4 Sistemas com restrições"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Medindo a conformidade"]
-  N1["5.2 O laboratório de correções"]
-  N2["Laboratório — Conformidade com as correções críticas"]
-  N3["5.3 Causas e apoio"]
-  N4["5.4 Sistemas com restrições"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[5.1 Medindo a conformidade]
-    |
-    v
-[5.2 O laboratório de correções]
-    |
-    v
-[Laboratório — Conformidade com as correções críticas]
-    |
-    v
-[5.3 Causas e apoio]
-    |
-    v
-[5.4 Sistemas com restrições]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -562,51 +337,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Identidade e acesso
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Papéis"]
-  N1["6.2 Acesso de emergência"]
-  N2["6.3 Revisões de acessos"]
-  N3["6.4 Acesso privilegiado e remoto"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Papéis"]
-  N1["6.2 Acesso de emergência"]
-  N2["6.3 Revisões de acessos"]
-  N3["6.4 Acesso privilegiado e remoto"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
-```
-
-```text
-[6.1 Papéis]
-    |
-    v
-[6.2 Acesso de emergência]
-    |
-    v
-[6.3 Revisões de acessos]
-    |
-    v
-[6.4 Acesso privilegiado e remoto]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar o acesso baseado em papéis para os sistemas clínicos; (2) revisar os acessos entre as unidades; (3) proteger o acesso privilegiado e o remoto.
@@ -660,56 +390,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Phishing e segurança do e-mail
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 O problema"]
-  N1["7.2 O laboratório dos domínios parecidos"]
-  N2["Laboratório — Sinalizando domínios de remetente pare"]
-  N3["7.3 Controles técnicos"]
-  N4["7.4 Controles humanos"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 O problema"]
-  N1["7.2 O laboratório dos domínios parecidos"]
-  N2["Laboratório — Sinalizando domínios de remetente pare"]
-  N3["7.3 Controles técnicos"]
-  N4["7.4 Controles humanos"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[7.1 O problema]
-    |
-    v
-[7.2 O laboratório dos domínios parecidos]
-    |
-    v
-[Laboratório — Sinalizando domínios de remetente pare]
-    |
-    v
-[7.3 Controles técnicos]
-    |
-    v
-[7.4 Controles humanos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -796,46 +476,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Backup, ransomware e recuperação
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Projeto dos backups"]
-  N1["8.3 Testando"]
-  N2["8.4 Continuidade das clínicas"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Projeto dos backups"]
-  N1["8.3 Testando"]
-  N2["8.4 Continuidade das clínicas"]
-  N0 --> N1 --> N2 --> Q["EX036"]
-```
-
-```text
-[8.1 Projeto dos backups]
-    |
-    v
-[8.3 Testando]
-    |
-    v
-[8.4 Continuidade das clínicas]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar backups resistentes ao ransomware; (2) testar a recuperação em relação aos objetivos; (3) planejar a continuidade das clínicas.
@@ -889,51 +529,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Resposta a incidentes e notificação
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Processo"]
-  N1["9.2 Notificação"]
-  N2["9.3 Exercício"]
-  N3["9.4 Aprendizado"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Processo"]
-  N1["9.2 Notificação"]
-  N2["9.3 Exercício"]
-  N3["9.4 Aprendizado"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
-```
-
-```text
-[9.1 Processo]
-    |
-    v
-[9.2 Notificação]
-    |
-    v
-[9.3 Exercício]
-    |
-    v
-[9.4 Aprendizado]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -989,51 +584,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Métricas, relatórios e o conselho
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Medidas"]
-  N1["10.2 Linhas de base"]
-  N2["10.3 Relatório ao conselho"]
-  N3["10.4 Orientando as decisões"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Medidas"]
-  N1["10.2 Linhas de base"]
-  N2["10.3 Relatório ao conselho"]
-  N3["10.4 Orientando as decisões"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
-```
-
-```text
-[10.1 Medidas]
-    |
-    v
-[10.2 Linhas de base]
-    |
-    v
-[10.3 Relatório ao conselho]
-    |
-    v
-[10.4 Orientando as decisões]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher medidas ligadas aos riscos; (2) relatar a um conselho não especialista; (3) usar as medidas para orientar as decisões.
@@ -1088,51 +638,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Projeto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Escolhendo o projeto"]
-  N1["11.2 Critérios de sucesso"]
-  N2["11.3 Entrega"]
-  N3["11.4 Avaliação"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Escolhendo o projeto"]
-  N1["11.2 Critérios de sucesso"]
-  N2["11.3 Entrega"]
-  N3["11.4 Avaliação"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX051"]
-```
-
-```text
-[11.1 Escolhendo o projeto]
-    |
-    v
-[11.2 Critérios de sucesso]
-    |
-    v
-[11.3 Entrega]
-    |
-    v
-[11.4 Avaliação]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir um projeto final de melhoria; (2) entregá-lo com evidências; (3) avaliar os resultados em relação às metas.
@@ -1186,51 +691,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Apresentação do projeto final e próximos passos
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 Apresentação"]
-  N1["12.2 Questionamentos"]
-  N2["12.3 Resultado"]
-  N3["12.4 Próximos passos"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Apresentação"]
-  N1["12.2 Questionamentos"]
-  N2["12.3 Resultado"]
-  N3["12.4 Próximos passos"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX056"]
-```
-
-```text
-[12.1 Apresentação]
-    |
-    v
-[12.2 Questionamentos]
-    |
-    v
-[12.3 Resultado]
-    |
-    v
-[12.4 Próximos passos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

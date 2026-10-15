@@ -37,61 +37,6 @@ NIST [SP 800-41r1](https://doi.org/10.6028/NIST.SP.800-41r1), [SP 800-77r1](http
 
 ## Chapter 1 — Research question and literature method
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Literature method"]
-  N3["1.3 Defining the measures"]
-  N4["1.4 Scope and boundaries"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Literature method"]
-  N3["1.3 Defining the measures"]
-  N4["1.4 Scope and boundaries"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 Literature method]
-    |
-    v
-[1.3 Defining the measures]
-    |
-    v
-[1.4 Scope and boundaries]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame a master's question about intrusion detection alert quality; (2) search and screen literature systematically; (3) define measures.
@@ -145,66 +90,6 @@ A precise question, a logged literature method and paired volume, precision and 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Network and communications security: advanced seminar
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 How detection works"]
-  N2["Lab — The base-rate problem"]
-  N3["2.2 Reading the base rates"]
-  N4["2.3 Triage in practice"]
-  N5["Flow records as a second view"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 How detection works"]
-  N2["Lab — The base-rate problem"]
-  N3["2.2 Reading the base rates"]
-  N4["2.3 Triage in practice"]
-  N5["Flow records as a second view"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 How detection works]
-    |
-    v
-[Lab — The base-rate problem]
-    |
-    v
-[2.2 Reading the base rates]
-    |
-    v
-[2.3 Triage in practice]
-    |
-    v
-[Flow records as a second view]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -285,66 +170,6 @@ Low base rates make false positive control the central problem of alert quality.
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Design"]
-  N2["3.2 Ethics and data"]
-  N3["3.3 Tuning governance"]
-  N4["3.4 Reproducibility"]
-  N5["Analysis plan"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Design"]
-  N2["3.2 Ethics and data"]
-  N3["3.3 Tuning governance"]
-  N4["3.4 Reproducibility"]
-  N5["Analysis plan"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Design]
-    |
-    v
-[3.2 Ethics and data]
-    |
-    v
-[3.3 Tuning governance]
-    |
-    v
-[3.4 Reproducibility]
-    |
-    v
-[Analysis plan]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) design a before-after study with controls; (2) secure ethics and data agreements; (3) plan reproducible analysis.
@@ -409,66 +234,6 @@ A governed, normalised before-after design with reproducible scripts is credible
 <a id="ch-04"></a>
 
 ## Chapter 4 — Network and communications security: competing explanations
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why alternatives matter"]
-  N2["Lab — Normalising by traffic"]
-  N3["4.2 Reading the normalised series"]
-  N4["4.3 Testing other explanations"]
-  N5["Analyst behaviour"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why alternatives matter"]
-  N2["Lab — Normalising by traffic"]
-  N3["4.2 Reading the normalised series"]
-  N4["4.3 Testing other explanations"]
-  N5["Analyst behaviour"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why alternatives matter]
-    |
-    v
-[Lab — Normalising by traffic]
-    |
-    v
-[4.2 Reading the normalised series]
-    |
-    v
-[4.3 Testing other explanations]
-    |
-    v
-[Analyst behaviour]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -557,66 +322,6 @@ Testing alternatives shows the tuning explanation survives, with traffic account
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Proposal"]
-  N2["5.2 Pilot sensor"]
-  N3["5.3 Pilot changes"]
-  N4["5.4 Pilot lessons"]
-  N5["Choosing what to tune first"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Proposal"]
-  N2["5.2 Pilot sensor"]
-  N3["5.3 Pilot changes"]
-  N4["5.4 Pilot lessons"]
-  N5["Choosing what to tune first"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Proposal]
-    |
-    v
-[5.2 Pilot sensor]
-    |
-    v
-[5.3 Pilot changes]
-    |
-    v
-[5.4 Pilot lessons]
-    |
-    v
-[Choosing what to tune first]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) write the dissertation proposal; (2) pilot tuning on one sensor; (3) refine the procedure.
@@ -687,71 +392,6 @@ The pilot refines tuning into narrow, documented, expiring changes.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Rollout"]
-  N2["Lab — Precision and recall"]
-  N3["6.2 Reading the result"]
-  N4["6.3 Examining the miss"]
-  N5["Weekly stability"]
-  N6["Analyst time"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Rollout"]
-  N2["Lab — Precision and recall"]
-  N3["6.2 Reading the result"]
-  N4["6.3 Examining the miss"]
-  N5["Weekly stability"]
-  N6["Analyst time"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Rollout]
-    |
-    v
-[Lab — Precision and recall]
-    |
-    v
-[6.2 Reading the result]
-    |
-    v
-[6.3 Examining the miss]
-    |
-    v
-[Weekly stability]
-    |
-    v
-[Analyst time]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -839,71 +479,6 @@ Tuning met its criteria, and analysing the one miss improved the procedure furth
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Structure"]
-  N2["7.2 Limitations"]
-  N3["7.3 Recommendations"]
-  N4["7.4 Writing for practitioners"]
-  N5["Ethical reflection"]
-  N6["Threats to validity summary"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Structure"]
-  N2["7.2 Limitations"]
-  N3["7.3 Recommendations"]
-  N4["7.4 Writing for practitioners"]
-  N5["Ethical reflection"]
-  N6["Threats to validity summary"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Structure]
-    |
-    v
-[7.2 Limitations]
-    |
-    v
-[7.3 Recommendations]
-    |
-    v
-[7.4 Writing for practitioners]
-    |
-    v
-[Ethical reflection]
-    |
-    v
-[Threats to validity summary]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) structure the dissertation; (2) write limitations; (3) make recommendations.
@@ -976,71 +551,6 @@ Clear structure and honest limits make the dissertation useful to examiners and 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Independent review"]
-  N2["8.2 Viva preparation"]
-  N3["8.3 The viva"]
-  N4["8.4 Follow-up"]
-  N5["Answering a hostile question"]
-  N6["Lessons for future students"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Independent review"]
-  N2["8.2 Viva preparation"]
-  N3["8.3 The viva"]
-  N4["8.4 Follow-up"]
-  N5["Answering a hostile question"]
-  N6["Lessons for future students"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Independent review]
-    |
-    v
-[8.2 Viva preparation]
-    |
-    v
-[8.3 The viva]
-    |
-    v
-[8.4 Follow-up]
-    |
-    v
-[Answering a hostile question]
-    |
-    v
-[Lessons for future students]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

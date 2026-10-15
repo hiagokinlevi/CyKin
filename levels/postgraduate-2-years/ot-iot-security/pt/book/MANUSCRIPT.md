@@ -36,56 +36,6 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [série 
 
 ## Capítulo 1 — Tomada de decisão avançada em segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Decisões, não constatações"]
-  N1["1.2 A perda esperada é necessária, mas não suficient"]
-  N2["1.3 Lendo a comparação"]
-  N3["1.4 Valor da informação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Decisões, não constatações"]
-  N1["1.2 A perda esperada é necessária, mas não suficient"]
-  N2["1.3 Lendo a comparação"]
-  N3["1.4 Valor da informação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[1.1 Decisões, não constatações]
-    |
-    v
-[1.2 A perda esperada é necessária, mas não suficient]
-    |
-    v
-[1.3 Lendo a comparação]
-    |
-    v
-[1.4 Valor da informação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) enquadrar uma decisão de segurança de TO com opções, critérios, incerteza e um responsável pela decisão; (2) comparar opções pela perda esperada e pelo pior caso plausível ao mesmo tempo; (3) registrar uma decisão de modo que ela possa ser auditada depois; e (4) reconhecer quando uma decisão deve ser adiada para reunir informações.
@@ -167,56 +117,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Segurança de TO, IoT e sistemas ciberfísicos: prática atual
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 O que as orientações atuais esperam"]
-  N1["2.2 Documentado versus executado"]
-  N2["2.3 Montando a lista de lacunas"]
-  N3["2.4 Priorizando"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O que as orientações atuais esperam"]
-  N1["2.2 Documentado versus executado"]
-  N2["2.3 Montando a lista de lacunas"]
-  N3["2.4 Priorizando"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[2.1 O que as orientações atuais esperam]
-    |
-    v
-[2.2 Documentado versus executado]
-    |
-    v
-[2.3 Montando a lista de lacunas]
-    |
-    v
-[2.4 Priorizando]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar o programa de segurança de TO de uma organização com os temas da NIST SP 800-82r3 e da IEC 62443-2-1; (2) distinguir a prática documentada da prática executada; (3) produzir uma lista de lacunas com evidências; e (4) priorizar as lacunas para a liderança.
@@ -279,56 +179,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 3 — Segurança de TO, IoT e sistemas ciberfísicos: evidências especializadas
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 As fontes e os seus pontos cegos"]
-  N1["3.2 Conflitos são informação"]
-  N2["3.3 Avaliando alegações externas"]
-  N3["3.4 Declarações de confiança"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 As fontes e os seus pontos cegos"]
-  N1["3.2 Conflitos são informação"]
-  N2["3.3 Avaliando alegações externas"]
-  N3["3.4 Declarações de confiança"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[3.1 As fontes e os seus pontos cegos]
-    |
-    v
-[3.2 Conflitos são informação]
-    |
-    v
-[3.3 Avaliando alegações externas]
-    |
-    v
-[3.4 Declarações de confiança]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) avaliar a qualidade das fontes de evidência de segurança de TO; (2) conciliar evidências conflitantes de dados de rede, de host e de processo; (3) avaliar criticamente as alegações de fornecedores e de alertas; e (4) escrever uma avaliação de evidências que declare níveis de confiança.
@@ -390,56 +240,6 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco e ética avançados
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 Distribuições em vez de estimativas pontuais"]
-  N1["4.2 Lendo a cauda"]
-  N2["4.3 Quem arca com o risco"]
-  N3["4.4 Transparência versus exposição"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Distribuições em vez de estimativas pontuais"]
-  N1["4.2 Lendo a cauda"]
-  N2["4.3 Quem arca com o risco"]
-  N3["4.4 Transparência versus exposição"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[4.1 Distribuições em vez de estimativas pontuais]
-    |
-    v
-[4.2 Lendo a cauda]
-    |
-    v
-[4.3 Quem arca com o risco]
-    |
-    v
-[4.4 Transparência versus exposição]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -522,56 +322,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Segurança de TO, IoT e sistemas ciberfísicos: alternativas de projeto
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 O problema"]
-  N1["5.2 Três alternativas"]
-  N2["5.3 Avaliando-as"]
-  N3["5.4 Registrando as rejeições"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O problema"]
-  N1["5.2 Três alternativas"]
-  N2["5.3 Avaliando-as"]
-  N3["5.4 Registrando as rejeições"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[5.1 O problema]
-    |
-    v
-[5.2 Três alternativas]
-    |
-    v
-[5.3 Avaliando-as]
-    |
-    v
-[5.4 Registrando as rejeições]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) gerar alternativas de projeto genuinamente diferentes para proteger estações elevatórias remotas; (2) avaliá-las segundo critérios operacionais, de segurança e de ciclo de vida; (3) usar os conceitos de zonas e conduítes da IEC 62443 para descrever cada uma; e (4) documentar por que as alternativas rejeitadas foram rejeitadas.
@@ -633,56 +383,6 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Segurança de TO, IoT e sistemas ciberfísicos: avaliação controlada
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Os mesmos dados, dois tratamentos"]
-  N1["6.2 Lendo o resultado"]
-  N2["6.3 Tomando a decisão"]
-  N3["6.4 Ameaças à validade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Os mesmos dados, dois tratamentos"]
-  N1["6.2 Lendo o resultado"]
-  N2["6.3 Tomando a decisão"]
-  N3["6.4 Ameaças à validade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
-```
-
-```text
-[6.1 Os mesmos dados, dois tratamentos]
-    |
-    v
-[6.2 Lendo o resultado]
-    |
-    v
-[6.3 Tomando a decisão]
-    |
-    v
-[6.4 Ameaças à validade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -777,56 +477,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Segurança de TO, IoT e sistemas ciberfísicos: integração organizacional
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 O problema da responsabilidade"]
-  N1["7.2 Uma RACI para três processos"]
-  N2["7.3 Gestão de mudanças"]
-  N3["7.4 Métricas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 O problema da responsabilidade"]
-  N1["7.2 Uma RACI para três processos"]
-  N2["7.3 Gestão de mudanças"]
-  N3["7.4 Métricas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[7.1 O problema da responsabilidade]
-    |
-    v
-[7.2 Uma RACI para três processos]
-    |
-    v
-[7.3 Gestão de mudanças]
-    |
-    v
-[7.4 Métricas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar papéis e responsabilidades de segurança de TO entre TI, operações e engenharia; (2) montar uma matriz RACI para os principais processos de segurança de TO; (3) integrar a segurança de TO à gestão de mudanças; e (4) definir métricas que induzam o comportamento certo.
@@ -889,56 +539,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Segurança de TO, IoT e sistemas ciberfísicos: casos difíceis
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Quando a contenção põe o processo em risco"]
-  N1["8.2 Ameaças internas"]
-  N2["8.3 Comprometimento de fornecedor"]
-  N3["8.4 Comunicar sob incerteza"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Quando a contenção põe o processo em risco"]
-  N1["8.2 Ameaças internas"]
-  N2["8.3 Comprometimento de fornecedor"]
-  N3["8.4 Comunicar sob incerteza"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[8.1 Quando a contenção põe o processo em risco]
-    |
-    v
-[8.2 Ameaças internas]
-    |
-    v
-[8.3 Comprometimento de fornecedor]
-    |
-    v
-[8.4 Comunicar sob incerteza]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) liderar uma resposta quando a contenção e a segurança do processo entram em conflito; (2) lidar com um cenário de ameaça interna com justiça e evidências; (3) gerenciar o comprometimento de um fornecedor que afeta vários sites; e (4) comunicar-se sob incerteza com reguladores e com o público.
@@ -998,61 +598,6 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Segurança de TO, IoT e sistemas ciberfísicos: liderança e garantia
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Alegações, argumentos, evidências"]
-  N1["9.2 Lendo a verificação"]
-  N2["9.3 Garantia não é conformidade"]
-  N3["9.4 Atualidade das evidências"]
-  N4["9.5 Reportando a um conselho"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Alegações, argumentos, evidências"]
-  N1["9.2 Lendo a verificação"]
-  N2["9.3 Garantia não é conformidade"]
-  N3["9.4 Atualidade das evidências"]
-  N4["9.5 Reportando a um conselho"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
-```
-
-```text
-[9.1 Alegações, argumentos, evidências]
-    |
-    v
-[9.2 Lendo a verificação]
-    |
-    v
-[9.3 Garantia não é conformidade]
-    |
-    v
-[9.4 Atualidade das evidências]
-    |
-    v
-[9.5 Reportando a um conselho]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1151,61 +696,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Leitura e crítica de pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Escolhendo os artigos"]
-  N1["10.2 Criticando o modelo de ameaça"]
-  N2["10.3 Criticando o método e a avaliação"]
-  N3["10.4 Transferência para a prática"]
-  N4["10.5 Escrevendo a crítica"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Escolhendo os artigos"]
-  N1["10.2 Criticando o modelo de ameaça"]
-  N2["10.3 Criticando o método e a avaliação"]
-  N3["10.4 Transferência para a prática"]
-  N4["10.5 Escrevendo a crítica"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[10.1 Escolhendo os artigos]
-    |
-    v
-[10.2 Criticando o modelo de ameaça]
-    |
-    v
-[10.3 Criticando o método e a avaliação]
-    |
-    v
-[10.4 Transferência para a prática]
-    |
-    v
-[10.5 Escrevendo a crítica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) criticar o modelo de ameaça, o método e a avaliação de um artigo de segurança de TO revisado por pares; (2) julgar se os resultados se transferem para a sua organização; (3) fazer a síntese entre artigos; e (4) escrever uma crítica estruturada que um público de profissionais possa usar.
@@ -1274,61 +764,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 11 — Projeto aplicado
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Escolhendo o projeto"]
-  N1["11.2 Partes interessadas e restrições"]
-  N2["11.3 Marcos e riscos"]
-  N3["11.4 Medidas de sucesso"]
-  N4["11.5 O dossiê"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Escolhendo o projeto"]
-  N1["11.2 Partes interessadas e restrições"]
-  N2["11.3 Marcos e riscos"]
-  N3["11.4 Medidas de sucesso"]
-  N4["11.5 O dossiê"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[11.1 Escolhendo o projeto]
-    |
-    v
-[11.2 Partes interessadas e restrições]
-    |
-    v
-[11.3 Marcos e riscos]
-    |
-    v
-[11.4 Medidas de sucesso]
-    |
-    v
-[11.5 O dossiê]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) delimitar um projeto aplicado de segurança de TO dentro de uma restrição organizacional real; (2) planejar as partes interessadas, os marcos e os riscos; (3) entregar um artefato mais um dossiê de evidências; e (4) definir medidas de sucesso antes de começar.
@@ -1396,56 +831,6 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 A visão de portfólio"]
-  N1["12.2 Transferência para outro setor"]
-  N2["12.3 Briefing de transferência"]
-  N3["12.4 Desenvolvimento contínuo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 A visão de portfólio"]
-  N1["12.2 Transferência para outro setor"]
-  N2["12.3 Briefing de transferência"]
-  N3["12.4 Desenvolvimento contínuo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[12.1 A visão de portfólio]
-    |
-    v
-[12.2 Transferência para outro setor]
-    |
-    v
-[12.3 Briefing de transferência]
-    |
-    v
-[12.4 Desenvolvimento contínuo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

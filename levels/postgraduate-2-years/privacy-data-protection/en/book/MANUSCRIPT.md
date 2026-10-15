@@ -37,61 +37,6 @@ Regulation (EU) 2016/679 (GDPR); Lei 13.709/2018 (LGPD); Directive 2002/58/EC (e
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The practitioner and the firm"]
-  N2["1.2 Decisions under uncertainty"]
-  N3["1.3 Constraints versus trade-offs"]
-  N4["1.4 Recording decisions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The practitioner and the firm"]
-  N2["1.2 Decisions under uncertainty"]
-  N3["1.3 Constraints versus trade-offs"]
-  N4["1.4 Recording decisions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The practitioner and the firm]
-    |
-    v
-[1.2 Decisions under uncertainty]
-    |
-    v
-[1.3 Constraints versus trade-offs]
-    |
-    v
-[1.4 Recording decisions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame privacy decisions as choices under uncertainty; (2) separate legal constraints from risk trade-offs; (3) document decisions for accountability.
@@ -142,61 +87,6 @@ Chapter 1 frames decisions. Chapter 2 surveys current practice.
 
 ## Chapter 2 — Privacy and data protection: current practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Mapping practice"]
-  N2["2.2 Comparing laws"]
-  N3["2.3 Frameworks"]
-  N4["2.4 Gaps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Mapping practice"]
-  N2["2.2 Comparing laws"]
-  N3["2.3 Frameworks"]
-  N4["2.4 Gaps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Mapping practice]
-    |
-    v
-[2.2 Comparing laws]
-    |
-    v
-[2.3 Frameworks]
-    |
-    v
-[2.4 Gaps]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map current privacy practice in a payments company; (2) compare GDPR and LGPD obligations; (3) identify gaps against good practice.
@@ -246,66 +136,6 @@ Chapter 2 maps practice. Chapter 3 gathers specialist evidence.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Privacy and data protection: specialist evidence
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 The necessity question"]
-  N2["3.2 Results"]
-  N3["3.3 Interpreting evidence"]
-  N4["3.4 Evidence culture"]
-  N5["Lab — Fraud detection with full GPS, city-level loca"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 The necessity question"]
-  N2["3.2 Results"]
-  N3["3.3 Interpreting evidence"]
-  N4["3.4 Evidence culture"]
-  N5["Lab — Fraud detection with full GPS, city-level loca"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 The necessity question]
-    |
-    v
-[3.2 Results]
-    |
-    v
-[3.3 Interpreting evidence]
-    |
-    v
-[3.4 Evidence culture]
-    |
-    v
-[Lab — Fraud detection with full GPS, city-level loca]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -387,61 +217,6 @@ Chapter 3 tests necessity. Chapter 4 addresses risk and ethics.
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Risk to whom"]
-  N2["4.2 Profiling ethics"]
-  N3["4.3 Conflicts of interest"]
-  N4["4.4 Ethical reasoning"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Risk to whom"]
-  N2["4.2 Profiling ethics"]
-  N3["4.3 Conflicts of interest"]
-  N4["4.4 Ethical reasoning"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Risk to whom]
-    |
-    v
-[4.2 Profiling ethics]
-    |
-    v
-[4.3 Conflicts of interest]
-    |
-    v
-[4.4 Ethical reasoning]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) assess privacy risk for individuals, not only the company; (2) apply ethical analysis to profiling; (3) handle conflicts of interest.
@@ -492,61 +267,6 @@ Chapter 4 broadens risk and ethics. Chapter 5 compares design alternatives.
 
 ## Chapter 5 — Privacy and data protection: design alternatives
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 The consent problem"]
-  N2["5.2 Alternatives"]
-  N3["5.3 Behavioural insight"]
-  N4["5.4 Choosing what to test"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 The consent problem"]
-  N2["5.2 Alternatives"]
-  N3["5.3 Behavioural insight"]
-  N4["5.4 Choosing what to test"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 The consent problem]
-    |
-    v
-[5.2 Alternatives]
-    |
-    v
-[5.3 Behavioural insight]
-    |
-    v
-[5.4 Choosing what to test]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) generate alternatives for a consent interface; (2) evaluate alternatives against law and user behaviour; (3) choose an alternative for testing.
@@ -596,66 +316,6 @@ Chapter 5 designs alternatives. Chapter 6 evaluates them in a controlled test.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Privacy and data protection: controlled evaluation
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Running the test"]
-  N2["6.2 Results"]
-  N3["6.3 Interpretation"]
-  N4["6.4 Communicating results"]
-  N5["Lab — Consent banner A/B test"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Running the test"]
-  N2["6.2 Results"]
-  N3["6.3 Interpretation"]
-  N4["6.4 Communicating results"]
-  N5["Lab — Consent banner A/B test"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Running the test]
-    |
-    v
-[6.2 Results]
-    |
-    v
-[6.3 Interpretation]
-    |
-    v
-[6.4 Communicating results]
-    |
-    v
-[Lab — Consent banner A/B test]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -728,61 +388,6 @@ Chapter 6 evaluates a design. Chapter 7 integrates privacy into the organisation
 
 ## Chapter 7 — Privacy and data protection: organizational integration
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Product process"]
-  N2["7.2 Procurement"]
-  N3["7.3 Alignment"]
-  N4["7.4 Champions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Product process"]
-  N2["7.2 Procurement"]
-  N3["7.3 Alignment"]
-  N4["7.4 Champions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Product process]
-    |
-    v
-[7.2 Procurement]
-    |
-    v
-[7.3 Alignment]
-    |
-    v
-[7.4 Champions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) embed privacy in product and procurement processes; (2) align privacy with security and risk functions; (3) build a network of privacy champions.
@@ -833,61 +438,6 @@ Chapter 7 integrates privacy. Chapter 8 handles difficult cases.
 
 ## Chapter 8 — Privacy and data protection: difficult cases
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 AML versus erasure"]
-  N2["8.2 Law enforcement requests"]
-  N3["8.3 Complex breach"]
-  N4["8.4 Lessons"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 AML versus erasure"]
-  N2["8.2 Law enforcement requests"]
-  N3["8.3 Complex breach"]
-  N4["8.4 Lessons"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 AML versus erasure]
-    |
-    v
-[8.2 Law enforcement requests]
-    |
-    v
-[8.3 Complex breach]
-    |
-    v
-[8.4 Lessons]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) handle conflicting obligations such as anti-money-laundering and erasure; (2) respond to law enforcement requests; (3) manage a complex breach.
@@ -937,66 +487,6 @@ Chapter 8 handles hard cases. Chapter 9 provides leadership and assurance.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Privacy and data protection: leadership and assurance
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Board reporting"]
-  N2["9.2 The dashboard"]
-  N3["9.3 Assurance"]
-  N4["9.4 Leadership"]
-  N5["Lab — Privacy risk indicators against board appetite"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Board reporting"]
-  N2["9.2 The dashboard"]
-  N3["9.3 Assurance"]
-  N4["9.4 Leadership"]
-  N5["Lab — Privacy risk indicators against board appetite"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Board reporting]
-    |
-    v
-[9.2 The dashboard]
-    |
-    v
-[9.3 Assurance]
-    |
-    v
-[9.4 Leadership]
-    |
-    v
-[Lab — Privacy risk indicators against board appetite]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -1070,61 +560,6 @@ Chapter 9 leads and assures. Chapter 10 reads and critiques research.
 
 ## Chapter 10 — Research reading and critique
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Reading de-identification research"]
-  N2["10.2 Reading differential privacy"]
-  N3["10.3 Reading behavioural research"]
-  N4["10.4 Writing critique"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Reading de-identification research"]
-  N2["10.2 Reading differential privacy"]
-  N3["10.3 Reading behavioural research"]
-  N4["10.4 Writing critique"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Reading de-identification research]
-    |
-    v
-[10.2 Reading differential privacy]
-    |
-    v
-[10.3 Reading behavioural research]
-    |
-    v
-[10.4 Writing critique]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) critique research on de-identification and consent; (2) judge relevance to practice; (3) write a critical summary.
@@ -1175,61 +610,6 @@ Chapter 10 critiques research. Chapter 11 delivers the applied project.
 
 ## Chapter 11 — Applied project
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Choosing the project"]
-  N2["11.2 Delivery"]
-  N3["11.3 Effect"]
-  N4["11.4 Stakeholders"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Choosing the project"]
-  N2["11.2 Delivery"]
-  N3["11.3 Effect"]
-  N4["11.4 Stakeholders"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Choosing the project]
-    |
-    v
-[11.2 Delivery]
-    |
-    v
-[11.3 Effect]
-    |
-    v
-[11.4 Stakeholders]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) deliver a privacy improvement project; (2) measure its effect; (3) manage stakeholders through change.
@@ -1279,56 +659,6 @@ Chapter 11 delivers change. Chapter 12 reviews and transfers learning.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Review"]
-  N2["12.2 Transfer"]
-  N3["12.4 Development"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Review"]
-  N2["12.2 Transfer"]
-  N3["12.4 Development"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Review]
-    |
-    v
-[12.2 Transfer]
-    |
-    v
-[12.4 Development]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

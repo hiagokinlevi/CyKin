@@ -73,66 +73,6 @@ Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [G
 
 ## Capítulo 1 — Arquitectura informática y del servicio
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 Las capas de un servicio de control supervisor"]
-  N2["1.2 Tres rutas, tres problemas de protección"]
-  N3["1.3 Sondeo y frescura"]
-  N4["1.4 Plataformas compartidas"]
-  N5["1.6 Actividad práctica: dibuje su propio diagrama de"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 Las capas de un servicio de control supervisor"]
-  N2["1.2 Tres rutas, tres problemas de protección"]
-  N3["1.3 Sondeo y frescura"]
-  N4["1.4 Plataformas compartidas"]
-  N5["1.6 Actividad práctica: dibuje su propio diagrama de"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[1.1 Las capas de un servicio de control supervisor]
-    |
-    v
-[1.2 Tres rutas, tres problemas de protección]
-    |
-    v
-[1.3 Sondeo y frescura]
-    |
-    v
-[1.4 Plataformas compartidas]
-    |
-    v
-[1.6 Actividad práctica: dibuje su propio diagrama de]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -259,61 +199,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes y protocolos
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa de la lección
-
-Lección 02 publicada. Mapa, ejemplo, EX005.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Protocolos industriales y confianza"]
-  N2["2.2 El modelo de datos de Modbus"]
-  N3["2.3 La cabecera MBAP"]
-  N4["2.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX005"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Protocolos industriales y confianza"]
-  N2["2.2 El modelo de datos de Modbus"]
-  N3["2.3 La cabecera MBAP"]
-  N4["2.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX005"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[2.1 Protocolos industriales y confianza]
-    |
-    v
-[2.2 El modelo de datos de Modbus]
-    |
-    v
-[2.3 La cabecera MBAP]
-    |
-    v
-[2.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -451,61 +336,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operativos e identidades
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa de la lección
-
-Lección 03 publicada. Mapa, ejemplo, EX009.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 Qué significa bastionar en el nivel técnico"]
-  N2["3.2 Leer correctamente la configuración de sshd"]
-  N3["3.3 Cuentas e identidades"]
-  N4["3.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX009"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 Qué significa bastionar en el nivel técnico"]
-  N2["3.2 Leer correctamente la configuración de sshd"]
-  N3["3.3 Cuentas e identidades"]
-  N4["3.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX009"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[3.1 Qué significa bastionar en el nivel técnico]
-    |
-    v
-[3.2 Leer correctamente la configuración de sshd]
-    |
-    v
-[3.3 Cuentas e identidades]
-    |
-    v
-[3.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -646,61 +476,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Scripts y formatos de datos
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa de la lección
-
-Lección 04 publicada. Mapa, ejemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Formatos con los que se encontrará"]
-  N2["4.2 Un orden de validación que falla de forma cerrad"]
-  N3["4.3 Coordenadas del registro"]
-  N4["4.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX013"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Formatos con los que se encontrará"]
-  N2["4.2 Un orden de validación que falla de forma cerrad"]
-  N3["4.3 Coordenadas del registro"]
-  N4["4.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[4.1 Formatos con los que se encontrará]
-    |
-    v
-[4.2 Un orden de validación que falla de forma cerrad]
-    |
-    v
-[4.3 Coordenadas del registro]
-    |
-    v
-[4.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -843,66 +618,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 5 — Alcance de seguridad y evidencia
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa de la lección
-
-Lección 05 publicada. Mapa, ejemplo, EX017.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 El alcance es un control de seguridad"]
-  N2["5.2 Primero lo pasivo"]
-  N3["5.3 Qué hace utilizable la evidencia técnica"]
-  N4["5.4 Cuatro etiquetas"]
-  N5["5.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX017"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 El alcance es un control de seguridad"]
-  N2["5.2 Primero lo pasivo"]
-  N3["5.3 Qué hace utilizable la evidencia técnica"]
-  N4["5.4 Cuatro etiquetas"]
-  N5["5.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX017"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[5.1 El alcance es un control de seguridad]
-    |
-    v
-[5.2 Primero lo pasivo]
-    |
-    v
-[5.3 Qué hace utilizable la evidencia técnica]
-    |
-    v
-[5.4 Cuatro etiquetas]
-    |
-    v
-[5.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -1005,61 +720,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 6 — Infraestructura crítica y seguridad sectorial: modelo del sistema
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa de la lección
-
-Lección 06 publicada. Mapa, ejemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Zonas y conductos"]
-  N2["6.2 Qué registrar de cada elemento"]
-  N3["6.3 Diferencias entre sectores que importan ante el"]
-  N4["6.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX021"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Zonas y conductos"]
-  N2["6.2 Qué registrar de cada elemento"]
-  N3["6.3 Diferencias entre sectores que importan ante el"]
-  N4["6.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[6.1 Zonas y conductos]
-    |
-    v
-[6.2 Qué registrar de cada elemento]
-    |
-    v
-[6.3 Diferencias entre sectores que importan ante el]
-    |
-    v
-[6.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -1148,61 +808,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestructura crítica y seguridad sectorial: datos y telemetría
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa de la lección
-
-Lección 07 publicada. Mapa, ejemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Fuentes y puntos ciegos"]
-  N2["7.2 Estructura de syslog"]
-  N3["7.3 Tiempo"]
-  N4["7.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX025"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Fuentes y puntos ciegos"]
-  N2["7.2 Estructura de syslog"]
-  N3["7.3 Tiempo"]
-  N4["7.5 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[7.1 Fuentes y puntos ciegos]
-    |
-    v
-[7.2 Estructura de syslog]
-    |
-    v
-[7.3 Tiempo]
-    |
-    v
-[7.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -1323,66 +928,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestructura crítica y seguridad sectorial: modos de fallo
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa de la lección
-
-Lección 08 publicada. Mapa, ejemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Un catálogo de modos de fallo"]
-  N2["8.2 Reglas que se explican solas"]
-  N3["8.3 Dentro de rango no es verdadero"]
-  N4["8.5 Elegir los umbrales"]
-  N5["8.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX029"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Un catálogo de modos de fallo"]
-  N2["8.2 Reglas que se explican solas"]
-  N3["8.3 Dentro de rango no es verdadero"]
-  N4["8.5 Elegir los umbrales"]
-  N5["8.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX029"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[8.1 Un catálogo de modos de fallo]
-    |
-    v
-[8.2 Reglas que se explican solas]
-    |
-    v
-[8.3 Dentro de rango no es verdadero]
-    |
-    v
-[8.5 Elegir los umbrales]
-    |
-    v
-[8.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -1514,61 +1059,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 9 — Infraestructura crítica y seguridad sectorial: herramientas y métodos
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa de la lección
-
-Lección 09 publicada. Mapa, ejemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["9.1 Elegir un método"]
-  N2["9.2 DNP3 en la capa de enlace"]
-  N3["9.3 Valide primero la herramienta"]
-  N4["9.6 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX033"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["9.1 Elegir un método"]
-  N2["9.2 DNP3 en la capa de enlace"]
-  N3["9.3 Valide primero la herramienta"]
-  N4["9.6 Actividad práctica"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[9.1 Elegir un método]
-    |
-    v
-[9.2 DNP3 en la capa de enlace]
-    |
-    v
-[9.3 Valide primero la herramienta]
-    |
-    v
-[9.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -1699,66 +1189,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestructura crítica y seguridad sectorial: configuración de controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa de la lección
-
-Lección 10 publicada. Mapa, ejemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["10.1 Los conjuntos de reglas como programas"]
-  N2["10.2 Patrones que erosionan una política"]
-  N3["10.3 Acceso remoto y de proveedores"]
-  N4["10.5 Planificación de cambios"]
-  N5["10.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX037"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["10.1 Los conjuntos de reglas como programas"]
-  N2["10.2 Patrones que erosionan una política"]
-  N3["10.3 Acceso remoto y de proveedores"]
-  N4["10.5 Planificación de cambios"]
-  N5["10.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[10.1 Los conjuntos de reglas como programas]
-    |
-    v
-[10.2 Patrones que erosionan una política]
-    |
-    v
-[10.3 Acceso remoto y de proveedores]
-    |
-    v
-[10.5 Planificación de cambios]
-    |
-    v
-[10.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -1900,66 +1330,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 11 — Infraestructura crítica y seguridad sectorial: verificación
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa de la lección
-
-Lección 11 publicada. Mapa, ejemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["11.1 Requisitos que se pueden probar"]
-  N2["11.2 Pruebas positivas y negativas"]
-  N3["11.3 Reglas de evidencia"]
-  N4["11.5 Verificación segura en redes de control"]
-  N5["11.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX041"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["11.1 Requisitos que se pueden probar"]
-  N2["11.2 Pruebas positivas y negativas"]
-  N3["11.3 Reglas de evidencia"]
-  N4["11.5 Verificación segura en redes de control"]
-  N5["11.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[11.1 Requisitos que se pueden probar]
-    |
-    v
-[11.2 Pruebas positivas y negativas]
-    |
-    v
-[11.3 Reglas de evidencia]
-    |
-    v
-[11.5 Verificación segura en redes de control]
-    |
-    v
-[11.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -2088,71 +1458,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratorio contenido I
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa de la lección
-
-Lección 12 publicada. Mapa, ejemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["12.1 Qué significa «contenido»"]
-  N2["12.2 La tarea del respondedor"]
-  N3["12.3 El registro dentro del dispositivo"]
-  N4["12.5 Rúbrica de evaluación de un laboratorio conteni"]
-  N5["12.6 Lo que el laboratorio no modela"]
-  N6["12.7 Actividad práctica"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX045"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["12.1 Qué significa «contenido»"]
-  N2["12.2 La tarea del respondedor"]
-  N3["12.3 El registro dentro del dispositivo"]
-  N4["12.5 Rúbrica de evaluación de un laboratorio conteni"]
-  N5["12.6 Lo que el laboratorio no modela"]
-  N6["12.7 Actividad práctica"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[12.1 Qué significa «contenido»]
-    |
-    v
-[12.2 La tarea del respondedor]
-    |
-    v
-[12.3 El registro dentro del dispositivo]
-    |
-    v
-[12.5 Rúbrica de evaluación de un laboratorio conteni]
-    |
-    v
-[12.6 Lo que el laboratorio no modela]
-    |
-    v
-[12.7 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -2307,66 +1612,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 13 — Infraestructura crítica y seguridad sectorial: diagnóstico de averías
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa de la lección
-
-Lección 13 publicada. Mapa, ejemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["13.1 El método"]
-  N2["13.2 De la avería al incidente"]
-  N3["13.4 Segundo caso: el puesto corporativo en KW-04"]
-  N4["13.5 El registro de diagnóstico"]
-  N5["13.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX049"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["13.1 El método"]
-  N2["13.2 De la avería al incidente"]
-  N3["13.4 Segundo caso: el puesto corporativo en KW-04"]
-  N4["13.5 El registro de diagnóstico"]
-  N5["13.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX049"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[13.1 El método]
-    |
-    v
-[13.2 De la avería al incidente]
-    |
-    v
-[13.4 Segundo caso: el puesto corporativo en KW-04]
-    |
-    v
-[13.5 El registro de diagnóstico]
-    |
-    v
-[13.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -2489,66 +1734,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Infraestructura crítica y seguridad sectorial: automatización
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa de la lección
-
-Lección 14 publicada. Mapa, ejemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["14.1 Por qué hashes"]
-  N2["14.2 Cuatro resultados, cuatro acciones"]
-  N3["14.4 Automatización segura en entornos de control"]
-  N4["14.5 Proteger la automatización"]
-  N5["14.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX053"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["14.1 Por qué hashes"]
-  N2["14.2 Cuatro resultados, cuatro acciones"]
-  N3["14.4 Automatización segura en entornos de control"]
-  N4["14.5 Proteger la automatización"]
-  N5["14.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX053"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[14.1 Por qué hashes]
-    |
-    v
-[14.2 Cuatro resultados, cuatro acciones]
-    |
-    v
-[14.4 Automatización segura en entornos de control]
-    |
-    v
-[14.5 Proteger la automatización]
-    |
-    v
-[14.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -2674,56 +1859,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 15 — Infraestructura crítica y seguridad sectorial: integración y dependencias
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa de la lección
-
-Lección 15 publicada. Mapa, ejemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["15.1 Interdependencia"]
-  N2["15.2 Las dependencias como grafo"]
-  N3["15.5 Actividad práctica"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX057"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["15.1 Interdependencia"]
-  N2["15.2 Las dependencias como grafo"]
-  N3["15.5 Actividad práctica"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[15.1 Interdependencia]
-    |
-    v
-[15.2 Las dependencias como grafo]
-    |
-    v
-[15.5 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -2848,66 +1983,6 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 16 — Documentación técnica y seguridad física
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa de la lección
-
-Lección 16 publicada. Mapa, ejemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["16.1 Los documentos de los que es responsable un téc"]
-  N2["16.2 La seguridad física es lo primero y corresponde"]
-  N3["16.3 Dispositivos y soportes transitorios"]
-  N4["16.4 Secretos e información sensible"]
-  N5["16.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX052"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["16.1 Los documentos de los que es responsable un téc"]
-  N2["16.2 La seguridad física es lo primero y corresponde"]
-  N3["16.3 Dispositivos y soportes transitorios"]
-  N4["16.4 Secretos e información sensible"]
-  N5["16.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX052"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[16.1 Los documentos de los que es responsable un téc]
-    |
-    v
-[16.2 La seguridad física es lo primero y corresponde]
-    |
-    v
-[16.3 Dispositivos y soportes transitorios]
-    |
-    v
-[16.4 Secretos e información sensible]
-    |
-    v
-[16.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo debería ser capaz de:
@@ -3006,66 +2081,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Laboratorio contenido II
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa de la lección
-
-Lección 17 publicada. Mapa, ejemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["17.1 Reglas a partir del modelo"]
-  N2["17.2 Episodios"]
-  N3["17.3 La cadena se supervisa a sí misma"]
-  N4["17.5 Rúbrica de evaluación"]
-  N5["17.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX067"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["17.1 Reglas a partir del modelo"]
-  N2["17.2 Episodios"]
-  N3["17.3 La cadena se supervisa a sí misma"]
-  N4["17.5 Rúbrica de evaluación"]
-  N5["17.6 Actividad práctica"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[17.1 Reglas a partir del modelo]
-    |
-    v
-[17.2 Episodios]
-    |
-    v
-[17.3 La cadena se supervisa a sí misma]
-    |
-    v
-[17.5 Rúbrica de evaluación]
-    |
-    v
-[17.6 Actividad práctica]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -3219,71 +2234,6 @@ Continúe con la siguiente lección escrita.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Proyecto técnico supervisado
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa de la lección
-
-Lección 18 publicada. Mapa, ejemplo, EX071.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["18.1 Elegir un proyecto"]
-  N2["18.2 Fases"]
-  N3["18.3 Sellar la evidencia"]
-  N4["18.5 Rúbrica de evaluación del proyecto"]
-  N5["18.6 Práctica continua"]
-  N6["Síntesis del capítulo"]
-  N7["Capítulo 1: EX001–EX004"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX071"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["18.1 Elegir un proyecto"]
-  N2["18.2 Fases"]
-  N3["18.3 Sellar la evidencia"]
-  N4["18.5 Rúbrica de evaluación del proyecto"]
-  N5["18.6 Práctica continua"]
-  N6["Síntesis del capítulo"]
-  N7["Capítulo 1: EX001–EX004"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX071"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[18.1 Elegir un proyecto]
-    |
-    v
-[18.2 Fases]
-    |
-    v
-[18.3 Sellar la evidencia]
-    |
-    v
-[18.5 Rúbrica de evaluación del proyecto]
-    |
-    v
-[18.6 Práctica continua]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Capítulo 1: EX001–EX004]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX071]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Resultados de aprendizaje y conexión
 

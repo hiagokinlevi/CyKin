@@ -1,5 +1,7 @@
 # Privacidade e Proteção de Dados: Curso Rápido
 
+**Atualização visual (14/10/2026):** os mapas automáticos de títulos e os desenhos lógicos duplicados mencionados nos registros históricos de tradução abaixo foram removidos deste livro e da referência inglesa. As contagens antigas desses mapas não descrevem o texto atual; o ensino, os exemplos, os exercícios e os diagramas técnicos específicos foram preservados.
+
 - Idioma: português do Brasil (`pt`); curso 004, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
 - Estado editorial: **publicado, com texto nos capítulos 1–20 e revisão de equivalência pendente**. Esta edição contém EX001–EX074 com resoluções e rubricas de 0 a 3. As vinte posições da referência inglesa fixada têm texto em português; isso não aprova a equivalência integral nem conclui o livro. O laboratório offline permanece sintético e usa somente a biblioteca padrão do Python. Revisão integral técnica, linguística, de fontes e de acessibilidade continua aberta. A4 é uma medição de uma edição renderizada, não uma aprovação por contagem de páginas.
 - Público: iniciantes que precisam de um começo rápido e prático em privacidade e proteção de dados para um pequeno negócio.
@@ -52,71 +54,6 @@ Regulamento (UE) 2016/679 (GDPR), artigos 4(1), 5, 9 e 28; Lei nº 13.709/2018 (
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Privacidade e proteção de dados: fundamentos e decisões
-
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["1.1 O curso e o caso"]
-  N1["1.2 O que conta como dado pessoal"]
-  N2["1.3 Categorias especiais"]
-  N3["1.4 Os princípios"]
-  N4["1.5 Uma primeira decisão"]
-  N5["Conceitos — três testes diferentes"]
-  N6["Dados — um papel, duas camadas"]
-  N7["Fluxo de decisão — classificar antes de decidir o us"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O curso e o caso"]
-  N1["1.2 O que conta como dado pessoal"]
-  N2["1.3 Categorias especiais"]
-  N3["1.4 Os princípios"]
-  N4["1.5 Uma primeira decisão"]
-  N5["Conceitos — três testes diferentes"]
-  N6["Dados — um papel, duas camadas"]
-  N7["Fluxo de decisão — classificar antes de decidir o us"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[1.1 O curso e o caso]
-    |
-    v
-[1.2 O que conta como dado pessoal]
-    |
-    v
-[1.3 Categorias especiais]
-    |
-    v
-[1.4 Os princípios]
-    |
-    v
-[1.5 Uma primeira decisão]
-    |
-    v
-[Conceitos — três testes diferentes]
-    |
-    v
-[Dados — um papel, duas camadas]
-    |
-    v
-[Fluxo de decisão — classificar antes de decidir o us]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -231,71 +168,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["2.1 Combinar o escopo"]
-  N1["2.2 Tratamento seguro durante a revisão"]
-  N2["2.3 Quando pedem para ir além"]
-  N3["2.4 Comunicar problemas"]
-  N4["2.5 Respeitar a equipe"]
-  N5["Conceitos — a página assinada decide, e uma cópia co"]
-  N6["Dados — cinco pedidos contra a página assinada"]
-  N7["Fluxo de decisão — olhar, copiar ou guardar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Combinar o escopo"]
-  N1["2.2 Tratamento seguro durante a revisão"]
-  N2["2.3 Quando pedem para ir além"]
-  N3["2.4 Comunicar problemas"]
-  N4["2.5 Respeitar a equipe"]
-  N5["Conceitos — a página assinada decide, e uma cópia co"]
-  N6["Dados — cinco pedidos contra a página assinada"]
-  N7["Fluxo de decisão — olhar, copiar ou guardar"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[2.1 Combinar o escopo]
-    |
-    v
-[2.2 Tratamento seguro durante a revisão]
-    |
-    v
-[2.3 Quando pedem para ir além]
-    |
-    v
-[2.4 Comunicar problemas]
-    |
-    v
-[2.5 Respeitar a equipe]
-    |
-    v
-[Conceitos — a página assinada decide, e uma cópia co]
-    |
-    v
-[Dados — cinco pedidos contra a página assinada]
-    |
-    v
-[Fluxo de decisão — olhar, copiar ou guardar]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar dentro da permissão combinada ao revisar a privacidade; (2) tratar os dados dos clientes com segurança durante a revisão; (3) comunicar problemas pelo canal certo.
@@ -402,71 +274,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Privacidade e proteção de dados: sistemas, dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["3.1 Mapear os sistemas"]
-  N1["3.2 Seguir os fluxos"]
-  N2["3.3 Fornecedores e dependências"]
-  N3["3.4 Bases legais"]
-  N4["3.5 Retenção"]
-  N5["Conceitos — a base não viaja para a finalidade segui"]
-  N6["Dados — quatro fluxos que saem da loja"]
-  N7["Fluxo de decisão — o dono propõe um uso novo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Mapear os sistemas"]
-  N1["3.2 Seguir os fluxos"]
-  N2["3.3 Fornecedores e dependências"]
-  N3["3.4 Bases legais"]
-  N4["3.5 Retenção"]
-  N5["Conceitos — a base não viaja para a finalidade segui"]
-  N6["Dados — quatro fluxos que saem da loja"]
-  N7["Fluxo de decisão — o dono propõe um uso novo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[3.1 Mapear os sistemas]
-    |
-    v
-[3.2 Seguir os fluxos]
-    |
-    v
-[3.3 Fornecedores e dependências]
-    |
-    v
-[3.4 Bases legais]
-    |
-    v
-[3.5 Retenção]
-    |
-    v
-[Conceitos — a base não viaja para a finalidade segui]
-    |
-    v
-[Dados — quatro fluxos que saem da loja]
-    |
-    v
-[Fluxo de decisão — o dono propõe um uso novo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -578,71 +385,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Privacidade e proteção de dados: laboratório guiado e síntese aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["4.1 O laboratório guiado"]
-  N1["4.2 Interpretar o laboratório"]
-  N2["4.3 Um plano curto"]
-  N3["4.4 Apresentar ao dono"]
-  N4["4.5 Conferir e próximos passos"]
-  N5["Laboratório — Campos do aplicativo de fidelidade ver"]
-  N6["Conceitos — o script testa nomes, não valores"]
-  N7["Dados — pertinência aos três conjuntos"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O laboratório guiado"]
-  N1["4.2 Interpretar o laboratório"]
-  N2["4.3 Um plano curto"]
-  N3["4.4 Apresentar ao dono"]
-  N4["4.5 Conferir e próximos passos"]
-  N5["Laboratório — Campos do aplicativo de fidelidade ver"]
-  N6["Conceitos — o script testa nomes, não valores"]
-  N7["Dados — pertinência aos três conjuntos"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[4.1 O laboratório guiado]
-    |
-    v
-[4.2 Interpretar o laboratório]
-    |
-    v
-[4.3 Um plano curto]
-    |
-    v
-[4.4 Apresentar ao dono]
-    |
-    v
-[4.5 Conferir e próximos passos]
-    |
-    v
-[Laboratório — Campos do aplicativo de fidelidade ver]
-    |
-    v
-[Conceitos — o script testa nomes, não valores]
-    |
-    v
-[Dados — pertinência aos três conjuntos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -789,35 +531,6 @@ Continue para a sequência traduzida; o quarto módulo antigo não encerra o liv
 
 ## Capítulo 5 — Uma exportação sem problemas não comprova todas as noites seguintes
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  W["Exportação verificada após duas semanas: totais e categorias que não são medicamentos"] --> L["Uma noite posterior traz uma linha com insulina"]
-  L --> F["A conferência de conteúdo falha. A ação continua em aberto"]
-  F --> S["Não altere o script de dez campos"]
-```
-
-Um arquivo descreve uma noite.
-
-### Desenho lógico
-
-```text
-verificação após duas semanas
-    o formulário pede cinco campos
-    aquela exportação não contém nome de medicamento
-uma noite posterior
-    uma linha traz o nome insulina
-        |
-        +-- o arquivo anterior não cobre este arquivo
-        +-- purchase_history ainda pode ser um nome necessário
-        +-- o script não é reescrito para esconder a linha
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -862,35 +575,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cinco campos no formulário não são uma nova saída do laboratório
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06. Mapa, exemplo, EX060.
-
-```mermaid
-flowchart TD
-  P["Execução publicada: 10 coletados, 5 desnecessários"] --> F["Um formulário posterior pede cinco nomes"]
-  F --> R{"O arquivo de dez nomes foi executado novamente?"}
-  R -->|Não| K["Não apresente 5 coletados e 0 desnecessários como nova saída"]
-  R -->|Sim| N["Registre essa execução em uma linha própria"]
-```
-
-Um formulário mais curto não reescreve a primeira contagem.
-
-### Desenho lógico
-
-```text
-lab_loyalty.py sobre a lista original
-    fields collected 10; not needed for any stated purpose 5 (50%)
-formulário verificado após duas semanas
-    cinco nomes, um objeto diferente
-        |
-        +-- 10 menos 5 é aritmética, não uma nova execução
-        +-- os cinco nomes rejeitados continuam sendo o achado sobre o primeiro arquivo
-        +-- a lista collected do script não é alterada
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Objetivos de aprendizagem
 
@@ -937,38 +621,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 7 — Cláusulas em minuta não são um contrato assinado
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  D["O Sr. Patel redigiu minutas de cláusulas"] --> N["Duas semanas depois, os contratos estão em negociação"]
-  N --> Q{"Existe um contrato assinado com os termos do artigo 28?"}
-  Q -->|Não| R["Não acrescente um novo fluxo para esse fornecedor"]
-  Q -->|Sim| K["Cite o contrato assinado"]
-```
-
-Uma minuta é um texto. Uma assinatura é outro fato.
-
-### Desenho lógico
-
-```text
-quatro fornecedores
-    fornecedor da dispensação: termos já presentes
-    ferramenta de boletim por e-mail: termos já presentes
-    empresa de fidelidade: termos gerais, lacuna
-    empresa de entregas: termos gerais, lacuna
-duas semanas depois
-    cláusulas redigidas em minuta, negociação em aberto
-        |
-        +-- negociação não é assinatura
-        +-- o contrato da dispensação não substitui o da fidelidade
-        +-- nenhum arquivo novo vai à empresa de fidelidade com essa justificativa
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1013,38 +665,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Uma recomendação aprovada não é uma data de término da retenção
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08. Mapa, exemplo, EX062.
-
-```mermaid
-flowchart TD
-  A["O dono aprovou a definição de três prazos"] --> S{"A tabela informa o término?"}
-  S -->|Não| B["O prazo continua em branco"]
-  S -->|Sim| U["Use esse término registrado"]
-  C["Câmeras, CCTV: trinta dias"] --> X["Não copie trinta para as linhas em branco"]
-```
-
-A aprovação inicia a tarefa. Um prazo definido conclui essa escolha.
-
-### Desenho lógico
-
-```text
-já registrado
-    receitas: regras profissionais, não um número escolhido por Sofia
-    câmeras: sobrescritas após trinta dias
-aprovado, ainda em branco
-    dados de fidelidade
-    registros de entrega no celular do entregador
-    endereços de assinantes que nunca abrem o boletim por e-mail
-        |
-        +-- "cerca de um ano" não é a definição do dono
-        +-- trinta dias é a regra das câmeras, não um modelo para todas as linhas
-        +-- esta aula não escreve uma nova quantidade de dias
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Objetivos de aprendizagem
 
@@ -1091,41 +711,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 9 — Programar a trituração não é registrar uma destruição realizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  R["Comunicação no mesmo dia: local, hora e o que ela viu"] --> L["O dono tranca o depósito"]
-  L --> A["A trituração das cópias com prazo de guarda encerrado é programada"]
-  A --> D{"Há uma data de destruição no registro?"}
-  D -->|Não| O["A programação não é a destruição"]
-  D -->|Sim| K["Cite essa data"]
-```
-
-Uma tranca limita o acesso ao depósito. Uma data registraria a trituração.
-
-### Desenho lógico
-
-```text
-comunicação de Sofia
-    local, hora e o que ela viu
-    ela não move as cópias
-    ela não as lê
-dono
-    tranca o depósito
-    organiza a trituração das cópias cujo prazo de retenção terminou
-registro
-    nenhuma data de destruição
-        |
-        +-- "providenciada" não é "triturada neste dia"
-        +-- ela continua sem ler o conteúdo para separar a caixa
-        +-- o prazo profissional não é inventado para selecionar páginas
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1170,37 +755,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Um plano de imagens sem clientes não autoriza a foto antiga
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  P["Plano: imagens sem clientes"] --> O{"Há clientes visíveis, sem permissão nos registros?"}
-  O -->|Sim| R["Não publique essa foto"]
-  O -->|Sem clientes| K["Essa imagem pode corresponder ao plano"]
-```
-
-O plano define a substituição. Não autoriza a imagem que já foi recusada.
-
-### Desenho lógico
-
-```text
-regra do Capítulo 1, aceita pelo dono
-    nenhum cliente no enquadramento, ou permissão clara
-ação do plano
-    substituir fotos do balcão por imagens sem clientes
-uma foto do balcão no mês passado
-    clientes visíveis
-    nenhuma permissão registrada
-        |
-        +-- "as prateleiras são o foco" não retira as pessoas do enquadramento
-        +-- esta aula não registra uma permissão
-        +-- a substituição não recebe uma data de conclusão para todas as lojas
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Objetivos de aprendizagem
 
@@ -1247,38 +801,6 @@ Continue para os capítulos 11–20 traduzidos, com respostas no apêndice deste
 
 ## Capítulo 11 — Uma exportação não comprova os demais caixas
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  O["O dono aprovou o plano para a Juniper"] --> E["Uma exportação foi verificada"]
-  E --> T{"O caixa de cada outra loja foi verificado?"}
-  T -->|Não| R["Não copie o primeiro resultado para os demais"]
-  T -->|Sim| K["Cite cada exportação"]
-```
-
-Três lojas não se tornam um único arquivo.
-
-### Desenho lógico
-
-```text
-Juniper
-    três lojas
-    cerca de 9.000 clientes regulares, sem divisão nos registros
-dono
-    aprovou as cinco ações
-registro da verificação após duas semanas
-    um formulário, uma exportação
-        |
-        +-- aprovação não é verificação de todos os caixas
-        +-- a primeira exportação continua sendo a primeira exportação
-        +-- nomes de lojas não são inventados
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1323,37 +845,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Uma consulta recusada não se torna permitida com o tempo
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12. Mapa, exemplo, EX066.
-
-```mermaid
-flowchart TD
-  F["Primeiro pedido recusado e registrado"] --> S["Um pedido posterior sobre a mesma consulta"]
-  S --> R["Recuse novamente. Registre este pedido"]
-  R --> N["Não abra o registro do cliente"]
-```
-
-A primeira recusa é evidência. Não é uma permissão para o segundo pedido.
-
-### Desenho lógico
-
-```text
-página assinada
-    registros individuais de clientes estão excluídos
-primeiro pedido
-    saber se um vizinho retirou uma receita
-    recusado e anotado no registro da revisão
-uma semana posterior
-    o mesmo tipo de pedido volta
-        |
-        +-- a anotação anterior não realiza a consulta
-        +-- "a pessoa me pediu" não é um motivo de trabalho previsto na página
-        +-- nenhum nome é acrescentado ao registro além do próprio pedido
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Objetivos de aprendizagem
 
@@ -1400,38 +891,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 13 — A inclusão escrita do celular responde a uma pergunta delimitada
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  W["O dono incluiu o celular do entregador por escrito"] --> Q["Pergunta: os endereços são armazenados?"]
-  Q --> F["O achado permanece: não há data de término"]
-  F --> C{"Um uso mais amplo: copiar a lista ou abrir o registro de um cliente?"}
-  C -->|Sim| R["Pare. Esse uso não está na inclusão escrita"]
-```
-
-A inclusão autorizou uma pergunta. Não transferiu o conteúdo do celular para o bolso de Sofia.
-
-### Desenho lógico
-
-```text
-inclusão escrita, depois que o dono conversou com o entregador
-    verificar se endereços de clientes são armazenados
-achado já registrado
-    os registros de entrega ficam no celular sem data de término
-um novo pedido
-    copiar a lista de endereços para o celular de Sofia
-    ou abrir uma entrega de um cliente identificado
-        |
-        +-- a inclusão escrita não cresce por conveniência
-        +-- uma consulta mais ampla aguarda nova inclusão por escrito
-        +-- nenhum endereço é copiado para esta aula
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1476,36 +935,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — A captura de tela de teste permanece na pasta da loja
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14. Mapa, exemplo, EX068.
-
-```mermaid
-flowchart TD
-  T["Cliente de teste inventado; captura na pasta criptografada da loja"] --> P["Alguém quer a imagem em um celular pessoal"]
-  P --> R["Recuse. O celular está fora da revisão"]
-```
-
-Uma pessoa inventada não transforma o aparelho em um local autorizado para arquivar documentos.
-
-### Desenho lógico
-
-```text
-manuseio previsto no documento assinado
-    capturas das configurações permitidas
-    tela de um cliente real recusada
-    cliente de teste criado pelo farmacêutico
-    captura guardada na pasta criptografada do computador da loja
-um slide para o dono
-    colega quer a imagem no celular de Sofia
-        |
-        +-- o celular fica fora da revisão nos dois casos
-        +-- o nome inventado não é digitado no slide
-        +-- "destruir as anotações depois" não é motivo para copiar antes
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Objetivos de aprendizagem
 
@@ -1552,40 +981,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 15 — Um vale baseado em pontos é uma nova proposta
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  I["A mensagem sobre insulina continua desativada"] --> P["Um vale quando os pontos ultrapassam um limiar, sem nome de medicamento"]
-  P --> F["É uma nova proposta. Inicie o fluxo de finalidade"]
-  F --> S["Não ative enquanto o contrato do artigo 28 não estiver assinado e a retenção da fidelidade estiver em branco"]
-```
-
-Dizer não a uma mensagem não significa dizer sim à próxima.
-
-### Desenho lógico
-
-```text
-já recusado
-    mensagem disparada por um medicamento identificado
-    contrato dos membros da fidelidade não cobre essa finalidade
-    falta consentimento explícito para essa finalidade que usa dados de saúde
-nova proposta
-    um vale vinculado aos pontos
-    nenhum medicamento identificado
-ainda em aberto desde os capítulos anteriores
-    termos do artigo 28 para a fidelidade não assinados
-    linha de retenção da fidelidade em branco
-        |
-        +-- a nova proposta começa no início do fluxo
-        +-- esta aula não registra uma base legal
-        +-- o vale continua desativado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1630,35 +1025,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Os trinta dias não são ampliados para vigiar uma pessoa
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  C["Imagens das câmeras sobrescritas após trinta dias"] --> W["O dono quer guardar por mais tempo as imagens de um funcionário"]
-  W --> R["Recuse a ampliação"]
-  R --> S["Alterar o gravador está fora do escopo de Sofia"]
-```
-
-Um prazo das câmeras não é uma avaliação de desempenho da equipe.
-
-### Desenho lógico
-
-```text
-prazo registrado
-    imagens das câmeras do balcão sobrescritas após trinta dias
-novo desejo
-    guardar imagens por mais tempo para avaliar a rapidez de um funcionário
-        |
-        +-- funcionários são titulares de dados
-        +-- o desejo corresponde a uma nova finalidade
-        +-- Sofia não altera configurações
-        +-- ela não registra uma opinião sobre a pessoa
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Objetivos de aprendizagem
 
@@ -1705,36 +1071,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 17 — Um comprovante liga o total de vendas a uma pessoa
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17. Mapa, exemplo, EX071.
-
-```mermaid
-flowchart TD
-  T["Total de terça-feira, sem comprovante"] --> N["Não é dado pessoal"]
-  T --> A["O mesmo total com um comprovante ou com 44021"]
-  A --> P["Dado pessoal. O número ainda não declara uma doença"]
-```
-
-A classificação do valor muda quando uma pessoa é vinculada a ele.
-
-### Desenho lógico
-
-```text
-total isolado
-    sem comprovante
-    não se refere a uma pessoa viva específica
-anexo
-    um comprovante ou o número de fidelidade 44021
-        |
-        +-- a Juniper consegue ligar 44021 a um cliente
-        +-- o número sozinho ainda não declara uma doença
-        +-- se Sofia não consegue determinar a ligação, trata o item como pessoal
-        +-- nenhum valor monetário é inventado
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1779,36 +1115,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — O retorno do campo de telefone faz a conferência de campos falhar
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18. Mapa, exemplo, EX072.
-
-```mermaid
-flowchart TD
-  F["Formulário após duas semanas: cinco campos"] --> P["Uma tela posterior volta a mostrar telefone"]
-  P --> X["A conferência de campos falha. A ação fica em aberto"]
-  X --> K["Não presuma que os outros quatro nomes rejeitados voltaram"]
-```
-
-Um nome que reaparece é uma falha. Não é uma contagem completa de todo o modelo de formulário.
-
-### Desenho lógico
-
-```text
-laboratório publicado
-    phone marcado NOT NEEDED no arquivo de dez nomes
-formulário após duas semanas
-    cinco campos, telefone ausente
-tela posterior
-    telefone está novamente no formulário
-        |
-        +-- a conferência de campos falha
-        +-- não se presume o retorno de gênero, CEP, itens de receita e rastro de localização
-        +-- a saída de dez coletados e cinco desnecessários não é alterada
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Objetivos de aprendizagem
 
@@ -1855,38 +1161,6 @@ Continue para a próxima aula traduzida.
 
 ## Capítulo 19 — Contatar um cliente continua fora do escopo
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  A["O dono pede que Sofia envie e-mail ou ligue a um cliente sobre a mudança na fidelidade"] --> S{"Contatar clientes está na página assinada?"}
-  S -->|Não| R["Não envie. Não ligue"]
-  S -->|Somente após nova inclusão escrita| W["Esta aula não escreve essa inclusão"]
-```
-
-O pedido ao fornecedor é do dono. Uma mensagem de Sofia depende do escopo.
-
-### Desenho lógico
-
-```text
-exclusões assinadas
-    ler registros individuais
-    contatar clientes
-    alterar configurações
-o que o dono já fez
-    pediu ao fornecedor que alterasse o aplicativo
-um novo pedido a Sofia
-    enviar e-mail aos membros ou ligar a um cliente habitual
-        |
-        +-- ela não envia o e-mail
-        +-- ela não faz a ligação
-        +-- nenhum cliente é identificado, e nenhum medicamento entra em uma mensagem que ela envie
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Objetivos de aprendizagem
 
 Depois deste capítulo, você deverá conseguir:
@@ -1931,42 +1205,6 @@ Continue para a próxima aula traduzida.
 <a id="ch-20"></a>
 
 ## Capítulo 20 — O que os documentos da revisão permitem afirmar
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20. Mapa, exemplo, EX074.
-
-```mermaid
-flowchart TD
-  N["Nota de encerramento"] --> F["Repita somente os documentos do caso e a execução publicada"]
-  F --> Q{"A frase acrescenta uma contagem, uma assinatura ou um estado de conclusão?"}
-  Q -->|Sim| R["Rejeite a frase"]
-  Q -->|Não| K["A nota pode citar essa linha"]
-```
-
-Vinte aulas atendem a um mínimo de planejamento. Não encerram a revisão.
-
-### Desenho lógico
-
-```text
-os documentos podem sustentar
-    ligação a uma pessoa, depois saúde, depois expectativa
-    44021 é pessoal; a linha de medicamento acrescenta a classificação de saúde
-    escopo assinado e suas exclusões
-    comunicação sobre o depósito, tranca, trituração organizada
-    quatro fornecedores; fidelidade e entregas ainda em negociação
-    câmeras: trinta dias; três linhas de retenção ainda em branco
-    saída do laboratório: 10 coletados, 5 desnecessários (50%)
-    formulário após duas semanas com cinco campos; aquela exportação sem medicamento
-    uma linha posterior com insulina mantém a ação de conteúdo em aberto
-a nota não pode sustentar
-    uma saída de 5 e 0; um contrato de fidelidade assinado
-    um ano inventado; a mensagem sobre insulina ativada
-    uma exportação comprovando três caixas
-    "em conformidade", "certificado" ou "o curso está concluído"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Objetivos de aprendizagem
 

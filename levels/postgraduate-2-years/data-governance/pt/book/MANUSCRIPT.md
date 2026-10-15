@@ -37,46 +37,6 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Wang e Strong (1996);
 
 ## Capítulo 1 — A profissional e a Corran Freight
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 A estudante"]
-  N1["1.2 A Corran Freight"]
-  N2["1.3 Os problemas"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 A estudante"]
-  N1["1.2 A Corran Freight"]
-  N2["1.3 Os problemas"]
-  N0 --> N1 --> N2 --> Q["EX001"]
-```
-
-```text
-[1.1 A estudante]
-    |
-    v
-[1.2 A Corran Freight]
-    |
-    v
-[1.3 Os problemas]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o percurso da pós-graduação e seu caso; (2) enunciar os problemas de governança da Corran Freight; (3) planejar uma abordagem de aprendizagem baseada no trabalho.
@@ -126,51 +86,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Modelo operacional de governança
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Modelos"]
-  N1["2.2 Escolhendo para a Corran"]
-  N2["2.3 O grupo de governança"]
-  N3["2.4 Começando pequeno"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Modelos"]
-  N1["2.2 Escolhendo para a Corran"]
-  N2["2.3 O grupo de governança"]
-  N3["2.4 Começando pequeno"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX006"]
-```
-
-```text
-[2.1 Modelos]
-    |
-    v
-[2.2 Escolhendo para a Corran]
-    |
-    v
-[2.3 O grupo de governança]
-    |
-    v
-[2.4 Começando pequeno]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -222,51 +137,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Titularidade de dados em uma rede logística
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 Domínios internos"]
-  N1["3.2 Dados de parceiros"]
-  N2["3.3 Declarações de titularidade"]
-  N3["3.4 Testando a titularidade"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Domínios internos"]
-  N1["3.2 Dados de parceiros"]
-  N2["3.3 Declarações de titularidade"]
-  N3["3.4 Testando a titularidade"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX011"]
-```
-
-```text
-[3.1 Domínios internos]
-    |
-    v
-[3.2 Dados de parceiros]
-    |
-    v
-[3.3 Declarações de titularidade]
-    |
-    v
-[3.4 Testando a titularidade]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) atribuir a titularidade de dados internos e externos; (2) tratar os dados criados por parceiros; (3) escrever declarações de titularidade.
@@ -317,51 +187,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Gestão da qualidade dos dados de remessas
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 Expectativas"]
-  N1["4.2 O ciclo da qualidade"]
-  N2["4.3 O custo da má qualidade"]
-  N3["4.4 Corrigindo o comprovante de entrega"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Expectativas"]
-  N1["4.2 O ciclo da qualidade"]
-  N2["4.3 O custo da má qualidade"]
-  N3["4.4 Corrigindo o comprovante de entrega"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
-```
-
-```text
-[4.1 Expectativas]
-    |
-    v
-[4.2 O ciclo da qualidade]
-    |
-    v
-[4.3 O custo da má qualidade]
-    |
-    v
-[4.4 Corrigindo o comprovante de entrega]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir as expectativas de qualidade dos dados de remessas; (2) montar um ciclo de gestão da qualidade; (3) priorizar os problemas pelo custo.
@@ -411,56 +236,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Pontualidade dos eventos das transportadoras
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 Por que a pontualidade importa"]
-  N1["Laboratório — Parcela de eventos sintéticos das tran"]
-  N2["5.2 Resultados"]
-  N3["5.3 Comparação justa"]
-  N4["5.4 Usando os resultados"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Por que a pontualidade importa"]
-  N1["Laboratório — Parcela de eventos sintéticos das tran"]
-  N2["5.2 Resultados"]
-  N3["5.3 Comparação justa"]
-  N4["5.4 Usando os resultados"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[5.1 Por que a pontualidade importa]
-    |
-    v
-[Laboratório — Parcela de eventos sintéticos das tran]
-    |
-    v
-[5.2 Resultados]
-    |
-    v
-[5.3 Comparação justa]
-    |
-    v
-[5.4 Usando os resultados]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -532,51 +307,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Metadados, linhagem e catálogo
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Definições"]
-  N1["6.2 Linhagem"]
-  N2["6.3 Um catálogo leve"]
-  N3["6.4 Comunicando a mudança"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Definições"]
-  N1["6.2 Linhagem"]
-  N2["6.3 Um catálogo leve"]
-  N3["6.4 Comunicando a mudança"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
-```
-
-```text
-[6.1 Definições]
-    |
-    v
-[6.2 Linhagem]
-    |
-    v
-[6.3 Um catálogo leve]
-    |
-    v
-[6.4 Comunicando a mudança]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) documentar as definições por trás das medidas principais; (2) rastrear a linhagem de uma medida do conselho; (3) montar um catálogo leve.
@@ -626,56 +356,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Governança de acessos
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 Por que revisar os acessos"]
-  N1["Laboratório — Contas inativas e não aprovadas em um"]
-  N2["7.2 Resultados"]
-  N3["7.3 Agindo sobre os resultados"]
-  N4["7.4 Tornando-a periódica"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Por que revisar os acessos"]
-  N1["Laboratório — Contas inativas e não aprovadas em um"]
-  N2["7.2 Resultados"]
-  N3["7.3 Agindo sobre os resultados"]
-  N4["7.4 Tornando-a periódica"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[7.1 Por que revisar os acessos]
-    |
-    v
-[Laboratório — Contas inativas e não aprovadas em um]
-    |
-    v
-[7.2 Resultados]
-    |
-    v
-[7.3 Agindo sobre os resultados]
-    |
-    v
-[7.4 Tornando-a periódica]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -753,51 +433,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Privacidade e dados de motoristas
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Telemetria"]
-  N1["8.2 Avaliação"]
-  N2["8.3 Envolvendo os motoristas"]
-  N3["8.4 Minimização"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Telemetria"]
-  N1["8.2 Avaliação"]
-  N2["8.3 Envolvendo os motoristas"]
-  N3["8.4 Minimização"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX036"]
-```
-
-```text
-[8.1 Telemetria]
-    |
-    v
-[8.2 Avaliação]
-    |
-    v
-[8.3 Envolvendo os motoristas]
-    |
-    v
-[8.4 Minimização]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) avaliar os riscos de privacidade da telemetria veicular; (2) aplicar a limitação da finalidade e a minimização; (3) envolver as pessoas afetadas.
@@ -847,51 +482,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados de terceiros e contratos
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Fluxos de dados com parceiros"]
-  N1["9.2 Cláusulas de dados"]
-  N2["9.3 Monitorando os parceiros"]
-  N3["9.4 Encerrando as relações"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Fluxos de dados com parceiros"]
-  N1["9.2 Cláusulas de dados"]
-  N2["9.3 Monitorando os parceiros"]
-  N3["9.4 Encerrando as relações"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
-```
-
-```text
-[9.1 Fluxos de dados com parceiros]
-    |
-    v
-[9.2 Cláusulas de dados]
-    |
-    v
-[9.3 Monitorando os parceiros]
-    |
-    v
-[9.4 Encerrando as relações]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -943,51 +533,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Métricas, relatórios e o conselho
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Escolhendo as métricas"]
-  N1["10.2 Montando o relatório"]
-  N2["10.3 Atribuição"]
-  N3["10.4 Decisões"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Escolhendo as métricas"]
-  N1["10.2 Montando o relatório"]
-  N2["10.3 Atribuição"]
-  N3["10.4 Decisões"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
-```
-
-```text
-[10.1 Escolhendo as métricas]
-    |
-    v
-[10.2 Montando o relatório]
-    |
-    v
-[10.3 Atribuição]
-    |
-    v
-[10.4 Decisões]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar métricas de governança para executivos; (2) ligar as métricas aos resultados do negócio; (3) relatar o progresso com honestidade.
@@ -1038,51 +583,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Projeto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Escolhendo a intervenção"]
-  N1["11.2 Desenho"]
-  N2["11.3 Implementação"]
-  N3["11.4 Avaliação"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Escolhendo a intervenção"]
-  N1["11.2 Desenho"]
-  N2["11.3 Implementação"]
-  N3["11.4 Avaliação"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX051"]
-```
-
-```text
-[11.1 Escolhendo a intervenção]
-    |
-    v
-[11.2 Desenho]
-    |
-    v
-[11.3 Implementação]
-    |
-    v
-[11.4 Avaliação]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar uma intervenção de governança como projeto final; (2) implementá-la com as partes interessadas; (3) avaliar os resultados em relação a uma linha de base.
@@ -1132,51 +632,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Apresentação do projeto final e próximos passos
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 A apresentação"]
-  N1["12.2 Perguntas dos avaliadores"]
-  N2["12.3 Reflexão profissional"]
-  N3["12.4 Próximos passos"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 A apresentação"]
-  N1["12.2 Perguntas dos avaliadores"]
-  N2["12.3 Reflexão profissional"]
-  N3["12.4 Próximos passos"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX056"]
-```
-
-```text
-[12.1 A apresentação]
-    |
-    v
-[12.2 Perguntas dos avaliadores]
-    |
-    v
-[12.3 Reflexão profissional]
-    |
-    v
-[12.4 Próximos passos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

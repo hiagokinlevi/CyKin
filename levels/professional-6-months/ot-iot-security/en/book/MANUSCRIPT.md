@@ -36,61 +36,6 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC
 
 ## Chapter 1 — Building systems as cyber-physical systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 What runs a hospital building"]
-  N2["1.2 Why they are cyber-physical"]
-  N3["1.3 Consequence for patients"]
-  N4["1.4 Who owns them"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 What runs a hospital building"]
-  N2["1.2 Why they are cyber-physical"]
-  N3["1.3 Consequence for patients"]
-  N4["1.4 Who owns them"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 What runs a hospital building]
-    |
-    v
-[1.2 Why they are cyber-physical]
-    |
-    v
-[1.3 Consequence for patients]
-    |
-    v
-[1.4 Who owns them]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) list the building systems a hospital depends on; (2) explain how each becomes a cyber-physical system once networked; and (3) describe the patient consequences of their failure.
@@ -148,66 +93,6 @@ Hospital building systems move air, gas, people and doors; their failure can hur
 <a id="ch-02"></a>
 
 ## Chapter 2 — Patient safety, contingency and authority
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Clinical safety first"]
-  N2["2.2 Contingency already exists"]
-  N3["2.3 Authority"]
-  N4["2.4 Permits in hospitals"]
-  N5["2.5 Talking to clinicians"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Clinical safety first"]
-  N2["2.2 Contingency already exists"]
-  N3["2.3 Authority"]
-  N4["2.4 Permits in hospitals"]
-  N5["2.5 Talking to clinicians"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Clinical safety first]
-    |
-    v
-[2.2 Contingency already exists]
-    |
-    v
-[2.3 Authority]
-    |
-    v
-[2.4 Permits in hospitals]
-    |
-    v
-[2.5 Talking to clinicians]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -273,66 +158,6 @@ Clinical safety sets the timing; contingency plans make security actions possibl
 
 ## Chapter 3 — Networks and protocols in building systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Field and supervisory layers"]
-  N2["3.2 Trust by default"]
-  N3["3.3 Where the networks meet"]
-  N4["3.4 What an analyst does"]
-  N5["3.5 Wireless"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Field and supervisory layers"]
-  N2["3.2 Trust by default"]
-  N3["3.3 Where the networks meet"]
-  N4["3.4 What an analyst does"]
-  N5["3.5 Wireless"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Field and supervisory layers]
-    |
-    v
-[3.2 Trust by default]
-    |
-    v
-[3.3 Where the networks meet]
-    |
-    v
-[3.4 What an analyst does]
-    |
-    v
-[3.5 Wireless]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) describe how BMS controllers communicate; (2) explain why building protocols are often unauthenticated; and (3) identify where building networks touch the hospital network.
@@ -396,71 +221,6 @@ Building controllers trust whoever reaches them, so every point where building a
 <a id="ch-04"></a>
 
 ## Chapter 4 — An inventory of building devices
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 What to record"]
-  N2["4.2 Grouping"]
-  N3["4.3 Reading the output"]
-  N4["4.4 Using the inventory"]
-  N5["4.5 Where the data comes from"]
-  N6["4.6 Consequence column"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 What to record"]
-  N2["4.2 Grouping"]
-  N3["4.3 Reading the output"]
-  N4["4.4 Using the inventory"]
-  N5["4.5 Where the data comes from"]
-  N6["4.6 Consequence column"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 What to record]
-    |
-    v
-[4.2 Grouping]
-    |
-    v
-[4.3 Reading the output]
-    |
-    v
-[4.4 Using the inventory]
-    |
-    v
-[4.5 Where the data comes from]
-    |
-    v
-[4.6 Consequence column]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -557,66 +317,6 @@ A system-grouped inventory with support status shows owners and where compensati
 
 ## Chapter 5 — Accounts, defaults and device baselines
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Defaults in buildings"]
-  N2["5.2 Shared estates accounts"]
-  N3["5.3 A procurement baseline"]
-  N4["5.4 Rules that estates staff can follow"]
-  N5["5.5 Checking the change worked"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Defaults in buildings"]
-  N2["5.2 Shared estates accounts"]
-  N3["5.3 A procurement baseline"]
-  N4["5.4 Rules that estates staff can follow"]
-  N5["5.5 Checking the change worked"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Defaults in buildings]
-    |
-    v
-[5.2 Shared estates accounts]
-    |
-    v
-[5.3 A procurement baseline]
-    |
-    v
-[5.4 Rules that estates staff can follow]
-    |
-    v
-[5.5 Checking the change worked]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) find default and shared accounts on building systems; (2) apply ETSI EN 303 645 and NIST IR 8259 ideas to procurement; and (3) set practical password rules for estates staff.
@@ -680,66 +380,6 @@ Changed defaults, named accounts, vaulted passwords and baseline contract questi
 <a id="ch-06"></a>
 
 ## Chapter 6 — Internet exposure of building systems
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 How it happens"]
-  N2["6.2 Checking exposure"]
-  N3["6.3 Reading the result"]
-  N4["6.4 Responding"]
-  N5["6.5 Preventing recurrence"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 How it happens"]
-  N2["6.2 Checking exposure"]
-  N3["6.3 Reading the result"]
-  N4["6.4 Responding"]
-  N5["6.5 Preventing recurrence"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 How it happens]
-    |
-    v
-[6.2 Checking exposure]
-    |
-    v
-[6.3 Reading the result]
-    |
-    v
-[6.4 Responding]
-    |
-    v
-[6.5 Preventing recurrence]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -824,61 +464,6 @@ Only the gateway faces the internet; anything else found is reported, closed and
 
 ## Chapter 7 — Contractor and vendor remote access
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Many hands"]
-  N2["7.2 Lessons from AA21-042A"]
-  N3["7.3 A controlled process"]
-  N4["7.4 Removing the old routes"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Many hands"]
-  N2["7.2 Lessons from AA21-042A"]
-  N3["7.3 A controlled process"]
-  N4["7.4 Removing the old routes"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Many hands]
-    |
-    v
-[7.2 Lessons from AA21-042A]
-    |
-    v
-[7.3 A controlled process]
-    |
-    v
-[7.4 Removing the old routes]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) inventory every remote route into building systems; (2) apply CISA AA21-042A lessons; and (3) design a controlled remote access process for contractors.
@@ -936,66 +521,6 @@ All remote help goes through one gateway with named, multi-factor, ticketed acco
 <a id="ch-08"></a>
 
 ## Chapter 8 — Segmentation for building networks
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Zones"]
-  N2["8.2 Conduits and rules"]
-  N3["8.3 Fixing the dual-homed workstation"]
-  N4["8.4 Migrating safely"]
-  N5["8.5 Documentation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Zones"]
-  N2["8.2 Conduits and rules"]
-  N3["8.3 Fixing the dual-homed workstation"]
-  N4["8.4 Migrating safely"]
-  N5["8.5 Documentation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Zones]
-    |
-    v
-[8.2 Conduits and rules]
-    |
-    v
-[8.3 Fixing the dual-homed workstation]
-    |
-    v
-[8.4 Migrating safely]
-    |
-    v
-[8.5 Documentation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
@@ -1060,71 +585,6 @@ Zones with narrow conduits stop office compromises from reaching controllers; mi
 <a id="ch-09"></a>
 
 ## Chapter 9 — Monitoring trends and logs
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Trends as evidence"]
-  N2["9.2 Change windows"]
-  N3["9.3 Reading the output"]
-  N4["9.4 Combining sources"]
-  N5["9.5 Alerting"]
-  N6["9.6 Keeping evidence"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Trends as evidence"]
-  N2["9.2 Change windows"]
-  N3["9.3 Reading the output"]
-  N4["9.4 Combining sources"]
-  N5["9.5 Alerting"]
-  N6["9.6 Keeping evidence"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Trends as evidence]
-    |
-    v
-[9.2 Change windows]
-    |
-    v
-[9.3 Reading the output]
-    |
-    v
-[9.4 Combining sources]
-    |
-    v
-[9.5 Alerting]
-    |
-    v
-[9.6 Keeping evidence]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -1215,71 +675,6 @@ Trend logs show what changed and when; combined with access logs they explain it
 
 ## Chapter 10 — Advisories and patching for building systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Sources"]
-  N2["10.2 Matching"]
-  N3["10.3 Choosing"]
-  N4["10.4 Tracking"]
-  N5["10.5 Testing after patching"]
-  N6["10.6 Vendor contact"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Sources"]
-  N2["10.2 Matching"]
-  N3["10.3 Choosing"]
-  N4["10.4 Tracking"]
-  N5["10.5 Testing after patching"]
-  N6["10.6 Vendor contact"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Sources]
-    |
-    v
-[10.2 Matching]
-    |
-    v
-[10.3 Choosing]
-    |
-    v
-[10.4 Tracking]
-    |
-    v
-[10.5 Testing after patching]
-    |
-    v
-[10.6 Vendor contact]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) match advisories to the building inventory; (2) decide between patching and mitigation; and (3) track decisions over time.
@@ -1350,66 +745,6 @@ Advisories are matched, mitigated quickly, patched at booked times with fall-bac
 
 ## Chapter 11 — Incident response for hospital building systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Planning ahead"]
-  N2["11.2 Detect and assess"]
-  N3["11.3 Contain"]
-  N4["11.4 Evidence and recovery"]
-  N5["11.5 Communication"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Planning ahead"]
-  N2["11.2 Detect and assess"]
-  N3["11.3 Contain"]
-  N4["11.4 Evidence and recovery"]
-  N5["11.5 Communication"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Planning ahead]
-    |
-    v
-[11.2 Detect and assess]
-    |
-    v
-[11.3 Contain]
-    |
-    v
-[11.4 Evidence and recovery]
-    |
-    v
-[11.5 Communication]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) adapt the incident response steps to building systems; (2) decide when to isolate the BMS; and (3) coordinate with clinical, estates and IT teams.
@@ -1473,71 +808,6 @@ Clinical safety leads, local control carries the plant, isolation stops remote h
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone: a building-systems risk report
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Structure"]
-  N2["12.2 Rating"]
-  N3["12.3 Recommendations"]
-  N4["12.4 Presenting"]
-  N5["12.5 Evidence appendix"]
-  N6["12.6 After the meeting"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Structure"]
-  N2["12.2 Rating"]
-  N3["12.3 Recommendations"]
-  N4["12.4 Presenting"]
-  N5["12.5 Evidence appendix"]
-  N6["12.6 After the meeting"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Structure]
-    |
-    v
-[12.2 Rating]
-    |
-    v
-[12.3 Recommendations]
-    |
-    v
-[12.4 Presenting]
-    |
-    v
-[12.5 Evidence appendix]
-    |
-    v
-[12.6 After the meeting]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

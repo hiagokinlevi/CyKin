@@ -38,71 +38,6 @@ The [worked results](#worked-results) contain EX001–EX060. A [glossary](#gloss
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["1.1 What changes at specialist level"]
-  N2["1.2 Framing"]
-  N3["1.3 Risk appetite into thresholds"]
-  N4["1.4 Reducible and irreducible uncertainty"]
-  N5["1.5 Decision quality versus outcome quality"]
-  N6["1.6 Residual risk and acceptance"]
-  N7["1.7 Revisit conditions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["1.1 What changes at specialist level"]
-  N2["1.2 Framing"]
-  N3["1.3 Risk appetite into thresholds"]
-  N4["1.4 Reducible and irreducible uncertainty"]
-  N5["1.5 Decision quality versus outcome quality"]
-  N6["1.6 Residual risk and acceptance"]
-  N7["1.7 Revisit conditions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[1.1 What changes at specialist level]
-    |
-    v
-[1.2 Framing]
-    |
-    v
-[1.3 Risk appetite into thresholds]
-    |
-    v
-[1.4 Reducible and irreducible uncertainty]
-    |
-    v
-[1.5 Decision quality versus outcome quality]
-    |
-    v
-[1.6 Residual risk and acceptance]
-    |
-    v
-[1.7 Revisit conditions]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes and connection
 
 After this chapter you can (1) frame an incident decision so that the options, the decision owner, the time horizon and the evaluation criteria are explicit; (2) translate the organization's **risk appetite** into thresholds that a commander can use at 03:00; (3) separate the uncertainty you can reduce from the uncertainty you must decide through; (4) write a decision record that a board, a regulator or an auditor can read a year later; and (5) define conditions that require the decision to be revisited. You arrive with a degree or equivalent experience and have handled incidents. This book does not teach you how to respond — it teaches you how to make, lead and defend organization-scale response choices as a specialist. Chapter 2 places these decisions inside an incident-command structure.
@@ -244,71 +179,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Current practice in enterprise incident command
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["2.1 Why command structures"]
-  N2["2.2 The commander's role"]
-  N3["2.3 Functional sections"]
-  N4["2.4 Conflicting reporting lines"]
-  N5["2.5 Information cadence"]
-  N6["2.6 Delegation and thresholds"]
-  N7["2.7 Handoffs and fatigue"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["2.1 Why command structures"]
-  N2["2.2 The commander's role"]
-  N3["2.3 Functional sections"]
-  N4["2.4 Conflicting reporting lines"]
-  N5["2.5 Information cadence"]
-  N6["2.6 Delegation and thresholds"]
-  N7["2.7 Handoffs and fatigue"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[2.1 Why command structures]
-    |
-    v
-[2.2 The commander's role]
-    |
-    v
-[2.3 Functional sections]
-    |
-    v
-[2.4 Conflicting reporting lines]
-    |
-    v
-[2.5 Information cadence]
-    |
-    v
-[2.6 Delegation and thresholds]
-    |
-    v
-[2.7 Handoffs and fatigue]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) design an incident-command structure that works across divisions with conflicting reporting lines; (2) define the commander's authority, delegation and information cadence; (3) build a handoff protocol that survives shift changes and fatigue; and (4) stress-test a command charter against realistic failure points. Chapter 1 established how individual decisions are framed; this chapter places them inside an organization. Chapter 5 uses the structure to coordinate containment.
@@ -407,71 +277,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Specialist evidence in complex investigations
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["3.1 The specialist report as evidence"]
-  N2["3.2 Forensic reports"]
-  N3["3.3 Cloud audit reports"]
-  N4["3.4 Identity traces"]
-  N5["3.5 Expert limitation"]
-  N6["3.6 Reconciling disagreements"]
-  N7["3.7 Confidence statements"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["3.1 The specialist report as evidence"]
-  N2["3.2 Forensic reports"]
-  N3["3.3 Cloud audit reports"]
-  N4["3.4 Identity traces"]
-  N5["3.5 Expert limitation"]
-  N6["3.6 Reconciling disagreements"]
-  N7["3.7 Confidence statements"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[3.1 The specialist report as evidence]
-    |
-    v
-[3.2 Forensic reports]
-    |
-    v
-[3.3 Cloud audit reports]
-    |
-    v
-[3.4 Identity traces]
-    |
-    v
-[3.5 Expert limitation]
-    |
-    v
-[3.6 Reconciling disagreements]
-    |
-    v
-[3.7 Confidence statements]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes and connection
 
@@ -578,66 +383,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Advanced risk and ethics
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["4.1 Why specialists face harder ethical questions"]
-  N2["4.2 Proportionality and necessity"]
-  N3["4.3 Competing duties"]
-  N4["4.4 Confidentiality and privilege"]
-  N5["4.6 The review record"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["4.1 Why specialists face harder ethical questions"]
-  N2["4.2 Proportionality and necessity"]
-  N3["4.3 Competing duties"]
-  N4["4.4 Confidentiality and privilege"]
-  N5["4.6 The review record"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[4.1 Why specialists face harder ethical questions]
-    |
-    v
-[4.2 Proportionality and necessity]
-    |
-    v
-[4.3 Competing duties]
-    |
-    v
-[4.4 Confidentiality and privilege]
-    |
-    v
-[4.6 The review record]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) apply proportionality, necessity and least intrusion to investigative and monitoring requests; (2) handle competing duties — to the organization, to employees, to customers and to the law; (3) design a review record that makes an ethical decision auditable; and (4) recommend a less intrusive authorized plan that still answers the question. Chapter 3 dealt with evidence quality; this chapter deals with the legitimacy of obtaining evidence at all. Chapter 7 adds the legal and privacy integration.
@@ -731,71 +476,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Alternatives for coordinated containment
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["5.1 Coordinated versus piecemeal containment"]
-  N2["5.2 Scoping before acting"]
-  N3["5.3 Identity first"]
-  N4["5.4 Dependencies and blast radius"]
-  N5["5.5 Approval and rollback gates"]
-  N6["5.6 Execution and verification"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["5.1 Coordinated versus piecemeal containment"]
-  N2["5.2 Scoping before acting"]
-  N3["5.3 Identity first"]
-  N4["5.4 Dependencies and blast radius"]
-  N5["5.5 Approval and rollback gates"]
-  N6["5.6 Execution and verification"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[5.1 Coordinated versus piecemeal containment]
-    |
-    v
-[5.2 Scoping before acting]
-    |
-    v
-[5.3 Identity first]
-    |
-    v
-[5.4 Dependencies and blast radius]
-    |
-    v
-[5.5 Approval and rollback gates]
-    |
-    v
-[5.6 Execution and verification]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) design containment across cloud and on-premises environments with shared identity; (2) sequence actions to avoid alerting the adversary prematurely or leaving gaps; (3) assess dependencies and blast radius of each action; (4) define approval and rollback gates; and (5) compare two coordinated strategies and recommend one. Chapters 1 and 2 provided decision framing and command; this chapter applies them to the most consequential operational decision in many incidents.
@@ -885,61 +565,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Controlled evaluation of recovery strategies
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["6.1 Recovery as an experiment"]
-  N2["6.2 Validation references"]
-  N3["6.3 Downstream synchronization"]
-  N4["6.4 Acceptance and fallback"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["6.1 Recovery as an experiment"]
-  N2["6.2 Validation references"]
-  N3["6.3 Downstream synchronization"]
-  N4["6.4 Acceptance and fallback"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[6.1 Recovery as an experiment]
-    |
-    v
-[6.2 Validation references]
-    |
-    v
-[6.3 Downstream synchronization]
-    |
-    v
-[6.4 Acceptance and fallback]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes and connection
 
@@ -1045,71 +670,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Integration across legal, privacy and operations
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["7.1 The integration problem"]
-  N2["7.2 Notification triggers"]
-  N3["7.3 Legal hold and operational recovery"]
-  N4["7.4 Minimization in the investigation"]
-  N5["7.5 The decision log"]
-  N6["7.6 Avoiding speculation in records"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["7.1 The integration problem"]
-  N2["7.2 Notification triggers"]
-  N3["7.3 Legal hold and operational recovery"]
-  N4["7.4 Minimization in the investigation"]
-  N5["7.5 The decision log"]
-  N6["7.6 Avoiding speculation in records"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[7.1 The integration problem]
-    |
-    v
-[7.2 Notification triggers]
-    |
-    v
-[7.3 Legal hold and operational recovery]
-    |
-    v
-[7.4 Minimization in the investigation]
-    |
-    v
-[7.5 The decision log]
-    |
-    v
-[7.6 Avoiding speculation in records]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) identify notification triggers across overlapping regimes and route them to the right specialist; (2) coordinate legal holds with operational recovery; (3) apply data minimization to the investigation itself; (4) maintain a decision log that separates facts, assessments and specialist determinations; and (5) avoid speculation in records that may be disclosed. Chapter 4 handled ethics; this chapter integrates legal and privacy functions into the running incident. Chapter 9 turns to leadership briefings.
@@ -1202,61 +762,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Difficult cases with conflicting evidence
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["8.1 When evidence conflicts"]
-  N2["8.2 Analysis of competing hypotheses"]
-  N3["8.3 Provenance and missingness"]
-  N4["8.4 Seeking disconfirmation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["8.1 When evidence conflicts"]
-  N2["8.2 Analysis of competing hypotheses"]
-  N3["8.3 Provenance and missingness"]
-  N4["8.4 Seeking disconfirmation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[8.1 When evidence conflicts]
-    |
-    v
-[8.2 Analysis of competing hypotheses]
-    |
-    v
-[8.3 Provenance and missingness]
-    |
-    v
-[8.4 Seeking disconfirmation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes and connection
 
@@ -1366,71 +871,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Response leadership and assurance decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["9.1 The leadership gap after containment"]
-  N2["9.2 Assurance claims"]
-  N3["9.3 Briefing structure"]
-  N4["9.4 Closure conditions"]
-  N5["9.5 Delegation and residual risk acceptance"]
-  N6["9.6 Review cadence"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["9.1 The leadership gap after containment"]
-  N2["9.2 Assurance claims"]
-  N3["9.3 Briefing structure"]
-  N4["9.4 Closure conditions"]
-  N5["9.5 Delegation and residual risk acceptance"]
-  N6["9.6 Review cadence"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[9.1 The leadership gap after containment]
-    |
-    v
-[9.2 Assurance claims]
-    |
-    v
-[9.3 Briefing structure]
-    |
-    v
-[9.4 Closure conditions]
-    |
-    v
-[9.5 Delegation and residual risk acceptance]
-    |
-    v
-[9.6 Review cadence]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) brief executives and boards with fact-limited statements before root cause is known; (2) make and record assurance claims with their basis; (3) define measurable closure conditions; (4) set a review cadence; and (5) accept or escalate residual risk at the right level. Chapters 1–8 built decisions, structure and evidence; this chapter is about leading with them upward.
@@ -1526,61 +966,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Research reading and critique
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["10.1 Kinds of evidence about response effectiveness"]
-  N2["10.2 A reading protocol"]
-  N3["10.3 Typical biases"]
-  N4["10.4 Transfer and local validation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["10.1 Kinds of evidence about response effectiveness"]
-  N2["10.2 A reading protocol"]
-  N3["10.3 Typical biases"]
-  N4["10.4 Transfer and local validation"]
-  N5["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[10.1 Kinds of evidence about response effectiveness]
-    |
-    v
-[10.2 A reading protocol]
-    |
-    v
-[10.3 Typical biases]
-    |
-    v
-[10.4 Transfer and local validation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes and connection
 
 You will be able to (1) read a published response-effectiveness study for design, population, outcome and limitations; (2) distinguish industry surveys, vendor incident datasets and academic studies; (3) judge whether a finding transfers to your organization; and (4) turn a published claim into a local validation question. Specialists are asked "what does the evidence say?" constantly; this chapter teaches the reading that the answer needs. Chapter 11 uses it to justify a program redesign.
@@ -1661,66 +1046,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project: redesign an incident program
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["11.1 Gap assessment"]
-  N2["11.2 Prioritization"]
-  N3["11.3 Design options"]
-  N4["11.4 Piloting"]
-  N5["11.5 Evaluation"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["11.1 Gap assessment"]
-  N2["11.2 Prioritization"]
-  N3["11.3 Design options"]
-  N4["11.4 Piloting"]
-  N5["11.5 Evaluation"]
-  N6["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[11.1 Gap assessment]
-    |
-    v
-[11.2 Prioritization]
-    |
-    v
-[11.3 Design options]
-    |
-    v
-[11.4 Piloting]
-    |
-    v
-[11.5 Evaluation]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes and connection
 
@@ -1832,71 +1157,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and organizational transfer plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes and connection"]
-  N1["12.1 Why transfer fails"]
-  N2["12.2 The transfer package"]
-  N3["12.3 Training and acceptance"]
-  N4["12.4 Residual issues"]
-  N5["12.5 Defending trade-offs"]
-  N6["12.6 Reassessment"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes and connection"]
-  N1["12.1 Why transfer fails"]
-  N2["12.2 The transfer package"]
-  N3["12.3 Training and acceptance"]
-  N4["12.4 Residual issues"]
-  N5["12.5 Defending trade-offs"]
-  N6["12.6 Reassessment"]
-  N7["Chapter synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes and connection]
-    |
-    v
-[12.1 Why transfer fails]
-    |
-    v
-[12.2 The transfer package]
-    |
-    v
-[12.3 Training and acceptance]
-    |
-    v
-[12.4 Residual issues]
-    |
-    v
-[12.5 Defending trade-offs]
-    |
-    v
-[12.6 Reassessment]
-    |
-    v
-[Chapter synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes and connection
 

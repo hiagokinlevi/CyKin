@@ -39,71 +39,6 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 ## Chapter 1 — Security operations in one month: seeing what matters
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What security operations means"]
-  N3["1.3 What to protect"]
-  N4["1.4 A few good signals"]
-  N5["1.5 Who watches, who acts"]
-  N6["1.6 Frameworks in plain words"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What security operations means"]
-  N3["1.3 What to protect"]
-  N4["1.4 A few good signals"]
-  N5["1.5 Who watches, who acts"]
-  N6["1.6 Frameworks in plain words"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 What security operations means]
-    |
-    v
-[1.3 What to protect]
-    |
-    v
-[1.4 A few good signals]
-    |
-    v
-[1.5 Who watches, who acts]
-    |
-    v
-[1.6 Frameworks in plain words]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what security operations means for a small organisation; (2) identify the few signals worth watching; (3) set up who watches and who acts; (4) introduce the case.
@@ -181,71 +116,6 @@ Small firms need the same habits as a SOC: know what matters, watch a few good s
 <a id="ch-02"></a>
 
 ## Chapter 2 — Spotting the signs
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Sign-in records"]
-  N2["Lab — unusual sign-ins"]
-  N3["2.2 Lab result"]
-  N4["2.3 Forwarding rules"]
-  N5["2.4 The story"]
-  N6["2.5 Not jumping to conclusions"]
-  N7["2.6 ATT&CK"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Sign-in records"]
-  N2["Lab — unusual sign-ins"]
-  N3["2.2 Lab result"]
-  N4["2.3 Forwarding rules"]
-  N5["2.4 The story"]
-  N6["2.5 Not jumping to conclusions"]
-  N7["2.6 ATT&CK"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Sign-in records]
-    |
-    v
-[Lab — unusual sign-ins]
-    |
-    v
-[2.2 Lab result]
-    |
-    v
-[2.3 Forwarding rules]
-    |
-    v
-[2.4 The story]
-    |
-    v
-[2.5 Not jumping to conclusions]
-    |
-    v
-[2.6 ATT&CK]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -348,71 +218,6 @@ Unusual sign-ins plus a hidden forwarding rule told the story; check innocent ex
 
 ## Chapter 3 — Acting fast and calmly
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Order of actions"]
-  N2["3.2 Timing"]
-  N3["3.3 Checking the money"]
-  N4["3.4 Warning clients"]
-  N5["3.5 Reporting"]
-  N6["3.6 Recording"]
-  N7["Telling staff"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Order of actions"]
-  N2["3.2 Timing"]
-  N3["3.3 Checking the money"]
-  N4["3.4 Warning clients"]
-  N5["3.5 Reporting"]
-  N6["3.6 Recording"]
-  N7["Telling staff"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Order of actions]
-    |
-    v
-[3.2 Timing]
-    |
-    v
-[3.3 Checking the money]
-    |
-    v
-[3.4 Warning clients]
-    |
-    v
-[3.5 Reporting]
-    |
-    v
-[3.6 Recording]
-    |
-    v
-[Telling staff]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) contain a compromised email account in the right order; (2) warn clients without causing panic; (3) check whether money was lost; (4) record actions and times.
@@ -494,71 +299,6 @@ Contain in the right order, chase the money quickly, warn calmly and record ever
 
 ## Chapter 4 — Keeping watch and getting better
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Ongoing alerts"]
-  N2["4.2 Measuring usefulness"]
-  N3["4.3 Reducing noise"]
-  N4["4.4 Lessons review"]
-  N5["4.5 Continuous monitoring"]
-  N6["4.6 Next steps"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Ongoing alerts"]
-  N2["4.2 Measuring usefulness"]
-  N3["4.3 Reducing noise"]
-  N4["4.4 Lessons review"]
-  N5["4.5 Continuous monitoring"]
-  N6["4.6 Next steps"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Ongoing alerts]
-    |
-    v
-[4.2 Measuring usefulness]
-    |
-    v
-[4.3 Reducing noise]
-    |
-    v
-[4.4 Lessons review]
-    |
-    v
-[4.5 Continuous monitoring]
-    |
-    v
-[4.6 Next steps]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) set up simple ongoing monitoring with a provider; (2) measure whether alerts are useful; (3) run a short lessons review; (4) plan the next month and beyond.
@@ -636,33 +376,6 @@ Keep watching a few signals, measure them, learn from each event and keep people
 
 ## Chapter 5 — The lab print is list order
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  L["Six tuples, written order"] --> P["One pass, no sort"]
-  P --> O["Six lines in that same order"]
-  O --> Q{"Did severity pick the first line?"}
-  Q -->|No| K["Keep the embedded print"]
-```
-
-The loop follows the list. It does not rank the rows.
-
-### Logical drawing
-
-```text
-e.finch   Fri 08:52 UK ok
-e.finch   Fri 13:05 UK ok
-e.finch   Fri 23:47 BR CHECK: new country, night
-s.marlow  Fri 09:10 UK ok
-l.barros  Fri 08:30 UK ok
-e.finch   Sat 00:02 BR CHECK: new country, night
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -715,35 +428,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Two flags are independent tests
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  R["One tuple"] --> C["Country test"]
-  R --> H["Hour test"]
-  C --> J["Join only the true names"]
-  H --> J
-  J --> Q{"Does two names outrank one?"}
-  Q -->|No| K["The script stores no weight"]
-```
-
-Both tests run. Neither test is a score.
-
-### Logical drawing
-
-```text
-flag pairs, in test order
-  new country, then night
-join
-  comma and one space
-empty list
-  the word ok, with no CHECK prefix
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -798,34 +482,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Night is a cut on the hour token
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  T["Time token"] --> S["Split on spaces"]
-  S --> H["First two characters of part two"]
-  H --> I["Integer hour"]
-  I --> Q{"Hour below 6, or hour at least 22?"}
-  Q -->|Yes| N["Night flag"]
-  Q -->|No| D["No night flag"]
-```
-
-The hour is parsed from characters. It is not a timezone.
-
-### Logical drawing
-
-```text
-Fri 23:47 -> hour 23 -> night
-Sat 00:02 -> hour 0 -> night
-Fri 08:52 -> hour 8 -> not night
-22:00 would be hour 22 -> night
-06:00 would be hour 6 -> not night
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -883,34 +539,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — The country token is not a lookup
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  U["usual is the set UK"] --> M{"Is the token in that set?"}
-  M -->|Yes| K["No country flag"]
-  M -->|No| F["Country flag"]
-  A["Approximate country, in prose"] --> Q{"Does the script test that limit?"}
-  Q -->|No| S["The token is only a stored label"]
-```
-
-Membership is a set test. It is not a map query.
-
-### Logical drawing
-
-```text
-usual = {"UK"}
-UK -> in the set -> no country flag
-BR -> not in the set -> country flag
-no network call
-no coordinate
-no routing-service check
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -965,36 +593,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Four minutes is 23:47 to 23:51
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  S["23:47 is a lab token"] --> D["Subtract from 23:51"]
-  R["23:51 is prose"] --> D
-  D --> F["Four minutes"]
-  F --> Q{"Is 23:51 a lab column?"}
-  Q -->|No| K["The rule stays outside the script"]
-```
-
-The gap is arithmetic beside the file. The file does not store the rule.
-
-### Logical drawing
-
-```text
-lab sees
-  Fri 23:47 BR
-prose sees
-  rule created 23:51
-difference
-  4 minutes
-script columns
-  user, when, country
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1048,33 +646,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Twelve mailboxes are not six rows
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  M["Twelve mailboxes, in prose"] --> S["Search for an outside rule"]
-  L["Six sign-in tuples"] --> P["Six printed rows"]
-  S --> Q{"Do the counts match?"}
-  P --> Q
-  Q -->|No| K["Keep both counts in their own places"]
-```
-
-A mailbox search is not a longer sign-in list.
-
-### Logical drawing
-
-```text
-printed user labels: e.finch, s.marlow, l.barros
-printed rows: 6
-mailboxes searched: 12
-outside-forwarding rule: Elaine's only
-other nine mailboxes: no rows in this file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1131,34 +702,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — The password-only window is twelve minutes
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  A["10:05 approval"] --> B["10:08 sessions revoked"]
-  B --> C["10:09 password reset"]
-  C --> D["10:11 rule removed"]
-  D --> E["10:20 MFA"]
-  B --> W["10:20 minus 10:08 = 12"]
-  C --> X["10:20 minus 10:09 = 11"]
-```
-
-Each pair of clocks answers a different question.
-
-### Logical drawing
-
-```text
-10:05 to 10:08 = 3 minutes
-10:08 to 10:20 = 12 minutes
-10:09 to 10:20 = 11 minutes
-10:05 to 10:20 = 15 minutes
-password-only window = the 12
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1212,33 +755,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — £3,100 is not the whole £4,800
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  T["Two clients received the invoice"] --> P["One paid 4800"]
-  T --> N["One had not paid"]
-  P --> R["Bank later recovered 3100"]
-  R --> Q{"Is 3100 the whole payment?"}
-  Q -->|No| K["Recovery stays partial and uncertain"]
-```
-
-Two amounts are recorded. Their ratio is not a printed success rate.
-
-### Logical drawing
-
-```text
-clients who received the fake invoice: 2
-clients who paid: 1
-amount paid: £4,800
-amount later recovered: £3,100
-success rate: not printed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1295,31 +811,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The client sentence is not a technical report
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  R["Rule removed"] --> A["Send from the usual address"]
-  A --> M["Two short sentences"]
-  M --> Q{"Does the text name a phone number or the attack?"}
-  Q -->|No| K["Keep the warning as written"]
-```
-
-The warning tells clients what to do. It does not brief them on the mailbox.
-
-### Logical drawing
-
-```text
-when: after the rule is removed
-from: the firm's usual address, not Elaine's
-contains: no phone number, no blame, no attack steps
-not the same document as: the regulator report or the fraud report
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1374,34 +865,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — Eleven alerts are not eleven attacks
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["8 abroad"] --> S["11 alerts"]
-  B["2 MFA changes"] --> S
-  C["1 forwarding rule"] --> S
-  S --> Z["0 attacks"]
-  Z --> Q{"Does 11 become a rate?"}
-  Q -->|No| K["Keep the parts and the zero"]
-```
-
-The month states a count and a zero. It does not state a rate.
-
-### Logical drawing
-
-```text
-8 + 2 + 1 = 11
-6 + 2 = 8
-attacks = 0
-8 abroad = 6 Spain holiday + 2 roaming
-rate such as 0/11: not printed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1455,33 +918,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — A travel list does not delete the abroad signal
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  T["Staff tell Leo before travel"] --> L["BrightPath keeps a trip list"]
-  L --> C["The abroad alert is checked faster"]
-  F["Forwarding alerts"] --> U["Unchanged"]
-  M["MFA alerts"] --> U
-  C --> Q{"Does the list delete the signal?"}
-  Q -->|No| K["The four signals stay"]
-```
-
-The list shortens a check. It does not remove a detector.
-
-### Logical drawing
-
-```text
-signal kept: unusual-country or night sign-ins
-aid added: a trip list in prose
-signals left unchanged: forwarding rules, MFA changes
-not a filter inside lab_signins.py
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Learning outcomes
 
@@ -1538,33 +974,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — Done and booked are not the same state
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  M["30-minute lessons review"] --> D["MFA for all staff: done"]
-  M --> P["Phone-check rule: done"]
-  M --> B["Phishing training: booked"]
-  M --> Y["Admin-rights check: twice a year"]
-  B --> Q{"Is booked the same as done?"}
-  Q -->|No| K["Four actions, three states"]
-```
-
-A meeting can close an action, schedule one, or leave one on a later calendar.
-
-### Logical drawing
-
-```text
-done this month: MFA for all staff; phone-check for bank details
-booked, not done: staff phishing training
-not this meeting: the twice-yearly admin-rights check
-one coder: no kappa
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1619,35 +1028,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — The weekly summary is not the yearly plan check
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  W["Weekly summary"] --> A["Alerts and their explanations"]
-  M["Monthly partner review"] --> B["Trends"]
-  Y["Yearly plan check"] --> C["Do the signals and the call list still fit?"]
-  A --> Q{"Are these one scored program?"}
-  B --> Q
-  C --> Q
-  Q -->|No| K["Three timescales, unscored"]
-```
-
-Three clocks, three questions. No maturity number attaches to them.
-
-### Logical drawing
-
-```text
-week: Leo reads the summary
-month: partners review
-year: the plan is checked
-SP 800-137: cited, not scored
-SOC-CMM: not scored
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1700,34 +1080,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — A later phish report is not another lab row
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  P["Two months later"] --> R["Staff report a fake invoice-overdue email"]
-  R --> N["No password entered"]
-  N --> B["Sender blocked"]
-  B --> U["Report button used three more times"]
-  U --> Q{"Does this add a seventh tuple?"}
-  Q -->|No| K["signins stays length 6"]
-```
-
-The report is success because people watched. It is not a new sign-in line.
-
-### Logical drawing
-
-```text
-lab rows: still 6
-password entered: no
-sender: blocked
-further uses of the report button that month: 3
-not a night-country flag
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1783,33 +1135,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — One restored client folder is not a resilience score
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  B["Backups already existed"] --> R["Recover was the only CSF part in place"]
-  L["Leo's next test"] --> F["Restore one client folder"]
-  F --> Q{"Does the book print a pass or a time?"}
-  Q -->|No| K["The test stays a plan"]
-```
-
-A planned restore is not a sixth signal and not a score.
-
-### Logical drawing
-
-```text
-CSF before the incident
-  Protect, Detect, Respond: empty
-  Recover: backups already in place
-planned test: one client folder
-printed score: none
-signals: still four
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1864,38 +1189,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the firm note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A firm note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the firm's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    both CHECK lines, in list order, and the ok rows
-    £4,800 and £3,100
-    10:08 and 10:20 as a twelve-minute window
-    11 alerts and 0 attacks
-    the client warning, without a phone number
-    chapter 4's closing line, quoted once:
-    Keep watching a few signals, measure them, learn from each event and keep people involved.
-must not be added
-    a reordered lab, a digest, a named bank
-    the word secure, a 2-of-6 fraction
-    an eleven-minute revocation-to-MFA window
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

@@ -37,61 +37,6 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 ## Capítulo 1 — Arquitetura e engenharia de segurança: fundamentos e decisões
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O que significa arquitetura"]
-  N1["1.2 Por que importa para uma organização pequena"]
-  N2["1.3 Cinco princípios"]
-  N3["1.4 Aplicá-los na Saltmarsh"]
-  N4["1.5 Registrar uma decisão"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O que significa arquitetura"]
-  N1["1.2 Por que importa para uma organização pequena"]
-  N2["1.3 Cinco princípios"]
-  N3["1.4 Aplicá-los na Saltmarsh"]
-  N4["1.5 Registrar uma decisão"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 O que significa arquitetura]
-    |
-    v
-[1.2 Por que importa para uma organização pequena]
-    |
-    v
-[1.3 Cinco princípios]
-    |
-    v
-[1.4 Aplicá-los na Saltmarsh]
-    |
-    v
-[1.5 Registrar uma decisão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar a arquitetura de segurança em termos simples; (2) aplicar cinco princípios de projeto a uma pequena cooperativa de crédito; (3) registrar corretamente uma decisão.
@@ -170,61 +115,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX014.
-
-```mermaid
-flowchart TD
-  N0["2.1 Definir o escopo"]
-  N1["2.2 Permissão por escrito"]
-  N2["2.3 Manuseio seguro dos dados dos associados"]
-  N3["2.4 Condições de parada"]
-  N4["2.5 Um achado dentro do escopo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Definir o escopo"]
-  N1["2.2 Permissão por escrito"]
-  N2["2.3 Manuseio seguro dos dados dos associados"]
-  N3["2.4 Condições de parada"]
-  N4["2.5 Um achado dentro do escopo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
-```
-
-```text
-[2.1 Definir o escopo]
-    |
-    v
-[2.2 Permissão por escrito]
-    |
-    v
-[2.3 Manuseio seguro dos dados dos associados]
-    |
-    v
-[2.4 Condições de parada]
-    |
-    v
-[2.5 Um achado dentro do escopo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir o escopo de uma pequena revisão de segurança; (2) obter permissão por escrito; (3) trabalhar com segurança com os dados dos associados.
@@ -302,66 +192,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Arquitetura e engenharia de segurança: sistemas, dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["3.1 Mapear os sistemas"]
-  N1["3.2 Desenhar os fluxos de dados"]
-  N2["3.3 Fornecedores e dependências"]
-  N3["Laboratório — Contagem dos serviços que dependem de"]
-  N4["3.4 Pontos únicos de falha"]
-  N5["3.5 Usar o mapa"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Mapear os sistemas"]
-  N1["3.2 Desenhar os fluxos de dados"]
-  N2["3.3 Fornecedores e dependências"]
-  N3["Laboratório — Contagem dos serviços que dependem de"]
-  N4["3.4 Pontos únicos de falha"]
-  N5["3.5 Usar o mapa"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[3.1 Mapear os sistemas]
-    |
-    v
-[3.2 Desenhar os fluxos de dados]
-    |
-    v
-[3.3 Fornecedores e dependências]
-    |
-    v
-[Laboratório — Contagem dos serviços que dependem de]
-    |
-    v
-[3.4 Pontos únicos de falha]
-    |
-    v
-[3.5 Usar o mapa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -463,66 +293,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Arquitetura e engenharia de segurança: laboratório guiado e síntese aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["4.1 O laboratório guiado"]
-  N1["Laboratório — Conferência das configurações do siste"]
-  N2["4.2 Ler os resultados"]
-  N3["4.3 Priorizar as ações"]
-  N4["4.4 Verificar a correção"]
-  N5["4.5 Síntese e plano"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O laboratório guiado"]
-  N1["Laboratório — Conferência das configurações do siste"]
-  N2["4.2 Ler os resultados"]
-  N3["4.3 Priorizar as ações"]
-  N4["4.4 Verificar a correção"]
-  N5["4.5 Síntese e plano"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[4.1 O laboratório guiado]
-    |
-    v
-[Laboratório — Conferência das configurações do siste]
-    |
-    v
-[4.2 Ler os resultados]
-    |
-    v
-[4.3 Priorizar as ações]
-    |
-    v
-[4.4 Verificar a correção]
-    |
-    v
-[4.5 Síntese e plano]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 

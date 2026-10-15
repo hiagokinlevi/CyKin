@@ -71,6 +71,20 @@ def test_public_guide_and_lesson(client):
     assert client.get("/api/chapters/rapid-1-month/incident-response-resilience/en/1").status_code == 200
 
 
+def test_section_title_maps_are_absent_but_technical_diagrams_remain(client):
+    path = "/courses/postgraduate-2-years/ai-security/chapters/pt/8/"
+    page = client.get(path)
+    markdown = client.get(path.rstrip("/") + ".md")
+    assert page.status_code == markdown.status_code == 200
+    assert "Mapa da aula" not in page.text and "Desenho lógico" not in page.text
+    assert "Mapa da aula" not in markdown.text and "Desenho lógico" not in markdown.text
+    assert "Controles em conflito" in page.text
+    technical = client.get("/courses/rapid-1-month/incident-response-resilience/chapters/en/2.md")
+    assert technical.status_code == 200
+    assert "```mermaid" in technical.text
+    assert "Lesson map" not in technical.text
+
+
 def test_unwritten_chapter_is_not_served_as_lesson(client):
     guide = client.get("/api/courses/rapid-1-month/cybersecurity/en").json()
     assert guide["planned_chapters"] == 20

@@ -39,71 +39,6 @@ GDPR. Full list in [References](#references).
 
 ## Chapter 1 — Data governance: foundations and first decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The learner and the café"]
-  N2["1.2 What data governance means"]
-  N3["1.3 Copperleaf's data"]
-  N4["1.4 Why it matters"]
-  N5["1.5 Three first decisions"]
-  N6["Concepts — responsibility, rules, and checks"]
-  N7["Data — what Copperleaf holds, and the harm Kwame nam"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The learner and the café"]
-  N2["1.2 What data governance means"]
-  N3["1.3 Copperleaf's data"]
-  N4["1.4 Why it matters"]
-  N5["1.5 Three first decisions"]
-  N6["Concepts — responsibility, rules, and checks"]
-  N7["Data — what Copperleaf holds, and the harm Kwame nam"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The learner and the café]
-    |
-    v
-[1.2 What data governance means]
-    |
-    v
-[1.3 Copperleaf's data]
-    |
-    v
-[1.4 Why it matters]
-    |
-    v
-[1.5 Three first decisions]
-    |
-    v
-[Concepts — responsibility, rules, and checks]
-    |
-    v
-[Data — what Copperleaf holds, and the harm Kwame nam]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain data governance in plain words; (2) list the data a small café holds; (3) make three first decisions about responsibility and rules.
@@ -217,71 +152,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Ownership, rules and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Simple rules"]
-  N2["2.2 Asking only for what is needed"]
-  N3["2.3 Security habits"]
-  N4["2.4 Keeping and deleting"]
-  N5["2.5 Getting agreement"]
-  N6["Concepts — a rule that staff can finish"]
-  N7["Data — fields the new sheet drops"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Simple rules"]
-  N2["2.2 Asking only for what is needed"]
-  N3["2.3 Security habits"]
-  N4["2.4 Keeping and deleting"]
-  N5["2.5 Getting agreement"]
-  N6["Concepts — a rule that staff can finish"]
-  N7["Data — fields the new sheet drops"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Simple rules]
-    |
-    v
-[2.2 Asking only for what is needed]
-    |
-    v
-[2.3 Security habits]
-    |
-    v
-[2.4 Keeping and deleting]
-    |
-    v
-[2.5 Getting agreement]
-    |
-    v
-[Concepts — a rule that staff can finish]
-    |
-    v
-[Data — fields the new sheet drops]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) write simple rules for each kind of data; (2) apply basic security habits; (3) decide how long to keep records.
@@ -394,71 +264,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Quality, systems and suppliers
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Quality in plain words"]
-  N2["3.2 Where data live"]
-  N3["3.3 Suppliers"]
-  N4["3.4 Payments and invoices"]
-  N5["3.5 Simple checks"]
-  N6["Concepts — quality, place, and the other organisatio"]
-  N7["Data — where the data sit after the map"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Quality in plain words"]
-  N2["3.2 Where data live"]
-  N3["3.3 Suppliers"]
-  N4["3.4 Payments and invoices"]
-  N5["3.5 Simple checks"]
-  N6["Concepts — quality, place, and the other organisatio"]
-  N7["Data — where the data sit after the map"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Quality in plain words]
-    |
-    v
-[3.2 Where data live]
-    |
-    v
-[3.3 Suppliers]
-    |
-    v
-[3.4 Payments and invoices]
-    |
-    v
-[3.5 Simple checks]
-    |
-    v
-[Concepts — quality, place, and the other organisatio]
-    |
-    v
-[Data — where the data sit after the map]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -574,71 +379,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided lab and action plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The sign-up list"]
-  N2["Lab — Checking a synthetic café sign-up list for bla"]
-  N3["4.2 What the lab finds"]
-  N4["4.3 Deciding who to email"]
-  N5["4.4 The action plan"]
-  N6["4.5 After the course"]
-  N7["Concepts — a row is not a permission"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The sign-up list"]
-  N2["Lab — Checking a synthetic café sign-up list for bla"]
-  N3["4.2 What the lab finds"]
-  N4["4.3 Deciding who to email"]
-  N5["4.4 The action plan"]
-  N6["4.5 After the course"]
-  N7["Concepts — a row is not a permission"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The sign-up list]
-    |
-    v
-[Lab — Checking a synthetic café sign-up list for bla]
-    |
-    v
-[4.2 What the lab finds]
-    |
-    v
-[4.3 Deciding who to email]
-    |
-    v
-[4.4 The action plan]
-    |
-    v
-[4.5 After the course]
-    |
-    v
-[Concepts — a row is not a permission]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -780,33 +520,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — A moved meeting is not an explanation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  P["Five actions, one meeting moved a week"] --> Q{"Does the notebook date the explanation?"}
-  Q -->|No| R["The fifth action stays open"]
-  Q -->|Yes| S["Cite that date. Do not reopen a finished meeting"]
-```
-
-Moving a date records a delay. It does not deliver the explanation.
-
-### Logical drawing
-
-```text
-plan pinned beside the rules
-    four actions dated as done
-    staff meeting shifted to the next week
-        |
-        +-- the plan still has five lines
-        +-- staff have not heard the rules until the meeting is held
-        +-- striking the line would hide the delay
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -849,36 +562,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — One removed duplicate is not a new census
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  L["Published run: rows 12; five with a yes tick"] --> N["Notebook: one duplicate email removed"]
-  N --> R{"Has a new typed list been checked?"}
-  R -->|No| K["Do not print 11 or 4 as this month's result"]
-  R -->|Yes| C["Record that run's own lines"]
-```
-
-A notebook finding is not a second execution of the script.
-
-### Logical drawing
-
-```text
-lab_signups.py on the twelve-row synthetic file
-    rows 12; blank email 2; malformed 1; duplicates 2
-    unique valid addresses with a yes tick: 5
-first-month notebook
-    one duplicate email removed
-        |
-        +-- the removal is a finding, not a rerun
-        +-- 12 minus 1 is arithmetic, not a measurement
-        +-- the script is not edited to force a new print
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -923,34 +606,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Last month's leaver does not clear this month
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  M["The group check asks: who is a member today?"] --> P["Last month one former staff member was removed"]
-  P --> T{"Is a later leaver still in the group?"}
-  T -->|Yes| F["That person is this month's finding"]
-  T -->|No| K["Cite today's list, not last month's sentence"]
-```
-
-A past removal proves last month. Membership is read again.
-
-### Logical drawing
-
-```text
-monthly check: only current staff in the paid group
-first month: one former member removed, dated
-a later person finishes
-    |
-    +-- last month's sentence does not name this person
-    +-- "we already cleaned the group" is not a new look
-    +-- the person stays a finding until removal is dated
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -993,34 +648,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — An unsubscribe is a new line
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  U["A person among the five asks to stop"] --> D["Delete the address soon after, and date it"]
-  D --> S["Do not rerun the twelve-row script to print 4"]
-  S --> K["The published five remains the description of that file"]
-```
-
-The keeping rule and the lab file are different objects.
-
-### Logical drawing
-
-```text
-rule: newsletter address kept while subscribed
-    deleted soon after unsubscribe
-synthetic file: five addresses with tick yes
-a later stop request from one of those addresses
-    |
-    +-- the request is a new event
-    +-- the script is not edited, and 5 is not rewritten as 4
-    +-- the notebook dates the deletion
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -1065,33 +692,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — A locked folder is not a six-month review
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  F["Allergy notes sit in the locked folder"] --> R{"Is there a review with the customer, dated within six months?"}
-  R -->|No| O["The review is due. The lock does not replace it"]
-  R -->|Yes| K["Cite that dated conversation"]
-```
-
-The folder answers who can see the note. The review answers whether the note is still right.
-
-### Logical drawing
-
-```text
-rule: allergy notes, locked, shown only to staff preparing that order
-period: review with the customer every six months
-folder still locked
-    |
-    +-- a lock is not a conversation
-    +-- "we have always had this note" is not a date
-    +-- no customer name is invented to fill the gap
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1134,34 +734,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — A nice photo is not a longer-use agreement
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  P["An event photo reaches its year"] --> A{"Does the notebook hold an agreement for longer use?"}
-  A -->|No| D["Delete it and date the deletion"]
-  A -->|Yes| K["Keep only for the use that agreement names"]
-  P2["The year has not arrived"] --> W["Do not delete early, and do not call a delay an agreement"]
-```
-
-Liking a picture does not extend the period.
-
-### Logical drawing
-
-```text
-default: event photos deleted after one year
-exception: people agreed to longer use
-a photo staff want to keep on the wall
-    |
-    +-- "it is a nice photo" is not the exception
-    +-- no agreement is invented here
-    +-- before the year, waiting is not the same as extending
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1206,35 +778,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — A blank period is not a shredding date
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  B["Old rotas and supplier bills"] --> A{"Has the accountant named the end?"}
-  A -->|No| H["Do not shred or delete. The period is blank"]
-  A -->|Yes| S["Use that written end, and not a round number of years"]
-```
-
-Kwame does not invent the tax period or the employment period.
-
-### Logical drawing
-
-```text
-rules already written
-    supplier bills remain until the accountant names the tax end
-    old rotas remain for the employment period the accountant confirms
-notebook
-    those ends are still unnamed
-        |
-        +-- "a year feels long enough" is not the accountant
-        +-- Mrs. Adeyemi is the person who checks with the accountant
-        +-- this lesson writes no number of years
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1277,33 +820,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — The second café needs the same page
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  R["One signed page for Copperleaf"] --> S{"Is that same page pinned at the second café?"}
-  S -->|No| P["Pin the same page. Do not write a shorter local version"]
-  S -->|Yes| K["Both sites follow one page"]
-```
-
-Two buildings do not justify two rulebooks.
-
-### Logical drawing
-
-```text
-Copperleaf: two cafés, twelve staff, one owner
-rules signed by Mrs. Adeyemi and pinned in a staff room
-second café
-    |
-    +-- the pin at one site is not a pin at the other
-    +-- a shorter "local" page would split the decisions
-    +-- allergy, rota and sheet rules travel with the same page
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1348,34 +864,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — A busy shift does not revive the shared code
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  B["Saturday queue at the second café"] --> C["Someone asks for the old shared till code"]
-  C --> R["Refuse. Separate logins stay"]
-  R --> L["Lock the screen when stepping away, on this shift too"]
-```
-
-The habit was written for busy moments, not for quiet ones.
-
-### Logical drawing
-
-```text
-habit already set
-    separate till logins, not one shared code
-    lock the screen when stepping away
-Saturday, second café, queue at the door
-    |
-    +-- "only this shift" is the exception the habit forbids
-    +-- a borrowed login attributes sales to the wrong person
-    +-- this lesson does not issue a new login on the spot
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1418,33 +906,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — A lost sheet is not rebuilt from memory
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX068.
-
-```mermaid
-flowchart TD
-  L["The counter sign-up sheet is missing"] --> K["Tell Kwame the same day and date the notebook"]
-  K --> M{"Is the replacement a memory or the lab file?"}
-  M -->|Yes| R["Do not type it. The send list is not rebuilt"]
-  M -->|No, the paper is found| F["Use the paper, not a recollection"]
-```
-
-A report of loss is not a new census of names.
-
-### Logical drawing
-
-```text
-habit: lost papers go to Kwame the same day
-the counter sheet is gone
-    |
-    +-- memory is not the sheet
-    +-- the twelve-row laboratory file is not the café's paper
-    +-- no lost name is invented to fill the mail
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1489,33 +950,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — A supplier form does not add a phone field
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  F["Supplier form adds a phone box"] --> S{"Is a phone on the signed page?"}
-  S -->|No| N["Collect none"]
-  S -->|Only after a new signature| W["That signature is not written here"]
-```
-
-A supplier's box is not Copperleaf's rule.
-
-### Logical drawing
-
-```text
-signed page: first name and email
-dropped earlier: phone, birthday, home address
-supplier form: phone, "to improve delivery"
-    |
-    +-- the form is not Mrs. Adeyemi's signature
-    +-- no telephone number is written in this lesson
-    +-- a later phone rule would need a person and a period
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1558,35 +992,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — A payment without the emailed invoice is a gap
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX070.
-
-```mermaid
-flowchart TD
-  C["Monthly check: invoices entered against payments"] --> G{"Does this payment have its emailed invoice?"}
-  G -->|No| R["Record the gap and the date. Tell Mrs. Adeyemi"]
-  G -->|Yes| M["Enter it once. Do not pay a second copy"]
-  R --> X["Do not invent a paper bill. Do not mark the check clean"]
-```
-
-A missing document stays missing until it is found.
-
-### Logical drawing
-
-```text
-monthly check already set
-    invoices entered, compared with payments
-this month
-    one payment, no emailed invoice beside it
-        |
-        +-- the gap is written, with the date
-        +-- a homemade paper bill would fake the record
-        +-- a gap is not, by itself, proof of theft
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1631,34 +1036,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — The meeting explains the page
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX071.
-
-```mermaid
-flowchart TD
-  M["The staff meeting, once it is actually held"] --> E["It explains the signed page"]
-  E --> V{"Do staff vote a field back on?"}
-  V -->|Yes| R["A vote is not Mrs. Adeyemi's signature"]
-  V -->|No| K["The explanation can be dated. The rules stay as signed"]
-```
-
-Explanation is not a rewrite.
-
-### Logical drawing
-
-```text
-fifth action: explain the rules to staff
-still open until the notebook dates that explanation
-when the meeting happens
-    |
-    +-- the page is read, not amended by a show of hands
-    +-- birthdays return only with a new signature, a person and a period
-    +-- this lesson does not write the meeting's calendar date
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1701,36 +1078,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — One deletion does not cover a new place
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX072.
-
-```mermaid
-flowchart TD
-  S["The laptop spreadsheet was deleted after a check"] --> U["A USB stick is found and is not on the map"]
-  U --> A["Add the stick as unchecked"]
-  A --> W["Do not wipe it in this lesson"]
-```
-
-A finished deletion has a scope. The stick is outside it.
-
-### Logical drawing
-
-```text
-map already used
-    paper sheet, newsletter service, till provider
-    staff messaging, invoice folder, allergy folder
-    laptop spreadsheet: checked, then deleted
-a drawer
-    USB stick, not listed
-        |
-        +-- unknown contents are not assumed to be event photos
-        +-- the stick is added as unchecked
-        +-- wiping is not this lesson's act
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1775,35 +1122,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — An undated new sheet is not the send list
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  D["Action one ticked the form: consent box and a date line"] --> C["Filled copies sit on the counter"]
-  C --> B{"Is the date line blank?"}
-  B -->|Yes| H["Do not email them. Do not merge them into the laboratory five"]
-  B -->|No| K["A dated sheet can be judged under the signed fields"]
-```
-
-Designing the form was the ticked action. Using blank copies is a different act.
-
-### Logical drawing
-
-```text
-plan, action one: short sheet with a consent box and the date
-a stack of copies
-    names, emails, ticks
-    date line blank on each
-        |
-        +-- a blank date is not the consent the design asked for
-        +-- the laboratory five stay a description of the synthetic file
-        +-- a phone in the margin is still Chapter 15: collect none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1846,38 +1164,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the notebook can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX074.
-
-```mermaid
-flowchart TD
-  N["Leaving note"] --> F["Repeat only what the file and the published run already hold"]
-  F --> Q{"Does the sentence add a count, a date, or a finished status?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They do not close the book.
-
-### Logical drawing
-
-```text
-the file may support
-    Mrs. Adeyemi accountable; Kwame day to day
-    one signed page for both cafés, second pin still undated
-    sheet fields; allergy lock; lab print; first-month findings
-    four plan actions dated; staff explanation still open
-the note may not support
-    a new print of 4 or 11; a homemade shredding year
-    a lock treated as the six-month review
-    a nice photo treated as longer use
-    a wiped stick; an emailed undated stack
-    "compliant", "certified", or "the course is complete"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

@@ -67,71 +67,6 @@ El vocabulario metodológico genérico (verificación frente a validación, núm
 
 ## Capítulo 1 — Integridad y métodos avanzados de investigación
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 El objeto de estudio: un lazo de control con con"]
-  N2["1.2 Una escalera de afirmaciones"]
-  N3["1.3 La seguridad física antes que la integridad de l"]
-  N4["1.4 Ética y doble uso"]
-  N5["1.5 Los datos que describen una planta son sensibles"]
-  N6["1.6 Métricas que resisten la manipulación"]
-  N7["1.8 Actividad práctica — Laboratorio 1: el ajuste po"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 El objeto de estudio: un lazo de control con con"]
-  N2["1.2 Una escalera de afirmaciones"]
-  N3["1.3 La seguridad física antes que la integridad de l"]
-  N4["1.4 Ética y doble uso"]
-  N5["1.5 Los datos que describen una planta son sensibles"]
-  N6["1.6 Métricas que resisten la manipulación"]
-  N7["1.8 Actividad práctica — Laboratorio 1: el ajuste po"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[1.1 El objeto de estudio: un lazo de control con con]
-    |
-    v
-[1.2 Una escalera de afirmaciones]
-    |
-    v
-[1.3 La seguridad física antes que la integridad de l]
-    |
-    v
-[1.4 Ética y doble uso]
-    |
-    v
-[1.5 Los datos que describen una planta son sensibles]
-    |
-    v
-[1.6 Métricas que resisten la manipulación]
-    |
-    v
-[1.8 Actividad práctica — Laboratorio 1: el ajuste po]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá: (1) explicar por qué el proceso físico, y no el paquete, es el objeto de la investigación en seguridad de TO; (2) situar una afirmación de investigación en una escalera que va de la observación de red a la consecuencia física; (3) diseñar un experimento cuyo peor resultado creíble esté acotado por una capa de seguridad independiente; (4) aplicar los principios del Menlo Report a la investigación industrial; y (5) elegir métricas de detección que no puedan manipularse mediante convenciones de puntuación. El capítulo se apoya en sus conocimientos de entrada sobre diseño de investigación y prepara el mapeo de la frontera del capítulo 2.
@@ -261,71 +196,6 @@ La investigación en TO estudia lazos de control cuya falla es física. Suba por
 
 ## Capítulo 2 — Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa de la lección
-
-Lección 02 publicada. Mapa, ejemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Por qué la frontera es difícil de ver"]
-  N2["2.2 Familias de investigación"]
-  N3["2.3 Las normas como hipótesis"]
-  N4["2.4 Evaluación crítica: qué hace creíble un artículo"]
-  N5["2.6 Actividad práctica — Laboratorio 2: codificar el"]
-  N6["2.7 Una laguna falsable"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX008"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["2.1 Por qué la frontera es difícil de ver"]
-  N2["2.2 Familias de investigación"]
-  N3["2.3 Las normas como hipótesis"]
-  N4["2.4 Evaluación crítica: qué hace creíble un artículo"]
-  N5["2.6 Actividad práctica — Laboratorio 2: codificar el"]
-  N6["2.7 Una laguna falsable"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[2.1 Por qué la frontera es difícil de ver]
-    |
-    v
-[2.2 Familias de investigación]
-    |
-    v
-[2.3 Las normas como hipótesis]
-    |
-    v
-[2.4 Evaluación crítica: qué hace creíble un artículo]
-    |
-    v
-[2.6 Actividad práctica — Laboratorio 2: codificar el]
-    |
-    v
-[2.7 Una laguna falsable]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) organizar la literatura sobre seguridad de TO en familias de investigación, (2) leer las normas como hipótesis comprobables, (3) evaluar críticamente los artículos sobre detección frente a errores de evaluación conocidos, (4) usar los incidentes públicos solo al nivel en que sus analistas los publicaron y (5) enunciar una laguna falsable. Se apoya en la escalera de afirmaciones del capítulo 1 y alimenta la propuesta del capítulo 3.
@@ -408,66 +278,6 @@ La frontera se extiende entre comunidades; léala con sinónimos, trate las norm
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Propuesta de contribución original
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa de la lección
-
-Lección 03 publicada. Mapa, ejemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 Tipos de contribución"]
-  N2["3.2 El mecanismo como invariante físico"]
-  N3["3.3 Modelo de atacante"]
-  N4["3.4 Hipótesis y umbrales"]
-  N5["3.5 Líneas de base y rivales"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX015"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["3.1 Tipos de contribución"]
-  N2["3.2 El mecanismo como invariante físico"]
-  N3["3.3 Modelo de atacante"]
-  N4["3.4 Hipótesis y umbrales"]
-  N5["3.5 Líneas de base y rivales"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[3.1 Tipos de contribución]
-    |
-    v
-[3.2 El mecanismo como invariante físico]
-    |
-    v
-[3.3 Modelo de atacante]
-    |
-    v
-[3.4 Hipótesis y umbrales]
-    |
-    v
-[3.5 Líneas de base y rivales]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -590,66 +400,6 @@ Una propuesta sólida se posiciona con honestidad, expresa el mecanismo como un 
 
 ## Capítulo 4 — Replicación de la línea de base y piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa de la lección
-
-Lección 04 publicada. Mapa, ejemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Términos"]
-  N2["4.2 Diagnóstico de una reproducción fallida: TankBen"]
-  N3["4.3 Verificación del simulador"]
-  N4["4.4 Ajuste sin filtración: laboratorio 6"]
-  N5["4.5 Un piloto acotado en el banco de pruebas T2"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX021"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["4.1 Términos"]
-  N2["4.2 Diagnóstico de una reproducción fallida: TankBen"]
-  N3["4.3 Verificación del simulador"]
-  N4["4.4 Ajuste sin filtración: laboratorio 6"]
-  N5["4.5 Un piloto acotado en el banco de pruebas T2"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[4.1 Términos]
-    |
-    v
-[4.2 Diagnóstico de una reproducción fallida: TankBen]
-    |
-    v
-[4.3 Verificación del simulador]
-    |
-    v
-[4.4 Ajuste sin filtración: laboratorio 6]
-    |
-    v
-[4.5 Un piloto acotado en el banco de pruebas T2]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) distinguir reproducción, replicación y reimplementación, (2) diagnosticar por qué no puede reproducirse un resultado publicado de detección en TO, (3) verificar un simulador de procesos antes de confiar en él, (4) diseñar un piloto acotado en una instalación aislada y (5) tomar una decisión de continuar o no continuar declarada de antemano. Toma las hipótesis del capítulo 3 y prepara el estudio principal del capítulo 5.
@@ -735,66 +485,6 @@ Reproduzca las líneas de base con una tolerancia declarada de antemano y diagno
 
 ## Capítulo 5 — Estudio principal y validación independiente
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa de la lección
-
-Lección 05 publicada. Mapa, ejemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 Diseño pareado"]
-  N2["5.2 Tres tipos de incertidumbre"]
-  N3["5.3 Validación independiente en el banco de pruebas"]
-  N4["5.4 La revisión ciega por parte de operadores"]
-  N5["5.5 Redacción honesta de resultados mixtos"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX027"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["5.1 Diseño pareado"]
-  N2["5.2 Tres tipos de incertidumbre"]
-  N3["5.3 Validación independiente en el banco de pruebas"]
-  N4["5.4 La revisión ciega por parte de operadores"]
-  N5["5.5 Redacción honesta de resultados mixtos"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[5.1 Diseño pareado]
-    |
-    v
-[5.2 Tres tipos de incertidumbre]
-    |
-    v
-[5.3 Validación independiente en el banco de pruebas]
-    |
-    v
-[5.4 La revisión ciega por parte de operadores]
-    |
-    v
-[5.5 Redacción honesta de resultados mixtos]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) diseñar un experimento pareado con números aleatorios comunes, (2) informar una incertidumbre que separe el ruido de la simulación de la incertidumbre del modelo, (3) validar en un segundo contexto independiente, (4) incorporar una revisión ciega por parte de operadores y (5) escribir un párrafo de resultados honesto, incluidos los resultados mixtos. Ejecuta el plan pilotado en el capítulo 4 y produce las afirmaciones que el capítulo 6 atacará.
@@ -872,66 +562,6 @@ Los diseños pareados afinan las comparaciones; la incertidumbre tiene tres tipo
 
 ## Capítulo 6 — Crítica de pares y revisión
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa de la lección
-
-Lección 06 publicada. Mapa, ejemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Las objeciones como hipótesis"]
-  N2["6.2 Condiciones límite"]
-  N3["6.3 La afirmación acotada"]
-  N4["6.4 Revisión de doble uso"]
-  N5["6.5 Respuesta a los revisores"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX033"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["6.1 Las objeciones como hipótesis"]
-  N2["6.2 Condiciones límite"]
-  N3["6.3 La afirmación acotada"]
-  N4["6.4 Revisión de doble uso"]
-  N5["6.5 Respuesta a los revisores"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[6.1 Las objeciones como hipótesis]
-    |
-    v
-[6.2 Condiciones límite]
-    |
-    v
-[6.3 La afirmación acotada]
-    |
-    v
-[6.4 Revisión de doble uso]
-    |
-    v
-[6.5 Respuesta a los revisores]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Después de este capítulo usted podrá (1) organizar una revisión interna de equipo rojo de sus propias afirmaciones, (2) convertir objeciones en hipótesis comprobables, (3) caracterizar las condiciones límite en lugar de ocultarlas, (4) realizar una revisión de doble uso de un artículo antes de enviarlo y (5) escribir una carta de respuesta a los revisores que responda de verdad. Ataca los resultados del capítulo 5 y alimenta el argumento de la tesis del capítulo 7.
@@ -993,66 +623,6 @@ La crítica es un dato: convierta las objeciones en pruebas, deje que acoten la 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa de la lección
-
-Lección 07 publicada. Mapa, ejemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Mapa del argumento"]
-  N2["7.2 Formato"]
-  N3["7.3 Archivo por niveles"]
-  N4["7.4 Documentación de datos y modelos sintéticos"]
-  N5["7.5 Limitaciones con dirección"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX039"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["7.1 Mapa del argumento"]
-  N2["7.2 Formato"]
-  N3["7.3 Archivo por niveles"]
-  N4["7.4 Documentación de datos y modelos sintéticos"]
-  N5["7.5 Limitaciones con dirección"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[7.1 Mapa del argumento]
-    |
-    v
-[7.2 Formato]
-    |
-    v
-[7.3 Archivo por niveles]
-    |
-    v
-[7.4 Documentación de datos y modelos sintéticos]
-    |
-    v
-[7.5 Limitaciones con dirección]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Resultados de aprendizaje y conexión
 
@@ -1137,71 +707,6 @@ La tesis es un argumento en el que cada elemento remite a evidencia; el archivo 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defensa y plan de publicación
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa de la lección
-
-Lección 08 publicada. Mapa, ejemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Auditoría del registro de afirmaciones"]
-  N2["8.2 Familias de preguntas de los examinadores"]
-  N3["8.3 Secuenciación de las publicaciones"]
-  N4["8.4 Divulgación coordinada"]
-  N5["8.5 Traducción para la práctica"]
-  N6["8.6 Programa posdoctoral"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX045"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["8.1 Auditoría del registro de afirmaciones"]
-  N2["8.2 Familias de preguntas de los examinadores"]
-  N3["8.3 Secuenciación de las publicaciones"]
-  N4["8.4 Divulgación coordinada"]
-  N5["8.5 Traducción para la práctica"]
-  N6["8.6 Programa posdoctoral"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[8.1 Auditoría del registro de afirmaciones]
-    |
-    v
-[8.2 Familias de preguntas de los examinadores]
-    |
-    v
-[8.3 Secuenciación de las publicaciones]
-    |
-    v
-[8.4 Divulgación coordinada]
-    |
-    v
-[8.5 Traducción para la práctica]
-    |
-    v
-[8.6 Programa posdoctoral]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Resultados de aprendizaje y conexión
 

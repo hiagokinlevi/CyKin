@@ -36,56 +36,6 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Razonamiento matemático
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["1.1 Por qué un estudiante de TO necesita hábitos de"]
-  N2["1.2 Unidades y comprobaciones dimensionales"]
-  N3["1.3 Implicación, contrarrecíproco y contraejemplo"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["1.1 Por qué un estudiante de TO necesita hábitos de"]
-  N2["1.2 Unidades y comprobaciones dimensionales"]
-  N3["1.3 Implicación, contrarrecíproco y contraejemplo"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[1.1 Por qué un estudiante de TO necesita hábitos de]
-    |
-    v
-[1.2 Unidades y comprobaciones dimensionales]
-    |
-    v
-[1.3 Implicación, contrarrecíproco y contraejemplo]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje
 
 Al terminar este capítulo usted podrá (1) convertir una frase sobre la planta en una magnitud con unidades; (2) estimar un orden de magnitud antes de calcular; (3) enunciar la hipótesis que hace válido un cálculo; y (4) reconocer cuándo un número de aspecto preciso esconde una conjetura. El caso de estudio es la planta sintética Lakeside District Heating Plant (LDHP).
@@ -129,56 +79,6 @@ Magnitudes con unidades, hipótesis dichas en voz alta y contraejemplos buscados
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas de computación
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa de la lección
-
-Lección 02 publicada. Mapa, ejemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["2.1 El ciclo de escaneo"]
-  N2["2.2 PLC frente a servidor"]
-  N3["2.3 Qué vive en el firmware"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX004"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["2.1 El ciclo de escaneo"]
-  N2["2.2 PLC frente a servidor"]
-  N3["2.3 Qué vive en el firmware"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[2.1 El ciclo de escaneo]
-    |
-    v
-[2.2 PLC frente a servidor]
-    |
-    v
-[2.3 Qué vive en el firmware]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Resultados de aprendizaje
 
@@ -229,56 +129,6 @@ Un controlador es primero una máquina temporizada y después un computador; su 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Programación I
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa de la lección
-
-Lección 03 publicada. Mapa, ejemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["3.1 Etiquetas como registros"]
-  N2["3.2 Validación de rangos"]
-  N3["3.3 Salida legible"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX007"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["3.1 Etiquetas como registros"]
-  N2["3.2 Validación de rangos"]
-  N3["3.3 Salida legible"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[3.1 Etiquetas como registros]
-    |
-    v
-[3.2 Validación de rangos]
-    |
-    v
-[3.3 Salida legible]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Resultados de aprendizaje
 
@@ -356,56 +206,6 @@ Programas pequeños y legibles, con la biblioteca estándar, que marcan en lugar
 
 ## Capítulo 4 — Escritura académica
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa de la lección
-
-Lección 04 publicada. Mapa, ejemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["4.1 Afirmación, evidencia, limitación"]
-  N2["4.2 Citar normas con precisión"]
-  N3["4.3 Un hecho, tres públicos"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX010"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["4.1 Afirmación, evidencia, limitación"]
-  N2["4.2 Citar normas con precisión"]
-  N3["4.3 Un hecho, tres públicos"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[4.1 Afirmación, evidencia, limitación]
-    |
-    v
-[4.2 Citar normas con precisión]
-    |
-    v
-[4.3 Un hecho, tres públicos]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) estructurar un memorando técnico como afirmación, evidencia y limitación; (2) citar una norma por su identificador y edición exactos; (3) escribir para un operador, un ingeniero y un directivo sin cambiar los hechos; y (4) evitar el lenguaje inflado en los hallazgos de seguridad.
@@ -449,56 +249,6 @@ La buena escritura de TO es comprobable: fuentes exactas, evidencia observada y 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Alfabetización en seguridad
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa de la lección
-
-Lección 05 publicada. Mapa, ejemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["5.1 El orden de preocupación en TO"]
-  N2["5.2 Amenaza, vulnerabilidad, consecuencia"]
-  N3["5.3 ATT&CK for ICS como vocabulario"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX013"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["5.1 El orden de preocupación en TO"]
-  N2["5.2 Amenaza, vulnerabilidad, consecuencia"]
-  N3["5.3 ATT&CK for ICS como vocabulario"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[5.1 El orden de preocupación en TO]
-    |
-    v
-[5.2 Amenaza, vulnerabilidad, consecuencia]
-    |
-    v
-[5.3 ATT&CK for ICS como vocabulario]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Resultados de aprendizaje
 
@@ -545,56 +295,6 @@ La alfabetización en seguridad en TO significa hablar con precisión de amenaza
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estructuras discretas
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa de la lección
-
-Lección 06 publicada. Mapa, ejemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["6.1 Zonas y conductos como grafo"]
-  N2["6.2 Búsqueda en anchura"]
-  N3["6.3 Aristas de corte"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX016"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["6.1 Zonas y conductos como grafo"]
-  N2["6.2 Búsqueda en anchura"]
-  N3["6.3 Aristas de corte"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[6.1 Zonas y conductos como grafo]
-    |
-    v
-[6.2 Búsqueda en anchura]
-    |
-    v
-[6.3 Aristas de corte]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Resultados de aprendizaje
 
@@ -670,56 +370,6 @@ Dibujar zonas y conductos como un grafo dirigido convierte los argumentos de seg
 
 ## Capítulo 7 — Redes y protocolos
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa de la lección
-
-Lección 07 publicada. Mapa, ejemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["7.1 Modbus/TCP en una trama"]
-  N2["7.2 Sin identidad en el protocolo"]
-  N3["7.3 Leer la salida"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX019"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["7.1 Modbus/TCP en una trama"]
-  N2["7.2 Sin identidad en el protocolo"]
-  N3["7.3 Leer la salida"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX019"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[7.1 Modbus/TCP en una trama]
-    |
-    v
-[7.2 Sin identidad en el protocolo]
-    |
-    v
-[7.3 Leer la salida]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) decodificar la cabecera MBAP de Modbus/TCP y el código de función a partir de bytes en bruto; (2) distinguir los códigos de función de lectura y de escritura; (3) explicar por qué Modbus no ofrece autenticación; y (4) enunciar lo que un decodificador de protocolos puede y no puede decirle a un analista.
@@ -784,61 +434,6 @@ Un decodificador de protocolos le da la estructura; la documentación de la plan
 
 ## Capítulo 8 — Programación II
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa de la lección
-
-Lección 08 publicada. Mapa, ejemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["8.1 Las funciones puras se pueden revisar"]
-  N2["8.2 Fallar de forma cerrada"]
-  N3["8.3 Las pruebas como documentación"]
-  N4["8.4 Registrar las decisiones para revisarlas"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX022"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["8.1 Las funciones puras se pueden revisar"]
-  N2["8.2 Fallar de forma cerrada"]
-  N3["8.3 Las pruebas como documentación"]
-  N4["8.4 Registrar las decisiones para revisarlas"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX022"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[8.1 Las funciones puras se pueden revisar]
-    |
-    v
-[8.2 Fallar de forma cerrada]
-    |
-    v
-[8.3 Las pruebas como documentación]
-    |
-    v
-[8.4 Registrar las decisiones para revisarlas]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) estructurar una herramienta de análisis como funciones puras con pruebas; (2) usar `unittest` de la biblioteca estándar; (3) hacer que las funciones fallen de forma cerrada; y (4) versionar un script para que un resultado pueda reproducirse meses después.
@@ -901,56 +496,6 @@ Las herramientas de TO revisables son puras, están probadas, fallan de forma ce
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Datos y bases de datos
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa de la lección
-
-Lección 09 publicada. Mapa, ejemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["9.1 El papel del historiador"]
-  N2["9.2 Un esquema mínimo"]
-  N3["9.3 Los agregados ocultan eventos"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX025"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["9.1 El papel del historiador"]
-  N2["9.2 Un esquema mínimo"]
-  N3["9.3 Los agregados ocultan eventos"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[9.1 El papel del historiador]
-    |
-    v
-[9.2 Un esquema mínimo]
-    |
-    v
-[9.3 Los agregados ocultan eventos]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1021,56 +566,6 @@ Pida al historiador extremos, recuentos y huecos, no solo medias, y trate su ubi
 
 ## Capítulo 10 — Ética y práctica autorizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa de la lección
-
-Lección 10 publicada. Mapa, ejemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["10.1 La autorización viene del propietario"]
-  N2["10.2 El permiso de trabajo"]
-  N3["10.3 Divulgación coordinada"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX028"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["10.1 La autorización viene del propietario"]
-  N2["10.2 El permiso de trabajo"]
-  N3["10.3 Divulgación coordinada"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[10.1 La autorización viene del propietario]
-    |
-    v
-[10.2 El permiso de trabajo]
-    |
-    v
-[10.3 Divulgación coordinada]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) distinguir la autorización del permiso de acceso; (2) enumerar los elementos de un permiso de trabajo escrito para pruebas de TO; (3) gestionar las vulnerabilidades descubiertas mediante divulgación coordinada; y (4) rechazar peticiones que pondrían en peligro a personas o excederían el alcance.
@@ -1114,61 +609,6 @@ En TO, la práctica ética es operativa: la autorización escrita del propietari
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operativos
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa de la lección
-
-Lección 11 publicada. Mapa, ejemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["11.1 Windows y Linux dentro de la planta"]
-  N2["11.2 Matrices de soporte"]
-  N3["11.3 Listas de permitidos y control de soportes"]
-  N4["11.4 Evidencia con el mínimo privilegio"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX031"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["11.1 Windows y Linux dentro de la planta"]
-  N2["11.2 Matrices de soporte"]
-  N3["11.3 Listas de permitidos y control de soportes"]
-  N4["11.4 Evidencia con el mínimo privilegio"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[11.1 Windows y Linux dentro de la planta]
-    |
-    v
-[11.2 Matrices de soporte]
-    |
-    v
-[11.3 Listas de permitidos y control de soportes]
-    |
-    v
-[11.4 Evidencia con el mínimo privilegio]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1219,66 +659,6 @@ Los equipos de propósito general son la capa más blanda de una planta: bastió
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidad y estadística
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa de la lección
-
-Lección 12 publicada. Mapa, ejemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["12.1 Cero no es cero"]
-  N2["12.2 Intervalos de Wilson"]
-  N3["12.3 Leer los números"]
-  N4["12.4 Tasas base"]
-  N5["12.5 Expresarlo por turno para los operadores"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX034"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["12.1 Cero no es cero"]
-  N2["12.2 Intervalos de Wilson"]
-  N3["12.3 Leer los números"]
-  N4["12.4 Tasas base"]
-  N5["12.5 Expresarlo por turno para los operadores"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[12.1 Cero no es cero]
-    |
-    v
-[12.2 Intervalos de Wilson]
-    |
-    v
-[12.3 Leer los números]
-    |
-    v
-[12.4 Tasas base]
-    |
-    v
-[12.5 Expresarlo por turno para los operadores]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1353,61 +733,6 @@ Publique siempre las afirmaciones de detección con un recuento, un denominador 
 
 ## Capítulo 13 — Identidad y acceso
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa de la lección
-
-Lección 13 publicada. Mapa, ejemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["13.1 Las cuentas compartidas rompen la atribución"]
-  N2["13.2 Roles que corresponden al trabajo"]
-  N3["13.3 Acceso de emergencia"]
-  N4["13.4 Acceso remoto de proveedores"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX037"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["13.1 Las cuentas compartidas rompen la atribución"]
-  N2["13.2 Roles que corresponden al trabajo"]
-  N3["13.3 Acceso de emergencia"]
-  N4["13.4 Acceso remoto de proveedores"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[13.1 Las cuentas compartidas rompen la atribución]
-    |
-    v
-[13.2 Roles que corresponden al trabajo]
-    |
-    v
-[13.3 Acceso de emergencia]
-    |
-    v
-[13.4 Acceso remoto de proveedores]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) diseñar cuentas nominativas basadas en roles para operadores, ingenieros y proveedores; (2) explicar el requisito fundamental de IEC 62443 de control de identificación y autenticación; (3) separar los privilegios de «ver», «operar» e «ingeniería»; y (4) diseñar un acceso de proveedores acotado en el tiempo.
@@ -1458,61 +783,6 @@ La identidad en TO debe hacer que cada acción sea atribuible, que cada privileg
 
 ## Capítulo 14 — Fundamentos de privacidad
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa de la lección
-
-Lección 14 publicada. Mapa, ejemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["14.1 Los contadores de calor revelan vidas"]
-  N2["14.2 Minimización y finalidad"]
-  N3["14.3 La agregación como control"]
-  N4["14.4 La base de referencia del IoT de consumo"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX040"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["14.1 Los contadores de calor revelan vidas"]
-  N2["14.2 Minimización y finalidad"]
-  N3["14.3 La agregación como control"]
-  N4["14.4 La base de referencia del IoT de consumo"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX040"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[14.1 Los contadores de calor revelan vidas]
-    |
-    v
-[14.2 Minimización y finalidad]
-    |
-    v
-[14.3 La agregación como control]
-    |
-    v
-[14.4 La base de referencia del IoT de consumo]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) reconocer datos personales en los flujos de contadores inteligentes y de automatización de edificios; (2) aplicar la minimización de datos y la limitación de la finalidad; (3) elegir intervalos de agregación que sirvan a las operaciones sin revelar el comportamiento de los hogares; y (4) relacionar la privacidad con la disposición 5.8 de ETSI EN 303 645.
@@ -1560,61 +830,6 @@ Los datos operativos del IoT a menudo son datos personales: recójalos para una 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Evidencia y medición
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa de la lección
-
-Lección 15 publicada. Mapa, ejemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["15.1 Los relojes discrepan"]
-  N2["15.2 Lo que muestra la cronología corregida"]
-  N3["15.3 Cadena de custodia"]
-  N4["15.4 Observación, inferencia, hipótesis"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX043"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["15.1 Los relojes discrepan"]
-  N2["15.2 Lo que muestra la cronología corregida"]
-  N3["15.3 Cadena de custodia"]
-  N4["15.4 Observación, inferencia, hipótesis"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[15.1 Los relojes discrepan]
-    |
-    v
-[15.2 Lo que muestra la cronología corregida]
-    |
-    v
-[15.3 Cadena de custodia]
-    |
-    v
-[15.4 Observación, inferencia, hipótesis]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1686,56 +901,6 @@ La evidencia en TO solo es tan buena como sus relojes, su registro de custodia y
 
 ## Capítulo 16 — Arquitectura de seguridad
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa de la lección
-
-Lección 16 publicada. Mapa, ejemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["16.1 Los niveles de Purdue como mapa inicial"]
-  N2["16.2 La DMZ industrial"]
-  N3["16.3 Niveles de seguridad"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX046"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["16.1 Los niveles de Purdue como mapa inicial"]
-  N2["16.2 La DMZ industrial"]
-  N3["16.3 Niveles de seguridad"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[16.1 Los niveles de Purdue como mapa inicial]
-    |
-    v
-[16.2 La DMZ industrial]
-    |
-    v
-[16.3 Niveles de seguridad]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) situar los activos de LDHP en los niveles de referencia de Purdue; (2) diseñar una DMZ entre las zonas corporativa y de control; (3) asignar niveles de seguridad objetivo a las zonas con los conceptos de IEC 62443-3-2; y (4) explicar la defensa en profundidad sin afirmar que una sola capa sea suficiente.
@@ -1783,61 +948,6 @@ La arquitectura es el arte de decidir qué sesiones pueden existir; las zonas, l
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Conceptos de criptografía
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa de la lección
-
-Lección 17 publicada. Mapa, ejemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["17.1 La integridad primero"]
-  N2["17.2 Reproducción"]
-  N3["17.3 Leer la ejecución"]
-  N4["17.4 Costes operativos"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX049"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["17.1 La integridad primero"]
-  N2["17.2 Reproducción"]
-  N3["17.3 Leer la ejecución"]
-  N4["17.4 Costes operativos"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[17.1 La integridad primero]
-    |
-    v
-[17.2 Reproducción]
-    |
-    v
-[17.3 Leer la ejecución]
-    |
-    v
-[17.4 Costes operativos]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1913,61 +1023,6 @@ Para los datos de TO, la integridad autenticada con protección frente a la repr
 
 ## Capítulo 18 — Métodos de investigación I
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa de la lección
-
-Lección 18 publicada. Mapa, ejemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["18.1 De la preocupación a la pregunta"]
-  N2["18.2 Elecciones de diseño"]
-  N3["18.3 Validez"]
-  N4["18.4 Leer la literatura"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX052"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["18.1 De la preocupación a la pregunta"]
-  N2["18.2 Elecciones de diseño"]
-  N3["18.3 Validez"]
-  N4["18.4 Leer la literatura"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX052"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[18.1 De la preocupación a la pregunta]
-    |
-    v
-[18.2 Elecciones de diseño]
-    |
-    v
-[18.3 Validez]
-    |
-    v
-[18.4 Leer la literatura]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) convertir una preocupación vaga en una pregunta investigable; (2) elegir entre diseños descriptivos, comparativos y experimentales; (3) definir variables, medidas y amenazas a la validez; y (4) buscar y evaluar literatura revisada por pares sobre seguridad de TO.
@@ -2015,61 +1070,6 @@ La investigación empieza con una pregunta precisa, un diseño que se ajuste a e
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Seguridad de TO, IoT y sistemas ciberfísicos: alcance y teoría
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa de la lección
-
-Lección 19 publicada. Mapa, ejemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["19.1 Definiciones"]
-  N2["19.2 El lazo como activo"]
-  N3["19.3 Mapa de normas"]
-  N4["19.4 Seguridad funcional y ciberseguridad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX055"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["19.1 Definiciones"]
-  N2["19.2 El lazo como activo"]
-  N3["19.3 Mapa de normas"]
-  N4["19.4 Seguridad funcional y ciberseguridad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX055"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[19.1 Definiciones]
-    |
-    v
-[19.2 El lazo como activo]
-    |
-    v
-[19.3 Mapa de normas]
-    |
-    v
-[19.4 Seguridad funcional y ciberseguridad]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2121,61 +1121,6 @@ La seguridad de TO, IoT y sistemas ciberfísicos protege lazos de realimentació
 
 ## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: casos fundamentales
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa de la lección
-
-Lección 20 publicada. Mapa, ejemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["20.1 Red eléctrica de Ucrania, diciembre de 2015"]
-  N2["20.2 Mirai, 2016"]
-  N3["20.3 Planta de tratamiento de agua, febrero de 2021"]
-  N4["20.4 Leer los casos con cuidado"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX058"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["20.1 Red eléctrica de Ucrania, diciembre de 2015"]
-  N2["20.2 Mirai, 2016"]
-  N3["20.3 Planta de tratamiento de agua, febrero de 2021"]
-  N4["20.4 Leer los casos con cuidado"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX058"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[20.1 Red eléctrica de Ucrania, diciembre de 2015]
-    |
-    v
-[20.2 Mirai, 2016]
-    |
-    v
-[20.3 Planta de tratamiento de agua, febrero de 2021]
-    |
-    v
-[20.4 Leer los casos con cuidado]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) resumir tres incidentes documentados a partir de fuentes primarias; (2) extraer de cada uno la ruta de ataque y la lección defensiva; (3) distinguir lo que está confirmado públicamente de la especulación; y (4) relacionar cada caso con LDHP.
@@ -2225,61 +1170,6 @@ Lea los incidentes en fuentes primarias, separe los hechos del relato y conviert
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: modelos de sistema
-
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa de la lección
-
-Lección 21 publicada. Mapa, ejemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["21.1 Por qué modelar"]
-  N2["21.2 Un depósito de compensación con control proporc"]
-  N3["21.3 Leer el modelo"]
-  N4["21.4 Usar el modelo para la seguridad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX061"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["21.1 Por qué modelar"]
-  N2["21.2 Un depósito de compensación con control proporc"]
-  N3["21.3 Leer el modelo"]
-  N4["21.4 Usar el modelo para la seguridad"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX061"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[21.1 Por qué modelar]
-    |
-    v
-[21.2 Un depósito de compensación con control proporc]
-    |
-    v
-[21.3 Leer el modelo]
-    |
-    v
-[21.4 Usar el modelo para la seguridad]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2355,61 +1245,6 @@ Los modelos de proceso sencillos dan a los defensores un reloj: cuánto tarda un
 
 ## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: datos y dependencias
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa de la lección
-
-Lección 22 publicada. Mapa, ejemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["22.1 Primero, el inventario"]
-  N2["22.2 Cadenas de dependencia"]
-  N3["22.3 Dependencias de proveedores"]
-  N4["22.4 Las personas como dependencias"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX064"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["22.1 Primero, el inventario"]
-  N2["22.2 Cadenas de dependencia"]
-  N3["22.3 Dependencias de proveedores"]
-  N4["22.4 Las personas como dependencias"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[22.1 Primero, el inventario]
-    |
-    v
-[22.2 Cadenas de dependencia]
-    |
-    v
-[22.3 Dependencias de proveedores]
-    |
-    v
-[22.4 Las personas como dependencias]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) construir un inventario de activos y dependencias; (2) seguir los flujos de datos desde el dispositivo de campo hasta el uso de negocio; (3) encontrar puntos únicos de fallo, incluidas personas y proveedores; y (4) usar una lista de materiales de software para razonar sobre vulnerabilidades heredadas.
@@ -2462,61 +1297,6 @@ Los inventarios, las cadenas de dependencia y las SBOM permiten a una planta raz
 
 ## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa de la lección
-
-Lección 23 publicada. Mapa, ejemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["23.1 Empezar por la consecuencia"]
-  N2["23.2 El flujo de trabajo de 62443-3-2 a grandes rasg"]
-  N3["23.3 Las matrices y sus trampas"]
-  N4["23.4 Riesgo residual"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX067"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["23.1 Empezar por la consecuencia"]
-  N2["23.2 El flujo de trabajo de 62443-3-2 a grandes rasg"]
-  N3["23.3 Las matrices y sus trampas"]
-  N4["23.4 Riesgo residual"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[23.1 Empezar por la consecuencia]
-    |
-    v
-[23.2 El flujo de trabajo de 62443-3-2 a grandes rasg]
-    |
-    v
-[23.3 Las matrices y sus trampas]
-    |
-    v
-[23.4 Riesgo residual]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) realizar una evaluación de riesgos guiada por las consecuencias para una zona; (2) usar con responsabilidad una matriz de probabilidad y consecuencia; (3) relacionar la evaluación con el flujo de trabajo de IEC 62443-3-2; y (4) registrar el riesgo residual con un responsable.
@@ -2565,61 +1345,6 @@ La evaluación guiada por las consecuencias, el uso honesto de las matrices y un
 
 ## Capítulo 24 — Seguridad de TO, IoT y sistemas ciberfísicos: controles
 
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa de la lección
-
-Lección 24 publicada. Mapa, ejemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["24.1 Familias de controles"]
-  N2["24.2 Ajustar los controles a S-3"]
-  N3["24.3 Controles que hacen daño"]
-  N4["24.4 Controles heredados y compensatorios"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX070"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["24.1 Familias de controles"]
-  N2["24.2 Ajustar los controles a S-3"]
-  N3["24.3 Controles que hacen daño"]
-  N4["24.4 Controles heredados y compensatorios"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX070"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[24.1 Familias de controles]
-    |
-    v
-[24.2 Ajustar los controles a S-3]
-    |
-    v
-[24.3 Controles que hacen daño]
-    |
-    v
-[24.4 Controles heredados y compensatorios]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) elegir controles preventivos, detectivos y correctivos para un escenario; (2) relacionarlos con los requisitos fundamentales de IEC 62443-3-3; (3) reconocer controles que podrían dañar la disponibilidad o la seguridad funcional; y (4) diseñar controles compensatorios para dispositivos heredados.
@@ -2667,56 +1392,6 @@ Un buen plan de controles de TO cubre los siete requisitos fundamentales, pregun
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratorio I
-
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa de la lección
-
-Lección 25 publicada. Mapa, ejemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["25.1 El experimento"]
-  N2["25.2 Interpretar la salida"]
-  N3["25.3 Comunicar con honestidad"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX073"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["25.1 El experimento"]
-  N2["25.2 Interpretar la salida"]
-  N3["25.3 Comunicar con honestidad"]
-  N4["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX073"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[25.1 El experimento]
-    |
-    v
-[25.2 Interpretar la salida]
-    |
-    v
-[25.3 Comunicar con honestidad]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2791,61 +1466,6 @@ Un resultado de laboratorio es un recuento sobre semillas con cotas y un modelo 
 
 ## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos II
 
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa de la lección
-
-Lección 26 publicada. Mapa, ejemplo, EX076.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["26.1 Diagramas de flujo de datos"]
-  N2["26.2 STRIDE por elemento"]
-  N3["26.3 Casos de abuso"]
-  N4["26.4 Relación con ATT&CK"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX076"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["26.1 Diagramas de flujo de datos"]
-  N2["26.2 STRIDE por elemento"]
-  N3["26.3 Casos de abuso"]
-  N4["26.4 Relación con ATT&CK"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX076"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[26.1 Diagramas de flujo de datos]
-    |
-    v
-[26.2 STRIDE por elemento]
-    |
-    v
-[26.3 Casos de abuso]
-    |
-    v
-[26.4 Relación con ATT&CK]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) aplicar un modelado de amenazas al estilo STRIDE a un diagrama de flujo de datos del sistema de contadores; (2) traducir las amenazas a técnicas de ATT&CK for ICS cuando proceda; (3) escribir casos de abuso con precondiciones; y (4) priorizar las mitigaciones frente a la clasificación por consecuencias del capítulo 23.
@@ -2895,61 +1515,6 @@ El modelado de amenazas convierte un diagrama en una lista clasificada de casos 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Seguridad de TO, IoT y sistemas ciberfísicos: verificación
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa de la lección
-
-Lección 27 publicada. Mapa, ejemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["27.1 Las políticas necesitan pruebas"]
-  N2["27.2 Diseñar los vectores"]
-  N3["27.3 Leer el resultado"]
-  N4["27.4 Del laboratorio a la planta"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX079"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["27.1 Las políticas necesitan pruebas"]
-  N2["27.2 Diseñar los vectores"]
-  N3["27.3 Leer el resultado"]
-  N4["27.4 Del laboratorio a la planta"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX079"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[27.1 Las políticas necesitan pruebas]
-    |
-    v
-[27.2 Diseñar los vectores]
-    |
-    v
-[27.3 Leer el resultado]
-    |
-    v
-[27.4 Del laboratorio a la planta]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3030,61 +1595,6 @@ La verificación es una lista escrita de decisiones esperadas, que incluye lími
 
 ## Capítulo 28 — Seguridad de TO, IoT y sistemas ciberfísicos: análisis de fallos
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa de la lección
-
-Lección 28 publicada. Mapa, ejemplo, EX082.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["28.1 Árboles de fallos"]
-  N2["28.2 Añadir eventos cibernéticos"]
-  N3["28.3 AMFE para la pasarela"]
-  N4["28.4 Vista de pajarita"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX082"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["28.1 Árboles de fallos"]
-  N2["28.2 Añadir eventos cibernéticos"]
-  N3["28.3 AMFE para la pasarela"]
-  N4["28.4 Vista de pajarita"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[28.1 Árboles de fallos]
-    |
-    v
-[28.2 Añadir eventos cibernéticos]
-    |
-    v
-[28.3 AMFE para la pasarela]
-    |
-    v
-[28.4 Vista de pajarita]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) construir un árbol de fallos para la pérdida de la calefacción urbana; (2) combinar puertas AND y OR con probabilidades sencillas; (3) añadir eventos inducidos por ciberataques a un análisis de estilo de seguridad funcional; y (4) usar el análisis de modos de fallo y efectos (AMFE) para una pasarela IoT.
@@ -3135,61 +1645,6 @@ Los árboles de fallos y el AMFE incorporan los eventos cibernéticos a la ingen
 
 ## Capítulo 29 — Seguridad de TO, IoT y sistemas ciberfísicos: operaciones
 
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa de la lección
-
-Lección 29 publicada. Mapa, ejemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["29.1 Una supervisión en la que confíen los operadore"]
-  N2["29.2 Pasos del manual"]
-  N3["29.3 Parches en ventanas"]
-  N4["29.4 Ejercicios de mesa"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX085"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["29.1 Una supervisión en la que confíen los operadore"]
-  N2["29.2 Pasos del manual"]
-  N3["29.3 Parches en ventanas"]
-  N4["29.4 Ejercicios de mesa"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[29.1 Una supervisión en la que confíen los operadore]
-    |
-    v
-[29.2 Pasos del manual]
-    |
-    v
-[29.3 Parches en ventanas]
-    |
-    v
-[29.4 Ejercicios de mesa]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) diseñar un flujo de trabajo de supervisión de seguridad de TO con los operadores en el circuito; (2) escribir un paso de un manual de respuesta a incidentes que respete la seguridad del proceso; (3) planificar la aplicación de parches dentro de las ventanas de mantenimiento; y (4) dirigir un ejercicio de mesa.
@@ -3235,61 +1690,6 @@ La seguridad de las operaciones de TO mantiene a los operadores al mando del pro
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratorio II
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa de la lección
-
-Lección 30 publicada. Mapa, ejemplo, EX088.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["30.1 La base de referencia"]
-  N2["30.2 Leer el resultado de la flota"]
-  N3["30.3 Priorizar"]
-  N4["30.5 Reproducir y ampliar el laboratorio"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX088"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["30.1 La base de referencia"]
-  N2["30.2 Leer el resultado de la flota"]
-  N3["30.3 Priorizar"]
-  N4["30.5 Reproducir y ampliar el laboratorio"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX088"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[30.1 La base de referencia]
-    |
-    v
-[30.2 Leer el resultado de la flota]
-    |
-    v
-[30.3 Priorizar]
-    |
-    v
-[30.5 Reproducir y ampliar el laboratorio]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3367,61 +1767,6 @@ Las evaluaciones frente a una base de referencia son útiles cuando se comunican
 
 ## Capítulo 31 — Seguridad de TO, IoT y sistemas ciberfísicos: casos avanzados
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Mapa de la lección
-
-Lección 31 publicada. Mapa, ejemplo, EX091.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["31.1 Herramientas dirigidas a dispositivos ICS/SCADA"]
-  N2["31.2 Capacidad no es incidente"]
-  N3["31.3 Del comportamiento a la detección"]
-  N4["31.4 Comparar tipos de casos"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX091"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["31.1 Herramientas dirigidas a dispositivos ICS/SCADA"]
-  N2["31.2 Capacidad no es incidente"]
-  N3["31.3 Del comportamiento a la detección"]
-  N4["31.4 Comparar tipos de casos"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX091"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[31.1 Herramientas dirigidas a dispositivos ICS/SCADA]
-    |
-    v
-[31.2 Capacidad no es incidente]
-    |
-    v
-[31.3 Del comportamiento a la detección]
-    |
-    v
-[31.4 Comparar tipos de casos]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX091]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) analizar un marco modular de ataque a ICS a partir de un aviso de CISA; (2) distinguir la capacidad del uso observado; (3) derivar oportunidades de detección del comportamiento documentado; y (4) comparar un aviso centrado en capacidades con un informe de incidente.
@@ -3472,61 +1817,6 @@ El análisis de casos avanzados significa leer los avisos buscando comportamient
 
 ## Capítulo 32 — Seguridad de TO, IoT y sistemas ciberfísicos: interfaces interdisciplinarias
 
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Mapa de la lección
-
-Lección 32 publicada. Mapa, ejemplo, EX094.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["32.1 Ingenieros de seguridad funcional"]
-  N2["32.2 Compras"]
-  N3["32.3 Operaciones y mantenimiento"]
-  N4["32.4 Derecho y regulación"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX094"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["32.1 Ingenieros de seguridad funcional"]
-  N2["32.2 Compras"]
-  N3["32.3 Operaciones y mantenimiento"]
-  N4["32.4 Derecho y regulación"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX094"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[32.1 Ingenieros de seguridad funcional]
-    |
-    v
-[32.2 Compras]
-    |
-    v
-[32.3 Operaciones y mantenimiento]
-    |
-    v
-[32.4 Derecho y regulación]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX094]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) explicar cómo se relaciona el trabajo de seguridad con la seguridad de procesos, las operaciones, las compras y el derecho; (2) escribir requisitos de seguridad para una especificación de compra; (3) participar en una revisión conjunta de seguridad funcional y ciberseguridad; y (4) comunicarse con profesionales ajenos a la seguridad usando sus propios términos.
@@ -3574,71 +1864,6 @@ La seguridad de TO tiene éxito a través de otras disciplinas: revisiones de se
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de investigación II
-
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Mapa de la lección
-
-Lección 33 publicada. Mapa, ejemplo, EX097.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["33.1 Prerregistro"]
-  N2["33.2 Tamaño muestral para una proporción"]
-  N3["33.3 Tamaños del efecto"]
-  N4["33.4 Paquete de replicación"]
-  N5["33.5 Resultados negativos"]
-  N6["33.6 El control de versiones como cuaderno de labora"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX097"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["33.1 Prerregistro"]
-  N2["33.2 Tamaño muestral para una proporción"]
-  N3["33.3 Tamaños del efecto"]
-  N4["33.4 Paquete de replicación"]
-  N5["33.5 Resultados negativos"]
-  N6["33.6 El control de versiones como cuaderno de labora"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX097"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[33.1 Prerregistro]
-    |
-    v
-[33.2 Tamaño muestral para una proporción]
-    |
-    v
-[33.3 Tamaños del efecto]
-    |
-    v
-[33.4 Paquete de replicación]
-    |
-    v
-[33.5 Resultados negativos]
-    |
-    v
-[33.6 El control de versiones como cuaderno de labora]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX097]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3698,71 +1923,6 @@ El rigor en la investigación aplicada de TO procede del prerregistro, de muestr
 
 ## Capítulo 34 — Proyecto comparativo
 
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Mapa de la lección
-
-Lección 34 publicada. Mapa, ejemplo, EX100.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["34.1 Las dos opciones"]
-  N2["34.2 Criterios"]
-  N3["34.3 Puntuación"]
-  N4["34.4 Sensibilidad"]
-  N5["34.5 Evidencia para cada puntuación"]
-  N6["34.6 Presentar la comparación"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX100"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["34.1 Las dos opciones"]
-  N2["34.2 Criterios"]
-  N3["34.3 Puntuación"]
-  N4["34.4 Sensibilidad"]
-  N5["34.5 Evidencia para cada puntuación"]
-  N6["34.6 Presentar la comparación"]
-  N7["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX100"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[34.1 Las dos opciones]
-    |
-    v
-[34.2 Criterios]
-    |
-    v
-[34.3 Puntuación]
-    |
-    v
-[34.4 Sensibilidad]
-    |
-    v
-[34.5 Evidencia para cada puntuación]
-    |
-    v
-[34.6 Presentar la comparación]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX100]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) comparar dos arquitecturas de acceso remoto de proveedores frente a criterios explícitos; (2) construir una matriz de decisión ponderada y probar su sensibilidad; (3) documentar las hipótesis de cada opción; y (4) hacer una recomendación con su riesgo residual.
@@ -3821,61 +1981,6 @@ El trabajo comparativo es honesto cuando los criterios, los pesos, la evidencia 
 
 ## Capítulo 35 — Propuesta del proyecto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Mapa de la lección
-
-Lección 35 publicada. Mapa, ejemplo, EX103.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["35.1 Estructura de la propuesta"]
-  N2["35.2 Un alcance que encaje"]
-  N3["35.3 Límite ético y de seguridad"]
-  N4["35.4 Criterios de aceptación"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX103"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["35.1 Estructura de la propuesta"]
-  N2["35.2 Un alcance que encaje"]
-  N3["35.3 Límite ético y de seguridad"]
-  N4["35.4 Criterios de aceptación"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX103"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[35.1 Estructura de la propuesta]
-    |
-    v
-[35.2 Un alcance que encaje]
-    |
-    v
-[35.3 Límite ético y de seguridad]
-    |
-    v
-[35.4 Criterios de aceptación]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX103]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) escribir una propuesta de proyecto final con problema, pregunta, alcance, método, ética y calendario; (2) definir entregables que puedan evaluarse; (3) enunciar los límites de seguridad y de autorización; y (4) obtener la aprobación del alcance por parte de su supervisor.
@@ -3923,61 +2028,6 @@ Una propuesta sólida es pequeña, comprobable y está acotada por una ética ex
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Práctica de campo o comunitaria
-
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Mapa de la lección
-
-Lección 36 publicada. Mapa, ejemplo, EX106.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["36.1 Lo que un estudiante de grado puede ofrecer con"]
-  N2["36.2 El acuerdo"]
-  N3["36.3 Trabajar con operadores pequeños"]
-  N4["36.4 Diario reflexivo"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX106"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["36.1 Lo que un estudiante de grado puede ofrecer con"]
-  N2["36.2 El acuerdo"]
-  N3["36.3 Trabajar con operadores pequeños"]
-  N4["36.4 Diario reflexivo"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX106"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[36.1 Lo que un estudiante de grado puede ofrecer con]
-    |
-    v
-[36.2 El acuerdo]
-    |
-    v
-[36.3 Trabajar con operadores pequeños]
-    |
-    v
-[36.4 Diario reflexivo]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX106]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
 
 ### Resultados de aprendizaje
 
@@ -4029,61 +2079,6 @@ La práctica de campo permite a los estudiantes ayudar a los operadores pequeño
 
 ## Capítulo 37 — Seminario de revisión de evidencia
 
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Mapa de la lección
-
-Lección 37 publicada. Mapa, ejemplo, EX109.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["37.1 Una escalera de evidencia"]
-  N2["37.2 Leer un artículo de medición"]
-  N3["37.3 Leer una revisión bibliográfica"]
-  N4["37.4 Revisión por pares estructurada"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX109"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["37.1 Una escalera de evidencia"]
-  N2["37.2 Leer un artículo de medición"]
-  N3["37.3 Leer una revisión bibliográfica"]
-  N4["37.4 Revisión por pares estructurada"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX109"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[37.1 Una escalera de evidencia]
-    |
-    v
-[37.2 Leer un artículo de medición]
-    |
-    v
-[37.3 Leer una revisión bibliográfica]
-    |
-    v
-[37.4 Revisión por pares estructurada]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX109]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) revisar críticamente una afirmación publicada sobre seguridad de TO; (2) graduar la calidad de la evidencia, desde la anécdota hasta la medición replicada; (3) comprobar si las conclusiones se derivan de los datos presentados; y (4) dar y recibir una revisión por pares estructurada.
@@ -4131,61 +2126,6 @@ La revisión de la evidencia pregunta cuán fuerte es la evidencia, si la conclu
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementación del proyecto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Mapa de la lección
-
-Lección 38 publicada. Mapa, ejemplo, EX112.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["38.1 Incrementos"]
-  N2["38.2 Registros de decisiones"]
-  N3["38.3 Evaluación"]
-  N4["38.4 Leer la matriz de confusión"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX112"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["38.1 Incrementos"]
-  N2["38.2 Registros de decisiones"]
-  N3["38.3 Evaluación"]
-  N4["38.4 Leer la matriz de confusión"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX112"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[38.1 Incrementos]
-    |
-    v
-[38.2 Registros de decisiones]
-    |
-    v
-[38.3 Evaluación]
-    |
-    v
-[38.4 Leer la matriz de confusión]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX112]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
 
 ### Resultados de aprendizaje
 
@@ -4256,66 +2196,6 @@ Implemente en incrementos probados, registre las decisiones y use los conjuntos 
 
 ## Capítulo 39 — Evaluación del proyecto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Mapa de la lección
-
-Lección 39 publicada. Mapa, ejemplo, EX115.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["39.1 Frente a la propuesta"]
-  N2["39.2 Resultados frente a interpretación"]
-  N3["39.3 Rúbrica de autoevaluación"]
-  N4["39.4 Plan para quien le suceda"]
-  N5["39.5 La visión del supervisor"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX115"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["39.1 Frente a la propuesta"]
-  N2["39.2 Resultados frente a interpretación"]
-  N3["39.3 Rúbrica de autoevaluación"]
-  N4["39.4 Plan para quien le suceda"]
-  N5["39.5 La visión del supervisor"]
-  N6["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX115"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[39.1 Frente a la propuesta]
-    |
-    v
-[39.2 Resultados frente a interpretación]
-    |
-    v
-[39.3 Rúbrica de autoevaluación]
-    |
-    v
-[39.4 Plan para quien le suceda]
-    |
-    v
-[39.5 La visión del supervisor]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX115]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) evaluar un proyecto final frente a su propia propuesta; (2) separar resultados, interpretación y limitaciones; (3) realizar una autoevaluación estructurada con la rúbrica del curso; y (4) planificar el trabajo que necesitaría hacer quien le suceda.
@@ -4367,61 +2247,6 @@ Evalúe un proyecto final frente a sus propias promesas, mantenga los resultados
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tesis y presentación
-
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Mapa de la lección
-
-Lección 40 publicada. Mapa, ejemplo, EX118.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["40.1 Estructura de la tesis"]
-  N2["40.2 Diapositivas"]
-  N3["40.3 Anticipar las preguntas"]
-  N4["40.4 Publicación responsable"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX118"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["40.1 Estructura de la tesis"]
-  N2["40.2 Diapositivas"]
-  N3["40.3 Anticipar las preguntas"]
-  N4["40.4 Publicación responsable"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX118"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[40.1 Estructura de la tesis]
-    |
-    v
-[40.2 Diapositivas]
-    |
-    v
-[40.3 Anticipar las preguntas]
-    |
-    v
-[40.4 Publicación responsable]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX118]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
 
 ### Resultados de aprendizaje
 

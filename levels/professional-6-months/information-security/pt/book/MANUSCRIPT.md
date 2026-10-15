@@ -37,51 +37,6 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 ## Capítulo 1 — Um profissional em atividade volta a estudar
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O aluno"]
-  N1["1.2 O empregador"]
-  N2["1.3 Como o curso funciona"]
-  N3["1.4 Regras básicas"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O aluno"]
-  N1["1.2 O empregador"]
-  N2["1.3 Como o curso funciona"]
-  N3["1.4 Regras básicas"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 O aluno]
-    |
-    v
-[1.2 O empregador]
-    |
-    v
-[1.3 Como o curso funciona]
-    |
-    v
-[1.4 Regras básicas]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o que cobre o curso profissional de seis meses; (2) conhecer o caso que acompanha o livro; (3) combinar as regras básicas para trabalhar com um empregador real.
@@ -136,46 +91,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Entendendo a firma
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Inventário de informações"]
-  N1["2.2 Quem depende delas"]
-  N2["2.4 O que não pode ser perdido"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Inventário de informações"]
-  N1["2.2 Quem depende delas"]
-  N2["2.4 O que não pode ser perdido"]
-  N0 --> N1 --> N2 --> Q["EX006"]
-```
-
-```text
-[2.1 Inventário de informações]
-    |
-    v
-[2.2 Quem depende delas]
-    |
-    v
-[2.4 O que não pode ser perdido]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear as informações que uma firma de serviços profissionais guarda; (2) identificar quem depende delas; (3) declarar o que a firma não pode se dar ao luxo de perder.
@@ -229,51 +144,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — O risco em termos simples
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 O que significa risco"]
-  N1["3.2 Montagem do registro"]
-  N2["Laboratório — Classificando um registro sintético de"]
-  N3["3.3 Leitura da classificação"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 O que significa risco"]
-  N1["3.2 Montagem do registro"]
-  N2["Laboratório — Classificando um registro sintético de"]
-  N3["3.3 Leitura da classificação"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX011"]
-```
-
-```text
-[3.1 O que significa risco]
-    |
-    v
-[3.2 Montagem do registro]
-    |
-    v
-[Laboratório — Classificando um registro sintético de]
-    |
-    v
-[3.3 Leitura da classificação]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -364,56 +234,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Contas e entrada com múltiplos fatores
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 Por que importa"]
-  N1["4.2 Tipos de conta"]
-  N2["Laboratório — Cobertura da entrada com múltiplos fat"]
-  N3["4.3 Leitura dos resultados"]
-  N4["4.4 Fechando as lacunas"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Por que importa"]
-  N1["4.2 Tipos de conta"]
-  N2["Laboratório — Cobertura da entrada com múltiplos fat"]
-  N3["4.3 Leitura dos resultados"]
-  N4["4.4 Fechando as lacunas"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[4.1 Por que importa]
-    |
-    v
-[4.2 Tipos de conta]
-    |
-    v
-[Laboratório — Cobertura da entrada com múltiplos fat]
-    |
-    v
-[4.3 Leitura dos resultados]
-    |
-    v
-[4.4 Fechando as lacunas]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que a entrada com múltiplos fatores importa; (2) medir a cobertura por tipo de conta; (3) planejar correções para as lacunas.
@@ -496,51 +316,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Dispositivos e dados no escritório
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 Linha de base dos notebooks"]
-  N1["5.2 O antigo servidor de arquivos"]
-  N2["5.3 Papel e mídias"]
-  N3["5.4 Acompanhamento do progresso"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Linha de base dos notebooks"]
-  N1["5.2 O antigo servidor de arquivos"]
-  N2["5.3 Papel e mídias"]
-  N3["5.4 Acompanhamento do progresso"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
-```
-
-```text
-[5.1 Linha de base dos notebooks]
-    |
-    v
-[5.2 O antigo servidor de arquivos]
-    |
-    v
-[5.3 Papel e mídias]
-    |
-    v
-[5.4 Acompanhamento do progresso]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir uma linha de base para os notebooks; (2) lidar com o antigo servidor de arquivos; (3) reduzir os riscos do papel e das mídias removíveis.
@@ -594,51 +369,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — E-mail e fraude de pagamentos
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Como a fraude funciona"]
-  N1["6.2 Verificações"]
-  N2["6.3 Proteções do e-mail"]
-  N3["6.4 Preparação da equipe"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Como a fraude funciona"]
-  N1["6.2 Verificações"]
-  N2["6.3 Proteções do e-mail"]
-  N3["6.4 Preparação da equipe"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
-```
-
-```text
-[6.1 Como a fraude funciona]
-    |
-    v
-[6.2 Verificações]
-    |
-    v
-[6.3 Proteções do e-mail]
-    |
-    v
-[6.4 Preparação da equipe]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -694,51 +424,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Fornecedores e serviços em nuvem
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 Lista de fornecedores"]
-  N1["7.2 Perguntas proporcionais"]
-  N2["7.3 A empresa de suporte"]
-  N3["7.4 O risco do fornecedor"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Lista de fornecedores"]
-  N1["7.2 Perguntas proporcionais"]
-  N2["7.3 A empresa de suporte"]
-  N3["7.4 O risco do fornecedor"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
-```
-
-```text
-[7.1 Lista de fornecedores]
-    |
-    v
-[7.2 Perguntas proporcionais]
-    |
-    v
-[7.3 A empresa de suporte]
-    |
-    v
-[7.4 O risco do fornecedor]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) listar os fornecedores que lidam com as informações da firma; (2) fazer perguntas de segurança proporcionais; (3) registrar o que cada fornecedor consegue alcançar.
@@ -792,51 +477,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Pessoas e conscientização
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Conscientização relevante"]
-  N1["8.2 Admissões e desligamentos"]
-  N2["8.3 Uma cultura de comunicação"]
-  N3["8.4 Medição do comportamento"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Conscientização relevante"]
-  N1["8.2 Admissões e desligamentos"]
-  N2["8.3 Uma cultura de comunicação"]
-  N3["8.4 Medição do comportamento"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX036"]
-```
-
-```text
-[8.1 Conscientização relevante]
-    |
-    v
-[8.2 Admissões e desligamentos]
-    |
-    v
-[8.3 Uma cultura de comunicação]
-    |
-    v
-[8.4 Medição do comportamento]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -892,51 +532,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 9 — Tratamento de incidentes
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Um procedimento curto"]
-  N1["9.2 A tomada de uma caixa postal"]
-  N2["9.3 Decisão sobre a notificação"]
-  N3["9.4 Aprendizado posterior"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Um procedimento curto"]
-  N1["9.2 A tomada de uma caixa postal"]
-  N2["9.3 Decisão sobre a notificação"]
-  N3["9.4 Aprendizado posterior"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
-```
-
-```text
-[9.1 Um procedimento curto]
-    |
-    v
-[9.2 A tomada de uma caixa postal]
-    |
-    v
-[9.3 Decisão sobre a notificação]
-    |
-    v
-[9.4 Aprendizado posterior]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever um procedimento de incidentes curto; (2) segui-lo durante um incidente sintético; (3) decidir quando notificar clientes ou reguladores.
@@ -990,51 +585,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Continuidade e backups
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 O que precisa continuar funcionando"]
-  N1["10.2 Teste das restaurações"]
-  N2["10.3 Um exercício de mesa"]
-  N3["10.4 Por escrito"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 O que precisa continuar funcionando"]
-  N1["10.2 Teste das restaurações"]
-  N2["10.3 Um exercício de mesa"]
-  N3["10.4 Por escrito"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
-```
-
-```text
-[10.1 O que precisa continuar funcionando]
-    |
-    v
-[10.2 Teste das restaurações]
-    |
-    v
-[10.3 Um exercício de mesa]
-    |
-    v
-[10.4 Por escrito]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1090,51 +640,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Política e obrigações
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Uma política utilizável"]
-  N1["11.2 Obrigações"]
-  N2["11.3 Certificação"]
-  N3["11.4 Manter atualizada"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Uma política utilizável"]
-  N1["11.2 Obrigações"]
-  N2["11.3 Certificação"]
-  N3["11.4 Manter atualizada"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX051"]
-```
-
-```text
-[11.1 Uma política utilizável]
-    |
-    v
-[11.2 Obrigações]
-    |
-    v
-[11.3 Certificação]
-    |
-    v
-[11.4 Manter atualizada]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma política de segurança curta e utilizável; (2) mapear as obrigações legais e profissionais da firma; (3) decidir se a certificação formal vale a pena.
@@ -1188,51 +693,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Relatórios à liderança e próximos passos
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 Um relatório de uma página"]
-  N1["12.2 Seis meses de progresso"]
-  N2["12.3 O próximo ano"]
-  N3["12.4 Continuação dos estudos"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Um relatório de uma página"]
-  N1["12.2 Seis meses de progresso"]
-  N2["12.3 O próximo ano"]
-  N3["12.4 Continuação dos estudos"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX056"]
-```
-
-```text
-[12.1 Um relatório de uma página]
-    |
-    v
-[12.2 Seis meses de progresso]
-    |
-    v
-[12.3 O próximo ano]
-    |
-    v
-[12.4 Continuação dos estudos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

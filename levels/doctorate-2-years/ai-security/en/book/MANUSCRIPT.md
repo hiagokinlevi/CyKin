@@ -40,66 +40,6 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Why integrity is a method, not a courtesy"]
-  N2["1.2 Security claims and capability claims"]
-  N3["1.3 Methods that survive review"]
-  N4["1.4 Authorization, data and disclosure"]
-  N5["1.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Why integrity is a method, not a courtesy"]
-  N2["1.2 Security claims and capability claims"]
-  N3["1.3 Methods that survive review"]
-  N4["1.4 Authorization, data and disclosure"]
-  N5["1.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Why integrity is a method, not a courtesy]
-    |
-    v
-[1.2 Security claims and capability claims]
-    |
-    v
-[1.3 Methods that survive review]
-    |
-    v
-[1.4 Authorization, data and disclosure]
-    |
-    v
-[1.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain why AI-security research is unusually exposed to measurement error, leakage and dual-use harm; (2) separate *security claims* from *capability claims* and state each so it can be falsified; (3) design an evaluation with a declared threat model, pre-specified metrics and an adaptive adversary; (4) apply the rules on authorization, data protection and responsible disclosure that bind security research on models and AI services; and (5) report uncertainty with intervals rather than single numbers.
@@ -202,66 +142,6 @@ Integrity in AI security is operational: falsifiable claims, sealed test data, a
 <a id="ch-02"></a>
 
 ## Chapter 2 — AI and machine-learning security: research frontier
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Four classical attack families"]
-  N2["2.2 Generative and agentic systems"]
-  N3["2.3 Governance as research context"]
-  N4["2.4 Finding open problems"]
-  N5["2.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Four classical attack families"]
-  N2["2.2 Generative and agentic systems"]
-  N3["2.3 Governance as research context"]
-  N4["2.4 Finding open problems"]
-  N5["2.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Four classical attack families]
-    |
-    v
-[2.2 Generative and agentic systems]
-    |
-    v
-[2.3 Governance as research context]
-    |
-    v
-[2.4 Finding open problems]
-    |
-    v
-[2.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -376,66 +256,6 @@ The frontier is shaped by a decade of attacks outpacing defences. Generative and
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 What counts as an original contribution"]
-  N2["3.2 From gap to hypotheses"]
-  N3["3.3 Threat model, metrics and baselines"]
-  N4["3.4 Risk, ethics and dual use in the proposal"]
-  N5["3.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 What counts as an original contribution"]
-  N2["3.2 From gap to hypotheses"]
-  N3["3.3 Threat model, metrics and baselines"]
-  N4["3.4 Risk, ethics and dual use in the proposal"]
-  N5["3.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 What counts as an original contribution]
-    |
-    v
-[3.2 From gap to hypotheses]
-    |
-    v
-[3.3 Threat model, metrics and baselines]
-    |
-    v
-[3.4 Risk, ethics and dual use in the proposal]
-    |
-    v
-[3.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) turn a gap statement into research questions and falsifiable hypotheses; (2) define the contribution type (attack, defence, measurement, theory, system or dataset); (3) specify threat model, metrics, baselines and success criteria before data collection; (4) plan risk, ethics and dual-use controls; and (5) write a proposal that a committee can approve or reject on evidence.
@@ -539,66 +359,6 @@ A proposal earns approval when it names a contribution type, freezes a threat mo
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["4.2 A replication protocol"]
-  N3["4.3 Pilot studies"]
-  N4["4.4 Harness engineering"]
-  N5["4.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["4.2 A replication protocol"]
-  N3["4.3 Pilot studies"]
-  N4["4.4 Harness engineering"]
-  N5["4.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why replicate first]
-    |
-    v
-[4.2 A replication protocol]
-    |
-    v
-[4.3 Pilot studies]
-    |
-    v
-[4.4 Harness engineering]
-    |
-    v
-[4.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -719,66 +479,6 @@ Replication tells you what prior work really does in your hands; the pilot tells
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Executing a pre-registered study"]
-  N2["5.2 Adaptive attack under a fair budget"]
-  N3["5.3 Analysis"]
-  N4["5.4 Independent validation"]
-  N5["5.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Executing a pre-registered study"]
-  N2["5.2 Adaptive attack under a fair budget"]
-  N3["5.3 Analysis"]
-  N4["5.4 Independent validation"]
-  N5["5.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Executing a pre-registered study]
-    |
-    v
-[5.2 Adaptive attack under a fair budget]
-    |
-    v
-[5.3 Analysis]
-    |
-    v
-[5.4 Independent validation]
-    |
-    v
-[5.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) run a pre-registered main study and keep a deviation log; (2) evaluate a defence under adaptive attack with a fair budget; (3) analyse results with paired comparisons, intervals and correction for multiple tests; (4) commission an independent validation (red team, second implementation or external replication); and (5) report what the evidence supports and what it does not.
@@ -872,66 +572,6 @@ A main study earns trust through a frozen protocol, a fair and adaptive adversar
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 How to review an AI-security paper"]
-  N2["6.2 Writing critique that helps"]
-  N3["6.3 Receiving critique"]
-  N4["6.4 Revising claims to fit evidence"]
-  N5["6.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 How to review an AI-security paper"]
-  N2["6.2 Writing critique that helps"]
-  N3["6.3 Receiving critique"]
-  N4["6.4 Revising claims to fit evidence"]
-  N5["6.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 How to review an AI-security paper]
-    |
-    v
-[6.2 Writing critique that helps]
-    |
-    v
-[6.3 Receiving critique]
-    |
-    v
-[6.4 Revising claims to fit evidence]
-    |
-    v
-[6.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) review an AI-security paper against a structured checklist; (2) write critique that is specific, actionable and fair; (3) receive critique and separate valid objections from misunderstanding; (4) revise claims, analyses and text so that the evidence and the words match; and (5) write a response letter.
@@ -990,66 +630,6 @@ Critique is a validity instrument. Reviewing others teaches you what evidence pe
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The thesis as an argument"]
-  N2["7.2 Threats to validity"]
-  N3["7.3 The reproducibility archive"]
-  N4["7.4 Release decisions"]
-  N5["7.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The thesis as an argument"]
-  N2["7.2 Threats to validity"]
-  N3["7.3 The reproducibility archive"]
-  N4["7.4 Release decisions"]
-  N5["7.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The thesis as an argument]
-    |
-    v
-[7.2 Threats to validity]
-    |
-    v
-[7.3 The reproducibility archive]
-    |
-    v
-[7.4 Release decisions]
-    |
-    v
-[7.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -1153,66 +733,6 @@ The thesis argues; the archive proves. A clear validity table and an archive tha
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The defence talk"]
-  N2["8.2 Anticipating questions"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Impact on governance and practice"]
-  N5["8.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The defence talk"]
-  N2["8.2 Anticipating questions"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Impact on governance and practice"]
-  N5["8.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The defence talk]
-    |
-    v
-[8.2 Anticipating questions]
-    |
-    v
-[8.3 Publication plan]
-    |
-    v
-[8.4 Impact on governance and practice]
-    |
-    v
-[8.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

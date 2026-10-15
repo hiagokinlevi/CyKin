@@ -5,7 +5,7 @@
   "language": "es",
   "chapter": 1,
   "source_anchor": "ch-01",
-  "source_sha256": "e82d9d4d9bf64da7e88d9f58392d71b958fba9a600d8d9b8b51b83396c8afe59",
+  "source_sha256": "35fe05162ead44290f80858564fd37aa59d0d4816e8076ed311895b1d6cc080f",
   "questions": [
     {"id":"Q01","prompt":"¿Qué componente de Millbrook es la estación central que permite acceder a varios sistemas del edificio?","options":[{"id":"a","text":"BMS-WS, la estación del sistema de gestión del edificio"},{"id":"b","text":"MGAS-PANEL, el panel de alarma de gases medicinales"},{"id":"c","text":"LIFT-CTRL, el controlador de los ascensores"},{"id":"d","text":"AHU-OT1, una unidad de tratamiento de aire"}],"correct":"a","explanation":"El capítulo identifica BMS-WS como la estación central desde la que se llega a varios sistemas; los demás son equipos o alarmas.","source":"Capítulo 1, §1.1"},
     {"id":"Q02","prompt":"¿Por qué conectar a la red un controlador de tratamiento de aire crea un problema de seguridad ciberfísica?","options":[{"id":"a","text":"Elimina automáticamente la necesidad del personal de mantenimiento"},{"id":"b","text":"Una orden remota puede modificar equipos físicos y condiciones clínicas"},{"id":"c","text":"Solo modifica registros digitales, nunca el entorno físico"},{"id":"d","text":"Demuestra que el controlador ya ha sido comprometido"}],"correct":"b","explanation":"Un controlador conectado convierte una orden en pantalla en una acción física. La posibilidad de acceso crea riesgo, pero no prueba un compromiso.","source":"Capítulo 1, §1.2"},

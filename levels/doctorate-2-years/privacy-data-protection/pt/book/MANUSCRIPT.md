@@ -37,61 +37,6 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Resolução CD/ANP
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Uma pergunta falseável"]
-  N1["1.2 Por que a pergunta importa"]
-  N2["1.3 Regras de integridade"]
-  N3["1.4 A unicidade como linha de base"]
-  N4["Laboratório — Unicidade de passageiros sintéticos em"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Uma pergunta falseável"]
-  N1["1.2 Por que a pergunta importa"]
-  N2["1.3 Regras de integridade"]
-  N3["1.4 A unicidade como linha de base"]
-  N4["Laboratório — Unicidade de passageiros sintéticos em"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Uma pergunta falseável]
-    |
-    v
-[1.2 Por que a pergunta importa]
-    |
-    v
-[1.3 Regras de integridade]
-    |
-    v
-[1.4 A unicidade como linha de base]
-    |
-    v
-[Laboratório — Unicidade de passageiros sintéticos em]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta falseável sobre publicação de dados com preservação de privacidade; (2) definir regras de integridade para pesquisas que envolvem dados pessoais; (3) medir com que rapidez atributos comuns tornam as pessoas únicas.
@@ -174,61 +119,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Privacidade e proteção de dados: fronteira da pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Do direito de ser deixado em paz"]
-  N1["2.2 Modelos sintáticos de anonimato"]
-  N2["2.3 Vinculação e desanonimização"]
-  N3["2.4 Privacidade diferencial"]
-  N4["2.5 A lacuna"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Do direito de ser deixado em paz"]
-  N1["2.2 Modelos sintáticos de anonimato"]
-  N2["2.3 Vinculação e desanonimização"]
-  N3["2.4 Privacidade diferencial"]
-  N4["2.5 A lacuna"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[2.1 Do direito de ser deixado em paz]
-    |
-    v
-[2.2 Modelos sintáticos de anonimato]
-    |
-    v
-[2.3 Vinculação e desanonimização]
-    |
-    v
-[2.4 Privacidade diferencial]
-    |
-    v
-[2.5 A lacuna]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) traçar o desenvolvimento da teoria da privacidade; (2) contrastar os modelos sintáticos de anonimato com a privacidade diferencial; (3) localizar a lacuna que o estudo de Ines aborda.
@@ -288,61 +178,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Hipóteses"]
-  N1["3.2 A generalização como linha de base"]
-  N2["3.3 Escolhendo a configuração de base"]
-  N3["3.4 Os planejadores como juízes da utilidade"]
-  N4["Laboratório — Generalização e supressão para k = 5"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Hipóteses"]
-  N1["3.2 A generalização como linha de base"]
-  N2["3.3 Escolhendo a configuração de base"]
-  N3["3.4 Os planejadores como juízes da utilidade"]
-  N4["Laboratório — Generalização e supressão para k = 5"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[3.1 Hipóteses]
-    |
-    v
-[3.2 A generalização como linha de base]
-    |
-    v
-[3.3 Escolhendo a configuração de base]
-    |
-    v
-[3.4 Os planejadores como juízes da utilidade]
-    |
-    v
-[Laboratório — Generalização e supressão para k = 5]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -424,61 +259,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Replicação da linha de base e piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Replicar primeiro"]
-  N1["4.2 A publicação piloto"]
-  N2["4.3 Células pequenas"]
-  N3["4.4 Contabilidade do orçamento"]
-  N4["Laboratório — Ruído de Laplace em contagens de orige"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Replicar primeiro"]
-  N1["4.2 A publicação piloto"]
-  N2["4.3 Células pequenas"]
-  N3["4.4 Contabilidade do orçamento"]
-  N4["Laboratório — Ruído de Laplace em contagens de orige"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[4.1 Replicar primeiro]
-    |
-    v
-[4.2 A publicação piloto]
-    |
-    v
-[4.3 Células pequenas]
-    |
-    v
-[4.4 Contabilidade do orçamento]
-    |
-    v
-[Laboratório — Ruído de Laplace em contagens de orige]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) replicar um resultado conhecido antes de estendê-lo; (2) implementar o mecanismo de Laplace sobre contagens; (3) interpretar o custo de precisão do épsilon nas células pequenas.
@@ -559,61 +339,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 O modelo de ataque"]
-  N1["5.2 Resultados"]
-  N2["5.3 Pseudonimização não é anonimização"]
-  N3["5.4 Validação independente"]
-  N4["Laboratório — Ataque de vinculação a três tipos de p"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O modelo de ataque"]
-  N1["5.2 Resultados"]
-  N2["5.3 Pseudonimização não é anonimização"]
-  N3["5.4 Validação independente"]
-  N4["Laboratório — Ataque de vinculação a três tipos de p"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[5.1 O modelo de ataque]
-    |
-    v
-[5.2 Resultados]
-    |
-    v
-[5.3 Pseudonimização não é anonimização]
-    |
-    v
-[5.4 Validação independente]
-    |
-    v
-[Laboratório — Ataque de vinculação a três tipos de p]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -698,56 +423,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica dos pares e revisão
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 As críticas"]
-  N1["6.2 Respondendo ao estatístico"]
-  N2["6.3 Respondendo à advogada"]
-  N3["6.4 Respondendo à planejadora"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 As críticas"]
-  N1["6.2 Respondendo ao estatístico"]
-  N2["6.3 Respondendo à advogada"]
-  N3["6.4 Respondendo à planejadora"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
-```
-
-```text
-[6.1 As críticas]
-    |
-    v
-[6.2 Respondendo ao estatístico]
-    |
-    v
-[6.3 Respondendo à advogada]
-    |
-    v
-[6.4 Respondendo à planejadora]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) responder a críticas substantivas dos pares; (2) restringir as afirmações ao que a evidência sustenta; (3) distinguir objeções jurídicas, técnicas e éticas.
@@ -802,61 +477,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 A síntese"]
-  N1["7.2 O que entra no arquivo"]
-  N2["7.3 Um vazamento detectado"]
-  N3["7.4 Licenciamento e acesso"]
-  N4["Laboratório — Manifesto e verificação de identificad"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 A síntese"]
-  N1["7.2 O que entra no arquivo"]
-  N2["7.3 Um vazamento detectado"]
-  N3["7.4 Licenciamento e acesso"]
-  N4["Laboratório — Manifesto e verificação de identificad"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[7.1 A síntese]
-    |
-    v
-[7.2 O que entra no arquivo]
-    |
-    v
-[7.3 Um vazamento detectado]
-    |
-    v
-[7.4 Licenciamento e acesso]
-    |
-    v
-[Laboratório — Manifesto e verificação de identificad]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -933,56 +553,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Preparando a defesa"]
-  N1["8.2 A defesa"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 A decisão da organização"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Preparando a defesa"]
-  N1["8.2 A defesa"]
-  N2["8.3 Plano de publicação"]
-  N3["8.4 A decisão da organização"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[8.1 Preparando a defesa]
-    |
-    v
-[8.2 A defesa]
-    |
-    v
-[8.3 Plano de publicação]
-    |
-    v
-[8.4 A decisão da organização]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -35,61 +35,6 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — Computing systems
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Layers"]
-  N2["1.2 Where models live"]
-  N3["1.3 Resources"]
-  N4["1.4 Layers and controls"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Layers"]
-  N2["1.2 Where models live"]
-  N3["1.3 Resources"]
-  N4["1.4 Layers and controls"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Layers]
-    |
-    v
-[1.2 Where models live]
-    |
-    v
-[1.3 Resources]
-    |
-    v
-[1.4 Layers and controls]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe the hardware and software layers an AI service runs on; (2) explain where models, weights and data live at run time; (3) identify the computing resources an attacker can exhaust; and (4) relate system layers to AI-security controls.
@@ -139,61 +84,6 @@ AI services are layered systems. Security begins by mapping where requests, mode
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and internet services
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX004.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 The request path"]
-  N2["2.2 Protocol roles"]
-  N3["2.3 Gateway controls"]
-  N4["2.4 Network abuse"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX004"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 The request path"]
-  N2["2.2 Protocol roles"]
-  N3["2.3 Gateway controls"]
-  N4["2.4 Network abuse"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 The request path]
-    |
-    v
-[2.2 Protocol roles]
-    |
-    v
-[2.3 Gateway controls]
-    |
-    v
-[2.4 Network abuse]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -273,61 +163,6 @@ AI endpoints are internet services: secure DNS, TLS and HTTP, put a gateway in f
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming foundations
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX007.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Programs around models"]
-  N2["3.2 Model output is untrusted"]
-  N3["3.3 Validate structured output"]
-  N4["3.5 Reading the lab"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX007"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Programs around models"]
-  N2["3.2 Model output is untrusted"]
-  N3["3.3 Validate structured output"]
-  N4["3.5 Reading the lab"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Programs around models]
-    |
-    v
-[3.2 Model output is untrusted]
-    |
-    v
-[3.3 Validate structured output]
-    |
-    v
-[3.5 Reading the lab]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -429,66 +264,6 @@ Programming around models means validating and encoding everything that crosses 
 
 ## Chapter 4 — Data models
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX010.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Kinds of data"]
-  N2["4.2 Vector indexes"]
-  N3["4.3 Access control in retrieval"]
-  N4["4.4 Sensitivity classes"]
-  N5["4.4b Data poisoning through documents"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX010"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Kinds of data"]
-  N2["4.2 Vector indexes"]
-  N3["4.3 Access control in retrieval"]
-  N4["4.4 Sensitivity classes"]
-  N5["4.4b Data poisoning through documents"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX010"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Kinds of data]
-    |
-    v
-[4.2 Vector indexes]
-    |
-    v
-[4.3 Access control in retrieval]
-    |
-    v
-[4.4 Sensitivity classes]
-    |
-    v
-[4.4b Data poisoning through documents]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) describe data structures used by AI systems — tables, documents, embeddings; (2) explain vector indexes and their security properties; (3) apply access control to data used for retrieval; and (4) classify data sensitivity.
@@ -543,66 +318,6 @@ AI data models include documents and embeddings; security depends on labelling d
 
 ## Chapter 5 — Security literacy
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX013.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 CIA for AI"]
-  N2["5.2 Vocabulary"]
-  N3["5.3 Frameworks"]
-  N4["5.4 Authorised practice"]
-  N5["5.4b Reporting a finding"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX013"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 CIA for AI"]
-  N2["5.2 Vocabulary"]
-  N3["5.3 Frameworks"]
-  N4["5.4 Authorised practice"]
-  N5["5.4b Reporting a finding"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX013"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 CIA for AI]
-    |
-    v
-[5.2 Vocabulary]
-    |
-    v
-[5.3 Frameworks]
-    |
-    v
-[5.4 Authorised practice]
-    |
-    v
-[5.4b Reporting a finding]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) use confidentiality, integrity and availability to describe AI risks; (2) read threat, vulnerability and risk correctly; (3) know the main AI-security frameworks; and (4) explain authorised practice.
@@ -656,61 +371,6 @@ Security literacy gives shared words — CIA, threat, vulnerability, risk, contr
 <a id="ch-06"></a>
 
 ## Chapter 6 — Operating systems and virtualization
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Processes and permissions"]
-  N2["6.2 Containers and virtual machines"]
-  N3["6.3 Sandboxing generated code"]
-  N4["6.4 Model files at rest"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Processes and permissions"]
-  N2["6.2 Containers and virtual machines"]
-  N3["6.3 Sandboxing generated code"]
-  N4["6.4 Model files at rest"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Processes and permissions]
-    |
-    v
-[6.2 Containers and virtual machines]
-    |
-    v
-[6.3 Sandboxing generated code]
-    |
-    v
-[6.4 Model files at rest]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -795,66 +455,6 @@ Operating-system isolation limits what a compromised AI component can do: least-
 
 ## Chapter 7 — Identity and access foundations
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX019.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The three As"]
-  N2["7.2 Agent identities"]
-  N3["7.3 Least privilege for tools"]
-  N4["7.4 Auditing"]
-  N5["7.4b Human confirmation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX019"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The three As"]
-  N2["7.2 Agent identities"]
-  N3["7.3 Least privilege for tools"]
-  N4["7.4 Auditing"]
-  N5["7.4b Human confirmation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The three As]
-    |
-    v
-[7.2 Agent identities]
-    |
-    v
-[7.3 Least privilege for tools]
-    |
-    v
-[7.4 Auditing]
-    |
-    v
-[7.4b Human confirmation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) explain authentication, authorisation and accounting; (2) design identities for AI agents and their tools; (3) apply least privilege and delegated access; and (4) audit agent actions.
@@ -908,66 +508,6 @@ Agents must act with the user's delegated, narrow, short-lived rights, with chec
 <a id="ch-08"></a>
 
 ## Chapter 8 — Security architecture basics
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX022.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Trust boundaries"]
-  N2["8.2 Defence in depth"]
-  N3["8.3 Fail-safe defaults"]
-  N4["8.4 Enforcement outside the model"]
-  N5["8.4b Drawing the architecture"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX022"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Trust boundaries"]
-  N2["8.2 Defence in depth"]
-  N3["8.3 Fail-safe defaults"]
-  N4["8.4 Enforcement outside the model"]
-  N5["8.4b Drawing the architecture"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Trust boundaries]
-    |
-    v
-[8.2 Defence in depth]
-    |
-    v
-[8.3 Fail-safe defaults]
-    |
-    v
-[8.4 Enforcement outside the model]
-    |
-    v
-[8.4b Drawing the architecture]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
@@ -1067,71 +607,6 @@ Security architecture for AI draws trust boundaries, layers defences, defaults t
 <a id="ch-09"></a>
 
 ## Chapter 9 — Evidence and measurement
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX025.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Rates, not anecdotes"]
-  N2["9.2 Confidence intervals"]
-  N3["9.3 Base rates"]
-  N4["9.4 Reproducible evidence"]
-  N5["9.4b Comparing two defences"]
-  N6["9.4c Measuring effects"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX025"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Rates, not anecdotes"]
-  N2["9.2 Confidence intervals"]
-  N3["9.3 Base rates"]
-  N4["9.4 Reproducible evidence"]
-  N5["9.4b Comparing two defences"]
-  N6["9.4c Measuring effects"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Rates, not anecdotes]
-    |
-    v
-[9.2 Confidence intervals]
-    |
-    v
-[9.3 Base rates]
-    |
-    v
-[9.4 Reproducible evidence]
-    |
-    v
-[9.4b Comparing two defences]
-    |
-    v
-[9.4c Measuring effects]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -1260,61 +735,6 @@ Good evidence counts outcomes over many trials, shows uncertainty, respects base
 
 ## Chapter 10 — AI and machine-learning security: orientation
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX028.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 How ML systems are built"]
-  N2["10.2 Attack classes"]
-  N3["10.3 OWASP and ATLAS"]
-  N4["10.4 The technologist's role"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX028"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 How ML systems are built"]
-  N2["10.2 Attack classes"]
-  N3["10.3 OWASP and ATLAS"]
-  N4["10.4 The technologist's role"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX028"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 How ML systems are built]
-    |
-    v
-[10.2 Attack classes]
-    |
-    v
-[10.3 OWASP and ATLAS]
-    |
-    v
-[10.4 The technologist's role]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) explain how machine-learning systems are built and used; (2) list the main attack classes on AI; (3) relate them to OWASP LLM Top 10 2025 and MITRE ATLAS; and (4) describe the technologist's role in AI security.
@@ -1364,66 +784,6 @@ AI security covers the whole lifecycle and many attack classes; technologists ow
 <a id="ch-11"></a>
 
 ## Chapter 11 — AI and machine-learning security: assets and context
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 AI assets"]
-  N2["11.2 Context"]
-  N3["11.3 Ranking"]
-  N4["11.4 Keeping it current"]
-  N5["11.4b Inventory fields"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 AI assets"]
-  N2["11.2 Context"]
-  N3["11.3 Ranking"]
-  N4["11.4 Keeping it current"]
-  N5["11.4b Inventory fields"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 AI assets]
-    |
-    v
-[11.2 Context]
-    |
-    v
-[11.3 Ranking]
-    |
-    v
-[11.4 Keeping it current]
-    |
-    v
-[11.4b Inventory fields]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes
 
@@ -1516,66 +876,6 @@ Know your AI assets and the context they run in, rank by consequence and keep th
 
 ## Chapter 12 — AI and machine-learning security: data flows
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX034.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Data-flow diagrams"]
-  N2["12.2 Sources and sinks"]
-  N3["12.3 Taint tracing"]
-  N4["12.4 Placing controls"]
-  N5["12.4b Keeping diagrams useful"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX034"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Data-flow diagrams"]
-  N2["12.2 Sources and sinks"]
-  N3["12.3 Taint tracing"]
-  N4["12.4 Placing controls"]
-  N5["12.4b Keeping diagrams useful"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Data-flow diagrams]
-    |
-    v
-[12.2 Sources and sinks]
-    |
-    v
-[12.3 Taint tracing]
-    |
-    v
-[12.4 Placing controls]
-    |
-    v
-[12.4b Keeping diagrams useful]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Learning outcomes
 
 You will (1) draw data-flow diagrams for AI systems; (2) mark untrusted sources and sensitive sinks; (3) trace how untrusted text can reach tools; and (4) use flows to place controls.
@@ -1629,71 +929,6 @@ Data-flow diagrams reveal how untrusted text reaches powerful sinks; place contr
 <a id="ch-13"></a>
 
 ## Chapter 13 — AI and machine-learning security: risk scenarios
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX037.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["13.1 Scenario format"]
-  N2["13.2 Likelihood and impact"]
-  N3["13.3 Prioritising"]
-  N4["13.4 Linking to controls and tests"]
-  N5["13.4b Sources of scenarios"]
-  N6["13.7 Reviewing scenarios over time"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX037"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["13.1 Scenario format"]
-  N2["13.2 Likelihood and impact"]
-  N3["13.3 Prioritising"]
-  N4["13.4 Linking to controls and tests"]
-  N5["13.4b Sources of scenarios"]
-  N6["13.7 Reviewing scenarios over time"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX037"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[13.1 Scenario format]
-    |
-    v
-[13.2 Likelihood and impact]
-    |
-    v
-[13.3 Prioritising]
-    |
-    v
-[13.4 Linking to controls and tests]
-    |
-    v
-[13.4b Sources of scenarios]
-    |
-    v
-[13.7 Reviewing scenarios over time]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 
 ### Learning outcomes
 
@@ -1753,61 +988,6 @@ Concrete, scored scenarios linked to controls and tests turn AI risk into engine
 
 ## Chapter 14 — AI and machine-learning security: methods I
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX040.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["14.1 Testing classifiers"]
-  N2["14.2 Testing for prompt injection"]
-  N3["14.3 Suite structure"]
-  N4["14.4 Recording findings"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX040"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["14.1 Testing classifiers"]
-  N2["14.2 Testing for prompt injection"]
-  N3["14.3 Suite structure"]
-  N4["14.4 Recording findings"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX040"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[14.1 Testing classifiers]
-    |
-    v
-[14.2 Testing for prompt injection]
-    |
-    v
-[14.3 Suite structure]
-    |
-    v
-[14.4 Recording findings]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Learning outcomes
 
 You will (1) run basic adversarial tests on classifiers; (2) test LLM applications for direct and indirect prompt injection; (3) structure a test suite with expected results; and (4) record findings reproducibly.
@@ -1857,71 +1037,6 @@ Basic AI-security testing systematically varies attacker-controlled inputs, judg
 <a id="ch-15"></a>
 
 ## Chapter 15 — AI and machine-learning security: guided lab
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX043.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["15.1 Lab rules"]
-  N2["15.2 Evasion"]
-  N3["15.3 Poisoning and backdoors"]
-  N4["15.4 Membership inference"]
-  N5["15.5 Extraction"]
-  N6["15.5b Writing up a lab"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX043"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["15.1 Lab rules"]
-  N2["15.2 Evasion"]
-  N3["15.3 Poisoning and backdoors"]
-  N4["15.4 Membership inference"]
-  N5["15.5 Extraction"]
-  N6["15.5b Writing up a lab"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[15.1 Lab rules]
-    |
-    v
-[15.2 Evasion]
-    |
-    v
-[15.3 Poisoning and backdoors]
-    |
-    v
-[15.4 Membership inference]
-    |
-    v
-[15.5 Extraction]
-    |
-    v
-[15.5b Writing up a lab]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Learning outcomes
 
@@ -2136,66 +1251,6 @@ Contained labs make abstract attacks measurable and each points to a practical c
 
 ## Chapter 16 — AI and machine-learning security: methods II
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["16.1 Retrieval tests"]
-  N2["16.2 Excessive agency"]
-  N3["16.3 Disclosure and system prompt leakage"]
-  N4["16.4 Resource tests"]
-  N5["16.4b Grading automatically"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["16.1 Retrieval tests"]
-  N2["16.2 Excessive agency"]
-  N3["16.3 Disclosure and system prompt leakage"]
-  N4["16.4 Resource tests"]
-  N5["16.4b Grading automatically"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[16.1 Retrieval tests]
-    |
-    v
-[16.2 Excessive agency]
-    |
-    v
-[16.3 Disclosure and system prompt leakage]
-    |
-    v
-[16.4 Resource tests]
-    |
-    v
-[16.4b Grading automatically]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Learning outcomes
 
 You will (1) test retrieval systems for access-control and poisoning weaknesses; (2) test agents for excessive agency; (3) test for sensitive-information disclosure and system-prompt leakage; and (4) test resource limits.
@@ -2250,61 +1305,6 @@ Methods II extend testing to retrieval, agency, disclosure and consumption — e
 
 ## Chapter 17 — AI and machine-learning security: tooling
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX049.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["17.1 Evaluation harness"]
-  N2["17.2 Tracing"]
-  N3["17.3 Scanners"]
-  N4["17.4 Choosing tools"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX049"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["17.1 Evaluation harness"]
-  N2["17.2 Tracing"]
-  N3["17.3 Scanners"]
-  N4["17.4 Choosing tools"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[17.1 Evaluation harness]
-    |
-    v
-[17.2 Tracing]
-    |
-    v
-[17.3 Scanners]
-    |
-    v
-[17.4 Choosing tools]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Learning outcomes
 
 You will (1) build a small evaluation harness; (2) use logging and tracing tools for AI requests; (3) integrate scanners for dependencies and model files; and (4) choose tools critically.
@@ -2354,66 +1354,6 @@ Tooling makes AI-security work repeatable: automated harnesses, traces, scanners
 <a id="ch-18"></a>
 
 ## Chapter 18 — AI and machine-learning security: controls
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["18.1 Policy service"]
-  N2["18.2 Input controls"]
-  N3["18.3 Output controls"]
-  N4["18.4 Human confirmation"]
-  N5["18.5 Verifying controls"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX052"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["18.1 Policy service"]
-  N2["18.2 Input controls"]
-  N3["18.3 Output controls"]
-  N4["18.4 Human confirmation"]
-  N5["18.5 Verifying controls"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX052"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[18.1 Policy service]
-    |
-    v
-[18.2 Input controls]
-    |
-    v
-[18.3 Output controls]
-    |
-    v
-[18.4 Human confirmation]
-    |
-    v
-[18.5 Verifying controls]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Learning outcomes
 
@@ -2468,66 +1408,6 @@ Controls that matter are code outside the model — policy services, validators,
 <a id="ch-19"></a>
 
 ## Chapter 19 — AI and machine-learning security: monitoring
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["19.1 Signals"]
-  N2["19.2 Anomaly detection"]
-  N3["19.3 Alert volume"]
-  N4["19.4 Runbooks"]
-  N5["19.4b Reviewing monitoring"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["19.1 Signals"]
-  N2["19.2 Anomaly detection"]
-  N3["19.3 Alert volume"]
-  N4["19.4 Runbooks"]
-  N5["19.4b Reviewing monitoring"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[19.1 Signals]
-    |
-    v
-[19.2 Anomaly detection]
-    |
-    v
-[19.3 Alert volume]
-    |
-    v
-[19.4 Runbooks]
-    |
-    v
-[19.4b Reviewing monitoring]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Learning outcomes
 
@@ -2624,66 +1504,6 @@ Monitoring watches AI-specific signals, uses robust statistics, respects base ra
 
 ## Chapter 20 — AI and machine-learning security: troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["20.1 A method"]
-  N2["20.2 Distinguishing causes"]
-  N3["20.3 Safe reproduction"]
-  N4["20.4 Fix and prevent"]
-  N5["20.4b Communicating during troubleshooting"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX058"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["20.1 A method"]
-  N2["20.2 Distinguishing causes"]
-  N3["20.3 Safe reproduction"]
-  N4["20.4 Fix and prevent"]
-  N5["20.4b Communicating during troubleshooting"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX058"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[20.1 A method]
-    |
-    v
-[20.2 Distinguishing causes]
-    |
-    v
-[20.3 Safe reproduction]
-    |
-    v
-[20.4 Fix and prevent]
-    |
-    v
-[20.4b Communicating during troubleshooting]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Learning outcomes
 
 You will (1) troubleshoot AI-system failures systematically; (2) distinguish model, data, configuration and attack causes; (3) reproduce issues safely; and (4) fix and prevent recurrence.
@@ -2737,66 +1557,6 @@ Troubleshooting AI systems separates model, data, configuration and attack cause
 <a id="ch-21"></a>
 
 ## Chapter 21 — AI and machine-learning security: service integration
-
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Lesson map
-
-Lesson 21 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["21.1 Platform integration"]
-  N2["21.2 Vendor APIs"]
-  N3["21.3 Multi-service and multi-agent"]
-  N4["21.4 Integration contracts"]
-  N5["21.4b Testing integrations"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX061"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["21.1 Platform integration"]
-  N2["21.2 Vendor APIs"]
-  N3["21.3 Multi-service and multi-agent"]
-  N4["21.4 Integration contracts"]
-  N5["21.4b Testing integrations"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[21.1 Platform integration]
-    |
-    v
-[21.2 Vendor APIs]
-    |
-    v
-[21.3 Multi-service and multi-agent]
-    |
-    v
-[21.4 Integration contracts]
-    |
-    v
-[21.4b Testing integrations]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
 
 ### Learning outcomes
 
@@ -2852,61 +1612,6 @@ Integrate AI services into standard platforms, treat every cross-service message
 
 ## Chapter 22 — AI and machine-learning security: automation
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Lesson map
-
-Lesson 22 published. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["22.1 Pipeline checks"]
-  N2["22.2 Release gates"]
-  N3["22.3 Automated containment"]
-  N4["22.4 Automation risks"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX064"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["22.1 Pipeline checks"]
-  N2["22.2 Release gates"]
-  N3["22.3 Automated containment"]
-  N4["22.4 Automation risks"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[22.1 Pipeline checks]
-    |
-    v
-[22.2 Release gates]
-    |
-    v
-[22.3 Automated containment]
-    |
-    v
-[22.4 Automation risks]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Learning outcomes
 
 You will (1) automate security checks in the AI delivery pipeline; (2) gate releases on evaluation results; (3) automate containment actions safely; and (4) avoid automation that creates new risks.
@@ -2956,66 +1661,6 @@ Automation turns AI-security checks into release gates and quick, reversible con
 <a id="ch-23"></a>
 
 ## Chapter 23 — AI and machine-learning security: evaluation
-
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Lesson map
-
-Lesson 23 published. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["23.1 Planning"]
-  N2["23.2 Adaptive testing"]
-  N3["23.3 Reporting"]
-  N4["23.4 Residual risk"]
-  N5["23.4b Presenting to owners"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX067"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["23.1 Planning"]
-  N2["23.2 Adaptive testing"]
-  N3["23.3 Reporting"]
-  N4["23.4 Residual risk"]
-  N5["23.4b Presenting to owners"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[23.1 Planning]
-    |
-    v
-[23.2 Adaptive testing]
-    |
-    v
-[23.3 Reporting]
-    |
-    v
-[23.4 Residual risk]
-    |
-    v
-[23.4b Presenting to owners]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
 
 ### Learning outcomes
 
@@ -3070,71 +1715,6 @@ A full evaluation is planned from scenarios, includes adaptive testers, reports 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Applied research methods
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Lesson map
-
-Lesson 24 published. Map, example, EX070.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["24.1 Questions"]
-  N2["24.2 Design"]
-  N3["24.3 Pitfalls"]
-  N4["24.4 Write-up"]
-  N5["24.4b Ethics in applied studies"]
-  N6["24.7 Sharing results inside the company"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX070"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["24.1 Questions"]
-  N2["24.2 Design"]
-  N3["24.3 Pitfalls"]
-  N4["24.4 Write-up"]
-  N5["24.4b Ethics in applied studies"]
-  N6["24.7 Sharing results inside the company"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[24.1 Questions]
-    |
-    v
-[24.2 Design]
-    |
-    v
-[24.3 Pitfalls]
-    |
-    v
-[24.4 Write-up]
-    |
-    v
-[24.4b Ethics in applied studies]
-    |
-    v
-[24.7 Sharing results inside the company]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Learning outcomes
 
@@ -3235,61 +1815,6 @@ Applied research in practice means testable questions, pre-planned comparisons, 
 
 ## Chapter 25 — Team project studio
 
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Lesson map
-
-Lesson 25 published. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["25.1 The studio brief"]
-  N2["25.2 Roles"]
-  N3["25.3 Peer review"]
-  N4["25.4 Stakeholder presentation"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX073"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["25.1 The studio brief"]
-  N2["25.2 Roles"]
-  N3["25.3 Peer review"]
-  N4["25.4 Stakeholder presentation"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX073"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[25.1 The studio brief]
-    |
-    v
-[25.2 Roles]
-    |
-    v
-[25.3 Peer review]
-    |
-    v
-[25.4 Stakeholder presentation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
-
 ### Learning outcomes
 
 You will (1) work in a team to secure an AI feature end to end; (2) divide roles and coordinate work; (3) review each other's security work; and (4) present results to stakeholders.
@@ -3339,61 +1864,6 @@ Team studios teach security as a shared practice: rotating roles, independent te
 <a id="ch-26"></a>
 
 ## Chapter 26 — AI and machine-learning security: operational handoff
-
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Lesson map
-
-Lesson 26 published. Map, example, EX076.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["26.1 What operations needs"]
-  N2["26.2 AI incident runbooks"]
-  N3["26.3 Objectives"]
-  N4["26.4 Training"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX076"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["26.1 What operations needs"]
-  N2["26.2 AI incident runbooks"]
-  N3["26.3 Objectives"]
-  N4["26.4 Training"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX076"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[26.1 What operations needs]
-    |
-    v
-[26.2 AI incident runbooks]
-    |
-    v
-[26.3 Objectives]
-    |
-    v
-[26.4 Training]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
 
 ### Learning outcomes
 
@@ -3474,66 +1944,6 @@ Handoff is complete when operations can run, contain and roll back the AI system
 
 ## Chapter 27 — Deployment and validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Lesson map
-
-Lesson 27 published. Map, example, EX079.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["27.1 Staged rollout"]
-  N2["27.2 Validating in production"]
-  N3["27.3 Shadow mode"]
-  N4["27.4 Go or no-go"]
-  N5["27.7 Recording the go or no-go decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX079"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["27.1 Staged rollout"]
-  N2["27.2 Validating in production"]
-  N3["27.3 Shadow mode"]
-  N4["27.4 Go or no-go"]
-  N5["27.7 Recording the go or no-go decision"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX079"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[27.1 Staged rollout]
-    |
-    v
-[27.2 Validating in production]
-    |
-    v
-[27.3 Shadow mode]
-    |
-    v
-[27.4 Go or no-go]
-    |
-    v
-[27.7 Recording the go or no-go decision]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
-
 ### Learning outcomes
 
 You will (1) deploy AI changes safely with staged rollouts; (2) validate security controls in production without harming users; (3) use canaries and shadow modes; and (4) decide go or no-go.
@@ -3588,61 +1998,6 @@ Deploy AI changes gradually behind flags, validate controls safely in production
 
 ## Chapter 28 — Field practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Lesson map
-
-Lesson 28 published. Map, example, EX082.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["28.1 Placement scope"]
-  N2["28.2 Typical work"]
-  N3["28.3 Practice log"]
-  N4["28.4 Reflection"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX082"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["28.1 Placement scope"]
-  N2["28.2 Typical work"]
-  N3["28.3 Practice log"]
-  N4["28.4 Reflection"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[28.1 Placement scope]
-    |
-    v
-[28.2 Typical work]
-    |
-    v
-[28.3 Practice log]
-    |
-    v
-[28.4 Reflection]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Learning outcomes
 
 You will (1) apply AI-security skills during a supervised placement; (2) work within an organisation's policies and authorisation; (3) keep a practice log; and (4) reflect on gaps between course and practice.
@@ -3692,66 +2047,6 @@ Field practice applies course methods under real constraints, within authorisati
 <a id="ch-29"></a>
 
 ## Chapter 29 — Capstone build
-
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Lesson map
-
-Lesson 29 published. Map, example, EX085.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["29.1 Capstone brief"]
-  N2["29.2 Build order"]
-  N3["29.3 Scope and defects"]
-  N4["29.4 Evidence"]
-  N5["29.4b Supervisor check-ins"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX085"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["29.1 Capstone brief"]
-  N2["29.2 Build order"]
-  N3["29.3 Scope and defects"]
-  N4["29.4 Evidence"]
-  N5["29.4b Supervisor check-ins"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX085"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[29.1 Capstone brief]
-    |
-    v
-[29.2 Build order]
-    |
-    v
-[29.3 Scope and defects]
-    |
-    v
-[29.4 Evidence]
-    |
-    v
-[29.4b Supervisor check-ins]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
 
 ### Learning outcomes
 
@@ -3851,66 +2146,6 @@ A capstone build integrates controls, monitoring and evaluation from the first s
 <a id="ch-30"></a>
 
 ## Chapter 30 — Capstone assessment
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Lesson map
-
-Lesson 30 published. Map, example, EX088.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["30.1 Final evaluation"]
-  N2["30.2 Demonstration and defence"]
-  N3["30.3 Residual risk and recommendations"]
-  N4["30.4 Continuing development"]
-  N5["30.4b Assessment criteria"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX088"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["30.1 Final evaluation"]
-  N2["30.2 Demonstration and defence"]
-  N3["30.3 Residual risk and recommendations"]
-  N4["30.4 Continuing development"]
-  N5["30.4b Assessment criteria"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX088"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[30.1 Final evaluation]
-    |
-    v
-[30.2 Demonstration and defence]
-    |
-    v
-[30.3 Residual risk and recommendations]
-    |
-    v
-[30.4 Continuing development]
-    |
-    v
-[30.4b Assessment criteria]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Learning outcomes
 

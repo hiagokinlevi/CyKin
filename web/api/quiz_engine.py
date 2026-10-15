@@ -59,7 +59,13 @@ def validate_bank(raw: str, level: str, area: str, language: str, chapter: int) 
             raise InvalidBank("Question needs a worked explanation")
         if not isinstance(question.get("source"), str) or not question["source"].strip():
             raise InvalidBank("Question needs a source section")
-    return bank, hashlib.sha256(raw.encode("utf-8")).hexdigest()
+    # A change to a chapter's source pin or the JSON layout does not change the
+    # assessment the learner took. Only question content and chapter identity
+    # create a new bank version, so completed attempts survive editorial-only
+    # changes to the teaching source.
+    versioned = {key: bank[key] for key in ("version", "level", "area", "language", "chapter", "source_anchor", "questions")}
+    canonical = json.dumps(versioned, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return bank, hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def public_question(bank: dict[str, Any], index: int, deadline_ms: int, now_ms: int) -> dict[str, Any]:

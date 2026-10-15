@@ -38,71 +38,6 @@ NIST [SP 800-123](https://doi.org/10.6028/NIST.SP.800-123), [SP 800-40r4](https:
 
 ## Chapter 1 — Week 1: Know your devices and update them
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Start with a list"]
-  N3["1.3 The quick check"]
-  N4["Lab — Five-point quick check"]
-  N5["1.4 Reading the result"]
-  N6["1.5 Getting updates working"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Start with a list"]
-  N3["1.3 The quick check"]
-  N4["Lab — Five-point quick check"]
-  N5["1.4 Reading the result"]
-  N6["1.5 Getting updates working"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 Start with a list]
-    |
-    v
-[1.3 The quick check]
-    |
-    v
-[Lab — Five-point quick check]
-    |
-    v
-[1.4 Reading the result]
-    |
-    v
-[1.5 Getting updates working]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) list every device and who uses it; (2) run a five-point quick check; (3) get updates working everywhere.
@@ -198,66 +133,6 @@ In week one, Leah knows every device, has a clear picture of five basics, and ha
 
 ## Chapter 2 — Week 2: Accounts and safer settings
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Standard accounts"]
-  N2["2.2 Getting software without admin"]
-  N3["2.3 Passwords and MFA"]
-  N4["2.4 Key settings"]
-  N5["2.5 Front desk PC"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Standard accounts"]
-  N2["2.2 Getting software without admin"]
-  N3["2.3 Passwords and MFA"]
-  N4["2.4 Key settings"]
-  N5["2.5 Front desk PC"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Standard accounts]
-    |
-    v
-[2.2 Getting software without admin]
-    |
-    v
-[2.3 Passwords and MFA]
-    |
-    v
-[2.4 Key settings]
-    |
-    v
-[2.5 Front desk PC]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) move everyone to standard accounts; (2) secure email sign-in with MFA; (3) apply a few key settings.
@@ -330,66 +205,6 @@ By the end of week two, nobody works as an administrator, email is protected by 
 
 ## Chapter 3 — Week 3: Encryption and backups
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Why encryption"]
-  N2["3.2 Turning it on"]
-  N3["3.3 Checking it worked"]
-  N4["3.4 Backups"]
-  N5["3.5 Testing a restore"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Why encryption"]
-  N2["3.2 Turning it on"]
-  N3["3.3 Checking it worked"]
-  N4["3.4 Backups"]
-  N5["3.5 Testing a restore"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Why encryption]
-    |
-    v
-[3.2 Turning it on]
-    |
-    v
-[3.3 Checking it worked]
-    |
-    v
-[3.4 Backups]
-    |
-    v
-[3.5 Testing a restore]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) turn on and verify disk encryption; (2) store recovery keys safely; (3) check and test backups.
@@ -460,66 +275,6 @@ After week three, a stolen laptop would no longer expose client data, and files 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Week 4: Keep it going and respond calmly
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Re-running the check"]
-  N2["4.2 A monthly routine"]
-  N3["4.3 When something goes wrong"]
-  N4["4.4 Joiners and leavers"]
-  N5["4.5 What remains"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Re-running the check"]
-  N2["4.2 A monthly routine"]
-  N3["4.3 When something goes wrong"]
-  N4["4.4 Joiners and leavers"]
-  N5["4.5 What remains"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Re-running the check]
-    |
-    v
-[4.2 A monthly routine]
-    |
-    v
-[4.3 When something goes wrong]
-    |
-    v
-[4.4 Joiners and leavers]
-    |
-    v
-[4.5 What remains]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -592,36 +347,6 @@ In one month, Leah moved the food bank from not knowing to knowing, with simple 
 
 ## Chapter 5 — The quick-check print is one matrix
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  D["Twelve keys, five cells each"] --> S["Sum each column"]
-  D --> A["all of five ones"]
-  S --> P["10, 8, 8, 11, 9 out of 12"]
-  A --> C["3 of 12; worst FB07"]
-  P --> Q{"Is a column rate the all-five count?"}
-  C --> Q
-  Q -->|No| K["Keep the embedded print"]
-```
-
-One dictionary. Five predicates. Two different summaries.
-
-### Logical drawing
-
-```text
-updates<=14d   10/12
-encrypted       8/12
-standard user   8/12
-screen lock    11/12
-backup<=7d      9/12
-laptops passing all five: 3/12; worst: FB07
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -673,34 +398,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — A serial number does not read the disk
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  R["A row names a device"] --> Q{"Which question is asked?"}
-  Q -->|Which object was taken| S["Serial and usual place"]
-  Q -->|Can the volume be read| E["The encrypted cell"]
-  S --> N["The serial does not answer encryption"]
-  E --> N
-```
-
-CIS starts from an inventory. Encryption is a different cell.
-
-### Logical drawing
-
-```text
-spreadsheet columns
-    short name, user, model, serial, usual place
-quick-check cell
-    encrypted is 0 or 1
-stolen laptop
-    no dated encryption answer was on file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -747,33 +444,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — The update column stores a bit, not a day count
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N["Predicate name: updates within 14 days"] --> B["Cell value is 0 or 1"]
-  B --> Z["Zeros: FB03 and FB07"]
-  Z --> M["No overdue day-count is stored"]
-  F["Friday prose: twelve within 14 days"] --> R["Prose is not a new matrix"]
-  M --> R
-```
-
-The threshold is in the label. The cell does not store a number of days.
-
-### Logical drawing
-
-```text
-label    updates<=14d
-values   1 or 0 only
-zeros    FB03, FB07
-causes   one full disk, one paused update
-binding  the file does not say which laptop had which cause
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -822,35 +492,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — A standard account is a privilege boundary
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  U["Everyday account is administrator"] --> P["A process inherits that authority"]
-  P --> H["System-wide change becomes possible"]
-  H --> C["Separate admin account; everyday account becomes standard"]
-  C --> L["The embedded zeros are not rewritten"]
-```
-
-Least privilege is a boundary on authority. It is not a detector.
-
-### Logical drawing
-
-```text
-standard-user zeros
-    FB02, FB04, FB07, FB09
-admin secret
-    password manager; Leah and the deputy manager
-everyday use
-    standard
-script
-    still shows those four zeros
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -897,33 +538,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — A screen lock is not volume encryption
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  V["Volume locked or off"] --> E["Encryption is the control named for that state"]
-  S["Interactive session unlocked"] --> L["Screen lock is the control named for that state"]
-  E --> X["FB05 can pass encryption and fail the lock"]
-  L --> X
-```
-
-Two states of the same laptop. Two different bits.
-
-### Logical drawing
-
-```text
-screen-lock column
-    only FB05 is 0
-    FB05 encryption cell is 1
-later checklist
-    five minutes of inactivity
-    that number is not stored in the matrix
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -972,37 +586,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — A recent-backup bit is not a restore
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  B["backup cell is 1"] --> R["A recency claim about the last seven days"]
-  T["A restore test"] --> F["A deleted file, and an older version"]
-  R --> D{"Does the test flip a zero?"}
-  F --> D
-  D -->|No| K["Zeros stay FB03, FB07, FB10"]
-```
-
-Recency, a recycle-bin restore, and a previous version are three operations.
-
-### Logical drawing
-
-```text
-backup<=7d zeros
-    FB03, FB07, FB10
-narrative tests
-    one deleted test file from the recycle bin
-    one older version of a document
-retention stated
-    previous versions, 30 days
-not stated
-    a separate recycle-bin lifetime
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1049,36 +632,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — The TPM unseals a key. It is not a typed passphrase
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  M["Platform measurements still match"] --> U["TPM unseals the volume key"]
-  U --> N["No extra startup passphrase"]
-  C["Measurements change"] --> K["Recovery key is demanded"]
-  K --> B["Leah recorded no measurement values"]
-```
-
-Unseal on match. Recovery key on mismatch. No values were written down.
-
-### Logical drawing
-
-```text
-recorded
-    TPM used so users do not type an extra startup password
-    one older laptop had the TPM off in firmware
-    it was enabled with that volunteer's agreement
-not recorded
-    which FB key that laptop was
-    any platform-configuration value
-    any firmware version
-    any recovery prompt that actually occurred
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1127,39 +680,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — Two key copies are not two file copies
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  K["Recovery key"] --> C["Cloud account"]
-  K --> S["Printed copy in the office safe"]
-  F["Documents"] --> V["Cloud file service, with versions"]
-  C --> X{"Does a key copy restore a file?"}
-  V --> X
-  X -->|No| D["Keep the two stores distinct"]
-```
-
-The key unwraps a volume. The file service returns a document.
-
-### Logical drawing
-
-```text
-key custody
-    cloud account
-    paper in the office safe
-    not on the laptop
-file recovery
-    recycle bin and previous versions
-people named for admin passwords
-    Leah and the deputy manager
-people named for the safe
-    nobody
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1206,35 +726,6 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — Three of twelve counts conjunctions
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  C["46 ones inside 60 cells"] --> R["A cell rate"]
-  U["Nine laptops with at least one zero"] --> W["A row rate"]
-  R --> N{"Are 46/60 and 3/12 the same claim?"}
-  W --> N
-  N -->|No| K["Report the reduction you computed"]
-```
-
-Cell totals and row totals answer different questions. Their failure sets overlap.
-
-### Logical drawing
-
-```text
-pass all five          FB01, FB08, FB12
-update zeros           FB03, FB07
-encryption zeros       FB02, FB06, FB07, FB11
-standard-user zeros    FB02, FB04, FB07, FB09
-lock zeros             FB05
-backup zeros           FB03, FB07, FB10
-union of those zeros   nine keys, not fourteen
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 ### Learning outcomes
 
@@ -1283,35 +774,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — Twelve of twelve is a later reading
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  M["Same five yes-or-no questions"] --> C["Before and after may be compared"]
-  N["A sixth question"] --> X["A different instrument"]
-  C --> K["Narrative: 12 of 12"]
-  K --> S["Embedded print stays 3 of 12"]
-  X --> S
-```
-
-Comparability requires the same predicates. It does not rewrite the first run.
-
-### Logical drawing
-
-```text
-first embedded run
-    3 of 12, worst FB07
-later prose
-    12 of 12 on the same five questions
-    date mentioned, not printed
-    cost: Leah's time only
-    one-page trustee summary, not pasted
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1358,36 +820,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — The front-desk PC is not a thirteenth row
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  L["Dictionary length 12"] --> P["Rates use denominator 12"]
-  F["Front-desk computer"] --> O["Described in prose, not keyed"]
-  M["Fourteen email accounts"] --> E["A mailbox count, not a laptop count"]
-  O --> R{"May these enter the denominator?"}
-  E --> R
-  R -->|No| K["Keep 12"]
-```
-
-Three populations. One of them is the matrix.
-
-### Logical drawing
-
-```text
-in the script
-    FB01 through FB12
-in the prose, not in the script
-    front-desk computer
-    cupboard laptop, wiped
-counted and not listed
-    fourteen email accounts
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Learning outcomes
 
@@ -1436,38 +868,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — Email MFA is not a laptop column
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  L["Laptop sign-in"] --> A["Standard or administrator token"]
-  E["Cloud email"] --> M["Password plus authenticator"]
-  M --> C["Backup codes in the safe"]
-  A --> X{"Is MFA a sixth cell in the matrix?"}
-  C --> X
-  X -->|No| K["The script has five cells"]
-```
-
-A second factor on a cloud account is a different authenticator from the laptop token.
-
-### Logical drawing
-
-```text
-matrix columns
-    five, and none of them is MFA
-email
-    fourteen accounts
-    authenticator on volunteers' phones
-    backup codes in the office safe
-    two people helped in person
-phones
-    not laptop rows, and not counted
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1514,38 +914,6 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Tamper protection is not measured boot
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  C["Printed checklist, applied by hand"] --> F["Four settings"]
-  F --> T["Tamper protection: Defender's settings stay on"]
-  T --> N["Not a TPM quote"]
-  N --> S["Not a STIG score"]
-  N --> B["Not a CIS Benchmark score"]
-```
-
-One product switch. A local baseline. No scanned deviation report.
-
-### Logical drawing
-
-```text
-four settings
-    Windows Firewall on
-    screen lock after five minutes
-    built-in guest account off
-    Microsoft Defender tamper protection on
-not recorded
-    a firewall rule
-    a network profile
-    a Secure Boot state
-    a STIG or benchmark score
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 ### Learning outcomes
 
@@ -1594,44 +962,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Disabling an account does not sanitize a disk
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  L["A leaver"] --> A["Disable the account the same day"]
-  L --> R["The laptop is returned, when it is returned"]
-  A --> N["Authentication stops"]
-  R --> P["Custody of the hardware changes"]
-  N --> X{"Did disable wipe the disk?"}
-  P --> X
-  X -->|No| K["Encryption remains its own control"]
-```
-
-Account state, physical custody, and media sanitization are three actions.
-
-### Logical drawing
-
-```text
-leaver
-    account disabled the same day
-    laptop returned
-    row noted in the spreadsheet
-    no name and no date printed
-joiner
-    standard account, MFA in person, two-minute saving talk
-    not the admin account
-cupboard machine
-    wiped and recycled
-    not the leaver procedure
-missed leaver
-    the monthly account comparison can catch one within a month
-    no missed leaver is actually named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1679,36 +1009,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — End of servicing is not today's pass
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  T["Today's later reading: 12 of 12"] --> N["A predicate can still pass today"]
-  E["Vendor servicing ends later"] --> F["updates<=14d fails on every later month"]
-  F --> B["Replacement is a trustee decision"]
-  M["A management service"] --> U["Not deployed; fleet is still twelve"]
-```
-
-A future failure of the update predicate is not a failure of today's conjunction.
-
-### Logical drawing
-
-```text
-FB07 at the first run
-    four zeros and a lock bit of 1
-remaining items
-    replace the oldest laptop
-    consider a free management service if the fleet grows past twelve
-not printed
-    an end-of-servicing date
-    a Windows version
-    a product name for the service
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1755,34 +1055,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the food-bank note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> Q{"Does the sentence replace the matrix, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the food bank's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    the five printed rates
-    3 of 12 and worst FB07
-    the later 12 of 12, labelled as prose
-must not be added
-    a rewritten matrix, a day count, a recovery key
-    a STIG score, a policy file, a firmware version
-    a claim the food bank is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

@@ -5,7 +5,7 @@
   "language": "en",
   "chapter": 4,
   "source_anchor": "ch-04",
-  "source_sha256": "b1927add2c78abb3c98e0046293af29353ff4496f41dde3058660b16075063b4",
+  "source_sha256": "e2c16b0cf1ea6f736c81a69bec4c9237faa5c9a13558defe9d296da5cff00888",
   "questions": [
     {"id":"Q01","prompt":"At the Round B tabletop checkpoint, which case material may the learner use for the triage decision?","options":[{"id":"a","text":"R1–R16, with later Round C and D cards still withheld"},{"id":"b","text":"R1–R24 plus the Branch S report"},{"id":"c","text":"P1/C1 and V1, because they describe later booking state"},{"id":"d","text":"The final model answer regardless of its release time"}],"correct":"a","explanation":"Round B releases R9–R16 in addition to Round A's R1–R8. R17–R24 and the separate recovery cards are later injects and cannot support the frozen Round B decision.","source":"Chapter 4, Lesson 16, §4.2, A–D release ledger"},
     {"id":"Q02","prompt":"A facilitator explores Branch P after students have completed Branch S. How should the alternative be handled?","options":[{"id":"a","text":"Merge Branch S revocation with Branch P's two pending queue requests"},{"id":"b","text":"Reset to the frozen Round C facts and label Branch P as a separate replay"},{"id":"c","text":"Treat Branch P as proof that Branch S failed"},{"id":"d","text":"Use whichever branch has the higher classroom score as canonical fact"}],"correct":"b","explanation":"The branches are distinct counterfactual continuations from the same Round C point. Combining their actions and queue facts fabricates a case state that neither branch supplies.","source":"Chapter 4, Lesson 16, §§4.2–4.3, branch discipline"},

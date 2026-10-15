@@ -38,61 +38,6 @@ NIST [SP 800-41r1](https://doi.org/10.6028/NIST.SP.800-41r1), [SP 800-77r1](http
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The setting"]
-  N2["1.2 Clients, servers and services"]
-  N3["1.3 Mapping Castleford's services"]
-  N4["1.4 Where network security applies"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The setting"]
-  N2["1.2 Clients, servers and services"]
-  N3["1.3 Mapping Castleford's services"]
-  N4["1.4 Where network security applies"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The setting]
-    |
-    v
-[1.2 Clients, servers and services]
-    |
-    v
-[1.3 Mapping Castleford's services]
-    |
-    v
-[1.4 Where network security applies]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe clients, servers and cloud services; (2) map an organisation's services; (3) identify where network security applies.
@@ -141,61 +86,6 @@ Mapping services and paths shows where network security controls are needed.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and protocols
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX005.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Addresses and subnets"]
-  N2["2.2 Routing and gateways"]
-  N3["2.3 Key protocols"]
-  N4["2.4 Reading diagrams"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX005"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Addresses and subnets"]
-  N2["2.2 Routing and gateways"]
-  N3["2.3 Key protocols"]
-  N4["2.4 Reading diagrams"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX005"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Addresses and subnets]
-    |
-    v
-[2.2 Routing and gateways]
-    |
-    v
-[2.3 Key protocols]
-    |
-    v
-[2.4 Reading diagrams]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -246,61 +136,6 @@ Subnets, gateways and protocols determine what traffic controls can see and filt
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX009.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Hardening hosts"]
-  N2["3.2 Accounts and least privilege"]
-  N3["3.3 Administrator access"]
-  N4["3.4 Multi-factor authentication"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX009"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Hardening hosts"]
-  N2["3.2 Accounts and least privilege"]
-  N3["3.3 Administrator access"]
-  N4["3.4 Multi-factor authentication"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX009"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Hardening hosts]
-    |
-    v
-[3.2 Accounts and least privilege]
-    |
-    v
-[3.3 Administrator access]
-    |
-    v
-[3.4 Multi-factor authentication]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) harden hosts; (2) manage accounts and administrator access; (3) use multi-factor authentication.
@@ -349,61 +184,6 @@ Hardened hosts, least privilege, named administrator accounts and multi-factor a
 <a id="ch-04"></a>
 
 ## Chapter 4 — Scripting and data formats
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX013.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why scripts help"]
-  N2["4.2 CSV and JSON"]
-  N3["4.3 Processing logs safely"]
-  N4["4.4 Making output useful"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX013"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why scripts help"]
-  N2["4.2 CSV and JSON"]
-  N3["4.3 Processing logs safely"]
-  N4["4.4 Making output useful"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why scripts help]
-    |
-    v
-[4.2 CSV and JSON]
-    |
-    v
-[4.3 Processing logs safely]
-    |
-    v
-[4.4 Making output useful]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -454,61 +234,6 @@ Simple, safe scripts reading standard formats make routine checks reliable.
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX017.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Scope of the work"]
-  N2["5.2 Authorised activity"]
-  N3["5.3 Gathering evidence"]
-  N4["5.4 Evidence and privacy"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX017"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Scope of the work"]
-  N2["5.2 Authorised activity"]
-  N3["5.3 Gathering evidence"]
-  N4["5.4 Evidence and privacy"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX017"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Scope of the work]
-    |
-    v
-[5.2 Authorised activity]
-    |
-    v
-[5.3 Gathering evidence]
-    |
-    v
-[5.4 Evidence and privacy]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) define the scope of technical security work; (2) gather evidence; (3) work within authorisation.
@@ -558,61 +283,6 @@ Clear scope, authorised activity and careful evidence handling are the foundatio
 
 ## Chapter 6 — Network and communications security: system model
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Zones"]
-  N2["6.2 Needed flows"]
-  N3["6.3 Excess access"]
-  N4["6.4 Using the model"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Zones"]
-  N2["6.2 Needed flows"]
-  N3["6.3 Excess access"]
-  N4["6.4 Using the model"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Zones]
-    |
-    v
-[6.2 Needed flows]
-    |
-    v
-[6.3 Excess access]
-    |
-    v
-[6.4 Using the model]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) model Castleford's network as zones and flows; (2) identify needed flows; (3) spot excess access.
@@ -661,66 +331,6 @@ A zone-and-flow model makes excess access visible and guides safe change.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Network and communications security: data and telemetry
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX025.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 What telemetry tells us"]
-  N2["7.2 Central collection"]
-  N3["Lab — VPN login failures"]
-  N4["7.3 Reading the result"]
-  N5["7.4 Thresholds and context"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX025"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 What telemetry tells us"]
-  N2["7.2 Central collection"]
-  N3["Lab — VPN login failures"]
-  N4["7.3 Reading the result"]
-  N5["7.4 Thresholds and context"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 What telemetry tells us]
-    |
-    v
-[7.2 Central collection]
-    |
-    v
-[Lab — VPN login failures]
-    |
-    v
-[7.3 Reading the result]
-    |
-    v
-[7.4 Thresholds and context]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -798,61 +408,6 @@ Central telemetry and simple analyses reveal account guessing and other problems
 
 ## Chapter 8 — Network and communications security: failure modes
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX029.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 How controls fail"]
-  N2["8.2 Expiry failures"]
-  N3["8.3 Silent failures"]
-  N4["8.4 Workarounds"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX029"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 How controls fail"]
-  N2["8.2 Expiry failures"]
-  N3["8.3 Silent failures"]
-  N4["8.4 Workarounds"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX029"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 How controls fail]
-    |
-    v
-[8.2 Expiry failures]
-    |
-    v
-[8.3 Silent failures]
-    |
-    v
-[8.4 Workarounds]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) identify how network controls fail; (2) plan safe failure; (3) prevent workarounds.
@@ -902,61 +457,6 @@ Planning for expiry, silent failure and workarounds keeps controls effective ove
 
 ## Chapter 9 — Network and communications security: tools and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Tools for a small organisation"]
-  N2["9.2 A repeatable method"]
-  N3["9.3 Reference standards"]
-  N4["9.4 Documenting results"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Tools for a small organisation"]
-  N2["9.2 A repeatable method"]
-  N3["9.3 Reference standards"]
-  N4["9.4 Documenting results"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Tools for a small organisation]
-    |
-    v
-[9.2 A repeatable method]
-    |
-    v
-[9.3 Reference standards]
-    |
-    v
-[9.4 Documenting results]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) choose suitable tools; (2) follow a repeatable method; (3) document results.
@@ -1005,66 +505,6 @@ Existing tools, a repeatable method, reference standards and good records suppor
 <a id="ch-10"></a>
 
 ## Chapter 10 — Network and communications security: control configuration
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX037.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Inbound and internal rules"]
-  N2["10.2 Why restrict outbound traffic"]
-  N3["Lab — Egress rules"]
-  N4["10.3 Reading the result"]
-  N5["10.4 Applying changes carefully"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX037"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Inbound and internal rules"]
-  N2["10.2 Why restrict outbound traffic"]
-  N3["Lab — Egress rules"]
-  N4["10.3 Reading the result"]
-  N5["10.4 Applying changes carefully"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Inbound and internal rules]
-    |
-    v
-[10.2 Why restrict outbound traffic]
-    |
-    v
-[Lab — Egress rules]
-    |
-    v
-[10.3 Reading the result]
-    |
-    v
-[10.4 Applying changes carefully]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Learning outcomes
 
@@ -1145,61 +585,6 @@ Default-deny rules for internal and outbound traffic, applied carefully, limit w
 
 ## Chapter 11 — Network and communications security: verification
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Verifying against intent"]
-  N2["11.2 VPN settings"]
-  N3["11.3 TLS on services"]
-  N4["11.4 Independent check"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Verifying against intent"]
-  N2["11.2 VPN settings"]
-  N3["11.3 TLS on services"]
-  N4["11.4 Independent check"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Verifying against intent]
-    |
-    v
-[11.2 VPN settings]
-    |
-    v
-[11.3 TLS on services]
-    |
-    v
-[11.4 Independent check]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) verify configurations against standards; (2) check TLS and VPN settings; (3) confirm rules match intent.
@@ -1248,66 +633,6 @@ Rule-by-rule comparison, standards checks and independent review confirm control
 <a id="ch-12"></a>
 
 ## Chapter 12 — Contained laboratory I
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 The contained lab"]
-  N2["12.2 Certificates in the lab"]
-  N3["Lab — Certificate expiry"]
-  N4["12.3 Reading the expiry list"]
-  N5["12.4 Lab discipline"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 The contained lab"]
-  N2["12.2 Certificates in the lab"]
-  N3["Lab — Certificate expiry"]
-  N4["12.3 Reading the expiry list"]
-  N5["12.4 Lab discipline"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 The contained lab]
-    |
-    v
-[12.2 Certificates in the lab]
-    |
-    v
-[Lab — Certificate expiry]
-    |
-    v
-[12.3 Reading the expiry list]
-    |
-    v
-[12.4 Lab discipline]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 
@@ -1383,61 +708,6 @@ A contained lab makes failures safe to observe and turns them into practical run
 
 ## Chapter 13 — Network and communications security: troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX049.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["13.1 Start with a precise problem"]
-  N2["13.2 Use the logs"]
-  N3["13.3 Layer by layer"]
-  N4["13.4 Fix narrowly and record"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX049"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["13.1 Start with a precise problem"]
-  N2["13.2 Use the logs"]
-  N3["13.3 Layer by layer"]
-  N4["13.4 Fix narrowly and record"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[13.1 Start with a precise problem]
-    |
-    v
-[13.2 Use the logs]
-    |
-    v
-[13.3 Layer by layer]
-    |
-    v
-[13.4 Fix narrowly and record]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Learning outcomes
 
 You will (1) troubleshoot connectivity methodically; (2) use logs; (3) fix narrowly.
@@ -1486,61 +756,6 @@ Precise questions, logs and layer-by-layer checks lead to narrow, recorded fixes
 <a id="ch-14"></a>
 
 ## Chapter 14 — Network and communications security: automation
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["14.1 Choosing what to automate"]
-  N2["14.2 Building safely"]
-  N3["14.3 Reviewing output"]
-  N4["14.4 Keeping automation healthy"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["14.1 Choosing what to automate"]
-  N2["14.2 Building safely"]
-  N3["14.3 Reviewing output"]
-  N4["14.4 Keeping automation healthy"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[14.1 Choosing what to automate]
-    |
-    v
-[14.2 Building safely]
-    |
-    v
-[14.3 Reviewing output]
-    |
-    v
-[14.4 Keeping automation healthy]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Learning outcomes
 
@@ -1591,61 +806,6 @@ Carefully built, read-only automation with short reports saves time and catches 
 
 ## Chapter 15 — Network and communications security: integration and dependencies
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["15.1 Cloud services"]
-  N2["15.2 Supplier access"]
-  N3["15.3 Dependency list"]
-  N4["15.4 Changing suppliers"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["15.1 Cloud services"]
-  N2["15.2 Supplier access"]
-  N3["15.3 Dependency list"]
-  N4["15.4 Changing suppliers"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[15.1 Cloud services]
-    |
-    v
-[15.2 Supplier access]
-    |
-    v
-[15.3 Dependency list]
-    |
-    v
-[15.4 Changing suppliers]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Learning outcomes
 
 You will (1) integrate cloud and supplier services; (2) manage dependencies; (3) plan for supplier change.
@@ -1695,61 +855,6 @@ Managing cloud, supplier and dependency risks keeps integrated services secure a
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["16.1 Purpose of documentation"]
-  N2["16.2 Writing procedures"]
-  N3["16.3 Safety in procedures"]
-  N4["16.4 Keeping documents current"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX061"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["16.1 Purpose of documentation"]
-  N2["16.2 Writing procedures"]
-  N3["16.3 Safety in procedures"]
-  N4["16.4 Keeping documents current"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX061"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[16.1 Purpose of documentation]
-    |
-    v
-[16.2 Writing procedures]
-    |
-    v
-[16.3 Safety in procedures]
-    |
-    v
-[16.4 Keeping documents current]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Learning outcomes
 
 You will (1) write clear technical documents; (2) include safety and rollback; (3) keep documents current.
@@ -1798,66 +903,6 @@ Clear, safe, current documentation preserves knowledge and protects services.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Contained laboratory II
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["17.1 Why test restores"]
-  N2["17.2 Verifying integrity"]
-  N3["Lab — Backup verification"]
-  N4["17.3 Reading the verification"]
-  N5["17.4 Timing recovery"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX065"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["17.1 Why test restores"]
-  N2["17.2 Verifying integrity"]
-  N3["Lab — Backup verification"]
-  N4["17.3 Reading the verification"]
-  N5["17.4 Timing recovery"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX065"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[17.1 Why test restores]
-    |
-    v
-[17.2 Verifying integrity]
-    |
-    v
-[Lab — Backup verification]
-    |
-    v
-[17.3 Reading the verification]
-    |
-    v
-[17.4 Timing recovery]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Learning outcomes
 
@@ -1935,61 +980,6 @@ Verified backups and practised restores turn recovery from hope into a tested pr
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical project
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["18.1 Project scope"]
-  N2["18.2 Doing the work"]
-  N3["18.3 Verifying outcomes"]
-  N4["18.4 Presenting and reflecting"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX069"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["18.1 Project scope"]
-  N2["18.2 Doing the work"]
-  N3["18.3 Verifying outcomes"]
-  N4["18.4 Presenting and reflecting"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX069"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[18.1 Project scope]
-    |
-    v
-[18.2 Doing the work]
-    |
-    v
-[18.3 Verifying outcomes]
-    |
-    v
-[18.4 Presenting and reflecting]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Learning outcomes
 

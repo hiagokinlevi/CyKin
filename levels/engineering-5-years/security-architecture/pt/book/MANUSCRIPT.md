@@ -37,56 +37,6 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 ## Capítulo 1 — Cálculo I
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O caso e por que cálculo"]
-  N1["1.2 Crescimento exponencial dos logs"]
-  N2["Laboratório — Crescimento dos logs e orçamento de ar"]
-  N3["1.3 Quando estimativas lineares falham"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O caso e por que cálculo"]
-  N1["1.2 Crescimento exponencial dos logs"]
-  N2["Laboratório — Crescimento dos logs e orçamento de ar"]
-  N3["1.3 Quando estimativas lineares falham"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[1.1 O caso e por que cálculo]
-    |
-    v
-[1.2 Crescimento exponencial dos logs]
-    |
-    v
-[Laboratório — Crescimento dos logs e orçamento de ar]
-    |
-    v
-[1.3 Quando estimativas lineares falham]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) usar taxas de variação para raciocinar sobre cargas de segurança em crescimento; (2) modelar o crescimento exponencial do volume de logs; (3) reconhecer quando uma estimativa linear falha.
@@ -158,56 +108,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["2.1 Acesso como relação"]
-  N1["2.2 Fecho transitivo"]
-  N2["Laboratório — Direitos indiretos via fecho transitiv"]
-  N3["2.3 Segregação de funções como conjuntos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX004"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Acesso como relação"]
-  N1["2.2 Fecho transitivo"]
-  N2["Laboratório — Direitos indiretos via fecho transitiv"]
-  N3["2.3 Segregação de funções como conjuntos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
-```
-
-```text
-[2.1 Acesso como relação]
-    |
-    v
-[2.2 Fecho transitivo]
-    |
-    v
-[Laboratório — Direitos indiretos via fecho transitiv]
-    |
-    v
-[2.3 Segregação de funções como conjuntos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -289,46 +189,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Física para computação
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["3.1 Informação é física"]
-  N1["3.2 Energia, tempo e emissões"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Informação é física"]
-  N1["3.2 Energia, tempo e emissões"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX007"]
-```
-
-```text
-[3.1 Informação é física]
-    |
-    v
-[3.2 Energia, tempo e emissões]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) relacionar fenômenos físicos a riscos de segurança do hardware; (2) explicar por que emanações e consumo de energia podem vazar informação; (3) ligar limites físicos a escolhas de arquitetura.
@@ -378,46 +238,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["4.1 Programas que verificam a entrada"]
-  N1["4.3 A biblioteca padrão primeiro"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX010"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Programas que verificam a entrada"]
-  N1["4.3 A biblioteca padrão primeiro"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX010"]
-```
-
-```text
-[4.1 Programas que verificam a entrada]
-    |
-    v
-[4.3 A biblioteca padrão primeiro]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -469,51 +289,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["5.1 Registros de decisão"]
-  N1["5.2 Diagramas revisáveis"]
-  N2["5.3 Explicar tradeoffs"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Registros de decisão"]
-  N1["5.2 Diagramas revisáveis"]
-  N2["5.3 Explicar tradeoffs"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX013"]
-```
-
-```text
-[5.1 Registros de decisão]
-    |
-    v
-[5.2 Diagramas revisáveis]
-    |
-    v
-[5.3 Explicar tradeoffs]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever registros de decisão de arquitetura; (2) desenhar diagramas que outras pessoas possam revisar; (3) explicar tradeoffs de segurança a não especialistas.
@@ -563,56 +338,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["6.1 Acumular taxas"]
-  N1["6.2 Janelas de exposição"]
-  N2["Laboratório — Exposição sob dois intervalos de atual"]
-  N3["6.3 Séries e pequenos riscos repetidos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Acumular taxas"]
-  N1["6.2 Janelas de exposição"]
-  N2["Laboratório — Exposição sob dois intervalos de atual"]
-  N3["6.3 Séries e pequenos riscos repetidos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[6.1 Acumular taxas]
-    |
-    v
-[6.2 Janelas de exposição]
-    |
-    v
-[Laboratório — Exposição sob dois intervalos de atual]
-    |
-    v
-[6.3 Séries e pequenos riscos repetidos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -689,56 +414,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["7.1 Probabilidade condicional"]
-  N1["7.2 O problema da taxa-base"]
-  N2["Laboratório — Taxas-base e precisão dos alertas"]
-  N3["7.3 Resumir bem os dados"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Probabilidade condicional"]
-  N1["7.2 O problema da taxa-base"]
-  N2["Laboratório — Taxas-base e precisão dos alertas"]
-  N3["7.3 Resumir bem os dados"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX019"]
-```
-
-```text
-[7.1 Probabilidade condicional]
-    |
-    v
-[7.2 O problema da taxa-base]
-    |
-    v
-[Laboratório — Taxas-base e precisão dos alertas]
-    |
-    v
-[7.3 Resumir bem os dados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar a probabilidade condicional a alertas de segurança; (2) explicar o problema da taxa-base na detecção; (3) resumir dados de segurança com estatísticas adequadas.
@@ -808,51 +483,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["8.1 Camadas de um computador"]
-  N1["8.2 Privilégio e proteção de memória"]
-  N2["8.3 Raízes de confiança e secure boot"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX022"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Camadas de um computador"]
-  N1["8.2 Privilégio e proteção de memória"]
-  N2["8.3 Raízes de confiança e secure boot"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX022"]
-```
-
-```text
-[8.1 Camadas de um computador]
-    |
-    v
-[8.2 Privilégio e proteção de memória]
-    |
-    v
-[8.3 Raízes de confiança e secure boot]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever as camadas de CPU, memória e armazenamento relevantes para a segurança; (2) explicar anéis de privilégio e proteção de memória; (3) explicar raízes de confiança em hardware e o secure boot.
@@ -902,51 +532,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["9.1 Módulos e interfaces"]
-  N1["9.2 Testes negativos"]
-  N2["9.3 Dependências"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Módulos e interfaces"]
-  N1["9.2 Testes negativos"]
-  N2["9.3 Dependências"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX025"]
-```
-
-```text
-[9.1 Módulos e interfaces]
-    |
-    v
-[9.2 Testes negativos]
-    |
-    v
-[9.3 Dependências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -998,51 +583,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["10.1 Deveres de um engenheiro"]
-  N1["10.2 Segurança física em sistemas de transporte"]
-  N2["10.3 Prazo versus segurança"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX028"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Deveres de um engenheiro"]
-  N1["10.2 Segurança física em sistemas de transporte"]
-  N2["10.3 Prazo versus segurança"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX028"]
-```
-
-```text
-[10.1 Deveres de um engenheiro]
-    |
-    v
-[10.2 Segurança física em sistemas de transporte]
-    |
-    v
-[10.3 Prazo versus segurança]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar códigos de ética da engenharia a decisões de segurança; (2) reconhecer as dimensões de segurança pública dos sistemas de transporte; (3) lidar com conflitos entre prazos e segurança.
@@ -1092,51 +632,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["11.1 Mapear zonas"]
-  N1["11.2 O que os protocolos protegem"]
-  N2["11.3 Fraquezas das redes planas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Mapear zonas"]
-  N1["11.2 O que os protocolos protegem"]
-  N2["11.3 Fraquezas das redes planas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
-```
-
-```text
-[11.1 Mapear zonas]
-    |
-    v
-[11.2 O que os protocolos protegem]
-    |
-    v
-[11.3 Fraquezas das redes planas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1188,51 +683,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["12.1 Isolamento e permissões"]
-  N1["12.2 Hardening da baseline"]
-  N2["12.3 Logging para detecção"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX034"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Isolamento e permissões"]
-  N1["12.2 Hardening da baseline"]
-  N2["12.3 Logging para detecção"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX034"]
-```
-
-```text
-[12.1 Isolamento e permissões]
-    |
-    v
-[12.2 Hardening da baseline]
-    |
-    v
-[12.3 Logging para detecção]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar o isolamento de processos, usuários e permissões; (2) fazer o hardening de uma baseline de servidor; (3) relacionar o logging do sistema operacional à detecção no nível da arquitetura.
@@ -1282,56 +732,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["13.1 Classificar dados"]
-  N1["13.2 Consultas parametrizadas"]
-  N2["Laboratório — Consulta concatenada versus parametriz"]
-  N3["13.3 Retenção e minimização"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 Classificar dados"]
-  N1["13.2 Consultas parametrizadas"]
-  N2["Laboratório — Consulta concatenada versus parametriz"]
-  N3["13.3 Retenção e minimização"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
-```
-
-```text
-[13.1 Classificar dados]
-    |
-    v
-[13.2 Consultas parametrizadas]
-    |
-    v
-[Laboratório — Consulta concatenada versus parametriz]
-    |
-    v
-[13.3 Retenção e minimização]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1407,51 +807,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["14.1 Segurança no ciclo de vida"]
-  N1["14.2 Revisão de projeto leve"]
-  N2["14.3 Revisões e automação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX040"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Segurança no ciclo de vida"]
-  N1["14.2 Revisão de projeto leve"]
-  N2["14.3 Revisões e automação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX040"]
-```
-
-```text
-[14.1 Segurança no ciclo de vida]
-    |
-    v
-[14.2 Revisão de projeto leve]
-    |
-    v
-[14.3 Revisões e automação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar atividades de segurança a um ciclo de vida de desenvolvimento; (2) conduzir uma revisão de projeto leve; (3) usar com eficácia a revisão de código e as verificações automatizadas.
@@ -1501,51 +856,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["15.1 Vocabulário essencial"]
-  N1["15.2 Princípios de projeto na prática"]
-  N2["15.3 Tipos de controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Vocabulário essencial"]
-  N1["15.2 Princípios de projeto na prática"]
-  N2["15.3 Tipos de controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX043"]
-```
-
-```text
-[15.1 Vocabulário essencial]
-    |
-    v
-[15.2 Princípios de projeto na prática]
-    |
-    v
-[15.3 Tipos de controles]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1597,51 +907,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["16.1 O ciclo de vida"]
-  N1["16.2 Engenharia de confiabilidade"]
-  N2["16.3 Rastreabilidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 O ciclo de vida"]
-  N1["16.2 Engenharia de confiabilidade"]
-  N2["16.3 Rastreabilidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
-```
-
-```text
-[16.1 O ciclo de vida]
-    |
-    v
-[16.2 Engenharia de confiabilidade]
-    |
-    v
-[16.3 Rastreabilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o ciclo de vida da engenharia de sistemas; (2) aplicar conceitos do NIST SP 800-160 Vol. 1 Rev. 1 a um sistema de transporte; (3) construir a rastreabilidade das necessidades até a verificação.
@@ -1691,56 +956,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["17.1 Realimentação na segurança"]
-  N1["17.2 Simular um rate limiter"]
-  N2["Laboratório — Ganhos do rate limiter adaptativo"]
-  N3["17.3 Atraso e oscilação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 Realimentação na segurança"]
-  N1["17.2 Simular um rate limiter"]
-  N2["Laboratório — Ganhos do rate limiter adaptativo"]
-  N3["17.3 Atraso e oscilação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
-```
-
-```text
-[17.1 Realimentação na segurança]
-    |
-    v
-[17.2 Simular um rate limiter]
-    |
-    v
-[Laboratório — Ganhos do rate limiter adaptativo]
-    |
-    v
-[17.3 Atraso e oscilação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1820,51 +1035,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["18.1 Frameworks de arquitetura"]
-  N1["18.2 Visão em camadas da Corvia"]
-  N2["18.3 Dos atributos aos controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX052"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Frameworks de arquitetura"]
-  N1["18.2 Visão em camadas da Corvia"]
-  N2["18.3 Dos atributos aos controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX052"]
-```
-
-```text
-[18.1 Frameworks de arquitetura]
-    |
-    v
-[18.2 Visão em camadas da Corvia]
-    |
-    v
-[18.3 Dos atributos aos controles]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever frameworks de arquitetura de segurança corporativa; (2) construir uma visão de arquitetura em camadas para a Corvia; (3) ligar atributos de negócio a controles técnicos.
@@ -1914,51 +1084,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["19.1 Três tipos de identidade"]
-  N1["19.2 Posicionar a criptografia"]
-  N2["19.3 Gestão de chaves como serviço"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 Três tipos de identidade"]
-  N1["19.2 Posicionar a criptografia"]
-  N2["19.3 Gestão de chaves como serviço"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX055"]
-```
-
-```text
-[19.1 Três tipos de identidade]
-    |
-    v
-[19.2 Posicionar a criptografia]
-    |
-    v
-[19.3 Gestão de chaves como serviço]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2010,51 +1135,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Arquitetura e engenharia de segurança: contexto de engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["20.1 Contexto regulatório e contratual"]
-  N1["20.2 Partes interessadas e restrições"]
-  N2["20.3 A declaração de contexto"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX058"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 Contexto regulatório e contratual"]
-  N1["20.2 Partes interessadas e restrições"]
-  N2["20.3 A declaração de contexto"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX058"]
-```
-
-```text
-[20.1 Contexto regulatório e contratual]
-    |
-    v
-[20.2 Partes interessadas e restrições]
-    |
-    v
-[20.3 A declaração de contexto]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o contexto regulatório, contratual e organizacional da arquitetura da Corvia; (2) identificar partes interessadas e restrições; (3) escrever uma declaração de contexto para um projeto.
@@ -2104,51 +1184,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Arquitetura e engenharia de segurança: requisitos
-
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["21.1 Requisitos verificáveis"]
-  N1["21.2 Casos de abuso"]
-  N2["21.3 Selecionar controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 Requisitos verificáveis"]
-  N1["21.2 Casos de abuso"]
-  N2["21.3 Selecionar controles"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
-```
-
-```text
-[21.1 Requisitos verificáveis]
-    |
-    v
-[21.2 Casos de abuso]
-    |
-    v
-[21.3 Selecionar controles]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2200,51 +1235,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 22 — Arquitetura e engenharia de segurança: modelos de sistema e de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["22.1 Modelo de componentes e interfaces"]
-  N1["22.2 Fronteiras e classificações"]
-  N2["22.3 Manter os modelos fiéis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX064"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 Modelo de componentes e interfaces"]
-  N1["22.2 Fronteiras e classificações"]
-  N2["22.3 Manter os modelos fiéis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX064"]
-```
-
-```text
-[22.1 Modelo de componentes e interfaces]
-    |
-    v
-[22.2 Fronteiras e classificações]
-    |
-    v
-[22.3 Manter os modelos fiéis]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar o back-office com componentes, interfaces e fluxos de dados; (2) marcar no modelo as fronteiras de confiança e as classificações dos dados; (3) manter os modelos coerentes com o sistema.
@@ -2294,56 +1284,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Arquitetura e engenharia de segurança: análise de ameaças e falhas
-
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["23.1 STRIDE sobre o modelo"]
-  N1["23.2 Árvore de falhas para a perda de receita"]
-  N2["Laboratório — Árvore de falhas para a receita não co"]
-  N3["23.3 Combinar as visões"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX067"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 STRIDE sobre o modelo"]
-  N1["23.2 Árvore de falhas para a perda de receita"]
-  N2["Laboratório — Árvore de falhas para a receita não co"]
-  N3["23.3 Combinar as visões"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX067"]
-```
-
-```text
-[23.1 STRIDE sobre o modelo]
-    |
-    v
-[23.2 Árvore de falhas para a perda de receita]
-    |
-    v
-[Laboratório — Árvore de falhas para a receita não co]
-    |
-    v
-[23.3 Combinar as visões]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2419,51 +1359,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 24 — Arquitetura e engenharia de segurança: métodos I
 
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["24.1 Qualitativo e quantitativo"]
-  N1["24.2 Conduzir uma avaliação"]
-  N2["24.3 Decisões de risco e responsáveis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX070"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.1 Qualitativo e quantitativo"]
-  N1["24.2 Conduzir uma avaliação"]
-  N2["24.3 Decisões de risco e responsáveis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX070"]
-```
-
-```text
-[24.1 Qualitativo e quantitativo]
-    |
-    v
-[24.2 Conduzir uma avaliação]
-    |
-    v
-[24.3 Decisões de risco e responsáveis]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar métodos de risco qualitativos e quantitativos; (2) conduzir uma avaliação de risco segundo o SP 800-30 Rev. 1; (3) documentar as decisões de risco com responsáveis.
@@ -2513,51 +1408,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
-
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["25.1 O briefing do ateliê"]
-  N1["25.2 Apresentar as escolhas"]
-  N2["25.3 Revisar a partir da crítica"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX073"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 O briefing do ateliê"]
-  N1["25.2 Apresentar as escolhas"]
-  N2["25.3 Revisar a partir da crítica"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX073"]
-```
-
-```text
-[25.1 O briefing do ateliê]
-    |
-    v
-[25.2 Apresentar as escolhas]
-    |
-    v
-[25.3 Revisar a partir da crítica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2609,51 +1459,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 26 — Arquitetura e engenharia de segurança: alternativas de arquitetura
 
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa da aula
-
-Aula 26 publicada. Mapa, exemplo, EX076.
-
-```mermaid
-flowchart TD
-  N0["26.1 Gerar alternativas"]
-  N1["26.2 Avaliação ponderada"]
-  N2["26.3 Documentar a escolha"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX076"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["26.1 Gerar alternativas"]
-  N1["26.2 Avaliação ponderada"]
-  N2["26.3 Documentar a escolha"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX076"]
-```
-
-```text
-[26.1 Gerar alternativas]
-    |
-    v
-[26.2 Avaliação ponderada]
-    |
-    v
-[26.3 Documentar a escolha]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) gerar alternativas de arquitetura para o back-office; (2) avaliá-las contra critérios ponderados; (3) documentar por que a opção escolhida venceu.
@@ -2703,51 +1508,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Arquitetura e engenharia de segurança: projeto de controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa da aula
-
-Aula 27 publicada. Mapa, exemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["27.1 Projetar a partir dos requisitos"]
-  N1["27.2 Defesa em profundidade com propósito"]
-  N2["27.3 Especificações precisas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX079"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["27.1 Projetar a partir dos requisitos"]
-  N1["27.2 Defesa em profundidade com propósito"]
-  N2["27.3 Especificações precisas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX079"]
-```
-
-```text
-[27.1 Projetar a partir dos requisitos]
-    |
-    v
-[27.2 Defesa em profundidade com propósito]
-    |
-    v
-[27.3 Especificações precisas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2799,51 +1559,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 28 — Arquitetura e engenharia de segurança: implementação I
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa da aula
-
-Aula 28 publicada. Mapa, exemplo, EX082.
-
-```mermaid
-flowchart TD
-  N0["28.1 Da arquitetura às tarefas"]
-  N1["28.2 Configuração e segredos"]
-  N2["28.3 Manter o alinhamento"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX082"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["28.1 Da arquitetura às tarefas"]
-  N1["28.2 Configuração e segredos"]
-  N2["28.3 Manter o alinhamento"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX082"]
-```
-
-```text
-[28.1 Da arquitetura às tarefas]
-    |
-    v
-[28.2 Configuração e segredos]
-    |
-    v
-[28.3 Manter o alinhamento]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) traduzir a arquitetura em tarefas de implementação; (2) aplicar configuração segura e tratamento de segredos; (3) manter a implementação alinhada à arquitetura.
@@ -2893,51 +1608,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Arquitetura e engenharia de segurança: medição
-
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa da aula
-
-Aula 29 publicada. Mapa, exemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["29.2 Calcular as métricas"]
-  N1["Laboratório — Tempestividade da revogação e cobertur"]
-  N2["29.3 Métricas que enganam"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX085"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["29.2 Calcular as métricas"]
-  N1["Laboratório — Tempestividade da revogação e cobertur"]
-  N2["29.3 Métricas que enganam"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX085"]
-```
-
-```text
-[29.2 Calcular as métricas]
-    |
-    v
-[Laboratório — Tempestividade da revogação e cobertur]
-    |
-    v
-[29.3 Métricas que enganam]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3012,56 +1682,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa da aula
-
-Aula 30 publicada. Mapa, exemplo, EX088.
-
-```mermaid
-flowchart TD
-  N0["30.1 Propósito da verificação"]
-  N1["30.2 Testes de autenticidade e de replay"]
-  N2["Laboratório — Verificação de autenticidade e de repl"]
-  N3["30.3 Registrar as evidências"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX088"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["30.1 Propósito da verificação"]
-  N1["30.2 Testes de autenticidade e de replay"]
-  N2["Laboratório — Verificação de autenticidade e de repl"]
-  N3["30.3 Registrar as evidências"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX088"]
-```
-
-```text
-[30.1 Propósito da verificação]
-    |
-    v
-[30.2 Testes de autenticidade e de replay]
-    |
-    v
-[Laboratório — Verificação de autenticidade e de repl]
-    |
-    v
-[30.3 Registrar as evidências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3145,51 +1765,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 31 — Arquitetura e engenharia de segurança: implementação II
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Mapa da aula
-
-Aula 31 publicada. Mapa, exemplo, EX091.
-
-```mermaid
-flowchart TD
-  N0["31.1 Automatizar os certificados de dispositivos"]
-  N1["31.2 Ligação com a gestão de ativos"]
-  N2["31.3 Exceções legadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX091"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["31.1 Automatizar os certificados de dispositivos"]
-  N1["31.2 Ligação com a gestão de ativos"]
-  N2["31.3 Exceções legadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX091"]
-```
-
-```text
-[31.1 Automatizar os certificados de dispositivos]
-    |
-    v
-[31.2 Ligação com a gestão de ativos]
-    |
-    v
-[31.3 Exceções legadas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX091]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar a automação do ciclo de vida dos certificados de dispositivos; (2) integrar a revogação à gestão de ativos; (3) lidar com componentes legados que não conseguem atender ao projeto-alvo.
@@ -3239,56 +1814,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Arquitetura e engenharia de segurança: confiabilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Mapa da aula
-
-Aula 32 publicada. Mapa, exemplo, EX094.
-
-```mermaid
-flowchart TD
-  N0["32.1 Série e paralelo"]
-  N1["Laboratório — Disponibilidade em série e em paralelo"]
-  N2["32.2 Redundância para serviços de segurança"]
-  N3["32.3 Quando a segurança prejudica a confiabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX094"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["32.1 Série e paralelo"]
-  N1["Laboratório — Disponibilidade em série e em paralelo"]
-  N2["32.2 Redundância para serviços de segurança"]
-  N3["32.3 Quando a segurança prejudica a confiabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX094"]
-```
-
-```text
-[32.1 Série e paralelo]
-    |
-    v
-[Laboratório — Disponibilidade em série e em paralelo]
-    |
-    v
-[32.2 Redundância para serviços de segurança]
-    |
-    v
-[32.3 Quando a segurança prejudica a confiabilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX094]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3363,46 +1888,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 33 — Arquitetura e engenharia de segurança: segurança e resiliência
 
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Mapa da aula
-
-Aula 33 publicada. Mapa, exemplo, EX097.
-
-```mermaid
-flowchart TD
-  N0["33.2 Técnicas de resiliência"]
-  N1["33.3 Degradação controlada"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX097"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["33.2 Técnicas de resiliência"]
-  N1["33.3 Degradação controlada"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX097"]
-```
-
-```text
-[33.2 Técnicas de resiliência]
-    |
-    v
-[33.3 Degradação controlada]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX097]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir os objetivos de segurança da informação, segurança física e resiliência; (2) aplicar técnicas de resiliência das orientações de engenharia de sistemas; (3) projetar a degradação controlada sob ataque.
@@ -3452,51 +1937,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Arquitetura e engenharia de segurança: integração
-
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Mapa da aula
-
-Aula 34 publicada. Mapa, exemplo, EX100.
-
-```mermaid
-flowchart TD
-  N0["34.1 Integrações com parceiros"]
-  N1["34.2 Projeto de APIs para parceiros"]
-  N2["34.3 Responsabilidade compartilhada"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX100"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["34.1 Integrações com parceiros"]
-  N1["34.2 Projeto de APIs para parceiros"]
-  N2["34.3 Responsabilidade compartilhada"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX100"]
-```
-
-```text
-[34.1 Integrações com parceiros]
-    |
-    v
-[34.2 Projeto de APIs para parceiros]
-    |
-    v
-[34.3 Responsabilidade compartilhada]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX100]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3548,51 +1988,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Mapa da aula
-
-Aula 35 publicada. Mapa, exemplo, EX103.
-
-```mermaid
-flowchart TD
-  N0["35.1 O briefing"]
-  N1["35.2 Conciliar conflitos"]
-  N2["35.3 O pacote de projeto"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX103"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["35.1 O briefing"]
-  N1["35.2 Conciliar conflitos"]
-  N2["35.3 O pacote de projeto"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX103"]
-```
-
-```text
-[35.1 O briefing]
-    |
-    v
-[35.2 Conciliar conflitos]
-    |
-    v
-[35.3 O pacote de projeto]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX103]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) liderar um projeto multidisciplinar de um sistema maior; (2) conciliar requisitos conflitantes das partes interessadas; (3) produzir um pacote de projeto adequado para revisão independente.
@@ -3642,56 +2037,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Arquitetura e engenharia de segurança: desempenho e escala
-
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Mapa da aula
-
-Aula 36 publicada. Mapa, exemplo, EX106.
-
-```mermaid
-flowchart TD
-  N0["36.1 O custo dos controles"]
-  N1["36.2 Dimensionar o token bucket"]
-  N2["Laboratório — Tratamento de rajadas com token bucket"]
-  N3["36.3 Projetar para escala"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX106"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["36.1 O custo dos controles"]
-  N1["36.2 Dimensionar o token bucket"]
-  N2["Laboratório — Tratamento de rajadas com token bucket"]
-  N3["36.3 Projetar para escala"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX106"]
-```
-
-```text
-[36.1 O custo dos controles]
-    |
-    v
-[36.2 Dimensionar o token bucket]
-    |
-    v
-[Laboratório — Tratamento de rajadas com token bucket]
-    |
-    v
-[36.3 Projetar para escala]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX106]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3765,51 +2110,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 37 — Arquitetura e engenharia de segurança: operações
 
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Mapa da aula
-
-Aula 37 publicada. Mapa, exemplo, EX109.
-
-```mermaid
-flowchart TD
-  N0["37.1 Operações desde o projeto"]
-  N1["37.2 Detecção a partir das ameaças"]
-  N2["37.3 Patches e mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX109"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["37.1 Operações desde o projeto"]
-  N1["37.2 Detecção a partir das ameaças"]
-  N2["37.3 Patches e mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX109"]
-```
-
-```text
-[37.1 Operações desde o projeto]
-    |
-    v
-[37.2 Detecção a partir das ameaças]
-    |
-    v
-[37.3 Patches e mudanças]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX109]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar as operações de segurança para a nova arquitetura; (2) definir casos de uso de detecção a partir do modelo de ameaças; (3) planejar a aplicação de patches e a gestão de mudanças preservando as propriedades de segurança.
@@ -3859,51 +2159,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Arquitetura e engenharia de segurança: validação
-
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Mapa da aula
-
-Aula 38 publicada. Mapa, exemplo, EX112.
-
-```mermaid
-flowchart TD
-  N0["38.1 Construir o sistema certo"]
-  N1["38.2 Achados do red team"]
-  N2["38.3 Estudos com usuários"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX112"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["38.1 Construir o sistema certo"]
-  N1["38.2 Achados do red team"]
-  N2["38.3 Estudos com usuários"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX112"]
-```
-
-```text
-[38.1 Construir o sistema certo]
-    |
-    v
-[38.2 Achados do red team]
-    |
-    v
-[38.3 Estudos com usuários]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX112]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3955,51 +2210,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 39 — Arquitetura e engenharia de segurança: manutenibilidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Mapa da aula
-
-Aula 39 publicada. Mapa, exemplo, EX115.
-
-```mermaid
-flowchart TD
-  N0["39.1 Sistemas de vida longa"]
-  N1["39.2 Agilidade criptográfica"]
-  N2["39.3 Dívida técnica de segurança"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX115"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["39.1 Sistemas de vida longa"]
-  N1["39.2 Agilidade criptográfica"]
-  N2["39.3 Dívida técnica de segurança"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX115"]
-```
-
-```text
-[39.1 Sistemas de vida longa]
-    |
-    v
-[39.2 Agilidade criptográfica]
-    |
-    v
-[39.3 Dívida técnica de segurança]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX115]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar uma segurança manutenível ao longo de uma vida longa; (2) planejar a agilidade criptográfica e a substituição de componentes; (3) gerenciar a dívida técnica nos controles de segurança.
@@ -4049,56 +2259,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
-
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Mapa da aula
-
-Aula 40 publicada. Mapa, exemplo, EX118.
-
-```mermaid
-flowchart TD
-  N0["40.1 A matriz de fluxos como especificação"]
-  N1["40.2 Comparação automatizada"]
-  N2["Laboratório — Regras de firewall contra a matriz de"]
-  N3["40.3 Relatar desvios"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX118"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["40.1 A matriz de fluxos como especificação"]
-  N1["40.2 Comparação automatizada"]
-  N2["Laboratório — Regras de firewall contra a matriz de"]
-  N3["40.3 Relatar desvios"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX118"]
-```
-
-```text
-[40.1 A matriz de fluxos como especificação]
-    |
-    v
-[40.2 Comparação automatizada]
-    |
-    v
-[Laboratório — Regras de firewall contra a matriz de]
-    |
-    v
-[40.3 Relatar desvios]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX118]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4170,51 +2330,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Arquitetura e engenharia de segurança: otimização do sistema
-
-<!-- open-cyber-academy:lesson-figures:start ch-41 -->
-### Mapa da aula
-
-Aula 41 publicada. Mapa, exemplo, EX121.
-
-```mermaid
-flowchart TD
-  N0["41.1 Escolher sob restrições"]
-  N1["41.2 Guloso versus exaustivo"]
-  N2["Laboratório — Seleção de controles gulosa e exaustiv"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX121"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["41.1 Escolher sob restrições"]
-  N1["41.2 Guloso versus exaustivo"]
-  N2["Laboratório — Seleção de controles gulosa e exaustiv"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX121"]
-```
-
-```text
-[41.1 Escolher sob restrições]
-    |
-    v
-[41.2 Guloso versus exaustivo]
-    |
-    v
-[Laboratório — Seleção de controles gulosa e exaustiv]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX121]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-41 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4290,46 +2405,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 42 — Arquitetura e engenharia de segurança: pesquisa aplicada
 
-<!-- open-cyber-academy:lesson-figures:start ch-42 -->
-### Mapa da aula
-
-Aula 42 publicada. Mapa, exemplo, EX124.
-
-```mermaid
-flowchart TD
-  N0["42.1 Uma pergunta vinda da prática"]
-  N1["42.2 Uso responsável dos dados"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX124"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["42.1 Uma pergunta vinda da prática"]
-  N1["42.2 Uso responsável dos dados"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX124"]
-```
-
-```text
-[42.1 Uma pergunta vinda da prática]
-    |
-    v
-[42.2 Uso responsável dos dados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX124]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-42 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta de pesquisa aplicada a partir da prática de engenharia; (2) desenhar um pequeno estudo usando dados da Corvia com responsabilidade; (3) relatar os achados com seus limites.
@@ -4379,51 +2454,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
-
-<!-- open-cyber-academy:lesson-figures:start ch-43 -->
-### Mapa da aula
-
-Aula 43 publicada. Mapa, exemplo, EX127.
-
-```mermaid
-flowchart TD
-  N0["43.1 Entrar na equipe"]
-  N1["43.2 Pressão e pragmatismo"]
-  N2["43.3 Estudo versus prática"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX127"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["43.1 Entrar na equipe"]
-  N1["43.2 Pressão e pragmatismo"]
-  N2["43.3 Estudo versus prática"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX127"]
-```
-
-```text
-[43.1 Entrar na equipe]
-    |
-    v
-[43.2 Pressão e pragmatismo]
-    |
-    v
-[43.3 Estudo versus prática]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX127]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-43 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4475,46 +2505,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- open-cyber-academy:lesson-figures:start ch-44 -->
-### Mapa da aula
-
-Aula 44 publicada. Mapa, exemplo, EX130.
-
-```mermaid
-flowchart TD
-  N0["44.1 Escolher o problema"]
-  N1["44.2 Planejar as evidências"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX130"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["44.1 Escolher o problema"]
-  N1["44.2 Planejar as evidências"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX130"]
-```
-
-```text
-[44.1 Escolher o problema]
-    |
-    v
-[44.2 Planejar as evidências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX130]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-44 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir um problema de arquitetura para o projeto final, com escopo e critérios de sucesso; (2) planejar as evidências do projeto final; (3) obter o acordo do supervisor e da parceira.
@@ -4564,51 +2554,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
-
-<!-- open-cyber-academy:lesson-figures:start ch-45 -->
-### Mapa da aula
-
-Aula 45 publicada. Mapa, exemplo, EX133.
-
-```mermaid
-flowchart TD
-  N0["45.1 Preparar-se para a revisão"]
-  N1["45.2 Responder aos achados"]
-  N2["45.3 Revisar os outros"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX133"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["45.1 Preparar-se para a revisão"]
-  N1["45.2 Responder aos achados"]
-  N2["45.3 Revisar os outros"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX133"]
-```
-
-```text
-[45.1 Preparar-se para a revisão]
-    |
-    v
-[45.2 Responder aos achados]
-    |
-    v
-[45.3 Revisar os outros]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX133]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-45 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4660,51 +2605,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- open-cyber-academy:lesson-figures:start ch-46 -->
-### Mapa da aula
-
-Aula 46 publicada. Mapa, exemplo, EX136.
-
-```mermaid
-flowchart TD
-  N0["46.1 Implementação no espelho"]
-  N1["46.2 O assurance case"]
-  N2["46.3 Mudanças de escopo tardias"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX136"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["46.1 Implementação no espelho"]
-  N1["46.2 O assurance case"]
-  N2["46.3 Mudanças de escopo tardias"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX136"]
-```
-
-```text
-[46.1 Implementação no espelho]
-    |
-    v
-[46.2 O assurance case]
-    |
-    v
-[46.3 Mudanças de escopo tardias]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX136]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-46 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar e verificar a fatia do projeto final num espelho de laboratório; (2) construir um assurance case que ligue afirmações a evidências; (3) gerenciar mudanças de escopo no fim de um projeto.
@@ -4754,56 +2654,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
-
-<!-- open-cyber-academy:lesson-figures:start ch-47 -->
-### Mapa da aula
-
-Aula 47 publicada. Mapa, exemplo, EX139.
-
-```mermaid
-flowchart TD
-  N0["47.1 Planejar o ensaio"]
-  N1["47.2 Executar e medir"]
-  N2["Laboratório — Tempos do ensaio de recuperação"]
-  N3["47.3 Melhorar o procedimento"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX139"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["47.1 Planejar o ensaio"]
-  N1["47.2 Executar e medir"]
-  N2["Laboratório — Tempos do ensaio de recuperação"]
-  N3["47.3 Melhorar o procedimento"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX139"]
-```
-
-```text
-[47.1 Planejar o ensaio]
-    |
-    v
-[47.2 Executar e medir]
-    |
-    v
-[Laboratório — Tempos do ensaio de recuperação]
-    |
-    v
-[47.3 Melhorar o procedimento]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX139]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-47 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4880,56 +2730,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- open-cyber-academy:lesson-figures:start ch-48 -->
-### Mapa da aula
-
-Aula 48 publicada. Mapa, exemplo, EX142.
-
-```mermaid
-flowchart TD
-  N0["48.1 Compilar o dossiê"]
-  N1["48.2 Integridade das evidências"]
-  N2["Laboratório — Manifesto do dossiê"]
-  N3["48.3 Mapear para normas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX142"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["48.1 Compilar o dossiê"]
-  N1["48.2 Integridade das evidências"]
-  N2["Laboratório — Manifesto do dossiê"]
-  N3["48.3 Mapear para normas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX142"]
-```
-
-```text
-[48.1 Compilar o dossiê]
-    |
-    v
-[48.2 Integridade das evidências]
-    |
-    v
-[Laboratório — Manifesto do dossiê]
-    |
-    v
-[48.3 Mapear para normas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX142]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-48 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) compilar um dossiê de evidências que sustente o assurance case; (2) proteger a integridade das evidências com manifestos; (3) mapear as evidências para normas, para públicos externos.
@@ -5002,51 +2802,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 49 — Tese de engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-49 -->
-### Mapa da aula
-
-Aula 49 publicada. Mapa, exemplo, EX145.
-
-```mermaid
-flowchart TD
-  N0["49.1 O argumento da tese"]
-  N1["49.2 Justificativa e resultados"]
-  N2["49.3 Limitações e reuso"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX145"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["49.1 O argumento da tese"]
-  N1["49.2 Justificativa e resultados"]
-  N2["49.3 Limitações e reuso"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX145"]
-```
-
-```text
-[49.1 O argumento da tese]
-    |
-    v
-[49.2 Justificativa e resultados]
-    |
-    v
-[49.3 Limitações e reuso]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX145]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-49 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma tese de engenharia que argumente a partir de evidências; (2) apresentar a justificativa do projeto, os resultados e as limitações; (3) contribuir com conhecimento reutilizável para a prática.
@@ -5096,51 +2851,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
-
-<!-- open-cyber-academy:lesson-figures:start ch-50 -->
-### Mapa da aula
-
-Aula 50 publicada. Mapa, exemplo, EX148.
-
-```mermaid
-flowchart TD
-  N0["50.1 Preparar a defesa"]
-  N1["50.2 Responder aos questionamentos"]
-  N2["50.3 Depois da defesa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX148"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["50.1 Preparar a defesa"]
-  N1["50.2 Responder aos questionamentos"]
-  N2["50.3 Depois da defesa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX148"]
-```
-
-```text
-[50.1 Preparar a defesa]
-    |
-    v
-[50.2 Responder aos questionamentos]
-    |
-    v
-[50.3 Depois da defesa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX148]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-50 -->
-
 
 ### Objetivos de aprendizagem
 

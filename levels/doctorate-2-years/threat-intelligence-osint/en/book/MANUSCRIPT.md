@@ -36,61 +36,6 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Why CTI research needs its own integrity rules"]
-  N2["1.2 Can versus may"]
-  N3["1.3 Pre-registration"]
-  N4["1.4 The ethics file"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Why CTI research needs its own integrity rules"]
-  N2["1.2 Can versus may"]
-  N3["1.3 Pre-registration"]
-  N4["1.4 The ethics file"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Why CTI research needs its own integrity rules]
-    |
-    v
-[1.2 Can versus may]
-    |
-    v
-[1.3 Pre-registration]
-    |
-    v
-[1.4 The ethics file]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) state the integrity obligations that apply to CTI and OSINT research; (2) separate data you may collect from data you merely can collect; (3) pre-register a question, a method and an analysis plan; (4) build an ethics file that a review board can approve.
@@ -149,61 +94,6 @@ Write the lawful basis, terms, minimisation and retention before collecting; res
 
 ## Chapter 2 — Threat intelligence and OSINT: research frontier
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Three models, three claims"]
-  N2["2.2 Open problems"]
-  N3["2.3 OSINT method frontier"]
-  N4["2.4 Writing the gap"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Three models, three claims"]
-  N2["2.2 Open problems"]
-  N3["2.3 OSINT method frontier"]
-  N4["2.4 Writing the gap"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Three models, three claims]
-    |
-    v
-[2.2 Open problems]
-    |
-    v
-[2.3 OSINT method frontier]
-    |
-    v
-[2.4 Writing the gap]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the main open problems in CTI method; (2) distinguish models (kill chain, Diamond, ATT&CK) by what they claim; (3) identify where evidence in the literature is thin; (4) write a gap statement that a reviewer cannot dismiss as a literature summary.
@@ -261,66 +151,6 @@ Know what each model claims, find gaps that are precise and decision-linked, and
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Falsifiable questions"]
-  N2["3.2 Constructs and measures"]
-  N3["3.3 Design that can fail"]
-  N4["3.4 Threats to validity"]
-  N5["3.5 Contribution claim"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Falsifiable questions"]
-  N2["3.2 Constructs and measures"]
-  N3["3.3 Design that can fail"]
-  N4["3.4 Threats to validity"]
-  N5["3.5 Contribution claim"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Falsifiable questions]
-    |
-    v
-[3.2 Constructs and measures]
-    |
-    v
-[3.3 Design that can fail]
-    |
-    v
-[3.4 Threats to validity]
-    |
-    v
-[3.5 Contribution claim]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -387,71 +217,6 @@ Risk refutation, define measures in a codebook, design blind coding, write valid
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX022.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["Lab 1 — overlap baseline"]
-  N3["4.2 Reading overlap"]
-  N4["Lab 2 — calibration pilot"]
-  N5["4.3 Reading the pilot"]
-  N6["4.4 Feasibility decision"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX022"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["Lab 1 — overlap baseline"]
-  N3["4.2 Reading overlap"]
-  N4["Lab 2 — calibration pilot"]
-  N5["4.3 Reading the pilot"]
-  N6["4.4 Feasibility decision"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why replicate first]
-    |
-    v
-[Lab 1 — overlap baseline]
-    |
-    v
-[4.2 Reading overlap]
-    |
-    v
-[Lab 2 — calibration pilot]
-    |
-    v
-[4.3 Reading the pilot]
-    |
-    v
-[4.4 Feasibility decision]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -560,71 +325,6 @@ Replicate the simple thing, verify code against hand calculation, treat pilot nu
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX029.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Double-coding"]
-  N2["Lab 3 — agreement"]
-  N3["5.2 Reading kappa"]
-  N4["5.3 Adjudication"]
-  N5["5.4 Independent validation"]
-  N6["5.5 Sharing results in standard form"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX029"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Double-coding"]
-  N2["Lab 3 — agreement"]
-  N3["5.2 Reading kappa"]
-  N4["5.3 Adjudication"]
-  N5["5.4 Independent validation"]
-  N6["5.5 Sharing results in standard form"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX029"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Double-coding]
-    |
-    v
-[Lab 3 — agreement]
-    |
-    v
-[5.2 Reading kappa]
-    |
-    v
-[5.3 Adjudication]
-    |
-    v
-[5.4 Independent validation]
-    |
-    v
-[5.5 Sharing results in standard form]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) organise blind double-coding of a corpus; (2) compute inter-rater agreement with Cohen's kappa; (3) adjudicate disagreements without contaminating the data; (4) arrange validation by a team that did not build the pipeline.
@@ -714,66 +414,6 @@ Code blind and twice, correct for chance, adjudicate transparently, validate ind
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Inviting the hardest reader"]
-  N2["6.2 ICD 203 as a lens"]
-  N3["6.3 Point-by-point responses"]
-  N4["6.4 Substantive versus cosmetic"]
-  N5["6.5 Alternative hypotheses"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Inviting the hardest reader"]
-  N2["6.2 ICD 203 as a lens"]
-  N3["6.3 Point-by-point responses"]
-  N4["6.4 Substantive versus cosmetic"]
-  N5["6.5 Alternative hypotheses"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Inviting the hardest reader]
-    |
-    v
-[6.2 ICD 203 as a lens]
-    |
-    v
-[6.3 Point-by-point responses]
-    |
-    v
-[6.4 Substantive versus cosmetic]
-    |
-    v
-[6.5 Alternative hypotheses]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) solicit adversarial critique of your own study; (2) apply ICD 203 tradecraft standards as a review lens; (3) respond to reviewers point by point; (4) distinguish revisions that change conclusions from those that improve presentation.
@@ -840,66 +480,6 @@ Invite hostile reading, hold yourself to ICD 203, answer every comment, promote 
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX043.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 One claim per chapter"]
-  N2["7.2 What the archive contains"]
-  N3["7.3 Environment"]
-  N4["7.4 Data-availability statement"]
-  N5["7.5 Machine-readable outputs"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX043"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 One claim per chapter"]
-  N2["7.2 What the archive contains"]
-  N3["7.3 Environment"]
-  N4["7.4 Data-availability statement"]
-  N5["7.5 Machine-readable outputs"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 One claim per chapter]
-    |
-    v
-[7.2 What the archive contains]
-    |
-    v
-[7.3 Environment]
-    |
-    v
-[7.4 Data-availability statement]
-    |
-    v
-[7.5 Machine-readable outputs]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) structure a thesis so each chapter carries one claim; (2) build a reproducibility archive that excludes restricted data lawfully; (3) document software environment and random seeds; (4) write a data-availability statement that is honest about restrictions.
@@ -963,66 +543,6 @@ One claim per chapter, an archive that rebuilds everything lawful, honest availa
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX050.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Defence posture"]
-  N2["8.2 Venues"]
-  N3["8.3 Vendor sensitivity"]
-  N4["8.4 TLP in outputs"]
-  N5["8.5 Follow-on work"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX050"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Defence posture"]
-  N2["8.2 Venues"]
-  N3["8.3 Vendor sensitivity"]
-  N4["8.4 TLP in outputs"]
-  N5["8.5 Follow-on work"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX050"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Defence posture]
-    |
-    v
-[8.2 Venues]
-    |
-    v
-[8.3 Vendor sensitivity]
-    |
-    v
-[8.4 TLP in outputs]
-    |
-    v
-[8.5 Follow-on work]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX050]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

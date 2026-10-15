@@ -39,71 +39,6 @@ ISO/IEC 27000:2026. Full list in [References](#references).
 
 ## Chapter 1 — A month to get the basics right
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The learner"]
-  N2["1.2 The practice"]
-  N3["1.3 What the clinic holds"]
-  N4["1.4 What cannot be lost"]
-  N5["1.5 Ground rules"]
-  N6["Concepts — three goals, one harm mark"]
-  N7["Data — where Hollybank's information sits"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The learner"]
-  N2["1.2 The practice"]
-  N3["1.3 What the clinic holds"]
-  N4["1.4 What cannot be lost"]
-  N5["1.5 Ground rules"]
-  N6["Concepts — three goals, one harm mark"]
-  N7["Data — where Hollybank's information sits"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The learner]
-    |
-    v
-[1.2 The practice]
-    |
-    v
-[1.3 What the clinic holds]
-    |
-    v
-[1.4 What cannot be lost]
-    |
-    v
-[1.5 Ground rules]
-    |
-    v
-[Concepts — three goals, one harm mark]
-    |
-    v
-[Data — where Hollybank's information sits]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe what the one-month rapid course covers; (2) meet the running case; (3) list what a small practice holds and what it cannot lose.
@@ -219,75 +154,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Accounts, devices and sharing
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Own accounts"]
-  N2["2.2 Second factor"]
-  N3["2.3 Devices"]
-  N4["Lab — Link-open files counted by folder"]
-  N5["2.4 Over-shared files"]
-  N6["2.5 Closing the gaps"]
-  N7["Concepts — identity, possession, and exposure"]
-  N8["Data — the synthetic share count, ranked by harm"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8
-  N8 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Own accounts"]
-  N2["2.2 Second factor"]
-  N3["2.3 Devices"]
-  N4["Lab — Link-open files counted by folder"]
-  N5["2.4 Over-shared files"]
-  N6["2.5 Closing the gaps"]
-  N7["Concepts — identity, possession, and exposure"]
-  N8["Data — the synthetic share count, ranked by harm"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Own accounts]
-    |
-    v
-[2.2 Second factor]
-    |
-    v
-[2.3 Devices]
-    |
-    v
-[Lab — Link-open files counted by folder]
-    |
-    v
-[2.4 Over-shared files]
-    |
-    v
-[2.5 Closing the gaps]
-    |
-    v
-[Concepts — identity, possession, and exposure]
-    |
-    v
-[Data — the synthetic share count, ranked by harm]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
 
 The arrows show a reading sequence, not a proof that a control succeeded. The maps cover the same nine section labels in both editions; the text drawing supplies the same sequence without requiring a rendered diagram.
 
@@ -444,71 +310,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Email, fraud and people
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Phishing signs"]
-  N2["3.2 Invoice fraud"]
-  N3["3.3 The rule in action"]
-  N4["3.4 Short training"]
-  N5["3.5 Reporting without blame"]
-  N6["Concepts — sign, channel, and report"]
-  N7["Data — one attempted payment and the training rhythm"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Phishing signs"]
-  N2["3.2 Invoice fraud"]
-  N3["3.3 The rule in action"]
-  N4["3.4 Short training"]
-  N5["3.5 Reporting without blame"]
-  N6["Concepts — sign, channel, and report"]
-  N7["Data — one attempted payment and the training rhythm"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Phishing signs]
-    |
-    v
-[3.2 Invoice fraud]
-    |
-    v
-[3.3 The rule in action]
-    |
-    v
-[3.4 Short training]
-    |
-    v
-[3.5 Reporting without blame]
-    |
-    v
-[Concepts — sign, channel, and report]
-    |
-    v
-[Data — one attempted payment and the training rhythm]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) recognise phishing and invoice fraud; (2) set a payment verification rule; (3) build a short, blame-free reporting habit.
@@ -620,71 +421,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Backups, incidents and the plan ahead
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Backups"]
-  N2["4.2 Testing a restore"]
-  N3["4.3 An incident card"]
-  N4["4.4 A practice drill"]
-  N5["4.5 The plan ahead"]
-  N6["Concepts — a copy, a test, a card, a drill"]
-  N7["Data — restore evidence and the Monday fallback"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Backups"]
-  N2["4.2 Testing a restore"]
-  N3["4.3 An incident card"]
-  N4["4.4 A practice drill"]
-  N5["4.5 The plan ahead"]
-  N6["Concepts — a copy, a test, a card, a drill"]
-  N7["Data — restore evidence and the Monday fallback"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Backups]
-    |
-    v
-[4.2 Testing a restore]
-    |
-    v
-[4.3 An incident card]
-    |
-    v
-[4.4 A practice drill]
-    |
-    v
-[4.5 The plan ahead]
-    |
-    v
-[Concepts — a copy, a test, a card, a drill]
-    |
-    v
-[Data — restore evidence and the Monday fallback]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -804,34 +540,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — A reminder is not a fresh list
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  R["A weekly reminder is written"] --> P{"Is a newer locked list in the office?"}
-  P -->|No| O["The three-week list is still the only paper"]
-  O --> U["Do not phone from it as if it were current"]
-  U --> H["Write the urgent call for confirmation when the system returns"]
-  P -->|Yes| C["Use that dated list for urgent calls only"]
-```
-
-A reminder is an intention. The locked page is the evidence.
-
-### Logical drawing
-
-```text
-drill finding: printed client list, three weeks old, new clients missing
-    Sofia writes a weekly reminder
-        |
-        +-- the reminder is not itself a print
-        +-- until a new list is printed and locked, the old list remains old
-        +-- absence from the old list is not "no record"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -876,36 +584,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — The outage paper is the record of those hours
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  D["The practice system returns"] --> S["Collect the paper written while it was down"]
-  S --> C{"Does a system note already describe the same visit?"}
-  C -->|No| E["Enter from the paper"]
-  C -->|Yes| M["Compare the two. Do not create a second visit"]
-  E --> L["Keep the paper in the change-log folder"]
-  M --> L
-```
-
-Memory is not a copy of the paper.
-
-### Logical drawing
-
-```text
-four hours, system treated as down
-    treatments written on paper
-    system returns
-        |
-        +-- entry source: that paper
-        +-- not a source: what a receptionist remembers
-        +-- if a note was saved before the outage, reconcile, do not double
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -952,36 +630,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The next share count is a new measurement
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  O["Published run: 47 of 300, seed 2"] --> K["Twelve client and finance files were closed afterward"]
-  K --> N{"Has a new export been run?"}
-  N -->|No| H["Do not print 47 minus 12 as this month's result"]
-  N -->|Yes| R["Record that run's own counts"]
-  H --> S["Leave the published output unchanged"]
-```
-
-Subtraction is not a rerun.
-
-### Logical drawing
-
-```text
-verified script, seed 2
-    all files: 47 of 300
-    client 8 of 140, finance 4 of 60  -> the twelve that were closed
-    monthly routine: rerun the check
-        |
-        +-- 47 - 12 = 35 only if the same 300 files are unchanged and nothing new was shared
-        +-- that assumption is not a measurement
-        +-- the script is not edited to force 35
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1026,35 +674,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — A locum account ends when the locum ends
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  L["The change log names the locum account to disable"] --> D{"Is the disable recorded?"}
-  D -->|No| F["The account is still a leaver finding"]
-  D -->|Yes| K["The monthly review can cite that log line"]
-  F --> M["A second factor does not replace the disable"]
-```
-
-The monthly review looks for the missing log line. It does not assume the account died on its own.
-
-### Logical drawing
-
-```text
-Monday locum
-    personal account created before the first patient
-    second factor turned on
-    log says which account to disable when the locum leaves
-        |
-        +-- "the week is over" is not a disable
-        +-- a security key left in a drawer is not a disable
-        +-- the review item "leavers' accounts" means check this line
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -1101,35 +720,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — One stopped fraud does not retire the rule
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  M["A new bank-detail message arrives"] --> P["Phone the number already held"]
-  P --> S["A second person approves only after that call"]
-  S --> N["Do not use the number printed in the message"]
-  N --> H["The earlier stopped attempt is not a waiver"]
-```
-
-Each request is a new use of the same rule.
-
-### Logical drawing
-
-```text
-rule, agreed with Dr. Moss
-    phone a number the clinic already held
-    a second person approves the change
-    one past attempt was stopped
-        |
-        +-- the next message is not covered by that success
-        +-- a familiar invoice layout does not skip the call
-        +-- the number inside the message is still the wrong telephone
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1174,34 +764,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — An undated page is not this week's list
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  D["A page of names is in the drawer"] --> Q{"Does the page show a print date, and does the log match it?"}
-  Q -->|No| R["It cannot be shown to be newer than the drill page"]
-  R --> W["Urgent calls do not use it as this week"]
-  Q -->|Yes| U["Urgent calls may use that dated page, names only"]
-```
-
-A stack of names without a date is not a newer extract.
-
-### Logical drawing
-
-```text
-reminder in the calendar
-three-week drill page still known
-someone adds another page, no date, no writer
-    |
-    +-- the new page is not identified as later
-    +-- urgent calling still waits
-    +-- a usable list would carry a print date and a log line
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1248,35 +810,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Next month's restore is a blank line
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  L["The log holds last week's failed restore and the later success"] --> M["The monthly routine asks for one restore test"]
-  M --> B{"Is there a line dated in the new month?"}
-  B -->|No| K["Last week's success does not fill the blank"]
-  B -->|Yes| C["Cite that line, including a failure"]
-```
-
-A passed test belongs to the week it was run.
-
-### Logical drawing
-
-```text
-course month
-    mailbox restore fails, then succeeds into a test area
-    both results are already logged
-last session sets the monthly routine
-    |
-    +-- the next month starts with an empty restore line
-    +-- the earlier success is not copied forward
-    +-- the live mailbox is not overwritten to manufacture a result
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1321,36 +854,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Three computers are not a patch census
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  T["Three computers had updates off"] --> F["A newer driver, then updates switched on"]
-  F --> S["The month note says updates are back on"]
-  S --> N{"Does the log list a patch check of all nine?"}
-  N -->|No| R["Do not write that all nine are fully patched"]
-  N -->|Yes| K["Cite that check, machine by machine"]
-```
-
-The repair covered the machines that had been switched off.
-
-### Logical drawing
-
-```text
-nine computers
-    three had updates off after a label-printer failure
-    driver replaced, those three switched on
-    six others were not in that note
-        |
-        +-- "updates back on" means those three
-        +-- it is not a patch-level reading of nine machines
-        +-- missing rows are not proof the six are exposed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1397,35 +900,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — An open session is still a shared login
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  N["A nurse is signed in"] --> H["A helper asks to use that screen"]
-  H --> A{"Would the helper's actions be recorded as the nurse?"}
-  A -->|Yes| F["Refuse the session"]
-  F --> P["A personal account waits for Dr. Moss's log line"]
-  A -->|No| O["Only if the helper has already signed in as themselves"]
-```
-
-The password on the note was removed. The live screen can recreate the same defect.
-
-### Logical drawing
-
-```text
-shared reception login: already refused
-nurse's own account: signed in at the desk
-Saturday helper, unnamed: "only to print the rota"
-    |
-    +-- the print would be attributed to the nurse
-    +-- stepping away does not lend the session
-    +-- a new account is not created in this lesson
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1470,36 +944,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — A new starter does not inherit a key
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX068.
-
-```mermaid
-flowchart TD
-  K["Two nurses received security keys"] --> W["They had declined work apps on personal phones"]
-  W --> R["A new receptionist asks for an app on their own phone"]
-  R --> M{"Has Dr. Moss written the method for this person?"}
-  M -->|No| H["Do not copy the nurses' keys and do not install the app"]
-  M -->|Yes| G["Use the method that line names"]
-```
-
-The keys answer two people's refusal. They are not a template.
-
-### Logical drawing
-
-```text
-second factor, clinic-wide
-    Dr. Moss and office team first
-    two nurses: keys, because they declined personal-phone apps
-new receptionist, method not yet written
-    |
-    +-- the nurses' reason is not this person's reason
-    +-- a third key is a new cost, not an automatic issue
-    +-- an app installed early is a setting change without agreement
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1546,35 +990,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Wipe is not the first move
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  T["A consult tablet is missing at closing"] --> C["Call Sofia, then Dr. Moss, then the technician"]
-  C --> N{"Are today's notes already in the practice system or on the day's paper?"}
-  N -->|Unknown| H["Do not wipe yet"]
-  N -->|Only on the tablet| D["Wiping would destroy the only copy. Dr. Moss decides after that fact is logged"]
-  N -->|Already copied| W["A wipe can then be considered and logged"]
-```
-
-Remote wipe deletes the device copy. It does not check whether that copy was the only one.
-
-### Logical drawing
-
-```text
-tablets: passcode and remote wipe, already configured
-incident card: lost tablet is an incident
-missing at closing is not yet a logged loss
-    |
-    +-- call order before any wipe command
-    +-- ask where today's notes live
-    +-- this lesson does not send a wipe
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1619,37 +1034,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — The log has two writers
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX070.
-
-```mermaid
-flowchart TD
-  R["A receptionist finishes a phone-back"] --> W["She wants to type the result into the change log"]
-  W --> P{"Is she Sofia or Dr. Moss?"}
-  P -->|No| T["She reports the result the same day"]
-  T --> S["One of the two writers records it"]
-  P -->|Yes| L["She may write the date and the reason"]
-```
-
-Speed does not add a third writer.
-
-### Logical drawing
-
-```text
-change log
-    open to Sofia and Dr. Moss only
-receptionist
-    completed a check
-    offers to type it "so it is not forgotten"
-        |
-        +-- forgetting is solved by telling a writer today
-        +-- a third login would let the desk edit the review record
-        +-- the result still needs a date and a reason
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1696,37 +1080,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Friday's link change is a new agreement
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX071.
-
-```mermaid
-flowchart TD
-  E["Earlier agreement: new shares clinic-only, twelve files closed"] --> F["Friday proposal: turn off every existing link, including marketing"]
-  F --> A{"Is there a new written agreement for that proposal?"}
-  A -->|No| H["Do not apply it on the way out"]
-  A -->|Yes| R["Apply only what the new line permits, then count again later"]
-```
-
-The old agreement had a scope. Friday is outside it.
-
-### Logical drawing
-
-```text
-already agreed
-    new shares default to clinic-only
-    8 client files and 4 finance files closed
-    marketing images may stay, because already public
-Friday, technician leaving
-    proposal to kill every remaining link
-        |
-        +-- marketing was a separate decision
-        +-- a wider shutdown needs its own written agreement
-        +-- no new export is produced here
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1771,35 +1124,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Two papers, two questions
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX072.
-
-```mermaid
-flowchart TD
-  O["The practice system is down"] --> Q{"Which question is being asked?"}
-  Q -->|Who is booked today?| A["Today's appointment sheet"]
-  Q -->|Whom do we phone as urgent?| L["The locked list, under Chapter 5 and Chapter 10 limits"]
-  A --> X["Do not read the locked list as the appointment book"]
-  L --> Y["Do not phone the whole appointment sheet as the urgent list"]
-```
-
-Each paper was made for one job.
-
-### Logical drawing
-
-```text
-outage
-    appointment sheet: this day's visits, already in the office
-    locked list: the urgent-call extract, possibly still the drill page
-        |
-        +-- a name on today's sheet is not an urgent-call duty
-        +-- absence from the locked list is not "no appointment"
-        +-- treatment entry, when the system returns, stays with Chapter 6
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1846,35 +1170,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — A ten-minute session does not edit the rule
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  Q["Staff ask whether a normal-looking email can skip the call"] --> S["That question becomes the ten-minute topic"]
-  S --> P["The session rehearses the held-number call"]
-  P --> V{"Does anyone propose a vote to shorten the rule?"}
-  V -->|Yes| R["A vote is not Dr. Moss's written change"]
-  V -->|No| K["The rule leaves the room as it entered"]
-```
-
-The meeting chooses practice. It does not choose policy.
-
-### Logical drawing
-
-```text
-monthly routine: one ten-minute session
-topics come from staff questions
-this month's question: skip the call when the email looks normal
-    |
-    +-- rehearse the call the clinic already knows
-    +-- do not ballot the rule
-    +-- a session note is not a change-log amendment
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1919,34 +1214,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the month's log can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX074.
-
-```mermaid
-flowchart TD
-  N["One leaving note"] --> E{"Is the sentence backed by a log line or a counted output?"}
-  E -->|Yes| K["The note may say it, with that limit"]
-  E -->|No| R["The note names the gap instead of filling it"]
-  R --> G["Next course: data governance, for retention"]
-```
-
-Twenty lessons meet a planning minimum. They do not close the case file.
-
-### Logical drawing
-
-```text
-the note may carry
-    personal accounts, the three repaired computers, twelve files closed
-    phone-back still in force, backup results already logged, card pinned
-the note may not carry
-    a new share total, a dated fresh list, next month's restore
-    a dated locum disable this book never supplied
-    "the clinic is secure" or "the exercise is closed"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

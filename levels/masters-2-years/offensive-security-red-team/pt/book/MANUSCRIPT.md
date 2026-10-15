@@ -40,66 +40,6 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Do estágio à pergunta"]
-  N1["1.2 Método de revisão da literatura"]
-  N2["1.3 Mapa de trabalhos relacionados"]
-  N3["1.4 Escolha de uma medida"]
-  N4["1.5 Contexto dos ativos"]
-  N5["1.5b Higiene das notas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Do estágio à pergunta"]
-  N1["1.2 Método de revisão da literatura"]
-  N2["1.3 Mapa de trabalhos relacionados"]
-  N3["1.4 Escolha de uma medida"]
-  N4["1.5 Contexto dos ativos"]
-  N5["1.5b Higiene das notas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[1.1 Do estágio à pergunta]
-    |
-    v
-[1.2 Método de revisão da literatura]
-    |
-    v
-[1.3 Mapa de trabalhos relacionados]
-    |
-    v
-[1.4 Escolha de uma medida]
-    |
-    v
-[1.5 Contexto dos ativos]
-    |
-    v
-[1.5b Higiene das notas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) transformar uma observação do local de trabalho numa pergunta de pesquisa; (2) buscar e organizar a literatura sobre metodologia e relato de red team; (3) escrever um mapa de trabalhos relacionados de uma página; (4) escolher uma medida de adoção da remediação; e (5) manter notas que separem alegações de evidências.
@@ -186,71 +126,6 @@ Os hábitos de seminário e de literatura transformam a prática de red team em 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança ofensiva autorizada e red team: seminário avançado
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Prática de seminário"]
-  N1["2.2 Vocabulário ATT&CK"]
-  N2["2.3 Achados sem payloads"]
-  N3["2.4 Guiado por ameaças versus checklist"]
-  N4["2.5 A arte do feedback"]
-  N5["2.5b Comparar frameworks num único slide"]
-  N6["2.5c Ler um framework de forma crítica"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Prática de seminário"]
-  N1["2.2 Vocabulário ATT&CK"]
-  N2["2.3 Achados sem payloads"]
-  N3["2.4 Guiado por ameaças versus checklist"]
-  N4["2.5 A arte do feedback"]
-  N5["2.5b Comparar frameworks num único slide"]
-  N6["2.5c Ler um framework de forma crítica"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
-```
-
-```text
-[2.1 Prática de seminário]
-    |
-    v
-[2.2 Vocabulário ATT&CK]
-    |
-    v
-[2.3 Achados sem payloads]
-    |
-    v
-[2.4 Guiado por ameaças versus checklist]
-    |
-    v
-[2.5 A arte do feedback]
-    |
-    v
-[2.5b Comparar frameworks num único slide]
-    |
-    v
-[2.5c Ler um framework de forma crítica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -384,66 +259,6 @@ Os hábitos de seminário e de literatura transformam a prática de red team em 
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Opções de desenho"]
-  N1["3.2 Ética e autorização"]
-  N2["3.3 Plano de reprodutibilidade"]
-  N3["3.4 Esboço do tamanho da amostra"]
-  N4["3.5 Condições de parada para as avaliações de origem"]
-  N5["3.5b Minimização de dados"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Opções de desenho"]
-  N1["3.2 Ética e autorização"]
-  N2["3.3 Plano de reprodutibilidade"]
-  N3["3.4 Esboço do tamanho da amostra"]
-  N4["3.5 Condições de parada para as avaliações de origem"]
-  N5["3.5b Minimização de dados"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[3.1 Opções de desenho]
-    |
-    v
-[3.2 Ética e autorização]
-    |
-    v
-[3.3 Plano de reprodutibilidade]
-    |
-    v
-[3.4 Esboço do tamanho da amostra]
-    |
-    v
-[3.5 Condições de parada para as avaliações de origem]
-    |
-    v
-[3.5b Minimização de dados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher um desenho de estudo que compare formatos de relato de forma justa; (2) definir regras de inclusão e de ética; (3) planejar a reprodutibilidade desde o primeiro dia; (4) dimensionar a amostra a partir de uma estimativa piloto; e (5) escrever condições de parada para o trabalho de avaliação que gera os achados.
@@ -546,66 +361,6 @@ As decisões de desenho, ética e reprodutibilidade são tomadas antes que os ti
 
 ## Capítulo 4 — Segurança ofensiva autorizada e red team: explicações concorrentes
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Explicações rivais"]
-  N1["4.2 Desenhar discriminadores"]
-  N2["4.3 Taxas de base nas filas"]
-  N3["4.4 Pontuações vazias"]
-  N4["4.5 Alegações que você vai recusar"]
-  N5["4.5b Pré-mortem"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Explicações rivais"]
-  N1["4.2 Desenhar discriminadores"]
-  N2["4.3 Taxas de base nas filas"]
-  N3["4.4 Pontuações vazias"]
-  N4["4.5 Alegações que você vai recusar"]
-  N5["4.5b Pré-mortem"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[4.1 Explicações rivais]
-    |
-    v
-[4.2 Desenhar discriminadores]
-    |
-    v
-[4.3 Taxas de base nas filas]
-    |
-    v
-[4.4 Pontuações vazias]
-    |
-    v
-[4.5 Alegações que você vai recusar]
-    |
-    v
-[4.5b Pré-mortem]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) listar explicações alternativas para uma diferença na taxa de remediação; (2) desenhar verificações que as separem; (3) usar taxas de base ao interpretar alertas de tickets; (4) evitar pontuações de segurança vazias; e (5) pré-especificar quais explicações você consegue testar.
@@ -689,66 +444,6 @@ Explicações concorrentes mantêm você honesto: desenhe verificações para as
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 Conteúdo da proposta"]
-  N1["5.2 Modelos"]
-  N2["5.3 Protocolo do piloto"]
-  N3["5.4 Travamento dos instrumentos"]
-  N4["5.5 Seguir / não seguir"]
-  N5["5.5b Disciplina com o sinal antecipado"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Conteúdo da proposta"]
-  N1["5.2 Modelos"]
-  N2["5.3 Protocolo do piloto"]
-  N3["5.4 Travamento dos instrumentos"]
-  N4["5.5 Seguir / não seguir"]
-  N5["5.5b Disciplina com o sinal antecipado"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[5.1 Conteúdo da proposta]
-    |
-    v
-[5.2 Modelos]
-    |
-    v
-[5.3 Protocolo do piloto]
-    |
-    v
-[5.4 Travamento dos instrumentos]
-    |
-    v
-[5.5 Seguir / não seguir]
-    |
-    v
-[5.5b Disciplina com o sinal antecipado]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -855,66 +550,6 @@ A proposta e o piloto transformam uma pergunta em instrumentos travados e num po
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Coleta"]
-  N1["6.2 Análise primária"]
-  N2["6.3 Análises secundárias"]
-  N3["6.4 Dados ausentes e exclusões"]
-  N4["6.5 Disciplina da linha do tempo"]
-  N5["6.5b Tratar exclusões com honestidade"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Coleta"]
-  N1["6.2 Análise primária"]
-  N2["6.3 Análises secundárias"]
-  N3["6.4 Dados ausentes e exclusões"]
-  N4["6.5 Disciplina da linha do tempo"]
-  N5["6.5b Tratar exclusões com honestidade"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[6.1 Coleta]
-    |
-    v
-[6.2 Análise primária]
-    |
-    v
-[6.3 Análises secundárias]
-    |
-    v
-[6.4 Dados ausentes e exclusões]
-    |
-    v
-[6.5 Disciplina da linha do tempo]
-    |
-    v
-[6.5b Tratar exclusões com honestidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1055,61 +690,6 @@ A coleta protege o cegamento; a análise respeita a medida primária pré-regist
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 Estrutura"]
-  N1["7.2 Redigir os achados"]
-  N2["7.3 Limitações que protegem os leitores"]
-  N3["7.4 Apêndice de reprodutibilidade"]
-  N4["7.5 Resumo para profissionais"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Estrutura"]
-  N1["7.2 Redigir os achados"]
-  N2["7.3 Limitações que protegem os leitores"]
-  N3["7.4 Apêndice de reprodutibilidade"]
-  N4["7.5 Resumo para profissionais"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[7.1 Estrutura]
-    |
-    v
-[7.2 Redigir os achados]
-    |
-    v
-[7.3 Limitações que protegem os leitores]
-    |
-    v
-[7.4 Apêndice de reprodutibilidade]
-    |
-    v
-[7.5 Resumo para profissionais]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar a dissertação em torno do ciclo de pesquisa; (2) escrever os achados sem detalhes de exploração; (3) declarar limitações que delimitem as alegações; (4) preparar um apêndice de reprodutibilidade; e (5) redigir um resumo para profissionais.
@@ -1226,61 +806,6 @@ A redação torna o ciclo inspecionável: alegações estruturadas, limites deli
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 Revisão independente"]
-  N1["8.2 Postura na defesa"]
-  N2["8.3 Desafios de uso dual"]
-  N3["8.4 Divulgação"]
-  N4["8.5 Encerrar o estágio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Revisão independente"]
-  N1["8.2 Postura na defesa"]
-  N2["8.3 Desafios de uso dual"]
-  N3["8.4 Divulgação"]
-  N4["8.5 Encerrar o estágio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[8.1 Revisão independente]
-    |
-    v
-[8.2 Postura na defesa]
-    |
-    v
-[8.3 Desafios de uso dual]
-    |
-    v
-[8.4 Divulgação]
-    |
-    v
-[8.5 Encerrar o estágio]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

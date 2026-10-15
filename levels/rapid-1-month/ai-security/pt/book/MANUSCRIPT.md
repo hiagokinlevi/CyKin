@@ -33,61 +33,6 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Segurança de IA e aprendizado de máquina: fundamentos e decisões
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Como os sistemas de IA funcionam, em resumo"]
-  N1["1.2 Como eles falham ou são atacados"]
-  N2["1.3 Organizando a decisão"]
-  N3["1.4 Opções"]
-  N4["1.5 Registrando a decisão"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Como os sistemas de IA funcionam, em resumo"]
-  N1["1.2 Como eles falham ou são atacados"]
-  N2["1.3 Organizando a decisão"]
-  N3["1.4 Opções"]
-  N4["1.5 Registrando a decisão"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Como os sistemas de IA funcionam, em resumo]
-    |
-    v
-[1.2 Como eles falham ou são atacados]
-    |
-    v
-[1.3 Organizando a decisão]
-    |
-    v
-[1.4 Opções]
-    |
-    v
-[1.5 Registrando a decisão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar em termos simples como os sistemas de IA funcionam e falham; (2) nomear os principais tipos de ataque e os riscos do OWASP LLM Top 10 2025; (3) usar as funções do NIST AI RMF para organizar uma decisão; (4) comparar opções de adoção, inclusive "agora não"; e (5) registrar uma decisão com responsáveis e gatilhos de revisão.
@@ -154,61 +99,6 @@ Sistemas de IA são modelos envolvidos por instruções, dados e ferramentas; po
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, autorização e prática segura
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX014.
-
-```mermaid
-flowchart TD
-  N0["2.1 Autorização"]
-  N1["2.2 Escopo e regras"]
-  N2["2.3 Ambientes seguros"]
-  N3["2.4 Evidências e medição"]
-  N4["2.5 Tratamento das constatações"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Autorização"]
-  N1["2.2 Escopo e regras"]
-  N2["2.3 Ambientes seguros"]
-  N3["2.4 Evidências e medição"]
-  N4["2.5 Tratamento das constatações"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
-```
-
-```text
-[2.1 Autorização]
-    |
-    v
-[2.2 Escopo e regras]
-    |
-    v
-[2.3 Ambientes seguros]
-    |
-    v
-[2.4 Evidências e medição]
-    |
-    v
-[2.5 Tratamento das constatações]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -310,61 +200,6 @@ Prática segura significa autorização, escopo claro, dados sintéticos, evidê
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança de IA e aprendizado de máquina: sistemas, dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["3.1 Desenhando o fluxo"]
-  N1["3.2 Conteúdo não confiável"]
-  N2["3.3 Acesso a dados"]
-  N3["3.4 Dependências"]
-  N4["3.5 Controles que limitam o dano"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Desenhando o fluxo"]
-  N1["3.2 Conteúdo não confiável"]
-  N2["3.3 Acesso a dados"]
-  N3["3.4 Dependências"]
-  N4["3.5 Controles que limitam o dano"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[3.1 Desenhando o fluxo]
-    |
-    v
-[3.2 Conteúdo não confiável]
-    |
-    v
-[3.3 Acesso a dados]
-    |
-    v
-[3.4 Dependências]
-    |
-    v
-[3.5 Controles que limitam o dano]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -502,66 +337,6 @@ Mapeie onde o conteúdo não confiável entra e por onde as ações saem; limite
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança de IA e aprendizado de máquina: laboratório guiado e síntese aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["4.1 Regras dos laboratórios"]
-  N1["4.2 Laboratório 1 — evasão"]
-  N2["4.4 Laboratório 3 — taxas de base"]
-  N3["4.5 Laboratório 4 — medição de defesas"]
-  N4["4.6 O plano de adoção"]
-  N5["4.8 Próximos estudos"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Regras dos laboratórios"]
-  N1["4.2 Laboratório 1 — evasão"]
-  N2["4.4 Laboratório 3 — taxas de base"]
-  N3["4.5 Laboratório 4 — medição de defesas"]
-  N4["4.6 O plano de adoção"]
-  N5["4.8 Próximos estudos"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[4.1 Regras dos laboratórios]
-    |
-    v
-[4.2 Laboratório 1 — evasão]
-    |
-    v
-[4.4 Laboratório 3 — taxas de base]
-    |
-    v
-[4.5 Laboratório 4 — medição de defesas]
-    |
-    v
-[4.6 O plano de adoção]
-    |
-    v
-[4.8 Próximos estudos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -5,7 +5,7 @@
   "language": "pt",
   "chapter": 1,
   "source_anchor": "ch-01",
-  "source_sha256": "ad755956125833f2dd05981a3e86a804e21ec7fd2eb56bfce19584ad44bbdcda",
+  "source_sha256": "2e3ae26f9dfffc6a7eccb0c9d39bc27834a5d586c3185114cec7b4e35ebff881",
   "questions": [
     {"id":"Q01","prompt":"Qual componente do Millbrook é a estação central usada para acessar vários sistemas prediais?","options":[{"id":"a","text":"BMS-WS, a estação do sistema de gerenciamento predial"},{"id":"b","text":"MGAS-PANEL, o painel de alarme de gases medicinais"},{"id":"c","text":"LIFT-CTRL, o controlador dos elevadores"},{"id":"d","text":"AHU-OT1, uma unidade de tratamento de ar"}],"correct":"a","explanation":"O capítulo identifica BMS-WS como a estação central a partir da qual se alcançam vários sistemas; os demais itens são equipamentos ou alarmes.","source":"Capítulo 1, §1.1"},
     {"id":"Q02","prompt":"Por que ligar o controlador de uma unidade de tratamento de ar à rede cria uma preocupação ciberfísica?","options":[{"id":"a","text":"Isso elimina automaticamente a necessidade da equipe de manutenção"},{"id":"b","text":"Um comando remoto pode alterar o equipamento físico e as condições clínicas"},{"id":"c","text":"Isso muda apenas registros digitais, nunca o ambiente físico"},{"id":"d","text":"Isso prova que o controlador já foi comprometido"}],"correct":"b","explanation":"O controlador em rede transforma um comando de tela em ação física. A possibilidade de acesso cria risco, sem provar que houve comprometimento.","source":"Capítulo 1, §1.2"},

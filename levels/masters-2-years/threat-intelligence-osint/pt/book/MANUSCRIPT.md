@@ -36,56 +36,6 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Da preocupação à pergunta"]
-  N1["1.2 Método de busca"]
-  N2["1.3 Classificando as fontes"]
-  N3["1.4 O registro de buscas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Da preocupação à pergunta"]
-  N1["1.2 Método de busca"]
-  N2["1.3 Classificando as fontes"]
-  N3["1.4 O registro de buscas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[1.1 Da preocupação à pergunta]
-    |
-    v
-[1.2 Método de busca]
-    |
-    v
-[1.3 Classificando as fontes]
-    |
-    v
-[1.4 O registro de buscas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) transformar uma preocupação de profissionais em uma pergunta pesquisável; (2) conduzir uma busca documentada na literatura, com critérios de inclusão; (3) classificar as fontes por tipo e confiabilidade; (4) manter um registro de buscas que outra pessoa possa repetir.
@@ -137,61 +87,6 @@ Estruture a pergunta, documente a busca, mantenha separadas as vertentes de font
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Inteligência de ameaças e OSINT: seminário avançado
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 Ciclo versus prática"]
-  N1["2.2 Três níveis"]
-  N2["2.3 Modelos como ferramentas para tarefas"]
-  N3["2.4 OSINT com profundidade de seminário"]
-  N4["2.5 TLP e cultura de compartilhamento"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Ciclo versus prática"]
-  N1["2.2 Três níveis"]
-  N2["2.3 Modelos como ferramentas para tarefas"]
-  N3["2.4 OSINT com profundidade de seminário"]
-  N4["2.5 TLP e cultura de compartilhamento"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[2.1 Ciclo versus prática]
-    |
-    v
-[2.2 Três níveis]
-    |
-    v
-[2.3 Modelos como ferramentas para tarefas]
-    |
-    v
-[2.4 OSINT com profundidade de seminário]
-    |
-    v
-[2.5 TLP e cultura de compartilhamento]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -253,56 +148,6 @@ Saiba onde o ciclo se rompe, rotule o nível, prefira descrições duráveis de 
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.2 Lidando com fatores de confusão"]
-  N1["3.3 Consentimento e TLP"]
-  N2["3.4 Dados pessoais"]
-  N3["3.5 Plano de reprodutibilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.2 Lidando com fatores de confusão"]
-  N1["3.3 Consentimento e TLP"]
-  N2["3.4 Dados pessoais"]
-  N3["3.5 Plano de reprodutibilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
-```
-
-```text
-[3.2 Lidando com fatores de confusão]
-    |
-    v
-[3.3 Consentimento e TLP]
-    |
-    v
-[3.4 Dados pessoais]
-    |
-    v
-[3.5 Plano de reprodutibilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher entre desenhos observacionais e quase experimentais; (2) identificar fatores de confusão em estudos sobre compartilhamento; (3) obter o consentimento dos membros de uma comunidade de compartilhamento para o uso em pesquisa; (4) planejar uma análise reprodutível.
@@ -358,66 +203,6 @@ Nomeie cedo os fatores de confusão, escolha um desenho que os enfraqueça, obte
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Inteligência de ameaças e OSINT: explicações concorrentes
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["4.1 Por que explicações concorrentes"]
-  N1["Laboratório 1 — matriz ACH"]
-  N2["4.2 Lendo a matriz"]
-  N3["4.3 Linguagem estimativa"]
-  N4["4.4 Gatilhos de mudança"]
-  N5["4.5 O ATT&CK como vocabulário da evidência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX022"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Por que explicações concorrentes"]
-  N1["Laboratório 1 — matriz ACH"]
-  N2["4.2 Lendo a matriz"]
-  N3["4.3 Linguagem estimativa"]
-  N4["4.4 Gatilhos de mudança"]
-  N5["4.5 O ATT&CK como vocabulário da evidência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
-```
-
-```text
-[4.1 Por que explicações concorrentes]
-    |
-    v
-[Laboratório 1 — matriz ACH]
-    |
-    v
-[4.2 Lendo a matriz]
-    |
-    v
-[4.3 Linguagem estimativa]
-    |
-    v
-[4.4 Gatilhos de mudança]
-    |
-    v
-[4.5 O ATT&CK como vocabulário da evidência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -504,56 +289,6 @@ Liste os rivais, procure inconsistências, relate as sobreviventes com palavras 
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["5.2 Dicionário de dados"]
-  N1["5.3 Piloto"]
-  N2["5.4 Revisar sem derivar"]
-  N3["5.5 Formatos de indicadores"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX029"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.2 Dicionário de dados"]
-  N1["5.3 Piloto"]
-  N2["5.4 Revisar sem derivar"]
-  N3["5.5 Formatos de indicadores"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
-```
-
-```text
-[5.2 Dicionário de dados]
-    |
-    v
-[5.3 Piloto]
-    |
-    v
-[5.4 Revisar sem derivar]
-    |
-    v
-[5.5 Formatos de indicadores]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta de dissertação com objetivos mensuráveis; (2) definir cada variável em um dicionário de dados; (3) conduzir um piloto para verificar a viabilidade; (4) revisar o plano a partir da evidência do piloto sem mudar a pergunta.
@@ -609,71 +344,6 @@ Objetivos mensuráveis, um dicionário preciso, um piloto voltado para a viabili
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["6.1 Validar primeiro"]
-  N1["Laboratório 2 — verificação de propriedades STIX"]
-  N2["6.2 O que a verificação mostra"]
-  N3["Laboratório 3 — medianas do tempo até o bloqueio"]
-  N4["6.3 Lendo as medianas"]
-  N5["6.4 Descrição versus causa"]
-  N6["6.5 Devolvendo a qualidade dos dados"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Validar primeiro"]
-  N1["Laboratório 2 — verificação de propriedades STIX"]
-  N2["6.2 O que a verificação mostra"]
-  N3["Laboratório 3 — medianas do tempo até o bloqueio"]
-  N4["6.3 Lendo as medianas"]
-  N5["6.4 Descrição versus causa"]
-  N6["6.5 Devolvendo a qualidade dos dados"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
-```
-
-```text
-[6.1 Validar primeiro]
-    |
-    v
-[Laboratório 2 — verificação de propriedades STIX]
-    |
-    v
-[6.2 O que a verificação mostra]
-    |
-    v
-[Laboratório 3 — medianas do tempo até o bloqueio]
-    |
-    v
-[6.3 Lendo as medianas]
-    |
-    v
-[6.4 Descrição versus causa]
-    |
-    v
-[6.5 Devolvendo a qualidade dos dados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -783,61 +453,6 @@ Valide antes de contar, prefira medianas para tempos assimétricos, mostre os ta
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["7.1 A estrutura segue as perguntas"]
-  N1["7.2 Limitações fortes"]
-  N2["7.3 Dois públicos"]
-  N3["7.4 Dados restritos no texto"]
-  N4["7.5 Linguagem de julgamento"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 A estrutura segue as perguntas"]
-  N1["7.2 Limitações fortes"]
-  N2["7.3 Dois públicos"]
-  N3["7.4 Dados restritos no texto"]
-  N4["7.5 Linguagem de julgamento"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
-```
-
-```text
-[7.1 A estrutura segue as perguntas]
-    |
-    v
-[7.2 Limitações fortes]
-    |
-    v
-[7.3 Dois públicos]
-    |
-    v
-[7.4 Dados restritos no texto]
-    |
-    v
-[7.5 Linguagem de julgamento]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação em torno das perguntas de pesquisa; (2) escrever uma seção de limitações que fortaleça em vez de pedir desculpas; (3) apresentar os resultados a dois públicos — examinadores e profissionais; (4) tratar os dados restritos no produto escrito.
@@ -893,61 +508,6 @@ Deixe as perguntas moldarem o texto, escreva as limitações com direção e mit
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX050.
-
-```mermaid
-flowchart TD
-  N0["8.1 Revisão independente dos métodos"]
-  N1["8.2 Perguntas prováveis na defesa"]
-  N2["8.3 Respondendo aos achados"]
-  N3["8.4 Devolvendo valor"]
-  N4["8.5 Depois da defesa"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX050"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Revisão independente dos métodos"]
-  N1["8.2 Perguntas prováveis na defesa"]
-  N2["8.3 Respondendo aos achados"]
-  N3["8.4 Devolvendo valor"]
-  N4["8.5 Depois da defesa"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX050"]
-```
-
-```text
-[8.1 Revisão independente dos métodos]
-    |
-    v
-[8.2 Perguntas prováveis na defesa]
-    |
-    v
-[8.3 Respondendo aos achados]
-    |
-    v
-[8.4 Devolvendo valor]
-    |
-    v
-[8.5 Depois da defesa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX050]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -37,66 +37,6 @@ Cox (2008), [doi:10.1111/j.1539-6924.2008.01030.x](https://doi.org/10.1111/j.153
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 A falsifiable question"]
-  N2["1.2 Why matrices are contested"]
-  N3["1.3 Integrity rules"]
-  N4["1.4 Agreement between assessors"]
-  N5["Lab — Agreement between two matrix assessors"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 A falsifiable question"]
-  N2["1.2 Why matrices are contested"]
-  N3["1.3 Integrity rules"]
-  N4["1.4 Agreement between assessors"]
-  N5["Lab — Agreement between two matrix assessors"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 A falsifiable question]
-    |
-    v
-[1.2 Why matrices are contested]
-    |
-    v
-[1.3 Integrity rules]
-    |
-    v
-[1.4 Agreement between assessors]
-    |
-    v
-[Lab — Agreement between two matrix assessors]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame a falsifiable question about how organisations assess cyber risk; (2) set integrity rules for research inside a regulated organisation; (3) measure agreement between assessors who use a risk matrix.
@@ -172,61 +112,6 @@ Doctoral GRC research starts with a falsifiable question, strict integrity rules
 
 ## Chapter 2 — Security governance, risk and compliance: research frontier
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 The governance frame"]
-  N2["2.2 Evidence and argument"]
-  N3["2.3 Practice reports"]
-  N4["2.4 The gap"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 The governance frame"]
-  N2["2.2 Evidence and argument"]
-  N3["2.3 Practice reports"]
-  N4["2.4 The gap"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 The governance frame]
-    |
-    v
-[2.2 Evidence and argument]
-    |
-    v
-[2.3 Practice reports]
-    |
-    v
-[2.4 The gap]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the research frontier in security risk governance; (2) distinguish claims supported by evidence from claims supported by argument; (3) locate a defensible gap.
@@ -278,66 +163,6 @@ The frontier shows strong argument but thin field evidence, which defines a prec
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Proposal structure"]
-  N2["3.2 Defining outcomes"]
-  N3["3.3 A small model"]
-  N4["Lab — Matrix scores versus expected loss for six sce"]
-  N5["3.4 Risks to the study"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Proposal structure"]
-  N2["3.2 Defining outcomes"]
-  N3["3.3 A small model"]
-  N4["Lab — Matrix scores versus expected loss for six sce"]
-  N5["3.4 Risks to the study"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Proposal structure]
-    |
-    v
-[3.2 Defining outcomes]
-    |
-    v
-[3.3 A small model]
-    |
-    v
-[Lab — Matrix scores versus expected loss for six sce]
-    |
-    v
-[3.4 Risks to the study]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -419,66 +244,6 @@ A strong proposal defines measurable outcomes and shows with a model why the que
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Replicating the technique"]
-  N2["Lab — Monte Carlo annual loss for ransomware on reco"]
-  N3["4.2 Reading the output"]
-  N4["4.3 Piloting calibration"]
-  N5["4.4 Adjusting the protocol"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Replicating the technique"]
-  N2["Lab — Monte Carlo annual loss for ransomware on reco"]
-  N3["4.2 Reading the output"]
-  N4["4.3 Piloting calibration"]
-  N5["4.4 Adjusting the protocol"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Replicating the technique]
-    |
-    v
-[Lab — Monte Carlo annual loss for ransomware on reco]
-    |
-    v
-[4.2 Reading the output]
-    |
-    v
-[4.3 Piloting calibration]
-    |
-    v
-[4.4 Adjusting the protocol]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) replicate a published quantitative technique on synthetic data; (2) pilot calibration training with assessors; (3) adjust the protocol from pilot evidence.
@@ -555,66 +320,6 @@ Replication, piloting and logged amendments prepare a sound main study.
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Running the study"]
-  N2["5.2 Calibration results"]
-  N3["Lab — Brier scores for matrix-band and calibrated fo"]
-  N4["5.3 Treatment order"]
-  N5["5.4 Independent validation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Running the study"]
-  N2["5.2 Calibration results"]
-  N3["Lab — Brier scores for matrix-band and calibrated fo"]
-  N4["5.3 Treatment order"]
-  N5["5.4 Independent validation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Running the study]
-    |
-    v
-[5.2 Calibration results]
-    |
-    v
-[Lab — Brier scores for matrix-band and calibrated fo]
-    |
-    v
-[5.3 Treatment order]
-    |
-    v
-[5.4 Independent validation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) run a randomised comparison of assessment methods; (2) analyse calibration with the Brier score; (3) validate results with an independent panel.
@@ -686,61 +391,6 @@ A randomised study with independent validation supports a modest, honestly state
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Receiving critique"]
-  N2["6.2 Sorting objections"]
-  N3["6.3 Revising analyses"]
-  N4["6.4 Learning from critique"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Receiving critique"]
-  N2["6.2 Sorting objections"]
-  N3["6.3 Revising analyses"]
-  N4["6.4 Learning from critique"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Receiving critique]
-    |
-    v
-[6.2 Sorting objections]
-    |
-    v
-[6.3 Revising analyses]
-    |
-    v
-[6.4 Learning from critique]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) respond to expert critique of a quantitative risk study; (2) separate methodological from philosophical objections; (3) revise claims and analyses.
@@ -791,66 +441,6 @@ Critique sorted by type leads to more precise claims and a more useful contribut
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The argument"]
-  N2["7.2 Reproducibility archive"]
-  N3["Lab — Manifest digests for the archive"]
-  N4["7.3 Confidentiality"]
-  N5["7.4 Coherence checks"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The argument"]
-  N2["7.2 Reproducibility archive"]
-  N3["Lab — Manifest digests for the archive"]
-  N4["7.3 Confidentiality"]
-  N5["7.4 Coherence checks"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The argument]
-    |
-    v
-[7.2 Reproducibility archive]
-    |
-    v
-[Lab — Manifest digests for the archive]
-    |
-    v
-[7.3 Confidentiality]
-    |
-    v
-[7.4 Coherence checks]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -922,61 +512,6 @@ A coherent thesis is traceable, reproducible and careful with partner confidenti
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The defense"]
-  N2["8.2 Questions"]
-  N3["8.3 Ethics questions"]
-  N4["8.4 Publication plan"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The defense"]
-  N2["8.2 Questions"]
-  N3["8.3 Ethics questions"]
-  N4["8.4 Publication plan"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The defense]
-    |
-    v
-[8.2 Questions]
-    |
-    v
-[8.3 Ethics questions]
-    |
-    v
-[8.4 Publication plan]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

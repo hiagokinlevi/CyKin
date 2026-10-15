@@ -39,71 +39,6 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(1), 5, 9 and 28; Lei 13.709/2018 (LGP
 
 ## Chapter 1 — Privacy and data protection: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The course and the case"]
-  N2["1.2 What counts as personal data"]
-  N3["1.3 Special categories"]
-  N4["1.4 The principles"]
-  N5["1.5 A first decision"]
-  N6["Concepts — three different tests"]
-  N7["Data — one slip, two layers"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The course and the case"]
-  N2["1.2 What counts as personal data"]
-  N3["1.3 Special categories"]
-  N4["1.4 The principles"]
-  N5["1.5 A first decision"]
-  N6["Concepts — three different tests"]
-  N7["Data — one slip, two layers"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The course and the case]
-    |
-    v
-[1.2 What counts as personal data]
-    |
-    v
-[1.3 Special categories]
-    |
-    v
-[1.4 The principles]
-    |
-    v
-[1.5 A first decision]
-    |
-    v
-[Concepts — three different tests]
-    |
-    v
-[Data — one slip, two layers]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) define personal data and special category data; (2) name the GDPR and LGPD principles; (3) make a first, reasoned privacy decision in a small business.
@@ -217,71 +152,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Agreeing the scope"]
-  N2["2.2 Safe handling during review"]
-  N3["2.3 When asked to go further"]
-  N4["2.4 Reporting problems"]
-  N5["2.5 Respecting staff"]
-  N6["Concepts — the signed page decides, a copy counts as"]
-  N7["Data — five requests against the signed page"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Agreeing the scope"]
-  N2["2.2 Safe handling during review"]
-  N3["2.3 When asked to go further"]
-  N4["2.4 Reporting problems"]
-  N5["2.5 Respecting staff"]
-  N6["Concepts — the signed page decides, a copy counts as"]
-  N7["Data — five requests against the signed page"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Agreeing the scope]
-    |
-    v
-[2.2 Safe handling during review]
-    |
-    v
-[2.3 When asked to go further]
-    |
-    v
-[2.4 Reporting problems]
-    |
-    v
-[2.5 Respecting staff]
-    |
-    v
-[Concepts — the signed page decides, a copy counts as]
-    |
-    v
-[Data — five requests against the signed page]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) work within agreed permission when reviewing privacy; (2) handle customer data safely during a review; (3) report problems through the right channel.
@@ -388,71 +258,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Privacy and data protection: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Mapping the systems"]
-  N2["3.2 Following the flows"]
-  N3["3.3 Vendors and dependencies"]
-  N4["3.4 Lawful bases"]
-  N5["3.5 Retention"]
-  N6["Concepts — the basis does not travel to the next pur"]
-  N7["Data — four flows that leave the shop"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Mapping the systems"]
-  N2["3.2 Following the flows"]
-  N3["3.3 Vendors and dependencies"]
-  N4["3.4 Lawful bases"]
-  N5["3.5 Retention"]
-  N6["Concepts — the basis does not travel to the next pur"]
-  N7["Data — four flows that leave the shop"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Mapping the systems]
-    |
-    v
-[3.2 Following the flows]
-    |
-    v
-[3.3 Vendors and dependencies]
-    |
-    v
-[3.4 Lawful bases]
-    |
-    v
-[3.5 Retention]
-    |
-    v
-[Concepts — the basis does not travel to the next pur]
-    |
-    v
-[Data — four flows that leave the shop]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -564,71 +369,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Privacy and data protection: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The guided lab"]
-  N2["4.2 Interpreting the lab"]
-  N3["4.3 A short plan"]
-  N4["4.4 Presenting to the owner"]
-  N5["4.5 Checking and next steps"]
-  N6["Lab — Loyalty app fields versus stated purposes"]
-  N7["Concepts — the script tests names, not values"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The guided lab"]
-  N2["4.2 Interpreting the lab"]
-  N3["4.3 A short plan"]
-  N4["4.4 Presenting to the owner"]
-  N5["4.5 Checking and next steps"]
-  N6["Lab — Loyalty app fields versus stated purposes"]
-  N7["Concepts — the script tests names, not values"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The guided lab]
-    |
-    v
-[4.2 Interpreting the lab]
-    |
-    v
-[4.3 A short plan]
-    |
-    v
-[4.4 Presenting to the owner]
-    |
-    v
-[4.5 Checking and next steps]
-    |
-    v
-[Lab — Loyalty app fields versus stated purposes]
-    |
-    v
-[Concepts — the script tests names, not values]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -775,35 +515,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — One clean export is not every later night
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  W["Two-week export: totals and non-medicine categories"] --> L["A later night names insulin"]
-  L --> F["Content check fails. The action stays open"]
-  F --> S["Do not edit the ten-field script"]
-```
-
-One file describes one night.
-
-### Logical drawing
-
-```text
-two-week check
-    form asks for five fields
-    that export has no medicine name
-a later night
-    a line names insulin
-        |
-        +-- the earlier file does not cover this file
-        +-- purchase_history may still be a needed name
-        +-- the script is not rewritten to hide the line
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -846,35 +557,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Five fields on the form are not a new lab print
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  P["Published run: 10 collected, 5 not needed"] --> F["A later form asks for five names"]
-  F --> R{"Was the ten-name file rerun?"}
-  R -->|No| K["Do not print 5 collected and 0 unneeded"]
-  R -->|Yes| N["Record that run on its own line"]
-```
-
-A shorter form is not a rewrite of the first count.
-
-### Logical drawing
-
-```text
-lab_loyalty.py on the original list
-    fields collected 10; not needed for any stated purpose 5 (50%)
-two-week form
-    five names, a different object
-        |
-        +-- 10 minus 5 is arithmetic, not a new execution
-        +-- the five rejected names stay the finding about the first file
-        +-- the script's collected list is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -919,38 +601,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Draft clauses are not a signed contract
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  D["Mr. Patel drafted clauses"] --> N["Two weeks later the contracts are in negotiation"]
-  N --> Q{"Is there a signed Article 28 contract?"}
-  Q -->|No| R["Do not add a new flow to that vendor"]
-  Q -->|Yes| K["Cite the signed contract"]
-```
-
-A draft is a text. A signature is a different fact.
-
-### Logical drawing
-
-```text
-four vendors
-    dispensing supplier: terms already present
-    newsletter tool: terms already present
-    loyalty firm: standard terms, gap
-    delivery firm: standard terms, gap
-two weeks on
-    clauses drafted, negotiation open
-        |
-        +-- negotiation is not a signature
-        +-- the dispensing contract does not stand in for loyalty
-        +-- no new file goes to the loyalty firm on that basis
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -993,38 +643,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — An approved recommendation is not a retention date
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["Owner approved setting three periods"] --> S{"Does the schedule name the end?"}
-  S -->|No| B["The period stays blank"]
-  S -->|Yes| U["Use that written end"]
-  C["CCTV: thirty days"] --> X["Do not copy thirty onto the blank rows"]
-```
-
-Approval starts the task. A number finishes it.
-
-### Logical drawing
-
-```text
-already written
-    prescriptions: professional rules, not Sofia's number
-    CCTV: overwritten after thirty days
-approved, still blank
-    loyalty data
-    delivery records on the driver's phone
-    newsletter addresses that never open a mail
-        |
-        +-- "about a year" is not the owner’s sentence
-        +-- thirty days is the camera rule, not a template
-        +-- this lesson writes no new count of days
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -1069,41 +687,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Arranging shredding is not a dated destruction
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  R["Same-day report: place, time, what she saw"] --> L["The owner locks the room"]
-  L --> A["Shredding is arranged for copies past the period"]
-  A --> D{"Is a destruction date in the log?"}
-  D -->|No| O["The arrangement is not the destruction"]
-  D -->|Yes| K["Cite that date"]
-```
-
-A lock limits the room. A date would record the shredding.
-
-### Logical drawing
-
-```text
-Sofia's report
-    place, time, what she saw
-    she does not move the copies
-    she does not read them
-owner
-    locks the room
-    arranges shredding of copies past the retention period
-log
-    no destruction date
-        |
-        +-- "arranged" is not "shredded on this day"
-        +-- she still does not sort the box by reading it
-        +-- the professional period is not invented to choose pages
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1146,37 +729,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — A customer-free plan is not the old photo
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  P["Plan: customer-free images"] --> O{"Are customers visible, with no permission in the file?"}
-  O -->|Yes| R["Do not post that photo"]
-  O -->|No customers| K["That image can match the plan"]
-```
-
-The plan names the replacement. It does not bless the picture already refused.
-
-### Logical drawing
-
-```text
-chapter 1 rule, owner agreed
-    no customers in the frame, or clear permission
-plan action
-    replace counter photos with customer-free images
-a last-month counter photo
-    customers visible
-    no permission written down
-        |
-        +-- "the shelves are the point" does not crop the people
-        +-- this lesson does not write a permission
-        +-- the replacement is not dated as finished at every shop
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1221,38 +773,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — One export does not certify the other tills
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  O["The owner approved the plan for Juniper"] --> E["One export was checked"]
-  E --> T{"Has each other shop's till been checked?"}
-  T -->|No| R["Do not copy the first result across"]
-  T -->|Yes| K["Cite each export"]
-```
-
-Three shops do not become one file.
-
-### Logical drawing
-
-```text
-Juniper
-    three shops
-    about 9,000 regular customers, not split in the file
-owner
-    approved the five actions
-two-week file
-    one form, one export
-        |
-        +-- approval is not a check of every till
-        +-- the first export stays the first export
-        +-- shop names are not invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1295,37 +815,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — A refused lookup does not expire
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  F["First request refused and logged"] --> S["A later request about the same lookup"]
-  S --> R["Refuse again. Log this request"]
-  R --> N["Do not open the record"]
-```
-
-The first refusal is evidence. It is not a permit for the second ask.
-
-### Logical drawing
-
-```text
-signed page
-    individual customer records are excluded
-first request
-    has a neighbour collected a prescription
-    refused, written in the review log
-a later week
-    the same kind of ask returns
-        |
-        +-- the earlier line does not perform the lookup
-        +-- "they asked me" is not a work reason on the page
-        +-- no name is added to the log beyond the request itself
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1370,38 +859,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The written phone line has a narrow question
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  W["Owner added the driver's phone in writing"] --> Q["Question: are addresses stored?"]
-  Q --> F["That finding stands: no end date"]
-  F --> C{"A wider use: copy the list, or open one customer?"}
-  C -->|Yes| R["Stop. That use is not the written line"]
-```
-
-The addition authorised a question. It did not empty the phone into Sofia's pocket.
-
-### Logical drawing
-
-```text
-written addition, after the owner spoke with the driver
-    look at whether customer addresses are stored
-finding already made
-    delivery records sit on the phone with no end date
-a new request
-    copy the address list to Sofia's phone
-    or open one named delivery
-        |
-        +-- the written line does not grow by convenience
-        +-- a wider look waits for a new written line
-        +-- no address is copied into this lesson
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1444,36 +901,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — The test screenshot stays in the shop folder
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX068.
-
-```mermaid
-flowchart TD
-  T["Invented test customer, screenshot in the encrypted shop folder"] --> P["Someone wants it on a personal phone"]
-  P --> R["Refuse. The phone is outside the review"]
-```
-
-An invented person does not make the handset a filing cabinet.
-
-### Logical drawing
-
-```text
-signed handling
-    settings screenshots allowed
-    a real customer screen refused
-    test customer built by the pharmacist
-    screenshot stored in the encrypted folder on the shop computer
-a slide for the owner
-    colleague wants the picture on Sofia's phone
-        |
-        +-- the phone is outside the review either way
-        +-- the invented name is not typed onto the slide
-        +-- "destroy notes afterwards" is not a reason to copy first
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1518,40 +945,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — A points voucher is a new proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  I["Insulin text stays off"] --> P["A voucher when points cross a threshold, no medicine named"]
-  P --> F["That is a new proposal. Start the purpose flow"]
-  F --> S["Do not switch it on while Article 28 is unsigned and loyalty retention is blank"]
-```
-
-Saying no to one message does not say yes to the next.
-
-### Logical drawing
-
-```text
-already refused
-    a text triggered by a named medicine
-    loyalty contract is not that purpose
-    explicit consent for that health purpose is absent
-new proposal
-    a voucher tied to points
-    no medicine named
-still open from earlier chapters
-    loyalty Article 28 terms unsigned
-    loyalty retention row blank
-        |
-        +-- the new proposal starts at the top of the flow
-        +-- this lesson does not write a basis line
-        +-- the voucher stays off
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1594,35 +987,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Thirty days is not extended to watch one person
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX070.
-
-```mermaid
-flowchart TD
-  C["CCTV overwritten after thirty days"] --> W["Owner wants one employee's images kept longer"]
-  W --> R["Refuse the extension"]
-  R --> S["Changing the recorder is outside Sofia's scope"]
-```
-
-A camera period is not a staff appraisal.
-
-### Logical drawing
-
-```text
-written period
-    counter CCTV overwritten after thirty days
-new wish
-    keep images longer to judge one employee's speed
-        |
-        +-- staff are data subjects
-        +-- the wish is a new purpose
-        +-- Sofia does not change settings
-        +-- she writes no opinion of the person
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1667,36 +1031,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — A receipt turns the takings into a person
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX071.
-
-```mermaid
-flowchart TD
-  T["Tuesday's total, no receipt"] --> N["Not personal data"]
-  T --> A["The same total with a receipt or with 44021"]
-  A --> P["Personal data. The number still states no illness"]
-```
-
-The figure changes class when a person is attached.
-
-### Logical drawing
-
-```text
-bare total
-    no receipt
-    not about one living person
-attachment
-    a receipt, or loyalty number 44021
-        |
-        +-- Juniper can link 44021 to one customer
-        +-- the number alone still does not state an illness
-        +-- if Sofia cannot tell, she treats the item as personal
-        +-- no money figure is invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1739,36 +1073,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — A returned phone field fails the field check
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX072.
-
-```mermaid
-flowchart TD
-  F["Two-week form: five fields"] --> P["A later screen shows phone again"]
-  P --> X["Field check fails. The action opens"]
-  X --> K["Do not assume the other four rejected names returned"]
-```
-
-One name coming back is a failure. It is not a census of the whole template.
-
-### Logical drawing
-
-```text
-published lab
-    phone marked NOT NEEDED on the ten-name file
-two-week form
-    five fields, phone absent
-later screen
-    phone is on the form again
-        |
-        +-- the field check fails
-        +-- gender, postcode, prescription items and the location trail are not assumed back
-        +-- the ten-and-five print is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1813,38 +1117,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Contacting a customer is still outside the scope
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  A["Owner asks Sofia to email or call a customer about the loyalty change"] --> S{"Is contacting customers on the signed page?"}
-  S -->|No| R["Do not send. Do not call"]
-  S -->|Only after a new written line| W["This lesson does not write that line"]
-```
-
-The vendor ask belongs to the owner. A message from Sofia belongs to the scope.
-
-### Logical drawing
-
-```text
-signed exclusions
-    reading individual records
-    contacting customers
-    changing settings
-already done by the owner
-    the vendor was asked to change the app
-a new request to Sofia
-    email members, or call one regular
-        |
-        +-- she does not send the mail
-        +-- she does not make the call
-        +-- no customer is named and no medicine is put in a draft she sends
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1887,42 +1159,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the review file can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX074.
-
-```mermaid
-flowchart TD
-  N["Leaving note"] --> F["Repeat only the file and the published run"]
-  F --> Q{"Does the sentence add a count, a signature, or a finished status?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They do not close the review.
-
-### Logical drawing
-
-```text
-the file may support
-    link, then health, then expectation
-    44021 personal until a medicine line is added
-    signed scope and its exclusions
-    storeroom report, lock, shredding arranged
-    four vendors; loyalty and delivery still in negotiation
-    CCTV thirty days; three retention rows still blank
-    lab print: 10 collected, 5 not needed (50%)
-    two-week form of five fields; that export had no medicine name
-    a later insulin line keeps the content action open
-the note may not support
-    a print of 5 and 0; a signed loyalty contract
-    a homemade year; the insulin text switched on
-    one export certifying three tills
-    "compliant", "certified", or "the course is complete"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

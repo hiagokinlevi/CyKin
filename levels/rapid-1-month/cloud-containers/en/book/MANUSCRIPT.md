@@ -39,71 +39,6 @@ NIST [SP 800-145](https://doi.org/10.6028/NIST.SP.800-145), [SP 800-210](https:/
 
 ## Chapter 1 — Cloud and container security: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The trigger"]
-  N2["1.2 What cloud means here"]
-  N3["1.3 Containers in plain terms"]
-  N4["1.4 Who does what"]
-  N5["1.5 Proportionate decisions"]
-  N6["1.6 Recording decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The trigger"]
-  N2["1.2 What cloud means here"]
-  N3["1.3 Containers in plain terms"]
-  N4["1.4 Who does what"]
-  N5["1.5 Proportionate decisions"]
-  N6["1.6 Recording decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The trigger]
-    |
-    v
-[1.2 What cloud means here]
-    |
-    v
-[1.3 Containers in plain terms]
-    |
-    v
-[1.4 Who does what]
-    |
-    v
-[1.5 Proportionate decisions]
-    |
-    v
-[1.6 Recording decisions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what cloud and container services a small clinic relies on; (2) use the shared responsibility model to see what the clinic must do; (3) make proportionate first decisions.
@@ -179,71 +114,6 @@ Understand what the clinic controls and fix the most important things first.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Authority"]
-  N2["2.2 Evidence first"]
-  N3["2.3 What the log shows"]
-  N4["2.4 Data protection"]
-  N5["2.5 Safe practice"]
-  N6["2.6 Accounts"]
-  N7["2.7 Multi-factor authentication"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Authority"]
-  N2["2.2 Evidence first"]
-  N3["2.3 What the log shows"]
-  N4["2.4 Data protection"]
-  N5["2.5 Safe practice"]
-  N6["2.6 Accounts"]
-  N7["2.7 Multi-factor authentication"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Authority]
-    |
-    v
-[2.2 Evidence first]
-    |
-    v
-[2.3 What the log shows]
-    |
-    v
-[2.4 Data protection]
-    |
-    v
-[2.5 Safe practice]
-    |
-    v
-[2.6 Accounts]
-    |
-    v
-[2.7 Multi-factor authentication]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -332,71 +202,6 @@ Work within authority, keep evidence, and avoid risky shortcuts.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cloud and container security: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 A simple policy"]
-  N2["3.2 Checking every item"]
-  N3["Lab — sharing check"]
-  N4["3.3 Reading the result"]
-  N5["3.4 Acting"]
-  N6["3.5 The booking container"]
-  N7["3.6 Agreement with the developer"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 A simple policy"]
-  N2["3.2 Checking every item"]
-  N3["Lab — sharing check"]
-  N4["3.3 Reading the result"]
-  N5["3.4 Acting"]
-  N6["3.5 The booking container"]
-  N7["3.6 Agreement with the developer"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 A simple policy]
-    |
-    v
-[3.2 Checking every item]
-    |
-    v
-[Lab — sharing check]
-    |
-    v
-[3.3 Reading the result]
-    |
-    v
-[3.4 Acting]
-    |
-    v
-[3.5 The booking container]
-    |
-    v
-[3.6 Agreement with the developer]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -506,71 +311,6 @@ Check every item against a simple rule and agree how dependencies stay current.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Cloud and container security: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The routine"]
-  N2["4.2 Why these six"]
-  N3["Lab — routine record"]
-  N4["4.3 Reading the result"]
-  N5["4.4 Fixing the gaps"]
-  N6["4.5 Keeping it light"]
-  N7["4.6 Course synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The routine"]
-  N2["4.2 Why these six"]
-  N3["Lab — routine record"]
-  N4["4.3 Reading the result"]
-  N5["4.4 Fixing the gaps"]
-  N6["4.5 Keeping it light"]
-  N7["4.6 Course synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The routine]
-    |
-    v
-[4.2 Why these six]
-    |
-    v
-[Lab — routine record]
-    |
-    v
-[4.3 Reading the result]
-    |
-    v
-[4.4 Fixing the gaps]
-    |
-    v
-[4.5 Keeping it light]
-    |
-    v
-[4.6 Course synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -687,34 +427,6 @@ A light, shared monthly routine keeps a small organisation's cloud security from
 
 ## Chapter 5 — The sharing print is one filter
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  T["Eight triples"] --> F["setting not in the allowed set"]
-  T --> N["count of True flags"]
-  F --> B["three names, list order"]
-  N --> S["sensitive 5"]
-  B --> Q{"Is the filter a later census?"}
-  S --> Q
-  Q -->|No| K["Keep the embedded print"]
-```
-
-One list. One membership test. Three printed numbers.
-
-### Logical drawing
-
-```text
-items 8, sensitive 5, shared too widely 3
-  patient-letters/: anyone-with-link
-  invoices/: anyone-with-link
-  old-backup.zip: anyone-with-link
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -763,30 +475,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — anyone-with-link is not the token public
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  S["A setting string"] --> M{"Is it a member of allowed for that Boolean?"}
-  M -->|Yes| K["The triple stays out of bad"]
-  M -->|No| B["The triple is printed"]
-```
-
-Membership is exact. It is not a rank.
-
-### Logical drawing
-
-```text
-allowed when sensitive:     staff, admins
-allowed when not sensitive: staff, admins, public
-present failure token:      anyone-with-link
-absent from this list:      a sensitive triple whose setting is public
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -837,31 +525,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — The patient-letters row is the April export
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  E["April sharing export"] --> L["Tuple still says anyone-with-link"]
-  A["Afternoon staff-only change"] --> D["Decision log"]
-  L --> Q{"Does the log edit the tuple?"}
-  D --> Q
-  Q -->|No| K["The filter still prints the row"]
-```
-
-The export and the afternoon are different records.
-
-### Logical drawing
-
-```text
-tuple:     patient-letters/ , anyone-with-link , True
-log prose: staff-only , April afternoon , Leila
-filter:    the tuple remains a failure line
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -911,31 +574,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Five sensitive is a Boolean sum
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  F["Five True flags"] --> S["sensitive 5"]
-  F --> P["Two of those five still pass the filter"]
-  P --> Q{"Is 5 a count of patients or of staff?"}
-  Q -->|No| K["It is the Boolean sum"]
-```
-
-The flag is a classification bit. It is not a headcount.
-
-### Logical drawing
-
-```text
-True and kept:  referrals/ at staff
-                booking-app-config at admins
-True and bad:   patient-letters/ , invoices/ , old-backup.zip
-False:          rota.xlsx , price-list.pdf , logo.png
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -982,31 +620,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Deleting the zip is not a second print
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  Z["old-backup.zip in the export"] --> P["Third failure line"]
-  R["Retention check with Mark"] --> X["Prose: the zip was deleted"]
-  P --> Q{"Does deletion edit the triple?"}
-  X --> Q
-  Q -->|No| K["The line stays"]
-```
-
-Removal from storage is not removal from the evidence list.
-
-### Logical drawing
-
-```text
-still printed:  old-backup.zip: anyone-with-link
-prose only:     deleted after the retention check
-not recorded:   a sanitization method, a recycler, a date
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -1055,30 +668,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — A responsibility page is not the clinic's contract
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  P["Three public responsibility pages"] --> U["The provider name is unrecorded"]
-  C["Customer-side sharing setting"] --> F["The filter reads that setting"]
-  U --> Q{"May one vendor diagram be pasted as Oakfield's contract?"}
-  Q -->|No| K["Leave the provider unnamed"]
-```
-
-The split is cited. The party is not identified.
-
-### Logical drawing
-
-```text
-recorded services: storage, email, hosted booking platform
-recorded hardware: the clinic owns no servers
-not recorded:      which provider, which region, which ticket
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1125,34 +714,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Four views are not a complete audience
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  L["Activity log, four outside views"] --> H["Three match a hospital domain"]
-  L --> P["One is the patient's forwarded view"]
-  H --> Q{"Does a domain equal every later copy?"}
-  P --> Q
-  Q -->|No| K["The audience stays these four lines"]
-```
-
-A domain match is not a census of copies.
-
-### Logical drawing
-
-```text
-window in prose: January to April
-outside views:   4
-hospital domain: 3
-patient's view:  1
-unknown address: none among those four
-not stored:      IP, person name, copy count beyond the log
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1201,32 +762,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — A named account is not a storage row
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  P["Eight staff"] --> A["Named accounts replace the reception login"]
-  I["Eight storage triples"] --> F["No person field"]
-  A --> Q{"Are the two eights the same set?"}
-  F --> Q
-  Q -->|No| K["Keep both counts, labelled"]
-```
-
-People and objects share a number and not a table.
-
-### Logical drawing
-
-```text
-staff:          8 people, reception login replaced
-sharing rows:   8 triples, no account column
-leaver bits:    1, 1, 1 across May June July
-leaver names:   none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1273,32 +808,6 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — A second factor is not a bit in the vector
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  M["Second factor on accounts"] --> H["Two hardware keys, unnamed"]
-  V["Routine index 1 is 1, 1, 1"] --> B["A done-bit, not a factor count"]
-  H --> Q{"Does the bit store the keys?"}
-  B --> Q
-  Q -->|No| K["Leave the keys out of the vector"]
-```
-
-The factor protects an account. The vector stores a tick.
-
-### Logical drawing
-
-```text
-prose:   every account has a second factor
-         two staff without smartphones received hardware keys
-vector:  check admin accounts and MFA = 1 in May, June, July
-absent:  key serial, phone number, count of factors
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 ### Learning outcomes
 
@@ -1347,31 +856,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — A year-old image is not a vulnerability count
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  Y["Developer: last rebuilt a year ago"] --> A["Monthly rebuild was agreed"]
-  C["One-line confirmation"] --> E["Evidence that a message arrived"]
-  Y --> Q{"Is the year a vulnerability count?"}
-  C --> Q
-  Q -->|No| K["No identifier was copied"]
-```
-
-Age is a sentence. A count would be a measurement.
-
-### Logical drawing
-
-```text
-recorded:    older base, last rebuilt a year ago
-agreement:   monthly rebuild, one-line confirmation
-not recorded: digest, tag, registry, CVE, EPSS, image name
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1418,31 +902,6 @@ Continue to the next authored lesson.
 <a id="ch-15"></a>
 
 ## Chapter 15 — A platform secret is not an empty config row
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  C["booking-app-config at admins"] --> R["Sensitive, and not in bad"]
-  S["Password moved and changed"] --> P["Prose about the platform setting"]
-  R --> Q{"Does the passing row prove the file is empty?"}
-  P --> Q
-  Q -->|No| K["The row and the prose stay separate"]
-```
-
-A passing triple does not describe the bytes inside the object.
-
-### Logical drawing
-
-```text
-triple:   booking-app-config , admins , True
-prose:    database password moved to platform secret settings, then changed
-absent:   the password, a Secret object, a statement that the file is empty
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
 
 ### Learning outcomes
 
@@ -1491,33 +950,6 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — A monthly bit is not a proof
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  V["Three vectors, length 6"] --> Z["zip by index"]
-  V --> S["sum over the denominator len of tasks"]
-  Z --> M["Miss names"]
-  S --> R["3/6, 5/6, 6/6"]
-  M --> Q{"Does a 1 store how well the task was done?"}
-  Q -->|No| K["Keep the bits as bits"]
-```
-
-Alignment is an assumption that holds for these three vectors.
-
-### Logical drawing
-
-```text
-May:   [1, 1, 0, 0, 1, 0]  -> 3/6
-June:  [1, 1, 1, 0, 1, 1]  -> 5/6
-July:  [1, 1, 1, 1, 1, 1]  -> 6/6
-causes such as "nobody knew how" are not cells
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1564,32 +996,6 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Fourteen of eighteen is not July
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  C["18 cells"] --> O["14 ones"]
-  C --> Z["4 zeros"]
-  J["July is the only all-ones month"] --> Q{"Did the script print 14/18?"}
-  O --> Q
-  Q -->|No| K["The print stays three month lines"]
-```
-
-A cell total is a further reduction. It is not a line in the output.
-
-### Logical drawing
-
-```text
-column ones: sharing 3, admin 3, restore 2, image 1, leavers 3, notices 2
-zero cells:  May restore, May image, May notices, June image
-printed:     May 3/6, June 5/6, July 6/6
-not printed: 14/18, the column sums, a mean
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
 
 ### Learning outcomes
 
@@ -1638,31 +1044,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — A test-folder restore is not the letters
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  M["May restore cell is 0"] --> C["Prose: nobody knew how"]
-  J["June restore cell is 1"] --> T["Prose: a test folder"]
-  T --> Q{"Does the 1 name patient letters?"}
-  Q -->|No| K["May's zero stays"]
-```
-
-Practice changes a later cell. It does not edit the earlier zero.
-
-### Logical drawing
-
-```text
-restore index: 2
-May 0, June 1, July 1
-object restored in prose: a test folder
-not the object: patient-letters/ or old-backup.zip
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1710,33 +1091,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — A backup contact is not a digest
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  I["Image cells 0, 0, 1"] --> H["June miss: developer away"]
-  B["Unnamed backup contact"] --> P["Prose, not a cell"]
-  H --> Q{"Does July's 1 store a digest?"}
-  P --> Q
-  Q -->|No| K["The confirmation stays a one-line message"]
-```
-
-The contact explains a gap. The July tick does not identify an image.
-
-### Logical drawing
-
-```text
-image index: 3
-May 0, June 0, July 1
-June cause in prose: developer on holiday
-later prose: a backup contact
-not stored: digest, tag, pod profile, network policy
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1783,34 +1137,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the clinic note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the clinic's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    items 8, sensitive 5, shared too widely 3
-    the three failure names
-    May 3/6, June 5/6, July 6/6
-must not be added
-    a rewritten triple, an August key, a vendor name
-    a vulnerability count, a digest, a Kubernetes score
-    a claim the clinic is secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

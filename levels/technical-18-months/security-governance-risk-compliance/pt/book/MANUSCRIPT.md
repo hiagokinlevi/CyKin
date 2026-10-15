@@ -37,51 +37,6 @@ NIST [CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) e seus recursos para pequen
 
 ## Capítulo 1 — Computação e arquitetura de serviços
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Os serviços da Fenwick"]
-  N1["1.2 Componentes"]
-  N2["1.3 Donos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Os serviços da Fenwick"]
-  N1["1.2 Componentes"]
-  N2["1.3 Donos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 Os serviços da Fenwick]
-    |
-    v
-[1.2 Componentes]
-    |
-    v
-[1.3 Donos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever os serviços que uma empresa de varejo opera; (2) identificar os componentes que sustentam cada serviço; (3) registrar os donos para a governança.
@@ -130,51 +85,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX005.
-
-```mermaid
-flowchart TD
-  N0["2.1 As redes das filiais"]
-  N1["2.2 Requisitos de pagamento com cartão"]
-  N2["2.3 Documentar as mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX005"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 As redes das filiais"]
-  N1["2.2 Requisitos de pagamento com cartão"]
-  N2["2.3 Documentar as mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX005"]
-```
-
-```text
-[2.1 As redes das filiais]
-    |
-    v
-[2.2 Requisitos de pagamento com cartão]
-    |
-    v
-[2.3 Documentar as mudanças]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -225,51 +135,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Sistemas operacionais e identidades
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX009.
-
-```mermaid
-flowchart TD
-  N0["3.1 Contas de usuários"]
-  N1["3.2 Menor privilégio"]
-  N2["3.3 Acesso de administrador"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX009"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Contas de usuários"]
-  N1["3.2 Menor privilégio"]
-  N2["3.3 Acesso de administrador"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX009"]
-```
-
-```text
-[3.1 Contas de usuários]
-    |
-    v
-[3.2 Menor privilégio]
-    |
-    v
-[3.3 Acesso de administrador]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) gerir as contas de usuários nos sistemas da empresa; (2) aplicar o menor privilégio nos computadores; (3) controlar o acesso de administrador.
@@ -318,56 +183,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Scripts e formatos de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["4.1 Formatos de dados"]
-  N1["4.2 Verificação da linha de base"]
-  N2["Laboratório — Verificar as configurações dos noteboo"]
-  N3["4.3 Relatar os desvios"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Formatos de dados"]
-  N1["4.2 Verificação da linha de base"]
-  N2["Laboratório — Verificar as configurações dos noteboo"]
-  N3["4.3 Relatar os desvios"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[4.1 Formatos de dados]
-    |
-    v
-[4.2 Verificação da linha de base]
-    |
-    v
-[Laboratório — Verificar as configurações dos noteboo]
-    |
-    v
-[4.3 Relatar os desvios]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -447,46 +262,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Escopo e evidências de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX017.
-
-```mermaid
-flowchart TD
-  N0["5.1 Escopo"]
-  N1["5.2 Evidências"]
-  N2["Síntese"]
-  N0 --> N1 --> N2
-  N2 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX017"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Escopo"]
-  N1["5.2 Evidências"]
-  N2["Síntese"]
-  N0 --> N1 --> N2 --> Q["EX017"]
-```
-
-```text
-[5.1 Escopo]
-    |
-    v
-[5.2 Evidências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir o escopo de uma tarefa de segurança; (2) coletar evidências da forma correta; (3) respeitar os limites da autorização.
@@ -536,51 +311,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Governança, riscos e compliance de segurança: modelo do sistema
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["6.1 A GRC e os técnicos"]
-  N1["6.2 Os papéis na Fenwick"]
-  N2["6.3 Ligar as tarefas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 A GRC e os técnicos"]
-  N1["6.2 Os papéis na Fenwick"]
-  N2["6.3 Ligar as tarefas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
-```
-
-```text
-[6.1 A GRC e os técnicos]
-    |
-    v
-[6.2 Os papéis na Fenwick]
-    |
-    v
-[6.3 Ligar as tarefas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar como a GRC se encaixa no trabalho técnico; (2) modelar os papéis de governança da Fenwick; (3) ligar as tarefas técnicas às políticas e aos riscos.
@@ -629,56 +359,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Governança, riscos e compliance de segurança: dados e telemetria
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["7.1 Logs como dados"]
-  N1["7.2 Contar as falhas"]
-  N2["Laboratório — Contar os logins com falha por conta"]
-  N3["7.3 Agir sobre os alertas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Logs como dados"]
-  N1["7.2 Contar as falhas"]
-  N2["Laboratório — Contar os logins com falha por conta"]
-  N3["7.3 Agir sobre os alertas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[7.1 Logs como dados]
-    |
-    v
-[7.2 Contar as falhas]
-    |
-    v
-[Laboratório — Contar os logins com falha por conta]
-    |
-    v
-[7.3 Agir sobre os alertas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -760,51 +440,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: modos de falha
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["8.1 Como os controles falham"]
-  N1["8.2 Detectar a falha"]
-  N2["8.3 Entradas no registro"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX029"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Como os controles falham"]
-  N1["8.2 Detectar a falha"]
-  N2["8.3 Entradas no registro"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX029"]
-```
-
-```text
-[8.1 Como os controles falham]
-    |
-    v
-[8.2 Detectar a falha]
-    |
-    v
-[8.3 Entradas no registro]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar como os controles técnicos falham; (2) planejar a detecção de cada falha; (3) registrar os modos de falha no registro de riscos.
@@ -853,51 +488,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Governança, riscos e compliance de segurança: ferramentas e métodos
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["9.1 Método de riscos"]
-  N1["9.2 Checklists"]
-  N2["9.3 Escolher ferramentas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Método de riscos"]
-  N1["9.2 Checklists"]
-  N2["9.3 Escolher ferramentas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX033"]
-```
-
-```text
-[9.1 Método de riscos]
-    |
-    v
-[9.2 Checklists]
-    |
-    v
-[9.3 Escolher ferramentas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -948,51 +538,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: configuração de controles
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["10.1 Configurar conforme a política"]
-  N1["10.2 Documentar as decisões"]
-  N2["10.3 Testar as mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Configurar conforme a política"]
-  N1["10.2 Documentar as decisões"]
-  N2["10.3 Testar as mudanças"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX037"]
-```
-
-```text
-[10.1 Configurar conforme a política]
-    |
-    v
-[10.2 Documentar as decisões]
-    |
-    v
-[10.3 Testar as mudanças]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) configurar os controles para atender à política; (2) documentar as decisões de configuração; (3) testar antes e depois das mudanças.
@@ -1041,56 +586,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Governança, riscos e compliance de segurança: verificação
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["11.1 Regras aprovadas"]
-  N1["11.2 Encontrar regras não aprovadas"]
-  N2["Laboratório — Verificar as regras de firewall contra"]
-  N3["11.3 Investigar e registrar"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Regras aprovadas"]
-  N1["11.2 Encontrar regras não aprovadas"]
-  N2["Laboratório — Verificar as regras de firewall contra"]
-  N3["11.3 Investigar e registrar"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[11.1 Regras aprovadas]
-    |
-    v
-[11.2 Encontrar regras não aprovadas]
-    |
-    v
-[Laboratório — Verificar as regras de firewall contra]
-    |
-    v
-[11.3 Investigar e registrar]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1163,51 +658,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Laboratório isolado I
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["12.1 Laboratório seguro"]
-  N1["12.2 Procedimento de teste"]
-  N2["12.3 Comparar"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Laboratório seguro"]
-  N1["12.2 Procedimento de teste"]
-  N2["12.3 Comparar"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
-```
-
-```text
-[12.1 Laboratório seguro]
-    |
-    v
-[12.2 Procedimento de teste]
-    |
-    v
-[12.3 Comparar]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) praticar um teste de controle num laboratório seguro; (2) seguir um procedimento de teste escrito; (3) comparar os resultados com as expectativas.
@@ -1257,51 +707,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: solução de problemas
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["13.1 O problema"]
-  N1["13.2 Testar as hipóteses"]
-  N2["13.3 Corrigir a causa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 O problema"]
-  N1["13.2 Testar as hipóteses"]
-  N2["13.3 Corrigir a causa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX049"]
-```
-
-```text
-[13.1 O problema]
-    |
-    v
-[13.2 Testar as hipóteses]
-    |
-    v
-[13.3 Corrigir a causa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) solucionar problemas num controle que produz resultados errados; (2) usar evidências para testar hipóteses; (3) corrigir as causas, e não os sintomas.
@@ -1350,56 +755,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Governança, riscos e compliance de segurança: automação
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["14.1 Escolher o que automatizar"]
-  N1["14.2 Níveis de aviso"]
-  N2["Laboratório — Avisos e alertas de expiração de certi"]
-  N3["14.3 Chegar aos donos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Escolher o que automatizar"]
-  N1["14.2 Níveis de aviso"]
-  N2["Laboratório — Avisos e alertas de expiração de certi"]
-  N3["14.3 Chegar aos donos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX053"]
-```
-
-```text
-[14.1 Escolher o que automatizar]
-    |
-    v
-[14.2 Níveis de aviso]
-    |
-    v
-[Laboratório — Avisos e alertas de expiração de certi]
-    |
-    v
-[14.3 Chegar aos donos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1473,51 +828,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: integração e dependências
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["15.1 Dependências"]
-  N1["15.2 Garantia dos provedores"]
-  N2["15.3 Planejar para a falha"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Dependências"]
-  N1["15.2 Garantia dos provedores"]
-  N2["15.3 Planejar para a falha"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX057"]
-```
-
-```text
-[15.1 Dependências]
-    |
-    v
-[15.2 Garantia dos provedores]
-    |
-    v
-[15.3 Planejar para a falha]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar as dependências de provedores externos; (2) verificar a garantia oferecida pelos provedores; (3) planejar para a falha de um provedor.
@@ -1566,51 +876,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Documentação técnica e segurança
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["16.1 Procedimentos claros"]
-  N1["16.2 Segurança e autorização"]
-  N2["16.3 Manter atualizado"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Procedimentos claros"]
-  N1["16.2 Segurança e autorização"]
-  N2["16.3 Manter atualizado"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
-```
-
-```text
-[16.1 Procedimentos claros]
-    |
-    v
-[16.2 Segurança e autorização]
-    |
-    v
-[16.3 Manter atualizado]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1661,51 +926,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 17 — Laboratório isolado II
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  N0["17.1 O exercício"]
-  N1["17.2 Responder"]
-  N2["17.3 Nota de incidente"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX065"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 O exercício"]
-  N1["17.2 Responder"]
-  N2["17.3 Nota de incidente"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX065"]
-```
-
-```text
-[17.1 O exercício]
-    |
-    v
-[17.2 Responder]
-    |
-    v
-[17.3 Nota de incidente]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir um exercício combinado de controles num laboratório seguro; (2) responder a um problema injetado; (3) escrever uma nota curta de incidente.
@@ -1754,51 +974,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  N0["18.1 O projeto"]
-  N1["18.2 Resultados"]
-  N2["18.3 Passagem"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX069"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 O projeto"]
-  N1["18.2 Resultados"]
-  N2["18.3 Passagem"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX069"]
-```
-
-```text
-[18.1 O projeto]
-    |
-    v
-[18.2 Resultados]
-    |
-    v
-[18.3 Passagem]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Objetivos de aprendizagem
 

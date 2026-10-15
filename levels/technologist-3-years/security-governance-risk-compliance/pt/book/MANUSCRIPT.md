@@ -37,51 +37,6 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 ## Capítulo 1 — Sistemas computacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Os sistemas da Riverton"]
-  N1["1.2 Ativos a cobrir"]
-  N2["1.3 Sistemas e serviços"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Os sistemas da Riverton"]
-  N1["1.2 Ativos a cobrir"]
-  N2["1.3 Sistemas e serviços"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 Os sistemas da Riverton]
-    |
-    v
-[1.2 Ativos a cobrir]
-    |
-    v
-[1.3 Sistemas e serviços]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever os sistemas de que depende uma empresa com várias unidades; (2) listar os ativos que a governança precisa cobrir; (3) ligar os sistemas aos serviços que eles sustentam.
@@ -129,51 +84,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["2.1 As redes das clínicas"]
-  N1["2.2 Dados em trânsito"]
-  N2["2.3 Riscos de rede"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX004"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 As redes das clínicas"]
-  N1["2.2 Dados em trânsito"]
-  N2["2.3 Riscos de rede"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX004"]
-```
-
-```text
-[2.1 As redes das clínicas]
-    |
-    v
-[2.2 Dados em trânsito]
-    |
-    v
-[2.3 Riscos de rede]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -223,51 +133,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Fundamentos de programação
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["3.1 Ler listas"]
-  N1["3.2 Filtrar"]
-  N2["3.3 Saída clara"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Ler listas"]
-  N1["3.2 Filtrar"]
-  N2["3.3 Saída clara"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX007"]
-```
-
-```text
-[3.1 Ler listas]
-    |
-    v
-[3.2 Filtrar]
-    |
-    v
-[3.3 Saída clara]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever scripts pequenos que leem listas de governança; (2) contar e filtrar registros; (3) imprimir resultados claros para os gestores.
@@ -315,51 +180,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["4.1 Tabelas"]
-  N1["4.2 Relacionamentos"]
-  N2["4.3 Consistência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX010"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Tabelas"]
-  N1["4.2 Relacionamentos"]
-  N2["4.3 Consistência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX010"]
-```
-
-```text
-[4.1 Tabelas]
-    |
-    v
-[4.2 Relacionamentos]
-    |
-    v
-[4.3 Consistência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -409,51 +229,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["5.1 Ameaças às clínicas"]
-  N1["5.2 Controles simples"]
-  N2["5.3 Falar com a equipe clínica"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Ameaças às clínicas"]
-  N1["5.2 Controles simples"]
-  N2["5.3 Falar com a equipe clínica"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX013"]
-```
-
-```text
-[5.1 Ameaças às clínicas]
-    |
-    v
-[5.2 Controles simples]
-    |
-    v
-[5.3 Falar com a equipe clínica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar as ameaças comuns às clínicas odontológicas; (2) ligar as ameaças a controles simples; (3) comunicar a segurança com clareza à equipe clínica.
@@ -501,51 +276,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["6.1 Configurações e políticas"]
-  N1["6.2 Virtualização e nuvem"]
-  N2["6.3 Consistência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Configurações e políticas"]
-  N1["6.2 Virtualização e nuvem"]
-  N2["6.3 Consistência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
-```
-
-```text
-[6.1 Configurações e políticas]
-    |
-    v
-[6.2 Virtualização e nuvem]
-    |
-    v
-[6.3 Consistência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -595,51 +325,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["7.1 Ciclo de vida"]
-  N1["7.2 Papéis"]
-  N2["7.3 Contas compartilhadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Ciclo de vida"]
-  N1["7.2 Papéis"]
-  N2["7.3 Contas compartilhadas"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX019"]
-```
-
-```text
-[7.1 Ciclo de vida]
-    |
-    v
-[7.2 Papéis]
-    |
-    v
-[7.3 Contas compartilhadas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) gerir as contas ao longo dos eventos do ciclo de vida dos funcionários; (2) aplicar o acesso baseado em papéis; (3) lidar com contas compartilhadas.
@@ -688,51 +373,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["8.1 A clínica padrão"]
-  N1["8.2 Camadas"]
-  N2["8.3 Desvios"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX022"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 A clínica padrão"]
-  N1["8.2 Camadas"]
-  N2["8.3 Desvios"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX022"]
-```
-
-```text
-[8.1 A clínica padrão]
-    |
-    v
-[8.2 Camadas]
-    |
-    v
-[8.3 Desvios]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever um desenho padrão seguro para as clínicas; (2) aplicar proteção em camadas; (3) registrar os desvios em relação ao padrão.
@@ -780,56 +420,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidências e medição
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["9.1 Registro de evidências"]
-  N1["9.2 Verificar a atualidade"]
-  N2["Laboratório — Verificar a atualidade das evidências"]
-  N3["9.3 Relatar"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Registro de evidências"]
-  N1["9.2 Verificar a atualidade"]
-  N2["Laboratório — Verificar a atualidade das evidências"]
-  N3["9.3 Relatar"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[9.1 Registro de evidências]
-    |
-    v
-[9.2 Verificar a atualidade]
-    |
-    v
-[Laboratório — Verificar a atualidade das evidências]
-    |
-    v
-[9.3 Relatar]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -902,51 +492,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: orientação
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["10.1 Três partes"]
-  N1["10.2 Obrigações"]
-  N2["10.3 Papéis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX028"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Três partes"]
-  N1["10.2 Obrigações"]
-  N2["10.3 Papéis"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX028"]
-```
-
-```text
-[10.1 Três partes]
-    |
-    v
-[10.2 Obrigações]
-    |
-    v
-[10.3 Papéis]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar governança, gestão de riscos e compliance num grupo de clínicas; (2) identificar as obrigações da Riverton; (3) descrever os papéis envolvidos.
@@ -994,51 +539,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Governança, riscos e compliance de segurança: ativos e contexto
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["11.1 Contexto"]
-  N1["11.2 Classificação"]
-  N2["11.3 Critérios de risco"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Contexto"]
-  N1["11.2 Classificação"]
-  N2["11.3 Critérios de risco"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
-```
-
-```text
-[11.1 Contexto]
-    |
-    v
-[11.2 Classificação]
-    |
-    v
-[11.3 Critérios de risco]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1088,51 +588,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Governança, riscos e compliance de segurança: fluxos de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["12.1 Mapear os fluxos"]
-  N1["12.2 Terceiros"]
-  N2["12.3 Riscos dos fluxos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX034"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Mapear os fluxos"]
-  N1["12.2 Terceiros"]
-  N2["12.3 Riscos dos fluxos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX034"]
-```
-
-```text
-[12.1 Mapear os fluxos]
-    |
-    v
-[12.2 Terceiros]
-    |
-    v
-[12.3 Riscos dos fluxos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear os fluxos de dados dos pacientes; (2) identificar os terceiros que recebem dados; (3) avaliar os riscos de cada fluxo.
@@ -1181,51 +636,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: cenários de risco
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["13.1 Escrever cenários"]
-  N1["13.2 Causas e consequências"]
-  N2["13.3 Escolher cenários"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 Escrever cenários"]
-  N1["13.2 Causas e consequências"]
-  N2["13.3 Escolher cenários"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX037"]
-```
-
-```text
-[13.1 Escrever cenários]
-    |
-    v
-[13.2 Causas e consequências]
-    |
-    v
-[13.3 Escolher cenários]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever cenários de risco para a Riverton; (2) identificar causas e consequências; (3) escolher cenários para análise detalhada.
@@ -1273,56 +683,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Governança, riscos e compliance de segurança: métodos I
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["14.1 Estimar"]
-  N1["14.2 Comparar"]
-  N2["Laboratório — Perda anual esperada de quatro cenário"]
-  N3["14.3 Incerteza"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX040"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Estimar"]
-  N1["14.2 Comparar"]
-  N2["Laboratório — Perda anual esperada de quatro cenário"]
-  N3["14.3 Incerteza"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
-```
-
-```text
-[14.1 Estimar]
-    |
-    v
-[14.2 Comparar]
-    |
-    v
-[Laboratório — Perda anual esperada de quatro cenário]
-    |
-    v
-[14.3 Incerteza]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1392,51 +752,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: laboratório guiado
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["15.1 Oficina"]
-  N1["15.2 Registro"]
-  N2["15.3 Donos e prazos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Oficina"]
-  N1["15.2 Registro"]
-  N2["15.3 Donos e prazos"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX043"]
-```
-
-```text
-[15.1 Oficina]
-    |
-    v
-[15.2 Registro]
-    |
-    v
-[15.3 Donos e prazos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir uma oficina guiada de avaliação de riscos; (2) registrar os resultados num registro; (3) acordar os donos dos tratamentos.
@@ -1485,51 +800,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 16 — Governança, riscos e compliance de segurança: métodos II
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["16.1 Opções de tratamento"]
-  N1["16.2 Risco residual"]
-  N2["16.3 Aceitação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Opções de tratamento"]
-  N1["16.2 Risco residual"]
-  N2["16.3 Aceitação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
-```
-
-```text
-[16.1 Opções de tratamento]
-    |
-    v
-[16.2 Risco residual]
-    |
-    v
-[16.3 Aceitação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher opções de tratamento de riscos; (2) estimar o risco residual após o tratamento; (3) documentar as decisões de aceitação de riscos.
@@ -1577,56 +847,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Governança, riscos e compliance de segurança: ferramentas
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["17.1 Resultados de testes como dados"]
-  N1["17.2 Resumo por clínica"]
-  N2["Laboratório — Taxas de aprovação por clínica a parti"]
-  N3["17.3 Padrões"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 Resultados de testes como dados"]
-  N1["17.2 Resumo por clínica"]
-  N2["Laboratório — Taxas de aprovação por clínica a parti"]
-  N3["17.3 Padrões"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
-```
-
-```text
-[17.1 Resultados de testes como dados]
-    |
-    v
-[17.2 Resumo por clínica]
-    |
-    v
-[Laboratório — Taxas de aprovação por clínica a parti]
-    |
-    v
-[17.3 Padrões]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1712,51 +932,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Governança, riscos e compliance de segurança: controles
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["18.1 Documentar os controles"]
-  N1["18.2 Mapear para as obrigações"]
-  N2["18.3 Declaração de aplicabilidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX052"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Documentar os controles"]
-  N1["18.2 Mapear para as obrigações"]
-  N2["18.3 Declaração de aplicabilidade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX052"]
-```
-
-```text
-[18.1 Documentar os controles]
-    |
-    v
-[18.2 Mapear para as obrigações]
-    |
-    v
-[18.3 Declaração de aplicabilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) documentar os controles com donos e frequências; (2) mapear os controles para as obrigações; (3) preparar uma declaração de aplicabilidade simples.
@@ -1804,56 +979,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Governança, riscos e compliance de segurança: monitoramento
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["19.1 Escolher indicadores"]
-  N1["19.2 A tendência"]
-  N2["Laboratório — Tendência do indicador de vulnerabilid"]
-  N3["19.3 Responder"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 Escolher indicadores"]
-  N1["19.2 A tendência"]
-  N2["Laboratório — Tendência do indicador de vulnerabilid"]
-  N3["19.3 Responder"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
-```
-
-```text
-[19.1 Escolher indicadores]
-    |
-    v
-[19.2 A tendência]
-    |
-    v
-[Laboratório — Tendência do indicador de vulnerabilid]
-    |
-    v
-[19.3 Responder]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1924,51 +1049,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: solução de problemas
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["20.1 Um controle que falha"]
-  N1["20.2 Diagnóstico"]
-  N2["20.3 Corrigir"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX058"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 Um controle que falha"]
-  N1["20.2 Diagnóstico"]
-  N2["20.3 Corrigir"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX058"]
-```
-
-```text
-[20.1 Um controle que falha]
-    |
-    v
-[20.2 Diagnóstico]
-    |
-    v
-[20.3 Corrigir]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) investigar por que um controle não está funcionando; (2) separar problemas de desenho, de operação e de evidência; (3) corrigir a coisa certa.
@@ -2017,51 +1097,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 21 — Governança, riscos e compliance de segurança: integração de serviços
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["21.1 Integração"]
-  N1["21.2 Mudanças e incidentes"]
-  N2["21.3 Chamados como evidência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 Integração"]
-  N1["21.2 Mudanças e incidentes"]
-  N2["21.3 Chamados como evidência"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
-```
-
-```text
-[21.1 Integração]
-    |
-    v
-[21.2 Mudanças e incidentes]
-    |
-    v
-[21.3 Chamados como evidência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar a GRC ao gerenciamento de serviços de TI; (2) ligar mudanças e incidentes aos riscos; (3) usar os chamados como evidência.
@@ -2109,56 +1144,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Governança, riscos e compliance de segurança: automação
-
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["22.1 Conciliação"]
-  N1["22.2 Achados"]
-  N2["Laboratório — Conciliar a lista do RH com as contas"]
-  N3["22.3 Pessoas no circuito"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX064"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 Conciliação"]
-  N1["22.2 Achados"]
-  N2["Laboratório — Conciliar a lista do RH com as contas"]
-  N3["22.3 Pessoas no circuito"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX064"]
-```
-
-```text
-[22.1 Conciliação]
-    |
-    v
-[22.2 Achados]
-    |
-    v
-[Laboratório — Conciliar a lista do RH com as contas]
-    |
-    v
-[22.3 Pessoas no circuito]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2228,51 +1213,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 23 — Governança, riscos e compliance de segurança: avaliação
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["23.1 Perguntas da avaliação"]
-  N1["23.2 Achados"]
-  N2["23.3 Recomendações"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX067"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 Perguntas da avaliação"]
-  N1["23.2 Achados"]
-  N2["23.3 Recomendações"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX067"]
-```
-
-```text
-[23.1 Perguntas da avaliação]
-    |
-    v
-[23.2 Achados]
-    |
-    v
-[23.3 Recomendações]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) avaliar o primeiro ano do programa de GRC; (2) usar evidências para julgar o progresso; (3) recomendar melhorias.
@@ -2320,51 +1260,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["24.1 Pergunta"]
-  N1["24.2 Método"]
-  N2["24.3 Achados"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX070"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.1 Pergunta"]
-  N1["24.2 Método"]
-  N2["24.3 Achados"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX070"]
-```
-
-```text
-[24.1 Pergunta]
-    |
-    v
-[24.2 Método]
-    |
-    v
-[24.3 Achados]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2414,51 +1309,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 25 — Ateliê de projeto em equipe
 
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["25.1 O briefing"]
-  N1["25.2 Revisão por pares"]
-  N2["25.3 Apresentação ao cliente"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX073"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 O briefing"]
-  N1["25.2 Revisão por pares"]
-  N2["25.3 Apresentação ao cliente"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX073"]
-```
-
-```text
-[25.1 O briefing]
-    |
-    v
-[25.2 Revisão por pares]
-    |
-    v
-[25.3 Apresentação ao cliente]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar em equipe numa entrega de GRC; (2) dividir o trabalho e revisar a produção uns dos outros; (3) apresentar a um cliente.
@@ -2506,51 +1356,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Governança, riscos e compliance de segurança: passagem operacional
-
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa da aula
-
-Aula 26 publicada. Mapa, exemplo, EX076.
-
-```mermaid
-flowchart TD
-  N0["26.1 Runbooks"]
-  N1["26.2 Prontidão"]
-  N2["26.3 Propriedade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX076"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["26.1 Runbooks"]
-  N1["26.2 Prontidão"]
-  N2["26.3 Propriedade"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX076"]
-```
-
-```text
-[26.1 Runbooks]
-    |
-    v
-[26.2 Prontidão]
-    |
-    v
-[26.3 Propriedade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2600,51 +1405,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 27 — Implantação e validação
 
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa da aula
-
-Aula 27 publicada. Mapa, exemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["27.1 Implantação"]
-  N1["27.2 Validação"]
-  N2["27.3 Evidências"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX079"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["27.1 Implantação"]
-  N1["27.2 Validação"]
-  N2["27.3 Evidências"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX079"]
-```
-
-```text
-[27.1 Implantação]
-    |
-    v
-[27.2 Validação]
-    |
-    v
-[27.3 Evidências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) implantar o desenho padrão de clínica numa nova unidade; (2) validar os controles antes da inauguração; (3) registrar as evidências da validação.
@@ -2692,51 +1452,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Prática de campo
-
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa da aula
-
-Aula 28 publicada. Mapa, exemplo, EX082.
-
-```mermaid
-flowchart TD
-  N0["28.1 Estágio"]
-  N1["28.2 Apoio à avaliação"]
-  N2["28.3 Conduta profissional"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX082"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["28.1 Estágio"]
-  N1["28.2 Apoio à avaliação"]
-  N2["28.3 Conduta profissional"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX082"]
-```
-
-```text
-[28.1 Estágio]
-    |
-    v
-[28.2 Apoio à avaliação]
-    |
-    v
-[28.3 Conduta profissional]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2786,51 +1501,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 29 — Construção do projeto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa da aula
-
-Aula 29 publicada. Mapa, exemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["29.1 A ferramenta"]
-  N1["29.2 Testes"]
-  N2["29.3 Documentação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX085"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["29.1 A ferramenta"]
-  N1["29.2 Testes"]
-  N2["29.3 Documentação"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX085"]
-```
-
-```text
-[29.1 A ferramenta]
-    |
-    v
-[29.2 Testes]
-    |
-    v
-[29.3 Documentação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) construir uma ferramenta de GRC para a Riverton como projeto final; (2) testá-la com usuários; (3) documentá-la para manutenção.
@@ -2878,51 +1548,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa da aula
-
-Aula 30 publicada. Mapa, exemplo, EX088.
-
-```mermaid
-flowchart TD
-  N0["30.1 Apresentação"]
-  N1["30.2 Avaliação"]
-  N2["30.3 Reflexão"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX088"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["30.1 Apresentação"]
-  N1["30.2 Avaliação"]
-  N2["30.3 Reflexão"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX088"]
-```
-
-```text
-[30.1 Apresentação]
-    |
-    v
-[30.2 Avaliação]
-    |
-    v
-[30.3 Reflexão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Objetivos de aprendizagem
 

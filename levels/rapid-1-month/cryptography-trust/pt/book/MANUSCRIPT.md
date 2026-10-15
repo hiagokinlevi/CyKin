@@ -36,66 +36,6 @@ Leia na ordem. Quatro capítulos acompanham um iniciante que ajuda uma pequena b
 
 ## Capítulo 1 — Criptografia e serviços de confiança: fundamentos e decisões
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O caso"]
-  N1["1.2 O que a criptografia protege"]
-  N2["1.3 Quatro tipos de transformação"]
-  N3["Laboratório — Uma letra muda a impressão digital"]
-  N4["1.4 O cadeado e o certificado"]
-  N5["1.5 Decisões simples e seguras"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O caso"]
-  N1["1.2 O que a criptografia protege"]
-  N2["1.3 Quatro tipos de transformação"]
-  N3["Laboratório — Uma letra muda a impressão digital"]
-  N4["1.4 O cadeado e o certificado"]
-  N5["1.5 Decisões simples e seguras"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[1.1 O caso]
-    |
-    v
-[1.2 O que a criptografia protege]
-    |
-    v
-[1.3 Quatro tipos de transformação]
-    |
-    v
-[Laboratório — Uma letra muda a impressão digital]
-    |
-    v
-[1.4 O cadeado e o certificado]
-    |
-    v
-[1.5 Decisões simples e seguras]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar em palavras simples o que a criptografia protege; (2) distinguir codificação, hashing, cifração e assinaturas; (3) entender o que um cadeado e um certificado prometem e o que não prometem; (4) tomar decisões simples e seguras sobre ferramentas criptográficas.
@@ -195,56 +135,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX014.
-
-```mermaid
-flowchart TD
-  N0["2.1 Primeiro, a permissão"]
-  N1["2.2 Um escopo pequeno e seguro"]
-  N2["2.3 Dados pessoais e segredos"]
-  N3["2.4 Relatando com responsabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Primeiro, a permissão"]
-  N1["2.2 Um escopo pequeno e seguro"]
-  N2["2.3 Dados pessoais e segredos"]
-  N3["2.4 Relatando com responsabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
-```
-
-```text
-[2.1 Primeiro, a permissão]
-    |
-    v
-[2.2 Um escopo pequeno e seguro]
-    |
-    v
-[2.3 Dados pessoais e segredos]
-    |
-    v
-[2.4 Relatando com responsabilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que a permissão vem antes de qualquer verificação; (2) definir um escopo pequeno e seguro; (3) manusear dados pessoais e segredos com cuidado; (4) relatar problemas de forma responsável.
@@ -318,61 +208,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Criptografia e serviços de confiança: sistemas, dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["3.1 Os sistemas e sua criptografia"]
-  N1["3.2 Como as senhas devem ser armazenadas"]
-  N2["Laboratório — Armazenamento de senhas com salt"]
-  N3["3.3 Dependendo de fornecedores"]
-  N4["3.4 Por que as coisas expiram"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Os sistemas e sua criptografia"]
-  N1["3.2 Como as senhas devem ser armazenadas"]
-  N2["Laboratório — Armazenamento de senhas com salt"]
-  N3["3.3 Dependendo de fornecedores"]
-  N4["3.4 Por que as coisas expiram"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[3.1 Os sistemas e sua criptografia]
-    |
-    v
-[3.2 Como as senhas devem ser armazenadas]
-    |
-    v
-[Laboratório — Armazenamento de senhas com salt]
-    |
-    v
-[3.3 Dependendo de fornecedores]
-    |
-    v
-[3.4 Por que as coisas expiram]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -470,61 +305,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Criptografia e serviços de confiança: laboratório guiado e síntese aplicada
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["4.1 A tarefa guiada"]
-  N1["Laboratório — Conferindo a impressão digital de um d"]
-  N2["4.2 Lendo o resultado"]
-  N3["4.3 Resumindo para a equipe"]
-  N4["4.4 O que vem a seguir"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 A tarefa guiada"]
-  N1["Laboratório — Conferindo a impressão digital de um d"]
-  N2["4.2 Lendo o resultado"]
-  N3["4.3 Resumindo para a equipe"]
-  N4["4.4 O que vem a seguir"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[4.1 A tarefa guiada]
-    |
-    v
-[Laboratório — Conferindo a impressão digital de um d]
-    |
-    v
-[4.2 Lendo o resultado]
-    |
-    v
-[4.3 Resumindo para a equipe]
-    |
-    v
-[4.4 O que vem a seguir]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 

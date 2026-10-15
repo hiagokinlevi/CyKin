@@ -36,56 +36,6 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [série 
 
 ## Capítulo 1 — Sistemas prediais como sistemas ciberfísicos
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O que faz funcionar um prédio hospitalar"]
-  N1["1.2 Por que são ciberfísicos"]
-  N2["1.3 Consequência para os pacientes"]
-  N3["1.4 Quem é o dono deles"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O que faz funcionar um prédio hospitalar"]
-  N1["1.2 Por que são ciberfísicos"]
-  N2["1.3 Consequência para os pacientes"]
-  N3["1.4 Quem é o dono deles"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[1.1 O que faz funcionar um prédio hospitalar]
-    |
-    v
-[1.2 Por que são ciberfísicos]
-    |
-    v
-[1.3 Consequência para os pacientes]
-    |
-    v
-[1.4 Quem é o dono deles]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) listar os sistemas prediais dos quais um hospital depende; (2) explicar como cada um se torna um sistema ciberfísico quando ligado em rede; e (3) descrever as consequências da sua falha para os pacientes.
@@ -147,61 +97,6 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança do paciente, contingência e autoridade
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Segurança clínica em primeiro lugar"]
-  N1["2.2 A contingência já existe"]
-  N2["2.3 Autoridade"]
-  N3["2.4 Permissões em hospitais"]
-  N4["2.5 Conversar com os clínicos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Segurança clínica em primeiro lugar"]
-  N1["2.2 A contingência já existe"]
-  N2["2.3 Autoridade"]
-  N3["2.4 Permissões em hospitais"]
-  N4["2.5 Conversar com os clínicos"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
-```
-
-```text
-[2.1 Segurança clínica em primeiro lugar]
-    |
-    v
-[2.2 A contingência já existe]
-    |
-    v
-[2.3 Autoridade]
-    |
-    v
-[2.4 Permissões em hospitais]
-    |
-    v
-[2.5 Conversar com os clínicos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -271,61 +166,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 3 — Redes e protocolos nos sistemas prediais
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 Camadas de campo e de supervisão"]
-  N1["3.2 Confiança por padrão"]
-  N2["3.3 Onde as redes se encontram"]
-  N3["3.4 O que um analista faz"]
-  N4["3.5 Sem fio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Camadas de campo e de supervisão"]
-  N1["3.2 Confiança por padrão"]
-  N2["3.3 Onde as redes se encontram"]
-  N3["3.4 O que um analista faz"]
-  N4["3.5 Sem fio"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
-```
-
-```text
-[3.1 Camadas de campo e de supervisão]
-    |
-    v
-[3.2 Confiança por padrão]
-    |
-    v
-[3.3 Onde as redes se encontram]
-    |
-    v
-[3.4 O que um analista faz]
-    |
-    v
-[3.5 Sem fio]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever como os controladores do BMS se comunicam; (2) explicar por que os protocolos prediais muitas vezes não têm autenticação; e (3) identificar onde as redes prediais tocam a rede do hospital.
@@ -393,66 +233,6 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Um inventário dos dispositivos prediais
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 O que registrar"]
-  N1["4.2 Agrupamento"]
-  N2["4.3 Ler a saída"]
-  N3["4.4 Usar o inventário"]
-  N4["4.5 De onde vêm os dados"]
-  N5["4.6 Coluna de consequência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O que registrar"]
-  N1["4.2 Agrupamento"]
-  N2["4.3 Ler a saída"]
-  N3["4.4 Usar o inventário"]
-  N4["4.5 De onde vêm os dados"]
-  N5["4.6 Coluna de consequência"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
-```
-
-```text
-[4.1 O que registrar]
-    |
-    v
-[4.2 Agrupamento]
-    |
-    v
-[4.3 Ler a saída]
-    |
-    v
-[4.4 Usar o inventário]
-    |
-    v
-[4.5 De onde vêm os dados]
-    |
-    v
-[4.6 Coluna de consequência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -553,61 +333,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Contas, senhas padrão e linhas de base dos dispositivos
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 Senhas padrão nos prédios"]
-  N1["5.2 Contas compartilhadas da manutenção"]
-  N2["5.3 Uma linha de base para compras"]
-  N3["5.4 Regras que a manutenção consegue seguir"]
-  N4["5.5 Verificar se a mudança funcionou"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Senhas padrão nos prédios"]
-  N1["5.2 Contas compartilhadas da manutenção"]
-  N2["5.3 Uma linha de base para compras"]
-  N3["5.4 Regras que a manutenção consegue seguir"]
-  N4["5.5 Verificar se a mudança funcionou"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[5.1 Senhas padrão nos prédios]
-    |
-    v
-[5.2 Contas compartilhadas da manutenção]
-    |
-    v
-[5.3 Uma linha de base para compras]
-    |
-    v
-[5.4 Regras que a manutenção consegue seguir]
-    |
-    v
-[5.5 Verificar se a mudança funcionou]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) encontrar contas padrão e compartilhadas nos sistemas prediais; (2) aplicar ideias da ETSI EN 303 645 e do NIST IR 8259 às compras; e (3) definir regras de senha práticas para a equipe de manutenção.
@@ -675,61 +400,6 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Exposição dos sistemas prediais à internet
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Como acontece"]
-  N1["6.2 Verificar a exposição"]
-  N2["6.3 Ler o resultado"]
-  N3["6.4 Responder"]
-  N4["6.5 Evitar a repetição"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Como acontece"]
-  N1["6.2 Verificar a exposição"]
-  N2["6.3 Ler o resultado"]
-  N3["6.4 Responder"]
-  N4["6.5 Evitar a repetição"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[6.1 Como acontece]
-    |
-    v
-[6.2 Verificar a exposição]
-    |
-    v
-[6.3 Ler o resultado]
-    |
-    v
-[6.4 Responder]
-    |
-    v
-[6.5 Evitar a repetição]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -818,56 +488,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Acesso remoto de empreiteiros e fornecedores
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 Muitas mãos"]
-  N1["7.2 Lições do AA21-042A"]
-  N2["7.3 Um processo controlado"]
-  N3["7.4 Remover as rotas antigas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Muitas mãos"]
-  N1["7.2 Lições do AA21-042A"]
-  N2["7.3 Um processo controlado"]
-  N3["7.4 Remover as rotas antigas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[7.1 Muitas mãos]
-    |
-    v
-[7.2 Lições do AA21-042A]
-    |
-    v
-[7.3 Um processo controlado]
-    |
-    v
-[7.4 Remover as rotas antigas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) inventariar todas as rotas remotas para dentro dos sistemas prediais; (2) aplicar as lições do CISA AA21-042A; e (3) projetar um processo controlado de acesso remoto para empreiteiros.
@@ -929,61 +549,6 @@ Siga para a próxima lição escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Segmentação das redes prediais
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Zonas"]
-  N1["8.2 Condutos e regras"]
-  N2["8.3 Corrigir a estação em dupla conexão"]
-  N3["8.4 Migrar com segurança"]
-  N4["8.5 Documentação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Zonas"]
-  N1["8.2 Condutos e regras"]
-  N2["8.3 Corrigir a estação em dupla conexão"]
-  N3["8.4 Migrar com segurança"]
-  N4["8.5 Documentação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
-```
-
-```text
-[8.1 Zonas]
-    |
-    v
-[8.2 Condutos e regras]
-    |
-    v
-[8.3 Corrigir a estação em dupla conexão]
-    |
-    v
-[8.4 Migrar com segurança]
-    |
-    v
-[8.5 Documentação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1052,66 +617,6 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Monitorar tendências e registros
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Tendências como evidência"]
-  N1["9.2 Janelas de mudança"]
-  N2["9.3 Ler a saída"]
-  N3["9.4 Combinar fontes"]
-  N4["9.5 Alertas"]
-  N5["9.6 Guardar as evidências"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Tendências como evidência"]
-  N1["9.2 Janelas de mudança"]
-  N2["9.3 Ler a saída"]
-  N3["9.4 Combinar fontes"]
-  N4["9.5 Alertas"]
-  N5["9.6 Guardar as evidências"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
-```
-
-```text
-[9.1 Tendências como evidência]
-    |
-    v
-[9.2 Janelas de mudança]
-    |
-    v
-[9.3 Ler a saída]
-    |
-    v
-[9.4 Combinar fontes]
-    |
-    v
-[9.5 Alertas]
-    |
-    v
-[9.6 Guardar as evidências]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1206,66 +711,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Alertas e correções para sistemas prediais
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Fontes"]
-  N1["10.2 Correspondência"]
-  N2["10.3 Escolher"]
-  N3["10.4 Acompanhamento"]
-  N4["10.5 Testar depois da correção"]
-  N5["10.6 Contato com o fornecedor"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Fontes"]
-  N1["10.2 Correspondência"]
-  N2["10.3 Escolher"]
-  N3["10.4 Acompanhamento"]
-  N4["10.5 Testar depois da correção"]
-  N5["10.6 Contato com o fornecedor"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
-```
-
-```text
-[10.1 Fontes]
-    |
-    v
-[10.2 Correspondência]
-    |
-    v
-[10.3 Escolher]
-    |
-    v
-[10.4 Acompanhamento]
-    |
-    v
-[10.5 Testar depois da correção]
-    |
-    v
-[10.6 Contato com o fornecedor]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar os alertas com o inventário predial; (2) decidir entre corrigir e mitigar; e (3) acompanhar as decisões ao longo do tempo.
@@ -1340,61 +785,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 11 — Resposta a incidentes em sistemas prediais hospitalares
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Planejar antes"]
-  N1["11.2 Detectar e avaliar"]
-  N2["11.3 Conter"]
-  N3["11.4 Evidências e recuperação"]
-  N4["11.5 Comunicação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Planejar antes"]
-  N1["11.2 Detectar e avaliar"]
-  N2["11.3 Conter"]
-  N3["11.4 Evidências e recuperação"]
-  N4["11.5 Comunicação"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[11.1 Planejar antes]
-    |
-    v
-[11.2 Detectar e avaliar]
-    |
-    v
-[11.3 Conter]
-    |
-    v
-[11.4 Evidências e recuperação]
-    |
-    v
-[11.5 Comunicação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) adaptar os passos da resposta a incidentes aos sistemas prediais; (2) decidir quando isolar o BMS; e (3) coordenar com as equipes clínicas, de manutenção e de TI.
@@ -1462,66 +852,6 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Projeto final: um relatório de risco dos sistemas prediais
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["12.1 Estrutura"]
-  N1["12.2 Classificação"]
-  N2["12.3 Recomendações"]
-  N3["12.4 Apresentar"]
-  N4["12.5 Apêndice de evidências"]
-  N5["12.6 Depois da reunião"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Estrutura"]
-  N1["12.2 Classificação"]
-  N2["12.3 Recomendações"]
-  N3["12.4 Apresentar"]
-  N4["12.5 Apêndice de evidências"]
-  N5["12.6 Depois da reunião"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX056"]
-```
-
-```text
-[12.1 Estrutura]
-    |
-    v
-[12.2 Classificação]
-    |
-    v
-[12.3 Recomendações]
-    |
-    v
-[12.4 Apresentar]
-    |
-    v
-[12.5 Apêndice de evidências]
-    |
-    v
-[12.6 Depois da reunião]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 

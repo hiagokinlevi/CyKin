@@ -35,61 +35,6 @@ La pregunta se apoya en la experiencia pública: cuando Chrome empezó a ofrecer
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 De la queja a la pregunta"]
-  N2["1.2 Por qué el tamaño es plausible"]
-  N3["1.3 FINER"]
-  N4["1.4 Una búsqueda documentada"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje y conexión"]
-  N1["1.1 De la queja a la pregunta"]
-  N2["1.2 Por qué el tamaño es plausible"]
-  N3["1.3 FINER"]
-  N4["1.4 Una búsqueda documentada"]
-  N5["Síntesis del capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje y conexión]
-    |
-    v
-[1.1 De la queja a la pregunta]
-    |
-    v
-[1.2 Por qué el tamaño es plausible]
-    |
-    v
-[1.3 FINER]
-    |
-    v
-[1.4 Una búsqueda documentada]
-    |
-    v
-[Síntesis del capítulo]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje y conexión
 
 Usted podrá (1) convertir una queja operativa en una pregunta investigable; (2) aplicar la prueba FINER (factible, interesante, novedosa, ética y relevante, por sus siglas en inglés); (3) diseñar una búsqueda bibliográfica documentada en fuentes normativas, académicas y profesionales; y (4) construir una tabla de evidencia. El capítulo se apoya en sus conocimientos de entrada y prepara el seminario del capítulo 2.

@@ -38,61 +38,6 @@ Capítulos 26–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), at
 
 ## Capítulo 1 — Raciocínio matemático
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Três tipos de inferência"]
-  N1["1.2 Falácias em relatórios"]
-  N2["1.3 Proporções e razões"]
-  N3["1.4 Premissas"]
-  N4["Estimar antes de calcular"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Três tipos de inferência"]
-  N1["1.2 Falácias em relatórios"]
-  N2["1.3 Proporções e razões"]
-  N3["1.4 Premissas"]
-  N4["Estimar antes de calcular"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Três tipos de inferência]
-    |
-    v
-[1.2 Falácias em relatórios]
-    |
-    v
-[1.3 Proporções e razões]
-    |
-    v
-[1.4 Premissas]
-    |
-    v
-[Estimar antes de calcular]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir dedução, indução e abdução no trabalho de inteligência; (2) identificar falácias comuns em relatórios de ameaças; (3) usar proporções e razões corretamente; (4) explicitar as premissas por trás de uma conclusão.
@@ -144,66 +89,6 @@ Nomeie o tipo de inferência, pegue as falácias, dê os numeradores junto com a
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["2.1 O parque computacional"]
-  N1["2.2 Logs como sensores"]
-  N2["2.3 Pontos de aplicação"]
-  N3["2.4 Dispositivos médicos"]
-  N4["2.5 Inventário de ativos"]
-  N5["Sistemas na nuvem e de fornecedores"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX004"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O parque computacional"]
-  N1["2.2 Logs como sensores"]
-  N2["2.3 Pontos de aplicação"]
-  N3["2.4 Dispositivos médicos"]
-  N4["2.5 Inventário de ativos"]
-  N5["Sistemas na nuvem e de fornecedores"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX004"]
-```
-
-```text
-[2.1 O parque computacional]
-    |
-    v
-[2.2 Logs como sensores]
-    |
-    v
-[2.3 Pontos de aplicação]
-    |
-    v
-[2.4 Dispositivos médicos]
-    |
-    v
-[2.5 Inventário de ativos]
-    |
-    v
-[Sistemas na nuvem e de fornecedores]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -261,66 +146,6 @@ Conheça o parque, seus logs e pontos de aplicação, trate os dispositivos méd
 
 ## Capítulo 3 — Programação I
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["3.1 Por que analistas programam"]
-  N1["3.2 Tipos para inteligência"]
-  N2["3.3 Classificar valores"]
-  N3["3.4 Falha explícita"]
-  N4["3.5 Nenhuma coleta oculta"]
-  N5["Código legível"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Por que analistas programam"]
-  N1["3.2 Tipos para inteligência"]
-  N2["3.3 Classificar valores"]
-  N3["3.4 Falha explícita"]
-  N4["3.5 Nenhuma coleta oculta"]
-  N5["Código legível"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX007"]
-```
-
-```text
-[3.1 Por que analistas programam]
-    |
-    v
-[3.2 Tipos para inteligência]
-    |
-    v
-[3.3 Classificar valores]
-    |
-    v
-[3.4 Falha explícita]
-    |
-    v
-[3.5 Nenhuma coleta oculta]
-    |
-    v
-[Código legível]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever funções em Python que limpam e classificam indicadores; (2) usar strings, listas, conjuntos e dicionários; (3) tratar entradas ruins de forma explícita; (4) manter os scripts livres de coleta pela rede.
@@ -376,66 +201,6 @@ Use o tipo de dado certo, valide a forma, falhe de forma explícita e mantenha o
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["4.1 Alegação, evidência, raciocínio"]
-  N1["4.2 Citação"]
-  N2["4.3 Ressalvas"]
-  N3["4.4 Estilo acadêmico versus estilo de inteligência"]
-  N4["4.5 Revisão"]
-  N5["Escrever para não especialistas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX010"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Alegação, evidência, raciocínio"]
-  N1["4.2 Citação"]
-  N2["4.3 Ressalvas"]
-  N3["4.4 Estilo acadêmico versus estilo de inteligência"]
-  N4["4.5 Revisão"]
-  N5["Escrever para não especialistas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX010"]
-```
-
-```text
-[4.1 Alegação, evidência, raciocínio]
-    |
-    v
-[4.2 Citação]
-    |
-    v
-[4.3 Ressalvas]
-    |
-    v
-[4.4 Estilo acadêmico versus estilo de inteligência]
-    |
-    v
-[4.5 Revisão]
-    |
-    v
-[Escrever para não especialistas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -493,66 +258,6 @@ Uma alegação por parágrafo, cite com precisão e de forma lícita, faça ress
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["5.1 Termos centrais"]
-  N1["5.2 O ciclo de vida da CTI"]
-  N2["5.3 Três níveis"]
-  N3["5.4 Por que a saúde"]
-  N4["5.5 Inteligência versus informação"]
-  N5["Quem consome inteligência no HCHT"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Termos centrais"]
-  N1["5.2 O ciclo de vida da CTI"]
-  N2["5.3 Três níveis"]
-  N3["5.4 Por que a saúde"]
-  N4["5.5 Inteligência versus informação"]
-  N5["Quem consome inteligência no HCHT"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX013"]
-```
-
-```text
-[5.1 Termos centrais]
-    |
-    v
-[5.2 O ciclo de vida da CTI]
-    |
-    v
-[5.3 Três níveis]
-    |
-    v
-[5.4 Por que a saúde]
-    |
-    v
-[5.5 Inteligência versus informação]
-    |
-    v
-[Quem consome inteligência no HCHT]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir ameaça, vulnerabilidade, risco e controle; (2) descrever o ciclo de vida da CTI; (3) distinguir inteligência estratégica, operacional e tática; (4) explicar por que a saúde atrai atacantes.
@@ -608,66 +313,6 @@ Use os termos centrais com precisão, comece o ciclo pela direção, ajuste o n�
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["6.1 Conjuntos e relações"]
-  N1["6.2 Grafos"]
-  N2["6.3 Caminhos e componentes"]
-  N3["6.4 A armadilha da infraestrutura compartilhada"]
-  N4["6.5 Dirigido versus não dirigido"]
-  N5["6.6 O grau como sinal de alerta"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Conjuntos e relações"]
-  N1["6.2 Grafos"]
-  N2["6.3 Caminhos e componentes"]
-  N3["6.4 A armadilha da infraestrutura compartilhada"]
-  N4["6.5 Dirigido versus não dirigido"]
-  N5["6.6 O grau como sinal de alerta"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
-```
-
-```text
-[6.1 Conjuntos e relações]
-    |
-    v
-[6.2 Grafos]
-    |
-    v
-[6.3 Caminhos e componentes]
-    |
-    v
-[6.4 A armadilha da infraestrutura compartilhada]
-    |
-    v
-[6.5 Dirigido versus não dirigido]
-    |
-    v
-[6.6 O grau como sinal de alerta]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -725,66 +370,6 @@ Conjuntos e grafos organizam a inteligência; confira os nós de grau alto, mant
 
 ## Capítulo 7 — Redes e protocolos
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["7.1 DNS"]
-  N1["7.2 HTTP e HTTPS"]
-  N2["7.3 SMTP e cabeçalhos"]
-  N3["7.4 Portas e serviços"]
-  N4["7.5 Horários e endereços"]
-  N5["7.6 Resultados de autenticação na prática"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 DNS"]
-  N1["7.2 HTTP e HTTPS"]
-  N2["7.3 SMTP e cabeçalhos"]
-  N3["7.4 Portas e serviços"]
-  N4["7.5 Horários e endereços"]
-  N5["7.6 Resultados de autenticação na prática"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
-```
-
-```text
-[7.1 DNS]
-    |
-    v
-[7.2 HTTP e HTTPS]
-    |
-    v
-[7.3 SMTP e cabeçalhos]
-    |
-    v
-[7.4 Portas e serviços]
-    |
-    v
-[7.5 Horários e endereços]
-    |
-    v
-[7.6 Resultados de autenticação na prática]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar DNS, HTTP(S) e SMTP no nível de que a CTI precisa; (2) ler cabeçalhos de e-mail em busca de pistas sobre o remetente; (3) entender por que o tráfego cifrado limita a visibilidade; (4) relacionar protocolos a técnicas do ATT&CK.
@@ -840,71 +425,6 @@ Os logs de DNS, web e e-mail são os principais pontos de conferência do analis
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["8.1 Feeds como arquivos"]
-  N1["Laboratório — validar um feed"]
-  N2["8.2 Lendo o resultado"]
-  N3["8.3 Regras de validação"]
-  N4["8.4 Nunca descarte em silêncio"]
-  N5["8.5 Idempotência"]
-  N6["8.6 Codificação e delimitadores"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX022"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Feeds como arquivos"]
-  N1["Laboratório — validar um feed"]
-  N2["8.2 Lendo o resultado"]
-  N3["8.3 Regras de validação"]
-  N4["8.4 Nunca descarte em silêncio"]
-  N5["8.5 Idempotência"]
-  N6["8.6 Codificação e delimitadores"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
-```
-
-```text
-[8.1 Feeds como arquivos]
-    |
-    v
-[Laboratório — validar um feed]
-    |
-    v
-[8.2 Lendo o resultado]
-    |
-    v
-[8.3 Regras de validação]
-    |
-    v
-[8.4 Nunca descarte em silêncio]
-    |
-    v
-[8.5 Idempotência]
-    |
-    v
-[8.6 Codificação e delimitadores]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -994,71 +514,6 @@ Faça o parsing com código, valide de forma explícita, relate as rejeições e
 
 ## Capítulo 9 — Dados e bancos de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["9.1 Por que um banco de dados"]
-  N1["9.2 Projeto da tabela"]
-  N2["Laboratório — consultar o repositório"]
-  N3["9.3 Lendo o resultado"]
-  N4["9.4 Envelhecimento de indicadores"]
-  N5["9.5 Consultas parametrizadas"]
-  N6["9.6 Manter o histórico"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Por que um banco de dados"]
-  N1["9.2 Projeto da tabela"]
-  N2["Laboratório — consultar o repositório"]
-  N3["9.3 Lendo o resultado"]
-  N4["9.4 Envelhecimento de indicadores"]
-  N5["9.5 Consultas parametrizadas"]
-  N6["9.6 Manter o histórico"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
-```
-
-```text
-[9.1 Por que um banco de dados]
-    |
-    v
-[9.2 Projeto da tabela]
-    |
-    v
-[Laboratório — consultar o repositório]
-    |
-    v
-[9.3 Lendo o resultado]
-    |
-    v
-[9.4 Envelhecimento de indicadores]
-    |
-    v
-[9.5 Consultas parametrizadas]
-    |
-    v
-[9.6 Manter o histórico]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar uma pequena tabela de indicadores; (2) consultá-la com SQL por meio do `sqlite3` do Python; (3) encontrar indicadores desatualizados; (4) guardar os rótulos de tratamento junto com os dados.
@@ -1142,66 +597,6 @@ Modele os indicadores com rótulos e datas, consulte com segurança, envelheça 
 
 ## Capítulo 10 — Ética e prática autorizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["10.1 Público não é ilimitado"]
-  N1["10.2 Termos de uso"]
-  N2["10.3 Autorização"]
-  N3["10.4 Proporcionalidade"]
-  N4["10.5 Pare e pergunte"]
-  N5["10.6 Códigos de ética e colegas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX028"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Público não é ilimitado"]
-  N1["10.2 Termos de uso"]
-  N2["10.3 Autorização"]
-  N3["10.4 Proporcionalidade"]
-  N4["10.5 Pare e pergunte"]
-  N5["10.6 Códigos de ética e colegas"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX028"]
-```
-
-```text
-[10.1 Público não é ilimitado]
-    |
-    v
-[10.2 Termos de uso]
-    |
-    v
-[10.3 Autorização]
-    |
-    v
-[10.4 Proporcionalidade]
-    |
-    v
-[10.5 Pare e pergunte]
-    |
-    v
-[10.6 Códigos de ética e colegas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) declarar os limites jurídicos e éticos da coleta de OSINT; (2) respeitar os termos de uso das plataformas; (3) aplicar princípios de proteção de dados; (4) reconhecer quando parar e perguntar.
@@ -1258,66 +653,6 @@ Colete de forma lícita, siga os termos, fique dentro do mandato, pese a proporc
 
 ## Capítulo 11 — Sistemas operacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["11.1 Processos e interpretadores de comandos"]
-  N1["11.2 Privilégio"]
-  N2["11.3 Telemetria de endpoint"]
-  N3["11.4 Ler uma página de técnica"]
-  N4["11.5 Serviços remotos"]
-  N5["11.6 Correções e situação de suporte"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Processos e interpretadores de comandos"]
-  N1["11.2 Privilégio"]
-  N2["11.3 Telemetria de endpoint"]
-  N3["11.4 Ler uma página de técnica"]
-  N4["11.5 Serviços remotos"]
-  N5["11.6 Correções e situação de suporte"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
-```
-
-```text
-[11.1 Processos e interpretadores de comandos]
-    |
-    v
-[11.2 Privilégio]
-    |
-    v
-[11.3 Telemetria de endpoint]
-    |
-    v
-[11.4 Ler uma página de técnica]
-    |
-    v
-[11.5 Serviços remotos]
-    |
-    v
-[11.6 Correções e situação de suporte]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) relacionar conceitos de sistemas operacionais a técnicas do ATT&CK; (2) identificar a telemetria de endpoint útil para conferir inteligência; (3) explicar o privilégio e seu abuso; (4) ler uma página de técnica com senso crítico.
@@ -1373,71 +708,6 @@ Associe o comportamento do sistema operacional a técnicas, use a telemetria de 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidade e estatística
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["12.1 Palavras de probabilidade estimativa"]
-  N1["Laboratório — conferir palavras estimativas"]
-  N2["12.2 Lendo o resultado"]
-  N3["12.3 Taxas-base"]
-  N4["12.4 Falsa precisão"]
-  N5["12.5 Probabilidade versus confiança"]
-  N6["12.6 Amostras pequenas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX034"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Palavras de probabilidade estimativa"]
-  N1["Laboratório — conferir palavras estimativas"]
-  N2["12.2 Lendo o resultado"]
-  N3["12.3 Taxas-base"]
-  N4["12.4 Falsa precisão"]
-  N5["12.5 Probabilidade versus confiança"]
-  N6["12.6 Amostras pequenas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
-```
-
-```text
-[12.1 Palavras de probabilidade estimativa]
-    |
-    v
-[Laboratório — conferir palavras estimativas]
-    |
-    v
-[12.2 Lendo o resultado]
-    |
-    v
-[12.3 Taxas-base]
-    |
-    v
-[12.4 Falsa precisão]
-    |
-    v
-[12.5 Probabilidade versus confiança]
-    |
-    v
-[12.6 Amostras pequenas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1520,66 +790,6 @@ Use uma escala comum, confira as taxas-base, evite a falsa precisão e declare t
 
 ## Capítulo 13 — Identidade e acesso
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["13.1 A identidade como perímetro"]
-  N1["13.2 Autenticação multifator"]
-  N2["13.3 Relatos de exposição de credenciais"]
-  N3["13.4 Contas de serviço e de fornecedores"]
-  N4["13.5 Medir o efeito do controle"]
-  N5["13.6 Menor privilégio e revisões"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 A identidade como perímetro"]
-  N1["13.2 Autenticação multifator"]
-  N2["13.3 Relatos de exposição de credenciais"]
-  N3["13.4 Contas de serviço e de fornecedores"]
-  N4["13.5 Medir o efeito do controle"]
-  N5["13.6 Menor privilégio e revisões"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
-```
-
-```text
-[13.1 A identidade como perímetro]
-    |
-    v
-[13.2 Autenticação multifator]
-    |
-    v
-[13.3 Relatos de exposição de credenciais]
-    |
-    v
-[13.4 Contas de serviço e de fornecedores]
-    |
-    v
-[13.5 Medir o efeito do controle]
-    |
-    v
-[13.6 Menor privilégio e revisões]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que as credenciais são um alvo privilegiado; (2) ligar a inteligência de identidade aos controles; (3) tratar com responsabilidade os relatos de exposição de credenciais; (4) reconhecer, no nível conceitual, a fadiga de MFA e o roubo de sessão.
@@ -1635,71 +845,6 @@ Trate a identidade como o perímetro, transforme a inteligência sobre credencia
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["14.1 Dados pessoais na CTI"]
-  N1["14.2 Ocultação antes do compartilhamento"]
-  N2["Laboratório — ocultar dados de uma amostra"]
-  N3["14.3 Lendo o resultado"]
-  N4["14.4 Minimização e retenção"]
-  N5["14.5 Dados de pacientes"]
-  N6["14.6 Pseudonimização versus anonimização"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX040"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Dados pessoais na CTI"]
-  N1["14.2 Ocultação antes do compartilhamento"]
-  N2["Laboratório — ocultar dados de uma amostra"]
-  N3["14.3 Lendo o resultado"]
-  N4["14.4 Minimização e retenção"]
-  N5["14.5 Dados de pacientes"]
-  N6["14.6 Pseudonimização versus anonimização"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
-```
-
-```text
-[14.1 Dados pessoais na CTI]
-    |
-    v
-[14.2 Ocultação antes do compartilhamento]
-    |
-    v
-[Laboratório — ocultar dados de uma amostra]
-    |
-    v
-[14.3 Lendo o resultado]
-    |
-    v
-[14.4 Minimização e retenção]
-    |
-    v
-[14.5 Dados de pacientes]
-    |
-    v
-[14.6 Pseudonimização versus anonimização]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1779,66 +924,6 @@ Encontre os dados pessoais, oculte com cuidado, mantenha os indicadores, minimiz
 
 ## Capítulo 15 — Evidência e medição
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["15.1 Três camadas"]
-  N1["15.2 Proveniência"]
-  N2["15.3 Medir a inteligência"]
-  N3["15.4 Feedback"]
-  N4["15.5 Tempestividade"]
-  N5["15.6 Precisão e revocação dos bloqueios"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 Três camadas"]
-  N1["15.2 Proveniência"]
-  N2["15.3 Medir a inteligência"]
-  N3["15.4 Feedback"]
-  N4["15.5 Tempestividade"]
-  N5["15.6 Precisão e revocação dos bloqueios"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
-```
-
-```text
-[15.1 Três camadas]
-    |
-    v
-[15.2 Proveniência]
-    |
-    v
-[15.3 Medir a inteligência]
-    |
-    v
-[15.4 Feedback]
-    |
-    v
-[15.5 Tempestividade]
-    |
-    v
-[15.6 Precisão e revocação dos bloqueios]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir observação, inferência e avaliação; (2) registrar a proveniência de cada evidência; (3) medir a utilidade da inteligência; (4) separar métricas de atividade de métricas de resultado.
@@ -1894,66 +979,6 @@ Separe as camadas de evidência, mantenha a proveniência, meça os resultados e
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["16.1 Camadas"]
-  N1["16.2 CTI em cada camada"]
-  N2["16.3 Segmentação"]
-  N3["16.4 Escolher onde aplicar"]
-  N4["16.5 Revisões de arquitetura"]
-  N5["16.6 Os backups como consumidores de CTI"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Camadas"]
-  N1["16.2 CTI em cada camada"]
-  N2["16.3 Segmentação"]
-  N3["16.4 Escolher onde aplicar"]
-  N4["16.5 Revisões de arquitetura"]
-  N5["16.6 Os backups como consumidores de CTI"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
-```
-
-```text
-[16.1 Camadas]
-    |
-    v
-[16.2 CTI em cada camada]
-    |
-    v
-[16.3 Segmentação]
-    |
-    v
-[16.4 Escolher onde aplicar]
-    |
-    v
-[16.5 Revisões de arquitetura]
-    |
-    v
-[16.6 Os backups como consumidores de CTI]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2011,66 +1036,6 @@ Alimente cada camada com a inteligência que ela pode usar, aplique onde for con
 
 ## Capítulo 17 — Conceitos de criptografia
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["17.1 Hashes"]
-  N1["17.2 Cifragem"]
-  N2["17.3 Assinaturas e certificados"]
-  N3["17.4 Transparência de certificados"]
-  N4["17.5 Proteger a inteligência"]
-  N5["17.6 Correspondência aproximada e parcial"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 Hashes"]
-  N1["17.2 Cifragem"]
-  N2["17.3 Assinaturas e certificados"]
-  N3["17.4 Transparência de certificados"]
-  N4["17.5 Proteger a inteligência"]
-  N5["17.6 Correspondência aproximada e parcial"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX049"]
-```
-
-```text
-[17.1 Hashes]
-    |
-    v
-[17.2 Cifragem]
-    |
-    v
-[17.3 Assinaturas e certificados]
-    |
-    v
-[17.4 Transparência de certificados]
-    |
-    v
-[17.5 Proteger a inteligência]
-    |
-    v
-[17.6 Correspondência aproximada e parcial]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar hash, cifragem e assinaturas no nível dos conceitos; (2) entender o que o hash de um arquivo prova; (3) relacionar certificados à infraestrutura de phishing; (4) lidar com canais de inteligência cifrados.
@@ -2126,71 +1091,6 @@ Entenda o que os artefatos criptográficos provam, use a transparência de certi
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["18.1 Perguntas de pesquisa"]
-  N1["18.2 Métodos"]
-  N2["18.3 Esquema de codificação"]
-  N3["18.4 Amostragem"]
-  N4["18.5 Ética"]
-  N5["18.6 Busca na literatura"]
-  N6["Confiabilidade entre codificadores"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX052"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Perguntas de pesquisa"]
-  N1["18.2 Métodos"]
-  N2["18.3 Esquema de codificação"]
-  N3["18.4 Amostragem"]
-  N4["18.5 Ética"]
-  N5["18.6 Busca na literatura"]
-  N6["Confiabilidade entre codificadores"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
-```
-
-```text
-[18.1 Perguntas de pesquisa]
-    |
-    v
-[18.2 Métodos]
-    |
-    v
-[18.3 Esquema de codificação]
-    |
-    v
-[18.4 Amostragem]
-    |
-    v
-[18.5 Ética]
-    |
-    v
-[18.6 Busca na literatura]
-    |
-    v
-[Confiabilidade entre codificadores]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2252,66 +1152,6 @@ Faça perguntas estreitas, combine métodos com bom senso, codifique de forma co
 
 ## Capítulo 19 — Inteligência de ameaças e OSINT: escopo e teoria
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["19.1 Definições"]
-  N1["19.2 Modelos"]
-  N2["19.3 Padrões de compartilhamento"]
-  N3["19.4 CTI e risco"]
-  N4["19.5 Teoria e prática"]
-  N5["19.6 Escolher um modelo"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 Definições"]
-  N1["19.2 Modelos"]
-  N2["19.3 Padrões de compartilhamento"]
-  N3["19.4 CTI e risco"]
-  N4["19.5 Teoria e prática"]
-  N5["19.6 Escolher um modelo"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX055"]
-```
-
-```text
-[19.1 Definições]
-    |
-    v
-[19.2 Modelos]
-    |
-    v
-[19.3 Padrões de compartilhamento]
-    |
-    v
-[19.4 CTI e risco]
-    |
-    v
-[19.5 Teoria e prática]
-    |
-    v
-[19.6 Escolher um modelo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir CTI e OSINT; (2) explicar o papel de modelos como a cadeia de intrusão (kill chain) e o Modelo Diamante; (3) descrever os padrões de compartilhamento — STIX, TAXII, TLP; (4) situar a CTI na gestão de riscos.
@@ -2367,71 +1207,6 @@ A CTI é apoio à decisão construído sobre modelos e compartilhado por meio de
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Inteligência de ameaças e OSINT: casos fundadores
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["20.1 O artigo da cadeia de intrusão"]
-  N1["20.2 Relatos sobre grupos"]
-  N2["20.3 Ransomware contra a saúde"]
-  N3["20.4 Cadeia de suprimentos"]
-  N4["20.5 Ler casos com ética"]
-  N5["20.6 Comparar casos"]
-  N6["Do caso à pergunta local"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX058"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 O artigo da cadeia de intrusão"]
-  N1["20.2 Relatos sobre grupos"]
-  N2["20.3 Ransomware contra a saúde"]
-  N3["20.4 Cadeia de suprimentos"]
-  N4["20.5 Ler casos com ética"]
-  N5["20.6 Comparar casos"]
-  N6["Do caso à pergunta local"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX058"]
-```
-
-```text
-[20.1 O artigo da cadeia de intrusão]
-    |
-    v
-[20.2 Relatos sobre grupos]
-    |
-    v
-[20.3 Ransomware contra a saúde]
-    |
-    v
-[20.4 Cadeia de suprimentos]
-    |
-    v
-[20.5 Ler casos com ética]
-    |
-    v
-[20.6 Comparar casos]
-    |
-    v
-[Do caso à pergunta local]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2493,71 +1268,6 @@ Os casos fundadores ensinam lições duradouras: reutilize a inteligência entre
 
 ## Capítulo 21 — Inteligência de ameaças e OSINT: modelos de sistema
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["21.1 A inteligência como sistema"]
-  N1["21.2 Gargalos"]
-  N2["21.3 Ciclos de retroalimentação"]
-  N3["21.4 O STIX como modelo de dados"]
-  N4["21.5 Fronteiras"]
-  N5["21.6 Aritmética da capacidade"]
-  N6["Níveis de serviço"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 A inteligência como sistema"]
-  N1["21.2 Gargalos"]
-  N2["21.3 Ciclos de retroalimentação"]
-  N3["21.4 O STIX como modelo de dados"]
-  N4["21.5 Fronteiras"]
-  N5["21.6 Aritmética da capacidade"]
-  N6["Níveis de serviço"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX061"]
-```
-
-```text
-[21.1 A inteligência como sistema]
-    |
-    v
-[21.2 Gargalos]
-    |
-    v
-[21.3 Ciclos de retroalimentação]
-    |
-    v
-[21.4 O STIX como modelo de dados]
-    |
-    v
-[21.5 Fronteiras]
-    |
-    v
-[21.6 Aritmética da capacidade]
-    |
-    v
-[Níveis de serviço]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar o sistema de inteligência do HCHT como entradas, processos e saídas; (2) identificar ciclos de retroalimentação; (3) encontrar gargalos; (4) expressar o modelo em termos de objetos STIX.
@@ -2618,71 +1328,6 @@ Modele a CTI como um sistema, administre os gargalos, vigie os ciclos de retroal
 
 ## Capítulo 22 — Inteligência de ameaças e OSINT: dados e dependências
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["22.1 Catálogo de fontes"]
-  N1["22.2 Dependências"]
-  N2["22.3 Termos e licenças"]
-  N3["22.4 Pontos únicos de falha"]
-  N4["22.5 Lacunas de cobertura"]
-  N5["22.6 Avaliação das fontes ao longo do tempo"]
-  N6["Fontes internas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX064"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 Catálogo de fontes"]
-  N1["22.2 Dependências"]
-  N2["22.3 Termos e licenças"]
-  N3["22.4 Pontos únicos de falha"]
-  N4["22.5 Lacunas de cobertura"]
-  N5["22.6 Avaliação das fontes ao longo do tempo"]
-  N6["Fontes internas"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX064"]
-```
-
-```text
-[22.1 Catálogo de fontes]
-    |
-    v
-[22.2 Dependências]
-    |
-    v
-[22.3 Termos e licenças]
-    |
-    v
-[22.4 Pontos únicos de falha]
-    |
-    v
-[22.5 Lacunas de cobertura]
-    |
-    v
-[22.6 Avaliação das fontes ao longo do tempo]
-    |
-    v
-[Fontes internas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) catalogar as fontes de inteligência do HCHT e as suas dependências; (2) avaliar pontos únicos de falha; (3) avaliar as licenças e os termos das fontes; (4) planejar a perda de uma fonte.
@@ -2742,71 +1387,6 @@ Conheça as suas fontes, os seus termos e dependências, e planeje a falha delas
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Inteligência de ameaças e OSINT: métodos I
-
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["23.1 Codificar relatórios"]
-  N1["Laboratório — frequência das técnicas"]
-  N2["23.2 Ler o resultado"]
-  N3["23.3 Cautela"]
-  N4["23.4 Da frequência à prioridade"]
-  N5["23.5 Registro"]
-  N6["23.6 Granularidade da codificação"]
-  N7["Comparar com os incidentes internos"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX067"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 Codificar relatórios"]
-  N1["Laboratório — frequência das técnicas"]
-  N2["23.2 Ler o resultado"]
-  N3["23.3 Cautela"]
-  N4["23.4 Da frequência à prioridade"]
-  N5["23.5 Registro"]
-  N6["23.6 Granularidade da codificação"]
-  N7["Comparar com os incidentes internos"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX067"]
-```
-
-```text
-[23.1 Codificar relatórios]
-    |
-    v
-[Laboratório — frequência das técnicas]
-    |
-    v
-[23.2 Ler o resultado]
-    |
-    v
-[23.3 Cautela]
-    |
-    v
-[23.4 Da frequência à prioridade]
-    |
-    v
-[23.5 Registro]
-    |
-    v
-[23.6 Granularidade da codificação]
-    |
-    v
-[Comparar com os incidentes internos]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2894,71 +1474,6 @@ Codifique com cuidado, conte com honestidade, leia as contagens no contexto e co
 
 ## Capítulo 24 — Inteligência de ameaças e OSINT: controles
 
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["24.1 Da técnica à mitigação"]
-  N1["24.2 A solicitação de controle"]
-  N2["24.3 Efeitos colaterais"]
-  N3["24.4 Verificação"]
-  N4["24.5 Degradação"]
-  N5["24.6 A detecção como controle"]
-  N6["Priorizar as solicitações"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX070"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.1 Da técnica à mitigação"]
-  N1["24.2 A solicitação de controle"]
-  N2["24.3 Efeitos colaterais"]
-  N3["24.4 Verificação"]
-  N4["24.5 Degradação"]
-  N5["24.6 A detecção como controle"]
-  N6["Priorizar as solicitações"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
-```
-
-```text
-[24.1 Da técnica à mitigação]
-    |
-    v
-[24.2 A solicitação de controle]
-    |
-    v
-[24.3 Efeitos colaterais]
-    |
-    v
-[24.4 Verificação]
-    |
-    v
-[24.5 Degradação]
-    |
-    v
-[24.6 A detecção como controle]
-    |
-    v
-[Priorizar as solicitações]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear técnicas para mitigações usando o ATT&CK; (2) redigir uma solicitação de controle orientada por inteligência; (3) estimar o custo e os efeitos colaterais de um controle; (4) verificar se um controle funciona.
@@ -3018,71 +1533,6 @@ Mapeie técnicas para mitigações, peça com evidência, pese os efeitos colate
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Inteligência de ameaças e OSINT: Laboratório I
-
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["25.1 Desenho do laboratório"]
-  N1["25.2 Regras do ambiente"]
-  N2["25.3 Passos"]
-  N3["25.4 O relatório de laboratório"]
-  N4["25.5 Avaliação"]
-  N5["25.6 Reprodutibilidade"]
-  N6["25.7 Trabalho em dupla"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX073"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 Desenho do laboratório"]
-  N1["25.2 Regras do ambiente"]
-  N2["25.3 Passos"]
-  N3["25.4 O relatório de laboratório"]
-  N4["25.5 Avaliação"]
-  N5["25.6 Reprodutibilidade"]
-  N6["25.7 Trabalho em dupla"]
-  N7["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
-```
-
-```text
-[25.1 Desenho do laboratório]
-    |
-    v
-[25.2 Regras do ambiente]
-    |
-    v
-[25.3 Passos]
-    |
-    v
-[25.4 O relatório de laboratório]
-    |
-    v
-[25.5 Avaliação]
-    |
-    v
-[25.6 Reprodutibilidade]
-    |
-    v
-[25.7 Trabalho em dupla]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -39,66 +39,6 @@ Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/3227
 
 ## Chapter 1 — Human factors and cyber policy: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 People and security"]
-  N2["1.2 Not the enemy"]
-  N3["1.3 Deception tactics"]
-  N4["1.4 Knowledge is not enough"]
-  N5["1.5 Three early decisions"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 People and security"]
-  N2["1.2 Not the enemy"]
-  N3["1.3 Deception tactics"]
-  N4["1.4 Knowledge is not enough"]
-  N5["1.5 Three early decisions"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 People and security]
-    |
-    v
-[1.2 Not the enemy]
-    |
-    v
-[1.3 Deception tactics]
-    |
-    v
-[1.4 Knowledge is not enough]
-    |
-    v
-[1.5 Three early decisions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain why people, not only technology, decide security outcomes; (2) recognise common deception tactics; (3) make three early decisions for a small charity.
@@ -163,66 +103,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Setting scope"]
-  N2["2.2 Permission"]
-  N3["2.3 Handling reports safely"]
-  N4["2.4 Simulations and ethics"]
-  N5["2.5 Safe practice summary"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Setting scope"]
-  N2["2.2 Permission"]
-  N3["2.3 Handling reports safely"]
-  N4["2.4 Simulations and ethics"]
-  N5["2.5 Safe practice summary"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Setting scope]
-    |
-    v
-[2.2 Permission]
-    |
-    v
-[2.3 Handling reports safely]
-    |
-    v
-[2.4 Simulations and ethics]
-    |
-    v
-[2.5 Safe practice summary]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) set the scope of security work in a small charity; (2) obtain permission and respect boundaries; (3) practise safely and ethically, including on simulations.
@@ -286,71 +166,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Human factors and cyber policy: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Mapping systems"]
-  N2["3.2 Data and people"]
-  N3["Lab — Counting systems each role can reach"]
-  N4["3.3 Single points of failure"]
-  N5["3.4 Simple fixes"]
-  N6["3.5 Checking the fixes"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Mapping systems"]
-  N2["3.2 Data and people"]
-  N3["Lab — Counting systems each role can reach"]
-  N4["3.3 Single points of failure"]
-  N5["3.4 Simple fixes"]
-  N6["3.5 Checking the fixes"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Mapping systems]
-    |
-    v
-[3.2 Data and people]
-    |
-    v
-[Lab — Counting systems each role can reach]
-    |
-    v
-[3.3 Single points of failure]
-    |
-    v
-[3.4 Simple fixes]
-    |
-    v
-[3.5 Checking the fixes]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -433,71 +248,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Human factors and cyber policy: guided lab and applied synthesis
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Reporting route"]
-  N2["4.2 Guided lab"]
-  N3["Lab — Reporting times and success in the guided lab"]
-  N4["4.3 Learning from the test"]
-  N5["4.4 One-month plan"]
-  N6["4.5 Synthesis"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Reporting route"]
-  N2["4.2 Guided lab"]
-  N3["Lab — Reporting times and success in the guided lab"]
-  N4["4.3 Learning from the test"]
-  N5["4.4 One-month plan"]
-  N6["4.5 Synthesis"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Reporting route]
-    |
-    v
-[4.2 Guided lab]
-    |
-    v
-[Lab — Reporting times and success in the guided lab]
-    |
-    v
-[4.3 Learning from the test]
-    |
-    v
-[4.4 One-month plan]
-    |
-    v
-[4.5 Synthesis]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) test a reporting route with volunteers in a safe setting; (2) measure whether it is quick and clear; (3) write a one-month action plan.
@@ -576,38 +326,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — An adopted plan is not week two already done
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  A["Trustees adopt the four-week plan"] --> B["Week two names individual accounts"]
-  B --> C{"Is a new access listing in the file?"}
-  C -->|No| D["Keep the published four role lines"]
-  C -->|Yes| E["That listing would be its own run"]
-```
-
-Adoption names the work. It does not perform week two.
-
-### Logical drawing
-
-```text
-published access print
-    treasurer: 5 of 5
-    coordinator: 3 of 5
-    warehouse volunteer: 1 of 5
-    staff (rota needed): 1 of 5
-plan, week two
-    replace the shared donations login
-        |
-        +-- the trustees' adoption is not that replacement
-        +-- lab_access.py is not edited
-        +-- no new role is added to the dictionary
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -650,39 +368,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Seven of eight is not a perfect eight
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  P["Published print: correct 7/8"] --> G["One genuine message was forwarded"]
-  G --> U["Ruth treats that forward as useful"]
-  U --> R{"Does someone change the 0 to a 1?"}
-  R -->|Yes| N["Refuse. That would be a different list"]
-  R -->|No| K["7/8 stays, and the forward stays useful"]
-```
-
-A kind reading does not rewrite the success count.
-
-### Logical drawing
-
-```text
-lab_route.py
-    correct 7/8
-    median time 40 s
-    over 60 s: 2
-the eighth flag
-    a genuine message, forwarded
-    recorded as 0 in the correct list
-        |
-        +-- useful is not the same claim as correct
-        +-- the 0 is not flipped
-        +-- nobody is named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -727,37 +412,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — One test alert is not every later alert
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  O["Alerts once went only to the treasurer's personal mail"] --> F["A shared mailbox is added as well"]
-  F --> T["One test alert reached that mailbox"]
-  T --> L{"Does the test retire the next real alert?"}
-  L -->|No| K["The next alert still has to be seen"]
-```
-
-A check of the pipe is one message. It is not a promise about the message after it.
-
-### Logical drawing
-
-```text
-original destination
-    treasurer's personal email only
-fix
-    shared charity mailbox as well as the treasurer
-check already made
-    one test alert arrived in the shared mailbox
-        |
-        +-- the personal copy is not removed
-        +-- the test is not the next invoice alert
-        +-- no later arrival is invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -800,40 +454,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — A test payment is not the wholesaler's new details
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  T["A small test payment used the callback"] --> P["That check tried the second trustee's path"]
-  W["A lookalike wholesaler asks for new bank details"] --> C["Phone the number already on file"]
-  P --> R{"Does the test approve the wholesaler's request?"}
-  R -->|No| K["The request still needs its own call"]
-```
-
-Yesterday's rehearsal does not answer today's invoice.
-
-### Logical drawing
-
-```text
-check already made
-    second trustee
-    small test payment
-    callback used
-still required for a real change
-    phone the supplier on the number on file
-typical lure
-    lookalike wholesaler address
-    new bank details
-        |
-        +-- the test payment names no supplier
-        +-- no amount is written here
-        +-- the lure is not paid
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -878,39 +498,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — The rota gap is not a copy of the treasurer's row
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  S["staff (rota needed): 1 of 5"] --> G["They have email and lack the rota"]
-  G --> C{"Does someone give them the treasurer's five?"}
-  C -->|Yes| R["Refuse. The gap is the rota, not the bank"]
-  C -->|No| K["The published line stays 1 of 5"]
-```
-
-The missing system is named by the role. It is not an invitation to copy another role.
-
-### Logical drawing
-
-```text
-staff who need the rota
-    email only
-    1 of 5
-treasurer
-    email, spreadsheet, bank, rota, social
-    5 of 5
-gap Ruth recorded
-    some staff who need the rota do not have it
-        |
-        +-- the fix would be the rota, not the whole set
-        +-- this lesson does not grant the rota either
-        +-- the print is not rewritten
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -953,41 +540,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — One checked login is not a destroyed shared password
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  O["One unnamed volunteer knew the shared password"] --> D["Individual logins and two-step verification"]
-  D --> R["Ruth's own login passed one check"]
-  R --> Q{"Is the old password shown as destroyed?"}
-  Q -->|No| K["Do not write the password, and do not name the volunteer"]
-```
-
-A successful sign-in on one account does not certify every other account.
-
-### Logical drawing
-
-```text
-old single point
-    one volunteer knows the shared social password
-    that person is not named
-design of the fix
-    individual logins
-    two-step verification
-    recovery details held by the charity manager
-check
-    Ruth signs in on her own account
-    two-step verification works for that sign-in
-        |
-        +-- one account is not every account
-        +-- destruction of the shared password is not in the file
-        +-- the password is not written down
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1033,38 +585,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — No simulations for now is not a friendly surprise
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N["Ruth recommends no simulations for now"] --> S["A colleague proposes a surprise email"]
-  S --> R["A surprise is still a trick without agreement"]
-  R --> P["Practice stays announced role-play"]
-```
-
-A softer adjective does not move a message out of the banned method.
-
-### Logical drawing
-
-```text
-recommendation now
-    no simulations
-if they are ever used
-    announce the programme
-    agree with staff and volunteer representatives
-    no lures about money, food or personal hardship
-    kind feedback, totals only, never against a person
-practice that is allowed
-    announced role-play
-        |
-        +-- "friendly" does not equal announced
-        +-- this lesson does not start a simulation
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1107,43 +627,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — A name on the report line breaks the record
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  R["A report arrives"] --> F["Record date, type and outcome only"]
-  F --> N{"Does someone add who sent it?"}
-  N -->|Yes| X["Refuse the name"]
-  N -->|No| K["Forward without clicking, and do not investigate alone"]
-```
-
-The record can be useful without becoming a list of people.
-
-### Logical drawing
-
-```text
-allowed fields
-    date
-    type
-    outcome
-not allowed
-    who reported
-handling
-    do not click links
-    do not open attachments
-    forward by the agreed method to the IT volunteer
-serious report
-    follow incident steps with the IT volunteer
-    do not investigate alone
-        |
-        +-- no person is named in this lesson
-        +-- no link is opened
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
 
 ### Learning outcomes
 
@@ -1188,36 +671,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — A suggestion for the induction pack is not the pack
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  S["Coordinator suggests the guide inside the induction pack"] --> P["The suggestion is not a completed insert"]
-  G["Ruth has written a short guide and a poster plan"] --> L["Week three is the launch, and it is not shown as finished"]
-```
-
-A good place to put a guide is not proof the guide is already there.
-
-### Logical drawing
-
-```text
-suggestion
-    include the guide in the induction pack every new volunteer already receives
-what exists as writing
-    a short instruction
-    a poster planned for the warehouse
-week three of the adopted plan
-    launch the route with the guide and the poster
-        |
-        +-- the suggestion is not the launch
-        +-- no new volunteer is named
-        +-- this lesson does not count who has read it
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1260,38 +713,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Twelve and sixty are not a census of seventy-two
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  A["Twelve staff"] --> S["Keep the two figures apart"]
-  B["Sixty volunteers"] --> S
-  S --> R{"Does someone write 72 as the lab population?"}
-  R -->|Yes| N["Refuse. 72 is arithmetic, not a role"]
-  R -->|No| K["The access print stays four role lines"]
-```
-
-Adding the two groups does not create a fifth line in the access program.
-
-### Logical drawing
-
-```text
-Riverbend, as written
-    twelve staff
-    sixty volunteers
-access program
-    four roles
-    each scored out of 5 systems
-        |
-        +-- 12 plus 60 is not a role
-        +-- the four lines are not a headcount of the charity
-        +-- the script is not edited to print 72
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1336,40 +757,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Two slow times stay in the published list
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  L["Times include 95 and 110"] --> O["over 60 s: 2"]
-  O --> M["Median of the full list: 40 s"]
-  F["Ruth later adds the report address to the phones"] --> N["That fix is after the list"]
-  N --> R{"Does someone drop 95 and 110?"}
-  R -->|Yes| X["Refuse. This lesson does not rerun the median"]
-```
-
-A fix found after the test does not delete the times that revealed the problem.
-
-### Logical drawing
-
-```text
-published times
-    25, 31, 34, 38, 42, 47, 95, 110
-published summary
-    correct 7/8
-    median time 40 s
-    over 60 s: 2
-later fix
-    report address added as a contact on shared phones
-        |
-        +-- the contact was not on the phones during these eight times
-        +-- 95 and 110 stay
-        +-- the median is not recomputed here
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1412,37 +799,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Adoption is not the three-month review
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  A["Trustees adopt the plan"] --> N["That act is the start"]
-  C["Callum: review after three months"] --> W{"Has the file dated those three months as elapsed?"}
-  W -->|No| K["Do not write findings from a review that has not happened"]
-```
-
-Saying when to look again is not the same as having looked.
-
-### Logical drawing
-
-```text
-now
-    trustees adopt the plan
-    Callum says review it after three months
-not in the file
-    a date on which the three months end
-    a note of that later review
-    findings from it
-        |
-        +-- adoption is not the review
-        +-- week four's planned conversation is not that review either
-        +-- no finding is invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1487,39 +843,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — No blame is not a reason to investigate alone
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  B["Reporting is welcome and not blamed"] --> S["A serious report still has incident steps"]
-  S --> I["Ask the IT volunteer"]
-  I --> N["Ruth does not investigate alone"]
-```
-
-Kindness changes the welcome. It does not change who may chase a serious case.
-
-### Logical drawing
-
-```text
-second early decision
-    reporting is welcome
-    honest mistakes are not blamed
-serious example already in the book
-    donor data sent to the wrong address
-response
-    incident steps
-    IT volunteer helps
-    Ruth does not go alone
-        |
-        +-- no blame is not secrecy
-        +-- date, type and outcome can still be recorded
-        +-- no person and no donor are named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1562,39 +885,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — The warehouse row does not inherit the bank
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  W["warehouse volunteer: 1 of 5"] --> S["Spreadsheet only"]
-  T["Payment single point"] --> F["A second trustee, with callbacks"]
-  F --> R{"Does the warehouse role receive the bank?"}
-  R -->|No| K["The second approver is not a wider grant"]
-```
-
-The payment fix adds an approver. It does not promote every other role.
-
-### Logical drawing
-
-```text
-warehouse volunteer
-    spreadsheet only
-    1 of 5
-why that spreadsheet exists
-    donor details copied from paper forms
-payment fix
-    a second authorised trustee
-    callback on a bank change
-        |
-        +-- the trustee is not the warehouse role
-        +-- the bank is not added to the warehouse line
-        +-- the print stays 1 of 5
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1639,37 +929,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — A requested reply template is not a reply already sent
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  P["The IT volunteer will reply to every report"] --> L["That is the promise"]
-  A["After the lab, Ruth asks for a quick reply template"] --> Q{"Was the template used on the eight messages?"}
-  Q -->|No| K["The request is later than the times"]
-```
-
-A promise and a template are two different objects, and neither is a stack of eight sent notes.
-
-### Logical drawing
-
-```text
-promise
-    every report gets a short verdict and thanks
-after the eight volunteers
-    Ruth asks the IT volunteer for a quick reply template
-not in the file
-    eight sent replies
-    the wording of a verdict
-    proof the template existed during the lab
-        |
-        +-- the promise is not backdated onto the eight times
-        +-- no verdict text is invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1712,39 +971,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the charity note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Quote the prints and the open steps"]
-  F --> Q{"Does the sentence add a new tally, a finished week, or a completed review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They do not close Riverbend's open steps.
-
-### Logical drawing
-
-```text
-may stay
-    twelve staff and sixty volunteers
-    treasurer 5 of 5; coordinator 3 of 5
-    warehouse volunteer 1 of 5; staff (rota needed) 1 of 5
-    correct 7/8; median 40 s; over 60 s: 2
-    no simulations for now
-    plan adopted; week two not shown as finished
-must not be added
-    8/8 or a new median
-    72 as the census
-    shared password destroyed
-    three-month review already done
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

@@ -40,66 +40,6 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 
 ## Chapter 1 — Research question and literature method
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 From topic to question"]
-  N2["1.2 A documented search"]
-  N3["1.3 Extracting evidence"]
-  N4["1.4 Judging sources"]
-  N5["1.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 From topic to question"]
-  N2["1.2 A documented search"]
-  N3["1.3 Extracting evidence"]
-  N4["1.4 Judging sources"]
-  N5["1.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 From topic to question]
-    |
-    v
-[1.2 A documented search]
-    |
-    v
-[1.3 Extracting evidence]
-    |
-    v
-[1.4 Judging sources]
-    |
-    v
-[1.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) move from a topic to a researchable question with a clear unit of analysis; (2) run a systematic, documented literature search across security and machine-learning venues and preprint servers; (3) extract evidence into a comparison matrix; (4) judge source quality, including preprints and vendor material; and (5) write a short, honest state-of-the-art section.
@@ -193,71 +133,6 @@ A good dissertation starts with a narrow, feasible question and a search that so
 <a id="ch-02"></a>
 
 ## Chapter 2 — AI and machine-learning security: advanced seminar
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 The seminar format"]
-  N2["2.2 Evasion"]
-  N3["2.3 Poisoning and backdoors"]
-  N4["2.4 Privacy attacks"]
-  N5["2.5 Model extraction"]
-  N6["2.6 Prompt injection and LLM applications"]
-  N7["2.8 Practice activities"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 The seminar format"]
-  N2["2.2 Evasion"]
-  N3["2.3 Poisoning and backdoors"]
-  N4["2.4 Privacy attacks"]
-  N5["2.5 Model extraction"]
-  N6["2.6 Prompt injection and LLM applications"]
-  N7["2.8 Practice activities"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 The seminar format]
-    |
-    v
-[2.2 Evasion]
-    |
-    v
-[2.3 Poisoning and backdoors]
-    |
-    v
-[2.4 Privacy attacks]
-    |
-    v
-[2.5 Model extraction]
-    |
-    v
-[2.6 Prompt injection and LLM applications]
-    |
-    v
-[2.8 Practice activities]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -398,66 +273,6 @@ The seminar builds fluency in the attack classes and in critical reading. Each c
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Choosing a design"]
-  N2["3.2 Variables and controls"]
-  N3["3.3 Ethics and data protection"]
-  N4["3.4 Reproducible by design"]
-  N5["3.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Choosing a design"]
-  N2["3.2 Variables and controls"]
-  N3["3.3 Ethics and data protection"]
-  N4["3.4 Reproducible by design"]
-  N5["3.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Choosing a design]
-    |
-    v
-[3.2 Variables and controls]
-    |
-    v
-[3.3 Ethics and data protection]
-    |
-    v
-[3.4 Reproducible by design]
-    |
-    v
-[3.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) choose a design (controlled experiment, observational study, case study) that fits the question; (2) define variables, controls, randomisation and sample size; (3) plan data handling and ethics for personal or sensitive data; (4) make the study reproducible from the start; and (5) document the plan so a supervisor can approve it.
@@ -556,66 +371,6 @@ Design determines what you can conclude. Controlled variables, matched member/no
 <a id="ch-04"></a>
 
 ## Chapter 4 — AI and machine-learning security: competing explanations
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why competing explanations matter"]
-  N2["4.2 A catalogue of alternatives in AI security"]
-  N3["4.3 Ablations and controls"]
-  N4["4.4 Reasoning about mechanisms with the labs"]
-  N5["4.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why competing explanations matter"]
-  N2["4.2 A catalogue of alternatives in AI security"]
-  N3["4.3 Ablations and controls"]
-  N4["4.4 Reasoning about mechanisms with the labs"]
-  N5["4.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why competing explanations matter]
-    |
-    v
-[4.2 A catalogue of alternatives in AI security]
-    |
-    v
-[4.3 Ablations and controls]
-    |
-    v
-[4.4 Reasoning about mechanisms with the labs]
-    |
-    v
-[4.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -727,66 +482,6 @@ Effects need explanations, and explanations need tests. Ablations, controls and 
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 The proposal"]
-  N2["5.2 The pilot"]
-  N3["5.3 Sample size and power"]
-  N4["5.4 Revising the plan"]
-  N5["5.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 The proposal"]
-  N2["5.2 The pilot"]
-  N3["5.3 Sample size and power"]
-  N4["5.4 Revising the plan"]
-  N5["5.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 The proposal]
-    |
-    v
-[5.2 The pilot]
-    |
-    v
-[5.3 Sample size and power]
-    |
-    v
-[5.4 Revising the plan]
-    |
-    v
-[5.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) write a dissertation proposal with question, background, design, analysis plan, ethics, risks and timeline; (2) run a pilot to test feasibility and estimate variability; (3) compute sample sizes; (4) revise the plan from pilot evidence; and (5) obtain approval with a clear record of decisions.
@@ -891,66 +586,6 @@ The proposal fixes what you will do and how you will analyse it; the pilot shows
 
 ## Chapter 6 — Data collection and analysis
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Running the main study"]
-  N2["6.2 Data-quality checks"]
-  N3["6.3 Primary analysis"]
-  N4["6.4 Secondary outcomes and costs"]
-  N5["6.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Running the main study"]
-  N2["6.2 Data-quality checks"]
-  N3["6.3 Primary analysis"]
-  N4["6.4 Secondary outcomes and costs"]
-  N5["6.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Running the main study]
-    |
-    v
-[6.2 Data-quality checks]
-    |
-    v
-[6.3 Primary analysis]
-    |
-    v
-[6.4 Secondary outcomes and costs]
-    |
-    v
-[6.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) run the main experiments exactly as planned and log deviations; (2) check data quality before analysis; (3) compute primary outcomes with uncertainty (Wilson intervals, bootstrap, variation across seeds); (4) analyse paired comparisons and secondary outcomes; and (5) present results in tables and figures that answer the research question.
@@ -1048,71 +683,6 @@ Analysis is where careful design pays off: interleaved runs, quality checks, int
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Structure"]
-  N2["7.2 Findings versus interpretation"]
-  N3["7.3 Limitations by validity type"]
-  N4["7.4 Writing about attacks responsibly"]
-  N5["7.5 Artefact appendix"]
-  N6["7.7 Practice activities"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Structure"]
-  N2["7.2 Findings versus interpretation"]
-  N3["7.3 Limitations by validity type"]
-  N4["7.4 Writing about attacks responsibly"]
-  N5["7.5 Artefact appendix"]
-  N6["7.7 Practice activities"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Structure]
-    |
-    v
-[7.2 Findings versus interpretation]
-    |
-    v
-[7.3 Limitations by validity type]
-    |
-    v
-[7.4 Writing about attacks responsibly]
-    |
-    v
-[7.5 Artefact appendix]
-    |
-    v
-[7.7 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) structure a dissertation so every chapter serves the research question; (2) write results and discussion that separate findings from interpretation; (3) write a limitations section organised by validity type; (4) handle security-sensitive details responsibly in writing; and (5) produce an artefact appendix that supports reproduction.
@@ -1202,66 +772,6 @@ A dissertation is judged by how clearly its claims match its evidence. Separatin
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Independent review before submission"]
-  N2["8.2 The defence presentation"]
-  N3["8.3 Answering examiners"]
-  N4["8.4 Corrections and dissemination"]
-  N5["8.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Independent review before submission"]
-  N2["8.2 The defence presentation"]
-  N3["8.3 Answering examiners"]
-  N4["8.4 Corrections and dissemination"]
-  N5["8.6 Practice activities"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Independent review before submission]
-    |
-    v
-[8.2 The defence presentation]
-    |
-    v
-[8.3 Answering examiners]
-    |
-    v
-[8.4 Corrections and dissemination]
-    |
-    v
-[8.6 Practice activities]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

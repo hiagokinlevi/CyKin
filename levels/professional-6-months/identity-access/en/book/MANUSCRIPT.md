@@ -38,56 +38,6 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 
 ## Chapter 1 — Foundations of identity and access
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Three questions"]
-  N3["1.3 The landscape and scope"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Three questions"]
-  N3["1.3 The landscape and scope"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 Three questions]
-    |
-    v
-[1.3 The landscape and scope]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain identity, authentication and authorisation; (2) describe the firm's identity landscape; (3) agree a supervised scope.
@@ -133,56 +83,6 @@ Framing work by identification, authentication and authorisation, within a signe
 <a id="ch-02"></a>
 
 ## Chapter 2 — Standards and context
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Guidance to rely on"]
-  N2["2.2 Fitting a small firm"]
-  N3["2.3 Prioritising"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Guidance to rely on"]
-  N2["2.2 Fitting a small firm"]
-  N3["2.3 Prioritising"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Guidance to rely on]
-    |
-    v
-[2.2 Fitting a small firm]
-    |
-    v
-[2.3 Prioritising]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -230,56 +130,6 @@ Recognised standards, applied by principle and ranked by harm and effort, focus 
 
 ## Chapter 3 — Evidence handling and authorised data collection
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Collecting within scope"]
-  N2["3.2 Protecting exports"]
-  N3["3.3 Reproducibility"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Collecting within scope"]
-  N2["3.2 Protecting exports"]
-  N3["3.3 Reproducibility"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Collecting within scope]
-    |
-    v
-[3.2 Protecting exports]
-    |
-    v
-[3.3 Reproducibility]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) collect identity evidence within scope; (2) protect exports; (3) keep records reproducible.
@@ -325,56 +175,6 @@ Scoped, protected and reproducible evidence makes identity findings trustworthy.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Reviewing authentication
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Current state"]
-  N2["4.2 Comparing with guidance"]
-  N3["4.3 Proposals"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Current state"]
-  N2["4.2 Comparing with guidance"]
-  N3["4.3 Proposals"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Current state]
-    |
-    v
-[4.2 Comparing with guidance]
-    |
-    v
-[4.3 Proposals]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -424,56 +224,6 @@ Comparing settings with guidance and proposing ranked changes strengthens authen
 
 ## Chapter 5 — Reviewing roles and authorisation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Role baselines"]
-  N2["5.2 Measuring drift"]
-  N3["5.3 Explaining drift"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Role baselines"]
-  N2["5.2 Measuring drift"]
-  N3["5.3 Explaining drift"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Role baselines]
-    |
-    v
-[5.2 Measuring drift]
-    |
-    v
-[5.3 Explaining drift]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) define role baselines; (2) compare actual access to baselines; (3) explain drift.
@@ -519,61 +269,6 @@ Role baselines make least privilege measurable and drift fixable through process
 <a id="ch-06"></a>
 
 ## Chapter 6 — Role drift lab
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 The report"]
-  N2["Lab — Role drift"]
-  N3["6.2 Interpreting results"]
-  N4["6.3 Agreeing actions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 The report"]
-  N2["Lab — Role drift"]
-  N3["6.2 Interpreting results"]
-  N4["6.3 Agreeing actions"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 The report]
-    |
-    v
-[Lab — Role drift]
-    |
-    v
-[6.2 Interpreting results]
-    |
-    v
-[6.3 Agreeing actions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -661,56 +356,6 @@ Set-based drift reports, reviewed with managers, lead to removals, exceptions or
 
 ## Chapter 7 — Alert triage for identity events
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 The alerts"]
-  N2["7.2 Triage steps"]
-  N3["7.3 Escalating"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 The alerts"]
-  N2["7.2 Triage steps"]
-  N3["7.3 Escalating"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 The alerts]
-    |
-    v
-[7.2 Triage steps]
-    |
-    v
-[7.3 Escalating]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) triage identity alerts; (2) separate benign from concerning events; (3) escalate with evidence.
@@ -757,56 +402,6 @@ Quick, evidence-based triage separates normal noise from events needing escalati
 
 ## Chapter 8 — Operational workflow and change
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Request flows"]
-  N2["8.2 Reviewing changes"]
-  N3["8.3 Audit trail"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Request flows"]
-  N2["8.2 Reviewing changes"]
-  N3["8.3 Audit trail"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Request flows]
-    |
-    v
-[8.2 Reviewing changes]
-    |
-    v
-[8.3 Audit trail]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) design request and approval flows; (2) review identity changes; (3) keep an audit trail.
@@ -852,61 +447,6 @@ Request flows, change review and audit matching make every access change account
 <a id="ch-09"></a>
 
 ## Chapter 9 — Guest and external access
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Guest risks"]
-  N2["Lab — Guest expiry"]
-  N3["9.2 Lab results"]
-  N4["9.3 Acting on results"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Guest risks"]
-  N2["Lab — Guest expiry"]
-  N3["9.2 Lab results"]
-  N4["9.3 Acting on results"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Guest risks]
-    |
-    v
-[Lab — Guest expiry]
-    |
-    v
-[9.2 Lab results]
-    |
-    v
-[9.3 Acting on results]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Learning outcomes
 
@@ -998,56 +538,6 @@ Sponsored, expiring guest access with automatic enforcement keeps external acces
 
 ## Chapter 10 — Supervised investigation
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 The concern"]
-  N2["10.2 Evidence"]
-  N3["10.3 Reporting"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 The concern"]
-  N2["10.2 Evidence"]
-  N3["10.3 Reporting"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 The concern]
-    |
-    v
-[10.2 Evidence]
-    |
-    v
-[10.3 Reporting]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) investigate an identity concern under supervision; (2) preserve evidence; (3) report facts.
@@ -1094,56 +584,6 @@ Narrow, approved investigations with preserved evidence and factual reporting re
 
 ## Chapter 11 — Reporting and troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Partner reports"]
-  N2["11.2 Troubleshooting"]
-  N3["11.3 Linking to controls"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Partner reports"]
-  N2["11.2 Troubleshooting"]
-  N3["11.3 Linking to controls"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Partner reports]
-    |
-    v
-[11.2 Troubleshooting]
-    |
-    v
-[11.3 Linking to controls]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) write reports for partners; (2) troubleshoot identity issues; (3) link problems to controls.
@@ -1189,56 +629,6 @@ Short partner reports and cause-linked troubleshooting turn identity work into v
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final portfolio
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 The portfolio"]
-  N2["12.2 Evaluating results"]
-  N3["12.3 Handover"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 The portfolio"]
-  N2["12.2 Evaluating results"]
-  N3["12.3 Handover"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 The portfolio]
-    |
-    v
-[12.2 Evaluating results]
-    |
-    v
-[12.3 Handover]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

@@ -17,71 +17,6 @@ This is the one principal English book for the rapid Security governance, risk a
 
 ## Chapter 1 — Security governance, risk and compliance: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The decision problem"]
-  N2["1.2 Start with a service, not a product"]
-  N3["1.3 Translate a threat into a business scenario"]
-  N4["1.4 Choose outcomes that can be checked"]
-  N5["1.5 Set priorities under a real limit"]
-  N6["1.6 A short working example"]
-  N7["1.7 The one-page strategy test"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The decision problem"]
-  N2["1.2 Start with a service, not a product"]
-  N3["1.3 Translate a threat into a business scenario"]
-  N4["1.4 Choose outcomes that can be checked"]
-  N5["1.5 Set priorities under a real limit"]
-  N6["1.6 A short working example"]
-  N7["1.7 The one-page strategy test"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The decision problem]
-    |
-    v
-[1.2 Start with a service, not a product]
-    |
-    v
-[1.3 Translate a threat into a business scenario]
-    |
-    v
-[1.4 Choose outcomes that can be checked]
-    |
-    v
-[1.5 Set priorities under a real limit]
-    |
-    v
-[1.6 A short working example]
-    |
-    v
-[1.7 The one-page strategy test]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 After this chapter, a reader should be able to distinguish a business objective from a security activity, explain how a risk scenario affects a service, identify who must own a decision, write a measurable security outcome, and test whether a proposed action belongs in a strategy.
@@ -260,71 +195,6 @@ All case details for Northstar Community Services are fictional. The strategic l
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Why scope comes first"]
-  N2["2.2 Permission and authority"]
-  N3["2.3 Handling personal data safely"]
-  N4["2.4 Designing a safe exercise"]
-  N5["2.5 Recording what was done"]
-  N6["Concepts — four gates that do not unlock each other"]
-  N7["Decision flow — read, export, restore, or stop"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX053"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Why scope comes first"]
-  N2["2.2 Permission and authority"]
-  N3["2.3 Handling personal data safely"]
-  N4["2.4 Designing a safe exercise"]
-  N5["2.5 Recording what was done"]
-  N6["Concepts — four gates that do not unlock each other"]
-  N7["Decision flow — read, export, restore, or stop"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Why scope comes first]
-    |
-    v
-[2.2 Permission and authority]
-    |
-    v
-[2.3 Handling personal data safely]
-    |
-    v
-[2.4 Designing a safe exercise]
-    |
-    v
-[2.5 Recording what was done]
-    |
-    v
-[Concepts — four gates that do not unlock each other]
-    |
-    v
-[Decision flow — read, export, restore, or stop]
-    |
-    v
-[Worked example] --> [Exercise EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) define the scope of a governance review in writing; (2) obtain and record permission before touching systems or data; (3) plan evidence collection and exercises that cannot harm services or people.
@@ -429,71 +299,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security governance, risk and compliance: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 From services to components"]
-  N2["3.2 Reading the dependency map"]
-  N3["Lab — Northstar dependency map and owners"]
-  N4["3.3 Data and where it goes"]
-  N5["3.4 Dependencies outside the organisation"]
-  N6["3.5 From map to scenarios and evidence"]
-  N7["Concepts — the listing counts names, it does not gra"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX055"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 From services to components"]
-  N2["3.2 Reading the dependency map"]
-  N3["Lab — Northstar dependency map and owners"]
-  N4["3.3 Data and where it goes"]
-  N5["3.4 Dependencies outside the organisation"]
-  N6["3.5 From map to scenarios and evidence"]
-  N7["Concepts — the listing counts names, it does not gra"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 From services to components]
-    |
-    v
-[3.2 Reading the dependency map]
-    |
-    v
-[Lab — Northstar dependency map and owners]
-    |
-    v
-[3.3 Data and where it goes]
-    |
-    v
-[3.4 Dependencies outside the organisation]
-    |
-    v
-[3.5 From map to scenarios and evidence]
-    |
-    v
-[Concepts — the listing counts names, it does not gra]
-    |
-    v
-[Worked example] --> [Exercise EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -631,71 +436,6 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Security governance, risk and compliance: guided lab and applied synthesis
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Running the exercise"]
-  N2["4.2 Reading the timings"]
-  N3["Lab — Timing the Northstar restore exercise"]
-  N4["4.3 What the result means"]
-  N5["4.4 Recording the decision"]
-  N6["4.5 Updating the one-page strategy"]
-  N7["Concepts — two calculations, and a reading that is n"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX057"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Running the exercise"]
-  N2["4.2 Reading the timings"]
-  N3["Lab — Timing the Northstar restore exercise"]
-  N4["4.3 What the result means"]
-  N5["4.4 Recording the decision"]
-  N6["4.5 Updating the one-page strategy"]
-  N7["Concepts — two calculations, and a reading that is n"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Running the exercise]
-    |
-    v
-[4.2 Reading the timings]
-    |
-    v
-[Lab — Timing the Northstar restore exercise]
-    |
-    v
-[4.3 What the result means]
-    |
-    v
-[4.4 Recording the decision]
-    |
-    v
-[4.5 Updating the one-page strategy]
-    |
-    v
-[Concepts — two calculations, and a reading that is n]
-    |
-    v
-[Worked example] --> [Exercise EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) run and time a restore exercise safely; (2) compare the result with the service target and find the critical delay; (3) write a short decision record and an updated one-page strategy.
@@ -830,38 +570,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — A booked retest is not a second run
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  A["Director approves option 2"] --> B["Improvements due within thirty days"]
-  B --> C["A second exercise is booked"]
-  C --> D{"Is a second log in the file?"}
-  D -->|No| E["Keep MISSED by 5 from the first run"]
-  D -->|Yes| F["That later log would be its own record"]
-```
-
-A booking is not a clock that has already been kept.
-
-### Logical drawing
-
-```text
-first exercise log
-    total 245 min
-    MISSED by 5 min
-    longest step 70 min
-decision record
-    second option approved
-        |
-        +-- thirty days is the due window, not a finished date
-        +-- the second exercise is booked, not run
-        +-- lab_restore.py stays as published
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -904,38 +612,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — The longest step is not the five-minute miss
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  T["Total 245 against 240"] --> M["MISSED by 5"]
-  L["Largest single step is 70"] --> D["Database restore"]
-  M --> G{"Does shrinking 70 on paper retire the miss?"}
-  G -->|No| K["The approved work is three other items"]
-```
-
-The maximum and the gap answer different questions.
-
-### Logical drawing
-
-```text
-comparison
-    245 against 240, miss of 5
-maximum
-    restore scheduling database, 70 min
-approved improvements
-    protected place for instructions and credentials
-    scripted web host configuration
-    identity reconnection written into the procedure
-        |
-        +-- none of those three is "cut 5 minutes off the 70"
-        +-- a pencilled 70 does not isolate a copy
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
 
 ### Learning outcomes
 
@@ -980,37 +656,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — A decision-list line is not an owner in the listing
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  N["Listing prints NONE"] --> L["Relay and roster go on the director's list"]
-  L --> W{"Did someone type a team name into the lab?"}
-  W -->|Yes| R["Refuse. The print still says NONE"]
-  W -->|No| K["The list is a request for a later decision"]
-```
-
-Asking for an owner does not fill the owner field.
-
-### Logical drawing
-
-```text
-lab_deps.py
-    email relay: owner NONE
-    roster spreadsheet: owner NONE
-    shared by all three: ['identity provider']
-director's decision list
-    owners still to be named
-        |
-        +-- "IT will look at it" is not the owner cell
-        +-- no personal name is invented
-        +-- the relay is not reconfigured
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1053,36 +698,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — A quarter outcome is not a mail already cleaned
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  F["Confirmations include the appointment reason"] --> O["Removal is a quarter outcome"]
-  O --> S{"Is a cleaned sample in the file?"}
-  S -->|No| R["A later mail that still carries the reason fails the change"]
-  S -->|Yes| K["That sample would be its own evidence"]
-```
-
-Intending a cheaper mail is not proof the cheaper mail went out.
-
-### Logical drawing
-
-```text
-current finding
-    appointment reason may show health or financial hardship
-    confirmations still carry that reason
-quarter outcome
-    remove the reason from those mails
-        |
-        +-- the outcome is named, not evidenced as done
-        +-- no sample message is invented
-        +-- the relay is still not reconfigured in this lesson
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
 
 ### Learning outcomes
 
@@ -1127,38 +742,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Next quarter has not moved the exclusion
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  S["First scope excludes case management and the roster"] --> N["Review named for next quarter"]
-  N --> Q{"Does the file date that quarter as arrived?"}
-  Q -->|No| K["Keep the case-database row and leave it closed"]
-  Q -->|Yes| R["A dated review would be a new page"]
-```
-
-A note about later is not a page that says later has started.
-
-### Logical drawing
-
-```text
-included now
-    appointment portal, scheduling database, identity provider, backup service
-excluded for now
-    case management and the volunteer roster
-    review next quarter
-listing
-    case database row stays, owner Casework
-        |
-        +-- the row is not a key
-        +-- no suspicious account is invented
-        +-- no calendar date is supplied
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1201,40 +784,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — The decision record is not a production permission
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  D["Decision record filed"] --> O["Option 2: improve, then retest"]
-  O --> P{"Does that filing name a live restore?"}
-  P -->|No| S["The next run still needs the safe-test rules"]
-  P -->|Yes| X["A production verb would be a different page"]
-```
-
-Approving a limit's path is not permission to touch the live portal.
-
-### Logical drawing
-
-```text
-first exercise
-    isolated copy
-    outbound mail blocked
-    named person able to stop it
-    separate credentials
-    live portal not touched
-decision record
-    whether to accept four hours
-    option 2 approved
-        |
-        +-- the record is not a new verb for production
-        +-- a later run repeats the safeguards
-        +-- opening hours are not waived here
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1279,37 +828,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — An unconfirmed inventory is not a count of zero
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  U["No confirmed inventory of third-party integrations"] --> Z{"Does someone write 0?"}
-  Z -->|Yes| R["Refuse. Unconfirmed is not a census"]
-  K["Web host, identity provider, email relay"] --> N["Named component suppliers"]
-  N --> C["Those names do not close the inventory"]
-```
-
-Known suppliers of named parts are not the whole unknown list.
-
-### Logical drawing
-
-```text
-Chapter 1 gap
-    third-party integrations: no confirmed inventory
-named suppliers of components
-    web host, identity provider, email relay
-refused purchase
-    Calder Systems platform, not adopted
-        |
-        +-- do not write 0
-        +-- do not add a fourth firm
-        +-- do not treat Calder's brochure as a live integration
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1353,36 +871,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — A status page is not a tested fallback
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  G["Evidence gap: no tested fallback sign-in"] --> S["A supplier page says operational"]
-  S --> R["That page is not a fallback test"]
-  E["Exercise reconnected identity in 25 min"] --> N["That step is part of the restore, not a fallback"]
-```
-
-Being able to sign in again on the restored copy is not a plan for when sign-in itself is gone.
-
-### Logical drawing
-
-```text
-scenario
-    identity provider unavailable
-    staff cannot reach any service
-    fallback sign-in: not tested
-exercise step
-    reconnect identity provider: 25 min
-        |
-        +-- 25 min is a step in the first log
-        +-- it assumes the provider can be reconnected
-        +-- no fallback product is named
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1425,37 +913,6 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — The roster sharing list has not arrived
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX067.
-
-```mermaid
-flowchart TD
-  R["Roster access has never been reviewed"] --> E["Evidence requested: the sharing list"]
-  E --> V{"Is the list in the file?"}
-  V -->|No| K["A guess about who can open it is not the list"]
-  V -->|Yes| S["The list would be the evidence"]
-```
-
-An assumption about departed volunteers stays an assumption until the list is read.
-
-### Logical drawing
-
-```text
-roster spreadsheet
-    owner NONE
-    contact details of volunteers
-    access: never reviewed
-requested evidence
-    the sharing list
-        |
-        +-- "about three people" is not the list
-        +-- a leaver's access is not stated as fact
-        +-- the spreadsheet is not edited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
 
 ### Learning outcomes
 
@@ -1501,39 +958,6 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — One exercise log is not a month of signals
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX068.
-
-```mermaid
-flowchart TD
-  S["Monthly signals named"] --> R["Restore time is one of them"]
-  R --> L["The file holds one restore total: 245"]
-  L --> N["One total is not a month of readings"]
-  B["Backup failures and privileged changes"] --> U["No counts are in the file"]
-```
-
-A signal's name is the thing to collect. It is not the collection.
-
-### Logical drawing
-
-```text
-signals to review monthly
-    restore time
-    backup failures
-    privileged changes
-    overdue owner actions
-what the file actually holds
-    one restore total, 245 min
-    relay and roster owners still NONE
-        |
-        +-- no failure count
-        +-- no privileged-change count
-        +-- 245 is not rewritten as a monthly average
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1578,41 +1002,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Six hours was the option not taken
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX069.
-
-```mermaid
-flowchart TD
-  O["Three options"] --> A["Accept four hours now"]
-  O --> B["Accept after improvements and a retest"]
-  O --> C["Raise the limit to six hours and staff manual booking"]
-  B --> Y["This is the approved option"]
-  C --> N["Do not start the manual process"]
-```
-
-Missing by five minutes does not promote the option the director did not choose.
-
-### Logical drawing
-
-```text
-option 1
-    accept four hours now
-    not chosen
-option 2
-    improvements, then a second test
-    approved
-option 3
-    six hours, plus a staffed manual booking process
-    not chosen
-        |
-        +-- the miss of 5 does not switch the choice
-        +-- no staffing number is invented
-        +-- the target is not rewritten to 360
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1655,38 +1044,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — A possible saving is not a measured minute
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX070.
-
-```mermaid
-flowchart TD
-  L["Locate step: 55 min"] --> P["A protected place could save most of that search"]
-  P --> M{"Did anyone measure the saving?"}
-  M -->|No| R["Refuse 40, 50, or any other homemade minute"]
-  M -->|Yes| K["That measurement would be a new log"]
-```
-
-"Most" is not a number the team may write into the result.
-
-### Logical drawing
-
-```text
-published locate step
-    55 min
-comment in the book
-    a known protected location could save most of those minutes
-what is not in the file
-    a measured saving
-    a completed move of the instructions
-        |
-        +-- 55 stays 55
-        +-- "most" is not 40 and not 50
-        +-- the improvement is not dated as done
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1732,39 +1089,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Test bookings are not client bookings
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX071.
-
-```mermaid
-flowchart TD
-  S["Success was defined in advance"] --> F["Front-desk staff make test bookings"]
-  F --> I["Isolated copy, outbound mail blocked"]
-  I --> C{"Did a client receive a booking?"}
-  C -->|No| K["The 20 minutes are a step length, not a client count"]
-```
-
-The front desk practised on a copy. Clients were kept outside that practice.
-
-### Logical drawing
-
-```text
-success definition
-    test bookings in the restored portal
-safeguards
-    isolated copy
-    outbound email blocked so test bookings cannot reach clients
-    live portal not touched
-step
-    front-desk test bookings: 20 min
-        |
-        +-- 20 is minutes, not a number of clients
-        +-- no client is named
-        +-- the blocked mail is why the practice stayed inside
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1807,37 +1131,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — A shared sign-in does not widen the first scope
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX072.
-
-```mermaid
-flowchart TD
-  I["Identity provider supports all three services"] --> R["It joins the appointment restore"]
-  R --> S["First scope still excludes case management and the roster"]
-  S --> N["Do not open those services because sign-in is shared"]
-```
-
-One component can enter an exercise while the other services stay outside the page.
-
-### Logical drawing
-
-```text
-why identity joins the restore
-    without sign-in a restored portal still cannot reopen
-first scope
-    portal, scheduling database, identity provider, backup service
-still excluded
-    case management
-    volunteer roster
-        |
-        +-- reconnecting identity is not a case-note review
-        +-- the case database stays closed
-        +-- the roster spreadsheet stays unedited
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1882,38 +1175,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — Attendance at the exercise is not the month-end review
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX073.
-
-```mermaid
-flowchart TD
-  A["Director attends the start and the end"] --> E["That attendance witnesses the exercise"]
-  M["Activity log reviewed at the end of the month"] --> R{"Is that review entered?"}
-  R -->|No| K["Filing the decision record does not replace it"]
-```
-
-Being in the room for a test is one event. Reading the month's log is another.
-
-### Logical drawing
-
-```text
-exercise attendance
-    operations director at the start and at the end
-    the result tests the four-hour assumption
-activity record
-    date, person, approval reference, what changed, evidence kept
-    reviewed by the director at the end of the month
-decision record
-    filed with the evidence
-        |
-        +-- filing is not the monthly review
-        +-- attendance is not that review either
-        +-- no finding from a month-end reading is invented
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1956,38 +1217,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the strategy page can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX074.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> F["Repeat the prints and the open lines"]
-  F --> Q{"Does the sentence add a new total, an owner, a cleaned mail, or a finished limit?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. The edition remains a working draft.
-
-### Logical drawing
-
-```text
-may stay
-    total 245 min; MISSED by 5 min; longest step 70 min
-    shared by all three: identity provider
-    relay and roster: NONE
-    second exercise booked, not run
-    case management and the roster still excluded
-must not be added
-    a print of MET
-    an owner typed into a NONE cell
-    appointment reasons already removed
-    four hours confirmed because the chapter count reached 20
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

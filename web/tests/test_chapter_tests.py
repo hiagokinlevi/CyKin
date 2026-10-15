@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib
 import hashlib
 import json
+import re
 import sqlite3
 from pathlib import Path
 from types import SimpleNamespace
@@ -43,7 +44,7 @@ class Database:
     def __init__(self):
         self.connection = sqlite3.connect(":memory:", check_same_thread=False)
         self.connection.row_factory = sqlite3.Row
-        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql", "0005_student_mcp_keys.sql", "0006_student_activity_source.sql"):
+        for migration in ("0001_progress.sql", "0002_chapter_tests.sql", "0003_student_auth.sql", "0004_student_password_activity.sql", "0005_student_mcp_keys.sql", "0006_student_activity_source.sql", "0007_figure_cleanup_bank_versions.sql"):
             self.connection.executescript((ROOT / "web/migrations" / migration).read_text())
 
     def prepare(self, query: str):
@@ -87,6 +88,46 @@ def test_question_bank_is_pinned_to_authored_text_and_has_no_duplicate_prompts()
     broken = {**bank, "questions": bank["questions"][:9]}
     with pytest.raises(InvalidBank, match="exactly ten"):
         validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 1)
+
+
+def test_source_pin_and_json_format_do_not_change_question_version():
+    path = ROOT / "web/question-banks/rapid-1-month/incident-response-resilience/en/001.json"
+    raw = path.read_text()
+    bank, version = validate_bank(raw, "rapid-1-month", "incident-response-resilience", "en", 1)
+    revised_source = {**bank, "source_sha256": "0" * 64}
+    assert validate_bank(json.dumps(revised_source, indent=4), "rapid-1-month", "incident-response-resilience", "en", 1)[1] == version
+    revised_question = {**bank, "questions": [{**bank["questions"][0], "correct": "d"}, *bank["questions"][1:]]}
+    assert validate_bank(json.dumps(revised_question), "rapid-1-month", "incident-response-resilience", "en", 1)[1] != version
+
+
+def test_diagram_cleanup_migration_preserves_completed_attempts():
+    migration = (ROOT / "web/migrations/0007_figure_cleanup_bank_versions.sql").read_text()
+    statements = [line for line in migration.splitlines() if line.startswith("UPDATE chapter_test_attempts")]
+    assert len(statements) == 7
+    pattern = re.compile(
+        r"SET bank_sha256 = '([a-f0-9]{64})' WHERE level = '([^']+)' AND area = '([^']+)' "
+        r"AND language = '([^']+)' AND chapter = (\d+) AND bank_sha256 = '([a-f0-9]{64})';"
+    )
+    db = Database()
+    try:
+        for number, statement in enumerate(statements):
+            match = pattern.search(statement)
+            assert match is not None
+            new, level, area, language, chapter, old = match.groups()
+            db.connection.execute(
+                "INSERT INTO chapter_test_attempts (id, user_id, level, area, language, chapter, bank_sha256, score, deadline_ms, status) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'complete')",
+                (f"prior-{number}", "student-1", level, area, language, int(chapter), old, 8, 1000),
+            )
+            current = json.loads((ROOT / f"web/public/test-index.json").read_text())["courses"][f"{level}/{area}/{language}"]
+            assert next(item for item in current if item["chapter"] == int(chapter))["bank_sha256"] == new
+        db.connection.executescript(migration)
+        db.connection.executescript(migration)
+        rows = db.connection.execute("SELECT bank_sha256, score FROM chapter_test_attempts ORDER BY id").fetchall()
+        assert [row["bank_sha256"] for row in rows] == [pattern.search(line).group(1) for line in statements]
+        assert all(row["score"] == 8 for row in rows)
+    finally:
+        db.connection.close()
 
 
 def test_rapid_incident_response_banks_cover_four_weeks_and_start(pilot):

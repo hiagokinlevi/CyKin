@@ -37,56 +37,6 @@ Regulation (EU) 2016/679 (GDPR) Articles 5, 6(1)(b), 10, 12(3), 14, 15, 32, 33 a
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The course and the case"]
-  N2["1.2 Three security properties"]
-  N3["1.3 Security and data protection"]
-  N4["1.4 Basics at Halden"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The course and the case"]
-  N2["1.2 Three security properties"]
-  N3["1.3 Security and data protection"]
-  N4["1.4 Basics at Halden"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The course and the case]
-    |
-    v
-[1.2 Three security properties]
-    |
-    v
-[1.3 Security and data protection]
-    |
-    v
-[1.4 Basics at Halden]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain confidentiality, integrity and availability for personal data; (2) relate security to data protection duties; (3) identify the security basics a recruitment agency needs.
@@ -136,56 +86,6 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Privacy and data protection: service and stakeholder context
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 How recruitment works"]
-  N2["2.2 Stakeholders"]
-  N3["2.3 Roles"]
-  N4["2.4 Candidate expectations"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 How recruitment works"]
-  N2["2.2 Stakeholders"]
-  N3["2.3 Roles"]
-  N4["2.4 Candidate expectations"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 How recruitment works]
-    |
-    v
-[2.2 Stakeholders]
-    |
-    v
-[2.3 Roles]
-    |
-    v
-[2.4 Candidate expectations]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -237,56 +137,6 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Working within authority"]
-  N2["3.2 Evidence handling"]
-  N3["3.3 Confidentiality in conversations"]
-  N4["3.4 Recording decisions"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Working within authority"]
-  N2["3.2 Evidence handling"]
-  N3["3.3 Confidentiality in conversations"]
-  N4["3.4 Recording decisions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Working within authority]
-    |
-    v
-[3.2 Evidence handling]
-    |
-    v
-[3.3 Confidentiality in conversations]
-    |
-    v
-[3.4 Recording decisions]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) work within an authorised scope; (2) handle evidence containing personal data; (3) respect confidentiality during reviews.
@@ -336,61 +186,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Privacy and data protection: core methods
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Data mapping"]
-  N2["4.2 Retention review"]
-  N3["4.3 Lawful basis analysis"]
-  N4["4.4 Recommendations"]
-  N5["Lab — Candidate CVs past retention"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Data mapping"]
-  N2["4.2 Retention review"]
-  N3["4.3 Lawful basis analysis"]
-  N4["4.4 Recommendations"]
-  N5["Lab — Candidate CVs past retention"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Data mapping]
-    |
-    v
-[4.2 Retention review]
-    |
-    v
-[4.3 Lawful basis analysis]
-    |
-    v
-[4.4 Recommendations]
-    |
-    v
-[Lab — Candidate CVs past retention]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -468,56 +263,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Privacy and data protection: tools and interpretation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Practical tools"]
-  N2["5.2 Reading results"]
-  N3["5.3 Uncertainty"]
-  N4["5.4 Avoiding overstatement"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Practical tools"]
-  N2["5.2 Reading results"]
-  N3["5.3 Uncertainty"]
-  N4["5.4 Avoiding overstatement"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Practical tools]
-    |
-    v
-[5.2 Reading results]
-    |
-    v
-[5.3 Uncertainty]
-    |
-    v
-[5.4 Avoiding overstatement]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) use simple tools to examine data and settings; (2) interpret results carefully; (3) avoid overstating findings.
@@ -567,61 +312,6 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Privacy and data protection: operational workflow
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Access requests at Halden"]
-  N2["6.2 Deadline lab"]
-  N3["6.3 Improving the workflow"]
-  N4["6.4 Results"]
-  N5["Lab — Access request deadlines"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Access requests at Halden"]
-  N2["6.2 Deadline lab"]
-  N3["6.3 Improving the workflow"]
-  N4["6.4 Results"]
-  N5["Lab — Access request deadlines"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Access requests at Halden]
-    |
-    v
-[6.2 Deadline lab]
-    |
-    v
-[6.3 Improving the workflow]
-    |
-    v
-[6.4 Results]
-    |
-    v
-[Lab — Access request deadlines]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -700,56 +390,6 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Privacy and data protection: controls and verification
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Selecting controls"]
-  N2["7.2 Testing controls"]
-  N3["7.3 Operating over time"]
-  N4["7.4 Recording results"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Selecting controls"]
-  N2["7.2 Testing controls"]
-  N3["7.3 Operating over time"]
-  N4["7.4 Recording results"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Selecting controls]
-    |
-    v
-[7.2 Testing controls]
-    |
-    v
-[7.3 Operating over time]
-    |
-    v
-[7.4 Recording results]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) select controls for recruitment risks; (2) verify that controls operate; (3) record verification results.
@@ -799,56 +439,6 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Privacy and data protection: supervised case analysis
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The case"]
-  N2["8.2 Risk assessment"]
-  N3["8.3 Communicating with candidates"]
-  N4["8.4 Proportionate actions"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The case"]
-  N2["8.2 Risk assessment"]
-  N3["8.3 Communicating with candidates"]
-  N4["8.4 Proportionate actions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The case]
-    |
-    v
-[8.2 Risk assessment]
-    |
-    v
-[8.3 Communicating with candidates]
-    |
-    v
-[8.4 Proportionate actions]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
@@ -900,56 +490,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Communication, ethics and reporting
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Writing for managers"]
-  N2["9.2 Ethical tensions"]
-  N3["9.3 Fair reporting"]
-  N4["9.4 Reporting to candidates"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Writing for managers"]
-  N2["9.2 Ethical tensions"]
-  N3["9.3 Fair reporting"]
-  N4["9.4 Reporting to candidates"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Writing for managers]
-    |
-    v
-[9.2 Ethical tensions]
-    |
-    v
-[9.3 Fair reporting]
-    |
-    v
-[9.4 Reporting to candidates]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) write privacy findings for managers; (2) handle ethical tensions; (3) report clearly and fairly.
@@ -1000,56 +540,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Privacy and data protection: quality and troubleshooting
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 A recurring problem"]
-  N2["10.2 Root cause and fix"]
-  N3["10.3 Quality checks"]
-  N4["10.4 Measuring improvement"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 A recurring problem"]
-  N2["10.2 Root cause and fix"]
-  N3["10.3 Quality checks"]
-  N4["10.4 Measuring improvement"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 A recurring problem]
-    |
-    v
-[10.2 Root cause and fix]
-    |
-    v
-[10.3 Quality checks]
-    |
-    v
-[10.4 Measuring improvement]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) diagnose a recurring privacy problem; (2) improve process quality; (3) measure improvement.
@@ -1099,61 +589,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised laboratory
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 The lab task"]
-  N2["11.2 Lab results"]
-  N3["11.3 Balancing the referee"]
-  N4["11.4 Documenting decisions"]
-  N5["Lab — Third-party names in an access response"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 The lab task"]
-  N2["11.2 Lab results"]
-  N3["11.3 Balancing the referee"]
-  N4["11.4 Documenting decisions"]
-  N5["Lab — Third-party names in an access response"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 The lab task]
-    |
-    v
-[11.2 Lab results]
-    |
-    v
-[11.3 Balancing the referee]
-    |
-    v
-[11.4 Documenting decisions]
-    |
-    v
-[Lab — Third-party names in an access response]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes
 
@@ -1234,56 +669,6 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Assembling the portfolio"]
-  N2["12.2 Evidence of competence"]
-  N3["12.3 Final review"]
-  N4["12.4 Continuing development"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Assembling the portfolio"]
-  N2["12.2 Evidence of competence"]
-  N3["12.3 Final review"]
-  N4["12.4 Continuing development"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Assembling the portfolio]
-    |
-    v
-[12.2 Evidence of competence]
-    |
-    v
-[12.3 Final review]
-    |
-    v
-[12.4 Continuing development]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

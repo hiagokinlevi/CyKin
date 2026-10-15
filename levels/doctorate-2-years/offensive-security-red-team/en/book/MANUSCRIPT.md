@@ -40,66 +40,6 @@ Sources were checked on 12 October 2026: [NIST SP 800-115](https://doi.org/10.60
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Integrity as a research method"]
-  N2["1.2 Authorization, scope and stop conditions"]
-  N3["1.3 Measures that matter"]
-  N4["1.4 Dual-use discipline"]
-  N5["1.5 Evidence trail"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Integrity as a research method"]
-  N2["1.2 Authorization, scope and stop conditions"]
-  N3["1.3 Measures that matter"]
-  N4["1.4 Dual-use discipline"]
-  N5["1.5 Evidence trail"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Integrity as a research method]
-    |
-    v
-[1.2 Authorization, scope and stop conditions]
-    |
-    v
-[1.3 Measures that matter]
-    |
-    v
-[1.4 Dual-use discipline]
-    |
-    v
-[1.5 Evidence trail]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) state the integrity rules that govern authorized offensive-security research; (2) design studies that cannot harm people or out-of-scope systems; (3) choose measures that reflect effects, not theatre; (4) handle dual-use knowledge responsibly; and (5) keep an evidence trail others can audit.
@@ -255,61 +195,6 @@ Doctoral integrity in authorized offensive security means permission, checkable 
 
 ## Chapter 2 — Authorized offensive security and red team: research frontier
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Methodology families"]
-  N2["2.2 Open problems"]
-  N3["2.3 Critique of weak scores"]
-  N4["2.4 ATT&CK as vocabulary"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Methodology families"]
-  N2["2.2 Open problems"]
-  N3["2.3 Critique of weak scores"]
-  N4["2.4 ATT&CK as vocabulary"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Methodology families]
-    |
-    v
-[2.2 Open problems]
-    |
-    v
-[2.3 Critique of weak scores]
-    |
-    v
-[2.4 ATT&CK as vocabulary]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the main methodology families and threat-led frameworks; (2) locate open research problems in measurement, ethics and assurance; (3) critique weak scoring schemes; (4) position ATT&CK as a vocabulary, not a completeness proof; and (5) write a frontier note that motivates a doctorate.
@@ -442,71 +327,6 @@ The research frontier sits where methodology, measurement and ethics meet — no
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Falsifiable questions"]
-  N2["3.2 Pre-registration"]
-  N3["3.3 Ethical protocol"]
-  N4["3.4 Baselines and sample size"]
-  N5["3.5 Approval"]
-  N6["3.5b Failure modes of the proposal"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Falsifiable questions"]
-  N2["3.2 Pre-registration"]
-  N3["3.3 Ethical protocol"]
-  N4["3.4 Baselines and sample size"]
-  N5["3.5 Approval"]
-  N6["3.5b Failure modes of the proposal"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Falsifiable questions]
-    |
-    v
-[3.2 Pre-registration]
-    |
-    v
-[3.3 Ethical protocol]
-    |
-    v
-[3.4 Baselines and sample size]
-    |
-    v
-[3.5 Approval]
-    |
-    v
-[3.5b Failure modes of the proposal]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) write a falsifiable research question; (2) specify hypotheses, measures and analysis before collecting data; (3) design an ethical protocol for authorized lab studies; (4) plan baselines and sample sizes; and (5) obtain supervisory and ethics approval.
@@ -622,71 +442,6 @@ A doctorate proposal commits to a falsifiable question, pre-registered measures,
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Baseline"]
-  N2["4.2 Pilot of the intervention"]
-  N3["4.3 Estimation"]
-  N4["4.4 Instrument refinement"]
-  N5["4.5 Go / no-go"]
-  N6["4.5b Operator briefing"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Baseline"]
-  N2["4.2 Pilot of the intervention"]
-  N3["4.3 Estimation"]
-  N4["4.4 Instrument refinement"]
-  N5["4.5 Go / no-go"]
-  N6["4.5b Operator briefing"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Baseline]
-    |
-    v
-[4.2 Pilot of the intervention]
-    |
-    v
-[4.3 Estimation]
-    |
-    v
-[4.4 Instrument refinement]
-    |
-    v
-[4.5 Go / no-go]
-    |
-    v
-[4.5b Operator briefing]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) replicate a baseline method under prose ROE; (2) run a pilot of the intervention; (3) estimate rates and variances; (4) refine instruments without peeking at final conclusions; and (5) decide go / no-go for the main study.
@@ -800,71 +555,6 @@ Baseline and pilot produce comparable rates, expose instrument problems and supp
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Running to plan"]
-  N2["5.2 Analysis"]
-  N3["5.3 Independent validation"]
-  N4["5.4 Confirmatory vs exploratory"]
-  N5["5.4b Negative results"]
-  N6["5.4c Sensitivity analyses"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Running to plan"]
-  N2["5.2 Analysis"]
-  N3["5.3 Independent validation"]
-  N4["5.4 Confirmatory vs exploratory"]
-  N5["5.4b Negative results"]
-  N6["5.4c Sensitivity analyses"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Running to plan]
-    |
-    v
-[5.2 Analysis]
-    |
-    v
-[5.3 Independent validation]
-    |
-    v
-[5.4 Confirmatory vs exploratory]
-    |
-    v
-[5.4b Negative results]
-    |
-    v
-[5.4c Sensitivity analyses]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Learning outcomes
 
@@ -980,66 +670,6 @@ The main study follows the plan, quantifies uncertainty, seeks independent eyes 
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Who critiques"]
-  N2["6.2 Major vs minor"]
-  N3["6.3 Revision without switching"]
-  N4["6.4 Threat model of the study"]
-  N5["6.4b Practitioner translation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Who critiques"]
-  N2["6.2 Major vs minor"]
-  N3["6.3 Revision without switching"]
-  N4["6.4 Threat model of the study"]
-  N5["6.4b Practitioner translation"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Who critiques]
-    |
-    v
-[6.2 Major vs minor]
-    |
-    v
-[6.3 Revision without switching]
-    |
-    v
-[6.4 Threat model of the study]
-    |
-    v
-[6.4b Practitioner translation]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) solicit critique from methodology and practice experts; (2) separate major from minor issues; (3) revise without outcome-switching; (4) update the threat model of your own study; and (5) record a response-to-reviewers trail.
@@ -1153,71 +783,6 @@ Critique improves honesty. Revise what the evidence supports; never silently mov
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Claims from evidence"]
-  N2["7.2 Limitations"]
-  N3["7.3 Reproducibility archive"]
-  N4["7.4 Secrets vs science"]
-  N5["7.5 Thesis structure"]
-  N6["7.5b Reading guide for practitioners"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Claims from evidence"]
-  N2["7.2 Limitations"]
-  N3["7.3 Reproducibility archive"]
-  N4["7.4 Secrets vs science"]
-  N5["7.5 Thesis structure"]
-  N6["7.5b Reading guide for practitioners"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Claims from evidence]
-    |
-    v
-[7.2 Limitations]
-    |
-    v
-[7.3 Reproducibility archive]
-    |
-    v
-[7.4 Secrets vs science]
-    |
-    v
-[7.5 Thesis structure]
-    |
-    v
-[7.5b Reading guide for practitioners]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) synthesise claims that follow from evidence; (2) state limitations without apology theatre; (3) build a reproducibility archive others can run; (4) separate scientific artefacts from operational secrets; and (5) prepare the thesis structure.
@@ -1323,66 +888,6 @@ Synthesis ties claims to evidence; the archive lets others check you; secrets st
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Defence posture"]
-  N2["8.2 Dual-use answers"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Next research"]
-  N5["8.5 Leaving the lab safer"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Defence posture"]
-  N2["8.2 Dual-use answers"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Next research"]
-  N5["8.5 Leaving the lab safer"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Defence posture]
-    |
-    v
-[8.2 Dual-use answers]
-    |
-    v
-[8.3 Publication plan]
-    |
-    v
-[8.4 Next research]
-    |
-    v
-[8.5 Leaving the lab safer]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

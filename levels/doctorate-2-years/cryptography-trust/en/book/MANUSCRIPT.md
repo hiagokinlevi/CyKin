@@ -37,71 +37,6 @@ Katz and Lindell, *Introduction to Modern Cryptography* (3rd ed.); Boneh and Sho
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What counts as misuse"]
-  N3["Lab — Coder agreement"]
-  N4["1.3 Reading agreement"]
-  N5["1.4 Integrity and disclosure"]
-  N6["1.5 Validity from the start"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 What counts as misuse"]
-  N3["Lab — Coder agreement"]
-  N4["1.3 Reading agreement"]
-  N5["1.4 Integrity and disclosure"]
-  N6["1.5 Validity from the start"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 What counts as misuse]
-    |
-    v
-[Lab — Coder agreement]
-    |
-    v
-[1.3 Reading agreement]
-    |
-    v
-[1.4 Integrity and disclosure]
-    |
-    v
-[1.5 Validity from the start]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame a doctoral question about cryptographic misuse in code review; (2) build and test a reliable coding scheme for misuse findings; (3) set integrity and disclosure rules for handling weaknesses in live payment systems.
@@ -198,66 +133,6 @@ A defensible study of crypto misuse starts with a precise codebook, measured cod
 
 ## Chapter 2 — Cryptography and trust services: research frontier
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 What is settled"]
-  N2["Lab — Random-nonce collision risk"]
-  N3["2.3 Reading the curve"]
-  N4["2.4 Misuse-resistance and usability work"]
-  N5["2.5 Positioning the contribution"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 What is settled"]
-  N2["Lab — Random-nonce collision risk"]
-  N3["2.3 Reading the curve"]
-  N4["2.4 Misuse-resistance and usability work"]
-  N5["2.5 Positioning the contribution"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 What is settled]
-    |
-    v
-[Lab — Random-nonce collision risk]
-    |
-    v
-[2.3 Reading the curve]
-    |
-    v
-[2.4 Misuse-resistance and usability work]
-    |
-    v
-[2.5 Positioning the contribution]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the research frontier on usable and misuse-resistant cryptography; (2) quantify a misuse risk from a standard's stated limit; (3) position an original question against what standards already settle.
@@ -344,66 +219,6 @@ The frontier is not in new primitives but in measured behaviour around them; sta
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 From question to hypotheses"]
-  N2["3.2 Choosing the outcome"]
-  N3["3.3 Design and power"]
-  N4["3.4 Registration and analysis plan"]
-  N5["3.5 Risks to the partner"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 From question to hypotheses"]
-  N2["3.2 Choosing the outcome"]
-  N3["3.3 Design and power"]
-  N4["3.4 Registration and analysis plan"]
-  N5["3.5 Risks to the partner"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 From question to hypotheses]
-    |
-    v
-[3.2 Choosing the outcome]
-    |
-    v
-[3.3 Design and power]
-    |
-    v
-[3.4 Registration and analysis plan]
-    |
-    v
-[3.5 Risks to the partner]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) write falsifiable hypotheses for a misuse-reduction study; (2) choose a primary outcome and analysis before seeing data; (3) register the plan so later changes are visible.
@@ -458,71 +273,6 @@ A registered plan with falsifiable hypotheses, a blinded and mechanically define
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why a baseline first"]
-  N2["Lab — Baseline audit"]
-  N3["4.2 Reading the baseline"]
-  N4["4.3 Planning from the baseline"]
-  N5["4.4 The pilot"]
-  N6["4.5 Revisions before the main study"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why a baseline first"]
-  N2["Lab — Baseline audit"]
-  N3["4.2 Reading the baseline"]
-  N4["4.3 Planning from the baseline"]
-  N5["4.4 The pilot"]
-  N6["4.5 Revisions before the main study"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why a baseline first]
-    |
-    v
-[Lab — Baseline audit]
-    |
-    v
-[4.2 Reading the baseline]
-    |
-    v
-[4.3 Planning from the baseline]
-    |
-    v
-[4.4 The pilot]
-    |
-    v
-[4.5 Revisions before the main study]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -608,71 +358,6 @@ A replicated baseline sets realistic expectations, and a pilot that hunts for pr
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Randomisation and conduct"]
-  N2["5.2 Primary analysis"]
-  N3["Lab — Permutation test"]
-  N4["5.3 Reading the result"]
-  N5["5.4 Independent validation"]
-  N6["5.5 Threats that remain"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Randomisation and conduct"]
-  N2["5.2 Primary analysis"]
-  N3["Lab — Permutation test"]
-  N4["5.3 Reading the result"]
-  N5["5.4 Independent validation"]
-  N6["5.5 Threats that remain"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Randomisation and conduct]
-    |
-    v
-[5.2 Primary analysis]
-    |
-    v
-[Lab — Permutation test]
-    |
-    v
-[5.3 Reading the result]
-    |
-    v
-[5.4 Independent validation]
-    |
-    v
-[5.5 Threats that remain]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Learning outcomes
 
@@ -761,66 +446,6 @@ A pre-registered, blinded, cluster-randomised test supports the checklist effect
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Inviting hostile reading"]
-  N2["6.2 The cryptographer's objection"]
-  N3["6.3 The methodologist's objection"]
-  N4["6.4 The engineer's objection"]
-  N5["6.5 Writing the response letter"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Inviting hostile reading"]
-  N2["6.2 The cryptographer's objection"]
-  N3["6.3 The methodologist's objection"]
-  N4["6.4 The engineer's objection"]
-  N5["6.5 Writing the response letter"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Inviting hostile reading]
-    |
-    v
-[6.2 The cryptographer's objection]
-    |
-    v
-[6.3 The methodologist's objection]
-    |
-    v
-[6.4 The engineer's objection]
-    |
-    v
-[6.5 Writing the response letter]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) organise structured peer critique of a cryptographic field study; (2) separate fatal objections from fixable ones; (3) revise a manuscript with a traceable response letter.
@@ -875,71 +500,6 @@ Structured hostile reading, sensitivity checks labelled as exploratory and a tra
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 One argument, not five papers"]
-  N2["7.2 What goes in the archive"]
-  N3["7.3 Detecting silent edits"]
-  N4["Lab — Hash manifest"]
-  N5["7.4 Reading the manifest"]
-  N6["7.5 Release decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 One argument, not five papers"]
-  N2["7.2 What goes in the archive"]
-  N3["7.3 Detecting silent edits"]
-  N4["Lab — Hash manifest"]
-  N5["7.4 Reading the manifest"]
-  N6["7.5 Release decisions"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 One argument, not five papers]
-    |
-    v
-[7.2 What goes in the archive]
-    |
-    v
-[7.3 Detecting silent edits]
-    |
-    v
-[Lab — Hash manifest]
-    |
-    v
-[7.4 Reading the manifest]
-    |
-    v
-[7.5 Release decisions]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -1027,66 +587,6 @@ A thesis is one claim defended chapter by chapter; a hashed, documented and care
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Preparing for the hard questions"]
-  N2["8.2 Answering without overclaiming"]
-  N3["8.3 Choosing venues"]
-  N4["8.4 Coordinated release with the partner"]
-  N5["8.5 Follow-on research"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Preparing for the hard questions"]
-  N2["8.2 Answering without overclaiming"]
-  N3["8.3 Choosing venues"]
-  N4["8.4 Coordinated release with the partner"]
-  N5["8.5 Follow-on research"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Preparing for the hard questions]
-    |
-    v
-[8.2 Answering without overclaiming]
-    |
-    v
-[8.3 Choosing venues]
-    |
-    v
-[8.4 Coordinated release with the partner]
-    |
-    v
-[8.5 Follow-on research]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 

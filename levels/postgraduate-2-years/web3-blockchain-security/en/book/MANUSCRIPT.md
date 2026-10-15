@@ -38,56 +38,6 @@ Nakamoto, [Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf); Wood, [Ethereum
 
 ## Chapter 1 — Advanced security decision-making
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case and the decision"]
-  N2["1.2 Criteria and uncertainty"]
-  N3["1.3 Recording decisions for review"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case and the decision"]
-  N2["1.2 Criteria and uncertainty"]
-  N3["1.3 Recording decisions for review"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case and the decision]
-    |
-    v
-[1.2 Criteria and uncertainty]
-    |
-    v
-[1.3 Recording decisions for review]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame security decisions under uncertainty; (2) weigh options with explicit criteria; (3) record decisions for later review.
@@ -133,56 +83,6 @@ Explicit criteria, honest uncertainty and recorded reasoning support sound secur
 <a id="ch-02"></a>
 
 ## Chapter 2 — Web3, blockchain and cryptoasset security: current practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Current guidance"]
-  N2["2.2 Mapping practice to the pilot"]
-  N3["2.3 Gaps between guidance and reality"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Current guidance"]
-  N2["2.2 Mapping practice to the pilot"]
-  N3["2.3 Gaps between guidance and reality"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Current guidance]
-    |
-    v
-[2.2 Mapping practice to the pilot]
-    |
-    v
-[2.3 Gaps between guidance and reality]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -230,56 +130,6 @@ Mapping current guidance to a real design exposes gaps while they are still chea
 
 ## Chapter 3 — Web3, blockchain and cryptoasset security: specialist evidence
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Appraising research"]
-  N2["3.2 Relevance to permissioned settlement"]
-  N3["3.3 Synthesis for practitioners"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Appraising research"]
-  N2["3.2 Relevance to permissioned settlement"]
-  N3["3.3 Synthesis for practitioners"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Appraising research]
-    |
-    v
-[3.2 Relevance to permissioned settlement]
-    |
-    v
-[3.3 Synthesis for practitioners]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) appraise specialist research; (2) judge relevance to permissioned settlement; (3) synthesise evidence for practitioners.
@@ -325,56 +175,6 @@ Careful appraisal and relevance rating turn specialist research into practical g
 <a id="ch-04"></a>
 
 ## Chapter 4 — Advanced risk and ethics
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Systemic and shared risk"]
-  N2["4.2 Ethical reasoning"]
-  N3["4.3 Balancing duties"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Systemic and shared risk"]
-  N2["4.2 Ethical reasoning"]
-  N3["4.3 Balancing duties"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Systemic and shared risk]
-    |
-    v
-[4.2 Ethical reasoning]
-    |
-    v
-[4.3 Balancing duties]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -422,56 +222,6 @@ Systemic analysis and ethical reasoning guide fair choices among institutions.
 
 ## Chapter 5 — Web3, blockchain and cryptoasset security: design alternatives
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Generating alternatives"]
-  N2["5.2 Analysing trade-offs"]
-  N3["5.3 Selecting with partners"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Generating alternatives"]
-  N2["5.2 Analysing trade-offs"]
-  N3["5.3 Selecting with partners"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Generating alternatives]
-    |
-    v
-[5.2 Analysing trade-offs]
-    |
-    v
-[5.3 Selecting with partners]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) generate design alternatives; (2) analyse trade-offs; (3) select a design with partners.
@@ -517,61 +267,6 @@ Generating, analysing and jointly selecting alternatives yields designs partners
 <a id="ch-06"></a>
 
 ## Chapter 6 — Web3, blockchain and cryptoasset security: controlled evaluation
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Designing the comparison"]
-  N2["Lab — Sign-off design comparison"]
-  N3["6.2 Interpreting results"]
-  N4["6.3 Cost and detection together"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Designing the comparison"]
-  N2["Lab — Sign-off design comparison"]
-  N3["6.2 Interpreting results"]
-  N4["6.3 Cost and detection together"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Designing the comparison]
-    |
-    v
-[Lab — Sign-off design comparison]
-    |
-    v
-[6.2 Interpreting results]
-    |
-    v
-[6.3 Cost and detection together]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Learning outcomes
 
@@ -654,56 +349,6 @@ Controlled comparison on seeded data shows mechanisms, and cost-aware interpreta
 
 ## Chapter 7 — Web3, blockchain and cryptoasset security: organizational integration
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Integrating with existing processes"]
-  N2["7.2 Responsibilities across institutions"]
-  N3["7.3 Training staff"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Integrating with existing processes"]
-  N2["7.2 Responsibilities across institutions"]
-  N3["7.3 Training staff"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Integrating with existing processes]
-    |
-    v
-[7.2 Responsibilities across institutions]
-    |
-    v
-[7.3 Training staff]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Learning outcomes
 
 You will (1) integrate ledger controls with existing processes; (2) assign responsibilities across institutions; (3) train staff.
@@ -749,56 +394,6 @@ Integration, clear responsibilities and measured training make ledger controls p
 <a id="ch-08"></a>
 
 ## Chapter 8 — Web3, blockchain and cryptoasset security: difficult cases
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 An ambiguous alert"]
-  N2["8.2 Deciding under time pressure"]
-  N3["8.3 Learning from near misses"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 An ambiguous alert"]
-  N2["8.2 Deciding under time pressure"]
-  N3["8.3 Learning from near misses"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 An ambiguous alert]
-    |
-    v
-[8.2 Deciding under time pressure]
-    |
-    v
-[8.3 Learning from near misses]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
@@ -846,56 +441,6 @@ Clear procedures, proportionate decisions and near-miss learning handle difficul
 
 ## Chapter 9 — Web3, blockchain and cryptoasset security: leadership and assurance
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Leading assurance"]
-  N2["9.2 Commissioning independent review"]
-  N3["9.3 Reporting to governing bodies"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Leading assurance"]
-  N2["9.2 Commissioning independent review"]
-  N3["9.3 Reporting to governing bodies"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Leading assurance]
-    |
-    v
-[9.2 Commissioning independent review]
-    |
-    v
-[9.3 Reporting to governing bodies]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) lead assurance across partners; (2) commission independent review; (3) report assurance to governing bodies.
@@ -942,56 +487,6 @@ Coordinated assurance, scoped independent review and clear reporting enable gove
 
 ## Chapter 10 — Research reading and critique
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 Reading critically"]
-  N2["10.2 Evaluating methods and claims"]
-  N3["10.3 Implications for practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 Reading critically"]
-  N2["10.2 Evaluating methods and claims"]
-  N3["10.3 Implications for practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 Reading critically]
-    |
-    v
-[10.2 Evaluating methods and claims]
-    |
-    v
-[10.3 Implications for practice]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Learning outcomes
 
 You will (1) read research critically; (2) evaluate methods and claims; (3) identify implications for practice.
@@ -1037,61 +532,6 @@ Critical reading turns research into balanced, context-aware practice rules.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Planning the project"]
-  N2["Lab — Quorum availability from outage logs"]
-  N3["11.2 Results and interpretation"]
-  N4["11.3 Presenting with caveats"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Planning the project"]
-  N2["Lab — Quorum availability from outage logs"]
-  N3["11.2 Results and interpretation"]
-  N4["11.3 Presenting with caveats"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Planning the project]
-    |
-    v
-[Lab — Quorum availability from outage logs]
-    |
-    v
-[11.2 Results and interpretation]
-    |
-    v
-[11.3 Presenting with caveats]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Learning outcomes
 
@@ -1169,56 +609,6 @@ Testing design assumptions with data, and reporting caveats, drives practical im
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Reviewing the pilot"]
-  N2["12.2 Transferring learning"]
-  N3["12.3 Next steps"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Reviewing the pilot"]
-  N2["12.2 Transferring learning"]
-  N3["12.3 Next steps"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Reviewing the pilot]
-    |
-    v
-[12.2 Transferring learning]
-    |
-    v
-[12.3 Next steps]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

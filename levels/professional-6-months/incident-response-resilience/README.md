@@ -34,7 +34,7 @@ This is one course. It has **one course skill** and **one principal book in each
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or public lesson. The book plan summarizes each chapter in full.
 
-**English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) has SHA-256 `3bd8136f3029be19c2c50979218cd9bada79f5281d7fb7ae819751257a418307`, **78,514 whitespace-separated words** and **177 A4 pages** in a local Chrome length preflight. This measurement applies to the current source; the book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
+**Historical English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) had SHA-256 `3bd8136f3029be19c2c50979218cd9bada79f5281d7fb7ae819751257a418307`, **78,514 whitespace-separated words** and **177 A4 pages** in a local Chrome length preflight. Repetitive lesson maps were removed on 14 October; the current source needs a new length measurement. The book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
 
 
 **Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original OpenCyber Academy material is dedicated under [CC0 1.0](../../../LICENSE).

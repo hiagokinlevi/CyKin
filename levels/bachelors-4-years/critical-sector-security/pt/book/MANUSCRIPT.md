@@ -83,56 +83,6 @@ As [resoluções](#worked-results) contêm EX001–EX080. Um [glossário](#gloss
 
 ## Capítulo 1 — Raciocínio matemático
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX002.
-
-```mermaid
-flowchart TD
-  N0["1.1 Por que a segurança precisa de números — e por q"]
-  N1["1.3 Ordens de grandeza e limitação"]
-  N2["1.4 Caso resolvido: duas propostas no condado de Cal"]
-  N3["1.5 Atividade prática: Laboratório 1"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX002"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Por que a segurança precisa de números — e por q"]
-  N1["1.3 Ordens de grandeza e limitação"]
-  N2["1.4 Caso resolvido: duas propostas no condado de Cal"]
-  N3["1.5 Atividade prática: Laboratório 1"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX002"]
-```
-
-```text
-[1.1 Por que a segurança precisa de números — e por q]
-    |
-    v
-[1.3 Ordens de grandeza e limitação]
-    |
-    v
-[1.4 Caso resolvido: duas propostas no condado de Cal]
-    |
-    v
-[1.5 Atividade prática: Laboratório 1]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX002]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) transformar uma preocupação vaga ("e se a central de despacho perder o seu link de internet?") numa grandeza com unidades; (2) calcular uma perda anual esperada e explicar por que ela não é o mesmo que o pior evento crível; (3) estimar ordens de grandeza e conferir um cálculo por limitação; e (4) declarar as premissas por trás de um número, para que outra pessoa possa discordar delas com precisão. O capítulo apresenta o condado sintético de Calder, usado ao longo do livro, e prepara o Capítulo 6 (estruturas discretas) e o Capítulo 12 (probabilidade e estatística).
@@ -225,61 +175,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Sistemas computacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX003.
-
-```mermaid
-flowchart TD
-  N0["2.1 Camadas e confiança"]
-  N1["2.2 TI e TO"]
-  N2["2.3 O ciclo de vida do dispositivo"]
-  N3["2.4 Caso resolvido: imagem no Calder Valley Hospital"]
-  N4["2.5 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX003"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Camadas e confiança"]
-  N1["2.2 TI e TO"]
-  N2["2.3 O ciclo de vida do dispositivo"]
-  N3["2.4 Caso resolvido: imagem no Calder Valley Hospital"]
-  N4["2.5 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX003"]
-```
-
-```text
-[2.1 Camadas e confiança]
-    |
-    v
-[2.2 TI e TO]
-    |
-    v
-[2.3 O ciclo de vida do dispositivo]
-    |
-    v
-[2.4 Caso resolvido: imagem no Calder Valley Hospital]
-    |
-    v
-[2.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX003]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) descrever as camadas de um sistema computacional — hardware, firmware, sistema operacional, aplicações, dados e pessoas — e dizer onde as decisões de segurança são tomadas em cada uma; (2) distinguir a tecnologia da informação (TI) da tecnologia operacional (TO) e explicar por que as suas prioridades diferem; (3) descrever o ciclo de vida de um dispositivo num serviço crítico, da aquisição ao descarte; e (4) explicar por que o componente mais antigo de um sistema muitas vezes define a sua segurança. O capítulo se apoia no hábito de grandezas explícitas do Capítulo 1 e prepara o Capítulo 3, em que você vai escrever código para inspecionar um inventário de dispositivos.
@@ -336,56 +231,6 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Programação I
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX005.
-
-```mermaid
-flowchart TD
-  N0["3.1 Por que um estudante de segurança programa"]
-  N1["3.2 As construções básicas"]
-  N2["3.3 Caso resolvido e Laboratório 2: triagem do inven"]
-  N3["3.4 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX005"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Por que um estudante de segurança programa"]
-  N1["3.2 As construções básicas"]
-  N2["3.3 Caso resolvido e Laboratório 2: triagem do inven"]
-  N3["3.4 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX005"]
-```
-
-```text
-[3.1 Por que um estudante de segurança programa]
-    |
-    v
-[3.2 As construções básicas]
-    |
-    v
-[3.3 Caso resolvido e Laboratório 2: triagem do inven]
-    |
-    v
-[3.4 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -482,56 +327,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 4 — Escrita acadêmica
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["4.1 Escrever faz parte do trabalho de segurança"]
-  N1["4.2 Estrutura para dois leitores"]
-  N2["4.3 Citação e honestidade"]
-  N3["4.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Escrever faz parte do trabalho de segurança"]
-  N1["4.2 Estrutura para dois leitores"]
-  N2["4.3 Citação e honestidade"]
-  N3["4.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
-```
-
-```text
-[4.1 Escrever faz parte do trabalho de segurança]
-    |
-    v
-[4.2 Estrutura para dois leitores]
-    |
-    v
-[4.3 Citação e honestidade]
-    |
-    v
-[4.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) estruturar um argumento técnico curto como afirmação, evidência, raciocínio e limites; (2) citar fontes de modo que o leitor encontre exatamente aquilo em que você se apoiou; (3) escrever para dois públicos ao mesmo tempo — um especialista que vai conferir o seu raciocínio e um tomador de decisão que tem cinco minutos; e (4) distinguir a sua própria análise do que uma fonte diz. O capítulo se apoia nas premissas explícitas do Capítulo 1 e prepara o Capítulo 18 (métodos de pesquisa) e o trabalho de conclusão (Capítulo 40).
@@ -594,56 +389,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["5.1 O vocabulário"]
-  N1["5.2 A tríade CIA nos serviços críticos"]
-  N2["5.3 Agentes e técnicas"]
-  N3["5.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX010"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O vocabulário"]
-  N1["5.2 A tríade CIA nos serviços críticos"]
-  N2["5.3 Agentes e técnicas"]
-  N3["5.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
-```
-
-```text
-[5.1 O vocabulário]
-    |
-    v
-[5.2 A tríade CIA nos serviços críticos]
-    |
-    v
-[5.3 Agentes e técnicas]
-    |
-    v
-[5.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) definir confidencialidade, integridade e disponibilidade e explicar por que os serviços críticos muitas vezes as ordenam de forma diferente da TI de escritório; (2) usar corretamente o vocabulário ativo, ameaça, vulnerabilidade, probabilidade, impacto, risco e controle; (3) descrever, em nível conceitual, as principais classes de agente de ameaça e de técnica de ataque; e (4) ler um alerta de segurança e extrair o que ele significa para uma dada organização. O capítulo se apoia nos Capítulos 1–4 e prepara o Capítulo 16 (arquitetura) e o Capítulo 19 (o escopo da área).
@@ -702,56 +447,6 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX012.
-
-```mermaid
-flowchart TD
-  N0["6.1 Conjuntos e relações"]
-  N1["6.2 Lógica"]
-  N2["6.3 Grafos"]
-  N3["6.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX012"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Conjuntos e relações"]
-  N1["6.2 Lógica"]
-  N2["6.3 Grafos"]
-  N3["6.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX012"]
-```
-
-```text
-[6.1 Conjuntos e relações]
-    |
-    v
-[6.2 Lógica]
-    |
-    v
-[6.3 Grafos]
-    |
-    v
-[6.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX012]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -850,56 +545,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Redes e protocolos
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["7.1 Camadas, endereços e portas"]
-  N1["7.2 Protocolos industriais e as suas premissas"]
-  N2["7.3 Zonas, conduítes e allowlists"]
-  N3["7.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Camadas, endereços e portas"]
-  N1["7.2 Protocolos industriais e as suas premissas"]
-  N2["7.3 Zonas, conduítes e allowlists"]
-  N3["7.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[7.1 Camadas, endereços e portas]
-    |
-    v
-[7.2 Protocolos industriais e as suas premissas]
-    |
-    v
-[7.3 Zonas, conduítes e allowlists]
-    |
-    v
-[7.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar as camadas, o endereçamento, as portas e a diferença entre o cliente e o servidor de uma conexão; (2) descrever como protocolos industriais como o Modbus diferem dos protocolos modernos da internet nas suas premissas de segurança; (3) expressar uma política de segmentação de rede como zonas, conduítes e uma allowlist; e (4) conferir os fluxos observados contra essa política e interpretar as violações. O capítulo se apoia nos Capítulos 3 e 6 e prepara o Capítulo 16 (arquitetura) e o Capítulo 24 (controles).
@@ -991,56 +636,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Programação II
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["8.1 A entrada é uma fronteira de segurança"]
-  N1["8.2 Regras de validação"]
-  N2["8.4 Testes"]
-  N3["8.6 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 A entrada é uma fronteira de segurança"]
-  N1["8.2 Regras de validação"]
-  N2["8.4 Testes"]
-  N3["8.6 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
-```
-
-```text
-[8.1 A entrada é uma fronteira de segurança]
-    |
-    v
-[8.2 Regras de validação]
-    |
-    v
-[8.4 Testes]
-    |
-    v
-[8.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) validar entradas não confiáveis com regras explícitas e rejeitar o que não está conforme; (2) tratar erros de modo que um programa falhe de forma segura e visível; (3) escrever testes de unidade, inclusive para casos de limite e malformados; e (4) explicar por que a análise sintática (parsing) é uma fronteira de segurança. O capítulo se apoia nos Capítulos 3 e 7 e prepara o Capítulo 9 (dados) e o Capítulo 27 (verificação).
@@ -1128,56 +723,6 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados e bancos de dados
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX017.
-
-```mermaid
-flowchart TD
-  N0["9.1 Por que dados relacionais"]
-  N1["9.2 SQL em quatro cláusulas"]
-  N2["9.3 Injeção"]
-  N3["9.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX017"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Por que dados relacionais"]
-  N1["9.2 SQL em quatro cláusulas"]
-  N2["9.3 Injeção"]
-  N3["9.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX017"]
-```
-
-```text
-[9.1 Por que dados relacionais]
-    |
-    v
-[9.2 SQL em quatro cláusulas]
-    |
-    v
-[9.3 Injeção]
-    |
-    v
-[9.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1275,61 +820,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Ética e prática autorizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["10.1 A autorização é a linha"]
-  N1["10.2 Regras de engajamento"]
-  N2["10.3 Divulgação"]
-  N3["10.4 Códigos profissionais e conflitos"]
-  N4["10.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 A autorização é a linha"]
-  N1["10.2 Regras de engajamento"]
-  N2["10.3 Divulgação"]
-  N3["10.4 Códigos profissionais e conflitos"]
-  N4["10.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX019"]
-```
-
-```text
-[10.1 A autorização é a linha]
-    |
-    v
-[10.2 Regras de engajamento]
-    |
-    v
-[10.3 Divulgação]
-    |
-    v
-[10.4 Códigos profissionais e conflitos]
-    |
-    v
-[10.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar por que é a autorização, e não a capacidade técnica, que define o trabalho de segurança legítimo; (2) escrever um documento simples de regras de engajamento para um exercício; (3) tratar uma descoberta acidental sobre um sistema real por meio da divulgação coordenada; e (4) raciocinar sobre conflitos entre segurança, safety, privacidade e continuidade do serviço usando um código profissional. O capítulo se apoia nos Capítulos 1–9 e rege toda atividade prática no restante do livro.
@@ -1392,61 +882,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 11 — Sistemas operacionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["11.1 O que o sistema operacional faz"]
-  N1["11.2 Tipos de SO nos serviços críticos"]
-  N2["11.3 Hardening"]
-  N3["11.4 Patches na operação"]
-  N4["11.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 O que o sistema operacional faz"]
-  N1["11.2 Tipos de SO nos serviços críticos"]
-  N2["11.3 Hardening"]
-  N3["11.4 Patches na operação"]
-  N4["11.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[11.1 O que o sistema operacional faz]
-    |
-    v
-[11.2 Tipos de SO nos serviços críticos]
-    |
-    v
-[11.3 Hardening]
-    |
-    v
-[11.4 Patches na operação]
-    |
-    v
-[11.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar processos, proteção de memória, permissões de arquivos e privilégio; (2) descrever como um sistema operacional impõe o menor privilégio e onde ele não consegue; (3) comparar sistemas operacionais de uso geral, de tempo real e embarcados nos serviços críticos; e (4) montar uma lista de hardening e uma decisão de patch para um dispositivo que não pode ser reiniciado à vontade. O capítulo se apoia nas camadas do Capítulo 2 e prepara o Capítulo 13 (identidade) e o Capítulo 24 (controles).
@@ -1507,56 +942,6 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidade e estatística
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX024.
-
-```mermaid
-flowchart TD
-  N0["12.1 Regras que você vai usar o tempo todo"]
-  N1["12.2 Probabilidade condicional e Bayes"]
-  N2["12.3 Raciocínio binomial para a redundância"]
-  N3["12.4 Descrever os dados"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX024"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Regras que você vai usar o tempo todo"]
-  N1["12.2 Probabilidade condicional e Bayes"]
-  N2["12.3 Raciocínio binomial para a redundância"]
-  N3["12.4 Descrever os dados"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX024"]
-```
-
-```text
-[12.1 Regras que você vai usar o tempo todo]
-    |
-    v
-[12.2 Probabilidade condicional e Bayes]
-    |
-    v
-[12.3 Raciocínio binomial para a redundância]
-    |
-    v
-[12.4 Descrever os dados]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX024]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1648,56 +1033,6 @@ Siga para a próxima lição escrita.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
-
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["13.1 Três perguntas"]
-  N1["13.2 Fatores e acesso remoto"]
-  N2["13.3 Papéis e segregação de funções"]
-  N3["13.4 O ciclo de vida das contas e as revisões"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 Três perguntas"]
-  N1["13.2 Fatores e acesso remoto"]
-  N2["13.3 Papéis e segregação de funções"]
-  N3["13.4 O ciclo de vida das contas e as revisões"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[13.1 Três perguntas]
-    |
-    v
-[13.2 Fatores e acesso remoto]
-    |
-    v
-[13.3 Papéis e segregação de funções]
-    |
-    v
-[13.4 O ciclo de vida das contas e as revisões]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1795,61 +1130,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 14 — Fundamentos de privacidade
 
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["14.1 Segurança não é privacidade"]
-  N1["14.2 Princípios"]
-  N2["14.3 Dados pessoais em lugares inesperados"]
-  N3["14.4 Privacidade nas operações de segurança"]
-  N4["14.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Segurança não é privacidade"]
-  N1["14.2 Princípios"]
-  N2["14.3 Dados pessoais em lugares inesperados"]
-  N3["14.4 Privacidade nas operações de segurança"]
-  N4["14.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[14.1 Segurança não é privacidade]
-    |
-    v
-[14.2 Princípios]
-    |
-    v
-[14.3 Dados pessoais em lugares inesperados]
-    |
-    v
-[14.4 Privacidade nas operações de segurança]
-    |
-    v
-[14.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar a diferença entre segurança e privacidade; (2) aplicar princípios de proteção de dados como licitude, limitação da finalidade, minimização e limitação da conservação; (3) identificar dados pessoais nos sistemas dos serviços críticos, inclusive dados que se tornam pessoais quando combinados; e (4) recomendar projetos que protegem a privacidade para o monitoramento e os dados de incidentes. O capítulo se apoia no Capítulo 9 (dados) e no Capítulo 10 (ética) e prepara o Capítulo 29 (operações) e os requisitos éticos do trabalho de conclusão.
@@ -1915,56 +1195,6 @@ Siga para a próxima lição escrita.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Evidência e medição
-
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["15.1 O que conta como evidência"]
-  N1["15.2 Medição e métricas"]
-  N2["15.3 Incerteza e sensibilidade"]
-  N3["15.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX029"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 O que conta como evidência"]
-  N1["15.2 Medição e métricas"]
-  N2["15.3 Incerteza e sensibilidade"]
-  N3["15.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
-```
-
-```text
-[15.1 O que conta como evidência]
-    |
-    v
-[15.2 Medição e métricas]
-    |
-    v
-[15.3 Incerteza e sensibilidade]
-    |
-    v
-[15.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -2035,61 +1265,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 16 — Arquitetura de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX032.
-
-```mermaid
-flowchart TD
-  N0["16.1 Princípios que duram"]
-  N1["16.2 Uma arquitetura de referência em camadas"]
-  N2["16.3 Defesa em profundidade e zero trust"]
-  N3["16.4 Acesso remoto"]
-  N4["16.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX032"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Princípios que duram"]
-  N1["16.2 Uma arquitetura de referência em camadas"]
-  N2["16.3 Defesa em profundidade e zero trust"]
-  N3["16.4 Acesso remoto"]
-  N4["16.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX032"]
-```
-
-```text
-[16.1 Princípios que duram]
-    |
-    v
-[16.2 Uma arquitetura de referência em camadas]
-    |
-    v
-[16.3 Defesa em profundidade e zero trust]
-    |
-    v
-[16.4 Acesso remoto]
-    |
-    v
-[16.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX032]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) aplicar os princípios clássicos de projeto — menor privilégio, padrões à prova de falha, economia de mecanismo, mediação completa, separação de privilégio; (2) descrever uma arquitetura de referência em camadas para um operador de serviço crítico, da empresa ao campo; (3) explicar a defesa em profundidade e o zero trust e os seus limites na tecnologia operacional; e (4) projetar um acesso remoto seguro para fornecedores. O capítulo se apoia nos Capítulos 7, 11 e 13 e prepara o Capítulo 21 (modelos de sistema) e o Capítulo 24 (controles).
@@ -2152,51 +1327,6 @@ Siga para a próxima lição escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Conceitos de criptografia
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["17.1 As ferramentas e as suas garantias"]
-  N1["17.2 Do que os sistemas de controle precisam"]
-  N2["17.3 As chaves são a parte difícil"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 As ferramentas e as suas garantias"]
-  N1["17.2 Do que os sistemas de controle precisam"]
-  N2["17.3 As chaves são a parte difícil"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX033"]
-```
-
-```text
-[17.1 As ferramentas e as suas garantias]
-    |
-    v
-[17.2 Do que os sistemas de controle precisam]
-    |
-    v
-[17.3 As chaves são a parte difícil]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -2291,61 +1421,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 18 — Métodos de pesquisa I
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX035.
-
-```mermaid
-flowchart TD
-  N0["18.1 Do tema à pergunta"]
-  N1["18.2 Desenhos"]
-  N2["18.3 Literatura, de forma sistemática"]
-  N3["18.4 Validade"]
-  N4["18.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX035"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Do tema à pergunta"]
-  N1["18.2 Desenhos"]
-  N2["18.3 Literatura, de forma sistemática"]
-  N3["18.4 Validade"]
-  N4["18.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX035"]
-```
-
-```text
-[18.1 Do tema à pergunta]
-    |
-    v
-[18.2 Desenhos]
-    |
-    v
-[18.3 Literatura, de forma sistemática]
-    |
-    v
-[18.4 Validade]
-    |
-    v
-[18.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX035]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) transformar um tema numa pergunta pesquisável; (2) escolher entre desenhos descritivos, comparativos, experimentais e de estudo de caso; (3) encontrar, triar e resumir a literatura de forma sistemática e registrar como fez isso; e (4) identificar ameaças à validade num estudo de segurança. O capítulo se apoia nos Capítulos 4, 12 e 15 e prepara o Capítulo 23 (métodos de risco), o Capítulo 33 (métodos de pesquisa II) e a proposta do trabalho de conclusão (Capítulo 35).
@@ -2410,56 +1485,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 19 — Infraestrutura crítica e segurança setorial: escopo e teoria
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["19.1 O que crítico significa"]
-  N1["19.2 Três lentes"]
-  N2["19.3 O que é próprio da área"]
-  N3["19.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 O que crítico significa"]
-  N1["19.2 Três lentes"]
-  N2["19.3 O que é próprio da área"]
-  N3["19.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
-```
-
-```text
-[19.1 O que crítico significa]
-    |
-    v
-[19.2 Três lentes]
-    |
-    v
-[19.3 O que é próprio da área]
-    |
-    v
-[19.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar o que torna uma infraestrutura "crítica" e comparar como os Estados Unidos, a União Europeia e o Reino Unido a definem e organizam; (2) usar as ideias de funções críticas, interdependência e resiliência para analisar um serviço; (3) comparar três lentes teóricas — risco, resiliência e safety/sistemas — e dizer o que cada uma vê e o que deixa escapar; e (4) situar uma organização no seu contexto regulatório e setorial. O capítulo abre o núcleo da área do livro e se apoia em todos os Capítulos 1–18.
@@ -2520,51 +1545,6 @@ Siga para a próxima lição escrita.
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Infraestrutura crítica e segurança setorial: casos fundadores
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["20.1 Ler um caso"]
-  N1["20.2 Seis casos"]
-  N2["20.3 Comparar os casos"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 Ler um caso"]
-  N1["20.2 Seis casos"]
-  N2["20.3 Comparar os casos"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX039"]
-```
-
-```text
-[20.1 Ler um caso]
-    |
-    v
-[20.2 Seis casos]
-    |
-    v
-[20.3 Comparar os casos]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -2638,56 +1618,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 21 — Infraestrutura crítica e segurança setorial: modelos de sistema
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["21.1 A malha de controle"]
-  N1["21.2 Um modelo de referência em camadas"]
-  N2["21.3 Cadeias de serviço e modos degradados"]
-  N3["21.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 A malha de controle"]
-  N1["21.2 Um modelo de referência em camadas"]
-  N2["21.3 Cadeias de serviço e modos degradados"]
-  N3["21.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[21.1 A malha de controle]
-    |
-    v
-[21.2 Um modelo de referência em camadas]
-    |
-    v
-[21.3 Cadeias de serviço e modos degradados]
-    |
-    v
-[21.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) descrever uma malha de controle e os componentes de um sistema SCADA ou de controle industrial; (2) situar os ativos num modelo de referência em camadas, dos dispositivos de campo à empresa; (3) modelar um serviço como uma cadeia de funções com modos degradados; e (4) dizer a que tipos de ataque ou falha cada parte do modelo está exposta. O capítulo se apoia nos Capítulos 7, 16 e 19 e prepara o Capítulo 22 (dados e dependências) e o Capítulo 28 (análise de falhas).
@@ -2746,51 +1676,6 @@ Siga para a próxima lição escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Infraestrutura crítica e segurança setorial: dados e dependências
-
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX024.
-
-```mermaid
-flowchart TD
-  N0["22.1 O inventário é evidência, não uma lista"]
-  N1["22.2 Tipos de dependência"]
-  N2["22.4 Qualidade dos dados"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX024"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 O inventário é evidência, não uma lista"]
-  N1["22.2 Tipos de dependência"]
-  N2["22.4 Qualidade dos dados"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX024"]
-```
-
-```text
-[22.1 O inventário é evidência, não uma lista]
-    |
-    v
-[22.2 Tipos de dependência]
-    |
-    v
-[22.4 Qualidade dos dados]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX024]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -2875,56 +1760,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 23 — Infraestrutura crítica e segurança setorial: métodos I
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["23.1 Uma avaliação de risco estruturada"]
-  N1["23.2 O problema das matrizes"]
-  N2["23.3 Consequência primeiro"]
-  N3["23.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 Uma avaliação de risco estruturada"]
-  N1["23.2 O problema das matrizes"]
-  N2["23.3 Consequência primeiro"]
-  N3["23.5 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[23.1 Uma avaliação de risco estruturada]
-    |
-    v
-[23.2 O problema das matrizes]
-    |
-    v
-[23.3 Consequência primeiro]
-    |
-    v
-[23.5 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) realizar uma avaliação de risco estruturada seguindo as etapas do NIST SP 800-30; (2) explicar as fraquezas das matrizes de risco; (3) aplicar uma abordagem que começa pela consequência, partindo dos piores efeitos sobre o serviço; e (4) comparar as duas abordagens num caso e dizer quando cada uma é apropriada. O capítulo se apoia nos Capítulos 1, 12, 15 e 19–22 e prepara o Capítulo 24 (controles) e o Capítulo 26 (métodos II).
@@ -2982,56 +1817,6 @@ Siga para a próxima lição escrita.
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Infraestrutura crítica e segurança setorial: controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX047.
-
-```mermaid
-flowchart TD
-  N0["24.1 Frameworks como organizadores"]
-  N1["24.2 Tipos de controle"]
-  N2["24.3 Mapeamento e lacunas"]
-  N3["24.4 Restrições da TO"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX047"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.1 Frameworks como organizadores"]
-  N1["24.2 Tipos de controle"]
-  N2["24.3 Mapeamento e lacunas"]
-  N3["24.4 Restrições da TO"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX047"]
-```
-
-```text
-[24.1 Frameworks como organizadores]
-    |
-    v
-[24.2 Tipos de controle]
-    |
-    v
-[24.3 Mapeamento e lacunas]
-    |
-    v
-[24.4 Restrições da TO]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX047]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -3097,61 +1882,6 @@ Siga para a próxima lição escrita.
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
-
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["25.1 Finalidade e regras"]
-  N1["25.2 A tarefa"]
-  N2["25.3 Método e reprodutibilidade"]
-  N3["25.4 Estrutura da nota"]
-  N4["25.6 Rubrica de avaliação"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 Finalidade e regras"]
-  N1["25.2 A tarefa"]
-  N2["25.3 Método e reprodutibilidade"]
-  N3["25.4 Estrutura da nota"]
-  N4["25.6 Rubrica de avaliação"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[25.1 Finalidade e regras]
-    |
-    v
-[25.2 A tarefa]
-    |
-    v
-[25.3 Método e reprodutibilidade]
-    |
-    v
-[25.4 Estrutura da nota]
-    |
-    v
-[25.6 Rubrica de avaliação]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -3239,56 +1969,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 26 — Infraestrutura crítica e segurança setorial: métodos II
 
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa da aula
-
-Aula 26 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["26.1 Modelagem de ameaças com fluxos de dados"]
-  N1["26.2 STPA: perigos a partir da estrutura de controle"]
-  N2["26.3 Exercícios de mesa"]
-  N3["26.4 Escolher os métodos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["26.1 Modelagem de ameaças com fluxos de dados"]
-  N1["26.2 STPA: perigos a partir da estrutura de controle"]
-  N2["26.3 Exercícios de mesa"]
-  N3["26.4 Escolher os métodos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[26.1 Modelagem de ameaças com fluxos de dados]
-    |
-    v
-[26.2 STPA: perigos a partir da estrutura de controle]
-    |
-    v
-[26.3 Exercícios de mesa]
-    |
-    v
-[26.4 Escolher os métodos]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) construir modelos estruturados de ameaças de um sistema usando diagramas de fluxo de dados e uma lista de ameaças; (2) aplicar a análise de perigos baseada na teoria de sistemas (STPA) para encontrar ações de controle inseguras; (3) projetar e conduzir um exercício de mesa como método para testar planos; e (4) comparar esses métodos com os métodos de risco do Capítulo 23 e escolher entre eles. O capítulo se apoia nos Capítulos 21–24 e prepara o Capítulo 27 (verificação) e o Capítulo 28 (análise de falhas).
@@ -3351,51 +2031,6 @@ Siga para a próxima lição escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Infraestrutura crítica e segurança setorial: verificação
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa da aula
-
-Aula 27 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["27.1 Verificação e validação"]
-  N1["27.2 Tipos de teste"]
-  N2["27.3 Avaliar detectores"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["27.1 Verificação e validação"]
-  N1["27.2 Tipos de teste"]
-  N2["27.3 Avaliar detectores"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX053"]
-```
-
-```text
-[27.1 Verificação e validação]
-    |
-    v
-[27.2 Tipos de teste]
-    |
-    v
-[27.3 Avaliar detectores]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -3477,51 +2112,6 @@ Siga para a próxima lição escrita.
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Infraestrutura crítica e segurança setorial: análise de falhas
-
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa da aula
-
-Aula 28 publicada. Mapa, exemplo, EX056.
-
-```mermaid
-flowchart TD
-  N0["28.1 Árvores de falhas"]
-  N1["28.2 FMEA"]
-  N2["28.4 Revisão pós-incidente sem culpabilização"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX056"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["28.1 Árvores de falhas"]
-  N1["28.2 FMEA"]
-  N2["28.4 Revisão pós-incidente sem culpabilização"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX056"]
-```
-
-```text
-[28.1 Árvores de falhas]
-    |
-    v
-[28.2 FMEA]
-    |
-    v
-[28.4 Revisão pós-incidente sem culpabilização]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -3605,56 +2195,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 29 — Infraestrutura crítica e segurança setorial: operações
 
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa da aula
-
-Aula 29 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["29.1 O que as operações de segurança fazem"]
-  N1["29.2 Resposta a incidentes na TO"]
-  N2["29.3 Medir as operações"]
-  N3["29.5 Uma etapa de playbook sintético"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["29.1 O que as operações de segurança fazem"]
-  N1["29.2 Resposta a incidentes na TO"]
-  N2["29.3 Medir as operações"]
-  N3["29.5 Uma etapa de playbook sintético"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
-```
-
-```text
-[29.1 O que as operações de segurança fazem]
-    |
-    v
-[29.2 Resposta a incidentes na TO]
-    |
-    v
-[29.3 Medir as operações]
-    |
-    v
-[29.5 Uma etapa de playbook sintético]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) descrever as operações de segurança de um operador de serviço crítico — monitoramento, triagem, escalonamento, gestão de mudanças e de vulnerabilidades; (2) adaptar a resposta a incidentes à tecnologia operacional, em que manter o processo seguro vem primeiro; (3) medir o desempenho operacional com o tempo para detectar e o tempo para recuperar, usando medianas e percentis; e (4) escrever uma etapa de playbook que respeite tanto a segurança quanto as operações. O capítulo se apoia nos Capítulos 12, 15, 24, 27 e 28 e prepara o Laboratório II (Capítulo 30).
@@ -3737,61 +2277,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 30 — Laboratório II
 
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa da aula
-
-Aula 30 publicada. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  N0["30.1 Cenário sintético"]
-  N1["30.2 Parte A — exercício de mesa 90 minutos"]
-  N2["30.3 Parte B — análise de evidências offline"]
-  N3["30.5 Relatório pós-ação"]
-  N4["30.6 Rubrica de avaliação"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX059"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["30.1 Cenário sintético"]
-  N1["30.2 Parte A — exercício de mesa 90 minutos"]
-  N2["30.3 Parte B — análise de evidências offline"]
-  N3["30.5 Relatório pós-ação"]
-  N4["30.6 Rubrica de avaliação"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX059"]
-```
-
-```text
-[30.1 Cenário sintético]
-    |
-    v
-[30.2 Parte A — exercício de mesa 90 minutos]
-    |
-    v
-[30.3 Parte B — análise de evidências offline]
-    |
-    v
-[30.5 Relatório pós-ação]
-    |
-    v
-[30.6 Rubrica de avaliação]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX059]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste laboratório, você consegue (1) conduzir um exercício contido em duas partes — um exercício de mesa facilitado e uma análise de evidências offline — para um cenário entre setores; (2) reconstruir uma linha do tempo a partir de logs sintéticos e verificar a integridade dos logs; (3) avaliar as decisões contra os planos e as medidas; e (4) escrever um relatório pós-ação com um plano de melhorias. O laboratório integra os Capítulos 17, 21, 22, 26, 27 e 29 e é o segundo ponto de controle de projeto.
@@ -3867,51 +2352,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 31 — Infraestrutura crítica e segurança setorial: casos avançados
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Mapa da aula
-
-Aula 31 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["31.1 Além da manchete"]
-  N1["31.2 Cadeias de suprimentos"]
-  N2["31.3 Um quadro de comparação"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["31.1 Além da manchete"]
-  N1["31.2 Cadeias de suprimentos"]
-  N2["31.3 Um quadro de comparação"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
-```
-
-```text
-[31.1 Além da manchete]
-    |
-    v
-[31.2 Cadeias de suprimentos]
-    |
-    v
-[31.3 Um quadro de comparação]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) analisar casos em que o dano veio pelo processo físico, pelos sistemas de safety ou por fornecedores compartilhados, e não pelo roubo de dados; (2) comparar casos de forma sistemática por causa, caminho, consequência, detecção e recuperação; (3) raciocinar sobre o risco da cadeia de suprimentos e de concentração entre setores; e (4) extrair lições defensáveis e delimitadas para um operador. O capítulo se apoia no Capítulo 20 e nos Capítulos 21–30 e prepara o projeto comparativo (Capítulo 34).
@@ -3979,56 +2419,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 32 — Infraestrutura crítica e segurança setorial: interfaces interdisciplinares
 
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Mapa da aula
-
-Aula 32 publicada. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  N0["32.1 Direito e regulação"]
-  N1["32.2 Economia e incentivos"]
-  N2["32.3 Engenharia de safety e fatores humanos"]
-  N3["32.4 Comunicação"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX063"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["32.1 Direito e regulação"]
-  N1["32.2 Economia e incentivos"]
-  N2["32.3 Engenharia de safety e fatores humanos"]
-  N3["32.4 Comunicação"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX063"]
-```
-
-```text
-[32.1 Direito e regulação]
-    |
-    v
-[32.2 Economia e incentivos]
-    |
-    v
-[32.3 Engenharia de safety e fatores humanos]
-    |
-    v
-[32.4 Comunicação]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX063]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) explicar como o direito e a regulação, a economia, a engenharia de safety, os fatores humanos e a comunicação pública moldam as decisões de segurança nos serviços críticos; (2) traduzir uma constatação técnica para advogados, responsáveis financeiros, clínicos, engenheiros e o público; (3) reconhecer quando um problema de segurança é na verdade um problema de incentivos ou organizacional; e (4) trabalhar entre disciplinas sem ultrapassar a sua competência. O capítulo se apoia nos Capítulos 10, 14, 19 e 28–31 e prepara a prática de campo (Capítulo 36) e o trabalho de conclusão.
@@ -4091,56 +2481,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 33 — Métodos de pesquisa II
 
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Mapa da aula
-
-Aula 33 publicada. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  N0["33.1 Métodos qualitativos"]
-  N1["33.2 Codificação e concordância"]
-  N2["33.3 Análise quantitativa reprodutível"]
-  N3["33.4 Métodos mistos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX065"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["33.1 Métodos qualitativos"]
-  N1["33.2 Codificação e concordância"]
-  N2["33.3 Análise quantitativa reprodutível"]
-  N3["33.4 Métodos mistos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX065"]
-```
-
-```text
-[33.1 Métodos qualitativos]
-    |
-    v
-[33.2 Codificação e concordância]
-    |
-    v
-[33.3 Análise quantitativa reprodutível]
-    |
-    v
-[33.4 Métodos mistos]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) desenhar entrevistas e análise documental como métodos qualitativos, incluindo a aprovação ética e o consentimento; (2) codificar dados qualitativos com um livro de códigos e conferir a concordância entre codificadores; (3) tornar reprodutível uma análise quantitativa; e (4) combinar evidências qualitativas e quantitativas num desenho de métodos mistos. O capítulo se apoia no Capítulo 18 e prepara o projeto comparativo (Capítulo 34) e o trabalho de conclusão (Capítulos 35–40).
@@ -4200,56 +2540,6 @@ Siga para a próxima lição escrita.
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Projeto comparativo
-
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Mapa da aula
-
-Aula 34 publicada. Mapa, exemplo, EX068.
-
-```mermaid
-flowchart TD
-  N0["34.1 Comparação multicritério"]
-  N1["34.2 Fazer isso com honestidade"]
-  N2["34.3 Quando uma nota não basta"]
-  N3["34.5 Produto do projeto"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX068"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["34.1 Comparação multicritério"]
-  N1["34.2 Fazer isso com honestidade"]
-  N2["34.3 Quando uma nota não basta"]
-  N3["34.5 Produto do projeto"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX068"]
-```
-
-```text
-[34.1 Comparação multicritério]
-    |
-    v
-[34.2 Fazer isso com honestidade]
-    |
-    v
-[34.3 Quando uma nota não basta]
-    |
-    v
-[34.5 Produto do projeto]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX068]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -4355,51 +2645,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 35 — Proposta do trabalho de conclusão
 
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Mapa da aula
-
-Aula 35 publicada. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  N0["35.1 O que é um trabalho de conclusão de bacharelado"]
-  N1["35.2 Escolher um tema"]
-  N2["35.3 A proposta"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX069"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["35.1 O que é um trabalho de conclusão de bacharelado"]
-  N1["35.2 Escolher um tema"]
-  N2["35.3 A proposta"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX069"]
-```
-
-```text
-[35.1 O que é um trabalho de conclusão de bacharelado]
-    |
-    v
-[35.2 Escolher um tema]
-    |
-    v
-[35.3 A proposta]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) escolher um tema de trabalho de conclusão que seja comparativo, viável, ético e útil; (2) escrever uma proposta com pergunta, contexto, método, plano de evidências, ética, riscos e cronograma; (3) definir com antecedência os critérios de sucesso e os produtos; e (4) obter as autorizações de que o seu projeto precisa. O capítulo se apoia nos Capítulos 18, 25, 30, 33 e 34 e inicia a sequência do trabalho de conclusão (Capítulos 35–40).
@@ -4461,61 +2706,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 36 — Prática de campo ou comunitária
 
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Mapa da aula
-
-Aula 36 publicada. Mapa, exemplo, EX072.
-
-```mermaid
-flowchart TD
-  N0["36.1 Por que a prática importa"]
-  N1["36.2 O acordo de estágio"]
-  N2["36.3 Trabalhar como aprendiz no local"]
-  N3["36.4 Prática comunitária"]
-  N4["36.5 Diário reflexivo"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX072"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["36.1 Por que a prática importa"]
-  N1["36.2 O acordo de estágio"]
-  N2["36.3 Trabalhar como aprendiz no local"]
-  N3["36.4 Prática comunitária"]
-  N4["36.5 Diário reflexivo"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX072"]
-```
-
-```text
-[36.1 Por que a prática importa]
-    |
-    v
-[36.2 O acordo de estágio]
-    |
-    v
-[36.3 Trabalhar como aprendiz no local]
-    |
-    v
-[36.4 Prática comunitária]
-    |
-    v
-[36.5 Diário reflexivo]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX072]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) preparar-se para um estágio com um operador de serviço crítico ou uma organização comunitária, incluindo acordos sobre escopo, confidencialidade e supervisão; (2) trabalhar de forma segura e útil num ambiente operacional como aprendiz; (3) manter um diário reflexivo de prática; e (4) produzir resultados que sirvam ao anfitrião sem expô-lo. O capítulo se apoia nos Capítulos 10, 14, 29, 32 e 35 e fornece evidências para o trabalho de conclusão.
@@ -4574,51 +2764,6 @@ Siga para a próxima lição escrita.
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
-
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Mapa da aula
-
-Aula 37 publicada. Mapa, exemplo, EX074.
-
-```mermaid
-flowchart TD
-  N0["37.1 Uma lista de revisão"]
-  N1["37.2 Amostras pequenas e intervalos"]
-  N2["37.4 Revisão por pares"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX074"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["37.1 Uma lista de revisão"]
-  N1["37.2 Amostras pequenas e intervalos"]
-  N2["37.4 Revisão por pares"]
-  N3["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX074"]
-```
-
-```text
-[37.1 Uma lista de revisão]
-    |
-    v
-[37.2 Amostras pequenas e intervalos]
-    |
-    v
-[37.4 Revisão por pares]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX074]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -4701,56 +2846,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
 
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Mapa da aula
-
-Aula 38 publicada. Mapa, exemplo, EX075.
-
-```mermaid
-flowchart TD
-  N0["38.1 Trabalhar segundo um plano"]
-  N1["38.2 Construir o modelo de apoio"]
-  N2["38.3 Coletar evidências de pessoas e anfitriões"]
-  N3["38.4 Resultados surpreendentes e negativos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX075"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["38.1 Trabalhar segundo um plano"]
-  N1["38.2 Construir o modelo de apoio"]
-  N2["38.3 Coletar evidências de pessoas e anfitriões"]
-  N3["38.4 Resultados surpreendentes e negativos"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX075"]
-```
-
-```text
-[38.1 Trabalhar segundo um plano]
-    |
-    v
-[38.2 Construir o modelo de apoio]
-    |
-    v
-[38.3 Coletar evidências de pessoas e anfitriões]
-    |
-    v
-[38.4 Resultados surpreendentes e negativos]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX075]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) executar o plano do trabalho de conclusão controlando o escopo e registrando as decisões; (2) coletar e gerenciar evidências de modo que todo resultado seja rastreável até a sua fonte; (3) construir um modelo ou laboratório pequeno e reprodutível que sustente a sua comparação; e (4) lidar com contratempos — acesso perdido, resultados surpreendentes — com honestidade. O capítulo se apoia nos Capítulos 25, 30, 34, 35 e 37 e prepara a avaliação (Capítulo 39).
@@ -4805,56 +2900,6 @@ Siga para a próxima lição escrita.
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do trabalho de conclusão
-
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Mapa da aula
-
-Aula 39 publicada. Mapa, exemplo, EX077.
-
-```mermaid
-flowchart TD
-  N0["39.1 Contra os critérios que você definiu"]
-  N1["39.2 Sensibilidade e robustez"]
-  N2["39.3 Limitações com direção"]
-  N3["39.4 Revisão independente"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX077"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["39.1 Contra os critérios que você definiu"]
-  N1["39.2 Sensibilidade e robustez"]
-  N2["39.3 Limitações com direção"]
-  N3["39.4 Revisão independente"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX077"]
-```
-
-```text
-[39.1 Contra os critérios que você definiu]
-    |
-    v
-[39.2 Sensibilidade e robustez]
-    |
-    v
-[39.3 Limitações com direção]
-    |
-    v
-[39.4 Revisão independente]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX077]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -4927,56 +2972,6 @@ Siga para a próxima lição escrita.
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Monografia e apresentação
-
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Mapa da aula
-
-Aula 40 publicada. Mapa, exemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["40.1 Estrutura da monografia"]
-  N1["40.2 A conclusão"]
-  N2["40.3 A apresentação"]
-  N3["40.4 Responder às perguntas"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX079"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["40.1 Estrutura da monografia"]
-  N1["40.2 A conclusão"]
-  N2["40.3 A apresentação"]
-  N3["40.4 Responder às perguntas"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
-```
-
-```text
-[40.1 Estrutura da monografia]
-    |
-    v
-[40.2 A conclusão]
-    |
-    v
-[40.3 A apresentação]
-    |
-    v
-[40.4 Responder às perguntas]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
 
 ### Objetivos de aprendizagem e conexão
 

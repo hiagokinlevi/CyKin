@@ -39,71 +39,6 @@ Read Riverside's chapters in order. Each numbered chapter is one English lesson,
 
 ## Chapter 1 — Application and software supply chain security: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The opening case"]
-  N2["1.2 What the subject covers"]
-  N3["1.3 Main risks"]
-  N4["1.4 Proportionate decisions"]
-  N5["1.5 Frameworks as guides"]
-  N6["1.6 The month's plan"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The opening case"]
-  N2["1.2 What the subject covers"]
-  N3["1.3 Main risks"]
-  N4["1.4 Proportionate decisions"]
-  N5["1.5 Frameworks as guides"]
-  N6["1.6 The month's plan"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The opening case]
-    |
-    v
-[1.2 What the subject covers]
-    |
-    v
-[1.3 Main risks]
-    |
-    v
-[1.4 Proportionate decisions]
-    |
-    v
-[1.5 Frameworks as guides]
-    |
-    v
-[1.6 The month's plan]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) explain what application and software supply chain security means for a small organisation's website; (2) recognise the main risks; (3) make simple, proportionate decisions; (4) set priorities for a month of work.
@@ -179,71 +114,6 @@ Know the components, fix cheap high-value risks first and plan the month.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX014.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Permission"]
-  N2["2.2 Scope"]
-  N3["2.3 Safe practice"]
-  N4["2.4 Donor data"]
-  N5["2.5 Defensive only"]
-  N6["2.6 When to ask for help"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Permission"]
-  N2["2.2 Scope"]
-  N3["2.3 Safe practice"]
-  N4["2.4 Donor data"]
-  N5["2.5 Defensive only"]
-  N6["2.6 When to ask for help"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Permission]
-    |
-    v
-[2.2 Scope]
-    |
-    v
-[2.3 Safe practice]
-    |
-    v
-[2.4 Donor data]
-    |
-    v
-[2.5 Defensive only]
-    |
-    v
-[2.6 When to ask for help]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -322,71 +192,6 @@ Permission, scope, backups and staging make changes safe.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Application and software supply chain security: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Listing components"]
-  N2["Lab — component review"]
-  N3["3.2 Lab result"]
-  N4["3.3 Why maintenance matters"]
-  N5["3.4 Data flows"]
-  N6["3.5 Deciding"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Listing components"]
-  N2["Lab — component review"]
-  N3["3.2 Lab result"]
-  N4["3.3 Why maintenance matters"]
-  N5["3.4 Data flows"]
-  N6["3.5 Deciding"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Listing components]
-    |
-    v
-[Lab — component review]
-    |
-    v
-[3.2 Lab result]
-    |
-    v
-[3.3 Why maintenance matters]
-    |
-    v
-[3.4 Data flows]
-    |
-    v
-[3.5 Deciding]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -492,71 +297,6 @@ Inventory, check and decide for each component.
 
 ## Chapter 4 — Application and software supply chain security: guided lab and applied synthesis
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 The update"]
-  N2["Lab — release checklist"]
-  N3["4.2 Lab result"]
-  N4["4.3 Why a checklist"]
-  N5["4.4 Routines"]
-  N6["4.5 Putting it together"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 The update"]
-  N2["Lab — release checklist"]
-  N3["4.2 Lab result"]
-  N4["4.3 Why a checklist"]
-  N5["4.4 Routines"]
-  N6["4.5 Putting it together"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 The update]
-    |
-    v
-[Lab — release checklist]
-    |
-    v
-[4.2 Lab result]
-    |
-    v
-[4.3 Why a checklist]
-    |
-    v
-[4.4 Routines]
-    |
-    v
-[4.5 Putting it together]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) prepare a safe update with a pre-release checklist; (2) verify downloads; (3) complete the month's improvements; (4) set routines to keep the site safe.
@@ -659,31 +399,6 @@ Check before each release and keep simple routines going.
 
 ## Chapter 5 — The component print is list order
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  L["Four tuples, written order"] --> P["One pass, no sort"]
-  P --> O["Four lines in that same order"]
-  O --> Q{"Was the first line chosen by severity?"}
-  Q -->|No| K["Keep the embedded print"]
-```
-
-The loop follows the list. It does not rank the rows.
-
-### Logical drawing
-
-```text
-donate-form     3.2.0  UPDATE to 3.2.4
-event-calendar  1.4.1  UNMAINTAINED (1606 days since release)
-photo-gallery   2.0.0  REMOVE (not in use)
-newsletter      5.1.3  ok
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -737,31 +452,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — A version tuple is not a decimal string
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06. Map, example, EX052.
-
-```mermaid
-flowchart TD
-  S["A version string"] --> T["Split on dots, then int"]
-  T --> C{"Is the installed tuple less than the fixed tuple?"}
-  C -->|Yes| U["Append UPDATE"]
-  C -->|No| N["No update note from this test"]
-```
-
-The comparison is numeric tuples. It is not dictionary order on the raw text.
-
-### Logical drawing
-
-```text
-installed donate-form: (3, 2, 0)
-fixed donate-form:     (3, 2, 4)
-(3, 2, 0) < (3, 2, 4) is true
-string order of 3.10 and 3.9 is a different test, and neither string is in this list
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -814,31 +504,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — 1606 is one subtraction
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07. Map, example, EX053.
-
-```mermaid
-flowchart TD
-  T["today = 2026-10-01"] --> D["Subtract last release"]
-  D --> G{"Is the day count greater than 730?"}
-  G -->|Yes| U["Append the UNMAINTAINED note"]
-  G -->|No| S["No age note"]
-```
-
-The threshold is a strict greater-than. The print shows the day count, not the threshold.
-
-### Logical drawing
-
-```text
-event-calendar last release 2022-05-09
-2026-10-01 minus that date = 1606 days
-1606 > 730, so the note is appended
-730 itself would not pass the test, and no row has that age
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -896,29 +561,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — REMOVE is the unused flag
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08. Map, example, EX054.
-
-```mermaid
-flowchart TD
-  U["Fifth field, in use"] --> F{"Is the Boolean false?"}
-  F -->|Yes| R["Append REMOVE"]
-  F -->|No| K["No remove note from this test"]
-```
-
-The note reads the Boolean. It does not read the release date.
-
-### Logical drawing
-
-```text
-photo-gallery  2.0.0  in use = False  age = 103 days
-note produced: REMOVE (not in use)
-age test for this row: 103 > 730 is false
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -973,33 +615,6 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — The word ok is an empty note list
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09. Map, example, EX055.
-
-```mermaid
-flowchart TD
-  N["notes starts empty"] --> A["Three ifs may append"]
-  A --> J{"Is the joined text empty?"}
-  J -->|Yes| O["Print ok"]
-  J -->|No| P["Print the joined notes"]
-```
-
-`ok` is the fallback string. It is not a grade.
-
-### Logical drawing
-
-```text
-newsletter
-  fixed is None
-  30 > 730 is false
-  in use is True
-joined notes: empty
-printed token: ok
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1053,32 +668,6 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — One row can carry more than one note
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  A["UPDATE if the version test passes"] --> B["UNMAINTAINED if age passes"]
-  B --> C["REMOVE if unused"]
-  C --> J["Join with semicolon-space, in that order"]
-```
-
-The three tests are independent. This file never makes two of them true on one row.
-
-### Logical drawing
-
-```text
-separator in source: '; '
-visible separators in the four lines: none
-donate-form notes: one
-event-calendar notes: one
-photo-gallery notes: one
-newsletter notes: none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
 
 ### Learning outcomes
 
@@ -1135,31 +724,6 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Theme and services are not lab columns
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11. Map, example, EX057.
-
-```mermaid
-flowchart TD
-  P["Prose inventory"] --> E["Theme, platform, two services"]
-  L["Lab list"] --> F["Four plugin tuples, five fields"]
-  E --> Q{"Do those prose items become tuples?"}
-  F --> Q
-  Q -->|No| K["Keep both records distinct"]
-```
-
-The administration-page story is wider than `components`.
-
-### Logical drawing
-
-```text
-in the four tuples: name, version, fixed or None, last release, in use
-in the prose inventory, and not in the list: theme, platform version,
-  payment provider, newsletter service
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1215,33 +779,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — Phone numbers are not a fifth field
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12. Map, example, EX058.
-
-```mermaid
-flowchart TD
-  C["event-calendar tuple"] --> A["Age note only"]
-  P["Phone-number discovery"] --> S["Prose: moved, then deleted"]
-  S --> Q{"Does that edit the tuple?"}
-  A --> Q
-  Q -->|No| K["1606 and in-use stay"]
-```
-
-The discovery changes priority in the write-up. It does not change the row.
-
-### Logical drawing
-
-```text
-event-calendar tuple stays:
-  1.4.1, fixed None, last release 2022-05-09, in use True
-printed note stays:
-  UNMAINTAINED (1606 days since release)
-phone numbers printed: none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1296,32 +833,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — The hash match is two hashes of one literal
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13. Map, example, EX059.
-
-```mermaid
-flowchart TD
-  B["One byte literal"] --> H1["sha256 hex digest"]
-  B --> H2["sha256 hex digest again"]
-  H1 --> E{"Are the hex strings equal?"}
-  H2 --> E
-  E -->|Yes| X["The check is True"]
-```
-
-Equal inputs produce equal digests. The digest itself is not printed.
-
-### Logical drawing
-
-```text
-download = b"synthetic donate-form 3.2.4 release"
-vendor side hashes that same literal
-printed result: [x] hash matches vendor
-printed hex digits: none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1375,33 +886,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Four ticks are not a printed fraction
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14. Map, example, EX060.
-
-```mermaid
-flowchart TD
-  D["Five Booleans in insertion order"] --> M["x when true, space when false"]
-  M --> S["Sum of the true values is 4"]
-  S --> Q{"Does the script print 4 of 5?"}
-  Q -->|No| K["Leave 4 of 5 as a label beside the lines"]
-```
-
-The fraction is arithmetic. The page shows brackets.
-
-### Logical drawing
-
-```text
-[x] official source used
-[x] hash matches vendor
-[x] backup taken
-[x] tested on staging copy
-[ ] admin accounts use MFA
-true values: 4    keys: 5    printed fraction: none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1458,30 +942,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — NOT READY names the false keys
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15. Map, example, EX061.
-
-```mermaid
-flowchart TD
-  K["Keys whose Boolean is false"] --> J["Join those keys with comma-space"]
-  J --> E{"Is that list empty?"}
-  E -->|No| N["Print NOT READY and the keys"]
-  E -->|Yes| R["Print READY"]
-```
-
-This run takes the first branch. The ready word is the other branch.
-
-### Logical drawing
-
-```text
-false keys, in dictionary order: admin accounts use MFA
-printed line: NOT READY: admin accounts use MFA
-READY: not printed
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1534,31 +994,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Official source is a stored Boolean
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16. Map, example, EX062.
-
-```mermaid
-flowchart TD
-  L["Literal True"] --> K["Key: official source used"]
-  K --> P["Bracket x"]
-  U["A page address"] --> Q{"Is an address stored?"}
-  Q -->|No| R["The tick is not a fetch"]
-```
-
-The prose names a page. The dictionary stores a Boolean.
-
-### Logical drawing
-
-```text
-"official source used": True
-URL stored: none
-request performed by the script: none
-printed bracket: [x]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -1614,32 +1049,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Backup and staging are separate bits
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17. Map, example, EX063.
-
-```mermaid
-flowchart TD
-  B["backup taken = True"] --> P["Its own bracket"]
-  S["tested on staging copy = True"] --> R["Its own bracket"]
-  P --> Q{"Does one True imply the other?"}
-  R --> Q
-  Q -->|No| K["Both happen to be true in this file"]
-```
-
-Two keys. Either could have been false alone. In this file, neither is.
-
-### Logical drawing
-
-```text
-[x] backup taken
-[x] tested on staging copy
-date stored on either bit: none
-donor row stored on either bit: none
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1692,32 +1101,6 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — The morning release is not this print
-
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18. Map, example, EX064.
-
-```mermaid
-flowchart TD
-  F["MFA Boolean is False"] --> N["NOT READY line"]
-  M["Next morning, in prose"] --> H["Volunteer finishes setup"]
-  H --> Q{"Does the published file change the Boolean?"}
-  N --> Q
-  Q -->|No| K["The print stays NOT READY"]
-```
-
-A later rerun is a sentence. This output is the file as published.
-
-### Logical drawing
-
-```text
-published missing list: not empty
-published decision word: NOT READY
-READY would require an empty missing list
-that edit is not in the file
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
 
 ### Learning outcomes
 
@@ -1773,32 +1156,6 @@ Continue to the next authored lesson.
 
 ## Chapter 19 — A routine is not a sixth check
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19. Map, example, EX065.
-
-```mermaid
-flowchart TD
-  C["Five keys in checks"] --> L["Five bracket lines"]
-  R["Weekly, monthly, yearly routines"] --> P["Prose owners and notes"]
-  P --> Q{"Do those routines add keys?"}
-  L --> Q
-  Q -->|No| K["The dictionary stays five keys"]
-```
-
-The routines repeat work. They are not new Booleans.
-
-### Logical drawing
-
-```text
-keys: official source, hash, backup, staging, MFA
-not keys: weekly update check, monthly account review,
-  yearly maintenance review, automatic updates,
-  the second volunteer, the director's notice
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1853,32 +1210,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — What the charity note can say
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20. Map, example, EX066.
-
-```mermaid
-flowchart TD
-  N["A leaving note"] --> Q{"Does the sentence replace a print, fill a blank, or close the review?"}
-  Q -->|Yes| R["Reject it"]
-  Q -->|No| K["The note may cite that line"]
-```
-
-Twenty lessons meet a planning minimum. They leave the charity's open items open.
-
-### Logical drawing
-
-```text
-may stay
-    the four component lines, including 1606 and ok
-    the five brackets and NOT READY: admin accounts use MFA
-must not be added
-    a reordered list, a digest, a CVE, a platform name
-    READY as the published line, a donor count, the word secure
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

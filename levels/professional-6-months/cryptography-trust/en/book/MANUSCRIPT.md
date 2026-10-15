@@ -37,56 +37,6 @@ Read in order. The chapters follow one junior analyst at a managed-service provi
 
 ## Chapter 1 — Security foundations for practitioners
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Three goals"]
-  N3["1.3 One control among many"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Three goals"]
-  N3["1.3 One control among many"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 Three goals]
-    |
-    v
-[1.3 One control among many]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) describe the confidentiality, integrity and authenticity goals that cryptography serves; (2) place cryptography among other controls; (3) introduce the managed-service case used throughout the book.
@@ -132,56 +82,6 @@ Practitioners judge each cryptographic control by the goal it serves and its rea
 <a id="ch-02"></a>
 
 ## Chapter 2 — Cryptography and trust services: service and stakeholder context
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Who cares about what"]
-  N2["2.2 Owners and suppliers"]
-  N3["2.3 Stakeholder language"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Who cares about what"]
-  N2["2.2 Owners and suppliers"]
-  N3["2.3 Stakeholder language"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Who cares about what]
-    |
-    v
-[2.2 Owners and suppliers]
-    |
-    v
-[2.3 Stakeholder language]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Learning outcomes
 
@@ -229,56 +129,6 @@ Cryptographic findings matter only when the right owner understands them, so pra
 
 ## Chapter 3 — Authorized practice and evidence handling
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Written authorisation"]
-  N2["3.2 Minimal evidence"]
-  N3["3.3 Secrets found on the job"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Written authorisation"]
-  N2["3.2 Minimal evidence"]
-  N3["3.3 Secrets found on the job"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Written authorisation]
-    |
-    v
-[3.2 Minimal evidence]
-    |
-    v
-[3.3 Secrets found on the job]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) work under a written authorisation; (2) handle evidence and client data minimally; (3) protect secrets discovered during an engagement.
@@ -325,56 +175,6 @@ Authorised, minimal and careful evidence handling keeps an engagement lawful and
 
 ## Chapter 4 — Cryptography and trust services: core methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Four building blocks"]
-  N2["4.2 Certificates and chains"]
-  N3["4.3 Matching method to need"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX016"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Four building blocks"]
-  N2["4.2 Certificates and chains"]
-  N3["4.3 Matching method to need"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Four building blocks]
-    |
-    v
-[4.2 Certificates and chains]
-    |
-    v
-[4.3 Matching method to need]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Learning outcomes
 
 You will (1) explain symmetric encryption, hashing, MACs and signatures in practitioner terms; (2) explain certificates and chains; (3) choose the right method for a client need.
@@ -420,61 +220,6 @@ Choosing among encryption, hashes, MACs, signatures and certificates by need is 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Cryptography and trust services: tools and interpretation
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 An inventory check"]
-  N2["Lab — Baseline flags"]
-  N3["5.2 Interpreting output"]
-  N4["5.3 Noise and false positives"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 An inventory check"]
-  N2["Lab — Baseline flags"]
-  N3["5.2 Interpreting output"]
-  N4["5.3 Noise and false positives"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 An inventory check]
-    |
-    v
-[Lab — Baseline flags]
-    |
-    v
-[5.2 Interpreting output]
-    |
-    v
-[5.3 Noise and false positives]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Learning outcomes
 
@@ -557,56 +302,6 @@ Tools produce flags; practitioners turn them into findings by confirming them, a
 
 ## Chapter 6 — Cryptography and trust services: operational workflow
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 The monthly workflow"]
-  N2["6.2 Tracking findings"]
-  N3["6.3 Handing off fixes"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX026"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 The monthly workflow"]
-  N2["6.2 Tracking findings"]
-  N3["6.3 Handing off fixes"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 The monthly workflow]
-    |
-    v
-[6.2 Tracking findings]
-    |
-    v
-[6.3 Handing off fixes]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) run Copperleaf's monthly cryptographic check workflow; (2) track findings from discovery to closure; (3) hand off fixes to the right owner.
@@ -652,56 +347,6 @@ A repeatable workflow with verified closure and clear handoffs turns monthly che
 <a id="ch-07"></a>
 
 ## Chapter 7 — Cryptography and trust services: controls and verification
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Verifying notifications"]
-  N2["Lab — Notification verification"]
-  N3["7.2 Verifying TLS settings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX031"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Verifying notifications"]
-  N2["Lab — Notification verification"]
-  N3["7.2 Verifying TLS settings"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Verifying notifications]
-    |
-    v
-[Lab — Notification verification]
-    |
-    v
-[7.2 Verifying TLS settings]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -772,56 +417,6 @@ Verification proves specific behaviour under specific tests, and honest statemen
 
 ## Chapter 8 — Cryptography and trust services: supervised case analysis
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 The incident"]
-  N2["8.2 Building the timeline"]
-  N3["8.3 Containment and recovery"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 The incident"]
-  N2["8.2 Building the timeline"]
-  N3["8.3 Containment and recovery"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 The incident]
-    |
-    v
-[8.2 Building the timeline]
-    |
-    v
-[8.3 Containment and recovery]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Learning outcomes
 
 You will (1) analyse a synthetic incident involving an exposed key; (2) reconstruct a timeline from evidence; (3) recommend containment and recovery steps.
@@ -868,56 +463,6 @@ Exposed keys are treated as compromised, recovered by reissue and revocation, an
 
 ## Chapter 9 — Communication, ethics and reporting
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX041.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["9.1 Report structure"]
-  N2["9.2 Consistent ratings"]
-  N3["9.3 Ethics in practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX041"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["9.1 Report structure"]
-  N2["9.2 Consistent ratings"]
-  N3["9.3 Ethics in practice"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[9.1 Report structure]
-    |
-    v
-[9.2 Consistent ratings]
-    |
-    v
-[9.3 Ethics in practice]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Learning outcomes
 
 You will (1) structure a cryptographic findings report; (2) rate risk consistently; (3) apply professional ethics to disclosure and honesty.
@@ -963,61 +508,6 @@ Clear structure, consistent ratings and honest ethics make cryptographic reports
 <a id="ch-10"></a>
 
 ## Chapter 10 — Cryptography and trust services: quality and troubleshooting
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX046.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["10.1 A staff portal finding"]
-  N2["10.2 Verifying the fix"]
-  N3["Lab — Salted PBKDF2 versus fast hash"]
-  N4["10.3 Quality through review"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX046"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["10.1 A staff portal finding"]
-  N2["10.2 Verifying the fix"]
-  N3["Lab — Salted PBKDF2 versus fast hash"]
-  N4["10.3 Quality through review"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[10.1 A staff portal finding]
-    |
-    v
-[10.2 Verifying the fix]
-    |
-    v
-[Lab — Salted PBKDF2 versus fast hash]
-    |
-    v
-[10.3 Quality through review]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Learning outcomes
 
@@ -1090,56 +580,6 @@ Quality comes from verifying fixes with sound methods and from steady review and
 
 ## Chapter 11 — Supervised laboratory
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX051.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["11.1 Mirroring the service"]
-  N2["11.2 Rehearsal and rollback"]
-  N3["11.3 Closing the lab"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Worked example"]
-  EX --> Q["Exercise EX051"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["11.1 Mirroring the service"]
-  N2["11.2 Rehearsal and rollback"]
-  N3["11.3 Closing the lab"]
-  N4["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[11.1 Mirroring the service]
-    |
-    v
-[11.2 Rehearsal and rollback]
-    |
-    v
-[11.3 Closing the lab]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Learning outcomes
 
 You will (1) set up a contained lab mirroring a client service; (2) rehearse a certificate renewal and rollback; (3) close the lab without leaving trust behind.
@@ -1185,61 +625,6 @@ Rehearsing changes in a contained lab reduces production risk, provided the lab 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX056.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["12.1 Building the portfolio"]
-  N2["12.2 Trends from the tracker"]
-  N3["Lab — Finding trends"]
-  N4["12.3 Reflection and next steps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX056"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["12.1 Building the portfolio"]
-  N2["12.2 Trends from the tracker"]
-  N3["Lab — Finding trends"]
-  N4["12.3 Reflection and next steps"]
-  N5["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX056"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[12.1 Building the portfolio]
-    |
-    v
-[12.2 Trends from the tracker]
-    |
-    v
-[Lab — Finding trends]
-    |
-    v
-[12.3 Reflection and next steps]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX056]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Learning outcomes
 

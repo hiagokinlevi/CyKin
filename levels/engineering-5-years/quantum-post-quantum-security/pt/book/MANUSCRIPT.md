@@ -80,51 +80,6 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 
 ## Capítulo 1 — Cálculo I
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Por que um engenheiro precisa de taxas de cresci"]
-  N1["1.2 Logaritmos e bits de segurança"]
-  N2["1.4 Atividade prática — Laboratório G"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Por que um engenheiro precisa de taxas de cresci"]
-  N1["1.2 Logaritmos e bits de segurança"]
-  N2["1.4 Atividade prática — Laboratório G"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
-```
-
-```text
-[1.1 Por que um engenheiro precisa de taxas de cresci]
-    |
-    v
-[1.2 Logaritmos e bits de segurança]
-    |
-    v
-[1.4 Atividade prática — Laboratório G]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar taxas de crescimento — polinomial, subexponencial e exponencial — e explicar por que elas decidem o que um computador quântico ameaça; (2) usar logaritmos para converter fatores de trabalho em "bits de segurança"; e (3) ler criticamente uma afirmação assintótica. Este capítulo abre a etapa de fundamentos e prepara a matemática discreta do Capítulo 2.
@@ -211,56 +166,6 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX003.
-
-```mermaid
-flowchart TD
-  N0["2.1 Aritmética modular"]
-  N1["2.2 Anéis de polinômios"]
-  N2["2.3 Atividade prática — Laboratório R"]
-  N3["2.4 Funções de hash"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX003"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Aritmética modular"]
-  N1["2.2 Anéis de polinômios"]
-  N2["2.3 Atividade prática — Laboratório R"]
-  N3["2.4 Funções de hash"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX003"]
-```
-
-```text
-[2.1 Aritmética modular]
-    |
-    v
-[2.2 Anéis de polinômios]
-    |
-    v
-[2.3 Atividade prática — Laboratório R]
-    |
-    v
-[2.4 Funções de hash]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX003]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -349,51 +254,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 3 — Física para computação
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX005.
-
-```mermaid
-flowchart TD
-  N0["3.1 Qubits e medição"]
-  N1["3.2 Emaranhamento e portas"]
-  N2["3.4 A distribuição quântica de chaves é outra coisa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX005"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Qubits e medição"]
-  N1["3.2 Emaranhamento e portas"]
-  N2["3.4 A distribuição quântica de chaves é outra coisa"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX005"]
-```
-
-```text
-[3.1 Qubits e medição]
-    |
-    v
-[3.2 Emaranhamento e portas]
-    |
-    v
-[3.4 A distribuição quântica de chaves é outra coisa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX005]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever em termos de engenharia um qubit, a superposição, a medição e o emaranhamento; (2) explicar a decoerência e por que a correção de erros domina o custo de um computador quântico; (3) distinguir qubits físicos de lógicos; e (4) separar a computação quântica da distribuição quântica de chaves. O capítulo parte dos Capítulos 1–2 e enquadra a ameaça usada ao longo do livro.
@@ -452,61 +312,6 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["4.1 Bytes, não strings"]
-  N1["4.2 Aleatoriedade"]
-  N2["4.3 Hashes e MACs"]
-  N3["4.4 Testes"]
-  N4["4.6 Atividade prática"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX007"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Bytes, não strings"]
-  N1["4.2 Aleatoriedade"]
-  N2["4.3 Hashes e MACs"]
-  N3["4.4 Testes"]
-  N4["4.6 Atividade prática"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
-```
-
-```text
-[4.1 Bytes, não strings]
-    |
-    v
-[4.2 Aleatoriedade]
-    |
-    v
-[4.3 Hashes e MACs]
-    |
-    v
-[4.4 Testes]
-    |
-    v
-[4.6 Atividade prática]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -577,56 +382,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX009.
-
-```mermaid
-flowchart TD
-  N0["5.1 O memorando de decisão"]
-  N1["5.2 Comunicar a incerteza"]
-  N2["5.3 Diagramas"]
-  N3["5.4 Públicos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX009"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O memorando de decisão"]
-  N1["5.2 Comunicar a incerteza"]
-  N2["5.3 Diagramas"]
-  N3["5.4 Públicos"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX009"]
-```
-
-```text
-[5.1 O memorando de decisão]
-    |
-    v
-[5.2 Comunicar a incerteza]
-    |
-    v
-[5.3 Diagramas]
-    |
-    v
-[5.4 Públicos]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX009]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever um memorando de decisão que separe fatos, pressupostos e recomendações; (2) apresentar com honestidade a incerteza sobre os prazos quânticos; (3) desenhar diagramas de arquitetura com alternativas em texto; e (4) adaptar uma mensagem para públicos técnicos e executivos. O capítulo parte dos Capítulos 1–4 e é usado em todas as revisões de projeto posteriores.
@@ -688,56 +443,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 6 — Cálculo II
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["6.1 Modelos exponenciais"]
-  N1["6.2 Somas e integrais para a exposição"]
-  N2["6.3 Otimização"]
-  N3["6.5 Atividade prática"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Modelos exponenciais"]
-  N1["6.2 Somas e integrais para a exposição"]
-  N2["6.3 Otimização"]
-  N3["6.5 Atividade prática"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
-```
-
-```text
-[6.1 Modelos exponenciais]
-    |
-    v
-[6.2 Somas e integrais para a exposição]
-    |
-    v
-[6.3 Otimização]
-    |
-    v
-[6.5 Atividade prática]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) usar modelos exponenciais e logarítmicos de crescimento e decaimento; (2) calcular somas e integrais que aparecem em modelos de custo e de risco; (3) aplicar otimização para escolher parâmetros sob restrições; e (4) modelar a janela de exposição do "colete agora, decifre depois". O capítulo parte do Capítulo 1 e apoia o desempenho (Capítulo 36) e a otimização (Capítulo 41).
@@ -798,56 +503,6 @@ Siga para a próxima lição escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["7.1 Eventos raros"]
-  N1["7.2 Atividade prática — Laboratório P"]
-  N2["7.3 Intervalos de confiança"]
-  N3["7.4 Segurança estatística versus criptográfica"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX013"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 Eventos raros"]
-  N1["7.2 Atividade prática — Laboratório P"]
-  N2["7.3 Intervalos de confiança"]
-  N3["7.4 Segurança estatística versus criptográfica"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
-```
-
-```text
-[7.1 Eventos raros]
-    |
-    v
-[7.2 Atividade prática — Laboratório P]
-    |
-    v
-[7.3 Intervalos de confiança]
-    |
-    v
-[7.4 Segurança estatística versus criptográfica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -931,56 +586,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["8.1 Recursos de desempenho"]
-  N1["8.2 Canais laterais"]
-  N2["8.3 Memória e tamanho de código"]
-  N3["8.4 HSMs e elementos seguros"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Recursos de desempenho"]
-  N1["8.2 Canais laterais"]
-  N2["8.3 Memória e tamanho de código"]
-  N3["8.4 HSMs e elementos seguros"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
-```
-
-```text
-[8.1 Recursos de desempenho]
-    |
-    v
-[8.2 Canais laterais]
-    |
-    v
-[8.3 Memória e tamanho de código]
-    |
-    v
-[8.4 HSMs e elementos seguros]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) relacionar o desempenho dos algoritmos a recursos do processador, como unidades vetoriais e caches; (2) explicar os canais laterais de tempo e de consumo de energia; (3) avaliar memória e tamanho de código em dispositivos restritos; e (4) entender os módulos de segurança de hardware (HSMs) e as suas restrições de migração. O capítulo prepara a implementação (Capítulos 28 e 31) e o desempenho (Capítulo 36).
@@ -1043,61 +648,6 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX017.
-
-```mermaid
-flowchart TD
-  N0["9.1 Interfaces acima de implementações"]
-  N1["9.2 Validação de entradas"]
-  N2["9.3 Testes além dos exemplos"]
-  N3["9.4 Dependências"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX017"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Interfaces acima de implementações"]
-  N1["9.2 Validação de entradas"]
-  N2["9.3 Testes além dos exemplos"]
-  N3["9.4 Dependências"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX017"]
-```
-
-```text
-[9.1 Interfaces acima de implementações]
-    |
-    v
-[9.2 Validação de entradas]
-    |
-    v
-[9.3 Testes além dos exemplos]
-    |
-    v
-[9.4 Dependências]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX017]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1166,51 +716,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Ética e segurança operacional em engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["10.1 Deveres"]
-  N1["10.2 Quem arca com o risco"]
-  N2["10.3 Interações com a segurança operacional"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX019"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Deveres"]
-  N1["10.2 Quem arca com o risco"]
-  N2["10.3 Interações com a segurança operacional"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX019"]
-```
-
-```text
-[10.1 Deveres]
-    |
-    v
-[10.2 Quem arca com o risco]
-    |
-    v
-[10.3 Interações com a segurança operacional]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar a ética profissional às decisões de migração criptográfica; (2) identificar quem arca com o risco do "colete agora, decifre depois"; (3) tratar com responsabilidade as descobertas de vulnerabilidades; e (4) evitar exagerar o risco quântico para vender produtos. O capítulo fecha o primeiro bloco de fundamentos e orienta todas as decisões de projeto posteriores.
@@ -1274,56 +779,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["11.1 TLS 1.3"]
-  N1["11.2 O tamanho e a rede"]
-  N2["11.3 Outros protocolos"]
-  N3["11.4 Ossificação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 TLS 1.3"]
-  N1["11.2 O tamanho e a rede"]
-  N2["11.3 Outros protocolos"]
-  N3["11.4 Ossificação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
-```
-
-```text
-[11.1 TLS 1.3]
-    |
-    v
-[11.2 O tamanho e a rede]
-    |
-    v
-[11.3 Outros protocolos]
-    |
-    v
-[11.4 Ossificação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) acompanhar um handshake do TLS 1.3 e identificar onde acontecem a troca de chaves e a autenticação; (2) explicar como o tamanho dos pacotes, a MTU e a fragmentação interagem com mensagens pós-quânticas maiores; (3) descrever o IKEv2, o SSH e o DNSSEC do ponto de vista da migração; e (4) reconhecer a ossificação dos middleboxes. O capítulo prepara a integração (Capítulo 34) e o desempenho (Capítulo 36).
@@ -1384,56 +839,6 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX023.
-
-```mermaid
-flowchart TD
-  N0["12.1 Onde a criptografia mora"]
-  N1["12.2 Políticas de todo o sistema"]
-  N2["12.3 Inicialização segura e atualizações"]
-  N3["12.4 Entropia e armazenamento de chaves"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX023"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 Onde a criptografia mora"]
-  N1["12.2 Políticas de todo o sistema"]
-  N2["12.3 Inicialização segura e atualizações"]
-  N3["12.4 Entropia e armazenamento de chaves"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX023"]
-```
-
-```text
-[12.1 Onde a criptografia mora]
-    |
-    v
-[12.2 Políticas de todo o sistema]
-    |
-    v
-[12.3 Inicialização segura e atualizações]
-    |
-    v
-[12.4 Entropia e armazenamento de chaves]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX023]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1498,56 +903,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa da aula
-
-Aula 13 publicada. Mapa, exemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["13.1 Tempo de vida da confidencialidade"]
-  N1["13.2 Em repouso, em trânsito, em backups"]
-  N2["13.3 Cifragem em envelope"]
-  N3["13.4 Banco de dados e enlaces de replicação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX025"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["13.1 Tempo de vida da confidencialidade"]
-  N1["13.2 Em repouso, em trânsito, em backups"]
-  N2["13.3 Cifragem em envelope"]
-  N3["13.4 Banco de dados e enlaces de replicação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
-```
-
-```text
-[13.1 Tempo de vida da confidencialidade]
-    |
-    v
-[13.2 Em repouso, em trânsito, em backups]
-    |
-    v
-[13.3 Cifragem em envelope]
-    |
-    v
-[13.4 Banco de dados e enlaces de replicação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) classificar os dados pelo tempo de vida da confidencialidade; (2) distinguir a cifragem em repouso, em trânsito e em backups; (3) entender a cifragem em envelope e o encapsulamento de chaves (key wrapping); e (4) identificar onde algoritmos vulneráveis à computação quântica protegem dados armazenados. O capítulo prepara os modelos de sistema e de dados (Capítulo 22).
@@ -1610,61 +965,6 @@ Siga para a próxima lição escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa da aula
-
-Aula 14 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["14.1 Ciclo de vida"]
-  N1["14.2 Revisão"]
-  N2["14.3 SBOM e CBOM"]
-  N3["14.4 Versões escalonadas"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["14.1 Ciclo de vida"]
-  N1["14.2 Revisão"]
-  N2["14.3 SBOM e CBOM"]
-  N3["14.4 Versões escalonadas"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[14.1 Ciclo de vida]
-    |
-    v
-[14.2 Revisão]
-    |
-    v
-[14.3 SBOM e CBOM]
-    |
-    v
-[14.4 Versões escalonadas]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1733,56 +1033,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa da aula
-
-Aula 15 publicada. Mapa, exemplo, EX029.
-
-```mermaid
-flowchart TD
-  N0["15.1 A tríade CID na migração"]
-  N1["15.2 Categorias de segurança"]
-  N2["15.3 Modelos de ataque"]
-  N3["15.4 Defesa em profundidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX029"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["15.1 A tríade CID na migração"]
-  N1["15.2 Categorias de segurança"]
-  N2["15.3 Modelos de ataque"]
-  N3["15.4 Defesa em profundidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
-```
-
-```text
-[15.1 A tríade CID na migração]
-    |
-    v
-[15.2 Categorias de segurança]
-    |
-    v
-[15.3 Modelos de ataque]
-    |
-    v
-[15.4 Defesa em profundidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX029]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar confidencialidade, integridade e disponibilidade à migração criptográfica; (2) explicar os níveis de segurança e as cinco categorias de PQC do NIST; (3) distinguir modelos de ataque — gravação passiva, intermediário ativo (man-in-the-middle) e falsificação; e (4) entender a defesa em profundidade. O capítulo prepara a arquitetura de segurança (Capítulo 18).
@@ -1845,61 +1095,6 @@ Siga para a próxima lição escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa da aula
-
-Aula 16 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["16.1 Visão de ciclo de vida"]
-  N1["16.2 Interfaces e dependências"]
-  N2["16.3 Estudos de compromisso"]
-  N3["16.4 Planejamento de V&V"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["16.1 Visão de ciclo de vida"]
-  N1["16.2 Interfaces e dependências"]
-  N2["16.3 Estudos de compromisso"]
-  N3["16.4 Planejamento de V&V"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[16.1 Visão de ciclo de vida]
-    |
-    v
-[16.2 Interfaces e dependências]
-    |
-    v
-[16.3 Estudos de compromisso]
-    |
-    v
-[16.4 Planejamento de V&V]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -1968,61 +1163,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa da aula
-
-Aula 17 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["17.1 Programas como laços"]
-  N1["17.2 Indicadores"]
-  N2["17.3 Estabilidade"]
-  N3["17.4 Portões de implantação como controladores"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["17.1 Programas como laços"]
-  N1["17.2 Indicadores"]
-  N2["17.3 Estabilidade"]
-  N3["17.4 Portões de implantação como controladores"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
-```
-
-```text
-[17.1 Programas como laços]
-    |
-    v
-[17.2 Indicadores]
-    |
-    v
-[17.3 Estabilidade]
-    |
-    v
-[17.4 Portões de implantação como controladores]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar um programa de migração como um laço de realimentação; (2) escolher indicadores antecedentes e consequentes; (3) reconhecer a instabilidade causada por correção excessiva; e (4) aplicar ideias de controle aos portões de implantação. O capítulo prepara as operações (Capítulo 37) e a otimização (Capítulo 41).
@@ -2090,61 +1230,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa da aula
-
-Aula 18 publicada. Mapa, exemplo, EX035.
-
-```mermaid
-flowchart TD
-  N0["18.1 Fronteiras de confiança"]
-  N1["18.2 Serviços criptográficos"]
-  N2["18.3 A agilidade criptográfica como arquitetura"]
-  N3["18.4 Onde aplicar os híbridos"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX035"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["18.1 Fronteiras de confiança"]
-  N1["18.2 Serviços criptográficos"]
-  N2["18.3 A agilidade criptográfica como arquitetura"]
-  N3["18.4 Onde aplicar os híbridos"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX035"]
-```
-
-```text
-[18.1 Fronteiras de confiança]
-    |
-    v
-[18.2 Serviços criptográficos]
-    |
-    v
-[18.3 A agilidade criptográfica como arquitetura]
-    |
-    v
-[18.4 Onde aplicar os híbridos]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX035]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar fronteiras de confiança e onde a criptografia as impõe; (2) projetar uma arquitetura criptográfica com zonas e serviços; (3) centralizar a gestão de chaves; e (4) documentar a agilidade criptográfica como propriedade da arquitetura. O capítulo parte dos Capítulos 15–17 e prepara o núcleo de PQC.
@@ -2211,56 +1296,6 @@ Siga para a próxima lição escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa da aula
-
-Aula 19 publicada. Mapa, exemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["19.1 Assinaturas e PKI"]
-  N1["19.2 Assinaturas baseadas em hash a partir dos princ"]
-  N2["19.3 Atividade prática — Laboratório L"]
-  N3["19.4 As opções padronizadas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX037"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["19.1 Assinaturas e PKI"]
-  N1["19.2 Assinaturas baseadas em hash a partir dos princ"]
-  N2["19.3 Atividade prática — Laboratório L"]
-  N3["19.4 As opções padronizadas"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
-```
-
-```text
-[19.1 Assinaturas e PKI]
-    |
-    v
-[19.2 Assinaturas baseadas em hash a partir dos princ]
-    |
-    v
-[19.3 Atividade prática — Laboratório L]
-    |
-    v
-[19.4 As opções padronizadas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2357,56 +1392,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 20 — Segurança quântica e pós-quântica: contexto de engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa da aula
-
-Aula 20 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["20.1 O que quebra e o que não quebra"]
-  N1["20.2 Priorizar com Mosca"]
-  N2["20.3 Normas e políticas, com a situação"]
-  N3["20.4 A migração como programa"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["20.1 O que quebra e o que não quebra"]
-  N1["20.2 Priorizar com Mosca"]
-  N2["20.3 Normas e políticas, com a situação"]
-  N3["20.4 A migração como programa"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
-```
-
-```text
-[20.1 O que quebra e o que não quebra]
-    |
-    v
-[20.2 Priorizar com Mosca]
-    |
-    v
-[20.3 Normas e políticas, com a situação]
-    |
-    v
-[20.4 A migração como programa]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar com precisão a ameaça quântica à criptografia implantada; (2) aplicar a desigualdade de Mosca para priorizar sistemas; (3) resumir o panorama de normas e políticas, com a sua situação; e (4) enquadrar a migração da BPA como um programa de engenharia. Este capítulo abre o núcleo de PQC e se apoia em todos os fundamentos.
@@ -2467,56 +1452,6 @@ Siga para a próxima lição escrita.
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança quântica e pós-quântica: requisitos
-
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa da aula
-
-Aula 21 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["21.1 Bons requisitos"]
-  N1["21.2 Fontes"]
-  N2["21.3 Categorias de requisitos"]
-  N3["21.4 Rastreabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["21.1 Bons requisitos"]
-  N1["21.2 Fontes"]
-  N2["21.3 Categorias de requisitos"]
-  N3["21.4 Rastreabilidade"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
-```
-
-```text
-[21.1 Bons requisitos]
-    |
-    v
-[21.2 Fontes]
-    |
-    v
-[21.3 Categorias de requisitos]
-    |
-    v
-[21.4 Rastreabilidade]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2585,61 +1520,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 22 — Segurança quântica e pós-quântica: modelos de sistema e de dados
 
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa da aula
-
-Aula 22 publicada. Mapa, exemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["22.1 Modelos de ativos e de fluxos"]
-  N1["22.2 Modelo de dados do CBOM"]
-  N2["22.3 Cálculo da exposição"]
-  N3["22.5 Atividade prática"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX043"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["22.1 Modelos de ativos e de fluxos"]
-  N1["22.2 Modelo de dados do CBOM"]
-  N2["22.3 Cálculo da exposição"]
-  N3["22.5 Atividade prática"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
-```
-
-```text
-[22.1 Modelos de ativos e de fluxos]
-    |
-    v
-[22.2 Modelo de dados do CBOM]
-    |
-    v
-[22.3 Cálculo da exposição]
-    |
-    v
-[22.5 Atividade prática]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar sistemas como ativos, fluxos e funções criptográficas; (2) construir um modelo de dados para um CBOM; (3) ligar os fluxos de dados aos tempos de vida da confidencialidade; e (4) usar os modelos para calcular a exposição. O capítulo parte dos Capítulos 13, 14 e 21.
@@ -2707,56 +1587,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 23 — Segurança quântica e pós-quântica: análise de ameaças e de falhas
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa da aula
-
-Aula 23 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["23.1 Ameaças da era quântica"]
-  N1["23.2 Modos de falha da migração"]
-  N2["23.3 Pontuação de risco"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["23.1 Ameaças da era quântica"]
-  N1["23.2 Modos de falha da migração"]
-  N2["23.3 Pontuação de risco"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[23.1 Ameaças da era quântica]
-    |
-    v
-[23.2 Modos de falha da migração]
-    |
-    v
-[23.3 Pontuação de risco]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar as ameaças da era quântica com uma análise no estilo STRIDE; (2) analisar os modos de falha introduzidos pela própria migração; (3) incluir ataques de rebaixamento e de implementação; e (4) priorizar com uma pontuação de risco. O capítulo parte dos Capítulos 15 e 22.
@@ -2819,51 +1649,6 @@ Siga para a próxima lição escrita.
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Segurança quântica e pós-quântica: métodos I
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa da aula
-
-Aula 24 publicada. Mapa, exemplo, EX047.
-
-```mermaid
-flowchart TD
-  N0["24.2 Cifrar um bit"]
-  N1["24.3 Atividade prática — Laboratório W brinquedo, in"]
-  N2["24.4 Do brinquedo ao ML-KEM"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3
-  N3 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX047"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["24.2 Cifrar um bit"]
-  N1["24.3 Atividade prática — Laboratório W brinquedo, in"]
-  N2["24.4 Do brinquedo ao ML-KEM"]
-  N3["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> Q["EX047"]
-```
-
-```text
-[24.2 Cifrar um bit]
-    |
-    v
-[24.3 Atividade prática — Laboratório W brinquedo, in]
-    |
-    v
-[24.4 Do brinquedo ao ML-KEM]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX047]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -2955,61 +1740,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 25 — Ateliê de projeto I
 
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa da aula
-
-Aula 25 publicada. Mapa, exemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["25.1 Enunciado"]
-  N1["25.2 Método do ateliê"]
-  N2["25.3 Esboço da solução de referência"]
-  N3["25.4 Exemplos de crítica"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX049"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["25.1 Enunciado"]
-  N1["25.2 Método do ateliê"]
-  N2["25.3 Esboço da solução de referência"]
-  N3["25.4 Exemplos de crítica"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
-```
-
-```text
-[25.1 Enunciado]
-    |
-    v
-[25.2 Método do ateliê]
-    |
-    v
-[25.3 Esboço da solução de referência]
-    |
-    v
-[25.4 Exemplos de crítica]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir um ateliê de projeto estruturado sobre um problema com forma real; (2) produzir um projeto de troca de chaves híbrida para a borda da BPA; (3) apresentá-lo e defendê-lo com evidências; e (4) incorporar as críticas. O capítulo integra os Capítulos 20–24.
@@ -3068,56 +1798,6 @@ Siga para a próxima lição escrita.
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Segurança quântica e pós-quântica: alternativas de arquitetura
-
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa da aula
-
-Aula 26 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["26.1 Pura versus híbrida"]
-  N1["26.2 Certificados"]
-  N2["26.3 Mitigações provisórias"]
-  N3["26.4 Tabela de decisão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["26.1 Pura versus híbrida"]
-  N1["26.2 Certificados"]
-  N2["26.3 Mitigações provisórias"]
-  N3["26.4 Tabela de decisão"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
-```
-
-```text
-[26.1 Pura versus híbrida]
-    |
-    v
-[26.2 Certificados]
-    |
-    v
-[26.3 Mitigações provisórias]
-    |
-    v
-[26.4 Tabela de decisão]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3187,61 +1867,6 @@ Siga para a próxima lição escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Segurança quântica e pós-quântica: projeto de controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa da aula
-
-Aula 27 publicada. Mapa, exemplo, EX053.
-
-```mermaid
-flowchart TD
-  N0["27.1 Controles do combinador"]
-  N1["27.2 Atividade prática — Laboratório C"]
-  N2["27.3 Controles de negociação"]
-  N3["27.4 Controles de gestão de chaves"]
-  N4["27.5 Controles de política"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX053"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["27.1 Controles do combinador"]
-  N1["27.2 Atividade prática — Laboratório C"]
-  N2["27.3 Controles de negociação"]
-  N3["27.4 Controles de gestão de chaves"]
-  N4["27.5 Controles de política"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
-```
-
-```text
-[27.1 Controles do combinador]
-    |
-    v
-[27.2 Atividade prática — Laboratório C]
-    |
-    v
-[27.3 Controles de negociação]
-    |
-    v
-[27.4 Controles de gestão de chaves]
-    |
-    v
-[27.5 Controles de política]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX053]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3333,61 +1958,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 28 — Segurança quântica e pós-quântica: implementação I
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa da aula
-
-Aula 28 publicada. Mapa, exemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["28.1 Seleção de bibliotecas"]
-  N1["28.2 Integração por provedores"]
-  N2["28.3 Identificadores e codificações"]
-  N3["28.4 Assinaturas com estado"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX055"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["28.1 Seleção de bibliotecas"]
-  N1["28.2 Integração por provedores"]
-  N2["28.3 Identificadores e codificações"]
-  N3["28.4 Assinaturas com estado"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX055"]
-```
-
-```text
-[28.1 Seleção de bibliotecas]
-    |
-    v
-[28.2 Integração por provedores]
-    |
-    v
-[28.3 Identificadores e codificações]
-    |
-    v
-[28.4 Assinaturas com estado]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) selecionar bibliotecas verificadas e módulos validados; (2) integrar o ML-KEM e o ML-DSA por meio de interfaces de provedores; (3) tratar codificações, identificadores e interoperabilidade; e (4) implementar com segurança a gestão de assinaturas com estado. O capítulo parte dos Capítulos 9, 14 e 27.
@@ -3454,61 +2024,6 @@ Siga para a próxima lição escrita.
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Segurança quântica e pós-quântica: medição
-
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa da aula
-
-Aula 29 publicada. Mapa, exemplo, EX057.
-
-```mermaid
-flowchart TD
-  N0["29.1 Fontes de evidência"]
-  N1["29.2 Atividade prática — Laboratório I"]
-  N2["29.3 Métricas"]
-  N3["29.4 Manipulação"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX057"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["29.1 Fontes de evidência"]
-  N1["29.2 Atividade prática — Laboratório I"]
-  N2["29.3 Métricas"]
-  N3["29.4 Manipulação"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX057"]
-```
-
-```text
-[29.1 Fontes de evidência]
-    |
-    v
-[29.2 Atividade prática — Laboratório I]
-    |
-    v
-[29.3 Métricas]
-    |
-    v
-[29.4 Manipulação]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX057]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3604,61 +2119,6 @@ Siga para a próxima lição escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa da aula
-
-Aula 30 publicada. Mapa, exemplo, EX059.
-
-```mermaid
-flowchart TD
-  N0["30.1 Testes de resposta conhecida"]
-  N1["30.2 Atividade prática — Laboratório V"]
-  N2["30.3 Interoperabilidade"]
-  N3["30.4 Evidências"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX059"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["30.1 Testes de resposta conhecida"]
-  N1["30.2 Atividade prática — Laboratório V"]
-  N2["30.3 Interoperabilidade"]
-  N3["30.4 Evidências"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX059"]
-```
-
-```text
-[30.1 Testes de resposta conhecida]
-    |
-    v
-[30.2 Atividade prática — Laboratório V]
-    |
-    v
-[30.3 Interoperabilidade]
-    |
-    v
-[30.4 Evidências]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX059]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3758,56 +2218,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 31 — Segurança quântica e pós-quântica: implementação II
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Mapa da aula
-
-Aula 31 publicada. Mapa, exemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["31.1 Tempo constante"]
-  N1["31.2 Comparação no desencapsulamento"]
-  N2["31.3 Ataques por injeção de falhas"]
-  N3["31.4 Aleatoriedade e sementes"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX061"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["31.1 Tempo constante"]
-  N1["31.2 Comparação no desencapsulamento"]
-  N2["31.3 Ataques por injeção de falhas"]
-  N3["31.4 Aleatoriedade e sementes"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
-```
-
-```text
-[31.1 Tempo constante]
-    |
-    v
-[31.2 Comparação no desencapsulamento]
-    |
-    v
-[31.3 Ataques por injeção de falhas]
-    |
-    v
-[31.4 Aleatoriedade e sementes]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar técnicas de tempo constante ao código baseado em reticulados; (2) entender os ataques por injeção de falhas e as suas contramedidas; (3) lidar com segurança com a aleatoriedade e as sementes; e (4) avaliar implementações embarcadas. O capítulo aprofunda o Capítulo 28 com a segurança da implementação.
@@ -3870,61 +2280,6 @@ Siga para a próxima lição escrita.
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Segurança quântica e pós-quântica: confiabilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Mapa da aula
-
-Aula 32 publicada. Mapa, exemplo, EX063.
-
-```mermaid
-flowchart TD
-  N0["32.1 Riscos de confiabilidade"]
-  N1["32.2 Fallback seguro"]
-  N2["32.3 Capacidade dos esquemas com estado"]
-  N3["32.4 Falhas silenciosas"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX063"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["32.1 Riscos de confiabilidade"]
-  N1["32.2 Fallback seguro"]
-  N2["32.3 Capacidade dos esquemas com estado"]
-  N3["32.4 Falhas silenciosas"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX063"]
-```
-
-```text
-[32.1 Riscos de confiabilidade]
-    |
-    v
-[32.2 Fallback seguro]
-    |
-    v
-[32.3 Capacidade dos esquemas com estado]
-    |
-    v
-[32.4 Falhas silenciosas]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX063]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -3993,56 +2348,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 33 — Segurança quântica e pós-quântica: segurança operacional e resiliência
 
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Mapa da aula
-
-Aula 33 publicada. Mapa, exemplo, EX065.
-
-```mermaid
-flowchart TD
-  N0["33.1 Interações com a segurança física"]
-  N1["33.2 Implantação resiliente"]
-  N2["33.3 Resposta a incidentes criptográficos"]
-  N3["33.4 Exercício de mesa: quebra de algoritmo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX065"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["33.1 Interações com a segurança física"]
-  N1["33.2 Implantação resiliente"]
-  N2["33.3 Resposta a incidentes criptográficos"]
-  N3["33.4 Exercício de mesa: quebra de algoritmo"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX065"]
-```
-
-```text
-[33.1 Interações com a segurança física]
-    |
-    v
-[33.2 Implantação resiliente]
-    |
-    v
-[33.3 Resposta a incidentes criptográficos]
-    |
-    v
-[33.4 Exercício de mesa: quebra de algoritmo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX065]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) analisar como a migração criptográfica interage com as operações relacionadas à segurança física (safety); (2) projetar implantações resilientes para a tecnologia operacional do porto; (3) planejar a resposta a incidentes criptográficos, incluindo o comprometimento de um algoritmo; e (4) preparar-se para um cenário de "quebra criptográfica". O capítulo parte dos Capítulos 10, 23 e 32.
@@ -4105,61 +2410,6 @@ Siga para a próxima lição escrita.
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Segurança quântica e pós-quântica: integração
-
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Mapa da aula
-
-Aula 34 publicada. Mapa, exemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["34.1 Mapa de integração"]
-  N1["34.2 Integração com parceiros"]
-  N2["34.3 Sequenciamento"]
-  N3["34.4 Testes de ponta a ponta"]
-  N4["34.7 Lista de verificação de prontidão para integraç"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX067"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["34.1 Mapa de integração"]
-  N1["34.2 Integração com parceiros"]
-  N2["34.3 Sequenciamento"]
-  N3["34.4 Testes de ponta a ponta"]
-  N4["34.7 Lista de verificação de prontidão para integraç"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
-```
-
-```text
-[34.1 Mapa de integração]
-    |
-    v
-[34.2 Integração com parceiros]
-    |
-    v
-[34.3 Sequenciamento]
-    |
-    v
-[34.4 Testes de ponta a ponta]
-    |
-    v
-[34.7 Lista de verificação de prontidão para integraç]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4236,56 +2486,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Mapa da aula
-
-Aula 35 publicada. Mapa, exemplo, EX069.
-
-```mermaid
-flowchart TD
-  N0["35.1 Enunciado"]
-  N1["35.2 Esboço da solução de referência"]
-  N2["35.3 Crítica da banca"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX069"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["35.1 Enunciado"]
-  N1["35.2 Esboço da solução de referência"]
-  N2["35.3 Crítica da banca"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX069"]
-```
-
-```text
-[35.1 Enunciado]
-    |
-    v
-[35.2 Esboço da solução de referência]
-    |
-    v
-[35.3 Crítica da banca]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX069]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar a autenticação pós-quântica de um ecossistema de documentos e firmware; (2) escolher entre ML-DSA, SLH-DSA e assinaturas baseadas em hash com estado; (3) projetar a validação de longo prazo com carimbos de tempo; e (4) defender o projeto diante de uma banca. O capítulo integra os Capítulos 26–34.
@@ -4340,61 +2540,6 @@ Siga para a próxima lição escrita.
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Segurança quântica e pós-quântica: desempenho e escala
-
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Mapa da aula
-
-Aula 36 publicada. Mapa, exemplo, EX071.
-
-```mermaid
-flowchart TD
-  N0["36.1 Orçamentos de bytes"]
-  N1["36.2 Atividade prática — Laboratório B"]
-  N2["36.3 Computação"]
-  N3["36.4 Medição"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX071"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["36.1 Orçamentos de bytes"]
-  N1["36.2 Atividade prática — Laboratório B"]
-  N2["36.3 Computação"]
-  N3["36.4 Medição"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX071"]
-```
-
-```text
-[36.1 Orçamentos de bytes]
-    |
-    v
-[36.2 Atividade prática — Laboratório B]
-    |
-    v
-[36.3 Computação]
-    |
-    v
-[36.4 Medição]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX071]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4486,61 +2631,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 37 — Segurança quântica e pós-quântica: operações
 
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Mapa da aula
-
-Aula 37 publicada. Mapa, exemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["37.1 Portões de canário"]
-  N1["37.2 Atividade prática — Laboratório K"]
-  N2["37.3 Monitoramento"]
-  N3["37.4 Operações de certificados e chaves"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX073"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["37.1 Portões de canário"]
-  N1["37.2 Atividade prática — Laboratório K"]
-  N2["37.3 Monitoramento"]
-  N3["37.4 Operações de certificados e chaves"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX073"]
-```
-
-```text
-[37.1 Portões de canário]
-    |
-    v
-[37.2 Atividade prática — Laboratório K]
-    |
-    v
-[37.3 Monitoramento]
-    |
-    v
-[37.4 Operações de certificados e chaves]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) operar implantações em estágios com portões estatísticos; (2) monitorar os algoritmos negociados e o fallback; (3) gerenciar certificados e chaves para os novos algoritmos; e (4) conduzir os processos de mudança e de incidentes. O capítulo parte dos Capítulos 17, 32 e 36.
@@ -4628,61 +2718,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 38 — Segurança quântica e pós-quântica: validação
 
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Mapa da aula
-
-Aula 38 publicada. Mapa, exemplo, EX075.
-
-```mermaid
-flowchart TD
-  N0["38.1 Verificação versus validação"]
-  N1["38.2 Testes de aceitação"]
-  N2["38.3 Validar a redução de risco"]
-  N3["38.4 Validação independente"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX075"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["38.1 Verificação versus validação"]
-  N1["38.2 Testes de aceitação"]
-  N2["38.3 Validar a redução de risco"]
-  N3["38.4 Validação independente"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX075"]
-```
-
-```text
-[38.1 Verificação versus validação]
-    |
-    v
-[38.2 Testes de aceitação]
-    |
-    v
-[38.3 Validar a redução de risco]
-    |
-    v
-[38.4 Validação independente]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX075]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) validar que o sistema migrado atende às necessidades das partes interessadas; (2) distinguir as evidências de verificação das evidências de validação; (3) conduzir testes de aceitação com usuários e parceiros; e (4) validar com cuidado as alegações de redução de risco. O capítulo parte dos Capítulos 16, 30 e 37.
@@ -4749,61 +2784,6 @@ Siga para a próxima lição escrita.
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Segurança quântica e pós-quântica: manutenibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Mapa da aula
-
-Aula 39 publicada. Mapa, exemplo, EX077.
-
-```mermaid
-flowchart TD
-  N0["39.1 Agilidade como manutenibilidade"]
-  N1["39.2 Atividade prática — Laboratório A"]
-  N2["39.3 Aposentadoria"]
-  N3["39.4 Documentação e inventário"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX077"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["39.1 Agilidade como manutenibilidade"]
-  N1["39.2 Atividade prática — Laboratório A"]
-  N2["39.3 Aposentadoria"]
-  N3["39.4 Documentação e inventário"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX077"]
-```
-
-```text
-[39.1 Agilidade como manutenibilidade]
-    |
-    v
-[39.2 Atividade prática — Laboratório A]
-    |
-    v
-[39.3 Aposentadoria]
-    |
-    v
-[39.4 Documentação e inventário]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX077]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -4901,61 +2881,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Mapa da aula
-
-Aula 40 publicada. Mapa, exemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["40.1 Verificação do ponto de observação do atacante"]
-  N1["40.2 Testes de rebaixamento"]
-  N2["40.3 Testes de tratamento do estado"]
-  N3["40.4 Relatório de verificação"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX079"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["40.1 Verificação do ponto de observação do atacante"]
-  N1["40.2 Testes de rebaixamento"]
-  N2["40.3 Testes de tratamento do estado"]
-  N3["40.4 Relatório de verificação"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX079"]
-```
-
-```text
-[40.1 Verificação do ponto de observação do atacante]
-    |
-    v
-[40.2 Testes de rebaixamento]
-    |
-    v
-[40.3 Testes de tratamento do estado]
-    |
-    v
-[40.4 Relatório de verificação]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) verificar as proteções de ponta a ponta, num laboratório, a partir do ponto de observação de um atacante; (2) testar a resistência ao rebaixamento; (3) verificar o tratamento do estado das assinaturas com estado; e (4) produzir um relatório de verificação. O capítulo parte dos Capítulos 30–39.
@@ -5022,61 +2947,6 @@ Siga para a próxima lição escrita.
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Segurança quântica e pós-quântica: otimização do sistema
-
-<!-- open-cyber-academy:lesson-figures:start ch-41 -->
-### Mapa da aula
-
-Aula 41 publicada. Mapa, exemplo, EX081.
-
-```mermaid
-flowchart TD
-  N0["41.1 Escolhas de parâmetros"]
-  N1["41.2 Redução do custo adicional"]
-  N2["41.3 Priorização pela redução de risco"]
-  N3["Nota de engenharia"]
-  N4["41.6 Otimização que não pode enfraquecer a segurança"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX081"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["41.1 Escolhas de parâmetros"]
-  N1["41.2 Redução do custo adicional"]
-  N2["41.3 Priorização pela redução de risco"]
-  N3["Nota de engenharia"]
-  N4["41.6 Otimização que não pode enfraquecer a segurança"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX081"]
-```
-
-```text
-[41.1 Escolhas de parâmetros]
-    |
-    v
-[41.2 Redução do custo adicional]
-    |
-    v
-[41.3 Priorização pela redução de risco]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[41.6 Otimização que não pode enfraquecer a segurança]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX081]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-41 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -5145,61 +3015,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 42 — Segurança quântica e pós-quântica: pesquisa aplicada
 
-<!-- open-cyber-academy:lesson-figures:start ch-42 -->
-### Mapa da aula
-
-Aula 42 publicada. Mapa, exemplo, EX083.
-
-```mermaid
-flowchart TD
-  N0["42.1 Perguntas vindas da prática"]
-  N1["42.2 Pequenos estudos"]
-  N2["42.3 Ler pesquisa"]
-  N3["42.4 Devolver à comunidade"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX083"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["42.1 Perguntas vindas da prática"]
-  N1["42.2 Pequenos estudos"]
-  N2["42.3 Ler pesquisa"]
-  N3["42.4 Devolver à comunidade"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX083"]
-```
-
-```text
-[42.1 Perguntas vindas da prática]
-    |
-    v
-[42.2 Pequenos estudos]
-    |
-    v
-[42.3 Ler pesquisa]
-    |
-    v
-[42.4 Devolver à comunidade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX083]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-42 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta de pesquisa aplicada a partir do trabalho de engenharia; (2) projetar um pequeno estudo com resultados mensuráveis; (3) ler e avaliar criticamente a pesquisa em PQC; e (4) devolver os resultados à comunidade de forma responsável. O capítulo parte dos Capítulos 29, 36 e 38.
@@ -5267,61 +3082,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- open-cyber-academy:lesson-figures:start ch-43 -->
-### Mapa da aula
-
-Aula 43 publicada. Mapa, exemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["43.1 O estágio"]
-  N1["43.2 Prática profissional"]
-  N2["43.3 Teoria versus prática"]
-  N3["43.4 Confidencialidade"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX085"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["43.1 O estágio"]
-  N1["43.2 Prática profissional"]
-  N2["43.3 Teoria versus prática"]
-  N3["43.4 Confidencialidade"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
-```
-
-```text
-[43.1 O estágio]
-    |
-    v
-[43.2 Prática profissional]
-    |
-    v
-[43.3 Teoria versus prática]
-    |
-    v
-[43.4 Confidencialidade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-43 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar, sob supervisão, numa equipe de migração com formato real; (2) aplicar práticas profissionais — controle de mudanças, documentação, comunicação com as partes interessadas; (3) refletir sobre as lacunas entre teoria e prática; e (4) produzir um relatório de estágio sem divulgar informações confidenciais. O capítulo inicia a etapa de prática e de projeto final.
@@ -5388,61 +3148,6 @@ Siga para a próxima lição escrita.
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
-
-<!-- open-cyber-academy:lesson-figures:start ch-44 -->
-### Mapa da aula
-
-Aula 44 publicada. Mapa, exemplo, EX087.
-
-```mermaid
-flowchart TD
-  N0["44.1 Enunciado do projeto final"]
-  N1["44.2 Entregáveis do Projeto Final I"]
-  N2["44.3 Avaliação"]
-  N3["Nota de engenharia"]
-  N4["44.6 Acordar a linha de base do projeto final"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX087"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["44.1 Enunciado do projeto final"]
-  N1["44.2 Entregáveis do Projeto Final I"]
-  N2["44.3 Avaliação"]
-  N3["Nota de engenharia"]
-  N4["44.6 Acordar a linha de base do projeto final"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX087"]
-```
-
-```text
-[44.1 Enunciado do projeto final]
-    |
-    v
-[44.2 Entregáveis do Projeto Final I]
-    |
-    v
-[44.3 Avaliação]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[44.6 Acordar a linha de base do projeto final]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX087]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-44 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -5517,56 +3222,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- open-cyber-academy:lesson-figures:start ch-45 -->
-### Mapa da aula
-
-Aula 45 publicada. Mapa, exemplo, EX089.
-
-```mermaid
-flowchart TD
-  N0["45.1 Método de revisão"]
-  N1["45.2 Lista de verificação da revisão de PQC"]
-  N2["45.3 Severidade"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX089"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["45.1 Método de revisão"]
-  N1["45.2 Lista de verificação da revisão de PQC"]
-  N2["45.3 Severidade"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX089"]
-```
-
-```text
-[45.1 Método de revisão]
-    |
-    v
-[45.2 Lista de verificação da revisão de PQC]
-    |
-    v
-[45.3 Severidade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX089]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-45 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir e receber uma revisão independente de projeto; (2) usar uma lista de verificação estruturada para projetos de PQC; (3) classificar as constatações por severidade; e (4) responder com mudanças ou com uma aceitação justificada. O capítulo examina o Projeto Final I antes do Projeto Final II.
@@ -5636,61 +3291,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- open-cyber-academy:lesson-figures:start ch-46 -->
-### Mapa da aula
-
-Aula 46 publicada. Mapa, exemplo, EX091.
-
-```mermaid
-flowchart TD
-  N0["46.1 Escopo do Projeto Final II"]
-  N1["46.2 Verificação e validação"]
-  N2["46.3 Demonstração de agilidade"]
-  N3["Nota de engenharia"]
-  N4["46.6 Passar o projeto final às operações"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX091"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["46.1 Escopo do Projeto Final II"]
-  N1["46.2 Verificação e validação"]
-  N2["46.3 Demonstração de agilidade"]
-  N3["Nota de engenharia"]
-  N4["46.6 Passar o projeto final às operações"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX091"]
-```
-
-```text
-[46.1 Escopo do Projeto Final II]
-    |
-    v
-[46.2 Verificação e validação]
-    |
-    v
-[46.3 Demonstração de agilidade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[46.6 Passar o projeto final às operações]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX091]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-46 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) concluir a implementação do projeto final em todos os domínios; (2) executar a verificação e a validação; (3) demonstrar a agilidade; e (4) preparar as evidências para o dossiê. O capítulo segue a revisão do Capítulo 45.
@@ -5758,56 +3358,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- open-cyber-academy:lesson-figures:start ch-47 -->
-### Mapa da aula
-
-Aula 47 publicada. Mapa, exemplo, EX093.
-
-```mermaid
-flowchart TD
-  N0["47.1 Cenários do ensaio"]
-  N1["47.3 Conduzir o ensaio"]
-  N2["Nota de engenharia"]
-  N3["47.6 Acompanhar as constatações do ensaio"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX093"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["47.1 Cenários do ensaio"]
-  N1["47.3 Conduzir o ensaio"]
-  N2["Nota de engenharia"]
-  N3["47.6 Acompanhar as constatações do ensaio"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX093"]
-```
-
-```text
-[47.1 Cenários do ensaio]
-    |
-    v
-[47.3 Conduzir o ensaio]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[47.6 Acompanhar as constatações do ensaio]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX093]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-47 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar e conduzir um ensaio de falha controlado; (2) recuperar-se de falhas criptográficas dentro dos objetivos; (3) medir o tempo de recuperação; e (4) melhorar os planos a partir dos resultados. O capítulo testa a resiliência projetada no Capítulo 33.
@@ -5874,66 +3424,6 @@ Siga para a próxima lição escrita.
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
-
-<!-- open-cyber-academy:lesson-figures:start ch-48 -->
-### Mapa da aula
-
-Aula 48 publicada. Mapa, exemplo, EX095.
-
-```mermaid
-flowchart TD
-  N0["48.1 Conteúdo"]
-  N1["48.2 Ligar as alegações às evidências"]
-  N2["48.3 Proteger as evidências"]
-  N3["48.4 Revisabilidade"]
-  N4["Nota de engenharia"]
-  N5["48.7 Manter o dossiê atualizado"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX095"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["48.1 Conteúdo"]
-  N1["48.2 Ligar as alegações às evidências"]
-  N2["48.3 Proteger as evidências"]
-  N3["48.4 Revisabilidade"]
-  N4["Nota de engenharia"]
-  N5["48.7 Manter o dossiê atualizado"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX095"]
-```
-
-```text
-[48.1 Conteúdo]
-    |
-    v
-[48.2 Ligar as alegações às evidências]
-    |
-    v
-[48.3 Proteger as evidências]
-    |
-    v
-[48.4 Revisabilidade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[48.7 Manter o dossiê atualizado]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX095]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-48 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -6008,56 +3498,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 49 — Monografia de engenharia
 
-<!-- open-cyber-academy:lesson-figures:start ch-49 -->
-### Mapa da aula
-
-Aula 49 publicada. Mapa, exemplo, EX097.
-
-```mermaid
-flowchart TD
-  N0["49.1 Estrutura"]
-  N1["49.3 Generalização"]
-  N2["49.4 Integridade"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX097"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["49.1 Estrutura"]
-  N1["49.3 Generalização"]
-  N2["49.4 Integridade"]
-  N3["Nota de engenharia"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX097"]
-```
-
-```text
-[49.1 Estrutura]
-    |
-    v
-[49.3 Generalização]
-    |
-    v
-[49.4 Integridade]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX097]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-49 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma monografia de engenharia que documente o projeto, a implementação e a validação; (2) apresentar os resultados com incerteza e limites; (3) generalizar as lições de forma responsável; e (4) cumprir os padrões de integridade acadêmica. O capítulo sintetiza o projeto final.
@@ -6124,61 +3564,6 @@ Siga para a próxima lição escrita.
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
-
-<!-- open-cyber-academy:lesson-figures:start ch-50 -->
-### Mapa da aula
-
-Aula 50 publicada. Mapa, exemplo, EX099.
-
-```mermaid
-flowchart TD
-  N0["50.1 Apresentação"]
-  N1["50.2 Perguntas prováveis"]
-  N2["50.3 Demonstração"]
-  N3["50.4 Plano futuro"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX099"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["50.1 Apresentação"]
-  N1["50.2 Perguntas prováveis"]
-  N2["50.3 Demonstração"]
-  N3["50.4 Plano futuro"]
-  N4["Nota de engenharia"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX099"]
-```
-
-```text
-[50.1 Apresentação]
-    |
-    v
-[50.2 Perguntas prováveis]
-    |
-    v
-[50.3 Demonstração]
-    |
-    v
-[50.4 Plano futuro]
-    |
-    v
-[Nota de engenharia]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX099]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-50 -->
-
 
 ### Objetivos de aprendizagem
 

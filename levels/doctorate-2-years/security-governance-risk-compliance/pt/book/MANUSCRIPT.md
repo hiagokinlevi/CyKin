@@ -37,61 +37,6 @@ Cox (2008), [doi:10.1111/j.1539-6924.2008.01030.x](https://doi.org/10.1111/j.153
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Uma pergunta falseável"]
-  N1["1.2 Por que as matrizes são contestadas"]
-  N2["1.3 Regras de integridade"]
-  N3["1.4 Concordância entre avaliadores"]
-  N4["Laboratório — Concordância entre dois avaliadores da"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Uma pergunta falseável"]
-  N1["1.2 Por que as matrizes são contestadas"]
-  N2["1.3 Regras de integridade"]
-  N3["1.4 Concordância entre avaliadores"]
-  N4["Laboratório — Concordância entre dois avaliadores da"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Uma pergunta falseável]
-    |
-    v
-[1.2 Por que as matrizes são contestadas]
-    |
-    v
-[1.3 Regras de integridade]
-    |
-    v
-[1.4 Concordância entre avaliadores]
-    |
-    v
-[Laboratório — Concordância entre dois avaliadores da]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta falseável sobre como as organizações avaliam o risco cibernético; (2) definir regras de integridade para pesquisar dentro de uma organização regulada; (3) medir a concordância entre avaliadores que usam uma matriz de risco.
@@ -171,56 +116,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: a fronteira da pesquisa
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX008.
-
-```mermaid
-flowchart TD
-  N0["2.1 O quadro de governança"]
-  N1["2.2 Evidência e argumento"]
-  N2["2.3 Relatos da prática"]
-  N3["2.4 A lacuna"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX008"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O quadro de governança"]
-  N1["2.2 Evidência e argumento"]
-  N2["2.3 Relatos da prática"]
-  N3["2.4 A lacuna"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
-```
-
-```text
-[2.1 O quadro de governança]
-    |
-    v
-[2.2 Evidência e argumento]
-    |
-    v
-[2.3 Relatos da prática]
-    |
-    v
-[2.4 A lacuna]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear a fronteira da pesquisa em governança de riscos de segurança; (2) distinguir afirmações apoiadas em evidências de afirmações apoiadas em argumentos; (3) localizar uma lacuna defensável.
@@ -276,61 +171,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX015.
-
-```mermaid
-flowchart TD
-  N0["3.1 Estrutura da proposta"]
-  N1["3.2 Definir os desfechos"]
-  N2["3.3 Um modelo pequeno"]
-  N3["Laboratório — Notas da matriz versus perda esperada"]
-  N4["3.4 Riscos para o estudo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX015"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Estrutura da proposta"]
-  N1["3.2 Definir os desfechos"]
-  N2["3.3 Um modelo pequeno"]
-  N3["Laboratório — Notas da matriz versus perda esperada"]
-  N4["3.4 Riscos para o estudo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
-```
-
-```text
-[3.1 Estrutura da proposta]
-    |
-    v
-[3.2 Definir os desfechos]
-    |
-    v
-[3.3 Um modelo pequeno]
-    |
-    v
-[Laboratório — Notas da matriz versus perda esperada]
-    |
-    v
-[3.4 Riscos para o estudo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -416,61 +256,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Replicação da linha de base e piloto
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["4.1 Replicar a técnica"]
-  N1["Laboratório — Perda anual por Monte Carlo para ranso"]
-  N2["4.2 Ler a saída"]
-  N3["4.3 Pilotar a calibração"]
-  N4["4.4 Ajustar o protocolo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 Replicar a técnica"]
-  N1["Laboratório — Perda anual por Monte Carlo para ranso"]
-  N2["4.2 Ler a saída"]
-  N3["4.3 Pilotar a calibração"]
-  N4["4.4 Ajustar o protocolo"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[4.1 Replicar a técnica]
-    |
-    v
-[Laboratório — Perda anual por Monte Carlo para ranso]
-    |
-    v
-[4.2 Ler a saída]
-    |
-    v
-[4.3 Pilotar a calibração]
-    |
-    v
-[4.4 Ajustar o protocolo]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) replicar uma técnica quantitativa publicada sobre dados sintéticos; (2) pilotar um treinamento de calibração com avaliadores; (3) ajustar o protocolo a partir das evidências do piloto.
@@ -551,61 +336,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["5.1 Conduzir o estudo"]
-  N1["5.2 Resultados de calibração"]
-  N2["Laboratório — Escores de Brier das previsões por fai"]
-  N3["5.3 Ordem de tratamento"]
-  N4["5.4 Validação independente"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 Conduzir o estudo"]
-  N1["5.2 Resultados de calibração"]
-  N2["Laboratório — Escores de Brier das previsões por fai"]
-  N3["5.3 Ordem de tratamento"]
-  N4["5.4 Validação independente"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[5.1 Conduzir o estudo]
-    |
-    v
-[5.2 Resultados de calibração]
-    |
-    v
-[Laboratório — Escores de Brier das previsões por fai]
-    |
-    v
-[5.3 Ordem de tratamento]
-    |
-    v
-[5.4 Validação independente]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir uma comparação randomizada de métodos de avaliação; (2) analisar a calibração com o escore de Brier; (3) validar os resultados com um painel independente.
@@ -681,56 +411,6 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica por pares e revisão
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX033.
-
-```mermaid
-flowchart TD
-  N0["6.1 Receber a crítica"]
-  N1["6.2 Classificar as objeções"]
-  N2["6.3 Revisar as análises"]
-  N3["6.4 Aprender com a crítica"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX033"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Receber a crítica"]
-  N1["6.2 Classificar as objeções"]
-  N2["6.3 Revisar as análises"]
-  N3["6.4 Aprender com a crítica"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
-```
-
-```text
-[6.1 Receber a crítica]
-    |
-    v
-[6.2 Classificar as objeções]
-    |
-    v
-[6.3 Revisar as análises]
-    |
-    v
-[6.4 Aprender com a crítica]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) responder à crítica de especialistas a um estudo quantitativo de risco; (2) separar objeções metodológicas de objeções filosóficas; (3) revisar afirmações e análises.
@@ -785,61 +465,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["7.1 O argumento"]
-  N1["7.2 Arquivo de reprodutibilidade"]
-  N2["Laboratório — Digests do manifesto do arquivo"]
-  N3["7.3 Confidencialidade"]
-  N4["7.4 Verificações de coerência"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 O argumento"]
-  N1["7.2 Arquivo de reprodutibilidade"]
-  N2["Laboratório — Digests do manifesto do arquivo"]
-  N3["7.3 Confidencialidade"]
-  N4["7.4 Verificações de coerência"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
-```
-
-```text
-[7.1 O argumento]
-    |
-    v
-[7.2 Arquivo de reprodutibilidade]
-    |
-    v
-[Laboratório — Digests do manifesto do arquivo]
-    |
-    v
-[7.3 Confidencialidade]
-    |
-    v
-[7.4 Verificações de coerência]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -915,56 +540,6 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX045.
-
-```mermaid
-flowchart TD
-  N0["8.1 A defesa"]
-  N1["8.2 Perguntas"]
-  N2["8.3 Perguntas de ética"]
-  N3["8.4 Plano de publicação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX045"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 A defesa"]
-  N1["8.2 Perguntas"]
-  N2["8.3 Perguntas de ética"]
-  N3["8.4 Plano de publicação"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
-```
-
-```text
-[8.1 A defesa]
-    |
-    v
-[8.2 Perguntas]
-    |
-    v
-[8.3 Perguntas de ética]
-    |
-    v
-[8.4 Plano de publicação]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem
 

@@ -35,61 +35,6 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Razonamiento matemático
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa de la lección
-
-Lección 01 publicada. Mapa, ejemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["1.1 Enunciados y cuantificadores"]
-  N2["1.2 Técnicas de demostración"]
-  N3["1.3 Funciones y vectores"]
-  N4["1.4 Optimización"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX001"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["1.1 Enunciados y cuantificadores"]
-  N2["1.2 Técnicas de demostración"]
-  N3["1.3 Funciones y vectores"]
-  N4["1.4 Optimización"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[1.1 Enunciados y cuantificadores]
-    |
-    v
-[1.2 Técnicas de demostración]
-    |
-    v
-[1.3 Funciones y vectores]
-    |
-    v
-[1.4 Optimización]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) leer y escribir enunciados matemáticos precisos; (2) usar técnicas de demostración (directa, por contradicción, por contraejemplo) para razonar sobre afirmaciones de seguridad; (3) trabajar con funciones, vectores y optimización sencilla; y (4) ver por qué un único contraejemplo derriba una afirmación universal de seguridad.
@@ -140,61 +85,6 @@ El razonamiento matemático hace precisas las afirmaciones de seguridad. Las afi
 
 ## Capítulo 2 — Sistemas de computación
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa de la lección
-
-Lección 02 publicada. Mapa, ejemplo, EX004.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["2.1 Capas de un sistema de computación"]
-  N2["2.2 Dónde se ejecuta la IA"]
-  N3["2.3 Responsabilidad compartida"]
-  N4["2.4 Mapear un servicio de IA"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX004"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["2.1 Capas de un sistema de computación"]
-  N2["2.2 Dónde se ejecuta la IA"]
-  N3["2.3 Responsabilidad compartida"]
-  N4["2.4 Mapear un servicio de IA"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[2.1 Capas de un sistema de computación]
-    |
-    v
-[2.2 Dónde se ejecuta la IA]
-    |
-    v
-[2.3 Responsabilidad compartida]
-    |
-    v
-[2.4 Mapear un servicio de IA]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX004]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) describir cómo encajan los ordenadores, los sistemas operativos, las redes y los servicios en la nube; (2) identificar dónde se ejecuta una aplicación de IA y dónde almacena datos; (3) explicar el modelo de responsabilidad compartida para la nube y la IA alojada; y (4) mapear un servicio de IA a sus componentes de computación.
@@ -244,61 +134,6 @@ Las aplicaciones de IA son sistemas de computación con piezas adicionales. Mape
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Programación I
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa de la lección
-
-Lección 03 publicada. Mapa, ejemplo, EX007.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["3.1 Por qué la programación importa en seguridad de"]
-  N2["3.2 Construcciones básicas"]
-  N3["3.3 Tratar la entrada de forma segura"]
-  N4["3.4 Pruebas"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX007"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["3.1 Por qué la programación importa en seguridad de"]
-  N2["3.2 Construcciones básicas"]
-  N3["3.3 Tratar la entrada de forma segura"]
-  N4["3.4 Pruebas"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[3.1 Por qué la programación importa en seguridad de]
-    |
-    v
-[3.2 Construcciones básicas]
-    |
-    v
-[3.3 Tratar la entrada de forma segura]
-    |
-    v
-[3.4 Pruebas]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX007]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Resultados de aprendizaje
 
@@ -396,61 +231,6 @@ La programación convierte las ideas de seguridad en evidencia. Lea los laborato
 
 ## Capítulo 4 — Escritura académica
 
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa de la lección
-
-Lección 04 publicada. Mapa, ejemplo, EX010.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["4.1 Afirmaciones y evidencia"]
-  N2["4.2 Citación y verificación"]
-  N3["4.3 Tipos de fuentes"]
-  N4["4.4 Integridad y herramientas de IA"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX010"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["4.1 Afirmaciones y evidencia"]
-  N2["4.2 Citación y verificación"]
-  N3["4.3 Tipos de fuentes"]
-  N4["4.4 Integridad y herramientas de IA"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX010"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[4.1 Afirmaciones y evidencia]
-    |
-    v
-[4.2 Citación y verificación]
-    |
-    v
-[4.3 Tipos de fuentes]
-    |
-    v
-[4.4 Integridad y herramientas de IA]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX010]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) escribir prosa académica clara con afirmaciones respaldadas por evidencia; (2) citar fuentes correctamente y verificar cada cita; (3) distinguir entre investigación revisada por pares, preprints, normas y literatura gris; y (4) evitar el plagio, incluido el mal uso de herramientas de escritura con IA.
@@ -500,61 +280,6 @@ La escritura académica en seguridad de la IA significa afirmaciones condicional
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Alfabetización en seguridad
-
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa de la lección
-
-Lección 05 publicada. Mapa, ejemplo, EX013.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["5.1 La tríada CIA"]
-  N2["5.2 Vocabulario del riesgo"]
-  N3["5.3 Ataques clásicos y variantes con IA"]
-  N4["5.4 Prácticas básicas"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX013"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["5.1 La tríada CIA"]
-  N2["5.2 Vocabulario del riesgo"]
-  N3["5.3 Ataques clásicos y variantes con IA"]
-  N4["5.4 Prácticas básicas"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[5.1 La tríada CIA]
-    |
-    v
-[5.2 Vocabulario del riesgo]
-    |
-    v
-[5.3 Ataques clásicos y variantes con IA]
-    |
-    v
-[5.4 Prácticas básicas]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX013]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 
 ### Resultados de aprendizaje
 
@@ -606,61 +331,6 @@ La alfabetización en seguridad —CIA, vocabulario del riesgo, ataques comunes 
 
 ## Capítulo 6 — Estructuras discretas
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa de la lección
-
-Lección 06 publicada. Mapa, ejemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["6.1 Conjuntos y relaciones"]
-  N2["6.2 Grafos"]
-  N3["6.3 Búsqueda en grafos"]
-  N4["6.4 Contar"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX016"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["6.1 Conjuntos y relaciones"]
-  N2["6.2 Grafos"]
-  N3["6.3 Búsqueda en grafos"]
-  N4["6.4 Contar"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[6.1 Conjuntos y relaciones]
-    |
-    v
-[6.2 Grafos]
-    |
-    v
-[6.3 Búsqueda en grafos]
-    |
-    v
-[6.4 Contar]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) usar conjuntos, relaciones y grafos para modelar sistemas; (2) expresar reglas de acceso como relaciones y comprobarlas; (3) encontrar en un grafo caminos desde entradas no confiables hasta acciones sensibles; y (4) contar posibilidades para juzgar si la fuerza bruta es viable.
@@ -710,66 +380,6 @@ Las estructuras discretas dan herramientas exactas —relaciones para las reglas
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redes y protocolos
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa de la lección
-
-Lección 07 publicada. Mapa, ejemplo, EX019.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["7.1 El camino de una petición"]
-  N2["7.2 Qué hace TLS y qué no"]
-  N3["7.3 Autenticación de API y limitación de frecuencia"]
-  N4["7.4 Amenazas a la IA a nivel de red"]
-  N5["7.6b Tiempos de espera y reintentos en las llamadas"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX019"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["7.1 El camino de una petición"]
-  N2["7.2 Qué hace TLS y qué no"]
-  N3["7.3 Autenticación de API y limitación de frecuencia"]
-  N4["7.4 Amenazas a la IA a nivel de red"]
-  N5["7.6b Tiempos de espera y reintentos en las llamadas"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[7.1 El camino de una petición]
-    |
-    v
-[7.2 Qué hace TLS y qué no]
-    |
-    v
-[7.3 Autenticación de API y limitación de frecuencia]
-    |
-    v
-[7.4 Amenazas a la IA a nivel de red]
-    |
-    v
-[7.6b Tiempos de espera y reintentos en las llamadas]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX019]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Resultados de aprendizaje
 
@@ -853,66 +463,6 @@ Las redes entregan los servicios de IA; TLS, la autenticación, las cuotas que t
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programación II
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa de la lección
-
-Lección 08 publicada. Mapa, ejemplo, EX022.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["8.1 Módulos y responsabilidades"]
-  N2["8.2 JSON y archivos"]
-  N3["8.3 Paquetes y archivos de modelo"]
-  N4["8.4 Pruebas adversarias"]
-  N5["8.6b Pruebas que protegen el analizador"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX022"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["8.1 Módulos y responsabilidades"]
-  N2["8.2 JSON y archivos"]
-  N3["8.3 Paquetes y archivos de modelo"]
-  N4["8.4 Pruebas adversarias"]
-  N5["8.6b Pruebas que protegen el analizador"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[8.1 Módulos y responsabilidades]
-    |
-    v
-[8.2 JSON y archivos]
-    |
-    v
-[8.3 Paquetes y archivos de modelo]
-    |
-    v
-[8.4 Pruebas adversarias]
-    |
-    v
-[8.6b Pruebas que protegen el analizador]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX022]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1001,66 +551,6 @@ Los programas estructurados, el análisis estricto, las dependencias verificadas
 
 ## Capítulo 9 — Datos y bases de datos
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa de la lección
-
-Lección 09 publicada. Mapa, ejemplo, EX025.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["9.1 Datos relacionales"]
-  N2["9.2 Salida del modelo y bases de datos"]
-  N3["9.3 Bases de datos vectoriales"]
-  N4["9.4 Minimización y conservación"]
-  N5["9.6b Borrar datos a petición"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX025"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["9.1 Datos relacionales"]
-  N2["9.2 Salida del modelo y bases de datos"]
-  N3["9.3 Bases de datos vectoriales"]
-  N4["9.4 Minimización y conservación"]
-  N5["9.6b Borrar datos a petición"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[9.1 Datos relacionales]
-    |
-    v
-[9.2 Salida del modelo y bases de datos]
-    |
-    v
-[9.3 Bases de datos vectoriales]
-    |
-    v
-[9.4 Minimización y conservación]
-    |
-    v
-[9.6b Borrar datos a petición]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX025]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) diseñar esquemas relacionales sencillos y escribir consultas; (2) prevenir la inyección en las consultas a bases de datos; (3) entender las bases de datos vectoriales que se usan para la recuperación; y (4) aplicar el control de acceso y la minimización de datos a los datos de IA.
@@ -1115,61 +605,6 @@ Los almacenes de datos alimentan y registran los sistemas de IA. Las consultas p
 
 ## Capítulo 10 — Ética y práctica autorizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa de la lección
-
-Lección 10 publicada. Mapa, ejemplo, EX028.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["10.1 Principios"]
-  N2["10.2 Autorización"]
-  N3["10.3 Divulgación coordinada"]
-  N4["10.4 Equidad y seguridad funcional"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX028"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["10.1 Principios"]
-  N2["10.2 Autorización"]
-  N3["10.3 Divulgación coordinada"]
-  N4["10.4 Equidad y seguridad funcional"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX028"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[10.1 Principios]
-    |
-    v
-[10.2 Autorización]
-    |
-    v
-[10.3 Divulgación coordinada]
-    |
-    v
-[10.4 Equidad y seguridad funcional]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX028]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) aplicar principios éticos al trabajo de seguridad de la IA; (2) explicar por qué hace falta autorización antes de probar; (3) seguir la divulgación coordinada; y (4) reconocer los problemas de equidad, privacidad y seguridad funcional que plantean los sistemas de IA.
@@ -1219,66 +654,6 @@ La práctica ética de la seguridad de la IA significa pruebas autorizadas, divu
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operativos
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa de la lección
-
-Lección 11 publicada. Mapa, ejemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["11.1 Procesos y permisos"]
-  N2["11.2 Aislamiento"]
-  N3["11.3 Control de recursos"]
-  N4["11.4 Registros"]
-  N5["11.4b Parcheo y configuración"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX031"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["11.1 Procesos y permisos"]
-  N2["11.2 Aislamiento"]
-  N3["11.3 Control de recursos"]
-  N4["11.4 Registros"]
-  N5["11.4b Parcheo y configuración"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[11.1 Procesos y permisos]
-    |
-    v
-[11.2 Aislamiento]
-    |
-    v
-[11.3 Control de recursos]
-    |
-    v
-[11.4 Registros]
-    |
-    v
-[11.4b Parcheo y configuración]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1333,66 +708,6 @@ El sistema operativo impone quién puede hacer qué. El mínimo privilegio, el a
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidad y estadística
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa de la lección
-
-Lección 12 publicada. Mapa, ejemplo, EX034.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["12.1 Probabilidad condicionada"]
-  N2["12.2 Tasas base"]
-  N3["12.3 Intervalos de confianza"]
-  N4["12.4 Comparar sistemas"]
-  N5["12.4b Variación y tamaño de la muestra"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX034"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["12.1 Probabilidad condicionada"]
-  N2["12.2 Tasas base"]
-  N3["12.3 Intervalos de confianza"]
-  N4["12.4 Comparar sistemas"]
-  N5["12.4b Variación y tamaño de la muestra"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[12.1 Probabilidad condicionada]
-    |
-    v
-[12.2 Tasas base]
-    |
-    v
-[12.3 Intervalos de confianza]
-    |
-    v
-[12.4 Comparar sistemas]
-    |
-    v
-[12.4b Variación y tamaño de la muestra]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX034]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1517,66 +832,6 @@ La probabilidad le dice qué significa una alerta y cuánta seguridad puede tene
 
 ## Capítulo 13 — Identidad y acceso
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Mapa de la lección
-
-Lección 13 publicada. Mapa, ejemplo, EX037.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["13.1 Autenticación, autorización, contabilidad"]
-  N2["13.2 Acceso basado en roles y en atributos"]
-  N3["13.3 Delegación para agentes de IA"]
-  N4["13.4 Contabilidad de las acciones de la IA"]
-  N5["13.6b Revisar los permisos del agente"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX037"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["13.1 Autenticación, autorización, contabilidad"]
-  N2["13.2 Acceso basado en roles y en atributos"]
-  N3["13.3 Delegación para agentes de IA"]
-  N4["13.4 Contabilidad de las acciones de la IA"]
-  N5["13.6b Revisar los permisos del agente"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[13.1 Autenticación, autorización, contabilidad]
-    |
-    v
-[13.2 Acceso basado en roles y en atributos]
-    |
-    v
-[13.3 Delegación para agentes de IA]
-    |
-    v
-[13.4 Contabilidad de las acciones de la IA]
-    |
-    v
-[13.6b Revisar los permisos del agente]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX037]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) explicar la autenticación, la autorización y la contabilidad; (2) diseñar acceso basado en roles y en atributos para aplicaciones de IA; (3) aplicar la delegación para que los agentes de IA actúen con los derechos limitados del usuario; y (4) evitar los problemas de *confused deputy* (agente confundido).
@@ -1630,66 +885,6 @@ Los controles de identidad deciden qué puede hacer un agente de IA y en nombre 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidad
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Mapa de la lección
-
-Lección 14 publicada. Mapa, ejemplo, EX040.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["14.1 Principios"]
-  N2["14.2 Ataques a la privacidad en el aprendizaje autom"]
-  N3["14.3 Técnicas de mejora de la privacidad"]
-  N4["14.4 Evaluación del riesgo para la privacidad"]
-  N5["14.4b Instrucciones y registros"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX040"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["14.1 Principios"]
-  N2["14.2 Ataques a la privacidad en el aprendizaje autom"]
-  N3["14.3 Técnicas de mejora de la privacidad"]
-  N4["14.4 Evaluación del riesgo para la privacidad"]
-  N5["14.4b Instrucciones y registros"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX040"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[14.1 Principios]
-    |
-    v
-[14.2 Ataques a la privacidad en el aprendizaje autom]
-    |
-    v
-[14.3 Técnicas de mejora de la privacidad]
-    |
-    v
-[14.4 Evaluación del riesgo para la privacidad]
-    |
-    v
-[14.4b Instrucciones y registros]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX040]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
-
 
 ### Resultados de aprendizaje
 
@@ -1779,66 +974,6 @@ Los modelos pueden revelar sus datos de entrenamiento. Los principios de protecc
 
 ## Capítulo 15 — Evidencia y medición
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Mapa de la lección
-
-Lección 15 publicada. Mapa, ejemplo, EX043.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["15.1 Métricas que responden a preguntas"]
-  N2["15.2 Conjuntos de prueba y fuga de datos"]
-  N3["15.3 Tratamiento de la evidencia"]
-  N4["15.4 Comunicación de resultados"]
-  N5["15.4b Líneas base y comparaciones"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX043"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["15.1 Métricas que responden a preguntas"]
-  N2["15.2 Conjuntos de prueba y fuga de datos"]
-  N3["15.3 Tratamiento de la evidencia"]
-  N4["15.4 Comunicación de resultados"]
-  N5["15.4b Líneas base y comparaciones"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[15.1 Métricas que responden a preguntas]
-    |
-    v
-[15.2 Conjuntos de prueba y fuga de datos]
-    |
-    v
-[15.3 Tratamiento de la evidencia]
-    |
-    v
-[15.4 Comunicación de resultados]
-    |
-    v
-[15.4b Líneas base y comparaciones]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX043]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) elegir métricas que respondan a las preguntas de seguridad; (2) diseñar conjuntos de prueba que eviten la fuga de datos; (3) recoger y conservar la evidencia correctamente; y (4) redactar resultados de medición con sus condiciones e incertidumbre.
@@ -1893,61 +1028,6 @@ Una buena medición hace la pregunta correcta, usa datos de prueba limpios, cons
 
 ## Capítulo 16 — Arquitectura de seguridad
 
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Mapa de la lección
-
-Lección 16 publicada. Mapa, ejemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["16.1 Principios aplicados a la IA"]
-  N2["16.2 Fronteras de confianza en las aplicaciones con"]
-  N3["16.3 El punto de aplicación de políticas"]
-  N4["16.4 Comparar opciones"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX046"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["16.1 Principios aplicados a la IA"]
-  N2["16.2 Fronteras de confianza en las aplicaciones con"]
-  N3["16.3 El punto de aplicación de políticas"]
-  N4["16.4 Comparar opciones"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[16.1 Principios aplicados a la IA]
-    |
-    v
-[16.2 Fronteras de confianza en las aplicaciones con]
-    |
-    v
-[16.3 El punto de aplicación de políticas]
-    |
-    v
-[16.4 Comparar opciones]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) aplicar el mínimo privilegio, la defensa en profundidad, la mediación completa y los valores predeterminados a prueba de fallos a los sistemas de IA; (2) trazar las fronteras de confianza en las aplicaciones con LLM; (3) situar un punto de aplicación de políticas fuera del modelo; y (4) comparar opciones de arquitectura por su riesgo residual.
@@ -1997,66 +1077,6 @@ La arquitectura de seguridad saca la aplicación de las reglas fuera del modelo:
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Conceptos de criptografía
-
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Mapa de la lección
-
-Lección 17 publicada. Mapa, ejemplo, EX049.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["17.1 Primitivas básicas"]
-  N2["17.2 Proteger los artefactos de IA"]
-  N3["17.3 Lo que la criptografía no puede hacer"]
-  N4["17.4 Claves"]
-  N5["17.6b Verificar firmas en la práctica"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX049"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["17.1 Primitivas básicas"]
-  N2["17.2 Proteger los artefactos de IA"]
-  N3["17.3 Lo que la criptografía no puede hacer"]
-  N4["17.4 Claves"]
-  N5["17.6b Verificar firmas en la práctica"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX049"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[17.1 Primitivas básicas]
-    |
-    v
-[17.2 Proteger los artefactos de IA]
-    |
-    v
-[17.3 Lo que la criptografía no puede hacer]
-    |
-    v
-[17.4 Claves]
-    |
-    v
-[17.6b Verificar firmas en la práctica]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX049]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2145,66 +1165,6 @@ La criptografía hace verificables y confidenciales los artefactos y los datos d
 
 ## Capítulo 18 — Métodos de investigación I
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Mapa de la lección
-
-Lección 18 publicada. Mapa, ejemplo, EX052.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["18.1 Preguntas"]
-  N2["18.2 Bibliografía"]
-  N3["18.3 Experimentos"]
-  N4["18.4 Comunicación honesta"]
-  N5["18.4b Ética en el diseño de la investigación"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX052"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["18.1 Preguntas"]
-  N2["18.2 Bibliografía"]
-  N3["18.3 Experimentos"]
-  N4["18.4 Comunicación honesta"]
-  N5["18.4b Ética en el diseño de la investigación"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX052"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[18.1 Preguntas]
-    |
-    v
-[18.2 Bibliografía]
-    |
-    v
-[18.3 Experimentos]
-    |
-    v
-[18.4 Comunicación honesta]
-    |
-    v
-[18.4b Ética en el diseño de la investigación]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX052]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) formular preguntas de investigación en seguridad de la IA; (2) encontrar y evaluar bibliografía; (3) diseñar experimentos sencillos con controles; y (4) comunicar los resultados con honestidad y con sus limitaciones.
@@ -2259,61 +1219,6 @@ Los métodos de investigación convierten las preguntas en respuestas fiables: p
 
 ## Capítulo 19 — Seguridad de la IA y del aprendizaje automático: alcance y teoría
 
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Mapa de la lección
-
-Lección 19 publicada. Mapa, ejemplo, EX055.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["19.1 Definiciones"]
-  N2["19.2 La taxonomía"]
-  N3["19.3 Por qué el aprendizaje automático es vulnerable"]
-  N4["19.4 Marcos"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX055"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["19.1 Definiciones"]
-  N2["19.2 La taxonomía"]
-  N3["19.3 Por qué el aprendizaje automático es vulnerable"]
-  N4["19.4 Marcos"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX055"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[19.1 Definiciones]
-    |
-    v
-[19.2 La taxonomía]
-    |
-    v
-[19.3 Por qué el aprendizaje automático es vulnerable]
-    |
-    v
-[19.4 Marcos]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX055]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) definir la seguridad de la IA y distinguirla de la seguridad funcional de la IA (*AI safety*) y de la IA responsable; (2) describir las clases de ataque de la taxonomía NIST AI 100-2 E2025; (3) explicar por qué el aprendizaje automático es vulnerable por principio; y (4) situar los principales marcos.
@@ -2363,71 +1268,6 @@ La seguridad de la IA tiene un alcance preciso y un vocabulario compartido. Sus 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: casos fundamentales
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Mapa de la lección
-
-Lección 20 publicada. Mapa, ejemplo, EX058.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["20.1 Ejemplos adversarios"]
-  N2["20.2 Defensas rotas"]
-  N3["20.3 Envenenamiento y puertas traseras"]
-  N4["20.4 Privacidad"]
-  N5["20.5 Aplicaciones con LLM"]
-  N6["20.6 Usar los estudios de casos de ATLAS"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX058"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["20.1 Ejemplos adversarios"]
-  N2["20.2 Defensas rotas"]
-  N3["20.3 Envenenamiento y puertas traseras"]
-  N4["20.4 Privacidad"]
-  N5["20.5 Aplicaciones con LLM"]
-  N6["20.6 Usar los estudios de casos de ATLAS"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX058"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[20.1 Ejemplos adversarios]
-    |
-    v
-[20.2 Defensas rotas]
-    |
-    v
-[20.3 Envenenamiento y puertas traseras]
-    |
-    v
-[20.4 Privacidad]
-    |
-    v
-[20.5 Aplicaciones con LLM]
-    |
-    v
-[20.6 Usar los estudios de casos de ATLAS]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX058]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2486,66 +1326,6 @@ Los casos fundamentales muestran patrones recurrentes: la exactitud no es robust
 
 ## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: modelos de sistema
 
-<!-- open-cyber-academy:lesson-figures:start ch-21 -->
-### Mapa de la lección
-
-Lección 21 publicada. Mapa, ejemplo, EX061.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["21.1 Componentes"]
-  N2["21.2 Flujos de datos y confianza"]
-  N3["21.3 Acciones privilegiadas"]
-  N4["21.4 Usar el modelo"]
-  N5["21.4b Componentes del momento del entrenamiento"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX061"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["21.1 Componentes"]
-  N2["21.2 Flujos de datos y confianza"]
-  N3["21.3 Acciones privilegiadas"]
-  N4["21.4 Usar el modelo"]
-  N5["21.4b Componentes del momento del entrenamiento"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[21.1 Componentes]
-    |
-    v
-[21.2 Flujos de datos y confianza]
-    |
-    v
-[21.3 Acciones privilegiadas]
-    |
-    v
-[21.4 Usar el modelo]
-    |
-    v
-[21.4b Componentes del momento del entrenamiento]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX061]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-21 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) modelar un sistema de IA con componentes, flujos de datos y niveles de confianza; (2) marcar las entradas no confiables y las acciones privilegiadas; (3) rastrear cómo el contenido no confiable llega a las decisiones; y (4) usar el modelo para planificar los controles.
@@ -2599,61 +1379,6 @@ Un modelo de sistema con niveles de confianza muestra exactamente dónde puede e
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Seguridad de la IA y del aprendizaje automático: datos y dependencias
-
-<!-- open-cyber-academy:lesson-figures:start ch-22 -->
-### Mapa de la lección
-
-Lección 22 publicada. Mapa, ejemplo, EX064.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["22.1 Riesgos de los datos"]
-  N2["22.2 Cadena de suministro"]
-  N3["22.3 Documentación"]
-  N4["22.4 Procedencia e integridad"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX064"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["22.1 Riesgos de los datos"]
-  N2["22.2 Cadena de suministro"]
-  N3["22.3 Documentación"]
-  N4["22.4 Procedencia e integridad"]
-  N5["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[22.1 Riesgos de los datos]
-    |
-    v
-[22.2 Cadena de suministro]
-    |
-    v
-[22.3 Documentación]
-    |
-    v
-[22.4 Procedencia e integridad]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX064]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-22 -->
-
 
 ### Resultados de aprendizaje
 
@@ -2759,66 +1484,6 @@ Los datos y las dependencias determinan lo que los modelos aprenden y hacen. La 
 
 ## Capítulo 23 — Seguridad de la IA y del aprendizaje automático: métodos I
 
-<!-- open-cyber-academy:lesson-figures:start ch-23 -->
-### Mapa de la lección
-
-Lección 23 publicada. Mapa, ejemplo, EX067.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["23.1 Análisis de amenazas"]
-  N2["23.2 Asignación"]
-  N3["23.3 Priorización"]
-  N4["23.4 Selección de pruebas"]
-  N5["23.4b Árboles de ataque"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX067"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["23.1 Análisis de amenazas"]
-  N2["23.2 Asignación"]
-  N3["23.3 Priorización"]
-  N4["23.4 Selección de pruebas"]
-  N5["23.4b Árboles de ataque"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[23.1 Análisis de amenazas]
-    |
-    v
-[23.2 Asignación]
-    |
-    v
-[23.3 Priorización]
-    |
-    v
-[23.4 Selección de pruebas]
-    |
-    v
-[23.4b Árboles de ataque]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX067]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-23 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) realizar un análisis estructurado de amenazas para un sistema de IA; (2) asignar las amenazas a OWASP LLM 2025 y a MITRE ATLAS; (3) priorizar las amenazas por probabilidad e impacto; y (4) seleccionar pruebas para las amenazas principales.
@@ -2872,66 +1537,6 @@ Métodos I convierte el modelo de sistema en una lista priorizada de amenazas as
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Seguridad de la IA y del aprendizaje automático: controles
-
-<!-- open-cyber-academy:lesson-figures:start ch-24 -->
-### Mapa de la lección
-
-Lección 24 publicada. Mapa, ejemplo, EX070.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["24.1 Tipos de controles"]
-  N2["24.2 Aplicación externa"]
-  N3["24.3 Controles para modelos predictivos"]
-  N4["24.4 Evaluación de los controles"]
-  N5["24.4b Proporcionalidad"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX070"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["24.1 Tipos de controles"]
-  N2["24.2 Aplicación externa"]
-  N3["24.3 Controles para modelos predictivos"]
-  N4["24.4 Evaluación de los controles"]
-  N5["24.4b Proporcionalidad"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX070"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[24.1 Tipos de controles]
-    |
-    v
-[24.2 Aplicación externa]
-    |
-    v
-[24.3 Controles para modelos predictivos]
-    |
-    v
-[24.4 Evaluación de los controles]
-    |
-    v
-[24.4b Proporcionalidad]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX070]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-24 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3031,71 +1636,6 @@ Los controles eficaces de la IA se organizan por capas y se aplican fuera del mo
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratorio I
-
-<!-- open-cyber-academy:lesson-figures:start ch-25 -->
-### Mapa de la lección
-
-Lección 25 publicada. Mapa, ejemplo, EX073.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["25.1 Reglas del laboratorio"]
-  N2["25.2 Experimentos"]
-  N3["25.3 Interpretación"]
-  N4["25.4 Informe de laboratorio"]
-  N5["25.4b Cambio de parámetros"]
-  N6["25.4c Seguridad del código del laboratorio"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX073"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["25.1 Reglas del laboratorio"]
-  N2["25.2 Experimentos"]
-  N3["25.3 Interpretación"]
-  N4["25.4 Informe de laboratorio"]
-  N5["25.4b Cambio de parámetros"]
-  N6["25.4c Seguridad del código del laboratorio"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[25.1 Reglas del laboratorio]
-    |
-    v
-[25.2 Experimentos]
-    |
-    v
-[25.3 Interpretación]
-    |
-    v
-[25.4 Informe de laboratorio]
-    |
-    v
-[25.4b Cambio de parámetros]
-    |
-    v
-[25.4c Seguridad del código del laboratorio]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX073]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-25 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3313,66 +1853,6 @@ El Laboratorio I aporta una intuición práctica de las cuatro familias de ataqu
 
 ## Capítulo 26 — Seguridad de la IA y del aprendizaje automático: métodos II
 
-<!-- open-cyber-academy:lesson-figures:start ch-26 -->
-### Mapa de la lección
-
-Lección 26 publicada. Mapa, ejemplo, EX076.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["26.1 Pruebas de equipo rojo en aplicaciones de LLM"]
-  N2["26.2 Conjuntos de pruebas"]
-  N3["26.3 Ataques adaptativos"]
-  N4["26.4 Cobertura e informes"]
-  N5["26.5 Automatización"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX076"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["26.1 Pruebas de equipo rojo en aplicaciones de LLM"]
-  N2["26.2 Conjuntos de pruebas"]
-  N3["26.3 Ataques adaptativos"]
-  N4["26.4 Cobertura e informes"]
-  N5["26.5 Automatización"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX076"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[26.1 Pruebas de equipo rojo en aplicaciones de LLM]
-    |
-    v
-[26.2 Conjuntos de pruebas]
-    |
-    v
-[26.3 Ataques adaptativos]
-    |
-    v
-[26.4 Cobertura e informes]
-    |
-    v
-[26.5 Automatización]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX076]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-26 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) planificar de forma segura evaluaciones adversariales de aplicaciones de LLM (pruebas de equipo rojo); (2) construir conjuntos de pruebas para la inyección, la divulgación y la agencia excesiva; (3) usar ataques adaptativos contra sus propias defensas; y (4) comunicar los resultados con intervalos y cobertura.
@@ -3426,71 +1906,6 @@ Métodos II construye pruebas adversariales disciplinadas: pruebas de equipo roj
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Seguridad de la IA y del aprendizaje automático: verificación
-
-<!-- open-cyber-academy:lesson-figures:start ch-27 -->
-### Mapa de la lección
-
-Lección 27 publicada. Mapa, ejemplo, EX079.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["27.1 Requisitos que verificar"]
-  N2["27.2 Criterios de aceptación"]
-  N3["27.3 Verificación de extremo a extremo"]
-  N4["27.4 Informes"]
-  N5["27.5 Regresión"]
-  N6["27.5b Verificar versiones, no nombres"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX079"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["27.1 Requisitos que verificar"]
-  N2["27.2 Criterios de aceptación"]
-  N3["27.3 Verificación de extremo a extremo"]
-  N4["27.4 Informes"]
-  N5["27.5 Regresión"]
-  N6["27.5b Verificar versiones, no nombres"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX079"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[27.1 Requisitos que verificar]
-    |
-    v
-[27.2 Criterios de aceptación]
-    |
-    v
-[27.3 Verificación de extremo a extremo]
-    |
-    v
-[27.4 Informes]
-    |
-    v
-[27.5 Regresión]
-    |
-    v
-[27.5b Verificar versiones, no nombres]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX079]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-27 -->
-
 
 ### Resultados de aprendizaje
 
@@ -3591,71 +2006,6 @@ La verificación demuestra los requisitos con criterios estadísticos fijados de
 
 ## Capítulo 28 — Seguridad de la IA y del aprendizaje automático: análisis de fallos
 
-<!-- open-cyber-academy:lesson-figures:start ch-28 -->
-### Mapa de la lección
-
-Lección 28 publicada. Mapa, ejemplo, EX082.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["28.1 Tipos de causas"]
-  N2["28.2 Evidencia y cronologías"]
-  N3["28.3 Métodos de causa raíz"]
-  N4["28.4 Revisiones sin culpables"]
-  N5["28.5 ¿Deriva o ataque?"]
-  N6["28.7b Convertir las causas en correcciones"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX082"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["28.1 Tipos de causas"]
-  N2["28.2 Evidencia y cronologías"]
-  N3["28.3 Métodos de causa raíz"]
-  N4["28.4 Revisiones sin culpables"]
-  N5["28.5 ¿Deriva o ataque?"]
-  N6["28.7b Convertir las causas en correcciones"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[28.1 Tipos de causas]
-    |
-    v
-[28.2 Evidencia y cronologías]
-    |
-    v
-[28.3 Métodos de causa raíz]
-    |
-    v
-[28.4 Revisiones sin culpables]
-    |
-    v
-[28.5 ¿Deriva o ataque?]
-    |
-    v
-[28.7b Convertir las causas en correcciones]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX082]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-28 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) analizar fallos e incidentes de IA para encontrar sus causas raíz; (2) distinguir causas del modelo, de los datos, de la integración y del proceso; (3) usar cronologías y evidencia; y (4) redactar revisiones posteriores al incidente sin culpables, con acciones.
@@ -3755,71 +2105,6 @@ El análisis de fallos convierte los incidentes en aprendizaje: cronologías bas
 
 ## Capítulo 29 — Seguridad de la IA y del aprendizaje automático: operaciones
 
-<!-- open-cyber-academy:lesson-figures:start ch-29 -->
-### Mapa de la lección
-
-Lección 29 publicada. Mapa, ejemplo, EX085.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["29.1 Monitorización"]
-  N2["29.2 Respuesta a incidentes"]
-  N3["29.3 Gestión de cambios"]
-  N4["29.4 Accesos y cuentas"]
-  N5["29.5 Informes"]
-  N6["29.5b Ejercicios y simulacros"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX085"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["29.1 Monitorización"]
-  N2["29.2 Respuesta a incidentes"]
-  N3["29.3 Gestión de cambios"]
-  N4["29.4 Accesos y cuentas"]
-  N5["29.5 Informes"]
-  N6["29.5b Ejercicios y simulacros"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX085"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[29.1 Monitorización]
-    |
-    v
-[29.2 Respuesta a incidentes]
-    |
-    v
-[29.3 Gestión de cambios]
-    |
-    v
-[29.4 Accesos y cuentas]
-    |
-    v
-[29.5 Informes]
-    |
-    v
-[29.5b Ejercicios y simulacros]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX085]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-29 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) operar los sistemas de IA de forma segura en el día a día; (2) monitorizar señales específicas de la IA; (3) dirigir la respuesta a incidentes de IA; y (4) gestionar los cambios en modelos, *prompts* y datos.
@@ -3877,66 +2162,6 @@ Las operaciones mantienen la seguridad de la IA en funcionamiento después del l
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratorio II
-
-<!-- open-cyber-academy:lesson-figures:start ch-30 -->
-### Mapa de la lección
-
-Lección 30 publicada. Mapa, ejemplo, EX088.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["30.1 Preparación"]
-  N2["30.2 Preguntas que responder"]
-  N3["30.3 Presentación de los resultados"]
-  N4["30.4 Reflexión"]
-  N5["30.4b Combinación de resultados"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX088"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["30.1 Preparación"]
-  N2["30.2 Preguntas que responder"]
-  N3["30.3 Presentación de los resultados"]
-  N4["30.4 Reflexión"]
-  N5["30.4b Combinación de resultados"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX088"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[30.1 Preparación]
-    |
-    v
-[30.2 Preguntas que responder]
-    |
-    v
-[30.3 Presentación de los resultados]
-    |
-    v
-[30.4 Reflexión]
-    |
-    v
-[30.4b Combinación de resultados]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX088]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-30 -->
-
 
 ### Resultados de aprendizaje
 
@@ -4090,66 +2315,6 @@ El Laboratorio II integra controles y análisis, mide los efectos secundarios y 
 
 ## Capítulo 31 — Seguridad de la IA y del aprendizaje automático: casos avanzados
 
-<!-- open-cyber-academy:lesson-figures:start ch-31 -->
-### Mapa de la lección
-
-Lección 31 publicada. Mapa, ejemplo, EX091.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["31.1 Ataques a agentes en varios pasos"]
-  N2["31.2 Puertas traseras persistentes"]
-  N3["31.3 Extracción de datos de entrenamiento"]
-  N4["31.4 Jailbreaks universales"]
-  N5["31.5 Riesgo residual en los agentes"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX091"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["31.1 Ataques a agentes en varios pasos"]
-  N2["31.2 Puertas traseras persistentes"]
-  N3["31.3 Extracción de datos de entrenamiento"]
-  N4["31.4 Jailbreaks universales"]
-  N5["31.5 Riesgo residual en los agentes"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX091"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[31.1 Ataques a agentes en varios pasos]
-    |
-    v
-[31.2 Puertas traseras persistentes]
-    |
-    v
-[31.3 Extracción de datos de entrenamiento]
-    |
-    v
-[31.4 Jailbreaks universales]
-    |
-    v
-[31.5 Riesgo residual en los agentes]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX091]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-31 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) analizar escenarios de ataque avanzados: ataques a agentes en varios pasos, puertas traseras que sobreviven al entrenamiento de seguridad, extracción de datos de entrenamiento y *jailbreaks* universales; (2) evaluar qué defensas los abordan; y (3) razonar sobre el riesgo residual en los sistemas agénticos.
@@ -4204,66 +2369,6 @@ Los casos avanzados muestran ataques que se encadenan, persisten y se transfiere
 
 ## Capítulo 32 — Seguridad de la IA y del aprendizaje automático: interfaces interdisciplinarias
 
-<!-- open-cyber-academy:lesson-figures:start ch-32 -->
-### Mapa de la lección
-
-Lección 32 publicada. Mapa, ejemplo, EX094.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["32.1 Derecho y regulación"]
-  N2["32.2 Sistemas de gestión y marcos"]
-  N3["32.3 Compras"]
-  N4["32.4 Expertos clínicos y del dominio"]
-  N5["32.5 Comunicar el riesgo"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX094"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["32.1 Derecho y regulación"]
-  N2["32.2 Sistemas de gestión y marcos"]
-  N3["32.3 Compras"]
-  N4["32.4 Expertos clínicos y del dominio"]
-  N5["32.5 Comunicar el riesgo"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX094"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[32.1 Derecho y regulación]
-    |
-    v
-[32.2 Sistemas de gestión y marcos]
-    |
-    v
-[32.3 Compras]
-    |
-    v
-[32.4 Expertos clínicos y del dominio]
-    |
-    v
-[32.5 Comunicar el riesgo]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX094]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-32 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) trabajar en la seguridad de la IA con colegas de los ámbitos jurídico, clínico, de privacidad, de compras y de dirección; (2) interpretar a nivel orientativo los requisitos reglamentarios y de las normas; (3) traducir el riesgo técnico en decisiones de la organización; y (4) reconocer cuándo hace falta asesoramiento experto.
@@ -4317,66 +2422,6 @@ La seguridad de la IA funciona a través de otras disciplinas: el derecho, la pr
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de investigación II
-
-<!-- open-cyber-academy:lesson-figures:start ch-33 -->
-### Mapa de la lección
-
-Lección 33 publicada. Mapa, ejemplo, EX097.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["33.1 Diseño experimental"]
-  N2["33.2 Análisis"]
-  N3["33.4 Amenazas a la validez"]
-  N4["33.4b Evaluación adaptativa"]
-  N5["33.6b Prerregistrar la comparación"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX097"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["33.1 Diseño experimental"]
-  N2["33.2 Análisis"]
-  N3["33.4 Amenazas a la validez"]
-  N4["33.4b Evaluación adaptativa"]
-  N5["33.6b Prerregistrar la comparación"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX097"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[33.1 Diseño experimental]
-    |
-    v
-[33.2 Análisis]
-    |
-    v
-[33.4 Amenazas a la validez]
-    |
-    v
-[33.4b Evaluación adaptativa]
-    |
-    v
-[33.6b Prerregistrar la comparación]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX097]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-33 -->
-
 
 ### Resultados de aprendizaje
 
@@ -4477,66 +2522,6 @@ Métodos de investigación II añade rigor: diseños pareados con varias condici
 
 ## Capítulo 34 — Proyecto comparativo
 
-<!-- open-cyber-academy:lesson-figures:start ch-34 -->
-### Mapa de la lección
-
-Lección 34 publicada. Mapa, ejemplo, EX100.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["34.1 Qué comparar"]
-  N2["34.2 Equidad"]
-  N3["34.3 Contrapartidas"]
-  N4["34.4 La comparación de la extracción"]
-  N5["34.4b Redacción del informe comparativo"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX100"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["34.1 Qué comparar"]
-  N2["34.2 Equidad"]
-  N3["34.3 Contrapartidas"]
-  N4["34.4 La comparación de la extracción"]
-  N5["34.4b Redacción del informe comparativo"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX100"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[34.1 Qué comparar]
-    |
-    v
-[34.2 Equidad]
-    |
-    v
-[34.3 Contrapartidas]
-    |
-    v
-[34.4 La comparación de la extracción]
-    |
-    v
-[34.4b Redacción del informe comparativo]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX100]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-34 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) comparar dos o más enfoques de seguridad de la IA sobre un banco de pruebas común; (2) definir condiciones de comparación justas; (3) comunicar las contrapartidas entre seguridad, utilidad y coste; y (4) redactar un informe comparativo.
@@ -4620,66 +2605,6 @@ Los proyectos comparativos enseñan a evaluar con equidad y a comunicar las cont
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Propuesta del proyecto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-35 -->
-### Mapa de la lección
-
-Lección 35 publicada. Mapa, ejemplo, EX103.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["35.1 Elección del proyecto final"]
-  N2["35.2 Contenido de la propuesta"]
-  N3["35.3 Ética y autorización"]
-  N4["35.4 El inventario como punto de partida"]
-  N5["35.4b Acuerdo con el supervisor"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX103"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["35.1 Elección del proyecto final"]
-  N2["35.2 Contenido de la propuesta"]
-  N3["35.3 Ética y autorización"]
-  N4["35.4 El inventario como punto de partida"]
-  N5["35.4b Acuerdo con el supervisor"]
-  N6["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX103"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[35.1 Elección del proyecto final]
-    |
-    v
-[35.2 Contenido de la propuesta]
-    |
-    v
-[35.3 Ética y autorización]
-    |
-    v
-[35.4 El inventario como punto de partida]
-    |
-    v
-[35.4b Acuerdo con el supervisor]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX103]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-35 -->
-
 
 ### Resultados de aprendizaje
 
@@ -4772,71 +2697,6 @@ Una propuesta de proyecto final convierte una idea de seguridad de la IA en un p
 
 ## Capítulo 36 — Prácticas de campo o comunitarias
 
-<!-- open-cyber-academy:lesson-figures:start ch-36 -->
-### Mapa de la lección
-
-Lección 36 publicada. Mapa, ejemplo, EX106.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["36.1 Entornos"]
-  N2["36.2 Resultados útiles"]
-  N3["36.3 Trabajar con no especialistas"]
-  N4["36.4 Autorización y confidencialidad"]
-  N5["36.5 Reflexión"]
-  N6["36.7b Dejar el entorno mejor"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX106"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["36.1 Entornos"]
-  N2["36.2 Resultados útiles"]
-  N3["36.3 Trabajar con no especialistas"]
-  N4["36.4 Autorización y confidencialidad"]
-  N5["36.5 Reflexión"]
-  N6["36.7b Dejar el entorno mejor"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX106"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[36.1 Entornos]
-    |
-    v
-[36.2 Resultados útiles]
-    |
-    v
-[36.3 Trabajar con no especialistas]
-    |
-    v
-[36.4 Autorización y confidencialidad]
-    |
-    v
-[36.5 Reflexión]
-    |
-    v
-[36.7b Dejar el entorno mejor]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX106]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-36 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) aplicar conocimientos de seguridad de la IA en una organización o en un entorno comunitario bajo supervisión; (2) comunicarse con no especialistas; (3) entregar un resultado útil y proporcionado; y (4) reflexionar sobre la experiencia.
@@ -4894,71 +2754,6 @@ Las prácticas de campo ponen a prueba si los conocimientos de seguridad de la I
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminario de revisión de la evidencia
-
-<!-- open-cyber-academy:lesson-figures:start ch-37 -->
-### Mapa de la lección
-
-Lección 37 publicada. Mapa, ejemplo, EX109.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["37.1 Formato del seminario"]
-  N2["37.2 Lista de comprobación de la revisión"]
-  N3["37.3 Dar comentarios"]
-  N4["37.4 Recibir comentarios"]
-  N5["37.5 Comparación con trabajos publicados"]
-  N6["37.7b Registro del resultado del seminario"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX109"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["37.1 Formato del seminario"]
-  N2["37.2 Lista de comprobación de la revisión"]
-  N3["37.3 Dar comentarios"]
-  N4["37.4 Recibir comentarios"]
-  N5["37.5 Comparación con trabajos publicados"]
-  N6["37.7b Registro del resultado del seminario"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX109"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[37.1 Formato del seminario]
-    |
-    v
-[37.2 Lista de comprobación de la revisión]
-    |
-    v
-[37.3 Dar comentarios]
-    |
-    v
-[37.4 Recibir comentarios]
-    |
-    v
-[37.5 Comparación con trabajos publicados]
-    |
-    v
-[37.7b Registro del resultado del seminario]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX109]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-37 -->
-
 
 ### Resultados de aprendizaje
 
@@ -5018,71 +2813,6 @@ La revisión de la evidencia fortalece los proyectos finales antes de su evaluac
 
 ## Capítulo 38 — Implementación del proyecto final
 
-<!-- open-cyber-academy:lesson-figures:start ch-38 -->
-### Mapa de la lección
-
-Lección 38 publicada. Mapa, ejemplo, EX112.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["38.1 Incrementos"]
-  N2["38.2 Integración de los controles"]
-  N3["38.3 Banco de evaluación"]
-  N4["38.4 Defectos y cambios"]
-  N5["38.5 Evidencia"]
-  N6["38.5b Revisión de código y valores seguros por defec"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX112"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["38.1 Incrementos"]
-  N2["38.2 Integración de los controles"]
-  N3["38.3 Banco de evaluación"]
-  N4["38.4 Defectos y cambios"]
-  N5["38.5 Evidencia"]
-  N6["38.5b Revisión de código y valores seguros por defec"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX112"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[38.1 Incrementos]
-    |
-    v
-[38.2 Integración de los controles]
-    |
-    v
-[38.3 Banco de evaluación]
-    |
-    v
-[38.4 Defectos y cambios]
-    |
-    v
-[38.5 Evidencia]
-    |
-    v
-[38.5b Revisión de código y valores seguros por defec]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX112]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-38 -->
-
-
 ### Resultados de aprendizaje
 
 Usted podrá (1) implementar el sistema del proyecto final por incrementos; (2) integrar los controles de seguridad y un banco de evaluación; (3) gestionar los defectos y los cambios de alcance; y (4) mantener al día la evidencia para la evaluación.
@@ -5140,71 +2870,6 @@ La implementación avanza por incrementos con controles y evaluación desde el p
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Evaluación del proyecto final
-
-<!-- open-cyber-academy:lesson-figures:start ch-39 -->
-### Mapa de la lección
-
-Lección 39 publicada. Mapa, ejemplo, EX115.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["39.1 Plan de evaluación final"]
-  N2["39.2 Pruebas independientes"]
-  N3["39.3 Usabilidad y efectos secundarios"]
-  N4["39.4 Riesgo residual y recomendaciones"]
-  N5["39.4b Comunicación de la evaluación"]
-  N6["39.6b Acordar de antemano los criterios del veredict"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX115"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["39.1 Plan de evaluación final"]
-  N2["39.2 Pruebas independientes"]
-  N3["39.3 Usabilidad y efectos secundarios"]
-  N4["39.4 Riesgo residual y recomendaciones"]
-  N5["39.4b Comunicación de la evaluación"]
-  N6["39.6b Acordar de antemano los criterios del veredict"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX115"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[39.1 Plan de evaluación final]
-    |
-    v
-[39.2 Pruebas independientes]
-    |
-    v
-[39.3 Usabilidad y efectos secundarios]
-    |
-    v
-[39.4 Riesgo residual y recomendaciones]
-    |
-    v
-[39.4b Comunicación de la evaluación]
-    |
-    v
-[39.6b Acordar de antemano los criterios del veredict]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX115]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-39 -->
-
 
 ### Resultados de aprendizaje
 
@@ -5304,71 +2969,6 @@ La evaluación del proyecto final es una medición honesta frente a criterios fi
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Memoria y presentación
-
-<!-- open-cyber-academy:lesson-figures:start ch-40 -->
-### Mapa de la lección
-
-Lección 40 publicada. Mapa, ejemplo, EX118.
-
-```mermaid
-flowchart TD
-  N0["Resultados de aprendizaje"]
-  N1["40.1 Estructura de la memoria"]
-  N2["40.2 Posicionamiento"]
-  N3["40.3 Presentación"]
-  N4["40.4 Defensa"]
-  N5["40.5 Siguientes pasos"]
-  N6["40.7b Hacer reutilizable la memoria"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Ejemplo resuelto"]
-  EX --> Q["Ejercicio EX118"]
-```
-
-### Dibujo lógico
-
-```mermaid
-flowchart LR
-  N0["Resultados de aprendizaje"]
-  N1["40.1 Estructura de la memoria"]
-  N2["40.2 Posicionamiento"]
-  N3["40.3 Presentación"]
-  N4["40.4 Defensa"]
-  N5["40.5 Siguientes pasos"]
-  N6["40.7b Hacer reutilizable la memoria"]
-  N7["Síntesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX118"]
-```
-
-```text
-[Resultados de aprendizaje]
-    |
-    v
-[40.1 Estructura de la memoria]
-    |
-    v
-[40.2 Posicionamiento]
-    |
-    v
-[40.3 Presentación]
-    |
-    v
-[40.4 Defensa]
-    |
-    v
-[40.5 Siguientes pasos]
-    |
-    v
-[40.7b Hacer reutilizable la memoria]
-    |
-    v
-[Síntesis]
-    |
-    v
-[Ejemplo resuelto] --> [Ejercicio EX118]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-40 -->
-
 
 ### Resultados de aprendizaje
 

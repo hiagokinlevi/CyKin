@@ -40,71 +40,6 @@ This is the **one principal book** for the English rapid Cybersecurity course. I
 
 ## Chapter 1 — Cybersecurity: foundations and decisions
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 Start with the service and the people"]
-  N2["1.2 Name assets and dependencies"]
-  N3["1.3 Three properties of information"]
-  N4["1.4 Distinguish threat, vulnerability, event, and ri"]
-  N5["1.5 Controls must answer a specific concern"]
-  N6["1.6 Use evidence without overclaiming"]
-  N7["1.7 A small guided analysis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 Start with the service and the people"]
-  N2["1.2 Name assets and dependencies"]
-  N3["1.3 Three properties of information"]
-  N4["1.4 Distinguish threat, vulnerability, event, and ri"]
-  N5["1.5 Controls must answer a specific concern"]
-  N6["1.6 Use evidence without overclaiming"]
-  N7["1.7 A small guided analysis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 Start with the service and the people]
-    |
-    v
-[1.2 Name assets and dependencies]
-    |
-    v
-[1.3 Three properties of information]
-    |
-    v
-[1.4 Distinguish threat, vulnerability, event, and ri]
-    |
-    v
-[1.5 Controls must answer a specific concern]
-    |
-    v
-[1.6 Use evidence without overclaiming]
-    |
-    v
-[1.7 A small guided analysis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -275,71 +210,6 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX006.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Curiosity needs a boundary"]
-  N2["2.2 Write an authorization brief"]
-  N3["2.3 Decide what information is necessary"]
-  N4["2.4 Define stop conditions before the exercise"]
-  N5["2.5 Report a finding with calibrated language"]
-  N6["2.6 Lab: a bounded tabletop"]
-  N7["Chapter 2 summary"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Curiosity needs a boundary"]
-  N2["2.2 Write an authorization brief"]
-  N3["2.3 Decide what information is necessary"]
-  N4["2.4 Define stop conditions before the exercise"]
-  N5["2.5 Report a finding with calibrated language"]
-  N6["2.6 Lab: a bounded tabletop"]
-  N7["Chapter 2 summary"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Curiosity needs a boundary]
-    |
-    v
-[2.2 Write an authorization brief]
-    |
-    v
-[2.3 Decide what information is necessary]
-    |
-    v
-[2.4 Define stop conditions before the exercise]
-    |
-    v
-[2.5 Report a finding with calibrated language]
-    |
-    v
-[2.6 Lab: a bounded tabletop]
-    |
-    v
-[Chapter 2 summary]
-    |
-    v
-[Worked example] --> [Exercise EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 After this chapter, you should be able to define an allowed study activity, identify who can authorize it, write stop conditions, choose a synthetic data set, and report an observation without collecting unnecessary personal information.
@@ -477,71 +347,6 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cybersecurity: systems, data and dependencies
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX011.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 A model answers a question; it is not the servic"]
-  N2["3.2 Name the parts and their owners"]
-  N3["3.3 Follow the information, including copies"]
-  N4["3.4 Draw a flow and mark the boundaries"]
-  N5["3.5 Dependencies change with the outcome"]
-  N6["3.6 Guided lab: a decision from a stale snapshot"]
-  N7["3.7 A reviewable model record"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX011"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 A model answers a question; it is not the servic"]
-  N2["3.2 Name the parts and their owners"]
-  N3["3.3 Follow the information, including copies"]
-  N4["3.4 Draw a flow and mark the boundaries"]
-  N5["3.5 Dependencies change with the outcome"]
-  N6["3.6 Guided lab: a decision from a stale snapshot"]
-  N7["3.7 A reviewable model record"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 A model answers a question; it is not the servic]
-    |
-    v
-[3.2 Name the parts and their owners]
-    |
-    v
-[3.3 Follow the information, including copies]
-    |
-    v
-[3.4 Draw a flow and mark the boundaries]
-    |
-    v
-[3.5 Dependencies change with the outcome]
-    |
-    v
-[3.6 Guided lab: a decision from a stale snapshot]
-    |
-    v
-[3.7 A reviewable model record]
-    |
-    v
-[Worked example] --> [Exercise EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Learning outcomes
 
@@ -732,42 +537,6 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Cybersecurity: guided lab and applied synthesis
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX016.
-
-```mermaid
-flowchart TD
-  A["Synthetic action"] --> B{"Named in the written rule?"}
-  B -->|No| U["UNKNOWN"]
-  B -->|Yes| C{"Which action?"}
-  C -->|open-live-site| S["STOP"]
-  C -->|export-contacts| O["OUT OF SCOPE"]
-  C -->|confirm-from-printout| D{"Created after 09:00?"}
-  D -->|Yes| R["REFUSE"]
-  D -->|No| L["ALLOW"]
-  C -->|mark-pending| L
-```
-
-The diagram classifies one invented action. It does not describe a real library, and ALLOW is not proof that a room is free.
-
-### Logical drawing
-
-```text
-written rule + synthetic row
-        |
-        +-- open live site --------> STOP
-        +-- export contacts -------> OUT OF SCOPE
-        +-- confirm from 09:00 paper
-        |         |
-        |         +-- later booking exists --> REFUSE
-        |         +-- no later booking -----> ALLOW
-        +-- mark pending ----------> ALLOW
-        +-- anything else ---------> UNKNOWN
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
 
 ### Learning outcomes
 
@@ -968,30 +737,6 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — What may be said about a booking
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  Q["Resident asks who holds Room 2"] --> N{"Does the answer need a name?"}
-  N -->|No| R["Give room and time only if that is their own booking"]
-  N -->|Yes| P["Stop and ask the owner before naming anyone"]
-```
-
-The drawing limits a spoken answer. It does not prove that the booking system hides names.
-
-### Logical drawing
-
-```text
-question about another person's booking
-        |
-        +-- answer with room state only --> still check that the asker needs it
-        +-- answer with a name -----------> not authorized by this lesson
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1048,32 +793,6 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — A handwritten change is not a correction
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX022.
-
-```mermaid
-flowchart TD
-  P["09:00 paper omits SYN-002"] --> H["Someone writes SYN-002 on the paper"]
-  H --> C{"Was that write authorized and checked?"}
-  C -->|No| K["The paper is now altered, not refreshed"]
-  C -->|Yes| V["Record who approved it and how it was checked"]
-```
-
-The diagram distinguishes an edit from a new authorized copy.
-
-### Logical drawing
-
-```text
-stale paper
-    |
-    +-- leave it and mark the request pending
-    +-- replace it with an approved later copy
-    +-- write on it so the confirmation looks allowed --> alteration
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1128,31 +847,6 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — A pending queue during an outage
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX023.
-
-```mermaid
-flowchart LR
-  O["Booking view unavailable"] --> D["Decision procedure still available"]
-  D --> P["Record the request as pending"]
-  P --> W["Do not invent a confirmation"]
-```
-
-Availability of a screen and availability of a safe decision are different.
-
-### Logical drawing
-
-```text
-outage of the booking view
-        |
-        +-- service unavailable
-        +-- staff procedure available --> pending queue
-        +-- confirmation from memory ----> not available as a method
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
 
 ### Learning outcomes
 
@@ -1212,32 +906,6 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — A weak procedure is not yet a vulnerability
 
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX024.
-
-```mermaid
-flowchart TD
-  W["Weak or missing procedure"] --> Q{"Could a threat source exploit or trigger it?"}
-  Q -->|Not shown| S["Call it a weakness in the exercise, not an incident"]
-  Q -->|Shown with evidence| V["Then the vulnerability claim can be examined"]
-```
-
-The test stops when the evidence stops. This case stops at the first box's "not shown" branch.
-
-### Logical drawing
-
-```text
-stale printout used as if it were current
-        |
-        +-- weak procedure: observed in the exercise design
-        +-- software flaw: not observed
-        +-- attack: not observed
-        +-- incident: not declared
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1294,38 +962,6 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — A verdict tally is not a severity
-
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Lesson map
-
-Lesson 09 published. Map, example, EX025.
-
-```mermaid
-flowchart TD
-  A["One logged action"] --> R["Written rule returns one label"]
-  R --> C["That label's counter increases by one"]
-  C --> T["The line reports how many actions received each label"]
-  T --> K["Impact and likelihood stay unmeasured"]
-```
-
-The last box is the limit. Printing the counters ends the tally. The flowchart does not continue into a score.
-
-### Logical drawing
-
-```text
-Chapter 4 log, four actions
-        |
-        +-- REFUSE 1        one confirmation was not allowed
-        +-- ALLOW 1         the rule matched; the room was not declared free
-        +-- OUT OF SCOPE 1  one action asked a different question
-        +-- STOP 1          one action left the paper exercise
-        +-- UNKNOWN 0       no action missed every branch
-        |
-        +-- the line is a census of labels
-        +-- impact is not in the line
-        +-- likelihood is not in the line
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
 
 ### Learning outcomes
 
@@ -1390,42 +1026,6 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — A spoken time is not a printout
 
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Lesson map
-
-Lesson 10 published. Map, example, EX026.
-
-```mermaid
-flowchart TD
-  S["A person repeats a clock time"] --> Q{"Is the sheet itself here, and did the owner name this sheet?"}
-  Q -->|No| P["Leave Room 2 at 15:00 pending"]
-  Q -->|Yes, then check the sheet| C{"Time reads 11:40 and SYN-002 is on it?"}
-  C -->|Both observed| U["Use only the procedure the owner named"]
-  C -->|Either check fails| P
-```
-
-The spoken time stops at the first question. It never becomes the printout by being repeated.
-
-### Logical drawing
-
-```text
-what the learner is holding
-        |
-        +-- a sentence: "someone said 11:40"
-        |     type: report
-        |     rows visible: none
-        |
-        +-- a sheet of paper
-        |     type: artifact
-        |     usable only after the owner names this sheet
-        |     and the learner records time and SYN-002
-        |
-        +-- the Chapter 4 program
-              still bound to the 09:00 printout
-              do not type a heard time into it
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1485,39 +1085,6 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — A named sheet does not free the room
-
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Lesson map
-
-Lesson 11 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N["Owner names this page for this exercise"] --> C{"Heading reads 11:40 and SYN-002 is printed?"}
-  C -->|Either check fails| P["Leave Room 2 at 15:00 pending"]
-  C -->|Both checks pass| T["The 15:00 slot is already booked"]
-  T --> A["Say the slot is taken and give no person's name"]
-  T --> K["Keep the Chapter 4 tally as printed"]
-  K --> M["Do not adopt 11:40 as a later-outage rule"]
-```
-
-Both checks answer what this page shows. They do not reopen the 09:00 program, and they do not write a policy.
-
-### Logical drawing
-
-```text
-named for this exercise only
-    page heading: 11:40
-    SYN-001   Room 2   14:00   created 08:20   confirmed
-    SYN-002   Room 2   15:00   created 10:05   confirmed
-        |
-        +-- 15:00 reading: taken, because SYN-002 is on the page
-        +-- forbidden reading: free, because the checks passed
-        +-- forbidden reading: clear the 09:00 REFUSE
-        +-- forbidden reading: every outage this month uses 11:40
-        +-- forbidden action: open a live booking site
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
 
 ### Learning outcomes
 
@@ -1589,38 +1156,6 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — A missing row is not a free room
 
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Lesson map
-
-Lesson 12 published. Map, example, EX028.
-
-```mermaid
-flowchart TD
-  Q["The question names one room and one start"] --> M{"A printed row has that room and that start?"}
-  M -->|Yes| T["Read the status on that row"]
-  M -->|No| S["This page is silent"]
-  S --> P["Leave the request pending"]
-  P --> F["Do not call the room free"]
-  F --> L["Leave the Chapter 4 ALLOW label on the old log"]
-```
-
-A match reads a row. A miss reads nothing. The miss does not invent availability.
-
-### Logical drawing
-
-```text
-named page: two printed rows, both Room 2
-    Room 2 at 15:00  -> SYN-002 matches -> taken
-    Room 2 at 14:00  -> SYN-001 matches -> taken
-    Room 4 at 15:00  -> no row matches  -> silent
-        |
-        +-- silent means the page does not answer
-        +-- silent does not mean the room is free
-        +-- ALLOW on the 09:00 log is not a row here
-        +-- do not pencil a Room 4 line onto the page
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1686,35 +1221,6 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Yesterday's naming does not bind today
 
-<!-- open-cyber-academy:lesson-figures:start ch-13 -->
-### Lesson map
-
-Lesson 13 published. Map, example, EX029.
-
-```mermaid
-flowchart TD
-  Y["An earlier exercise named a page"] --> E{"Has today's owner named a source for today?"}
-  E -->|No| D["Today's request stays pending"]
-  E -->|Yes| R["Read only the source named today"]
-  D --> K["Do not import yesterday's room answer"]
-```
-
-The old naming is a record of a finished sitting. It is not a permit for the next one.
-
-### Logical drawing
-
-```text
-folder still holds the 11:40 page
-    yesterday: owner named it, for that exercise
-    today 09:12: booking view described as unavailable
-    today's owner: has not named a source
-        |
-        +-- yesterday's "taken" answer stays in yesterday's note
-        +-- today's Room 2 at 15:00 is pending
-        +-- do not announce taken or free from the old page
-```
-<!-- open-cyber-academy:lesson-figures:end ch-13 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1770,36 +1276,6 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — A new page answers only its own rows
-
-<!-- open-cyber-academy:lesson-figures:start ch-14 -->
-### Lesson map
-
-Lesson 14 published. Map, example, EX030.
-
-```mermaid
-flowchart TD
-  N["Today's owner names the 11:55 page"] --> H{"Heading is 11:55 and the asked row is printed?"}
-  H -->|No| P["That question stays pending"]
-  H -->|Yes| B["Read the status on that row"]
-  B --> S["Say the slot is taken and give no name"]
-  S --> C["Leave the 09:00 census as printed"]
-```
-
-The new page does not edit any older page, and it does not reopen the old program.
-
-### Logical drawing
-
-```text
-named for this exercise: page heading 11:55
-    SYN-001  Room 2  14:00  created 08:20  confirmed
-    SYN-002  Room 2  15:00  created 10:05  confirmed
-    SYN-003  Room 4  15:00  created 11:20  confirmed
-        |
-        +-- Room 4 at 15:00 matches SYN-003 -> taken
-        +-- Room 2 at 15:00 matches SYN-002 -> taken
-        +-- the 11:40 page is not the source of this sitting
-```
-<!-- open-cyber-academy:lesson-figures:end ch-14 -->
 
 ### Learning outcomes
 
@@ -1859,35 +1335,6 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Two pages are not one schedule
 
-<!-- open-cyber-academy:lesson-figures:start ch-15 -->
-### Lesson map
-
-Lesson 15 published. Map, example, EX031.
-
-```mermaid
-flowchart TD
-  A["Two pages are in the folder"] --> B{"Which page did this exercise's owner name?"}
-  B --> C["Read rows on that page only"]
-  C --> D["Leave the other page unedited"]
-  D --> E["Do not build a third schedule by mixing rows"]
-```
-
-Mixing rows creates an object nobody printed and nobody named.
-
-### Logical drawing
-
-```text
-11:40 page          11:55 page, named today
-SYN-001 Room 2      SYN-001 Room 2
-SYN-002 Room 2      SYN-002 Room 2
-                    SYN-003 Room 4
-        |
-        +-- lawful reading: the named page, whole
-        +-- unlawful reading: SYN-003 glued onto 11:40
-        +-- unlawful reading: drop SYN-002 because an older page felt "more real"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-15 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -1943,35 +1390,6 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — A created time does not erase a printed row
-
-<!-- open-cyber-academy:lesson-figures:start ch-16 -->
-### Lesson map
-
-Lesson 16 published. Map, example, EX032.
-
-```mermaid
-flowchart TD
-  R["A row is printed on the named page"] --> Q{"Is the challenge about the row's created time?"}
-  Q -->|Yes| K["Keep the row. The clock does not delete ink"]
-  Q -->|Someone wants that time typed into the 09:00 program| X["Do not start that program"]
-  K --> T["The slot on this page stays taken"]
-```
-
-Created time and page heading answer different questions. Neither one is permission to retype the log.
-
-### Logical drawing
-
-```text
-SYN-003 on the 11:55 page
-    created 11:20  = when the synthetic booking was made
-    heading 11:55  = when this page says it was printed
-    09:00 log      = a different run, already finished
-        |
-        +-- 11:20 is earlier than 11:55, so the row can appear on the page
-        +-- that order is not a reason to drop the row
-        +-- that order is not a reason to rerun Chapter 4
-```
-<!-- open-cyber-academy:lesson-figures:end ch-16 -->
 
 ### Learning outcomes
 
@@ -2031,33 +1449,6 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Matching rows are not a cause
 
-<!-- open-cyber-academy:lesson-figures:start ch-17 -->
-### Lesson map
-
-Lesson 17 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  M["SYN-002 appears on two later pages"] --> W["The exercise printed that row twice"]
-  W --> N["The outage cause is still unrecorded"]
-  N --> R["Do not call the match an attack, a vulnerability, or proof of safety"]
-```
-
-Agreement of one synthetic row is a comparison of pages. It is not a diagnosis.
-
-### Logical drawing
-
-```text
-11:40 page: SYN-002 Room 2 15:00
-11:55 page: SYN-002 Room 2 15:00
-        |
-        +-- supported: both sheets show that row
-        +-- not supported: why the booking view failed
-        +-- not supported: an attack occurred
-        +-- not supported: the library is safe because the rows match
-```
-<!-- open-cyber-academy:lesson-figures:end ch-17 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -2115,35 +1506,6 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Earlier pages stay in the file
 
-<!-- open-cyber-academy:lesson-figures:start ch-18 -->
-### Lesson map
-
-Lesson 18 published. Map, example, EX034.
-
-```mermaid
-flowchart TD
-  F["Three sheets exist"] --> S["File each under its own time"]
-  S --> U["Do not shred an earlier sheet because a later one exists"]
-  U --> N["Do not overwrite one sheet with another"]
-  N --> A["Answer this exercise from the page named for it"]
-```
-
-Retention here is about not destroying a comparison. It is not a claim about a real library's retention schedule.
-
-### Logical drawing
-
-```text
-file, three separate copies
-    09:00 printout   -> input of the recorded run
-    11:40 page       -> yesterday's named sheet, no SYN-003
-    11:55 page       -> named for the current exercise
-        |
-        +-- shredding 09:00 would hide why REFUSE was printed
-        +-- shredding 11:40 would hide yesterday's silence on Room 4
-        +-- overwriting either one is an alteration
-```
-<!-- open-cyber-academy:lesson-figures:end ch-18 -->
-
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -2199,34 +1561,6 @@ Continue to the next authored lesson.
 <a id="ch-19"></a>
 
 ## Chapter 19 — A booking page does not open the contact list
-
-<!-- open-cyber-academy:lesson-figures:start ch-19 -->
-### Lesson map
-
-Lesson 19 published. Map, example, EX035.
-
-```mermaid
-flowchart TD
-  P["The 11:55 page is named"] --> Q{"Does the request ask about a row on that page?"}
-  Q -->|Yes| R["Answer from that row"]
-  Q -->|It asks for event contacts| O["Out of scope"]
-  O --> S["Do not export, and do not add names to the page"]
-```
-
-A fresh naming widens nothing beyond the object named.
-
-### Logical drawing
-
-```text
-named object: 11:55 booking page
-    in scope: its printed room rows
-    still outside: event-contact export
-        |
-        +-- 11:43 already labeled that export OUT OF SCOPE
-        +-- a later booking page does not move the boundary
-        +-- no resident name is added to make the message "easier"
-```
-<!-- open-cyber-academy:lesson-figures:end ch-19 -->
 
 ### Learning outcomes
 
@@ -2285,34 +1619,6 @@ Continue to the next authored lesson.
 <a id="ch-20"></a>
 
 ## Chapter 20 — The note that can leave the room
-
-<!-- open-cyber-academy:lesson-figures:start ch-20 -->
-### Lesson map
-
-Lesson 20 published. Map, example, EX036.
-
-```mermaid
-flowchart TD
-  N["One note for this exercise"] --> A["List the sheets and which one was named"]
-  A --> R["State each 15:00 answer from that sheet"]
-  R --> L["State the census you did not change"]
-  L --> O["State the questions still open"]
-  O --> X["Remove any sentence that closes the case, names a person, or frees a room"]
-```
-
-The note is finished when a reader can check every sentence against a sheet or against the printed census. It is not finished when it sounds conclusive.
-
-### Logical drawing
-
-```text
-note that may leave the room
-    sheets: 09:00 kept; 11:40 kept; 11:55 named for this exercise
-    Room 2 at 15:00 on 11:55: taken, SYN-002, no person
-    Room 4 at 15:00 on 11:55: taken, SYN-003, no person
-    census: STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0
-    open: outage cause; how often a real desk reprints; next outage needs a new naming
-```
-<!-- open-cyber-academy:lesson-figures:end ch-20 -->
 
 ### Learning outcomes
 

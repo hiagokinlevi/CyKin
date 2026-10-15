@@ -36,61 +36,6 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 ## Capítulo 1 — O que é a segurança ofensiva autorizada
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 Teste autorizado, não invasão por diversão"]
-  N1["1.2 Por que as organizações pagam por isso"]
-  N2["1.3 O que este curso não vai ensinar"]
-  N3["1.4 Quem diz sim"]
-  N4["1.5 Uma linguagem comum para as técnicas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 Teste autorizado, não invasão por diversão"]
-  N1["1.2 Por que as organizações pagam por isso"]
-  N2["1.3 O que este curso não vai ensinar"]
-  N3["1.4 Quem diz sim"]
-  N4["1.5 Uma linguagem comum para as técnicas"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
-```
-
-```text
-[1.1 Teste autorizado, não invasão por diversão]
-    |
-    v
-[1.2 Por que as organizações pagam por isso]
-    |
-    v
-[1.3 O que este curso não vai ensinar]
-    |
-    v
-[1.4 Quem diz sim]
-    |
-    v
-[1.5 Uma linguagem comum para as técnicas]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) definir segurança ofensiva autorizada e red team; (2) explicar como elas diferem do crime e do trabalho cotidiano de TI; (3) nomear os principais frameworks públicos que as orientam; e (4) descrever quem decide quando um teste é permitido.
@@ -152,56 +97,6 @@ A segurança ofensiva autorizada é um teste com permissão feito para melhorar 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
-
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX014.
-
-```mermaid
-flowchart TD
-  N0["2.1 O que o papel precisa dizer"]
-  N1["2.2 Conferir uma lista de alvos"]
-  N2["2.3 Condições de parada e proibições"]
-  N3["2.4 Quando alguém pede para você quebrar as regras"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 O que o papel precisa dizer"]
-  N1["2.2 Conferir uma lista de alvos"]
-  N2["2.3 Condições de parada e proibições"]
-  N3["2.4 Quando alguém pede para você quebrar as regras"]
-  N4["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
-```
-
-```text
-[2.1 O que o papel precisa dizer]
-    |
-    v
-[2.2 Conferir uma lista de alvos]
-    |
-    v
-[2.3 Condições de parada e proibições]
-    |
-    v
-[2.4 Quando alguém pede para você quebrar as regras]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX014]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
 
 ### Objetivos de aprendizagem
 
@@ -289,61 +184,6 @@ Escopo escrito, exclusões e condições de parada decidem cada ação; tudo o q
 
 ## Capítulo 3 — Achados, evidências e relato responsável
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX027.
-
-```mermaid
-flowchart TD
-  N0["3.1 O que é um achado"]
-  N1["3.2 Evidências sem dano"]
-  N2["3.3 Nomear técnicas"]
-  N3["3.4 Severidade honesta"]
-  N4["3.5 Quem lê o relatório"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 O que é um achado"]
-  N1["3.2 Evidências sem dano"]
-  N2["3.3 Nomear técnicas"]
-  N3["3.4 Severidade honesta"]
-  N4["3.5 Quem lê o relatório"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
-```
-
-```text
-[3.1 O que é um achado]
-    |
-    v
-[3.2 Evidências sem dano]
-    |
-    v
-[3.3 Nomear técnicas]
-    |
-    v
-[3.4 Severidade honesta]
-    |
-    v
-[3.5 Quem lê o relatório]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o que torna um achado útil; (2) guardar evidências simples sem atacar sistemas; (3) mapear um achado para o nome de uma técnica do ATT&CK; e (4) escrever um relatório curto, adequado ao público.
@@ -404,66 +244,6 @@ Os achados são específicos, sustentados por evidências e mapeados para nomes 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Síntese guiada: planejar, verificar, relatar
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX039.
-
-```mermaid
-flowchart TD
-  N0["4.1 O engajamento de sala de aula"]
-  N1["4.2 Classificar para o resumo"]
-  N2["4.3 Escrever a página"]
-  N3["4.4 Cenários de pressão"]
-  N4["4.5 Depois do curso"]
-  N5["4.6 Registrar o exercício"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O engajamento de sala de aula"]
-  N1["4.2 Classificar para o resumo"]
-  N2["4.3 Escrever a página"]
-  N3["4.4 Cenários de pressão"]
-  N4["4.5 Depois do curso"]
-  N5["4.6 Registrar o exercício"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
-```
-
-```text
-[4.1 O engajamento de sala de aula]
-    |
-    v
-[4.2 Classificar para o resumo]
-    |
-    v
-[4.3 Escrever a página]
-    |
-    v
-[4.4 Cenários de pressão]
-    |
-    v
-[4.5 Depois do curso]
-    |
-    v
-[4.6 Registrar o exercício]
-    |
-    v
-[Síntese]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem
 

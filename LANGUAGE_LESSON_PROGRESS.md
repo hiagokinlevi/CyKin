@@ -8,9 +8,9 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4312/4490 | 30/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 4312/4312 |
-| Português | 124/207 | 2573/4250 | 0/120060 | 2476/2573 | 2573/2573 | 2573/2573 | 2573/2573 |
-| Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
+| English | 199/207 | 4312/4490 | 30/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 23/4312 |
+| Português | 124/207 | 2573/4250 | 0/120060 | 2476/2573 | 2573/2573 | 2573/2573 | 20/2573 |
+| Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 8/516 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
 

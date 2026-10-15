@@ -67,66 +67,6 @@ Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossári
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Mapa da aula
-
-Aula 01 publicada. Mapa, exemplo, EX001.
-
-```mermaid
-flowchart TD
-  N0["1.1 O que é um serviço essencial"]
-  N1["1.2 Consequência primeiro"]
-  N2["1.3 O trabalho do coordenador"]
-  N3["1.4 O vocabulário do risco"]
-  N4["1.5 Frameworks como mapas"]
-  N5["1.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["1.1 O que é um serviço essencial"]
-  N1["1.2 Consequência primeiro"]
-  N2["1.3 O trabalho do coordenador"]
-  N3["1.4 O vocabulário do risco"]
-  N4["1.5 Frameworks como mapas"]
-  N5["1.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
-```
-
-```text
-[1.1 O que é um serviço essencial]
-    |
-    v
-[1.2 Consequência primeiro]
-    |
-    v
-[1.3 O trabalho do coordenador]
-    |
-    v
-[1.4 O vocabulário do risco]
-    |
-    v
-[1.5 Frameworks como mapas]
-    |
-    v
-[1.7 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -252,61 +192,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Infraestrutura crítica e segurança setorial: contexto de serviço e de partes interessadas
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Mapa da aula
-
-Aula 02 publicada. Mapa, exemplo, EX006.
-
-```mermaid
-flowchart TD
-  N0["2.1 Um serviço é uma cadeia"]
-  N1["2.2 A montante, a jusante, compartilhadas"]
-  N2["2.3 Partes interessadas e os seus papéis"]
-  N3["2.4 Como os setores diferem"]
-  N4["2.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["2.1 Um serviço é uma cadeia"]
-  N1["2.2 A montante, a jusante, compartilhadas"]
-  N2["2.3 Partes interessadas e os seus papéis"]
-  N3["2.4 Como os setores diferem"]
-  N4["2.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
-```
-
-```text
-[2.1 Um serviço é uma cadeia]
-    |
-    v
-[2.2 A montante, a jusante, compartilhadas]
-    |
-    v
-[2.3 Partes interessadas e os seus papéis]
-    |
-    v
-[2.4 Como os setores diferem]
-    |
-    v
-[2.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX006]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -416,66 +301,6 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e tratamento de evidências
-
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Mapa da aula
-
-Aula 03 publicada. Mapa, exemplo, EX011.
-
-```mermaid
-flowchart TD
-  N0["3.1 Por que a autorização é um problema de coordenaç"]
-  N1["3.2 O que contém uma autorização válida"]
-  N2["3.3 Registros de decisão"]
-  N3["3.4 Tratamento de evidências pelo coordenador"]
-  N4["3.5 Compartilhamento: o Traffic Light Protocol"]
-  N5["3.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX011"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["3.1 Por que a autorização é um problema de coordenaç"]
-  N1["3.2 O que contém uma autorização válida"]
-  N2["3.3 Registros de decisão"]
-  N3["3.4 Tratamento de evidências pelo coordenador"]
-  N4["3.5 Compartilhamento: o Traffic Light Protocol"]
-  N5["3.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
-```
-
-```text
-[3.1 Por que a autorização é um problema de coordenaç]
-    |
-    v
-[3.2 O que contém uma autorização válida]
-    |
-    v
-[3.3 Registros de decisão]
-    |
-    v
-[3.4 Tratamento de evidências pelo coordenador]
-    |
-    v
-[3.5 Compartilhamento: o Traffic Light Protocol]
-    |
-    v
-[3.7 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX011]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -605,56 +430,6 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestrutura crítica e segurança setorial: métodos centrais
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Mapa da aula
-
-Aula 04 publicada. Mapa, exemplo, EX016.
-
-```mermaid
-flowchart TD
-  N0["4.1 O ciclo de avaliação de riscos"]
-  N1["4.3 Titularidade e higiene"]
-  N2["4.4 Aceitar riscos"]
-  N3["4.6 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX016"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["4.1 O ciclo de avaliação de riscos"]
-  N1["4.3 Titularidade e higiene"]
-  N2["4.4 Aceitar riscos"]
-  N3["4.6 Atividade prática"]
-  N4["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
-```
-
-```text
-[4.1 O ciclo de avaliação de riscos]
-    |
-    v
-[4.3 Titularidade e higiene]
-    |
-    v
-[4.4 Aceitar riscos]
-    |
-    v
-[4.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX016]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -814,61 +589,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Infraestrutura crítica e segurança setorial: ferramentas e interpretação
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Mapa da aula
-
-Aula 05 publicada. Mapa, exemplo, EX021.
-
-```mermaid
-flowchart TD
-  N0["5.1 O panorama dos frameworks"]
-  N1["5.2 Lendo uma avaliação"]
-  N2["5.3 Métricas que conduzem decisões"]
-  N3["5.4 Interpretando constatações técnicas"]
-  N4["5.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["5.1 O panorama dos frameworks"]
-  N1["5.2 Lendo uma avaliação"]
-  N2["5.3 Métricas que conduzem decisões"]
-  N3["5.4 Interpretando constatações técnicas"]
-  N4["5.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
-```
-
-```text
-[5.1 O panorama dos frameworks]
-    |
-    v
-[5.2 Lendo uma avaliação]
-    |
-    v
-[5.3 Métricas que conduzem decisões]
-    |
-    v
-[5.4 Interpretando constatações técnicas]
-    |
-    v
-[5.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -980,61 +700,6 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Infraestrutura crítica e segurança setorial: fluxo operacional
-
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Mapa da aula
-
-Aula 06 publicada. Mapa, exemplo, EX026.
-
-```mermaid
-flowchart TD
-  N0["6.1 Papéis"]
-  N1["6.2 RACI"]
-  N2["6.3 Governança de mudanças entre TI e TO"]
-  N3["6.4 Escalonamento"]
-  N4["6.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX026"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["6.1 Papéis"]
-  N1["6.2 RACI"]
-  N2["6.3 Governança de mudanças entre TI e TO"]
-  N3["6.4 Escalonamento"]
-  N4["6.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
-```
-
-```text
-[6.1 Papéis]
-    |
-    v
-[6.2 RACI]
-    |
-    v
-[6.3 Governança de mudanças entre TI e TO]
-    |
-    v
-[6.4 Escalonamento]
-    |
-    v
-[6.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX026]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1192,61 +857,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Infraestrutura crítica e segurança setorial: controles e verificação
 
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Mapa da aula
-
-Aula 07 publicada. Mapa, exemplo, EX031.
-
-```mermaid
-flowchart TD
-  N0["7.1 O que é um controle, para um gestor"]
-  N1["7.2 Níveis de garantia"]
-  N2["7.3 Quem verifica"]
-  N3["7.4 Exceções"]
-  N4["7.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX031"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["7.1 O que é um controle, para um gestor"]
-  N1["7.2 Níveis de garantia"]
-  N2["7.3 Quem verifica"]
-  N3["7.4 Exceções"]
-  N4["7.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
-```
-
-```text
-[7.1 O que é um controle, para um gestor]
-    |
-    v
-[7.2 Níveis de garantia]
-    |
-    v
-[7.3 Quem verifica]
-    |
-    v
-[7.4 Exceções]
-    |
-    v
-[7.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX031]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -1356,66 +966,6 @@ Siga para a próxima lição escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Infraestrutura crítica e segurança setorial: análise supervisionada de caso
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Mapa da aula
-
-Aula 08 publicada. Mapa, exemplo, EX036.
-
-```mermaid
-flowchart TD
-  N0["8.1 Por que os fornecedores importam tanto aqui"]
-  N1["8.2 O ciclo de vida do fornecedor"]
-  N2["8.3 A revisão de acesso"]
-  N3["8.4 Caso resolvido: a revisão de maio sintético"]
-  N4["8.5 Requisitos de contrato e de integração"]
-  N5["8.6 Apresentação supervisionada"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["8.1 Por que os fornecedores importam tanto aqui"]
-  N1["8.2 O ciclo de vida do fornecedor"]
-  N2["8.3 A revisão de acesso"]
-  N3["8.4 Caso resolvido: a revisão de maio sintético"]
-  N4["8.5 Requisitos de contrato e de integração"]
-  N5["8.6 Apresentação supervisionada"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
-```
-
-```text
-[8.1 Por que os fornecedores importam tanto aqui]
-    |
-    v
-[8.2 O ciclo de vida do fornecedor]
-    |
-    v
-[8.3 A revisão de acesso]
-    |
-    v
-[8.4 Caso resolvido: a revisão de maio sintético]
-    |
-    v
-[8.5 Requisitos de contrato e de integração]
-    |
-    v
-[8.6 Apresentação supervisionada]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX036]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1558,66 +1108,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 9 — Comunicação, ética e relato
 
-<!-- open-cyber-academy:lesson-figures:start ch-09 -->
-### Mapa da aula
-
-Aula 09 publicada. Mapa, exemplo, EX041.
-
-```mermaid
-flowchart TD
-  N0["9.1 Quem precisa ser informado, e quando"]
-  N1["9.2 Clientes críticos"]
-  N2["9.3 Comunicação pública"]
-  N3["9.4 Ética"]
-  N4["9.6 Relatos à diretoria e ao conselho"]
-  N5["9.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX041"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["9.1 Quem precisa ser informado, e quando"]
-  N1["9.2 Clientes críticos"]
-  N2["9.3 Comunicação pública"]
-  N3["9.4 Ética"]
-  N4["9.6 Relatos à diretoria e ao conselho"]
-  N5["9.7 Atividade prática"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
-```
-
-```text
-[9.1 Quem precisa ser informado, e quando]
-    |
-    v
-[9.2 Clientes críticos]
-    |
-    v
-[9.3 Comunicação pública]
-    |
-    v
-[9.4 Ética]
-    |
-    v
-[9.6 Relatos à diretoria e ao conselho]
-    |
-    v
-[9.7 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX041]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-09 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -1756,61 +1246,6 @@ Siga para a próxima lição escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestrutura crítica e segurança setorial: qualidade e resolução de problemas
-
-<!-- open-cyber-academy:lesson-figures:start ch-10 -->
-### Mapa da aula
-
-Aula 10 publicada. Mapa, exemplo, EX046.
-
-```mermaid
-flowchart TD
-  N0["10.1 Como os programas falham"]
-  N1["10.2 Resolvendo uma falha de coordenação"]
-  N2["10.3 Qualidade das decisões"]
-  N3["10.5 Encerrando ações corretivas"]
-  N4["10.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX046"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["10.1 Como os programas falham"]
-  N1["10.2 Resolvendo uma falha de coordenação"]
-  N2["10.3 Qualidade das decisões"]
-  N3["10.5 Encerrando ações corretivas"]
-  N4["10.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
-```
-
-```text
-[10.1 Como os programas falham]
-    |
-    v
-[10.2 Resolvendo uma falha de coordenação]
-    |
-    v
-[10.3 Qualidade das decisões]
-    |
-    v
-[10.5 Encerrando ações corretivas]
-    |
-    v
-[10.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX046]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-10 -->
-
 
 ### Objetivos de aprendizagem e conexão
 
@@ -1958,66 +1393,6 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 11 — Laboratório supervisionado
 
-<!-- open-cyber-academy:lesson-figures:start ch-11 -->
-### Mapa da aula
-
-Aula 11 publicada. Mapa, exemplo, EX051.
-
-```mermaid
-flowchart TD
-  N0["11.1 Tipos de exercício"]
-  N1["11.2 Desenho"]
-  N2["11.3 Facilitação"]
-  N3["11.4 Avaliação e melhoria"]
-  N4["11.6 Rubrica de desenho de exercícios"]
-  N5["11.7 Atividade prática supervisionada"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX051"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["11.1 Tipos de exercício"]
-  N1["11.2 Desenho"]
-  N2["11.3 Facilitação"]
-  N3["11.4 Avaliação e melhoria"]
-  N4["11.6 Rubrica de desenho de exercícios"]
-  N5["11.7 Atividade prática supervisionada"]
-  N6["Síntese do capítulo"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
-```
-
-```text
-[11.1 Tipos de exercício]
-    |
-    v
-[11.2 Desenho]
-    |
-    v
-[11.3 Facilitação]
-    |
-    v
-[11.4 Avaliação e melhoria]
-    |
-    v
-[11.6 Rubrica de desenho de exercícios]
-    |
-    v
-[11.7 Atividade prática supervisionada]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX051]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-11 -->
-
-
 ### Objetivos de aprendizagem e conexão
 
 Ao final deste capítulo, você deverá ser capaz de:
@@ -2138,71 +1513,6 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
-
-<!-- open-cyber-academy:lesson-figures:start ch-12 -->
-### Mapa da aula
-
-Aula 12 publicada. Mapa, exemplo, EX060.
-
-```mermaid
-flowchart TD
-  N0["12.1 O portfólio"]
-  N1["12.2 A apresentação ao conselho"]
-  N2["12.3 O plano de 90 dias"]
-  N3["12.5 Revisão final"]
-  N4["12.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N6["Capítulo 1"]
-  N7["Capítulo 2"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX060"]
-```
-
-### Desenho lógico
-
-```mermaid
-flowchart LR
-  N0["12.1 O portfólio"]
-  N1["12.2 A apresentação ao conselho"]
-  N2["12.3 O plano de 90 dias"]
-  N3["12.5 Revisão final"]
-  N4["12.6 Atividade prática"]
-  N5["Síntese do capítulo"]
-  N6["Capítulo 1"]
-  N7["Capítulo 2"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX060"]
-```
-
-```text
-[12.1 O portfólio]
-    |
-    v
-[12.2 A apresentação ao conselho]
-    |
-    v
-[12.3 O plano de 90 dias]
-    |
-    v
-[12.5 Revisão final]
-    |
-    v
-[12.6 Atividade prática]
-    |
-    v
-[Síntese do capítulo]
-    |
-    v
-[Capítulo 1]
-    |
-    v
-[Capítulo 2]
-    |
-    v
-[Exemplo resolvido] --> [Exercício EX060]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-12 -->
-
 
 ### Objetivos de aprendizagem e conexão
 

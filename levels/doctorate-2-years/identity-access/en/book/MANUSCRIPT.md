@@ -37,71 +37,6 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- open-cyber-academy:lesson-figures:start ch-01 -->
-### Lesson map
-
-Lesson 01 published. Map, example, EX001.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Defining excess"]
-  N3["Lab — Coder agreement"]
-  N4["1.3 Reading agreement"]
-  N5["1.4 Integrity and data handling"]
-  N6["1.5 Validity from the start"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["1.1 The case"]
-  N2["1.2 Defining excess"]
-  N3["Lab — Coder agreement"]
-  N4["1.3 Reading agreement"]
-  N5["1.4 Integrity and data handling"]
-  N6["1.5 Validity from the start"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[1.1 The case]
-    |
-    v
-[1.2 Defining excess]
-    |
-    v
-[Lab — Coder agreement]
-    |
-    v
-[1.3 Reading agreement]
-    |
-    v
-[1.4 Integrity and data handling]
-    |
-    v
-[1.5 Validity from the start]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX001]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-01 -->
-
-
 ### Learning outcomes
 
 You will (1) frame a doctoral question about excess privilege in identity systems; (2) design a valid coding scheme for entitlements; (3) establish ethical and data-handling rules for partner identity data.
@@ -184,66 +119,6 @@ A defensible doctoral study of excess privilege starts with a precise codebook, 
 
 ## Chapter 2 — Identity and access management: research frontier
 
-<!-- open-cyber-academy:lesson-figures:start ch-02 -->
-### Lesson map
-
-Lesson 02 published. Map, example, EX008.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["2.1 Access control models"]
-  N2["2.2 Roles in practice"]
-  N3["2.3 Authentication research"]
-  N4["2.4 Access review as a control"]
-  N5["2.5 Positioning the thesis"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX008"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["2.1 Access control models"]
-  N2["2.2 Roles in practice"]
-  N3["2.3 Authentication research"]
-  N4["2.4 Access review as a control"]
-  N5["2.5 Positioning the thesis"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[2.1 Access control models]
-    |
-    v
-[2.2 Roles in practice]
-    |
-    v
-[2.3 Authentication research]
-    |
-    v
-[2.4 Access review as a control]
-    |
-    v
-[2.5 Positioning the thesis]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX008]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-02 -->
-
-
 ### Learning outcomes
 
 You will (1) map the research on access control models, authentication and access review; (2) locate the gap Rhea's thesis addresses; (3) position the contribution precisely.
@@ -300,66 +175,6 @@ Rhea's thesis sits between formal access control research and the practical fail
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- open-cyber-academy:lesson-figures:start ch-03 -->
-### Lesson map
-
-Lesson 03 published. Map, example, EX015.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["3.1 Hypotheses"]
-  N2["3.2 Measures"]
-  N3["3.3 Design and comparison"]
-  N4["3.4 Threats to validity"]
-  N5["3.5 Ethics of the intervention"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX015"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["3.1 Hypotheses"]
-  N2["3.2 Measures"]
-  N3["3.3 Design and comparison"]
-  N4["3.4 Threats to validity"]
-  N5["3.5 Ethics of the intervention"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[3.1 Hypotheses]
-    |
-    v
-[3.2 Measures]
-    |
-    v
-[3.3 Design and comparison]
-    |
-    v
-[3.4 Threats to validity]
-    |
-    v
-[3.5 Ethics of the intervention]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX015]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-03 -->
-
-
 ### Learning outcomes
 
 You will (1) state hypotheses and their tests; (2) design the comparison of review procedures; (3) plan for threats to validity.
@@ -414,71 +229,6 @@ A strong proposal fixes hypotheses, measures and design before data, and plans h
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
-
-<!-- open-cyber-academy:lesson-figures:start ch-04 -->
-### Lesson map
-
-Lesson 04 published. Map, example, EX021.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["Lab — Granted versus used"]
-  N3["4.2 Reading the baseline"]
-  N4["4.3 Running the pilot"]
-  N5["4.4 Pilot findings"]
-  N6["4.5 Revising the procedure"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["4.1 Why replicate first"]
-  N2["Lab — Granted versus used"]
-  N3["4.2 Reading the baseline"]
-  N4["4.3 Running the pilot"]
-  N5["4.4 Pilot findings"]
-  N6["4.5 Revising the procedure"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[4.1 Why replicate first]
-    |
-    v
-[Lab — Granted versus used]
-    |
-    v
-[4.2 Reading the baseline]
-    |
-    v
-[4.3 Running the pilot]
-    |
-    v
-[4.4 Pilot findings]
-    |
-    v
-[4.5 Revising the procedure]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX021]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-04 -->
-
 
 ### Learning outcomes
 
@@ -562,71 +312,6 @@ Replicating a simple baseline and running a small pilot expose pipeline and proc
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- open-cyber-academy:lesson-figures:start ch-05 -->
-### Lesson map
-
-Lesson 05 published. Map, example, EX027.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["5.1 Running the study"]
-  N2["Lab — Removal comparison"]
-  N3["5.2 Reading the result"]
-  N4["5.3 Independent validation"]
-  N5["5.4 Complexity and excess"]
-  N6["5.5 Effect in context"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["5.1 Running the study"]
-  N2["Lab — Removal comparison"]
-  N3["5.2 Reading the result"]
-  N4["5.3 Independent validation"]
-  N5["5.4 Complexity and excess"]
-  N6["5.5 Effect in context"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[5.1 Running the study]
-    |
-    v
-[Lab — Removal comparison]
-    |
-    v
-[5.2 Reading the result]
-    |
-    v
-[5.3 Independent validation]
-    |
-    v
-[5.4 Complexity and excess]
-    |
-    v
-[5.5 Effect in context]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX027]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-05 -->
-
-
 ### Learning outcomes
 
 You will (1) run the randomised comparison; (2) estimate the difference in removal rates with its uncertainty; (3) validate removals independently.
@@ -699,66 +384,6 @@ A randomised comparison with blinded validation of removals shows both benefit a
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- open-cyber-academy:lesson-figures:start ch-06 -->
-### Lesson map
-
-Lesson 06 published. Map, example, EX033.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["6.1 Internal seminar"]
-  N2["6.2 Responding to reviewers"]
-  N3["6.3 The observation question"]
-  N4["6.4 Revising the procedure"]
-  N5["6.5 Keeping a decision log"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX033"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["6.1 Internal seminar"]
-  N2["6.2 Responding to reviewers"]
-  N3["6.3 The observation question"]
-  N4["6.4 Revising the procedure"]
-  N5["6.5 Keeping a decision log"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[6.1 Internal seminar]
-    |
-    v
-[6.2 Responding to reviewers]
-    |
-    v
-[6.3 The observation question]
-    |
-    v
-[6.4 Revising the procedure]
-    |
-    v
-[6.5 Keeping a decision log]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX033]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-06 -->
-
-
 ### Learning outcomes
 
 You will (1) present the study for critique; (2) respond to reviewers with evidence; (3) keep a decision log.
@@ -813,71 +438,6 @@ Critique handled with evidence, separate procedure versions and a decision log m
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
-
-<!-- open-cyber-academy:lesson-figures:start ch-07 -->
-### Lesson map
-
-Lesson 07 published. Map, example, EX039.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["7.1 Synthesis"]
-  N2["Lab — Complexity and excess"]
-  N3["7.2 Reading the correlation"]
-  N4["7.3 The archive"]
-  N5["7.4 What can and cannot be reproduced"]
-  N6["7.5 Sharing responsibly"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["7.1 Synthesis"]
-  N2["Lab — Complexity and excess"]
-  N3["7.2 Reading the correlation"]
-  N4["7.3 The archive"]
-  N5["7.4 What can and cannot be reproduced"]
-  N6["7.5 Sharing responsibly"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[7.1 Synthesis]
-    |
-    v
-[Lab — Complexity and excess]
-    |
-    v
-[7.2 Reading the correlation]
-    |
-    v
-[7.3 The archive]
-    |
-    v
-[7.4 What can and cannot be reproduced]
-    |
-    v
-[7.5 Sharing responsibly]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX039]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-07 -->
-
 
 ### Learning outcomes
 
@@ -954,66 +514,6 @@ A careful synthesis claims only what the evidence supports, and a well-bounded a
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
-
-<!-- open-cyber-academy:lesson-figures:start ch-08 -->
-### Lesson map
-
-Lesson 08 published. Map, example, EX045.
-
-```mermaid
-flowchart TD
-  N0["Learning outcomes"]
-  N1["8.1 Preparing the defense"]
-  N2["8.2 Anticipated questions"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Closing the partnership"]
-  N5["8.5 After the defense"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX045"]
-```
-
-### Logical drawing
-
-```mermaid
-flowchart LR
-  N0["Learning outcomes"]
-  N1["8.1 Preparing the defense"]
-  N2["8.2 Anticipated questions"]
-  N3["8.3 Publication plan"]
-  N4["8.4 Closing the partnership"]
-  N5["8.5 After the defense"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
-```
-
-```text
-[Learning outcomes]
-    |
-    v
-[8.1 Preparing the defense]
-    |
-    v
-[8.2 Anticipated questions]
-    |
-    v
-[8.3 Publication plan]
-    |
-    v
-[8.4 Closing the partnership]
-    |
-    v
-[8.5 After the defense]
-    |
-    v
-[Synthesis]
-    |
-    v
-[Worked example] --> [Exercise EX045]
-```
-<!-- open-cyber-academy:lesson-figures:end ch-08 -->
-
 
 ### Learning outcomes
 
