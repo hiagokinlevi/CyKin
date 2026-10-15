@@ -831,7 +831,7 @@ Continue para a próxima aula publicada.
 
 ### Continuação traduzida — capítulos 11–20
 
-Dez capítulos e EX057–EX066, já escritos numa cópia de trabalho local, foram integrados seletivamente neste livro. O texto das aulas foi comparado por estrutura, fatos e limites com a fonte inglesa publicada (blob anterior `63c6951d427a84acb4293c5da4cf351751247136`); as respostas foram vinculadas aos enunciados. Os diagramas automáticos que apenas repetiam a ordem das seções foram omitidos. Esta integração amplia a presença de aulas em português para 20/20 e de pares enunciado–resposta para 66/66; **não** certifica equivalência editorial ou livro concluído. O histórico Git identifica a publicação; a revisão humana independente permanece pendente.
+Dez capítulos e EX057–EX066, já escritos numa cópia de trabalho local, foram integrados seletivamente neste livro. Conferiram-se a estrutura, os IDs, os números centrais e uma amostra de sentido contra a fonte inglesa publicada (blob anterior `63c6951d427a84acb4293c5da4cf351751247136`); a comparação semântica integral permanece pendente. As respostas foram vinculadas aos enunciados. Os diagramas automáticos que apenas repetiam a ordem das seções foram omitidos. Esta integração amplia a presença de aulas em português para 20/20 e de pares enunciado–resposta para 66/66; **não** certifica equivalência editorial ou livro concluído. O histórico Git identifica a publicação; a revisão humana independente permanece pendente.
 
 <a id="ch-11"></a>
 
