@@ -1,59 +1,39 @@
-# Principal book plan — Incident response and cyber resilience / Rapid course / Português
+# Plano do livro principal — Resposta a Incidentes e Resiliência Cibernética / Curso rápido / Português
 
-**One book for this course and language.** 4 curricular subjects are its chapters. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience.
+**Um livro por curso e idioma.** Duração nominal de um mês. A fonte inglesa tem quatro capítulos semanais com cinco aulas diárias em cada. Nesta edição, somente o capítulo 1 e as aulas 01–05 foram traduzidos para o [manuscrito público](MANUSCRIPT.md).
 
-**Editorial state:** structured outline; manuscript not yet authored. English working summaries await translation and review.
+**Estado:** texto do capítulo 1 disponível para leitura, revisão integral da tradução pendente; semanas 2–4 ainda são planos. Quantidade de páginas e de exercícios não substitui a revisão técnica, linguística, de fontes, direitos, acessibilidade e navegação. [Padrão editorial](../../../../../BOOK_STANDARD.md).
 
-[Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
-
-## Book requirements
-
-A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 320-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
-
-## Contents and chapter summaries
-
-These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+[Início](../../../../../README.md) · [Curso](../../README.md) · [Edição](../README.md) · [Índice](../SUBJECTS.md) · [Skill](../../skill/SKILL.md) · [Registro de tradução](TRANSLATION_REVIEW.md)
 
 <a id="ch-01"></a>
 
-### Chapter 01 — Incident readiness, roles and authorized scope
+### Capítulo 01 — Prontidão para incidentes, papéis e escopo autorizado
 
-**Stage 1; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
+**Publicado:** [aulas 01–05, exemplos, laboratórios e EX001–EX013](MANUSCRIPT.md#ch-01), com respostas no mesmo livro. Ensina a declarar observações, premissas, autoridade, escopo, funções e uma primeira rota de evidência no caso fictício Harbor Library. A revisão integral ainda está pendente.
 
-This subject teaches **Incident readiness, roles and authorized scope** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
-
-**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue estudando — capítulo 01:** [← Curso](../../README.md) · [Índice](../SUBJECTS.md) · [Capítulo 02 (plano) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
-### Chapter 02 — Alert triage and evidence preservation
+### Capítulo 02 — Triagem de alertas e preservação de evidências
 
-**Stage 2; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
+**Planejado; ensino em português ainda não escrito.** A sequência prevista compara sinais e falsas pistas, registra a linha do tempo e escolhe o que preservar sem ampliar a autoridade concedida. O livro inglês contém a referência; sua tradução exige revisão própria.
 
-This subject teaches **Alert triage and evidence preservation** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
-
-**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue estudando — capítulo 02:** [← Capítulo 01 publicado](MANUSCRIPT.md#ch-01) · [Índice](../SUBJECTS.md) · [Capítulo 03 (plano) →](PLAN.md#ch-03)
 
 <a id="ch-03"></a>
 
-### Chapter 03 — Containment, eradication and recovery decisions
+### Capítulo 03 — Decisões de contenção, erradicação e recuperação
 
-**Stage 3; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
+**Planejado; ensino em português ainda não escrito.** A sequência prevista distingue proposta, aprovação, execução observada, recuperação e validação de serviços; resultados de laboratório não viram autorizações de produção.
 
-This subject teaches **Containment, eradication and recovery decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
-
-**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue estudando — capítulo 03:** [← Capítulo 02 (plano)](PLAN.md#ch-02) · [Índice](../SUBJECTS.md) · [Capítulo 04 (plano) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
-### Chapter 04 — Guided incident simulation and after-action review
+### Capítulo 04 — Simulação guiada e revisão pós-incidente
 
-**Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
+**Planejado; ensino em português ainda não escrito.** A sequência prevista exercita equipes, decisões, evidências e aprendizagem posterior com um cenário fictício e papéis nomeados.
 
-This subject teaches **Guided incident simulation and after-action review** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
-
-**Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
-
-## Practical and assessment plan
-
-Practice: follow a contained worked example. Assessment: short quiz, observed lab and a small annotated artifact. Allocate at least one authored exercise to every chapter and at least 50 in the whole book. Each technical exercise needs a goal, inputs, authorized scope, steps, expected evidence and a worked or rubric-based result. The final book requires a glossary, references and an A4 rendering verified under the [book standard](../../../../../BOOK_STANDARD.md).
+**Continue estudando — capítulo 04:** [← Capítulo 03 (plano)](PLAN.md#ch-03) · [Índice](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)

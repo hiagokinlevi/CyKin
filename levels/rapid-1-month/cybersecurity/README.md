@@ -21,7 +21,7 @@ This is one course. It has **one course skill** and **one principal book in each
 | Language | Course materials | Subjects / chapters | Principal book | State |
 |---|---|---|---|---|
 | English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Read public book](en/book/MANUSCRIPT.md) | Public manuscript; editorial review pending |
-| Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Book plan](pt/book/PLAN.md) | Working outline; translation pending |
+| Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Read public book](pt/book/MANUSCRIPT.md) | 20 translated chapters; full review pending |
 | Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Book plan](es/book/PLAN.md) | Working outline; translation pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |
 | Français (`fr`) | [Overview](fr/README.md) · [Materials](fr/MATERIALS.md) | [Chapter index](fr/SUBJECTS.md) | [Book plan](fr/book/PLAN.md) | Working outline; translation pending |
@@ -30,9 +30,9 @@ This is one course. It has **one course skill** and **one principal book in each
 | 中文 (`zh`) | [Overview](zh/README.md) · [Materials](zh/MATERIALS.md) | [Chapter index](zh/SUBJECTS.md) | [Book plan](zh/book/PLAN.md) | Working outline; translation pending |
 | 日本語 (`ja`) | [Overview](ja/README.md) · [Materials](ja/MATERIALS.md) | [Chapter index](ja/SUBJECTS.md) | [Book plan](ja/book/PLAN.md) | Working outline; translation pending |
 
-## English chapter sequence
+## Chapter sequence
 
-The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or public lesson. The book plan summarizes each chapter in full.
+The [English index](en/SUBJECTS.md) and [Portuguese index](pt/SUBJECTS.md) link their published chapters and exercises. The [Portuguese translation record](pt/book/TRANSLATION_REVIEW.md) states what was checked and what remains open. The Spanish edition remains a plan.
 
 **Related project:** [hiagokinlevi/dfir-attack-lab](https://github.com/hiagokinlevi/dfir-attack-lab). Its source material is supplementary and retains its own rights. Original OpenCyber Academy material is dedicated under [CC0 1.0](../../../LICENSE).
 

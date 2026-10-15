@@ -29,6 +29,6 @@ The review units are not new daily lessons, translations or complete-book approv
 
 The next editorial position is [Lesson 06 — A bounded triage question and revisable priority](book/MANUSCRIPT.md#lesson-06). That position is not a learner completion claim.
 
-English is the reference edition and current writing priority. Translation begins after the English collection is written and reviewed; every later edition needs its own technical and language review.
+English is the reference edition and current writing priority. [Portuguese Chapter 01](../pt/book/MANUSCRIPT.md#ch-01) is public for study, with independent translation review still open; Chapters 02–04 remain planned in Portuguese. Every edition needs its own technical and language review.
 
 **Completion gate:** substantive teaching throughout the intended weekly course, one worked example and exercise with its answer per daily lesson, verified sources, safe reproducible practice, and technical, rights, accessibility and editorial review. The current manuscript has a source-matched **403-page A4 length preflight**; that measurement and the 50 exercise/answer pairs do not approve the volume. A public manuscript can be studied before review passes. Course titles do not confer accreditation.

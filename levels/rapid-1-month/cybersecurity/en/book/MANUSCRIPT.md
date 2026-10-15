@@ -548,11 +548,11 @@ After this chapter, you should be able to:
 4. State one fact the offline script cannot know.
 5. Write a short dossier that keeps the observation, the decision and the limit in separate sentences.
 
-### 4.1 Four verdicts, one written rule
+### 4.1 Five labels, four logged actions
 
 Chapters 1–3 left a front-desk worker with a 09:00 paper schedule, two invented bookings, and a rule: do not confirm a later room from that paper, do not open a live site, and do not pull the event-contact list into the booking exercise. Chapter 4 turns that rule into a check a second person can rerun.
 
-The check uses four verdicts. They are labels for this exercise, not a severity scale.
+The check has five possible labels. Four occur in the four-action log; `UNKNOWN` has a zero count. These are labels for this exercise, not a severity scale.
 
 | Verdict | Question it answers | What it does not answer |
 |---|---|---|

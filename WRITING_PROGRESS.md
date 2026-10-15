@@ -10,8 +10,8 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 
 | Sigil | Academic area | English (`en`) | Português (`pt`) | Español (`es`) | עברית (`he`) | Français (`fr`) | Русский (`ru`) | Deutsch (`de`) | 中文 (`zh`) | 日本語 (`ja`) | All nine |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| IR | [Incident response and cyber resilience](levels/rapid-1-month/incident-response-resilience/README.md) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 182/1638 (11.1%) |
-| CYBR | [Cybersecurity](levels/rapid-1-month/cybersecurity/README.md) | 20/198 (10.1%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 20/1654 (1.2%) |
+| IR | [Incident response and cyber resilience](levels/rapid-1-month/incident-response-resilience/README.md) | 182/182 (100.0%) | 1/182 (0.5%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 183/1638 (11.2%) |
+| CYBR | [Cybersecurity](levels/rapid-1-month/cybersecurity/README.md) | 20/198 (10.1%) | 20/198 (10.1%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 40/1670 (2.4%) |
 | INFO | [Information security](levels/rapid-1-month/information-security/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 4/182 (2.2%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 400/1670 (24.0%) |
 | DATA | [Data governance](levels/rapid-1-month/data-governance/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
 | PRIV | [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
@@ -39,7 +39,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Language | Numbered chapters / indexed positions | Structural coverage |
 |---|---:|---:|
 | English (`en`) | 4,312 / 4,490 | 96.0% |
-| Português (`pt`) | 2,589 / 4,266 | 60.7% |
+| Português (`pt`) | 2,610 / 4,282 | 61.0% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
 | Français (`fr`) | 0 / 4,186 | 0.0% |
@@ -47,6 +47,6 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,417 / 38,058** | **19.5%** |
+| **All nine editions** | **7,438 / 38,074** | **19.5%** |
 
 These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).

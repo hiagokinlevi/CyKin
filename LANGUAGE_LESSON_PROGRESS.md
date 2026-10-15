@@ -9,7 +9,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
 | English | 199/207 | 4312/4490 | 30/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 23/4312 |
-| Português | 124/207 | 2589/4266 | 0/120060 | 2492/2589 | 2589/2589 | 2589/2589 | 26/2589 |
+| Português | 126/207 | 2610/4282 | 5/120060 | 2510/2610 | 2610/2610 | 2610/2610 | 26/2610 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 8/516 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
@@ -20,7 +20,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 
 | Level · academic area | English | Português | Español |
 |---|---:|---:|---:|
-| rapid-1-month · Cybersecurity | [20/20](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
+| rapid-1-month · Cybersecurity | [20/20](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/cybersecurity/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
 | rapid-1-month · Information security | [20/20](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md) |
 | rapid-1-month · Data governance | [20/20](levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/data-governance/es/book/PLAN.md) |
 | rapid-1-month · Privacy and data protection | [20/20](levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/privacy-data-protection/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md) |
@@ -35,7 +35,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Cloud and container security | [20/20](levels/rapid-1-month/cloud-containers/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cloud-containers/es/book/PLAN.md) |
 | rapid-1-month · Application and software supply chain security | [20/20](levels/rapid-1-month/application-supply-chain/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/application-supply-chain/es/book/PLAN.md) |
 | rapid-1-month · Security operations and blue team | [20/20](levels/rapid-1-month/security-operations-blue-team/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/security-operations-blue-team/es/book/PLAN.md) |
-| rapid-1-month · Incident response and cyber resilience | [4/4 · 20 daily lessons](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/es/book/PLAN.md) |
+| rapid-1-month · Incident response and cyber resilience | [4/4 · 20 daily lessons](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) | [1/4 · 5 daily lessons](levels/rapid-1-month/incident-response-resilience/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/incident-response-resilience/es/book/PLAN.md) |
 | rapid-1-month · Digital forensics and malware analysis | [20/20](levels/rapid-1-month/digital-forensics-malware/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/digital-forensics-malware/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/digital-forensics-malware/es/book/PLAN.md) |
 | rapid-1-month · Threat intelligence and OSINT | [20/20](levels/rapid-1-month/threat-intelligence-osint/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/threat-intelligence-osint/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/threat-intelligence-osint/es/book/PLAN.md) |
 | rapid-1-month · Authorized offensive security and red team | [20/20](levels/rapid-1-month/offensive-security-red-team/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/offensive-security-red-team/es/book/PLAN.md) |

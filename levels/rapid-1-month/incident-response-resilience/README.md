@@ -21,7 +21,7 @@ This is one course. It has **one course skill** and **one principal book in each
 | Language | Course materials | Subjects / chapters | Principal book | State |
 |---|---|---|---|---|
 | English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [20-lesson index](en/SUBJECTS.md) | [Read public book](en/book/MANUSCRIPT.md) | 4 weekly chapters and 20 daily lessons; whole-book review pending |
-| Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Book plan](pt/book/PLAN.md) | Working outline; translation pending |
+| Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Read Chapter 01](pt/book/MANUSCRIPT.md#ch-01) | Five daily lessons and EX001–EX013 public; Chapters 02–04 planned, full review pending |
 | Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Book plan](es/book/PLAN.md) | Working outline; translation pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |
 | Français (`fr`) | [Overview](fr/README.md) · [Materials](fr/MATERIALS.md) | [Chapter index](fr/SUBJECTS.md) | [Book plan](fr/book/PLAN.md) | Working outline; translation pending |

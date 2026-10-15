@@ -1,13 +1,11 @@
-# Materials — Cybersecurity / Rapid course / Português
+# Materiais — Cibersegurança / Curso rápido / Português
 
-[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/cybersecurity/README.md) · [Course skill](../skill/SKILL.md)
+[Visão geral](README.md) · [Índice das aulas](SUBJECTS.md) · [Livro público](book/MANUSCRIPT.md) · [Plano](book/PLAN.md) · [Skill](../skill/SKILL.md)
 
-**Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
+**Ensino e exemplos:** leia os capítulos 01–20 em sequência. Harbor Library e suas reservas são fictícias. Cada capítulo tem uma decisão delimitada e um exemplo com premissa identificada.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Laboratório:** o [programa do capítulo 04](book/MANUSCRIPT.md#ch-04) usa entradas sintéticas. Compare sua saída com o resultado publicado e interrompa a prática em STOP. O programa não autoriza ações reais nem comprova a recuperação de uma biblioteca.
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
+**Prática e respostas:** EX001–EX036 estão no livro; as resoluções ficam no [apêndice final](book/MANUSCRIPT.md#worked-results). Tente antes de ler a resposta e registre as premissas e dúvidas.
 
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
-
-**References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.
+**Referências e direitos:** siga as ligações do livro às fontes primárias. O texto original segue [CC0 1.0](../../../../LICENSE); fontes externas conservam seus direitos. Tradução, fontes e acessibilidade ainda precisam de revisão completa.

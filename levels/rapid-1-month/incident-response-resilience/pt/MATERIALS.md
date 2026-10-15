@@ -1,13 +1,9 @@
-# Materials — Incident response and cyber resilience / Rapid course / Português
+# Materiais — Resposta a Incidentes / Curso rápido / Português
 
-[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md) · [Course skill](../skill/SKILL.md)
+[Edição](README.md) · [Índice](SUBJECTS.md) · [Livro público](book/MANUSCRIPT.md) · [Plano](book/PLAN.md) · [Skill](../skill/SKILL.md)
 
-**Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
+**Prática disponível:** no [capítulo 1](book/MANUSCRIPT.md#ch-01), os laboratórios BSL1, PATH1, AR1, alegações e R1X usam somente artefatos de sala de aula. A prática ocorre em ambiente offline e tem limites de autoridade explícitos.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Exercícios e respostas:** EX001–EX013 e suas resoluções estão no [mesmo livro](book/MANUSCRIPT.md#answers). Tente antes de ler a solução. As cinco unidades W1-R1–W1-R5 são revisão suplementar, não novas aulas diárias.
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
-
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
-
-**References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.
+**Continuação:** semanas 2–4 permanecem [planejadas](book/PLAN.md#ch-02). Não apresente esse plano como conteúdo já traduzido. Consulte as referências primárias e o aviso de direitos no manuscrito.

@@ -17,6 +17,7 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/cybersecurity/README.md): source-linked practice.
 - [Published English book](../en/book/MANUSCRIPT.md): use the chapters and exercises present there. Review is still open, so do not describe the book as finished or accredited.
+- [Published Portuguese book](../pt/book/MANUSCRIPT.md): chapters 01–20 and EX001–EX036 with worked answers. The [Portuguese index](../pt/SUBJECTS.md) provides sequential navigation. [Translation review record](../pt/book/TRANSLATION_REVIEW.md) names the checks and pending review; do not call the edition complete.
 
 ## Navigation rule
 
@@ -25,7 +26,7 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Tutor workflow
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
+1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference. Portuguese teaching is public for reading but its equivalence review remains open.
 2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
 3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
 4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation, or a finished book, from a folder alone. Page count is not proof of completion.
