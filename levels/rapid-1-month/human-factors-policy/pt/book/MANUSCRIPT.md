@@ -1,16 +1,24 @@
 # Fatores Humanos e Política Cibernética: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 006, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado, com tradução parcial e revisão de equivalência pendente**. Os capítulos 1–10 e EX001–EX056 com respostas estão disponíveis em português. A referência inglesa fixada contém vinte capítulos e EX001–EX066; os capítulos 11–20 ainda não foram traduzidos neste manuscrito. Os quatro capítulos anteriores, seus cinquenta pares e os dois programas foram preservados. A revisão integral técnica, linguística, de fontes, direitos e acessibilidade continua aberta. Nenhuma renderização A4 desta fonte é declarada; uma medição anterior não verifica o texto alterado.
 - Público: funcionários e voluntários de pequenas organizações beneficentes e comunitárias que precisam de um começo rápido e prático em segurança centrada nas pessoas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam os sistemas que cada função alcança e resumem os tempos de reporte num teste guiado, ambos sobre dados sintéticos; nenhum funcionário, voluntário, doador, e-mail ou conta real está envolvido. O teste guiado usa uma conta de e-mail de teste e voluntários que conhecem o propósito. O curso não recomenda phishing simulado; se algum dia for usado, deve ser anunciado, acordado com os representantes dos funcionários e dos voluntários, evitar iscas sobre dinheiro, comida ou dificuldades, dar um retorno gentil e relatar apenas totais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
 
 [Página do curso](../../README.md) · [Índice de capítulos](../SUBJECTS.md) · [Plano do livro](PLAN.md) · [Skill do curso](../../skill/SKILL.md) · [Resoluções](#worked-results)
 
-## Como usar este rascunho
+## Como usar este livro
 
-Leia na ordem. Os quatro capítulos acompanham uma coordenadora de operações num pequeno banco de alimentos: fundamentos e primeiras decisões; escopo, permissão e prática segura; sistemas, dados e dependências; e um laboratório guiado com um plano de um mês. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+Leia na ordem. Os quatro capítulos iniciais acompanham uma coordenadora de operações num pequeno banco de alimentos: fundamentos e primeiras decisões; escopo, permissão e prática segura; sistemas, dados e dependências; e um laboratório guiado com um plano de um mês. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+
+<a id="pt-translation-ch05-10"></a>
+
+### Continuação traduzida — capítulos 05–10
+
+Este lote incorpora seis capítulos, EX051–EX056 e suas respostas no mesmo livro. Fonte: `levels/rapid-1-month/human-factors-policy/en/book/MANUSCRIPT.md`, revisão `bb01c9fa8768320fdc5e2fdaee91c4ecc26d83a1`, blob `51818a05bf99ecb52b4603ff970cb679640bca73`; alvo português anterior: `3cad3561072a3cf8667099e773cd1f673b621fe6`. Responsabilidade editorial: hiagokinlevi. A disponibilidade passa de **4/20 para 10/20 posições de capítulo (50%)**, e de **50/66 para 56/66 IDs com respostas (84,85%)**. São medidas de presença, não equivalência integral aprovada.
+
+A sequência 05–10 preserva ensino, objetivos, tabelas, mapas, desenhos textuais, rubricas 0–3 e gabaritos da fonte. Tente cada exercício antes de seguir o link para sua resposta. Os próximos capítulos permanecem na [lacuna 11–20](PLAN.md#translation-gap). O [registro do lote](PLAN.md#translation-review) delimita a comparação e os testes; as [notas técnicas separadas](#pt-human-limits-05-10) distinguem o que os programas calculam do que não observam. Esta publicação não declara a coleção inglesa ou portuguesa concluída.
 
 ### Caso sintético
 
@@ -29,7 +37,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -159,7 +167,7 @@ As decisões precisam de continuidade. As equipes pequenas mudam com frequência
 A segurança em organizações pequenas começa pelas pessoas, por procedimentos simples e por uma cultura de reporte acolhedora.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-01 -->
-### Continue estudando — aula 01 (capítulo 01 de 04)
+### Continue estudando — aula 01 (capítulo 01 de 20 na referência; 10 disponíveis em português)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
@@ -292,7 +300,7 @@ O escopo pode precisar de atualização. Os voluntários podem não ler os guias
 Escopo claro, permissão e hábitos éticos tornam o trabalho de segurança confiável.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-02 -->
-### Continue estudando — aula 02 (capítulo 02 de 04)
+### Continue estudando — aula 02 (capítulo 02 de 20 na referência; 10 disponíveis em português)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
@@ -446,7 +454,7 @@ Os mapas se desatualizam. Os segundos aprovadores precisam de treinamento.
 Mapear sistemas, dados e pessoas revela pontos únicos de falha que correções simples podem eliminar.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-03 -->
-### Continue estudando — aula 03 (capítulo 03 de 04)
+### Continue estudando — aula 03 (capítulo 03 de 20 na referência; 10 disponíveis em português)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
@@ -597,18 +605,487 @@ Teste pequeno. Os planos atrasam sem revisão.
 Um teste seguro, um plano curto e medidas simples e gentis dão a uma pequena organização beneficente um começo sólido.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-04 -->
-### Continue estudando — aula 04 (capítulo 04 de 04)
+### Continue estudando — aula 04 (capítulo 04 de 20 na referência; 10 disponíveis em português)
 
-[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 em português →](#ch-05)
 
-O índice aponta para o próximo curso do percurso de estudos.
+Continue para os capítulos 05–10 traduzidos; o quarto módulo anterior não encerra a referência atual.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Um plano adotado não significa que a segunda semana já foi cumprida
+
+<!-- open-cyber-academy:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  A["Os curadores adotam o plano de quatro semanas"] --> B["A segunda semana prevê contas individuais"]
+  B --> C{"Há uma nova listagem de acessos nos documentos?"}
+  C -->|Não| D["Mantenha as quatro linhas de funções publicadas"]
+  C -->|Sim| E["Essa listagem seria uma execução própria"]
+```
+
+A adoção define o trabalho. Não executa a segunda semana.
+
+### Desenho lógico
+
+```text
+saída publicada de acessos
+    treasurer: 5 of 5
+    coordinator: 3 of 5
+    warehouse volunteer: 1 of 5
+    staff (rota needed): 1 of 5
+plano, segunda semana
+    substituir o login compartilhado de doações
+        |
+        +-- a adoção pelos curadores não é essa substituição
+        +-- lab_access.py não é alterado
+        +-- nenhuma nova função é acrescentada ao dicionário
+```
+<!-- open-cyber-academy:lesson-figures:end ch-05 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Manter as linhas de acesso publicadas como a contagem já executada.
+2. Distinguir uma etapa da segunda semana adotada no plano de contas já criadas e disponibilizadas.
+3. Manter o achado sobre o login compartilhado até que exista uma listagem posterior.
+
+### 5.1 A assinatura inicia o mês. Não conclui a tarefa de terça-feira.
+
+O Capítulo 4 registra que os curadores adotam o plano de quatro semanas de Ruth. A segunda semana desse plano prevê substituir o login compartilhado de doações por contas individuais. Um colega trata a adoção como prova de que a substituição aconteceu e quer reescrever a nota de acessos para que cada função apresente um login individual. A única listagem nos documentos é a saída de quatro linhas de `lab_access.py`. Essa saída ainda descreve a tesoureira, a coordenadora, o voluntário do armazém e os funcionários que precisam da escala. Ela não descreve a criação e a disponibilização concluídas de contas. Ruth mantém o script inalterado. A segunda semana continua sendo uma etapa do plano adotado, não um resultado que ela já possa citar.
+
+### 5.2 Exemplo resolvido
+
+| O que alguém cita | O que os documentos contêm | Decisão |
+|---|---|---|
+| Os curadores adotam o plano | Uma decisão de seguir as quatro semanas | Mantenha a adoção |
+| "Portanto, a segunda semana está concluída." | Nenhuma listagem posterior de acessos | Recuse |
+| As quatro linhas de funções publicadas | A primeira execução | Mantenha-as |
+| "Acrescente uma linha para cada conta nova." | O dicionário original | Recuse a alteração |
+
+> **Caso sintético.** Nenhum login novo é disponibilizado nesta aula. As quatro linhas continuam sendo a execução verificada.
+
+### Erros e limites
+
+Manter a segunda semana em aberto não cancela a decisão de substituir o login compartilhado. Recusa um resultado que os documentos não contêm.
+
+### Aplicar
+
+- **EX051 — Qual semana foi concluída?** Os curadores adotam o plano. A segunda semana prevê substituir o login compartilhado de doações por contas individuais. A saída de acessos continua sendo as quatro linhas publicadas. A segunda semana foi executada? O que acontece com o script? *Rubrica:* 3 = adoção não é conclusão; as quatro linhas permanecem; não alterar o script; não acrescentar linhas de contas; 2 = o plano foi adotado e a saída permanece; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX051 no apêndice](#answer-ex051).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 20 na referência inglesa)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Sete de oito não são oito acertos perfeitos
+
+<!-- open-cyber-academy:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  P["Saída publicada: correct 7/8"] --> G["Uma mensagem genuína foi encaminhada"]
+  G --> U["Ruth trata esse encaminhamento como útil"]
+  U --> R{"Alguém troca o 0 por 1?"}
+  R -->|Sim| N["Recuse. Isso seria outra lista"]
+  R -->|Não| K["7/8 permanece, e o encaminhamento continua útil"]
+```
+
+Uma interpretação acolhedora não reescreve a contagem de acertos.
+
+### Desenho lógico
+
+```text
+lab_route.py
+    correct 7/8
+    median time 40 s
+    over 60 s: 2
+o oitavo indicador
+    uma mensagem genuína, encaminhada
+    registrada como 0 na lista correct
+        |
+        +-- útil não é a mesma afirmação que correto
+        +-- o 0 não é invertido
+        +-- ninguém é identificado pelo nome
+```
+<!-- open-cyber-academy:lesson-figures:end ch-06 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Manter `correct 7/8` como a linha publicada de acertos.
+2. Manter o encaminhamento da mensagem genuína como um reporte útil.
+3. Recusar uma lista reescrita que produziria oito de oito.
+
+### 6.1 Útil e correto respondem a perguntas diferentes
+
+O laboratório guiado pediu a oito voluntários que reportassem qualquer coisa estranha. Sete reportaram a mensagem suspeita. Uma pessoa encaminhou uma mensagem genuína, e Ruth trata esse encaminhamento como um reporte útil, em vez de repreendê-la. Um colega diz que esse acolhimento significa que a saída deveria mostrar oito de oito. O programa conta apenas a mensagem suspeita. O encaminhamento genuíno corresponde ao 0 final na lista de acertos, e por isso a linha mostra 7/8. Chamá-lo de útil não altera esse 0. Ruth não modifica `lab_route.py` nem identifica a pessoa pelo nome.
+
+### 6.2 Exemplo resolvido
+
+| Afirmação | A qual pergunta responde | Decisão |
+|---|---|---|
+| Sete reportaram a mensagem suspeita | A lista de acertos | Mantenha 7/8 |
+| O outro encaminhamento foi um reporte útil | A interpretação de Ruth sobre a pessoa | Mantenha essa interpretação |
+| "Então o laboratório foi 8/8." | Outra contagem | Recuse |
+| "Troque o último 0 por 1." | A lista publicada | Recuse |
+
+> **Caso sintético.** A oitava pessoa permanece sem nome. O 0 pertence à lista já executada.
+
+### Erros e limites
+
+Proteger a pessoa de culpa não exige uma fração mais bonita. A fração e o acolhimento podem permanecer juntos.
+
+### Aplicar
+
+- **EX052 — Qual número muda?** Sete de oito reportaram a mensagem suspeita. A outra pessoa encaminhou uma mensagem genuína, e Ruth considera isso útil. A saída pode passar a 8/8? O que acontece com o script? *Rubrica:* 3 = 7/8 permanece; o encaminhamento genuíno continua sendo um reporte útil e não é reclassificado como reporte correto de mensagem suspeita; não alterar o script; não identificar voluntário pelo nome; 2 = 7/8 permanece e a pessoa não é culpabilizada; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX052 no apêndice](#answer-ex052).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 20 na referência inglesa)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Um alerta de teste não é cada alerta posterior
+
+<!-- open-cyber-academy:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07. Mapa, exemplo, EX053.
+
+```mermaid
+flowchart TD
+  O["Os alertas iam apenas ao e-mail pessoal da tesoureira"] --> F["Uma caixa postal compartilhada também é acrescentada"]
+  F --> T["Um alerta de teste chegou a essa caixa postal"]
+  T --> L{"O teste dispensa a conferência do próximo alerta real?"}
+  L -->|Não| K["O próximo alerta ainda precisa ser observado"]
+```
+
+A conferência do caminho usa uma mensagem. Não é uma promessa sobre a mensagem seguinte.
+
+### Desenho lógico
+
+```text
+destino original
+    somente o e-mail pessoal da tesoureira
+correção
+    caixa postal compartilhada da organização, além da tesoureira
+conferência já realizada
+    um alerta de teste chegou à caixa postal compartilhada
+        |
+        +-- a cópia pessoal não é removida
+        +-- o teste não é o próximo alerta de fatura
+        +-- nenhuma chegada posterior é inventada
+```
+<!-- open-cyber-academy:lesson-figures:end ch-07 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Manter o alerta de teste como uma chegada confirmada.
+2. Manter a cópia pessoal da tesoureira.
+3. Recusar o uso do teste como prova de cada alerta posterior.
+
+### 7.1 A caixa postal foi acrescentada ao lado do endereço antigo e testada uma vez
+
+Os alertas bancários iam apenas ao e-mail pessoal da tesoureira. A correção também os envia a uma caixa postal compartilhada da organização. Ruth confirmou que um alerta de teste chegou a essa caixa postal e registrou a conferência. Um colega risca o endereço pessoal da página e escreve que os alertas futuros estão resolvidos. Os documentos dizem "além de", não "em vez de". Uma chegada não descreve o próximo alerta real do banco. Ruth não remove a cópia da tesoureira, e esta aula não inventa um segundo teste.
+
+### 7.2 Exemplo resolvido
+
+| Frase | Sustentação nos documentos | Decisão |
+|---|---|---|
+| Um alerta de teste chegou à caixa postal compartilhada | A conferência registrada por Ruth | Pode permanecer |
+| A tesoureira também continua recebendo alertas | "Além de" | Pode permanecer |
+| "Todos os alertas posteriores chegarão." | Nenhum teste posterior | Recuse |
+| "Exclua o endereço pessoal." | A correção não determinou isso | Recuse |
+
+> **Caso sintético.** Nenhum segundo alerta é redigido. A tesoureira continua sem nome.
+
+### Erros e limites
+
+Manter a cópia pessoal não significa que a caixa postal compartilhada fosse desnecessária. Significa que os documentos não substituíram um destino pelo outro.
+
+### Aplicar
+
+- **EX053 — O que o teste abrangeu?** Um alerta bancário de teste chegou à caixa postal compartilhada. Os alertas também continuam indo à tesoureira. Um integrante da equipe exclui o endereço pessoal e diz que os alertas posteriores estão garantidos. O que permanece? O que não está garantido? *Rubrica:* 3 = o teste realizado permanece; a cópia pessoal permanece; um alerta posterior não está garantido; não inventar segundo teste; 2 = um teste não é cada alerta, e a cópia pessoal permanece; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX053 no apêndice](#answer-ex053).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 20 na referência inglesa)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Um pagamento de teste não valida os novos dados do atacadista
+
+<!-- open-cyber-academy:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08. Mapa, exemplo, EX054.
+
+```mermaid
+flowchart TD
+  T["Um pequeno pagamento de teste usou o retorno de ligação"] --> P["Essa conferência testou o caminho do segundo curador"]
+  W["Um remetente parecido com o atacadista pede novos dados bancários"] --> C["Ligue para o número já cadastrado"]
+  P --> R{"O teste aprova o pedido do atacadista?"}
+  R -->|Não| K["O pedido ainda precisa de sua própria ligação"]
+```
+
+O ensaio de ontem não responde à fatura de hoje.
+
+### Desenho lógico
+
+```text
+conferência já realizada
+    segundo curador
+    pequeno pagamento de teste
+    retorno de ligação utilizado
+ainda necessário para uma alteração real
+    ligar para o fornecedor no número cadastrado
+isca típica
+    endereço parecido com o do atacadista
+    novos dados bancários
+        |
+        +-- o pagamento de teste não identifica fornecedor
+        +-- nenhum valor é registrado aqui
+        +-- a isca não é paga
+```
+<!-- open-cyber-academy:lesson-figures:end ch-08 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Manter o pequeno pagamento de teste como uma conferência do caminho do segundo curador.
+2. Submeter um pedido posterior de alteração bancária à ligação para o número cadastrado.
+3. Recusar o uso do ensaio como aprovação de uma fatura enviada por um remetente semelhante ao legítimo.
+
+### 8.1 O retorno de ligação foi praticado. Não foi usado para aprovar um fornecedor.
+
+Ruth pediu ao segundo curador que aprovasse um pequeno pagamento de teste, e essa aprovação usou um retorno de ligação. Separadamente, a decisão inicial exige conferir qualquer alteração dos dados bancários de um fornecedor ligando para o número já cadastrado. Um colega recebe uma mensagem de um endereço parecido com o do atacadista de alimentos, pedindo pagamento para novos dados bancários, e diz que o teste torna o caminho confiável o suficiente para pagar. O teste não tinha fornecedor nem conta nova. A mensagem semelhante à legítima é a situação para a qual a ligação foi prevista. Ruth não faz o pagamento, não inventa um valor nem o nome verdadeiro do atacadista.
+
+### 8.2 Exemplo resolvido
+
+| Item | O que é | Decisão |
+|---|---|---|
+| Pequeno pagamento de teste com retorno de ligação | Uma conferência do segundo curador | Pode permanecer como essa conferência |
+| Remetente parecido com o atacadista, dados novos | A isca típica | Não pague |
+| "O ensaio abrangeu esta fatura." | Um salto de conclusão | Recuse |
+| Ligar para o número cadastrado | A regra para uma alteração real | Continua necessário |
+
+> **Caso sintético.** Nenhum nome de fornecedor, número de conta ou valor é acrescentado.
+
+### Erros e limites
+
+Recusar a isca não desfaz o pagamento de teste. O ensaio e a fatura são objetos diferentes.
+
+### Aplicar
+
+- **EX054 — Qual pagamento era o teste?** O segundo curador aprovou um pequeno pagamento de teste com retorno de ligação. Depois, um remetente parecido com o atacadista pede novos dados bancários. O teste aprova esse pedido? Qual ligação continua necessária? *Rubrica:* 3 = o teste não aprova a isca; ligar para o número já cadastrado; não pagar; não inventar valor nem nome de fornecedor; 2 = a isca não é o pagamento de teste; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX054 no apêndice](#answer-ex054).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 20 na referência inglesa)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — A lacuna da escala não se resolve copiando a linha da tesoureira
+
+<!-- open-cyber-academy:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  S["staff (rota needed): 1 of 5"] --> G["Têm e-mail e não têm a escala"]
+  G --> C{"Alguém lhes concede os cinco sistemas da tesoureira?"}
+  C -->|Sim| R["Recuse. A lacuna é a escala, não o banco"]
+  C -->|Não| K["A linha publicada permanece em 1 of 5"]
+```
+
+O sistema que falta é indicado pela função. Isso não é um convite para copiar outra função.
+
+### Desenho lógico
+
+```text
+funcionários que precisam da escala
+    somente e-mail
+    1 of 5
+tesoureira
+    email, spreadsheet, bank, rota, social
+    5 of 5
+lacuna registrada por Ruth
+    alguns funcionários que precisam da escala não têm esse acesso
+        |
+        +-- a correção seria a escala, não o conjunto inteiro
+        +-- esta aula também não concede a escala
+        +-- a saída não é reescrita
+```
+<!-- open-cyber-academy:lesson-figures:end ch-09 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Interpretar `staff (rota needed): 1 of 5` como e-mail sem acesso à escala.
+2. Recusar a cópia dos cinco sistemas da tesoureira para essa função.
+3. Manter a lacuna em aberto nesta aula.
+
+### 9.1 O nome da função indica qual sistema está faltando
+
+A listagem de acessos imprime `staff (rota needed): 1 of 5`. O dicionário dá a essa função apenas e-mail. A nota de Ruth diz que alguns funcionários que precisam da escala não têm esse acesso. Um colega "corrige" a linha concedendo a esses funcionários os cinco sistemas da tesoureira, inclusive banco e redes sociais. A lacuna é a escala. Não é motivo para entregar pagamentos ou páginas públicas. Esta aula também não concede a escala, porque nenhuma nova listagem foi executada. A linha publicada permanece em 1 of 5. Ruth não altera `lab_access.py`.
+
+### 9.2 Exemplo resolvido
+
+| Proposta | O que altera | Decisão |
+|---|---|---|
+| Manter a linha dos funcionários em 1 of 5 | Nada | Aceite para estes documentos |
+| Dar a esses funcionários a escala quando uma alteração real for feita | O sistema que falta | Não foi feito nesta aula |
+| Copiar os cinco sistemas da tesoureira | Também banco e redes sociais | Recuse |
+| Excluir a função para fazer a lacuna desaparecer | A evidência | Recuse |
+
+> **Caso sintético.** Nenhum funcionário é identificado pelo nome. A escala não é habilitada aqui.
+
+### Erros e limites
+
+Manter a lacuna visível não é decidir negar a escala para sempre. Impede que uma concessão mais ampla se faça passar pela correção menor.
+
+### Aplicar
+
+- **EX055 — Qual sistema estava faltando?** A saída mostra `staff (rota needed): 1 of 5`, e essa função tem apenas e-mail. Um integrante da equipe atribui os cinco sistemas da tesoureira. Qual era a lacuna? O que a saída continua mostrando? *Rubrica:* 3 = a lacuna é a escala, não o banco nem as redes sociais; a linha permanece em 1 of 5; não copiar o conjunto da tesoureira; não alterar o script; esta aula não concede a escala; 2 = a lacuna é a escala e a saída permanece; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX055 no apêndice](#answer-ex055).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 20 na referência inglesa)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Um login verificado não é uma senha compartilhada destruída
+
+<!-- open-cyber-academy:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  O["Um voluntário não identificado sabia a senha compartilhada"] --> D["Logins individuais e verificação em duas etapas"]
+  D --> R["O login próprio de Ruth passou por uma conferência"]
+  R --> Q{"Há comprovação de que a senha antiga foi destruída?"}
+  Q -->|Não| K["Não escreva a senha nem identifique o voluntário"]
+```
+
+Uma autenticação bem-sucedida em uma conta não comprova todas as outras contas.
+
+### Desenho lógico
+
+```text
+ponto único anterior
+    um voluntário sabe a senha compartilhada das redes sociais
+    essa pessoa não é identificada pelo nome
+desenho da correção
+    logins individuais
+    verificação em duas etapas
+    dados de recuperação guardados pela gerente da organização
+conferência
+    Ruth entra com sua própria conta
+    a verificação em duas etapas funciona nessa autenticação
+        |
+        +-- uma conta não é cada conta
+        +-- a destruição da senha compartilhada não consta dos documentos
+        +-- a senha não é escrita
+```
+<!-- open-cyber-academy:lesson-figures:end ch-10 -->
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá conseguir:
+
+1. Manter a conferência em duas etapas de Ruth como uma conferência do login dela.
+2. Deixar sem afirmação a destruição da senha compartilhada antiga.
+3. Não identificar a senha nem o voluntário que a conhecia.
+
+### 10.1 A conferência tinha um único objeto: a autenticação da própria Ruth
+
+Só um voluntário sabia a senha das redes sociais, e o livro nunca identifica essa pessoa pelo nome. A correção são logins individuais, verificação em duas etapas e dados de recuperação guardados pela gerente da organização. Ruth então entra com sua própria conta e vê a verificação em duas etapas funcionar. Um colega escreve "senha compartilhada destruída" e pede que Ruth guarde a senha antiga na nota para permitir comparação. Os documentos mostram uma conferência bem-sucedida. Não mostram uma destruição nem todas as outras contas. Ruth não escreve senha nem inventa nome. A linha da tesoureira na listagem de acessos é outro fato e não é usada para identificar quem conhecia a senha.
+
+### 10.2 Exemplo resolvido
+
+| Frase | Evidência | Decisão |
+|---|---|---|
+| O login próprio de Ruth passou pela verificação em duas etapas | A conferência | Pode permanecer |
+| Os dados de recuperação ficam com a gerente | O desenho da correção | Pode permanecer como desenho |
+| "A senha compartilhada foi destruída." | Não consta dos documentos | Recuse |
+| "Escreva a senha antiga na margem." | Um segredo que a nota não deve guardar | Recuse |
+| Identificar pelo nome o voluntário que a sabia | Nenhum nome foi fornecido | Não invente |
+
+> **Caso sintético.** Nenhuma senha ou conta adicional é criada.
+
+### Erros e limites
+
+Impedir que a nota guarde uma senha não prova que a senha antiga seja inofensiva. Mantém a nota dentro do que foi conferido.
+
+### Aplicar
+
+- **EX056 — O que a autenticação de Ruth comprovou?** A verificação em duas etapas funcionou no login próprio de Ruth nas redes sociais. Um integrante da equipe escreve que a senha compartilhada foi destruída e pede que ela seja copiada para a nota. O que permanece válido? O que você não escreve? *Rubrica:* 3 = a conferência é de uma conta; a destruição não consta dos documentos; não escrever a senha; não identificar o voluntário pelo nome; 2 = um login não é uma senha destruída; 1 = um desses elementos; 0 = nenhum.
+
+[Resolução de EX056 no apêndice](#answer-ex056).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 20 na referência inglesa)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 — tradução pendente →](PLAN.md#translation-gap)
+
+A referência inglesa continua no Capítulo 11. Os capítulos 11–20 ainda não têm tradução neste manuscrito; um plano não substitui o ensino.
 <!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX050. Ruth Adeyemi, Callum Shaw, o Oakmere Adult Learning Centre, o Riverbend Food Bank e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX056. Ruth Adeyemi, Callum Shaw, o Oakmere Adult Learning Centre, o Riverbend Food Bank e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Doze funcionários e sessenta voluntários.
 
@@ -709,6 +1186,54 @@ Respostas-modelo para EX001–EX050. Ruth Adeyemi, Callum Shaw, o Oakmere Adult 
 **EX049.** Que são desnecessários e poderiam prejudicar a confiança.
 
 **EX050.** Depois de três meses.
+
+<a id="answer-ex051"></a>
+
+**EX051.** Adoção não é conclusão. As quatro linhas permanecem. Não altere o script. Não acrescente linhas de contas.
+
+[Voltar ao exercício EX051](#ch-05).
+
+<a id="answer-ex052"></a>
+
+**EX052.** 7/8 permanece. O encaminhamento genuíno continua sendo um reporte útil e não é reclassificado como reporte correto de mensagem suspeita. Não altere o script. Não identifique voluntário pelo nome.
+
+[Voltar ao exercício EX052](#ch-06).
+
+<a id="answer-ex053"></a>
+
+**EX053.** O teste realizado permanece. A cópia pessoal permanece. Um alerta posterior não está garantido. Não invente segundo teste.
+
+[Voltar ao exercício EX053](#ch-07).
+
+<a id="answer-ex054"></a>
+
+**EX054.** O teste não aprova a isca. Ligue para o número já cadastrado. Não pague. Não invente valor nem nome de fornecedor.
+
+[Voltar ao exercício EX054](#ch-08).
+
+<a id="answer-ex055"></a>
+
+**EX055.** A lacuna é a escala, não o banco nem as redes sociais. A linha permanece em 1 of 5. Não copie o conjunto da tesoureira. Não altere o script. Esta aula não concede a escala.
+
+[Voltar ao exercício EX055](#ch-09).
+
+<a id="answer-ex056"></a>
+
+**EX056.** A conferência é de uma conta. A destruição não consta dos documentos. Não escreva a senha. Não identifique o voluntário pelo nome.
+
+[Voltar ao exercício EX056](#ch-10).
+
+<a id="pt-human-limits-05-10"></a>
+
+### Notas editoriais do lote 05–10 — separadas do texto traduzido
+
+**O que os programas observam:** nenhum deles inspeciona uma conta, lê uma mensagem, cria um login ou realiza pagamento. `lab_access.py` conta elementos dos conjuntos fornecidos; o divisor apresentado como cinco é literal. `lab_route.py` soma os rótulos fornecidos em `correct`, ordena os tempos e utiliza as posições 3 e 4 com divisor oito fixo. A frase do Capítulo 6 sobre contar a mensagem suspeita deve ser lida como contagem dos indicadores do caso, não como detecção automática de phishing. Uma nova listagem também não concede autorização nem comprova, por si só, a criação de contas. Os exemplos preservam decisões e pendências da narrativa; ausência de evidência nos documentos não é uma prova universal de ausência de acontecimentos.
+
+**Saídas reproduzidas e limites de generalização:** as listagens completas, transcritas das leituras fixadas, foram executadas em Python 3.13.5. O acesso reproduziu quatro linhas; o reporte reproduziu `correct 7/8; median time 40 s; over 60 s: 2`. Dez entradas alternativas mostraram, entre outros limites, que um sexto sistema pode imprimir `6 of 5`; sete tempos produzem 40 onde a mediana desse conjunto é 38; nove tempos produzem 40 onde a mediana é 42; tempos vazios geram `IndexError`; um indicador 2 pode produzir `9/8`. O limiar é estritamente maior que sessenta, e conjuntos eliminam elementos repetidos. Esses testes são separados da execução canônica; não alteram as listas, os gabaritos ou os acontecimentos do Riverbend. O código anterior não foi modificado silenciosamente.
+
+**Fontes e proveniência:** foi consultada a [página oficial de NIST SP 800-50 Rev. 1](https://csrc.nist.gov/pubs/sp/800/50/r1/final), que descreve programas de aprendizagem adaptáveis e avaliação. Os quatro papéis, oito participantes, tempos, decisões de contas e prazos do caso são sintéticos, não exigências numéricas do NIST. A página oficial também lista **Marian Merritt** antes dos cinco autores que constam da referência antiga deste livro: a referência está incompleta e precisa de correção coordenada nas duas edições. Ela foi preservada abaixo, não declarada bibliograficamente aprovada. A [página dos autores no arXiv](https://arxiv.org/abs/1901.02672) confirma o trabalho de Bada, Sasse e Nurse e seu resumo; esta consulta não substitui nova revisão integral dos artigos, dos livros comerciais ou da referência ABNT.
+
+A comparação deste lote preservou dezoito objetivos, seis tabelas com 25 linhas de exemplos, seis mapas com 25 conexões, seis desenhos textuais, seis enunciados, seus quatro níveis de rubrica e seis respostas. Sete controles estruturais inválidos foram rejeitados. A igualdade da estrutura não certifica a tradução. A reconciliação integral dos quatro capítulos anteriores, a revisão humana independente, a renderização Mermaid/A4 e a leitura ao vivo do site/MCP continuam pendentes. Os rótulos truncados em diagramas antigos não foram corrigidos nesta passagem. Nenhuma ação sobre pessoas, contas, mensagens ou dinheiro reais ocorreu.
 
 <a id="references"></a>
 ## Referências
