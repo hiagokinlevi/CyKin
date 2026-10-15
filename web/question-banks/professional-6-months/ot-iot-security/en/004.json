@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 4,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "c3ebe1faa45133ae6a36172e7d442ed0ebe4ceda",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-04",
+  "source_sha256": "ee9a517b8597187ae3aa8b7b540f44c8925809d5d06c4f7dbe9a33774f3182a4",
+  "case_note": "Millbrook Hospital and its device data are synthetic. Q05 changes one lab input hypothetically; it does not amend the source case.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which inventory field most directly supports ranking a device finding by urgency?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Installation year"
+        },
+        {
+          "id": "b",
+          "text": "Network address"
+        },
+        {
+          "id": "c",
+          "text": "Clinical consequence of failure"
+        },
+        {
+          "id": "d",
+          "text": "Controller model"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Clinical consequence connects a device failure to patient impact and therefore to the urgency of a finding. Installation year helps describe age but does not establish urgency; the network address helps identify applicable firewall rules; the controller model identifies the equipment. Section 4.6 requires consequence wording to be agreed with estates and clinical leads rather than guessed by the analyst.",
+      "source": "Chapter 4, §4.1 \"What to record\" and §4.6 \"Consequence column\""
+    },
+    {
+      "id": "Q02",
+      "prompt": "Only the installation year is known for a controller. How should Aisha establish its vendor support status?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirm support status with the vendor"
+        },
+        {
+          "id": "b",
+          "text": "Classify it as unsupported from age alone"
+        },
+        {
+          "id": "c",
+          "text": "Copy the status of another controller nearby"
+        },
+        {
+          "id": "d",
+          "text": "Treat continued operation as proof of support"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The installation year is a hint, not a support determination. The chapter requires vendor confirmation before treating a support flag as final. Age alone cannot establish the answer; a nearby controller does not provide evidence about this device; continued operation says nothing about whether the vendor will publish fixes for new weaknesses.",
+      "source": "Chapter 4, §4.3 \"Reading the output\" and \"Errors and limits\""
+    },
+    {
+      "id": "Q03",
+      "prompt": "Two inventory sources disagree on a device field. Which reconciliation preserves the evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep whichever value was recorded most recently"
+        },
+        {
+          "id": "b",
+          "text": "Accept the handover file and discard the other value"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a new handover file before recording the conflict"
+        },
+        {
+          "id": "d",
+          "text": "Record both values and sources; resolve with the owner"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 4.5 requires recording which source supplied each field and retaining both values when sources disagree, then resolving the discrepancy with the owner. A newer date alone does not settle accuracy. The handover file can omit later additions, so it is not automatically decisive. Waiting for another handover revision without recording the conflict leaves the current disagreement undocumented rather than reconciling it.",
+      "source": "Chapter 4, §4.5 \"Where the data comes from\""
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which role receives an MGAS-PANEL finding under the chapter's system-based grouping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The estates mechanical lead"
+        },
+        {
+          "id": "b",
+          "text": "The medical gas authorised person"
+        },
+        {
+          "id": "c",
+          "text": "The lift maintenance contractor"
+        },
+        {
+          "id": "d",
+          "text": "The network switch administrator"
+        }
+      ],
+      "correct": "b",
+      "explanation": "MGAS-PANEL belongs to the medical gas alarm group, which the chapter routes to the medical gas authorised person. The estates mechanical lead is the stated contact for HVAC devices; the lift contractor is the contact for the elevator. Switch data can contribute network evidence, but that does not make the switch administrator the designated medical gas contact.",
+      "source": "Chapter 4, §4.2 \"Grouping\" and EX020 \"Who to call\""
+    },
+    {
+      "id": "Q05",
+      "prompt": "In Lab 4, only CHILLER-1's year becomes \"2025\"; supported remains False. What happens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Still flagged unsupported; still counted in HVAC"
+        },
+        {
+          "id": "b",
+          "text": "No longer flagged; still counted in HVAC"
+        },
+        {
+          "id": "c",
+          "text": "Still flagged unsupported; excluded from HVAC"
+        },
+        {
+          "id": "d",
+          "text": "No longer flagged; excluded from HVAC"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The loop adds every device to its system group before testing `if not supported`. Changing only the year leaves False unchanged, so CHILLER-1 is still printed as unsupported and remains one of the three HVAC devices. The year appears in the output but is not a support test. Suppressing the flag or excluding the device from the group would require logic that this lab does not contain. This hypothetical output is not vendor confirmation.",
+      "source": "Chapter 4, §4.2 \"Grouping\", Lab 4 loop and verified output; §4.3 \"Reading the output\""
+    },
+    {
+      "id": "Q06",
+      "prompt": "Vendor support has ended for a controller that still operates. What does \"unsupported\" mean here?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The controller can no longer perform its physical function"
+        },
+        {
+          "id": "b",
+          "text": "The firmware is merely one release behind the current version"
+        },
+        {
+          "id": "c",
+          "text": "The vendor will publish no fixes for new weaknesses"
+        },
+        {
+          "id": "d",
+          "text": "The controller has already been successfully exploited"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter defines unsupported as no vendor fixes for new weaknesses. That creates a reason to plan compensating controls and replacement, even while the device operates. It is not a statement that the plant has stopped working, a measurement of how many firmware versions are missing, or evidence that exploitation has occurred.",
+      "source": "Chapter 4, §4.3 \"Reading the output\" and EX018 \"Meaning of unsupported\""
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which allowed source matches CHILLER-1's dedicated firewall rule in the synthetic worked example?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every device in the HVAC group"
+        },
+        {
+          "id": "b",
+          "text": "BMS-WS only"
+        },
+        {
+          "id": "c",
+          "text": "Every estates corporate workstation"
+        },
+        {
+          "id": "d",
+          "text": "The lift contractor's cellular gateway"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The worked example explicitly allows only BMS-WS through CHILLER-1's dedicated firewall rule. Membership of the HVAC group does not grant network access, and the example does not allow all estates workstations or the lift contractor's gateway. The lift cellular link is a separate review. This restriction is a compensating measure alongside a replacement plan, not proof that the unsupported chiller has regained vendor support.",
+      "source": "Chapter 4, \"Worked example (synthetic Millbrook)\" and §4.3 \"Reading the output\""
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which inventory entry makes temporary controls traceable while replacement is deferred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support status alone until the next inventory review"
+        },
+        {
+          "id": "b",
+          "text": "A replacement year without documenting interim controls"
+        },
+        {
+          "id": "c",
+          "text": "Controls and an owner, with no date or replacement target"
+        },
+        {
+          "id": "d",
+          "text": "Controls, a named owner, a date and a replacement target"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 4.3 asks for the compensating controls beside each unsupported device, an owner and a date, plus when replacement is due. Support status alone does not record a treatment. A replacement year alone omits the interim protection. Controls and an owner without dates leave the timing and replacement plan untracked. The controls bridge the delay; they are not a permanent substitute for replacement planning.",
+      "source": "Chapter 4, §4.3 \"Reading the output\" and \"Worked example (synthetic Millbrook)\""
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which inventory-sharing practice follows Chapter 4 while preserving accountability?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Email the complete inventory to every contractor after updates"
+        },
+        {
+          "id": "b",
+          "text": "Restrict contractors to their systems; record who changed entries and when"
+        },
+        {
+          "id": "c",
+          "text": "Give every employee read-only access to the complete inventory"
+        },
+        {
+          "id": "d",
+          "text": "Keep a shared contractor copy without recording individual edits"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The inventory exposes device identities, versions and addresses, so the chapter limits sharing to people who need it, including contractors for their own systems. It also requires recording who changed it and when. Mailing the whole inventory broadly or granting all employees read access expands disclosure; read-only permission does not remove that exposure. An unattributed shared copy loses change accountability. Access is reviewed quarterly, and older copies are kept out of email.",
+      "source": "Chapter 4, §4.4 \"Using the inventory\""
+    },
+    {
+      "id": "Q10",
+      "prompt": "One HVAC device has a password-policy weakness. What does system grouping justify next?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mark every HVAC device as confirmed affected"
+        },
+        {
+          "id": "b",
+          "text": "Check only devices with the same installation year"
+        },
+        {
+          "id": "c",
+          "text": "Check the other HVAC devices for a shared weakness"
+        },
+        {
+          "id": "d",
+          "text": "Limit the review to the device that raised the finding"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The three HVAC devices may share a contractor and a password policy, so Section 4.2 calls for checking the others when a weakness appears on one. Shared grouping is a reason to investigate, not proof that all devices are affected. Filtering only by installation year misses the stated relationship, while limiting review to the first device ignores the possible shared cause.",
+      "source": "Chapter 4, §4.2 \"Grouping\", paragraph after the verified Lab 4 output"
+    }
+  ]
+}
