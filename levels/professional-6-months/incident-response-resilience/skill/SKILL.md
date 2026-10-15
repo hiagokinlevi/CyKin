@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Incident response and cyber resilience — Professional course skill
 
-Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–5 contain separate five-day Week 1–5 sequences: 25/130 planned daily lessons are authored. Do not count the other chapters as 105 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–6 contain separate five-day Week 1–6 sequences: 30/130 planned daily lessons are authored. Do not count the other chapters as 100 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
 
 ## Course sources
 
@@ -32,6 +32,8 @@ For Week 3, teach [Day 11](../en/book/MANUSCRIPT.md#week-03-day-01) through [Day
 For Week 4, teach [Day 16](../en/book/MANUSCRIPT.md#week-04-day-01) through [Day 20](../en/book/MANUSCRIPT.md#week-04-day-05) with the retained Chapter 4 reference. EX016 uses the 09:14 request boundary; EX017–EX020 can use C09/C10 through 09:22. Retain all original V4/C4/C4X outputs. W4-BYTES adds five lines showing equal parsed lines with unequal bytes (34 versus 36); it is not C09. Teach the source/copy/derivative distinction and append-only handling supplements. W4-SCOPE and W4-CLOCK are separate tabletop variants; the proposed 09:30 review is not a new case event. Read all five revised prompts with their worked Week 4 extensions before grading.
 
 For Week 5, teach [Day 21](../en/book/MANUSCRIPT.md#week-05-day-01) through [Day 25](../en/book/MANUSCRIPT.md#week-05-day-05) with C5/C5X and W5-EDGE. C11 is a 09:24 statement, not an approval receipt; C12 is a 09:26 supplement to C05's reported 09:01 edit, not a new edit or validated job run. Require typed source edges, explicit unknown joins, non-exclusive H1/H2/H3, scoped discriminator requests and EX021–EX025 with their worked extensions. W5-EDGE's checked training contract is an assumed fixture premise; even its positive match is not causation. The proposed 09:35 checkpoint and gate branches are not case events. The separate [Chapter 4 bank](../../../../web/question-banks/professional-6-months/incident-response-resilience/en/004.json) supplies ten original timed questions while keeping the free-response exercises intact.
+
+For Week 6, teach [Day 26](../en/book/MANUSCRIPT.md#week-06-day-01) through [Day 30](../en/book/MANUSCRIPT.md#week-06-day-05). Require the C13–C16 impact/objective and three-option proposal before releasing C17–C19. Keep C16 tolerance, C17 approval, C18 execution report and C19 one-route observation separate; the expiry is fixed at 09:47, not ten minutes after reported deployment. Reproduce C6/V6/C6X and W6-TIME, then challenge the declared route denominator with W6-MISSING. Match EX026–EX030 to the original model and Week 6 extensions. V6/API and C6X variants are not CTN findings; C19 does not establish S41 or alternate-route behavior. No rollback or renewal is supplied at 09:42. The separate [Chapter 5 bank](../../../../web/question-banks/professional-6-months/incident-response-resilience/en/005.json) adds ten timed questions, not interactive counterparts of EX021–EX025 or a human translation release.
 
 ## Authored twelve-subject route
 

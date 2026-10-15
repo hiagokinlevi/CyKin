@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1–5 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01) and [Week 5](#week-05-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Twenty-five authored daily units (25/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–6 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01), [Week 4](#week-04-day-01), [Week 5](#week-05-day-01) and [Week 6](#week-06-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Thirty authored daily units (30/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -23,7 +23,7 @@ The recommended starting point for organizational incident-response outcomes is 
 3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority; [Week 3: course Days 11–15](#week-03-day-01).
 4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits; [Week 4: course Days 16–20](#week-04-day-01).
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor; [Week 5: course Days 21–25](#week-05-day-01).
-6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect.
+6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect; [Week 6: course Days 26–30](#week-06-day-01).
 7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths.
 8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate.
 9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
@@ -2046,7 +2046,7 @@ These branches are conditional. The first does not authorize a hold, revocation 
 
 **Practice.** Complete [EX025](#exercise-ex025) as a 140–200-word 09:26 handoff plus a separate three-branch gate table. Include at least two unresolved explanations and a proposed checkpoint. Compare the [worked answer](#answer-ex025), ensuring that no later card, completed follow-up, fictitious approval or human actor has entered the record. The end of Week 5 is an investigation handoff; the course and incident remain incomplete.
 
-**Continue studying — course Day 25:** [Previous: Day 24](#week-05-day-04) · [Week 5 index](#ch-05) · [Course index](../SUBJECTS.md) · [Next: Chapter 6 reference; daily sequence pending](#ch-06).
+**Continue studying — course Day 25:** [Previous: Day 24](#week-05-day-04) · [Week 5 index](#ch-05) · [Course index](../SUBJECTS.md) · [Next: Week 6, Day 26](#week-06-day-01).
 
 <a id="week-05-end"></a>
 
@@ -2099,6 +2099,8 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Containment planning and approvals
+
+**Week 6; course Days 26–30.** Study the retained C13–C19 reference and C6/V6/C6X with the [five daily lessons](#week-06-day-01). Keep the 09:35 proposal separate from the 09:37 approval, 09:39 execution report and 09:42 one-route observation; the fixed expiry remains 09:47.
 
 ### Learning outcomes and connection
 
@@ -2326,6 +2328,146 @@ A professionally useful handoff at 09:42 includes the current S42 effect scope; 
 
 A second responder should be able to check each item without access to the original conversation.
 
+<a id="week-06-index"></a>
+
+### Week 6 — Containment as a bounded, observable intervention
+
+These five lessons extend the retained Chapter 6 reference; they do not replace its C6, V6 or C6X laboratories. Read [Day 26](#week-06-day-01), [Day 27](#week-06-day-02), [Day 28](#week-06-day-03), [Day 29](#week-06-day-04) and [Day 30](#week-06-day-05) in order. At the first two checkpoints only C13–C16 have been released. Days 28–30 may inspect C17–C19 through 09:42. Later-chapter renewals and mechanism evidence are unavailable to these decisions. All worksheets and W6 fixtures below are original synthetic teaching, not additional CTN records, authority or live operations.
+
+<a id="week-06-day-01"></a>
+
+#### Day 26 — Convert an impact observation into a measurable containment objective
+
+**Learning task.** Produce an impact ledger that supports a limited decision without turning state evidence into attribution. A containment objective must describe a change to prevent, the protected service to retain, a window and an observation that could contradict success. The verb “contain” alone supplies none of these. An intervention can prevent a further mutation while leaving an already wrong value unchanged. Conversely, restoring a display can hide a symptom while the harmful write path remains available. Prevention, correction and diagnosis require different evidence.
+
+At 09:35, C13 is the strongest supplied source for S42's stored state: an owner-approved custodian read finds version 19 `unavailable`, with last recorded request `q-144`; the separately preserved 08:30 snapshot has version 18 `open`. This supports a state difference between observations, not the exact instant of every intervening transition. C05's reported 09:01 edit and C02's approximate 09:00 symptom remain separately sourced. Do not move either clock to make a smooth account. C10 depicts a page with incomplete capture/cache context; it can remain relevant to user experience while being weaker than C13 for backend state. Those sources answer different questions rather than competing for one universal reliability score.
+
+Separate **impact**, **authorization** and **origin**. C15's official-ledger check through 09:33 finds no S42 addendum; it bounds the visible approval evidence, not all possible emergency conversations. C14 supplies a complete manifest for one approved `batch-17` run in the API request namespace: `q-140`/S40 and `q-141`/S41. Its exclusion of `q-144` defeats the claim that this specified run manifest contains that request. It does not inventory every job or identify a human. C16 contributes an initial ten-minute S42 delay tolerance. Neither a harmful state nor tolerable delay signs an action approval.
+
+**Worked example.** A useful objective at 09:35 is: “Request a temporary S42 write hold to prevent further accepted in-scope S42 mutations during an explicitly approved window, while preserving permitted S40/S41 operations. Obtain the route inventory and approval before execution; check route-labelled request outcomes and authoritative state/audit evidence, record unknown coverage, and review service cost and expiry.” This is a proposed property, not a report of deployment. The planned acceptance record should list accepted S42 writes on tested routes (target zero), successful permitted S40/S41 checks (required), observation times, source pointers and missing tests. No actual denominator of CTN routes is supplied. A count of zero accepted writes in a silent log is not equivalent to a successful denial test: there may have been no attempts or no logging.
+
+**Contrast.** “Return S42 to open, block the attacker and announce containment complete” mixes a data-repair objective with an unproven actor and an unmeasured global result. C13 does not authorize restoration or establish the correct current business value for every enrollment. The defensible note names the next change to prevent and leaves restoration and actor identification pending. A hold might freeze the wrong value; that cost belongs in the owner's decision.
+
+**Offline practice.** Make four rows on paper: stored state, displayed symptom, approval evidence and actor/origin. For each, write the strongest supplied claim, source/release, one boundary and the question that could change the proposed control. Add a fifth planning annotation for C16 without turning it into an approval row. In a second column test this adverse claim: “Because q-144 is absent from batch-17, the shared account user is malicious.” Identify the unsupported transition from a bounded exclusion to intent. No lookup or tenant access is needed.
+
+**Limits and decision.** Neither affected learner count nor all-route exposure is measured. Unknown impact is not zero impact; unknown origin is not safety. Submit [EX026](#exercise-ex026), then compare the four-row model and [Day 26 worked extension](#answer-ex026). Carry a conditional S42 proposal into the next lesson, with route and owner questions attached.
+
+[Previous: Week 5, Day 25](#week-05-day-05) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Day 27](#week-06-day-02).
+
+<a id="week-06-day-02"></a>
+
+#### Day 27 — Compare three controls against the same harm and service costs
+
+**Learning task.** Recommend an option whose benefit, uncertainty, interruption and reversal can be inspected separately. At 09:35, compare session restriction, S42 write hold and shared-account disablement against one outcome: preventing another unapproved or mistaken S42 mutation while preserving legitimate enrollment. Changing the outcome between rows makes an apparently precise ranking meaningless. “Broadest action” and “least disruptive action” are both incomplete selection rules; effectiveness and accepted cost must each satisfy a gate.
+
+The causal path assumed by a session restriction is that `s-77` is active, revocable and relevant to the unwanted write. C03/C09 establish session observations; C05 has no direct session key. Thus even a verified revocation could leave the S42 path unaffected. The S42 hold targets the state operation rather than an unresolved identity. Its failure assumptions are different: all relevant writers must encounter the intended guard, and the legitimate delay must be acceptable. Account disablement targets credential use broadly. Its expected cost includes approved scheduled work and emergency/manual uses of `svc-enroll`, not merely the suspected transaction. The responder must not hide these costs behind a security confidence percentage.
+
+| Proposed control at 09:35 | Benefit premise to test | Cost to preserve in the decision | Observation and reversal dependency |
+|---|---|---|---|
+| Restrict `s-77` | Session remains usable and participates in the harmful path; the direct join is currently absent. | Legitimate integration/session interruption; another path can continue. | Identity-owned session-state receipt plus application/service evidence; identity operator and owners decide restoration. |
+| S42-only hold | The guard covers the in-scope S42 mutation routes. | Legitimate S42 corrections/enrollment wait; current wrong state is not repaired. | Application operator receipt, route-specific denial and permitted S40/S41 checks; scoped expiry and rollback ownership. |
+| Disable `svc-enroll` | Credential use is a sufficiently broad supported harm path. | Approved batch and other dependencies may stop; queued work can require reconciliation. | Broader identity/service/emergency-change approval, account-state and business checks, dependency-aware restoration. |
+
+**Worked recommendation.** Propose the bounded S42 hold because C13 supports a harmful stored state and C16 supplies initial delay tolerance, while the session/request relationship is absent and the account-wide costs are broader. Record “conditional on C17-like actual authorization, route design and observable cost,” not “approved by the table.” If the application owner reports that the available mechanism only disables the entire account, the narrow proposal is not implementable as written. Return it for a new decision; do not substitute a broader command. If an authoritative route inventory shows that the hold misses the dominant writer, reopen the ranking. Evidence can change the preferred option without retrospectively changing what the analyst knew.
+
+**Contrast.** A superficially rigorous matrix assigns security scores 9/10 to account disablement and 6/10 to S42 hold, subtracts a small downtime score and chooses disablement. The weights conceal mandatory service constraints and unsupported causal assumptions. A better comparison uses a gate for owner-accepted service cost and another for plausible, testable harm reduction; only then compare feasible candidates. Do not invent monetary loss, user counts, probabilities or approval thresholds that the case has not supplied.
+
+**Offline practice.** Write one decision row for each control with benefit premise, source, missing observation, approving capacity, operator, service check and rollback owner. Then evaluate two separate hypothetical owner replies: (A) “the S42 hold has an unguarded job route”; (B) “the session key is demonstrably joined to the offending request in a permitted new source.” For A, mark coverage unresolved and seek redesign or a newly approved alternative. For B, a targeted session action becomes more relevant but still needs active-session, cost and authority checks. These are counterfactual replies, not newly released cards. State what would reverse your ranking and why.
+
+**Limits and decision.** C16 gives tolerance, not a cost-free option or an indefinitely renewable ten-minute budget. No control is executed by this comparison. Complete [EX027](#exercise-ex027) and its [worked answer](#answer-ex027). Keep all three rows so a supervisor can see why alternatives were deferred and what evidence would make them appropriate.
+
+[Previous: Day 26](#week-06-day-01) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Day 28](#week-06-day-03).
+
+<a id="week-06-day-03"></a>
+
+#### Day 28 — Maintain separate authorization, execution and verification records
+
+**Learning task.** Reconstruct four checkpoints without promoting a receipt into a stronger state. An approval answers who permitted which action and until when. An execution receipt answers what an operator reports changing. Verification asks what independent or otherwise authorized observations support the intended property, with their time, scope and blind spots. Even when one person holds multiple local roles, preserve the records and their meanings separately. The teaching method is an evidence chain, not a requirement to invent people or signatures.
+
+At 09:35 the S42 hold is proposed under C13–C16. At 09:37 C17 supplies the case approval: S42-only, automatic expiry 09:47, named operator and rollback owner, monitoring/preservation and alternate-route escalation. Account disablement and S40/S41 modification are outside that scope. At 09:39 C18 reports `g-22` enabled. At 09:42 C19 observes `q-147` denied on one S42 application route and `q-148` accepted for S40. The case contains no learner-generated write and no S41 outcome at that checkpoint. A plan requiring S40/S41 continuity may remain only partially evidenced even though one legitimate control passed.
+
+**Worked record.** Use distinct fields: requested action and rationale; approval reference/window; operator report/configuration; observation source/request/route/time; untested routes/service operations; next gate. At 09:42 write “C17 authorized S42 hold until 09:47; C18 reports g-22 enabled at 09:39; C19 selectively observes one denied S42 and one accepted S40 request; alternate paths and S41 outcome unverified.” This lets a reviewer ask a precise missing-evidence question. “Containment green” cannot reveal whether an approval, a deployment or a coverage check is missing.
+
+**Clock and contrast.** The interval from 09:37 approval to 09:47 expiry is ten minutes; from 09:39 reported enablement to expiry is eight minutes. Neither calculation proves continuous enforcement for that duration. “Give the operator ten minutes from deployment” silently changes the expiry to 09:49 without a new approval. “Approval at 09:37 proves no writes after 09:37” confuses authority with effect. Preserve the fixed 09:47 boundary and record missing actual activation/expiration evidence rather than resetting it. The later C21 development is outside this checkpoint.
+
+**Offline laboratory W6-TIME — a fixed boundary, not an approval engine.** Python 3 standard library only, in-memory, no file or network operations. Inputs are explicitly supplied teaching timestamps on the same date and UTC clock, not authenticated receipts. The half-open interval includes activation and excludes expiry. A local rule rejects an observation before reported activation or at/after the stated expiry; it cannot decide whether a real control was active. Predict all five lines before running:
+
+~~~python
+from datetime import datetime
+
+def minute6(value):
+    return datetime.strptime(value, "%H:%M")
+
+approved6 = minute6("09:37")
+reported6 = minute6("09:39")
+expires6 = minute6("09:47")
+print("W6 approval-to-expiry-minutes=", int((expires6-approved6).total_seconds()/60))
+print("W6 reported-to-expiry-minutes=", int((expires6-reported6).total_seconds()/60))
+for value in ("09:38", "09:42", "09:47"):
+    state = "IN_REPORTED_WINDOW" if reported6 <= minute6(value) < expires6 else "OUTSIDE_REPORTED_WINDOW"
+    print("W6 " + value + ": " + state)
+~~~
+
+Expected transcript, reproduced during publication validation:
+
+~~~text
+W6 approval-to-expiry-minutes= 10
+W6 reported-to-expiry-minutes= 8
+W6 09:38: OUTSIDE_REPORTED_WINDOW
+W6 09:42: IN_REPORTED_WINDOW
+W6 09:47: OUTSIDE_REPORTED_WINDOW
+~~~
+
+The pre-activation and exact-expiry rows are adverse controls against treating a plausible clock as permission. “IN_REPORTED_WINDOW” means only interval membership under supplied values. It does not authenticate C17, confirm deployment or authorize a test. It also assumes same-day minute-resolution UTC; dates, clock error and time zones need explicit handling in a real record.
+
+**Practice and limits.** Reproduce C6 and W6-TIME, then annotate each line as planning, permission, report or observation. Submit [EX028](#exercise-ex028) and compare its [worked answer](#answer-ex028). Preserve blank actual rollback fields and unknown route coverage. A request for stronger verification must go to the owner; it is not permission for the learner to send test traffic.
+
+[Previous: Day 27](#week-06-day-02) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Day 29](#week-06-day-04).
+
+<a id="week-06-day-04"></a>
+
+#### Day 29 — Design coverage evidence that can reveal bypass and collateral harm
+
+**Learning task.** Define a coverage verdict using named routes, opposite controls and authoritative observations. The denominator is an owner-reviewed inventory of in-scope mutation paths, not the number of tests that happened to pass. A test should bind target slot, operation, route, allowed window, request identifier, expected outcome and observation source. A response code alone may describe front-end rejection while an asynchronous writer later commits; authoritative state/version and audit observations are needed to test that possibility. State what each observation actually measures rather than assuming every layer agrees.
+
+For a hold, a negative S42 write test asks whether the protected operation was rejected without a committed change. A positive permitted S40/S41 check asks whether legitimate service remains available. “Negative” refers to the operation expected to be rejected; a bypass is a negative test result for the security property. Both axes matter. Passing service checks cannot compensate for an accepted S42 mutation; rejecting every request is not a business-preserving success. Real test design requires explicit owner permission and safe synthetic inputs. Here all inputs are offline or already supplied observations.
+
+**Worked V6 verdict.** The isolated variant supplies a browser-form S42 denial, a direct API S42 acceptance and a successful S40 control. Its claimed all-route S42 property fails because one supplied in-scope route accepts the prohibited operation. The successful browser and S40 outcomes do not cancel the bypass. Ask the application owner where the guard predicate is enforced and whether the form and API share that boundary. A proposed retest needs a reviewed inventory, authorization, one protected-operation denial and permitted-service check per applicable path, observation receipts and a stop rule for either bypass or collateral harm. V6 does not prove a CTN bypass: C19 supplies only one observed CTN application route.
+
+**Contrast.** “One of one observed S42 routes passed, so coverage is 100%” silently changes the denominator from all routes to observed routes. “One of two V6 routes failed, therefore CTN is 50% contained” combines two different fixtures and invents a meaningful risk fraction. Report separate scope-qualified verdicts instead: CTN other-route coverage unknown; V6 all-route criterion failed. A route not tested is unknown, not denied and not accepted.
+
+**Offline laboratory review.** Run the retained C6X program in §6.15 and reproduce its seven lines. C16 gives `PROPOSED_ONLY`; C17 `APPROVED_NOT_APPLIED`; C18/C19 `COVERAGE_UNKNOWN`. The separate invented BYPASS row gives `PROTECTION_FAIL`; SERVICE_DOWN gives `BUSINESS_FAIL`; LAB_PASS gives `BOUNDED_TEST_PASS`. Read the function: it expects `form` and `api`, and a single legitimate outcome. Those are declared fixture inputs, not an owner-discovered CTN inventory. The function checks the reported approval/application ordering but does not authenticate roles, check expiry, require independent receipts or test each legitimate slot. W6-TIME covers only a separate interval calculation; combining two toy passes still does not verify a real application.
+
+**Paper adverse control W6-MISSING.** Start with LAB_PASS's two supplied route denials. Add a hypothetical owner-declared third route `worker` with no observation. A defensible coverage ledger now has two observed denials and one unknown row, so it refuses an all-route verdict. Do not merely change C6's arbitrary threshold to three and count dictionary entries: duplicate names, stale observations or wrong target slots would still mislead. Next replace the worker's missing result with an accepted S42 mutation in the isolated worksheet; now the protection criterion fails. Neither row becomes C19 or authorizes a live test. This exercise teaches why inventory completeness and evidence validity precede arithmetic.
+
+**Practice and limits.** Add columns for source, request, time/window, target, route, commit/state observation and service result to your proposed verification sheet. Mark fields unavailable in C19 rather than inventing them. Begin [EX029](#exercise-ex029) and its [worked rollback card](#answer-ex029): translate bypass, service regression and expiry into three distinct owner-governed triggers, leaving actual reversal pending. Rehearse V6 for the next day's EX030. Unknown coverage requires a time-bounded owner decision, not indefinite silence or a false pass.
+
+[Previous: Day 28](#week-06-day-03) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Day 30](#week-06-day-05).
+
+<a id="week-06-day-05"></a>
+
+#### Day 30 — Prepare expiry, rollback and the investigation handoff without inventing action
+
+**Learning task.** Make a rollback card usable by an authorized successor while distinguishing planned reversal, automatic expiry, renewal and observed restoration. Rollback aims to reverse a specified control change safely; it is not necessarily a restore of business data, an undo of every queued action or proof of recovery. Turning off g-22 could reopen the harmful write path while leaving S42 unavailable. Conversely, leaving a hold active can prolong a legitimate service cost. The service owner and incident lead must weigh these consequences under the applicable procedure; an analyst must not choose an unauthorized extension by omission.
+
+At 09:42 the next fixed boundary is 09:47. C17 specifies automatic expiry; there is no actual expiration, rollback or renewal receipt in C13–C19. The proposed card should identify the application operator/rollback role from the approval, the exact S42 control/configuration reference, trigger and decision authority, preservation obligations, expected reversal receipt, protected-state and legitimate-service checks, and the next observer. Keep actual operator, completion time and result fields blank unless an authentic supplied receipt fills them. The card names a required role without inventing a person's name.
+
+**Worked trigger comparison.** For expiry without a new approval, honor the recorded automatic-expiry rule and arrange an owner-led exposure/service review; verify what actually happened at the boundary. For an observed alternate-route S42 acceptance, preserve its receipt and urgently re-plan with the owner: removing the partial guard might worsen exposure, while broadening it requires new approval. For unexpected S40/S41 denial or cost beyond accepted tolerance, seek the designated emergency decision and bounded reversal or redesign, retaining audit evidence. A trigger is a reason to invoke the authorized procedure, not a universal “disable all security” instruction. These branches should record both urgency and the unresolved tradeoff.
+
+**Contrast.** “Rollback completed at 09:47; service restored” invents two results from a scheduled timer. “Extend for another ten minutes because C16 permitted ten” invents renewal. “Restore the 08:30 snapshot to undo containment” confuses reverting a guard with overwriting business state and could reverse legitimate S40/S41 work. A defensible card instead says “C17 expires at 09:47; actual expiration/reversal and service results pending; seek a separately documented owner decision before any extension.” No later card may fill these fields retrospectively at the 09:42 checkpoint.
+
+**Offline tabletop.** Using only paper or a local text editor, clone your 09:42 action record into three explicitly hypothetical branches: expiry/no new approval, verified bypass and legitimate-service regression. For each, write the smallest evidence package to preserve, decision owner, permitted next request, reversal precondition and observation needed afterward. Have a partner reject one branch with a missing owner, one with an expired approval and one claiming S41 availability from S40 alone. The corrected branch must leave execution pending rather than author a signature. No tenant operation or new CTN event is part of the activity.
+
+**Worked 09:42 handoff.** “C13 supports S42 version 19 unavailable; C14 excludes q-144 from one complete approved run and C15 finds no official S42 addendum through 09:33. Human actor remains unknown. C17 approves S42-only hold to 09:47, C18 reports g-22 enabled at 09:39, and C19 observes q-147 denied on one application route with q-148/S40 accepted. Other mutation routes and S41 behavior remain unverified. Preserve approval, operator and audit sources; ask the application owner for coverage and accepted-cost review before expiry. Use the designated operator and owner procedure on bypass, service regression or expiry. No rollback, renewal, account disablement or verified cause removal is claimed.” This is a model message built from supplied cards, not a sent communication.
+
+**Practice and limits.** Finalize the EX029 rollback card begun on Day 29, then submit [EX030](#exercise-ex030) and compare its [worked answer](#answer-ex030), including the V6 verdict, C6/C6X comparison, W6-MISSING and a 09:42 handoff with the failed/unknown coverage branches. A supervisor should be able to trace every affirmative claim to a card and every future action to a pending gate. Chapter 7 may introduce mechanism and new authority evidence, but its daily sequence is still pending. Do not mark it complete, translate an unreleased unit or treat the Week 6 technical checks as independent human approval.
+
+[Previous: Day 29](#week-06-day-04) · [Week 6 index](#week-06-index) · [Course index](../SUBJECTS.md) · [Next: Chapter 7 reference; daily sequence pending](#ch-07).
+
+<a id="week-06-end"></a>
+
+**Week 6 checkpoint.** Five distinct lessons have produced an impact/objective ledger, a three-control comparison, a four-state action record, a route/service verification design and a conditional expiry/rollback handoff. They use the existing EX026–EX030, C6/V6/C6X and the separate W6-TIME/W6-MISSING teaching controls. Passing an offline consistency check is neither an executed response nor a complete-book review.
+
 ### Common errors and limits
 
 - Converting C16's tolerance into C17's approval. They are separate cards, two minutes apart, with different meanings.
@@ -2340,15 +2482,25 @@ Give one learner C13–C16 and ask for a two-option comparison. A second learner
 
 ### Exercises — subject 6
 
-**EX026 — Updated impact statement.** Inputs: C05, C10, C13–C15. Produce a four-row ledger of stored state, displayed symptom, approval scope and actor attribution, with source IDs and one unresolved question each. A 2-point answer distinguishes C13's authoritative S42 state from C10's screenshot and does not name an actor.
+<a id="exercise-ex026"></a>
 
-**EX027 — Containment comparison.** Inputs: C13–C16 and the three options above. Produce benefit, business cost, permission gate, verification and rollback for each; select a *proposal* at 09:35. A 2-point answer names one reason the narrow option could still fail and does not treat C16 as approval.
+**EX026 — Updated impact statement.** Objective: derive a measurable containment proposal without attribution. Inputs: C05/C10/C13–C16 and Day 26 at 09:35. Produce four rows for stored state, displayed symptom, approval evidence and actor/origin, each with source, release, bounded claim and unresolved question. Outside the ledger add the proposed prevention/service property, observation window/denominator questions and C16 tolerance annotation. No control approval or learner execution may be asserted. Rubric: 0 = invented actor/authority or repaired chronology; 1 = sourced ledger but incomplete measurable property or uncertainty; 2 = all four boundaries, a falsifiable proposal and tolerance kept distinct from permission. [Worked answer](#answer-ex026).
 
-**EX028 — Approval-to-effect record.** Inputs: C17–C19. Make four timestamped status lines: proposal, approval, execution and observed result. Include the 09:47 expiry and state which write path remains unverified. A 2-point answer does not call the whole account disabled or all routes blocked.
+<a id="exercise-ex027"></a>
 
-**EX029 — Conditional rollback.** Inputs: C17–C19. Write a rollback decision card with owner, three triggers, required service and audit checks, and a record of what must remain preserved. A 2-point answer leaves any *actual* rollback unperformed until a triggering observation and authorized operation occur.
+**EX027 — Containment comparison.** Objective: compare three controls using one harm target and independent service gates. Inputs: C13–C16, Day 27 and the session/S42/account options. For each give benefit premise, source gap, business cost, approving capacity, operator, verification and reversal dependency. Select a conditional proposal at 09:35 and name one owner observation that would reverse its ranking; do not invent costs, joins or approval. Rubric: 0 = C16 treated as authority or unsupported operation; 1 = three options but missing coverage, service or reversal gate; 2 = comparable options, justified conditional selection and an explicit counterfactual that changes the decision. [Worked answer](#answer-ex027).
 
-**EX030 — V6 coverage review.** Input: the isolated V6 browser/API/S40 outcomes. Write a two-sentence containment verdict, a bounded design question for the application owner and a retest criterion. A 2-point answer says the all-route criterion fails in V6 without importing that result into CTN's C19. Compare the isolated V6 verdict with the CTN state-machine output in §6.11; distinguish one-route observation from all-route assurance.
+<a id="exercise-ex028"></a>
+
+**EX028 — Approval-to-effect record.** Objective: keep permission, reported execution and observations separate. Inputs: C13–C19 through 09:42, C6 and Day 28 W6-TIME. Make four timestamped status lines with source/scope, the fixed 09:47 expiry and unverified routes/service checks. Reproduce both transcripts and explain ten versus eight minutes, including the pre-activation and exact-expiry controls. No new operation, renewal or all-route result may be asserted. Rubric: 0 = backdated authority, changed expiry or invented effectiveness; 1 = correct states but missing interval/observation limits; 2 = all four transitions and exact outputs with fixed expiry and a bounded one-route verdict. [Worked answer](#answer-ex028).
+
+<a id="exercise-ex029"></a>
+
+**EX029 — Conditional rollback.** Objective: translate coverage and service failures into an owner-governed reversal plan. Inputs: C17–C19, Day 29 coverage design and Day 30 expiry synthesis. Write a card with scope/configuration, decision and operator roles, three distinct triggers (expiry, bypass, service regression), preserved sources and proposed pre/post-action checks. Explain why bypass may require re-planning rather than automatic removal of a partial guard. Leave actual reversal/renewal receipts and results pending; use no later card. Rubric: 0 = invented rollback/extension or unauthorized expansion; 1 = useful triggers but missing source, authority or exposure/service checks; 2 = actionable conditional card preserving the fixed boundary and all missing results. [Worked answer](#answer-ex029).
+
+<a id="exercise-ex030"></a>
+
+**EX030 — V6 coverage review.** Objective: defend a coverage verdict and bounded handoff. Inputs: isolated V6, C6/C6X, W6-MISSING and Days 29–30. Give a two-sentence V6 verdict, owner design question and retest contract; reproduce C6/C6X outputs, distinguish their declared inventories from CTN evidence, and explain the unobserved third-route control. Add a 09:42 CTN handoff naming scope, cost questions, 09:47 expiry and pending owner decision. No fixture API outcome, S41 result, renewal or cause removal may be imported into CTN. Rubric: 0 = invented CTN bypass/action or global pass; 1 = correct V6 failure but incomplete service/inventory or handoff limits; 2 = exact outputs, scope-qualified verdicts and an auditable pending-action handoff. [Worked answer](#answer-ex030).
 
 ### Subject synthesis
 
@@ -4011,21 +4163,39 @@ Outside the message, record three gates: (1) verified wrong state plus continuin
 
 ### Subject 6: EX026–EX030
 
+<a id="answer-ex026"></a>
+
 **EX026 — Model impact ledger.** Stored state: C13's owner-approved read shows S42 version 19 `unavailable`, last request `q-144`, while its 08:30 comparison shows version 18 `open`; unknown is the extent of affected enrollments. Display symptom: C10 depicts an unavailable page at a conditional 09:21 UTC; capture clock and cache remain unverified. Approval: C15's official ledger through 09:33 has no S42 addendum, narrowing C11's possible claim; an unrecorded emergency process is still a question. Actor: C05 gives an account label and C14 excludes `q-144` from the approved `batch-17` run, but neither identifies a human. A ledger that states “attacker used `svc-enroll`” loses the evidence-boundary point.
 
 **Additional professional worked reasoning:** Preserve four separately sourced cells: C13's owner-approved S42 version-19 read, C14's one-run exclusion of q-144, C15's official-ledger check through 09:33, and C16's ten-minute *tolerance only*. A recommended S42 hold is conditional and requires incident lead/service owner approval; the shared account is not yet connected to q-144 by a trusted session key. A defensible impact ledger explicitly marks affected learner count and human operator *unknown*, not zero or malicious.
+
+**Week 6 Day 26 — worked objective ledger.** Four cells remain separate: C13's owner-approved state read released 09:29 (version 19 unavailable versus preserved 08:30 version 18 open); C10's display/capture limits; C15's official-ledger absence through 09:33 with unrecorded authority still an open question; C05/C14's bounded account/run evidence without a human attribution. C14 excludes q-144 from one complete manifest in a comparable namespace, not every job. C16 at 09:35 supplies initial delay tolerance only. Propose zero accepted in-scope S42 mutations during the eventual approved window, required permitted S40/S41 behavior, route-labelled observations and authoritative state/audit pointers. The route denominator, actual window/effect and learner impact count are not yet supplied. No attempts in a log does not prove a tested denial. A hold would not itself repair the stored state; restoration requires a different decision.
+
+<a id="answer-ex027"></a>
 
 **EX027 — Model option comparison.** Targeted `s-77` restriction could reduce use of that session, but the session-to-`q-144` join is absent and the identity/service owners must approve it; verification needs a session-state and service check, with identity operator rollback. A ten-minute S42 write hold narrows the harm path and preserves S40/S41, but could block legitimate S42 changes and miss an alternate route; the service owner and incident lead must approve scope/expiry, application operator executes, and a guarded-route observation plus rollback owner are required. Account-wide disablement covers more uses but may stop the approved job and other integration, so it needs broader owner/emergency-change approval and a service-wide recovery plan. At 09:35 propose the S42 hold **subject to approval**. C16 supplies tolerability, not that approval; uncertain route coverage is the principal failure mode.
 
 **Additional professional worked reasoning:** Score each option on the same target harm—another unapproved or erroneous S42 write—and on independent legitimate service continuity. A session-only restriction can miss q-144 because s-77 is not joined; account disablement can interrupt approved batch-17; a S42 hold targets smaller scope but must include route-inventory and expiry checks. The preferred 09:35 action is a **proposal** under C16, not an authorized implementation. Name the observation that would reverse the ranking.
 
+**Week 6 Day 27 — worked selection reversal.** Keep the same target harm for all three rows. Session restriction depends on an active/relevant s-77 despite the absent q-144 join; identity/service approval, operator receipt and application/service observations would be required. Account disablement risks approved batch and shared dependencies and needs broader authority and restoration design. The S42 hold is a conditional proposal because it targets the operation and C16 supplies tolerance, but unknown routes can defeat it and legitimate S42 work waits. An owner-confirmed uncovered worker path would reopen the design/ranking; a later authenticated session/request join would increase relevance of the session option without granting permission. Neither hypothetical is supplied at 09:35. Reject invented loss figures or a weighted score that masks a mandatory service gate.
+
+<a id="answer-ex028"></a>
+
 **EX028 — Model action-state timeline.** 09:35: analyst proposes a S42-only temporary hold based on C13–C16; no change yet. 09:37: C17 records incident-lead/service-owner approval for S42 only, expiry 09:47, operator and rollback owner named. 09:39: C18 reports `g-22` enabled by the application operator; execution receipt is distinct from approval. 09:42: C19 shows `q-147` denied on one S42 application route and `q-148` accepted for S40. The observed route supports partial effect; direct database or alternate API coverage is **not verified**. The account remains enabled. The next gate is the 09:47 expiry or an earlier observed bypass/legitimate harm.
 
 **Additional professional worked reasoning:** Use this precise provenance sequence: 09:35 C16 impact tolerance and analyst proposal; 09:37 C17 scoped approval expiring 09:47; 09:39 C18 operator reports g-22 enabled; 09:42 C19 observes one S42 denial q-147 and one S40 acceptance q-148. Neither 09:37 approval nor 09:39 report proves all-route enforcement. The apparent effective interval from 09:39 to 09:47 is eight minutes under a hypothetical continuous-activation assumption, not an automatically verified ten-minute block. C21 renewal belongs to the next chapter.
 
+**Week 6 Day 28 — worked fixed-window controls.** C6 reproduces five lines: proposal, authorized, reported-enabled and observed-one-route each with all-routes unknown, then separate V6 FAIL. W6-TIME reproduces five lines: approval-to-expiry 10; reported-to-expiry 8; 09:38 OUTSIDE_REPORTED_WINDOW; 09:42 IN_REPORTED_WINDOW; 09:47 OUTSIDE_REPORTED_WINDOW. The interval is half-open under same-day UTC teaching assumptions. A 09:38 observation cannot validate this reported activation window, and 09:47 is already its excluded boundary. Even 09:42 membership is not proof of deployment or continuous enforcement. C19 supports one S42 denial and one S40 acceptance, not S41 or alternate routes. Do not shift the expiry to 09:49 or import C21.
+
+<a id="answer-ex029"></a>
+
 **EX029 — Model rollback card.** Owner: application operator under service-owner and incident-lead decision. Triggers: approved 09:47 expiry without extension; evidence of an unguarded S42 write or unexpected S40/S41 denial; a legitimate enrollment impact above the owner-approved tolerance. Before rollback, preserve C17–C19 approvals, receipts and selected audit records under their custodians. On a triggering decision, operator would record configuration version, change time and authorization, then verify S42/S40/S41 behavior and monitor for renewed edits. **No actual rollback is in C17–C19**; an answer must leave execution and result blank. C21 later supersedes the expiry through a new approval, but cannot be presumed at the EX029 checkpoint.
 
 **Additional professional worked reasoning:** The expiry at 09:47 is an escalation/reversal trigger from C17, but the chapter has no actual rollback execution receipt. A bypass on a declared write route, unexpected S40/S41 denial, or service harm outside accepted tolerance also requires a new owner-led decision. Preserve source and operator evidence, then conditionally test post-action S42 protection **and** permitted enrollment behavior; resumption or renewal cannot be inferred from a clock alone. No privileged command is to be run by the learner.
+
+**Week 6 Day 29 — worked conditional trigger card.** Reference C17's S42-only scope, g-22 as reported by C18, designated application operator/rollback role and owner/incident-lead decision capacity. Preserve approval, operator and relevant audit sources before a contemplated change. Trigger one: 09:47 automatic expiry without new approval, followed by actual-state and exposure/service checks. Trigger two: observed bypass, requiring urgent owner review because removing a partially protective guard might worsen risk and broadening it needs authority. Trigger three: unexpected S40/S41 denial or accepted-cost breach, requiring the designated decision/reversal procedure. Proposed checks include configuration and observation time, protected-path behavior, legitimate service and queued-work reconciliation where applicable; unavailable observations stay unknown. Actual reversal, renewal and post-action outcomes remain pending. Reverting a guard is not restoring an 08:30 data snapshot.
+
+<a id="answer-ex030"></a>
 
 **EX030 — Model V6 verdict.** “The isolated V6 guard fails the **all-route** S42 containment criterion: browser-form writes are denied, but a direct API write is accepted; S40 succeeding shows the service is not globally blocked. Ask the application owner whether both routes share the guard predicate, then repeat positive S40 and negative S42 tests through each authorized path after a reviewed design change.” This is a training-tenant outcome. CTN's C19 still documents only its own observed route and should not inherit V6's bypass as an incident fact.
 
@@ -4042,6 +4212,8 @@ C6 V6 all-route= FAIL
 ~~~
 
 At 09:35 there is a proposal only; at 09:37 approval; at 09:39 reported enablement; at 09:42 observation on one route. The three-route count inside the fixture is a teaching placeholder, not CTN's known route inventory. The separate V6 variant fails because its API path accepts an S42 write; that result cannot be reported as a CTN incident observation. An EX030 answer must distinguish these scopes.
+
+**Week 6 Day 30 — worked coverage and handoff.** V6 fails its all-route S42 property because form denial coexists with API acceptance; its S40 success does not offset the bypass. Ask whether routes share the guard predicate and require authorized isolated per-route protected/legitimate tests, state/audit receipts and stop rules after a reviewed design. C6X's seven exact results are PROPOSED_ONLY, APPROVED_NOT_APPLIED, COVERAGE_UNKNOWN, COVERAGE_UNKNOWN, PROTECTION_FAIL, BUSINESS_FAIL and BOUNDED_TEST_PASS in printed row order. Its two-route and single legitimate-outcome assumptions omit expiry, authentication and per-slot coverage; its pass is a toy consistency result. W6-MISSING's third unobserved route prevents an all-route verdict, and an invented third-route acceptance fails protection in that worksheet only. The Day 30 model handoff correctly names C13–C15's state/approval bounds, C17 expiry, C18 report, C19 one-route denial/S40 success, unverified routes/S41 and pending owner review. It claims no rollback, renewal, account disablement, CTN API bypass or cause removal. Award full credit only when both protection and service gates and the fixed 09:47 boundary survive the handoff.
 
 ### Subject 7: EX031–EX035
 

@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "incident-response-resilience",
+  "language": "en",
+  "chapter": 5,
+  "source_anchor": "ch-05",
+  "source_sha256": "fdb4746d24faf89de4772aa2acbca9b6883ed3ef272077e6e530653d76029014",
+  "source_path": "levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md",
+  "editorial_note": "Ten original authored questions; source, key and distractor semantics checked against the final Chapter 5 after the Day 25 navigation update. Technical validation is not independent human approval or translation release. The site adds its fifth uncertainty option and ten-second timing.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A frozen 09:22 timeline already contains q-144. How should C12, released at 09:26, be added?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the 09:22 entry with a validated batch-17 origin."
+        },
+        {
+          "id": "b",
+          "text": "Append a 09:26 supplement to the reported 09:01 request."
+        },
+        {
+          "id": "c",
+          "text": "Record another S42 edit occurring at 09:26."
+        },
+        {
+          "id": "d",
+          "text": "Move the original edit time to the tag release time."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B preserves both clocks: C12 adds a self-reported tag to C05's existing q-144 event, and the old 09:22 view remains reconstructible. A invents validation and rewrites prior knowledge. C invents a second edit. D replaces event time with release time. The supplement does not prove scheduler origin.",
+      "source": "Chapter 5, Week 5 / course Day 21, #week-05-day-01, Worked contrast and new timeline information table; EX021."
+    },
+    {
+      "id": "Q02",
+      "prompt": "C11 supplies a possible-addendum statement at 09:24. What does that timestamp establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The S42 approval became effective at 09:24."
+        },
+        {
+          "id": "b",
+          "text": "The change authority signed the addendum at 09:24."
+        },
+        {
+          "id": "c",
+          "text": "The analyst received the uncertain statement at 09:24."
+        },
+        {
+          "id": "d",
+          "text": "The alleged addendum expired at 09:24."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C identifies the case knowledge time. C11 says S42 might have been included, but supplies no addendum, effective time or contents. A and B invent authorization events from a recollection; D invents expiry. Refer the missing document and its applicable scope/time to the change authority.",
+      "source": "Chapter 5, Week 5 / course Day 21, #week-05-day-01, C11 paragraph and timeline information table; EX021."
+    },
+    {
+      "id": "Q03",
+      "prompt": "C09 and C04 both display runner-03. Which graph edge is supported by those labels alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cross-source label similarity; process/session linkage unverified."
+        },
+        {
+          "id": "b",
+          "text": "A validated process-to-session join on runner-03."
+        },
+        {
+          "id": "c",
+          "text": "A causal edge from the device to q-144."
+        },
+        {
+          "id": "d",
+          "text": "A unique human operator identity for svc-enroll."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A preserves the demonstrated comparison and its boundary: an IdP client label and an endpoint device label look equal. B requires a producer/namespace and provenance contract absent here. C further invents a request mechanism, and D attributes a human from a shared label. Similarities do not compose into a causal path.",
+      "source": "Chapter 5, Week 5 / course Day 22, #week-05-day-02, edge-list row C09 client ↔ C04 device and Worked contrast; EX022."
+    },
+    {
+      "id": "Q04",
+      "prompt": "C05 has a blank session field. What is the defensible direct s-77-to-q-144 join verdict?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The shared account establishes the join."
+        },
+        {
+          "id": "b",
+          "text": "The records prove the events are unrelated."
+        },
+        {
+          "id": "c",
+          "text": "A nearby minute substitutes for the missing key."
+        },
+        {
+          "id": "d",
+          "text": "The direct join is unavailable; neither cause nor unrelatedness is proved."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D treats the missing key as an unavailable comparison. A and C substitute weak similarities for a direct identifier relationship. B reverses missing evidence into proof of no relationship. Ask whether a trustworthy source cross-reference exists; any alternative corroboration needs explicit assumptions and limits.",
+      "source": "Chapter 5, Week 5 / course Day 22, #week-05-day-02, proposed cross-source correlation row and Worked contrast; EX022."
+    },
+    {
+      "id": "Q05",
+      "prompt": "W5-EDGE compares equal keys in one namespace with its checked flag True. What does its positive control mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The program authenticated the producer contract."
+        },
+        {
+          "id": "b",
+          "text": "A scoped key match under supplied premises, without causation."
+        },
+        {
+          "id": "c",
+          "text": "The program proved the CTN session caused q-144."
+        },
+        {
+          "id": "d",
+          "text": "Any cross-namespace equal label is now a valid join."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B matches SCOPED_KEY_MATCH_NOT_CAUSATION. The flag and namespace are declared fixture premises. A overstates what a Boolean can authenticate; C imports a separate synthetic key result into CTN causation. D contradicts the cross-namespace adverse assertion, which still returns LABEL_EQUAL_NAMESPACE_UNVERIFIED even with True.",
+      "source": "Chapter 5, Week 5 / course Day 22, #week-05-day-02, Offline W5-EDGE contract control, exact output and limitation paragraph; EX022."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A partial run manifest has no q-144. What can the investigator conclude about the specified automated origin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A human must have issued the request."
+        },
+        {
+          "id": "b",
+          "text": "All automated paths are excluded."
+        },
+        {
+          "id": "c",
+          "text": "The approved job explanation is definitively false."
+        },
+        {
+          "id": "d",
+          "text": "The exclusion test is inconclusive without relevant completeness and comparable identifiers."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D requires authenticated source, relevant completeness and comparable request semantics before a missing row can weaken a specified route. C overstates even a complete exclusion, which would weaken only the specified route; this partial source does not establish that exclusion. A invents a human; B extrapolates one source to all automation. A blocked or incomplete request leaves the question unresolved.",
+      "source": "Chapter 5, Week 5 / course Day 23, #week-05-day-03, Worked contrast and conditional-result table; §5.E4; EX023."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A valid S42 addendum covers the exact operation and effective time. Which claim does that result directly weaken?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The premise that the operation was outside approval."
+        },
+        {
+          "id": "b",
+          "text": "The possibility of a stale user-facing display."
+        },
+        {
+          "id": "c",
+          "text": "The possibility of an incorrect execution outcome."
+        },
+        {
+          "id": "d",
+          "text": "The uncertainty about which scheduler emitted q-144."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A changes H2's outside-approval component. The result is hypothetical at this checkpoint and would still need actual document validation. B concerns display/state evidence, C execution correctness and D technical origin: authorization supplies none of those answers. It also does not identify a human or justify disruption.",
+      "source": "Chapter 5, Week 5 / course Day 23, #week-05-day-03, addendum example and conditional-result table; EX023."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A permitted new read finds wrong authoritative S42 state. What does it refute most directly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every possibility that caching contributed to the symptom."
+        },
+        {
+          "id": "b",
+          "text": "The existence of any earlier correct S42 state."
+        },
+        {
+          "id": "c",
+          "text": "A solely display-only explanation of that state at the read time."
+        },
+        {
+          "id": "d",
+          "text": "The possibility that automation performed the edit."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C limits the inference to authoritative state at the observation time: a wrong backend value is not solely a display artifact. A is too broad because caching can coexist with a genuine edit. B projects a current read backward into all history. D confuses state with origin. The result does not solve actor, authorization or precise historical chronology.",
+      "source": "Chapter 5, Week 5 / course Day 23, #week-05-day-03, mechanism/permission/display distinctions and state-read table row; EX023."
+    },
+    {
+      "id": "Q09",
+      "prompt": "At 09:26, which proposed request best tests q-144 origin without presupposing batch-17 caused it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Export every svc-enroll record and assume common origin."
+        },
+        {
+          "id": "b",
+          "text": "Ask custodians for a bounded preserved run/request relationship and its identifier semantics."
+        },
+        {
+          "id": "c",
+          "text": "Ask for the already-proven batch-17 run that changed S42."
+        },
+        {
+          "id": "d",
+          "text": "Query current S42 state and treat it as the scheduler-origin answer."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B asks a source-bounded discriminator with comparable key semantics, permissions, method/receipt and unavailable-result handling. A expands collection without a justified discriminator. C embeds the contested conclusion. D answers current impact rather than job origin. A useful request remains proposed until actual authority, acquisition and a supplied receipt establish later states.",
+      "source": "Chapter 5, Week 5 / course Day 24, #week-05-day-04, origin request and presupposition contrast; EX024."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A 09:26 handoff carries a self-reported job tag and missing joins. Which next step respects the evidence and authority boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable svc-enroll because the tag identifies an attacker."
+        },
+        {
+          "id": "b",
+          "text": "Report the suspected control as already approved."
+        },
+        {
+          "id": "c",
+          "text": "Close the case because no human has been identified."
+        },
+        {
+          "id": "d",
+          "text": "Prepare bounded options and source-specific requests, leaving disruption behind an actual owner gate."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D preserves conditional planning and unresolved service, origin and approval questions. A jumps from tag to job, actor and permission. B invents a decision receipt. C treats unknown identity as evidence of safety. The handoff may propose review checkpoints; it cannot borrow later containment cards or claim execution from a planning table.",
+      "source": "Chapter 5, Week 5 / course Day 25, #week-05-day-05, Worked contrast and future-condition/gate table; EX025."
+    }
+  ]
+}

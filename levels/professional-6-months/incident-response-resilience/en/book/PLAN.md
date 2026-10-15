@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–5 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01), [Week 3](MANUSCRIPT.md#week-03-day-01), [Week 4](MANUSCRIPT.md#week-04-day-01) and [Week 5](MANUSCRIPT.md#week-05-day-01), each with five applied weekday lessons: 25/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–6 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01), [Week 3](MANUSCRIPT.md#week-03-day-01), [Week 4](MANUSCRIPT.md#week-04-day-01), [Week 5](MANUSCRIPT.md#week-05-day-01) and [Week 6](MANUSCRIPT.md#week-06-day-01), each with five applied weekday lessons: 30/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -127,7 +127,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 06 — Containment planning and approvals
 
-**Stage 3; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
+**Stage 3 in the legacy outline; 30 historical planned pages; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-06) and [Week 6, course Days 26–30](MANUSCRIPT.md#week-06-day-01). The daily sequence teaches a measurable containment property, three-control/service-cost comparison, separate approval/execution/verification, fixed 09:47 expiry, route/service tests and conditional rollback. C13–C19 and C6/V6/C6X remain intact; W6-TIME adds fixed-window adverse controls and W6-MISSING challenges an incomplete inventory. EX026–EX030 and their worked extensions are revised together. A separate [Chapter 5 timed-test bank](../../../../../web/question-banks/professional-6-months/incident-response-resilience/en/005.json) adds ten original questions pinned after the Day 25 navigation update. No later authority or human approval is asserted.
 
 **Teaching purpose and relevance:** Choose a containment sequence that reduces further harm while respecting availability and authorization.
 
