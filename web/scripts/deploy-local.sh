@@ -81,6 +81,8 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 [[ "$(curl --silent --output /dev/null --write-out '%{redirect_url}' "${curl_options[@]}" 'https://opencyber.academy/private/login?next=%2Ftests%2F')" == 'https://opencyber.academy/account/?next=%2Ftests%2F' ]]
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | grep -F 'professional-6-months/ot-iot-security/en' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | grep -F 'rapid-1-month/incident-response-resilience/en' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | \
+  python3 -c 'import json,sys; rows=json.load(sys.stdin)["courses"].get("rapid-1-month/incident-response-resilience/en", []); sys.exit(0 if [row["chapter"] for row in rows] == [1,2,3,4] else 1)'
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/analytics.js | grep -F 'G-7KDGFR12FS' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \

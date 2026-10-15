@@ -67,12 +67,12 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert chapter_only.headers["location"] == "/courses/rapid-1-month/information-security/chapters/en/1/"
 
 
-def test_lesson_test_link_uses_its_week_and_unpublished_chapters_are_honest(client):
-    lesson_five = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/5/")
-    assert 'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter=1"' in lesson_five.text
-    lesson_six = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/6/")
-    assert "A chapter test has not been published yet." in lesson_six.text
-    assert 'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter=2"' not in lesson_six.text
+def test_lesson_test_link_uses_its_week_and_unpublished_editions_are_honest(client):
+    for lesson_number, chapter in ((5, 1), (6, 2), (11, 3), (16, 4)):
+        response = client.get(f"/courses/rapid-1-month/incident-response-resilience/lessons/en/{lesson_number}/")
+        assert f'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter={chapter}"' in response.text
+    unavailable = client.get("/courses/rapid-1-month/information-security/chapters/en/1/")
+    assert "A chapter test has not been published yet." in unavailable.text
 
 
 def test_translated_chapters_use_localized_course_names_in_search_and_navigation(client):
