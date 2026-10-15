@@ -5,7 +5,7 @@
 **Audience:** Hospital leadership, clinical operations, nursing, radiology, SOC, infrastructure, recovery, privacy and communications.  
 **Format:** Facilitated discussion and written decision artifacts, not a functional test or production playbook.  
 **Timing:** 15-minute briefing, 90-minute exercise, 25-minute evaluation/debrief; extend for accessibility or deliberation.  
-**Sources and rights:** See [primary references](#primary-references-and-rights). Original exercise text is within the project's [rights policy](../../../RIGHTS.md). The ten-entry web scenario catalog remains the discovery index; this document expands its existing hospital-ransomware entry and is **not** an eleventh incident or a second course book.
+**Sources and rights:** See [primary references](#11-primary-references-and-rights). Original exercise text is within the project's [rights policy](../../../RIGHTS.md). The ten-entry web scenario catalog remains the discovery index; this document expands its existing hospital-ransomware entry and is **not** an eleventh incident or a second course book.
 
 ## 1. Purpose, scope, and safety contract
 
