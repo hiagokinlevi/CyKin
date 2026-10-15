@@ -1,5 +1,7 @@
 # OpenCyber Academy — Cybersecurity Academic Books Collection
 
+**Course 039 / English writing checkpoint (2026-10-15):** Professional Incident Response now includes [Week 3, course Days 11–15](levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md#week-03-day-01), with revised EX011–EX015 and worked answers. [The edition guide](levels/professional-6-months/incident-response-resilience/en/SUBJECTS.md) has **15/130 planned daily lessons authored**; the remaining daily curriculum and whole-volume review are pending. This update does not release an English unit for translation or establish site deployment.
+
 <!-- open-cyber-academy:multilingual-score:start -->
 ~~~text
   +------------------------------------------------------------------+

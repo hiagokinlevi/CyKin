@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapter 1 contains [Week 1](MANUSCRIPT.md#week-01-day-01) and Chapter 2 contains [Week 2](MANUSCRIPT.md#week-02-day-01), each with five applied weekday lessons. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–3 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01) and [Week 3](MANUSCRIPT.md#week-03-day-01), each with five applied weekday lessons: 15/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -8,7 +8,7 @@
 
 ## Book requirements
 
-A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 360-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
+The earlier 300-page minimum and 360-page budget are superseded by the current book standard: A4 page count is a measurement, not an authoring target or completion gate. The existing 60 exercise/answer pairs do not by themselves complete the 130-day curriculum. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
 ## Primary source starting points
 
@@ -67,7 +67,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 03 — Alert intake and severity assessment
 
-**Stage 2; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
+**Stage 2 in the legacy outline; 30 historical planned pages; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-03) and [Week 3, course Days 11–15](MANUSCRIPT.md#week-03-day-01). The sequence teaches provenance-preserving intake, clock correction, provisional priority, hypothesis discrimination and actionable escalation. C02–C08, C3/C3X and EX011–EX015 remain in the single manuscript; the questions and worked extensions were revised together. Five-choice interactive counterparts have not been authored by this batch.
 
 **Teaching purpose and relevance:** Move from raw reports to a documented priority without equating every anomaly with compromise.
 

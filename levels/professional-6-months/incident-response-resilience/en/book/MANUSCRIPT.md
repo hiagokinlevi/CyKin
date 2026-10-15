@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1 and 2 now include separate [Week 1](#week-01-day-01) and [Week 2](#week-02-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Ten published daily units are not the 130 lessons of the six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–3 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01) and [Week 3](#week-03-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Fifteen authored daily units (15/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -20,7 +20,7 @@ The recommended starting point for organizational incident-response outcomes is 
 
 1. [Incident lifecycle and organizational readiness](#ch-01) — define the service, owners, evidence readiness and first handoff; [Week 1: five applied daily lessons](#week-01-day-01).
 2. [Authority, scope and response roles](#ch-02) — turn a charter into approval gates and reversible proposals; [Week 2: five applied daily lessons](#week-02-day-01).
-3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority.
+3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority; [Week 3: course Days 11–15](#week-03-day-01).
 4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits.
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor.
 6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect.
@@ -860,6 +860,8 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Alert intake and severity assessment
 
+**Week 3; course Days 11–15.** Read the reference sections and retained laboratories below with the [five daily lessons](#week-03-day-01). C02–C08 remain the case boundary; no later card is released by this expansion.
+
 ### Learning outcomes
 
 The learner can form one case from multiple signals without merging their claims, normalize clock readings with a stated uncertainty, assign a provisional response priority from impact and evidence confidence, and set a review trigger. At this level, triage is an auditable decision, not a prediction that an account was compromised.
@@ -1023,6 +1025,122 @@ At the C08 release, record the reported 10:00 expiry as a **custodian claim** re
 
 **Chapter synthesis:** Triage establishes *what to investigate next and by when*, not who did it. The clock correction C04=08:58 is valid for the stated toy input, but joining that event to C03/C05 requires more than time. Retain P2 at 09:14 as provisional and source-bounded. The next chapter handles receipt, custody and integrity, not cause attribution.
 
+### Week 3 — five applied daily lessons (course Days 11–15)
+
+The chapter reference above and its C3/C3X laboratories remain part of this week's reading. Work through them with the daily sequence below; a daily page does not replace its prerequisites. The case has not advanced past C08. C02 is the earlier support report, C03–C05 become available at 09:09, C06 at 09:10, C07 at 09:12 and C08 at 09:14. A study day is not a day of incident time. The week teaches how a supervisor can act on an incomplete intake without pretending that correlation, permission or preservation has already been established.
+
+| Course day | Daily decision | Required artifact | Existing exercise |
+|---|---|---|---|
+| 11 | Which claims belong in one case without becoming one event? | Four source lines and a separate hypothesis | [EX011](#exercise-ex011) |
+| 12 | Which time comparisons survive correction and release checks? | Raw/derived time record and a bounded comparison | [EX012](#exercise-ex012) |
+| 13 | What work is urgent while impact and cause remain uncertain? | Provisional priority with an owner and review trigger | [EX013](#exercise-ex013) |
+| 14 | Which collected result could weaken each explanation? | Competing-hypothesis and closure-gate table | [EX014](#exercise-ex014) |
+| 15 | What can the next shift request and verify? | Bounded escalation and request-state record | [EX015](#exercise-ex015) |
+
+<a id="week-03-day-01"></a>
+
+#### Day 11 — Preserve source claims before correlating signals
+
+**Mechanism and decision.** Intake is the transformation of heterogeneous reports into a reviewable case record. It is not the transformation of four reports into one proven incident narrative. A case groups related questions about a service; an event record describes what one producer reported. Preserve that distinction by assigning each source its own row, retaining its raw fields and recording interpretations separately. This makes it possible to retract a weak inference without losing the observations that motivated it. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) provides forensic-process context; the four-row worksheet here is an original teaching method, not a form mandated by that publication.
+
+At **09:09**, the intake boundary is C02–C05. C02 establishes that a symptom was reported, not that the authoritative S42 state was wrong. C03 establishes what the IdP summary labels a successful sign-in. C04 reports an endpoint browser process with a clock defect. C05 reports an API edit, not its present business effect. An account string can occur in multiple records without identifying one operation. Deduplicate only when producer identity, event identifier and source semantics support the claim that two records are copies of the same emitted event. Different producers are not duplicates merely because their times or account labels look similar.
+
+**Assumptions and evidence.** Treat the cards as supplied classroom inputs; their presence does not mean an analyst has collected the underlying IdP export. Keep source event time, ingestion/receipt and learner release separate. Do not fill a missing C02 collector time with its 09:04 support receipt. For each line, record the service question, missing fields, proposed custodian question and collection status. Preserve exact labels such as `s-77`, `q-144` and `runner-03`; their namespace and meaning still need validation.
+
+**Worked contrast.** An intake row saying “08:58: runner-03 logged in as svc-enroll and changed S42” quietly adds both an actor and a join. A defensible replacement is two observations and one hypothesis: “C03: summary reports svc-enroll/s-77 at 08:58. C04: endpoint reports a browser at estimated 08:58, without a session key. Hypothesis: these might concern related activity; no validated join supplied.” C05 must retain its own row because the blank session field cannot connect `q-144` to `s-77`. The useful next question is which source can supply a validated cross-reference, not which person to blame.
+
+One case envelope can still be opened for the reported enrollment concern. Grouping enables coordinated work; it does not strengthen the causal confidence of each row. A supervisor should be able to reconstruct every claim from the card ID and identify where the analyst added interpretation.
+
+**Practice.** Complete [EX011](#exercise-ex011) at 09:09, before using C06–C08. Add one explicitly labeled hypothesis outside the four source rows and one observation that would be needed to test it. Use the [worked answer](#answer-ex011) to check provenance, missing values and the prohibition on a fabricated join. **Limit:** source separation prevents a reasoning error; it cannot authenticate a record, prove completeness or establish current slot state.
+
+**Continue studying — course Day 11:** [Previous: Week 2, Day 5](#week-02-day-05) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Day 12](#week-03-day-02).
+
+<a id="week-03-day-02"></a>
+
+#### Day 12 — Normalize a clock without creating an event relationship
+
+**Mechanism.** A clock correction changes a representation of time; it does not add identity fields. Define the sign before calculating: `offset = device reading − reference UTC`. A clock four minutes slow has offset −4 minutes. Therefore `estimated UTC = raw device time − offset = 08:54 − (−00:04) = 08:58`. Retain the raw value, correction, source of the correction and resulting estimate. Overwriting 08:54 with 08:58 would hide the transformation a reviewer needs to inspect.
+
+**Assumptions and evidence.** The exercise supplies one fixed offset for this synthetic snapshot. It does not establish that the device remained four minutes slow throughout the day or that its reference comparison was exact. The cards have minute precision; the equality of two displayed minutes cannot order the events within that minute. In a real case, ask how the offset was measured, when it was measured, which timezone applies and whether clock adjustment or drift occurred between the event and measurement. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) supplies log-management context; these arithmetic choices depend on the given clock convention.
+
+**Worked contrast.** With the supplied offset, C04 and C03 both display 08:58 after normalization. That supports “coincident at the supplied precision,” not “same session.” With the wrong sign, `08:54 − 00:04` produces 08:50. The error would make a browser appear eight minutes earlier than the correctly derived estimate and could distort the investigation. Yet correcting the arithmetic still does not provide the missing session/request key.
+
+For a separate uncertainty illustration, suppose an offset measurement is **−4 minutes ±1 minute**, and raw 08:54 is known to be rounded to the nearest minute. The true raw reading could be approximately 08:53:30–08:54:30, and the correction could be +3 to +5 minutes. The possible UTC interval is approximately 08:56:30–08:59:30. These are **invented uncertainty assumptions**, not additional C04 measurements. They show why point estimates can hide overlap: a nominal 08:58 does not imply exact simultaneous execution.
+
+**Decision.** Use the corrected estimate to choose bounded questions and source windows. Request enough context to account for known uncertainty; justify the proposed 08:50–09:05 selection rather than calling it guaranteed complete. Ask the custodian about delayed ingestion and event-time selectors before interpreting an empty result. Separately enforce release: C06's source time 08:50 cannot make it available to a 09:09 analyst when its release is 09:10. C3 tests correction; C3X tests release. Neither program joins records.
+
+**Practice.** Complete [EX012](#exercise-ex012), predict and execute C3, and compare the sign-error variant. Explain why C3's final literal line is not a computed join test. Use C3X to reject an early C06/C08 citation, then compare the [worked answer](#answer-ex012). **Limit:** interval overlap is temporal compatibility, not causation; an in-memory parser cannot validate source clocks or a real query's completeness.
+
+**Continue studying — course Day 12:** [Previous: Day 11](#week-03-day-01) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Day 13](#week-03-day-03).
+
+<a id="week-03-day-03"></a>
+
+#### Day 13 — Assign response effort separately from causal confidence
+
+**Mechanism and assumptions.** A priority label selects a workload and coordination path under a local policy. It is not a measured probability of compromise. Keep four judgments visible: reported/verified service impact, confidence in a particular causal explanation, time sensitivity of useful evidence, and the cost of a proposed action. Combining them into an unexplained score would conceal why a low-confidence case can still require urgent preservation. The chapter's P1/P2/P3 definitions are classroom choices. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response within cybersecurity risk management; it does not assign these CTN labels or authorize an account change.
+
+**Evidence at 09:14.** The S42 symptom and C05 edit make meaningful service harm plausible, but no authoritative state or affected-user count has been supplied. C06 shows a retrieved approval for S40/S41, not a complete search of every approval. C07 weakens human attribution because the account has multiple uses. C08 reports a 10:00 evidence-expiry condition. From 09:14 to 10:00 there are 46 minutes of nominal remaining time under that statement. This is not a guaranteed retrieval budget: approval, export execution, delivery and checking all take time, and the claim may need clarification.
+
+**Worked contrast.** Analyst A writes “low confidence; defer until tomorrow.” That ignores the reported evidence window. Analyst B writes “urgent; disable the account.” That ignores service impact and permission. A defensible decision is P2 provisional: request a narrow authorized IdP preservation and a separate current-state S42 comparison now, while keeping disruptive controls behind their own service-owner gate. The decision preserves options without declaring a cause. It remains a request until the proper custodian approves and performs it.
+
+Make the reassessment operational. For this exercise, select **09:25** as an analyst-proposed supervisor checkpoint, not a new case event or a deadline dictated by policy. At that checkpoint ask whether the authorized request has an accepting custodian and an execution/receipt plan before 10:00. If blocked, escalate the authority gap and document what may be lost. Reassess sooner upon a verified state change, a usable source receipt or evidence of major service impact. Merely scheduling a review does not preserve data.
+
+| Change in supplied evidence, hypothetical | Decision it could change | Conclusion it would not establish |
+|---|---|---|
+| Owner verifies major enrollment disruption meeting the classroom P1 threshold | Escalate coordination and priority | Which person caused it |
+| Custodian confirms a bounded export is received and checkable | Advance preservation status and review its contents | Whole-case closure or complete source coverage |
+| Owner verifies correct state and a scoped approved job | Reconsider impact and benign explanation | That all signals were false or no other path exists |
+
+**Practice.** Complete [EX013](#exercise-ex013) with the four judgments, chosen priority, named roles and an event/time trigger. Compare the [worked answer](#answer-ex013). An alternative priority needs evidence and the stated rubric, not invented policy. **Limit:** the priority record allocates attention; it cannot measure business impact, authenticate an export or grant emergency powers.
+
+**Continue studying — course Day 13:** [Previous: Day 12](#week-03-day-02) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Day 14](#week-03-day-04).
+
+<a id="week-03-day-04"></a>
+
+#### Day 14 — Test an explanation before using it to close a case
+
+**Mechanism.** A discriminator is a result that changes the relative plausibility or decision relevance of an explanation. Evidence merely compatible with a hypothesis is weaker than evidence that distinguishes it from a competing account. A falsifier is a result that would weaken or contradict a specified claim under stated coverage assumptions. Write the claim narrowly enough to test. “The browser can be normal” is a possibility; “an approved scheduled run produced q-144 within scope” requires validated job provenance, request semantics and approval scope.
+
+**Assumptions and evidence.** At 09:14, C04/C06/C07 motivate alternative explanations but supply none of the missing job-run receipts or S42 authorization addenda. The supplied calendar's omission of S42 does not prove that no addendum exists anywhere. Conversely, an addendum mentioning S42 would address authorization scope, not automatically establish correct execution, current state or the identity behind `s-77`. Keep permission, mechanism and outcome as separate questions. Hypotheses can overlap: approved automation could produce an incorrect state, and a stale display could coexist with an actual edit.
+
+**Worked contrast.** Consider the benign hypothesis “an approved scheduled run accounts for q-144.” Finding an approved run at roughly 09:01 is **compatible**, but insufficient when that record has no request key. A custodian-validated run manifest that includes q-144 under the relevant namespace, plus a versioned S42 approval, would support the narrower hypothesis. A manifest that excludes q-144 weakens it **only if** the custodian establishes that the manifest covers the relevant run, route and interval. Absence from a partial export is not that falsifier. None of these hypothetical results has been collected in the case.
+
+For the concerning hypothesis “q-144 was outside approval,” a valid S42 authorization covering that specific operation would weaken the authorization claim. It would not prove the resulting enrollment state was correct. For a display-only explanation, a verified wrong authoritative state would refute the word **only**; a stale browser view cannot by itself account for the backend discrepancy. Ask for the smallest authorized comparison rather than a tenant-wide data dump.
+
+**Decision and closure gate.** Maintain the case while discriminators are pending. A defensible benign disposition needs the organization's actual rule, sufficient scope, a checked result, an accepting owner and the unresolved questions carried forward. The response may instead be “known service defect, security cause unconfirmed.” Distinguish an alert's detection logic firing incorrectly from an accurate signal explained by benign activity, and from a case whose evidence is insufficient. The label “false positive” should not erase a genuine edit or a service fault. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) supplies response context; this hypothesis table is original supervised practice.
+
+**Practice.** Complete [EX014](#exercise-ex014) with two benign hypotheses and one concerning hypothesis. For each, give a requested source, a supporting result, a weakening result and its coverage condition. Compare the [worked answer](#answer-ex014). **Limit:** discriminators refine claims; without an actually obtained result, they remain a collection plan. No later C09–C12 fact may be borrowed to finish this exercise.
+
+**Continue studying — course Day 14:** [Previous: Day 13](#week-03-day-03) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Day 15](#week-03-day-05).
+
+<a id="week-03-day-05"></a>
+
+#### Day 15 — Hand over a bounded request with an observable next state
+
+**Mechanism.** An escalation transfers a decision and its evidence boundary to a role that can accept it. A useful message specifies checkpoint, present observations, priority rationale, pending authority, a bounded request and what receipt would change the record. A request-state row then separates **drafted → submitted → approved → executed/reported → received → checked**. Not every organization uses those labels, and an operator report may precede independent receipt. The important property is that one state never substitutes for evidence of another.
+
+**Assumptions and evidence.** At the C08 checkpoint, no detailed export is in the case and no restriction is approved or executed. The incident lead coordinates; the identity/data custodian must approve and perform permitted source access under local rules. The application owner separately checks authoritative S42 state/version. C01's missing after-hours alternate is a documented fallback gap, not proof that the daytime custodian is currently unreachable. A 10:00 expiry statement creates urgency; it does not authorize a broad export or establish that the records have already vanished.
+
+**Worked contrast.** “Please investigate the compromised account; data secured” asserts two unsupported outcomes and leaves scope open. A bounded alternative asks for `svc-enroll` IdP records over proposed 08:50–09:05 UTC, source and query metadata, an identified approver/operator and an execution/receipt plan before the reported expiry. The custodian must validate the window against source clock and ingestion semantics. If the relevant event lies outside that scope, revise the request explicitly; do not silently claim the initial scope was exhaustive.
+
+Keep the operational states reviewable with a small sidecar in the case, not another manuscript:
+
+| Request | Current status at 09:14 | Evidence needed for the next state |
+|---|---|---|
+| Narrow IdP preservation | Draft/proposed; C08 supplies an expiry statement | Actual authorized acceptance, followed by operator/copy receipt and later integrity/provenance checks |
+| S42 authoritative-state comparison | Proposed to application owner | Permitted read with source, version, read time, comparison criterion and owner interpretation |
+| Account-wide restriction | Not approved or executed | Separate impact, scope, permission, operator, rollback and verification gates |
+
+The table is an authored plan, not a set of newly observed CTN events. Chapter 4 explains why receipt and byte verification remain distinct. Neither a hash alone nor a screenshot will prove that an export is complete or authentic.
+
+**Decision.** Send the fictional handoff for review with a specific checkpoint and an immediate-change trigger. An analyst-proposed 09:25 review can expose a blocked preservation path early. Major verified service harm meeting the local P1 threshold warrants earlier reprioritization; receipt of one export primarily changes preservation status and knowledge, not necessarily severity. State what kind of new result would justify a downgrade instead of making “before expiry” the only instruction.
+
+**Practice.** Complete [EX015](#exercise-ex015): a 90–150-word escalation plus the separate request-state row. Preserve the original task's C01 gap and all C02–C08 limits. Compare the [worked answer](#answer-ex015), checking that neither proposed approval nor a hypothetical example is narrated as an accomplished action. **Limit:** a clear message can make a blocked decision visible; only actual authorized action and checked evidence can resolve it.
+
+**Continue studying — course Day 15:** [Previous: Day 14](#week-03-day-04) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Chapter 4 reference; daily sequence pending](#ch-04).
+
+<a id="week-03-end"></a>
+
 ### Common mistakes and limits
 
 - Ordering C04 before C03 because 08:54 appears earlier than 08:58. Normalize the known four-minute offset and retain uncertainty.
@@ -1037,17 +1155,27 @@ In a synthetic workbook, record the case at 09:09, then reveal C06, C07 and C08 
 
 ### Exercises — subject 3
 
-**EX011 — Intake form.** Input: C02–C05 at 09:09. Produce four separate source lines with event and receipt times, source identifiers, service implication, missing fields and one next question. A 2-point result does not join `s-77` and `q-144` as fact.
+<a id="exercise-ex011"></a>
 
-**EX012 — Clock reconciliation.** Input: C03 and C04. Give C04's normalized UTC estimate, the raw/normalized pair and a two-sentence explanation of what the coincidence with C03 does and does not establish. A 2-point result calculates 08:58 and preserves correlation uncertainty.
+**EX011 — Intake form.** Objective: preserve provenance while grouping a case. Input: C02–C05 at 09:09 and the Chapter 3 reference. Produce four separate source lines with original event time, any derived time, ingestion/receipt and release, source identifiers, service implication, missing fields and one custodian question per line. Mark an unavailable field as not supplied; keep one testable hypothesis outside the observation rows. Do not use C06–C08 or join `s-77` and `q-144` as fact. Rubric: 0 = merged/fabricated event, future-card use or missing source lines; 1 = four bounded lines but ambiguous time/status or an untestable hypothesis; 2 = four traceable lines, explicit missing values, distinct hypothesis and a safe discriminating request. [Worked answer](#answer-ex011).
+
+<a id="exercise-ex012"></a>
+
+**EX012 — Clock reconciliation.** Objective: correct a clock without inventing correlation. Input: C03/C04 and the complete C3 fixture in §3.5. Give the raw/normalized pair, define the sign convention and calculate C04's UTC estimate. In two sentences explain the supplied precision and why coincidence cannot establish order, actor or a session/request join. Keep both original and derived values; do not import an uncertainty measurement from the separate Day 12 illustration. Rubric: 0 = wrong correction or claimed causal join; 1 = 08:58 with incomplete provenance/precision explanation; 2 = inspectable +4-minute transformation, stated uncertainty limits and no unsupported join. [Worked answer](#answer-ex012).
 
 **C3 extension for EX012:** Predict and run the four-line Python 3 fixture in §3.5. Change the correction sign in a separate copy and explain why a matching minute is still not a session-to-request join.
 
-**EX013 — Priority decision.** Input: C02–C08 at 09:14 and the classroom P1–P3 rubric. Choose a provisional priority, separately state impact, confidence, expiry-related urgency and a review time or event. A 2-point result can justify P2 without calling the account compromised.
+<a id="exercise-ex013"></a>
 
-**EX014 — False-positive gate.** Input: C04, C06 and C07. Write two benign explanations, one concerning explanation and the minimum discriminator for each. A 2-point result does not use an uncollected record as evidence.
+**EX013 — Priority decision.** Objective: allocate response effort under uncertainty. Input: C02–C08 at 09:14 and the classroom P1–P3 rubric. Choose a provisional priority; separately state impact, causal confidence, reported expiry urgency and decision cost. Name the roles for the bounded preservation request and S42 state check, their pending authorization, a concrete proposed review time and an earlier evidence trigger. State what would justify raising priority. Rubric: 0 = unsupported compromise/impact or expiry treated as permission; 1 = defensible provisional label but missing owner, action-state distinction or review trigger; 2 = all four judgments support the label, requests remain pending, and the next review can be acted on. A different label needs evidence fitting the supplied classroom rubric; do not invent CTN policy. [Worked answer](#answer-ex013).
 
-**EX015 — Shift escalation.** Input: C02–C08. Compose a 90–150-word message to the incident lead with observed facts, one bounded preservation request, an S42 state check, the C01 owner gap and a condition that would change priority. A 2-point result separates these requests from approved or executed actions.
+<a id="exercise-ex014"></a>
+
+**EX014 — False-positive gate.** Objective: distinguish a compatible story from a tested disposition. Input: C04/C06/C07 in the C02–C08 context at 09:14. Write two benign hypotheses and one concerning hypothesis. For each, name the minimum requested source, a supporting result, a result that would weaken it, and the coverage/identifier assumption that makes that result meaningful. State why closure is still pending; a scoped authorization alone cannot prove correct execution or current state. Rubric: 0 = invented collected evidence or definitive benign/malicious closure; 1 = three plausible hypotheses but a nondiscriminating test or reversed support/falsification; 2 = three conditional tests with correctly directed results, source limitations and an explicit pending disposition. No C09 or later card is available. [Worked answer](#answer-ex014).
+
+<a id="exercise-ex015"></a>
+
+**EX015 — Shift escalation.** Objective: hand over an actionable decision without overstating progress. Input: C01's owner-gap context and C02–C08 at 09:14; no later receipts. Compose a 90–150-word message to the incident lead with source-bounded observations, provisional priority, a narrow IdP preservation request, separate S42 state check, the C01 fallback gap and a concrete review checkpoint. Name a verified condition that would change priority. Outside the word-limited message add a request-state row naming current status, accepting role and evidence required for the next state. Rubric: 0 = invented join, permission or completed preservation/restriction; 1 = accurate message but missing scope, owner, priority-change condition or request-state evidence; 2 = actionable bounded message and row, correct checkpoint/release limits, explicit pending authority and justified reprioritization trigger. The message is a classroom artifact; do not contact real people. [Worked answer](#answer-ex015).
 
 ### Subject synthesis
 
@@ -3327,9 +3455,15 @@ These are toy Boolean states, not CTN action receipts. At C02, the actual accoun
 
 ### Subject 3: EX011–EX015
 
+<a id="answer-ex011"></a>
+
 **EX011 — Model intake lines.** C02: symptom noticed around 09:00, received 09:04, reporter observation only, ask for scoped S42 state. C03: IdP event 08:58, ingested 09:02, released 09:09, `svc-enroll`/`s-77`, no client or human field in summary, ask for authorized detail. C04: endpoint raw 08:54, normalized estimate 08:58, ingested 09:06/released 09:09, `runner-03`, no shared session key, ask whether scheduled browser activity is expected. C05: API edit 09:01, ingested 09:07/released 09:09, S42/`q-144`/`svc-enroll`, blank session, ask application custodian for authoritative state and key semantics. The four lines must remain distinct; a combined “runner session edited slot” line is unsupported.
 
 **Additional worked reasoning (EX011 — Four independent intake lines.):** C02 remains a reporter-observed symptom, noticed approximately 09:00 and received 09:04. C03 source sign-in 08:58, ingested 09:02, released 09:09, account/session label without human/client. C04 raw 08:54 corrected to *estimated* 08:58, ingested 09:06 and released 09:09, endpoint process without a shared key. C05 API edit 09:01, ingested 09:07, released 09:09, request `q-144`, session missing. Each line identifies a custodian and one safe next query; a joined “runner session edited S42” observation is false.
+
+**Week 3 Day 11 — worked provenance check.** A four-row table must retain C02's approximate symptom time and known 09:04 support receipt; its collector ingestion time is not supplied. C03 has 08:58 event/09:02 ingestion/09:09 release. C04 has raw 08:54, derived approximately 08:58, 09:06 ingestion and 09:09 release. C05 has 09:01 event/09:07 ingestion/09:09 release. Proposed custodians are support, identity, endpoint and application owners respectively; these are requests, not collection receipts. A valid separate hypothesis is “the sign-in and edit might be related.” A test request asks the application/identity custodians for validated cross-source identifiers and their semantics. A second row saying the browser caused the edit is not additional evidence. Two points require both the original four-line artifact and these time/status boundaries; a correct hypothesis cannot repair a merged observation row.
+
+<a id="answer-ex012"></a>
 
 **EX012 — Model clock calculation.** C04 device displays 08:54 while measured four minutes slow; adding four minutes yields approximately **08:58 UTC**. C03's reported sign-in also occurred at 08:58, so the events are temporally coincident at the given minute precision. Because C04 lacks a session ID and the offset's uncertainty is not specified, coincidence neither proves a shared transaction nor orders the two within that minute.
 
@@ -3346,17 +3480,47 @@ C3|C04_C03_same_minute=True|direct_join=False
 
 The final line is an explicit classroom interpretation, not a verified join. In the negative-control copy, changing C04's correction to `-4` makes its displayed 08:54 become 08:50, revealing the sign error. Changing C05's event time does not supply a missing session/request key. Full credit requires the correct raw-to-UTC transformation **and** the unsupported-causation limit.
 
+**Week 3 Day 12 — worked transformation check.** Define `offset = device − UTC = −00:04`; hence `UTC estimate = raw − offset = 08:54 + 00:04 = 08:58`. Preserve raw, derived and offset metadata. C03 and corrected C04 coincide at supplied minute precision, while within-minute order and a common session remain unknown. C3's first three lines execute the transformation; its fourth line is a printed interpretation, not a tested join. Reversing the sign yields 08:50 and fails the expected correction. C3X keeps C06/C08 out of 09:09 despite their source metadata. In the separate uncertainty illustration only, raw rounding ±30 seconds plus correction 3–5 minutes yields approximately 08:56:30–08:59:30; that interval must not be inserted into canonical C04 as a measurement. Two points require the inspectable calculation and inference limits, not the optional invented interval.
+
+<a id="answer-ex013"></a>
+
 **EX013 — Model priority decision.** At 09:14 choose classroom **P2 provisional**. Potential impact: an S42 enrollment slot may be wrong, but present state and number of users affected are unknown. Confidence: C05 reports an edit, yet `s-77` has no verified link to `q-144`, and account sharing prevents attribution. Urgency: C08 states detailed events expire at 10:00, so ask the authorized custodian for a bounded export now. Review on the first of export receipt, S42 state, verified approval addendum, further symptoms or a short supervisor checkpoint before 10:00. A justified alternative priority can score two if tied to an explicit local rubric and no compromise claim.
 
 **Additional worked reasoning (EX013 — Provisional P2 decision.):** Reported S42 service concern plus C05 recorded edit implies plausible but unmeasured impact; shared `svc-enroll`, no cross-source join and incomplete calendar limit attribution. C08's 10:00 expiry, released at 09:14, raises *preservation urgency*, not proven compromise. Name an owner-approved IdP 08:50–09:05 request and separate read-only S42 state check, with reassessment before 10:00 or on verified new damage. A P1 label without its defined high-impact evidence fails the rationale.
 
+**Week 3 Day 13 — worked decision contract.** P2 provisional fits plausible unmeasured enrollment harm plus C08's reported loss window. Causal confidence stays limited by sharing, incomplete approval scope and no direct join. Broad account disablement has potentially large service cost and remains separately gated. Ask the identity custodian for approved, scoped preservation and the application owner for an authoritative S42 state/version comparison. A defensible proposed review is 09:25, or earlier on verified major service harm or a usable new source receipt. At 09:25, absence of an accepting custodian or execution/receipt plan calls for escalation of the blocked request; it does not prove the data has expired. Evidence meeting the classroom P1 major-impact threshold can raise priority. Correct state plus validated authorized mechanism can support reassessment, but collection alone does not close the case. The selected time is an analyst proposal, not a new case card. Two points require decision cost, pending authority and a usable trigger in addition to the original priority reasoning.
+
+<a id="answer-ex014"></a>
+
 **EX014 — Model gates.** Benign explanation 1: C04 browser is scheduled runner activity; discriminate with a preserved, approved job-run record and known expected process behavior. Benign explanation 2: C06's visible calendar is incomplete; discriminate with a signed S42 addendum and its scope. Concerning explanation: shared account used outside approval to edit S42; discriminate with identity access trail, validated session/request join and change scope. None of these source records is in hand at 09:14, so the labels remain hypotheses. A “false positive” closure would need the organization’s actual closure rule and supporting results.
 
-**Additional worked reasoning (EX014 — Closure must have evidence.):** Benign candidates: ordinary runner process and an omitted approved addendum; concerning candidate: use of shared account outside scope. For each, specify what would falsify the explanation—a verified job-to-request link, signed change scope, and trustworthy session/application identifier semantics as appropriate. Current C04/C06/C07 do not supply these discriminators, so the learner's result remains hypotheses, not “false positive” or “attacker confirmed.”
+**Additional worked reasoning (EX014 — Closure must have evidence.):** Benign candidates are ordinary runner activity and an omitted S42 approval addendum; a concerning candidate is use of the shared account outside approval. A validated job-to-request link and applicable signed scope would **support**, not falsify, the benign approved-run explanation. A complete, correctly scoped manifest excluding `q-144` would weaken that explanation; an incomplete manifest would not. A valid S42 authorization would weaken the outside-approval claim without proving correct execution or state. Current C04/C06/C07 supply none of those discriminator results. The disposition remains pending, not “false positive” or “attacker confirmed.”
 
-**EX015 — Model escalation (108 words).** “At 09:14 CTN enrollment remains P2 provisional. Support reported S42 unavailable; the API recorded an S42 edit through `q-144`, while the IdP reported `s-77` and the endpoint showed a roughly coincident runner browser event. No session-to-request join or human attribution exists. C06's visible approval covers S40–S41; an addendum has not been checked. C08 says detailed IdP source data expires at 10:00. Please authorize the identity custodian to preserve only `svc-enroll` events from 08:50–09:05 with source metadata. Ask the application owner for present S42 state. The after-hours identity alternate remains undefined in C01. Reassess after either result or before source expiry; no account change has been approved.”
+**Week 3 Day 14 — worked discriminator table.** All results below are requested/hypothetical, not collected evidence at 09:14.
 
-**Additional worked reasoning (EX015 — Handoff (119 words).):** “At 09:14, CTN-IR-014 is P2 provisional. Support reports S42 unavailable, and C05 records an S42 edit via q-144. C03 describes an svc-enroll sign-in with s-77; C04's runner browser time corrects to approximately 08:58, but no direct join identifies an operator or cause. C06 lists approved work on S40–S41 and does not show an S42 addendum. C08 reports IdP detail expiry at 10:00, so please authorize the identity custodian to preserve a narrow 08:50–09:05 source selection and provenance. In parallel ask the application owner to compare current authoritative S42 state. C01 lacks an after-hours identity alternate. Neither export nor restriction has occurred. Reassess before expiry or immediately on verified new harm.”
+| Hypothesis | Minimum source and support | Result that would weaken it | Required boundary |
+|---|---|---|---|
+| The runner browser is ordinary scheduled activity | Endpoint/job custodian's preserved process and run records match an expected approved execution | A validated complete run record contradicts the expected process/run relationship | Coverage of the relevant host, interval and process identity; browser presence alone is insufficient |
+| An omitted approval addendum authorizes the S42 edit | Versioned authorization explicitly covers the operation, target and time | The authoritative complete approval ledger and responsible owner establish no applicable S42 authorization | Completeness and approving authority must be established; omission from C06 alone cannot do this |
+| The shared account performed q-144 outside approval | Validated application provenance plus a complete authorization comparison excludes the specific edit | A valid authorization covers that exact edit; this weakens the scope claim even if execution was faulty | Validate request namespaces and operation scope; account equality does not attribute a human |
+
+The first row concerns the browser's explanation, not proof that it caused `q-144`. The second and third concern authorization; neither settles current S42 correctness. A job/request join could support an approved-run explanation, while a complete manifest excluding the request could weaken it. Reversing those directions is a substantive reasoning error. Closure awaits actual discriminator results and the organization's accepting owner/rule; do not manufacture either from a table.
+
+<a id="answer-ex015"></a>
+
+**EX015 — Model escalation.** “At 09:14 CTN enrollment remains P2 provisional. Support reported S42 unavailable; the API recorded an S42 edit through `q-144`, while the IdP reported `s-77` and the endpoint showed a roughly coincident runner browser event. No session-to-request join or human attribution exists. C06's visible approval covers S40–S41; an addendum has not been checked. C08 says detailed IdP source data expires at 10:00. Please authorize the identity custodian to preserve only `svc-enroll` events from 08:50–09:05 with source metadata. Ask the application owner for present S42 state. The after-hours identity alternate remains undefined in C01. Reassess after either result or before source expiry; no account change has been approved.”
+
+**Additional worked reasoning (EX015 — Handoff.):** “At 09:14, CTN-IR-014 is P2 provisional. Support reports S42 unavailable, and C05 records an S42 edit via q-144. C03 describes an svc-enroll sign-in with s-77; C04's runner browser time corrects to approximately 08:58, but no direct join identifies an operator or cause. C06 lists approved work on S40–S41 and does not show an S42 addendum. C08 reports IdP detail expiry at 10:00, so please authorize the identity custodian to preserve a narrow 08:50–09:05 source selection and provenance. In parallel ask the application owner to compare current authoritative S42 state. C01 lacks an after-hours identity alternate. Neither export nor restriction has occurred. Reassess before expiry or immediately on verified new harm.”
+
+**Week 3 Day 15 — worked escalation with a priority-change condition.**
+
+“At 09:14, enrollment is P2 provisional. C02 reports S42 unavailable and C05 records q-144; C03/C04 do not establish a session-to-request join or human actor. C06 lists S40–S41, and an S42 addendum remains unverified. C08 reports IdP detail expiry at 10:00. Please have the identity custodian authorize and preserve a proposed svc-enroll selection for 08:50–09:05 UTC with source/query metadata, validating that window against clock and ingestion limits. Ask the application owner for current authoritative S42 state/version. C01 lacks an after-hours identity alternate; no export or restriction is yet approved or executed. Review at 09:25 or earlier on verified major enrollment disruption, which could justify P1 under the classroom rubric.”
+
+| Request | Current state | Accepting role and next evidence |
+|---|---|---|
+| Proposed bounded IdP preservation | Draft; authorization and execution pending | Identity/data custodian's actual approval and operator plan, followed by a separate source/copy receipt before advancing to received/checked |
+
+The 09:25 time is a proposed checkpoint, not an observed action. If permission cannot be obtained, the lead escalates the missing authority path and records potential evidence loss. “Export requested” is not “export received.” The earlier model messages remain useful source summaries; this extension explicitly supplies the priority-change condition and state row required by the revised exercise.
 
 ### Subject 4: EX016–EX020
 

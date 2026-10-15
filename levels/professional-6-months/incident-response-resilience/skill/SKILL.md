@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Incident response and cyber resilience — Professional course skill
 
-Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1 and 2 contain separate five-day Week 1 and Week 2 sequences. Do not count the other chapters as 120 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–3 contain separate five-day Week 1–3 sequences: 15/130 planned daily lessons are authored. Do not count the other chapters as 115 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
 
 ## Course sources
 
@@ -27,9 +27,11 @@ For Week 1, teach [Day 1](../en/book/MANUSCRIPT.md#week-01-day-01) through [Day 
 For Week 2, teach [Day 1](../en/book/MANUSCRIPT.md#week-02-day-01) through [Day 5](../en/book/MANUSCRIPT.md#week-02-day-05) separately. Each day links EX006–EX010 and its worked Week 2 result. Keep the C02-only 09:04 main-case cutoff separate from the invented W2 `SIM-DEC-01` rehearsal. The Day 2 Python gate compares declared fields; it cannot authenticate a real approver or prove execution. Ask learners to identify which permission, owner receipt, operation receipt and independent check are still missing. Later chapters remain readable as subject teaching while the other daily weeks are authored.
 
 
+For Week 3, teach [Day 11](../en/book/MANUSCRIPT.md#week-03-day-01) through [Day 15](../en/book/MANUSCRIPT.md#week-03-day-05) with the Chapter 3 reference and retained C3/C3X programs. Match EX011–EX015 to their revised prompts, original worked answers and Week 3 extensions. Enforce C02–C05 at 09:09 and C06/C07/C08 only at their later releases. A job/request link can support a hypothesis; a complete manifest excluding the request can weaken it. Neither an incomplete calendar nor a shared minute proves misuse. The proposed 09:25 review is not a new case event. Five-choice interactive artifacts are not supplied by this batch.
+
 ## Authored twelve-subject route
 
-This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the book has not met the 300-page A4, independent-review or publication gate. Teach only the actual manuscript as OpenCyber Academy text and identify any added explanation as supplementary.
+This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the full daily curriculum, independent review and complete-book publication gate remain open; A4 pages are measured, not a completion threshold. Teach only the actual manuscript as OpenCyber Academy text and identify any added explanation as supplementary.
 
 | Subject | Read and teach | Learner artifact |
 |---|---|---|
@@ -112,7 +114,7 @@ For Chapter 9, have the learner maintain separate service and possible data-impa
 
 ## Editorial and language state
 
-Use the [course progress table](../../../../COURSE_WRITING_PROGRESS.md), [source audit](../../../../SOURCE_AUDIT.md) and [book standard](../../../../BOOK_STANDARD.md). Twelve chapter drafts and 60 exercise-answer pairs are available in English; this is draft-chapter coverage, not a complete book. The manuscript has not passed 300 A4 pages or independent review. Other language folders are working outlines until translated and reviewed after the full English set.
+Use the [course progress table](../../../../COURSE_WRITING_PROGRESS.md), [source audit](../../../../SOURCE_AUDIT.md) and [book standard](../../../../BOOK_STANDARD.md). Twelve chapter drafts and 60 exercise-answer pairs are available in English; this is draft-chapter coverage, not a complete book. The full daily curriculum and independent review remain incomplete. A coherent English unit may enter Portuguese translation only after actual source review and release pinned to its exact package; full English collection completion is not required first. This Week 3 update does not release Chapter 1 or any other unit to translation. Check every other edition's real text and release evidence rather than inferring availability from its folder.
 
 ## Continue the curriculum
 
