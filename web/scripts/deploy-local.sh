@@ -77,6 +77,8 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Test yourself' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Available tests now' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tabletop/ | grep -F 'Hospital ransomware' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tabletop/hospital-ransomware/ | grep -F 'Aster Evidence team' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/ | grep -F 'chapter=1' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/account/ | grep -F 'profile-brand' > /dev/null
 [[ "$(curl --silent --output /dev/null --write-out '%{redirect_url}' "${curl_options[@]}" 'https://opencyber.academy/private/login?next=%2Ftests%2F')" == 'https://opencyber.academy/account/?next=%2Ftests%2F' ]]
@@ -102,6 +104,7 @@ for language in pt es he fr ru de zh ja; do
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F "<html lang=\"${language}\"" > /dev/null
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/about/" | grep -F 'Hiago Kin Levi' > /dev/null
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/sitemap.xml" | grep -F "https://${host}/sitemaps/" > /dev/null
+    curl --fail --show-error --silent "${host_options[@]}" "https://${host}/tabletop/" | grep -F 'NIST SP 800-61 REV. 3' > /dev/null
   else
     curl --fail --show-error --silent "${host_options[@]}" "https://${host}/" | grep -F 'noindex,follow' > /dev/null
   fi

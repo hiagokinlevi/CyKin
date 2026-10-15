@@ -1,0 +1,442 @@
+{
+  "version": 1,
+  "standard": "NIST SP 800-61 Rev. 3 (2025) and CSF 2.0",
+  "source": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+  "languages": [
+    "en",
+    "pt",
+    "es"
+  ],
+  "scenarios": [
+    {
+      "id": "hospital-ransomware",
+      "title": {
+        "en": "Hospital ransomware",
+        "pt": "Ransomware em hospital",
+        "es": "Ransomware en un hospital"
+      },
+      "situation": {
+        "en": "A regional hospital loses access to appointment scheduling and a shared imaging folder; bedside systems remain functional but their dependency is unverified.",
+        "pt": "Um hospital regional perde acesso ao agendamento e a uma pasta compartilhada de imagens; os sistemas de leito continuam funcionando, mas a dependência deles não foi confirmada.",
+        "es": "Un hospital regional pierde acceso a las citas y a una carpeta compartida de imágenes; los sistemas de cabecera siguen funcionando, pero su dependencia no está confirmada."
+      },
+      "signal": {
+        "en": "At 08:20 a workstation shows an extortion note; two file shares become unreadable. Endpoint alerts and backup-job logs disagree on the first affected time.",
+        "pt": "Às 08h20, uma estação mostra uma nota de extorsão; duas pastas ficam ilegíveis. Alertas de endpoint e registros de backup discordam sobre o primeiro horário afetado.",
+        "es": "A las 08:20 una estación muestra una nota de extorsión; dos carpetas dejan de poder leerse. Alertas de terminal y registros de copias discrepan sobre la primera hora afectada."
+      },
+      "guardrail": {
+        "en": "Keep clinical safety decisions with the clinical lead; do not disconnect equipment or restore over evidence without approval.",
+        "pt": "Mantenha decisões de segurança clínica com a liderança clínica; não desconecte equipamentos nem restaure sobre evidências sem aprovação.",
+        "es": "Las decisiones de seguridad clínica corresponden al responsable clínico; no desconecte equipos ni restaure sobre evidencia sin aprobación."
+      },
+      "containment": {
+        "en": "Isolate confirmed affected workstations and shares in an owner-approved order while preserving disk and log copies.",
+        "pt": "Isole estações e pastas afetadas confirmadas em ordem aprovada pelo responsável, preservando cópias de discos e registros.",
+        "es": "Aísle estaciones y carpetas afectadas confirmadas en un orden aprobado por el responsable y conserve copias de discos y registros."
+      },
+      "recovery": {
+        "en": "Restore scheduling in an isolated environment from a selected clean backup, then reconnect only after clinical workflow testing.",
+        "pt": "Restaure o agendamento em ambiente isolado a partir de um backup limpo selecionado; reconecte somente após testar o fluxo clínico.",
+        "es": "Restaure las citas en un entorno aislado desde una copia limpia seleccionada; reconecte solo tras probar el flujo clínico."
+      },
+      "acceptance": {
+        "en": "Clinical staff can complete an appointment and retrieve an image; monitoring shows no renewed encryption.",
+        "pt": "A equipe clínica consegue concluir um agendamento e recuperar uma imagem; o monitoramento não mostra nova criptografia.",
+        "es": "El personal clínico puede completar una cita y recuperar una imagen; la supervisión no muestra nuevo cifrado."
+      },
+      "improvement": {
+        "en": "Rehearse backup isolation, restore ownership, and clinical fallback before the next incident.",
+        "pt": "Ensaiar isolamento de backups, responsabilidade pela restauração e contingência clínica antes do próximo incidente.",
+        "es": "Ensayar el aislamiento de copias, la responsabilidad de restauración y la contingencia clínica antes del próximo incidente."
+      }
+    },
+    {
+      "id": "vendor-invoice-fraud",
+      "title": {
+        "en": "Vendor invoice fraud",
+        "pt": "Fraude em fatura de fornecedor",
+        "es": "Fraude en factura de proveedor"
+      },
+      "situation": {
+        "en": "A finance mailbox receives a plausible request to replace the bank account for a critical supplier hours before payment.",
+        "pt": "Uma caixa de finanças recebe pedido plausível para trocar a conta bancária de fornecedor crítico poucas horas antes do pagamento.",
+        "es": "Un buzón de finanzas recibe una solicitud plausible para cambiar la cuenta bancaria de un proveedor crítico horas antes del pago."
+      },
+      "signal": {
+        "en": "The sender address resembles the supplier's domain, but the reply-to differs; an employee already opened the attachment.",
+        "pt": "O endereço do remetente se parece com o domínio do fornecedor, mas o reply-to difere; um funcionário já abriu o anexo.",
+        "es": "La dirección del remitente se parece al dominio del proveedor, pero el campo de respuesta difiere; un empleado ya abrió el adjunto."
+      },
+      "guardrail": {
+        "en": "Do not change payment details from the email; verify with a known independent supplier contact and preserve financial records.",
+        "pt": "Não altere dados de pagamento pelo e-mail; confirme com contato conhecido e independente do fornecedor e preserve os registros financeiros.",
+        "es": "No cambie los datos de pago desde el correo; verifique con un contacto conocido e independiente del proveedor y conserve los registros financieros."
+      },
+      "containment": {
+        "en": "Freeze the proposed bank-detail change, preserve headers and attachment safely, and review access to the affected mailbox.",
+        "pt": "Suspenda a alteração proposta, preserve cabeçalhos e anexo com segurança e revise o acesso à caixa afetada.",
+        "es": "Suspenda el cambio propuesto, conserve cabeceras y adjunto de forma segura y revise el acceso al buzón afectado."
+      },
+      "recovery": {
+        "en": "Release payment only after dual approval and callback to the pre-existing supplier contact; reset compromised access if confirmed.",
+        "pt": "Libere o pagamento apenas após dupla aprovação e retorno ao contato pré-existente do fornecedor; redefina acessos comprometidos se confirmado.",
+        "es": "Libere el pago solo tras doble aprobación y llamada al contacto preexistente del proveedor; restablezca accesos comprometidos si se confirma."
+      },
+      "acceptance": {
+        "en": "The supplier confirms the account through the independent channel and the payment register shows the approved destination.",
+        "pt": "O fornecedor confirma a conta pelo canal independente e o registro de pagamentos mostra o destino aprovado.",
+        "es": "El proveedor confirma la cuenta por el canal independiente y el registro de pagos muestra el destino aprobado."
+      },
+      "improvement": {
+        "en": "Add callback and dual-control drills to the payment-change procedure.",
+        "pt": "Acrescente exercícios de retorno por telefone e dupla aprovação ao procedimento de troca bancária.",
+        "es": "Añada simulacros de llamada de verificación y doble control al procedimiento de cambio bancario."
+      }
+    },
+    {
+      "id": "cloud-key-exposure",
+      "title": {
+        "en": "Cloud credential exposure",
+        "pt": "Exposição de credencial na nuvem",
+        "es": "Exposición de credencial en la nube"
+      },
+      "situation": {
+        "en": "A deployment token appears in a public source commit and may authorize changes to a production cloud project.",
+        "pt": "Um token de implantação aparece em commit público e pode autorizar alterações em projeto de nuvem de produção.",
+        "es": "Un token de despliegue aparece en un commit público y puede autorizar cambios en un proyecto de nube de producción."
+      },
+      "signal": {
+        "en": "Cloud audit logs show unfamiliar token use after publication, but the affected resource list is incomplete.",
+        "pt": "Registros de auditoria da nuvem mostram uso desconhecido do token após a publicação, mas a lista de recursos afetados está incompleta.",
+        "es": "Los registros de auditoría de la nube muestran un uso desconocido del token tras la publicación, pero la lista de recursos afectados está incompleta."
+      },
+      "guardrail": {
+        "en": "Treat the token as exposed; preserve audit logs before rotation and avoid printing the secret in tickets or messages.",
+        "pt": "Trate o token como exposto; preserve registros de auditoria antes da rotação e não imprima o segredo em chamados ou mensagens.",
+        "es": "Trate el token como expuesto; conserve los registros antes de rotarlo y no copie el secreto en incidencias o mensajes."
+      },
+      "containment": {
+        "en": "Disable or rotate the token, search its use by time and resource, and bound any affected deployment with owner approval.",
+        "pt": "Desative ou rotacione o token, investigue seu uso por hora e recurso e delimite implantações afetadas com aprovação do responsável.",
+        "es": "Desactive o rote el token, examine su uso por hora y recurso y delimite despliegues afectados con aprobación del responsable."
+      },
+      "recovery": {
+        "en": "Reissue least-privilege credentials from a protected store and redeploy verified artifacts.",
+        "pt": "Emita credenciais de menor privilégio a partir de armazenamento protegido e reimplante artefatos verificados.",
+        "es": "Emita credenciales de mínimo privilegio desde un almacén protegido y vuelva a desplegar artefactos verificados."
+      },
+      "acceptance": {
+        "en": "The old token is rejected, approved workloads function, and audit review finds no unexplained resource changes.",
+        "pt": "O token antigo é rejeitado, as cargas aprovadas funcionam e a auditoria não encontra mudanças inexplicadas.",
+        "es": "El token antiguo se rechaza, las cargas aprobadas funcionan y la auditoría no encuentra cambios sin explicación."
+      },
+      "improvement": {
+        "en": "Move deployment authentication to short-lived, scoped identities and test secret scanning.",
+        "pt": "Migre a autenticação de implantação para identidades temporárias e restritas e teste a detecção de segredos.",
+        "es": "Pase la autenticación del despliegue a identidades breves y limitadas y pruebe la detección de secretos."
+      }
+    },
+    {
+      "id": "supplier-update",
+      "title": {
+        "en": "Compromised supplier update",
+        "pt": "Atualização de fornecedor comprometida",
+        "es": "Actualización comprometida del proveedor"
+      },
+      "situation": {
+        "en": "A signed update from a software supplier reaches several endpoints before the supplier warns of a possible build compromise.",
+        "pt": "Uma atualização assinada de fornecedor alcança vários endpoints antes de o fornecedor alertar sobre possível comprometimento da compilação.",
+        "es": "Una actualización firmada del proveedor llega a varios equipos antes de que el proveedor avise de un posible compromiso de la compilación."
+      },
+      "signal": {
+        "en": "Endpoint behavior changes after installation, but the supplier advisory is preliminary and does not yet list every affected version.",
+        "pt": "O comportamento dos endpoints muda após a instalação, mas o aviso preliminar ainda não lista todas as versões afetadas.",
+        "es": "El comportamiento de los equipos cambia tras la instalación, pero el aviso preliminar aún no enumera todas las versiones afectadas."
+      },
+      "guardrail": {
+        "en": "Do not assume a valid signature proves safety; separate confirmed installation from suspected malicious behavior.",
+        "pt": "Não presuma que uma assinatura válida prova segurança; separe instalação confirmada de comportamento malicioso suspeito.",
+        "es": "No suponga que una firma válida demuestra seguridad; separe la instalación confirmada del comportamiento malicioso sospechado."
+      },
+      "containment": {
+        "en": "Pause the rollout, preserve package hashes and installation logs, and isolate hosts only where impact is supported.",
+        "pt": "Pause a distribuição, preserve hashes dos pacotes e registros de instalação e isole hosts apenas onde houver evidência de impacto.",
+        "es": "Detenga el despliegue, conserve hashes y registros de instalación y aísle equipos solo donde haya evidencia de impacto."
+      },
+      "recovery": {
+        "en": "Redeploy a verified prior version through an approved rollback path after testing business dependencies.",
+        "pt": "Reimplante versão anterior verificada por caminho de reversão aprovado após testar dependências de negócio.",
+        "es": "Vuelva a desplegar una versión anterior verificada mediante una reversión aprobada tras probar dependencias de negocio."
+      },
+      "acceptance": {
+        "en": "An unaffected build hash is present, key workflows pass, and monitoring finds no recurring suspicious behavior.",
+        "pt": "Um hash de versão não afetada está presente, fluxos essenciais passam e o monitoramento não encontra recorrência suspeita.",
+        "es": "Está presente el hash de una versión no afectada, los procesos esenciales funcionan y la supervisión no detecta recurrencia."
+      },
+      "improvement": {
+        "en": "Require staged rollouts, supplier contact paths, signed artifact provenance and rollback rehearsal.",
+        "pt": "Exija implantação em etapas, contato com fornecedor, proveniência do artefato assinado e ensaio de reversão.",
+        "es": "Exija despliegues escalonados, contacto con el proveedor, procedencia del artefacto firmado y ensayos de reversión."
+      }
+    },
+    {
+      "id": "insider-data-export",
+      "title": {
+        "en": "Suspicious data export",
+        "pt": "Exportação suspeita de dados",
+        "es": "Exportación sospechosa de datos"
+      },
+      "situation": {
+        "en": "A staff account exports a large customer dataset outside its normal schedule; the account owner says the task may be authorized.",
+        "pt": "Uma conta de funcionário exporta grande conjunto de dados de clientes fora do horário habitual; o titular diz que a tarefa pode ser autorizada.",
+        "es": "Una cuenta de empleado exporta un gran conjunto de datos de clientes fuera de su horario habitual; el titular dice que la tarea puede estar autorizada."
+      },
+      "signal": {
+        "en": "Audit records show the export job and destination identifier but not who initiated it or whether the recipient downloaded it.",
+        "pt": "Registros de auditoria mostram o job de exportação e o destino, mas não quem iniciou ou se o destinatário baixou os dados.",
+        "es": "Los registros muestran la tarea de exportación y el destino, pero no quién la inició ni si el destinatario descargó los datos."
+      },
+      "guardrail": {
+        "en": "Preserve privacy and employment due process; an account label is not proof of a person's intent.",
+        "pt": "Preserve privacidade e devido processo trabalhista; o nome da conta não prova intenção de uma pessoa.",
+        "es": "Respete la privacidad y el debido proceso laboral; el nombre de la cuenta no prueba la intención de una persona."
+      },
+      "containment": {
+        "en": "Pause the scheduled export with data-owner approval and preserve the minimum audit and access records needed.",
+        "pt": "Pause a exportação agendada com aprovação do responsável pelos dados e preserve apenas auditoria e acessos necessários.",
+        "es": "Pause la exportación programada con aprobación del responsable de datos y conserve solo los registros necesarios."
+      },
+      "recovery": {
+        "en": "Restore authorized reporting from a scoped dataset after confirming purpose, destination and access rights.",
+        "pt": "Restaure relatórios autorizados com conjunto de dados delimitado após confirmar finalidade, destino e direitos de acesso.",
+        "es": "Restaure los informes autorizados con un conjunto de datos limitado tras confirmar finalidad, destino y permisos."
+      },
+      "acceptance": {
+        "en": "The data owner confirms the permitted extract; logs show no further unauthorized export and access review is complete.",
+        "pt": "O responsável confirma o extrato permitido; registros não mostram nova exportação não autorizada e a revisão de acesso terminou.",
+        "es": "El responsable confirma la extracción permitida; los registros no muestran nuevas exportaciones no autorizadas y la revisión de acceso termina."
+      },
+      "improvement": {
+        "en": "Record export approvals, minimum fields, retention and independent privacy review.",
+        "pt": "Registre aprovações de exportação, campos mínimos, retenção e revisão independente de privacidade.",
+        "es": "Registre aprobaciones de exportación, campos mínimos, retención y revisión independiente de privacidad."
+      }
+    },
+    {
+      "id": "ddos-portal",
+      "title": {
+        "en": "Public portal disruption",
+        "pt": "Indisponibilidade de portal público",
+        "es": "Interrupción de portal público"
+      },
+      "situation": {
+        "en": "A public service portal slows sharply during a traffic surge; some legitimate users cannot complete submissions.",
+        "pt": "Um portal de serviço público fica muito lento em pico de tráfego; alguns usuários legítimos não concluem solicitações.",
+        "es": "Un portal de servicio público se ralentiza durante un pico de tráfico; usuarios legítimos no pueden completar trámites."
+      },
+      "signal": {
+        "en": "Edge metrics show requests from many networks, while application error rate rises only on the submission endpoint.",
+        "pt": "Métricas de borda mostram requisições de muitas redes, enquanto os erros sobem apenas no endpoint de envio.",
+        "es": "Las métricas perimetrales muestran solicitudes de muchas redes, mientras los errores suben solo en el endpoint de envío."
+      },
+      "guardrail": {
+        "en": "Do not block entire countries or providers without impact analysis; preserve a path for legitimate users.",
+        "pt": "Não bloqueie países ou provedores inteiros sem analisar impacto; preserve acesso de usuários legítimos.",
+        "es": "No bloquee países o proveedores enteros sin analizar el impacto; mantenga el acceso de usuarios legítimos."
+      },
+      "containment": {
+        "en": "Apply bounded rate controls at the affected endpoint and compare legitimate-user completion before widening rules.",
+        "pt": "Aplique limites de taxa delimitados ao endpoint afetado e compare conclusão de usuários legítimos antes de ampliar regras.",
+        "es": "Aplique límites de tasa al endpoint afectado y compare la finalización de usuarios legítimos antes de ampliar reglas."
+      },
+      "recovery": {
+        "en": "Scale the submission service and remove temporary controls once traffic and application behavior stabilize.",
+        "pt": "Amplie a capacidade do serviço de envio e remova controles temporários quando tráfego e aplicação estabilizarem.",
+        "es": "Aumente la capacidad del servicio de envío y retire controles temporales cuando se estabilicen tráfico y aplicación."
+      },
+      "acceptance": {
+        "en": "Real users finish a test submission, error rates fall, and no rule disproportionately blocks normal clients.",
+        "pt": "Usuários reais concluem envio de teste, erros caem e nenhuma regra bloqueia desproporcionalmente clientes normais.",
+        "es": "Usuarios reales completan un envío de prueba, bajan los errores y ninguna regla bloquea desproporcionadamente a clientes normales."
+      },
+      "improvement": {
+        "en": "Test surge capacity and assess mitigation cost to users before an emergency.",
+        "pt": "Teste capacidade de pico e avalie o custo das mitigações aos usuários antes de uma emergência.",
+        "es": "Pruebe la capacidad ante picos y evalúe el coste de las mitigaciones para los usuarios antes de una emergencia."
+      }
+    },
+    {
+      "id": "water-ot-anomaly",
+      "title": {
+        "en": "Water-system controller anomaly",
+        "pt": "Anomalia em controlador de água",
+        "es": "Anomalía en controlador de agua"
+      },
+      "situation": {
+        "en": "A municipal water plant sees a chemical dosing setpoint change that differs from the operator's approved work order.",
+        "pt": "Uma estação municipal de água vê mudança no valor de dosagem química diferente da ordem de serviço aprovada.",
+        "es": "Una planta municipal de agua observa un cambio de consigna de dosificación distinto de la orden de trabajo aprobada."
+      },
+      "signal": {
+        "en": "The control-room screen and a local gauge disagree; the affected network path also carries other safety functions.",
+        "pt": "A tela da sala de controle e um medidor local discordam; a rota de rede afetada também carrega outras funções de segurança.",
+        "es": "La pantalla de control y un indicador local discrepan; la ruta de red afectada también lleva otras funciones de seguridad."
+      },
+      "guardrail": {
+        "en": "Put operator and public safety first; do not scan, reboot or isolate controllers before an authorized process-safety decision.",
+        "pt": "Priorize a segurança dos operadores e do público; não faça varredura, reinicialização ou isolamento de controladores sem decisão autorizada de segurança do processo.",
+        "es": "Priorice la seguridad de operadores y público; no escanee, reinicie ni aísle controladores sin una decisión autorizada de seguridad del proceso."
+      },
+      "containment": {
+        "en": "Have the process operator verify safe physical readings and invoke the approved manual procedure; preserve control logs read-only.",
+        "pt": "O operador verifica leituras físicas seguras e aciona procedimento manual aprovado; preserve registros de controle apenas para leitura.",
+        "es": "El operador verifica lecturas físicas seguras y activa el procedimiento manual aprobado; conserve registros de control solo para lectura."
+      },
+      "recovery": {
+        "en": "Return to automatic control only after engineering checks sensors, actuators and approved setpoints in a bounded test.",
+        "pt": "Retorne ao controle automático só após a engenharia verificar sensores, atuadores e valores aprovados em teste delimitado.",
+        "es": "Vuelva al control automático solo tras comprobar sensores, actuadores y consignas aprobadas en una prueba delimitada."
+      },
+      "acceptance": {
+        "en": "Independent measurements match the approved process range and operators sign off the controlled return.",
+        "pt": "Medições independentes coincidem com a faixa aprovada do processo e os operadores aprovam o retorno controlado.",
+        "es": "Las mediciones independientes coinciden con el rango aprobado y los operadores firman el retorno controlado."
+      },
+      "improvement": {
+        "en": "Rehearse a safe manual fallback and document control-room versus field-reading disagreement.",
+        "pt": "Ensaiar contingência manual segura e documentar divergência entre a sala de controle e as leituras em campo.",
+        "es": "Ensayar una contingencia manual segura y documentar discrepancias entre control y lecturas de campo."
+      }
+    },
+    {
+      "id": "lost-laptop",
+      "title": {
+        "en": "Lost field laptop",
+        "pt": "Notebook de campo perdido",
+        "es": "Portátil de campo perdido"
+      },
+      "situation": {
+        "en": "An engineer reports a missing laptop used for site visits; asset records say encryption is enabled, but the latest check is old.",
+        "pt": "Um engenheiro relata notebook de campo perdido; o inventário diz que há criptografia, mas a última checagem é antiga.",
+        "es": "Un ingeniero informa de un portátil de campo perdido; el inventario indica cifrado, pero la última comprobación es antigua."
+      },
+      "signal": {
+        "en": "Device management shows the last check-in two days ago and a cached service account whose scope is unclear.",
+        "pt": "O gerenciamento mostra último contato há dois dias e uma conta de serviço em cache cujo escopo é incerto.",
+        "es": "La gestión muestra la última conexión hace dos días y una cuenta de servicio en caché cuyo alcance es incierto."
+      },
+      "guardrail": {
+        "en": "Do not declare a data breach or safe encryption without evidence; limit collection of the engineer's personal information.",
+        "pt": "Não declare vazamento nem criptografia segura sem evidências; limite a coleta de dados pessoais do engenheiro.",
+        "es": "No declare una fuga ni cifrado seguro sin pruebas; limite la recogida de datos personales del ingeniero."
+      },
+      "containment": {
+        "en": "Revoke the cached credential, verify encryption attestation and preserve device-management and access records.",
+        "pt": "Revogue a credencial em cache, verifique atestado de criptografia e preserve registros de gestão e acessos.",
+        "es": "Revoque la credencial en caché, verifique la prueba de cifrado y conserve registros de gestión y acceso."
+      },
+      "recovery": {
+        "en": "Issue a managed replacement device with scoped credentials and restore approved field tools.",
+        "pt": "Entregue dispositivo gerenciado substituto com credenciais restritas e restaure ferramentas de campo aprovadas.",
+        "es": "Entregue un dispositivo gestionado de sustitución con credenciales limitadas y restaure las herramientas de campo aprobadas."
+      },
+      "acceptance": {
+        "en": "The old credential fails, the replacement is managed and encrypted, and the data-risk assessment records its unknowns.",
+        "pt": "A credencial antiga falha, o novo dispositivo é gerenciado e criptografado, e a avaliação de dados registra as incertezas.",
+        "es": "La credencial antigua falla, el sustituto está gestionado y cifrado y la evaluación de datos registra incertidumbres."
+      },
+      "improvement": {
+        "en": "Require recent encryption evidence, least-privilege offline access and rapid loss reporting.",
+        "pt": "Exija evidência recente de criptografia, acesso offline mínimo e comunicação rápida de perdas.",
+        "es": "Exija pruebas recientes de cifrado, acceso sin conexión mínimo y notificación rápida de pérdidas."
+      }
+    },
+    {
+      "id": "web-application-compromise",
+      "title": {
+        "en": "Web application compromise",
+        "pt": "Comprometimento de aplicação web",
+        "es": "Compromiso de aplicación web"
+      },
+      "situation": {
+        "en": "A customer portal begins returning unexpected database errors after an unreviewed change to a search endpoint.",
+        "pt": "Um portal de clientes começa a mostrar erros inesperados de banco após mudança não revisada em endpoint de busca.",
+        "es": "Un portal de clientes empieza a devolver errores de base de datos inesperados tras un cambio no revisado en el buscador."
+      },
+      "signal": {
+        "en": "Application and database logs show malformed queries and an unusual read volume, but the affected record count is unknown.",
+        "pt": "Registros da aplicação e do banco mostram consultas malformadas e volume anormal de leitura, mas a quantidade de registros afetados é desconhecida.",
+        "es": "Los registros de aplicación y base de datos muestran consultas malformadas y lecturas anómalas, pero se desconoce el número de registros afectados."
+      },
+      "guardrail": {
+        "en": "Do not use live exploitation to confirm the flaw; preserve query traces and involve the data owner before impact claims.",
+        "pt": "Não explore a falha em produção para confirmá-la; preserve rastros de consulta e envolva o responsável pelos dados antes de afirmar impacto.",
+        "es": "No explote la falla en producción para confirmarla; conserve trazas de consulta e involucre al responsable de datos antes de afirmar impacto."
+      },
+      "containment": {
+        "en": "Disable the affected search path through an approved feature flag, retain evidence and review database permissions.",
+        "pt": "Desative a busca afetada por recurso aprovado, retenha evidências e revise permissões do banco.",
+        "es": "Desactive la búsqueda afectada mediante un interruptor aprobado, conserve evidencia y revise permisos de la base de datos."
+      },
+      "recovery": {
+        "en": "Deploy a reviewed query fix and least-privilege database role, then run bounded functional tests.",
+        "pt": "Implante correção revisada das consultas e papel de banco com privilégio mínimo; execute testes funcionais delimitados.",
+        "es": "Despliegue una corrección revisada de consultas y un rol de mínimo privilegio; ejecute pruebas funcionales delimitadas."
+      },
+      "acceptance": {
+        "en": "Normal searches work, malformed input is rejected, and an independent log review finds no continuing anomalous reads.",
+        "pt": "Buscas normais funcionam, entradas malformadas são rejeitadas e revisão independente não acha novas leituras anômalas.",
+        "es": "Las búsquedas normales funcionan, se rechaza la entrada malformada y una revisión independiente no halla lecturas anómalas."
+      },
+      "improvement": {
+        "en": "Add pre-deployment query tests, access review and a data-impact evidence checklist.",
+        "pt": "Acrescente testes de consulta antes do deploy, revisão de acesso e lista de evidências de impacto em dados.",
+        "es": "Añada pruebas de consultas previas al despliegue, revisión de accesos y lista de evidencia de impacto en datos."
+      }
+    },
+    {
+      "id": "dns-domain-hijack",
+      "title": {
+        "en": "Domain routing hijack",
+        "pt": "Sequestro de rota de domínio",
+        "es": "Secuestro de ruta de dominio"
+      },
+      "situation": {
+        "en": "A nonprofit's public domain intermittently resolves to an unfamiliar address while donation pages remain reachable for some users.",
+        "pt": "O domínio público de uma organização alterna entre endereço normal e desconhecido; páginas de doação seguem acessíveis a alguns usuários.",
+        "es": "El dominio público de una organización alterna entre la dirección normal y otra desconocida; las donaciones siguen accesibles para algunos usuarios."
+      },
+      "signal": {
+        "en": "Authoritative DNS records differ from the approved zone change log; registrar access history shows a new session.",
+        "pt": "Registros DNS autoritativos diferem do histórico aprovado; acessos ao registrador mostram nova sessão.",
+        "es": "Los registros DNS autoritativos difieren del historial aprobado; el acceso al registrador muestra una sesión nueva."
+      },
+      "guardrail": {
+        "en": "Treat affected donations and possible impersonation as unknown until logs and payment provider evidence are checked.",
+        "pt": "Trate doações afetadas e possível falsificação como desconhecidas até conferir registros e dados do provedor de pagamento.",
+        "es": "Trate las donaciones afectadas y la posible suplantación como incertidumbre hasta revisar registros y datos del proveedor de pagos."
+      },
+      "containment": {
+        "en": "Freeze registrar changes with the owner, preserve zone history and replace unauthorized records through the controlled process.",
+        "pt": "Congele mudanças no registrador com o responsável, preserve o histórico da zona e substitua registros não autorizados pelo processo controlado.",
+        "es": "Congele los cambios del registrador con el responsable, conserve el historial de zona y sustituya los registros no autorizados mediante el proceso controlado."
+      },
+      "recovery": {
+        "en": "Restore the approved zone, rotate registrar access and coordinate cache propagation with the DNS provider.",
+        "pt": "Restaure a zona aprovada, rotacione acesso ao registrador e coordene propagação de cache com o provedor DNS.",
+        "es": "Restaure la zona aprobada, rote el acceso al registrador y coordine la propagación de caché con el proveedor DNS."
+      },
+      "acceptance": {
+        "en": "Authoritative and sampled recursive resolvers return the approved destination; donation completion is independently tested.",
+        "pt": "Servidores autoritativos e resolvers recursivos amostrados retornam o destino aprovado; a conclusão de doações é testada independentemente.",
+        "es": "Los servidores autoritativos y resolutores recursivos muestreados devuelven el destino aprobado; se prueba el pago de forma independiente."
+      },
+      "improvement": {
+        "en": "Add registrar MFA, dual approval for zone changes and external DNS drift monitoring.",
+        "pt": "Adicione MFA no registrador, dupla aprovação para mudanças de zona e monitoramento externo de divergência DNS.",
+        "es": "Añada MFA en el registrador, doble aprobación de cambios de zona y vigilancia externa de cambios DNS."
+      }
+    }
+  ]
+}

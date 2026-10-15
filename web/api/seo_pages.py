@@ -329,7 +329,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <script src="/seo-lesson.js" defer></script>{diagram_script}<script src="/analytics.js" defer></script>
 </head>
 <body><a class="skip" href="#lesson-content">{chrome['skip']}</a>
-<header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
+<header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/tabletop/">TableTop</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
 <main id="lesson-content" class="shell">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">{ui['home']}</a><span>›</span><a href="{escaped['course_url']}">{escaped['name']}</a><span>›</span><span>{label} {number}</span></nav>
   <div class="eyebrow">{escaped['level_name']} · {label} {number} · {language_name}</div>

@@ -123,7 +123,8 @@ def main() -> None:
 </head><body><header class="header"><div class="shell header-row"><a class="brand" href="/">◇ OpenCyber Academy</a></div></header>
 <main class="shell"><div class="eyebrow">{html.escape(name)} · OpenCyber Academy</div><h1>{html.escape(title)}</h1>
 <p class="intro">{html.escape(description)}</p><nav class="lesson-nav"><a href="https://opencyber.academy/">English</a>
-<a href="https://pt.opencyber.academy/">Português</a><a href="https://es.opencyber.academy/">Español</a></nav></main>
+<a href="https://pt.opencyber.academy/">Português</a><a href="https://es.opencyber.academy/">Español</a></nav>
+<p><a href="https://opencyber.academy/tabletop/">TableTop (English)</a></p></main>
 <script src="/analytics.js" defer></script>
 </body></html>''', encoding="utf-8")
     print(f"Localized {len(pages)} static pages for Portuguese and Spanish; staged six additional language home pages")

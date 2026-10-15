@@ -29,6 +29,7 @@ from student_auth import (SESSION_LIFETIME, _limit, basic_credentials, create_se
                           mcp_student_identity, password_account, router as student_auth_router, student_identity)
 from student_activity import (course_performance, record as record_activity, rows as activity_rows,
                               summary as activity_summary)
+from tabletop import render_case as render_tabletop_case, render_index as render_tabletop_index
 
 
 app = FastAPI(title="OpenCyber Academy public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
@@ -1373,6 +1374,42 @@ async def mcp(request: Request) -> Response:
 @app.get("/mcp")
 async def mcp_get() -> Response:
     return Response(status_code=405, headers={"Allow": "POST"})
+
+
+async def tabletop_source(request: Request) -> dict[str, Any]:
+    raw = await source_text(request, "web/tabletop/scenarios.json")
+    if raw is None:
+        raise HTTPException(503, "TableTop scenarios are unavailable")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise HTTPException(503, "TableTop scenarios are invalid") from exc
+
+
+@app.get("/tabletop/", include_in_schema=False)
+async def tabletop_index(request: Request) -> Response:
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    if language not in ACTIVE_INTERFACES:
+        return RedirectResponse(site_for_language("en") + "/tabletop/", status_code=302)
+    try:
+        page = render_tabletop_index(await tabletop_source(request), language)
+    except (ValueError, KeyError, TypeError) as exc:
+        raise HTTPException(503, "TableTop scenarios are invalid") from exc
+    return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": language})
+
+
+@app.get("/tabletop/{slug}/", include_in_schema=False)
+async def tabletop_case(request: Request, slug: str) -> Response:
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    if language not in ACTIVE_INTERFACES:
+        return RedirectResponse(site_for_language("en") + f"/tabletop/{quote(slug)}/", status_code=302)
+    try:
+        page = render_tabletop_case(await tabletop_source(request), language, slug)
+    except (ValueError, KeyError, TypeError) as exc:
+        raise HTTPException(503, "TableTop scenarios are invalid") from exc
+    if page is None:
+        raise HTTPException(404, "Unknown TableTop scenario")
+    return HTMLResponse(page, headers={"Cache-Control": "no-store", "Content-Language": language})
 
 
 @app.get("/robots.txt", include_in_schema=False)
