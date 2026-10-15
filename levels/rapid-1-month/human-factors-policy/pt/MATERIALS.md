@@ -4,10 +4,10 @@
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Labs and practice:** the principal book includes two offline Python 3 standard-library labs on synthetic data, with inputs and expected outputs in its worked examples. Their outputs do not verify live accounts or messages.
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
+**Projects and assessment:** EX001–EX066 have 0–3 rubrics and same-book worked answers. The case is synthetic; a local code run is not evidence that a student completed an observed lab.
 
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
+**Exercises and answers:** the twenty published chapters contain EX001–EX066 with worked results in the final appendix of the same book. This is presence of practice, not proof of independent review or a completed qualification.
 
 **References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.

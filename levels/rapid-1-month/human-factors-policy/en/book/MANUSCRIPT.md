@@ -25,7 +25,7 @@ Read the chapters in order. This English edition publishes twenty lessons, and e
 
 ### Core sources
 
-Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796.322806); Sasse, Brostoff and Weirich (2001), [doi:10.1023/A:1011902718709](https://doi.org/10.1023/A:1011902718709); Hadnagy (2018); Cialdini (2021); Bada, Sasse and Nurse (2019), arXiv:1901.02672; Hansche et al. (2024), NIST SP 800-50r1. Full list in [References](#references).
+Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796.322806); Sasse, Brostoff and Weirich (2001), [doi:10.1023/A:1011902718709](https://doi.org/10.1023/A:1011902718709); Hadnagy (2018); Cialdini (2021); Bada, Sasse and Nurse (2019), arXiv:1901.02672; Merritt et al. (2024), NIST SP 800-50r1. Full list in [References](#references).
 
 ## Contents
 
@@ -57,7 +57,7 @@ Ruth learns common tactics described by Hadnagy (2018) and explained by Cialdini
 
 ### 1.4 Knowledge is not enough
 
-Callum warns that telling people about tactics rarely changes behaviour by itself. Bada, Sasse and Nurse (2019) found that awareness campaigns often fail when they rely on fear or assume knowledge leads to action. NIST SP 800-50r1 (Hansche et al., 2024) describes learning programmes that combine awareness with role-based training and evaluation. For a small charity, Ruth concludes, the practical approach is a few easy habits, clear procedures for risky tasks and a friendly way to ask for help, rather than long lectures that people forget.
+Callum warns that telling people about tactics rarely changes behaviour by itself. Bada, Sasse and Nurse (2019) found that awareness campaigns often fail when they rely on fear or assume knowledge leads to action. NIST SP 800-50r1 (Merritt et al., 2024) describes learning programmes that combine awareness with role-based training and evaluation. For a small charity, Ruth concludes, the practical approach is a few easy habits, clear procedures for risky tasks and a friendly way to ask for help, rather than long lectures that people forget.
 
 ### 1.5 Three early decisions
 
@@ -724,7 +724,7 @@ After this chapter, you should be able to:
 
 ### 14.1 The size of the charity and the width of a role are different counts
 
-Riverbend has twelve staff and sixty volunteers. The access program does not count those people. It counts systems reachable by four roles, each out of five. A classmate adds twelve and sixty, writes 72, and replaces the role lines with "72 of 5." Addition of the two groups is not a run of the program, and 72 people cannot each be a fraction of five systems. The staff figure and the volunteer figure stay separate. Ruth does not edit `lab_access.py`.
+Riverbend has twelve staff and sixty volunteers. The access program does not count those people. It counts systems reachable by four roles, each out of five. A classmate adds twelve and sixty, writes 72, and replaces the role lines with "72 of 5." The arithmetic sum is 72, but the case does not establish whether the groups overlap, so it is not a verified count of distinct people. Addition is not a run of the access program: people are not the numerator in its per-role system counts. The staff figure and the volunteer figure stay separate. Ruth does not edit `lab_access.py`.
 
 ### 14.2 Worked example
 
@@ -732,14 +732,14 @@ Riverbend has twelve staff and sixty volunteers. The access program does not cou
 |---|---|---|
 | Twelve staff | Staff | Keep |
 | Sixty volunteers | Volunteers | Keep |
-| 72 | Someone's sum | Refuse as the census |
+| 72 | Arithmetic sum; distinct-person count unverified | Refuse as the census or program output |
 | Four role lines, each of 5 | Systems a role can reach | Keep those lines |
 
 > **Synthetic case.** The sum 72 is the classmate's arithmetic. It is not a new execution.
 
 ### Errors and limits
 
-Refusing the sum does not make either group unimportant. It stops one number from erasing the distinction the file actually drew.
+The sum itself is correct arithmetic. Refusing to relabel it as a measured census or a systems-per-role output keeps the units and the unknown overlap visible.
 
 ### Apply
 
@@ -1160,6 +1160,6 @@ Links checked 12 October 2026; re-verify editions before citing. Organisations, 
 - Bada, M., Sasse, M. A., & Nurse, J. R. C. (2019). *Cyber security awareness campaigns: Why do they fail to change behaviour?* arXiv:1901.02672. <https://arxiv.org/abs/1901.02672>
 - Cialdini, R. B. (2021). *Influence, new and expanded: The psychology of persuasion*. Harper Business.
 - Hadnagy, C. (2018). *Social engineering: The science of human hacking* (2nd ed.). Wiley.
-- Hansche, S., Ellis, B., Sanchez-Cherry, K., Snyder, J. N., & Walden, D. (2024). *Building a cybersecurity and privacy learning program* (NIST SP 800-50 Rev. 1). NIST. <https://doi.org/10.6028/NIST.SP.800-50r1>
+- Merritt, M., Hansche, S., Ellis, B., Sanchez-Cherry, K., Snyder, J. N., & Walden, D. (2024). *Building a cybersecurity and privacy learning program* (NIST SP 800-50 Rev. 1). NIST. <https://doi.org/10.6028/NIST.SP.800-50r1>
 - Lain, D., Kostiainen, K., & Čapkun, S. (2022). Phishing in organizations: Findings from a large-scale and long-term study. *2022 IEEE Symposium on Security and Privacy*, 842–859. <https://doi.org/10.1109/SP46214.2022.9833766>
 - Sasse, M. A., Brostoff, S., & Weirich, D. (2001). Transforming the 'weakest link' — a human/computer interaction approach to usable and effective security. *BT Technology Journal*, 19(3), 122–131. <https://doi.org/10.1023/A:1011902718709>

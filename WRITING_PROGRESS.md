@@ -16,7 +16,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | DATA | [Data governance](levels/rapid-1-month/data-governance/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
 | PRIV | [Privacy and data protection](levels/rapid-1-month/privacy-data-protection/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
 | GRC | [Security governance, risk and compliance](levels/rapid-1-month/security-governance-risk-compliance/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
-| HUMAN | [Human factors and cyber policy](levels/rapid-1-month/human-factors-policy/README.md) | 198/198 (100.0%) | 188/188 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 386/1660 (23.3%) |
+| HUMAN | [Human factors and cyber policy](levels/rapid-1-month/human-factors-policy/README.md) | 198/198 (100.0%) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 396/1670 (23.7%) |
 | ARCH | [Security architecture and engineering](levels/rapid-1-month/security-architecture/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
 | CRYPT | [Cryptography and trust services](levels/rapid-1-month/cryptography-trust/README.md) | 198/198 (100.0%) | 182/182 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 380/1654 (23.0%) |
 | WEB3 | [Web3, blockchain and cryptoasset security](levels/rapid-1-month/web3-blockchain-security/README.md) | 198/198 (100.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 0/182 (0.0%) | 198/1654 (12.0%) |
@@ -39,7 +39,7 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Language | Numbered chapters / indexed positions | Structural coverage |
 |---|---:|---:|
 | English (`en`) | 4,312 / 4,490 | 96.0% |
-| Português (`pt`) | 2,579 / 4,256 | 60.6% |
+| Português (`pt`) | 2,589 / 4,266 | 60.7% |
 | Español (`es`) | 516 / 4,186 | 12.3% |
 | עברית (`he`) | 0 / 4,186 | 0.0% |
 | Français (`fr`) | 0 / 4,186 | 0.0% |
@@ -47,6 +47,6 @@ This is a structural discovery measure. A chapter anchor can exist before its te
 | Deutsch (`de`) | 0 / 4,186 | 0.0% |
 | 中文 (`zh`) | 0 / 4,186 | 0.0% |
 | 日本語 (`ja`) | 0 / 4,186 | 0.0% |
-| **All nine editions** | **7,407 / 38,048** | **19.5%** |
+| **All nine editions** | **7,417 / 38,058** | **19.5%** |
 
 These figures are recalculated locally before publication; GitHub does not compute them live. A later manuscript edit makes this snapshot stale until regenerated. [Read the editorial gate](BOOK_STANDARD.md).

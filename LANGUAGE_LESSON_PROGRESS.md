@@ -9,7 +9,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
 | English | 199/207 | 4312/4490 | 30/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 23/4312 |
-| Português | 124/207 | 2579/4256 | 0/120060 | 2482/2579 | 2579/2579 | 2579/2579 | 26/2579 |
+| Português | 124/207 | 2589/4266 | 0/120060 | 2492/2589 | 2589/2589 | 2589/2589 | 26/2589 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 8/516 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
@@ -25,7 +25,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | rapid-1-month · Data governance | [20/20](levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/data-governance/es/book/PLAN.md) |
 | rapid-1-month · Privacy and data protection | [20/20](levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/privacy-data-protection/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md) |
 | rapid-1-month · Security governance, risk and compliance | [20/20](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/security-governance-risk-compliance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-governance-risk-compliance/es/book/PLAN.md) |
-| rapid-1-month · Human factors and cyber policy | [20/20](levels/rapid-1-month/human-factors-policy/en/book/MANUSCRIPT.md) | [10/10](levels/rapid-1-month/human-factors-policy/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/human-factors-policy/es/book/PLAN.md) |
+| rapid-1-month · Human factors and cyber policy | [20/20](levels/rapid-1-month/human-factors-policy/en/book/MANUSCRIPT.md) | [20/20](levels/rapid-1-month/human-factors-policy/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/human-factors-policy/es/book/PLAN.md) |
 | rapid-1-month · Security architecture and engineering | [20/20](levels/rapid-1-month/security-architecture/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/security-architecture/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-architecture/es/book/PLAN.md) |
 | rapid-1-month · Cryptography and trust services | [20/20](levels/rapid-1-month/cryptography-trust/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/cryptography-trust/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cryptography-trust/es/book/PLAN.md) |
 | rapid-1-month · Web3, blockchain and cryptoasset security | [20/20](levels/rapid-1-month/web3-blockchain-security/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/web3-blockchain-security/es/book/PLAN.md) |

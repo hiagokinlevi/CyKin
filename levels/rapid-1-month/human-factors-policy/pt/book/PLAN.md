@@ -2,9 +2,9 @@
 
 **Um livro por curso e idioma.** Curso 006; duração nominal de um mês e esforço planejado de aproximadamente 80 horas. Público: iniciantes com alfabetização digital básica, sem experiência profissional em segurança obrigatória. Resultado pretendido: reconhecer e explicar os riscos fundamentais e realizar uma tarefa guiada em fatores humanos e política cibernética. Duração e esforço são estimativas, não medições de aprendizagem.
 
-**Disponibilidade após este lote:** capítulos 1–10 e EX001–EX056 com respostas no [manuscrito português](MANUSCRIPT.md), frente a vinte capítulos e 66 IDs na fonte inglesa fixada. A tradução 05–10 acrescenta seis capítulos e seis pares; os quatro anteriores e seus cinquenta pares permanecem. A indicação antiga deste plano de que não havia manuscrito estava desatualizada. Dez de vinte posições correspondem a 50% da contagem de capítulos, não a 50% de equivalência aprovada. Os 56/66 IDs respondidos correspondem a 84,85% da presença dos IDs.
+**Disponibilidade atual:** capítulos 1–20 e EX001–EX066 com respostas no [manuscrito português](MANUSCRIPT.md), correspondendo às vinte posições e aos 66 IDs da fonte inglesa. O lote 05–10 e a integração 11–20 ampliaram a presença de texto, preservando os quatro capítulos anteriores e seus cinquenta pares. A contagem 20/20 e 66/66 mede presença, não equivalência editorial aprovada.
 
-**Estado editorial:** tradução parcial publicada para leitura, com revisão integral técnica, linguística, de fontes, direitos e acessibilidade pendente. A previsão histórica era de quatro módulos com oitenta páginas e vinte horas cada, totalizando 320 páginas planejadas e 80 horas; não eram medições. Nenhuma nova renderização A4 é declarada. A fonte inglesa não foi declarada integralmente aprovada nesta passagem, e a etapa espanhola não foi iniciada.
+**Estado editorial:** tradução publicada para leitura, com revisão integral técnica, linguística, de fontes, direitos e acessibilidade pendente. A previsão histórica era de quatro módulos com oitenta páginas e vinte horas cada, totalizando 320 páginas planejadas e 80 horas; não eram medições. Nenhuma nova renderização A4 é declarada. A fonte inglesa não foi declarada integralmente aprovada nesta passagem, e a etapa espanhola não foi iniciada.
 
 [Início](../../../../../README.md) · [Página do curso](../../README.md) · [Edição](../README.md) · [Índice](../SUBJECTS.md) · [Skill única](../../skill/SKILL.md)
 
@@ -114,13 +114,53 @@ A lacuna é o acesso à escala, não ao banco e às redes sociais. Copiar as cin
 
 A verificação em duas etapas de Ruth abrange sua própria autenticação. Não comprova a destruição da senha compartilhada ou a situação das outras contas. A nota não deve guardar a senha nem identificar uma pessoa cujo nome não foi fornecido.
 
-**Continue estudando — capítulo 10:** [← Capítulo 09](MANUSCRIPT.md#ch-09) · [Índice](../SUBJECTS.md) · [Lacuna 11–20 →](#translation-gap)
+**Continue estudando — capítulo 10:** [← Capítulo 09](MANUSCRIPT.md#ch-09) · [Índice](../SUBJECTS.md) · [Capítulo 11 →](MANUSCRIPT.md#ch-11)
 
 <a id="translation-gap"></a>
 
-## Continuação 11–20 ainda não traduzida
+## Continuação 11–20 publicada
 
-Faltam dez capítulos e EX057–EX066 com respostas. O próximo lote começa no **Capítulo 11 / EX057 — nenhuma simulação por enquanto não significa uma surpresa amigável**. O [plano inglês](../../en/book/PLAN.md#ch-11) é uma referência em outro idioma, não uma aula portuguesa. Não há aulas vazias para preencher essa ausência. A continuação curricular é [Arquitetura e Engenharia de Segurança / Português](../../../security-architecture/pt/SUBJECTS.md), curso 007; explorá-la não conclui este volume ou a coleção portuguesa.
+As dez aulas e EX057–EX066 com respostas estão no [manuscrito português](MANUSCRIPT.md#ch-11). Os resumos abaixo orientam a leitura; não substituem as aulas nem encerram a revisão editorial. O próximo curso da trilha é [Arquitetura e Engenharia de Segurança / Português](../../../security-architecture/pt/SUBJECTS.md), curso 007.
+
+<a id="ch-11"></a>
+### Capítulo 11 — Simulação sem acordo
+**Leitura:** [capítulo 11](MANUSCRIPT.md#ch-11). **Exercício:** EX057 e resposta no mesmo livro. Recusar o e-mail surpresa e preservar a prática anunciada. [Próximo →](MANUSCRIPT.md#ch-12).
+
+<a id="ch-12"></a>
+### Capítulo 12 — Registro de reporte sem nome
+**Leitura:** [capítulo 12](MANUSCRIPT.md#ch-12). **Exercício:** EX058. Registrar apenas data, tipo e desfecho, sem clicar em links. [Próximo →](MANUSCRIPT.md#ch-13).
+
+<a id="ch-13"></a>
+### Capítulo 13 — Sugestão para o kit
+**Leitura:** [capítulo 13](MANUSCRIPT.md#ch-13). **Exercício:** EX059. Distinguir sugestão, lançamento planejado e entrega verificada. [Próximo →](MANUSCRIPT.md#ch-14).
+
+<a id="ch-14"></a>
+### Capítulo 14 — Contagens de pessoas e funções
+**Leitura:** [capítulo 14](MANUSCRIPT.md#ch-14). **Exercício:** EX060. Não transformar a soma de funcionários e voluntários em saída do programa de acesso. [Próximo →](MANUSCRIPT.md#ch-15).
+
+<a id="ch-15"></a>
+### Capítulo 15 — Tempos lentos preservados
+**Leitura:** [capítulo 15](MANUSCRIPT.md#ch-15). **Exercício:** EX061. Manter 95 e 110 segundos na lista original e distinguir mudanças posteriores. [Próximo →](MANUSCRIPT.md#ch-16).
+
+<a id="ch-16"></a>
+### Capítulo 16 — Adoção e revisão
+**Leitura:** [capítulo 16](MANUSCRIPT.md#ch-16). **Exercício:** EX062. Não declarar feita a revisão de três meses por causa da adoção do plano. [Próximo →](MANUSCRIPT.md#ch-17).
+
+<a id="ch-17"></a>
+### Capítulo 17 — Reporte sem culpa e escalonamento
+**Leitura:** [capítulo 17](MANUSCRIPT.md#ch-17). **Exercício:** EX063. Acolher o reporte e seguir as etapas de incidente com apoio. [Próximo →](MANUSCRIPT.md#ch-18).
+
+<a id="ch-18"></a>
+### Capítulo 18 — Permissões do armazém
+**Leitura:** [capítulo 18](MANUSCRIPT.md#ch-18). **Exercício:** EX064. Manter a função do armazém fora do banco e separar a segunda aprovação. [Próximo →](MANUSCRIPT.md#ch-19).
+
+<a id="ch-19"></a>
+### Capítulo 19 — Modelo de resposta posterior
+**Leitura:** [capítulo 19](MANUSCRIPT.md#ch-19). **Exercício:** EX065. Não inventar oito respostas enviadas a partir de um modelo pedido depois do teste. [Próximo →](MANUSCRIPT.md#ch-20).
+
+<a id="ch-20"></a>
+### Capítulo 20 — Nota de passagem fiel
+**Leitura:** [capítulo 20](MANUSCRIPT.md#ch-20). **Exercício:** EX066. Preservar as saídas publicadas e as etapas ainda abertas. [Próximo curso →](../../../security-architecture/pt/SUBJECTS.md).
 
 <a id="translation-review"></a>
 
@@ -148,9 +188,9 @@ O lote foi comparado com a fonte, preservando conceitos, negações, relações,
 
 As listagens completas de `lab_access.py` e `lab_route.py`, transcritas das leituras fixadas, foram executadas em Python 3.13.5 e reproduziram quatro e uma linhas, respectivamente. Dez controles separados examinaram dicionário vazio, sexto sistema, elemento repetido em conjunto, função omitida, tempos vazios, sete tempos, nove tempos, indicador não binário, ordem invertida e tempo exatamente de sessenta segundos. Os dados de entrada não foram alterados. Os limites documentados incluem denominadores fixos, índices de mediana fixos, ausência de validação binária e `IndexError` para tempos vazios. O cálculo não lê e-mails, testa permissões ou conduz experiências com pessoas. Não foi acrescentado programa novo ao livro nem modificado o código anterior.
 
-As [notas separadas](MANUSCRIPT.md#pt-human-limits-05-10) registram a consulta à página oficial de NIST SP 800-50r1 e à página do trabalho de Bada, Sasse e Nurse no arXiv. A lista antiga de autores do documento NIST omite Marian Merritt, presente na página oficial; a correção coordenada permanece pendente, sem alteração silenciosa das referências. As fontes não tornam os números, prazos e regras do Riverbend requisitos universais. Não houve nova leitura integral dos trabalhos nem auditoria da referência ABNT.
+As [notas separadas](MANUSCRIPT.md#pt-human-limits-05-10) registram a consulta à página oficial de NIST SP 800-50r1 e à página do trabalho de Bada, Sasse e Nurse no arXiv. A autoria incompleta da referência NIST foi corrigida nas duas edições; as demais fontes ainda exigem revisão integral. Os números, prazos e regras do Riverbend não são requisitos universais. Não houve nova leitura integral dos trabalhos nem auditoria da referência ABNT.
 
-A revisão integral dos quatro capítulos anteriores e de suas figuras permanece pendente. Não houve renderização Mermaid/A4, revisão humana independente, verificação do site/MCP ou operação real. Uma medição A4 anterior não verifica esta fonte. O inventário global não foi reconstruído. O próximo lote é 11–20 em português; este lote não inicia espanhol nem declara completa a coleção inglesa.
+A revisão integral dos quatro capítulos anteriores permanece pendente. Os diagramas automáticos da cópia local 11–20, que apenas repetiam títulos de seção, não entraram no manuscrito. O lote histórico 05–10 não incluiu renderização Mermaid/A4, revisão humana independente, verificação do site/MCP ou operação real. Uma medição A4 anterior não verifica esta fonte. A publicação das vinte aulas não declara completa a coleção inglesa ou portuguesa.
 
 
 ### Integração do lote preparado

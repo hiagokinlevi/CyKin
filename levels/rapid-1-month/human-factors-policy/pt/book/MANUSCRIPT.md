@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 006, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado, com tradução parcial e revisão de equivalência pendente**. Os capítulos 1–10 e EX001–EX056 com respostas estão disponíveis em português. A referência inglesa fixada contém vinte capítulos e EX001–EX066; os capítulos 11–20 ainda não foram traduzidos neste manuscrito. Os quatro capítulos anteriores, seus cinquenta pares e os dois programas foram preservados. A revisão integral técnica, linguística, de fontes, direitos e acessibilidade continua aberta. Nenhuma renderização A4 desta fonte é declarada; uma medição anterior não verifica o texto alterado.
+- Estado editorial: **publicado, com vinte aulas em português e revisão de equivalência pendente**. Os capítulos 1–20 e EX001–EX066 com respostas estão disponíveis. Os quatro capítulos iniciais, seus cinquenta pares e os dois programas foram preservados. A revisão integral técnica, linguística, de fontes, direitos e acessibilidade continua aberta; presença de texto não significa livro concluído. Nenhuma renderização A4 desta fonte é declarada; uma medição anterior não verifica o texto alterado.
 - Público: funcionários e voluntários de pequenas organizações beneficentes e comunitárias que precisam de um começo rápido e prático em segurança centrada nas pessoas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam os sistemas que cada função alcança e resumem os tempos de reporte num teste guiado, ambos sobre dados sintéticos; nenhum funcionário, voluntário, doador, e-mail ou conta real está envolvido. O teste guiado usa uma conta de e-mail de teste e voluntários que conhecem o propósito. O curso não recomenda phishing simulado; se algum dia for usado, deve ser anunciado, acordado com os representantes dos funcionários e dos voluntários, evitar iscas sobre dinheiro, comida ou dificuldades, dar um retorno gentil e relatar apenas totais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -10,7 +10,7 @@
 
 ## Como usar este livro
 
-Leia na ordem. Os quatro capítulos iniciais acompanham uma coordenadora de operações num pequeno banco de alimentos: fundamentos e primeiras decisões; escopo, permissão e prática segura; sistemas, dados e dependências; e um laboratório guiado com um plano de um mês. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+Leia na ordem. Os quatro capítulos iniciais acompanham uma coordenadora de operações num pequeno banco de alimentos: fundamentos e primeiras decisões; escopo, permissão e prática segura; sistemas, dados e dependências; e um laboratório guiado com um plano de um mês. Os capítulos 5–20 examinam decisões posteriores sem transformar propostas em resultados realizados. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
 
 <a id="pt-translation-ch05-10"></a>
 
@@ -18,7 +18,7 @@ Leia na ordem. Os quatro capítulos iniciais acompanham uma coordenadora de oper
 
 Este lote incorpora seis capítulos, EX051–EX056 e suas respostas no mesmo livro. Fonte: `levels/rapid-1-month/human-factors-policy/en/book/MANUSCRIPT.md`, revisão `bb01c9fa8768320fdc5e2fdaee91c4ecc26d83a1`, blob `51818a05bf99ecb52b4603ff970cb679640bca73`; alvo português anterior: `3cad3561072a3cf8667099e773cd1f673b621fe6`. Responsabilidade editorial: hiagokinlevi. A disponibilidade passa de **4/20 para 10/20 posições de capítulo (50%)**, e de **50/66 para 56/66 IDs com respostas (84,85%)**. São medidas de presença, não equivalência integral aprovada.
 
-A sequência 05–10 preserva ensino, objetivos, tabelas, mapas, desenhos textuais, rubricas 0–3 e gabaritos da fonte. Tente cada exercício antes de seguir o link para sua resposta. Os próximos capítulos permanecem na [lacuna 11–20](PLAN.md#translation-gap). O [registro do lote](PLAN.md#translation-review) delimita a comparação e os testes; as [notas técnicas separadas](#pt-human-limits-05-10) distinguem o que os programas calculam do que não observam. Esta publicação não declara a coleção inglesa ou portuguesa concluída.
+A sequência 05–10 preserva ensino, objetivos, tabelas, rubricas 0–3 e gabaritos da fonte. Tente cada exercício antes de seguir o link para sua resposta. Os capítulos seguintes estão [neste manuscrito](#ch-11). O [registro do lote](PLAN.md#translation-review) delimita a comparação e os testes; as [notas técnicas separadas](#pt-human-limits-05-10) distinguem o que os programas calculam do que não observam. Esta publicação não declara a coleção inglesa ou portuguesa concluída.
 
 ### Caso sintético
 
@@ -31,13 +31,13 @@ A sequência 05–10 preserva ensino, objetivos, tabelas, mapas, desenhos textua
 
 ### Fontes principais
 
-Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796.322806); Sasse, Brostoff e Weirich (2001), [doi:10.1023/A:1011902718709](https://doi.org/10.1023/A:1011902718709); Hadnagy (2018); Cialdini (2021); Bada, Sasse e Nurse (2019), arXiv:1901.02672; Hansche et al. (2024), NIST SP 800-50r1. Lista completa em [Referências](#references).
+Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796.322806); Sasse, Brostoff e Weirich (2001), [doi:10.1023/A:1011902718709](https://doi.org/10.1023/A:1011902718709); Hadnagy (2018); Cialdini (2021); Bada, Sasse e Nurse (2019), arXiv:1901.02672; Merritt et al. (2024), NIST SP 800-50r1. Lista completa em [Referências](#references).
 
 ## Sumário
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -63,7 +63,7 @@ Ruth aprende as táticas comuns descritas por Hadnagy (2018) e explicadas pelos 
 
 ### 1.4 Conhecimento não basta
 
-Callum avisa que falar às pessoas sobre as táticas raramente muda o comportamento por si só. Bada, Sasse e Nurse (2019) constataram que as campanhas de conscientização muitas vezes falham quando se apoiam no medo ou supõem que o conhecimento leva à ação. O NIST SP 800-50r1 (Hansche et al., 2024) descreve programas de aprendizagem que combinam conscientização, treinamento por função e avaliação. Para uma pequena organização beneficente, conclui Ruth, a abordagem prática é ter alguns hábitos fáceis, procedimentos claros para as tarefas arriscadas e um jeito amigável de pedir ajuda, em vez de palestras longas que as pessoas esquecem.
+Callum avisa que falar às pessoas sobre as táticas raramente muda o comportamento por si só. Bada, Sasse e Nurse (2019) constataram que as campanhas de conscientização muitas vezes falham quando se apoiam no medo ou supõem que o conhecimento leva à ação. O NIST SP 800-50r1 (Merritt et al., 2024) descreve programas de aprendizagem que combinam conscientização, treinamento por função e avaliação. Para uma pequena organização beneficente, conclui Ruth, a abordagem prática é ter alguns hábitos fáceis, procedimentos claros para as tarefas arriscadas e um jeito amigável de pedir ajuda, em vez de palestras longas que as pessoas esquecem.
 
 ### 1.5 Três decisões iniciais
 
@@ -822,16 +822,473 @@ Impedir que a nota guarde uma senha não prova que a senha antiga seja inofensiv
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 20 na referência inglesa)
 
-[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 — tradução pendente →](PLAN.md#translation-gap)
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
-A referência inglesa continua no Capítulo 11. Os capítulos 11–20 ainda não têm tradução neste manuscrito; um plano não substitui o ensino.
+Continue para a próxima aula publicada.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="pt-translation-ch11-20"></a>
+
+### Continuação traduzida — capítulos 11–20
+
+Dez capítulos e EX057–EX066, já escritos numa cópia de trabalho local, foram integrados seletivamente neste livro. O texto das aulas foi comparado por estrutura, fatos e limites com a fonte inglesa publicada (blob anterior `63c6951d427a84acb4293c5da4cf351751247136`); as respostas foram vinculadas aos enunciados. Os diagramas automáticos que apenas repetiam a ordem das seções foram omitidos. Esta integração amplia a presença de aulas em português para 20/20 e de pares enunciado–resposta para 66/66; **não** certifica equivalência editorial ou livro concluído. O histórico Git identifica a publicação; a revisão humana independente permanece pendente.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — "Nenhuma simulação por enquanto" não é uma surpresa amigável
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter a recomendação de nenhuma simulação por enquanto.
+2. Reconhecer um e-mail surpresa como uma simulação.
+3. Deixar a prática na dramatização anunciada.
+
+### 11.1 A pergunta da gerente já tinha resposta
+
+A gerente da organização perguntou se o Riverbend deveria enviar mensagens falsas para testar os voluntários. A recomendação de Ruth é nenhuma simulação por enquanto, porque o engano pode prejudicar uma confiança da qual os voluntários podem se afastar. Depois que os curadores adotam o plano, um colega propõe uma "surpresa amigável" sobre um turno perdido e diz que não é realmente uma simulação. Uma mensagem que as pessoas não sabem ser um teste é aquilo que o escopo excluiu: um teste que engana as pessoas sem acordo. Turnos perdidos ficam ao lado dos temas de dificuldade que estariam barrados mesmo se um programa algum dia fosse acordado. Ruth não a envia. A dramatização anunciada continua sendo o modo de praticar um procedimento.
+
+### 11.2 Exemplo resolvido
+
+| Proposta | O que ela é de fato | Decisão |
+|---|---|---|
+| Nenhuma simulação por enquanto | A recomendação | Mantê-la |
+| Dramatização anunciada do retorno de ligação | A prática permitida | Pode seguir como prática |
+| Um e-mail surpresa sobre um turno perdido | Um truque não anunciado | Recusar |
+| "Vamos guardar só os totais, então está bem." | Uma regra para um programa que não foi acordado | Não é motivo para começar |
+
+> **Caso sintético.** Nenhuma isca é enviada. Nenhum voluntário é pontuado.
+
+### Erros e limites
+
+Recusar a surpresa não proíbe falar de táticas numa aula em que as pessoas sabem que estão presentes. A diferença é se a pessoa concordou em ser testada.
+
+### Aplicar
+
+- **EX057 — O que é a surpresa?** Ruth recomendou nenhuma simulação por enquanto. Um colega quer um e-mail de surpresa amigável sobre um turno perdido, guardando apenas os totais. O que você recusa, e que prática continua permitida? *Rubrica:* 3 = recuse a surpresa; é um truque sem acordo; nenhuma simulação por enquanto continua valendo; a dramatização anunciada continua sendo a prática; não envie a mensagem;; 2 = a surpresa é recusada;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX057 no apêndice](#answer-ex057).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 20 na referência)
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Um nome na linha do reporte quebra o registro
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter o registro de um reporte em data, tipo e desfecho.
+2. Recusar um nome nessa linha.
+3. Deixar a investigação de um reporte grave com as etapas de incidente e o voluntário de TI.
+
+### 12.1 A acolhida não coleta uma identidade
+
+Ruth registra apenas a data, o tipo e o desfecho de um reporte, não quem o enviou. Esse limite protege a pessoa que falou. Um colega de turma acrescenta um nome "para o agradecimento poder ser pessoal" e também abre o link para ver se a mensagem é real. O agradecimento pode ser feito sem guardar o nome no registro. Abrir o link é o ato que a regra de manuseio proíbe. Se o reporte parece grave, Ruth segue as etapas de incidente e pede ajuda ao voluntário de TI. Ela não investiga sozinha e não inventa um nome só para recusar um.
+
+### 12.2 Exemplo resolvido
+
+| Acréscimo | Permitido? | Decisão |
+|---|---|---|
+| Data, tipo, desfecho | Sim | Manter esses três |
+| O nome de quem reportou | Não | Deixá-lo de fora |
+| Clicar no link para conferir | Não | Não clicar |
+| Um caso grave investigado por Ruth sozinha | Não | Etapas de incidente, com o voluntário de TI |
+
+> **Caso sintético.** Ninguém que reportou é nomeado e nenhum corpo de mensagem é citado.
+
+### Erros e limites
+
+Omitir o nome não significa que o reporte seja ignorado. O desfecho ainda é registrado, e um caso grave ainda segue adiante.
+
+### Aplicar
+
+- **EX058 — O que entra na linha?** Um reporte chega. Um colega de equipe escreve o nome do voluntário ao lado da data, do tipo e do desfecho, e clica no link. O que você registra, e o que não faz? *Rubrica:* 3 = registre apenas data, tipo e desfecho; não registre o nome; não clique; não invente um nome; um reporte grave segue as etapas de incidente com o voluntário de TI;; 2 = sem nome e sem clique;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX058 no apêndice](#answer-ex058).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 20 na referência)
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Uma sugestão para o kit de integração não é o kit
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter a ideia da coordenadora como uma sugestão.
+2. Manter a semana três como um lançamento que a adoção não concluiu.
+3. Recusar a afirmação de que todo voluntário novo já recebeu o guia.
+
+### 13.1 O kit era a prateleira certa. Ninguém mostrou o guia nela.
+
+A coordenadora de voluntários sugere pôr o guia no kit de integração, para Ruth não construir um segundo processo. Essa frase é uma ideia de uma colega. A semana três do plano adotado é o lançamento do caminho de reporte com o guia e o cartaz. Um colega de turma marca "todos os voluntários novos orientados" porque a sugestão era sensata e os curadores adotaram o plano. O arquivo não diz que o kit foi reimpresso e não diz que a semana três foi executada. Ruth não inventa uma contagem de pessoas que leram a página.
+
+### 13.2 Exemplo resolvido
+
+| Afirmação | Situação | Decisão |
+|---|---|---|
+| A coordenadora sugeriu o kit de integração | Uma ideia | Pode permanecer como ideia |
+| Ruth escreveu uma instrução curta | Redação | Pode permanecer |
+| A semana três lança o caminho | Uma etapa do plano | Não aparece como concluída |
+| "Todo voluntário novo tem o guia." | Nenhuma contagem | Recusar |
+
+> **Caso sintético.** Nenhum voluntário novo é nomeado. Nenhum kit é descrito como reimpresso.
+
+### Erros e limites
+
+Deixar a inclusão inacabada não desperdiça a sugestão. Mantém o lançamento na semana que foi escrita para ele.
+
+### Aplicar
+
+- **EX059 — Quem tem o guia?** A coordenadora sugeriu o kit de integração. A semana três é o lançamento, e os curadores adotaram o plano. Um colega de equipe diz que todo voluntário novo já tem o guia. O que ainda é apenas uma sugestão ou uma etapa, e que contagem falta? *Rubrica:* 3 = a ideia do kit não é uma inclusão concluída; a semana três não aparece como concluída; não afirme que todo voluntário novo tem o guia; não invente contagem;; 2 = a sugestão não é o lançamento;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX059 no apêndice](#answer-ex059).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 20 na referência)
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Doze e sessenta não são um censo de setenta e dois
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter doze funcionários e sessenta voluntários como o tamanho publicado.
+2. Recusar 72 como censo substituto.
+3. Manter a saída de acesso como quatro funções, não como uma contagem de pessoas.
+
+### 14.1 O tamanho da organização e a largura de uma função são contagens diferentes
+
+O Riverbend tem doze funcionários e sessenta voluntários. O programa de acesso não conta essas pessoas. Conta sistemas alcançáveis por quatro funções, cada uma sobre cinco. Um colega de turma soma doze e sessenta, escreve 72 e substitui as linhas de função por "72 of 5". A soma aritmética é 72, mas o caso não estabelece se os grupos se sobrepõem; portanto, não é uma contagem verificada de pessoas distintas. Somar não executa o programa de acesso: pessoas não são o numerador de sua contagem de sistemas por função. O número de funcionários e o número de voluntários permanecem separados. Ruth não edita `lab_access.py`.
+
+### 14.2 Exemplo resolvido
+
+| Número | O que conta | Decisão |
+|---|---|---|
+| Doze funcionários | Funcionários | Manter |
+| Sessenta voluntários | Voluntários | Manter |
+| 72 | Soma aritmética; contagem de pessoas distintas não verificada | Recusar como censo ou saída do programa |
+| Quatro linhas de função, cada uma de 5 | Sistemas que uma função alcança | Manter essas linhas |
+
+> **Caso sintético.** A soma 72 é a aritmética do colega de turma. Não é uma execução nova.
+
+### Erros e limites
+
+A soma é aritmeticamente correta. Recusar seu uso como censo medido ou como saída de sistemas por função preserva as unidades e deixa visível a possível sobreposição.
+
+### Aplicar
+
+- **EX060 — O que é 72?** O Riverbend tem doze funcionários e sessenta voluntários. A saída de acesso tem quatro linhas de função. Um colega de equipe escreve "72 of 5". Quais números permanecem, e o que você não imprime? *Rubrica:* 3 = doze e sessenta permanecem separados; 72 não é o censo; as quatro linhas de função permanecem; não edite o script;; 2 = 72 é recusado e as linhas de função permanecem;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX060 no apêndice](#answer-ex060).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 20 na referência)
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Dois tempos lentos permanecem na lista publicada
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter 95 e 110 dentro da lista de tempos publicada.
+2. Manter a mediana em 40 segundos para essa lista completa.
+3. Situar a correção do contato no celular depois do teste, não dentro dele.
+
+### 15.1 O par lento é o motivo de os celulares terem sido alterados. Não é um par para apagar.
+
+Dois dos oito tempos passam de um minuto: 95 segundos e 110 segundos. A saída diz `over 60 s: 2`, e a mediana da lista completa ordenada é 40 segundos. Ruth então acrescenta o endereço de reporte como contato nos celulares compartilhados dos voluntários, porque as pessoas tiveram dificuldade para encontrá-lo. Um colega de turma apaga 95 e 110, dizendo que os celulares estão corrigidos e portanto esses tempos já não contam, e pede uma mediana nova. O contato foi acrescentado depois das oito tentativas. Remover o par seria uma lista diferente, e esta aula não executa essa lista. A mediana publicada permanece 40 segundos.
+
+### 15.2 Exemplo resolvido
+
+| Ação | Momento | Decisão |
+|---|---|---|
+| Manter 95 e 110 | Estão na lista publicada | Aceitar |
+| Mediana de 40 segundos | A lista completa | Manter |
+| Acrescentar o endereço aos celulares | Depois do teste | Pode permanecer como correção posterior |
+| Descartar os dois tempos lentos e recalcular | Uma lista nova | Recusar |
+
+> **Caso sintético.** Nenhuma mediana nova é calculada. Os oito tempos continuam sendo os do programa.
+
+### Erros e limites
+
+Manter os tempos lentos não significa que o contato no celular tenha sido inútil. Significa que o contato não reescreve a tarde que o motivou.
+
+### Aplicar
+
+- **EX061 — Quais tempos permanecem?** A lista publicada inclui 95 e 110, a mediana é 40 segundos e dois tempos estão acima de 60 segundos. Ruth acrescenta o endereço de reporte aos celulares depois. Um colega de equipe descarta os dois tempos lentos. O que permanece, e o que você não recalcula? *Rubrica:* 3 = 95 e 110 permanecem; a mediana permanece 40 segundos para a lista completa; o contato no celular é posterior ao teste; não recalcule; não edite o script;; 2 = os tempos lentos permanecem e a mediana não é refeita;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX061 no apêndice](#answer-ex061).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 20 na referência)
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — A adoção não é a revisão de três meses
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter a revisão de três meses como um olhar futuro.
+2. Distingui-la da adoção pelos curadores.
+3. Recusar achados que o olhar posterior nunca produziu.
+
+### 16.1 O lembrete aponta para a frente. A adoção aponta para o plano.
+
+Callum diz a Ruth que revise o plano depois de três meses, porque os hábitos precisam de atenção para durar. Os curadores adotam o plano no fim do curso. Um colega de turma escreve "revisão de três meses: feita" com base nessa adoção e acrescenta dois achados que a reunião nunca registrou. A adoção é a decisão de começar. O olhar de três meses não tem data no arquivo e não tem notas. A semana quatro, uma conversa com a gerente da organização sobre reportes e problemas, é uma etapa dentro do primeiro mês. Não é a revisão posterior. Ruth não inventa achado algum e não marca os três meses como decorridos.
+
+### 16.2 Exemplo resolvido
+
+| Evento | O que é | Decisão |
+|---|---|---|
+| Os curadores adotam o plano | O começo | Pode permanecer |
+| Revisar depois de três meses | Um lembrete | Mantê-lo no futuro |
+| Semana quatro com a gerente | Uma etapa dentro do plano | Não é a revisão de três meses |
+| Dois achados dessa revisão posterior | Nada foi escrito | Não os inventar |
+
+> **Caso sintético.** Nenhuma data de calendário é fornecida para a revisão posterior.
+
+### Erros e limites
+
+Deixar a revisão no futuro não enfraquece o lembrete de Callum. Recusa fingir que o lembrete já foi cumprido.
+
+### Aplicar
+
+- **EX062 — Qual reunião foi a revisão?** Os curadores adotam o plano. Callum diz para revisá-lo depois de três meses. Um colega de equipe marca essa revisão como feita e escreve dois achados. O que aconteceu, e o que falta? *Rubrica:* 3 = a adoção não é a revisão de três meses; os três meses não estão datados como decorridos; não invente achados; a semana quatro não é essa revisão posterior;; 2 = a adoção não é a revisão posterior;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX062 no apêndice](#answer-ex062).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 20 na referência)
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — A ausência de culpa não é motivo para investigar sozinha
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter a acolhida sem culpa.
+2. Encaminhar um reporte grave pelas etapas de incidente com o voluntário de TI.
+3. Recusar uma investigação solitária disfarçada de gentileza.
+
+### 17.1 A acolhida e o escalonamento continuam ambos em vigor
+
+A segunda decisão de Ruth diz a funcionários e voluntários que reportar qualquer coisa estranha é bem-vindo e não leva à culpa. Um colega de turma ouve falar de dados de doadores enviados ao lugar errado e diz que Ruth deveria "resolver em silêncio" para ninguém se sentir acusado. Resolver em silêncio, por uma só pessoa, é a investigação que a regra de manuseio já recusou. Um reporte grave segue as etapas de incidente da organização, e Ruth pede ajuda ao voluntário de TI. A ausência de culpa ainda permite um registro de data, tipo e desfecho. Não exige um nome, e esta aula não inventa um doador nem um voluntário.
+
+### 17.2 Exemplo resolvido
+
+| Resposta | Cabe na acolhida? | Decisão |
+|---|---|---|
+| Agradecer o reporte e registrar data, tipo e desfecho | Sim | Fazer isso |
+| Culpar a pessoa | Não | Não fazer |
+| Ruth investiga sozinha o caso do endereço errado | Não | Etapas de incidente, com o voluntário de TI |
+| Esconder o caso para a acolhida continuar confortável | Não | A acolhida não é ocultação |
+
+> **Caso sintético.** O caso do endereço errado continua sendo o tipo já usado no livro. Ninguém é nomeado.
+
+### Erros e limites
+
+Escalar não transforma quem reportou em suspeito. Leva um caso grave às pessoas que as etapas já nomearam.
+
+### Aplicar
+
+- **EX063 — Quem segue um reporte grave?** Reportar é bem-vindo e ninguém é culpado por um erro honesto. Dados de doadores foram para o endereço errado. Um colega de equipe diz a Ruth para resolver em silêncio, sozinha. O que ainda acontece, e o que a ausência de culpa não permite? *Rubrica:* 3 = a ausência de culpa permanece; ela não investiga sozinha; ela segue as etapas de incidente com o voluntário de TI; o registro ainda pode conter data, tipo e desfecho; não nomeie ninguém;; 2 = nenhuma investigação solitária;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX063 no apêndice](#answer-ex063).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 20 na referência)
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — A linha do armazém não herda o banco
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Ler a linha do armazém como somente a planilha.
+2. Manter o segundo curador como a correção dos pagamentos.
+3. Recusar pôr o banco na função do armazém.
+
+### 18.1 Um segundo aprovador é uma pessoa com um trabalho, não um conjunto novo para o armazém
+
+O voluntário do armazém alcança um sistema dos cinco: a planilha, que é onde os dados dos doadores, vindos de formulários em papel, são digitados. O ponto único dos pagamentos é corrigido autorizando um segundo curador, que aprova somente depois de um retorno de ligação quando os dados bancários mudam. Um colega de turma vê que a tesoureira alcança o banco e diz que a função do armazém também deveria alcançá-lo, para a organização nunca ficar parada. Espalhar o banco para as pessoas que digitam formulários de doadores é uma concessão mais ampla do que a correção. O segundo curador não é um novo nome da linha do armazém. A linha publicada permanece `warehouse volunteer: 1 of 5`. Ruth não edita o script.
+
+### 18.2 Exemplo resolvido
+
+| Proposta | Efeito | Decisão |
+|---|---|---|
+| Deixar a linha do armazém em `1 of 5` | Somente a planilha | Aceitar |
+| O segundo curador aprova depois de um retorno de ligação | A correção dos pagamentos | Já é a correção escolhida |
+| Dar o banco à função do armazém | Uma concessão nova | Recusar |
+| "Aí eles podem pagar se a tesoureira estiver fora." | O problema da pressão, resolvido pela função errada | Recusar |
+
+> **Caso sintético.** O segundo curador continua sem nome. A linha do armazém não é reescrita.
+
+### Erros e limites
+
+Manter o banco fora da função do armazém não deixa os pagamentos com uma só pessoa. O segundo curador já é a outra pessoa no desenho.
+
+### Aplicar
+
+- **EX064 — Quem ganha o banco?** A saída do armazém é `1 of 5`, a planilha. Um segundo curador é a correção dos pagamentos. Um colega de equipe dá o banco à função do armazém para as faturas não precisarem esperar. O que permanece `1 of 5`, e quem já era o segundo aprovador? *Rubrica:* 3 = a linha do armazém permanece `1 of 5` e não ganha o banco; o segundo curador continua sendo a correção dos pagamentos; não edite o script;; 2 = a função do armazém não ganha o banco;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX064 no apêndice](#answer-ex064).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 20 na referência)
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Um modelo de resposta pedido não é uma resposta já enviada
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Manter a promessa de resposta como uma promessa.
+2. Situar o pedido do modelo depois do laboratório guiado.
+3. Recusar a afirmação de que oito respostas foram enviadas com esse modelo.
+
+### 19.1 O pedido veio depois de o relógio já ter parado
+
+O desenho do caminho diz que o voluntário de TI confere o endereço de reporte todo dia e responde a cada reporte com um veredito curto e um agradecimento. Depois que os oito voluntários foram cronometrados, Ruth pede um modelo de resposta rápida, porque as pessoas disseram que gostam de receber retorno. Um colega de turma escreve que o modelo foi usado nas oito mensagens e redige um veredito para colar na nota. O modelo foi pedido depois desses tempos. O arquivo não contém oito respostas enviadas e não contém as palavras de um veredito. Ruth não as inventa. A promessa continua valendo para reportes que vierem depois. Não é evidência sobre os oito.
+
+### 19.2 Exemplo resolvido
+
+| Item | Quando se situa | Decisão |
+|---|---|---|
+| Um veredito curto e um agradecimento para cada reporte | A promessa | Pode permanecer como promessa |
+| Um pedido de modelo rápido | Depois do laboratório | Pode permanecer como pedido |
+| "O modelo tratou dos oito." | Antes de o pedido existir | Recusar |
+| Um veredito de exemplo escrito agora | Não está no arquivo | Não inventar as palavras |
+
+> **Caso sintético.** Nenhum texto de resposta é redigido. Os oito tempos continuam sendo um exercício de cronometragem.
+
+### Erros e limites
+
+Separar a promessa das oito tentativas não cancela a promessa. Impede que o relógio do laboratório seja enfeitado com uma ferramenta pedida depois.
+
+### Aplicar
+
+- **EX065 — Quando o modelo foi pedido?** O voluntário de TI deve responder a cada reporte com um veredito curto e um agradecimento. Ruth pede um modelo de resposta rápida depois que os oito voluntários são cronometrados. Um colega de equipe diz que o modelo produziu oito respostas. O que é uma promessa, o que é um pedido posterior, e o que você não inventa? *Rubrica:* 3 = a regra de resposta é uma promessa; o modelo foi pedido depois do laboratório; oito respostas enviadas não estão no arquivo; não invente texto de veredito;; 2 = o modelo não é evidência sobre os oito;; 1 = um desses;; 0 = nenhum.
+
+[Resolução de EX065 no apêndice](#answer-ex065).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 20 na referência)
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula traduzida.
+<!-- open-cyber-academy:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — O que a nota da organização pode dizer
+
+### Objetivos de aprendizagem
+
+Depois deste capítulo, você deverá ser capaz de:
+
+1. Repetir as linhas de laboratório e as decisões que o arquivo já contém.
+2. Rejeitar uma nota que encerra etapas em aberto.
+3. Apontar o próximo curso sem chamar esta edição de concluída.
+
+### 20.1 Uma nota pode citar o arquivo. Ela não pode melhorá-lo.
+
+Uma nota de passagem pode dizer o que já estava escrito. O Riverbend ainda tem doze funcionários e sessenta voluntários. A saída de acesso ainda mostra a tesoureira em 5 de 5, a coordenadora em 3 de 5, o voluntário do armazém em 1 de 5 e os funcionários que precisam da escala em 1 de 5. A saída de reporte ainda diz `correct 7/8`, uma mediana de 40 segundos e dois tempos acima de 60 segundos. Os curadores adotaram o plano de quatro semanas. A semana dois, as contas individuais, não aparece como concluída. As simulações continuam desligadas por enquanto. A revisão de três meses não foi realizada. O próprio login social de Ruth passou por uma conferência de verificação em duas etapas, o que não é uma nota de que a senha compartilhada foi destruída.
+
+### 20.2 Exemplo resolvido
+
+| Frase da nota de passagem | Por que falha ou permanece | Decisão |
+|---|---|---|
+| "A saída de acesso são as quatro linhas de função publicadas." | A primeira execução | Pode permanecer |
+| "Os reportes corretos foram 7 de 8, mediana de 40 segundos." | A execução de reporte | Pode permanecer |
+| "A saída agora é 8/8 e a mediana foi recalculada." | Nenhuma execução nova | Rejeitar |
+| "A semana dois terminou porque o plano foi adotado." | A adoção não é essa etapa | Rejeitar |
+| "A revisão de três meses foi realizada." | Não existe essa nota | Rejeitar |
+
+> **Caso sintético.** A nota é uma página de sala de aula sobre o Riverbend. Não é um aviso aos doadores.
+
+### Erros e limites
+
+Atingir o mínimo de planejamento de 20 aulas deixa a revisão independente em aberto. Uma pergunta nova do Riverbend ainda pode merecer uma aula posterior própria. Esta edição portuguesa não conclui a coleção ou a revisão editorial. Fatores humanos continua sendo este curso. Arquitetura de segurança é a disciplina seguinte de quem estuda. As etapas em aberto no Riverbend continuam em aberto nessa passagem. Estes capítulos não certificam a organização beneficente e não entregam uma qualificação a ninguém.
+
+### Aplicar
+
+- **EX066 — Quatro afirmações.** A nota de passagem de um colega de turma diz que a saída de reporte agora é 8/8 com uma mediana nova, que a semana dois está concluída porque os curadores adotaram o plano, que a senha social compartilhada foi destruída e que a revisão de três meses já foi realizada. Quais afirmações você rejeita, e a que as vinte aulas atendem? *Rubrica:* 3 = rejeitar as quatro; a saída de reporte permanece 7/8 com mediana de 40 segundos e dois tempos acima de 60 segundos; a semana dois não aparece como concluída; a destruição da senha compartilhada não está no arquivo; a revisão de três meses não foi realizada; vinte aulas atendem ao mínimo de planejamento e deixam a revisão em aberto;; 2 = rejeitar as quatro afirmações e manter as saídas publicadas;; 1 = uma afirmação;; 0 = nenhum.
+
+[Resolução de EX066 no apêndice](#answer-ex066).
+
+<!-- open-cyber-academy:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 20 na referência)
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Próximo curso →](../../../security-architecture/pt/SUBJECTS.md)
+
+A trilha continua no curso 007; as revisões deste livro permanecem abertas.
 <!-- open-cyber-academy:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX056. Ruth Adeyemi, Callum Shaw, o Oakmere Adult Learning Centre, o Riverbend Food Bank e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX066. Ruth Adeyemi, Callum Shaw, o Oakmere Adult Learning Centre, o Riverbend Food Bank e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Doze funcionários e sessenta voluntários.
 
@@ -969,6 +1426,66 @@ Respostas-modelo para EX001–EX056. Ruth Adeyemi, Callum Shaw, o Oakmere Adult 
 
 [Voltar ao exercício EX056](#ch-10).
 
+<a id="answer-ex057"></a>
+
+**EX057.** Recuse a surpresa. É um truque sem acordo. Nenhuma simulação por enquanto continua valendo. A dramatização anunciada continua sendo a prática. Não envie a mensagem.
+
+[Voltar ao exercício EX057](#ch-11).
+
+<a id="answer-ex058"></a>
+
+**EX058.** Registre apenas data, tipo e desfecho. Não registre o nome. Não clique. Não invente um nome. Um reporte grave segue as etapas de incidente com o voluntário de TI.
+
+[Voltar ao exercício EX058](#ch-12).
+
+<a id="answer-ex059"></a>
+
+**EX059.** A ideia do kit não é uma inclusão concluída. A semana três não aparece como concluída. Não afirme que todo voluntário novo tem o guia. Não invente contagem.
+
+[Voltar ao exercício EX059](#ch-13).
+
+<a id="answer-ex060"></a>
+
+**EX060.** Doze e sessenta permanecem separados. 72 não é o censo. As quatro linhas de função permanecem. Não edite o script.
+
+[Voltar ao exercício EX060](#ch-14).
+
+<a id="answer-ex061"></a>
+
+**EX061.** 95 e 110 permanecem. A mediana permanece 40 segundos para a lista completa. O contato no celular é posterior ao teste. Não recalcule. Não edite o script.
+
+[Voltar ao exercício EX061](#ch-15).
+
+<a id="answer-ex062"></a>
+
+**EX062.** A adoção não é a revisão de três meses. Os três meses não estão datados como decorridos. Não invente achados. A semana quatro não é essa revisão posterior.
+
+[Voltar ao exercício EX062](#ch-16).
+
+<a id="answer-ex063"></a>
+
+**EX063.** A ausência de culpa permanece. Ela não investiga sozinha. Ela segue as etapas de incidente com o voluntário de TI. O registro ainda pode conter data, tipo e desfecho. Não nomeie ninguém.
+
+[Voltar ao exercício EX063](#ch-17).
+
+<a id="answer-ex064"></a>
+
+**EX064.** A linha do armazém permanece `1 of 5` e não ganha o banco. O segundo curador continua sendo a correção dos pagamentos. Não edite o script.
+
+[Voltar ao exercício EX064](#ch-18).
+
+<a id="answer-ex065"></a>
+
+**EX065.** A regra de resposta é uma promessa. O modelo foi pedido depois do laboratório. Oito respostas enviadas não estão no arquivo. Não invente texto de veredito.
+
+[Voltar ao exercício EX065](#ch-19).
+
+<a id="answer-ex066"></a>
+
+**EX066.** Rejeite as quatro. A saída de reporte permanece 7/8, com mediana de 40 segundos e dois tempos acima de 60 segundos. A semana dois não aparece como concluída. A destruição da senha compartilhada não está no arquivo. A revisão de três meses não foi realizada. Vinte aulas atendem ao mínimo de planejamento e deixam a revisão em aberto.
+
+[Voltar ao exercício EX066](#ch-20).
+
 <a id="pt-human-limits-05-10"></a>
 
 ### Notas editoriais do lote 05–10 — separadas do texto traduzido
@@ -977,7 +1494,7 @@ Respostas-modelo para EX001–EX056. Ruth Adeyemi, Callum Shaw, o Oakmere Adult 
 
 **Saídas reproduzidas e limites de generalização:** as listagens completas, transcritas das leituras fixadas, foram executadas em Python 3.13.5. O acesso reproduziu quatro linhas; o reporte reproduziu `correct 7/8; median time 40 s; over 60 s: 2`. Dez entradas alternativas mostraram, entre outros limites, que um sexto sistema pode imprimir `6 of 5`; sete tempos produzem 40 onde a mediana desse conjunto é 38; nove tempos produzem 40 onde a mediana é 42; tempos vazios geram `IndexError`; um indicador 2 pode produzir `9/8`. O limiar é estritamente maior que sessenta, e conjuntos eliminam elementos repetidos. Esses testes são separados da execução canônica; não alteram as listas, os gabaritos ou os acontecimentos do Riverbend. O código anterior não foi modificado silenciosamente.
 
-**Fontes e proveniência:** foi consultada a [página oficial de NIST SP 800-50 Rev. 1](https://csrc.nist.gov/pubs/sp/800/50/r1/final), que descreve programas de aprendizagem adaptáveis e avaliação. Os quatro papéis, oito participantes, tempos, decisões de contas e prazos do caso são sintéticos, não exigências numéricas do NIST. A página oficial também lista **Marian Merritt** antes dos cinco autores que constam da referência antiga deste livro: a referência está incompleta e precisa de correção coordenada nas duas edições. Ela foi preservada abaixo, não declarada bibliograficamente aprovada. A [página dos autores no arXiv](https://arxiv.org/abs/1901.02672) confirma o trabalho de Bada, Sasse e Nurse e seu resumo; esta consulta não substitui nova revisão integral dos artigos, dos livros comerciais ou da referência ABNT.
+**Fontes e proveniência:** foi consultada a [página oficial de NIST SP 800-50 Rev. 1](https://csrc.nist.gov/pubs/sp/800/50/r1/final), que descreve programas de aprendizagem adaptáveis e avaliação. Os quatro papéis, oito participantes, tempos, decisões de contas e prazos do caso são sintéticos, não exigências numéricas do NIST. A página oficial lista **Marian Merritt** antes dos demais autores; a autoria desta referência foi corrigida nas duas edições. A [página dos autores no arXiv](https://arxiv.org/abs/1901.02672) confirma o trabalho de Bada, Sasse e Nurse e seu resumo; esta consulta não substitui nova revisão integral dos artigos, dos livros comerciais ou da referência ABNT.
 
 A comparação deste lote preservou dezoito objetivos, seis tabelas com 25 linhas de exemplos, seis mapas com 25 conexões, seis desenhos textuais, seis enunciados, seus quatro níveis de rubrica e seis respostas. Sete controles estruturais inválidos foram rejeitados. A igualdade da estrutura não certifica a tradução. A reconciliação integral dos quatro capítulos anteriores, a revisão humana independente, a renderização Mermaid/A4 e a leitura ao vivo do site/MCP continuam pendentes. Os rótulos truncados em diagramas antigos não foram corrigidos nesta passagem. Nenhuma ação sobre pessoas, contas, mensagens ou dinheiro reais ocorreu.
 
@@ -991,6 +1508,6 @@ Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas 
 - Bada, M., Sasse, M. A., & Nurse, J. R. C. (2019). *Cyber security awareness campaigns: Why do they fail to change behaviour?* arXiv:1901.02672. <https://arxiv.org/abs/1901.02672>
 - Cialdini, R. B. (2021). *Influence, new and expanded: The psychology of persuasion*. Harper Business.
 - Hadnagy, C. (2018). *Social engineering: The science of human hacking* (2nd ed.). Wiley.
-- Hansche, S., Ellis, B., Sanchez-Cherry, K., Snyder, J. N., & Walden, D. (2024). *Building a cybersecurity and privacy learning program* (NIST SP 800-50 Rev. 1). NIST. <https://doi.org/10.6028/NIST.SP.800-50r1>
+- Merritt, M., Hansche, S., Ellis, B., Sanchez-Cherry, K., Snyder, J. N., & Walden, D. (2024). *Building a cybersecurity and privacy learning program* (NIST SP 800-50 Rev. 1). NIST. <https://doi.org/10.6028/NIST.SP.800-50r1>
 - Lain, D., Kostiainen, K., & Čapkun, S. (2022). Phishing in organizations: Findings from a large-scale and long-term study. *2022 IEEE Symposium on Security and Privacy*, 842–859. <https://doi.org/10.1109/SP46214.2022.9833766>
 - Sasse, M. A., Brostoff, S., & Weirich, D. (2001). Transforming the 'weakest link' — a human/computer interaction approach to usable and effective security. *BT Technology Journal*, 19(3), 122–131. <https://doi.org/10.1023/A:1011902718709>
