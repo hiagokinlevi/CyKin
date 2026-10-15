@@ -1497,7 +1497,65 @@ The notebook line that matches the page is: Room 2 at 15:00 is already booked on
 
 A single synthetic page cannot show how often a real desk reprints a fallback schedule. It cannot explain why the booking view was unavailable. It cannot authorize a search of a live system. The owner's sentence should be copied into the notebook with its limit attached: named for this exercise, not adopted as the library's outage procedure. When the sitting ends, the next outage is pending again until its own source is named and checked.
 
-The Chapter 4 ALLOW line is also the wrong tool here. That label belonged to Room 4 at 15:00, a slot with no later row on the 09:00 printout. Room 2 at 15:00 now has a row on a different page. Reusing ALLOW's wording would report a free room that this page contradicts.
+The Chapter 4 ALLOW line is also the wrong tool here. In the published four-action log, that label belongs to the 11:45 **mark-pending** proposal; the program separately discusses a hypothetical Room 4 input change that could print ALLOW, but that variant was not the logged ALLOW. Neither label grants a room or overrides the 11:40 page. Room 2 at 15:00 now has a confirmed row on the named page, so calling it free contradicts the source.
+
+
+### 11.4 A bounded source is evidence, not a universal permission
+
+**Source authorization** answers which artifact may be consulted for a particular question. **Evidence of content** answers what that artifact actually states. **Transaction authority** answers who may commit or change a reservation. These are three independent gates: an approved source may establish that a slot is occupied while still providing no permission to assign it to somebody else.
+
+Chapter 10 ended with the purported 11:40 refresh as *reported but not verified*. Only **at the start of Chapter 11** does the fictional exercise owner place an actual synthetic page on the table and designate *that page* as current **for this sitting**. The learner inspects the heading and its two rows. That changes the evidence available for the **present** room-state question. It does not change what an earlier worker saw at 11:42 while relying on the 09:00 copy, and it is not a standing authorization for future days or outages.
+
+A compact evidence record should preserve six distinctions:
+
+| Field | Evidence released here | What must not be added |
+|---|---|---|
+| Artifact identity | One particular synthetic paper page placed by the exercise owner | A verified production schedule, API result or permanent offline replica |
+| Authority | Owner names **this page for this exercise** | Blanket authorization for all future outages or transactions |
+| Stated source time | Visible heading **11:40** on the named page | Independent proof of system synchronization, printing mechanism or later updates |
+| Relevant row | `SYN-002`: Room 2, 15:00, created 10:05, confirmed | Name of the resident, cause of a system outage, or evidence of a second reservation |
+| Bounded decision | The page shows the Room 2 / 15:00 slot **already booked** | Room 2 is free or may be transferred to this asker |
+| Historical result | Chapter 4's 09:00-based **REFUSE** and original tally remain | A rerun, cancellation of REFUSE or correction of the earlier source |
+
+[NIST CSF 2.0, PR.AA-05](https://doi.org/10.6028/NIST.CSWP.29) describes defined, managed and enforced authorizations; it does **not** define the fictional library's approval procedure. The [NIST SP 800-53 Rev. 5, AU-3](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) discusses recording event type, time, source and outcome to support auditability. The page/owner ledger above adapts the *conceptual distinction* between source, time, authorization and result; it is original classroom reasoning, **not** a claim that Harbor Library implemented an NIST audit control or that this one piece of paper meets federal control requirements.
+
+### 11.5 Work the two gates against the exact row
+
+**Input:** the newly released 11:40 page contains two printed synthetic records. `SYN-001` is Room 2 / 14:00 (created 08:20, confirmed); `SYN-002` is Room 2 / 15:00 (created 10:05, confirmed). These are different slots. No names or external systems are provided.
+
+**Gate 1 — is this the source designated for the question?** For *this* sitting, yes: the owner identified the page. This is a role-play grant for reading, not verification of how a real system produces schedules. If the owner had only repeated “a sheet may exist,” as in Chapter 10, this gate would **fail**.
+
+**Gate 2 — what does the chosen page show?** Record the heading 11:40 and inspect the row matching **both** requested fields: Room 2 **and** 15:00. The `SYN-002` row explicitly says `confirmed`. A row with start 14:00 cannot be substituted merely because it names the same room. With that direct observation, the supported answer to “Can I have Room 2 at 15:00?” is **“That slot is already booked.”**
+
+Neither gate is a **booking-creation** gate. Even when the source is approved and the relevant row has been read correctly, staff have not been authorized to make a different resident's booking, disclose a person, modify the printed row, or claim success in a production application. The room-state conclusion is bounded to the paper's scope and the exercise. The page may contain information useful for refusing an unavailable slot without proving its completeness for *other* rooms or times.
+
+**Worked comparison of five proposed decisions:**
+
+| Proposal | Evidence/authority finding | Appropriate statement |
+|---|---|---|
+| “Both source checks passed, so the room is free.” | The matching row has status **confirmed**, meaning occupied in this fixture | “Room 2 at 15:00 is already booked.” |
+| “The heading says 11:40, so it is valid for every future outage.” | Approval is bounded to **this page and sitting** | Later uses need their own approved source and time check |
+| “The 14:00 booking tells us what happens at 15:00.” | Room matches but time does **not** | Use `SYN-002`, not `SYN-001`, for 15:00 |
+| “A new page means the 09:00-based REFUSE was wrong.” | An old verdict is evaluated against an old fixed snapshot | Preserve the historic REFUSE and original tally |
+| “The sheet contains a code, so announce the holder's name.” | `SYN-002` is an invented identifier and the sheet has **no names** | State that the slot is booked without identifying a person |
+
+### 11.6 Preservation of chronology and a meaningful negative control
+
+The Chapter 4 classifier uses `PRINTOUT = "09:00"` and the fixture's later `SYN-002` creation time of 10:05. For its 11:42 **proposed** confirm-from-printout action it outputs REFUSE. The printed four-action tally is **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. In that **fixed** log, ALLOW belongs to the **11:45 mark-pending** proposal. Chapter 4 separately discussed a *hypothetical Room 4 input change*; that was **not** the published 11:45 ALLOW row and produced no replacement tally.
+
+**Negative control A — remove the owner naming.** Keep the same printed page visible but imagine the exercise owner does **not** designate it. The text `SYN-002` remains observable, yet authority to use this page as a decision source is missing. Correct action: keep the current decision pending until the owner approves an appropriate source. Visibility is not authorization.
+
+**Negative control B — preserve the naming but choose the wrong row.** The page remains authorized, but using `SYN-001` (14:00) to answer the 15:00 question violates the room/start match. Correct action: reject the wrong inference and use `SYN-002` for the actual question.
+
+**Negative control C — carry the answer into a later sitting.** The 11:40 page remains unchanged, but the date and authorization scope are different. Correct action: do not automatically reuse the page. Chapter 13 will teach that next-sitting boundary explicitly, and the current lesson must not pre-decide its request.
+
+The point is not to make the reply maximally hesitant: **when owner naming and a matching confirmed row are both supplied in this sitting, “already booked” is a well-supported bounded answer.** The same evidence does not authorize a new allocation, a personal disclosure, an old-log rewrite or an indefinite procedure.
+
+### 11.7 Independent EX027 practice
+
+Before consulting [EX027's worked result](#answer-ex027), write the four sentences requested by the original exercise. Underline which sentence depends on the page's visible `SYN-002` row, which protects the historical 09:00 output, and which limits the owner's authorization to a single sitting. Then build a short two-column **claim versus evidence** card for “booked,” “free,” “re-open REFUSE,” and “monthly fallback.” The correct card must show the actual row fields `Room 2 / 15:00 / confirmed` and preserve the exact five-counter line.
+
+As a second independent check, apply negative controls A and B from Section 11.6 without inventing a new case result. State which **gate** failed and which claim must be withheld. Do not open any live site, create a new booking or reveal a resident name. A learner who says “free” after reading `SYN-002` has interpreted the **opposite** of the evidence.
 
 ### Chapter 11 summary
 
@@ -1513,6 +1571,10 @@ When the owner names this 11:40 page and both observations pass, Room 2 at 15:00
 - **Task:** Write four sentences: what `SYN-002` shows about Room 2 at 15:00, why "free" reverses that row, why the Chapter 4 line stays, and why 11:40 does not govern the next outage.
 - **Expected evidence:** Four sentences a reader can check against the page in Section 11.1 and against the published Chapter 4 tally.
 - **Rubric:** Credit when the slot stays booked, the tally is left as printed, the monthly rule is refused, and no person's name and no live site appear. A new program run does not earn credit.
+
+- **Independent extension:** Construct an evidence-to-decision card distinguishing (a) owner naming for this sitting, (b) the `11:40` heading and exact `SYN-002` row, (c) the scoped “already booked” reply, and (d) what the page **does not** authorize. Explain why Chapter 10 could not use this artifact before it was released.
+- **Negative controls:** Reconsider the decision if the owner had not named the page, and if a learner selected the 14:00 `SYN-001` row for the 15:00 query. Neither control permits “free,” “reservation created,” a personal name, or erasure of the old `REFUSE`.
+- **Self-check:** [EX027 worked answer](#answer-ex027).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 20
@@ -1546,7 +1608,7 @@ The spoken reply is therefore limited: "This page does not list Room 4 at 15:00,
 
 ### 12.2 Worked example
 
-A classmate treats the old ALLOW label as if it were the missing row. In Chapter 4, ALLOW was the label for one logged action: a Room 4 question compared with the 09:00 printout. The reason on that run was that the printout's table had no later booking for the slot. Staff were already told not to announce that Room 4 was free. The 11:40 page is a second object. It does not contain the ALLOW label, and it does not contain a Room 4 row. Moving ALLOW onto this page would forge a row the printer never produced.
+A classmate treats the old ALLOW label as if it were the missing row. In **Chapter 4's fixed four-action log**, ALLOW classified the **11:45 mark-pending** proposal; no Room 4 confirmation was logged. A separate Chapter 4 counterfactual explains that changing the 11:42 room input to Room 4 could instead produce ALLOW under the tiny synthetic table, but it was **not executed as the published run** and would not prove vacancy. The 11:40 page is a second artifact. It contains neither a Room 4 row nor any ALLOW verdict. Transplanting that label would invent evidence the printer never produced.
 
 | Proposal | What the two rows support | Decision |
 |---|---|---|
@@ -1564,6 +1626,71 @@ A pending Room 4 request is not a hidden booking. The page did not show a confli
 
 The Chapter 4 program stays closed. Its census remains a description of the four logged actions against the 09:00 printout. A question asked of the 11:40 page is not a fifth action in that log, so it cannot change ALLOW, REFUSE, or UNKNOWN.
 
+
+### 12.4 Source completeness is a separate claim from source approval
+
+An **approved source** is one an authorized owner has named for a particular question and context. A **complete source for a query** contains all relevant records within a defined scope and cutoff, with trustworthy retrieval and update behavior. **Availability** is a property of a slot under that complete and sufficiently current state. **Transaction authorization** permits an identified actor or procedure to create, change or confirm a booking. None of those terms can substitute for another.
+
+The new 11:40 page has a **positive matching row** for Room 2 at 15:00, so the Chapter 11 statement “already booked” follows from its printed evidence **for this sitting**. Room 4 at 15:00 is different: there is **no matching row**. That gives the learner exactly one narrow observation: “No Room 4 / 15:00 entry appears on the two displayed rows.” It does **not** prove the page contains every booking for every room, or that a separate operational booking step succeeded or is allowed.
+
+A useful distinction is **open-world versus closed-world inference**. Under an *explicitly established* closed-world rule for a complete and current dataset, a missing record may support a narrowly scoped absence conclusion. Under an *open-world* or incompletely characterized source—like this two-row classroom page—absence of a matching record is **not evidence of absence from the entire reservation system**. We do not claim the real application uses either database semantics. The teaching problem is that the exercise never supplied an approved completeness statement or synchronization guarantee for **Room 4 at 15:00**.
+
+The [NIST CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) distinguishes asset/data management and authorized access outcomes, while [NIST SP 800-53 Rev. 5, AC-3 (Access Enforcement)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) frames enforcement of approved authorizations. These primary standards support treating data-management evidence and permission to act as different control questions; they **do not** certify this synthetic page as complete or establish Harbor Library's booking rules.
+
+### 12.5 A precise predicate for an offer, not a guess
+
+Before a worker could responsibly say “Room 4 is available to book,” the owner would need to define the exact question and the required evidence. In this classroom the prerequisites can be written conceptually (this is **not executable code**):
+
+**Sufficient current scope** AND **no conflicting reservation in that scope** AND **authorization to offer or hold the slot**.
+
+A confirmed transaction would need a **separate authorized booking operation and reliable outcome evidence**. The three prerequisites are not asserted as already satisfied. The original two-row page does **not** establish the first; therefore even a zero-match scan is insufficient. In addition, having a current view with no conflict would not by itself prove the booking was committed or that the owner granted transaction rights.
+
+| Question | Room 2 / 15:00 | Room 4 / 15:00 |
+|---|---|---|
+| Source named for this sitting? | Yes, the specific 11:40 page | Same page, same limited naming |
+| Printed matching row? | Yes: `SYN-002` | No: **zero** of the two rows |
+| Conclusion supported directly by this page | The page records a confirmed booking for that slot | Only “no matching row on this page” |
+| Can “free” or “offer” be asserted? | **No**: the row contradicts vacancy | **No**: relevant source completeness and transaction permission are not supplied |
+| Resident-facing decision | “Room 2 at 15:00 is booked.” | “This page does not establish Room 4's availability; I can record the request as pending.” |
+
+This is an **asymmetric evidence problem**. A positive conflicting booking on the owner-named page provides direct evidence that the slot is taken for the bounded question; a missing row cannot prove a universal negative without evidence that the page covers the entire relevant state. The exercise does not infer that the page is always correct in every real-world circumstance: a future contradictory authorized record would require renewed review, not concealment. In this sitting the positive record is sufficient for the limited “taken” reply the owner defined.
+
+### 12.6 Worked contrasting cases and negative controls
+
+**Case A — the actual two-row page.** Match by both fields: Room 4 **and** 15:00. `SYN-001` is Room 2 / 14:00, so it fails room and time; `SYN-002` is Room 2 / 15:00, so it fails room. Total rows = 2; relevant matches = 0. The result is **no answer about Room 4 availability**, so the request remains pending. Separately, the same page does show Room 2 / 15:00 as booked. No row or outcome was added.
+
+**Case B — hypothetical completeness certification (not issued here).** Imagine the owner later provides a separately authorized source and a verified assurance that it contains every active booking for Room 4 at the relevant date and 15:00 cutoff. If that source shows no conflicting row, the narrow **absence of a conflict in that verified scope** becomes supportable. It still does **not** create or confirm a reservation. This is a conditional inference only: no such certification or later artifact has been supplied in Chapter 12.
+
+**Case C — hypothetical missing synchronization receipt.** Imagine that a purported later page says “complete” but there is no evidence of its cutoff or refresh behavior. A heading is not a completeness test. Keep the request pending. No inferred database defect or real operational outage is declared.
+
+**Negative control 1 — wrong-room substitution.** Copying the `SYN-002` Room 2 / 15:00 row into the Room 4 question is wrong: matching the requested start without matching the room does not establish a Room 4 booking. Conversely, `SYN-001` at 14:00 cannot decide a 15:00 slot merely because it is on the same page.
+
+**Negative control 2 — relabel the prior ALLOW.** Chapter 4's fixed four-action result says **ALLOW** for the **11:45 mark-pending** proposal. Chapter 4 also mentioned a distinct hypothetical Room 4 input substitution that *could* return ALLOW under its narrow fixture rule. Neither ALLOW is a new Room 4 reservation or a fresh 11:40 printout row. The published tally remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**.
+
+**Negative control 3 — manufacture completeness.** Handwriting an invented Room 4 row or typing an altered printout time into the old script changes the evidence or fixture. It does not verify the original page or create booking authority. The prohibited live-site check is still outside the safe exercise scope.
+
+### 12.7 Evidence ledger and a decision another learner can challenge
+
+Use a five-line ledger for the Room 4 question:
+
+| Field | Entry permitted by the released case |
+|---|---|
+| **Question** | Is Room 4 available at 15:00 during this sitting? |
+| **Source** | Owner-named synthetic 11:40 page, limited to this sitting |
+| **Observed match** | Two printed rows, zero matching Room 4 / 15:00 |
+| **Unknown** | Whether the page covers every relevant Room 4 booking and whether any offer/transaction is authorized |
+| **Decision** | Do not offer the slot. Record the request as **pending** and ask for an approved current and sufficiently complete source and the authorized booking step |
+
+The field **Observed match = 0** is not a vacancy result. This ledger separates *query result* (zero in the inspected subset) from *source coverage* (not established), *business state* (not proven) and *permitted operation* (not approved). If a later source disagrees, preserve this original note as the evidence held at this checkpoint; a different result belongs to a versioned new decision, not to silent alteration of the first artifact.
+
+A false positive for the assessment is a learner who says "Room 4 is free" because the page has zero Room 4 rows. A false negative is a learner who declines to say that Room 2 / 15:00 is **already booked** despite directly inspecting the named `SYN-002` row. The goal is neither indiscriminate refusal nor unjustified certainty: it is the strongest **supported** bounded decision for each exact room/time pair.
+
+### 12.8 Independent EX028 exercise extension
+
+Complete EX028's original four sentences independently before reading [its worked answer](#answer-ex028). Then produce a small four-column comparison—**row count**, **scope/freshness established?**, **slot state supported**, **transaction allowed?**—for Room 2 / 15:00 and Room 4 / 15:00. Specify why the owner naming one page does not establish completeness for Room 4 and why the historical classifier's ALLOW is not an authorization to create a room booking. Finally, evaluate the hypothetical completeness-certification branch from Section 12.6: what **additional** evidence would be necessary, and what business action remains separate even if no conflicting row is shown?
+
+The falsifier is a promise of Room 4 based only on missing rows, a claim that a new booking was executed, an overwrite of the Chapter 4 line, or a claim that Room 2 was freed. This is a paper exercise with no live checks, real patrons or new case observations.
+
 ### Chapter 12 summary
 
 On this named page, a question is decided only when a printed row matches its room and its start. Room 4 at 15:00 has no such row. The page is silent, the request stays pending, and the older ALLOW label is not a substitute row.
@@ -1578,6 +1705,10 @@ On this named page, a question is decided only when a printed row matches its ro
 - **Task:** Write four sentences: how many rows match Room 4 at 15:00, what you tell the resident, what you do with the ALLOW label, and what remains true of Room 2 at 15:00.
 - **Expected evidence:** Four sentences a reader can check against the two-row page and against the Chapter 4 census.
 - **Rubric:** Credit when the Room 4 request stays pending, ALLOW stays on the old log, the census is not rewritten, and `SYN-002` still makes Room 2 at 15:00 taken. An offer of a free room does not earn credit.
+
+- **Independent extension:** Supply a two-row comparison of Room 2 / 15:00 and Room 4 / 15:00: match count, what the page positively establishes, what **completeness** is missing, and whether a new transaction was authorized. Name what a hypothetical fully scoped later source could establish **without** treating it as evidence released in this chapter.
+- **Negative controls:** Do not turn a zero-match subset into a vacancy, or `ALLOW` from the earlier **11:45 mark-pending** action into a booking. Keep `SYN-002`'s confirmed 15:00 reservation for Room 2 and the earlier tally unchanged.
+- **Self-check:** [EX028 worked answer](#answer-ex028).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 20
@@ -2228,13 +2359,42 @@ The correct three-part reply is: **(1)** the classmate's note is a second-hand r
 
 **Negative control.** Repeating the purported 11:40 time from another person fails both gates; a real checked page with SYN-002 confirmed would not justify saying the 15:00 slot is free. Equivalent responses that preserve provenance, time, owner approval and the original four-action run satisfy the task without reproducing this table word for word.
 
+<a id="answer-ex027"></a>
 ### EX027 — Worked result
 
 `SYN-002` on the named page is a confirmed booking of Room 2 at 15:00, so the resident is told the slot is taken. The word free contradicts that row. The older program still describes the 09:00 printout, and its line stays `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. An 11:40 heading on one classroom page does not set the fallback for later outages. No personal name is spoken, and the live site is not opened.
 
+
+**Expanded worked source-and-decision record (EX027).**
+
+| Decision component | Direct evidence or boundary | Justified result |
+|---|---|---|
+| **Source selection** | The exercise owner names **this one** synthetic page for the current sitting | Page may support the limited room-state question, not a month-long procedure |
+| **Direct inspection** | Heading `11:40`; `SYN-002`, Room 2, 15:00, created 10:05, `confirmed` | A matching, confirmed **existing** reservation for Room 2 / 15:00 |
+| **Resident reply** | Booking record has an ID but **no resident name** | “Room 2 at 15:00 is already booked.” No holder identity is inferred or announced |
+| **Historical provenance** | Chapter 4 classified a proposal against the fixed `09:00` printout, before release of this page | Its `REFUSE` and exact five-counter tally remain unchanged |
+| **Approval limit** | The owner named this page **only in the current exercise** | No standing refresh rule, new booking, production action or live-site check is authorized |
+
+Four defensible original EX027 sentences are: **(1)** “The owner-named 11:40 page shows `SYN-002` as a confirmed Room 2 booking at 15:00.” **(2)** “Calling that slot free contradicts the row's explicit status.” **(3)** “Chapter 4's `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0` still describes the 09:00-based action log, including REFUSE for the 11:42 proposed paper confirmation; the new page does not rewrite it.” **(4)** “The owner approved this particular source for this sitting, not as a standing monthly or future-outage schedule.”
+
+**Adversarial checks:** without the owner's naming, inspection alone is insufficient for the role-play's authorized decision; relying on `SYN-001` would answer the **14:00** question, not the 15:00 question. Chapter 10 recorded only a **report**, so this source cannot be backdated into its evidence set. The fixed log's printed ALLOW belongs to **mark-pending at 11:45**; a separately discussed Room 4 hypothetical is not that log entry. A new confirmed booking, a resident identity and actual software behavior remain outside this chapter. Answers using equivalent wording earn credit only if all four distinctions survive.
+
+<a id="answer-ex028"></a>
 ### EX028 — Worked result
 
 The named page prints two rows, and both name Room 2. Room 4 at 15:00 matches neither, so the page says nothing about that request. Staff tell the resident they cannot answer from this page and leave the request pending. They do not offer the room. ALLOW remains the label Chapter 4 printed for the 09:00 log. It is not rewritten as a confirmation on the 11:40 page. The census of that log is still `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. `SYN-002` is still on the page, so Room 2 at 15:00 stays booked.
+
+
+**Expanded worked query-completeness record (EX028).**
+
+| Pair inspected | Page rows matching both room **and** start | Supported room-state conclusion | Missing evidence before a new booking |
+|---|---:|---|---|
+| Room 2 / 15:00 | **1**: `SYN-002`, confirmed | **Taken**, on this owner-named synthetic page | No authority to reallocate; no patron identity, live access or new transaction receipt |
+| Room 4 / 15:00 | **0** of the two displayed rows | **Unknown availability**: page is silent | Completeness/currentness for the relevant date and slot, conflict checking, owner-approved booking action and a separate confirmation result |
+
+The four required EX028 sentences can read: **(1)** “The named 11:40 page has two rows and **zero** matches for Room 4 at 15:00.” **(2)** “That absence does not prove the page lists all Room 4 bookings, so I cannot offer the room and will leave the request pending.” **(3)** “The Chapter 4 ALLOW was the **11:45 mark-pending** verdict on the original 09:00-based four-action log, not a Room 4 reservation; its exact `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0` stays unchanged.” **(4)** “The same page still shows `SYN-002` confirmed for Room 2 at 15:00, so that different slot is already booked.”
+
+**Conditional test, not a new observation:** if the owner separately provided an authorized, demonstrably complete and current record for Room 4 at the relevant date/time, a zero-conflict finding could be assessed **within that verified scope**; it would not automatically create a booking. An authorized transaction and its outcome would still be required. A supposed conflict cannot be manufactured from another room's row, and a missing row cannot be made into a free-room promise. The exercise has no such complete later record, no real patron data and no completed booking operation.
 
 ### EX029 — Worked result
 
