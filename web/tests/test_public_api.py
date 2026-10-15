@@ -507,7 +507,7 @@ def test_human_factors_chapter_lessons_use_one_canonical_page_each(client):
     portuguese = client.get('/api/courses/rapid-1-month/human-factors-policy/pt').json()
     assert portuguese['chapter_lessons'] is False
     assert portuguese['published_lessons'] == 0
-    assert portuguese['published_chapters'] == 10
+    assert portuguese['published_chapters'] == 20
     fifth = client.get('/courses/rapid-1-month/human-factors-policy/chapters/pt/5.md')
     assert fifth.status_code == 200
     assert '### Diagrama — Adoção do plano e evidência de execução' in fifth.text
@@ -1076,7 +1076,7 @@ def test_stateless_mcp_public_and_progress_private(client):
     policy = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 5, "method": "resources/read", "params": {"uri": "open-cyber-academy://editorial-policy"}})
     assert "all 207 course editions" in policy.json()["result"]["contents"][0]["text"]
     policy_tool = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 6, "method": "tools/call", "params": {"name": "get_editorial_policy", "arguments": {}}})
-    assert "English → Portuguese → Spanish" in json.loads(policy_tool.json()["result"]["content"][0]["text"])["markdown"]
+    assert "English reference writing → Portuguese translation → Spanish translation" in json.loads(policy_tool.json()["result"]["content"][0]["text"])["markdown"]
     lesson = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "read_lesson", "arguments": {"level": "rapid-1-month", "area": "incident-response-resilience", "language": "en", "chapter": 1}}})
     mcp_lesson = json.loads(lesson.json()["result"]["content"][0]["text"])
     assert "W1-R1 — Worked answer" in mcp_lesson["worked_answers"]
