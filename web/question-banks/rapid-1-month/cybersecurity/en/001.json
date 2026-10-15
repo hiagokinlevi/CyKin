@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "0246c25155babbba200a4c9138de6a272a775b8c0161c8a077a908fa5dd9d930",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why does the chapter start by naming a service outcome before choosing a security tool?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A server is valuable regardless of its use"
+        },
+        {
+          "id": "b",
+          "text": "The newest product defines the service's purpose"
+        },
+        {
+          "id": "c",
+          "text": "The affected people and harm explain what the technology must protect"
+        },
+        {
+          "id": "d",
+          "text": "A tool selection proves the service is secure"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The room-booking outcome and people affected give the technical assets their meaning; a product cannot establish that context.",
+      "source": "Chapter 1, Section 1.1"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which pair correctly distinguishes an asset from a dependency in this case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reservation records are an information asset; the sign-in process may be a dependency of staff work"
+        },
+        {
+          "id": "b",
+          "text": "Every dependency is necessarily a single point of failure"
+        },
+        {
+          "id": "c",
+          "text": "A staff account cannot be an asset"
+        },
+        {
+          "id": "d",
+          "text": "The printed schedule proves the database design"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Records have value as information, and the sign-in path may be needed for a staff outcome. Actual failure properties require evidence.",
+      "source": "Chapter 1, Section 1.2"
+    },
+    {
+      "id": "Q03",
+      "prompt": "An event contact list is sent to an unauthorized recipient while bookings remain available. Which property is directly affected?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only availability"
+        },
+        {
+          "id": "b",
+          "text": "Only booking integrity"
+        },
+        {
+          "id": "c",
+          "text": "None, because the website still works"
+        },
+        {
+          "id": "d",
+          "text": "Confidentiality of the contact information"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Unauthorized disclosure affects confidentiality even when the booking service remains available and its records are unchanged.",
+      "source": "Chapter 1, Section 1.3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A reservation is silently changed while the booking website still responds. What is the clearest first description?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The response proves all records are accurate"
+        },
+        {
+          "id": "b",
+          "text": "The contact list has necessarily leaked"
+        },
+        {
+          "id": "c",
+          "text": "An integrity concern exists even though availability may remain"
+        },
+        {
+          "id": "d",
+          "text": "A confirmed malicious incident has already been proved"
+        }
+      ],
+      "correct": "c",
+      "explanation": "An incorrect or unintended reservation change is an integrity concern. A responsive page does not validate its data or establish cause.",
+      "source": "Chapter 1, Section 1.3"
+    },
+    {
+      "id": "Q05",
+      "prompt": "A fictional page is unavailable once, with no recorded cause. Which statement respects the evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An attacker disabled the page"
+        },
+        {
+          "id": "b",
+          "text": "An availability event occurred; cause and incident classification remain open"
+        },
+        {
+          "id": "c",
+          "text": "A reused password was exploited"
+        },
+        {
+          "id": "d",
+          "text": "No security analysis is possible until an attack is proven"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The observation supports an availability event, but maintenance, error, network failure and malicious activity remain possible explanations.",
+      "source": "Chapter 1, Section 1.4"
+    },
+    {
+      "id": "Q06",
+      "prompt": "What does the example risk scenario about unauthorized booking changes establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A numerical likelihood"
+        },
+        {
+          "id": "b",
+          "text": "That an unauthorized change occurred"
+        },
+        {
+          "id": "c",
+          "text": "That all booking controls have failed"
+        },
+        {
+          "id": "d",
+          "text": "A plausible condition linked to a resident and staff consequence"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A risk scenario connects a possible condition to harm; it does not claim occurrence or provide likelihood without supporting context.",
+      "source": "Chapter 1, Section 1.4"
+    },
+    {
+      "id": "Q07",
+      "prompt": "How should the six NIST CSF 2.0 functions be used in the Harbor Library example?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As a once-only six-step procedure"
+        },
+        {
+          "id": "b",
+          "text": "As concurrent and continuous language for responsibilities"
+        },
+        {
+          "id": "c",
+          "text": "As proof that every listed control works"
+        },
+        {
+          "id": "d",
+          "text": "As a product procurement checklist"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Govern through Recover describe outcomes that can coexist and recur; mapping a case to them is not a sequential completion claim.",
+      "source": "Chapter 1, Section 1.4"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which proposed control is specific enough to test against the staff sign-in concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Require an approved second factor for reservation administrators and verify coverage and recovery"
+        },
+        {
+          "id": "b",
+          "text": "Buy an unnamed security platform"
+        },
+        {
+          "id": "c",
+          "text": "Improve security everywhere"
+        },
+        {
+          "id": "d",
+          "text": "Declare all staff sign-ins malicious"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The proposed second-factor rule names a population and boundary, while coverage, access recovery and exceptions remain explicit checks.",
+      "source": "Chapter 1, Section 1.5"
+    },
+    {
+      "id": "Q09",
+      "prompt": "A service owner says the paper schedule refreshes each morning. How should the note label that statement before it is checked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reported fact attributed to the owner and time"
+        },
+        {
+          "id": "b",
+          "text": "Observed fact from the booking database"
+        },
+        {
+          "id": "c",
+          "text": "Confirmed proof that all later bookings appear"
+        },
+        {
+          "id": "d",
+          "text": "A recommendation already implemented"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The source is an owner's report, not an independently observed refresh. Attribution and timing preserve the distinction.",
+      "source": "Chapter 1, Section 1.6"
+    },
+    {
+      "id": "Q10",
+      "prompt": "The 09:00 printout omits a 10:05 booking. What is the bounded conclusion from the synthetic record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The outage was caused by an attacker"
+        },
+        {
+          "id": "b",
+          "text": "Residents could not access the site"
+        },
+        {
+          "id": "c",
+          "text": "Staff could be misled by a stale copy; actual wrong allocation and outage cause are unproved"
+        },
+        {
+          "id": "d",
+          "text": "The event contact list was exported"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The old printout predates the booking, making a stale-decision risk plausible. The record does not show cause or actual misallocation.",
+      "source": "Chapter 1, Section 1.7 and EX003"
+    }
+  ]
+}

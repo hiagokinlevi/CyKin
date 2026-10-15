@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "e751d6a97b295f55e745e123f54463f57dcd23d314f280a584cbf4b438883d0f",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which question defines the service model's intended boundary in Chapter 3?",
+      "options": [
+        {
+          "id": "a",
+          "text": "How many devices does the library own?"
+        },
+        {
+          "id": "b",
+          "text": "Can a front-desk worker make a correct room decision while the live view is unavailable?"
+        },
+        {
+          "id": "c",
+          "text": "Which vendor has the most features?"
+        },
+        {
+          "id": "d",
+          "text": "Was any contact-list record ever exported?"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The model includes parts needed for the bounded booking decision, not every device or an unrelated announcement workflow.",
+      "source": "Chapter 3, Section 3.1"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which classification matches the small proposed model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Resident is a store; reservation store is a person"
+        },
+        {
+          "id": "b",
+          "text": "Printed schedule is the authoritative live process"
+        },
+        {
+          "id": "c",
+          "text": "Booking view is a process; reservation store is a data store; printed schedule is a copy"
+        },
+        {
+          "id": "d",
+          "text": "Event contacts are the booking request flow"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter distinguishes people or external entities, processes, retained stores and physical copies without claiming verified architecture.",
+      "source": "Chapter 3, Section 3.2"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Why is the event-contact list excluded from the traced booking-decision path?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It has no security needs"
+        },
+        {
+          "id": "b",
+          "text": "It serves announcements, not the particular room decision being modeled"
+        },
+        {
+          "id": "c",
+          "text": "Its records have been verified as public"
+        },
+        {
+          "id": "d",
+          "text": "Staff automatically may export it"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The narrow decision boundary excludes a different-purpose data set without claiming that it is safe or unimportant.",
+      "source": "Chapter 3, Sections 3.1–3.3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "At 11:42, what does the fixed 09:00 printout prove about SYN-002 created at 10:05?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It cannot include that later booking under the stated snapshot assumption"
+        },
+        {
+          "id": "b",
+          "text": "It proves Room 2 at 15:00 is free"
+        },
+        {
+          "id": "c",
+          "text": "It proves the store lost SYN-002"
+        },
+        {
+          "id": "d",
+          "text": "It proves a resident received a confirmation"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A fixed copy predates SYN-002. Its silence cannot establish current availability or the state of a real reservation store.",
+      "source": "Chapter 3, Sections 3.3 and 3.6"
+    },
+    {
+      "id": "Q05",
+      "prompt": "What is the pending request queue in the tabletop model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A record of unverified requests that still needs reconciliation"
+        },
+        {
+          "id": "b",
+          "text": "An authoritative confirmed booking"
+        },
+        {
+          "id": "c",
+          "text": "A replacement for all reservation records"
+        },
+        {
+          "id": "d",
+          "text": "Proof of the outage's cause"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The queue records a provisional front-desk decision but is not a current booking source or confirmation.",
+      "source": "Chapter 3, Section 3.3"
+    },
+    {
+      "id": "Q06",
+      "prompt": "What does crossing the resident-to-booking-view trust boundary show by itself?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Authentication and authorization are implemented correctly"
+        },
+        {
+          "id": "b",
+          "text": "Encryption is absent"
+        },
+        {
+          "id": "c",
+          "text": "Every resident can edit staff reservations"
+        },
+        {
+          "id": "d",
+          "text": "A change of authority worth checking; no control implementation is proved"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A boundary points to a verification question. The proposed arrow is not evidence that a particular safeguard exists or works.",
+      "source": "Chapter 3, Section 3.4 and EX014"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which sentence describes a conditional dependency rather than a data flow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A booking request moves from resident to booking view"
+        },
+        {
+          "id": "b",
+          "text": "The diagram proves one physical database"
+        },
+        {
+          "id": "c",
+          "text": "If the reservation store is unavailable, saving a booking may fail absent an approved fallback"
+        },
+        {
+          "id": "d",
+          "text": "A printout has a timestamp"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A dependency states what an outcome requires under a condition; a flow describes proposed movement of information.",
+      "source": "Chapter 3, Sections 3.4–3.5 and EX013"
+    },
+    {
+      "id": "Q08",
+      "prompt": "A hypothetical messaging supplier delays confirmation. What can the model conclude about saving the reservation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The reservation definitely failed"
+        },
+        {
+          "id": "b",
+          "text": "The reservation definitely succeeded"
+        },
+        {
+          "id": "c",
+          "text": "Delivery and saving are separate outcomes; the owner must confirm whether they are coupled"
+        },
+        {
+          "id": "d",
+          "text": "The messaging supplier is confirmed to exist"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A delayed message alone does not establish persistence. The supplier and coupling are unverified teaching possibilities.",
+      "source": "Chapter 3, Section 3.4"
+    },
+    {
+      "id": "Q09",
+      "prompt": "An owner reports an approved 11:40 offline sheet with SYN-002, but nobody has checked it. What changes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The old 09:00 sheet is now known to be current"
+        },
+        {
+          "id": "b",
+          "text": "All previous observations must be erased"
+        },
+        {
+          "id": "c",
+          "text": "Room 2 can be promised immediately"
+        },
+        {
+          "id": "d",
+          "text": "The report weakens the stale-only assumption, pending a safe timestamp and content check"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The new report is relevant evidence to examine, not an independently verified sheet; decisions branch on its approved status and check.",
+      "source": "Chapter 3, Section 3.6 and EX015"
+    },
+    {
+      "id": "Q10",
+      "prompt": "The model does not mention a recovery mechanism. Which conclusion is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No recovery exists"
+        },
+        {
+          "id": "b",
+          "text": "The service has a single point of failure"
+        },
+        {
+          "id": "c",
+          "text": "The printed schedule is a tested recovery system"
+        },
+        {
+          "id": "d",
+          "text": "Recovery remains an open question for the owner, not evidence of absence"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A missing description cannot prove absence. The model must label uncertainty and seek owner-confirmed facts.",
+      "source": "Chapter 3, Sections 3.5 and 3.7"
+    }
+  ]
+}

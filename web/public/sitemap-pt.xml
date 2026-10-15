@@ -89,9 +89,11 @@
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/ai-security/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/critical-sector-security/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/cryptography-trust/pt.xml</loc></sitemap>
+  <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/cybersecurity/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/data-governance/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/digital-forensics-malware/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/human-factors-policy/pt.xml</loc></sitemap>
+  <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/incident-response-resilience/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/information-security/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/offensive-security-red-team/pt.xml</loc></sitemap>
   <sitemap><loc>https://pt.opencyber.academy/sitemaps/rapid-1-month/ot-iot-security/pt.xml</loc></sitemap>

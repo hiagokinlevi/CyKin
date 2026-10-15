@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "bb3370fa82174315be874b2b5a9d696c416d68e70fbc01321e730d8cd8a32375",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why does the 11:42 confirm-from-printout action receive REFUSE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The contact list was exported"
+        },
+        {
+          "id": "b",
+          "text": "The 09:00 copy omits matching SYN-002 created at 10:05"
+        },
+        {
+          "id": "c",
+          "text": "The live site was opened"
+        },
+        {
+          "id": "d",
+          "text": "The outage was confirmed malicious"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The rule finds a later booking for Room 2 at 15:00 that the fixed 09:00 printout cannot contain.",
+      "source": "Chapter 4, Sections 4.2–4.4 and EX016"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why is the 11:43 contact export OUT OF SCOPE rather than REFUSE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A contact export confirms a room"
+        },
+        {
+          "id": "b",
+          "text": "SYN-002 is a contact record"
+        },
+        {
+          "id": "c",
+          "text": "The script verified contact-list protection"
+        },
+        {
+          "id": "d",
+          "text": "The event-contact data set is outside the booking-time comparison"
+        }
+      ],
+      "correct": "d",
+      "explanation": "OUT OF SCOPE is a data-set boundary; REFUSE applies to the specific stale-printout booking comparison.",
+      "source": "Chapter 4, Sections 4.1 and 4.4 and EX018"
+    },
+    {
+      "id": "Q03",
+      "prompt": "After printing STOP for the 11:44 live-site proposal, what does the program actually do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It terminates before any later row"
+        },
+        {
+          "id": "b",
+          "text": "It deletes the proposal"
+        },
+        {
+          "id": "c",
+          "text": "It continues and prints the 11:45 pending action; people must be paused separately"
+        },
+        {
+          "id": "d",
+          "text": "It opens the live site to verify the stop"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The script classifies a recorded proposal and keeps replaying rows. A facilitator must pause participants under the exercise brief.",
+      "source": "Chapter 4, Sections 4.3–4.4 and EX019"
+    },
+    {
+      "id": "Q04",
+      "prompt": "What does ALLOW mean for the 11:45 mark-pending action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All booking functions recovered"
+        },
+        {
+          "id": "b",
+          "text": "The room is confirmed free"
+        },
+        {
+          "id": "c",
+          "text": "The 11:40 owner report was verified"
+        },
+        {
+          "id": "d",
+          "text": "The rule permits recording a pending request until an approved current source is available"
+        }
+      ],
+      "correct": "d",
+      "explanation": "ALLOW here accepts the pending-queue step only; it does not certify availability or recovery.",
+      "source": "Chapter 4, Sections 4.2–4.4"
+    },
+    {
+      "id": "Q05",
+      "prompt": "What is the correct count of UNKNOWN in the published four-action output?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Four"
+        },
+        {
+          "id": "b",
+          "text": "Zero, because every logged action matches a written rule"
+        },
+        {
+          "id": "c",
+          "text": "One"
+        },
+        {
+          "id": "d",
+          "text": "Two"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The classifier has five possible labels but its four printed actions match STOP, OUT OF SCOPE, REFUSE and ALLOW.",
+      "source": "Chapter 4, Sections 4.1 and 4.4"
+    },
+    {
+      "id": "Q06",
+      "prompt": "If only the 11:42 room changes to Room 4 at 15:00, what verdict and limit follow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ALLOW, but the tiny table cannot prove Room 4 is free"
+        },
+        {
+          "id": "b",
+          "text": "REFUSE, proving Room 4 is booked"
+        },
+        {
+          "id": "c",
+          "text": "STOP, because Room 4 is a live site"
+        },
+        {
+          "id": "d",
+          "text": "UNKNOWN, because any new room is forbidden"
+        }
+      ],
+      "correct": "a",
+      "explanation": "No later matching booking appears for Room 4 in this tiny fixture, so the rule allows the action but cannot promise availability.",
+      "source": "Chapter 4, Section 4.4 and EX017"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Can the tally STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0 be reported as a risk percentage?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the labels answer different rule questions and measure no harm rate"
+        },
+        {
+          "id": "b",
+          "text": "Yes, because four actions form a representative sample"
+        },
+        {
+          "id": "c",
+          "text": "Yes, because REFUSE is an incident severity"
+        },
+        {
+          "id": "d",
+          "text": "No, because Python cannot count labels"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The four-row count is a classification tally, not a risk score, severity rank or estimate of staff behavior.",
+      "source": "Chapter 4, Sections 4.1 and 4.4"
+    },
+    {
+      "id": "Q08",
+      "prompt": "How does the program treat the owner report of an 11:40 offline sheet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It verifies and imports the sheet"
+        },
+        {
+          "id": "b",
+          "text": "It replaces the 09:00 printout automatically"
+        },
+        {
+          "id": "c",
+          "text": "It treats the report as an attack indicator"
+        },
+        {
+          "id": "d",
+          "text": "It deliberately excludes the still-unverified report from its inputs"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The fixed program reads its published synthetic rows and 09:00 assumption, not an unverified newer-source report.",
+      "source": "Chapter 4, Section 4.2"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which limitation belongs in the six-sentence dossier?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All residents received wrong bookings"
+        },
+        {
+          "id": "b",
+          "text": "The program proved the outage was malicious"
+        },
+        {
+          "id": "c",
+          "text": "The script did not inspect a reservation store or verify the 11:40 sheet"
+        },
+        {
+          "id": "d",
+          "text": "The contact list was fully protected"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The dossier must state the actual input boundary so a classroom classification is not misread as a production finding.",
+      "source": "Chapter 4, Section 4.5 and EX020"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which pairing keeps the four-action decisions separate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact export is REFUSE and booking confirmation is OUT OF SCOPE"
+        },
+        {
+          "id": "b",
+          "text": "Live-site proposal is STOP; contact export is OUT OF SCOPE; stale-paper confirmation is REFUSE"
+        },
+        {
+          "id": "c",
+          "text": "Every action is ALLOW when the program ends"
+        },
+        {
+          "id": "d",
+          "text": "Pending queue is STOP because no source is current"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Each label answers a different rule question; merging the contact boundary with the booking-time comparison would misreport the run.",
+      "source": "Chapter 4, Sections 4.1–4.4"
+    }
+  ]
+}

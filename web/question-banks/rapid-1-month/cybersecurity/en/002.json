@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "110e8bf9b7736821aadce1493481bc4f116714748260edeb36857d7294da1e24",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A public booking page is readable in a browser. What does that visibility authorize in this course?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reading the public page only; active testing still needs specific owner authorization"
+        },
+        {
+          "id": "b",
+          "text": "Collecting production reservations"
+        },
+        {
+          "id": "c",
+          "text": "Testing accounts behind the page"
+        },
+        {
+          "id": "d",
+          "text": "Disrupting the service for education"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Public readability does not authorize probes, account tests, data collection or disruption; the approved exercise uses synthetic records.",
+      "source": "Chapter 2, Section 2.1"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which brief defines a usable boundary for the Harbor Library tabletop?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Test the library until satisfied"
+        },
+        {
+          "id": "b",
+          "text": "Name the owner, synthetic materials, permitted actions, excluded systems, time, stop rule and report recipient"
+        },
+        {
+          "id": "c",
+          "text": "Use any available resident records"
+        },
+        {
+          "id": "d",
+          "text": "Skip a stop rule because the exercise is educational"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The one-page brief makes scope and authority reviewable before practice starts, including exclusions and a defined exit.",
+      "source": "Chapter 2, Section 2.2"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which item remains outside the approved paper exercise even if it might answer a learner's question?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Two invented booking rows"
+        },
+        {
+          "id": "b",
+          "text": "An invented 09:00 printout"
+        },
+        {
+          "id": "c",
+          "text": "A role-play front-desk decision"
+        },
+        {
+          "id": "d",
+          "text": "A real booking account or production website"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The authorization brief explicitly excludes real accounts, residents, the live booking page and production data.",
+      "source": "Chapter 2, Section 2.2"
+    },
+    {
+      "id": "Q04",
+      "prompt": "For the stale-printout question, which data choice follows the minimization rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove times and retain only the resident name"
+        },
+        {
+          "id": "b",
+          "text": "Keep all resident fields in case they become useful"
+        },
+        {
+          "id": "c",
+          "text": "Retain booking ID, room, start and creation times; remove resident name and phone"
+        },
+        {
+          "id": "d",
+          "text": "Copy credentials to make the sample reproducible"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The exercise needs timing and room evidence, not personal identifiers. Each retained field should serve the learning question.",
+      "source": "Chapter 2, Section 2.3 and EX007"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Under the stated fixed 09:00 snapshot assumption, which invented booking can the printout include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neither booking because the page later failed"
+        },
+        {
+          "id": "b",
+          "text": "Both bookings because they are confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Only SYN-002 because it is later"
+        },
+        {
+          "id": "d",
+          "text": "SYN-001 created at 08:20, but not SYN-002 created at 10:05"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A fixed 09:00 copy can contain the earlier row but not a row created at 10:05; this is an explicit exercise assumption.",
+      "source": "Chapter 2, Section 2.3"
+    },
+    {
+      "id": "Q06",
+      "prompt": "A sample sheet unexpectedly contains a real patron's name. What should participants do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pause the exercise, protect the sheet and ask the designated owner for direction"
+        },
+        {
+          "id": "b",
+          "text": "Delete it without telling the owner"
+        },
+        {
+          "id": "c",
+          "text": "Circulate the sheet for realism"
+        },
+        {
+          "id": "d",
+          "text": "Continue until the scheduled end"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A real name triggers the prewritten stop condition; the team should avoid further circulation and follow the owner's process.",
+      "source": "Chapter 2, Section 2.4"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which report sentence is calibrated to the paper exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The real library suffered a critical breach"
+        },
+        {
+          "id": "b",
+          "text": "The synthetic 09:00 copy omitted a later invented booking; current real-world procedure was not tested"
+        },
+        {
+          "id": "c",
+          "text": "All staff always rely on stale printouts"
+        },
+        {
+          "id": "d",
+          "text": "The outage was caused by a compromised account"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The record supports a gap in the synthetic comparison and a possible procedure concern, not a production breach or universal claim.",
+      "source": "Chapter 2, Section 2.5 and EX009"
+    },
+    {
+      "id": "Q08",
+      "prompt": "What should the second tabletop round measure after introducing the pending-queue rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether an unknown live system can be penetrated"
+        },
+        {
+          "id": "b",
+          "text": "Whether the worker avoids confirming a later request from the stale printout"
+        },
+        {
+          "id": "c",
+          "text": "Whether every future outage will be harmless"
+        },
+        {
+          "id": "d",
+          "text": "Whether the contact list can be exported"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The exercise can observe a role-play decision difference. A single synthetic session cannot establish reliability in all settings.",
+      "source": "Chapter 2, Section 2.6 and EX010"
+    },
+    {
+      "id": "Q09",
+      "prompt": "A participant proposes opening the real site halfway through the paper exercise. What is the next authorized step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pause the live proposal and ask the owner while preserving an offline path"
+        },
+        {
+          "id": "b",
+          "text": "Open it quickly before the owner notices"
+        },
+        {
+          "id": "c",
+          "text": "Treat a public URL as standing permission"
+        },
+        {
+          "id": "d",
+          "text": "Rewrite the scope after completing the test"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The prewritten boundary forbids live checks; the owner decides whether a different approved action is needed.",
+      "source": "Chapter 2, Section 2.4 and EX008"
+    },
+    {
+      "id": "Q10",
+      "prompt": "How does a real incident evidence duty differ from this classroom exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Real records should always be deleted to minimize data"
+        },
+        {
+          "id": "b",
+          "text": "The tabletop authorizes production collection"
+        },
+        {
+          "id": "c",
+          "text": "Classroom inputs start synthetic; real incident evidence follows the organization's approved retention process"
+        },
+        {
+          "id": "d",
+          "text": "Personal data is required to make a lesson credible"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The classroom can avoid personal data from the start, while real incident records may have preservation obligations under an approved process.",
+      "source": "Chapter 2, Section 2.3"
+    }
+  ]
+}
