@@ -2229,6 +2229,68 @@ The class of the exercise problem stays a weak confirmation procedure. The censu
 
 Staff can still write "cause not established" under the comparison. That phrase blocks a false ending. It does not assign blame, and it does not authorize a live investigation. The following chapter is about whether the older sheets may be destroyed once a newer sheet exists.
 
+
+### 17.4 Repeated fields corroborate content, not a mechanism
+
+**A matching row** means that the compared documents contain the same stated values for a defined key and fields. In this classroom the key is **SYN-002**, and the compared attributes are **Room 2**, start **15:00**, creation **10:05**, and status **confirmed**. Both the 11:40 and 11:55 synthetic pages print those values. The strongest direct observation is therefore: **this same confirmed row appears on both supplied pages**. The current owner-named 11:55 page supports a bounded “Room 2 at 15:00 is already booked” reply. A repeated row does not identify a resident or authorize a new booking.
+
+**Corroboration** is evidence consistent with a claim. Two sheets agreeing about one row can make a transcription error less plausible **within this paper comparison**, but those sheets are not established to be independent sources or independently validated system logs. They might have been generated through a shared process, or simply written as consistent synthetic fixtures by the author. The course supplies **no printer job records, update receipts, source databases, error rates, or observation of a real service**. Agreement cannot establish that the entire source is complete, that all writes synchronized, or that the view's outage had any particular cause.
+
+The difference also has a narrow meaning: **SYN-003** (Room 4, 15:00, created 11:20, confirmed) appears on 11:55 but **not** on the older 11:40 sheet. Although the given created time predates the 11:40 heading, the missing row does **not** by itself show a system defect. The case provides no verified definition of either page's query scope, generation cutoff, filtering rules or eventual consistency behavior. Naming the reason would require evidence not supplied. Repeating “both pages are consistent” without mentioning this difference would itself overstate what was compared.
+
+| Question about the two pages | Evidence present | Defensible answer | Extra evidence needed for more |
+|---|---|---|---|
+| Does SYN-002 repeat? | Same key, room, start, creation and status on both supplied pages | **Yes, a bounded content match** | Nothing further to state the printed match |
+| Is SYN-003 missing from 11:40? | One row absent there and printed on 11:55 | **Yes, for these two artifacts** | Verified page-generation scope before explaining why |
+| Did two independent data pipelines agree? | Two classroom pages, no source lineage | **Not established** | Independent origin and validated generation records |
+| Did an attacker cause the view outage? | No exploit, actor, telemetry or causal link | **Not established** | Separately authorized, source-supported investigation |
+| Is the booking procedure safe or insecure in production? | Only synthetic rows and a modeled stale-paper risk | **Not assessed** | Actual process, controls, outcomes, triggering evidence and approval |
+
+This is the difference between **a comparison that can be repeated by a learner** and **an assessment of a system the learner has not inspected**.
+
+### 17.5 Distinguish observation, hypothesis, finding, incident and risk
+
+An **observation** is what the bounded evidence directly shows. A **hypothesis** is an explanation or predicted mechanism that could be tested and falsified. A **supported finding** requires evidence adequate for its declared scope; it need not be a security incident. A **security incident** is an event meeting applicable response criteria based on authorized assessment, not a label produced by looking at similar rows. **Risk evaluation** asks about the potential adverse effect and likelihood in the relevant operating context. A consistent table does not supply either dimension.
+
+The [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) integrates incident-response considerations into organizational cybersecurity risk management and does not decree that this fictional paper comparison is a detected incident. The [NIST SP 800-53 Revision 5 control AU-3](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) discusses audit-record content such as event type, time, source and outcome. These principles help identify what is **absent** in the teaching evidence; no Harbor Library control implementation, audit event, or statutory obligation is claimed. The comparison method and grading rules here are original instruction, not quotations from the standards.
+
+| Proposed label | What would support it | Status here |
+|---|---|---|
+| **Observed match** | Inspect SYN-002 fields on both synthetic pages | Supported |
+| **Hypothesis: pages share a generation source** | A separately identified source path and testable predictions | Possible to formulate; **not demonstrated** |
+| **Hypothesis: update delay explains SYN-003 difference** | Actual generation semantics, event/cutoff evidence and a discriminating test | **Not demonstrated**, even though times seem suggestive |
+| **Verified operational defect** | Authorized process evidence showing a specific failed control | Not observed |
+| **Attacker-caused incident** | Incident criteria and evidence linking harmful event to cause | Not observed |
+| **Severity, probability or risk score** | Defined consequence, exposure, likelihood, controls and a method | Not measured |
+
+Chapter 8 already classified the demonstrated training issue as a **weak confirmation procedure**, while explicitly withholding a demonstrated product vulnerability, attack or incident. That classification **does not change** because SYN-002 appears twice. Chapter 9 likewise rejected severity numbers derived from the four-label tally. A document agreement cannot quietly reverse either boundary.
+
+### 17.6 The causal test the evidence cannot yet pass
+
+To claim **cause**, an analyst would need a plausible mechanism and evidence distinguishing it from relevant alternatives. Suppose a student proposes “an attacker disrupted the staff view, so both printouts show SYN-002.” The printed repetition supplies no linkage between the booking row and the availability of the staff view. Even the order “SYN-002 created 10:05 → later pages show it” supports chronology **within the synthetic fixture**, not a causal statement about the outage.
+
+Contrast three **explicitly hypothetical** explanations for the pages' different SYN-003 coverage: a deliberate scope filter; a source update delay; or a version-selection practice. Each could be compatible with the two visible row sets. None is established, and the lesson does not invent a printer implementation. A useful discriminating question would ask the authorized owner for documented generation time, included-booking criteria, source versions and any available print receipts. Those records have **not been released**, so no branch is tested or resolved.
+
+**Worked evidence ladder.** Start with “The two pages print matching SYN-002 fields.” Add the bounded inference “the current owner-named 11:55 page shows Room 2 / 15:00 as taken.” Stop there for the room answer. Adding “therefore the outage was an attack” skips the mechanism and verification. Adding “therefore everything is safe” skips incomplete coverage and actual control assessment. Adding “therefore risk is low” invents impact and likelihood measurements. The strongest claim is not the loudest one; it is the claim another learner can refute using the named source.
+
+### 17.7 Contrastive decisions and negative controls
+
+**Negative control A — agreement without causal proof.** Imagine the author simply transcribes SYN-002 consistently onto two pages. All matching fields remain, but no event involving a real printer or attacker is introduced. A causal claim is therefore not entailed by agreement.
+
+**Negative control B — same row, different missing row.** Keep SYN-002 matching but note SYN-003 only on the 11:55 page. Agreement on the first key does **not** imply identical page completeness or justified absence of other bookings on the earlier page. Do not create an unobserved third source to explain the difference.
+
+**Negative control C — cause unknown, UNKNOWN still zero.** Chapter 4's **UNKNOWN 0** means none of the **four authored action kinds** escaped the classifier's written branches. It does **not** count unknown outage causes. Neither repeated SYN-002 nor an unexplained service interruption adds a fifth logged action.
+
+**Negative control D — safe workflow proposal, not a measured outcome.** The role-playing worker can continue to use the pending procedure and the owner-named source for the current question. That is a **bounded decision**, not a verified improvement of real-library reliability. It cannot establish a probability, security rating or incident closure.
+
+The original census remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**, with ALLOW assigned to **11:45 mark-pending**, not a free-room confirmation.
+
+### 17.8 Independent EX033 comparison and worked contrast
+
+First answer the original four-sentence **EX033** without reading its appendix result. Then prepare a small claim-evidence ledger: (1) match of SYN-002, (2) difference involving SYN-003, (3) untested outage cause, and (4) unassessed severity or safety. Record **observation**, **hypothesis**, **needed independent evidence**, and **permitted conclusion** for each. Finally state one conceivable alternative cause and the **question** that would discriminate it, without pretending to retrieve any missing record.
+
+A strong response identifies both pages and the exact repeated fields; refuses *both* the attack and the “closed as safe” assertions; preserves Chapter 8's **weak confirmation procedure** class; preserves the old tally; and labels every causal explanation hypothetical. No live sites, real patron information, incident declaration, or test run belongs in this classroom exercise. Compare your result with [EX033's worked answer](#answer-ex033).
+
 ### Chapter 17 summary
 
 Two pages that share `SYN-002` support that shared row and nothing causal. The outage stays unexplained. The older labels of procedure, tally, and score stay in their earlier lessons.
@@ -2243,6 +2305,10 @@ Two pages that share `SYN-002` support that shared row and nothing causal. The o
 - **Task:** Replace the note with the fact the pages support, the two claims you reject, and the class Chapter 8 already allowed.
 - **Expected evidence:** Four sentences a reader can check against the pages and Chapters 8 and 9.
 - **Rubric:** Credit when the shared row is stated, attack and safety are both refused, the procedure class is unchanged, and the census is unchanged.
+
+- **Independent extension:** Build a short evidence ledger for matching SYN-002 fields, the distinct SYN-003 coverage, the unknown outage cause, and the absent impact/likelihood measures. Explain why agreement does not prove two independent sources and name one source-record question that could discriminate competing hypothetical explanations.
+- **Negative controls:** The match must not prove an attack, safety, a real vulnerability, or closure; UNKNOWN 0 does not count unknown causes. Do not reclassify Chapter 8's weak confirmation procedure or edit the original tally.
+- **Compare:** [EX033 worked result](#answer-ex033).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 20
@@ -2285,6 +2351,68 @@ No cleanup step reruns the program. The census remains the census of the log tha
 
 This chapter does not set how long Harbor Library, or any real library, must keep paper. It does not cite a statute. The rule is local to the exercise: do not destroy the sheets the reasoning depends on. A real schedule would be an owner's decision with its own authority. That decision is not in the folder.
 
+
+### 18.4 Why preserve three distinct time-scoped artifacts?
+
+**Preservation for review** means keeping an artifact's contents, identity and relevant context intact so someone else can reconstruct which source informed which decision. **Provenance** records where an item came from and what was known about its origin, not a claim that the item is independently authenticated. **Custody documentation** states who is responsible for handling an item and what transfers or edits occur, if any. **Retention** concerns how long records should be kept under an organization-approved schedule and applicable requirements; that legal and operational determination is **outside this fictional exercise**.
+
+The case offers three **synthetic** schedule representations and the original four-action program record. It does not offer printer serials, real custodians, checksums, a validated evidence store, a forensic collection process or a retention law. Therefore “keep all three pages for the tabletop's review” is a bounded educational instruction, not an allegation of formal legal chain of custody or a requirement to keep every real paper indefinitely.
+
+The [NIST SP 800-53 Rev. 5 AU-3, AU-9 and AU-11 controls](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) distinguish audit-record content, protecting audit information from unauthorized modification/deletion, and organization-defined retention. These controls provide **principles** for reviewable records; they do not set a universal number of days for Harbor Library paper and do not make the synthetic pages legal evidence. [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) likewise discusses incident-response capabilities in cybersecurity risk management, not automatic retention of every classroom artifact as an incident file.
+
+### 18.5 Build a truthful inventory without changing the sheets
+
+| Artifact ID in this notebook | Content and time basis | Decision it explains | Current authorized use in the course |
+|---|---|---|---|
+| **A — 09:00 paper snapshot** | Fixed sheet showing SYN-001; later SYN-002 was created at 10:05 and is absent from that snapshot | Why the **11:42 proposed confirm-from-printout** action was REFUSE in Chapter 4 | File unchanged as the historical exercise input |
+| **B — 11:40 page** | Two printed rows: SYN-001 and SYN-002; no SYN-003 row | Earlier owner-named sitting: Room 2 / 15:00 taken; Room 4 / 15:00 **not determined** by the absence of a row | Preserve as earlier-sitting evidence; naming not carried forward |
+| **C — 11:55 page** | Three printed rows: SYN-001, SYN-002 and SYN-003 | Current owner-named sitting: Room 2 / 15:00 and Room 4 / 15:00 both taken | Use this page for the **bounded current** room questions; file with earlier objects after review |
+| **D — Chapter 4 classifier transcript** | Four fixed synthetic proposals and five-category tally, created in the earlier lab | Demonstrates written-rule classifications only | Preserve unchanged beside its **09:00** input assumptions |
+
+This inventory is an **analytical index**, not a fourth booking schedule. The page headings describe the time basis **printed in the fixtures**. They do not establish real print-job receipts or cross-system synchronization. Every conclusion retains its owning sitting and room/start pair. A reader must not mistake the older **absence** of SYN-003 for a proof of a free room or the newer **presence** of SYN-003 for evidence that the old page had three rows.
+
+The source designated for the current sitting is C, the 11:55 page. B remains an earlier historical page; A remains the classifier's snapshot. Keeping B or A does **not** extend either page's prior decision authority into the current sitting.
+
+### 18.6 Label, handle and refer without inventing forensic custody
+
+A beginner's file label should include: **document identity**, **printed or stated time**, **exercise sitting**, **how it was supplied**, **scope of the owner's naming**, **its unmodified content**, and **the question it answered**. Where a fact was not supplied, the label should say **not provided**, rather than manufacturing a name, signature, collection timestamp, or hash. The labels can be written on **separate inventory slips**—never by adding new booking fields to the printed originals.
+
+The exercise may use a role description such as “designated instructor or exercise owner” for proposed handling. This is not evidence that a particular individual collected, signed or transferred the sheets. A real custodial log would record actual, authorized handoffs when they occur; no such events are supplied here. Do not simulate a signed real-world chain of custody or claim that the case passes an evidentiary admissibility standard.
+
+**Worked label for B (fictional):** “Harbor Library synthetic page; heading 11:40; two rows SYN-001/SYN-002; named only for the earlier sitting; historic Room 2 / 15:00 booked conclusion; absence of Room 4 / 15:00 row did not prove availability; original retained without edits; actual human custodian, source printer and disposal schedule **not supplied**.” This is provenance-aware without inventing a custodian.
+
+**Worked label for C (fictional):** “Separate synthetic page; heading 11:55; three rows SYN-001/SYN-002/SYN-003; named by today's owner for current exercise; Room 2 and Room 4 at 15:00 booked based on confirmed rows; not authorization for a new booking or future outage; real print mechanism and external verification **not supplied**.”
+
+### 18.7 Why the apparent cleanup damages reviewability
+
+**Shred A:** The reader loses the paper snapshot that motivated the 09:00 cutoff and the REFUSE on the proposed 11:42 confirmation. The Chapter 4 script or narration may still exist, so do not claim *all* history vanished, but the direct comparison with its historical input would be weaker.
+
+**Shred B:** The reader loses the printed source for the earlier absence of SYN-003 and the previously limited Room 4 conclusion. Later C cannot show **what B contained** before destruction merely because C is newer.
+
+**Replace A and B with C:** That discards distinct times and past knowledge states. It makes a finished decision appear to have been based on a later source the worker did not have then. This is an evidence-provenance error, not a more accurate master schedule.
+
+**Annotate both pages with current rows:** It is another form of unauthorized derivative, as Chapter 15 showed. A separate comparison slip is permitted for analysis; editing an original changes what future learners are asked to verify.
+
+**Keep A, B and C separate:** The learner can still answer the current Room 4 / 15:00 question from C and explain why earlier A and B supported *different* decisions. Source selection for action and retention for review serve different purposes.
+
+### 18.8 Practice a custody decision without claiming a retention law
+
+For the **current** Room 4 / 15:00 question, the owner-named C page contains confirmed SYN-003, so the permitted spoken statement is “Room 4 at 15:00 is already booked,” without a resident name. A and B stay filed as historical evidence; neither is the current decision source.
+
+A hypothetical real-library records request would require an actual owner-defined retention schedule, applicable requirements and procedures for access and disposal. **None is given**. NIST guidance on organization-defined record retention cannot substitute for legal counsel, a records authority or a specific applicable rule. The classroom instruction to retain all pages *for this review* is therefore **not** a legal hold, indefinite storage rule, or mandatory record-disposal prohibition outside the lesson.
+
+**Negative control A — time alone.** The existence of a later 11:55 page does not invalidate all earlier facts or justify deleting their source. It only provides a different, presently named basis for specific current room questions.
+
+**Negative control B — retention versus access rights.** Keeping a page in a folder does not mean it remains authorized for future booking decisions. The earlier 11:40 designation expired with its sitting; Chapter 13 already showed why possession does not renew that grant.
+
+**Negative control C — false provenance.** A student writes “collected by certified forensic investigator at 12:03; checksum validated.” The case provides no such identity, event or computed hash. That label is worse than an honest “not supplied.” Do not mint a verification receipt to make the file look official.
+
+### 18.9 Independent EX034 four-line worksheet
+
+Complete EX034 without opening [the worked answer](#answer-ex034). Produce **four** lines: one for A (09:00), one for B (11:40), one for C (11:55), and one naming **C** as the source for the current Room 4 / 15:00 answer. For each of the first three give time, role, keep-or-dispose decision, and one irrecoverable comparison that would be weakened by disposal. Then add a brief separation note contrasting **preserve for classroom review** with **real-world retention required by law**—the latter is unknown and cannot be inferred.
+
+A passing solution preserves all three page identities and unmodified contents, matches the original 09:00 lab to A, uses C for today's SYN-003 decision, never merges pages, never revises the historic tally, and invents neither custody receipts nor binding retention terms.
+
 ### Chapter 18 summary
 
 Keep the three sheets, labeled and separate. Use the one named for this exercise when you answer a room. Do not shred or overwrite the others to make the folder look simple.
@@ -2299,6 +2427,10 @@ Keep the three sheets, labeled and separate. Use the one named for this exercise
 - **Task:** For each sheet, give its role and say whether it stays. Then name the sheet you would actually read for Room 4 at 15:00 in this exercise.
 - **Expected evidence:** Four short lines a reader can match to the three times.
 - **Rubric:** Credit when all three sheets stay, their roles differ, the 11:55 page is the one read for the current Room 4 question, and the census is not rerun.
+
+- **Independent extension:** Label the three pages independently by heading, content, earlier/current authority and decision supported. Identify the historical comparison weakened if each were destroyed. A fourth line must name the **11:55** page as today's authorized source for Room 4 / 15:00.
+- **Negative controls:** Do not treat classroom preservation as a real retention law, fabricate a custodian/receipt/hash, combine rows into a new official schedule, or turn filing the 11:40 page into today's source approval.
+- **Compare:** [EX034 worked result](#answer-ex034).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 20
@@ -2717,13 +2849,42 @@ The fixed lab's REFUSE was the 11:42 Room 2 / 15:00 confirmation proposal from s
 
 **Falsifiers:** “Old at 11:55” mistakes creation for expiry, despite a visible confirmed row. “After 09:00, flip ALLOW” substitutes later evidence for old inputs and mistakes the ALLOW action. Either error fails the technical objective even if the numerical ordering of the clocks is accurate.
 
+<a id="answer-ex033"></a>
 ### EX033 — Worked result
 
 Both later pages show `SYN-002` for Room 2 at 15:00. That is the supported fact. An attack is not shown. Safety is not shown. The supported class remains a weak confirmation procedure. The census stays the four-label line from the 09:00 log.
 
+
+**Expanded worked evidence and causal check (EX033).** Four acceptable core sentences are: **(1)** “The synthetic 11:40 and 11:55 pages both print SYN-002 as confirmed for Room 2 at 15:00, with the same stated creation time and row fields.” **(2)** “The match does not establish that an attacker caused the staff-view outage; no mechanism, attacker observation or causal record was supplied.” **(3)** “It also does not establish that the library is safe or that an incident can be closed; the two pages are not proven independent or complete, and impact and likelihood were not assessed.” **(4)** “Chapter 8's supported class remains a weak confirmation procedure, and the Chapter 4 tally is unchanged.”
+
+| Claim or hypothesis | Evidence in the supplied case | Missing discriminator | Defensible status |
+|---|---|---|---|
+| SYN-002 repeats across two pages | Direct comparison: Room 2 / 15:00, created 10:05, confirmed on both | None for this bounded printed-row claim | **Supported observation** |
+| SYN-003 only appears on 11:55 | Direct page difference; its created time is 11:20 | Actual generation scope, source lineage and update receipts before explaining absence on 11:40 | **Supported difference, unexplained mechanism** |
+| Both sheets prove independent replication correctness | Two classroom pages with no independently established origins | Verified independent source and cutoff/provenance evidence | **Not established** |
+| Attack caused outage; library safe or risk low | No attack records, service investigation or impact/likelihood sample | Authorized evidence of triggering mechanism, consequence and applicable criteria | **Unsupported** |
+
+An appropriate *hypothetical* follow-up asks the authorized owner whether the pages were generated from the same store and which row inclusion/cutoff rules applied; **no answer is supplied**. A shared match can coexist with different missing rows and different underlying mechanisms. Chapter 4's **UNKNOWN 0** only describes coverage of four known action kinds; it does not say the outage's cause was determined. The exact historical output stays **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**, with ALLOW for **11:45 mark-pending**. No real incident, risk score, vulnerability verification or program rerun is claimed.
+
+**Rubric clarification:** Credit requires the *positive bounded match*, the two rejected overclaims (attack and safety), and the original weak-procedure classification. Describing a plausible causal hypothesis is permitted only if framed as a question with missing evidence, not as a conclusion.
+
+<a id="answer-ex034"></a>
 ### EX034 — Worked result
 
 Keep the 09:00 printout because it is the recorded run's input. Keep the 11:40 page because it shows yesterday's missing Room 4 row. Keep the 11:55 page and use it for the current Room 4 question. Do not shred or overwrite. Do not rerun the census.
+
+
+**Expanded worked preservation and source-selection answer (EX034).**
+
+| Original page | Role and evidence scope | Why it stays in this classroom file |
+|---|---|---|
+| **09:00** | Fixed printout underlying the Chapter 4 classifier; SYN-002 was created after this snapshot | Keeps the printed basis for the 11:42 **REFUSE** and the original rule comparison reviewable |
+| **11:40** | Two-row synthetic sheet with SYN-001/SYN-002, earlier owner-named sitting; missing SYN-003 | Preserves the actual earlier silence for Room 4 / 15:00 and the historically bounded “taken” reading for Room 2 |
+| **11:55** | Three-row sheet with SYN-001/SYN-002/SYN-003, currently named for this exercise | Supports Room 4 / 15:00 **booked** through confirmed SYN-003, and Room 2 / 15:00 **booked** through confirmed SYN-002; preserves later comparison |
+
+The four EX034 lines can be: **(1)** “Keep the 09:00 printout as the fixed historical input to the old REFUSE classification.” **(2)** “Keep the 11:40 page as the earlier two-row source, whose silence about Room 4 must not be overwritten or remembered as a vacancy.” **(3)** “Keep the named 11:55 page as the later three-row source with its original SYN-002 and SYN-003 rows.” **(4)** “For the current Room 4 / 15:00 question, use the owner-named 11:55 page and report the slot taken without naming a person; do not rerun or alter the old tally.”
+
+**Custody and retention limit:** A separate inventory slip may label each synthetic page's heading, row set, relevant sitting and authorized role; no real human collector, signature, transfer, hash or printer receipt has been supplied. The instruction to preserve them is **for this exercise's reviewability**, not a real-world retention law, legal hold, or indefinite-storage requirement. Any actual organization would need its own authorized records/retention determination. The historic census remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**.
 
 ### EX035 — Worked result
 
