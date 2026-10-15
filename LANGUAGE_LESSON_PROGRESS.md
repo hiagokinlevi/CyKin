@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4312/4490 | 60/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 23/4312 |
+| English | 199/207 | 4312/4490 | 65/120060 | 4172/4312 | 4312/4312 | 4312/4312 | 23/4312 |
 | Português | 126/207 | 2610/4282 | 5/120060 | 2510/2610 | 2610/2610 | 2610/2610 | 26/2610 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 8/516 |
 
@@ -58,7 +58,7 @@ Open a numbered entry to read its public chapters. A *(plan)* entry still needs 
 | professional-6-months · Cloud and container security | [12/12](levels/professional-6-months/cloud-containers/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/cloud-containers/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/cloud-containers/es/book/PLAN.md) |
 | professional-6-months · Application and software supply chain security | [12/12](levels/professional-6-months/application-supply-chain/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/application-supply-chain/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/application-supply-chain/es/book/PLAN.md) |
 | professional-6-months · Security operations and blue team | [12/12](levels/professional-6-months/security-operations-blue-team/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/security-operations-blue-team/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/security-operations-blue-team/es/book/PLAN.md) |
-| professional-6-months · Incident response and cyber resilience | [12/12 · 40 daily lessons](levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/incident-response-resilience/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/incident-response-resilience/es/book/PLAN.md) |
+| professional-6-months · Incident response and cyber resilience | [12/12 · 45 daily lessons](levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/incident-response-resilience/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/incident-response-resilience/es/book/PLAN.md) |
 | professional-6-months · Digital forensics and malware analysis | [12/12](levels/professional-6-months/digital-forensics-malware/en/book/MANUSCRIPT.md) | [12/12](levels/professional-6-months/digital-forensics-malware/pt/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/digital-forensics-malware/es/book/PLAN.md) |
 | professional-6-months · Threat intelligence and OSINT | [12/12](levels/professional-6-months/threat-intelligence-osint/en/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/threat-intelligence-osint/pt/book/PLAN.md) | [0/12 (plan)](levels/professional-6-months/threat-intelligence-osint/es/book/PLAN.md) |
 | professional-6-months · Authorized offensive security and red team | [12/12](levels/professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) | [12/12](levels/professional-6-months/offensive-security-red-team/pt/book/MANUSCRIPT.md) | [0/12 (plan)](levels/professional-6-months/offensive-security-red-team/es/book/PLAN.md) |
