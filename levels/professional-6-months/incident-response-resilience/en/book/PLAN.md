@@ -67,7 +67,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 03 — Alert intake and severity assessment
 
-**Stage 2 in the legacy outline; 30 historical planned pages; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-03) and [Week 3, course Days 11–15](MANUSCRIPT.md#week-03-day-01). The sequence teaches provenance-preserving intake, clock correction, provisional priority, hypothesis discrimination and actionable escalation. C02–C08, C3/C3X and EX011–EX015 remain in the single manuscript; the questions and worked extensions were revised together. Five-choice interactive counterparts have not been authored by this batch.
+**Stage 2 in the legacy outline; 30 historical planned pages; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-03) and [Week 3, course Days 11–15](MANUSCRIPT.md#week-03-day-01). The sequence teaches provenance-preserving intake, clock correction, provisional priority, hypothesis discrimination and actionable escalation. C02–C08, C3/C3X and EX011–EX015 remain in the single manuscript; the questions and worked extensions were revised together. A separate [Chapter 3 timed-test bank](../../../../../web/question-banks/professional-6-months/incident-response-resilience/en/003.json) contains ten source-pinned original questions and worked explanations; the site supplies the fifth uncertainty choice. These timed questions do not replace EX011–EX015 or create their interactive practice counterparts. Independent human approval is not claimed.
 
 **Teaching purpose and relevance:** Move from raw reports to a documented priority without equating every anomaly with compromise.
 

@@ -2,7 +2,7 @@
 
 **One course, one principal book, 12 currently authored subject chapters, one course skill.** Chapters 1–3 also contain [Week 1](book/MANUSCRIPT.md#week-01-day-01), [Week 2](book/MANUSCRIPT.md#week-02-day-01) and [Week 3](book/MANUSCRIPT.md#week-03-day-01), with fifteen distinct daily lessons (15/130 planned) linked to EX001–EX015 and worked answers. These counts establish availability, not independent review or course completion. The other subject chapters have not yet been converted into the 26-week/130-day curriculum. A planned chapter is a summary, not a completed lesson.
 
-English is the reference edition.
+English is the reference edition. A separate [Chapter 3 timed-test source](../../../../web/question-banks/professional-6-months/incident-response-resilience/en/003.json) provides ten questions with four authored options each; the site adds the fifth uncertainty option and ten-second timing. This adds assessment availability, not a daily lesson, reviewed book or translation release.
 
 [Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
 

@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "incident-response-resilience",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "7e06a360c275b939e689b0bd787782fd012d27e397a098eee79b44bc4bf0cbff",
+  "source_path": "levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md",
+  "editorial_note": "Original timed self-assessment for Chapter 3 and Week 3. Authored options and explanations underwent technical and ambiguity checks; independent human review is not claimed. This bank does not release a source unit for Portuguese translation or replace EX011–EX015.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "At 09:09, C02 reports a symptom, C03 a sign-in, C04 a browser and C05 an edit. How should intake represent them?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Merge them into one confirmed session-to-edit event."
+        },
+        {
+          "id": "b",
+          "text": "Keep four source lines in one case; label any causal relationship separately."
+        },
+        {
+          "id": "c",
+          "text": "Deduplicate C03 and C05 because their account labels match."
+        },
+        {
+          "id": "d",
+          "text": "Record the API edit as proof of current S42 state."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B preserves producer-specific claims while allowing coordinated investigation in one case. A invents the missing session/request relationship. C treats an account label as an emitted-event identifier, although the producers and events differ. D confuses an audit report of an edit with a checked present business state. The next task is a bounded custodian question, not attribution.",
+      "source": "Chapter 3, Week 3 / course Day 11, #week-03-day-01, Mechanism and decision and Worked contrast; §3.E1; EX011."
+    },
+    {
+      "id": "Q02",
+      "prompt": "C06 describes an 08:50 calendar entry but is released at 09:10. May it justify the learner's 09:09 assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; its source time precedes the assessment."
+        },
+        {
+          "id": "b",
+          "text": "Yes; a later release can retrospectively approve earlier reasoning."
+        },
+        {
+          "id": "c",
+          "text": "Only if its source time is first corrected to UTC."
+        },
+        {
+          "id": "d",
+          "text": "No; retain the earlier decision and reassess after release."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D respects the case's information boundary: C06 becomes usable at 09:10, so a new assessment can cite it then. A substitutes event time for learner availability. B backdates knowledge and hides what the analyst could actually know at 09:09. C changes a clock representation but cannot make a withheld card available. C3X demonstrates this distinction without authenticating the underlying source.",
+      "source": "Chapter 3, §3.E2 and §3.E5 (C3X); Week 3 / course Day 12, #week-03-day-02, Decision; EX012 worked extension."
+    },
+    {
+      "id": "Q03",
+      "prompt": "C04 reads 08:54 on a clock four minutes slow. C03 reports 08:58. Which conclusion follows from the supplied times?",
+      "options": [
+        {
+          "id": "a",
+          "text": "C04 estimates to 08:58 UTC; coincidence does not establish a shared session."
+        },
+        {
+          "id": "b",
+          "text": "C04 estimates to 08:50 UTC and therefore precedes C03."
+        },
+        {
+          "id": "c",
+          "text": "C04 remains at 08:54 UTC because normalization would alter evidence."
+        },
+        {
+          "id": "d",
+          "text": "C04 estimates to 08:58 UTC and proves the browser caused C03."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A applies the stated sign: offset = device minus UTC = minus four minutes, so estimated UTC = 08:54 minus that offset = 08:58. Retain both raw and derived values. B uses the wrong correction sign. C wrongly forbids a documented derived view; preserving the raw record does not prohibit normalization. D turns minute-level temporal compatibility into causation without the missing identifiers or within-minute ordering evidence.",
+      "source": "Chapter 3, Week 3 / course Day 12, #week-03-day-02, Mechanism and Worked contrast; §3.2; EX012."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The C3 program prints direct_join=False as a literal final line. What does reproducing that line establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A join algorithm searched all source records and found no relationship."
+        },
+        {
+          "id": "b",
+          "text": "C03 and C05 are proven to concern unrelated operations."
+        },
+        {
+          "id": "c",
+          "text": "The supplied program prints its stated interpretation; it performs no join test."
+        },
+        {
+          "id": "d",
+          "text": "The shared account's complete source history has been checked."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C identifies the executable boundary: the code computes three normalized times, then prints a literal analyst interpretation. Reproduction checks that program's behavior. A invents a join algorithm and source search. B confuses an unestablished relationship with a disproved relationship. D extrapolates from a tiny in-memory fixture to uncollected source history. No literal output can create a missing session/request key.",
+      "source": "Chapter 3, §3.5, final print statement and its interpretation; Week 3 / course Day 12, #week-03-day-02, Practice; EX012 worked result."
+    },
+    {
+      "id": "Q05",
+      "prompt": "At 09:14, C08 reports detail expiry at 10:00 while service impact and cause remain uncertain. Which assessment fits the classroom rubric?",
+      "options": [
+        {
+          "id": "a",
+          "text": "P1 confirmed compromise, because any reported expiry proves major service impact."
+        },
+        {
+          "id": "b",
+          "text": "P2 provisional: seek bounded preservation without claiming a proven cause."
+        },
+        {
+          "id": "c",
+          "text": "P3 routine review, because causal uncertainty removes time sensitivity."
+        },
+        {
+          "id": "d",
+          "text": "Delay priority assignment until the responsible human is identified."
+        }
+      ],
+      "correct": "b",
+      "explanation": "B separates effort from causal confidence: plausible enrollment harm plus reported evidence loss justifies urgent bounded investigation under the stated P2 rule. A invents both major observed impact and confirmed compromise. C ignores a time-sensitive evidence gap. D makes attribution a prerequisite for triage even though timely preservation can be necessary before attribution. The request still needs its own authority and execution receipts.",
+      "source": "Chapter 3, §3.3 and §3.E3; Week 3 / course Day 13, #week-03-day-03, Evidence at 09:14 and Worked contrast; EX013."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Day 13 proposes a 09:25 review. At that time no custodian has accepted preservation. Which next step follows from the lesson?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Escalate the blocked authority path and obtain a plan before the reported expiry."
+        },
+        {
+          "id": "b",
+          "text": "Record the data as already expired because the checkpoint was missed."
+        },
+        {
+          "id": "c",
+          "text": "Assume the review appointment itself preserved the source records."
+        },
+        {
+          "id": "d",
+          "text": "Let the analyst bulk-export without approval because time is short."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A uses the proposed checkpoint to expose a blocked request early and route it to the proper owner. B confuses the analyst's review time with C08's reported 10:00 source-expiry condition; neither is proof of deletion. C substitutes a plan for executed preservation. D invents emergency authority and abandons scope minimization. The 09:25 checkpoint is an exercise proposal, not a new CTN observation.",
+      "source": "Chapter 3, Week 3 / course Day 13, #week-03-day-03, reassessment paragraph beginning Make the reassessment operational; EX013 worked extension."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which requested result would weaken the specific hypothesis that an approved scheduled run produced q-144, assuming the manifest is complete for that run and route?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The run time is close to the API edit time."
+        },
+        {
+          "id": "b",
+          "text": "A validated manifest includes q-144 with applicable S42 approval."
+        },
+        {
+          "id": "c",
+          "text": "C07 says the account is sometimes used by a scheduled job."
+        },
+        {
+          "id": "d",
+          "text": "The correctly scoped manifest excludes q-144 under validated request-ID semantics."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D is a meaningful contradiction only under the prompt's completeness, route and identifier assumptions. A is temporal compatibility, not a discriminator. B supports the approved-run hypothesis rather than weakening it. C describes a possible use of the account without establishing this operation's provenance. An incomplete manifest excluding q-144 would not have the same falsifying force; all results here remain hypothetical requests.",
+      "source": "Chapter 3, Week 3 / course Day 14, #week-03-day-04, Worked contrast; EX014 corrected additional reasoning and worked discriminator table."
+    },
+    {
+      "id": "Q08",
+      "prompt": "In a separate hypothetical result, a valid S42 authorization covers the exact q-144 edit. Which claim does that result directly weaken?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The authoritative S42 state might still be incorrect."
+        },
+        {
+          "id": "b",
+          "text": "The browser display might differ from authoritative state."
+        },
+        {
+          "id": "c",
+          "text": "That specific edit was outside approval."
+        },
+        {
+          "id": "d",
+          "text": "A session-to-request join is still unestablished."
+        }
+      ],
+      "correct": "c",
+      "explanation": "C is the claim directly contradicted by an authorization that actually covers the same operation, target and time. A remains possible because authorized execution can be faulty. B is a separate display/state comparison, which an approval record does not perform. D concerns identifier linkage, not permission. The hypothetical authorization does not appear in the released C02–C08 evidence and must not be silently added to the case.",
+      "source": "Chapter 3, Week 3 / course Day 14, #week-03-day-04, Assumptions and evidence and paragraph beginning For the concerning hypothesis; EX014."
+    },
+    {
+      "id": "Q09",
+      "prompt": "At the C08 checkpoint, which action respects the distinction between preservation urgency and operational authority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Request scoped custodian-approved preservation; keep account restriction behind a separate gate."
+        },
+        {
+          "id": "b",
+          "text": "Treat the expiry statement as approval to disable svc-enroll."
+        },
+        {
+          "id": "c",
+          "text": "Use export permission as permission to revoke every session."
+        },
+        {
+          "id": "d",
+          "text": "Borrow an administrator's credential if the approval path is slow."
+        }
+      ],
+      "correct": "a",
+      "explanation": "A preserves the separate rights and service-impact decisions: source access needs its accepting custodian, while a disruptive restriction needs its own scope, approval, operator and verification. B promotes a retention claim into change authority. C expands data-export permission into a different operation. D invents a substitute access path. Neither urgency nor account knowledge supplies authorization.",
+      "source": "Chapter 3, Week 3 / course Day 15, #week-03-day-05, Assumptions and evidence and request-state table; §3.3; EX015."
+    },
+    {
+      "id": "Q10",
+      "prompt": "An analyst has drafted the bounded IdP request; no approval or operator receipt is supplied. What preservation status may the handoff claim?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approved, because a precise request defines its scope."
+        },
+        {
+          "id": "b",
+          "text": "Received, because C08 describes the source's expiry."
+        },
+        {
+          "id": "c",
+          "text": "Checked, because the proposed window contains the displayed event times."
+        },
+        {
+          "id": "d",
+          "text": "Proposed or drafted; approval, execution, receipt and checking remain unestablished."
+        }
+      ],
+      "correct": "d",
+      "explanation": "D reports only the state supported by the supplied artifact. A request can be reviewable without being approved. A confuses scope definition with acceptance; B confuses a custodian's expiry statement with a delivered copy; C confuses planned selection with an actual checked result. Advancing status requires separate real receipts under the applicable policy, not a well-written plan.",
+      "source": "Chapter 3, Week 3 / course Day 15, #week-03-day-05, Mechanism and request-state table; §3.E6; EX015 worked escalation and state row."
+    }
+  ]
+}

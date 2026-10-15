@@ -1,5 +1,7 @@
 # OpenCyber Academy — Cybersecurity Academic Books Collection
 
+**Course 039 / English correction and assessment checkpoint (2026-10-15):** The principal book corrects C1X input validation and its reproduced adverse controls, the Day 1 edge legend, EX005's word label and obsolete page-gate metadata. Its separate [Chapter 3 timed-test source](web/question-banks/professional-6-months/incident-response-resilience/en/003.json) adds ten original source-pinned questions. Availability remains 15/130 daily lessons; human approval, Portuguese release and site deployment are not established by this commit.
+
 **Course 039 / English writing checkpoint (2026-10-15):** Professional Incident Response now includes [Week 3, course Days 11–15](levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md#week-03-day-01), with revised EX011–EX015 and worked answers. [The edition guide](levels/professional-6-months/incident-response-resilience/en/SUBJECTS.md) has **15/130 planned daily lessons authored**; the remaining daily curriculum and whole-volume review are pending. This update does not release an English unit for translation or establish site deployment.
 
 <!-- open-cyber-academy:multilingual-score:start -->

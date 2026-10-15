@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Professional Practice
 
 - Language: English (`en`); professional course, six months; approximately 360 hours of planned study.
-- Editorial state: **published**. All 12 subjects have authored teaching, 60 numbered exercises and 60 worked results. Substantive expansion, independent technical review, editing and the 300-page A4 gate remain open.
+- Editorial state: **published**. All 12 subjects have authored teaching, 60 numbered exercises and 60 worked results. The remaining daily curriculum, independent technical review and editing remain open. A4 page count records a particular rendering; it is not a condition of book completion.
 - Audience: new response practitioners working with a supervisor and an organization's approved procedures. Prerequisites: basic security concepts, identity, applications, logs and service ownership.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); external sources retain their rights.
 - Educational status: this is a public learning draft, not a completed textbook, credential or authority to operate on real systems.
@@ -31,7 +31,7 @@ The recommended starting point for organizational incident-response outcomes is 
 11. [Supervised incident simulation](#ch-11) — run a time-gated tabletop with separate facilitator, responder and observer records.
 12. [Case portfolio and after-action review](#ch-12) — defend decisions from three bounded cases and turn observations into retestable improvements.
 
-The twelve authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX060 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks. Sixty authored exercises meet the planned exercise allocation, but do not by themselves make this a completed 300-page book.
+The twelve authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX060 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks. Sixty authored exercises meet the planned exercise allocation, but do not by themselves complete the intended daily curriculum or satisfy the editorial publication gate.
 
 <a id="ch-01"></a>
 
@@ -225,8 +225,12 @@ def assess(p):
         return "FAIL_WRONG_SLOT"
     if p.key is None:
         return "FAIL_MISSING_JOIN_KEY"
+    if not isinstance(p.key, str) or not p.key.strip():
+        return "FAIL_INVALID_JOIN_KEY"
     if p.latency_min is None:
         return "UNKNOWN_NOT_RETRIEVED"
+    if type(p.latency_min) is not int or p.latency_min < 0:
+        return "FAIL_INVALID_LATENCY"
     if p.latency_min > 20:
         return "FAIL_WINDOW"
     return "PASS_DECLARED_FIXTURE"
@@ -240,6 +244,22 @@ probes = [
 for p in probes:
     print(f"{p.route}: {assess(p)}")
 assert assess(probes[0]) == "PASS_DECLARED_FIXTURE"
+
+# Separate adversarial declarations, not new C01 observations.
+controls = [
+    ("empty_key", "", 4, "FAIL_INVALID_JOIN_KEY"),
+    ("blank_key", "   ", 4, "FAIL_INVALID_JOIN_KEY"),
+    ("negative_latency", "req-control", -1, "FAIL_INVALID_LATENCY"),
+    ("boolean_latency", "req-control", True, "FAIL_INVALID_LATENCY"),
+    ("fractional_latency", "req-control", 4.5, "FAIL_INVALID_LATENCY"),
+    ("zero_latency", "req-control", 0, "PASS_DECLARED_FIXTURE"),
+    ("boundary_20", "req-control", 20, "PASS_DECLARED_FIXTURE"),
+    ("late_21", "req-control", 21, "FAIL_WINDOW"),
+]
+for name, key, latency, expected in controls:
+    result = assess(Probe(name, "S41", "S41", key, latency))
+    print(f"{name}: {result}")
+    assert result == expected, (name, result, expected)
 ~~~
 
 **Executed output:**
@@ -249,13 +269,23 @@ scheduled_api: PASS_DECLARED_FIXTURE
 manual_api: FAIL_MISSING_JOIN_KEY
 identity_detail: UNKNOWN_NOT_RETRIEVED
 negative_S40: FAIL_WRONG_SLOT
+empty_key: FAIL_INVALID_JOIN_KEY
+blank_key: FAIL_INVALID_JOIN_KEY
+negative_latency: FAIL_INVALID_LATENCY
+boolean_latency: FAIL_INVALID_LATENCY
+fractional_latency: FAIL_INVALID_LATENCY
+zero_latency: PASS_DECLARED_FIXTURE
+boundary_20: PASS_DECLARED_FIXTURE
+late_21: FAIL_WINDOW
 ~~~
+
+**Input-domain checks and reproduced controls.** After checking slot scope, the classifier distinguishes an absent key (`None`) from an invalid empty, whitespace-only or non-string key. For a present key, an absent latency remains unknown; a measured latency must be a nonnegative integer number of minutes. Boolean and fractional values are rejected rather than silently treated as measurements. Zero and exactly 20 minutes are within the declared goal; 21 minutes fails it. The first four output lines retain the original classifications, while eight additional lines exercise these boundaries. Each failed declaration remains a classroom result, not a finding about CTN.
 
 A useful interpretation states why no “overall ready” flag is produced. The scheduled test is only logically consistent *if its fields were authentic*. The manual test cannot establish a request-to-audit join. The identity test has no measured availability. The S40 control exposes a scope mismatch; silently expanding the selection to include S40 would defeat the control. Neither a plausible ID string nor a small latency number independently authenticates a log.
 
 **Adversarial control:** Replace the first probe's slot with S40 and predict FAIL_WRONG_SLOT despite an unchanged key and latency. Then restore it and replace the manual probe's missing key with `"invented"`: the code would return PASS_DECLARED_FIXTURE, demonstrating why a passing Boolean classifier is **not a producer receipt**. Do not insert these variants into the C01 case facts.
 
-**Submission and scoring:** Produce a four-row comparison, two explicit falsifiers, a proposed request to the application custodian and a short distinction between the executed *offline code* and an unexecuted *authorized route rehearsal*. Six local points: four correct classifications, one for identifying how the S40 negative control detects scope broadening, and one for preserving the authority/provenance limitations. An “all CTN logs verified” conclusion fails regardless of the numeric score.
+**Submission and scoring:** Produce the original four-row comparison, the eight-line control transcript with explanations of invalid-input versus window failures, two explicit falsifiers, a proposed request to the application custodian and a short distinction between the executed *offline code* and an unexecuted *authorized route rehearsal*. Six local points: four correct classifications, one for identifying how the S40 negative control detects scope broadening, and one for preserving the authority/provenance limitations. An “all CTN logs verified” conclusion fails regardless of the numeric score.
 
 ### Prioritize by decision harm, not by a readiness percentage
 
@@ -295,7 +325,7 @@ flowchart LR
   O["Service owner"] -. "defines acceptable transition" .-> D
 ```
 
-The solid path represents the proposed business transaction; dotted paths represent claims to test. Even a complete export from `X` would not, by itself, establish that `D` committed a valid result. A reservation receipt might be returned before a delayed write, and a notification could be queued before a rollback. Ask the service owner which record is authoritative, which request or version key joins client and write records, and how an authorized isolated test would distinguish a duplicate retry from a second successful booking. If no stable key exists, do not substitute a shared minute or account label for identity of an operation.
+Edge labels identify the relationship: client → API → authoritative state is the proposed business/data path; API → audit producer → collector → scoped export is the proposed evidence path; identity → collector is another possible evidence path; owner → state supplies the acceptance criterion. Both solid and dotted edges are unverified teaching-model relationships. Solid edges are used on the main data path and the audit/collection chain; dotted edges distinguish the proposed audit branch, conditional identity evidence and owner criterion. Line style does not mean observed versus hypothetical or verified versus unverified. Even a complete export from `X` would not, by itself, establish that `D` committed a valid result. A reservation receipt might be returned before a delayed write, and a notification could be queued before a rollback. Ask the service owner which record is authoritative, which request or version key joins client and write records, and how an authorized isolated test would distinguish a duplicate retry from a second successful booking. If no stable key exists, do not substitute a shared minute or account label for identity of an operation.
 
 **Worked example.** Under the *hypothetical* contract, start at one available seat. If `q-A` succeeds, availability becomes zero and its retry returns the same reservation reference without another decrement. `q-B` then fails with an unchanged zero. A displayed success for both requests would violate the contract or indicate that the assumed contract is wrong; a single application log line cannot choose between those explanations. The first supervisor question is therefore “Is idempotency promised on this route, and which authoritative state/version verifies it?” rather than “Which attacker booked twice?” This is an example of deriving a testable question from an invariant, not an observation about C01.
 
@@ -3064,7 +3094,7 @@ Give a second learner P1, the main case up to 09:14, then release later cards at
 
 ### Subject synthesis and next step
 
-Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. Chapters 11–12 use these artifacts in a supervised simulation and case portfolio. The full book still needs deeper teaching, independent review and 300-page A4 verification.
+Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. Chapters 11–12 use these artifacts in a supervised simulation and case portfolio. The full book still needs deeper daily teaching and independent review; any A4 verification records a rendering rather than a completion threshold.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 12
@@ -3331,7 +3361,7 @@ With two learners, exchange only the portfolio index and linked artifacts. The r
 
 ### Subject synthesis and next step
 
-This twelve-subject draft now spans readiness, authorized response, evidence, competing explanations, containment, cause-path verification, recovery, communication, a reviewed playbook, a supervised simulation and a defensible portfolio. The 60 exercise-answer pairs support practice, but the manuscript is still **short of the required verified 300 A4 pages** and has not passed independent technical, editorial or accessibility review. The next learning level's technical course will demand deeper system modeling, reproducible labs and more explicit failure/rollback evidence. The next editorial task for this volume is substantial expansion and review, not relabeling the draft complete.
+This twelve-subject draft now spans readiness, authorized response, evidence, competing explanations, containment, cause-path verification, recovery, communication, a reviewed playbook, a supervised simulation and a defensible portfolio. The 60 exercise-answer pairs support practice, but the intended daily curriculum remains incomplete and the manuscript has not passed independent technical, editorial or accessibility review. A4 length is a source-specific rendering measurement, not a completion requirement. The next learning level's technical course will demand deeper system modeling, reproducible labs and more explicit failure/rollback evidence. The next editorial task for this volume is substantial expansion and review, not relabeling the draft complete.
 
 <!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
@@ -3383,7 +3413,7 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 
 <a id="answer-ex005"></a>
 
-**EX005 — Model handoff (102 words).** “CTN enrollment depends on the API, IdP, support and recovery services. C01 names an application and recovery lead, but it leaves the after-hours identity alternate and service-owner fallback blank. The asserted API-audit 24-hour window has no defined anchor. The response lead should ask the application custodian to test one synthetic scheduled S41 change and an unrelated S40 control, recording fields and retrieval time. The identity custodian should verify detailed-log retention and its authorized export path. The service owner should assign an emergency delegate and define an isolated restore acceptance test. These are proposed readiness checks; C01 contains no incident observation.” A shorter result can earn two points if it retains all required roles, gaps and status distinctions.
+**EX005 — Model handoff (100 whitespace-separated words).** “CTN enrollment depends on the API, IdP, support and recovery services. C01 names an application and recovery lead, but it leaves the after-hours identity alternate and service-owner fallback blank. The asserted API-audit 24-hour window has no defined anchor. The response lead should ask the application custodian to test one synthetic scheduled S41 change and an unrelated S40 control, recording fields and retrieval time. The identity custodian should verify detailed-log retention and its authorized export path. The service owner should assign an emergency delegate and define an isolated restore acceptance test. These are proposed readiness checks; C01 contains no incident observation.” A shorter result can earn two points if it retains all required roles, gaps and status distinctions.
 
 **Additional worked reasoning (EX005 — Model 108-word handoff.):** “At 08:40 UTC the CTN readiness worksheet identifies enrollment dependencies but not an after-hours identity alternate or a service-owner fallback. Its twenty-four-hour API audit claim has no verified source or clock anchor. I recommend two supervisor-approved rehearsals: first, use a harmless S41 scheduled change and unrelated S40 control to verify request-ID coverage and retrieval within twenty minutes; second, verify an authorized identity-custodian path when the primary is unavailable. The application owner should document manual-write audit coverage, and the recovery lead should propose an isolated restore acceptance test. All tests and approvals remain pending. C01 contains no evidence of a live incident or compromise.” Assess the stated owner, two measurable gaps, absence of invented outcomes and usable next shift action, not style alone.
 
