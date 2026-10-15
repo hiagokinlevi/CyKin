@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 8,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "bccf97cfb0331efd094072524f99d6e681868a34",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-08",
+  "source_sha256": "984a7c79ecbf69026fa52792901ef7b2e7c6be4bb859174abe47fccd8ab961ea",
+  "case_note": "Millbrook Hospital, devices, migration steps and findings are synthetic. Hypothetical review scenarios do not add observations to the source case. Planned rules, deployed configuration and validated behaviour are separate evidence states. No question authorises real OT changes, live tests or interruption of clinical services. The chapter does not specify a numeric energy-export port or the time-service protocol.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In Millbrook's design, how do a security zone and a conduit differ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A zone defines permitted traffic; a conduit groups the protected assets"
+        },
+        {
+          "id": "b",
+          "text": "A zone groups assets by purchase date; a conduit groups their owners"
+        },
+        {
+          "id": "c",
+          "text": "A zone groups assets with similar security needs; a conduit connects zones"
+        },
+        {
+          "id": "d",
+          "text": "A zone is a diagram label; a conduit permits all traffic between labels"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.1 groups assets by similar security requirements and connects zones through conduits; Section 8.2 expresses the required communications as narrow rules. Reversing asset grouping and communication mixes the two concepts. Purchase date alone is not the stated grouping criterion, and drawing a connection does not authorise unrestricted traffic. The IEC 62443-3-2 public description confirms partitioning and risk assessment by zone and conduit; it does not prescribe Millbrook's layout or certify that the proposed boundaries are implemented.",
+      "source": "Chapter 8, §8.1 \"Zones\" and §8.2 \"Conduits and rules\"; EX036 \"Zone list\". Primary scope check: IEC 62443-3-2:2020 official public description, https://webstore.iec.ch/en/publication/30727"
+    },
+    {
+      "id": "Q02",
+      "prompt": "A proposed map merges medical gas and lifts into one safety zone. Which correction matches the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep them together because both have patient-safety consequences"
+        },
+        {
+          "id": "b",
+          "text": "Separate gas and lifts; retain distinct BMS, access-control, DMZ and corporate zones"
+        },
+        {
+          "id": "c",
+          "text": "Move gas and lifts into the DMZ alongside gateway and export services"
+        },
+        {
+          "id": "d",
+          "text": "Group each safety device with the contractor's corporate workstation"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter explicitly separates medical gas alarms and lifts: their failure consequences matter and their contractors differ. Shared safety relevance is not a reason to merge their boundaries. BMS controllers and server belong in the BMS zone, access control has its own zone, and the DMZ hosts gateway and export services rather than all safety equipment. Grouping by a contractor's workstation is not the proposed architecture. EX036's worked answer preserves separate gas and lift zones despite the prompt's broad five-category wording; do not compress the design to meet a label count.",
+      "source": "Chapter 8, §8.1 \"Zones\", both paragraphs; EX036 \"Zone list\" and its worked answer"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which proposed allow-rule record correctly scopes BMS energy exports without inventing a protocol or port?",
+      "options": [
+        {
+          "id": "a",
+          "text": "DMZ data server to BMS server; agreed protocol/port, reporting purpose, named owner"
+        },
+        {
+          "id": "b",
+          "text": "Any BMS host to any DMZ host; any protocol/port, reporting purpose, named owner"
+        },
+        {
+          "id": "c",
+          "text": "BMS server to DMZ data server; guessed web port, reporting purpose, named owner"
+        },
+        {
+          "id": "d",
+          "text": "BMS server to DMZ data server; agreed protocol/port, energy-report purpose, named owner"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The source is the BMS server and the destination is the DMZ data server for energy reports. Section 8.2 also requires the protocol, port, reason and owner. Reversing the direction changes the proposed flow; broad host and service wildcards exceed the stated need; assuming a web port invents a detail the chapter does not supply. The exact protocol and numeric port still need agreement and recording before implementation. EX037 places this specific allowance within default deny. Required routes must be reconciled with the inventory so that intended isolation does not silently remove an essential dependency.",
+      "source": "Chapter 8, §8.2 \"Conduits and rules\", both paragraphs; EX037 \"Writing a conduit\" and its worked answer. Primary cross-check: NIST SP 800-82 Rev. 3, §6.2.1.3, p. 102, https://doi.org/10.6028/NIST.SP.800-82r3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A rule table is approved, but no deployment or post-change checks are recorded. What is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An approved plan, not demonstrated deployment or validated behaviour"
+        },
+        {
+          "id": "b",
+          "text": "A deployed rule because the approved table names its owner"
+        },
+        {
+          "id": "c",
+          "text": "Validated segmentation because the table contains a default-deny entry"
+        },
+        {
+          "id": "d",
+          "text": "Completed migration because estates accepted the zone diagram"
+        }
+      ],
+      "correct": "a",
+      "explanation": "An approved table records intended policy. It is not evidence that the policy reached the devices or that the resulting system was checked. Section 8.3 requires post-change controller reachability checks, Section 8.4 requires agreed point checks after each step, and Section 8.5 preserves revisions and approvers. An owner, a default-deny row or diagram approval cannot replace those results. This hypothetical is an evidence gap, not proof that deployment failed, and it must not overwrite the separate events narrated in the synthetic worked example.",
+      "source": "Chapter 8, §8.1 \"Zones\", §8.3 \"Fixing the dual-homed workstation\", §8.4 \"Migrating safely\" and §8.5 \"Documentation\"; EX039 \"Lost points\""
+    },
+    {
+      "id": "Q05",
+      "prompt": "After the corporate interface is retired, which office-access design avoids recreating the direct controller path?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Office PCs query controllers directly with read-only application accounts"
+        },
+        {
+          "id": "b",
+          "text": "BMS-WS keeps a spare corporate interface for reporting periods"
+        },
+        {
+          "id": "c",
+          "text": "Staff view a DMZ dashboard; authorised changes use a gateway-reached jump host"
+        },
+        {
+          "id": "d",
+          "text": "Controllers move into the corporate zone while their server stays in BMS"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.3 replaces the dual-homed office path with a read-only DMZ dashboard or a jump host reached through the gateway. EX038's worked answer distinguishes viewing from changes through that controlled route. A read-only application account does not remove direct corporate-to-controller connectivity, which Section 8.2 excludes. A spare corporate interface recreates the bridge when used. Moving controllers into the corporate zone abandons the intended boundary. These are design choices to review, not instructions to modify a live hospital network or proof that a proposed path works.",
+      "source": "Chapter 8, §8.2 \"Conduits and rules\" and §8.3 \"Fixing the dual-homed workstation\"; EX038 \"Office viewing\" and its worked answer"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which evidence sequence supports completion of the BMS-WS dual-homed migration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the corporate interface, then ask which office tasks depended on it"
+        },
+        {
+          "id": "b",
+          "text": "Validate replacement office access, use an agreed slot, then confirm controller reachability"
+        },
+        {
+          "id": "c",
+          "text": "Deploy all conduit changes together, then check only that the gateway responds"
+        },
+        {
+          "id": "d",
+          "text": "Approve the new drawing and close the risk entry before the interface change"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 8.3 requires agreement on the office tasks, testing of the replacement with its users, a booked change slot and confirmation that BMS-WS still reaches controllers afterward. Removing the interface before understanding dependencies reverses the prerequisites. Changing every conduit at once contradicts Section 8.4's staged approach, and a gateway response does not verify controller reporting. Diagram approval alone leaves execution and results unproved. The change record belongs with the original bridge-risk entry; completion should not be inferred from a calendar date or a configuration diagram.",
+      "source": "Chapter 8, §8.3 \"Fixing the dual-homed workstation\", second paragraph; §8.4 \"Migrating safely\"; EX038 \"Office viewing\""
+    },
+    {
+      "id": "Q07",
+      "prompt": "In the synthetic step-two failure, what dependency was missing from the conduit design?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Communication with a time server"
+        },
+        {
+          "id": "b",
+          "text": "Direct corporate-PC access to every controller"
+        },
+        {
+          "id": "c",
+          "text": "Unrestricted communication among all DMZ services"
+        },
+        {
+          "id": "d",
+          "text": "A second corporate network card in BMS-WS"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The worked example and Section 8.4 identify a forgotten conduit to a time server when two controllers stop reporting after step 2. They do not identify direct corporate access, unrestricted DMZ connectivity or a second corporate card as the remedy; those changes would undermine the intended architecture. The source supplies no time-service protocol or port, so a specific rule cannot be reconstructed from this narrative alone. This is the demonstrated cause within the invented case, not a diagnosis that applies automatically to any real loss of reporting.",
+      "source": "Chapter 8, §8.4 \"Migrating safely\", second paragraph; \"Worked example (synthetic Millbrook)\"; EX039 \"Lost points\" and its worked answer"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Hypothetical migration checks reveal lost points affecting clinical areas. Which response follows the chapter's safety logic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the new rules unchanged until every planned migration step finishes"
+        },
+        {
+          "id": "b",
+          "text": "Replace narrow rules with a permanent allow-all path to restore visibility"
+        },
+        {
+          "id": "c",
+          "text": "Restart all controllers before estates assesses the missing points"
+        },
+        {
+          "id": "d",
+          "text": "Coordinate with estates, restore the previous configuration if needed, and correct the dependency under change control"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Clinical impact determines the response, not the desire to finish the new rule set. Section 8.4 keeps the previous configuration ready; EX039 calls for confirming the impact with estates, restoring that configuration when needed, finding the missing conduit and correcting it under the same change record. Waiting through later steps can prolong the unsafe condition. Permanent allow-all access discards the design, and indiscriminate restarts introduce an unsupported action. In this decision exercise, responsible operational staff control any rollback and subsequent checks; no real equipment is to be changed.",
+      "source": "Chapter 8, §8.4 \"Migrating safely\"; EX039 \"Lost points\", rubric and worked answer; \"Worked example (synthetic Millbrook)\""
+    },
+    {
+      "id": "Q09",
+      "prompt": "A rule has no recorded owner. How should its status affect the migration review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove it immediately because a missing owner proves it is unnecessary"
+        },
+        {
+          "id": "b",
+          "text": "Keep it permanently because it appeared in an older configuration"
+        },
+        {
+          "id": "c",
+          "text": "Review its purpose and dependencies before any approved, revision-recorded removal"
+        },
+        {
+          "id": "d",
+          "text": "Assign the last editor as owner and treat the rule as validated"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.2 makes an ownerless rule a candidate for removal, not an automatically safe deletion. The route inventory and operational dependencies still matter, particularly where loss of a required conduit affects reporting. Age does not prove necessity, while an editor's identity does not establish ownership or successful validation. Section 8.5 requires updated revisions, recorded approval and retained superseded documents so the decision is traceable. The hypothetical review must resolve the evidence and responsibility gap before an authorised change, rather than risk deleting a vital flow.",
+      "source": "Chapter 8, §8.2 \"Conduits and rules\", second paragraph; §8.4 \"Migrating safely\" and §8.5 \"Documentation\"; EX037 \"Writing a conduit\" and EX039 \"Lost points\""
+    },
+    {
+      "id": "Q10",
+      "prompt": "An attacker can use valid gateway credentials within a permitted conduit. Which residual risk remains?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every separate zone becomes reachable from that account"
+        },
+        {
+          "id": "b",
+          "text": "Actions inside the allowed path may still be harmful"
+        },
+        {
+          "id": "c",
+          "text": "The permitted conduit can no longer carry any traffic"
+        },
+        {
+          "id": "d",
+          "text": "Every BMS device is necessarily already compromised"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter's limit is that segmentation restricts where access can go but does not by itself make activity through an allowed conduit benign. Valid credentials or an insider can still be misused within that scope. This does not make all zones reachable, render the permitted flow unusable or prove every device compromised. NIST SP 800-82 Rev. 3 likewise cautions that network isolation does not address all network risks. This hypothetical describes residual risk; it is not evidence of an intrusion at Millbrook or proof that other access controls are present or absent.",
+      "source": "Chapter 8, \"Errors and limits\"; EX040 \"Limit of segmentation\" and its worked answer. Primary cross-check: NIST SP 800-82 Rev. 3, §6.2.1.3, p. 103, https://doi.org/10.6028/NIST.SP.800-82r3"
+    }
+  ]
+}
