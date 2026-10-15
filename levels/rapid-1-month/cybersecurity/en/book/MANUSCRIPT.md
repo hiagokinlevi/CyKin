@@ -2475,6 +2475,73 @@ The tally is still the four-action census. This request is not a fifth logged li
 
 A library might someday have a lawful way to tell a patron about a room. This exercise does not provide that way. Wanting to be helpful does not move contacts into the booking sheet. The owner would have to name a different activity, with its own limit. Until then, the contact path stays closed.
 
+
+### 19.4 Purpose, source access and data processing are different permissions
+
+**Purpose** describes the task for which information is used. **Source scope** describes which records and fields the approved source actually supplies. **Processing authority** describes who may retrieve, combine, export or disclose particular data for a particular purpose. Passing a room-booking source check does not automatically authorize a different processing action. In Harbor Library's synthetic exercise, the current owner named **the 11:55 booking page for the room-state questions in this sitting**. The page contains booking IDs, room/start fields, creation times and statuses. It contains **no resident names and no event-contact fields**.
+
+The original 11:43 proposal was to export the separate announcement-contact dataset. Chapter 4's fixed rule returned **OUT OF SCOPE** because that dataset was outside the authorized booking exercise. That classification records a **proposed action**, not an executed export or observed privacy breach. The newer page supplies stronger evidence about Room 2 and Room 4 at 15:00, but provides **no new authorization or contact data**. It therefore changes the supported room-state replies, not the earlier export classification.
+
+The [NIST Privacy Framework Version 1.0 (CSWP 10)](https://csrc.nist.gov/pubs/cswp/10/nist-privacy-framework-version-10/final) is a voluntary, risk-based framework for managing privacy. Its **CT.PO-P1** concerns policies for authorizing and maintaining data processing; **CT.PO-P2** concerns data review, sharing and disclosure practices; its Control-P categories consider purpose, scope and relevant data-processing responsibilities. These are primary-source **concepts**, not evidence that Harbor Library obtained a person's consent, adopted any specific privacy policy, or has a legal notification obligation. The rule here is the **exercise's explicit authorization boundary**, not a claim about legislation or the intrinsic confidentiality of every booking.
+
+A safe learner decision distinguishes all four questions:
+
+| Decision question | Evidence or authority supplied | Supported response |
+|---|---|---|
+| May staff read **this** booking page for **this** sitting? | Today's owner names the synthetic 11:55 page for the booking question | Yes, within the named scope |
+| What does the page show for Room 2 / 15:00 and Room 4 / 15:00? | Confirmed SYN-002 and SYN-003 rows | Both slots are booked, without personal names |
+| May staff identify, enrich or contact the booking holders? | No name, mapping, identity-verification procedure or communication permission supplied | **Not authorized or established** |
+| May staff export the event contacts to announce a room update? | The dataset and action remain outside Chapter 2/4 scope | **No** under this exercise; preserve OUT OF SCOPE |
+
+Even if the visitor's question seems benign, the source and the permitted disclosure remain limited. A synthetic booking ID is not a verified human identity. Associating that ID with a contact name would be a **new data linkage**, requiring a distinct lawful and owner-authorized purpose in any real setting. The exercise does not permit the lookup, so do not create or invent a contact list to make the story convenient.
+
+### 19.5 Mechanism: prevent purpose expansion at the source boundary
+
+Before approving any information use, separate **the requested service outcome**, **the data elements needed**, **the current authorization**, **the recipient or audience**, and **the evidence that an action occurred**. This is a paper decision method for the classroom, not a claim that the library has a deployed access-control product.
+
+1. **Identify the legitimate booking question.** Someone asks whether a particular Room 2 or Room 4 slot is taken. The approved 11:55 page can support that **slot-state** question.
+2. **Read only relevant fields.** Room, start, booking status and, for internal provenance, booking ID are enough to distinguish SYN-002 and SYN-003. No resident identity is necessary for the visitor-facing answer.
+3. **Check whether the requested action changes purpose.** Exporting event subscribers to announce bookings is a **different processing activity** from reading booking availability. The purpose of the announcement contacts is not thereby converted into booking-notification permission.
+4. **Ask for evidence of authority, rather than inferring it.** A staff title, a newer paper, a helpful intention or the assumption that “everyone would want to know” is **not** approval to export, cross-reference or message contacts.
+5. **Withhold unapproved processing and communicate the supported answer.** Staff may say each requested 15:00 slot is taken based on the named page. They may not speak a resident name, add one to a row, export contacts, or assert that a message has been sent.
+6. **Refer a separate communication request to the responsible owner.** If a real notification is proposed, the appropriate service/data owner and designated communications or privacy decision-maker would need to define purpose, recipients, necessary fields, authorization, review and delivery evidence. These roles are **proposed verification routes**, not named Harbor Library positions or approvals already recorded.
+
+The [NIST Privacy Framework FAQ](https://www.nist.gov/privacy-framework/frequently-asked-questions) explains that the framework is jurisdiction-agnostic and does not itself impose mandatory legal rules. Its control vocabulary helps formulate the questions a responsible organization would ask. No legal duty to notify, consent, contact-list authorization, retention period or identity-mapping result is established here.
+
+### 19.6 Worked two-track reply: a room answer and a referral
+
+**Track A — what the desk can say now.** The owner-named 11:55 page visibly includes confirmed **SYN-002** for Room 2 at 15:00 and confirmed **SYN-003** for Room 4 at 15:00. An appropriate spoken reply is: “Room 2 at 15:00 is booked, and Room 4 at 15:00 is booked.” The worker does not need to read the booking IDs to the resident, and cannot supply any resident names from this sheet. The page does not establish whether every other room or start is available, or authorize creating a new booking.
+
+**Track B — what to do when someone asks for notifications.** A classmate says, “Export the event-contact list so everyone knows the rooms changed.” A defensible *internal referral*, not a sent message, is: “The current synthetic booking page supports the two occupied-slot statements. The proposed event-contact export is outside our exercise authority. A separately responsible data/communications owner would have to establish an approved notification purpose, permissible recipients and fields, review and release process before any contact processing. No export or message has occurred.” No consent, emergency exception or notification obligation is presumed.
+
+These tracks should not contaminate each other: an authorized room-state answer does not justify an unauthorized audience or data set; and a potential future communications need does not falsify the existing reservation rows.
+
+| Proposed shortcut | Why it fails | Safer bounded action |
+|---|---|---|
+| “The booking page is newer, so all staff uses of data are now allowed.” | Source validity for one question is not blanket data-processing permission | Keep booking and contact decisions separate |
+| “SYN-002 and SYN-003 tell us whom to call.” | Synthetic IDs provide no person mapping | Give slot state without identity |
+| “Use event subscribers as if they booked these rooms.” | Different original purpose and unknown relationship | Do not infer shared recipients |
+| “Draft a message and say it was sent.” | Proposed text is not an authorization or delivery receipt | Label internal referral or draft **not sent** |
+| “Clear OUT OF SCOPE because today has a current page.” | Chapter 4 classified an earlier fixed action under a separate boundary | Preserve the historic OUT OF SCOPE and tally |
+
+### 19.7 Controls against fabricated permission and evidence
+
+**Negative control A — a plausible recipient.** Imagine a student claims an event subscriber is also a room-booking holder. Without a verified mapping and owner approval this is an **unsupported assertion**, not a permitted contact. The correct action remains no export.
+
+**Negative control B — a communication emergency claim.** A classmate calls the notification urgent. Urgency alone does not establish an exception, legal obligation, consent, or a new instruction from the authorized owner. The safe response is referral, not an invented authorization.
+
+**Negative control C — a limited source that is accurate.** Suppose both confirmed rows are perfectly accurate for the named sitting. The contact data still do not appear on that page, and no person-specific disclosure right follows from its accuracy. Evidence and permission are independent gates.
+
+**Negative control D — counting fictional verdicts as operations.** The 11:43 OUT OF SCOPE line is a classification of a **proposed export**, not proof that any subscriber was contacted. The original census remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. No new export changes UNKNOWN, ALLOW or any historical label.
+
+The limitation is explicit: the classroom demonstrates an **authorization decision under a synthetic scope**. It does not establish how any actual library protects contacts, whether a real notification should be issued, or whether the organization is compliant with a specific law.
+
+### 19.8 EX035 independent evidence-and-authority worksheet
+
+Answer the original EX035 split note before reading [the worked answer](#answer-ex035). For each action—reading a room state, revealing a holder's name, exporting event contacts, and requesting notification review—write the **purpose**, **source**, **authority shown**, **allowed next step** and **missing evidence**. Then draft one resident-facing sentence for each occupied slot and a separate two-sentence internal referral that is explicitly **unsent**.
+
+The exercise passes if Room 2 and Room 4 at 15:00 remain booked without names, the contact export remains unperformed and OUT OF SCOPE, the proposed referral never becomes approval or proof of dispatch, and the published tally remains unchanged. A made-up patron, assumed consent, regulatory threshold or live-data check fails the scope criterion.
+
 ### Chapter 19 summary
 
 Naming the 11:55 page authorizes reading its booking rows. It does not authorize an event-contact export or a name written onto a row.
@@ -2489,6 +2556,10 @@ Naming the 11:55 page authorizes reading its booking rows. It does not authorize
 - **Task:** Separate the room answers you may give from the export you may not, and say what happens to the 11:43 label.
 - **Expected evidence:** A short split note.
 - **Rubric:** Credit when the two 15:00 slots stay taken without names, the export stays out of scope, no name is written on a row, and the census stays as printed.
+
+- **Independent extension:** Make a four-row authority matrix for room-state reading, identity linkage, event-contact export and referral to a data/communications owner. State each purpose, necessary data, evidence of permission, and the safe next step.
+- **Negative controls:** Neither the current 11:55 source nor a student's desire to notify people is proof of contact consent, lawful processing, access rights or a sent message. Treat the 11:43 export as an **unexecuted OUT OF SCOPE proposal**, not a privacy incident.
+- **Worked answer:** [EX035](#answer-ex035).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-19 -->
 ### Continue studying — chapter 19 of 20
@@ -2535,6 +2606,72 @@ The note can leave the room. The case cannot be declared finished.
 
 Another outage, a real retention rule, or a contact procedure would be further teaching if an owner defined them. They are not implied by reaching lesson 20. Other languages of this course are not published by this English note. Information security is a separate book. Read it when you mean to study that book, not as a substitute for an unanswered Harbor question.
 
+
+### 20.4 A releasable note is a verifiable decision artifact
+
+A **decision note** records which evidence a writer used, what question was answered, the authorization boundary, the resulting limited decision and the remaining uncertainty. A **provenance label** distinguishes the source and its time from the time or scope of the writer's conclusion. **Release-ready for instructional review** means that another learner or facilitator can check the note against the supplied sources and recognize its limitations. It does **not** mean that a public announcement was approved, transmitted, or that an incident was legally or operationally closed.
+
+The [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident-response recommendations within cybersecurity risk management and coordinated organizational activities. Applying its general principles of evidence-based coordination and communication here is **original teaching inference**. The publication does not classify Harbor Library's imaginary outage as a cybersecurity incident, specify this five-line format, appoint an approver, or certify the class's conclusions. No real alert, service investigation, incident ticket or recovery receipt has been obtained.
+
+A good note preserves five things independently: **source identity and chronology**, **precise supported statement**, **decision and authority**, **unmeasured or unresolved claims**, and **next owner question**. It is not a list of impressive words or a substitute for actual evidence.
+
+### 20.5 Evidence-to-claim ledger for the three pages
+
+| Artifact or input | What is supplied in the synthetic case | What may be said | What must not be inferred |
+|---|---|---|---|
+| **09:00 original printout** | Fixed historical snapshot: SYN-001 precedes it, SYN-002 is created later at 10:05 | The old paper omitted the later booking and underlies the 11:42 **REFUSE** in Chapter 4 | That the original run read newer pages or inspected a live reservation store |
+| **11:40 earlier owner-named page** | Two rows, SYN-001 and SYN-002; no SYN-003 row | At the earlier sitting, Room 2 / 15:00 was shown booked, while Room 4 / 15:00 was **not established** by that page | That zero Room 4 matches proved availability or that the page's permission persists for future sittings |
+| **11:55 page named for the current sitting** | Three rows including confirmed **SYN-002** and **SYN-003** | Room 2 / 15:00 and Room 4 / 15:00 are **both booked on this named page** | Any holder's identity, permanent fallback rule, permission to export contacts or executed booking |
+| **Chapter 4 fixed classifier output** | Four action labels with an UNKNOWN zero category | **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0** | Risk score, attack count, causal conclusion or a replacement result for the later pages |
+
+For the 11:55 page, **SYN-002** is Room 2 at 15:00, confirmed; **SYN-003** is Room 4 at 15:00, created 11:20, confirmed. The exact room/start match matters more than a narrative that simply calls a page “new.” The earlier 11:40 page's missing SYN-003 is not rewritten after the later page is released; the earlier **pending** conclusion remains the correct historical description of the earlier evidence.
+
+### 20.6 Mechanism: assemble a note that another learner can falsify
+
+1. **Specify the case and limits.** Label it a Harbor Library **synthetic tabletop**, not a tested public library or real incident. State the note's purpose: communicate the result of a bounded paper comparison.
+2. **List sources by identity and time.** Separate the original **09:00** printout, the earlier named **11:40** two-row page, and the current owner-named **11:55** three-row page. Do not blend them, silently change printout times, or promote an older owner's naming into today's permission.
+3. **Tie each conclusion to one relevant observation.** Room 2 / 15:00 is taken because the current page prints confirmed **SYN-002**; Room 4 / 15:00 is taken because it prints confirmed **SYN-003**. For an unlisted Room 4 / 16:00 query, availability would still be **unknown** without a complete approved source.
+4. **Copy the exact historical result without replaying it.** The 09:00-based four-action run returned the printed five-category census. Its ALLOW came from the **11:45 mark-pending** proposal; it was not an available-room or successful booking decision. The 11:43 export-contacts proposal stayed **OUT OF SCOPE**.
+5. **Make uncertainty and authority visible.** Neither the reason for the unavailable front-desk view nor the real operational print schedule, completeness of other slots, personal identities, data-sharing approval, safety, impact or likelihood was established. The exercise supplied no owner-issued permanent fallback rule.
+6. **Identify the next appropriate owner question.** A future use of a different day's record would require a newly named and checked source; a real notification would require separate data and communications authority. These are **dependencies for a future decision**, not activities already performed.
+7. **Do not claim closure or certification.** A note suitable for review does not certify a real incident as resolved, grant a credential, mark the book complete, or prove the organization secure. The editorial gate remains independent of reaching the twentieth chapter.
+
+The [NIST Privacy Framework Version 1.0](https://csrc.nist.gov/pubs/cswp/10/nist-privacy-framework-version-10/final) supports the general distinction between defined processing purposes and appropriate sharing; it does not authorize any contact-list export. The sources retain their own rights. All Harbor Library rows, responses, identifiers and record-handling procedures used here remain **original fictional classroom examples**.
+
+### 20.7 Fully worked, checkable five-line handoff
+
+A compact response to EX036 can satisfy the requested **five lines** while carrying every necessary boundary:
+
+> 1. **Source:** Harbor Library synthetic exercise; retain the original 09:00 paper, earlier named 11:40 two-row page, and current owner-named 11:55 three-row page as separate artifacts.
+> 2. **Room 2 / 15:00:** the current named 11:55 page shows **SYN-002 confirmed**, so this slot is **already booked**; no holder name is supplied.
+> 3. **Room 4 / 15:00:** the same page shows **SYN-003 confirmed**, so this slot is **already booked**; no holder name is supplied.
+> 4. **Historical classifier:** the fixed 09:00 exercise remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**; no rerun, contact export or real booking was performed.
+> 5. **Limit and next check:** the view outage's cause, real fallback refresh rules and broader availability remain unverified; later sittings need their own authorized source and booking decision.
+
+This is a **model note**, not a message actually transmitted to residents, a declaration of a legal duty, or a new operational authorization. The note preserves the earlier Room 4 question's pending status **for its prior source** without claiming the later 11:55 evidence existed during that earlier lesson.
+
+A facilitator can challenge each positive claim by consulting a named source and its row, and can challenge an overclaim by asking **where the supporting evidence or authority appears**. There is no need for a decorative flowchart: the claim/source table and concise note are independently reviewable.
+
+### 20.8 Contrast a supported report with five false endings
+
+| Proposed ending | Unsupported assumption | Safer treatment |
+|---|---|---|
+| “Room 4 was always free until we confirmed it.” | Previous silence was never proof of vacancy; current SYN-003 is an existing booking | Preserve both time-scoped statements |
+| “The two later pages prove the outage was an attack.” | Repeated SYN-002 rows show no attack mechanism or cause | State **cause not established** |
+| “UNKNOWN 0 and ALLOW 1 prove the library is safe.” | Classifier coverage and mark-pending permission are not a security evaluation | Preserve the census without safety or risk conclusions |
+| “We can now export contacts to alert everyone.” | Booking-page naming never granted contact processing authority | Keep the 11:43 proposal OUT OF SCOPE; refer separately |
+| “Use the 11:55 page for every outage and mark the book finished.” | The page naming was bounded to this sitting; lesson-count baseline is not the quality gate | Request new source authorization; keep editorial review pending |
+
+Neither “there was definitely an incident” nor “there was definitely no incident” follows from the paper exercise. The supported assertion is narrower: **no real incident determination has been made using real evidence**. The purpose of the note is to avoid replacing that uncertainty with a reassuring conclusion.
+
+### 20.9 Independent validation and publication gate
+
+Before opening [the worked EX036 answer](#answer-ex036), create your own five-line note. Under each line, annotate **which exact artifact or action supports it**, **who named that source for the relevant sitting**, and **what is not proven**. Then try three negative controls: (a) remove the 11:55 page and see which current taken-slot statements lose their basis; (b) replace the historical 09:00 source with the 11:40 page and explain why the original REFUSE cannot be recalculated retrospectively; (c) pretend the 11:55 page grants contact export and identify the purpose and authority not supplied.
+
+The assessment succeeds when the note preserves **all three pages**, **both confirmed 15:00 room states**, **the exact original tally**, and **at least one unanswered source or cause question**. It fails when the writer invents a person, source check, outbound message, permanent rule, attack, risk score, closure, diploma or accredited qualification.
+
+Reaching **20 authored chapters** satisfies the rapid course's **minimum planned lesson count**, not the publication gate for a finished volume. Under [BOOK_STANDARD.md](../../../../../BOOK_STANDARD.md), the full book still requires verified teaching coverage, sound sources, technical and editorial review, accessible navigation and checked exercises/answers. No such whole-volume review or credential approval is claimed by this exercise or by the existence of its leaving note.
+
 ### Chapter 20 summary
 
 The leaving note lists the named sheet, the taken slots, the untouched census, and the open questions. It does not close the case, name a person, free a room, or convert this exercise into a standing rule.
@@ -2549,6 +2686,10 @@ The leaving note lists the named sheet, the taken slots, the untouched census, a
 - **Task:** Replace that ending with the sheet you rely on, the two 15:00 answers, the census, and one question the folder still cannot answer.
 - **Expected evidence:** Five checkable lines.
 - **Rubric:** Credit when both named-page slots stay taken, the census is quoted unchanged, at least one real open question remains, and the security claim, the free room, and the monthly rule are all gone. Declaring the book finished does not earn credit.
+
+- **Independent extension:** Write five checkable lines naming all three page times and their roles, the Room 2 and Room 4 / 15:00 confirmed rows, the exact 09:00 classifier tally, and at least one honest uncertainty. Under each line identify its source and what stronger claim would require another check.
+- **Negative controls:** Reject incident closure, blanket safety, a standing 11:55 rule, a contact-list notification, affected-person claims and academic accreditation. The Chapter 20 endpoint does not establish completion of the whole book.
+- **Worked answer:** [EX036](#answer-ex036).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-20 -->
 ### Continue studying — chapter 20 of 20
@@ -2886,10 +3027,43 @@ The four EX034 lines can be: **(1)** “Keep the 09:00 printout as the fixed his
 
 **Custody and retention limit:** A separate inventory slip may label each synthetic page's heading, row set, relevant sitting and authorized role; no real human collector, signature, transfer, hash or printer receipt has been supplied. The instruction to preserve them is **for this exercise's reviewability**, not a real-world retention law, legal hold, or indefinite-storage requirement. Any actual organization would need its own authorized records/retention determination. The historic census remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**.
 
+<a id="answer-ex035"></a>
 ### EX035 — Worked result
 
 Room 2 at 15:00 and Room 4 at 15:00 stay taken from the named page, with no names spoken or written. The event-contact export stays out of scope, and the 11:43 label stays OUT OF SCOPE. The census does not gain a fifth action.
 
+
+**Expanded worked purpose/authority separation (EX035).** The owner-named 11:55 booking page provides two positive **slot-state** observations: SYN-002 is confirmed for Room 2 / 15:00 and SYN-003 for Room 4 / 15:00. The resident-facing result is **“both 15:00 slots are booked,” with no holder names or unnecessary IDs disclosed**. The page gives no identity mapping, event-contact records, subscriber-to-booker relationship, notification purpose, authorization, consent, transmission receipt or legal duty. Therefore neither exporting announcement contacts nor attaching invented personal names to either booking is justified.
+
+| Proposed activity | Purpose and data at issue | Authority/evidence supplied | Correct result |
+|---|---|---|---|
+| Answer whether Room 2 / 15:00 and Room 4 / 15:00 are booked | Booking page: room/start/status; IDs only for internal provenance | Specific 11:55 page named for this sitting | Say **taken**, without a person |
+| Identify who holds either reservation | Additional personal-data mapping not present on the page | **None** | Do not guess, link or write a name |
+| Export event contacts to announce bookings | A different dataset, audience and processing purpose | Explicitly excluded; Chapter 4 classified the **11:43 proposal OUT OF SCOPE** | No export, message or fifth logged action |
+| Refer a proposed notification for review | A *question* about lawful purpose, recipient, authorization, scope, review and dispatch | Referral is a suggested next step, **not a granted permission** | Ask the separately responsible owner through an approved channel; do not assert anyone approved or sent it |
+
+**Worked spoken reply:** “Room 2 at 15:00 is booked, and Room 4 at 15:00 is booked.” **Separate unsent internal referral:** “The booking page supports those two occupied-slot observations but contains no patron identities or event contacts. Any notification proposal requires a separately authorized data/communications owner to determine its purpose, audience and permitted information; no export or notification has occurred.”
+
+The full historic classifier is **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. Its OUT OF SCOPE does not prove an actual disclosure. An accurate answer may use different words, but credit requires the two slot states, purpose separation, no inferred resident identity, no unauthorized export and no retrospective alteration of the log.
+
+<a id="answer-ex036"></a>
 ### EX036 — Worked result
 
 The note names the 11:55 page for this exercise. Room 2 at 15:00 is taken from `SYN-002`. Room 4 at 15:00 is taken from `SYN-003`. The census remains `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`. The outage cause is still not established. The security claim, the free room, and the monthly 11:55 rule are removed. Reaching lesson 20 does not finish the book.
+
+**Expanded worked five-line closeout-without-closure note (EX036).**
+
+> 1. **Sources:** In the synthetic Harbor Library case, the 09:00 printout, earlier 11:40 two-row page and current owner-named 11:55 three-row page are three separate, preserved artifacts with different temporal/authority scopes.
+> 2. **Room 2 / 15:00:** the 11:55 page prints SYN-002 as confirmed, so this slot is **booked** in the current sitting, without a person identified.
+> 3. **Room 4 / 15:00:** the same page prints SYN-003 as confirmed, so this slot is **booked** in the current sitting, without a person identified; the earlier page's silence about Room 4 remains its true historical observation.
+> 4. **Historical lab:** STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0 is the unchanged four-action census of the original 09:00-based program, with ALLOW for 11:45 **mark-pending** and OUT OF SCOPE for the 11:43 proposed contacts export.
+> 5. **Limit and next question:** the cause of the unavailable view, any real fallback policy, security/impact assessment and authorization for a future sitting remain unverified; seek a separately named current source and authorized procedure rather than claiming the library is secure or the case is closed.
+
+| Model-note assertion | Traceable basis | Stronger statement not supported |
+|---|---|---|
+| Three distinct page identities | 09:00 fixture, owner-scoped 11:40 and 11:55 pages | One composite, permanent authoritative schedule |
+| Two current taken slots | Confirmed SYN-002 and SYN-003 on the specifically named 11:55 page | Room free, new booking executed, patron name known |
+| Historical five-counter line | Chapter 4 written fixture and exact printed output | Risk score, successful attack, current-page rerun, incident closure |
+| Open cause and future authority | No diagnostic records or new standing rule supplied | Assurance that operations are safe or any actual incident is resolved |
+
+**Negative-control reasoning:** Without the named 11:55 artifact, this sitting would lack the direct current proof for both slot-state statements. Replacing the Chapter 4 09:00 assumption with a later page would create a **different test**, not fix the historic result. Booking-page authority does not open event contacts or establish that a notification was sent. This response is a **teaching handoff suitable for facilitator review**, not a real external dispatch, completed incident report, legal advice, credential, or proof that the book passed its full technical and editorial publication gate. Equivalent five-line notes earn credit when they maintain every evidence/authority distinction without claiming completion.
