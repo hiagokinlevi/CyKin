@@ -2003,6 +2003,59 @@ Room 4 at 15:00 is taken because the named page says so. Room 2 at 15:00 is take
 
 A facilitator may write that the pages differ by one row. That sentence does not choose a room, does not name a person, and does not declare a cause. The next chapter looks at a different temptation: deleting a printed row because of the clock inside it.
 
+
+### 15.4 Integrity belongs to an identified artifact
+
+**An artifact** is a particular record with its own source, content and time basis. A **source designation** is an owner's authorization to use that artifact for a bounded decision. A **comparison** is an analytical observation about two artifacts; it is not itself a newly issued schedule. An **unauthorized derivative** is a document assembled or edited without the process and provenance necessary to replace either original.
+
+In this exercise the older 11:40 page belongs to an earlier sitting and has two rows, SYN-001 and SYN-002. The currently owner-named 11:55 page has three rows, SYN-001, SYN-002 and SYN-003. SYN-002 is printed on both. SYN-003 is printed only on the newer page. Those differences are supplied synthetic facts, not evidence that an attacker changed data, that a real printer failed, or that a production replica synchronized successfully. A newer page can legitimately include a later booking.
+
+**Information integrity** asks whether records remain accurate and are modified only under an authorized process. Preserving two different, dated records can be more accurate than making them visually equal. The [NIST Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29) includes data security and managed authorization outcomes. The [NIST SP 800-53 Rev. 5 SI-7 and AU-3 controls](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) discuss information integrity and meaningful event record content. These are conceptual primary references, **not** a claim that the fictional Harbor Library implemented those controls or that its papers have digital signatures.
+
+| Artifact or derivative | Rows represented in this case | Authority for the current sitting | Appropriate handling |
+|---|---|---|---|
+| Original 11:40 page | SYN-001, SYN-002 | Approved only for the earlier sitting | Keep unchanged as historical evidence |
+| Named 11:55 page | SYN-001, SYN-002, SYN-003 | Named by the owner for this sitting | Read **all three rows** as printed |
+| Separate comparison note | SYN-002 on both; SYN-003 on 11:55 only | Analysis, **not** booking-source authorization | Label as comparison and cite both pages |
+| Hand-edited hybrid | Old page with additions or new page with deletions | None supplied | Do not substitute for either source |
+
+The rule for comparing documents is **observe both and describe the difference without editing either**. A legitimate reconciliation note needs a source label for each statement, the scope of the comparison and a limitation. It must not silently become a third schedule from which staff promise a room.
+
+### 15.5 Why both proposed edits create false provenance
+
+**Edit A: copy SYN-003 onto the 11:40 page.** This would make the earlier page appear to have printed a booking that was **not** on that earlier artifact. The added line might match a record legitimately present on the 11:55 page, but correspondence to a later fact does not authenticate the history of an older paper. The result is an altered derivative, not a corrected 11:40 printer output. If a controlled correction procedure existed, its author, time, purpose, approval and original would need to remain distinguishable; no such procedure is provided in the exercise.
+
+**Edit B: cross out SYN-002 on the 11:55 page.** This hides a row actually printed on the currently named three-row source. SYN-002 is confirmed for Room 2 at 15:00. Its presence on the earlier page does not justify removing it from the later one. Repetition is not cancellation. An authorized cancellation, if any, would need separate evidence, but none was released.
+
+Each edit changes what the reader sees and thus creates a **different third set of assertions**, even if no additional physical page is printed. Combining the two edits creates two altered pages and an artificial “best of both” story. Neither derivative was named by the owner. Changing a record to make the answer look convenient is an integrity failure of the classroom artifact, not proof that a malicious intrusion occurred.
+
+A separate written comparison is different: “11:40: SYN-001/SYN-002; 11:55: SYN-001/SYN-002/SYN-003.” This claim can be checked directly against the supplied rows. It has no power to alter reservation statuses or to extend the older sheet's expired authorization.
+
+### 15.6 Worked source-to-decision example
+
+The current owner has named the 11:55 page for this exercise. Answer using **both room and start**, and the printed status:
+
+| Question | Row on the named 11:55 page | Supported answer | Unwarranted inference |
+|---|---|---|---|
+| Room 2 at 15:00 | SYN-002, confirmed | The slot is **taken** | A repeated row is obsolete or may be removed |
+| Room 4 at 15:00 | SYN-003, confirmed | The slot is **taken** | The old page's silence makes this room free |
+| Room 4 at 16:00 | No matching row on this limited page | Availability **not established**; keep request pending | Missing row means free |
+| Which row was on the 11:40 page? | Earlier source has SYN-001/SYN-002 only | The earlier artifact lacked SYN-003 | A pencil annotation can rewrite the historical observation |
+
+The current question is not answered by merging sheets. The new named source already gives a supported **taken** response for both 15:00 slots. It does not identify the residents behind SYN-002 or SYN-003, authorize a transaction, explain an outage, or prove that all future sources are complete.
+
+Chapter 4 remains a separate, already completed 09:00-based classifier. Its exact census stays **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. The original ALLOW belongs to the **11:45 mark-pending** action. It was not a real booking or a Room 4 availability result. Neither row comparison nor handwritten amendment creates a new action in that log.
+
+### 15.7 Negative controls and bounded practice
+
+**Negative control: same text, different authority.** A worker makes an apparently perfect transcription of the 11:55 rows into a new sheet. The copied fields may be accurate, but the owner named **the original 11:55 artifact**, not this student's derivative. Matching data do not make the derivative an approved booking source.
+
+**Negative control: fewer rows appear simpler.** The worker crosses out SYN-002 because it was seen yesterday. This would discard a confirmed Room 2 / 15:00 row. It cannot be defended by calling it de-duplication: the rows are on **separate time-stamped objects**, not accidental duplicates within a single booking register.
+
+**Negative control: older missing row.** The 11:40 page lacks SYN-003; that does not prove Room 4 was available in a complete underlying system, nor does the later SYN-003 row retroactively make the original page print a third row. Preserve the distinct evidence scopes.
+
+**Independent EX031 exercise extension:** Before reading [the worked EX031 result](#answer-ex031), create a four-row table describing the old paper, the named new paper, a legitimate comparison note and the proposed altered composite. For each classify it as source or derivative, list which SYN rows actually belong to it, state whether today's owner named it, and explain whether it can justify a spoken slot-state answer. Then explain why the two proposed edits are separate integrity failures. The exercise passes only if **both** current 15:00 slots remain booked on the named page, both originals remain intact, and no extra schedule, name, cause or program run is invented.
+
 ### Chapter 15 summary
 
 Use the page this exercise named, with all of its rows. Do not manufacture a schedule by moving lines between sheets.
@@ -2017,6 +2070,10 @@ Use the page this exercise named, with all of its rows. Do not manufacture a sch
 - **Task:** Name the page you will read, the two edits you will not make, and the two 15:00 answers those pages' named sheet already supports.
 - **Expected evidence:** A short note a reader can check against both pages.
 - **Rubric:** Credit when the 11:55 page is read whole, both older and newer sheets stay unmarked, and both 15:00 slots that the named page lists are treated as taken.
+
+- **Independent comparison extension:** Prepare a ledger distinguishing the original two-row 11:40 page, the owner-named three-row 11:55 page, a labeled comparison note and an unauthorized handwritten hybrid. Explain which row is present on each original, which source is named now, and why a visually consistent blend does not restore provenance.
+- **Negative control:** Copying SYN-003 to 11:40 and deleting SYN-002 from 11:55 are not symmetrical corrections. Both alter what was printed; a comparison note changes neither. Keep the original four-action tally untouched.
+- **Worked answer:** [EX031](#answer-ex031).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 20
@@ -2061,6 +2118,56 @@ The useful line is: created 11:20, page 11:55, row present, slot taken, old log 
 
 Nothing in the two times explains the unavailable booking view. Nothing in them measures how often a desk prints. The next chapter asks what a repeated row can prove, which is a smaller claim than a cause.
 
+
+### 16.4 Separate creation, page, observation and program time
+
+A timestamp has meaning only with its **event type and source**. A booking's **created time** is not its requested room start or its cancellation time. A sheet's **heading time** identifies the page's stated snapshot time. An **observation time** would say when the worker actually inspected it. A **program cutoff** describes the constant used in a prior simulated computation. Confusing these clocks can make an intact printed row look stale or make a later piece of evidence appear to change a finished program.
+
+| Time concept | Value supplied in this synthetic case | What it establishes | What it does not establish |
+|---|---|---|---|
+| SYN-003 booking creation | **11:20** | The record's given creation time | Cancellation, expiry or identity |
+| Named sheet's heading | **11:55** | The time written on the page where SYN-003 is printed | Independent printer/sync log or freshness for all future decisions |
+| Learner's direct observation | Described, but **no separately timestamped receipt** | The visible named page and row were inspected in this exercise | An invented 11:56 inspection timestamp or proof of production behavior |
+| Chapter 4 PRINTOUT constant | **09:00** | The fixed historical synthetic printout used in the original run | Content of the later 11:55 page |
+| Requested room start | **15:00** | The slot to compare with SYN-003's Room 4 | The time of creation or printing |
+
+**11:20 precedes 11:55**. That is compatible with a booking made earlier appearing on a later sheet. It is not a rule that anything created before the heading must be removed. The current named page explicitly prints SYN-003 as **confirmed** for Room 4 at 15:00. Within this bounded exercise, the supported room-state statement is **already booked**. A different row status or authenticated later cancellation might change a future decision, but this chapter supplies neither.
+
+[NIST SP 800-92, Guide to Computer Security Log Management](https://csrc.nist.gov/pubs/sp/800/92/final) discusses time context and log records. It is a publication from **2006**; its general provenance ideas are used here, not dated instructions for a current production logging architecture. [NIST CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) discusses information-protection and governance outcomes. Neither source demonstrates how Harbor Library actually generates printouts.
+
+### 16.5 Mechanism: decide from the artifact that exists
+
+First identify the **named 11:55 paper** and the scope of the owner's grant: this sitting only. Second read the **whole** relevant row, including booking ID, room, start, created time and status. Third compare the fields that answer the actual question: Room 4 plus 15:00, with **confirmed** as the existing reservation state. Fourth keep the historical classifier's inputs and outputs in their own record. This separates the question “what does this printed page show?” from “what would another program run do if someone changed its input?”
+
+The old Chapter 4 program used only SYN-001 and SYN-002 in its BOOKING fixture and a fixed PRINTOUT of 09:00. Its four recorded actions were at 11:42, 11:43, 11:44 and 11:45: proposed confirmation from old paper (**REFUSE**), event-contact export (**OUT OF SCOPE**), opening the live site (**STOP**), and marking pending (**ALLOW**). The later SYN-003 booking is **not an input to that historical run**. A sentence about its 11:20 creation cannot retroactively append it to a previously executed fixture.
+
+Even in a separately labeled counterfactual run with extra bookings, the rule's **mark-pending** branch does not test Room 4's availability; it returns ALLOW because recording a pending request is within scope. Thus the proposed “SYN-003 flips ALLOW to REFUSE” is incorrect **both** about the historic dataset and about which branch produced ALLOW. The old output remains:
+**STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**.
+
+### 16.6 Worked contrasting claims
+
+| Proposed claim | What is confused | Correct decision |
+|---|---|---|
+| “Created at 11:20 means SYN-003 is too old for 11:55.” | Creation time versus a later page's content and printed status | **Keep SYN-003**; Room 4 / 15:00 remains taken |
+| “After 09:00 means the old program must change.” | A later lesson's fact versus the earlier program's actual inputs | **Do not revise or rerun** the published census |
+| “The ALLOW was for a free Room 4.” | Mark-pending action versus real availability | ALLOW means the safe pending action was classified as permitted |
+| “The 11:55 heading proves the full database synchronized.” | Source heading versus independent system provenance | State only what the fictional page shows |
+| “The learner inspected at 11:56.” | Observation described versus precise receipt | **No exact observation time supplied** |
+| “SYN-002 is older, so strike it from the later page.” | Duplication across documents versus canceling a booking | Keep the printed confirmed row for Room 2 / 15:00 |
+| “A confirmed row tells us who booked it.” | Synthetic identifier versus personal identity | Give the slot state without a name |
+
+**Worked handoff:** “The owner-named 11:55 synthetic page prints SYN-003 (created 11:20, Room 4, start 15:00, confirmed), so the slot is already booked in this sitting. SYN-002 remains a separate confirmed Room 2 / 15:00 row on the same page. No observation receipt with an exact inspection time was supplied, and no data establish the real printer's update mechanism. The 09:00-based four-action laboratory remains unchanged; its ALLOW was mark-pending at 11:45. No production check, new booking, cancellation or disclosure took place.”
+
+### 16.7 Negative controls and independent clock practice
+
+**Control A: chronology only.** If the creation time stays 11:20 and the heading stays 11:55, the row remains visible and confirmed. The ordering 11:20 < 11:55 does not justify deleting it. To withdraw the slot-state statement would require different relevant evidence, such as a separately authorized later status change, which is **not supplied**.
+
+**Control B: a new hypothetical fixture.** If a student changes the Chapter 4 booking array to insert SYN-003, this creates a different hypothetical test. It cannot change the recorded output of the original four-action run; the student must not label the altered result as the original.
+
+**Control C: incomplete temporal provenance.** The exercise supplies no exact observation receipt and no independent clock-synchronization log. That limits operational claims about timestamp accuracy but does **not** justify pretending the supplied row was absent.
+
+**Independent EX032 exercise extension:** Before opening [the worked EX032 result](#answer-ex032), write a five-field clock ledger covering creation 11:20, heading 11:55, observation **not supplied**, original program cutoff 09:00, and requested start 15:00. Then answer the original three-part prompt and test the claims “before page time means expired” and “after program cutoff means change ALLOW.” Explain each false inference in terms of **field meaning and actual inputs**, not merely clock arithmetic. Keep the entire printed current page and historical lab untouched. No executable rerun, real-system probe, or new observation is part of this practice.
+
 ### Chapter 16 summary
 
 A created time locates a booking. A heading locates a page. A printed row stays printed. The finished 09:00 census is not rewritten to match a clock from a later sheet.
@@ -2075,6 +2182,10 @@ A created time locates a booking. A heading locates a page. A printed row stays 
 - **Task:** State what each clock means, whether the row stays, and what happens to ALLOW.
 - **Expected evidence:** Three statements a reader can check against `SYN-003` and the published census.
 - **Rubric:** Credit when the row stays, Room 4 at 15:00 stays taken on the named page, and ALLOW is not rewritten.
+
+- **Independent timing extension:** Distinguish the creation time 11:20, heading 11:55, observation time (not supplied), earlier program time 09:00 and slot start 15:00; state which claim each can support and the missing provenance for any stronger claim.
+- **Negative control:** Reject both deletion of a printed confirmed row and retroactive alteration of the completed Chapter 4 lab. ALLOW was assigned to mark-pending, not Room 4 availability.
+- **Worked answer:** [EX032](#answer-ex032).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 20
@@ -2565,13 +2676,46 @@ Today's owner named the 11:55 page. `SYN-003` prints Room 4 at 15:00 as confirme
 
 An acceptable original three-sentence answer is: **(1)** “Today's owner named this 11:55 page only for the current sitting.” **(2)** “SYN-003 shows an existing confirmed Room 4 / 15:00 booking, so that slot is taken and no person's name is given.” **(3)** “I will not rewrite the earlier Chapter 12 note of silence on its different 11:40 page or the Chapter 4 tally STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0.” The old ALLOW was for the **11:45 mark-pending** proposal in the fixed Chapter 4 log, not proof of Room 4 availability or a receipt for an executed booking. A new record may provide more evidence for a later sitting **without retroactively changing what the older artifact said**. Do not backdate the new sheet to Chapter 13, manually merge the sheets, claim a live test, or identify fictional patrons.
 
+<a id="answer-ex031"></a>
 ### EX031 — Worked result
 
 Read the 11:55 page whole. Do not copy `SYN-003` onto the 11:40 page, and do not strike `SYN-002` from the named page. Both 15:00 slots printed on the named page are taken. The sheets stay unmarked.
 
+
+**Expanded EX031 worked comparison.**
+
+| Item | Rows actually supplied | Current authority | Correct treatment |
+|---|---|---|---|
+| Earlier 11:40 page | SYN-001 and SYN-002 | Historical, limited to older sitting | Preserve unmarked |
+| Current 11:55 page | SYN-001, SYN-002 and SYN-003 | Owner-named for this sitting | Read all rows; Room 2 and Room 4 at 15:00 are each booked |
+| Separate comparison note | SYN-002 appears on both; SYN-003 appears on 11:55 only | Analytical derivative, not booking authority | Label and retain beside originals |
+| Proposed hybrid | Extra SYN-003 on older page, crossed-out SYN-002 on newer page | Not authorized | Reject as altered source |
+
+The original EX031 response is: **Use the 11:55 page whole.** Do not copy SYN-003 onto the 11:40 page: it would falsify the earlier artifact's two-row history. Do not strike SYN-002 from 11:55: that would conceal an existing printed confirmed Room 2 / 15:00 booking. SYN-003 independently shows Room 4 / 15:00 booked on the current named page. These edits would produce altered derivatives or a fabricated composite rather than a correctly authorized third source. Preserve both pages and keep any comparison note distinct. The historic Chapter 4 census remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**.
+
+**Grading contrast:** Even if the modified paper happened to lead to a correct-looking room-state answer, that does not restore the altered source's origin or authorization. Credit requires the two source identities, the two distinct rejected changes, the two confirmed room/start conclusions, and preservation of the earlier record. Do not claim attack, actual synchronization, booking execution or a resident identity.
+
+<a id="answer-ex032"></a>
 ### EX032 — Worked result
 
 11:20 is when `SYN-003` was created. 11:55 is the page heading. The row is on the named page, so Room 4 at 15:00 stays taken. ALLOW is not flipped. The program is not started again.
+
+
+**Expanded EX032 worked timing table.**
+
+| Field | Case value | Interpretation |
+|---|---|---|
+| SYN-003 creation time | **11:20** | Synthetic record creation, not a cancellation |
+| Named 11:55 page heading | **11:55** | Stated paper time and directly visible confirmed SYN-003 row |
+| Learner observation time | **No exact receipt supplied** | Inspection occurred in the classroom; do not invent a clock |
+| Chapter 4 PRINTOUT | **09:00** | Fixed prior classifier input with SYN-001 and SYN-002 only |
+| Room 4 requested start | **15:00** | Booking slot, not the time the record was made |
+
+Three correct EX032 statements are: **(1)** “11:20 is when SYN-003 was created, while 11:55 is the heading of the owner-named current page.” **(2)** “That page prints SYN-003 as confirmed for Room 4 at 15:00; an earlier creation time does not cancel or erase the row, so the slot is taken.” **(3)** “The Chapter 4 run used the 09:00 printout and its original two-booking, four-action fixture. The later row cannot retroactively change its ALLOW, REFUSE or totals.”
+
+The fixed lab's REFUSE was the 11:42 Room 2 / 15:00 confirmation proposal from stale paper; OUT OF SCOPE was proposed contacts export at 11:43; STOP was proposed live-site use at 11:44; ALLOW was **11:45 mark-pending**, not a Room 4 booking. Therefore the census stays **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. If the classmate imagines adding SYN-003 to the old code, that is a **different, unexecuted fixture** and still does not make mark-pending into a conflicting-room check.
+
+**Falsifiers:** “Old at 11:55” mistakes creation for expiry, despite a visible confirmed row. “After 09:00, flip ALLOW” substitutes later evidence for old inputs and mistakes the ALLOW action. Either error fails the technical objective even if the numerical ordering of the clocks is accurate.
 
 ### EX033 — Worked result
 
