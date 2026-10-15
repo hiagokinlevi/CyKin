@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 6,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "d411afd0e21041c71384be9688a37e768bd51f9f",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-06",
+  "source_sha256": "7c6fe311d3dd8f5a7577e997e9d09a02e3c7fc12ffeb2053b32d047177d03c39",
+  "case_note": "Millbrook Hospital, devices, addresses and events are synthetic. Q04 appends one documentation-range entry to the offline lab; it does not amend the source case. No question grants authority to probe real systems. Exposure and connection attempts do not by themselves confirm intrusion or physical impact.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A commissioning ticket is closed, but its public BMS port-forward remains. Which statement is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The support purpose makes continued exposure approved"
+        },
+        {
+          "id": "b",
+          "text": "Closing the ticket ends the network route"
+        },
+        {
+          "id": "c",
+          "text": "Active forwarding can outlast the commissioning task"
+        },
+        {
+          "id": "d",
+          "text": "Gateway accounts automatically disable the port-forward"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A completed task and an active network rule are different states. Section 6.1 describes a commissioning rule left behind after the project, alongside contractor port openings and added routers as exposure routes. A legitimate original purpose does not establish continuing approval. Closing paperwork does not remove a rule, and providing gateway accounts does not itself disable the old forwarding. The network configuration must be addressed through its owner, rather than assumed to match the ticket.",
+      "source": "Chapter 6, §6.1 \"How it happens\"; §6.5 \"Preventing recurrence\"; EX026 \"How exposure happens\""
+    },
+    {
+      "id": "Q02",
+      "prompt": "Aisha is assigned only to analyse a supplied exposure export. Which boundary still applies?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Active testing needs explicit network-team authorisation"
+        },
+        {
+          "id": "b",
+          "text": "Public visibility permits testing any listed address"
+        },
+        {
+          "id": "c",
+          "text": "Hospital ownership alone authorises her probing"
+        },
+        {
+          "id": "d",
+          "text": "A contractor's past access grants her testing permission"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 6.2 assigns export production to the network team or an authorised service and tells the analyst not to probe hospital addresses without network-team authorisation. An analysis assignment is not an active-testing mandate. Visibility on the internet is not permission, ownership alone does not assign Aisha that task, and a contractor's previous access cannot grant her authority. The chapter also excludes other hospitals from her testing scope. This question calls for no live probing.",
+      "source": "Chapter 6, §6.2 \"Checking exposure\"; \"Errors and limits\"; EX030 \"Testing boundary\""
+    },
+    {
+      "id": "Q03",
+      "prompt": "In the original Lab 6, what does 'unapproved: 2' count?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Two distinct public IP addresses"
+        },
+        {
+          "id": "b",
+          "text": "Two confirmed control-system intrusions"
+        },
+        {
+          "id": "c",
+          "text": "Two entries, including the approved gateway"
+        },
+        {
+          "id": "d",
+          "text": "Two found IP/port entries absent from the approved set"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The final sum tests each found entry against the approved set using its IP address and port. The gateway at 203.0.113.10:443 matches; 203.0.113.24:47808 and 203.0.113.24:80 do not, so the count is two. Both unapproved entries share one address, and the gateway is excluded from that count. The program neither counts intrusions nor observes device behaviour: it compares supplied synthetic data offline. Its result does not establish compromise.",
+      "source": "Chapter 6, §6.2 \"Checking exposure\", Lab 6 final sum and verified output; §6.3 \"Reading the result\"; EX027 \"Third finding\""
+    },
+    {
+      "id": "Q04",
+      "prompt": "Offline variant adds 203.0.113.24:443 labelled 'VPN gateway'; approved stays unchanged. Which check rejects it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Matching the service label against gateway names"
+        },
+        {
+          "id": "b",
+          "text": "Exact (IP address, port) membership in approved"
+        },
+        {
+          "id": "c",
+          "text": "Counting services that share the same address"
+        },
+        {
+          "id": "d",
+          "text": "Comparing the port number alone with 443"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The program checks the exact pair, not the label, the number of services on a host or the port by itself. The approved pair is (203.0.113.10, 443), so (203.0.113.24, 443) is absent even with the same port and a gateway label. Appending this synthetic entry therefore adds another NOT APPROVED result and raises the unapproved count from two to three. This is a labelled offline variant, not a newly observed service or a change to the chapter's original case.",
+      "source": "Chapter 6, §6.2 \"Checking exposure\", Lab 6 approved set and membership tests; EX027 \"Third finding\" (same pair-matching principle, different synthetic input)"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which assessment uses T0883 appropriately for the exposed BMS route?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A software exploit has already been proved"
+        },
+        {
+          "id": "b",
+          "text": "An unauthorised setpoint change has been confirmed"
+        },
+        {
+          "id": "c",
+          "text": "A possible direct-internet access path is identified"
+        },
+        {
+          "id": "d",
+          "text": "An approved gateway session is automatically malicious"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Chapter 6 names T0883 Internet Accessible Device for the direct exposure. MITRE describes potential access through inadequately protected internet-facing industrial devices, rather than requiring a software exploit. This makes the technique relevant to the access path, but the export alone does not prove an adversary used it. Neither exploitation nor a setpoint change follows from reachability, and legitimate gateway access is not automatically malicious. Classify the exposure while keeping actual intrusion and impact unconfirmed.",
+      "source": "Chapter 6, §6.1 \"How it happens\"; §6.3 \"Reading the result\"; EX028 \"Technique name\". Primary cross-check: MITRE ATT&CK for ICS, T0883 description, https://attack.mitre.org/techniques/T0883/"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Why prioritise the chapter's exposed BACnet/IP route with estates?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its port number identifies who changed the equipment"
+        },
+        {
+          "id": "b",
+          "text": "Two open services prove two compromised controllers"
+        },
+        {
+          "id": "c",
+          "text": "A functioning web page limits harm to confidentiality"
+        },
+        {
+          "id": "d",
+          "text": "The path may permit commands affecting building plant"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 6.3 links the exposed route in this deployment to theatre air and chiller settings. That potential physical-control consequence makes it more than a possible information disclosure and explains involving estates. A port number does not identify an actor; open-service counts do not establish the number of compromised controllers; a responsive web page does not exclude integrity or operational harm. The question concerns the chapter's deployment and possible consequences, not a universal claim about all BACnet configurations or confirmed patient harm.",
+      "source": "Chapter 6, §6.3 \"Reading the result\", both paragraphs"
+    },
+    {
+      "id": "Q07",
+      "prompt": "After identifying unapproved exposure, which action preserves change ownership?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Report to network and estates; network owner handles emergency closure"
+        },
+        {
+          "id": "b",
+          "text": "The analyst changes the firewall and documents approval afterwards"
+        },
+        {
+          "id": "c",
+          "text": "The contractor alone decides whether direct exposure remains open"
+        },
+        {
+          "id": "d",
+          "text": "No response occurs until a successful intrusion is confirmed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 6.4 requires immediate reporting to the network team and estates and asks the network owner to close the exposure through emergency change. Urgency does not transfer ownership to the analyst or make retrospective approval sufficient. The contractor needs a supported route, not unilateral control over exposure. Containing an unapproved path need not wait for proof of intrusion; retain the export, times and log extracts and investigate its origin and possible use. The worked example provides gateway accounts instead of leaving the direct route.",
+      "source": "Chapter 6, §6.4 \"Responding\"; \"Worked example (synthetic Millbrook)\"; EX029 \"Response steps\""
+    },
+    {
+      "id": "Q08",
+      "prompt": "Firewall logs show outside attempts to port 47808. What is established before controller evidence is checked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A malicious control change definitely occurred"
+        },
+        {
+          "id": "b",
+          "text": "Attempts occurred; their control-system effects remain unconfirmed"
+        },
+        {
+          "id": "c",
+          "text": "Every attempt was blocked by the firewall"
+        },
+        {
+          "id": "d",
+          "text": "The attacker's identity and intent are established"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The synthetic record describes connection attempts, not confirmed changes to controllers. Section 6.4 sends that finding to estates for checks of controller settings and trend logs over the same period. Preserve the export, times and log extracts so those comparisons retain their chronology. The supplied description does not state that every attempt was blocked, that a control change succeeded or who was responsible. A hypothesis about misuse remains a reason to investigate, not an incident finding to present as confirmed.",
+      "source": "Chapter 6, §6.4 \"Responding\", second paragraph; \"Worked example (synthetic Millbrook)\"; EX029 \"Response steps\""
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which pair prevents a project opening from becoming a permanent support shortcut?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Named BMS accounts and a retained configuration backup"
+        },
+        {
+          "id": "b",
+          "text": "A different public port and an updated contractor bookmark"
+        },
+        {
+          "id": "c",
+          "text": "An expiry for project rules and the gateway access process"
+        },
+        {
+          "id": "d",
+          "text": "A persistent port-forward and an archived commissioning ticket"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 6.5 pairs end dates on project firewall rules with contractor requests through the supported gateway process. Expiry addresses forgotten project openings; the gateway addresses the continuing need for support without direct ports. Named accounts and backups do not retire that route, changing its public port merely relocates it, and archiving the ticket while retaining forwarding preserves the problem. Monthly checks complement these measures by detecting discrepancies that still arise; they are not a substitute for managing the route's lifecycle.",
+      "source": "Chapter 6, §6.5 \"Preventing recurrence\", both paragraphs; §6.1 \"How it happens\"; EX026 \"How exposure happens\""
+    },
+    {
+      "id": "Q10",
+      "prompt": "A dated export shows only approved entries. What does it justify about future exposure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only a snapshot; repeat and record the monthly check"
+        },
+        {
+          "id": "b",
+          "text": "Continuous assurance until a known device is replaced"
+        },
+        {
+          "id": "c",
+          "text": "Permanent approval of project openings added later"
+        },
+        {
+          "id": "d",
+          "text": "No further checks while contractor accounts still work"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The Errors and limits section calls exposure lists snapshots. A matching export supports a conclusion about the supplied observation, not continuous assurance about later changes. Section 6.5 requires the network team's monthly check to be recorded with its date and result so missed checks are visible. A later project opening needs its own approval and end date; contractor account availability does not verify external exposure. Keep the time boundary explicit rather than extrapolating a clean sample into a permanent guarantee.",
+      "source": "Chapter 6, §6.5 \"Preventing recurrence\"; \"Errors and limits\""
+    }
+  ]
+}
