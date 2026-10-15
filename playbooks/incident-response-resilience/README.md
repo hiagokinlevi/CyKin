@@ -16,5 +16,6 @@ The course book is the primary teaching material. These source-linked playbooks 
 
 Original classroom TableTop: [Hospital ransomware (English)](tabletops/01-hospital-ransomware.en.md).
 Original classroom TableTop: [Vendor invoice fraud (English)](tabletops/02-vendor-invoice-fraud.en.md).
+Original classroom TableTop: [Cloud credential exposure (English)](tabletops/03-cloud-key-exposure.en.md).
 
 These links are pinned to source revisions. Review each repository's license and current safety guidance before reuse. No linked file is silently copied or relicensed here.
