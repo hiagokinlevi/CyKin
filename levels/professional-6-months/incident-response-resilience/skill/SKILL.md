@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Incident response and cyber resilience — Professional course skill
 
-Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–8 contain separate five-day Week 1–8 sequences: 40/130 planned daily lessons are authored. Do not count the other chapters as 90 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–9 contain separate five-day Week 1–9 sequences: 45/130 planned daily lessons are authored. Do not count the other chapters as 90 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
 
 ## Course sources
 
@@ -40,6 +40,9 @@ For Week 7, teach [Day 31](../en/book/MANUSCRIPT.md#week-07-day-01) through [Day
 For Week 8, teach [Day 36](../en/book/MANUSCRIPT.md#week-08-day-01) through [Day 40](../en/book/MANUSCRIPT.md#week-08-day-05). Release C25/C26, then C27/C28, C29 and C30 in order. Require specific identity scope, hash versus business-target separation, C27 mandatory audit NO-GO, C28 isolated pass, atomic version/rollback design and distinct production/owner receipts. Reproduce §§8.3/8.11/C8X, W8-CAS and W8-CLOCK; keep fixture rollback flags and invented versions separate from case receipts. Match exact EX036–EX040 links with checkpoint-aware answers. Treat 10:30 as early checks, 10:45 as limited acceptance, 101 minutes as measured endpoints without an RTO target and the extra monitoring as assigned. Use the separate [Chapter 7 bank](../../../../web/question-banks/professional-6-months/incident-response-resilience/en/007.json) for ten timed questions, without implying interactive EX031–EX035 conversion or human review.
 
 ## Authored twelve-subject route
+
+
+For Week 9, teach [Day 41](../en/book/MANUSCRIPT.md#week-09-day-01) to [Day 45](../en/book/MANUSCRIPT.md#week-09-day-05). Preserve C30–C33 timing, inspect separate service/data status, internal restricted source-and-approval manifest, unsent learner-facing draft, privacy-limited custodian/legal referral and V9-only 11:20 correction. Use the same EX041–EX045 prompts and appendix worked answers, including the new weekday extensions, and keep C9/C9X as **offline toy fixtures**, never real communication receipts. Day 45 ends the authored daily sequence; Chapter 10 remains legacy teaching, not Day 46. No lawyer or analyst can infer universal legal notice obligations from CTN's fictional tokens and missing gateway interval.
 
 This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the full daily curriculum, independent review and complete-book publication gate remain open; A4 pages are measured, not a completion threshold. Teach only the actual manuscript as OpenCyber Academy text and identify any added explanation as supplementary.
 
