@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–8 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01), [Week 3](MANUSCRIPT.md#week-03-day-01), [Week 4](MANUSCRIPT.md#week-04-day-01), [Week 5](MANUSCRIPT.md#week-05-day-01), [Week 6](MANUSCRIPT.md#week-06-day-01), [Week 7](MANUSCRIPT.md#week-07-day-01) and [Week 8](MANUSCRIPT.md#week-08-day-01), each with five applied weekday lessons: 40/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–9 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01), [Week 3](MANUSCRIPT.md#week-03-day-01), [Week 4](MANUSCRIPT.md#week-04-day-01), [Week 5](MANUSCRIPT.md#week-05-day-01), [Week 6](MANUSCRIPT.md#week-06-day-01), [Week 7](MANUSCRIPT.md#week-07-day-01), [Week 8](MANUSCRIPT.md#week-08-day-01) and [Week 9](MANUSCRIPT.md#week-09-day-01), each with five applied weekday lessons: 45/130 planned daily lessons are authored, with whole-volume review still pending. Chapters 10–12 retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -186,6 +186,8 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 <a id="ch-09"></a>
 
 ### Chapter 09 — Communications, privacy and legal coordination
+
+**Week 9 now authored, Days 41–45.** [Read the five daily units](MANUSCRIPT.md#week-09-day-01) alongside all retained Chapter 9 source teaching, C31–C33, original C9/C9X offline checks, EX041–EX045 and their answers. Day 41 teaches two independent status claims; Day 42 an evidence/approval manifest; Day 43 learner-facing unsent messaging; Day 44 limited privacy referral; and Day 45 a V9-only versioned correction at 11:20. No new case card, legal determination, actual message dispatch, human review approval or A4 render is claimed.
 
 **Stage 5; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-09)
 
