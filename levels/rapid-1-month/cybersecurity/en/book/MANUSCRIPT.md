@@ -1751,6 +1751,70 @@ The morning note records 09:12, Room 2, start 15:00, state pending, and the reas
 
 The earlier page is still a real sheet of the earlier exercise. Filing it is allowed. Reading it as today's authority is not. A later sentence, spoken by today's owner about a named object, would open a different lesson. This chapter does not supply that sentence.
 
+
+### 13.4 What expires: authority to use a source, not the historical fact
+
+**Source designation** is an authorized owner's decision that a particular record can be used for a particular purpose. In a paper-based exercise that designation needs at least an identifiable **object**, a **decision question**, a **sitting or effective period**, and a person with the authority to make the designation. **Temporal validity** means that the designation still applies when the next decision is made. It differs from a paper's physical survival, a row's historical truth, and the date written in the page heading.
+
+Chapter 11 supplied an owner-named 11:40 sheet for one sitting. Chapter 12 used the same source for another room/time query within that limited context. Both lessons' notes remain true descriptions of the pages they inspected. **At the new morning's 09:12 checkpoint**, the earlier owner naming is no longer an applicable grant for today's booking decision. The page may remain unaltered in the folder while its **authorization for today's purpose is absent**. Nothing in the case says the old page was falsified or that its printed SYN-002 row has disappeared; those would be unsupported additional events.
+
+This distinction separates two clocks: **document time** (11:40 on the earlier sheet) and **authority time** (the period and task for which the owner named it). A document can be preserved indefinitely for audit without being current enough to drive a new booking. Conversely, receiving a newly printed document tomorrow would not automatically give the worker transaction authority. A later decision must use the evidence **available and approved at that later checkpoint**, not a result retrospectively borrowed from a finished sitting.
+
+| Claim about the earlier artifact | Supported at the new 09:12 morning? | Why |
+|---|---|---|
+| "The 11:40 sheet was named for the earlier sitting." | Yes, as historical classroom evidence | The earlier owner statement belongs in its own record |
+| "The page still has SYN-002 from its previous exercise." | Yes, as an observation about the retained historical paper, if read as a file record | It is not proof of today's reservation state |
+| "Its printed 11:40 heading extends the approval until someone removes the page." | No | Possession and printed time are not a renewed authorization |
+| "The previous Room 2 / 15:00 result was taken **on that earlier named page**." | Yes, as a time-qualified previous conclusion | It does not answer today's independent question |
+| "Today's Room 2 / 15:00 is definitely taken—or definitely free." | No | No source has yet been named for today's decision |
+
+The [NIST CSF 2.0 outcomes GV.RR-02 and PR.AA-05](https://doi.org/10.6028/NIST.CSWP.29) distinguish defined responsibilities and managed permissions. These are general security-governance outcomes, **not** a Harbor Library policy and not proof that a particular real-world library uses time-limited paper permissions. The **per-sitting** restriction is supplied by this fictional exercise. We apply the broader lesson that an old, authorized act does not authorize an unrelated later act without checking its scope.
+
+### 13.5 Mechanism: make the new decision from today's evidence set
+
+To avoid stale authorization, build a small **decision checkpoint**. This is an analytical worksheet, not a software transaction protocol:
+
+1. **Name the requested outcome.** A visitor wants Room 2 at 15:00 on **the new day**. The requested start time is not the time of the intake, the time of a source's printout, or a record that any booking succeeded.
+2. **Find an applicable source designation.** The old owner named the old 11:40 sheet for an earlier sitting. Today's owner **has not named** any page in Chapter 13. The first gate is therefore **unmet**, irrespective of what is still in the folder.
+3. **Do not infer the current slot from archived data.** The earlier SYN-002 row was confirmed on the previously named sheet; the new day may have a different booking state, but this chapter provides no current rows either way. Do not use the historic result as a prediction.
+4. **Record the request, not an allocation.** Retain the four allowed intake fields: **heard 09:12; Room 2; requested start 15:00 today; status not confirmed**. That queue entry says a request exists, not that an authorized reservation has been created.
+5. **Ask for a new bounded decision basis.** Today's owner would need to identify the current source, the date and slot it covers, any freshness and completeness requirements, and the procedure for communicating or creating a reservation. Those are **questions**, not responses or checks already performed.
+6. **Preserve the older record untouched.** File the earlier page and note with the original approval scope and conclusion. If the situation later changes, create a new dated record of the later evidence rather than correcting the former conclusion to match hindsight.
+
+The result is a deliberately **pending** state. Pending is not “free” and not “taken”; it records uncertainty **for today's decision**. Keeping the original note is equally important: otherwise a reviewer could not distinguish what the learner reasonably concluded yesterday from what later evidence showed.
+
+### 13.6 Worked contrasts: the same words in different contexts
+
+**Earlier sitting, evidence already released:** the named 11:40 page displayed SYN-002 as a confirmed Room 2 / 15:00 booking. For that sitting, the allowed bounded spoken answer was “Room 2 at 15:00 is already booked.” The historical record should retain the owner designation, printed source, source-scoped row and decision. It is not a universal rule about Room 2.
+
+**New morning, before any new naming:** a visitor asks at 09:12 for Room 2 at 15:00 on that day while the front-desk view is described as unavailable. A classmate still has the 11:40 paper in the folder. The proper reply is “I cannot confirm today's Room 2 at 15:00 from the earlier sheet. I will record the request as **not confirmed** until the current exercise owner identifies an approved source.” This answer conveys the current operational limit and next step. It neither denies nor grants the room.
+
+**Hypothetical future authorization, not in Chapter 13:** if today's owner later names a **different** source, that source must be inspected for the actual question before a room-state answer can be derived. Naming alone does not produce a matching row or booking transaction. This possibility is intentionally kept conditional: **Chapter 14**, not Chapter 13, releases the subsequent page.
+
+| Temptation | Negative control | Decision to record |
+|---|---|---|
+| Reuse the older page because it is physically present | Imagine the owner approval restricted to that closed sitting—as the case explicitly says | Do not treat possession as current authorization |
+| Say the old SYN-002 “still proves” today's slot is taken | Ask which dated current source supports today's row; none is named | Withhold both “taken” and “free” |
+| Remove yesterday's taken conclusion to avoid contradiction with today's pending note | Compare each record's question/date and evidence cutoff | Preserve **both** as distinct, time-scoped records |
+| Say “the earlier program ALLOW means a room may be confirmed” | Identify the actual Chapter 4 ALLOW: **11:45 mark-pending**, not a reservation | Leave the program tally exactly as published |
+| Reproduce today's new outage cause from the prior episode | Ask for telemetry or an authorized root-cause assessment; none supplied | Do not attribute cause, attack, or common mechanism |
+
+The last two controls also prevent false history: Chapter 4's synthetic classifier remains **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0**. That previous four-action census is not a measurement of today's outage, and no new action has been appended to its fixture.
+
+### 13.7 Provenance, handoff and the stop condition
+
+A usable **historical record** should say *which sitting and question*, *what page was named*, *what the row showed*, *what was communicated*, and *what was not proved*. A usable **current pending slip** should contain only the minimal request fields and the state “not confirmed.” The two can coexist without collapsing dates or introducing resident identity data. The previous printed sheet need not be destroyed to remove an authorization it never had for today.
+
+**Worked handoff (fictional):** “Previous sitting: owner-designated 11:40 page showed SYN-002 confirmed for Room 2 / 15:00; earlier result was ‘taken’ for that sitting only. New morning, 09:12: Room 2 / 15:00 today requested while the staff view is unavailable. No source has been named by today's owner; request retained as **not confirmed**. Do not use the earlier page as today's basis. Await owner designation and checked current contents before stating room availability, and a separate authorized process before confirming a reservation.”
+
+This is not a statement that a real outage persisted past 09:12, that a new row was created, or that any person approved a transaction. The **stop condition** is reached whenever applicable source authorization or current evidence is missing: do not promise, release identity data, modify old records or improvise a live-site check. Paper-only role-play keeps the method reproducible and safe.
+
+### 13.8 Practice without looking at the answer key
+
+Complete the three original sentences of **EX029** first. Then independently draw a two-entry ledger titled **earlier sitting** and **new morning**. For each entry specify: source designation, page available, evidence about Room 2 / 15:00, legitimate reply, and status of any actual new booking. Test three counterexamples: (a) the folder still contains the old sheet; (b) a participant repeats yesterday's owner's words today; (c) a printed timestamp resembles today's time of day but is from a different date. Every case must preserve today's **pending** request unless today's authorized source is actually named and checked. No new source is released in this chapter.
+
+Compare your record with [the worked EX029 result](#answer-ex029). The expected distinction is not “yesterday was wrong”; it is **“yesterday's conclusion was scoped to yesterday's evidence, and no equivalent evidence has been released for today.”**
+
 ### Chapter 13 summary
 
 A page that was named yesterday answers yesterday. Today's outage waits for today's naming. Until that sentence exists, the room request is pending and the old census stays put.
@@ -1765,6 +1829,10 @@ A page that was named yesterday answers yesterday. Today's outage waits for toda
 - **Task:** Write three sentences: which sitting the naming belonged to, what today's owner has not yet done, and the state of today's request.
 - **Expected evidence:** Three sentences a reader can check against the two dates.
 - **Rubric:** Credit when yesterday's page stays an earlier artifact, today's request stays pending, and the census is untouched. Confirming the room from the old page does not earn credit.
+
+- **Independent extension:** Write an earlier-sitting versus new-morning provenance table with the applicable owner naming, document date/time, Room 2 / 15:00 evidence, permitted reply and unresolved booking action. Explain why the old paper is still useful as an archive but not as today's approved schedule.
+- **Negative controls:** Possession of the 11:40 sheet, repeated words of yesterday's owner, and similar clock times cannot create today's source designation. Keep today's 09:12 request **not confirmed** and the Chapter 4 tally intact.
+- **Check your reasoning:** [EX029 worked result](#answer-ex029).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 20
@@ -1809,6 +1877,72 @@ The 11:40 page stays in the folder as yesterday's artifact. It is not consulted 
 
 `SYN-003` is an invented booking for this lesson. It does not show that a real library created a reservation at 11:20, and it does not show why the booking view was unavailable. The naming expires when this exercise ends. A month-long rule of "trust 11:55" is not on the page.
 
+
+### 14.4 A new naming changes the evidence available now, not what happened before
+
+**Current source designation** is the owner's identification of one artifact for a defined sitting and purpose. **Relevant evidence** is what that artifact says about the precise room-and-start query. **Disclosure authority** controls what may be communicated to the visitor; **transaction authority** controls whether anyone may create or modify a reservation. Passing the source designation and reading a row is **not** proof of a new booking operation.
+
+Chapter 13 stopped at 09:12 with **no source named for the new day**, so today's Room 2 / 15:00 request remained not confirmed. **Only in Chapter 14** does today's owner identify a separate synthetic sheet headed **11:55** for this exercise. The sheet carries three rows; the released facts relevant here include **SYN-003 — Room 4, 15:00, created 11:20, confirmed** and **SYN-002 — Room 2, 15:00, confirmed**. Those details are **on the new page**, not added to the old 11:40 sheet. The 11:55 heading is a page attribute; without additional receipts, it does not prove a real-world database sync, printing path, or when any real server operation occurred.
+
+That is a change in the learner's **knowledge and permitted source**, not a retroactive correction to Chapter 12's accurate observation that the earlier **two-row 11:40 page** contained **no Room 4 / 15:00 row**. These records have different objects and decision checkpoints. Preserving both is not contradictory: the earlier note describes the earlier page; the later note describes the newer page.
+
+[NIST CSF 2.0, PR.AA-05 and PR.DS-01](https://doi.org/10.6028/NIST.CSWP.29) address managed authorizations and confidentiality, integrity and availability of stored data. The **page naming, row matching and time-scoped decision rule are synthetic teaching procedures**, not a NIST-prescribed library workflow or evidence of deployed controls.
+
+### 14.5 Mechanism: evaluate each exact question against this artifact
+
+Do not start with a desired answer. Use a short chain that a second learner can inspect:
+
+1. **Select the approved object.** The owner names this specific 11:55 page **for this sitting**. The previously named 11:40 page is an archived source from an earlier exercise, not today's substitute.
+2. **State the query exactly.** A room-and-start pair is required; 15:00 and 16:00 are different questions, as are Room 2 and Room 4.
+3. **Read matching fields and status.** For Room 4 / 15:00 the new page directly contains **SYN-003**, status **confirmed**. For Room 2 / 15:00 it contains **SYN-002**, also confirmed. Two supported positive matches indicate that **each corresponding slot is already booked on this page**.
+4. **Do not invert a positive match.** Reading a confirmed reservation supports “taken,” never “free.” Passing the source-identification gate is not a requester's authorization to take a room.
+5. **Treat a missing matching row separately.** The three-row page has **no Room 4 / 16:00 match**. No completeness guarantee for that separate slot was supplied, so the strongest honest statement is “not shown on this sheet,” not “available.”
+6. **Communicate minimally.** Give the room-state answer where supported. There is no person's name on the synthetic page; neither **SYN-003** nor **SYN-002** is a resident's name, and no identity should be invented or disclosed.
+7. **Keep historical outputs and transaction boundaries.** The earlier pending status, older page observations and Chapter 4's fixed four-action tally stay in their own records. None is rewritten, and no new booking is executed in this lesson.
+
+The **positive-match/absence asymmetry** is central. A matching, owner-named, confirmed row supplies direct evidence of an existing reservation for the named context. A zero-match result supplies only a claim about what was searched in the visible subset. To infer a slot is free from absence, the owner would first have to establish completeness and currentness for that slot **and** the relevant booking rules; an authorized transaction would still be a different step.
+
+### 14.6 Worked comparison, with chronology preserved
+
+| Query or proposed action | Evidence released in Chapter 14 | Supported answer or decision | Unsupported leap |
+|---|---|---|---|
+| Room 4 / 15:00 | **SYN-003**, Room 4, 15:00, created 11:20, confirmed | “That slot is already booked.” | Naming an unknown holder or offering the booked room |
+| Room 2 / 15:00 | **SYN-002** is also printed as confirmed on the named page | “That slot is already booked.” | Dropping the older row because another booking is newer |
+| Room 4 / 16:00 | No matching row on the three-row page | “This page does not establish whether that slot is available; the request is pending.” | Claiming all unlisted times are free |
+| “Correct Chapter 12 to show SYN-003.” | Chapter 12 used a different, two-row 11:40 page | Keep Chapter 12's accurate record of **what its page showed** | Backdating the newly released row or pencil-editing the old sheet |
+| “Change Chapter 4 ALLOW to REFUSE.” | Chapter 4's ALLOW is the **11:45 mark-pending** action in an older 09:00-based classifier | Preserve **STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0** | A new 11:55 page cannot rewrite a closed four-action run |
+
+**Worked interaction — two booked slots:** A visitor asks to use Room 4 at 15:00. The worker checks the **owner-named 11:55 page**, finds a confirmed **SYN-003** match, and says, “Room 4 at 15:00 is already booked.” Another visitor asks about Room 2 at 15:00. **SYN-002** gives the same *taken* conclusion for that different room. Neither reply names a resident, promises a replacement room, or asserts the worker has opened the live site.
+
+**Contrasting silent query:** Someone asks for Room 4 at 16:00. The learner can state only “There is no Room 4 / 16:00 entry on the three rows shown.” This does not certify the whole reservation system is complete for 16:00 or that a booking is authorized. The request stays **not confirmed** until the source owner supplies the required scope and decision authority. Importing the 15:00 row would substitute the wrong start time.
+
+### 14.7 Test the reasoning with three negative controls
+
+**Control A — remove today's naming.** Imagine someone merely hands the learner the sheet without the designated owner's approval. The **visible** row can be described as text on paper, but the right to use it as today's booking-decision source is not established. The learner must not convert inspection into authority by assertion. In the **actual** case, the owner did name the page; the authorized, bounded *taken* replies for its two confirmed rows stand.
+
+**Control B — hide SYN-003 while retaining the other rows.** In an explicitly hypothetical variant with no Room 4 / 15:00 row, the page would become silent about that pair. The learner may not transfer Room 2's SYN-002 result to Room 4 or claim vacancy based on silence. The actual named page **does** show SYN-003; this control tests dependence on the specific row rather than altering the published facts.
+
+**Control C — change only the requested start to 16:00.** The physical 11:55 page and owner designation are unchanged, but the query has changed. No Room 4 / 16:00 match is supplied, so the result changes from supported *taken at 15:00* to *pending for 16:00*. One authorized source can answer some questions and be silent about others. A named page is not necessarily a complete live booking register.
+
+In all three controls, do not rewrite Chapter 12's historic zero-match note; its subject was the older 11:40 page. Do not rerun or alter Chapter 4's classifier. The exercise does not disclose why the front-desk view was unavailable or prove any real service defect, synchronization success or executed room allocation.
+
+### 14.8 A provenance-preserving handoff
+
+Keep two different records rather than combining them:
+
+| Evidence checkpoint | Source scope and observed item | Defensible statement |
+|---|---|---|
+| Earlier Chapter 12 sitting | Owner-named **11:40** page with two rows, neither for Room 4 / 15:00 | “No Room 4 / 15:00 row appears on this earlier page; availability not determined; request pending.” |
+| Current Chapter 14 sitting | Today's owner names **11:55** page, containing confirmed **SYN-003** for Room 4 / 15:00 and confirmed **SYN-002** for Room 2 / 15:00 | “The current named page shows both listed slots as booked; no person identified.” |
+
+There is no need to delete the earlier pending note. It records what the worker could responsibly say **at that earlier checkpoint**. A later, scope-bound conclusion can supersede a pending **operational answer for its own sitting** without retroactively supplying data that the prior sheet did not contain. Keep the old page unchanged so another learner can verify this distinction. A comparison note is not a third printed schedule or an authorization to make one.
+
+### 14.9 Independent EX030 practice and limits
+
+Before opening [the EX030 worked result](#answer-ex030), write the original three sentences: identify the page named **today**, report the **SYN-003** evidence for Room 4 / 15:00, and name the **two historical records** that must remain intact (the Chapter 12 earlier-page note and Chapter 4 classifier output). Then independently fill a three-row decision table for **Room 4 / 15:00**, **Room 2 / 15:00**, and **Room 4 / 16:00** with columns **source**, **matching row**, **room-state statement**, and **what remains unauthorized or unknown**.
+
+Check whether your answer would change incorrectly if you erased yesterday's note, relabeled the fixed ALLOW, inferred a resident from SYN-003, or treated a 16:00 omission as proof of availability. A correct answer preserves the original exercise narrative, acknowledges the later release **only here**, and never claims a real booking, incident diagnosis, or site check occurred.
+
 ### Chapter 14 summary
 
 When today's owner names the 11:55 page, Room 4 at 15:00 is taken because `SYN-003` is printed there. That reading does not rewrite yesterday's note or the 09:00 census.
@@ -1823,6 +1957,10 @@ When today's owner names the 11:55 page, Room 4 at 15:00 is taken because `SYN-0
 - **Task:** Write three sentences: which page is named today, what `SYN-003` shows, and which two records you refuse to edit.
 - **Expected evidence:** Three sentences a reader can check against the three-row page.
 - **Rubric:** Credit when Room 4 at 15:00 is taken from `SYN-003`, no name is added, yesterday's note is left as yesterday's, and ALLOW stays on the old log.
+
+- **Independent extension:** Compare the three queries on the named 11:55 page: Room 4 / 15:00, Room 2 / 15:00, and Room 4 / 16:00. Record matching row, supported state, disclosure limit, and next decision for any unproven availability. Separately state why the earlier pending record and the original classifier output remain valid historical evidence.
+- **Negative controls:** No new source in Chapter 13, no invented resident name from SYN-003, no confirmed 16:00 availability from missing rows, no alteration to 11:40 paper, and no changed historical ALLOW.
+- **Check your reasoning:** [EX030 worked result](#answer-ex030).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 20
@@ -2396,13 +2534,36 @@ The four required EX028 sentences can read: **(1)** “The named 11:40 page has 
 
 **Conditional test, not a new observation:** if the owner separately provided an authorized, demonstrably complete and current record for Room 4 at the relevant date/time, a zero-conflict finding could be assessed **within that verified scope**; it would not automatically create a booking. An authorized transaction and its outcome would still be required. A supposed conflict cannot be manufactured from another room's row, and a missing row cannot be made into a free-room promise. The exercise has no such complete later record, no real patron data and no completed booking operation.
 
+<a id="answer-ex029"></a>
 ### EX029 — Worked result
 
 The naming the classmate cites belonged to the earlier sitting. Today's owner has not named a source for the 09:12 outage. Today's Room 2 at 15:00 request stays pending. The 11:40 page remains filed as an earlier sheet. The Chapter 4 census is not rerun.
 
+
+**Expanded worked provenance and temporal-authority answer (EX029).** The earlier 11:40 page was approved **for the previous sitting only**. It can still be filed as evidence that the then-named page displayed a confirmed SYN-002 booking for Room 2 at 15:00. That statement remains historically bounded; the older physical paper and its heading do **not** constitute a new authorization. At 09:12 on the next morning, the desk view is described as unavailable and today's owner **has not named any current page**. Therefore the new request for Room 2 / 15:00 is **not confirmed**; the worker cannot tell the visitor either “taken” or “free” based on the previous sitting. The correct next action is a minimal pending slip followed by an owner-named and checked current source, with a separate approved transaction if a booking is ever to be made. **No source is released in Chapter 13.**
+
+| Checkpoint | Source and authority | Evidence for the question | Permitted result |
+|---|---|---|---|
+| Previous sitting | 11:40 synthetic sheet, named only for that exercise | SYN-002, Room 2 / 15:00, confirmed **on that sheet** | Historical bounded “taken” statement; preserve note |
+| New morning, 09:12 | The old sheet is archived; today's owner has named **none** | No approved current row for Room 2 / 15:00 on the new date | Record **09:12; Room 2; 15:00 today; not confirmed**; await current evidence |
+
+A usable three-sentence answer is: **(1)** “The 11:40 sheet was named for the earlier sitting, not for this new morning.” **(2)** “Today's owner has not identified an authorized current source for the 09:12 request.” **(3)** “The Room 2 / 15:00 request therefore stays not confirmed, while yesterday's record and the original Chapter 4 tally remain unchanged.” The negative control is any response that treats possession, a repeated story or a printed clock as an active permission grant. No record supplied a confirmed transaction for the new morning.
+
+<a id="answer-ex030"></a>
 ### EX030 — Worked result
 
 Today's owner named the 11:55 page. `SYN-003` prints Room 4 at 15:00 as confirmed, so the slot is taken and no personal name is added. Chapter 12's silence stays in that chapter's note about the 11:40 page. ALLOW stays on the 09:00 log.
+
+
+**Expanded worked source-scoped reading (EX030).** Today's owner names the separate **11:55 synthetic sheet for this exercise**. Its **SYN-003** row explicitly records **Room 4 / 15:00**, created **11:20**, status **confirmed**, so the bounded answer is **“Room 4 at 15:00 is already booked.”** The page also contains confirmed **SYN-002** for **Room 2 / 15:00**, which independently supports “taken” for that pair. Neither identifier names a resident and no disclosure of a person's identity is authorized. The page says **nothing** about Room 4 at **16:00**, so the absence of a row does not establish that time is free or authorize a transaction.
+
+| Query | Evidence on owner-named 11:55 page | Supported response | Unsupported inference |
+|---|---|---|---|
+| Room 4 / 15:00 | SYN-003 confirmed, created 11:20 | Already booked, no person named | Free, transferable, or newly confirmed for the asker |
+| Room 2 / 15:00 | SYN-002 confirmed | Already booked, no person named | The older booking row can be discarded |
+| Room 4 / 16:00 | No matching row in the three-row visible subset | Availability **unknown**; keep the request not confirmed | Missing means free or a new booking is authorized |
+
+An acceptable original three-sentence answer is: **(1)** “Today's owner named this 11:55 page only for the current sitting.” **(2)** “SYN-003 shows an existing confirmed Room 4 / 15:00 booking, so that slot is taken and no person's name is given.” **(3)** “I will not rewrite the earlier Chapter 12 note of silence on its different 11:40 page or the Chapter 4 tally STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0.” The old ALLOW was for the **11:45 mark-pending** proposal in the fixed Chapter 4 log, not proof of Room 4 availability or a receipt for an executed booking. A new record may provide more evidence for a later sitting **without retroactively changing what the older artifact said**. Do not backdate the new sheet to Chapter 13, manually merge the sheets, claim a live test, or identify fictional patrons.
 
 ### EX031 — Worked result
 
