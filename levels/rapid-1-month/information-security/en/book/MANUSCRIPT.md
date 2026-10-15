@@ -565,6 +565,67 @@ Staff who cannot find a caller on the page do not announce that the clinic has n
 
 > **Synthetic case.** No new print is added by this lesson. The three-week age is the drill's finding, not a new measurement.
 
+
+### 5.3 A planned control and an operating control are not the same evidence
+
+A **reminder** is a scheduled instruction to perform a future action. A **fresh printout** is a specific copy of information from a stated source at a stated time. A **verified usable list**, for this training question, would additionally need the clinic's approved handling conditions to be met: a visible print date, a corresponding recorded print in the authorized change log, appropriate protection in the locked location, and a check that the list's cutoff is suitable for the intended urgent-call decision. A reminder may support the intention to print every week; it cannot supply the resulting page, its contents or the time at which it was created.
+
+The Hollybank drill already found a three-week-old printed client list and missing newer registrations. Sofia then **set a weekly reminder** to print and lock a fresh copy. These are two different facts in the fictional case. No later print, dated sheet, new log line or comparison with the live practice system was released in Chapter 5. An auditor should therefore record **control planned**, not **fresh fallback demonstrated**. A box ticked in a calendar can describe scheduling, not successful execution.
+
+The [NIST Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29) identifies **PR.DS-01** for protecting the confidentiality, integrity and availability of stored information and **PR.IR** for the resilience of technology infrastructure. Those are organizational outcomes, not rules that declare a Hollybank paper list current. The distinctions in this chapter are original classroom reasoning from those concepts. No actual clinic system, printer or client list was accessed.
+
+### 5.4 Model the age, source and completeness of a paper extract
+
+Treat the list as a **snapshot**: an extract of information at the time and with the coverage the source supplied. The case says the drill's paper was three weeks old; it does not supply a newly timed print. Even a correctly printed list will not automatically include registrations made *after* its cutoff. A name missing from a subset is therefore **not evidence that no client record exists** in the practice system.
+
+| Item in the fictional file | What it establishes | What it cannot establish |
+|---|---|---|
+| Calendar reminder for weekly printing | Sofia scheduled a recurring task | Anyone actually printed, checked or locked a new list |
+| The old list in the drawer | A paper population that was already three weeks old during the drill | Complete coverage of later registrations or this week's urgent-call population |
+| A caller absent from that old list | No matching name on that particular historic extract | The caller is new, unknown to the practice, unregistered, not booked or eligible for any clinical action |
+| Today's appointment paper | A limited place to record and review today's desk interactions and appointments | A rebuilt client register, a current urgent-call population or a confirmed new appointment |
+| A later authenticated practice-system result | **Not supplied in this chapter** | No restoration, refreshed list, identity match or booking confirmation may be declared |
+
+There are **two time questions**: *when was the sheet printed?* and *what time span and records does it cover?* Those might differ even when a page looks recent. A print date alone does not prove that a complete data refresh occurred; in a real process the source owner would define the intended cutoff and validation checks. Hollybank's current teaching fixture contains **no such successful later validation**. The known old list is not silently replaced by a hypothetical better one.
+
+For confidentiality, the printed names still need the exercise's locked-away handling. The staff member should not copy that list into a personal device or public message just to fill the gap. For integrity, a memory-based recreation cannot claim to be a source printout. For availability, the desk needs a useful fallback, but calling old data “available” does not make it up to date.
+
+### 5.5 Worked contrast: the caller whose name is missing
+
+In the tabletop a caller supplies a name not on the old client list. The worker must answer the **question that the paper can actually support**: the name is not on *this extract*. The worker cannot infer that Hollybank has no record. They also cannot promise a clinical appointment, prescribe urgency or decide what treatment should occur from the list's absence.
+
+A permitted **offline record** under the existing exercise rule is a line on **today's appointment sheet** with the caller's supplied name, the time of the call, and an explicit state such as **“confirm when the practice system returns.”** The line documents *a contact received and a question unresolved*. It does not create a registration, appointment, treatment, patient file, or verified identity match. No name or time value is added by this teaching example: the learner uses the scenario's supplied caller details only.
+
+| Proposed response | Evidence behind it | Decision in the classroom |
+|---|---|---|
+| “The reminder fired; this list is fresh.” | Only the scheduling commitment is in the change log | Refuse the freshness assertion |
+| “Your name is not on this old page, so the clinic has no record of you.” | The page predates possible later registrations | Refuse the absence-to-nonexistence inference |
+| “I will put you down as confirmed at the next opening.” | No current booking result or authority is provided | Do not invent an appointment |
+| “I will record the call and mark it for checking in the practice system when that source becomes available.” | Today's paper fallback is allowed for a bounded desk record | Accept as **pending verification**, not completed confirmation |
+| “Rebuild the urgent-call list from staff recollections.” | No source validation or owner approval | Refuse the substitute population |
+
+**Example note for review, not a new case observation:** “Contact received; supplied name and call time noted on today's appointment sheet; not found on the known old list; practice-system identity/appointment status **unverified**; follow-up check needed when the authorized source is available.” This is a template, not a claim that any real named client has been called.
+
+### 5.6 Safe follow-up: check later without backdating the result
+
+Once an authorized source becomes available, a designated worker would need to compare the pending contact with the practice system using the approved identity and booking workflow, resolve any mismatch or duplicate entry under the clinic's actual rules, and separately record the verified outcome. The course supplies **no evidence that this later action occurred**, so the result stays pending. The old list is retained as evidence of what was available during the drill, not edited to look newer.
+
+A useful verification ledger separates three fields: **source/time** (the three-week-old paper), **pending question** (whether a caller is represented in the relevant system records), and **later disposition** (empty until an authorized check actually occurs). This guards against backdating a later answer into the outage window. A page absent of a name does not prove the person absent from the system, and a newly printed page—if it existed—would still be a time-bounded snapshot rather than omniscient evidence.
+
+The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats preparation, response and recovery as coordinated risk-management activities. It does **not** specify Hollybank's reception workflow or establish an incident from this synthetic outdated-list exercise. This chapter adapts the general value of documented assumptions, checkpoints and verifiable follow-up without asserting medical or legal requirements.
+
+### 5.7 Negative controls and independent practice
+
+**Negative control A: the calendar becomes perfectly reliable.** Imagine every reminder notification appears on time. That still does not show that any page was printed, reviewed, dated or locked; the source gap remains. The relevant observable outcome would be a separately evidenced print and applicable source check, not the reminder itself.
+
+**Negative control B: the printed list contains many valid names.** That does not establish its coverage of registrations after its old snapshot. A known name might be present while the missing caller still requires an authorized system check. A valid positive match and an unproven negative claim are not symmetrical.
+
+**Negative control C: someone remembers the caller.** Memory may suggest a question for later comparison but is not a substitute current list, a verified patient record or authority to book an appointment. Neither the worker nor this book makes a clinical judgment.
+
+**Negative control D: a new print is promised.** A promise is a future action, not a received result. Do not move the evidence cutoff forward, claim the system returned, or mark the pending contact resolved before source verification.
+
+**Independent EX059 practice:** First answer the original prompt in three parts: **which paper and calendar artifacts exist**, **which claim you refuse**, and **what exactly is recorded for later checking**. Then create a four-column table headed *source/time*, *claim*, *evidence gap* and *safe next action*. Evaluate the reminder, the old list, the absent caller and the hypothetical later check separately. Explain why today's appointment paper is a **pending-contact record** rather than a confirmed registration or a replacement urgent-call list. Compare your answer with [the EX059 worked result](#answer-ex059); do not invent a date, new page, client identity or medical advice.
+
 ### Errors and limits
 
 This lesson does not say a fresh list would be useless. It says the fresh list is not in evidence yet. When a dated print is locked, urgent calls may use that print, and only for the names it shows. Clients absent from even a fresh list are still confirmed against the system when it returns. The data-governance course remains the next course for how long old client records are kept. This chapter does not answer retention.
@@ -572,6 +633,10 @@ This lesson does not say a fresh list would be useless. It says the fresh list i
 ### Apply
 
 - **EX059 — Reminder versus paper.** The calendar reminder exists. The drawer still holds the drill's list. A caller gives a name that is not on it. What do you use, what do you refuse to say, and what do you write? *Rubric:* 3 = do not use the old list as this week's list; do not say the clinic has no record; write the call for confirmation when the system returns;; 2 = refuse the old list and the "no record" sentence;; 1 = one of those;; 0 = none.
+
+  - **Independent extension:** Distinguish (a) the calendar reminder, (b) the three-week-old paper, (c) the absent name on that paper, and (d) a later practice-system verification **not yet performed**. For each, write a source/time, supported claim, missing evidence and next step.
+  - **Negative controls:** Do not call the old extract “this week's list,” treat absence as nonregistration, invent a new print or appointment, or claim the practice system has already confirmed the caller.
+  - **Worked answer:** [EX059](#answer-ex059).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 20)
@@ -610,6 +675,76 @@ Some notes may already sit in the system from before the outage. Those notes are
 
 > **Synthetic case.** No dose, animal name, or client name is supplied. Do not invent one.
 
+
+### 6.3 A source hierarchy is not permission to overwrite a chart
+
+A **contemporaneous record** is information recorded during the period it describes. A **pre-outage chart note** is a record that may already exist in the practice system before the interruption. **Memory** is a person's later recollection, which can raise a discrepancy but is not a dated source document. A **correction** is a separately attributable revision justified through the permitted review process. **Reconciliation** is a comparison of sources to decide what, if anything, remains to be entered without creating a duplicate visit or hiding a disagreement.
+
+Hollybank's **twenty-minute drill** simulated a **four-hour** system interruption and stated that treatments would be written on paper for later entry. EX060 then stipulates a specific **system-is-back condition** and an outage-paper treatment line, while a nurse remembers a different dose and a pre-existing note names the same animal and morning. Those are **exercise premises**, not proof of a real restoration, administered dose, patient's identity, treatment outcome, or live chart review. The exercise supplies **no actual dose**, and the lesson must not produce one.
+
+The [NIST CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) includes outcomes for integrity and availability of data (PR.DS) and for maintaining usable information during disruption. The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) supports an organizational approach to documented response and recovery. Those references supply **information-security principles**; this fictional Dr. Moss approval path is not a NIST clinical documentation procedure, patient-safety protocol, or applicable legal rule.
+
+### 6.4 Name the three inputs and their evidentiary limits
+
+| Candidate source | What the exercise says | What it can support | What it cannot support alone |
+|---|---|---|---|
+| Outage paper | Written during the simulated unavailable-system interval and contains a treatment entry | Primary **contemporaneous classroom record** for that interval | Whether every field is medically correct, legible or already reflected in the restored system |
+| Existing practice-system note | A note for the same animal from the same morning already exists | An **overlap candidate** requiring reconciliation | Automatically proving it is identical to the paper event or that a second visit occurred |
+| Nurse's later recollection | A different dose is remembered | A **discrepancy to refer** to the designated reviewer | Authority to erase or replace the paper's dose, supply an invented value or create a new clinical event |
+
+Do not treat either “same animal and morning” as conclusive identity of an encounter or “different dose remembered” as proof the paper is medically wrong. These are **matching clues** with distinct confidence limits. A cautious reconciler checks whether the existing note and paper refer to the same visit, what was already entered, whether a field is missing, and whether a discrepancy needs Dr. Moss's review. The story provides no encounter IDs, exact clock times, animal names, dose values or validated matching algorithm.
+
+The paper is the designated **entry source** for this fictional outage, subject to the correction rule. It is not a guarantee of clinical truth. If it conflicts with memory, the safe *documentation decision* is to retain the paper as originally written and make the discrepancy visible to Dr. Moss, **not** to use the remembered value or silently enter two competing versions.
+
+### 6.5 Worked reconciliation: one paper, one prior note, one disagreement
+
+The exercise's stated condition is “the system is back.” That permits a **hypothetical reconciliation workflow**; it does not assert that a real practice system was tested or that a new chart entry has been completed.
+
+1. **Preserve the original paper.** Identify it as the paper from the simulated outage interval. Do not cross out the treatment or recopy it from memory and label the result “original.”
+2. **Read the existing chart note as a separate source.** The exercise only establishes “same animal, same morning”; that creates a reason to compare, not proof of a distinct additional appointment or proof that all of the outage paper's information is already present.
+3. **Compare fields within the authorized process.** Ask whether the two records refer to the same encounter and which paper facts, if any, remain to be entered. Where the matching facts are insufficient, **hold the disputed field for review** rather than automatically inserting another visit.
+4. **Make the dose discrepancy explicit without choosing a value.** State that the nurse's recollection differs from the contemporaneous paper; neither a remembered dose nor an invented “correct” dose is entered solely because the recollection is confident. Dr. Moss must determine and attribute any correction under the fictional rule.
+5. **Record an authorized correction separately if one is made.** The rule requires Dr. Moss to record the correction and the reason. That is a **conditional later act**. No correction, clinical finding or actual source entry has been supplied, so do not claim it occurred.
+6. **Prevent duplication.** When the prior note already covers the same encounter, reconcile missing material into that record **only under the approved workflow** instead of creating a second visit. If whether they are the same encounter remains uncertain, flag the mismatch for authorized review rather than declaring a second event.
+7. **Keep the original available for checking.** A visually complete chart is not proof that every line was entered accurately or that the paper can be discarded. The case requires filing it alongside the change log for the exercise; it does **not** specify a real retention period.
+
+The mechanism aims for a **traceable mapping** between paper statements, already-entered chart information, any approved amendment, and any unresolved disagreement. It does not calculate or administer medication and should not be used as actual veterinary care guidance.
+
+### 6.6 Contrast the right and wrong outcomes
+
+| Proposed action | Evidentiary problem | Classroom documentation decision |
+|---|---|---|
+| “Create a new visit for every paper line.” | Paper may supplement a pre-existing note for the **same encounter** | Compare first; do not duplicate a visit |
+| “Because the chart has a note, discard the outage sheet.” | Existing note may lack outage-period details; source would be lost | Keep paper and check what remains missing |
+| “Replace the paper's dose with the nurse's recollection.” | Memory is a discrepancy, not a verified correction | Escalate the disagreement to Dr. Moss |
+| “Ask Dr. Moss to review, then document an attributed reasoned correction **if approved**.” | Preserves original and provides an accountable way to correct | Supported **conditional process**, not an observed completed correction |
+| “Enter only source-supported missing information into the existing encounter under the authorized workflow.” | Avoids duplicate visit while recording any legitimate gap | Valid plan **after** comparison and approval |
+| “Call the mailbox restore or client list fixed.” | Different artifacts and recovery questions | Do not conflate separate recovery results |
+
+**Worked reconciliation note (template, not an executed chart edit):** “Outage-period paper treatment entry identified in the fictional drill; a system note exists for the same animal and morning; whether the entries describe the same event and what fields remain missing require comparison. Nurse's recalled dose conflicts with the paper and is unresolved. No additional visit or replacement dose is created from memory. Submit discrepancy to Dr. Moss for a reasoned, attributable correction if required; keep original paper linked to the follow-up record.”
+
+This note says what must be **checked**, not that it has already been checked. It does not invent a patient, animal, dose, treatment or clinical outcome.
+
+### 6.7 Integrity, custody and the boundary of retention
+
+Three distinct activities must not be collapsed. **Preserving the original** keeps the first-written information available for later comparison. **Reconciling** decides whether the chart needs an authorized update or whether an apparent difference is the same event already represented. **Correcting** is an attributed, reasoned change under Dr. Moss's fictional role, not merely overwriting a field to match memory.
+
+A useful classroom reconciliation ledger can have source labels **PAPER / PRIOR NOTE / RECOLLECTION**, a proposed same-encounter match, fields needing review, Dr. Moss approval status (**not provided**), and final disposition (**not supplied**). Those are categories for a student's exercise output—not claims that a real clinical record, patient identifier, signature, date or audit receipt was collected.
+
+A clinic's actual legal record retention, clinical documentation requirements, privacy safeguards and medication-error procedures would require separate applicable policies and professional authority. This book makes **no legal retention claim** and provides **no real medical advice**. The synthetic exercise's instruction “file the paper with the change log” exists solely to preserve a reviewable teaching trail.
+
+### 6.8 Negative controls and independent EX060 practice
+
+**Negative control A: memory sounds more certain.** A confident nurse's recollection still does not alter the contemporaneous paper without Dr. Moss's attributed correction. Confidence is not the required evidence or authority.
+
+**Negative control B: two documents, one morning.** A paper line and existing note are not necessarily two visits. Duplicating the visit because there are two records fails reconciliation. Conversely, asserting they are definitely the same encounter **without enough matching evidence** also overstates the given data.
+
+**Negative control C: the screen looks finished.** A neat chart view does not prove that the paper was fully checked, all discrepancies resolved, or the original is safe to destroy.
+
+**Negative control D: a conditional system return.** EX060 assumes the system is back to pose a reconciliation decision. The course does not supply an actual restoration receipt, new log entry, successful save or final correction. Do not change the story's factual history to reward an expected result.
+
+**Independent practice:** Complete EX060 first in three sentences naming (i) which source governs the outage-period treatment statement, (ii) how conflicting memory is held for Dr. Moss's correction rather than treated as fact, and (iii) what to do with a same-animal, same-morning prior note to prevent an unjustified second visit. Then draw a source/claim/verification/decision table for paper, prior note and recollection. Identify one **negative control** that would make a duplicate-visit decision wrong and one that would make a silent dose overwrite wrong. Consult the [EX060 worked result](#answer-ex060) only after making your own decision. No prescription or clinical event is performed in this exercise.
+
 ### Errors and limits
 
 Filing the paper does not restore the mailbox, and it does not refresh the client list from Chapter 5. Each artefact still answers its own question. This chapter also does not set a legal retention period for the paper.
@@ -617,6 +752,10 @@ Filing the paper does not restore the mailbox, and it does not refresh the clien
 ### Apply
 
 - **EX060 — Which writing is entered?** The system is back. The outage paper lists a treatment. A nurse remembers a different dose, and the chart already has a note for that animal from the same morning. What is entered, and what is not created? *Rubric:* 3 = enter from the paper, record any correction through Dr. Moss, and do not create a second visit;; 2 = use the paper and avoid the duplicate;; 1 = one of those;; 0 = none.
+
+  - **Independent extension:** Separate the contemporaneous outage paper, the pre-outage note and the nurse's memory in a three-row reconciliation ledger. Identify which information is already represented, what remains uncertain, who may document a correction, and why a second visit cannot be created merely because two writings exist.
+  - **Negative controls:** Do not supply a dose, assume a completed Dr. Moss correction, claim a verified real restoration, delete the original paper or overwrite the existing visit from recollection.
+  - **Worked answer:** [EX060](#answer-ex060).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 20)
@@ -1381,7 +1520,40 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX059.** The calendar reminder is not a new list. Do not phone from the three-week page as if it were this week's list, and do not tell the caller the clinic has no record. Write the call on the day's sheet for confirmation when the practice system returns.
 
+
+<a id="answer-ex059"></a>
+**Expanded worked evidence and pending-contact decision for EX059.**
+
+| Item | What the synthetic file supports | Unproved claim | Safe next decision |
+|---|---|---|---|
+| Weekly reminder in Sofia's log | A commitment to prompt printing | A newly printed, dated and checked list exists | Leave completion unverified |
+| Drawer copy | The list used in the drill was three weeks old and omitted newer registrations | It is the currently complete population for urgent calls | Do **not** phone from it as though it were this week's list |
+| Absent caller's name | The old extract has no matching entry | The practice has no such person, registration or appointment | Withhold any “no record” statement |
+| Today's appointment paper | Allowed place in the tabletop to note the supplied caller name and call time | A clinical appointment or identity match was confirmed | Write a **pending check** for the practice system, without fabricating a booking |
+| Later system verification | **No result supplied in Chapter 5** | Contact already matched, registered or scheduled | Reconcile only when the authorized source and process are actually available |
+
+**Answer to the original EX059 prompt:** The calendar reminder is not evidence of a fresh list, so the worker does **not** treat the three-week-old drawer paper as the week's current urgent-call population. The worker does **not** tell the caller “Hollybank has no record,” because absence from a stale extract is not absence from the underlying system. The worker records the caller's supplied name and the call time on **today's appointment sheet**, explicitly marked **“confirm when the practice system returns.”** No appointment, patient identity confirmation, treatment or new print is established.
+
+**Why this matters:** A scheduled action and its completed artifact are different evidence types. A historical list can contain correct names yet omit later registrations. A pending contact line documents a question, not the result of checking it. Equivalent answers earn full credit only if they keep the old source's age, avoid asserting nonexistence, and make the later check conditional rather than accomplished. Do not invent caller details or a result after restoration.
+
+
 **EX060.** Enter the treatment from the outage paper. A remembered dose does not replace that paper; a correction goes through Dr. Moss and is logged. Do not create a second visit when the chart already has the same animal and the same morning.
+
+
+<a id="answer-ex060"></a>
+**Expanded worked three-source reconciliation for EX060.**
+
+| Source | Role in the fictional exercise | What must be checked | Disposition |
+|---|---|---|---|
+| Paper written during the modeled outage | Primary **contemporaneous** record for the outage hours | Which paper fields still need entry and whether they overlap the chart note | Preserve unchanged; use as the reference for any supported missing record |
+| Existing practice-system note for same animal and morning | Candidate already-entered information | Whether it is the **same encounter** and which fields are already represented | Reconcile within the existing record where supported, rather than automatically creating a second visit |
+| Nurse's remembered different dose | A later, conflicting recollection | Discrepancy requiring appropriate reviewer evaluation | **Do not** replace paper or invent a value; refer to Dr. Moss |
+| Dr. Moss correction | **Conditional future step**, not a supplied completed event | Dr. Moss's attributed review, reason and the authorized amendment if needed | Keep original paper and document a separate correction only if actually approved |
+
+**Model answer:** In EX060's expressly hypothetical **system-is-back** condition, start from the outage paper for treatment information recorded during the interruption; do not substitute the nurse's remembered dose. Compare the paper with the pre-existing note to determine whether both writings refer to the same encounter and what information, if any, is missing. If a dose discrepancy needs correction, **Dr. Moss records an attributed correction with its reason**, without erasing the original. Do **not** create a second visit simply because a paper line and an earlier note concern the same animal and morning. The supplied fields are not enough to prove a second encounter, and the exercise supplies neither a dose value nor a verified final chart edit.
+
+**Falsifiers:** Entering a guessed dose from memory fails the integrity and attribution gate. Creating a second visit without reconciliation fails the duplication gate. Discarding the paper after the screen seems complete removes the contemporaneous teaching source. The assistant's answer must not claim that Dr. Moss already corrected a dose, that a real system was restored, or that a specific veterinary procedure took place. This is a documentation exercise, not clinical guidance.
+
 
 **EX061.** Thirty-five was not counted. The verified total remains 47 of 300 until a new export is run. Do not edit the seed-2 script to force a lower number.
 
