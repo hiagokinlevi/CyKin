@@ -8,7 +8,7 @@
 
 **Exit goal:** operate a repeatable workflow and communicate findings in incident response and cyber resilience. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 
-This is one course. It has **one course skill** and **one principal book in each language edition**. Its **12 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
+This is one course. It has **one course skill** and **one principal book in each language edition**. Its **12 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The earlier 300-page A4 and 50-exercise figures are historical planning values. Page count is a rendering measurement, not a completion gate; the full daily curriculum and review requirements still apply.
 
 [Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/incident-response-resilience/README.md)
 
@@ -34,8 +34,10 @@ This is one course. It has **one course skill** and **one principal book in each
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or public lesson. The book plan summarizes each chapter in full.
 
-**Historical English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) had SHA-256 `3bd8136f3029be19c2c50979218cd9bada79f5281d7fb7ae819751257a418307`, **78,514 whitespace-separated words** and **177 A4 pages** in a local Chrome length preflight. Repetitive lesson maps were removed on 14 October; the current source needs a new length measurement. The book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
+**Historical English manuscript checkpoint (13 October 2026):** The [single principal English book](en/book/MANUSCRIPT.md) had SHA-256 `3bd8136f3029be19c2c50979218cd9bada79f5281d7fb7ae819751257a418307`, **78,514 whitespace-separated words** and **177 A4 pages** in a local Chrome length preflight. Repetitive lesson maps were removed on 14 October, making that measurement historical; it does not describe the source measured in the current checkpoint below. The book remains open for study while technical, source, rights, accessibility and editorial review remain pending.
 
+
+**Current English A4 checkpoint (15 October 2026):** The maintainer reports **218 A4 pages** from an authorized local render of the [single principal English manuscript](en/book/MANUSCRIPT.md), using the private Engine's `render_a4_book.js` with Chrome and checking the count with `pdfinfo`. Source commit: `0f31ebd065f30fe2d97ba066ddaf05751baaccfe`; manuscript SHA-256: `dacbb7dafd5ec7327eef5d6161d23f3c4c27ff2a4be0ded1f09b671a7ba52bd9`, verified against the remote source when recording this checkpoint. **40/130 daily lessons are authored; the book remains incomplete and human technical/editorial review is pending.** This is the maintainer's reported render, not an independent rerender or approval. Page count does not change coverage or imply completion. See the [source-matched course measurement](../../../COURSE_WRITING_PROGRESS.md#professional-ir-a4-2026-10-15); a later source hash needs a new render.
 
 **Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original OpenCyber Academy material is dedicated under [CC0 1.0](../../../LICENSE).
 
