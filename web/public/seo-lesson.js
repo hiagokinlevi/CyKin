@@ -25,28 +25,55 @@
     const dashboard = document.getElementById('progress-dashboard');
     const markButton = document.getElementById('mark-lesson-complete');
     const ui = lesson[4] === 'pt'
-      ? { count: (n, total) => `${n} de ${total} aulas publicadas concluídas.`, unavailable: 'O progresso está indisponível agora.', marked: 'Aula concluída.', saved: 'Resposta salva na sua conta.', signIn: 'Entre para salvar sua resposta.', failed: 'Não foi possível salvar a resposta.' }
+      ? { count: (n, total) => `${n} de ${total} aulas publicadas concluídas.`, unavailable: 'O progresso está indisponível agora.', marked: 'Aula concluída.', saved: 'Escolha salva na sua conta.', signIn: 'Entre para salvar sua escolha.', failed: 'Não foi possível salvar a escolha.', noChoice: 'Ainda não há questão revisada com cinco alternativas para este exercício. Consulte o enunciado e a resposta comentada.', choiceFailed: 'Não foi possível carregar as alternativas agora.', correct: 'Correto.', incorrect: 'Incorreto.', right: 'Resposta correta' }
       : lesson[4] === 'es'
-      ? { count: (n, total) => `${n} de ${total} lecciones publicadas completadas.`, unavailable: 'El progreso no está disponible ahora.', marked: 'Lección completada.', saved: 'Respuesta guardada en tu cuenta.', signIn: 'Inicia sesión para guardar tu respuesta.', failed: 'No se pudo guardar la respuesta.' }
-      : { count: (n, total) => `${n} of ${total} published lessons completed.`, unavailable: 'Progress is unavailable right now.', marked: 'Lesson completed.', saved: 'Answer saved to your account.', signIn: 'Sign in to save your answer.', failed: 'Could not save the answer.' };
-    for (const form of document.querySelectorAll('.exercise-attempt')) {
-      form.addEventListener('submit', async event => {
-        event.preventDefault();
-        const answer = form.querySelector('textarea');
-        const button = form.querySelector('button[type="submit"]');
-        const status = form.querySelector('.exercise-attempt-status');
-        if (!answer?.value.trim() || !button || !status) return;
-        button.disabled = true;
-        try {
-          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...payload, unit_kind: unitKind, exercise_id: form.dataset.exerciseId, answer: answer.value, status: 'attempted' }),
-          });
-          status.textContent = response.ok ? ui.saved : [401, 403].includes(response.status) ? ui.signIn : ui.failed;
-          if (response.ok) void loadProgress();
-          if ([401, 403].includes(response.status) && signIn) signIn.hidden = false;
-        } catch { status.textContent = ui.failed; }
-        finally { button.disabled = false; }
+      ? { count: (n, total) => `${n} de ${total} lecciones publicadas completadas.`, unavailable: 'El progreso no está disponible ahora.', marked: 'Lección completada.', saved: 'Elección guardada en tu cuenta.', signIn: 'Inicia sesión para guardar tu elección.', failed: 'No se pudo guardar la elección.', noChoice: 'Todavía no hay una pregunta revisada con cinco opciones para este ejercicio. Lee el enunciado y la respuesta desarrollada.', choiceFailed: 'No se pudieron cargar las opciones.', correct: 'Correcto.', incorrect: 'Incorrecto.', right: 'Respuesta correcta' }
+      : { count: (n, total) => `${n} of ${total} published lessons completed.`, unavailable: 'Progress is unavailable right now.', marked: 'Lesson completed.', saved: 'Choice saved to your account.', signIn: 'Sign in to save your choice.', failed: 'Could not save the choice.', noChoice: 'A reviewed five-choice question is not available for this exercise yet. Read the prompt and worked answer.', choiceFailed: 'Could not load the choices now.', correct: 'Correct.', incorrect: 'Incorrect.', right: 'Correct answer' };
+    const practiceCards = [...document.querySelectorAll('.exercise-attempt')];
+    if (practiceCards.length) {
+      const url = `/api/practice/${payload.level}/${payload.area}/${lesson[3]}/${payload.language}/${payload.chapter}`;
+      fetch(url, { cache: 'no-store' }).then(async response => {
+        if (!response.ok) {
+          const message = response.status === 404 ? ui.noChoice : ui.choiceFailed;
+          for (const card of practiceCards) card.querySelector('.exercise-attempt-status').textContent = message;
+          return;
+        }
+        const bank = await response.json();
+        const questions = new Map(bank.questions.map(question => [question.exercise_id, question]));
+        for (const card of practiceCards) {
+          const question = questions.get(card.dataset.exerciseId);
+          const status = card.querySelector('.exercise-attempt-status');
+          if (!question) { status.textContent = ui.noChoice; continue; }
+          const fieldset = document.createElement('fieldset'); fieldset.className = 'exercise-choices';
+          const legend = document.createElement('legend'); legend.textContent = question.prompt; fieldset.append(legend);
+          for (const option of question.options) {
+            const label = document.createElement('label');
+            const radio = document.createElement('input'); radio.type = 'radio'; radio.name = `choice-${question.exercise_id}`; radio.value = option.id;
+            const text = document.createElement('span'); text.textContent = `${option.id.toUpperCase()}. ${option.text}`;
+            label.append(radio, text); fieldset.append(label);
+            radio.addEventListener('change', async () => {
+              fieldset.disabled = true;
+              const chosen = option.id === question.correct;
+              const right = question.options.find(item => item.id === question.correct);
+              const verdict = `${chosen ? ui.correct : ui.incorrect} ${ui.right}: ${right.id.toUpperCase()}. ${right.text} ${question.explanation}`;
+              status.textContent = verdict; status.dataset.correct = String(chosen);
+              try {
+                const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ ...payload, unit_kind: unitKind, exercise_id: question.exercise_id,
+                    answer: option.id, status: chosen ? 'completed' : 'attempted' }),
+                });
+                status.textContent = `${verdict} ${response.ok ? ui.saved : [401, 403].includes(response.status) ? ui.signIn : ui.failed}`;
+                if (response.ok) void loadProgress();
+                if ([401, 403].includes(response.status) && signIn) signIn.hidden = false;
+              } catch { status.textContent = `${verdict} ${ui.failed}`; }
+            }, { once: true });
+          }
+          card.querySelector('.exercise-choice-options').replaceChildren(fieldset);
+          status.textContent = '';
+        }
+      }).catch(() => {
+        for (const card of practiceCards) card.querySelector('.exercise-attempt-status').textContent = ui.choiceFailed;
       });
     }
     const showGuest = () => { if (panelStatus) panelStatus.textContent = ''; if (signIn) signIn.hidden = false; };

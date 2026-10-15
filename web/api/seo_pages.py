@@ -287,24 +287,22 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
                               exercise_anchors=False) if lesson["worked_answers"] else ""
     answers_html = f'<section class="answers"><details><summary>{ui["answers"]}</summary><div class="prose">{answers}</div></details></section>' if answers else ""
     practice_copy = {
-        "en": ("Work through the exercises", "Open the prompt", "Your response", "Save my answer", "Compare with the worked answer"),
-        "pt": ("Resolva os exercícios", "Ver o enunciado", "Sua resposta", "Salvar minha resposta", "Comparar com a resposta comentada"),
-        "es": ("Resuelve los ejercicios", "Ver el enunciado", "Tu respuesta", "Guardar mi respuesta", "Comparar con la respuesta desarrollada"),
-    }.get(language, ("Work through the exercises", "Open the prompt", "Your response", "Save my answer", "Compare with the worked answer"))
+        "en": ("Practice the exercises", "Open the prompt", "Compare with the worked answer", "Checking for a reviewed five-choice question…"),
+        "pt": ("Pratique os exercícios", "Ver o enunciado", "Comparar com a resposta comentada", "Verificando se há uma questão revisada com cinco alternativas…"),
+        "es": ("Practica los ejercicios", "Ver el enunciado", "Comparar con la respuesta desarrollada", "Buscando una pregunta revisada con cinco opciones…"),
+    }.get(language, ("Practice the exercises", "Open the prompt", "Compare with the worked answer", "Checking for a reviewed five-choice question…"))
     practice_cards = []
     for digits in lesson.get("exercise_ids", []):
         exercise_id = f"EX{digits}"
         prompt_link = (f'<a href="#exercise-ex{digits}">{html.escape(practice_copy[1])} →</a>'
                        if f'id="exercise-ex{digits}"' in body else "")
-        answer_link = (f'<a href="#answer-ex{digits}">{html.escape(practice_copy[4])} →</a>'
+        answer_link = (f'<a href="#answer-ex{digits}">{html.escape(practice_copy[2])} →</a>'
                        if f'id="answer-ex{digits}"' in answers else "")
         practice_cards.append(
-            f'<form class="exercise-attempt" data-exercise-id="{exercise_id}">'
+            f'<section class="exercise-attempt" data-exercise-id="{exercise_id}">'
             f'<h3>{exercise_id}</h3><div class="exercise-links">{prompt_link}{answer_link}</div>'
-            f'<label for="attempt-{exercise_id}">{html.escape(practice_copy[2])}</label>'
-            f'<textarea id="attempt-{exercise_id}" name="answer" rows="5" maxlength="20000" required></textarea>'
-            f'<button type="submit">{html.escape(practice_copy[3])}</button>'
-            f'<p class="exercise-attempt-status" role="status"></p></form>'
+            f'<div class="exercise-choice-options"></div>'
+            f'<p class="exercise-attempt-status" role="status">{html.escape(practice_copy[3])}</p></section>'
         )
     practice_html = (f'<section id="lesson-practice" class="lesson-practice" aria-label="{html.escape(practice_copy[0], quote=True)}">'
                      f'<h2>{html.escape(practice_copy[0])}</h2>{"".join(practice_cards)}</section>') if practice_cards else ""

@@ -70,12 +70,15 @@ def validate_bank(raw: str, level: str, area: str, language: str, chapter: int) 
 
 def public_question(bank: dict[str, Any], index: int, deadline_ms: int, now_ms: int) -> dict[str, Any]:
     item = bank["questions"][index]
+    uncertain = {"en": "I do not know yet", "pt": "Ainda não sei", "es": "Todavía no lo sé"}
     return {
         "number": index + 1,
         "total": 10,
         "id": item["id"],
         "prompt": item["prompt"],
-        "options": item["options"],
+        # An explicit uncertainty choice avoids forced guessing while giving
+        # every timed question exactly five visible alternatives.
+        "options": [*item["options"], {"id": "e", "text": uncertain.get(bank["language"], uncertain["en"])}],
         "deadline_ms": deadline_ms,
         "server_now_ms": now_ms,
         "seconds": 10,

@@ -5,7 +5,8 @@ import { siteLanguage } from './i18n';
 
 type Chapter = { chapter: number; bank_sha256: string; source_sha256: string };
 type Question = { number: number; total: number; id: string; prompt: string; options: { id: string; text: string }[]; deadline_ms: number; server_now_ms: number; seconds: number };
-type QuizResponse = { attempt_id: string; question?: Question; complete?: boolean; score?: number; perfect?: boolean; feedback?: { id: string; selected: string | null; correct: boolean; timed_out: boolean; answer: string; explanation: string; source: string }[] };
+type Review = { id: string; selected: string | null; correct: boolean; timed_out: boolean; answer: string; explanation: string; source: string };
+type QuizResponse = { attempt_id: string; question?: Question; complete?: boolean; score?: number; perfect?: boolean; review?: Review; feedback?: Review[] };
 type Course = (typeof catalog.courses)[number];
 
 const names: Record<string, string> = { en: 'English', pt: 'Português', es: 'Español', he: 'עברית', fr: 'Français', ru: 'Русский', de: 'Deutsch', zh: '中文', ja: '日本語' };
@@ -179,6 +180,7 @@ export function initChapterTests(): void {
       if (!response.ok) throw new Error(data.detail || ui.failed);
       active = data as QuizResponse;
       el('test-result').hidden = true; el('test-player').hidden = false;
+      el('test-live-feedback').hidden = true;
       showQuestion(active.question!); el('test-player').scrollIntoView({ behavior: 'smooth', block: 'start' });
       status.textContent = ui.count(available().length, chosenCourse()!.planned_chapters);
     } catch (error) { status.textContent = error instanceof Error ? error.message : ui.failed; }
@@ -214,7 +216,17 @@ export function initChapterTests(): void {
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || ui.failed);
       active = data as QuizResponse;
-      if (active.question) showQuestion(active.question);
+      if (active.question) {
+        showQuestion(active.question);
+        if (active.review) {
+          const notice = el('test-live-feedback');
+          const verdict = active.review.correct
+            ? language === 'pt' ? 'Correto.' : language === 'es' ? 'Correcto.' : 'Correct.'
+            : language === 'pt' ? 'Incorreto.' : language === 'es' ? 'Incorrecto.' : 'Incorrect.';
+          notice.textContent = `${verdict} ${ui.correct}: ${active.review.answer.toUpperCase()}. ${active.review.explanation}`;
+          notice.hidden = false;
+        }
+      }
       else if (active.complete) showResult(active);
     } catch (error) {
       try {

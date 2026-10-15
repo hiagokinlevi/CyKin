@@ -78,16 +78,16 @@ def pilot(monkeypatch):
 
 def test_question_bank_is_pinned_to_authored_text_and_has_no_duplicate_prompts():
     for language in ("en", "pt", "es"):
-        bank_path = ROOT / f"web/question-banks/professional-6-months/ot-iot-security/{language}/001.json"
-        bank, _digest = validate_bank(bank_path.read_text(), "professional-6-months", "ot-iot-security", language, 1)
         manuscript = (ROOT / f"levels/professional-6-months/ot-iot-security/{language}/book/MANUSCRIPT.md").read_text()
-        import hashlib
-        chapter = api.chapter_sections(manuscript)[1]["markdown"]
-        assert bank["source_sha256"] == hashlib.sha256(chapter.encode()).hexdigest()
-        assert len({item["prompt"].casefold() for item in bank["questions"]}) == 10
+        for number in (1, 2):
+            bank_path = ROOT / f"web/question-banks/professional-6-months/ot-iot-security/{language}/{number:03d}.json"
+            bank, _digest = validate_bank(bank_path.read_text(), "professional-6-months", "ot-iot-security", language, number)
+            chapter = api.chapter_sections(manuscript)[number]["markdown"]
+            assert bank["source_sha256"] == hashlib.sha256(chapter.encode()).hexdigest()
+            assert len({item["prompt"].casefold() for item in bank["questions"]}) == 10
     broken = {**bank, "questions": bank["questions"][:9]}
     with pytest.raises(InvalidBank, match="exactly ten"):
-        validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 1)
+        validate_bank(json.dumps(broken), "professional-6-months", "ot-iot-security", "es", 2)
 
 
 def test_source_pin_and_json_format_do_not_change_question_version():
@@ -98,6 +98,24 @@ def test_source_pin_and_json_format_do_not_change_question_version():
     assert validate_bank(json.dumps(revised_source, indent=4), "rapid-1-month", "incident-response-resilience", "en", 1)[1] == version
     revised_question = {**bank, "questions": [{**bank["questions"][0], "correct": "d"}, *bank["questions"][1:]]}
     assert validate_bank(json.dumps(revised_question), "rapid-1-month", "incident-response-resilience", "en", 1)[1] != version
+
+
+def test_each_timed_question_has_five_choices_and_immediate_feedback(pilot):
+    client, _db, _now = pilot
+    course = {"level": "professional-6-months", "area": "ot-iot-security", "language": "pt", "chapter": 2}
+    started = client.post("/student/tests/start", json=course, headers=ORIGIN)
+    assert started.status_code == 200
+    assert [option["id"] for option in started.json()["question"]["options"]] == list("abcde")
+    assert started.json()["question"]["options"][-1]["text"] == "Ainda não sei"
+    attempt_id = started.json()["attempt_id"]
+    answered = client.post("/student/tests/answer", json={"attempt_id": attempt_id, "index": 0,
+                                                           "selected": "e"}, headers=ORIGIN)
+    assert answered.status_code == 200
+    result = answered.json()
+    assert result["review"]["correct"] is False
+    assert result["review"]["answer"] == "c"
+    assert result["review"]["explanation"]
+    assert len(result["question"]["options"]) == 5
 
 
 def test_diagram_cleanup_migration_preserves_completed_attempts():
@@ -264,6 +282,16 @@ def test_certificate_requires_full_approval_and_is_private_to_its_owner(pilot, m
     monkeypatch.setattr(api, "approved_books", approved)
     course = api.get_course(api.app.state.catalog_override, "professional-6-months", "ot-iot-security", "en")
     course["planned_chapters"] = 1
+    one_chapter_index = json.loads((ROOT / "web/public/test-index.json").read_text())
+    index_key = "professional-6-months/ot-iot-security/en"
+    one_chapter_index["courses"][index_key] = [
+        item for item in one_chapter_index["courses"][index_key] if item["chapter"] == 1
+    ]
+
+    async def approved_test_index(_request):
+        return one_chapter_index
+
+    monkeypatch.setattr(api, "test_index", approved_test_index)
     bank = json.loads((ROOT / "web/question-banks/professional-6-months/ot-iot-security/en/001.json").read_text())
     started = client.post("/private/tests/start", json=COURSE, headers=ORIGIN)
     assert started.status_code == 200

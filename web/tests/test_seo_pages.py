@@ -141,7 +141,7 @@ def test_daily_lesson_uses_distinct_sequential_code(client):
     ("/courses/rapid-1-month/security-governance-risk-compliance/chapters/pt/1/", "EX001"),
     ("/courses/professional-6-months/ot-iot-security/chapters/es/1/", "EX001"),
 ])
-def test_published_exercises_have_prompt_answer_and_save_form(client, path, exercise):
+def test_published_exercises_have_prompt_answer_and_five_choice_slot(client, path, exercise):
     response = client.get(path)
     assert response.status_code == 200
     page = response.text
@@ -151,9 +151,25 @@ def test_published_exercises_have_prompt_answer_and_save_form(client, path, exer
     assert f'id="answer-ex{digits}"' in page
     assert f'data-exercise-id="{exercise}"' in page
     assert 'id="lesson-practice"' in page
+    assert '<textarea id="attempt-' not in page
+    assert 'class="exercise-choice-options"' in page
     if "/lessons/en/" in path:
         assert "at least five dependencies" in page
     assert page.count(f'id="answer-ex{digits}"') == 1
+
+
+def test_reviewed_practice_matches_the_published_exercise(client):
+    route = "/api/practice/rapid-1-month/security-governance-risk-compliance/chapters/pt/8"
+    response = client.get(route)
+    assert response.status_code == 200
+    question = response.json()["questions"][0]
+    assert question["exercise_id"] == "EX062"
+    assert len(question["options"]) == 5
+    assert question["options"][1]["id"] == question["correct"] == "b"
+    assert client.get(route.replace("/8", "/7")).status_code == 404
+    page = client.get("/courses/rapid-1-month/security-governance-risk-compliance/chapters/pt/8/").text
+    assert 'data-exercise-id="EX062"' in page
+    assert '<textarea id="attempt-EX062"' not in page
 
 
 def test_sitemap_lists_only_routes_that_resolve_to_authored_sections(client):

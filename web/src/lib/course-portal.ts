@@ -240,19 +240,11 @@ export async function initCoursePortal(): Promise<void> {
       el('course-progress-status').textContent = response.ok ? 'Lesson completed and saved to your account.' : 'Could not save right now.';
     }); action.append(mark);
     for (const digits of lesson.exercise_ids) {
-      const exerciseId = `EX${digits}`, form = document.createElement('form'); form.className = 'exercise-form';
-      const label = document.createElement('label'); label.textContent = `Your answer for ${exerciseId}`; label.htmlFor = `answer-${exerciseId}`;
-      const input = document.createElement('textarea'); input.id = `answer-${exerciseId}`; input.maxLength = 20_000; input.rows = 4; input.placeholder = 'Save your attempt, then compare the worked answer.';
-      const save = document.createElement('button'); save.type = 'submit'; save.className = 'button secondary'; save.textContent = 'Save attempt';
-      form.append(label, input, save);
-      form.addEventListener('submit', async event => {
-        event.preventDefault(); save.disabled = true;
-        try {
-          const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, unit_kind: lesson.content_kind === 'legacy_chapter' || lesson.content_kind === 'chapter_lesson' ? 'chapter' : 'lesson', exercise_id: exerciseId, answer: input.value, status: 'attempted' }) });
-          el('course-progress-status').textContent = response.ok ? `${exerciseId} saved to your account.` : `Could not save ${exerciseId}.`;
-        } catch { el('course-progress-status').textContent = `Could not save ${exerciseId}.`; }
-        finally { save.disabled = false; }
-      }); forms.append(form);
+      const route = lesson.content_kind === 'legacy_chapter' || lesson.content_kind === 'chapter_lesson' ? 'chapters' : 'lessons';
+      const link = document.createElement('a'); link.className = 'button secondary';
+      link.href = `/courses/${base.level}/${base.area}/${route}/${base.language}/${base.chapter}/#lesson-practice`;
+      link.textContent = `${language === 'pt' ? 'Praticar' : language === 'es' ? 'Practicar' : 'Practice'} EX${digits} →`;
+      forms.append(link);
     }
     const noteForm = document.createElement('form'); noteForm.className = 'exercise-form';
     const noteLabel = document.createElement('label'); noteLabel.textContent = language === 'pt' ? 'Sua análise da aula' : language === 'es' ? 'Tu análisis de la lección' : 'Your lesson analysis';

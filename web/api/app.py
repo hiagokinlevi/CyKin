@@ -22,6 +22,7 @@ from pydantic import BaseModel, Field
 from access import identity as access_identity
 from course_directory import render_course_directory
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
+from practice_engine import InvalidPractice, validate_practice
 from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
 from student_auth import (SESSION_LIFETIME, _limit, basic_credentials, create_session,
@@ -83,7 +84,7 @@ class TestStart(BaseModel):
 class TestAnswer(BaseModel):
     attempt_id: str = Field(pattern=r"^[A-Za-z0-9_-]{16,80}$")
     index: int = Field(ge=0, le=9)
-    selected: str | None = Field(default=None, pattern=r"^[a-d]$")
+    selected: str | None = Field(default=None, pattern=r"^[a-e]$")
 
 
 class CertificateClaim(BaseModel):
@@ -538,6 +539,28 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
     }
 
 
+@app.get("/api/practice/{level}/{area}/{route}/{language}/{number}")
+async def api_lesson_practice(request: Request, level: str, area: str, route: str,
+                              language: str, number: int) -> Response:
+    """Serve source-pinned, reviewed five-choice exercises; no account is needed to practice."""
+    if route not in {"lessons", "chapters"} or not all(re.fullmatch(r"[a-z0-9-]+", part)
+                                                     for part in (level, area, language)):
+        raise HTTPException(404, "Unknown lesson")
+    lesson = await lesson_details(request, level, area, language, number, legacy=route == "chapters")
+    if route == "lessons" and lesson["content_kind"] != "daily_lesson":
+        raise HTTPException(404, "This edition uses chapter pages")
+    path = f"web/practice-banks/{level}/{area}/{language}/{route}/{number:03d}.json"
+    raw = await source_text(request, path)
+    if raw is None:
+        raise HTTPException(404, "No reviewed five-choice exercise is published for this unit")
+    try:
+        bank = validate_practice(raw, level, area, language, route, number,
+                                 lesson["content_sha256"], lesson["exercise_ids"])
+    except InvalidPractice as exc:
+        raise HTTPException(409, str(exc)) from exc
+    return JSONResponse(bank, headers={"Cache-Control": "no-store", "Content-Language": language})
+
+
 @app.get("/api/health")
 async def health() -> dict[str, str]:
     return {"service": "OpenCyber Academy", "status": "ok", "source": "https://github.com/hiagokinlevi/OpenCyberAcademy"}
@@ -757,7 +780,10 @@ async def answer_test(request: Request, payload: TestAnswer, student: dict, *, s
     await record_activity(db, student["sub"], "test_answered", attempt["level"], attempt["area"],
                           attempt["language"], int(attempt["chapter"]), score=int(scored["correct"]), source=source)
     if next_index < 10:
-        return {"attempt_id": payload.attempt_id, "question": public_question(bank, next_index, next_deadline, now_ms)}
+        item = bank["questions"][index]
+        review = {**scored, "answer": item["correct"], "explanation": item["explanation"], "source": item["source"]}
+        return {"attempt_id": payload.attempt_id, "question": public_question(bank, next_index, next_deadline, now_ms),
+                "review": review}
     return {"attempt_id": payload.attempt_id, "complete": True, "score": new_score, "total": 10,
             "perfect": new_score == 10, "feedback": feedback(bank, answers)}
 

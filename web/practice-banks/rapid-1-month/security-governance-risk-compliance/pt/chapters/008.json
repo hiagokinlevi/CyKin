@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-governance-risk-compliance",
+  "language": "pt",
+  "route": "chapters",
+  "unit": 8,
+  "source_sha256": "a4be8668f9999d04bfd8fb0069872a378f8a3ede35634b71ded271c6a61a934a",
+  "questions": [
+    {
+      "exercise_id": "EX062",
+      "prompt": "A remoção do motivo de agendamento consta apenas como resultado previsto para o trimestre. Qual conclusão os documentos permitem?",
+      "options": [
+        {"id": "a", "text": "Os clientes já recebem confirmações sem o motivo, porque a lista de resultados é prova de implantação."},
+        {"id": "b", "text": "A remoção continua sendo uma intenção; sem amostra ou data da alteração, não se pode afirmar que os e-mails já mudaram."},
+        {"id": "c", "text": "Uma confirmação que ainda mostra o motivo prova que a nova versão já está em produção."},
+        {"id": "d", "text": "A equipe de segurança deve reconfigurar o relay de e-mail imediatamente, mesmo sem autorização escrita."},
+        {"id": "e", "text": "Basta inventar um exemplo de e-mail sem o motivo para encerrar o achado de privacidade."}
+      ],
+      "correct": "b",
+      "explanation": "O capítulo distingue o achado existente e a remoção planejada de uma mudança comprovada. Não há amostra sem o conteúdo nem data de alteração; a aula também rejeita inventar mensagens e reconfigurar o relay sem autorização."
+    }
+  ]
+}
