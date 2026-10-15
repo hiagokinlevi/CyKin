@@ -10,7 +10,7 @@
 
 ## How to study this book
 
-Read the twelve authored subject chapters in order. Chapters 1–3 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01) and [Week 3](#week-03-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Fifteen authored daily units (15/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapters 1–4 now include separate [Week 1](#week-01-day-01), [Week 2](#week-02-day-01), [Week 3](#week-03-day-01) and [Week 4](#week-04-day-01) five-day applied sequences; later chapters retain their earlier subject structure while distinct weekday teaching is developed. Twenty authored daily units (20/130 planned) are not the complete six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -21,7 +21,7 @@ The recommended starting point for organizational incident-response outcomes is 
 1. [Incident lifecycle and organizational readiness](#ch-01) — define the service, owners, evidence readiness and first handoff; [Week 1: five applied daily lessons](#week-01-day-01).
 2. [Authority, scope and response roles](#ch-02) — turn a charter into approval gates and reversible proposals; [Week 2: five applied daily lessons](#week-02-day-01).
 3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority; [Week 3: course Days 11–15](#week-03-day-01).
-4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits.
+4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits; [Week 4: course Days 16–20](#week-04-day-01).
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor.
 6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect.
 7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths.
@@ -1167,7 +1167,7 @@ The table is an authored plan, not a set of newly observed CTN events. Chapter 4
 
 **Practice.** Complete [EX015](#exercise-ex015): a 90–150-word escalation plus the separate request-state row. Preserve the original task's C01 gap and all C02–C08 limits. Compare the [worked answer](#answer-ex015), checking that neither proposed approval nor a hypothetical example is narrated as an accomplished action. **Limit:** a clear message can make a blocked decision visible; only actual authorized action and checked evidence can resolve it.
 
-**Continue studying — course Day 15:** [Previous: Day 14](#week-03-day-04) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Chapter 4 reference; daily sequence pending](#ch-04).
+**Continue studying — course Day 15:** [Previous: Day 14](#week-03-day-04) · [Week 3 index](#ch-03) · [Course index](../SUBJECTS.md) · [Next: Week 4, Day 16](#week-04-day-01).
 
 <a id="week-03-end"></a>
 
@@ -1222,6 +1222,8 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Evidence preservation and case records
+
+**Week 4; course Days 16–20.** Read the retained reference and V4/C4/C4X laboratories with the [five daily lessons](#week-04-day-01). The week stops at C10/09:22; later investigation cards remain withheld.
 
 ### Learning outcomes
 
@@ -1471,6 +1473,143 @@ Do not discard the raw C10 display once it has been normalized; retain both time
 
 **Chapter synthesis:** The evidence workflow is not completed by approval, file existence or a hash alone. C09 supplies a reported received copy but lacks key provenance/integrity fields; C10 is a limited screenshot observation. Both are useful if their uncertainties remain visible. Chapter 5 will compare their clues against other source records without converting a missing session join into proof.
 
+### Week 4 — five applied daily lessons (course Days 16–20)
+
+Read the chapter reference and retained V4/C4/C4X laboratories with these five lessons. Study days are not new incident timestamps. Day 16 uses the **09:14** request checkpoint; later days may use C09 at 09:18 and C10 at 09:22 as specified. C11 and later cards remain withheld. The week's product is an evidence package another investigator can challenge, including its missing fields and unperformed actions, rather than a certificate of authenticity.
+
+| Course day | Decision to justify | Artifact | Existing exercise |
+|---|---|---|---|
+| 16 | What may be requested, from whom, and within which boundary? | Collection contract and a scope-change rule | [EX016](#exercise-ex016) |
+| 17 | Which object and handling event does each receipt describe? | Separate receipts and a source/copy/derivative ledger | [EX017](#exercise-ex017) |
+| 18 | What does a digest comparison establish about exact bytes? | Reproduced V4/C4 outputs and a representation control | [EX018](#exercise-ex018) |
+| 19 | Which time and context claims survive screenshot review? | Raw/derived time annotation and a capture-context request | [EX019](#exercise-ex019) |
+| 20 | What bounded evidence work should investigation receive next? | Two-request queue and a claim-to-source handoff | [EX020](#exercise-ex020) |
+
+<a id="week-04-day-01"></a>
+
+#### Day 16 — Turn a collection question into an authorization boundary
+
+**Theory and mechanism.** A collection contract connects an investigation question to a particular producer, selection rule, permitted operation and receiving role. Its purpose is to prevent a useful question from becoming an unbounded data transfer. Separate **what would answer the question** from **what the analyst is permitted to obtain**. An API might expose more fields than the approval allows; an approval might cover data the interface cannot export. Neither condition repairs the other. The [NIST forensic-techniques guide](https://csrc.nist.gov/pubs/sp/800/86/final) gives source-sensitive acquisition context; the contract below is an original supervised workflow, not a NIST form or authorization.
+
+At **09:14**, C08 supplies a custodian statement about 10:00 expiry. It does not supply C09's later approval or collection. The bounded question is whether detailed identity records can clarify account/session/client relationships near the reported activity. Request `svc-enroll` IdP detail for proposed 08:50–09:05 UTC, necessary source event IDs and time basis, session/client/outcome fields, and query/export provenance. A minimal case destination is an access-controlled evidence location whose actual identifier remains **to be assigned**. Do not invent a storage path, approver's signature or operator receipt to complete the worksheet.
+
+**Assumptions and evidence.** The time range must name the selected field and timezone, endpoint inclusion, ingestion lag and paging behavior. The existing case's notation does not specify whether 09:05 is included. Mark that as a custodian question rather than silently declaring an implementation. The same caution applies to a shared source object: possessing an export button does not permit transfer of unrelated users' records. Ask the custodian for a filtered export, permitted field projection or restricted in-place review. If the approved method cannot satisfy the question, record the gap and seek an explicit scope amendment.
+
+**Worked contrast.** “Get every identity log before it disappears” leaves producer, selectors, rights and destination undefined. A defensible alternative states: “Please decide whether the identity custodian may retrieve the proposed bounded selection for CTN-IR-014/IDP-01, with source/query metadata and a restricted receiving role. Confirm interval semantics and access conditions; execution remains pending.” It asks for an actual decision. Writing “approved 09:16” at the 09:14 checkpoint would import C09 from the future.
+
+Consider a separate **W4-SCOPE tabletop variant**, not the C09 query. Suppose an owner proposes a half-open event-time window `[08:50,09:05)` and the account selector `svc-enroll`. A synthetic 08:50 matching-account row is eligible; an 09:05 row is outside this proposed rule; an 08:58 different-account row is also outside. If the latter is needed to test a relationship, the correct next state is a new bounded approval request, not silent query expansion. This tests selection reasoning without performing collection. A filter's returned rows still would not prove producer completeness or authorized execution.
+
+**Decision and limit.** Record request, approval, collection and receipt separately, including a stop condition if scope or access is unclear. A reported deadline prioritizes owner attention; it does not grant privilege or preserve source data by itself. Permission to export is distinct from permission to retain, disclose or transform an unrestricted copy under local rules.
+
+**Practice.** Complete [EX016](#exercise-ex016) using only C03/C05/C08 at 09:14. Specify the contract, unresolved interval semantics and a conditional response if the interface offers only an oversized export. Compare the [worked answer](#answer-ex016). No source contact or real export is part of the exercise.
+
+**Continue studying — course Day 16:** [Previous: Week 3, Day 15](#week-03-day-05) · [Week 4 index](#ch-04) · [Course index](../SUBJECTS.md) · [Next: Day 17](#week-04-day-02).
+
+<a id="week-04-day-02"></a>
+
+#### Day 17 — Identify the source, received copy and analytical derivative
+
+**Theory and mechanism.** “Original” is ambiguous unless the record identifies the layer. The producer's retained record set, the custodian's exported object, the first case copy and an analyst's transformed file are distinct objects even when their visible rows agree. Name the layer and preserve a source pointer. An analyst cannot prove that the first received file is the producer's original merely by calling it `original.csv`. An export may already be a selected or transformed representation of a changing source.
+
+At 09:18, C09 supplies a case-copy receipt and two readable rows with a reported 09:16 approval. It does not supply the source object/version, exact query or actual byte count/digest. At 09:22, C10 supplies a separate screenshot observation. The received case materials are useful, but the lesson's readable transcription is not the underlying CSV or image byte sequence. Keep missing byte-level fields as **not supplied**, not zero, failed or guessed.
+
+**Custody mechanism.** For every real handling event, an evidence trail should identify item/version, source pointer, acting role, action, time basis, approved scope, destination or receiving role, check performed and result. Distinguish “sent,” “received” and “checked”: a sender report does not establish recipient receipt, and receipt does not establish a successful comparison. Later clarification is a dated supplement with its actual author/time and a pointer to the prior entry. Backdating today's digest would conceal a gap in the earlier record. This improves traceability but does not certify lawful handling or admissibility.
+
+**Worked contrast.** A receipt reading “09:18: C09 and C10 verified” is wrong twice: C10 arrives later, and neither card supplies a completed byte check. Separate entries retain C09's 09:16 approval/09:18 receipt and C10's 09:22 receipt with its conditional display time. A proposed derivative ledger can then say: “Future normalized timeline → C09/C10 case references → transformation to retain raw and normalized times → analyst and version to be recorded when performed.” That is a plan, not a new received file.
+
+If a hypothetical analyst later redacts a copy for restricted discussion, the derivative needs its own identity, transformation description and disclosure gate. Retain the preserved case copy under its actual policy; do not overwrite it with the redacted version. A changed digest after redaction can be expected and must be explained. Matching digests for two alleged copies address byte identity only under the comparison's trust assumptions; they do not authenticate a misleading filename or missing producer path.
+
+**Laboratory and decision.** Predict and run the retained C4X receipt-state illustration. Its `CTN_C09_LIMIT` output models missing integrity fields; it is not a hash computation. Its `sha256:toy` value and Boolean `checked` flag are declarations, not measurements. The contradiction control with `approved=False` and an alleged received copy exposes a limitation of that toy's first-failure label: retain and flag the inconsistency rather than using `REQUEST_ONLY` to erase a reported handling event. No such inconsistent new receipt is added to canonical C09.
+
+**Practice and limit.** Complete [EX017](#exercise-ex017) as two receipts plus a three-layer source/copy/derivative ledger and one proposed transfer record. Use the [worked answer](#answer-ex017) to check statuses. A complete-looking form can still describe an unperformed transfer; only actual evidence permits advancing its state. C09's receipt does not establish a source hold or stop the producer's reported deletion.
+
+**Continue studying — course Day 17:** [Previous: Day 16](#week-04-day-01) · [Week 4 index](#ch-04) · [Course index](../SUBJECTS.md) · [Next: Day 18](#week-04-day-03).
+
+<a id="week-04-day-03"></a>
+
+#### Day 18 — Compare exact bytes without confusing integrity with truth
+
+**Theory and mechanism.** A cryptographic digest is computed from an exact byte sequence. Verification requires identifying the checked object, algorithm, reference digest and origin of that reference, measurement method/time, comparison result and response to a mismatch. A digest supplied by a custodian and a digest independently recomputed over received bytes are different observations. Without the bytes or a trustworthy comparison baseline, an integrity check is **not performed**, not automatically failed. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) supplies forensic context; the demonstrations here concern artificial bytes only.
+
+**Worked contrast.** The retained V4/C4 programs hash a 34-byte classroom payload. Changing `idp-export` to `idp-Export` changes one byte without changing length and produces a different digest. Identical length therefore does not establish identical bytes. Conversely, obtaining the expected V4 digest twice verifies reproducibility for that payload, not the source authenticity, complete event coverage or approved acquisition of C09. Never insert V4's digest into C09's missing field.
+
+A representation change creates another useful boundary. The same visible two lines may use LF or CRLF terminators. A CSV parser might present equal field values from both, while the bytes differ. Preserve the received representation and document conversion as a derivative; do not “repair” an original's line endings to make a hash match. A mismatch calls for object/version, transfer and transformation checks. It does not by itself identify a malicious actor or show where the discrepancy arose.
+
+**Offline W4-BYTES control — separate from CTN.** Run with Python 3 standard library in memory. Inputs are the exact V4 classroom bytes and a CRLF derivative; no source or user file is read or written. Compare the lines logically before running. The purpose is to distinguish an equal parsed representation from equal raw bytes, not to validate CSV completeness.
+
+~~~python
+import hashlib
+
+preserved = b"case=CTN-IR-014\nsource=idp-export\n"
+crlf_derivative = preserved.replace(b"\n", b"\r\n")
+baseline = hashlib.sha256(preserved).digest()
+print("W4|lengths", len(preserved), len(crlf_derivative))
+print("W4|same_lines", preserved.splitlines() == crlf_derivative.splitlines())
+print("W4|same_bytes", preserved == crlf_derivative)
+print("W4|repeat_digest", baseline == hashlib.sha256(preserved).digest())
+print("W4|derivative_matches", baseline == hashlib.sha256(crlf_derivative).digest())
+assert preserved != crlf_derivative
+assert baseline != hashlib.sha256(crlf_derivative).digest()
+~~~
+
+**Executed output for these exact inputs:**
+
+~~~text
+W4|lengths 34 36
+W4|same_lines True
+W4|same_bytes False
+W4|repeat_digest True
+W4|derivative_matches False
+~~~
+
+Equal parsed lines and unequal bytes coexist without contradiction. The repeat check is a positive control; the derivative is a negative comparison against the original baseline. A recipient who sees only the line display cannot infer which byte representation was received. A trustworthy source path is still required even when two hashes agree; an attacker-controlled file and attacker-supplied digest are not independent corroboration.
+
+**Decision, practice and limit.** Complete [EX018](#exercise-ex018) with the exact V4 digest, C4 mutation and W4-BYTES transcript. State how a missing reference differs from a measured mismatch, and what evidence would let a later C09 check proceed. Compare the [worked answer](#answer-ex018). All three programs test local representations, not actual CTN collection. Keep them separate from source authenticity, completeness and business meaning.
+
+**Continue studying — course Day 18:** [Previous: Day 17](#week-04-day-02) · [Week 4 index](#ch-04) · [Course index](../SUBJECTS.md) · [Next: Day 19](#week-04-day-04).
+
+<a id="week-04-day-04"></a>
+
+#### Day 19 — Keep capture context separate from clock arithmetic
+
+**Theory and mechanism.** Time normalization changes an interpreted representation; it does not authenticate the time source. An image can contain several clocks: a rendered application time, device clock, filename or metadata timestamp. Receipt time records when the case obtained an item. None must be silently substituted for capture time or for the time a business state changed. A reliable annotation preserves the raw display, claimed zone/offset, conversion method, time-source confidence and separate receipt.
+
+For C10, the given arithmetic is `11:21 − 02:00 = 09:21 UTC`, conditional on the displayed fixed offset and clock. The case receipt is 09:22. Subtraction alone cannot show that the picture was captured exactly one minute before receipt: its capture-device clock and the semantics of the displayed time are unverified. Nor does that interval measure the duration of the unavailable state. Keep the screenshot observation and the authoritative-state question separate.
+
+**Worked contrast.** Caption A says “S42's database became unavailable at 09:21; evidence collected a minute later.” It invents the authoritative state, transition time and collection latency. Caption B says “Support supplied an image at 09:22 showing S42 unavailable and a display reading 11:21 UTC+02:00; the conditional conversion is 09:21 UTC, while capture time, cache and backend state remain unverified.” B permits the next investigator to question each assumption without discarding the report.
+
+At the professional level, a context request should be specific: preserve the original image file and ticket under permitted access; ask which device/application clock is shown, what establishes its offset, which page and authorized role/view produced the display, whether a refresh/cache distinction is known, and whether a minimal request/version identifier can be linked to an application-side record. A full screenshot of unrelated learner records is not needed to ask those questions. If a redacted view is shared, record it as a derivative and preserve the actual source access boundary.
+
+**Independent contrast exercise, W4-CLOCK.** Suppose another training picture displays the same digits, 11:21, but its stated fixed offset is +03:00. The conditional conversion is 08:21 UTC, one hour earlier than C10's +02:00 conversion. That difference comes from an explicitly changed assumption; it is not a correction to canonical C10. If the offset is absent, the correct result is **UTC estimate unavailable without another time basis**, not a guess based on the analyst's laptop timezone. If a screenshot is re-encoded, its new file metadata likewise cannot prove the original capture time. These variants require no source connection or real personal image.
+
+**Decision and limit.** Retain C10 as bounded evidence of a displayed symptom. A requested authoritative S42 value/version and read time could clarify current state at the time of that permitted read. It would not automatically reconstruct the historical backend state at 09:21; historical claims need their own traceable records and clock semantics. Do not let a later current-state check rewrite an earlier screenshot caption.
+
+**Practice.** Complete [EX019](#exercise-ex019) with the raw/derived/receipt fields, the two captions' evidential difference and one bounded context request. Explain W4-CLOCK without importing its offset into C10, then compare the [worked answer](#answer-ex019). An accurate conversion is necessary for the supplied arithmetic task but insufficient for a capture-time or state claim.
+
+**Continue studying — course Day 19:** [Previous: Day 18](#week-04-day-03) · [Week 4 index](#ch-04) · [Course index](../SUBJECTS.md) · [Next: Day 20](#week-04-day-05).
+
+<a id="week-04-day-05"></a>
+
+#### Day 20 — Hand investigation a claim-to-source package and bounded queue
+
+**Theory and mechanism.** A preservation handoff defines which claims an investigator can test next without improving the source by narration. Link each claim to its source/copy reference, receipt time, integrity/provenance status, inference limit and next accepting role. Keep the evidence ledger separate from a hypothesis table: observations remain traceable even when a preferred explanation changes. Preservation establishes usable inputs for investigation; it does not establish an actor or root cause.
+
+At **09:22**, C09 offers supplied identity detail associating `s-77` with client `runner-03`, within the reported two rows. C03/C09 may motivate an identity correlation question, while C05 still has a blank session field and `q-144`. No direct session-to-application-request join has been supplied. C10 offers a pictured UI symptom with conditional time and unknown cache/context. C11/C12 have not arrived and must not appear as evidence in this handoff. A new analytical identifier can organize notes but cannot replace a missing producer identifier.
+
+**Worked contrast.** “Evidence verified; runner-03 edited S42” promotes an incomplete receipt into a causal conclusion. A bounded alternative says: “C09 copy received according to the case at 09:18; original object/query/digest absent. Its supplied rows associate s-77 with runner-03, but C05 supplies no matching session field. C10 received at 09:22 depicts an unavailable UI; backend and capture context unverified. Preserve these limits while requesting source-specific discriminators.” The latter is actionable because it names the next missing evidence, not merely “investigate further.”
+
+Build a two-request queue using **loss risk and decision value**, not the number of blank cells. First, ask the identity custodian under the actual approval to supply C09's source object/version, exact selectors and method, collection/transfer history and byte count/digest if measured. If a fresh collection or wider scope is needed, seek its own approval rather than presuming the old approval covers it. C08 reports 10:00 expiry; at 09:22 the nominal interval is 38 minutes, but no guaranteed execution budget or source hold follows from that arithmetic. A custody gap remains a gap after expiry unless supported later evidence resolves it.
+
+Second, seek a permitted, minimized authoritative S42 state/version and relevant last-change reference from the application/service owner. State which source is authoritative and when the read is performed; a future current-state observation is not a measured historical value. These requests can be handled in parallel if custodians and permissions allow. Rank identity preservation first under the supplied loss warning, but permit a justified alternative scheduling if an owner identifies a more urgent service consequence. Do not drop the first request's deadline merely because the state check is easier.
+
+**Review trigger and stopping rule.** Propose a supervisor review at 09:30, earlier if a usable receipt or verified major service harm arrives. This is a new **proposed checkpoint**, not a CTN card or observed action. If the accepting custodian, permission or method is missing, escalate the blocked request and document the residual loss risk. If a digest mismatch appears in a future check, retain the discrepant versions and seek an authorized comparison; do not overwrite a copy or declare intentional tampering. Keep the distinction between source hold, case copy, derivative and checked result visible.
+
+**Practice and limit.** Complete [EX020](#exercise-ex020): two bounded requests, review/stop conditions and a short source-linked handoff at 09:22. Use the [worked answer](#answer-ex020) to test whether another analyst can identify the unknowns without inventing a completed operation. This package prepares Chapter 5's hypotheses and timeline; it does not close the case or release later cards.
+
+**Continue studying — course Day 20:** [Previous: Day 19](#week-04-day-04) · [Week 4 index](#ch-04) · [Course index](../SUBJECTS.md) · [Next: Chapter 5 reference; daily sequence pending](#ch-05).
+
+<a id="week-04-end"></a>
+
 ### Common mistakes and limits
 
 - Calling a checksum a signature or proof of authenticity. A digest detects changed bytes only when a trustworthy baseline and object identity exist.
@@ -1485,15 +1624,25 @@ One learner prepares a C09/C10 package with a request, receipt, limitation note 
 
 ### Exercises — subject 4
 
-**EX016 — Bounded collection request.** Input: C08 at 09:14, C03 and C05. Write the IdP source, 08:50–09:05 UTC range, selectors, minimum fields, purpose, custodian, approval gate and requested result. A 2-point result does not demand a tenant-wide export or claim execution.
+<a id="exercise-ex016"></a>
 
-**EX017 — Two receipts.** Input: C09 and C10. Create separate receipt lines with source, event/display time, receipt time, approval where known, object integrity state and one explicit limitation each. A 2-point result distinguishes C09's missing digest from a verified hash of V4.
+**EX016 — Bounded collection request.** Objective: specify a reviewable request without expanding permission. Input: C03/C05/C08 at 09:14, the earlier role boundaries and Day 16. Produce a contract naming IdP source, proposed 08:50–09:05 UTC range, selected time field and unresolved endpoint semantics, account/field selectors, purpose, custodian, approval gate, restricted receiving role and expected receipt. State a stop/amendment rule if only an oversized export is offered. No C09 approval or real collection is available at this checkpoint. Rubric: 0 = invented permission/execution or unrestricted collection; 1 = bounded request with missing semantics, owner or stop condition; 2 = actionable contract preserving pending authority and explicit scope-change handling. [Worked answer](#answer-ex016).
 
-**EX018 — Hash verification.** Input: the V4 bytes and published SHA-256 above. Run the local snippet or independently recompute the digest, state the 34-byte count and digest, then explain one thing it establishes and two things it does not. A 2-point result gives the exact digest and refuses to authenticate C09 from V4. Also change one ASCII byte in a copy as in §4.8; explain why equal byte counts do not establish identical bytes.
+<a id="exercise-ex017"></a>
 
-**EX019 — Timezone annotation.** Input: C10. Calculate the apparent UTC display time, record the 09:22 receipt separately and write a caveat about the unverified capture clock and cached page. A 2-point result gives 09:21 UTC as *conditional*.
+**EX017 — Two receipts.** Objective: distinguish object identity, handling events and interpretation. Input: C09/C10 as available at 09:22, the C4X illustration and Day 17. Create separate receipt lines with source and object layer, event/display time, receipt time, approval where supplied, missing byte/provenance fields and one limit each. Add a source/case-copy/proposed-derivative ledger and a proposed transfer entry whose unperformed fields remain pending. Explain why a later digest needs a dated supplement and why C4X flags do not prove custody. Rubric: 0 = merged chronology, fabricated transfer/check or V4 digest assigned to C09; 1 = honest receipts with incomplete layer/handling distinction; 2 = two traceable receipts, separate layers, append-only supplement and explicit proposed transfer status. [Worked answer](#answer-ex017).
 
-**EX020 — Preservation queue.** Input: C08–C10 and the S42 question. Rank two authorized follow-ups by imminent loss and decision value; identify owner, bounded scope and expected discriminator. A 2-point result asks for C09 collection metadata before expiry and an authoritative S42 state comparison without declaring either result received.
+<a id="exercise-ex018"></a>
+
+**EX018 — Hash verification.** Objective: reproduce a byte comparison and delimit its claim. Input: exact V4 bytes and expected digest in §4.4, C4 in §4.8 and W4-BYTES on Day 18; Python 3 standard library or an equivalent documented offline method. Report V4's exact count/digest, reproduce the one-byte mutation and five-line representation control, and explain equal length versus equal parsed lines versus equal bytes. State one supported claim, two unsupported source claims, and the difference between a missing baseline and a measured mismatch. Do not alter any source artifact or populate C09 from a fixture. Rubric: 0 = wrong bytes/digest or claimed C09 verification; 1 = correct V4 result but incomplete control/limit explanation; 2 = reproducible results, diagnosed differences and a source-specific boundary. [Worked answer](#answer-ex018).
+
+<a id="exercise-ex019"></a>
+
+**EX019 — Timezone annotation.** Objective: normalize a displayed time without authenticating capture or state. Input: C10, Day 19 and its explicitly separate W4-CLOCK variant. Record raw 11:21 UTC+02:00, conditional UTC conversion and 09:22 receipt separately. Explain why their difference is not a measured capture-to-receipt latency or backend transition time. Give a bounded context request, the +03:00 variant result and the outcome if no offset is supplied. Rubric: 0 = wrong sign, asserted capture clock or authoritative state; 1 = conditional 09:21 but incomplete context/variant reasoning; 2 = correct distinct time fields, source-limited caption, variant distinction and targeted request. [Worked answer](#answer-ex019).
+
+<a id="exercise-ex020"></a>
+
+**EX020 — Preservation queue.** Objective: hand investigation a source-linked, executable-under-approval plan. Input: C08–C10, relevant earlier cards and the S42 question at 09:22; no C11 or later card. Rank two bounded follow-up requests by reported loss risk and decision value. For each name the accepting custodian, supplied versus pending approval, scope, discriminator, next receipt and review/stop condition. Add a 90–150-word handoff identifying C09/C10 limits and the missing session-to-request join. A proposed review time is not a new case observation; a future current-state read does not establish historical state. Rubric: 0 = invented result/permission or causal attribution; 1 = plausible two-request queue with incomplete source, authority or reassessment fields; 2 = actionable bounded queue and honest handoff with distinct preservation and state questions. Justified scheduling alternatives may pass if they retain the loss warning and permission boundaries. [Worked answer](#answer-ex020).
 
 ### Subject synthesis
 
@@ -3554,21 +3703,49 @@ The 09:25 time is a proposed checkpoint, not an observed action. If permission c
 
 ### Subject 4: EX016–EX020
 
+<a id="answer-ex016"></a>
+
 **EX016 — Model request.** `CTN-IR-014 / IDP-01`, requested 09:14: identity custodian to preserve detailed IdP events for `svc-enroll`, 08:50–09:05 UTC, selecting event ID, original source timestamp/zone, session, client, outcome, account and export/source metadata. Purpose: test whether the summary's session/client fields can be reviewed before C08's 10:00 expiry; limit any other identifiers under custodian policy. Approval gate: identity authority and any applicable case/data owner. Expected result: source object ID, export query, byte count, digest and restricted copy location. At 09:14 these are **requested**, not received. At 09:16 C09 later supplies an approval, but do not use that to backdate the request's status.
 
 **Additional worked reasoning (EX016 — Proposed collection request.):** At 09:14 C08 supports urgency to ask the identity custodian for a narrowly scoped 08:50–09:05 `svc-enroll` IdP detail source, preserving original timestamps, session/client fields, event IDs, producer/copy metadata and an explicit restricted location. Identity/data-owner authorization and actual collector/time are **pending**, not complete. The purpose is a bounded source availability and correlation question, not “download the tenant.” An actual expiry at 10:00 is a custodian statement in C08, not a blanket data-access permission.
+
+**Week 4 Day 16 — worked collection contract.** At 09:14 the proposal is IdP detail for `svc-enroll`, 08:50–09:05 UTC, to examine session/client context around C03/C05. Ask which source time field, zone, endpoint inclusion, ingestion cutoff and paging behavior implement that interval. Minimum relevant fields are source event ID/time/zone, account, session, client, outcome and acquisition metadata. The accepting role is the identity/data custodian under actual case rules; the restricted destination identifier and operator receipt are not supplied. C09's later 09:16 approval cannot complete this earlier form. Expected evidence is an actual decision followed separately by a source-specific collection/receipt record. If the interface offers only all identities, stop the proposed transfer and request an authorized narrower method or amendment. In W4-SCOPE only, `[08:50,09:05)` includes a matching-account 08:50 event but excludes 09:05 and a different-account 08:58 row. These are selection outcomes in a separate tabletop, not C09's established query or real collection.
+
+<a id="answer-ex017"></a>
 
 **EX017 — Model receipts.** C09: IdP detailed CSV described as 08:50–09:05 source range, two reported events 08:58/08:59, approval at 09:16, case copy received 09:18; object ID, byte count and digest not supplied; completeness and integrity **unverified**. C10: support screenshot displays 11:21 UTC+02:00, conditionally 09:21 UTC; ticket receipt 09:22; original file identity, capture device, clock and cache context unknown; displayed symptom only. V4's digest must not be copied into the C09 receipt. If a later collection fills a field, add a dated supplement, not a silent edit of the original receipt.
 
 **Additional worked reasoning (EX017 — Two different receipt statuses.):** C09 has a reported permission at 09:16 and case-copy receipt at 09:18 for events 08:58/08:59, but no supplied source object ID, byte count or digest; its integrity/completeness remain unverified. C10's display is 11:21 UTC+02:00, conditionally 09:21 UTC, with support receipt at 09:22, missing original capture clock/cache context. Do not make a single “09:18 verified evidence” entry for both. A receipt is evidence of receiving the claimed object, not proof of authoritative meaning.
 
+**Week 4 Day 17 — worked layer and handling record.** C09's received-case-copy layer has reported approval 09:16, receipt 09:18 and described events 08:58/08:59; producer object/version, byte count, digest and exact method remain not supplied. C10 is a separate screenshot item received 09:22, with raw display 11:21 +02:00 and conditional 09:21 UTC; file identity, capture clock/cache and authoritative state remain unknown. For each, distinguish the described producer, received case material and proposed analytical derivative; none of the missing underlying bytes is supplied by the book's text. A proposed transfer row may identify case item and permitted receiving role while marking operator, transfer time, recipient acceptance and check pending. Later metadata belongs in a dated supplement, never a backdated original receipt. C4X's six lines classify declared states only; `checked=True` with `sha256:toy` is not a measured digest. A contradictory received/unapproved variant must be retained and flagged, not erased by the toy's REQUEST_ONLY label. An access log improves traceability but does not certify admissibility or a source hold.
+
+<a id="answer-ex018"></a>
+
 **EX018 — Model hash result.** The exact V4 payload has **34 bytes** and SHA-256 `1407e98f466990ff5aa4eee42cd30291826490e2c910ee57887824e6946136cc`. Recomputing this on the stated bytes verifies that the local fixture and published expected digest agree. It does **not** show that C09's CSV has those bytes, was completely collected, or contains true IdP events. A different digest after changing one byte in a copy demonstrates sensitivity to byte changes, not authenticity of an external system.
 
 **Additional worked reasoning (EX018 — V4 digest and its boundary.):** The published V4 payload has **34 bytes**, with SHA-256 `1407e98f466990ff5aa4eee42cd30291826490e2c910ee57887824e6946136cc`. A second digest after a one-byte mutation differs despite equal byte length. This checks the chosen classroom strings only; nothing in the 34-byte fixture can authenticate C09's actual source export. Award the integrity point for reproducible bytes **and** a clear statement that source authority and coverage remain separate.
 
+**Week 4 Day 18 — worked representation control.** The original V4 count/digest and C4 one-byte variant above remain unchanged. W4-BYTES prints:
+
+~~~text
+W4|lengths 34 36
+W4|same_lines True
+W4|same_bytes False
+W4|repeat_digest True
+W4|derivative_matches False
+~~~
+
+Replacing two LF bytes with two CRLF pairs adds two bytes, yielding 36. `splitlines()` removes those terminators, so equal returned lines do not imply equal raw bytes. The repeated original digest is a positive control; the derivative fails comparison with the original baseline as expected. A missing C09 baseline/byte sequence means no comparison was performed, not an observed mismatch. A future actual mismatch would require retaining the discrepant objects and checking identity, version, transfer and transformations through the authorized custodian. None of these local outputs establishes C09 authenticity or completeness. Two points require the original V4 digest and C4 mutation as well as this transcript and its interpretation.
+
+<a id="answer-ex019"></a>
+
 **EX019 — Model time annotation.** The screenshot's displayed 11:21 with a fixed UTC+02:00 label converts to **09:21 UTC** after subtracting two hours; the support desk received it at **09:22 UTC**. Record raw display, stated offset, conditional conversion and receipt in separate fields. Without capture-device clock evidence and cache context, do not claim that the authoritative S42 state changed at 09:21 or that every viewer saw the same result.
 
 **Additional worked reasoning (EX019 — Conditional screenshot time.):** 11:21 at an asserted UTC+02:00 offset corresponds to 09:21 UTC. C10 entered the case at 09:22, not at 09:21. Without evidence about capture-device clock accuracy, page freshness and source state, label the conversion conditional and the symptom a screenshot observation. No current backend S42 value is established by the picture.
+
+**Week 4 Day 19 — worked context annotation.** Raw display: 11:21 UTC+02:00. Conditional displayed UTC: 09:21 after subtracting two hours. Case receipt: 09:22. Clock/offset verification, capture time, page cache and authoritative S42 state: not supplied. The nominal one-minute difference is not measured transfer latency because the display has not been established as an accurate capture clock. A safe caption attributes the picture to support and retains the uncertainty. A bounded request seeks the original image/ticket under permitted access, displayed-clock semantics, device time basis, page/role/cache context and minimal request/version pointers if available. W4-CLOCK's separate +03:00 assumption yields 08:21 UTC; with no offset or another trustworthy time basis, a UTC estimate is unavailable. Do not change C10 to match either variant. A later current-state read answers a new observation at its own read time, not automatically the historical 09:21 state.
+
+<a id="answer-ex020"></a>
 
 **EX020 — Model queue.** First ask the identity custodian, under the case approval, for the C09 source object ID, exact bounded query, byte count/digest and collection method before the stated 10:00 source expiry; this can determine whether an analysable copy exists. In parallel ask the service/application owner for an approved read-only S42 authoritative-state and last-change check with minimal fields; it can distinguish current state from a displayed symptom. Neither follow-up result has arrived in the case at 09:22. Reasonable ordering can differ if the learner preserves the deadline, authority and discriminator.
 
@@ -3583,6 +3760,19 @@ C4|equal_digests False
 ~~~
 
 The 34-byte V4 fixture and one-byte variant have identical lengths but different SHA-256 values. This establishes a difference between those classroom byte strings only. C09's original object, method, byte count and digest remain unavailable; the V4 digest must never populate its evidence receipt. A correct EX018 explanation keeps source authenticity, completeness and decision relevance distinct from byte integrity.
+
+**Week 4 Day 20 — worked queue and handoff.**
+
+| Proposed request | Role and authority | Next evidence / discriminator | Review and stop condition |
+|---|---|---|---|
+| C09 bounded acquisition clarification | Identity custodian under the supplied case approval; confirm whether any fresh/wider operation needs another decision | Source object/version, exact query/method, acquisition/transfer record and actual byte count/digest if measured; distinguish received copy from complete producer scope | Before reported 10:00 loss when possible; propose 09:30 supervisor review and escalate earlier if acceptance/method is blocked; never silently widen scope |
+| S42 authoritative-state and last-change comparison | Application/service owner; an approved read-only method is still to be established in this case | Minimal status/value, version/request reference, source and read time; distinguish current state from screenshot interpretation | Review on actual result or 09:30 proposal; stop if permission/source meaning is unclear; do not backdate a future read |
+
+These are requests, not new case receipts. Identity work is ranked first under the source-loss warning; concurrent scheduling is acceptable with distinct custodians and permissions. At 09:22, 38 nominal minutes remain to C08's reported expiry, but neither a guaranteed execution window nor a working source hold is supplied.
+
+**Model handoff:** “At 09:22, C09 supplies a received IdP copy with reported 09:16 approval, but source object, query and byte checks remain missing. Its two supplied rows associate s-77 with runner-03; they do not join that session to q-144. C10 depicts S42 unavailable with conditional 09:21 UTC display time; capture clock, cache and authoritative state are unverified. Ask the identity custodian for bounded acquisition metadata before the reported 10:00 expiry, confirming any new operation's permission. Separately seek an approved application-owner S42 value/version and last-change comparison. Propose review at 09:30 or earlier on a usable receipt or verified major harm. No new collection, state result or account action is claimed.”
+
+This message carries claim-to-source limits into investigation. C11/C12 are unavailable, and neither request's expected result can be written as received. Current-state evidence may inform impact while historical cause still needs its own validated identifiers and time basis.
 
 ### Subject 5: EX021–EX025
 

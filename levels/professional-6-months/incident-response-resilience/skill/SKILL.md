@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Incident response and cyber resilience — Professional course skill
 
-Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–3 contain separate five-day Week 1–3 sequences: 15/130 planned daily lessons are authored. Do not count the other chapters as 115 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapters 1–4 contain separate five-day Week 1–4 sequences: 20/130 planned daily lessons are authored. Do not count the other chapters as 110 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
 
 ## Course sources
 
@@ -28,6 +28,8 @@ For Week 2, teach [Day 1](../en/book/MANUSCRIPT.md#week-02-day-01) through [Day 
 
 
 For Week 3, teach [Day 11](../en/book/MANUSCRIPT.md#week-03-day-01) through [Day 15](../en/book/MANUSCRIPT.md#week-03-day-05) with the Chapter 3 reference and retained C3/C3X programs. Match EX011–EX015 to their revised prompts, original worked answers and Week 3 extensions. Enforce C02–C05 at 09:09 and C06/C07/C08 only at their later releases. A job/request link can support a hypothesis; a complete manifest excluding the request can weaken it. Neither an incomplete calendar nor a shared minute proves misuse. The proposed 09:25 review is not a new case event. A separate [Chapter 3 timed-test bank](../../../../web/question-banks/professional-6-months/incident-response-resilience/en/003.json) now contains Q01–Q10, each with four authored choices, a worked explanation and a specific source reference. The site adds the fifth uncertainty choice and a ten-second deadline. This test does not convert EX011–EX015 into interactive practice counterparts or establish independent human approval.
+
+For Week 4, teach [Day 16](../en/book/MANUSCRIPT.md#week-04-day-01) through [Day 20](../en/book/MANUSCRIPT.md#week-04-day-05) with the retained Chapter 4 reference. EX016 uses the 09:14 request boundary; EX017–EX020 can use C09/C10 through 09:22. Retain all original V4/C4/C4X outputs. W4-BYTES adds five lines showing equal parsed lines with unequal bytes (34 versus 36); it is not C09. Teach the source/copy/derivative distinction and append-only handling supplements. W4-SCOPE and W4-CLOCK are separate tabletop variants; the proposed 09:30 review is not a new case event. Read all five revised prompts with their worked Week 4 extensions before grading.
 
 ## Authored twelve-subject route
 

@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–3 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01) and [Week 3](MANUSCRIPT.md#week-03-day-01), each with five applied weekday lessons: 15/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapters 1–4 contain [Week 1](MANUSCRIPT.md#week-01-day-01), [Week 2](MANUSCRIPT.md#week-02-day-01), [Week 3](MANUSCRIPT.md#week-03-day-01) and [Week 4](MANUSCRIPT.md#week-04-day-01), each with five applied weekday lessons: 20/130 planned daily lessons are authored, with whole-volume review still pending. Later chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -87,7 +87,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 04 — Evidence preservation and case records
 
-**Stage 2; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
+**Stage 2 in the legacy outline; 30 historical planned pages; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-04) and [Week 4, course Days 16–20](MANUSCRIPT.md#week-04-day-01). The five lessons teach authorization/scope, source-copy-derivative identity, receipts and custody, exact-byte checks, capture context and a bounded investigation handoff. They retain C09/C10 and V4/C4/C4X, add the in-memory W4-BYTES representation control, and revise EX016–EX020 with matching worked extensions. No later case card, additional numbered exercise or new timed test is supplied.
 
 **Teaching purpose and relevance:** Create a case trail that allows a second responder to reproduce observations without altering the source.
 
