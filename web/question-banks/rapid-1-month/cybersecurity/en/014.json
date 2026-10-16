@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 14,
+  "source_anchor": "ch-14",
+  "source_sha256": "97c8fe72fc6383fe92bfed6fb398794b9e5b93427b90f400ddb48ea34fa66e40",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, which source is authorized for the current Chapter 14 sitting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The archived 11:40 page, because it passed checks in the earlier sitting"
+        },
+        {
+          "id": "b",
+          "text": "A combined schedule assembled from the older and newer pages"
+        },
+        {
+          "id": "c",
+          "text": "The particular 11:55 page named by today's owner for this exercise"
+        },
+        {
+          "id": "d",
+          "text": "Every page headed 11:55 during later outages this month"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The owner designates one identifiable object for this sitting, not a clock value or every sheet in the folder. The earlier 11:40 page remains an archive; its previous naming does not transfer to today's decision. Combining pages would create a different object that was not designated. Section 14.3 also limits the grant to this exercise rather than a month of outages. EX030 first identifies today's source before interpreting its rows. NIST CSF 2.0 supports managed authorizations generally; the particular per-sitting rule comes from the fictional case, not the framework.",
+      "source": "Chapter 14, §14.1 \"Today's source is a different object\"; §14.2, final paragraph; §14.3 \"Limits of the third row\"; §14.5, step 1; EX030, task and first worked sentence. General principle only: NIST CSF 2.0, Appendix A, PR.AA-05, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which entry on the named 11:55 page directly answers the Room 4 / 15:00 query?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SYN-003: Room 4, start 15:00, created 11:20, confirmed"
+        },
+        {
+          "id": "b",
+          "text": "SYN-002: Room 2, start 15:00, confirmed"
+        },
+        {
+          "id": "c",
+          "text": "The 11:55 heading, without matching a booking row"
+        },
+        {
+          "id": "d",
+          "text": "The earlier page's absence of any Room 4 entry"
+        }
+      ],
+      "correct": "a",
+      "explanation": "SYN-003 matches both the requested room and start, and its status is confirmed. Created 11:20 describes that synthetic record; it is neither the requested start nor the page heading. SYN-002 shares 15:00 but names another room. A heading alone states no booking status, and silence on an older artifact does not answer this newly supported query. EX030 uses the row released in Chapter 14 rather than importing another source. These are supplied fictional facts, not evidence of a real reservation being created at 11:20 or a verified database synchronization.",
+      "source": "Chapter 14, §14.1, first paragraph; §14.2, Room 4 at 15:00 row; §14.4, released-facts paragraph; §14.5, steps 2–3; EX030, worked result and expanded Room 4 / 15:00 row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "After reading SYN-003 on the approved page, which reply is supported without inventing a person or a new transaction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Your new reservation for Room 4 at 15:00 is now confirmed"
+        },
+        {
+          "id": "b",
+          "text": "Room 4 at 15:00 is available because the source is newer"
+        },
+        {
+          "id": "c",
+          "text": "The resident called SYN-003 holds Room 4 at 15:00"
+        },
+        {
+          "id": "d",
+          "text": "Room 4 at 15:00 is already booked"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The confirmed row supports the bounded already-booked statement, not a confirmation for this asker. Source approval does not grant the room, transfer the existing booking or turn occupied into free. SYN-003 is an invented record identifier, not a personal name; no name is printed or needs to be added to the answer. Section 14.4 keeps disclosure and transaction authority separate from reading evidence. The worked interaction and EX030 give the room-state answer without a replacement-room promise, identity disclosure or claim that a new booking operation occurred.",
+      "source": "Chapter 14, §14.4, definitions of disclosure and transaction authority; §14.5, steps 4 and 6; §14.6, first table row and worked interaction; EX030, rubric and expanded worked source-scoped reading."
+    },
+    {
+      "id": "Q04",
+      "prompt": "SYN-003 is newly displayed. Why does Room 2 at 15:00 still have a supported taken reading?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A booking in Room 4 blocks every room with the same start"
+        },
+        {
+          "id": "b",
+          "text": "SYN-002 remains confirmed for Room 2 / 15:00 on the current named page"
+        },
+        {
+          "id": "c",
+          "text": "The older 11:40 page automatically remains today's decision source"
+        },
+        {
+          "id": "d",
+          "text": "Any earlier row must remain authoritative even when absent from the current source"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The answer comes from SYN-002 on the current 11:55 page, not from extrapolating SYN-003 across rooms or borrowing yesterday's authority. Each room-and-start pair has its own matching evidence. Adding a new row does not cancel a different confirmed row still printed on the page. Nor does the lesson establish a universal rule for records missing from future sources. Section 14.6 supports taken for both listed pairs independently. EX030 retains the Room 2 result without claiming that any reservation was renewed, reallocated or verified on a live service.",
+      "source": "Chapter 14, §14.1, second paragraph; §14.2, Room 2 at 15:00 row; §14.5, step 3; §14.6, second table row; EX030, expanded query table, Room 2 / 15:00 row."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The request changes from Room 4 / 15:00 to Room 4 / 16:00. What can this same page support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Taken at 16:00, because the room field in SYN-003 matches"
+        },
+        {
+          "id": "b",
+          "text": "Free at 16:00, because no conflicting row is displayed"
+        },
+        {
+          "id": "c",
+          "text": "No matching 16:00 row is shown; availability is unproved and the request stays pending"
+        },
+        {
+          "id": "d",
+          "text": "A provisional 16:00 hold, because the page was named by the owner"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The requested start is part of the query. SYN-003 at 15:00 cannot establish occupation at 16:00 without a relevant row or a duration rule that the source does not supply. The missing match also cannot establish vacancy: completeness for the separate 16:00 question was not demonstrated. Owner naming is not permission to hold or create a booking. Control C changes the question while leaving the artifact and its authority intact. EX030 therefore retains not confirmed for 16:00 while accepting the positive booked reading for 15:00.",
+      "source": "Chapter 14, §14.5, step 5 and positive-match/absence paragraph; §14.6, contrasting silent query; §14.7, Control C; EX030, independent extension and expanded Room 4 / 16:00 row."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Chapter 12 recorded no Room 4 / 15:00 row. How should that note coexist with today's SYN-003 evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reject SYN-003 because the earlier silence has priority over the later page"
+        },
+        {
+          "id": "b",
+          "text": "Erase the earlier pending note because the new row makes its observation false"
+        },
+        {
+          "id": "c",
+          "text": "Copy SYN-003 onto the 11:40 page so both sources agree"
+        },
+        {
+          "id": "d",
+          "text": "Keep the earlier source-scoped note and record today's positive match separately"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The two records describe different artifacts and checkpoints. The old note accurately describes the two-row 11:40 page; today's named 11:55 page supplies a positive match. Neither observation must be erased to preserve the other. An older omission is no veto, and handwriting a row would manufacture a different historical source. Section 14.8 preserves both records without creating a merged schedule. EX030 explicitly protects the earlier note. NIST CSF 2.0's integrity and provenance outcomes support this general record discipline, not a claim that Harbor Library experienced an incident or implemented a NIST control.",
+      "source": "Chapter 14, §14.4, chronology paragraph; §14.6, proposed correction to Chapter 12; §14.8 \"A provenance-preserving handoff\"; EX030, third worked sentence and final historical-evidence boundary. General principle only: NIST CSF 2.0, Appendix A, RS.AN-06 and RS.AN-07, p. 22, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Can the source now released in Chapter 14 be recorded as already available at Chapter 13's 09:12 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the later designation and inspection belong to a separate evidence checkpoint"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a later valid source proves the earlier decision had already been authorized"
+        },
+        {
+          "id": "c",
+          "text": "Yes; SYN-003's creation field records when the learner first inspected the page"
+        },
+        {
+          "id": "d",
+          "text": "No; the later page must be rejected whenever an earlier request was pending"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Chapter 13 stopped with no current source named. Chapter 14 separately releases the designated page and its relevant contents. A record's creation field is not a receipt showing when a learner acquired or inspected it, and later evidence cannot supply earlier permission retrospectively. That limit does not invalidate the new page: it supports present, bounded conclusions while the earlier pending checkpoint remains accurately recorded. EX030 expressly forbids backdating the sheet to Chapter 13. No missing approval, inspection, earlier room allocation or source-generation event is invented.",
+      "source": "Chapter 14, §14.4 \"A new naming changes the evidence available now, not what happened before\", second paragraph; §14.8, checkpoint comparison; §14.9, later-release boundary; EX030, negative controls and final worked-answer paragraph."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What happens to the old ALLOW verdict when the named 11:55 page supplies SYN-003?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It changes to REFUSE because the new Room 4 row is confirmed"
+        },
+        {
+          "id": "b",
+          "text": "It remains attached to the original 11:45 mark-pending proposal; the tally is unchanged"
+        },
+        {
+          "id": "c",
+          "text": "It becomes a receipt for the new asker's Room 4 reservation"
+        },
+        {
+          "id": "d",
+          "text": "It is replaced by UNKNOWN because the paper and log have different contents"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The original four-action run used the fixed 09:00 source; its ALLOW labels the 11:45 mark-pending proposal. It is neither a row on the 11:55 sheet nor a reservation receipt. SYN-003 is not added to that closed log, so no relabeling follows. The line remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0, including the earlier REFUSE. EX030 keeps both that output and the program untouched. This is interpretation of the published result, not a new execution, counterfactual run or operational booking outcome.",
+      "source": "Chapter 14, §14.1, final paragraph; §14.2, ALLOW proposal; §14.6, classifier row; §14.5, step 7; EX030, safe condition, rubric and expanded worked explanation of ALLOW."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetical Control A: today's owner has not designated the visible page. Which conclusion follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing approval proves that the visible row is false"
+        },
+        {
+          "id": "b",
+          "text": "Yesterday's naming automatically approves this new object"
+        },
+        {
+          "id": "c",
+          "text": "The absent designation proves SYN-003 was deleted from production"
+        },
+        {
+          "id": "d",
+          "text": "Visible text does not establish authority to use the page for today's decision"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Control A removes the applicable designation while preserving what can be seen on the paper. Inspection can describe the text but cannot grant authority to rely on it for today's booking decision. Missing approval does not prove falsity or deletion, and an older designation does not approve a different object. The actual Chapter 14 case does supply today's naming, so its bounded taken answers still stand. EX030's source requirement remains essential; this hypothetical does not rewrite the published case or claim that a new test or production event occurred.",
+      "source": "Chapter 14, §14.4, current-source definition; §14.5, step 1; §14.7 \"Test the reasoning with three negative controls\", Control A; EX030, task and first expanded worked sentence."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which proposed follow-up exceeds this exercise's authority even after today's page has been named and read?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open the real booking site to verify the page's synchronization"
+        },
+        {
+          "id": "b",
+          "text": "Retain the earlier 11:40 note with its original source limitation"
+        },
+        {
+          "id": "c",
+          "text": "Give the supported booked-slot reply without a holder's name"
+        },
+        {
+          "id": "d",
+          "text": "Keep the unmatched Room 4 / 16:00 request not confirmed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The exercise releases a synthetic page, not permission to access a real service. Its heading is not proof of database synchronization, and the invented 11:20 creation time does not establish a real server operation or explain an outage. The other three actions preserve the supplied evidence and its boundaries: archived history, a supported minimal reply and a pending unmatched request. EX030 does not permit a site check or new booking. Approval of one artifact also supplies no standing rule for future outages; further authority cannot be manufactured from the desire to verify more.",
+      "source": "Chapter 14, §14.3, real-world and duration limits; §14.4, page-attribute limitation; §14.6, worked interaction and silent query; §14.7, final paragraph; EX030, rubric and final worked-answer prohibition on live tests."
+    }
+  ]
+}
