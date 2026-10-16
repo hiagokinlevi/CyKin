@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 5,
+  "source_anchor": "ch-05",
+  "source_sha256": "4f17482ada7324de2563165190dd47294b33e55a23f08b511a77b127a36a139d",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which source supports the statement that the export contained only totals and non-medicine categories?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The original program's list of ten collected field names"
+        },
+        {
+          "id": "b",
+          "text": "The specific export checked two weeks after the owner's request"
+        },
+        {
+          "id": "c",
+          "text": "Every export produced after the owner requested the change"
+        },
+        {
+          "id": "d",
+          "text": "The later file whose content includes the insulin line"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 5.1 attaches that observation to the two-week file. It is not a description of the original laboratory input, every subsequent export or the later failing file. Identifying the particular source is essential before repeating its result. The first row of the worked table preserves the sentence with its temporal limit. EX059 then contrasts this file with the later insulin file. These are supplied events in the synthetic narrative; no new export, exact calendar date or additional inspection is established by the question.",
+      "source": "Chapter 5, section 5.1 Two exports, two results, opening sentences; section 5.2 Worked example, first row; Apply EX059; Worked results (#worked-results; EX059)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Once the later insulin line is found, what follows logically about the claim that every later export is clean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It remains established because the earlier check was successful"
+        },
+        {
+          "id": "b",
+          "text": "It proves that every export after the two-week check contains insulin"
+        },
+        {
+          "id": "c",
+          "text": "It proves that the earlier check must have inspected the wrong file"
+        },
+        {
+          "id": "d",
+          "text": "The universal claim is contradicted, but other unexamined files remain unassessed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A claim about every later file is stronger than a result about one file. The later medicine line is a counterexample to that universal clean claim. It does not establish the contents of all other nights, the frequency of failure or an error in the original check. Section 5.2 first rejects generalisation without evidence and then records the specific later failure. This tests the reach of a conclusion, not a statistical failure rate or a new inspection. EX059 preserves the limited earlier result while refusing permanent closure.",
+      "source": "Chapter 5, section 5.1, permanent-pass claim and later file; section 5.2 Worked example, second and third rows; Apply EX059; Worked results (#worked-results; EX059)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Why does a permitted purchase_history name not settle the insulin line's acceptability?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The laboratory checks the name's membership in a purpose set, not the value stored under it"
+        },
+        {
+          "id": "b",
+          "text": "The laboratory removes medicine values automatically whenever it keeps a field name"
+        },
+        {
+          "id": "c",
+          "text": "The laboratory's needed label grants permission for any content stored in that field"
+        },
+        {
+          "id": "d",
+          "text": "The field name must cease to be in the points set whenever a medicine value appears"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The name purchase_history belongs to the points set, while the later value is medicine text. The supplied code compares field names with used, the union of purpose sets; it neither reads values nor sanitises an export. Thus membership can remain unchanged while the separate content rule fails. Section 5.1 expressly distinguishes these layers, and EX059 retains the failure. The Chapter 4 code is supplementary technical context only. No value-level scanner, permission, changed set or new program execution is claimed.",
+      "source": "Chapter 5, section 5.1, purchase_history name/value sentence; section 5.2, later-line row; Apply EX059; Worked results (#worked-results; EX059). Supplementary mechanism: Chapter 4, Lab — Loyalty app fields versus stated purposes, used/unneeded expressions, and Concepts — the script tests names, not values."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Does finding insulin in the later export prove that phone has reappeared on the sign-up form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a failed content check means all previously rejected field names have returned"
+        },
+        {
+          "id": "b",
+          "text": "Yes; medicine text can enter an export only through the phone field"
+        },
+        {
+          "id": "c",
+          "text": "No; the finding establishes a content failure, not a new inventory of form fields"
+        },
+        {
+          "id": "d",
+          "text": "No; the earlier five-field form guarantees that every later form stayed identical"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The later observation concerns a value in a file. It is not a fresh count or complete inspection of the later sign-up form. Chapter 5 gives the five-field form at the earlier two-week checkpoint and explains that an allowed purchase_history name can still carry medicine text. Neither the return of phone nor permanent absence of all rejected names follows. The question does not invent a changed form. It applies EX059's evidence boundary while using phone only as a field already present in the original Chapter 4 laboratory.",
+      "source": "Chapter 5, section 5.1, earlier form and later content contrast; section 5.2, Which file it describes column; Apply EX059; Worked results (#worked-results; EX059). Supplementary field identity: Chapter 4, Lab — Loyalty app fields versus stated purposes, collected list."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which action-log entry follows EX059 after the later file names insulin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record that this later file failed the content check and keep the loyalty action open"
+        },
+        {
+          "id": "b",
+          "text": "Close the loyalty action because an allowed field name outweighed the failed content check"
+        },
+        {
+          "id": "c",
+          "text": "Leave no finding until enough later files exist to calculate a failure percentage"
+        },
+        {
+          "id": "d",
+          "text": "Record the loyalty action as repaired because the failure has now been written down"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 5.1 describes a supported operational decision: record this file's content failure and leave the action open. A permissible label does not cancel that failure, and a failure rate is not required to recognise the supplied counterexample. Recording a problem also does not repair it. EX059's answer expressly keeps the action open. This entry concerns the loyalty action and the later file, not every action in the earlier plan. No remediation, notification, invented date or additional measurement is supplied.",
+      "source": "Chapter 5, section 5.1, Sofia's recorded failure and open action; section 5.2 Worked example, third row; Apply EX059 and its rubric; Worked results (#worked-results; EX059)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "An editor proposes replacing the two-week clean sentence with the later insulin finding. What should the record preserve?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the later failure, because the newest observation cancels every older observation"
+        },
+        {
+          "id": "b",
+          "text": "Only the earlier pass, because preserving history excludes adding a contrary later result"
+        },
+        {
+          "id": "c",
+          "text": "One combined statement that gives both files the same content and result"
+        },
+        {
+          "id": "d",
+          "text": "Both observations, each attached to its own file and position in the chronology"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The two statements concern different files, so their different results are not a contradiction that must be removed. Section 5.1 expressly retains the two-week sentence; Errors and limits says that leaving the action open does not undo that file. Keeping only one result loses either the documented earlier success or the later failure. Combining their contents invents a single observation. EX059 supports preserving the earlier evidence without using it to close the later finding. This is a proposed editorial choice, not an edit made to the manuscript.",
+      "source": "Chapter 5, section 5.1, final sentence; section 5.2, first and third rows; Errors and limits, first clause; Apply EX059; Worked results (#worked-results; EX059)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Would shortening collected in the original lab so its print looks finished correct the later export?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; changing the teaching list automatically changes the vendor's stored export values"
+        },
+        {
+          "id": "b",
+          "text": "No; it changes the laboratory input, not the failed file, and the original script must stay intact"
+        },
+        {
+          "id": "c",
+          "text": "Yes; excluding prescription_items also removes insulin values from purchase_history everywhere"
+        },
+        {
+          "id": "d",
+          "text": "No; the correct alternative is to overwrite the two-week observation instead"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The original program operates on its supplied list of field names. It contains no operation that repairs the later export. Editing collected would therefore change the teaching input without correcting the evidenced content failure. Section 5.2 rejects an edit made to produce a finished-looking print, and EX059 explicitly preserves the script. The fact that a value can sit under purchase_history also defeats the suggested shortcut involving prescription_items. Neither the source code nor the earlier observation was changed during this assessment.",
+      "source": "Chapter 5, section 5.1, unchanged lab_loyalty.py; section 5.2 Worked example, fourth row; Apply EX059; Worked results (#worked-results; EX059). Supplementary mechanism: Chapter 4, Lab — Loyalty app fields versus stated purposes, collected list and membership-only computation."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A summary calls the later file a new lab run with five collected and zero unneeded fields. Which statement is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The later file reran the original program because it was produced after the form change"
+        },
+        {
+          "id": "b",
+          "text": "The earlier form count alone supplies a new program output of five collected and zero unneeded"
+        },
+        {
+          "id": "c",
+          "text": "No such new run is supplied; the historical lab remains ten collected and five unneeded"
+        },
+        {
+          "id": "d",
+          "text": "The insulin line makes the original field-name output mathematically incorrect"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The note beneath section 5.2 explicitly says the later insulin file is not a second run of the published ten-field print. The supplementary Chapter 4 code has ten collected names and five outside the purpose union, producing 50 percent. A shorter form or a later export is a different artifact, not an execution receipt for new inputs. Preserve the historical output without asserting a replacement run. EX059's instruction not to edit the script also prevents manufacturing an apparent completion result. No laboratory execution is attributed to Chapter 5.",
+      "source": "Chapter 5, section 5.2, fourth row and Synthetic case note; Apply EX059; Worked results (#worked-results; EX059). Supplementary historical output: Chapter 4, Lab — Loyalty app fields versus stated purposes, collected/unneeded expressions and verified print."
+    },
+    {
+      "id": "Q09",
+      "prompt": "What can the teaching file's insulin line support about a particular patient's identity or diagnosis?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No particular patient attribution; it establishes only the stated synthetic content-check failure"
+        },
+        {
+          "id": "b",
+          "text": "A confirmed diagnosis for whichever real patient the reader thinks probably appears in the export"
+        },
+        {
+          "id": "c",
+          "text": "Evidence that a named patient caused the vendor's export problem"
+        },
+        {
+          "id": "d",
+          "text": "Permission to open real prescription records to attach a name to the example"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The later line is explicitly a synthetic teaching input. Errors and limits says the open action does not accuse a named patient. The evidence here supports the content-check result, not an identified real person, clinical diagnosis or attribution of fault. Searching real records would add an operation that this exercise neither describes nor authorises. EX059 asks about the file, action and script, not a patient. No name, medicine use by an individual or new clinical fact is added by the correct answer.",
+      "source": "Chapter 5, section 5.2, Synthetic case note; Errors and limits, named-patient boundary; section 5.1, later-line finding; Apply EX059; Worked results (#worked-results; EX059)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does the decision to keep the loyalty action open settle whether a regulator must be told?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; every failed teaching check automatically establishes a mandatory regulatory report"
+        },
+        {
+          "id": "b",
+          "text": "Yes; retaining the earlier clean file establishes that reporting is never required"
+        },
+        {
+          "id": "c",
+          "text": "Yes; describing the action as open proves a notification was already sent"
+        },
+        {
+          "id": "d",
+          "text": "No; the chapter leaves that decision unresolved and supplies no notification outcome"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Errors and limits expressly reserves the regulator question. EX059 determines the content-check status and preservation of the code; it does not decide notification duties, an exemption or a completed filing. Neither an open action nor an earlier pass supplies that missing determination. This question assesses the boundary of the manuscript, not the threshold or deadline under any law. It does not advise a real pharmacy to report or not report, and it invents no regulator contact or incident conclusion.",
+      "source": "Chapter 5, Errors and limits, final sentence; contrast with section 5.1's open loyalty action and Apply EX059; Worked results (#worked-results; EX059). The answer concerns the lesson's explicit scope, not a statutory notification rule."
+    }
+  ]
+}
