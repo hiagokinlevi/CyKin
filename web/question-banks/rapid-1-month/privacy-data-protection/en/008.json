@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 8,
+  "source_anchor": "ch-08",
+  "source_sha256": "0bb01a684a7994a4ee37eff29c585fb3479ef2ffcc30ba6958b5ed6e3b700c90",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "The owner approved the retention recommendation. What status can Sofia support for the three unfinished rows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The periods are fixed because approval of the recommendation also supplied their lengths"
+        },
+        {
+          "id": "b",
+          "text": "The recommendation is approved, but the periods still await the owner's written choices"
+        },
+        {
+          "id": "c",
+          "text": "The recommendation must have been rejected because the schedule still contains blanks"
+        },
+        {
+          "id": "d",
+          "text": "The rows may be marked complete using the date when the recommendation was approved"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Chapter 3 records approval to establish periods; section 8.1 says the choices are not yet on the page. Approval and a specified retention end are different facts. Neither the blanks nor an approval date supplies the missing periods. The approval remains valid as a decision to do the work, not evidence that it is complete. EX062 therefore keeps the three rows pending. This is the synthetic Juniper record: no date, period or further owner decision is added.",
+      "source": "Chapter 8, section 8.1 The owner agreed to choose. The choice is not on the page., opening and closing sentences; Apply EX062; Worked results (#worked-results; EX062). Approval context: Chapter 3, section 3.5 Retention."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which description preserves the newsletter population actually covered by the unresolved recommendation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every newsletter subscriber, whether or not they ever open a message"
+        },
+        {
+          "id": "b",
+          "text": "Only customers whose medicine purchases appear in the loyalty feed"
+        },
+        {
+          "id": "c",
+          "text": "Newsletter subscribers who never open emails, without inventing a retention length"
+        },
+        {
+          "id": "d",
+          "text": "All pharmacy customers, with unopened email treated as proof they left the business"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.1 identifies a particular group: newsletter subscribers who never open emails. The recommendation does not establish a period for all subscribers or all customers, nor does it identify a clinical group. Keeping the population precise prevents a pending row from being silently broadened. EX062's unopened-newsletter row remains without a supplied period. No conclusion about customer departure, consent or completed removal follows from that description.",
+      "source": "Chapter 8, learning outcome 1; section 8.1, three populations; section 8.2, Synthetic case note; Apply EX062; Worked results (#worked-results; EX062). Context: Chapter 3, section 3.5, newsletter recommendation."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Can the documented thirty-day CCTV period fill the driver's delivery-record row without another decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the existing number belongs to CCTV, not to the delivery records"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the same owner makes a period transferable across every dataset"
+        },
+        {
+          "id": "c",
+          "text": "Yes; using an observed number avoids the need for a delivery-specific choice"
+        },
+        {
+          "id": "d",
+          "text": "No; rejecting the transfer means the documented CCTV period must also be deleted"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The camera period has evidence, but for a different dataset. Section 8.2 expressly refuses copying it to the driver's phone. A genuine number can still be the wrong evidence for a row. Refusing the copy does not invalidate the thirty-day CCTV fact or settle delivery retention. EX062 preserves the camera period and leaves delivery pending. This does not state a universal camera rule or introduce a new number for the phone.",
+      "source": "Chapter 8, section 8.1, CCTV comparison; section 8.2 Worked example, camera-rule row; Apply EX062 and rubric; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A colleague proposes one year for loyalty because it feels tidy. Which objection is supported by the lesson?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A year is established as unlawful for loyalty data in every jurisdiction"
+        },
+        {
+          "id": "b",
+          "text": "Any round number is acceptable once it is labelled a provisional estimate"
+        },
+        {
+          "id": "c",
+          "text": "The proposed year is a completed decision because the colleague put it in writing"
+        },
+        {
+          "id": "d",
+          "text": "The proposal supplies a guess, not the owner's evidenced choice for that row"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The worked example rejects the source of this number: a guess. It does not establish that one year could never be appropriate in another assessed situation. Labelling the guess provisional or writing it down does not turn it into the owner's choice in this case. EX062 refuses the invented period while leaving the row open. No legal maximum, calendar deadline or new approval is inferred from the example.",
+      "source": "Chapter 8, section 8.1, 'a year feels tidy' proposal; section 8.2 Worked example, loyalty guess row; Apply EX062; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The lesson gives no numeric prescription period. How should Sofia handle a suggestion to replace it with five years?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use five years because an explicit number is preferable to an unstated professional rule"
+        },
+        {
+          "id": "b",
+          "text": "Preserve the professional-rule reference and refuse to invent its numeric replacement"
+        },
+        {
+          "id": "c",
+          "text": "Mark prescriptions as having no governing retention rule because no number is quoted"
+        },
+        {
+          "id": "d",
+          "text": "Use the eventual loyalty period for prescriptions so the schedule stays consistent"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The manuscript says prescription records follow professional rules, while not supplying their numeric duration here. That is not the same as saying there is no rule. Section 8.2 refuses a guessed five-year replacement, and EX062 keeps the professional period outside Sofia's invention. Neither uniform formatting nor a future loyalty decision supplies the missing prescription detail. This answer does not specify a jurisdiction, interpret a professional rule or choose a new legal period.",
+      "source": "Chapter 8, learning outcome 3; section 8.1, prescription-record boundary; section 8.2 Worked example, five-year proposal; Errors and limits; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague reads the empty delivery row as 'keep everything forever'. What response follows Errors and limits?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept indefinite retention because a blank is the same as the owner's written permission"
+        },
+        {
+          "id": "b",
+          "text": "Delete all delivery records immediately because a blank means a zero-day period"
+        },
+        {
+          "id": "c",
+          "text": "Keep the decision pending and ask the owner; neither indefinite permission nor a zero-day rule is supplied"
+        },
+        {
+          "id": "d",
+          "text": "Stop pursuing a retention decision because avoiding invented numbers completes the task"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits expressly says that a blank is not permission to retain forever without asking. It prevents fabrication of an end, not follow-up with the person assigned to choose it. The opposite shortcut, treating the blank as immediate deletion, also invents a decision. EX062 preserves the pending row until the owner's written choice exists. No retention, deletion or technical change is authorised by the empty cell itself in this exercise.",
+      "source": "Chapter 8, Errors and limits, first two sentences; section 8.1, owner's outstanding choice; Apply EX062; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Hypothetically, the owner later writes an end for loyalty only. What does the final worked-example row support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply that written end to loyalty; the other two decisions remain unresolved"
+        },
+        {
+          "id": "b",
+          "text": "Copy it to delivery and unopened newsletter records because they shared the recommendation"
+        },
+        {
+          "id": "c",
+          "text": "Replace the CCTV period too, since the newest written period overrides every older one"
+        },
+        {
+          "id": "d",
+          "text": "Treat all three rows as complete without checking which row the owner addressed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The final row of section 8.2 limits the consequence to the row the owner addresses. A common recommendation does not merge separate datasets or supply their missing choices. The hypothetical loyalty end therefore settles neither delivery nor unopened newsletter retention and does not rewrite CCTV. EX062 states the actual checkpoint, where all three are still blank. This conditional question supplies no new period, date or real completion event.",
+      "source": "Chapter 8, section 8.2 Worked example, final row; section 8.1, three separate outstanding ends; Apply EX062; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Suppose the owner writes a loyalty retention period. Does that alone prove old loyalty records have been deleted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; writing a period is itself a technical record of deletion"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the original approval proves all implementation steps occurred before the period was chosen"
+        },
+        {
+          "id": "c",
+          "text": "No; choosing a period proves that existing records must remain forever"
+        },
+        {
+          "id": "d",
+          "text": "No; a recorded retention choice is not evidence that deletion has been executed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The worked example says the written end applies to its row. It does not report implementation or deletion. Inferring a completed operation from that sentence would add evidence the hypothetical does not contain. Likewise, the earlier approval does not fill this gap, and a lack of deletion evidence is not permission for unlimited retention. This item tests what a document proves, not a new deletion procedure. No record, execution date or completed technical operation is invented.",
+      "source": "Chapter 8, section 8.2 Worked example, final row and its limited consequence; section 8.1, decision versus missing written end; Errors and limits; Apply EX062; Worked results (#worked-results; EX062)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Chapter 3 found delivery records kept indefinitely; Chapter 8 leaves their new period blank. How should these facts be recorded?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the earlier observation as evidence that the owner approved permanent retention"
+        },
+        {
+          "id": "b",
+          "text": "Preserve the observed practice and separately record the unresolved retention decision"
+        },
+        {
+          "id": "c",
+          "text": "Erase the earlier finding because the approved recommendation proves retention was corrected"
+        },
+        {
+          "id": "d",
+          "text": "Report that the phone's records are gone because the new schedule contains an empty cell"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Chapter 3 describes the practice Sofia found on the driver's phone. Chapter 8 describes an uncompleted governance decision. The observation and the blank schedule can both be true: neither is evidence of an approved forever policy or completed correction. Keeping these facts separate avoids treating current practice as permission or a recommendation as execution. EX062 leaves the period unwritten, not the earlier finding erased. No fresh phone inspection or deletion is asserted.",
+      "source": "Chapter 8, section 8.1 and Errors and limits; Apply EX062; Worked results (#worked-results; EX062). Prior observation and approval: Chapter 3, section 3.5 Retention."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A reviewer removes the CCTV period until the three pending rows are resolved. What should the record retain instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blank every row, because any unresolved period makes all existing evidence unreliable"
+        },
+        {
+          "id": "b",
+          "text": "Set every row to thirty days to make the partial schedule look complete"
+        },
+        {
+          "id": "c",
+          "text": "Keep the evidenced CCTV period while leaving the three unchosen periods pending"
+        },
+        {
+          "id": "d",
+          "text": "Replace the camera period with the colleague's proposed year as a temporary compromise"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A gap in one part of the schedule does not erase evidence for another part. Section 8.1 records CCTV overwrite after thirty days, and EX062 expressly preserves it while refusing to fill the other rows. Clearing the whole schedule loses a supported fact; copying thirty days or substituting a year fabricates new choices. The professional prescription boundary also remains unchanged. This records mixed evidence states, not complete retention compliance or a change to a real camera system.",
+      "source": "Chapter 8, section 8.1, existing CCTV period and three pending rows; section 8.2 Worked example; Apply EX062 and rubric; Worked results (#worked-results; EX062)."
+    }
+  ]
+}
