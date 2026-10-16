@@ -60,6 +60,8 @@ if ! curl --fail --silent --output /dev/null https://opencyber.academy/api/healt
   curl_options=(--resolve "opencyber.academy:443:$public_ip")
 fi
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/health
+curl --fail --show-error --silent "${curl_options[@]}" "https://opencyber.academy/site-release.json?check=$(date +%s)" | \
+  python3 -c 'import json,sys; sys.exit(0 if json.load(sys.stdin)["git_sha"] == sys.argv[1] else 1)' "$local_sha"
 [[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/auth/me)" == 401 ]]
 [[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" https://opencyber.academy/student/progress)" == 401 ]]
 [[ "$(curl --silent --output /dev/null --write-out '%{http_code}' "${curl_options[@]}" \

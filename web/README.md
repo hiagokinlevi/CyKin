@@ -62,7 +62,7 @@ The private MCP tools can read a lesson while recording the visit, save completi
 
 `/tests/` offers the language → subject → level route for all 207 courses and their nine planned editions. Only chapters with an authored, source-pinned bank appear as available tests. A bank lives at `question-banks/<level>/<area>/<language>/<chapter>.json`; it must contain exactly ten distinct four-option questions with explanations and a SHA-256 hash of the chapter text. `scripts/build_question_index.py` validates these banks against the current manuscript and publishes their availability in `public/test-index.json`. A change to the teaching text invalidates its test until a reviewer updates the bank. Unwritten or unreviewed questions are never synthesized from an outline.
 
-The current published coverage is reported by the live `/api/tests/catalog` endpoint and the `/tests/` page. A newly committed bank enters those screens after the validated question index and site assets are built and deployed locally; the bank file alone does not update the site. Each item stores four authored choices; `quiz_engine.py` adds the fifth visible uncertainty choice and specifies ten seconds per question. Published availability is not a claim that the collection-wide bank is complete or that every bank has independent editorial approval. The question keys remain public educational material in the source repository; results and certificates are therefore self-study records, not proctored examination credentials.
+The current published coverage is reported by the live `/api/tests/catalog` endpoint and the `/tests/` page. The Worker checks GitHub `main` for new source-pinned banks and caches a validated result for up to 30 minutes; it falls back to the bundled index if GitHub is temporarily unavailable. The local site reconciliation also refreshes and commits the bundled index, then deploys it, so the fallback stays current. An invalid or stale bank is withheld instead of appearing as an available test. Each item stores four authored choices; `quiz_engine.py` adds the fifth visible uncertainty choice and specifies ten seconds per question. Published availability is not a claim that the collection-wide bank is complete or that every bank has independent editorial approval. The question keys remain public educational material in the source repository; results and certificates are therefore self-study records, not proctored examination credentials.
 
 ## TableTop incident exercises
 
@@ -84,9 +84,18 @@ After committing and pushing the site to the public repository's `main` branch, 
 ./scripts/deploy-local.sh
 ```
 
-The script checks the GitHub remote, requires a clean checkout at the exact public `main` commit, checks the Cloudflare account, builds and tests locally, deploys with PyWrangler, and checks the live health and MCP endpoints. No GitHub Actions or cloud build pipeline is used.
+The script checks the GitHub remote, requires a clean checkout at the exact public `main` commit, checks the Cloudflare account, builds and tests locally, deploys with PyWrangler, and checks the live health and MCP endpoints. Its generated, ignored `/site-release.json` records the deployed Git commit and web tree for public readback. No GitHub Actions or cloud build pipeline is used.
 
-For a content-only publication, push the Markdown to GitHub; the reader fetches the selected book from GitHub `main`. To update the static catalog after course structure changes, rebuild and deploy locally.
+For a content-only publication, push the Markdown to GitHub; the reader fetches the selected book from GitHub `main`. The timed test catalog checks GitHub independently. New banks, course structure, static assets and application code are reconciled on an authorized local computer every 30 minutes. The local routine must use a **fresh, disposable clone**, never the primary checkout:
+
+```sh
+temporary_clone="$(mktemp -d /tmp/oca-site-sync.XXXXXX)"
+git clone https://github.com/hiagokinlevi/OpenCyberAcademy.git "$temporary_clone"
+cd "$temporary_clone/web"
+OCA_DISPOSABLE_CLONE=1 ./scripts/reconcile-site-local.sh
+```
+
+The routine regenerates and publishes only the generated catalog, lesson, test and sitemap indexes when they changed; it uses a fast-forward push with no force. It compares the current `web` Git tree with `/site-release.json` and runs the approved local deploy only when those site inputs differ. Afterward it checks the public catalog, every current bank in `/api/tests/catalog`, changed Markdown through `/api/source`, all ten TableTop links and the public release marker. A failure leaves the last deployed version intact and must be reported; a scheduled check is not an uptime guarantee. The recurring Codex task runs the command locally and stays quiet when nothing changes.
 
 ## Public AI interface
 
