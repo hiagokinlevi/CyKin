@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 9,
+  "source_anchor": "ch-09",
+  "source_sha256": "a4826d51c20943ae8bcf0cf1d6e482764420a8881a9b39289251e4e0f1ddc2f4",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, what is the denominator behind the four nonzero verdict counts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Four observed incidents affecting the booking service"
+        },
+        {
+          "id": "b",
+          "text": "Four deliberately authored action proposals in the fixed log"
+        },
+        {
+          "id": "c",
+          "text": "Five possible labels, including the zero-count remainder"
+        },
+        {
+          "id": "d",
+          "text": "Four completed reservations checked during a staff shift"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The published line is STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. Its counts sum to four because each of the four synthetic proposals receives one verdict. Five is the size of the label vocabulary, not the population of input records. The proposals are neither observed incidents nor completed reservations or residents. Sections 9.1 and 9.4 make the deliberately constructed denominator explicit. This question reads the book's existing output; it does not report a new execution or a real library shift.",
+      "source": "Chapter 9, §9.1 \"The program counts labels\"; §9.4 \"What the five counters actually measure\", opening paragraph and counter table; EX025, objective, worked result and expanded denominator explanation."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which pairing preserves the meaning of STOP and OUT OF SCOPE without converting proposals into completed events?",
+      "options": [
+        {
+          "id": "a",
+          "text": "STOP: completed intrusion; OUT OF SCOPE: confirmed contact disclosure"
+        },
+        {
+          "id": "b",
+          "text": "STOP: stale-paper confirmation; OUT OF SCOPE: pending request"
+        },
+        {
+          "id": "c",
+          "text": "STOP: proposed contact export; OUT OF SCOPE: proposed live-site access"
+        },
+        {
+          "id": "d",
+          "text": "STOP: proposed live-site access; OUT OF SCOPE: proposed excluded-data export"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 9.4 maps STOP to the 11:44 live-site proposal and OUT OF SCOPE to the 11:43 event-contact export proposal. They express different exercise boundaries, not evidence that either action occurred in production. Reversing those meanings misreads the rule; substituting confirmation and pending actions confuses them with REFUSE and ALLOW. Calling the proposals a completed intrusion or disclosure invents outcomes. EX025 retains each label separately because combining boundary decisions into an adverse-event count would require evidence and a definition absent from the fixture.",
+      "source": "Chapter 9, §9.4, STOP and OUT OF SCOPE rows; §9.6 \"Contrasting examples and negative controls\", Case A; EX025, expanded worked reasoning and dashboard-proposition table."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A reviewer explicitly groups STOP and REFUSE. What does 2/4 legitimately express in this fixture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Half the authored proposals have a label in that selected group"
+        },
+        {
+          "id": "b",
+          "text": "Half the library's visitors experienced a harmful outcome"
+        },
+        {
+          "id": "c",
+          "text": "A future desk decision has an estimated one-in-two chance of harm"
+        },
+        {
+          "id": "d",
+          "text": "Half the proposed actions produced confirmed security incidents"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chosen group contains two records among four authored proposals, so its mathematical share is 50%. That is a statement about the selected labels only. The numerator has not been validated as harms or incidents, and the denominator is not a population of visitors or representative operational decisions. Consequently the same fraction supplies neither a harm rate nor a future likelihood. Section 9.4 and EX025's accepted alternatives explicitly allow the declared arithmetic while rejecting \"50% adverse\". No victim, incident or operational outcome is added by dividing two counts.",
+      "source": "Chapter 9, §9.4, paragraph beginning \"A ratio can be\"; §9.7 \"Worked replacement for the misleading dashboard\", sentence 2; EX025, independent extension and \"Falsifiers and accepted alternatives\"."
+    },
+    {
+      "id": "Q04",
+      "prompt": "REFUSE and OUT OF SCOPE each occur once. What follows about the consequences of those proposals?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Their matching frequencies establish the same impact level"
+        },
+        {
+          "id": "b",
+          "text": "REFUSE is more severe because its label sounds stronger"
+        },
+        {
+          "id": "c",
+          "text": "Equal label counts establish neither equal harm nor a severity ordering"
+        },
+        {
+          "id": "d",
+          "text": "Both have zero possible consequence because the classifier rejected them"
+        }
+      ],
+      "correct": "c",
+      "explanation": "REFUSE concerns a proposed confirmation from stale paper; OUT OF SCOPE concerns a different data-purpose proposal. Their identical counts reflect the constructed log, not an impact scale. Neither the wording of a label nor rejection by a classroom classifier establishes consequence magnitude. A prohibited proposal is not evidence of actual harm, but it also does not prove that the underlying possibility has zero consequence. Sections 9.5 and 9.6 require keeping frequency and consequence separate. EX025 preserves the procedural concern without assigning a rank to either count.",
+      "source": "Chapter 9, §9.4, REFUSE and OUT OF SCOPE rows; §9.5 \"Distinguish a classifier, an event sample, and an assessed risk\", first paragraph; §9.6, Case A; EX025, worked result and evidence boundary."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which conclusion is supported by UNKNOWN 0 while the outage cause and the reported 11:40 sheet remain unresolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The interruption's cause is known because the remainder is empty"
+        },
+        {
+          "id": "b",
+          "text": "Every supplied action matched a written classification branch"
+        },
+        {
+          "id": "c",
+          "text": "Every possible staff action is covered by the production procedure"
+        },
+        {
+          "id": "d",
+          "text": "The later sheet has been checked and accepted as current"
+        }
+      ],
+      "correct": "b",
+      "explanation": "UNKNOWN counts inputs that the written rule does not classify; it is not a register of every open question. All four supplied action kinds matched branches, so the remainder is zero. The cause of the interruption, the status of the reported later sheet and completeness of a real procedure were not measured by those counters. Complete classification of these inputs cannot establish coverage of all possible actions. EX025 explicitly rejects causal certainty or source approval inferred from UNKNOWN 0. Those questions remain open without changing the original tally.",
+      "source": "Chapter 9, §9.1, final paragraph; §9.4, UNKNOWN row; §9.6, Case C and negative-control review; EX025, negative-control criterion and expanded worked reasoning."
+    },
+    {
+      "id": "Q06",
+      "prompt": "In the published four-action mapping, what does the 11:45 ALLOW verdict permit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Recording an unconfirmed request in the pending queue"
+        },
+        {
+          "id": "b",
+          "text": "Allocating Room 2 at 15:00 to the waiting requester"
+        },
+        {
+          "id": "c",
+          "text": "Treating the reported 11:40 copy as a verified replacement"
+        },
+        {
+          "id": "d",
+          "text": "Reporting that the booking service has completed recovery"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The explicit mapping in Section 9.4 associates ALLOW with marking Room 2 / 15:00 pending. It does not establish a free slot, an allocation, a checked later source or completed recovery. The expanded EX025 answer confirms that the rule permits an unconfirmed request rather than certifying availability. Keep the action attached to its verdict: the word ALLOW is not blanket authority for a different operation. This interpretation reports the existing synthetic classification, not evidence that a real worker created a request or reservation.",
+      "source": "Chapter 9, §9.4, ALLOW row; §9.3 \"What the counters leave open\"; §9.7, sentence 4; EX025, expanded worked reasoning and accepted-alternative exclusions."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Using only this tally, which replacement for the dashboard's \"25 / Medium\" is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Risk score zero, because no harmed resident is counted"
+        },
+        {
+          "id": "b",
+          "text": "Medium by default, because the four nonzero counts balance"
+        },
+        {
+          "id": "c",
+          "text": "An average of the counters used as an impact rating"
+        },
+        {
+          "id": "d",
+          "text": "Risk and severity were not estimated from this exercise"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Sections 9.5 and 9.7 supply no justified scoring model, likelihood estimate, impact criteria or approved severity thresholds for the dashboard. Balanced labels therefore establish neither Medium nor a numerical average with risk meaning. Replacing an unsupported score with zero would confuse missing measurement with measured absence of risk. EX025 requires withholding the score and rank without inventing a replacement number. The weak confirmation procedure remains a concern in the fictional exercise; saying its risk was not estimated does not call it harmless or classify an incident.",
+      "source": "Chapter 9, §9.5, quantities table and final paragraph; §9.7, sentence 3; EX025, rubric, worked result and \"Score 25 / Medium\" dashboard-proposition row."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What additional basis would a service owner need for a risk assessment rather than a label census?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only a larger collection of the same classroom label counts"
+        },
+        {
+          "id": "b",
+          "text": "A new name for adverse verdicts without defining a harmful outcome"
+        },
+        {
+          "id": "c",
+          "text": "A defined harm scenario, impact and likelihood evidence, context and an approved method"
+        },
+        {
+          "id": "d",
+          "text": "A zero UNKNOWN count accepted in place of evidence about controls"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 9.5 asks for the affected service and decision boundary, triggering conditions, control performance, impact criteria, likelihood evidence and treatment of uncertainty. NIST's risk definition likewise relates potential adverse impact to likelihood; it does not turn classifier labels into either input. More copies of constructed counts or a renamed category do not provide that basis, and classification coverage does not verify controls. An assessment need not wait for actual harm, but its potential consequences and likelihood require defensible support. The chapter provides no completed organizational assessment or authorized severity scale.",
+      "source": "Chapter 9, §9.2 \"Worked example\", opening paragraph; §9.5, assessment requirements and quantities table; EX025, independent extension and expanded worked reasoning. Primary terminology: NIST CSRC Glossary, \"risk\", definition attributed to NIST SP 800-30 Rev. 1, https://csrc.nist.gov/glossary/term/risk ; \"likelihood of occurrence\", https://csrc.nist.gov/glossary/term/likelihood_of_occurrence"
+    },
+    {
+      "id": "Q09",
+      "prompt": "The fixed mapping is repeatable. Why does that not estimate how often staff would wrongly confirm from stale paper?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeating a classifier converts its labels into independent staff observations"
+        },
+        {
+          "id": "b",
+          "text": "A stable result removes the need to define the population being estimated"
+        },
+        {
+          "id": "c",
+          "text": "A representative sample is established whenever every label occurs"
+        },
+        {
+          "id": "d",
+          "text": "Repeatability concerns the same authored inputs, not operational occurrence evidence"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 9.4 distinguishes deterministic mapping for fixed inputs from validity outside the fixture. The log was designed to exercise distinct decisions, not to sample staff behavior or real outcomes. Repetition alone supplies no new operational denominator and does not make the examples representative. Section 9.6's differently balanced worksheet is explicitly hypothetical, not another run or an observed shift. EX025 therefore withholds likelihood even when the counts are reproducible. This is a methodological question; no classifier rerun, new label count or staff-behavior measurement is reported here.",
+      "source": "Chapter 9, §9.1, explanation of the designed counts; §9.4, opening paragraph; §9.6, Case B; EX025, worked result and expanded denominator/likelihood boundary."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The tally review is complete, but the 11:40 source remains unverified. What follows for Room 2 at 15:00?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close the request because no input received UNKNOWN"
+        },
+        {
+          "id": "b",
+          "text": "Keep it unconfirmed pending an approved current source and the separate booking decision"
+        },
+        {
+          "id": "c",
+          "text": "Confirm it because ALLOW cancels the earlier REFUSE"
+        },
+        {
+          "id": "d",
+          "text": "Use the reported later time as evidence that the source has already been checked"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Finishing the arithmetic does not complete the source or authorization checks. Sections 9.3 and 9.7 leave the request pending and the reported 11:40 replacement unchecked. UNKNOWN 0 covers classification only; ALLOW permits the pending action and does not cancel the refused confirmation. A spoken source time is not a verification receipt. Even an approved current source must support the particular slot decision before any separately authorized booking step. EX025 keeps those gates open without claiming recovery, a new run, a room allocation or closure of an incident.",
+      "source": "Chapter 9, §9.3 \"What the counters leave open\"; §9.7, sentence 4 and final paragraph; EX025, worked result, \"Exercise can close\" row and expanded owner/source/booking-decision boundary."
+    }
+  ]
+}
