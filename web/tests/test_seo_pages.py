@@ -71,7 +71,9 @@ def test_lesson_test_link_uses_its_week_and_unpublished_editions_are_honest(clie
     for lesson_number, chapter in ((5, 1), (6, 2), (11, 3), (16, 4)):
         response = client.get(f"/courses/rapid-1-month/incident-response-resilience/lessons/en/{lesson_number}/")
         assert f'href="/tests/?lang=en&amp;area=incident-response-resilience&amp;level=rapid-1-month&amp;chapter={chapter}"' in response.text
-    unavailable = client.get("/courses/rapid-1-month/information-security/chapters/en/1/")
+    published = client.get("/courses/rapid-1-month/information-security/chapters/en/1/")
+    assert 'href="/tests/?lang=en&amp;area=information-security&amp;level=rapid-1-month&amp;chapter=1"' in published.text
+    unavailable = client.get("/courses/rapid-1-month/privacy-data-protection/chapters/en/1/")
     assert "A chapter test has not been published yet." in unavailable.text
 
 
@@ -311,13 +313,15 @@ def test_language_hosts_and_unwritten_study_slots_are_honest(client):
         assert "Hiago Kin Levi" in about.text
     french = client.get("/", headers={"host": "fr.opencyber.academy"})
     assert french.status_code == 200 and 'content="noindex,follow"' in french.text
-    planned = client.get("/courses/professional-6-months/incident-response-resilience/lessons/en/11/", headers={"host": "opencyber.academy"})
+    guide = client.get("/api/courses/professional-6-months/incident-response-resilience/en").json()
+    first_unpublished = next(slot["chapter"] for slot in guide["daily_slots"] if not slot["published"])
+    planned = client.get(f"/courses/professional-6-months/incident-response-resilience/lessons/en/{first_unpublished}/", headers={"host": "opencyber.academy"})
     assert planned.status_code == 200
     assert planned.headers["x-robots-tag"] == "noindex, follow"
     assert "have not been published yet" in planned.text
-    assert "OCA-039-A011" in planned.text
-    assert "OCA-039-A012" in planned.text
-    assert "/lessons/en/12/" in planned.text
+    assert f"OCA-039-A{first_unpublished:03d}" in planned.text
+    assert f"OCA-039-A{first_unpublished + 1:03d}" in planned.text
+    assert f"/lessons/en/{first_unpublished + 1}/" in planned.text
     assert client.get("/courses/professional-6-months/incident-response-resilience/lessons/en/131/").status_code == 404
     cross_host = client.get("/courses/rapid-1-month/incident-response-resilience/lessons/pt/1/", headers={"host": "opencyber.academy"}, follow_redirects=False)
     assert cross_host.status_code == 308

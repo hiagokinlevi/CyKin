@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from app import app, chapter_sections, worked_answers
+from app import app, chapter_sections, lesson_sections, worked_answers
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -1128,6 +1128,9 @@ def test_weekly_chapters_group_130_daily_lessons_into_26_weeks(client):
 
 def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(client):
     path = 'levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md'
+    original = (ROOT / path).read_text(encoding='utf-8')
+    authored_lessons = lesson_sections(original)
+    authored_chapters = chapter_sections(original)
     original_source = app.state.source_override
     revised = None
 
@@ -1141,10 +1144,11 @@ def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(clien
     try:
         guide = client.get('/api/courses/professional-6-months/incident-response-resilience/en').json()
         assert guide['planned_lessons'] == 130
-        assert guide['published_lessons'] == 10
-        assert guide['published_chapters'] == 12
-        assert [day['published'] for day in guide['daily_slots'][:11]] == [True] * 10 + [False]
-        assert len(guide['legacy_chapters']) == 12
+        assert 10 <= guide['published_lessons'] < guide['planned_lessons']
+        assert guide['published_lessons'] == len(authored_lessons)
+        assert guide['published_chapters'] == len(authored_chapters)
+        assert len(guide['legacy_chapters']) == len(authored_chapters)
+        assert all(day['published'] == (day['chapter'] in authored_lessons) for day in guide['daily_slots'])
 
         day = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/1')
         assert day.status_code == 200
@@ -1166,9 +1170,9 @@ def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(clien
         assert '#week-02-day-01' in second_week.json()['source_url']
         assert '<a id="exercise-ex006"></a>' in second_week.json()['markdown']
         assert '<a id="answer-ex006"></a>' in second_week.json()['worked_answers']
-        assert client.get('/api/lessons/professional-6-months/incident-response-resilience/en/11').status_code == 404
+        first_unpublished = next(day['chapter'] for day in guide['daily_slots'] if not day['published'])
+        assert client.get(f'/api/lessons/professional-6-months/incident-response-resilience/en/{first_unpublished}').status_code == 404
 
-        original = (ROOT / path).read_text(encoding='utf-8')
         revised = original.replace('The write path and the observation path have different failure points:', 'The updated write path and observation path have different failure points:', 1)
         assert revised != original
         updated = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/1').json()
