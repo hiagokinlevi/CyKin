@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 7,
+  "source_anchor": "ch-07",
+  "source_sha256": "f8c0deba1e584667562de9db1b3837ba0f4e5d04f0c909136181d83ebcd6f80f",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, the view is down but the desk records pending requests. What remains available?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The entire booking service, because the desk is staffed"
+        },
+        {
+          "id": "b",
+          "text": "A limited request-intake function, not confirmed online booking"
+        },
+        {
+          "id": "c",
+          "text": "No useful service, because every decision must stop"
+        },
+        {
+          "id": "d",
+          "text": "An alternative reservation engine with automatic approval"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Sections 7.1 and 7.7 distinguish the unavailable booking view from the desk's continuing ability to collect requests. That narrow function is useful without proving online booking, full library availability or automatic allocation. Calling everything unavailable would also hide the permitted continuity procedure. One slip establishes neither capacity nor how long staff can sustain the fallback. NIST CSF 2.0 organizes general cybersecurity outcomes; it does not prescribe this queue or confer booking authority. Harbor Library and the exercise are fictional, not observations of a live service.",
+      "source": "Chapter 7, §7.1 \"Availability of what\"; §7.4, final paragraph; §7.7 \"Distinguish continuity evidence from availability claims\", first paragraph; EX023, objective. General reference only: NIST CSF 2.0, abstract and §2, p. 3, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which compact entry preserves all four intake fields without adding personal information or a booking promise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Heard 09:12; Room 2; start 15:00 today; probably available"
+        },
+        {
+          "id": "b",
+          "text": "Heard 09:12; Room 2; start 15:00 today; confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Heard 09:12; Room 2; start 15:00 today; requester name"
+        },
+        {
+          "id": "d",
+          "text": "Heard 09:12; Room 2; start 15:00 today; not confirmed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The four fields record when the request was heard, the room, the requested start and the explicit state not confirmed. The first alternative substitutes unsupported reassurance for that state; the second asserts an allocation; the third replaces status with a personal-data field the exercise excludes. Keeping the entry small does not mean omitting its decision limit. EX023 supplies no resident name, telephone number or booking identifier. The slip preserves the visitor's request, not evidence that a reservation was created or that any identity was verified.",
+      "source": "Chapter 7, §7.1, second paragraph; §7.2 \"Worked example: the next morning\", field table; §7.6, Phase A; EX023, rubric and worked result."
+    },
+    {
+      "id": "Q03",
+      "prompt": "What do 09:12 and 15:00 mean on the second morning's pending slip?",
+      "options": [
+        {
+          "id": "a",
+          "text": "09:12 is intake time; 15:00 is the requested start"
+        },
+        {
+          "id": "b",
+          "text": "09:12 is booking creation; 15:00 is confirmed use"
+        },
+        {
+          "id": "c",
+          "text": "09:12 is schedule verification; 15:00 is approval time"
+        },
+        {
+          "id": "d",
+          "text": "09:12 is outage recovery; 15:00 is the source timestamp"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The visitor asks at 09:12 for a future 15:00 slot that day. Neither time documents reservation creation, approval or a successful source check. The described outage runs until 09:25, so the intake time is not its recovery time either. Section 7.5 separates request time, requested use, the previous day's paper and later decision evidence. A later reconciliation must not be backfilled into the original intake record as if already performed. These are supplied fictional times, not timestamps obtained from a real system.",
+      "source": "Chapter 7, §7.5 \"Four clocks must not become one event\", time-reference table and following paragraph; EX023, independent extension and worked temporal and reconciliation extension."
+    },
+    {
+      "id": "Q04",
+      "prompt": "At 09:12, why is the paper marked 09:00 not sufficient for today's Room 2 request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Any paper source is forbidden even when owner-approved"
+        },
+        {
+          "id": "b",
+          "text": "A twelve-minute age proves a shared outage cause"
+        },
+        {
+          "id": "c",
+          "text": "The paper belongs to the previous day, not today's schedule"
+        },
+        {
+          "id": "d",
+          "text": "The earlier paper proves the requested slot has been cancelled"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The familiar time-of-day must not hide the different date: the sheet in the drawer is yesterday's snapshot. Treating it as twelve minutes old silently changes the source. It cannot confirm today's 15:00 availability or prove a cancellation. The chapter does not ban every paper source; it requires an approved, sufficiently current basis for the decision. An old snapshot also says nothing about either interruption's cause. Exclude that paper as today's confirmation source while retaining the separate request as not confirmed.",
+      "source": "Chapter 7, §7.2, first paragraph; §7.5, first paragraph and previous-day row; EX023, safe condition, rubric and worked result."
+    },
+    {
+      "id": "Q05",
+      "prompt": "What follows from the second view interruption being described as 09:10–09:25?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The two outages have a demonstrated common cause"
+        },
+        {
+          "id": "b",
+          "text": "The described view-interruption window spans 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "A measured 15-minute recovery objective was achieved"
+        },
+        {
+          "id": "d",
+          "text": "The pending queue can handle every request for 15 minutes"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Subtracting 09:10 from 09:25 gives 15 minutes for the stated window. This arithmetic is not a measured recovery objective, a capacity test or a claim about all library functions. The second interruption does not establish the first one's cause, and no shared attack or technical fault is supplied. Sections 7.3 and 7.5 also leave synchronization, staff coverage and sustainable fallback duration unmeasured. The worker can record a pending request without diagnosing the interruption; the cause does not belong among the four intake fields.",
+      "source": "Chapter 7, §7.2, first paragraph; §7.3 \"Limit\"; §7.5, final paragraph; §7.7, first paragraph; EX023, safe condition and worked extension."
+    },
+    {
+      "id": "Q06",
+      "prompt": "The screen returns, but no reliable schedule result has been supplied. What is still needed before judging the requested slot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An approved current-source check for the correct date, room and start"
+        },
+        {
+          "id": "b",
+          "text": "A new timestamp on yesterday's paper instead of a source check"
+        },
+        {
+          "id": "c",
+          "text": "Assurance that a returned screen has synchronized every booking"
+        },
+        {
+          "id": "d",
+          "text": "Reclassification of the pending line as confirmed when the page loads"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 7.6, Phase B, makes source authority, freshness, date/room/start matching and possible update delays follow-up questions. A screen loading does not answer them. Relabeling the old paper obtains no new evidence, and synchronization is not established by display availability. The intake therefore remains not confirmed while a reliable result is missing. Even a later no-conflict result would leave the separately authorized creation step unresolved. The chapter supplies neither an actual post-return read nor an implemented approval procedure, so neither may be invented here.",
+      "source": "Chapter 7, §7.4, state table and paragraph distinguishing a check from confirmation; §7.5, after-return row; §7.6, Phase B; EX023, worked temporal and reconciliation extension."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A worker promises 'you have the room' before checking; a later source shows no conflict. How should the rehearsal be assessed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Successful, because the later outcome validates the earlier promise"
+        },
+        {
+          "id": "b",
+          "text": "Successful, because recording a request grants the room temporarily"
+        },
+        {
+          "id": "c",
+          "text": "Inconclusive until the visitor supplies personal identification"
+        },
+        {
+          "id": "d",
+          "text": "Failed: later agreement cannot authorize an unsupported earlier confirmation"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 7.7 defines premature confirmation as a falsifier even when a later record happens to show the room free. A pending request conveys no temporary allocation, and adding identity checks would invent a procedure outside this offline exercise. At the earlier decision point, the useful statement was that the request had been recorded but was not confirmed. Both a checked current source and the owner's separate confirmation requirements matter. A later compatible state cannot supply authority or evidence retroactively; this is a hypothetical rehearsal, not a reported booking event.",
+      "source": "Chapter 7, §7.4 \"Define exactly what \"pending\" commits to\", opening paragraph; §7.6, Phase A; §7.7, falsifier paragraph; EX023, worked extension and falsifier."
+    },
+    {
+      "id": "Q08",
+      "prompt": "In the hypothetical occupied branch, an approved current check finds a conflict. Which reply stays within that result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Your pending entry has replaced the earlier reservation"
+        },
+        {
+          "id": "b",
+          "text": "The record lets me identify the person who booked it"
+        },
+        {
+          "id": "c",
+          "text": "That slot is booked; your request was not a confirmed reservation"
+        },
+        {
+          "id": "d",
+          "text": "The occupied result proves the earlier outage was malicious"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The occupied branch supports a room-state answer, not a change of ownership or disclosure of a person's identity. The original 09:12 entry remains a historical request; it never became a reservation merely by being recorded. The outcome explains no outage cause. Section 7.6 requires following the owner's disposition process rather than silently erasing that history. The premise here is explicitly conditional: the source text supplies no actual check result or completed reconciliation for the second morning. No new person, booking or cancellation is established.",
+      "source": "Chapter 7, §7.4, \"Slot shown occupied\" row; §7.6, Phase C, occupied branch; §7.8; EX023, worked temporal and reconciliation extension."
+    },
+    {
+      "id": "Q09",
+      "prompt": "An approved current check hypothetically finds no conflict. What separates that finding from a confirmed reservation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A separate authorized creation step and confirmation evidence, not supplied here"
+        },
+        {
+          "id": "b",
+          "text": "Nothing: an empty slot is automatically assigned to the first recorded request"
+        },
+        {
+          "id": "c",
+          "text": "A repeated submission until a screen appears successful"
+        },
+        {
+          "id": "d",
+          "text": "The earlier pending slip, which already serves as the booking receipt"
+        }
+      ],
+      "correct": "a",
+      "explanation": "No conflict in the verified source scope is only a possible precondition for a booking. The chapter does not supply a successful creation action, confirmation receipt or automatic allocation rule. A pending slip is not such a receipt, and retrying until a screen looks successful does not establish authorized completion. The narrow statement is that the checked source shows no conflict for that slot; it is not you have it. Section 7.4 explicitly marks confirmed as a state not reached in the chapter. This conditional branch must remain distinct from received case evidence.",
+      "source": "Chapter 7, §7.4, \"Slot appears available\" and \"Confirmed\" rows; §7.6, Phase C, no-conflict branch; EX023, extended rubric and worked extension."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Hypothetical: unresolved slips share a room and start time after the view returns. Which handling avoids inventing completed reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Merge them automatically as one person's request"
+        },
+        {
+          "id": "b",
+          "text": "Preserve the minimal request history and refer unresolved conflicts to the owner"
+        },
+        {
+          "id": "c",
+          "text": "Delete them because page recovery proves they were processed"
+        },
+        {
+          "id": "d",
+          "text": "Resubmit repeatedly and assume duplicate requests will be suppressed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 7.6 warns against silently deleting the queue or repeatedly submitting requests until success appears. The exercise provides no request identifier, duplicate-suppression contract or identity link proving that matching room/start values refer to one person. Page recovery does not prove processing. Keep the limited request records and take unresolved conflicts through the owner's approved process without inventing its steps. Preservation does not mean adding names or a universal retention period. No completed reconciliation, exactly-once booking or capacity guarantee has been demonstrated by these slips.",
+      "source": "Chapter 7, §7.6, final paragraph; §7.7, first paragraph; EX023, worked temporal and reconciliation extension, preservation and referral requirement."
+    }
+  ]
+}
