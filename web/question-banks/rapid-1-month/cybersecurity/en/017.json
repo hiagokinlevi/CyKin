@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 17,
+  "source_anchor": "ch-17",
+  "source_sha256": "93cc5b897090fcec405bac19ef68e43743733609137a1e3097818e6c2709c72d",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, which statement records the SYN-002 comparison without adding a system-level conclusion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The two entire pages have identical contents and coverage"
+        },
+        {
+          "id": "b",
+          "text": "Both pages print SYN-002: Room 2, 15:00, created 10:05, confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Two independent production pipelines verified the booking"
+        },
+        {
+          "id": "d",
+          "text": "The matching fields show that the unavailable view recovered"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The supplied 11:40 and 11:55 pages agree on the stated key, room, start, creation time and status. That supports a bounded printed-row observation. It does not make the whole pages identical: SYN-003 appears only on 11:55. Neither independent origins nor recovery of the view is documented. EX033 requires keeping this positive fact while refusing conclusions beyond the compared fields. The exercise supplies synthetic artifacts, not production telemetry, a recovery receipt or a new reservation operation.",
+      "source": "Chapter 17, §17.1 \"What the repeat can carry\"; §17.2 \"Worked example\", supported-match row; §17.4, matching-row definition; EX033, task and first expanded worked sentence."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Two paper objects agree on SYN-002. What prevents treating them as two independently validated sources?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Their different headings prove their records conflict"
+        },
+        {
+          "id": "b",
+          "text": "A shared row proves that both pages came from one database"
+        },
+        {
+          "id": "c",
+          "text": "The extra SYN-003 row proves that each used a separate pipeline"
+        },
+        {
+          "id": "d",
+          "text": "Their source lineage and generation records have not been established"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Physical separation and different headings do not establish independent origins. A common process is possible, but the match alone does not prove that origin either. Different row coverage likewise does not prove separate pipelines. Section 17.4 explicitly withholds source databases, printer records and update receipts. EX033's independence row therefore remains not established. The inspected field agreement is still usable as a paper observation; its value should not be inflated into independent replication correctness or dismissed as evidence of conflict.",
+      "source": "Chapter 17, §17.4 \"Repeated fields corroborate content, not a mechanism\", corroboration paragraph and independent-pipelines row; §17.7, Control A; EX033, independent extension and expanded independence row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "SYN-003 was created at 11:20 but appears only on 11:55, not 11:40. What does that difference establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Different printed coverage, with the generation mechanism still unexplained"
+        },
+        {
+          "id": "b",
+          "text": "A failed update, because every earlier-created row must appear on 11:40"
+        },
+        {
+          "id": "c",
+          "text": "A deliberate deletion from the older page by an attacker"
+        },
+        {
+          "id": "d",
+          "text": "Complete coverage on 11:55, because it contains one more row"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The difference is directly observable, but no verified inclusion rule, cutoff, filter or update behavior tells us why it occurred. The numerical ordering does not guarantee that the earlier page had to include SYN-003. It also identifies no attacker or complete later register. Section 17.4 explicitly addresses this apparent timing puzzle. EX033 records a supported difference with an unexplained mechanism. SYN-002 can match while SYN-003 differs, without either observation diagnosing a real defect or authorizing an edit to an original.",
+      "source": "Chapter 17, §17.1, match-and-difference paragraph; §17.4, SYN-003 paragraph and missing-row entry; §17.7, Control B; EX033, expanded SYN-003 row and missing-discriminator column."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A learner claims the repeated row proves an attacker caused the view outage. Which missing element matters most?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Another copy of the same row, regardless of its origin"
+        },
+        {
+          "id": "b",
+          "text": "A later heading that can be ordered after the creation time"
+        },
+        {
+          "id": "c",
+          "text": "Evidence linking a hostile mechanism to the outage and distinguishing alternatives"
+        },
+        {
+          "id": "d",
+          "text": "The personal identity of the holder of the synthetic booking"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The printed repetition supplies no causal link between a hostile action and the unavailable view. More copies or ordered timestamps cannot fill that gap, and identifying a booking holder would neither establish the mechanism nor respect the exercise's data boundary. Section 17.6 asks for a plausible mechanism and evidence separating it from alternatives. EX033 rejects the attack claim without proving that no attack could ever occur. A supported finding need not be an incident; the CSF's incident criteria are a general assessment principle, not evidence that this classroom event meets them.",
+      "source": "Chapter 17, §17.2, attack claim; §17.5, observation/finding/incident distinction; §17.6 \"The causal test the evidence cannot yet pass\"; EX033, second expanded worked sentence and attack-claim row. General principle only: NIST CSF 2.0, Appendix A, DE.AE-08, p. 21, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q05",
+      "prompt": "After the row comparison, which classification of the training issue remains supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verified booking-software vulnerability, established by the duplicate row"
+        },
+        {
+          "id": "b",
+          "text": "The weak confirmation procedure already identified in Chapter 8"
+        },
+        {
+          "id": "c",
+          "text": "A confirmed attacker-caused incident, established by the newer page"
+        },
+        {
+          "id": "d",
+          "text": "A proven safe procedure, because the same booking was printed twice"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The repeated row adds no demonstration of a product defect, hostile action or production safety. Chapter 8's bounded weak-procedure classification therefore remains unchanged. This does not mean procedural weaknesses can never be vulnerabilities: the NIST CSRC definition includes security procedures and controls that a threat could exploit or trigger. A definition is not a verification of this case. EX033 preserves the original classification and rejects both the attack and safety assertions, rather than promoting terminology because the same synthetic record appeared again.",
+      "source": "Chapter 17, §17.1, classification paragraph; §17.2, vulnerability and safety rows; §17.5 \"Distinguish observation, hypothesis, finding, incident and risk\", final paragraph; EX033, fourth expanded worked sentence and rubric clarification. Terminology only: NIST CSRC Glossary, vulnerability, FIPS 200 definition, https://csrc.nist.gov/glossary/term/vulnerability"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Staff can give a bounded room-state answer from the named page. Does that justify closing the case as safe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; that decision is not an assessment of overall safety or grounds for closure"
+        },
+        {
+          "id": "b",
+          "text": "Yes; one correct room answer establishes that all controls worked"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the absence of attack evidence proves no incident could exist"
+        },
+        {
+          "id": "d",
+          "text": "No; withholding closure itself proves a continuing malicious incident"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A useful classroom decision and a system-wide safety assessment answer different questions. Section 17.7's Control D allows the limited workflow without claiming measured reliability or incident closure. The match does not assess all controls or prove the absence of an incident; refusing a safety conclusion also does not establish an ongoing attack. EX033 requires rejecting both overclaims while preserving the observation. No declared real incident, restoration result or closure authorization is supplied, so none can be inferred from a successful-looking reply.",
+      "source": "Chapter 17, §17.2, safety claim; §17.6, worked evidence ladder; §17.7 \"Contrastive decisions and negative controls\", Control D; EX033, third expanded worked sentence and rubric clarification."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Why does agreement on SYN-002 fail to justify a low risk rating?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Risk must be high whenever a source's origin is unknown"
+        },
+        {
+          "id": "b",
+          "text": "Two matching pages supply the required harm-frequency sample"
+        },
+        {
+          "id": "c",
+          "text": "UNKNOWN 0 supplies a measured zero likelihood of adverse effects"
+        },
+        {
+          "id": "d",
+          "text": "The comparison supplies neither an impact assessment nor a likelihood assessment"
+        }
+      ],
+      "correct": "d",
+      "explanation": "NIST's general risk terminology relates potential adverse consequences to likelihood in a relevant context. The page comparison measures neither. Two appearances of one synthetic row are not a sample of harmful outcomes, and the classifier's UNKNOWN counter is not a probability. Missing evidence also does not force a high rating. Section 17.5 leaves severity, probability and scores unmeasured. EX033 therefore preserves the boundary from Chapter 9 rather than assigning a low, high or numerical risk value to Harbor Library.",
+      "source": "Chapter 17, §17.1, harm/likelihood limit; §17.5, risk definition and score row; §17.6, worked evidence ladder; EX033, independent extension and expanded risk/safety row. Terminology only: NIST CSRC Glossary, risk, adverse-impact/likelihood definitions, https://csrc.nist.gov/glossary/term/risk"
+    },
+    {
+      "id": "Q08",
+      "prompt": "The outage cause remains unknown. What does UNKNOWN 0 in the old Chapter 4 output mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The source of the outage has already been identified"
+        },
+        {
+          "id": "b",
+          "text": "The tally must gain a fifth action for the unexplained cause"
+        },
+        {
+          "id": "c",
+          "text": "All four logged action kinds matched written classifier branches"
+        },
+        {
+          "id": "d",
+          "text": "ALLOW confirms Room 4 because no unknown booking remains"
+        }
+      ],
+      "correct": "c",
+      "explanation": "UNKNOWN counts unmatched action kinds, not unanswered causal questions or booking states. The old log contains four proposals; comparing pages or lacking an outage explanation appends none. Its line stays STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. ALLOW still labels the 11:45 mark-pending proposal, not a Room 4 confirmation. Section 17.7's Control C and EX033 preserve this input/output scope. No new classifier execution or replacement tally is performed or claimed.",
+      "source": "Chapter 17, §17.2, UNKNOWN proposal; §17.7, Control C and final tally paragraph; EX033, rubric, negative controls and expanded paragraph on UNKNOWN 0."
+    },
+    {
+      "id": "Q09",
+      "prompt": "With the cause unresolved, what may the worker still say from the current owner-named 11:55 page?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 at 15:00 is already booked, without identifying a holder"
+        },
+        {
+          "id": "b",
+          "text": "Nothing about any room until the outage's cause is proved"
+        },
+        {
+          "id": "c",
+          "text": "Room 2 at 15:00 is now confirmed for this new requester"
+        },
+        {
+          "id": "d",
+          "text": "The holder of SYN-002 caused the unavailable view"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The named current page supplies the exact confirmed SYN-002 match for Room 2 / 15:00. That supports the limited booked-slot answer despite the unresolved cause. Refusing every row-level conclusion would discard supplied evidence; confirming a new request would invent a transaction. The identifier supplies neither a person's name nor causal responsibility. Section 17.6's evidence ladder stops at the supported room answer. EX033 demands the positive bounded match alongside rejection of attack and safety claims, not indiscriminate refusal or a new booking.",
+      "source": "Chapter 17, §17.2, supported-match row; §17.4, opening paragraph; §17.6, worked evidence ladder; EX033, first expanded worked sentence, supported-observation row and rubric clarification."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which follow-up best distinguishes a possible scope filter from update delay without claiming new evidence or exceeding the exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record update delay as the finding because the times appear compatible"
+        },
+        {
+          "id": "b",
+          "text": "Open the live booking site to test which explanation is correct"
+        },
+        {
+          "id": "c",
+          "text": "Invent a third printout whose rows resolve the discrepancy"
+        },
+        {
+          "id": "d",
+          "text": "Ask the authorized owner which inclusion rules, source versions and cutoffs applied"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The requested records could help distinguish the chapter's competing hypotheses. Asking for them is not receiving them: no generation record, source answer or test result has been released. A compatible timeline does not verify delay, and neither an evidence gap nor curiosity authorizes live access or fabrication. EX033 permits a question with its missing evidence, not a diagnosis. NIST SP 800-61 Rev. 3 supports preserving record integrity and provenance generally; it does not supply Harbor Library's missing lineage or grant permission to investigate a real service.",
+      "source": "Chapter 17, §17.3 \"The open cause\"; §17.6, hypothetical explanations and discriminating question; §17.8, independent ledger; EX033, safe condition, expanded hypothetical follow-up and rubric clarification. General provenance principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06/RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    }
+  ]
+}
