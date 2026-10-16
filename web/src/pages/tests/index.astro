@@ -1,33 +1,36 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { FlaskConical, ListFilter } from 'lucide-react';
+import { FlaskConical, ListFilter, SlidersHorizontal } from 'lucide-react';
 ---
 <BaseLayout title="Test yourself · OpenCyber Academy" description="Timed, chapter-based cybersecurity self-assessments for registered OpenCyber Academy learners." robots="noindex,follow">
   <section class="test-hero"><div class="shell">
     <div class="eyebrow"><FlaskConical size={17} aria-hidden="true" /> CHAPTER ASSESSMENTS</div>
     <h1>Test yourself.</h1>
-    <p>Choose a language, subject and course level. Each published chapter test has ten questions, five choices per question and ten seconds for each answer. Reading the books stays free and open; saving test results requires a student sign-in.</p>
+    <p>Choose a published course below, or select a language, subject and level manually. Each chapter test has ten questions, five choices per question and ten seconds for each answer. Reading stays free; saving results requires student sign-in.</p>
+    <a class="button gold test-hero-action" href="#available-tests">Browse available tests ↓</a>
     <p class="test-boundary">These are self-assessments. A course-completion certificate is available only after every chapter test is passed with 10/10 and the entire book passes its editorial completion review. The certificate is not an accredited degree.</p>
     <div class="test-usage"><strong data-insight="tests_completed">—</strong><span>completed test attempts · all time</span><small data-insight-status role="status"></small></div>
   </div></section>
 
   <section class="section"><div class="shell test-shell">
-    <section class="test-step" aria-labelledby="published-tests-heading">
+    <section id="available-tests" class="test-step" aria-labelledby="published-tests-heading">
       <div class="test-step-heading"><ListFilter size={22} aria-hidden="true" /><h2 id="published-tests-heading">Available courses with tests</h2></div>
       <p class="muted">Browse by course here, then choose a chapter below. Questions are tied to published teaching and source files.</p>
       <p id="test-catalog-sync" class="test-catalog-sync" role="status">Checking the current GitHub catalog…</p>
       <div id="test-available" class="test-chapters"></div>
     </section>
-    <div class="test-step"><div class="test-step-heading"><span class="test-step-number">1</span><h2>Choose your language</h2></div><div id="test-languages" class="test-choices" role="group" aria-label="Test language"></div></div>
-    <div class="test-step"><div class="test-step-heading"><span class="test-step-number">2</span><h2>Choose a subject</h2></div><div id="test-subjects" class="test-choices subject-choices" role="group" aria-label="Course subject"></div></div>
-    <div class="test-step"><div class="test-step-heading"><span class="test-step-number">3</span><h2>Choose a level</h2></div><div id="test-levels" class="test-choices" role="group" aria-label="Course level"></div></div>
-    <div class="test-step test-course"><div class="test-step-heading"><span class="test-step-number">4</span><h2>Published chapter tests</h2></div><p id="test-course-status" class="muted" role="status">Select a language, subject and level.</p><div id="test-chapters" class="test-chapters"></div></div>
+    <details id="test-manual-selection" class="test-manual-selection" open><summary><SlidersHorizontal size={20} aria-hidden="true" /> Choose language, subject and level manually</summary>
+      <div class="test-step"><div class="test-step-heading"><span class="test-step-number">1</span><h2>Choose your language</h2></div><div id="test-languages" class="test-choices" role="group" aria-label="Test language"></div></div>
+      <div class="test-step"><div class="test-step-heading"><span class="test-step-number">2</span><h2>Choose a subject</h2></div><div id="test-subjects" class="test-choices subject-choices" role="group" aria-label="Course subject"></div></div>
+      <div class="test-step"><div class="test-step-heading"><span class="test-step-number">3</span><h2>Choose a level</h2></div><div id="test-levels" class="test-choices" role="group" aria-label="Course level"></div></div>
+    </details>
+    <div id="published-chapters" class="test-step test-course"><div class="test-step-heading"><span class="test-step-number">4</span><h2>Published chapter tests</h2></div><p id="test-course-status" class="muted" role="status">Select a language, subject and level.</p><div id="test-chapters" class="test-chapters"></div></div>
     <section class="test-step" aria-labelledby="book-practice-heading"><div class="test-step-heading"><h2 id="book-practice-heading">Exercises in the public book</h2></div><p class="muted">Open an authored lesson or chapter to see its exercises. Reviewed five-choice practice questions show the result after a choice; where a question is still being authored, the prompt and worked answer remain available. Timed chapter tests appear separately above.</p><p id="test-practice-status" class="muted" role="status">Choose a language, subject and level.</p><div id="test-practice" class="test-chapters"></div></section>
     <section id="test-player" class="test-player card" hidden aria-live="polite">
       <div class="eyebrow">TEN SECONDS PER QUESTION</div>
       <div class="test-player-head"><h2 id="test-question-number">Question 1 of 10</h2><span id="test-timer" class="test-timer" aria-label="Time remaining">10</span></div>
-      <p id="test-prompt" class="test-prompt"></p>
       <p id="test-live-feedback" class="test-live-feedback" role="status" hidden></p>
+      <p id="test-prompt" class="test-prompt"></p>
       <form id="test-answer-form"><fieldset id="test-options" class="test-options"><legend class="sr-only">Choose one answer</legend></fieldset><button class="button gold" type="submit" id="test-submit">Submit answer →</button></form>
       <p id="test-feedback-status" class="muted" role="status"></p>
     </section>
@@ -39,11 +42,12 @@ import { FlaskConical, ListFilter } from 'lucide-react';
   </script>
 </BaseLayout>
 <style is:global>
-  .test-hero{padding:78px 0 62px;background:linear-gradient(125deg,var(--bg-2),var(--bg));border-bottom:1px solid var(--line)}
+  .test-hero{padding:clamp(38px,5vw,58px) 0 clamp(34px,4vw,48px);background:linear-gradient(125deg,var(--bg-2),var(--bg));border-bottom:1px solid var(--line)}
   .test-hero h1{font-size:clamp(2.8rem,5vw,5rem);margin:14px 0}.test-hero p{max-width:780px;color:var(--muted);font-size:1.06rem;line-height:1.65}
-  .test-hero .test-boundary{font-size:.9rem;border-left:3px solid var(--gold);padding-left:16px;margin-top:22px}
+  .test-hero .test-boundary{font-size:.9rem;border-left:3px solid var(--gold);padding-left:16px;margin-top:22px}.test-hero-action{margin-top:10px}
   .test-hero .eyebrow{display:inline-flex;gap:9px;align-items:center}.test-usage{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:25px;color:var(--muted)}.test-usage strong{font:700 1.7rem 'Manrope',sans-serif;color:var(--gold);font-variant-numeric:tabular-nums}.test-usage small{width:100%}
-  .test-shell{max-width:1080px}.test-step{border-bottom:1px solid var(--line);padding:0 0 30px;margin-bottom:30px}.test-step-heading{display:flex;align-items:center;gap:14px;margin-bottom:18px}.test-step-heading h2{font-size:1.5rem;margin:0}.test-step-number{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--gold);color:var(--gold);font-size:.9rem}
+  .test-hero+.section{padding-top:48px}.test-shell{max-width:1080px}.test-step{border-bottom:1px solid var(--line);padding:0 0 30px;margin-bottom:30px}.test-step-heading{display:flex;align-items:center;gap:14px;margin-bottom:18px}.test-step-heading h2{font-size:1.5rem;margin:0}.test-step-number{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--gold);color:var(--gold);font-size:.9rem}#available-tests{scroll-margin-top:104px}
+  .test-manual-selection{border-bottom:1px solid var(--line);margin-bottom:30px}.test-manual-selection summary{display:flex;align-items:center;gap:11px;padding:0 0 26px;cursor:pointer;color:var(--gold);font-weight:600}.test-manual-selection summary svg{flex:none}.test-manual-selection summary::after{content:'+';margin-left:auto;font-size:1.25rem;line-height:1}.test-manual-selection[open] summary::after{content:'−'}.test-manual-selection[open] summary{padding-bottom:30px}.test-manual-selection .test-step:last-child{border-bottom:0;margin-bottom:0}#published-chapters{scroll-margin-top:92px}
   .test-choices{display:flex;gap:9px;flex-wrap:wrap}.test-choices button{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;border-radius:3px;font:inherit;cursor:pointer;text-align:left}.test-choices button:hover,.test-choices button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}.subject-choices button{max-width:290px}
   .test-chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.test-chapter{padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px}.test-chapter:hover{border-color:var(--gold)}.test-chapter strong{display:block;margin-bottom:7px}.test-best{display:block;color:var(--gold);margin:0 0 9px}.test-best:empty{display:none}.test-chapter a{display:inline-block;margin-right:12px;font-size:.9rem}.test-chapter button{background:none;border:0;padding:0;color:var(--gold);font:inherit;font-size:.9rem;cursor:pointer;text-decoration:underline}.test-course-card{display:flex;flex-direction:column;gap:5px}.test-course-card .muted{margin-bottom:3px}.test-course-card a{margin-top:auto;padding-top:10px;color:var(--gold);font-weight:600}.test-coverage{display:block;color:var(--text);font-size:.79rem}
   .test-player,.test-result{padding:28px;margin:28px 0}.test-player[hidden],.test-result[hidden]{display:none}.test-player-head{display:flex;justify-content:space-between;gap:15px;align-items:center}.test-player-head h2{margin:10px 0;font-size:1.5rem}.test-timer{display:grid;place-items:center;min-width:50px;height:50px;border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-variant-numeric:tabular-nums;font-size:1.3rem}.test-timer.low{border-color:#e37061;color:#e37061}.test-prompt{font-size:1.18rem;font-weight:550}.test-live-feedback{border-left:3px solid var(--gold);padding:10px 14px;background:var(--surface)}.test-options{border:0;padding:0;display:grid;gap:10px;margin:20px 0}.test-option{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);cursor:pointer}.test-option:has(input:checked){border-color:var(--gold)}.test-result h2{font-size:1.8rem}.test-explanation{border-top:1px solid var(--line);padding:14px 0}.test-explanation strong{color:var(--gold)}.test-explanation p{margin:6px 0}.test-explanation small{color:var(--muted)}

@@ -1,6 +1,6 @@
 /* Public, aggregated, opt-in usage counts. No personal records are returned. */
 (() => {
-  if (!document.querySelector('[data-insight], [data-exercise-insight]')) return;
+  if (!document.querySelector('[data-insight], [data-exercise-insight], [data-exercise-browsers]')) return;
   const language = document.documentElement.lang || 'en';
   const number = new Intl.NumberFormat(language);
   let pending = false;
@@ -22,6 +22,11 @@
       for (const element of document.querySelectorAll('[data-exercise-insight]')) {
         const id = element.getAttribute('data-exercise-insight');
         const value = data.exercises_by_id?.[id]?.opens || 0;
+        element.textContent = number.format(value);
+      }
+      for (const element of document.querySelectorAll('[data-exercise-browsers]')) {
+        const id = element.getAttribute('data-exercise-browsers');
+        const value = data.exercises_by_id?.[id]?.browsers || 0;
         element.textContent = number.format(value);
       }
       document.querySelectorAll('[data-insight-status]').forEach(element => { element.textContent = ''; });

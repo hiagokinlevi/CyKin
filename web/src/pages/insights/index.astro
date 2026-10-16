@@ -15,7 +15,7 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
       <section class="insights-table-panel" aria-labelledby="insights-courses-title">
         <div class="insights-panel-title"><BookOpen size={22} aria-hidden="true" /><div><span class="eyebrow">COURSE ACTIVITY</span><h2 id="insights-courses-title">Courses with activity</h2></div></div>
         <p>Views include course entry pages and published lesson pages. A reading session means the lesson remained visible for 30 seconds.</p>
-        <div class="insights-scroll"><table><thead><tr><th scope="col">Course</th><th scope="col">Views</th><th scope="col">30s reads</th><th scope="col">Exercise opens</th></tr></thead><tbody id="insights-courses"><tr><td colspan="4">Loading activity…</td></tr></tbody></table></div>
+        <div class="insights-scroll"><table><thead><tr><th scope="col">Course</th><th scope="col">Browsers</th><th scope="col">Views</th><th scope="col">30s reads</th><th scope="col">Exercise opens</th></tr></thead><tbody id="insights-courses"><tr><td colspan="5">Loading activity…</td></tr></tbody></table></div>
       </section>
       <section class="insights-table-panel" aria-labelledby="insights-pages-title">
         <div class="insights-panel-title"><Eye size={22} aria-hidden="true" /><div><span class="eyebrow">PAGE ACTIVITY</span><h2 id="insights-pages-title">Most viewed pages</h2></div></div>
@@ -40,7 +40,7 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
     void fetch('/api/insights?breakdown=true', { cache: 'no-store' }).then(async response => {
       if (!response.ok) throw new Error('Insights unavailable');
       const result = await response.json() as { top_courses: Entry[]; top_pages: Entry[] };
-      if (!result.top_courses.length) fallback(courseBody, 4, message[0]);
+      if (!result.top_courses.length) fallback(courseBody, 5, message[0]);
       else courseBody.replaceChildren(...result.top_courses.map(entry => {
         const [level, area, language] = entry.label.split('/');
         const course = catalog.courses.find(item => item.level === level && item.area === area);
@@ -48,7 +48,7 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
         link.href = `/courses/${level}/${area}/?lang=${language}`;
         link.textContent = course?.titles[siteLanguage()] || course?.title || area.replaceAll('-', ' ');
         const detail = document.createElement('small'); detail.textContent = `${language.toUpperCase()} · ${catalog.level_names[level]?.[siteLanguage()] || level}`;
-        cell.append(link, detail); row.append(cell, countCell(entry.views), countCell(entry.reads), countCell(entry.exercises)); return row;
+        cell.append(link, detail); row.append(cell, countCell(entry.browsers), countCell(entry.views), countCell(entry.reads), countCell(entry.exercises)); return row;
       }));
       if (!result.top_pages.length) fallback(pageBody, 3, message[0]);
       else pageBody.replaceChildren(...result.top_pages.map(entry => {
@@ -56,7 +56,7 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
         link.href = entry.label; link.textContent = entry.label === '/' ? 'Home' : entry.label;
         cell.append(link); row.append(cell, countCell(entry.views), countCell(entry.browsers)); return row;
       }));
-    }).catch(() => { fallback(courseBody, 4, message[1]); fallback(pageBody, 3, message[1]); });
+    }).catch(() => { fallback(courseBody, 5, message[1]); fallback(pageBody, 3, message[1]); });
   </script>
 </BaseLayout>
 <style>

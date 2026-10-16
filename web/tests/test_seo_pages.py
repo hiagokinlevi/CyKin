@@ -59,6 +59,8 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert 'id="exercise-ex001"' in response.text
     assert 'id="answer-ex001"' in response.text
     assert 'href="#answer-ex001"' in response.text
+    assert 'data-insight="page.browsers"' in response.text
+    assert 'data-exercise-browsers="EX001"' in response.text
     assert '/lessons/en/2/' in response.text
     assert 'src="/analytics.js"' in response.text
     assert client.get("/courses/rapid-1-month/incident-response-resilience/lessons/en/21/").status_code == 404

@@ -292,10 +292,10 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         "es": ("Practica los ejercicios", "Ver el enunciado", "Comparar con la respuesta desarrollada", "Buscando una pregunta revisada con cinco opciones…"),
     }.get(language, ("Practice the exercises", "Open the prompt", "Compare with the worked answer", "Checking for a reviewed five-choice question…"))
     usage_copy = {
-        "en": ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page."),
-        "pt": ("Atividade pública", "Visualizações", "Sessões de leitura", "Exercícios abertos", "Aberturas em 30 dias", "Contagens incluem navegadores que permitiram análise de uso. Uma sessão de leitura exige 30 segundos com a página visível."),
-        "es": ("Actividad pública", "Visualizaciones", "Sesiones de lectura", "Ejercicios abiertos", "Aperturas en 30 días", "Los recuentos incluyen navegadores que permitieron el análisis de uso. Una sesión de lectura exige 30 segundos con la página visible."),
-    }.get(language, ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page."))
+        "en": ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page. Browsers are not people.", "Participating browsers", "browsers"),
+        "pt": ("Atividade pública", "Visualizações", "Sessões de leitura", "Exercícios abertos", "Aberturas em 30 dias", "Contagens incluem navegadores que permitiram análise de uso. Uma sessão de leitura exige 30 segundos com a página visível. Navegadores não equivalem a pessoas.", "Navegadores participantes", "navegadores"),
+        "es": ("Actividad pública", "Visualizaciones", "Sesiones de lectura", "Ejercicios abiertos", "Aperturas en 30 días", "Los recuentos incluyen navegadores que permitieron el análisis de uso. Una sesión de lectura exige 30 segundos con la página visible. Los navegadores no equivalen a personas.", "Navegadores participantes", "navegadores"),
+    }.get(language, ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page. Browsers are not people.", "Participating browsers", "browsers"))
     practice_intro = {
         "en": "Open a prompt, write your response, then compare it with the worked answer. Five-choice practice appears where a reviewed question is available.",
         "pt": "Leia o enunciado, escreva sua resposta e compare com a resolução. Questões de cinco alternativas aparecem onde já há revisão.",
@@ -311,7 +311,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         practice_cards.append(
             f'<section class="exercise-attempt" data-exercise-id="{exercise_id}">'
             f'<h3>{exercise_id}</h3><div class="exercise-links">{prompt_link}{answer_link}</div>'
-            f'<small class="exercise-public-count">{html.escape(usage_copy[4])}: <strong data-exercise-insight="{exercise_id}">—</strong></small>'
+            f'<small class="exercise-public-count">{html.escape(usage_copy[4])}: <strong data-exercise-insight="{exercise_id}">—</strong> · {html.escape(usage_copy[7])}: <strong data-exercise-browsers="{exercise_id}">—</strong></small>'
             f'<div class="exercise-choice-options"></div>'
             f'<p class="exercise-attempt-status" role="status">{html.escape(practice_copy[3])}</p></section>'
         )
@@ -365,6 +365,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
          data-published="{len([unit for unit in guide['daily_slots'] if unit['published']]) if guide and not guide['chapter_lessons'] else len([unit for unit in guide['legacy_chapters'] if unit['published']]) if guide else 0}">
     <div class="sidebar-inner"><h2>{html.escape(study['progress'])}</h2>
       <div class="reader-public-usage"><h3>{html.escape(usage_copy[0])} · 30d</h3>
+        <p><strong data-insight="page.browsers">—</strong> {html.escape(usage_copy[6])}</p>
         <p><strong data-insight="page.views">—</strong> {html.escape(usage_copy[1])}</p>
         <p><strong data-insight="page.reads">—</strong> {html.escape(usage_copy[2])}</p>
         <p><strong data-insight="page.exercises">—</strong> {html.escape(usage_copy[3])}</p>
