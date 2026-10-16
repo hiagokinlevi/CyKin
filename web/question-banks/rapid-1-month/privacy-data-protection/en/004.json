@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "c3cb94b5d486a8cb41e48afb601c2f77de12aa316f32e846f43e4bc7d981c223",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why does date_of_birth print needed although it appears only in the birthday-voucher set?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The program accepts every field already present in the sign-up form"
+        },
+        {
+          "id": "b",
+          "text": "Membership in any stated purpose set is enough to enter their union"
+        },
+        {
+          "id": "c",
+          "text": "A field must occur in all three purpose sets to survive the check"
+        },
+        {
+          "id": "d",
+          "text": "The program inspects birthdays and verifies each customer's agreement"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The program builds used with set().union(*needs.values()). date_of_birth belongs to the birthday-voucher set, so its name enters used even though the other two sets omit it. Intersection, existing collection and inspection of customer values are different tests and are not what this code performs. The same union contains email once despite its occurrence in several purpose sets. This explains membership for the supplied synthetic inputs, not legal necessity or consent. EX057's distinction between names and values also applies here.",
+      "source": "Chapter 4, Lab — Loyalty app fields versus stated purposes, needs/used expressions; Concepts — the script tests names, not values, Build used row; Data — membership against the three sets, date_of_birth row; Worked results (#worked-results; EX039, EX057)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "In the original output, what do the numerator five and denominator ten actually measure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Five exposed customers among ten loyalty members inspected by the program"
+        },
+        {
+          "id": "b",
+          "text": "Five deleted records among ten records removed from a live database"
+        },
+        {
+          "id": "c",
+          "text": "Five collected field names outside the purpose union among ten supplied collected names"
+        },
+        {
+          "id": "d",
+          "text": "Five failed legal requirements among ten GDPR requirements evaluated"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The original collected list has ten entries. Five are absent from used: phone, postcode, prescription_items, gender and location_trail. The program computes 100 * 5 / 10 and prints 50%. It counts field names, not people, stored values, deletions or legal requirements. The later five-field form does not replace this historical input or turn its denominator into five. EX039 supplies the original proportion; EX047 describes a different, later form. Reproducing the offline program verifies the arithmetic without creating a new production measurement.",
+      "source": "Chapter 4, sections 4.1 and 4.5; Lab, collected/unneeded and final print; Data — membership against the three sets, final paragraph; Worked results (#worked-results; EX039, EX047)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "How should Sofia discuss the location trail and possible vendor defaults without overstating the evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat default collection as evidence that every field serves the points purpose"
+        },
+        {
+          "id": "b",
+          "text": "Describe unexpected movement tracking as a concern and template origin as a possibility, not a finding"
+        },
+        {
+          "id": "c",
+          "text": "Assert that the supplier deliberately tracked a named customer's movements"
+        },
+        {
+          "id": "d",
+          "text": "Ignore background collection because the visible form alone defines the privacy review"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 4.2 identifies the location trail as intrusive, unexpected tracking and says gender, postcode and phone may have come from the vendor template. EX040 supports the concern; EX041's short answer names a possible source rather than proving that source caused this collection. Neither a default nor a field's presence supplies a stated purpose. Conversely, the case does not establish deliberate vendor misconduct or identify a tracked person. The answer preserves a concrete concern while distinguishing the narrative's tentative explanation from a verified provenance claim.",
+      "source": "Chapter 4, section 4.2 Interpreting the lab; Data — membership against the three sets, unneeded fields row; general Worked example; Worked results (#worked-results; EX040, EX041, EX042)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Before recommending deletion solely from the notice-based field check, what missing assumption should Sofia investigate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether an unrecorded business purpose exists and genuinely changes the assessment"
+        },
+        {
+          "id": "b",
+          "text": "Whether a new purpose can be invented merely to make every field pass"
+        },
+        {
+          "id": "c",
+          "text": "Whether fields collected by default are automatically outside minimisation"
+        },
+        {
+          "id": "d",
+          "text": "Whether the unneeded result itself authorizes immediate changes by the reviewer"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Errors and limits warns that the purposes listed in a notice may be incomplete. Asking the business about other purposes tests that assumption before deletion; it does not fabricate a justification or approve a setting change. Any proposed purpose still needs assessment. GDPR Article 5(1)(b)-(c) supplies purpose-limitation and minimisation principles, not a rule that editing needs makes collection lawful. The laboratory establishes absence from its supplied purpose sets. No additional Juniper purpose, approval or deletion is reported by this question.",
+      "source": "Chapter 4, Errors and limits; section 4.1, stated-purpose inputs; Concepts — the script tests names, not values, Build used limitation; Worked results (#worked-results; EX042, EX057). General principles only: GDPR Article 5(1)(b)-(c), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Why can purchase_history print needed while prescription_items prints NOT NEEDED, even with medicine text inside purchase_history?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The selected name guarantees that the program removed medicine values from it"
+        },
+        {
+          "id": "b",
+          "text": "The program approves medicine data whenever the field label avoids prescription"
+        },
+        {
+          "id": "c",
+          "text": "The program detects medicine text but conceals it from the displayed result"
+        },
+        {
+          "id": "d",
+          "text": "Only the names are compared with the union; the stored medicine text is not examined"
+        }
+      ],
+      "correct": "d",
+      "explanation": "purchase_history appears in the points set; prescription_items appears in none of the three sets. That explains the different marks. The program never opens either field's values and performs no content sanitisation. Under EX057, putting insulin inside purchase_history therefore leaves the membership result unchanged while violating the case's separate export-content rule. A label cannot hide a medicine from that second assessment. This is an explanation of the published computation and fictional example, not evidence that a real value was inspected, changed or sent.",
+      "source": "Chapter 4, Concepts — the script tests names, not values; Lab, membership expressions; Data — membership against the three sets, purchase_history row; Worked example — five clean names, one insulin line; Apply EX057 and Worked results (#worked-results; EX057)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "EX058's form has the five allowed fields, but its export lists insulin. Which status record is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both checks passed because every form name belongs to the purpose union"
+        },
+        {
+          "id": "b",
+          "text": "Field check passed; content check failed; record the failure and keep the action open"
+        },
+        {
+          "id": "c",
+          "text": "Field check failed; content check passed because insulin is not a field name"
+        },
+        {
+          "id": "d",
+          "text": "The action is complete because one successful check outweighs one failed check"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The two checks answer different questions and are not averaged. The five-field form passes the structural check, but insulin in the export fails the content rule. EX058 and the decision flow require recording which check failed and its date, leaving the action open; the worked example also tells the owner. This question supplies no actual date, patient, diagnosis or new run. It does not infer that every export contains insulin, nor does the permitted field name neutralize the failure of the particular file described.",
+      "source": "Chapter 4, Decision flow — someone says the form is fixed, field-pass/content-fail path; Worked example — five clean names, one insulin line; Apply EX058 and Worked results (#worked-results; EX048, EX049, EX057, EX058)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "An earlier two-week export is clean; a later file names insulin. Which historical statement should remain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The later failure proves the earlier export must also have contained insulin"
+        },
+        {
+          "id": "b",
+          "text": "The earlier pass certifies all later files, so the new medicine line can be ignored"
+        },
+        {
+          "id": "c",
+          "text": "The earlier result applies to that night; the later failure remains open without rewriting the lab output"
+        },
+        {
+          "id": "d",
+          "text": "The ten-field laboratory output should be replaced with five collected and none unneeded"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 4.5 records totals and non-medicine categories in the two-week export. That observation remains valid for its own file. The later insulin example is a separate content failure, not a correction to the earlier observation or a rerun of the ten-name laboratory. Chapter 5 makes this chronology explicit. EX048 must be read at the two-week checkpoint, while EX058 describes the failing input. Preserve both results, keep the later action open and leave the historical ten-field output unchanged. Neither permanent success nor a retrospectively invented earlier failure is supported.",
+      "source": "Chapter 4, section 4.5; original Lab output; Worked example — five clean names, one insulin line; Worked results (#worked-results; EX039, EX047, EX048, EX049, EX058). Chronology cross-check only: Chapter 5, section 5.1 Two exports, two results (#ch-05)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A draft lists Sofia's five desired outcomes but no responsibility, cost or timing. What makes it match her actionable plan?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A statement that approving the page proves every action has already been implemented"
+        },
+        {
+          "id": "b",
+          "text": "Removal of the vendor and retention actions because the field check cannot measure them"
+        },
+        {
+          "id": "c",
+          "text": "A single completion tick borrowed from the successful two-week export"
+        },
+        {
+          "id": "d",
+          "text": "An owner, cost estimate and target date for each action, with completion assessed separately"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX043 and EX044 describe five actions, each with an owner, cost estimate and target date. These make the plan assignable rather than a list of wishes. The first action covers fields and the medicine feed; the others concern contracts, retention, photos and storeroom handling. Owner approval and a request to the vendor are not evidence that all five are done. Section 4.5 still describes contract negotiation. No invented cost, calendar date, signature or completed measure is supplied here, and the three-month planning horizon is not presented as a legal deadline.",
+      "source": "Chapter 4, sections 4.3 A short plan, 4.4 Presenting to the owner and 4.5 Checking and next steps; general Worked example; Worked results (#worked-results; EX043, EX044, EX049)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The owner fears reduced app value. Which response best follows Sofia's presentation rather than relying on the percentage alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Explain the medicine-flow concern first, then show how points and vouchers use the remaining necessary fields"
+        },
+        {
+          "id": "b",
+          "text": "Claim that removing half the fields guarantees half the privacy risk and unchanged revenue"
+        },
+        {
+          "id": "c",
+          "text": "Keep every default field because the owner's concern proves that all are necessary"
+        },
+        {
+          "id": "d",
+          "text": "Treat the completed presentation as evidence that the vendor has already corrected every export"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX045 identifies medicine purchases reaching the loyalty vendor as the lead issue; EX046 identifies the owner's concern about value. Sofia connects the privacy finding to the business purpose and shows that points and vouchers work with the remaining fields. A 50% field count is not a quantified reduction in risk, an income measurement or proof of implementation. The fictional owner's approval and vendor request remain distinct from later checks. This answer neither adds a sales result nor claims that a named customer's health condition was established.",
+      "source": "Chapter 4, section 4.4 Presenting to the owner; section 4.1, purpose sets; general Worked example; Worked results (#worked-results; EX039, EX045, EX046, EX049)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does a needed mark establish that collecting health data meets the GDPR requirements relevant to this lesson?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; membership in a purpose set establishes a valid Article 9 condition"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the pharmacy setting removes the need to assess how the information is used"
+        },
+        {
+          "id": "c",
+          "text": "No; membership proves neither a lawful purpose nor an applicable health-data condition"
+        },
+        {
+          "id": "d",
+          "text": "No; the program must diagnose the customer before it can assess the relevant condition"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The Concepts table explicitly says used cannot determine whether a purpose is lawful. GDPR Article 5(1)(b)-(c) addresses purpose limitation and minimisation; Article 9(1)-(2) imposes restrictions and conditions for special-category processing. The code establishes none of those legal facts. Its needed mark is only membership under supplied teaching assumptions, not consent, permission or a compliance decision. Nor is diagnosing someone a task for this program. The principles support a separate assessment; they do not turn Juniper's synthetic lab into legal advice or prove that a real pharmacy satisfies either article.",
+      "source": "Chapter 4, section 4.2; Concepts — the script tests names, not values, Build used row; Lab, used expression; Apply EX057; Worked results (#worked-results; EX042, EX057). Legal principles only: GDPR Articles 5(1)(b)-(c) and 9(1)-(2), https://data.europa.eu/eli/reg/2016/679/oj"
+    }
+  ]
+}
