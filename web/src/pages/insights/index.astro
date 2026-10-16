@@ -37,6 +37,28 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
       const row = document.createElement('tr'); const cell = document.createElement('td'); cell.colSpan = columns; cell.textContent = text; row.append(cell); target.replaceChildren(row);
     };
     const countCell = (value: number) => { const cell = document.createElement('td'); cell.textContent = number.format(value); return cell; };
+    const pageLabel = (path: string): string => {
+      const labels = {
+        en: { home: 'Home', tests: 'Chapter assessments', account: 'My area', activity: 'Public activity', ai: 'API and MCP', tabletop: 'TableTop scenarios', lesson: 'Lesson', chapter: 'Chapter' },
+        pt: { home: 'Início', tests: 'Testes por capítulo', account: 'Minha área', activity: 'Atividade pública', ai: 'API e MCP', tabletop: 'Cenários TableTop', lesson: 'Aula', chapter: 'Capítulo' },
+        es: { home: 'Inicio', tests: 'Pruebas por capítulo', account: 'Mi área', activity: 'Actividad pública', ai: 'API y MCP', tabletop: 'Escenarios TableTop', lesson: 'Lección', chapter: 'Capítulo' },
+      }[siteLanguage()];
+      const simple: Record<string, string> = {
+        '/': labels.home, '/tests/': labels.tests, '/account/': labels.account,
+        '/insights/': labels.activity, '/for-ai/': labels.ai, '/tabletop/': labels.tabletop,
+      };
+      if (simple[path]) return simple[path];
+      const coursePage = /^\/courses\/([^/]+)\/([^/]+)\/(?:((?:lessons|chapters))\/([a-z]{2})\/(\d+)\/)?$/.exec(path);
+      if (coursePage) {
+        const [, level, area, kind, , number] = coursePage;
+        const course = catalog.courses.find(item => item.level === level && item.area === area);
+        const name = course?.titles[siteLanguage()] || course?.title || area.replaceAll('-', ' ');
+        return number ? `${name} · ${kind === 'lessons' ? labels.lesson : labels.chapter} ${number.padStart(2, '0')}` : name;
+      }
+      const tabletop = /^\/tabletop\/([^/]+)\/$/.exec(path);
+      if (tabletop) return `TableTop · ${tabletop[1].replaceAll('-', ' ').replace(/^./, letter => letter.toUpperCase())}`;
+      return path;
+    };
     void fetch('/api/insights?breakdown=true', { cache: 'no-store' }).then(async response => {
       if (!response.ok) throw new Error('Insights unavailable');
       const result = await response.json() as { top_courses: Entry[]; top_pages: Entry[] };
@@ -53,8 +75,9 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
       if (!result.top_pages.length) fallback(pageBody, 3, message[0]);
       else pageBody.replaceChildren(...result.top_pages.map(entry => {
         const row = document.createElement('tr'); const cell = document.createElement('td'); const link = document.createElement('a');
-        link.href = entry.label; link.textContent = entry.label === '/' ? 'Home' : entry.label;
-        cell.append(link); row.append(cell, countCell(entry.views), countCell(entry.browsers)); return row;
+        link.href = entry.label; link.textContent = pageLabel(entry.label);
+        const path = document.createElement('small'); path.textContent = entry.label;
+        cell.append(link, path); row.append(cell, countCell(entry.views), countCell(entry.browsers)); return row;
       }));
     }).catch(() => { fallback(courseBody, 5, message[1]); fallback(pageBody, 3, message[1]); });
   </script>
@@ -62,9 +85,9 @@ import { BarChart3, BookOpen, Eye } from 'lucide-react';
 <style>
   .insights-hero{padding:clamp(32px,4vw,56px) 0;background:var(--hero-gradient);border-bottom:1px solid var(--line)}
   .insights-hero .eyebrow{display:flex;align-items:center;gap:9px}.insights-hero p{max-width:720px;color:var(--muted);font-size:1.04rem}
-  .insights-content{max-width:1180px;padding-top:42px}.insights-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.insights-table-panel{padding:25px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+  .insights-content{max-width:1180px;padding-top:42px}.insights-panels{display:grid;grid-template-columns:1fr;gap:18px;margin-top:28px}.insights-table-panel{padding:25px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
   .insights-panel-title{display:flex;gap:14px;align-items:center}.insights-panel-title svg{color:var(--gold);flex:none}.insights-panel-title h2{font-size:1.35rem;margin:3px 0}.insights-table-panel>p{color:var(--muted);font-size:.81rem;margin:10px 0 20px}.insights-scroll{overflow-x:auto}
-  table{border-collapse:collapse;width:100%;font-size:.81rem}th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th:not(:first-child),td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}th{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}td a{color:var(--text);font-weight:600;overflow-wrap:anywhere}td a:hover{color:var(--gold)}td small{display:block;color:var(--muted);margin-top:4px}
+  table{border-collapse:collapse;width:100%;font-size:.88rem}.insights-scroll :global(th),.insights-scroll :global(td){padding:13px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.insights-scroll :global(th:not(:first-child)),.insights-scroll :global(td:not(:first-child)){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.insights-scroll :global(th){color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}.insights-scroll :global(td a){color:var(--text);font-weight:600;overflow-wrap:anywhere;text-transform:none}.insights-scroll :global(td a:hover){color:var(--gold)}.insights-scroll :global(td small){display:block;color:var(--muted);font-size:.75rem;margin-top:4px;overflow-wrap:anywhere}
   .insights-method{max-width:85ch;color:var(--muted);font-size:.8rem;line-height:1.7;margin-top:25px}.insights-method a{color:var(--gold);text-decoration:underline}
-  @media(max-width:880px){.insights-panels{grid-template-columns:1fr}}@media(max-width:520px){.insights-table-panel{padding:17px}th,td{padding:9px 5px;font-size:.72rem}}
+  @media(max-width:520px){.insights-table-panel{padding:17px}.insights-scroll :global(th),.insights-scroll :global(td){padding:9px 5px;font-size:.72rem}}
 </style>
