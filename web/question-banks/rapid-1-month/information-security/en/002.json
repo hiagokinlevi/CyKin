@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "e21c3b184db7286f99eabe21061e700365c7e7e2381e099f823b8a011cdd6c71",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Reception proposes adding MFA to its shared login. Which problem would that leave unresolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activity would still be recorded under one shared account rather than separate staff accounts"
+        },
+        {
+          "id": "b",
+          "text": "A successful second factor would conclusively identify which receptionist wrote each note"
+        },
+        {
+          "id": "c",
+          "text": "Removing the paper password would automatically create a separate account for every user"
+        },
+        {
+          "id": "d",
+          "text": "A stronger sign-in would make individual accounts unnecessary for attributing recorded activity"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A second factor and a personal account address different weaknesses. MFA can reduce reliance on a password, but adding it to a shared login does not separate the users' recorded activity. Removing the password note also does not create individual accounts. The chapter instead combines personal accounts with quick switching to preserve reception's workflow. EX014 and EX015 explain the original problem and the stated timing. Even individual accounts would support account-level attribution, not conclusive identification of a physical person. This is a proposal within the synthetic case, not an implemented change.",
+      "source": "Chapter 2, §2.1 \"Own accounts\"; §2.2 \"Second factor\"; \"Concepts — identity, possession, and exposure\", personal-account and second-factor rows; \"Decision flow — a person, a device, or a link\"; EX014/EX015 and their Worked results."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A hypothetical activity record names a personal account. What does that record alone support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The named employee personally performed and approved the change"
+        },
+        {
+          "id": "b",
+          "text": "The account's credentials and session could not have been shared or compromised"
+        },
+        {
+          "id": "c",
+          "text": "The activity was recorded under that account or session, not conclusive human attribution"
+        },
+        {
+          "id": "d",
+          "text": "The account holder was authorized to access every file visible to that session"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The concepts table limits the record to the account or session associated with the activity. Identifying the physical actor, excluding compromise and establishing permission for a particular action need more evidence. NIST SP 800-63B-4 describes authentication in terms of control of authenticators associated with an account; that is not a universal human-attribution or file-authorization guarantee. EX014's shared-login problem explains why personal accounts help without making their records infallible. The question supplies a hypothetical record, not an actual clinic audit event or assurance-level assessment.",
+      "source": "Chapter 2, §2.1; §2.2; \"Concepts — identity, possession, and exposure\", account-evidence limits and following prose; EX014 and its Worked result. General authentication principle: NIST SP 800-63B-4, §1 Introduction, https://pages.nist.gov/800-63-4/sp800-63b.html"
+    },
+    {
+      "id": "Q03",
+      "prompt": "A learner calls every password-plus-code login phishing-resistant. Which correction follows the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The claim is valid whenever the code can be used only once"
+        },
+        {
+          "id": "b",
+          "text": "All of Hollybank's security keys meet the highest assurance level because they are physical"
+        },
+        {
+          "id": "c",
+          "text": "Apps and keys provide no benefit unless they conclusively identify the person at the keyboard"
+        },
+        {
+          "id": "d",
+          "text": "An extra factor helps, but typed codes can be relayed and the case's app/key protocols are unspecified"
+        }
+      ],
+      "correct": "d",
+      "explanation": "An additional distinct factor reduces dependence on a password; it does not eliminate takeover. NIST SP 800-63B-4 explains that manually entered authentication outputs can be relayed to an impostor, so a one-time code is not necessarily phishing-resistant. The case names apps and keys without their protocols, leaving phishing resistance and assurance level unestablished. EX017 explains the practical reason for offering keys to nurses who declined phone apps, not a protocol certification. Useful authentication controls can have limits; neither a physical form nor a successful login supplies universal safety or conclusive actor identity.",
+      "source": "Chapter 2, §2.2 \"Second factor\"; \"Concepts — identity, possession, and exposure\", second-factor row; EX016/EX017 and their Worked results. NIST SP 800-63B-4, §3.2.5 Phishing Resistance, https://pages.nist.gov/800-63-4/sp800-63b.html#phishing-resistance"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Updates were disabled after a label-printer problem. Which authorized repair addresses the dependency rather than avoiding it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep updates disabled and rely on the automatic screen lock instead"
+        },
+        {
+          "id": "b",
+          "text": "Resolve the printer-driver problem, then re-enable updates under the written-approval rule"
+        },
+        {
+          "id": "c",
+          "text": "Enable tablet remote wipe as a substitute for updating the affected computers"
+        },
+        {
+          "id": "d",
+          "text": "Wait for a confirmed intrusion before changing the printer driver or update setting"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.3 narrates a newer printer driver followed by updates being re-enabled. The repair addresses the compatibility problem rather than preserving an indefinite workaround. Locking a screen or enabling a tablet control addresses different concerns and does not replace computer updates. A confirmed intrusion is not the chapter's prerequisite for the repair. EX018/EX019 supply the dependency and fix; EX020 names separate tablet controls. The explicit prior written-approval rule still applies. Narrative order is not permission for retrospective approval, and these described actions do not prove every device is currently secure.",
+      "source": "Chapter 2, §2.3 \"Devices\"; \"Errors and limits\"; paragraph after \"Decision flow — a person, a device, or a link\"; prior-approval clarification after the Concepts table; EX018/EX019/EX020 and their Worked results."
+    },
+    {
+      "id": "Q05",
+      "prompt": "After running the published seed-2 sharing program, which result may the learner report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It imported the technician's export and verified the clinic's live permissions"
+        },
+        {
+          "id": "b",
+          "text": "It discovered and closed twelve client and finance shares in a cloud account"
+        },
+        {
+          "id": "c",
+          "text": "It flagged 47 of 300 generated artificial rows, without reading or changing a cloud account"
+        },
+        {
+          "id": "d",
+          "text": "It measured the exposure rate expected in another clinic with the same folder names"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The complete code generates folder/flag tuples in memory and counts them. It does not read an export, connect to a tenant, inspect effective permissions or perform the restrictions narrated elsewhere. The 47/300 result belongs to this seed and fixture; the folder probabilities are invented inputs, not sampled exposure rates. Python's random documentation supports reproducible sequences with a compatible seed, not conclusions about another organisation. EX021's answer must be read within that execution boundary. Repeating this offline demonstration therefore supplies no evidence of a fresh operational measurement or permission change.",
+      "source": "Chapter 2, \"Lab — Shared files open to anyone with the link, by folder, in a synthetic file store\", execution boundary, full program and verified output; §2.4; EX021 and its Worked result. Python 3.13 random documentation, random.seed, random.random and Notes on Reproducibility: https://docs.python.org/3.13/library/random.html"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Marketing has 25 open rows, versus 8 clients and 4 finance. Which proposed order follows harm rather than count alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prioritize clients and finance, replace open rota access with sign-in, and retain the already-public marketing use"
+        },
+        {
+          "id": "b",
+          "text": "Restrict marketing first because its open count exceeds either sensitive folder's count"
+        },
+        {
+          "id": "c",
+          "text": "Restrict rotas, then marketing, because their open fractions exceed those of clients and finance"
+        },
+        {
+          "id": "d",
+          "text": "Leave client and finance links open while adding MFA to staff accounts, then assess sharing later"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX054 ranks consequences rather than absolute totals or fractions. The twelve client and finance flags matter first because a link could expose client or bank information. Rota sharing then needs a sign-in-based replacement that preserves the home-access task. The particular marketing images may remain public because they are already published; that is not a blanket safety finding for every marketing file or access. MFA for staff does not protect a resource still available to anyone with its link. This is the proposed order under prior written authorization, not a new report that restrictions were executed.",
+      "source": "Chapter 2, §2.4 \"Over-shared files\"; §2.5 \"Closing the gaps\"; \"Data — the synthetic share count, ranked by harm\"; decision-flow sharing branches; EX022/EX023/EX054 and their Worked results."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Part-time staff need the rota from home. What does clinic-only require in the chapter's proposed solution?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Restricting access to devices physically inside the clinic building"
+        },
+        {
+          "id": "b",
+          "text": "Leaving an anonymous link active for anyone using a personal phone"
+        },
+        {
+          "id": "c",
+          "text": "Giving every successful sign-in access to all folders, regardless of role"
+        },
+        {
+          "id": "d",
+          "text": "Restricting it to authorized clinic accounts while preserving the home task behind sign-in"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Clinic-only describes account authorization, not a building boundary. The chapter moves the rota into the practice system so authorized staff can read it from home after signing in. Leaving an anonymous link would preserve the exposure; permitting all authenticated users to every file would confuse authentication with authorization. Effective permissions and the legitimate workflow still need checking within approved scope, not assuming that a label proves success. EX024/EX025 and EX054 connect the access need to the replacement. No actual home-access test or tenant inspection is claimed here.",
+      "source": "Chapter 2, §2.5; \"Concepts — identity, possession, and exposure\", clinic-only row and following prose; decision-flow outside-work branch; EX024/EX025/EX054 and their Worked results."
+    },
+    {
+      "id": "Q08",
+      "prompt": "For the locum's first day, which plan respects both account attribution and the approval boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the reception login for the first week and create a personal account after the locum leaves"
+        },
+        {
+          "id": "b",
+          "text": "Obtain prior written approval; provide a personal account with a second factor before use and log the disable target"
+        },
+        {
+          "id": "c",
+          "text": "Create a personal account now, but defer the second factor and approval until after the first patient"
+        },
+        {
+          "id": "d",
+          "text": "Record an account for future disabling and treat that entry as proof it has already been disabled"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The locum example and EX053 require a personal account with a second factor before the first patient, with approval in the change log. The Concepts clarification preserves written approval before settings changes, despite the narrative's sentence order. Shared access is not made acceptable by a short contract, and delayed MFA would miss the stated prerequisite. The same log identifies the account to disable when the locum leaves; it is not a disable receipt or a supplied departure date. This plan does not grant a new authorization or claim any provisioning took place in a real clinic.",
+      "source": "Chapter 2, §2.1; \"Worked example — a locum who starts on Monday\"; prior-approval clarification after the Concepts table; Apply EX053 \"Locum account\", rubric, and Worked results answer-ex053."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A clinic-only default and a monthly reminder are described. With no new measurement, what happens to the published 47/300 result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It becomes 35/300, a newly verified tenant result, by subtracting the twelve priority files"
+        },
+        {
+          "id": "b",
+          "text": "It becomes zero because a default for new shares also repairs every existing share"
+        },
+        {
+          "id": "c",
+          "text": "It stays the original synthetic result; a default and reminder are not evidence of a later count"
+        },
+        {
+          "id": "d",
+          "text": "It proves next month's files are safe because the check is already on the calendar"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The script's historical result and the proposed or narrated controls are different evidence. A new-share default is not proof that existing permissions were repaired, and a reminder is not an executed measurement. Subtraction can describe an assumption but cannot create a verified later tenant count. EX026 identifies the default; EX021 identifies the original synthetic output. Section 2.5's monthly check is a continuing task, not a receipt that future files are safe. The bank preserves 47/300 without inventing a later scan, changed fixture or successful tenant-wide cleanup.",
+      "source": "Chapter 2, laboratory execution boundary and verified output; §2.5; \"Data — the synthetic share count, ranked by harm\", All files row; EX021/EX026 and their Worked results."
+    },
+    {
+      "id": "Q10",
+      "prompt": "In a separately labeled analytical variant, an open tuple is duplicated before counting. Why can the tally mislead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The counter counts the extra row again; without file IDs it cannot show an extra distinct exposed file"
+        },
+        {
+          "id": "b",
+          "text": "The fixed random seed causes Counter to discard duplicate folder/flag pairs automatically"
+        },
+        {
+          "id": "c",
+          "text": "Two identical tuples necessarily represent two independently verified cloud files"
+        },
+        {
+          "id": "d",
+          "text": "A duplicated tuple proves a second unauthorized disclosure to a real recipient"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The fixture stores only folder labels and Boolean flags. Its counting expressions count occurrences, not unique file identities, so an added duplicate would contribute again without proving a new distinct file or disclosure. A seed controls pseudo-random generation; it does not deduplicate later data. The lab also warns that empty input is missing data, not assurance of zero exposure. These are limits of the synthetic counter, not evidence that the published baseline contains an erroneous export. EX021's 47/300 remains the result of the unchanged original program; the variant is separate.",
+      "source": "Chapter 2, laboratory execution boundary, duplicate/empty-input paragraph and Counter expressions; \"Data — the synthetic share count, ranked by harm\", total-as-check statement; EX021 and its Worked result. Python 3.13 random documentation, seed semantics: https://docs.python.org/3.13/library/random.html"
+    }
+  ]
+}
