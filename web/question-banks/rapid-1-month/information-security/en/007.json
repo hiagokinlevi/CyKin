@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 7,
+  "source_anchor": "ch-07",
+  "source_sha256": "a44bdbf54e9d257d1307395fdad1897ca415466e6e80cd1795f404fdc517eb51",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "The change log records twelve restrictions, but no new census exists. Which dashboard note is defensible?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Current exposure: 35 of 300, calculated by subtracting the logged changes"
+        },
+        {
+          "id": "b",
+          "text": "Historical fixture: 47 of 300; restrictions recorded separately; current total not measured"
+        },
+        {
+          "id": "c",
+          "text": "Current exposure: 47 of 300, because the last printout has not been replaced"
+        },
+        {
+          "id": "d",
+          "text": "Exposure cleared: sensitive folders were addressed, so counting is no longer needed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX061 separates an intervention record from a measured population. The historical fixture contains clients 8/140, finance 4/60, marketing 25/80 and rotas 10/20, with the exact line all files: 47 of 300. The restrictions remain described actions, not a replacement census. Although 47 minus 12 equals 35, the assumptions needed to call it current have not been checked. Keeping 47 as today's count would make the opposite error: an old observation with an unjustified current label. Prioritizing sensitive folders does not eliminate the measurement question. Hollybank is synthetic; no present tenant state is established.",
+      "source": "Chapter 7, §7.3 \"Define the evidence before calculating\", historical table; §7.4, candidate-statements table and final paragraph; §7.6, supported reporting note; EX061 original answer and \"Expanded EX061 worked result — change versus census\", Core answer (#answer-ex061)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "What evidence is missing when twelve logged restriction actions are subtracted from twelve old open flags?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Matching folder totals, without checking which individual files the actions targeted"
+        },
+        {
+          "id": "b",
+          "text": "Twelve change-log lines, regardless of repeated actions against the same file"
+        },
+        {
+          "id": "c",
+          "text": "Similar filenames, used as a substitute for stable identities"
+        },
+        {
+          "id": "d",
+          "text": "A mapping to twelve distinct originally open files, with effective restrictions checked"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Action count is not distinct-file count. Repeated work on one item or similarly named items could break the assumed correspondence without changing the number of log entries. Section 7.4 requires identifying the same twelve distinct records that were originally open and verifying their effective restriction. The generator stores only folder/flag tuples, so it cannot establish that mapping to later actions. Matching totals or names would not repair this identity gap. EX061's expanded change-record row leaves independent rechecking unproved. These are reasons to seek evidence, not claims that Hollybank's changes targeted the wrong files or failed.",
+      "source": "Chapter 7, §7.4 \"Why 47 minus 12 does not establish 35\", assumptions 1–2 and file-identity paragraph; §7.5, identity and deduplication requirements; §7.2, restriction-versus-census row; EX061 independent extension and expanded Worked result, Hollybank change-record row (#answer-ex061)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Two synthetic rows share a folder and open flag. Is collapsing them a justified deduplication rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; matching folder and flag uniquely identify a cloud file"
+        },
+        {
+          "id": "b",
+          "text": "Yes; seed 2 certifies that repeated tuples refer to duplicates"
+        },
+        {
+          "id": "c",
+          "text": "No; distinct files can share those fields, so file identity is needed"
+        },
+        {
+          "id": "d",
+          "text": "No; every repeated tuple is necessarily a different file"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The two fields do not tell whether equal tuples represent duplicate observations or different files with the same attributes. Collapsing every equal tuple could remove distinct items; assuming every occurrence is distinct is also unsupported. Python Counter tallies occurrences from its input rather than discovering cloud-file identities. A genuine duplicated row could therefore be counted again, but deduplication needs an identity-aware rule, not just matching folder and flag. EX061 names duplication as a counterexample to a trustworthy census. This analytical comparison supplies no new export, validated deduplication algorithm or changed historical dataset.",
+      "source": "Chapter 7, §7.4, no-unique-identifier paragraph; §7.5 \"Dataset, sample and software version\", counting and identity limits; §7.6, duplicate-row negative control; EX061 expanded Worked result, Worked counterexample (#answer-ex061). Library behavior only: Python 3.13 collections.Counter, constructor and occurrence-counting examples, https://docs.python.org/3.13/library/collections.html#collections.Counter"
+    },
+    {
+      "id": "Q04",
+      "prompt": "In a proposed review, an approved restriction request is offered as proof that access ended. What still needs verification?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Effective access for the identified files through an authorized current source"
+        },
+        {
+          "id": "b",
+          "text": "Only that the approver's name appears in the restriction request"
+        },
+        {
+          "id": "c",
+          "text": "Only that the generator still prints the same seed-2 result"
+        },
+        {
+          "id": "d",
+          "text": "Only that the intended setting was described as clinic-only"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Approval establishes an authorized intention, not independently verified effective access. The proposed reviewer must identify the affected files and check the actual access condition at an appropriate cutoff through an authorized source. A setting label or a repeat of a synthetic generator cannot do that. Even a successful check of those files would not by itself count every other in-scope item. Section 7.4 distinguishes effective restrictions from approval or intent; EX061 preserves the described changes without promoting them to a new census. This question does not claim approval was absent, restrictions failed, or a permission test occurred in Hollybank.",
+      "source": "Chapter 7, §7.3, control-change definition; §7.4, assumptions 2 and 6; §7.6 \"Worked reporting and verification gate\", proposed future measurement; §7.2, first row; EX061 expanded Worked result, change-record row and Core answer (#answer-ex061)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Hypothetically, a link reopens and an in-scope file is added. Which assumptions behind 35/300 are threatened?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only timing; file identity and membership cannot affect a count"
+        },
+        {
+          "id": "b",
+          "text": "Only the denominator; open-link status stays fixed after restriction"
+        },
+        {
+          "id": "c",
+          "text": "Neither; logged restrictions permanently determine all later totals"
+        },
+        {
+          "id": "d",
+          "text": "Both unchanged open status and unchanged membership of the 300-file population"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Subtraction assumes the remaining open states and the population have stayed comparable. Reopening a link challenges the state assumption; adding a file challenges the fixed membership and denominator. The added file's permission is unspecified, so the scenario does not justify a replacement numerator or total. These counterexamples explain why a current observation is needed rather than manufacturing a new measurement by arithmetic. EX061's worked counterexample explicitly preserves such possibilities without asserting that they occurred. The original 47/300 remains historical, and the hypothetical changes are not reported as real Hollybank events.",
+      "source": "Chapter 7, §7.4, assumptions 3–4 and possible-counterexamples paragraph; §7.6, reopened-link/new-file controls; §7.7, independent assumption testing; EX061 independent extension and expanded Worked result, Worked counterexample (#answer-ex061)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A hypothetical later export omits finance and shows fewer open rows. What should the reviewer do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the missing finance rows as evidence that their links are private"
+        },
+        {
+          "id": "b",
+          "text": "Check export coverage and scope before interpreting the decrease as reduced exposure"
+        },
+        {
+          "id": "c",
+          "text": "Retain 300 as the denominator so the reports appear comparable"
+        },
+        {
+          "id": "d",
+          "text": "Exclude finance from the historical count to match the shorter export"
+        }
+      ],
+      "correct": "b",
+      "explanation": "A smaller extract can result from missing coverage rather than improved permissions. An exporter might lack access to a folder or exclude it, but the exercise establishes no actual cause. The reviewer should verify the population boundary and filters and withhold a like-for-like improvement claim until coverage is understood. Missing rows are not observed closed links. Retaining an unsupported denominator or rewriting the older count would hide the difference. EX061 lists a missing folder as a counterexample. This hypothetical export is not a source received in Chapter 7, and no new value replaces the original finance 4/60 or all-files result.",
+      "source": "Chapter 7, §7.4, absent-row and population conditions; §7.5, scope/filter/export-access limitations; §7.6, missing-folder control; EX061 independent extension and expanded Worked result, not-yet-obtained-export row and Worked counterexample (#answer-ex061)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Marketing content may remain public. How should its open rows be handled in the original all-files metric?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep them counted; permission to publish does not change the metric's definition"
+        },
+        {
+          "id": "b",
+          "text": "Remove their open flags but leave their rows in the denominator"
+        },
+        {
+          "id": "c",
+          "text": "Delete marketing from both historical totals without relabeling the metric"
+        },
+        {
+          "id": "d",
+          "text": "Reclassify its open flags as closed because the exposure was accepted"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The metric counts open-to-anyone-with-link flags, not only inappropriate or high-priority exposure. The historical marketing result is 25 of 80 even though those public images were treated differently from client and finance information. A business decision does not change the flag's meaning, and removing the folder would change the measured population. A separately scoped measure would need explicit labeling and its own evidence; it cannot silently replace the original. EX061's worked answer preserves marketing in the all-files metric. No formal risk acceptance, current permission state or new measurement is established by this question.",
+      "source": "Chapter 7, §7.2, marketing row; §7.3, historical counts and metric-scope paragraph; §7.4, marketing candidate statement; EX061 expanded Worked result, historical-lab row and Worked counterexample (#answer-ex061)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A learner proposes rerunning unchanged seed-2 code as this month's permission check. What would it establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fresh effective permissions because the execution would have today's timestamp"
+        },
+        {
+          "id": "b",
+          "text": "Whether the twelve recorded restrictions changed specific files in the tenant"
+        },
+        {
+          "id": "c",
+          "text": "Reproduction of an artificial fixture, not a new observation of current shares"
+        },
+        {
+          "id": "d",
+          "text": "A representative current sample because the folder sizes remain the same"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The program generates artificial rows in memory; it does not read live permissions or consume a later export. Python's random documentation explains seeded reproducibility under compatible conditions, not sampling of an organisation's current files. A new execution time would not make generated data a fresh observation. Changing the seed or folder sizes to force 35 would instead create different inputs while leaving the measurement gap unresolved. EX061 therefore preserves the script and historical output. This question evaluates a proposed rerun; it reports no execution, subsequent output or production account access.",
+      "source": "Chapter 7, §7.3, generator boundary; §7.5, synthetic-sample and seed paragraphs; §7.2, force-output proposal; §7.7 and EX061 original/expanded Worked results (#answer-ex061). Simulation semantics only: Python 3.13 random.seed, random.random and Notes on Reproducibility, https://docs.python.org/3.13/library/random.html"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Two hypothetical reports show the same total. What is needed before calling their measurements comparable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identical numbers alone, even if the reports count different permission conditions"
+        },
+        {
+          "id": "b",
+          "text": "A common file extension, without identifying capture times or folder filters"
+        },
+        {
+          "id": "c",
+          "text": "The same seed value, without identifying exports or effective permissions"
+        },
+        {
+          "id": "d",
+          "text": "Documented sources, cutoffs, population, predicate and method, with differences explained"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Equal totals can hide different populations or rules. Comparable measurement requires identifying source and capture time, file identities and deduplication, folder coverage, the permission predicate and the program version. A changed predicate or filter must be explained rather than concealed by the matching number. Even properly comparable totals alone would not establish that the same individual files remained open. Section 7.5 sets these requirements; EX061 keeps the absent second census unreported. The two reports here are hypothetical and supply no actual export, timestamp, access result or new counting method validated for Hollybank.",
+      "source": "Chapter 7, §7.4, assumptions 1 and 4–6; §7.5, source/version/comparability paragraph; §7.6, future verification gate; EX061 independent extension and expanded Worked result, not-yet-obtained-export row and Core answer (#answer-ex061)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "What belongs in EX061's verification queue until a new authorized census has actually been reviewed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close the item because the monthly reminder proves the check ran"
+        },
+        {
+          "id": "b",
+          "text": "Keep the current total blank; request scoped evidence and retain its later checked result"
+        },
+        {
+          "id": "c",
+          "text": "Use 35 provisionally as an observed result until someone disproves it"
+        },
+        {
+          "id": "d",
+          "text": "Use a NIST citation as the receipt that the intended outcome was achieved"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The queue should distinguish recorded interventions, the historical source/output and outstanding evidence. A future authorized measurement needs capture time, scope, effective permissions, identities and coverage, a comparable counting rule and an actual reviewed result retained alongside the original. Until then, the current-count field stays blank or explicitly unmeasured. A reminder or framework citation cannot fill it. NIST CSF 2.0 distinguishes current or attempted outcomes from desired outcomes and calls for scoped supporting information; this is a general principle, not verification of Hollybank. EX061 proposes further checking but grants no production-export permission or local compliance status.",
+      "source": "Chapter 7, §7.3, NIST boundary; §7.6, supported note and proposed gate; §7.7, four-column independent practice; EX061 original and expanded Worked result, Core answer (#answer-ex061). General distinction only: NIST CSF 2.0, §3.1 CSF Profiles, pp. 6–7, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
