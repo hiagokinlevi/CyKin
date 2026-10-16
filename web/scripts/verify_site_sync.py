@@ -70,7 +70,9 @@ def verify(previous: str) -> dict:
 
     expected = json.loads((ROOT / "web/public/test-index.json").read_text(encoding="utf-8"))
     live = fetch_json("/api/tests/catalog")
-    if live.get("live_sync") != "github" or test_rows(live.get("courses", {})) != test_rows(expected["courses"]):
+    # Some Worker isolates temporarily use the deployed index when GitHub is
+    # unavailable. That is safe only when it exactly matches the current banks.
+    if live.get("live_sync") not in {"github", "bundled"} or test_rows(live.get("courses", {})) != test_rows(expected["courses"]):
         raise ValueError("The public test catalog differs from the validated GitHub banks")
 
     documents = sorted(set(changed_markdown(previous, current)) | {
@@ -93,7 +95,8 @@ def verify(previous: str) -> dict:
     return {"git_sha": current, "web_tree_sha": web_tree,
             "deployed_git_sha": release.get("git_sha"), "books_and_docs_checked": len(documents),
             "courses": len(catalog["courses"]), "question_banks": sum(map(len, live["courses"].values())),
-            "tabletop_scenarios": len(scenarios), "test_catalog_source_head": live.get("source_head")}
+            "tabletop_scenarios": len(scenarios), "test_catalog_mode": live.get("live_sync"),
+            "test_catalog_source_head": live.get("source_head")}
 
 
 def main() -> None:
