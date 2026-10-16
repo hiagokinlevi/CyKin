@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 6,
+  "source_anchor": "ch-06",
+  "source_sha256": "4fc3fd88ae9de7ccaec42c4bf224dd88d65f52557875aeea324062e8594d6e67",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, the 09:00 sheet remains unmarked. Which assessment separates its integrity from its currency?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its unchanged condition proves it is complete at 11:42"
+        },
+        {
+          "id": "b",
+          "text": "Its missing later row proves an unauthorized deletion"
+        },
+        {
+          "id": "c",
+          "text": "It can preserve the 09:00 snapshot without representing later bookings"
+        },
+        {
+          "id": "d",
+          "text": "Its printed time authorizes confirmation during any later outage"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The stipulated snapshot contains SYN-001, whereas SYN-002 was created at 10:05. Keeping the sheet unchanged preserves its historical role; it does not make a fixed 09:00 copy current at 11:42. The absent later row is explained by the cutoff, not proof of deletion. Nor does a printed time confer authority for a new booking. Section 6.4 separates historical content, current state and authorized change. An intact old source may remain useful as historical evidence while being insufficient for the requested present decision.",
+      "source": "Chapter 6, §6.4 \"Three dimensions of integrity, not one convenient match\", the three questions; §6.5, artifact A; EX022, independent extension and expanded worked provenance note."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A penciled SYN-002 line matches the row created at 10:05. Why is that match insufficient to correct the 09:00 snapshot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A later matching value does not prove original content or authorized issuance"
+        },
+        {
+          "id": "b",
+          "text": "Matching the current table automatically refreshes every field on the paper"
+        },
+        {
+          "id": "c",
+          "text": "The pencil proves that SYN-002 was already printed at 09:00"
+        },
+        {
+          "id": "d",
+          "text": "The match establishes the volunteer as the approved schedule issuer"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The proposed line can coincide with a true later fact while changing the meaning of the older artifact. SYN-002 postdates the fixed printout, so the line cannot be evidence that it was printed at 09:00. Agreement on one value establishes neither complete current content nor an authorized issuer or review. The volunteer has changed the paper, not obtained a separately issued replacement. Good intent does not supply those missing checks. EX022 therefore keeps confirmation refused on the altered sheet without treating the match itself as proof of an attack.",
+      "source": "Chapter 6, §6.1 \"Integrity is about the record, not the wish\"; §6.4; §6.5, worked reconstruction; EX022, rubric and worked result."
+    },
+    {
+      "id": "Q03",
+      "prompt": "The exercise sheet is already marked, and no independent original is supplied. Which handling preserves the remaining evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Erase the pencil silently and describe the sheet as the untouched original"
+        },
+        {
+          "id": "b",
+          "text": "Discard the sheet because an altered artifact has no evidential use"
+        },
+        {
+          "id": "c",
+          "text": "Copy the remembered rows onto fresh paper and call it the original"
+        },
+        {
+          "id": "d",
+          "text": "Keep and label the altered sheet; record the request separately as not confirmed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 6.5 preserves the changed object as altered, rather than disguising or replacing its history. A separate pending entry carries the request without claiming a reservation. Silent erasure hides the change, discarding the sheet loses evidence of it, and a reconstruction cannot be passed off as an independently preserved original. Section 6.4 limits the conclusion to this object: no photograph or archival copy is supplied, but that does not prove all possible originals were destroyed. The owner-reviewed replacement remains an open verification task.",
+      "source": "Chapter 6, §6.4, provenance paragraph; §6.5 \"Three artifacts that must not be merged\", final paragraph; §6.8; EX022, expanded worked provenance note."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which mapping keeps artifacts A, B and C distinct at the Chapter 6 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A: current schedule; B: accepted reservation; C: verified replacement"
+        },
+        {
+          "id": "b",
+          "text": "A: historical snapshot; B: unconfirmed request; C: reported candidate schedule"
+        },
+        {
+          "id": "c",
+          "text": "A: pending queue; B: historical snapshot; C: verified live database"
+        },
+        {
+          "id": "d",
+          "text": "A: corrected snapshot; B: canceled booking; C: relabeled original paper"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The artifact table gives A the original 09:00 time basis, B the separate 11:42 request marked not confirmed, and C the proposed 11:40 schedule that has only been reported. These roles cannot be exchanged or merged. B accepts no reservation and cancels nothing; C is not a checked live database or a relabeled A. If A is subsequently marked, its altered condition must be recorded rather than calling it an untouched original. The labels describe evidence and workflow states, not three interchangeable views of a current booking store.",
+      "source": "Chapter 6, §6.5 \"Three artifacts that must not be merged\", artifact table and following paragraph; EX022, independent extension and expanded worked provenance note."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The owner reports that an 11:40 copy exists, but nobody has examined it. What is its evidential status here?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verified replacement because an owner mentioned its time"
+        },
+        {
+          "id": "b",
+          "text": "A disproved source because the desk has only old paper"
+        },
+        {
+          "id": "c",
+          "text": "A candidate requiring checks; the request remains pending"
+        },
+        {
+          "id": "d",
+          "text": "Proof that the altered 09:00 sheet was officially reissued"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The report creates a specific question to verify, not a checked replacement already in hand. Sections 6.5 and 6.6 require examining a separate source and establishing its authority, origin and relevant content. The lack of examination does not disprove its existence, while an owner mentioning a time does not prove the necessary checks have happened. Nothing in the report reissues the penciled sheet. Until the source and relevant state can support the decision, the separate request remains pending. This preserves the chapter checkpoint rather than importing a later hypothetical outcome.",
+      "source": "Chapter 6, §6.2 \"Worked example\", second row; §6.5, artifact C; §6.6 \"A conditional gate for the reported 11:40 copy\"; EX022, expanded worked provenance note."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A candidate sheet displays 11:40 and SYN-002. Which review is still required before using it as the decision source?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check owner approval, separate origin, row status, currency and completeness"
+        },
+        {
+          "id": "b",
+          "text": "Accept it because a later timestamp establishes a complete update"
+        },
+        {
+          "id": "c",
+          "text": "Match the ID only; room, slot and status are unnecessary"
+        },
+        {
+          "id": "d",
+          "text": "Ask the volunteer whether it gives the preferred answer"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A displayed time is itself a source claim, and an identifier alone does not establish the relevant room, slot or booking state. Section 6.6 asks the responsible owner to identify the approved source and its issuer; the copy must be separate from the altered paper. Its generation and update method must support the 10:05 change and the requested decision time, with the relevant row interpretable. A volunteer preference proves none of these properties. This question describes required review evidence, not checks actually performed on a Harbor Library replacement.",
+      "source": "Chapter 6, §6.6 \"A conditional gate for the reported 11:40 copy\", checks 1–4 and failure branch; EX022, independent extension and expanded worked provenance note."
+    },
+    {
+      "id": "Q07",
+      "prompt": "In the conditional rehearsal, an owner-approved separate sheet confirms SYN-002 as booked. What decision follows for that occupied slot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give it to the waiting requester because the source is now approved"
+        },
+        {
+          "id": "b",
+          "text": "Cancel SYN-002 because the pending request was written separately"
+        },
+        {
+          "id": "c",
+          "text": "Treat the new sheet as proof that the earlier pencil was authorized"
+        },
+        {
+          "id": "d",
+          "text": "Recognize the existing booking without granting a new allocation or change"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Approving a source for a bounded decision does not authorize giving away, changing or identifying the holder of an existing reservation. The verified booked status in branch A prevents an unsupported confirmation for somebody else. A pending request has no cancellation effect, and a later valid source does not retrospectively authorize the earlier pencil mark. Section 6.6 explicitly labels this branch a conditional rehearsal, not received case evidence. The exercise supplies neither a real booking transaction nor permission to operate a live system.",
+      "source": "Chapter 6, §6.6, check 5 and \"Conditional worked outcomes (not received case evidence)\"; EX022, expanded worked provenance note, final paragraph."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which conclusion about handwriting is consistent with the chapter rather than an invented blanket policy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every handwritten schedule is forbidden regardless of its approved process"
+        },
+        {
+          "id": "b",
+          "text": "An approved timed, attributed and checked manual form could be valid; none is demonstrated here"
+        },
+        {
+          "id": "c",
+          "text": "Any signature retrospectively turns an added line into original printed content"
+        },
+        {
+          "id": "d",
+          "text": "Legible handwriting alone supplies the required authority and provenance"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 6.3 allows the possibility of a designed offline form with a time, author and check. Section 6.5 also describes a controlled manual-correction process as something a real organization may have, not something demonstrated at Harbor Library. Legibility or a signature alone does not establish that process or rewrite historical print content. The defect being examined is the unapproved alteration and lost provenance, not handwriting as a medium. The general data-protection outcomes in NIST CSF 2.0 do not certify a local form or prescribe a universal handwriting ban.",
+      "source": "Chapter 6, §6.3 \"A limit\"; §6.5, paragraph after the artifact table; §6.4, primary-reference limits; EX022, alternative procedure. General source only: NIST CSF 2.0, abstract and Appendix A, PR.DS, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q09",
+      "prompt": "A learner changes the baseline to seek ALLOW. What makes that a valid comparison rather than a rewritten original result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Preserve the original; label a separate one-assumption variant and bound its conclusion"
+        },
+        {
+          "id": "b",
+          "text": "Replace the original input and retain only the preferred verdict"
+        },
+        {
+          "id": "c",
+          "text": "Treat a different classifier verdict as authorization to reserve the room"
+        },
+        {
+          "id": "d",
+          "text": "Use the variant to declare the historical REFUSE decision disproved"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 6.7 requires retaining the initial fixture and identifying a hypothetical variant with its changed assumption, predicted classification and evidential limit. Overwriting the baseline removes the comparison instead of testing it. A result for a different input does not refute the original result, and the classifier is not a booking engine or an authorization process. The question supplies no newly executed output: it assesses the method for an honest comparison. No variant can retrospectively establish an approved source for the original pencil alteration.",
+      "source": "Chapter 6, §6.7 \"A valid test does not edit its baseline to pass\", both paragraphs; §6.1, comparison with the Chapter 4 lab; EX022, objective and safe condition."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which handoff statement stays within the evidence of the pencil exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The volunteer attacked the service and caused the outage"
+        },
+        {
+          "id": "b",
+          "text": "Every historical copy was destroyed and reconstruction is impossible"
+        },
+        {
+          "id": "c",
+          "text": "This paper was altered; source verification remains open and the request is not confirmed"
+        },
+        {
+          "id": "d",
+          "text": "A cryptographic control detected and corrected the pencil alteration"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 6.8 separates the mark observed in the synthetic exercise, the loss of unchanged-snapshot provenance, the withheld confirmation and the replacement evidence still needed. It establishes neither malicious intent nor the outage cause. It also does not establish destruction of all historical copies or deployment of a cryptographic control. NIST SI-7 discusses detecting unauthorized modifications and recognizes errors as well as malicious activity; citing it proves no local implementation. The handoff should preserve those limits and the responsible-owner review rather than turn a wish to help into an allegation.",
+      "source": "Chapter 6, §6.8 \"Worked handoff: observation, inference, decision and open evidence\"; §6.4, provenance and primary-reference paragraphs; EX022, expanded worked provenance note. General source only: NIST SP 800-53 Rev. 5, SI-7, control and discussion, p. 345, https://doi.org/10.6028/NIST.SP.800-53r5"
+    }
+  ]
+}
