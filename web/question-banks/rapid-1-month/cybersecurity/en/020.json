@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 20,
+  "source_anchor": "ch-20",
+  "source_sha256": "5fb8ed1b5d21a446427ccb84793170d3177ff59fbe6264d643849c1d18e275ba",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which source description makes the final Harbor Library note reviewable without creating a new schedule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Three interchangeable pages whose authority is renewed by keeping them together"
+        },
+        {
+          "id": "b",
+          "text": "One master sheet formed by combining every row from the three pages"
+        },
+        {
+          "id": "c",
+          "text": "Three separate originals: 09:00 historical, 11:40 earlier, and 11:55 named for this sitting"
+        },
+        {
+          "id": "d",
+          "text": "Only the newest page, because the earlier papers no longer explain any decision"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Each artifact has its own contents and decision scope. The 09:00 snapshot explains the old paper-based refusal; the earlier 11:40 page has two rows; the current named 11:55 page has three. Combining them would manufacture a source, discarding older pages would weaken historical review, and filing does not renew an earlier designation. EX036 preserves all three rather than calling the folder one schedule. NIST SP 800-61 Rev. 3 supplies general integrity and provenance principles, not authentication of these fictional sheets or a mandated five-line format.",
+      "source": "Chapter 20, §20.1 \"What belongs in the note\"; §20.5 \"Evidence-to-claim ledger for the three pages\"; §20.6, step 2; §20.7, model line 1; EX036, independent extension and expanded Sources line. General principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06/RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which pair of claims correctly links both 15:00 answers to the current named page?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 is booked through SYN-002; Room 4 is booked through SYN-003, with no holder named"
+        },
+        {
+          "id": "b",
+          "text": "Room 2 is booked through SYN-003; Room 4 is booked through SYN-002"
+        },
+        {
+          "id": "c",
+          "text": "Room 2 is booked; Room 4 is free because the earlier sheet omitted it"
+        },
+        {
+          "id": "d",
+          "text": "Room 2 and Room 4 are newly reserved for the person requesting the note"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The source-to-claim ledger matches room and start to the confirmed row, not just to the fact that the sheet is new. SYN-002 supports Room 2 / 15:00 and SYN-003 supports Room 4 / 15:00. Swapping identifiers misattributes the evidence; older silence does not override the current positive match; reading the page performs no new booking. EX036 uses the IDs for traceability in the review note without supplying personal names. The statements remain limited to this sitting and these slots, not every room or time.",
+      "source": "Chapter 20, §20.5, current-page row and paragraph below the ledger; §20.6, step 3; §20.7, model lines 2–3; EX036, task, rubric and expanded Room 2 / Room 4 lines."
+    },
+    {
+      "id": "Q03",
+      "prompt": "How should the note reconcile the earlier pending Room 4 / 15:00 question with the current booked reading?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the earlier pending conclusion with booked because the later row corrects all previous knowledge"
+        },
+        {
+          "id": "b",
+          "text": "Describe Room 4 as previously free until this exercise created its booking"
+        },
+        {
+          "id": "c",
+          "text": "Reject the later row because the older missing match permanently prevents a booked answer"
+        },
+        {
+          "id": "d",
+          "text": "Retain the earlier source's silence and the later named page's positive match as separate checkpoints"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The two-row 11:40 artifact did not establish Room 4 availability. The later 11:55 artifact supplies confirmed SYN-003, supporting booked now. Both time-scoped statements can be accurate without backdating the later evidence or treating silence as vacancy. Nothing says the learner created that existing reservation, and an old omission is not a permanent veto. EX036 preserves the historical observation alongside the current conclusion. A reviewable note records the change in available evidence, not an invented correction, transaction or earlier source check.",
+      "source": "Chapter 20, §20.5, earlier-page row and final paragraph; §20.7, paragraph after the five-line example; §20.8, first false ending; EX036, expanded line 3 and source-identity row of the assertion table."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A reviewer suggests replacing the old 09:00 input with 11:40 to repair REFUSE. How should the note respond?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the old tally only until the newer page becomes available"
+        },
+        {
+          "id": "b",
+          "text": "Preserve the old input and result; substituting a page describes a different test"
+        },
+        {
+          "id": "c",
+          "text": "Erase the refusal because SYN-002 eventually appeared on an approved sheet"
+        },
+        {
+          "id": "d",
+          "text": "Use the later page and label the revised result the original run"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The historical 11:42 refusal was evaluated against the fixed 09:00 paper basis, which omitted the booking created at 10:05. Later evidence cannot retrospectively become an input that the original run used. Substituting 11:40 would define another test, not repair the recorded one, and this exercise authorizes no rerun. EX036 retains REFUSE and every other original count. The notebook can explain both the old decision and the later source reading without editing either; 09:00 is a source time, not a newly asserted execution timestamp.",
+      "source": "Chapter 20, §20.5, 09:00 and classifier rows; §20.6, step 4; §20.9, negative control (b); EX036, historical-lab line and expanded negative-control reasoning about replacing the source."
+    },
+    {
+      "id": "Q05",
+      "prompt": "What interpretation belongs beside ALLOW 1 and UNKNOWN 0 in the historical tally?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ALLOW proves a room was allocated; UNKNOWN proves all outage causes were identified"
+        },
+        {
+          "id": "b",
+          "text": "ALLOW permits the old mark-pending proposal; UNKNOWN counts unmatched action kinds, not unanswered causes"
+        },
+        {
+          "id": "c",
+          "text": "ALLOW proves the library safe; UNKNOWN measures a zero likelihood of harm"
+        },
+        {
+          "id": "d",
+          "text": "ALLOW may be reassigned to SYN-003; UNKNOWN must count the note as a new logged action"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The unchanged line is STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. ALLOW belongs to the 11:45 mark-pending proposal, not a room-availability or successful-booking decision. UNKNOWN concerns the classifier's action categories; an unresolved cause is not an extra action in that four-proposal fixture. Neither counter assesses impact, likelihood or security. EX036 preserves the exact census while keeping the open questions visible. Writing the handoff neither appends a fifth action nor reassigns an old label to a later row.",
+      "source": "Chapter 20, §20.5, fixed-classifier row; §20.6, steps 4–5; §20.7, model line 4; §20.8, UNKNOWN/ALLOW false ending; EX036, expanded historical-lab line and historical-five-counter assertion."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which final-line proposal respects the limit of the current 11:55 source designation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adopt 11:55 as the fallback for every morning because it worked in this exercise"
+        },
+        {
+          "id": "b",
+          "text": "Use archived 11:40 whenever its confirmed rows match a later page"
+        },
+        {
+          "id": "c",
+          "text": "Record that tomorrow's source and procedure have already been checked"
+        },
+        {
+          "id": "d",
+          "text": "Ask the responsible owner to name and check the source and procedure for a future sitting"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The owner named this artifact for this sitting, not a recurring clock-based rule. A matching older row does not renew an earlier grant, and naming a next check does not establish that it has occurred. EX036 leaves future source authority and the real fallback procedure unverified. The proposed question is useful precisely because it identifies a dependency for a later decision without claiming its completion. It supplies no standing permission, new operational schedule or access to a real service, and the current booked-slot answers remain intact.",
+      "source": "Chapter 20, §20.2, standing-clock proposal; §20.6, steps 5–6; §20.7, model line 5; §20.8, final false ending; EX036, rubric and expanded Limit and next question line."
+    },
+    {
+      "id": "Q07",
+      "prompt": "The note is ready for facilitator review. Which statement about contacts is still correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The OUT OF SCOPE label proves subscribers suffered an actual disclosure"
+        },
+        {
+          "id": "b",
+          "text": "Proposing a data-owner referral establishes approval and delivery of a notification"
+        },
+        {
+          "id": "c",
+          "text": "The 11:43 export remains unexecuted and OUT OF SCOPE; notification needs separate review and authority"
+        },
+        {
+          "id": "d",
+          "text": "The room-state approval now authorizes exporting contacts to distribute the note"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Booking-source authority covers the room questions, not identity linkage, contact export or dispatch. The 11:43 line classified an unexecuted proposal, so it is neither evidence of a privacy incident nor a transmission receipt. A proposed referral is still a future dependency, not approval or delivery. EX036 explicitly preserves that boundary. NIST Privacy Framework 1.0 CT.PO-P1/P2 provide general concepts for processing authorization and sharing procedures; they supply no local consent, legal duty, recipient identity or permission to send this classroom note.",
+      "source": "Chapter 20, §20.5, current-page limits; §20.6, steps 4–6 and Privacy Framework paragraph; §20.8, contact-export false ending; EX036, historical-lab line and expanded negative-control paragraph. General concepts only: NIST Privacy Framework 1.0, Appendix A, CT.PO-P1/CT.PO-P2, p. 23, https://doi.org/10.6028/NIST.CSWP.10"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which ending states the evidential limit without replacing one unsupported assurance with another?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cause, safety and impact remain unverified; the paper exercise makes no real incident determination"
+        },
+        {
+          "id": "b",
+          "text": "Two correct room answers establish low risk despite the missing investigation records"
+        },
+        {
+          "id": "c",
+          "text": "Matching pages prove an attack occurred, although its actor is still unnamed"
+        },
+        {
+          "id": "d",
+          "text": "No attack is demonstrated, so no incident could have occurred and closure is justified"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The folder supports limited slot-state and historical-output statements, not a mechanism for the unavailable view or an assessment of broader consequences. Rejecting an attack conclusion does not prove that no incident could exist; equally, agreement on rows does not establish an attack. Correct classroom answers do not measure risk or authorize closure. Section 20.8 makes this two-sided limit explicit, and EX036 retains an unanswered cause or source question. Keeping uncertainty does not erase the two supported booked readings or require inventing real diagnostic evidence.",
+      "source": "Chapter 20, §20.4, absent real records; §20.5, stronger statements excluded; §20.8, attack/safety endings and final paragraph; §20.7, model limit line; EX036, rubric and expanded open-cause assertion."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetical review control: the named 11:55 artifact is unavailable. What must change in the current note?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Promote the archived 11:40 page into today's authority without another designation"
+        },
+        {
+          "id": "b",
+          "text": "Reconstruct a replacement 11:55 page from memory and call it the supplied original"
+        },
+        {
+          "id": "c",
+          "text": "Declare both slots free because the current confirming rows cannot be inspected"
+        },
+        {
+          "id": "d",
+          "text": "Mark the direct current basis for both booked claims missing, while retaining the earlier evidence"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Removing the current named artifact removes the direct basis supplied for the two current slot-state claims. It does not establish vacancy, cancel earlier historical observations or transfer today's authority to the older page. Reconstructing a sheet would invent a source rather than restore the missing evidence. Section 20.9 and EX036 use this as a hypothetical dependency check, not an actual disappearance or cancellation. In the published case the named 11:55 page is present and both slots are booked; this control must not rewrite that actual classroom baseline.",
+      "source": "Chapter 20, §20.5, separate source scopes; §20.6, steps 2–3; §20.9, negative control (a); §20.7, current-source model; EX036, expanded negative-control reasoning, first sentence."
+    },
+    {
+      "id": "Q10",
+      "prompt": "What does producing the five checkable lines at the Chapter 20 endpoint establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The next course supplies the missing closure evidence for Harbor Library"
+        },
+        {
+          "id": "b",
+          "text": "A model handoff can be reviewed against the sources; dispatch, closure and book approval remain unproved"
+        },
+        {
+          "id": "c",
+          "text": "A resident announcement was approved and sent because the note can leave the room"
+        },
+        {
+          "id": "d",
+          "text": "The book passed its full review gate and the learner earned a qualification"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Review readiness means a facilitator can trace claims and limits, not that anyone transmitted a message, closed an incident or approved a qualification. The twentieth chapter meets a planning count rather than the full editorial gate. Navigation leads through the chapter index to a separate next course, which does not answer Harbor's unresolved questions. EX036 accepts equivalent five-line notes that preserve these distinctions. NIST SP 800-61 Rev. 3 discusses coordinated communication under established procedures generally; it neither prescribes this format nor appoints an approver or supplies a dispatch receipt.",
+      "source": "Chapter 20, §20.3 \"What the twentieth lesson does not finish\"; §20.4, instructional-review definition; §20.7, model-note limitation; §20.9, publication gate; Continue studying; EX036, expanded final paragraph. General communication principle only: NIST SP 800-61 Rev. 3, Table 3, RS.CO and RS.CO-02 R2, p. 30, https://doi.org/10.6028/NIST.SP.800-61r3"
+    }
+  ]
+}
