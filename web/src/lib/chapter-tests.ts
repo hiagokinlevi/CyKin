@@ -18,11 +18,25 @@ const copy = {
   pt: { choose: 'Escolha idioma, tema e nível.', none: 'Ainda não há testes revisados publicados para esta edição.', count: (done: number, total: number) => `${done} de ${total} capítulos têm testes publicados.`, read: 'Ler capítulo', take: 'Fazer teste', open: 'Abrir avaliação', chapter: 'Capítulo', best: (score: number) => `Melhor nota: ${score}/10`, question: (n: number) => `Pergunta ${n} de 10`, submit: 'Enviar resposta →', sending: 'Salvando sua resposta…', signin: 'Entre para fazer este teste →', setup: 'O cadastro de estudantes está sendo configurado. A leitura pública continua aberta.', failed: 'Não foi possível carregar o teste. Tente novamente.', result: (score: number) => `${score} / 10 corretas`, perfect: 'Aproveitamento integral neste capítulo. Seu resultado foi salvo.', retry: 'Revise o capítulo e tente novamente até obter 10/10.', timed: 'Tempo esgotado', selected: 'Sua escolha', correct: 'Resposta correta', previous: (correct: boolean) => `Pergunta anterior: ${correct ? 'correta' : 'incorreta'}. As explicações completas aparecem ao final do teste.`, certificate: 'Ver seu certificado', pending: 'O certificado do curso exige 10/10 em todos os capítulos e um livro integralmente revisado.', practiceNone: 'Ainda não há aulas e exercícios escritos nesta edição.', practiceCount: (n: number) => `${n} unidades escritas com exercícios do livro para praticar.`, practiceOpen: 'Abrir exercícios', lesson: 'Aula' },
   es: { choose: 'Elige idioma, tema y nivel.', none: 'Todavía no hay pruebas revisadas publicadas para esta edición.', count: (done: number, total: number) => `${done} de ${total} capítulos tienen pruebas publicadas.`, read: 'Leer capítulo', take: 'Hacer prueba', open: 'Abrir evaluación', chapter: 'Capítulo', best: (score: number) => `Mejor nota: ${score}/10`, question: (n: number) => `Pregunta ${n} de 10`, submit: 'Enviar respuesta →', sending: 'Guardando la respuesta…', signin: 'Inicia sesión para hacer esta prueba →', setup: 'El registro de estudiantes está en preparación. La lectura pública sigue abierta.', failed: 'No se pudo cargar la prueba. Inténtalo de nuevo.', result: (score: number) => `${score} / 10 correctas`, perfect: 'Puntuación perfecta en este capítulo. El resultado se guardó.', retry: 'Repasa el capítulo e inténtalo de nuevo hasta lograr 10/10.', timed: 'Tiempo agotado', selected: 'Tu elección', correct: 'Respuesta correcta', previous: (correct: boolean) => `Pregunta anterior: ${correct ? 'correcta' : 'incorrecta'}. Las explicaciones completas aparecen al terminar la prueba.`, certificate: 'Ver tu certificado', pending: 'El certificado del curso exige 10/10 en todos los capítulos y un libro totalmente revisado.', practiceNone: 'Esta edición todavía no tiene lecciones ni ejercicios redactados.', practiceCount: (n: number) => `${n} unidades redactadas con ejercicios del libro para practicar.`, practiceOpen: 'Abrir ejercicios', lesson: 'Lección' },
 };
+const practiceFallback = {
+  en: { failed: 'The exercise list is temporarily unavailable.', guide: 'Open the course guide →' },
+  pt: { failed: 'A lista de exercícios está temporariamente indisponível.', guide: 'Abrir guia do curso →' },
+  es: { failed: 'La lista de ejercicios no está disponible en este momento.', guide: 'Abrir guía del curso →' },
+};
+const readyCopy = {
+  en: { note: 'Ten questions, with ten seconds for each answer. The clock starts when you begin. Explanations appear after the last question.', start: 'Start timed test →' },
+  pt: { note: 'Dez perguntas, com dez segundos para cada resposta. O cronômetro começa quando você iniciar. As explicações aparecem ao final.', start: 'Iniciar teste cronometrado →' },
+  es: { note: 'Diez preguntas, con diez segundos para cada respuesta. El reloj comienza al iniciar. Las explicaciones aparecen al final.', start: 'Iniciar prueba cronometrada →' },
+};
 
 const el = (id: string): HTMLElement => document.getElementById(id)!;
 const button = (label: string, pressed: boolean, onClick: () => void): HTMLButtonElement => {
   const result = document.createElement('button'); result.type = 'button'; result.textContent = label;
   result.setAttribute('aria-pressed', String(pressed)); result.addEventListener('click', onClick); return result;
+};
+const actionButton = (label: string, onClick: () => void): HTMLButtonElement => {
+  const result = document.createElement('button'); result.type = 'button'; result.textContent = label;
+  result.addEventListener('click', onClick); return result;
 };
 
 export function initChapterTests(): void {
@@ -84,7 +98,8 @@ export function initChapterTests(): void {
     resultsRequest++;
     if (timer) clearInterval(timer);
     timer = undefined; active = null; selectedChapter = 0;
-    el('test-player').hidden = true; el('test-result').hidden = true;
+    el('test-ready').hidden = true; el('test-player').hidden = true; el('test-result').hidden = true;
+    (el('test-practice-disclosure') as HTMLDetailsElement).open = false;
   };
 
   const chosenCourse = (): Course | undefined => catalog.courses.find(course => course.area === area && course.level === level);
@@ -118,16 +133,16 @@ export function initChapterTests(): void {
     )));
     const status = el('test-course-status'); const list = el('test-chapters'); list.replaceChildren();
     const course = chosenCourse();
-    if (!course) { status.textContent = ui.choose; el('test-practice-status').textContent = ui.choose; el('test-practice').replaceChildren(); return; }
+    if (!course) { status.textContent = ui.choose; el('test-practice-status').textContent = ui.choose; el('test-practice').replaceChildren(); el('test-practice-fallback').hidden = true; return; }
     const chapters = available();
     status.textContent = chapters.length ? ui.count(chapters.length, course.planned_chapters) : ui.none;
     for (const item of chapters) {
       const card = document.createElement('article'); card.className = 'test-chapter';
       card.dataset.chapter = String(item.chapter);
-      const heading = document.createElement('strong'); heading.textContent = `${course.titles[language as keyof typeof course.titles] || course.title} · ${ui.chapter} ${item.chapter.toString().padStart(2, '0')}`;
+      const heading = document.createElement('strong'); heading.textContent = `${ui.chapter} ${item.chapter.toString().padStart(2, '0')}`;
       const best = document.createElement('small'); best.className = 'test-best';
       const link = document.createElement('a'); link.href = `/courses/${level}/${area}/chapters/${language}/${item.chapter}/`; link.textContent = ui.read;
-      const start = button(ui.take, false, () => { void startTest(item.chapter); });
+      const start = actionButton(ui.take, () => prepareTest(item.chapter));
       card.append(heading, best, link, start); list.append(card);
     }
     void loadResults(courseKey());
@@ -137,6 +152,7 @@ export function initChapterTests(): void {
   const renderPractice = async (key: string) => {
     const requestId = ++practiceRequest;
     const status = el('test-practice-status'); const list = el('test-practice');
+    const fallback = el('test-practice-fallback'); fallback.hidden = true; fallback.replaceChildren();
     list.replaceChildren(); status.textContent = '';
     try {
       const response = await fetch(`/api/courses/${level}/${area}/${language}`, { cache: 'no-store' });
@@ -149,6 +165,11 @@ export function initChapterTests(): void {
           ...edition.daily_slots.filter(unit => unit.published).map(unit => ({ ...unit, route: 'lessons', label: ui.lesson })),
           ...edition.legacy_chapters.filter(unit => unit.published).map(unit => ({ ...unit, route: 'chapters', label: ui.chapter })),
         ];
+      for (const chapter of edition.legacy_chapters) {
+        if (!chapter.published) continue;
+        const heading = el('test-chapters').querySelector<HTMLElement>(`[data-chapter="${chapter.chapter}"] strong`);
+        if (heading) heading.textContent = `${ui.chapter} ${String(chapter.chapter).padStart(2, '0')} · ${chapter.title}`;
+      }
       status.textContent = units.length ? ui.practiceCount(units.length) : ui.practiceNone;
       for (const unit of units) {
         const card = document.createElement('article'); card.className = 'test-chapter';
@@ -157,7 +178,13 @@ export function initChapterTests(): void {
         link.textContent = `${ui.practiceOpen} →`;
         card.append(title, link); list.append(card);
       }
-    } catch { if (requestId === practiceRequest) status.textContent = ui.failed; }
+    } catch {
+      if (requestId !== practiceRequest || key !== courseKey()) return;
+      const message = practiceFallback[siteLanguage()];
+      status.textContent = message.failed;
+      const link = document.createElement('a'); link.href = `/courses/${level}/${area}/?lang=${language}`;
+      link.textContent = message.guide; fallback.replaceChildren(link); fallback.hidden = false;
+    }
   };
 
   const loadResults = async (key: string) => {
@@ -187,6 +214,19 @@ export function initChapterTests(): void {
     method: 'POST', credentials: 'same-origin', cache: 'no-store',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload),
   });
+  const prepareTest = (chapter: number) => {
+    if (busy) return;
+    if (timer) clearInterval(timer);
+    timer = undefined; active = null; selectedChapter = chapter; updateUrl();
+    el('test-player').hidden = true; el('test-result').hidden = true;
+    const ready = readyCopy[siteLanguage()];
+    el('test-ready-heading').textContent = `${ui.chapter} ${String(chapter).padStart(2, '0')} · ${ui.take}`;
+    el('test-ready-note').textContent = ready.note;
+    el('test-ready-start').textContent = ready.start;
+    el('test-ready').hidden = false;
+    el('test-ready').scrollIntoView({ behavior: 'auto', block: 'start' });
+    el('test-ready-heading').focus({ preventScroll: true });
+  };
   const startTest = async (chapter: number) => {
     if (busy) return; busy = true; selectedChapter = chapter; updateUrl();
     const status = el('test-course-status'); status.textContent = ui.sending;
@@ -201,15 +241,17 @@ export function initChapterTests(): void {
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || ui.failed);
       active = data as QuizResponse;
-      el('test-result').hidden = true; el('test-player').hidden = false;
+      el('test-ready').hidden = true; el('test-result').hidden = true; el('test-player').hidden = false;
       el('test-live-feedback').hidden = true;
-      showQuestion(active.question!); el('test-player').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el('test-player').scrollIntoView({ behavior: 'auto', block: 'start' });
+      showQuestion(active.question!);
       status.textContent = ui.count(available().length, chosenCourse()!.planned_chapters);
     } catch (error) { status.textContent = error instanceof Error ? error.message : ui.failed; }
     finally { busy = false; }
   };
   const showQuestion = (question: Question) => {
     el('test-question-number').textContent = ui.question(question.number);
+    (el('test-progress') as HTMLProgressElement).value = question.number;
     el('test-live-feedback').textContent = '';
     el('test-live-feedback').hidden = true;
     el('test-prompt').textContent = question.prompt;
@@ -222,6 +264,7 @@ export function initChapterTests(): void {
     }
     (el('test-submit') as HTMLButtonElement).disabled = false; el('test-submit').textContent = ui.submit;
     el('test-feedback-status').textContent = '';
+    el('test-question-number').focus({ preventScroll: true });
     if (timer) clearInterval(timer);
     deadline = performance.now() + Math.min(10_000, question.deadline_ms - question.server_now_ms - 250);
     const tick = () => {
@@ -281,14 +324,16 @@ export function initChapterTests(): void {
     const approved = (approvals.books as { level: string; area: string; language: string }[]).some(item => item.level === level && item.area === area && item.language === language);
     certificate.hidden = !(approved && course && available().length === course.planned_chapters);
     el('test-certificate-status').textContent = certificate.hidden ? ui.pending : '';
-    el('test-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    el('test-result').scrollIntoView({ behavior: 'auto', block: 'start' });
+    el('test-score').focus({ preventScroll: true });
   };
   el('test-answer-form').addEventListener('submit', event => {
     event.preventDefault();
     const selected = (document.querySelector<HTMLInputElement>('input[name="test-option"]:checked'))?.value || null;
     void submitAnswer(selected);
   });
-  el('test-retry').addEventListener('click', () => { if (selectedChapter) void startTest(selectedChapter); });
+  el('test-ready-start').addEventListener('click', () => { if (selectedChapter) void startTest(selectedChapter); });
+  el('test-retry').addEventListener('click', () => { if (selectedChapter) prepareTest(selectedChapter); });
   el('test-certificate').addEventListener('click', async () => {
     const status = el('test-certificate-status'); status.textContent = ui.sending;
     try {

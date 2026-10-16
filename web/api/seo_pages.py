@@ -347,6 +347,16 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <div class="unit-identity"><span>{ui['course_code']}: <strong>{course_code}</strong></span><span>{label} {number:02d}: <strong>{unit_code}</strong></span></div>
   <h1 id="{'lesson' if kind == 'lesson' else 'ch'}-{number:02d}">{escaped['lesson_title']}</h1>
   <p class="intro">{ui['free']}</p>
+  <section class="reader-public-usage" aria-label="{html.escape(usage_copy[0], quote=True)}">
+    <h2>{html.escape(usage_copy[0])} · 30d</h2>
+    <div class="reader-usage-metrics">
+      <p><strong data-insight="page.browsers">—</strong><span>{html.escape(usage_copy[6])}</span></p>
+      <p><strong data-insight="page.views">—</strong><span>{html.escape(usage_copy[1])}</span></p>
+      <p><strong data-insight="page.reads">—</strong><span>{html.escape(usage_copy[2])}</span></p>
+      <p><strong data-insight="page.exercises">—</strong><span>{html.escape(usage_copy[3])}</span></p>
+    </div>
+    <small>{html.escape(usage_copy[5])}</small><small data-insight-status role="status"></small>
+  </section>
   <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
   <div class="lesson-layout">
   <div class="lesson-main">
@@ -364,12 +374,6 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
          data-language="{html.escape(language, quote=True)}" data-chapter="{number}"
          data-published="{len([unit for unit in guide['daily_slots'] if unit['published']]) if guide and not guide['chapter_lessons'] else len([unit for unit in guide['legacy_chapters'] if unit['published']]) if guide else 0}">
     <div class="sidebar-inner"><h2>{html.escape(study['progress'])}</h2>
-      <div class="reader-public-usage"><h3>{html.escape(usage_copy[0])} · 30d</h3>
-        <p><strong data-insight="page.browsers">—</strong> {html.escape(usage_copy[6])}</p>
-        <p><strong data-insight="page.views">—</strong> {html.escape(usage_copy[1])}</p>
-        <p><strong data-insight="page.reads">—</strong> {html.escape(usage_copy[2])}</p>
-        <p><strong data-insight="page.exercises">—</strong> {html.escape(usage_copy[3])}</p>
-        <small>{html.escape(usage_copy[5])}</small><small data-insight-status role="status"></small></div>
       <p id="progress-status">{html.escape(study['loading'])}</p>
       <div id="progress-metrics" hidden>
         <p><strong id="progress-completed">0</strong> {html.escape(study['completed'])}</p>
