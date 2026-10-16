@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "data-governance",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "b55305da0c5f5fef1fbbf654c0bde317c5915d00a291e7d7f3be5b7c82e146c5",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A colleague wants optional phone, birthday and address fields kept 'just in case'. Which design follows Copperleaf's newsletter purpose?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep every old field because making it optional establishes a present need"
+        },
+        {
+          "id": "b",
+          "text": "Retain birthdays only because a supplier could offer an incentive later"
+        },
+        {
+          "id": "c",
+          "text": "Keep first name and email; remove fields not needed for this newsletter"
+        },
+        {
+          "id": "d",
+          "text": "Collect the extra fields now and decide their purpose after the first mailing"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The new form is designed for the newsletter, not every possible future use. Section 2.2 keeps a first name for the greeting and email for delivery, while removing phone, birthday and home address. Calling an unnecessary field optional or potentially useful does not supply the current purpose the example requires. EX017 and EX018 connect the chosen fields to less information to protect, lose or explain. Article 5(1)(c) supplies the general data-minimisation principle; it does not prescribe these exact fields or establish Copperleaf's legal compliance. No new collection is performed by this question.",
+      "source": "Chapter 2, §2.2 Asking only for what is needed; Data — fields the new sheet drops; Concepts — a rule that staff can finish, Least data row; EX017/EX018 and their Worked results (#worked-results; EX017, EX018). General principle only: Regulation (EU) 2016/679, Article 5(1)(c), official EUR-Lex text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q02",
+      "prompt": "A supplier asks to advertise through the existing newsletter list. What does the current Copperleaf rule permit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the addresses only for the newsletter, not as permission for the supplier's advertising"
+        },
+        {
+          "id": "b",
+          "text": "Allow the advertising because possession of an address authorizes any message"
+        },
+        {
+          "id": "c",
+          "text": "Allow it whenever the supplier offers the café a commercial benefit"
+        },
+        {
+          "id": "d",
+          "text": "Let the list's caretaker expand its use without changing the agreed rule"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.1 limits the list to the newsletter. The Concepts table identifies advertising a supplier as the contrasting failure, so neither possession, a commercial benefit nor daily responsibility changes the rule. EX014's answer is limited to newsletter use. This question applies that fictional restriction; it does not establish consent, a lawful basis, an actual supplier mailing or a universal prohibition on every future marketing arrangement. The birthday example separately shows that a proposed later use must be addressed through its own rule rather than quietly added to the existing purpose.",
+      "source": "Chapter 2, §2.1 Simple rules; Concepts — a rule that staff can finish, One job row; Worked example — a birthday for a free cake; EX014/EX053 and their Worked results (#worked-results; EX014, EX053)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Suppose Mrs. Adeyemi is interested in a later birthday offer. What must precede collecting birthdays under EX053?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a margin column immediately and seek agreement after collecting the dates"
+        },
+        {
+          "id": "b",
+          "text": "Treat interest in the offer as a signed rule for its collection and storage"
+        },
+        {
+          "id": "c",
+          "text": "Name a responsible person but leave purpose, period and channel to that person's discretion"
+        },
+        {
+          "id": "d",
+          "text": "Agree a separate rule, person, keeping period and approved channel before collecting dates"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Interest in a future offer is not the completed decision described in EX053. The worked example refuses the supplier's incentive as a reason to restore the birthday field. A later offer needs its own rule with a named person, a keeping period and an approved channel before any date is collected. The flow also places Mrs. Adeyemi's signature and Kwame's explanation in the rule-making process. None of that is supplied by a margin note or a caretaker alone. This is a hypothetical future decision, not approval received, dates collected or legal permission established in the case.",
+      "source": "Chapter 2, Decision flow — someone wants one more field, purpose/person/channel and signature steps; Worked example — a birthday for a free cake; Apply EX053, rubric; Worked result EX053 (#worked-results; EX053)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Two staff say a private shift-swap text is harmless because both agreed. Which response follows EX054?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Their agreement replaces the signed channel rule for that swap"
+        },
+        {
+          "id": "b",
+          "text": "Use the café's paid staff group; private agreement does not replace its approved channel"
+        },
+        {
+          "id": "c",
+          "text": "Send it privately first and treat a later group copy as proof the original route complied"
+        },
+        {
+          "id": "d",
+          "text": "Use any paid app because a subscription alone proves the destination is approved"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Copperleaf's signed rule places rotas and shift swaps in its paid staff messaging group, with the stated purpose of keeping phone numbers private. EX054 applies that rule even when two people have arranged a swap by private text. Their agreement about the shift does not amend the handling rule. Nor does paying for an unrelated app make it the café's approved channel. This is the case's selected workflow, not a legal requirement to buy a group service or a verified privacy guarantee for every paid product. No corrective message or new audit is claimed.",
+      "source": "Chapter 2, §§2.1 and 2.5 Getting agreement; Concepts — a rule that staff can finish, A channel the café controls row; Apply EX054; EX016/EX024/EX054 Worked results (#worked-results; EX016, EX024, EX054)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The staff group is approved for rotas. Does that authorize posting a regular's allergy note to every member?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; approval for one staff workflow permits every kind of customer information"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the subscription removes the need to consider who is preparing the order"
+        },
+        {
+          "id": "c",
+          "text": "No; the allergy rule limits access to staff preparing that customer's order"
+        },
+        {
+          "id": "d",
+          "text": "No; the note must never be shown even to staff preparing that order"
+        }
+      ],
+      "correct": "c",
+      "explanation": "An approved channel for one dataset is not unrestricted permission for all datasets or recipients. Section 2.1 gives allergy notes their own handling rule: a locked folder behind the counter and access only for staff preparing that customer's order. EX015 preserves that audience. Posting to the whole group would expand it, while withholding the note from everyone would defeat the permitted use. The decision follows the fictional rules, not a new legal classification or a clinical judgment. The question proposes a copy to assess; it does not report that a note was distributed or a disclosure occurred.",
+      "source": "Chapter 2, §2.1 Simple rules, allergy and rota sentences; Concepts — a rule that staff can finish, One job/A channel/A person rows; general Worked example; EX015/EX016 and their Worked results (#worked-results; EX015, EX016)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A busy shift proposes keeping the shared till code but promising careful use. Which practice follows the chapter instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use separate logins and lock the till screen when stepping away"
+        },
+        {
+          "id": "b",
+          "text": "Rotate the common code while everyone continues using the same login"
+        },
+        {
+          "id": "c",
+          "text": "Keep the shared code until a mistake proves that separate logins are needed"
+        },
+        {
+          "id": "d",
+          "text": "Have staff agree informally who used the screen instead of changing the login habit"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.3 names separate logins and locking the till screen as distinct security habits; EX019 identifies separate logins as the replacement for the shared code. A promise, code rotation or later recollection does not implement that replacement. Busy service is not an exception supplied by this chapter. The answer describes the case's required practice, not an account provisioned or a log inspected during this task. It also does not claim that a named account conclusively identifies every person behind an action, or that these two habits alone prove the café is secure.",
+      "source": "Chapter 2, §2.3 Security habits, till login and screen-lock instructions; general Worked example; EX019 and its Worked result (#worked-results; EX019)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Hypothetically, a staff member discovers a lost sign-up sheet but has no evidence of misuse. What should they report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing until unauthorized use is proven, because uncertainty cancels the reporting rule"
+        },
+        {
+          "id": "b",
+          "text": "A confirmed data breach and completed customer notification, inferred from the loss alone"
+        },
+        {
+          "id": "c",
+          "text": "A resolved loss because the sheet's details could be reconstructed from memory"
+        },
+        {
+          "id": "d",
+          "text": "The known loss to Kwame that day, without presenting possible misuse as established"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 2.3 and EX020 require lost papers or devices to be reported to Kwame the same day. The staff member can communicate the loss actually known without inventing who accessed the information or a completed response. Waiting for proven misuse would add a condition absent from the rule; reconstructing details would not establish recovery. The reporting content here is an evidence-bounded application, not a prescribed incident form. The chapter supplies no report receipt, real incident, external notification or legal reporting deadline. The hypothetical loss is not added to Copperleaf's narrative history.",
+      "source": "Chapter 2, §2.3 Security habits, loss-reporting instruction and explanatory example; general Worked example; EX020 and its Worked result (#worked-results; EX020). The same-day report is a fictional internal rule, not a statutory deadline."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A colleague applies one deletion date to allergies, photos and unsubscribed emails. Which distinction corrects that reading?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Allergy notes must be deleted at six months, while all other records stay for one year"
+        },
+        {
+          "id": "b",
+          "text": "Allergy review, photo retention and unsubscribe deletion are different rules, not one shared deadline"
+        },
+        {
+          "id": "c",
+          "text": "A locked allergy folder makes the customer review unnecessary"
+        },
+        {
+          "id": "d",
+          "text": "The photo exception proves that every customer agreed to unlimited retention"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.4 requires reviewing allergy notes with the customer every six months; it does not describe automatic deletion at that point. Photos have a one-year default unless people agreed to longer use, while newsletter emails are deleted soon after unsubscribing. EX021-EX023 distinguish those actions. No longer-use agreement, review completion or deletion date is supplied by this comparison. Article 5(1)(e) states a general storage-limitation principle, not Copperleaf's six-month or one-year numbers. Those periods remain synthetic case rules, and a lock alone is not the stated customer review.",
+      "source": "Chapter 2, §2.4 Keeping and deleting; Concepts — a rule that staff can finish, A period row; general Worked example; EX021-EX023 and their Worked results (#worked-results; EX021, EX022, EX023). General principle only: Regulation (EU) 2016/679, Article 5(1)(e), official EUR-Lex text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Can Kwame copy the event-photo period onto old rotas and supplier bills to complete their retention entries?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; confirm the applicable employment and tax periods through the owner and accountant"
+        },
+        {
+          "id": "b",
+          "text": "Yes; one year is the chapter's universal maximum for every café record"
+        },
+        {
+          "id": "c",
+          "text": "Yes; a missing number permits immediate destruction rather than further clarification"
+        },
+        {
+          "id": "d",
+          "text": "No; uncertainty establishes a permanent requirement to keep both datasets forever"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter deliberately gives these datasets different dependencies. Rotas follow applicable employment rules; supplier bills remain until the accountant identifies the tax retention end. Mrs. Adeyemi checks those periods with the accountant, and the Concepts section says Kwame does not invent them. The numerical photo rule in EX023 cannot fill either gap. Lack of a supplied number establishes neither immediate destruction nor indefinite legal retention. The next step is to obtain the applicable decision through the stated process, not fabricate a date, claim consultation was completed with a particular result or report that invoices were shredded.",
+      "source": "Chapter 2, §2.4 Keeping and deleting, rota/invoice and accountant sentences; Concepts — a rule that staff can finish, paragraph after the table; general Worked example; contrast with EX022/EX023 and their Worked results (#worked-results; EX022, EX023). No numerical employment or tax period is supplied."
+    },
+    {
+      "id": "Q10",
+      "prompt": "An owner signs a short rules page. What does the chapter require beyond simply announcing that it exists?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the signature as proof that every employee already understands and follows each rule"
+        },
+        {
+          "id": "b",
+          "text": "Let staff change the approved fields informally when explaining them is inconvenient"
+        },
+        {
+          "id": "c",
+          "text": "Display the agreed page and explain why the changes work in staff's daily tasks"
+        },
+        {
+          "id": "d",
+          "text": "Replace the page with a longer corporate policy before any staff discussion can occur"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.5 combines owner agreement, display in the staff room and an explanation of the changes. EX025 locates the page, while EX026 identifies understanding as what makes the rules usable. The question asks what signature alone does not achieve; it does not erase the explanation narrated in the worked example. A signature is not evidence of every later action, and explanation does not grant permission to amend fields informally. The Errors and limits section also rejects importing an unreadable long policy. No new meeting, signature, compliance audit or additional approval is claimed here.",
+      "source": "Chapter 2, §2.5 Getting agreement; general Worked example; Errors and limits; Decision flow — someone wants one more field, final signature/explanation step; EX025/EX026 and their Worked results (#worked-results; EX025, EX026)."
+    }
+  ]
+}
