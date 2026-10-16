@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 5,
+  "source_anchor": "ch-05",
+  "source_sha256": "94895ede97d276a0323a75d44cb63d826efc49c46996dd87eaedf723cf4bcc31",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Suppose every weekly reminder fires on time. Which status remains justified for Hollybank's fresh-list control?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Operating: reliable reminders establish that the corresponding pages were printed"
+        },
+        {
+          "id": "b",
+          "text": "Verified: a calendar entry substitutes for the authorized print record"
+        },
+        {
+          "id": "c",
+          "text": "Planned: the reminders do not demonstrate a printed, checked and protected page"
+        },
+        {
+          "id": "d",
+          "text": "Failed permanently: without a current page, paper can never provide a useful fallback"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A reminder is an instruction for a future action, not the artifact that action should produce. Even perfect notification delivery supplies no page, print record, coverage check or evidence of locked storage. EX059's expanded reminder row therefore leaves completion unverified. This does not mean paper is always useless: a suitably checked later print could support bounded use, but none is supplied here. The premise about reliable reminders is a negative control, not a new observation. The original three-week-old drawer copy is not silently replaced.",
+      "source": "Chapter 5, §5.3 \"A planned control and an operating control are not the same evidence\"; §5.2, reminder example; §5.7, negative control A; EX059 and its expanded Worked result, weekly-reminder row; Errors and limits."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Hypothetical comparison: a sheet bears today's print date but its data cutoff is unknown. What remains to be checked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The records and time span covered, and their suitability for the intended decision"
+        },
+        {
+          "id": "b",
+          "text": "Only whether the date is recent enough to make every omitted name a nonclient"
+        },
+        {
+          "id": "c",
+          "text": "Whether its recent appearance allows it to replace the approved handling process"
+        },
+        {
+          "id": "d",
+          "text": "Only whether the printer worked, since printing always refreshes the underlying data"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Print time and data coverage are separate questions. A recent heading does not establish which records were extracted or whether later registrations were included. Section 5.3 also retains the authorized print record and protected handling; a date does not waive those checks. EX059's old-paper analysis illustrates why omission cannot establish nonregistration. This is an explicitly hypothetical comparison, not a new print released by Chapter 5. In the actual teaching file the later page, refreshed contents and successful verification remain absent.",
+      "source": "Chapter 5, §5.4 \"Model the age, source and completeness of a paper extract\", two-time-questions paragraph and source table; §5.3, usable-list conditions; §5.2, drawer example; EX059 independent extension and expanded Worked result, drawer-copy row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A caller's supplied name is absent from the drawer copy. Which reply stays within the evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The clinic has no record of you, so you must register as a new client"
+        },
+        {
+          "id": "b",
+          "text": "Your identity is confirmed because you supplied a name to reception"
+        },
+        {
+          "id": "c",
+          "text": "Your appointment must have been cancelled because the page contains no entry"
+        },
+        {
+          "id": "d",
+          "text": "The name is not on this old extract; registration and appointment status remain unverified"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The observation concerns a particular historical extract, not the whole practice system. The list omitted registrations newer than its cutoff, so a missing entry does not establish nonregistration, cancellation or absence of an appointment. A caller-supplied name is also not a verified identity match. The worked contrast and EX059 require withholding the no-record statement while recording a pending question. This response neither confirms that the person is registered nor that they are not; it identifies what remains unresolved without making a clinical or booking decision.",
+      "source": "Chapter 5, §5.4, absent-caller row; §5.5 \"Worked contrast: the caller whose name is missing\", first paragraph and response table; EX059 original prompt/rubric and expanded Worked result, absent-name row and original-answer paragraph."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which entry on today's appointment sheet records the EX059 contact without turning it into a booking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Caller-supplied name and a confirmed appointment at the next opening"
+        },
+        {
+          "id": "b",
+          "text": "Caller-supplied name, call time and \"confirm when the practice system returns\""
+        },
+        {
+          "id": "c",
+          "text": "Verified patient identity, assigned urgency and a treatment instruction"
+        },
+        {
+          "id": "d",
+          "text": "Caller name and a note that the missing match proves no registration exists"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The permitted line records the supplied name, the time of contact and an explicit pending-verification state. Its location on an appointment sheet does not make the line a confirmed appointment or clinical record. The source supplies no appointment slot, identity check, urgency decision or treatment. EX059's worked answer distinguishes recording a received contact from resolving the underlying question. This option specifies fields, not invented name or time values, and does not claim that a real call or system entry occurred.",
+      "source": "Chapter 5, §5.1, pending-line instruction; §5.5, permitted offline record and review-note template; EX059 original rubric and expanded Worked result, today's-paper row and original-answer paragraph."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The old list still contains many valid names. Why is that insufficient for using it as this week's urgent-call population?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Valid entries prove every later registration is present in the same extract"
+        },
+        {
+          "id": "b",
+          "text": "Missing newer registrations means all earlier names must now be false"
+        },
+        {
+          "id": "c",
+          "text": "Correct entries do not establish complete coverage of registrations after the cutoff"
+        },
+        {
+          "id": "d",
+          "text": "Keeping the sheet physically available makes its contents current enough for all calls"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A valid positive entry and a complete population claim are different evidence. Older entries may remain useful historically while the same extract omits newer registrations. The drill identified exactly that coverage gap; it did not show that every old name was wrong. Physical availability does not refresh information. EX059 therefore rejects phoning from this page as though it were the current complete list. No replacement population, successful outreach or clinical priority is established, and the three-week age remains the drill's finding rather than a fresh measurement.",
+      "source": "Chapter 5, §5.1, missing-new-clients consequence; §5.2, drawer example; §5.4, old-list row and availability paragraph; §5.7, negative control B; EX059 expanded Worked result, drawer-copy row and \"Why this matters\"."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague remembers the missing caller and offers to reconstruct the list. What is the defensible use of that recollection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use it to suggest a later verification question, not a replacement source or booking"
+        },
+        {
+          "id": "b",
+          "text": "Print the recollection with today's date and call it a practice-system extract"
+        },
+        {
+          "id": "c",
+          "text": "Confirm the caller's appointment because recognition supplies the missing authority"
+        },
+        {
+          "id": "d",
+          "text": "Overwrite the old page so later reviewers see only the reconstructed names"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Memory can point to something worth checking but is not an authenticated system result or a dated source extract. Printing a recollection does not change its origin. Recognition also supplies no authority to confirm an appointment or alter the historical page. The worked example rejects reprinting from memory, and EX059 requires preserving the unresolved contact for the authorized system check. Both the recollection and proposed reconstruction here are analytical alternatives, not newly received case evidence, a verified client identity or an executed change.",
+      "source": "Chapter 5, §5.2, memory-reprint example; §5.5, substitute-population response; §5.7, negative control C; §5.6, historical preservation; EX059 independent extension and expanded Worked result, pending-contact and later-verification rows."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Someone proposes photographing the old client list onto a personal phone to help during the outage. Which response fits the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept it because an old list no longer contains information needing protection"
+        },
+        {
+          "id": "b",
+          "text": "Publish the names so callers can correct the missing records themselves"
+        },
+        {
+          "id": "c",
+          "text": "Copy it first and treat the useful purpose as implied authorization"
+        },
+        {
+          "id": "d",
+          "text": "Retain protected handling and use the permitted pending-contact record instead"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Age does not remove the confidentiality of printed names. Section 5.4 prohibits copying the list to a personal device or public message merely to fill the information gap. The exercise instead permits a bounded contact entry on today's sheet, with system verification pending. NIST CSF 2.0 PR.DS-01 supplies the general goal of protecting stored information; Hollybank's handling boundary comes from the manuscript, not an authorization granted by NIST. No copy, disclosure, consent or real privacy incident is asserted by this proposed-action question.",
+      "source": "Chapter 5, §5.4, confidentiality/integrity/availability paragraph; §5.5, permitted contact line; §5.3, NIST distinction; EX059 and its expanded Worked result, today's-paper row. General principle only: NIST CSF 2.0, Appendix A, PR.DS-01, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q08",
+      "prompt": "No later system result is supplied. Which ledger treatment preserves the source history and the unresolved question?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the old source time with the date of the promised next print"
+        },
+        {
+          "id": "b",
+          "text": "Keep the old source/time and pending question; leave the later disposition unfilled"
+        },
+        {
+          "id": "c",
+          "text": "Write confirmed in the disposition column because the intended check is recorded"
+        },
+        {
+          "id": "d",
+          "text": "Discard the old source and retain only the reminder as evidence of the drill"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The ledger separates the historical source, the question that source cannot settle and the result of a later check. Without evidence of that check, recording an outcome would turn a plan into evidence. A promised print cannot move the old cutoff forward, and discarding the source weakens review of what was available during the drill. Section 5.6 and EX059 retain the older artifact without giving it current authority. Preserving it here is an evidential practice, not a legal retention period, and no new log entry or completed disposition is reported.",
+      "source": "Chapter 5, §5.6 \"Safe follow-up: check later without backdating the result\", verification-ledger paragraph; §5.7, negative control D and four-column practice; EX059 independent extension and expanded Worked result, later-verification row."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetically, the practice system becomes available later. What is still needed before resolving the pending contact?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An authorized comparison under the approved identity and booking workflow, with the outcome recorded separately"
+        },
+        {
+          "id": "b",
+          "text": "Automatic confirmation of every pending contact as soon as the screen can be opened"
+        },
+        {
+          "id": "c",
+          "text": "A new appointment for each paper line, without checking existing entries or mismatches"
+        },
+        {
+          "id": "d",
+          "text": "Backdating the later answer so the old list appears to have supported it during the outage"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Source availability enables a check; it does not supply the check's result. A designated worker would compare the contact through the approved workflow, resolve mismatches or duplicates under the clinic's rules and record the verified outcome separately. No particular result or transaction is predetermined. EX059 explicitly says that Chapter 5 supplies no later system verification. The hypothetical return therefore must not be reported as an actual restoration, identity match or appointment, and any later finding must not be inserted into the earlier evidence window.",
+      "source": "Chapter 5, §5.6, authorized follow-up and separate disposition; §5.4, later-system-result row; §5.5, review-note template; EX059 independent extension and expanded Worked result, later-verification row and final explanation."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A reviewer cites NIST PR.DS-01 and PR.IR as proof that Hollybank's fallback is current. What is wrong with that argument?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The framework makes every weekly reminder evidence of completed printing"
+        },
+        {
+          "id": "b",
+          "text": "Its data-protection outcome establishes the caller's identity without checking the practice system"
+        },
+        {
+          "id": "c",
+          "text": "General outcomes guide protection and resilience; they do not validate this sheet or grant local approval"
+        },
+        {
+          "id": "d",
+          "text": "Citing those outcomes fixes how long the clinic must legally retain the old list"
+        }
+      ],
+      "correct": "c",
+      "explanation": "CSF 2.0 describes general cybersecurity outcomes, including protection of stored information and infrastructure resilience; it does not certify a particular paper's date, coverage or handling. Section 5.3 expressly separates those principles from the original classroom reasoning. EX059 still requires the missing artifact or authorized verification evidence, rather than a framework citation. Neither local approval, caller identity nor a legal retention period follows from these identifiers. The chapter's next lesson is reached through its existing navigation; further study and a standards reference do not resolve the current pending contact.",
+      "source": "Chapter 5, §5.3, PR.DS-01/PR.IR paragraph; §5.4, evidence table; §5.7, independent practice; Errors and limits; EX059 expanded Worked result, unproved-claim column; Continue studying. NIST CSF 2.0, Abstract and Appendix A PR.DS-01/PR.IR, pp. i/20, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
