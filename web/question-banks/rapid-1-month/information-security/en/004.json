@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "dcc3d40345800eb992d3daa3e926a9c480bbbd64b059c6179f6be2b95bd92263",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In synthetic Hollybank, a deleted shared-folder file was never in the practice system. Which recovery evidence is relevant?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The provider's thirty-day retention promise, regardless of where the file was stored"
+        },
+        {
+          "id": "b",
+          "text": "A separate email-and-files copy covering it, verified by restoring the relevant folder"
+        },
+        {
+          "id": "c",
+          "text": "The practice system remaining online, without checking any copy of the file"
+        },
+        {
+          "id": "d",
+          "text": "The incident card listing a technician, without a copy or restore result"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX057 requires matching the missing information to a backup that actually includes it and checking the relevant folder's restoration. The practice-system provider's daily retention and quoted one-day restore concern that system, not email or shared folders outside it. Service uptime and a contact number supply neither the missing copy nor a successful recovery test. The separate service is the recovery source supplied for this exercise; the answer does not invent a completed restoration of this deleted file or rule out every recovery method in other organisations.",
+      "source": "Chapter 4, §4.1 \"Backups\"; \"Concepts — a copy, a test, a card, a drill\", provider and separate-backup rows; Apply EX057 \"Whose copy is it?\", rubric; Worked results EX039/EX040/EX057 (answer-ex057)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A green dashboard symbol appears before the first mailbox copy finishes. What does the worked example justify?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Recording a passed mailbox restore because the service reports a healthy status"
+        },
+        {
+          "id": "b",
+          "text": "Applying the successful folder result to the unfinished mailbox without testing it"
+        },
+        {
+          "id": "c",
+          "text": "Treating the symbol as evidence that an attacker destroyed the mailbox copy"
+        },
+        {
+          "id": "d",
+          "text": "Withholding a passed-test claim until the named mailbox has actually been restored"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The symbol appears before the first full mailbox copy is complete, and the narrated restore fails in that condition. A status indicator is not the result of recovering the mailbox into the test area. The folder's success concerns a different test, while no malicious cause is supplied. EX041 explains the failed attempt; the worked example records failure rather than promoting the symbol to a passed test. NIST SP 800-34 Rev. 1 discusses validating recovery procedures through testing generally; it does not authenticate this dashboard or report a real clinic recovery.",
+      "source": "Chapter 4, §4.2 \"Testing a restore\"; \"Worked example — a full copy that is not a finished backup\"; EX041 and its Worked result. General testing principle: NIST SP 800-34 Rev. 1, §3.5.1, p. 27, https://doi.org/10.6028/NIST.SP.800-34r1"
+    },
+    {
+      "id": "Q03",
+      "prompt": "The second mailbox restore works a week later. How should Sofia represent the two attempts in the change log?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the first failure and its cause alongside the later successful test"
+        },
+        {
+          "id": "b",
+          "text": "Replace the failure with success because both attempts concerned the same mailbox"
+        },
+        {
+          "id": "c",
+          "text": "Backdate success to the first attempt once the missing copy has finished"
+        },
+        {
+          "id": "d",
+          "text": "Keep only the first failure because a later test cannot add useful evidence"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Each attempt answers what could be restored at its own checkpoint. The first failed because the initial full copy had not finished; the second worked a week later. Retaining both exposes the earlier gap and the later improvement. Replacement or backdating would hide the failed recovery condition, while ignoring success would omit relevant later evidence. Section 4.2 and the data table explicitly keep both results. These are records in the synthetic narrative, not newly executed tests, a measured service-wide recovery duration or proof of every backup's integrity.",
+      "source": "Chapter 4, §4.2; \"Data — restore evidence and the Monday fallback\", first/second mailbox rows and preservation paragraph; full-copy worked example; EX041 and its Worked result."
+    },
+    {
+      "id": "Q04",
+      "prompt": "One folder and one mailbox have restored successfully into a test area. Which report stays within that evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The entire clinic can now recover within the provider's quoted one-day period"
+        },
+        {
+          "id": "b",
+          "text": "Every future email and file backup is proven complete by these two tests"
+        },
+        {
+          "id": "c",
+          "text": "Those named tests succeeded; whole-clinic and future recovery still need separate evidence"
+        },
+        {
+          "id": "d",
+          "text": "The tests show only provider uptime and say nothing about restoring the selected data"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The tests provide positive evidence for the selected folder and mailbox, so dismissing them as mere uptime is too weak. Extending them to all systems or future copies is too strong. The provider's quoted timeframe has its own practice-system scope and cannot be borrowed for clinic-wide recovery. EX057 similarly requires a relevant copy and restore, not a promise about unrelated data. NIST SP 800-61 Rev. 3 distinguishes checking restoration assets and verifying restored systems; those general outcomes are not evidence that additional checks occurred in Hollybank.",
+      "source": "Chapter 4, §4.2; \"Concepts — a copy, a test, a card, a drill\", restore-test limitation; \"Data — restore evidence and the Monday fallback\"; EX057 and its Worked result. General verification principles: NIST SP 800-61 Rev. 3, Table 3, RC.RP-03/RC.RP-05, p. 34, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q05",
+      "prompt": "EX058 hypothetically places a ransom demand on one reception computer. Which response follows the card without authorizing payment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pay the displayed account first, then call the technician to recover the cost"
+        },
+        {
+          "id": "b",
+          "text": "Disconnect every clinic system and skip the named contacts because the screen is urgent"
+        },
+        {
+          "id": "c",
+          "text": "Call the technician alone and treat the screen as approval of a new payment destination"
+        },
+        {
+          "id": "d",
+          "text": "Disconnect that computer; call Sofia, then Dr. Moss, then the technician; do not pay the screen"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX058 separates a bounded technical action, the stated escalation order and the continuing payment restriction. Disconnecting the affected computer does not authorize a clinic-wide shutdown. The card supplies no permission to pay a displayed account, and urgency does not replace the named contacts. This is the hypothetical exercise response, not a real ransom event, performed isolation or payment. NIST SP 800-61 Rev. 3 supports coordination through response plans generally; the specific names and order come from Hollybank's fictional card, not from NIST or a legal requirement.",
+      "source": "Chapter 4, §4.3 \"An incident card\"; \"Decision flow — the practice system is down, or a screen asks for money\", ransom branch and payment-limit paragraph; EX042/EX043 and Apply EX058 with their Worked results. General coordination principle: NIST SP 800-61 Rev. 3, Table 3, RS.MA-01, p. 27, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q06",
+      "prompt": "What can the twenty-minute drill of a four-hour outage demonstrate without being mistaken for a production incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The live practice system was restored from ransomware in twenty minutes"
+        },
+        {
+          "id": "b",
+          "text": "The team rehearsed the fallback and discovered a stale-list gap in the synthetic scenario"
+        },
+        {
+          "id": "c",
+          "text": "All clients were contacted successfully throughout an actual four-hour outage"
+        },
+        {
+          "id": "d",
+          "text": "The provider proved its recovery commitment by operating the paper appointment sheet"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Twenty minutes describes the drill, whereas four hours is the scenario's simulated system interruption. Section 4.4 describes paper working and discovery of an old client list; it does not provide a production outage, ransomware diagnosis, universal call coverage or provider restore test. EX045 and EX046 must be interpreted with that boundary, not converted into a recovery-time measurement. NIST SP 800-34 Rev. 1 describes exercises as scenario-driven validation generally. It does not establish Hollybank's exercise as an actual incident or certify that every fallback task succeeded.",
+      "source": "Chapter 4, §4.4 \"A practice drill\"; \"Data — restore evidence and the Monday fallback\", drill and list rows; general Worked example; EX045/EX046 and their Worked results. General exercise distinction: NIST SP 800-34 Rev. 1, §3.5.3, p. 29, https://doi.org/10.6028/NIST.SP.800-34r1"
+    },
+    {
+      "id": "Q07",
+      "prompt": "In the simulated system interruption, what role does the day's appointment sheet play?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It becomes a backup of all email, shared folders and client history"
+        },
+        {
+          "id": "b",
+          "text": "It proves the separate printed contact list contains every recent client"
+        },
+        {
+          "id": "c",
+          "text": "It supports temporary desk work, with treatments recorded on paper for later entry"
+        },
+        {
+          "id": "d",
+          "text": "It authorizes staff to recreate missing treatment details from memory"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The paper fallback supports work during the simulated gap and preserves entries for use after the system returns. It is not a complete backup, a substitute client register or evidence that a separate contact list is current. The chapter calls for writing treatments on paper, not inventing missing details from memory. EX044 identifies the day's appointment sheet, while section 4.4 supplies its operational context. This interpretation introduces no client, dose, new appointment or verified live-system return; the separate finding of a stale contact list remains unresolved by the sheet alone.",
+      "source": "Chapter 4, §4.3; §4.4; \"Decision flow — the practice system is down, or a screen asks for money\", paper-fallback branch; \"Data — restore evidence and the Monday fallback\", drill row; EX044 and its Worked result."
+    },
+    {
+      "id": "Q08",
+      "prompt": "After the drill finds an outdated contact list, a weekly print reminder is added. What is actually evidenced at that point?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A refresh task was scheduled; a newly printed and protected list is not yet demonstrated"
+        },
+        {
+          "id": "b",
+          "text": "A current list exists because the reminder contains the instruction to print one"
+        },
+        {
+          "id": "c",
+          "text": "The old list now includes missing clients because its handling procedure improved"
+        },
+        {
+          "id": "d",
+          "text": "Every urgent-call decision can rely on the old list until the next reminder"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The drill found a three-week-old list missing newer clients, and Sofia then scheduled a weekly fresh print to be locked away. A reminder records intended follow-up, not the resulting page, its date or its contents. Neither a better instruction nor waiting for its next occurrence repairs the old extract. EX047 describes the chosen remedy, but section 4.4 supplies no later completed print. EX046's finding therefore remains part of the evidence. The bank does not manufacture a refreshed list or retrospectively claim complete urgent-call coverage.",
+      "source": "Chapter 4, §4.4; \"Data — restore evidence and the Monday fallback\", Printed client list row; general Worked example; EX046/EX047 and their Worked results, read as finding versus scheduled remedy."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Next month's calendar lists checks, account reviews, training and a restore test. Which status is justified before they run?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Recovery is verified because the preceding month's mailbox test succeeded"
+        },
+        {
+          "id": "b",
+          "text": "A recurring routine is planned; each later action still needs its own result"
+        },
+        {
+          "id": "c",
+          "text": "A fresh sharing measurement exists because the reminder names the sharing check"
+        },
+        {
+          "id": "d",
+          "text": "Leavers' access has been removed because reviewing accounts is on the calendar"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 4.5 sets four recurring tasks: a sharing check, review of leavers' accounts, a short session and a restore test. EX049's list identifies the work to perform, not evidence that a future cycle has completed. Earlier successes retain their value without proving a new test, permission state or account removal. Scheduling a check cannot create its output. The same distinction separates a proposed recurring control from demonstrated operation. No new scan, restore, training session or account action is asserted by this question.",
+      "source": "Chapter 4, §4.5 \"The plan ahead\"; \"Data — restore evidence and the Monday fallback\", Monthly routine row; general Worked example; EX049 and its Worked result."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Sofia finishes the month's summary and is directed toward data-governance study. Which conclusion avoids overstating that milestone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The provider's backup retention now supplies the clinic's legal record-retention policy"
+        },
+        {
+          "id": "b",
+          "text": "The security course is editorially approved because the case reached its last weekly session"
+        },
+        {
+          "id": "c",
+          "text": "The next course automatically resolves the open question about old client records"
+        },
+        {
+          "id": "d",
+          "text": "The summary records bounded progress; retention decisions and whole-book review remain separate"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX050 points to data governance because retention of old client records remains a question for further study. The provider's backup-copy period does not answer that broader question or establish a legal obligation. A case's end-of-month summary is likewise not the publication gate for the book. Chapter 4's actual navigation continues to Chapter 5, and BOOK_STANDARD requires substantive teaching, checked answers and review rather than a count alone. This milestone supplies no qualification, editorial approval, completed future course or new retention decision.",
+      "source": "Chapter 4, §4.5 \"The plan ahead\"; general Worked example; EX050 and its Worked result; Continue studying, Chapter 05 link. Editorial boundary: BOOK_STANDARD.md, \"Publication gate for each volume\"; manuscript editorial state."
+    }
+  ]
+}
