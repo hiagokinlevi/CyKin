@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 8,
+  "source_anchor": "ch-08",
+  "source_sha256": "cad6802f3aff9caee5ce66c68f61dc9c6f1094b5eb687faf3e6b52b7bcd179d4",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "The locum has left, but the log contains only a disable instruction. What finding does EX062 support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The backend is certainly enabled because its disable is not recorded"
+        },
+        {
+          "id": "b",
+          "text": "Closure is undocumented and unverified; check status and arrange approved disabling if still enabled"
+        },
+        {
+          "id": "c",
+          "text": "The account is disabled because the engagement has ended"
+        },
+        {
+          "id": "d",
+          "text": "The additional factor proves that no closure work remains"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The log establishes an outstanding closure question, not a live technical state. Neither a missing entry nor the end of the assignment proves whether the backend accepts authentication. The owner should arrange a scoped status check and approved disabling if the account remains enabled, followed by a true execution record and independent readback. EX062's short rubric says the account is still open, but the detailed theory and expanded answer explicitly reject that inference. This key follows the expanded answer. Hollybank is synthetic; no login, disable action or status result is supplied.",
+      "source": "Chapter 8, §8.1, documentary-gap paragraph; §8.3, account-retirement finding; §8.5, actual evidence and proposed next action; EX062, Expanded worked result — account lifecycle, Model response and Boundary (#answer-ex062). Read the short rubric subject to that explicit evidence limit."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Suppose the locum's MFA is extremely strong. Why must the end-of-engagement access question still be resolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Strong authentication turns a temporary work role into continuing authorization"
+        },
+        {
+          "id": "b",
+          "text": "Using a personal account exempts its owner from leaver review"
+        },
+        {
+          "id": "c",
+          "text": "Possession of the factor replaces Dr. Moss's decision about further work"
+        },
+        {
+          "id": "d",
+          "text": "Authenticator control does not renew the business authorization or terminate the account"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Authentication checks control of authenticators; continued permission to work is a different decision. Even the hypothetical strong factor does not renew the locum's role or perform deactivation. NIST SP 800-63B-4's Introduction describes authentication in terms of authenticator control, while AC-2 addresses valid access authorization and account lifecycle management. Those general principles support the distinction, not a measured assurance level for Hollybank. EX062 still requires resolving the closure through the authorized workflow. The strength assumed in the question is a negative control, not a newly verified property of the case's MFA.",
+      "source": "Chapter 8, §8.2, MFA example; §8.3, definitions; §8.6, final paragraph; §8.7, negative control A; EX062 expanded Worked result, Model response (#answer-ex062). General principles: NIST SP 800-63B-4, §1 Introduction, https://pages.nist.gov/800-63-4/sp800-63b.html ; NIST SP 800-53 Rev. 5, AC-2(i)/(l), p. 19, https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+    },
+    {
+      "id": "Q03",
+      "prompt": "In a hypothetical follow-up, closure is approved but execution is unverified. Which sequence preserves the remaining gates?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check the target; disable if enabled; record the actual result; independently verify the resulting state"
+        },
+        {
+          "id": "b",
+          "text": "Mark closure complete because approval supplies both execution and verification"
+        },
+        {
+          "id": "c",
+          "text": "Issue a disable request and treat its submission as a successful state change"
+        },
+        {
+          "id": "d",
+          "text": "Write a successful readback first so the operator can work toward the recorded result"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Approval supplies a decision, not an executed change. The proposed administrator must verify the correct target and current status, act if needed and retain the actual result. Independent readback then checks what state the action left, including relevant remaining-access questions where applicable. A submitted request or command alone is not a success receipt. EX062's expanded gate table distinguishes these states. The hypothetical approval here is not an approval received in the original case, and this answer reports no performed operation, API call or verified outcome.",
+      "source": "Chapter 8, §8.4 Four gates to a defensible closure, execution/readback rows and following paragraph; §8.5, proposed next action; EX062 independent extension and expanded Worked result, Authorization/Execution/Readback rows (#answer-ex062)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A colleague proposes using the locum's last working day as the disable date. What should the reviewer require?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the last working day because it was when disabling became desirable"
+        },
+        {
+          "id": "b",
+          "text": "Use the review date as proof that the technical action occurred then"
+        },
+        {
+          "id": "c",
+          "text": "Record the real action time only when evidenced; keep unperformed execution explicitly unresolved"
+        },
+        {
+          "id": "d",
+          "text": "Choose the date that closes the documentary gap without delaying the report"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The end of the engagement explains why access should end; it does not timestamp a technical operation. EX062 supplies no exact date and no completed disable record. A truthful record must distinguish the real execution time and result from an intended date or the time a reviewer wrote the note. Backfilling either would invent evidence. The chapter's template therefore keeps action, actor, actual date and outcome unsupported until supplied. This question requires accurate future recording, not a fabricated date, retrospective approval or a claim that the log was changed.",
+      "source": "Chapter 8, §8.4, engagement-end and execution rows; §8.5, no-backfill instruction; §8.6, proposed receipt template; §8.7, negative control B; EX062 expanded Worked result, Execution row and Boundary (#answer-ex062)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "A proposed closure targets every reception account to avoid missing the locum. Which scope is justified instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable all staff accounts that use the same sign-in service"
+        },
+        {
+          "id": "b",
+          "text": "Identify the temporary personal account from the prior log and verify that exact target"
+        },
+        {
+          "id": "c",
+          "text": "Select an account with a similar name and obtain confirmation after disabling it"
+        },
+        {
+          "id": "d",
+          "text": "Replace the reception staff's factors without checking the locum account"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The earlier log identifies which temporary account needs review; it does not authorize disabling unrelated reception users. An authorized administrator must confirm the exact account before any conditional action. Similar names, shared infrastructure or other staff's factors do not establish the target. EX062 supplies no literal account identifier or locum name, so none should be invented to make the plan look executable. The chapter also separates this account question from the twelve restricted files. A narrow closure plan neither removes other staff's authorization nor proves any actual account change.",
+      "source": "Chapter 8, §8.4, closure-request and correct-account rows; §8.5, disable-all-reception contrast; §8.6, Specific account row; §8.7, negative control E; Errors and limits; EX062 expanded Worked result, End-of-engagement and closure request row (#answer-ex062)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A hypothetical file contains a dated disable record but no current technical readback. Which review is warranted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify the record and approved account state rather than equating documentation with current status"
+        },
+        {
+          "id": "b",
+          "text": "Treat the dated line as proof that all accounts and sessions are closed"
+        },
+        {
+          "id": "c",
+          "text": "Repeat the disable blindly because a documentary record can never be useful"
+        },
+        {
+          "id": "d",
+          "text": "Erase the earlier closure request because the new line proves it was unnecessary"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A dated record can support that an action was documented, but its source, target and outcome still matter. It is not automatically a current-state observation or proof about every session. Section 8.2 explicitly recommends checking the record and an approved readback instead of repeating an unverified operation. Dismissing all documentary value is also unjustified. EX062's expanded answer separates execution evidence from readback. The hypothetical file is not present in the original case and supplies no real timestamp, receipt or completed deactivation for the learner to report.",
+      "source": "Chapter 8, §8.2, hypothetical dated-disable row; §8.4, execution versus readback; §8.6, receipt-template limits; EX062 expanded Worked result, Execution/Readback rows and Boundary (#answer-ex062)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Hypothetically, an approved status check finds the exact account already disabled. What follows without rewriting the earlier evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The original missing log line now proves disabling occurred on the last working day"
+        },
+        {
+          "id": "b",
+          "text": "Re-enable the account so a new disable can fill the old documentation gap"
+        },
+        {
+          "id": "c",
+          "text": "Declare every earlier session revoked without checking the platform's behavior"
+        },
+        {
+          "id": "d",
+          "text": "Record the new finding; reconcile the history and remaining access questions without blindly repeating the action"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A genuine later readback can change what is known at that later checkpoint. It does not reveal an earlier execution date, operator or session outcome unless that evidence is also supplied. The reviewer should retain the new finding, reconcile the documentary gap and assess relevant remaining-access questions under the approved process. Re-enabling or unnecessarily repeating a disable would not repair history. EX062's expanded answer makes disabling conditional on the account still being enabled. This is the chapter's positive hypothetical control, not a readback performed or a result received in Hollybank.",
+      "source": "Chapter 8, §8.5, conditional disable sequence; §8.2, verify rather than repeat; §8.7, negative control C; EX062 expanded Worked result, Model response and separate-state Boundary (#answer-ex062)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Does the unresolved closure establish that a former session is still usable or that an intrusion occurred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; missing disable documentation is a record of successful unauthorized authentication"
+        },
+        {
+          "id": "b",
+          "text": "No; MFA proves all previous sessions ended when the assignment ended"
+        },
+        {
+          "id": "c",
+          "text": "Neither is established; potential residual access needs state and relevant activity evidence"
+        },
+        {
+          "id": "d",
+          "text": "Yes; the end of the work period is itself proof of an intruder's activity"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter identifies a potential residual-access scenario, not observed use. Whether any sessions exist or survive account disabling depends on system behavior that the case does not describe. A missing line does not establish a live session, and MFA does not prove session termination. Actual misuse would require relevant activity and applicable incident criteria, not merely a leaver-review gap. EX062 therefore leaves state and remaining-access verification open. No session, token, sign-in, compromise or real incident is introduced by this question.",
+      "source": "Chapter 8, §8.4, session-behavior limitation; §8.6 Potential residual access and evidence-aware reporting, first paragraph and receipt template; §8.7, evidence limits; EX062 expanded Worked result, Readback row and Boundary (#answer-ex062)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The locum might return next month and still has an authenticator. What authorizes work on a future assignment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A fresh Dr. Moss decision defining role, scope and period through the approved account process"
+        },
+        {
+          "id": "b",
+          "text": "The previous assignment's approval, automatically extended by the possibility of returning"
+        },
+        {
+          "id": "c",
+          "text": "Continued possession of the factor, regardless of whether a new role was approved"
+        },
+        {
+          "id": "d",
+          "text": "A colleague's expectation of a return, recorded after access has already resumed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A possible return is neither a present assignment nor new authorization. Dr. Moss would need a fresh bounded decision. Depending on actual policy, that may lead to new provisioning or explicitly approved reactivation; the chapter does not mandate an invented platform operation or permit automatic revival. The old factor alone cannot supply the decision, and recording approval after use reverses the gate. EX062's expanded Possible return row states that no future assignment is approved. The question neither grants that approval nor claims the locum returned or an account was created.",
+      "source": "Chapter 8, §8.2, possible-return row; §8.5, explicitly hypothetical future assignment; §8.7, negative control D; Errors and limits; EX062 expanded Worked result, Possible return row and Boundary (#answer-ex062)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A reviewer cites NIST AC-2 to conclude that the account expired automatically. What evidence gap remains?",
+      "options": [
+        {
+          "id": "a",
+          "text": "None; a control catalog proves automatic expiry on every temporary account"
+        },
+        {
+          "id": "b",
+          "text": "Only the locum's name; knowing it would establish the backend configuration"
+        },
+        {
+          "id": "c",
+          "text": "The case supplies neither an implemented expiry mechanism nor a checked deactivation result"
+        },
+        {
+          "id": "d",
+          "text": "None; a calendar deadline and a disable instruction together prove execution"
+        }
+      ],
+      "correct": "c",
+      "explanation": "AC-2 addresses account management, and enhancement AC-2(2) describes automated temporary-account removal or disabling after an organization-defined period. A published control is not evidence that a particular platform implements it. Hollybank supplies no expiry feature, configured period or technical readback, so the assignment ending cannot establish automatic deactivation. EX062's expanded answer keeps the closure unverified until supported checks occur. The NIST reference supplies general principles, not local approval, a legal deadline, conformance certification or a result that fills the exercise's missing evidence.",
+      "source": "Chapter 8, §8.2, week-ended row; §8.3, source boundary; §8.5, automatic-expiry contrast; EX062 expanded Worked result, Execution/Readback rows and Boundary (#answer-ex062). General control, not implementation evidence: NIST SP 800-53 Rev. 5, AC-2(f)/(l) and AC-2(2), pp. 19–20, https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+    }
+  ]
+}
