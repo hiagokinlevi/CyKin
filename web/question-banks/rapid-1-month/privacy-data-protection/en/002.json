@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "4793588f7868a4d057f37ca533ccb88b0b7302ceb63251756580b7a20ab58aa2",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Sofia may inspect loyalty settings. Does that let her change a setting she considers safer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a beneficial purpose extends the signed scope to implementation"
+        },
+        {
+          "id": "b",
+          "text": "No; inspection is allowed, but changing settings remains expressly excluded"
+        },
+        {
+          "id": "c",
+          "text": "Yes; recording the change afterwards supplies the missing prior permission"
+        },
+        {
+          "id": "d",
+          "text": "No; the exclusion on changes also prevents her from reviewing settings"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.1 authorizes specified review activities while separately excluding changes, customer contact and individual records. Permission to inspect is therefore not permission to implement. Conversely, the change exclusion does not cancel the allowed settings review. A helpful intention or a later log entry cannot amend the signed page retroactively. EX014 confirms the distinction. The paper-filing permission similarly concerns the method, not opening a customer's file. This applies the fictional scope; it does not assert a setting was changed, an additional approval received or a universal legal form for every review.",
+      "source": "Chapter 2, section 2.1 Agreeing the scope; Concepts — the signed page decides, a copy counts as a look, What may she open? row; Data — five requests against the signed page, settings and filing rows; general Worked example; Worked results (#worked-results; EX014)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "In EX053, why is photographing the live screen not harmless merely because the database stays unchanged?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only editing the database counts; a phone photograph remains outside the scope rules"
+        },
+        {
+          "id": "b",
+          "text": "The layout purpose makes the customer's name and medicine irrelevant to the copy"
+        },
+        {
+          "id": "c",
+          "text": "A promise to delete the photograph later supplies permission to take it now"
+        },
+        {
+          "id": "d",
+          "text": "The photograph reproduces an excluded customer record and creates another copy"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The live screen contains an individual customer's record, not just configuration information. EX053 refuses both the excluded record access and its reproduction onto a phone. Leaving the database unchanged does not prevent a new copy from existing elsewhere. GDPR Article 4(2) includes recording and storage within processing; LGPD Article 5(X) separately includes access, reproduction and storage. Those definitions explain why a photograph is not outside data handling, but they do not supply Juniper's permission or establish a breach. The photograph is refused in this synthetic example, not reported as taken.",
+      "source": "Chapter 2, Concepts — the signed page decides, a copy counts as a look, opening paragraph; Worked example — a photo of the live screen; Apply EX053; Worked results (#worked-results; EX014, EX025, EX053). Definitions only: GDPR Article 4(2), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(X), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q03",
+      "prompt": "The review needs an example of the screen layout. Which substitute follows the worked example?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the pharmacist's invented test customer and store its screenshot in the encrypted shop folder"
+        },
+        {
+          "id": "b",
+          "text": "Open a genuine customer record first, then hide its name in the saved image"
+        },
+        {
+          "id": "c",
+          "text": "Rename a genuine record and assume all its remaining details are now invented"
+        },
+        {
+          "id": "d",
+          "text": "Ask a customer to send their record directly, despite customer contact being excluded"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The worked example meets the layout-learning purpose with a test customer created by the pharmacist, rather than a real record. EX015 explains that purpose, and EX053 includes the encrypted shop folder as the destination. Hiding a name after access would not undo the excluded access; renaming a real record does not turn its other contents into invented data. Contacting a customer also remains excluded. This answer describes the replacement narrated by the book, not a test customer created during this task or permission to change production records. No invented name or clinical detail is supplied.",
+      "source": "Chapter 2, sections 2.1-2.2; Decision flow — look, copy, or keep, real-record branch; Worked example — a photo of the live screen, replacement step; Apply EX053; Worked results (#worked-results; EX014, EX015, EX016, EX053)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A colleague proposes an encrypted personal phone for review notes. Does encryption approve that location?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; encryption makes every device equivalent to the storage named in the scope"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a temporary phone copy becomes permitted if it is later moved to the shop"
+        },
+        {
+          "id": "c",
+          "text": "No; the review still specifies the locked drawer and encrypted folder on the shop computer"
+        },
+        {
+          "id": "d",
+          "text": "No; Sofia must avoid all written notes, including those in the specified shop storage"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.2 addresses both protection and location. Notes belong in the locked drawer and encrypted shop folder, not on a personal phone. Encryption of another device would not itself change that boundary, and a later move would not authorize the initial copy. The answer also preserves the allowed note-taking activity instead of forbidding all evidence. EX016 identifies the storage arrangements; EX025 explains why review material can create exposure of its own. No phone configuration, encryption test, storage audit or new retention period is claimed. The proposed phone is a hypothetical alternative, not an event added to Juniper.",
+      "source": "Chapter 2, section 2.2 Safe handling during review; Concepts — the signed page decides, a copy counts as a look, What may she keep? row; Decision flow — look, copy, or keep, storage branch; general Worked example; Worked results (#worked-results; EX016, EX025)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "A colleague asks for only a yes-or-no answer about a neighbour's prescription collection. What should Sofia do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Look it up because a short answer exposes less than the full prescription"
+        },
+        {
+          "id": "b",
+          "text": "Refuse the lookup and record the request; a yes-or-no question still requires excluded access"
+        },
+        {
+          "id": "c",
+          "text": "Open the record privately and decide afterwards whether any information should be shared"
+        },
+        {
+          "id": "d",
+          "text": "Ask another colleague to perform the same lookup so Sofia does not open it herself"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.3 refuses the neighbour request because it lacks a work reason and would misuse access. Narrowing the eventual answer does not make the underlying individual-record lookup part of the review. Keeping the lookup private or passing it to someone else does not resolve that defect. EX017 supports refusal, and the Data table requires recording the request. The log records what was asked, not the neighbour's collection status. The chapter supplies no lookup result, patient name, justified exception or permission from the neighbour, and this question invents none.",
+      "source": "Chapter 2, section 2.3 When asked to go further, neighbour paragraph; Data — five requests against the signed page, neighbour row; general Worked example; Worked results (#worked-results; EX014, EX017)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "For the delivery driver's phone, which sequence preserves the case's authorization boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner discusses it with the driver and adds it in writing before Sofia looks"
+        },
+        {
+          "id": "b",
+          "text": "Sofia inspects first because the owner's spoken request already amends the signed scope"
+        },
+        {
+          "id": "c",
+          "text": "Sofia documents what she inspected and asks the owner to approve it retrospectively"
+        },
+        {
+          "id": "d",
+          "text": "The driver's conversation replaces a written addition and permits any later phone inspection"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX018 states that the owner added the delivery phone to the scope in writing after speaking with the driver. The Concepts table makes the order explicit: the addition precedes the look. A spoken request, conversation alone or retrospective note does not provide the written boundary used in the case. Adding this item is not unrestricted permission for unrelated phone content or future reviews. The narrative's written addition is preserved without inventing its date, exact wording, findings on the device or a new inspection. This is organizational permission in a synthetic exercise, not proof of consent or legal compliance.",
+      "source": "Chapter 2, section 2.3, delivery-phone paragraph; Errors and limits; Concepts — the signed page decides, a copy counts as a look, The ask grows row; Data — five requests against the signed page, driver row; Worked results (#worked-results; EX018)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "At the unlocked box in EX054, which report and conduct stay within Sofia's scope?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read the copies to identify customers, then send the names with the report"
+        },
+        {
+          "id": "b",
+          "text": "Move the box first and treat its new location as the original finding"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a completed investigation before telling the owner about the exposed records"
+        },
+        {
+          "id": "d",
+          "text": "Report place, time and what she saw that day; do not move or read the copies"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX054 requires the three observed facts and excludes two additional actions: moving and reading. Section 2.4 sends that same-day report to the owner and Mr. Patel. Discovering exposure does not grant Sofia authority to inspect prescriptions or relocate them. Waiting for a completed investigation would delay the report that enables the responsible people to assess the problem. The response supplies categories of facts, not an invented room name, clock time, customer or medicine. Same-day internal reporting is the fictional procedure here, not a legal notification deadline attributed to either GDPR or LGPD.",
+      "source": "Chapter 2, section 2.4 Reporting problems; Concepts — the signed page decides, a copy counts as a look, She finds exposed records row; Data — five requests against the signed page, box row; Apply EX054; Worked results (#worked-results; EX019, EX020, EX021, EX054)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What does the factual storeroom report enable, without proving either a breach or the absence of one?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A finding that every prescription was read by an unauthorized person"
+        },
+        {
+          "id": "b",
+          "text": "A conclusion that no breach occurred because Sofia left the records untouched"
+        },
+        {
+          "id": "c",
+          "text": "Assessment by the business of whether a breach occurred and whether notification is needed"
+        },
+        {
+          "id": "d",
+          "text": "An assumption that notification was completed when Mr. Patel recorded the event"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.4 and EX023 describe the report as input to a judgment, not the judgment itself. An unlocked room presents a finding to assess; it does not state who accessed which records. Sofia's restraint prevents her adding exposure but does not establish what others did. Mr. Patel's event record is also not a notification receipt. The book reports neither the final breach assessment nor a completed external notification in this passage. The question preserves that uncertainty and the responsible decision path, without importing statutory thresholds, deadlines or a real incident into Juniper's synthetic narrative.",
+      "source": "Chapter 2, section 2.4, factual reporting, assessment and event-record sentences; general Worked example; Apply EX054; Worked results (#worked-results; EX019, EX021, EX023, EX054)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which progress note matches the owner's narrated response to the prescription copies?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The room was locked and shredding arranged; completed destruction is not established by that arrangement"
+        },
+        {
+          "id": "b",
+          "text": "Every prescription copy was destroyed, because arranging shredding proves execution"
+        },
+        {
+          "id": "c",
+          "text": "Sofia selected the expired records and shredded them under the original review scope"
+        },
+        {
+          "id": "d",
+          "text": "The room stayed unlocked because the planned shredding replaced the need to secure it"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX022 reports two different actions: the owner locked the room and arranged secure shredding of expired copies. The first is narrated as done; the second is an arrangement, not a reported destruction result. That distinction does not erase the locking or assign Sofia the handling that EX020 excludes. The passage gives no completed shredding date, receipt or authority for Sofia to decide which copies are expired. This is a bounded reading of the owner's response, not a new retention rule or a claim that the whole incident was resolved. Review notes and prescription copies are different objects.",
+      "source": "Chapter 2, section 2.4, owner-response sentence; general Worked example; contrast with the no-handling rule in Apply EX054; Worked results (#worked-results; EX020, EX022, EX054)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "How should Sofia encourage staff cooperation without turning the review into a dossier of personal opinions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Promise unrestricted scrutiny of colleagues because staff records are not customer records"
+        },
+        {
+          "id": "b",
+          "text": "Explain what she is checking and why, focusing on processes rather than subjective judgments about individuals"
+        },
+        {
+          "id": "c",
+          "text": "Keep the purpose secret and record suspected character flaws to make staff report problems"
+        },
+        {
+          "id": "d",
+          "text": "Omit the authorized staff-access review because recognizing privacy prevents any review of staff data"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.5 pairs openness about the review with avoiding opinions about individuals. EX026 connects cooperation to improvement rather than blame; EX024 reminds learners that staff are data subjects too. GDPR Article 4(1) and LGPD Article 5(I) define personal data by its relation to an identifiable person, not by whether that person is a customer or employee. This does not authorize unrestricted staff scrutiny or cancel the specific access review already allowed. The two laws remain separate; no employment-law conclusion, employee complaint or successful cooperation measurement is supplied by the synthetic case.",
+      "source": "Chapter 2, section 2.5 Respecting staff; section 2.1, staff-access permission; general Worked example; Worked results (#worked-results; EX024, EX026). Definition boundary only: GDPR Article 4(1), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(I), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    }
+  ]
+}
