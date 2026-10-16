@@ -9,7 +9,7 @@
   "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
   "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
   "source_anchor": "ch-12",
-  "source_sha256": "9936f2bdf4ddd5ede7e9c19408513f3c6787da134d75088f7512bb5b3e6859c1",
+  "source_sha256": "d3fa0113f0c2097dce8364da61eadfd0a93202ffe92d7c312d8ce55e3d1b148f",
   "case_note": "Millbrook Hospital, its assets, report, ratings and management decisions are fictional. Hypothetical review records do not add observations to the case. Potential clinical consequences are not observed patient harm. Recommendations, funding, implementation and verified completion are distinct. Risk acceptance belongs to authorised hospital management, not automatically to the analyst or contractor. No formal IEC 62443 assessment or certification is claimed, and no question authorises changes to real OT. The source hash covers the stripped ch-12 text ending before the worked-results anchor, excluding that appendix anchor.",
   "questions": [
     {
