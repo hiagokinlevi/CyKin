@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 12,
+  "source_anchor": "ch-12",
+  "source_sha256": "7dc5f34655e3ed90c3ec0201e9ffa5331b17b37d5edabaf4dd03eebb82ba9910",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, the owner names the 11:40 page for this sitting. Which claim remains unestablished?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The page may be read within this exercise"
+        },
+        {
+          "id": "b",
+          "text": "The page covers every relevant Room 4 booking"
+        },
+        {
+          "id": "c",
+          "text": "The page contains two displayed booking rows"
+        },
+        {
+          "id": "d",
+          "text": "SYN-002 names Room 2 at 15:00"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Naming supplies limited source authority, not a guarantee of complete coverage. The page and its two rows are supplied; SYN-002 positively identifies Room 2 / 15:00. Nothing establishes that every relevant Room 4 booking would appear. That missing completeness claim prevents a vacancy inference without making the page unauthorized or all its contents unusable. EX028 separates those questions. NIST CSF 2.0 discusses managing permissions and authorizations as a general outcome; it does not certify this fictional page's completeness or define the library's booking procedure.",
+      "source": "Chapter 12, §12.1 \"Authority is not the same claim as completeness\", opening paragraphs; §12.4 \"Source completeness is a separate claim from source approval\"; EX028, independent extension and expanded query-completeness record. General principle only: NIST CSF 2.0, Appendix A, PR.AA-05, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q02",
+      "prompt": "For Room 4 / 15:00, how do the two printed rows match the required room-and-start pair?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One match: SYN-002 has the requested start"
+        },
+        {
+          "id": "b",
+          "text": "Two matches: both rows share the approved page"
+        },
+        {
+          "id": "c",
+          "text": "One match: SYN-001 establishes the later room state"
+        },
+        {
+          "id": "d",
+          "text": "Zero matches: SYN-001 fails both fields; SYN-002 fails room"
+        }
+      ],
+      "correct": "d",
+      "explanation": "SYN-001 is Room 2 / 14:00, so neither field matches Room 4 / 15:00. SYN-002 is Room 2 / 15:00, so only its start matches. The required comparison uses both fields together, yielding zero matches among the two displayed rows. Sharing a heading supplies no additional match, and an earlier row does not establish a later slot's state. This is a count of the supplied page, not a search of a real reservation store. EX028 leaves the unmatched request pending rather than inventing a conflict or vacancy.",
+      "source": "Chapter 12, §12.1, room-and-start comparison; §12.6 \"Worked contrasting cases and negative controls\", Case A and negative control 1; EX028, task, worked result and Room 4 / 15:00 comparison row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "After finding no Room 4 / 15:00 row, which reply stays useful without offering a room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This page cannot establish availability; I can record the request as pending"
+        },
+        {
+          "id": "b",
+          "text": "The slot is probably free because the page was approved"
+        },
+        {
+          "id": "c",
+          "text": "The same 15:00 entry means Room 4 is taken too"
+        },
+        {
+          "id": "d",
+          "text": "I can hold Room 4 now and verify it later"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The first reply reports the page's limit and offers the permitted continuity action. A pending request is not a hidden booking, temporary hold or promise. Approval alone does not supply coverage, and SYN-002 concerns another room, so it cannot establish a Room 4 conflict. Softening an unsupported offer to probably free still adds a vacancy claim. The chapter supplies no completed transaction or authority to hold the slot. EX028 requires no offer and no personal data; the request remains pending while the source and booking questions are unresolved.",
+      "source": "Chapter 12, §12.1, spoken reply; §12.2 \"Worked example\", first proposed decision; §12.3 \"What silence still leaves open\"; EX028, rubric and second expanded worked sentence."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Room 4's availability is unresolved. What does the same page still establish for Room 2 at 15:00?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both rooms must be treated as free because no full schedule is supplied"
+        },
+        {
+          "id": "b",
+          "text": "No room-state answer is possible anywhere on an incomplete page"
+        },
+        {
+          "id": "c",
+          "text": "SYN-002 supports already booked for that exact pair in this sitting"
+        },
+        {
+          "id": "d",
+          "text": "SYN-001 at 14:00 proves Room 2 becomes free at 15:00"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A positive matching confirmed row and an absent row have different evidential force. SYN-002 supports the bounded already-booked reply for Room 2 / 15:00; Room 4's missing match does not cancel it. Conversely, the page's limited coverage does not erase the specific evidence it does contain. SYN-001 concerns 14:00 and supplies no duration or release rule for 15:00. EX028 preserves both conclusions: Room 4 stays pending, while Room 2 / 15:00 remains booked. This establishes neither complete building-wide coverage nor authority to reallocate an existing reservation.",
+      "source": "Chapter 12, §12.2, Room 2 reopening proposal; §12.5 \"A precise predicate for an offer, not a guess\", comparison table and asymmetry paragraph; §12.7, false-negative example; EX028, fourth worked sentence and Room 2 / 15:00 comparison row."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which original action produced ALLOW, without supplying a Room 4 reservation or a row on the 11:40 page?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A completed Room 4 booking at 15:00"
+        },
+        {
+          "id": "b",
+          "text": "The 11:45 mark-pending proposal in the fixed four-action log"
+        },
+        {
+          "id": "c",
+          "text": "The separately imagined Room 4 substitution, executed as the published run"
+        },
+        {
+          "id": "d",
+          "text": "The owner's approval of the new page, added to that log"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The fixed log associates ALLOW with the 11:45 proposal to mark a request pending. It is not a reservation receipt or a printed booking row. Chapter 4's separately discussed Room 4 input change was hypothetical, not the action that produced the logged ALLOW. The owner's naming of the later page is not an additional input in that old run. EX028 keeps each label attached to its actual scope and input. Neither the historical permission to record a request nor the counterfactual label establishes vacancy on the 11:40 page.",
+      "source": "Chapter 12, §12.2, opening paragraph; §12.6, negative control 2; EX028, negative controls and third expanded worked sentence."
+    },
+    {
+      "id": "Q06",
+      "prompt": "How does the new zero-match page query affect the published Chapter 4 tally?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UNKNOWN increases because Room 4's availability is unknown"
+        },
+        {
+          "id": "b",
+          "text": "REFUSE is cleared because the source is now newer"
+        },
+        {
+          "id": "c",
+          "text": "ALLOW becomes a confirmation because the page has no matching row"
+        },
+        {
+          "id": "d",
+          "text": "It leaves the tally unchanged; the query is not another logged action"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The page query is not a fifth action in the historical log. Its unmeasured availability does not become the classifier's UNKNOWN count, and the later page does not rewrite the 09:00-based REFUSE. The line stays STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. ALLOW still concerns pending intake, not confirmation. EX028 requires retaining that exact census without altering inputs or launching the program again. This question interprets the published result and reports no new run, cancellation, booking operation or recovery outcome.",
+      "source": "Chapter 12, §12.3, second paragraph; §12.6, negative control 2; §12.2, closing note; EX028, safe condition, rubric and third expanded worked sentence."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Hypothetical later page: its heading says complete, but cutoff and refresh behavior are unverified. What follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the request pending; the heading does not verify relevant coverage and currency"
+        },
+        {
+          "id": "b",
+          "text": "Treat its claim as proof that all Room 4 bookings are current"
+        },
+        {
+          "id": "c",
+          "text": "Offer the slot because a later page must include every prior change"
+        },
+        {
+          "id": "d",
+          "text": "Declare a database defect because no synchronization receipt was supplied"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Case C makes a completeness label a claim to evaluate, not a successful test. Without evidence of the relevant scope, cutoff and update behavior, an absent row cannot establish a current absence of conflict. Being newer does not resolve those gaps, while missing evidence does not prove a database defect. The pending state therefore remains appropriate. This is an explicitly hypothetical comparison; Chapter 12 releases no such later page or verification receipt. EX028 allows conditional reasoning but not its conversion into a supplied fact, authorized offer or completed booking.",
+      "source": "Chapter 12, §12.4, completeness definition and open-world distinction; §12.6, Case C; EX028, independent extension and final conditional-test paragraph in the worked answer."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Hypothetical approved source: complete and current for Room 4 / 15:00, with no conflict. What remains separate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing: the first pending request is automatically assigned the slot"
+        },
+        {
+          "id": "b",
+          "text": "Only announcing the reservation that the zero-match check already created"
+        },
+        {
+          "id": "c",
+          "text": "Authority to offer or hold, plus an authorized booking operation and its outcome"
+        },
+        {
+          "id": "d",
+          "text": "No further evidence is possible because missing rows can never support absence"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Under the expressly assumed complete, current and authorized scope, no conflicting row can support a bounded no-conflict finding. It is therefore wrong to reject every absence inference regardless of evidence. But that finding neither grants permission to offer or hold the slot nor performs a booking. An authorized operation and reliable result remain distinct. The actual two-row page does not satisfy the hypothetical premise. EX028's worked answer retains these separate requirements without supplying an automatic allocation rule, later artifact, transaction receipt or new case outcome.",
+      "source": "Chapter 12, §12.4, closed-world contrast; §12.5, conceptual prerequisites and separate transaction paragraph; §12.6, Case B; EX028, independent extension and worked conditional-test paragraph."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The page is silent about Room 4. Which follow-up respects the exercise instead of manufacturing evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a Room 4 row so the named page becomes complete"
+        },
+        {
+          "id": "b",
+          "text": "Preserve the page, keep the request pending and ask the owner what evidence is needed"
+        },
+        {
+          "id": "c",
+          "text": "Retype the printout time and use a different verdict as a booking receipt"
+        },
+        {
+          "id": "d",
+          "text": "Consult the live site because an evidence gap authorizes read-only access"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The appropriate follow-up preserves the two printed rows and records what remains unknown. Adding a row alters the evidence rather than verifying completeness; changing a model input obtains no source or transaction authority. The exercise also excludes a live-site lookup, even when a real answer would be convenient. Asking for an approved, sufficiently current and complete source is a request for evidence, not a claim that one arrived. EX028 keeps the request pending and the program closed, with no invented identity, vacancy or booking operation.",
+      "source": "Chapter 12, §12.2, handwritten-row and live-site proposals; §12.6, negative control 3; §12.7, evidence-ledger decision; EX028, safe condition and expanded Room 4 missing-evidence column."
+    },
+    {
+      "id": "Q10",
+      "prompt": "If a separately reviewed later source changed the finding, how should this checkpoint's zero-match note be handled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Overwrite pending with confirmed as if the later evidence had already been available"
+        },
+        {
+          "id": "b",
+          "text": "Delete the old note because a changed finding makes its original observations false"
+        },
+        {
+          "id": "c",
+          "text": "Keep the later finding out of the record to avoid disagreeing with the first page"
+        },
+        {
+          "id": "d",
+          "text": "Preserve the original note and record the new source and decision separately"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 12.7 preserves what was known at each checkpoint. A later result belongs to a new, versioned decision, not silent rewriting or concealment. The original observation of zero matches on two displayed rows can remain accurate even if a later source answers a broader question. Nothing here supplies that later source or a confirmed transaction. EX028 keeps hypothetical additional evidence separate from the released page. NIST SP 800-61 Rev. 3 supports integrity and provenance of records as a general principle; it does not establish a Harbor Library incident or prescribe this classroom ledger.",
+      "source": "Chapter 12, §12.7 \"Evidence ledger and a decision another learner can challenge\", paragraph after the ledger; §12.5, contradictory-record limit; EX028, expanded query-completeness record and conditional-test boundary. General evidence principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    }
+  ]
+}
