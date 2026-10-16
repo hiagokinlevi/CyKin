@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 6,
+  "source_anchor": "ch-06",
+  "source_sha256": "8681a1218478462651bbb3d0df725be4bdc93063be20b428c9bd19347ec29cb8",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "How can the original ten-name print and the later five-field form both be accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The newer form automatically changes the input used by the earlier run"
+        },
+        {
+          "id": "b",
+          "text": "One of the two counts must be discarded because a course can have only one count"
+        },
+        {
+          "id": "c",
+          "text": "They describe different artifacts at different checkpoints, so both records can stand"
+        },
+        {
+          "id": "d",
+          "text": "The original ten names must represent two copies of the five-field form"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 6.1 identifies two sources: the original synthetic input and a later sign-up form. The print counts the former; observing five fields describes the latter. Their different counts do not make either record false, and the later form does not rewrite an earlier execution. Nothing says that the ten names were duplicated. EX060 rejects replacing the historical print, not the observation that the form was shortened. This answer preserves both facts without adding a run, a calendar date or a new form inspection.",
+      "source": "Chapter 6, section 6.1 The form changed. The first file did not., opening sentences; section 6.2 Worked example, first two rows; Apply EX060; Worked results (#worked-results; EX060)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "What does 50% mean in the retained ten-name laboratory result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Five of the ten collected field names were outside the supplied purpose union"
+        },
+        {
+          "id": "b",
+          "text": "Five of the five fields in the later form were unnecessary"
+        },
+        {
+          "id": "c",
+          "text": "Half of Juniper's customers had their records exposed"
+        },
+        {
+          "id": "d",
+          "text": "Half of all possible purposes were found to be unlawful"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The published input has ten collected names and five absent from the union, so its fraction is 5/10, or 50%. The numerator and denominator belong to the same input. Replacing ten with the later form's five mixes artifacts. The computation counts neither customers nor legal findings. EX060 preserves that original proportion. Chapter 4 supplies the collected and unneeded expressions as technical context, not a new measurement performed in Chapter 6 or a percentage reduction in privacy risk.",
+      "source": "Chapter 6, section 6.1, original-list description; section 6.2, first row and Synthetic case note; Apply EX060; Worked results (#worked-results; EX060). Supplementary computation: Chapter 4, Lab — Loyalty app fields versus stated purposes, collected/unneeded and final print."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Why is the claim \"phone was collected, therefore it was needed\" wrong for the original run?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The program deletes phone before deciding whether it belongs to a purpose"
+        },
+        {
+          "id": "b",
+          "text": "Every field on the original form is accepted as necessary by definition"
+        },
+        {
+          "id": "c",
+          "text": "Phone is absent from the original input, so it receives no classification"
+        },
+        {
+          "id": "d",
+          "text": "Being in collected and being in the purpose union are separate tests; phone fails the latter"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Phone is one of the original collected names, but none of the supplied purpose sets includes it. The original output therefore marks phone NOT NEEDED. Presence describes what was collected; membership supplies the laboratory's necessity predicate. The code does not delete the field, and later shortening does not change this historical mark. Section 6.2 explicitly rejects the opposite claim. This is a result under the given inputs, not a universal statement that a phone number can never serve another properly assessed purpose.",
+      "source": "Chapter 6, section 6.1, rejected names; section 6.2 Worked example, phone row; Apply EX060; Worked results (#worked-results; EX060). Supplementary mechanism: Chapter 4, Lab, collected/needs and published phone mark."
+    },
+    {
+      "id": "Q04",
+      "prompt": "If all you know about a proposed test list is that it has five names, can you infer zero unneeded names?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; any list of five names is identical to the observed five-field form"
+        },
+        {
+          "id": "b",
+          "text": "No; its names must be compared with the purpose union, not inferred from its length"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the purpose union accepts every list shorter than the original ten-name list"
+        },
+        {
+          "id": "d",
+          "text": "No; every five-name list necessarily contains one of the rejected names"
+        }
+      ],
+      "correct": "b",
+      "explanation": "A count alone does not identify the list's members. The Chapter 4 predicate examines each name against used; it does not accept or reject a list merely because its length is five. A five-name list could differ from the observed form without either zero or a positive failure count being established here. This hypothetical supplies no new list or output. Section 6.1 and EX060 reject an unsupported replacement result, while Errors and limits leaves later failure possible. No claim is made that the actual form changed again.",
+      "source": "Chapter 6, section 6.1, unsupported five/zero proposal; Errors and limits; Apply EX060; Worked results (#worked-results; EX060). Supplementary predicate: Chapter 4, Lab, unneeded = [f for f in collected if f not in used]."
+    },
+    {
+      "id": "Q05",
+      "prompt": "A classmate derives five remaining names by subtracting five from ten. What kind of evidence is that?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arithmetic about a proposed change, not a receipt that the program ran on a new list"
+        },
+        {
+          "id": "b",
+          "text": "A recorded execution that can replace the published output without further evidence"
+        },
+        {
+          "id": "c",
+          "text": "Evidence that the vendor removed every unnecessary value from its live systems"
+        },
+        {
+          "id": "d",
+          "text": "A mathematical impossibility because the original result must never be discussed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The subtraction is valid arithmetic, but performing it is not executing the program. Even a plausible prediction needs to remain labelled as a prediction rather than the published result of a new input. Section 6.1 makes this distinction explicitly. EX060 refuses both substituted numbers as a replacement print, not because subtraction itself is forbidden. The calculation supplies no execution, output capture, vendor change or inspection of stored values. The observed later form remains a separate fact, and the original laboratory line stays intact.",
+      "source": "Chapter 6, section 6.1, subtraction and unchanged published lines; section 6.2 Worked example, five/zero row; Apply EX060 and its rubric; Worked results (#worked-results; EX060)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "An editor wants to delete rejected names from collected so the teaching file looks finished. What should Sofia preserve?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the shortened list, because removing evidence makes the earlier result easier to read"
+        },
+        {
+          "id": "b",
+          "text": "The old output with a silently replaced input, because the printed numbers would remain visible"
+        },
+        {
+          "id": "c",
+          "text": "The original input and its published output together, rather than silently changing their relationship"
+        },
+        {
+          "id": "d",
+          "text": "Neither input nor output, because an updated form invalidates every earlier laboratory record"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The historical print describes the original input. Keeping its numbers while silently replacing collected would leave a misleading relationship between evidence and explanation. Deleting both would also discard a valid result. Section 6.2 rejects shortening the teaching file for appearance, and EX060 instructs the learner not to edit the script. A separately identified future test is a different matter; it is not a reason to overwrite this record. No code or manuscript edit is performed by the question.",
+      "source": "Chapter 6, learning outcome 3; section 6.1, final sentence; section 6.2 Worked example, collected-edit row; Apply EX060; Worked results (#worked-results; EX060). Supplementary artifact: Chapter 4, original collected list and verified output."
+    },
+    {
+      "id": "Q07",
+      "prompt": "If someone later runs the script on a new list, how should that result relate to the original print?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It should replace the old result because the latest run makes historical results untrue"
+        },
+        {
+          "id": "b",
+          "text": "It should be recorded now as successful because the chapter permits a future run"
+        },
+        {
+          "id": "c",
+          "text": "It cannot be recorded at all because preserving the original forbids every future test"
+        },
+        {
+          "id": "d",
+          "text": "It should have its own result entry; this chapter supplies no such execution or output"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 6.1 expressly allows a run on a new list to receive its own line, while stating that this lesson does not perform that run. Preserving evidence does not prohibit later testing, and permitting a hypothetical test does not prove it happened. A genuine later entry must describe its own input and observed result rather than overwrite or borrow the old print. EX060 keeps the historical 10/5/50% result. This conditional question supplies no new list, run date, successful outcome or execution receipt.",
+      "source": "Chapter 6, section 6.1, sentences beginning \"If someone runs\" and \"This lesson does not perform\"; section 6.2, Synthetic case note; Apply EX060; Worked results (#worked-results; EX060)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Does retaining purchase_history as a needed name establish that its stored values contain no medicine names?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; needed is the program's declaration that the field values were inspected and cleaned"
+        },
+        {
+          "id": "b",
+          "text": "No; the demonstrated membership test does not inspect values within that field"
+        },
+        {
+          "id": "c",
+          "text": "Yes; reducing the number of form fields automatically removes medicine values from retained fields"
+        },
+        {
+          "id": "d",
+          "text": "No; the needed mark proves that the retained field currently contains medicine data"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Chapter 4's code checks names against the purpose union and has no operation for reading values inside purchase_history. Its mark therefore establishes neither clean contents nor the presence of a medicine. Chapter 6 preserves the output of that bounded test; it does not broaden what the test measured. The later form's size also supplies no value-level inspection. This is supplementary mechanism analysis, not a new export finding, patient detail or content test carried out for EX060.",
+      "source": "Chapter 6, section 6.1, scope of the script's print; section 6.2, retained-output row; Apply EX060; Worked results (#worked-results; EX060). Supplementary technical boundary: Chapter 4, Lab and Concepts — the script tests names, not values."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which conclusion about lawfulness is supported by the chapter's five-field observation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Exactly five fields makes a form lawful for every possible business purpose"
+        },
+        {
+          "id": "b",
+          "text": "Keeping the old print proves that the later form is unlawful for every purpose"
+        },
+        {
+          "id": "c",
+          "text": "No general lawfulness conclusion follows from the field count or the preserved laboratory result"
+        },
+        {
+          "id": "d",
+          "text": "The observer may treat a matching field name as permission for any later use"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits explicitly declines to call the five-field form lawful for every purpose. Neither a smaller count nor a retained historical print performs that assessment. The opposite universal claim of unlawfulness is equally unsupported. EX060 settles which program result may be reported, not consent, permission or legal compliance. This question tests the manuscript's stated evidential limit; it supplies no statutory test or legal advice and does not evaluate a real pharmacy.",
+      "source": "Chapter 6, Errors and limits, final sentence; section 6.1, later-form versus original-print distinction; Apply EX060; Worked results (#worked-results; EX060). The question concerns the lesson's limit, not a new legal determination."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The chapter warns that a later form can fail if a rejected name reappears. What may be recorded now?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That possibility remains open; the warning itself establishes no actual return or permanent pass"
+        },
+        {
+          "id": "b",
+          "text": "Phone has definitely returned, because the chapter mentions the possibility of reappearance"
+        },
+        {
+          "id": "c",
+          "text": "Every future form is guaranteed clean because the two-week form had five fields"
+        },
+        {
+          "id": "d",
+          "text": "All five rejected names returned together and a new failure count was measured"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The warning describes a possible later development, not an observed change in this lesson. It also prevents turning one form check into permanent assurance. No particular name's return, new count or later inspection is established by that sentence. EX060 preserves the original print while leaving unsupported future claims unwritten. Chapter 18 is mentioned by the source as later reading; its events are not imported into this bank. The Chapter 5/index/Chapter 7 links remain navigation, not evidence that another test occurred.",
+      "source": "Chapter 6, Errors and limits, first sentence; section 6.1, stated observations only; Continue studying; Apply EX060; Worked results (#worked-results; EX060)."
+    }
+  ]
+}
