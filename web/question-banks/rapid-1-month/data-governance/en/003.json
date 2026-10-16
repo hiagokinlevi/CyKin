@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "data-governance",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "fd11ccaa8e37003af6e3a545a503b6058b115dc0c9df59ca26d6b9551037c8af",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why is a present, well-formed email not enough to call a newsletter row accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence and format establish accuracy without any comparison to the person who signed up"
+        },
+        {
+          "id": "b",
+          "text": "Those checks do not establish that the address belongs to the person who signed up"
+        },
+        {
+          "id": "c",
+          "text": "A valid-looking address removes the need to check repeated entries elsewhere in the list"
+        },
+        {
+          "id": "d",
+          "text": "Correct-looking format establishes permission for every future use of the address"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 3.1 asks separate questions. An email value addresses completeness; looking like an address addresses the chapter's basic validity test. Accuracy concerns whether it belongs to the person who signed up. Passing the first two tests does not answer that third question or eliminate duplicate review. None of those quality checks, by itself, establishes permission for another use. EX027 and the Concepts table preserve these distinctions. This is an interpretation of Copperleaf's synthetic teaching example, not a claim that an actual address was verified, a person identified or a mailing authorized.",
+      "source": "Chapter 3, §3.1 Quality in plain words; Concepts — quality, place, and the other organisation, Complete/Valid/Accurate/Duplicate rows; general Worked example; EX027/EX028 and their Worked results (#worked-results; EX027, EX028)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Hypothetically, the same signer's accurate email is entered twice. Which response addresses the remaining quality problem?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat two complete rows as two customers even though the signer is stipulated to be the same"
+        },
+        {
+          "id": "b",
+          "text": "Correct the email's format and assume that doing so removes the repeated entry"
+        },
+        {
+          "id": "c",
+          "text": "Delete every record sharing that person's first name without checking whether it is a repeat"
+        },
+        {
+          "id": "d",
+          "text": "Review the duplicate entry; a value can be accurate while the same record is repeated"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Accuracy of a value does not make every occurrence a distinct person. The question explicitly stipulates a repeated entry for the same signer, so the duplicate check matters even when neither row is blank or malformed. Format correction alone does not address repetition. Matching first names would also be an unsupported deletion rule: the chapter supplies no identity-matching algorithm. EX028 adds duplicate review to the other quality questions because repeated records can waste effort and lead to repeated messages. This hypothetical comparison creates no new list, deletion or observed duplicate mailing in Copperleaf.",
+      "source": "Chapter 3, §3.1, fourth quality question and possible repeated-message consequence; Concepts — quality, place, and the other organisation, Duplicate row; general Worked example; EX027/EX028 and their Worked results (#worked-results; EX027, EX028)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A proposed map lists apps but omits paper records and who can see each location. What should be added?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Paper and digital locations, who can see the data, and the protection at each place"
+        },
+        {
+          "id": "b",
+          "text": "Only the supplier logos, because an app's presence on a map establishes approved access"
+        },
+        {
+          "id": "c",
+          "text": "Only locations already believed safe, leaving forgotten files outside the map"
+        },
+        {
+          "id": "d",
+          "text": "A blanket statement that every listed place is protected, instead of checking its access"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 3.2 maps places, not merely products. It includes paper, services, folders and the old laptop spreadsheet, with visibility and protection recorded for each. The Data table makes the paper sheet's protection conditional on keeping it out of customers' reach; listing it is not proof that it is protected. Omitting a forgotten file would hide the place that EX029 requires the learner to recognize. Adding labels or supplier logos cannot substitute for these questions. The proposed map is hypothetical, and no new inspection, access reading or complete real-world inventory is claimed.",
+      "source": "Chapter 3, §3.2 Where data live; Data — where the data sit after the map, column headings and Paper sign-up sheet/Old laptop spreadsheet rows; Decision flow — a supplier or a second copy, map branch; EX029 and its Worked result (#worked-results; EX029)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Before carrying out the agreed deletion of the old spreadsheet, which condition must Kwame check?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That nobody recalls opening it recently, without examining whether it holds needed information"
+        },
+        {
+          "id": "b",
+          "text": "That every loose customer-data copy can be removed under the same file-specific decision"
+        },
+        {
+          "id": "c",
+          "text": "That this spreadsheet holds nothing the café still needs before deleting it"
+        },
+        {
+          "id": "d",
+          "text": "That a deletion note can be written first so the check appears complete"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The owner's agreement in section 3.2 is conditional: check that the old spreadsheet contains nothing needed before deleting it. Lack of recent use is the reason to investigate, not a substitute for that check. EX030 states the prerequisite, and the general worked summary later reports the deletion of that file. That completed narrative action does not authorize deleting every loose copy or fabricating a prior check. This question preserves the order and the scope of the example; it supplies no additional deletion receipt, retention deadline or assurance that every storage location is clean.",
+      "source": "Chapter 3, §3.2, old-spreadsheet decision; Data — where the data sit after the map, Old laptop spreadsheet row; general Worked example; EX029/EX030 and their Worked results (#worked-results; EX029, EX030)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "In EX055's cheaper-till scenario, the provider wants its own customer offers. What decision and record follow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept the lower rate and record it as an exception already approved by the owner"
+        },
+        {
+          "id": "b",
+          "text": "Refuse the conflicting use and record the refusal with its date in the notebook"
+        },
+        {
+          "id": "c",
+          "text": "Treat a promise of security as permission for the provider's separate advertising"
+        },
+        {
+          "id": "d",
+          "text": "Send the list first and review the proposed use after the provider's campaign"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The proposed use fails Copperleaf's commitment that the provider use the data only for Copperleaf. A lower rate or a security promise does not replace that separate condition. EX055 requires recording the refusal and date, and the worked example leaves the existing till provider in place. Its invented offer is an exercise in reviewing proposed terms, not evidence of an actual transfer, campaign, contract breach or additional owner approval. The answer applies the café's fictional requirements rather than claiming a universal legal ban on all supplier advertising.",
+      "source": "Chapter 3, §3.3 Suppliers, three commitments; Concepts — quality, place, and the other organisation, Supplier terms row; Worked example — a cheaper till that wants the newsletter; Apply EX055 and its Worked result (#worked-results; EX055); EX032 and its Worked result (#worked-results; EX032)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague treats the paid-app label as proof of security. Which review follows the chapter's actual supplier decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Examine its applicable terms against the café's requirements; price alone does not establish them"
+        },
+        {
+          "id": "b",
+          "text": "Accept any paid subscription because payment guarantees business terms and safe operation"
+        },
+        {
+          "id": "c",
+          "text": "Infer that every free service fails without reading the terms relevant to the proposed use"
+        },
+        {
+          "id": "d",
+          "text": "Use the familiar app first and postpone all supplier review until a problem occurs"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The case changes the messaging version because the personal version lacks the required business terms, not because a price tag itself proves security. Sections 3.3 and the Concepts discussion tie the decision to the three commitments and retention of their text. NIST CSF 2.0 GV.SC-05/06 provide general principles of supplier requirements in agreements and due diligence before formal relationships. They do not make a paid product safe, condemn every free service or certify Copperleaf. EX033's reported switch is a fictional action, not evidence that a real contract or provider was audited.",
+      "source": "Chapter 3, §3.3; Concepts — quality, place, and the other organisation, Supplier terms row and following paragraph; general Worked example; EX032/EX033 and their Worked results (#worked-results; EX032, EX033). General principles only: NIST CSF 2.0, Appendix A, GV.SC-05/GV.SC-06, p. 18, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A supplier's terms promise deletion at contract end. What does keeping that text in the shared folder establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That all copies have already been deleted from every place the supplier controls"
+        },
+        {
+          "id": "b",
+          "text": "That the supplier cannot use the data beyond the promise under any circumstances"
+        },
+        {
+          "id": "c",
+          "text": "That all future staff-membership and payment checks can now be omitted"
+        },
+        {
+          "id": "d",
+          "text": "An available record of the commitment, not proof that the promised action has occurred"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The saved terms allow the commitments to be reread and compared with Copperleaf's rules. A deletion promise is not a deletion result, and the chapter supplies no contract-end event or supplier-wide erasure check. Nor does filing terms replace the separate monthly checks. EX032 describes what terms should commit to, while the worked example evaluates an offer before accepting it. NIST CSF 2.0 GV.SC-05 concerns incorporating requirements into agreements; it does not turn an agreement into observed implementation. No supplier activity, legal compliance result or completed deletion is added to the synthetic case.",
+      "source": "Chapter 3, §3.3, retained terms; Concepts — quality, place, and the other organisation, supplier commitments and rereading paragraph; §3.5, separate checks; Worked example — a cheaper till that wants the newsletter; EX032/EX055 and their Worked results (#worked-results; EX032, EX055). General agreement principle only: NIST CSF 2.0, Appendix A, GV.SC-05, p. 18, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q08",
+      "prompt": "EX056 says the emailed invoice is already entered. Its paper copy has a different date. What happens next?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enter the paper again because a date difference necessarily creates a second payable invoice"
+        },
+        {
+          "id": "b",
+          "text": "Re-enter the email and paper together so both formats have separate payment records"
+        },
+        {
+          "id": "c",
+          "text": "Keep the single email-based entry, mark the paper received, and do not pay it as another bill"
+        },
+        {
+          "id": "d",
+          "text": "Destroy the paper immediately because marking a copy received is the same as authorizing disposal"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The exercise identifies the paper as a copy of the already-entered invoice. Its slightly different date does not establish a second debt. EX056's answer preserves one email-based entry, marks the paper as received and refuses a second payment. Because the email is already entered, 'enter once' is not an instruction to enter it again. Section 3.4 says the café nearly paid twice, not that a duplicate payment occurred. Marking receipt is also not a destruction authorization. This reasoning introduces no new invoice, payment, refund or real supplier transaction.",
+      "source": "Chapter 3, §3.4 Payments and invoices; Concepts — quality, place, and the other organisation, Duplicate row; Decision flow — a supplier or a second copy, duplicate branch; Apply EX056; EX034/EX035/EX056 Worked results (#worked-results; EX034, EX035, EX056)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A proposed monthly checklist checks supplier terms alone. Which set restores the three checks specified in Chapter 3?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Review newsletter duplicates or malformed emails, current group membership, and invoices against payments"
+        },
+        {
+          "id": "b",
+          "text": "Review only the subscription price, the number of apps and whether their logos are familiar"
+        },
+        {
+          "id": "c",
+          "text": "Count invoice copies, then treat that count as proof each payment is matched"
+        },
+        {
+          "id": "d",
+          "text": "Remove last month's duplicate again and assume the messaging group cannot have changed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 3.5 assigns distinct checks to list quality, messaging access and money records. Reading supplier terms alone does not test any of those three current comparisons. Counting documents is not the same as comparing entered invoices with payments, and repeating an earlier correction would not establish current membership. EX036 identifies the membership objective; EX037 locates the dated findings. The proposed checklist is an application exercise, not a new monthly check that has run. No unmatched payment, additional leaver or new duplicate is asserted, and the chapter's short checks are not an organization-wide audit.",
+      "source": "Chapter 3, §3.5 Simple checks, three checks and notebook; Data — where the data sit after the map, Staff messaging/Invoice folder rows; general Worked example; EX028/EX036/EX037 and their Worked results (#worked-results; EX028, EX036, EX037)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The first-month notebook records one duplicate removal and one former member removed. Which report stays within that evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All data are clean and all access is correct because two corrections were recorded"
+        },
+        {
+          "id": "b",
+          "text": "Report the dated findings and actions as recorded, without turning them into complete cleanup"
+        },
+        {
+          "id": "c",
+          "text": "Replace the findings with a generic pass so later reviewers need not see the problems"
+        },
+        {
+          "id": "d",
+          "text": "Treat those actions as proof that no future monthly check can find a problem"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The notebook preserves the date and what was found, including the two actions narrated in section 3.5. EX037 makes it the record kept with the rules. Those entries do not establish that every dataset, permission or payment was checked successfully, and they do not pre-complete later checks. Erasing the findings behind an unqualified pass would remove the evidence that makes the routine useful. The proposed report should retain the scope of the actual entries without inventing a calendar date or an invoice-reconciliation result. Copperleaf is synthetic; no complete cleanup, incident closure or legal compliance is claimed.",
+      "source": "Chapter 3, §3.5, dated findings and first-month examples; Decision flow — a supplier or a second copy, record-date-and-finding step; general Worked example; EX036/EX037/EX038 and their Worked results (#worked-results; EX036, EX037, EX038)."
+    }
+  ]
+}
