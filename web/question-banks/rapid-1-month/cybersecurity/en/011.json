@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 11,
+  "source_anchor": "ch-11",
+  "source_sha256": "d5c146a65e86d2883bf17d8b26e0963dcdd13332e347e59ff6fb411e0eb321c4",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, what changes the evidence from Chapter 10 to Chapter 11?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Another retelling makes the reported refresh independently verified"
+        },
+        {
+          "id": "b",
+          "text": "The owner names a particular page and its heading and rows are inspected"
+        },
+        {
+          "id": "c",
+          "text": "The earlier worker is shown to have read the later page at 11:42"
+        },
+        {
+          "id": "d",
+          "text": "The published classifier imports the 11:40 sheet and changes its output"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Chapter 10 supplied only a report about a possible sheet. Section 11.1 now releases one synthetic page, identifies its authority for this sitting and supplies direct observations of its heading and rows. That is new evidence for the present room-state question, not stronger hearsay. It neither backdates the learner's knowledge nor shows that the earlier worker saw the page. The classifier has not imported anything or run again. EX027 preserves the distinction between the source released here and the historical 09:00-based classification.",
+      "source": "Chapter 11, §11.1 \"What the named page can decide\", opening and observation paragraphs; §11.4, chronology paragraph; EX027, independent extension and expanded worked record, historical-provenance row."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which notebook entry records both source gates for this sitting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner mentioned 11:40; a classmate remembers the booking row"
+        },
+        {
+          "id": "b",
+          "text": "The page displays 11:40 and SYN-002; nobody has designated its use"
+        },
+        {
+          "id": "c",
+          "text": "The owner named the page; its contents are assumed from yesterday's paper"
+        },
+        {
+          "id": "d",
+          "text": "The owner named this page for this exercise; its 11:40 heading and matching SYN-002 row were read"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Gate 1 identifies this exact page as the owner's approved source for this exercise. Gate 2 records direct observations from that page: heading 11:40 and SYN-002 with Room 2, start 15:00, created 10:05 and confirmed status. Remembering a report, viewing an undesignated page or assuming contents from another artifact leaves a gate unmet. The chapter supplies both checks for this sitting, not for every future use. They permit a bounded reading of existing booking state, not creation of a reservation or certification of the underlying printing system.",
+      "source": "Chapter 11, §11.1, page and observations; §11.5 \"Work the two gates against the exact row\", Gates 1–2; EX027, expanded worked record, source-selection and direct-inspection rows."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which row answers the Room 2 / 15:00 question without substituting a different slot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SYN-002: Room 2, start 15:00, created 10:05, confirmed"
+        },
+        {
+          "id": "b",
+          "text": "SYN-001: Room 2, start 14:00, because the room matches"
+        },
+        {
+          "id": "c",
+          "text": "SYN-001: created 08:20, because the oldest booking determines later use"
+        },
+        {
+          "id": "d",
+          "text": "Either row, because a single heading makes their start times equivalent"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The decision requires matching both room and requested start, then reading the relevant status. SYN-002 matches Room 2 / 15:00 and is confirmed. SYN-001 also names Room 2 but has a different start, 14:00. Neither its earlier creation time nor the common page heading extends that row to 15:00. The source supplies no duration rule from which to invent a free hour or an additional conflict. Section 11.6's wrong-row control and EX027's adversarial checks require rejecting that substitution rather than changing the page.",
+      "source": "Chapter 11, §11.1, two-row table and final paragraph; §11.5, Gate 2 and worked comparison; §11.6, negative control B; EX027, negative controls and worked adversarial checks."
+    },
+    {
+      "id": "Q04",
+      "prompt": "What does SYN-002's Created value of 10:05 establish relative to the fixed 09:00 printout?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The room's requested use began at 10:05 rather than 15:00"
+        },
+        {
+          "id": "b",
+          "text": "The original paper acquired the row when the 11:40 sheet appeared"
+        },
+        {
+          "id": "c",
+          "text": "The booking was created after that snapshot, which could not contain the later row"
+        },
+        {
+          "id": "d",
+          "text": "The 11:42 proposal committed a second reservation for the same slot"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Created identifies the synthetic booking's creation time, not the requested start or a later worker action. The 10:05 row postdates the fixed 09:00 snapshot, explaining why the original paper cannot contain it. Reading a later page does not update the earlier artifact retrospectively. The 11:42 item was a proposal classified REFUSE, not a committed second booking. Section 11.6 keeps these times and events separate. EX027 uses the later confirmed row to answer the current exercise question while retaining the old comparison's evidence boundary.",
+      "source": "Chapter 11, §11.1, SYN-002 row; §11.4, relevant-row and historical-result fields; §11.6, opening paragraph; EX027, expanded direct-inspection and historical-provenance rows."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Both source gates pass and SYN-002 is confirmed. Which reply is justified for the present request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 at 15:00 is already booked"
+        },
+        {
+          "id": "b",
+          "text": "The updated source means Room 2 at 15:00 is yours"
+        },
+        {
+          "id": "c",
+          "text": "No room-state answer is possible until the old program is rerun"
+        },
+        {
+          "id": "d",
+          "text": "The later heading makes Room 2 at 15:00 probably available"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The named page and matching confirmed row support an affirmative, limited statement that the slot is already booked. They do not confirm the new request. Calling the slot available reverses the row, while refusing to give any room-state answer ignores evidence the exercise now supplies. No rerun is needed or authorized. Source authorization, evidence of content and authority to create a booking remain distinct. EX027's first two judgments therefore retain the existing reservation without granting, transferring or changing it, and without adding the holder's identity.",
+      "source": "Chapter 11, §11.2 \"Worked example\", first proposed decision; §11.4, three-gate distinction; §11.5, first worked comparison; §11.6, concluding paragraph; EX027, worked result and first two worked sentences."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Hypothetical control: the same page is visible, but the owner has not named it. Which response respects the failed gate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use it for the decision because readable rows supply their own authority"
+        },
+        {
+          "id": "b",
+          "text": "Declare the printed row false because owner approval is missing"
+        },
+        {
+          "id": "c",
+          "text": "Borrow the authority from the earlier oral report without identifying this page"
+        },
+        {
+          "id": "d",
+          "text": "Keep the current decision pending until an appropriate source is approved"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Negative control A removes source authorization while leaving visible content unchanged. A learner may observe the printed text, but cannot treat that page as the designated decision source merely because it is readable. Missing approval does not prove falsity or forgery. The earlier report does not identify and approve this particular artifact either. The appropriate response is to retain the pending decision until the owner approves a suitable source. This is the chapter's hypothetical control, not a claim that the actual Chapter 11 naming failed or that a new test was executed.",
+      "source": "Chapter 11, §11.5, Gate 1; §11.6 \"Preservation of chronology and a meaningful negative control\", negative control A; EX027, negative controls and first worked adversarial check."
+    },
+    {
+      "id": "Q07",
+      "prompt": "How should the original tally be recorded after the named page has been read?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete REFUSE because the later page corrects the old program's source"
+        },
+        {
+          "id": "b",
+          "text": "Keep the exact 09:00-based tally and record the new source decision separately"
+        },
+        {
+          "id": "c",
+          "text": "Add a second ALLOW because the source approval is a new successful booking"
+        },
+        {
+          "id": "d",
+          "text": "Replace the four-action log with the page's two confirmed rows"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The original line remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. It describes proposals evaluated with the fixed 09:00 source, including REFUSE at 11:42. The new page supports a separate bounded conclusion; it does not enter that old log or replace its input records. Retyping 11:40 or rerunning the program would violate EX027's safe condition. NIST SP 800-61 Rev. 3 discusses preserving the integrity and provenance of investigation records; that general discipline supports keeping the histories distinct, not declaring a Harbor Library incident or a new execution.",
+      "source": "Chapter 11, §11.2, opening paragraph and tally row; §11.6, original-run paragraph; EX027, safe condition, third worked sentence and historical-provenance row. General evidence principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which interpretation keeps the old run's ALLOW separate from the new page's confirmed booking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ALLOW records a successful new allocation of Room 2 at 15:00"
+        },
+        {
+          "id": "b",
+          "text": "ALLOW belongs to the hypothetical Room 4 variant, not the fixed log"
+        },
+        {
+          "id": "c",
+          "text": "ALLOW permits the 11:45 mark-pending proposal; it grants no room"
+        },
+        {
+          "id": "d",
+          "text": "ALLOW overrides SYN-002 because a rule label outranks a printed status"
+        }
+      ],
+      "correct": "c",
+      "explanation": "In the fixed four-action log, ALLOW belongs to the 11:45 proposal to mark a request pending. It is not a booking receipt and overrides no existing reservation. The separately discussed Room 4 input change is a hypothetical variant, not the source of that logged ALLOW. Section 11.3 prevents mixing those examples, and the expanded EX027 answer repeats the distinction. The named page now shows SYN-002 already confirmed for Room 2 / 15:00; neither an unrelated rule label nor a hypothetical variant makes that slot available. No new program run is claimed.",
+      "source": "Chapter 11, §11.3 \"What one page cannot settle\", ALLOW paragraph; §11.6, original-run paragraph; §11.2, worked comparison; EX027, expanded worked adversarial checks on ALLOW and Room 4."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The sitting ends and another outage occurs. What authority does this unchanged 11:40 page carry forward automatically?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A standing monthly fallback rule because the owner approved it once"
+        },
+        {
+          "id": "b",
+          "text": "None for the new decision; its own source must be named and checked"
+        },
+        {
+          "id": "c",
+          "text": "Permission to redate the page while keeping the previous approval"
+        },
+        {
+          "id": "d",
+          "text": "Permanent confirmation of the same room and start on every later day"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The grant was limited to this page and this sitting. The old artifact can remain a historical record, but its unchanged appearance does not extend its decision authority to a later date or outage. Negative control C changes the setting and scope, not the ink. Redating the page would not obtain a new approved source, and one booking row establishes no permanent room allocation. Section 11.3 leaves a later request pending until its own source is named and checked. EX027 rejects the monthly rule without inventing the next outage's actual booking state or cause.",
+      "source": "Chapter 11, §11.2, standing-rule row; §11.3, first paragraph; §11.6, negative control C; EX027, fourth worked sentence and approval-limit row."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The slot is answered. A classmate proposes finding the person behind SYN-002 on the live site. What follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read-only access is permitted because the page has already been approved"
+        },
+        {
+          "id": "b",
+          "text": "Announce SYN-002 as the person's identity without opening the site"
+        },
+        {
+          "id": "c",
+          "text": "Use the page's approval as permission to retrieve the missing name"
+        },
+        {
+          "id": "d",
+          "text": "Give only the booked-slot answer; infer no person and keep the live site closed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The page contains synthetic booking identifiers, not personal names. SYN-002 identifies a row and need not be announced to answer the resident's operational question. Naming the page for this sitting grants neither identity-disclosure authority nor permission to consult a real service, even in read-only mode. The relevant row already supports the narrow answer. Section 11.2 rejects both the identity lookup and the live-site proposal; EX027 retains paper-only scope. This does not invent a universal access policy, a real resident, or an incident: it preserves the specific exercise boundary.",
+      "source": "Chapter 11, §11.1, resident-reply paragraph; §11.2, live-site and holder-name rows; §11.5, paragraph after the gates; EX027, safe condition, rubric and expanded resident-reply/approval-limit rows."
+    }
+  ]
+}
