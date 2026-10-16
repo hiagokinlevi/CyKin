@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 19,
+  "source_anchor": "ch-19",
+  "source_sha256": "1598b00e49a0a8acd4a1529d36716ead8e6d76a414dd758083a6784b9097a1be",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What does the owner's 11:55 designation authorize in fictional Harbor Library?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Using all library datasets for tasks related to rooms"
+        },
+        {
+          "id": "b",
+          "text": "Using yesterday's source approvals for today's contact processing"
+        },
+        {
+          "id": "c",
+          "text": "Reading this booking page for the current sitting's room-state questions"
+        },
+        {
+          "id": "d",
+          "text": "Exporting announcement contacts once the booking rows have been checked"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The designation selects one booking source for a bounded purpose and sitting. It does not extend earlier approvals or bring other datasets into scope. The page contains booking fields, not announcement contacts or permission to export them. Checking its rows can support an occupied-slot answer, but cannot authorize a different processing activity. Section 19.4 separates purpose, source scope and processing authority. EX035 preserves that separation even when the page is current; no general staff-data permission or contact authorization has been supplied.",
+      "source": "Chapter 19, §19.1 \"The boundary does not follow the newest sheet\"; §19.4 \"Purpose, source access and data processing are different permissions\", definitions and decision table; §19.2, export request; EX035, task and expanded authority matrix."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A visitor asks about Room 2 and Room 4 at 15:00. Which reply stays within the supplied authority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 at 15:00 is booked, and Room 4 at 15:00 is booked"
+        },
+        {
+          "id": "b",
+          "text": "Both slots are booked by the event subscribers linked to those rows"
+        },
+        {
+          "id": "c",
+          "text": "I cannot give either room's state without permission to export contacts"
+        },
+        {
+          "id": "d",
+          "text": "Both slots are now reserved for you because this page is approved"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Confirmed SYN-002 and SYN-003 support the two existing booked-slot statements. The worker need not announce their internal record IDs and cannot infer a holder's name or subscriber relationship. Withholding contact processing does not require withholding an otherwise supported room answer. Conversely, reading the approved page does not reserve either occupied slot for this visitor. Track A and the EX035 worked reply communicate only the necessary room, start and state. No identity check, booking operation or notification is reported.",
+      "source": "Chapter 19, §19.4, room-state and identity rows; §19.5, steps 1–2 and 5; §19.6 \"Worked two-track reply: a room answer and a referral\", Track A; EX035, rubric and worked spoken reply."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A classmate claims an event subscriber holds SYN-003. What should the learner do with that claimed identity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add it as a likely match because both datasets belong to the library"
+        },
+        {
+          "id": "b",
+          "text": "Write it in pencil until a notification confirms the match"
+        },
+        {
+          "id": "c",
+          "text": "Copy it to SYN-002 as well because both reservations start at 15:00"
+        },
+        {
+          "id": "d",
+          "text": "Do not link or add it; neither a verified mapping nor permission is supplied"
+        }
+      ],
+      "correct": "d",
+      "explanation": "SYN-003 is an internal synthetic booking identifier, not a person mapping. A plausible subscriber-to-booker claim supplies neither verification nor authority to enrich the booking record. Common organizational ownership, a tentative pencil mark and a shared start time do not fill those gaps. Control A rejects the proposed linkage without claiming the two populations could never overlap. EX035 leaves both rows without personal names and permits no contact-list lookup to resolve the assertion. No individual or identity relationship is invented.",
+      "source": "Chapter 19, §19.2, name-addition request; §19.4, final identity-linkage paragraph; §19.6, subscriber shortcut; §19.7, negative control A; EX035, safe condition and expanded identity row."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why is exporting event subscribers to announce bookings more than a different format for the room answer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The later page's timestamp makes the earlier contacts inaccurate"
+        },
+        {
+          "id": "b",
+          "text": "It changes the dataset, audience and processing purpose beyond the approved task"
+        },
+        {
+          "id": "c",
+          "text": "Exporting is prohibited only when the file includes booking IDs"
+        },
+        {
+          "id": "d",
+          "text": "Every booking fact is legally secret regardless of purpose or recipient"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The approved task is answering a precise room-state query from the booking page. Exporting announcement contacts introduces a separate collection, audience and use, not merely a new layout for that answer. Neither the contact data's accuracy nor a universal secrecy rule is established. Removing booking IDs would not create the missing authority. EX035 keeps the export outside scope. NIST Privacy Framework 1.0 CT.PO-P1/P2 provide general authorization and disclosure-policy concepts; they do not approve this use or establish a law for Harbor Library.",
+      "source": "Chapter 19, §19.4, processing definitions and Privacy Framework paragraph; §19.5, step 3; §19.6, event-subscriber shortcut; EX035, expanded export row. General principles only: NIST Privacy Framework 1.0, Appendix A, CT.PO-P1 and CT.PO-P2, p. 23, https://doi.org/10.6028/NIST.CSWP.10"
+    },
+    {
+      "id": "Q05",
+      "prompt": "What does the historical 11:43 OUT OF SCOPE line establish about the contact export?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The contacts were disclosed and a privacy incident was confirmed"
+        },
+        {
+          "id": "b",
+          "text": "A deployed security control intercepted an attempted network transfer"
+        },
+        {
+          "id": "c",
+          "text": "A proposed export was classified outside the exercise; no export was executed"
+        },
+        {
+          "id": "d",
+          "text": "The proposal was approved but delivery to subscribers failed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The line records the fixed classifier's judgment of a proposal. The case supplies no executed export, sent message, production-control interception or failed delivery. Consequently, OUT OF SCOPE is not evidence of an observed privacy breach, nor of approval followed by a transport failure. Section 19.4 and Control D distinguish a verdict from an operation. EX035 preserves the unexecuted proposal and its original label. This neither measures a real library's privacy safeguards nor turns a classroom decision into an incident report.",
+      "source": "Chapter 19, §19.1, original contact proposal; §19.4, proposed-action paragraph; §19.7, negative control D; EX035, negative controls, expanded export row and final sentence on actual disclosure."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A classmate says notification is urgent and everyone would welcome it. Which response respects the current boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propose review by the responsible owner without exporting or claiming an exception"
+        },
+        {
+          "id": "b",
+          "text": "Export only email addresses because urgency removes the need for approval"
+        },
+        {
+          "id": "c",
+          "text": "Treat the helpful purpose as consent from all event subscribers"
+        },
+        {
+          "id": "d",
+          "text": "Stop giving the supported room answers until every subscriber can be contacted"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Urgency and helpful intent do not supply an exception, consent, a legal duty or an instruction from an authorized owner. Using fewer contact fields would still be processing a dataset excluded from this exercise. The useful response is a proposed review route, while the two supported room answers remain available. Control B and EX035 require withholding the export without inventing approval. The chapter does not prohibit every possible real notification; it simply supplies none of the separate authority needed to perform one here.",
+      "source": "Chapter 19, §19.3 \"Notification can be a real job, under a different authority\"; §19.5, steps 4–6; §19.6, Track B; §19.7, negative control B; EX035, expanded referral row."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which internal note correctly distinguishes requesting notification review from approval and dispatch?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Referral prepared; the data owner has therefore approved the contact export"
+        },
+        {
+          "id": "b",
+          "text": "Review proposed for purpose, recipients, fields and release; no export or message has occurred"
+        },
+        {
+          "id": "c",
+          "text": "Notification wording drafted; delivery to the contact list is complete"
+        },
+        {
+          "id": "d",
+          "text": "Owner approval is unnecessary once the note states both rooms are booked"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The unsent note describes what a separately responsible owner would need to review, not what anyone has approved or done. Preparing wording establishes neither authorization nor transmission, and the booking facts cannot replace those checks. Section 19.5 identifies purpose, recipients, necessary fields, authorization, review and delivery evidence as questions for the separate activity. Track B and EX035 keep the referral explicitly unsent. The roles are suggested review routes, not identified Harbor Library officials, recorded approvals or proof that a handoff occurred.",
+      "source": "Chapter 19, §19.5, step 6; §19.6, Track B and draft-versus-sent shortcut; §19.8, unsent internal referral; EX035, expanded referral row and separate unsent internal referral."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Suppose both confirmed booking rows are perfectly accurate. What still prevents using them to contact their holders?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accuracy automatically makes every booking field publicly disclosable"
+        },
+        {
+          "id": "b",
+          "text": "The page's newer time proves its owner also approved identity lookup"
+        },
+        {
+          "id": "c",
+          "text": "An accurate reservation necessarily identifies its holder among event subscribers"
+        },
+        {
+          "id": "d",
+          "text": "The page supplies neither person mappings nor separate contact-processing authority"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Control C holds the row evidence accurate while leaving permission and identity mapping absent. Accurate data can answer one question without permitting another use. A timestamp, an existing reservation and the source owner's naming do not generate a verified person relationship or contact authorization. EX035 therefore retains the booked answers without identifying or messaging holders. CSF 2.0 PR.AA-05 addresses managed authorizations generally; it does not supply the missing local permission or certify any access-control implementation in this fictional exercise.",
+      "source": "Chapter 19, §19.4, source-access versus processing distinction; §19.6, two-track boundary; §19.7, negative control C; EX035, expanded purpose/authority separation. General principle only: NIST CSF 2.0, Appendix A, PR.AA-05, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q09",
+      "prompt": "What happens to the original four-action tally after the newer booking page is accepted and a referral is proposed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "OUT OF SCOPE becomes ALLOW because the current page was approved"
+        },
+        {
+          "id": "b",
+          "text": "UNKNOWN increases to count the proposed referral as a fifth log entry"
+        },
+        {
+          "id": "c",
+          "text": "The tally stays unchanged; neither the page nor the referral alters that fixed log"
+        },
+        {
+          "id": "d",
+          "text": "REFUSE is removed because the newer sheet improves the booking evidence"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The closed log classified its own four proposals. The current source and an unsent referral append no action and retrospectively authorize none. Its exact tally remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. In particular, the 11:43 export proposal remains OUT OF SCOPE, not approved or executed. The later room-state evidence cannot remove REFUSE or recalculate UNKNOWN. EX035 requires preserving the printed census. This question interprets that record without rerunning the program or reporting any operational result.",
+      "source": "Chapter 19, §19.2, label-preservation row and tally paragraph; §19.6, final shortcut; §19.7, negative control D; EX035, rubric, original worked result and full historic classifier in the expanded answer."
+    },
+    {
+      "id": "Q10",
+      "prompt": "How may the NIST Privacy Framework inform this notification question without supplying missing case evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Guide questions about processing purpose and authority without granting local permission"
+        },
+        {
+          "id": "b",
+          "text": "Certify that Harbor Library already has consent because its page was approved"
+        },
+        {
+          "id": "c",
+          "text": "Impose a notification deadline whenever an exercise mentions an unavailable view"
+        },
+        {
+          "id": "d",
+          "text": "Prove that no real library could ever lawfully send a booking notification"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter uses the framework as a vocabulary for responsible review, not a permission receipt or proof of consent. NIST describes it as voluntary and jurisdiction-agnostic, and its FAQ says using it does not ensure compliance. It neither supplies a notification deadline here nor rules out every separately authorized notification in another setting. EX035 leaves the contact proposal unperformed and any review unsent. The operative limit is this exercise's explicit scope; a framework citation cannot manufacture an audience, approval, legal basis or delivery event.",
+      "source": "Chapter 19, §19.4, NIST Privacy Framework paragraph; §19.5, FAQ and missing-authority paragraph; §19.6, Track B; EX035, expanded referral row and no-consent/no-legal-duty boundary. General reference only: NIST Privacy Framework FAQ, \"Will anyone be required to use the NIST Privacy Framework?\" and \"Does use of the Privacy Framework ensure or guarantee that an organization is compliant with laws and regulations?\", https://www.nist.gov/privacy-framework/frequently-asked-questions"
+    }
+  ]
+}
