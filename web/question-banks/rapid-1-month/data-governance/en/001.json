@@ -30,7 +30,7 @@
       ],
       "correct": "c",
       "explanation": "Copperleaf separates overall accountability, general daily care and responsibility for each kind of data. Mrs. Adeyemi remains accountable; Kwame looks after data day to day, while the assistant manager handles rotas in the main narrative. Assigning that specific task does not transfer all accountability, erase the other assignments or appoint the mentor as owner. EX009-EX011 confirm these different roles. This is the fictional allocation in section 1.5, not a universal legal assignment or a claim that any real employee has accepted a new duty.",
-      "source": "Chapter 1, §1.5 Three first decisions; Concepts — responsibility, rules, and checks, Responsibility row; general Worked example; EX009-EX011 and their Worked results (#answer-ex009, #answer-ex010, #answer-ex011)."
+      "source": "Chapter 1, §1.5 Three first decisions; Concepts — responsibility, rules, and checks, Responsibility row; general Worked example; EX009-EX011 and their Worked results (#worked-results; EX009, EX010, EX011)."
     },
     {
       "id": "Q02",
@@ -55,7 +55,7 @@
       ],
       "correct": "a",
       "explanation": "The chapter defines governance through responsibility, rules and checks rather than a particular product. A short list of responsible people and agreed rules can begin the work, with checks planned to test whether those rules operate. Purchasing software is neither the prerequisite nor evidence that the decisions have been followed. A policy without anyone responsible or any checking omits two parts of the definition. EX003 and EX004 support this starting point. It does not establish that a small amount of paperwork completes every governance need or demonstrates compliance.",
-      "source": "Chapter 1, §1.2 What data governance means; Errors and limits; Concepts — responsibility, rules, and checks; general Worked example; EX003/EX004 and their Worked results (#answer-ex003, #answer-ex004)."
+      "source": "Chapter 1, §1.2 What data governance means; Errors and limits; Concepts — responsibility, rules, and checks; general Worked example; EX003/EX004 and their Worked results (#worked-results; EX003, EX004)."
     },
     {
       "id": "Q03",
@@ -80,7 +80,7 @@
       ],
       "correct": "d",
       "explanation": "The inventory connects what is held with where it is kept and what could go wrong. Email and paper copies matter because Kwame identifies paying a supplier twice from duplicate invoices as a possible harm. The presence of two copies does not prove two payments or a confirmed incident. Paper is still part of the inventory, and recording a location grants no copying permission. EX007 identifies the monetary risk; section 1.3 supplies the location step. This reasoning uses Copperleaf's synthetic examples without inventing a transaction or a new storage system.",
-      "source": "Chapter 1, §§1.3-1.4; Data — what Copperleaf holds, and the harm Kwame named, Supplier contacts and invoices row; general Worked example; EX007 and its Worked result (#answer-ex007)."
+      "source": "Chapter 1, §§1.3-1.4; Data — what Copperleaf holds, and the harm Kwame named, Supplier contacts and invoices row; general Worked example; EX007 and its Worked result (#worked-results; EX007)."
     },
     {
       "id": "Q04",
@@ -105,7 +105,7 @@
       ],
       "correct": "b",
       "explanation": "Agreement and communication establish that the decisions were made and conveyed. They do not by themselves demonstrate how the rule operated. The Concepts table explicitly separates the announcement from a dated check. An inventory helps locate data but does not alone establish compliance with an approved-system boundary. EX003 includes checking within the definition, while EX013 identifies the decision record. The napkin example illustrates a specific intervention; it does not prove that all handling across the cafe has been tested. No new check or organization-wide result is asserted here.",
-      "source": "Chapter 1, §1.2; §1.5; Concepts — responsibility, rules, and checks, Checks row; Worked example — an allergy on a napkin; EX003/EX013 and their Worked results (#answer-ex003, #answer-ex013)."
+      "source": "Chapter 1, §1.2; §1.5; Concepts — responsibility, rules, and checks, Checks row; Worked example — an allergy on a napkin; EX003/EX013 and their Worked results (#worked-results; EX003, EX013)."
     },
     {
       "id": "Q05",
@@ -130,7 +130,7 @@
       ],
       "correct": "c",
       "explanation": "The manuscript identifies this regular's allergy note as health information, and Article 9(1) includes data concerning health among special categories of personal data. That classification does not establish consent, a lawful basis or permission for a proposed use. Neither the paper medium nor the owner's agreement supplies those missing conclusions. The question follows the case's stated allergy context; it does not classify every unexplained food preference as health data. EX005 and EX051 support the need to distinguish this note. No finding about a real cafe's jurisdiction or legal compliance is made.",
-      "source": "Chapter 1, §1.3; Concepts — responsibility, rules, and checks, allergy paragraph; Worked example — an allergy on a napkin; EX005/EX051 and their Worked results (#answer-ex005, #answer-ex051). Classification only: Regulation (EU) 2016/679, Article 9(1), official EUR-Lex text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+      "source": "Chapter 1, §1.3; Concepts — responsibility, rules, and checks, allergy paragraph; Worked example — an allergy on a napkin; EX005/EX051 and their Worked results (#worked-results; EX005, EX051). Classification only: Regulation (EU) 2016/679, Article 9(1), official EUR-Lex text, https://eur-lex.europa.eu/eli/reg/2016/679/"
     },
     {
       "id": "Q06",
@@ -155,7 +155,7 @@
       ],
       "correct": "a",
       "explanation": "The third decision keeps customer and staff data within approved systems. In this example the personal phone is not approved, and the note contains the regular's health information. Helping the next shift does not change either fact. Changing the medium does not make the information unrestricted, and the rule is not an image-quality test. EX051's answer combines the approved-system boundary with the nature of the note. The refusal is Copperleaf's fictional decision, not a claim that Article 9 universally prohibits all photography or that an additional approval was granted.",
-      "source": "Chapter 1, §1.5, third decision; Decision flow — a new fact about a person, approved-system branch; Worked example — an allergy on a napkin; EX012/EX051 and their Worked results (#answer-ex012, #answer-ex051). Health classification only: Regulation (EU) 2016/679, Article 9(1), https://eur-lex.europa.eu/eli/reg/2016/679/"
+      "source": "Chapter 1, §1.5, third decision; Decision flow — a new fact about a person, approved-system branch; Worked example — an allergy on a napkin; EX012/EX051 and their Worked results (#worked-results; EX012, EX051). Health classification only: Regulation (EU) 2016/679, Article 9(1), https://eur-lex.europa.eu/eli/reg/2016/679/"
     },
     {
       "id": "Q07",
@@ -180,7 +180,7 @@
       ],
       "correct": "d",
       "explanation": "The worked example describes entry on the cafe's own list, recording its location and telling Mrs. Adeyemi the same day because she is accountable. EX051 confirms the recipient and reason. This does not supply a deletion receipt for every copy, an external notification, a legal deadline or distribution of the image. The narrative refuses the personal-phone route; it does not prove any additional cleanup or legal closure. The bank reports only the actions the synthetic example narrates, without inventing a real customer, message delivery or further approval.",
-      "source": "Chapter 1, §1.5, accountability and approved-system decisions; Worked example — an allergy on a napkin, response paragraph; EX009/EX051 and their Worked results (#answer-ex009, #answer-ex051). The same-day report is a fictional case rule, not a statutory notification requirement."
+      "source": "Chapter 1, §1.5, accountability and approved-system decisions; Worked example — an allergy on a napkin, response paragraph; EX009/EX051 and their Worked results (#worked-results; EX009, EX051). The same-day report is a fictional case rule, not a statutory notification requirement."
     },
     {
       "id": "Q08",
@@ -205,7 +205,7 @@
       ],
       "correct": "b",
       "explanation": "EX052 deliberately supplies a rota without a named day-to-day person. That leaves the second decision incomplete, even though overall accountability remains assigned. Its worked answer requires naming that person on the one page before copying. Assigning responsibility after the copy would reverse the stated order, and the copier is not automatically the authorized choice. Section 1.5's main narrative names the assistant manager; the exercise variant must not be used to erase that earlier fact. This answer supplies neither a new appointment of a person nor an executed rota transfer.",
-      "source": "Chapter 1, §1.5, second decision; Decision flow — a new fact about a person, missing-person branch; Apply EX052 — Missing name, rubric; Worked result EX052 (#answer-ex052); contrast with main-narrative EX011 and its Worked result (#answer-ex011)."
+      "source": "Chapter 1, §1.5, second decision; Decision flow — a new fact about a person, missing-person branch; Apply EX052 — Missing name, rubric; Worked result EX052 (#worked-results; EX052); contrast with main-narrative EX011 and its Worked result (#worked-results; EX011)."
     },
     {
       "id": "Q09",
@@ -230,7 +230,7 @@
       ],
       "correct": "a",
       "explanation": "Naming the caretaker resolves one decision, not every condition for handling the data. The flow then checks whether the information would leave an approved cafe system; section 1.5 retains that independent restriction. Responsibility does not make a personal device approved, but the chapter also does not impose a blanket ban on all copies. Its allergy example uses the cafe's own list. The premise here is a hypothetical completion of the missing-person step, not a newly granted permission or observed copy in EX052. The destination still requires the case's approval boundary.",
-      "source": "Chapter 1, §1.5, second and third decisions; Decision flow — a new fact about a person, named-person then destination branches; Worked example — an allergy on a napkin; EX012/EX052 and their Worked results (#answer-ex012, #answer-ex052)."
+      "source": "Chapter 1, §1.5, second and third decisions; Decision flow — a new fact about a person, named-person then destination branches; Worked example — an allergy on a napkin; EX012/EX052 and their Worked results (#worked-results; EX012, EX052)."
     },
     {
       "id": "Q10",
@@ -255,7 +255,7 @@
       ],
       "correct": "d",
       "explanation": "Section 1.4 asks what could go wrong, and EX008 explains why missing allergy information can matter to a customer. The risk therefore concerns how information is used, not just the cost of a lost record. Naming that risk is neither an incident report nor proof that the initial governance decisions removed it. The inventory's harm column helps connect data with a decision worth protecting. No reaction, treatment, clinical judgment or risk score is supplied. The aim of safe, usable information also establishes no specific retention period or legal compliance result.",
-      "source": "Chapter 1, §§1.2-1.4; Data — what Copperleaf holds, and the harm Kwame named, Allergy notes row; general Worked example; EX008 and its Worked result (#answer-ex008)."
+      "source": "Chapter 1, §§1.2-1.4; Data — what Copperleaf holds, and the harm Kwame named, Allergy notes row; general Worked example; EX008 and its Worked result (#worked-results; EX008)."
     }
   ]
 }
