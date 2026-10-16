@@ -23,6 +23,7 @@ from access import identity as access_identity
 from course_directory import render_course_directory
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from practice_engine import InvalidPractice, validate_practice
+from public_usage import collect as collect_public_usage, counts as public_usage_counts
 from quiz_engine import InvalidBank, feedback, public_question, score_answer, validate_bank
 from seo_pages import lesson_path, render_lesson_page, render_planned_lesson_page
 from student_auth import (SESSION_LIFETIME, _limit, basic_credentials, create_session,
@@ -58,6 +59,9 @@ EDITORIAL_POLICY_URI = "open-cyber-academy://editorial-policy"
 ALLOWED_ORIGINS = {site_for_language(language) for language in LANGUAGES} | {"https://www.opencyber.academy", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
 PUBLIC_ORIGINS = {site_for_language(language) for language in LANGUAGES} | {"https://www.opencyber.academy"}
+_live_test_index: dict[str, Any] | None = None
+_live_test_index_until = 0.0
+_live_test_index_lock = asyncio.Lock()
 
 
 class LessonProgress(BaseModel):
@@ -101,6 +105,14 @@ class LearningActivity(TestStart):
 
 class StudentAnalysis(TestStart):
     note: str = Field(min_length=1, max_length=10_000)
+
+
+class PublicUsageEvent(BaseModel):
+    visitor: str = Field(pattern=r"^[a-f0-9]{32}$")
+    event: str = Field(pattern=r"^(view|read|exercise)$")
+    path: str = Field(min_length=1, max_length=301)
+    exercise_id: str = Field(default="", pattern=r"^(?:|EX[0-9]{3,4})$")
+    edition: str = Field(default="", pattern=r"^(?:|[a-z]{2})$")
 
 
 @app.middleware("http")
@@ -180,7 +192,67 @@ async def public_asset_json(request: Request, filename: str, local_path: Path) -
 
 
 async def test_index(request: Request) -> dict[str, Any]:
-    return await public_asset_json(request, "test-index.json", TEST_INDEX_PATH)
+    bundled = await public_asset_json(request, "test-index.json", TEST_INDEX_PATH)
+    if request.scope.get("env") is None:
+        return bundled
+    # GitHub is the editorial source. Refresh the published bank list without
+    # requiring a site deploy for each independently published question bank.
+    global _live_test_index, _live_test_index_until
+    if _live_test_index is not None and time.time() < _live_test_index_until:
+        return _live_test_index
+    async with _live_test_index_lock:
+        if _live_test_index is not None and time.time() < _live_test_index_until:
+            return _live_test_index
+        try:
+            from js import fetch  # type: ignore[import-not-found]
+            response = await fetch(
+                "https://api.github.com/repos/hiagokinlevi/OpenCyberAcademy/git/trees/main?recursive=1",
+                {"headers": {"Accept": "application/vnd.github+json", "User-Agent": "OpenCyberAcademy-public-reader"}},
+            )
+            if int(response.status) != 200:
+                raise ValueError("GitHub tree is unavailable")
+            tree = json.loads(str(await response.text()))
+            if tree.get("truncated") or not isinstance(tree.get("tree"), list):
+                raise ValueError("GitHub tree is incomplete")
+            published = {(key, int(item["chapter"])): item for key, chapters in bundled["courses"].items()
+                         for item in chapters}
+            known_courses = {(item["level"], item["area"]) for item in (await catalog(request))["courses"]}
+            book_blobs = {item["path"]: item.get("sha") for item in tree["tree"]
+                          if item.get("path", "").endswith("/book/MANUSCRIPT.md")}
+            courses: dict[str, list[dict[str, Any]]] = {}
+            for item in tree["tree"]:
+                match = re.fullmatch(r"web/question-banks/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{3})\.json", item.get("path", ""))
+                if not match or item.get("type") != "blob":
+                    continue
+                level, area, language, number = match.groups()
+                if (level, area) not in known_courses or language not in LANGUAGES:
+                    continue
+                chapter = int(number)
+                key = f"{level}/{area}/{language}"
+                old = published.get((key, chapter))
+                manuscript = f"levels/{level}/{area}/{language}/book/MANUSCRIPT.md"
+                book_unchanged = bundled.get("book_git_sha", {}).get(key) == book_blobs.get(manuscript)
+                if old and old.get("git_sha") == item.get("sha") and book_unchanged:
+                    entry = old
+                else:
+                    try:
+                        bank, digest = await chapter_test_bank(request, level, area, language, chapter, check_source=True)
+                    except HTTPException:
+                        continue  # A changed or incomplete chapter cannot become available.
+                    entry = {"chapter": chapter, "bank_sha256": digest,
+                             "source_sha256": bank["source_sha256"], "git_sha": item["sha"]}
+                courses.setdefault(key, []).append(entry)
+            for chapters in courses.values():
+                chapters.sort(key=lambda entry: entry["chapter"])
+            result = {"version": 1, "questions_per_chapter": 10,
+                      "courses": dict(sorted(courses.items())), "source_head": tree.get("sha"), "live_sync": "github"}
+            _live_test_index = result
+            _live_test_index_until = time.time() + 1800
+            return result
+        except Exception:
+            _live_test_index = {**bundled, "live_sync": "bundled"}
+            _live_test_index_until = time.time() + 300
+            return _live_test_index
 
 
 async def approved_books(request: Request) -> dict[str, Any]:
@@ -565,6 +637,28 @@ async def api_lesson_practice(request: Request, level: str, area: str, route: st
 @app.get("/api/health")
 async def health() -> dict[str, str]:
     return {"service": "OpenCyber Academy", "status": "ok", "source": "https://github.com/hiagokinlevi/OpenCyberAcademy"}
+
+
+@app.get("/api/insights")
+async def public_insights(request: Request, path: str = "/", exercise: str = "", breakdown: bool = False,
+                          edition: str = "") -> Response:
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    data = await public_usage_counts(database(request), path=path, language=language,
+                                     exercise_id=exercise, breakdown=breakdown, edition=edition)
+    return JSONResponse(data, headers={"Cache-Control": "public, max-age=60", "X-Content-Type-Options": "nosniff"})
+
+
+@app.post("/api/insights/collect", status_code=204)
+async def public_insights_collect(request: Request, payload: PublicUsageEvent) -> Response:
+    if request.headers.get("origin") not in ALLOWED_ORIGINS:
+        raise HTTPException(403, "Use the Academy site to record public usage")
+    if request.headers.get("sec-gpc") == "1" or request.headers.get("dnt") == "1":
+        return Response(status_code=204)
+    language = language_for_host(request.headers.get("host", "")) or "en"
+    await collect_public_usage(database(request), visitor=payload.visitor, event=payload.event,
+                               path=payload.path, language=language, exercise_id=payload.exercise_id,
+                               edition=payload.edition)
+    return Response(status_code=204, headers={"Cache-Control": "no-store"})
 
 
 @app.get("/private/login")

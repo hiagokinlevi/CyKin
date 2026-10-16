@@ -39,6 +39,7 @@ def authored_chapter(markdown: str, number: int) -> str | None:
 
 def build() -> dict:
     courses: dict[str, list[dict]] = {}
+    book_git_sha: dict[str, str] = {}
     root = WEB / "question-banks"
     for path in sorted(root.glob("*/*/*/*.json")):
         level, area, language = path.parts[-4:-1]
@@ -48,8 +49,9 @@ def build() -> dict:
             raise ValueError(f"Question bank filename must be a chapter number: {path}") from exc
         if path.name != f"{chapter:03d}.json":
             raise ValueError(f"Question bank filename must use three digits: {path}")
+        raw_bytes = path.read_bytes()
         try:
-            bank, digest = validate_bank(path.read_text(encoding="utf-8"), level, area, language, chapter)
+            bank, digest = validate_bank(raw_bytes.decode("utf-8"), level, area, language, chapter)
         except InvalidBank as exc:
             raise ValueError(f"{path}: {exc}") from exc
         manuscript = WEB.parent / "levels" / level / area / language / "book" / "MANUSCRIPT.md"
@@ -59,10 +61,15 @@ def build() -> dict:
         if hashlib.sha256(section.encode("utf-8")).hexdigest() != bank["source_sha256"]:
             raise ValueError(f"Question bank needs review after chapter changed: {path}")
         key = f"{level}/{area}/{language}"
-        courses.setdefault(key, []).append({"chapter": chapter, "bank_sha256": digest, "source_sha256": bank["source_sha256"]})
+        manuscript_bytes = manuscript.read_bytes()
+        book_git_sha[key] = hashlib.sha1(f"blob {len(manuscript_bytes)}\0".encode("ascii") + manuscript_bytes).hexdigest()
+        git_sha = hashlib.sha1(f"blob {len(raw_bytes)}\0".encode("ascii") + raw_bytes).hexdigest()
+        courses.setdefault(key, []).append({"chapter": chapter, "bank_sha256": digest,
+                                              "source_sha256": bank["source_sha256"], "git_sha": git_sha})
     for chapters in courses.values():
         chapters.sort(key=lambda item: item["chapter"])
-    return {"version": 1, "questions_per_chapter": 10, "courses": dict(sorted(courses.items()))}
+    return {"version": 1, "questions_per_chapter": 10, "courses": dict(sorted(courses.items())),
+            "book_git_sha": dict(sorted(book_git_sha.items()))}
 
 
 if __name__ == "__main__":

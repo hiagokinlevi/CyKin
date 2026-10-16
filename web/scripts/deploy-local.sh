@@ -41,6 +41,7 @@ npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0004_student_password_activity.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0005_student_mcp_keys.sql
 npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0007_figure_cleanup_bank_versions.sql
+npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0008_public_usage.sql
 activity_schema="$(npx wrangler d1 execute open-cyber-academy-progress --remote --command='PRAGMA table_info(student_activity)' --json)"
 if ! python3 -c 'import json,sys; rows=json.load(sys.stdin)[0]["results"]; sys.exit(0 if any(row["name"] == "source" for row in rows) else 1)' <<< "$activity_schema"; then
   npx wrangler d1 execute open-cyber-academy-progress --remote --file=migrations/0006_student_activity_source.sql
@@ -76,7 +77,10 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/application-supply-chain/chapters/en/20.md | grep -F 'Chapter 20' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/about/ | grep -F 'Hiago Kin Levi' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Test yourself' > /dev/null
-curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Available tests now' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tests/ | grep -F 'Available courses with tests' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" 'https://opencyber.academy/api/insights?path=%2F' | \
+  python3 -c 'import json,sys; data=json.load(sys.stdin); assert data["method"] == "opt_in_browsers" and data["window_days"] == 30 and "views" in data["site"]'
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/ | grep -F 'PUBLIC STUDY ACTIVITY' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tabletop/ | grep -F 'Hospital ransomware' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/tabletop/hospital-ransomware/ | grep -F 'Aster Evidence team' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/courses/rapid-1-month/incident-response-resilience/lessons/en/1/ | grep -F 'chapter=1' > /dev/null

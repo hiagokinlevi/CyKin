@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UsagePanel from '../../components/UsagePanel.astro';
+import { BarChart3, BookOpen, Eye } from 'lucide-react';
+---
+<BaseLayout title="Public learning activity · OpenCyber Academy" description="Explore opt-in activity for OpenCyber Academy courses and public lessons during the last 30 days." robots="noindex,follow">
+  <section class="insights-hero"><div class="shell">
+    <div class="eyebrow"><BarChart3 size={18} aria-hidden="true" /> PUBLIC ACTIVITY</div>
+    <h1>See how the library is used.</h1>
+    <p>Explore visits, visible reading sessions and exercise opens across public courses and pages. These are counts from browsers that allowed measurement, beginning with this feature’s launch.</p>
+  </div></section>
+  <section class="section shell insights-content">
+    <UsagePanel scope="site" />
+    <div class="insights-panels">
+      <section class="insights-table-panel" aria-labelledby="insights-courses-title">
+        <div class="insights-panel-title"><BookOpen size={22} aria-hidden="true" /><div><span class="eyebrow">COURSE ACTIVITY</span><h2 id="insights-courses-title">Courses with activity</h2></div></div>
+        <p>Views include course entry pages and published lesson pages. A reading session means the lesson remained visible for 30 seconds.</p>
+        <div class="insights-scroll"><table><thead><tr><th scope="col">Course</th><th scope="col">Views</th><th scope="col">30s reads</th><th scope="col">Exercise opens</th></tr></thead><tbody id="insights-courses"><tr><td colspan="4">Loading activity…</td></tr></tbody></table></div>
+      </section>
+      <section class="insights-table-panel" aria-labelledby="insights-pages-title">
+        <div class="insights-panel-title"><Eye size={22} aria-hidden="true" /><div><span class="eyebrow">PAGE ACTIVITY</span><h2 id="insights-pages-title">Most viewed pages</h2></div></div>
+        <p>These public totals omit visitors who declined analytics and cannot identify individual people.</p>
+        <div class="insights-scroll"><table><thead><tr><th scope="col">Page</th><th scope="col">Views</th><th scope="col">Browsers</th></tr></thead><tbody id="insights-pages"><tr><td colspan="3">Loading activity…</td></tr></tbody></table></div>
+      </section>
+    </div>
+    <p class="insights-method">The course and page lists show the twelve most active entries in the last 30 days. One browser can represent multiple people, and one person can use multiple browsers. An opt-in view is counted at most once per browser, page and half-hour. <a href="/privacy/">Read the measurement and privacy details →</a></p>
+  </section>
+  <script>
+    import { catalog } from '../../lib/catalog';
+    import { siteLanguage } from '../../lib/i18n';
+    type Entry = { label: string; browsers: number; views: number; reads: number; exercises: number };
+    const number = new Intl.NumberFormat(siteLanguage());
+    const message = { en: ['No activity measured yet.', 'Activity is temporarily unavailable.'], pt: ['Ainda não há atividade medida.', 'A atividade está temporariamente indisponível.'], es: ['Aún no hay actividad medida.', 'La actividad no está disponible en este momento.'] }[siteLanguage()];
+    const courseBody = document.getElementById('insights-courses')!;
+    const pageBody = document.getElementById('insights-pages')!;
+    const fallback = (target: HTMLElement, columns: number, text: string) => {
+      const row = document.createElement('tr'); const cell = document.createElement('td'); cell.colSpan = columns; cell.textContent = text; row.append(cell); target.replaceChildren(row);
+    };
+    const countCell = (value: number) => { const cell = document.createElement('td'); cell.textContent = number.format(value); return cell; };
+    void fetch('/api/insights?breakdown=true', { cache: 'no-store' }).then(async response => {
+      if (!response.ok) throw new Error('Insights unavailable');
+      const result = await response.json() as { top_courses: Entry[]; top_pages: Entry[] };
+      if (!result.top_courses.length) fallback(courseBody, 4, message[0]);
+      else courseBody.replaceChildren(...result.top_courses.map(entry => {
+        const [level, area, language] = entry.label.split('/');
+        const course = catalog.courses.find(item => item.level === level && item.area === area);
+        const row = document.createElement('tr'); const cell = document.createElement('td'); const link = document.createElement('a');
+        link.href = `/courses/${level}/${area}/?lang=${language}`;
+        link.textContent = course?.titles[siteLanguage()] || course?.title || area.replaceAll('-', ' ');
+        const detail = document.createElement('small'); detail.textContent = `${language.toUpperCase()} · ${catalog.level_names[level]?.[siteLanguage()] || level}`;
+        cell.append(link, detail); row.append(cell, countCell(entry.views), countCell(entry.reads), countCell(entry.exercises)); return row;
+      }));
+      if (!result.top_pages.length) fallback(pageBody, 3, message[0]);
+      else pageBody.replaceChildren(...result.top_pages.map(entry => {
+        const row = document.createElement('tr'); const cell = document.createElement('td'); const link = document.createElement('a');
+        link.href = entry.label; link.textContent = entry.label === '/' ? 'Home' : entry.label;
+        cell.append(link); row.append(cell, countCell(entry.views), countCell(entry.browsers)); return row;
+      }));
+    }).catch(() => { fallback(courseBody, 4, message[1]); fallback(pageBody, 3, message[1]); });
+  </script>
+</BaseLayout>
+<style>
+  .insights-hero{padding:clamp(55px,8vw,95px) 0;background:var(--hero-gradient);border-bottom:1px solid var(--line)}
+  .insights-hero .eyebrow{display:flex;align-items:center;gap:9px}.insights-hero p{max-width:720px;color:var(--muted);font-size:1.04rem}
+  .insights-content{max-width:1180px}.insights-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.insights-table-panel{padding:25px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+  .insights-panel-title{display:flex;gap:14px;align-items:center}.insights-panel-title svg{color:var(--gold);flex:none}.insights-panel-title h2{font-size:1.35rem;margin:3px 0}.insights-table-panel>p{color:var(--muted);font-size:.81rem;margin:10px 0 20px}.insights-scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:.81rem}th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th:not(:first-child),td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}th{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}td a{color:var(--text);font-weight:600;overflow-wrap:anywhere}td a:hover{color:var(--gold)}td small{display:block;color:var(--muted);margin-top:4px}
+  .insights-method{max-width:85ch;color:var(--muted);font-size:.8rem;line-height:1.7;margin-top:25px}.insights-method a{color:var(--gold);text-decoration:underline}
+  @media(max-width:880px){.insights-panels{grid-template-columns:1fr}}@media(max-width:520px){.insights-table-panel{padding:17px}th,td{padding:9px 5px;font-size:.72rem}}
+</style>

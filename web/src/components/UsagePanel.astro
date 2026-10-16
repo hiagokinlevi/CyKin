@@ -1,0 +1,15 @@
+---
+import { BookOpenCheck, Eye, MousePointerClick, UsersRound } from 'lucide-react';
+const { scope = 'site', compact = false } = Astro.props;
+---
+<section class:list={['usage-panel', { 'usage-panel-compact': compact }]} aria-label="Public study activity">
+  <div class="usage-heading"><div><span class="eyebrow">PUBLIC STUDY ACTIVITY</span><h2>Learning in motion</h2></div><p>Last 30 days · visitors who chose analytics</p></div>
+  <div class="usage-grid">
+    <div class="usage-metric"><UsersRound size={21} aria-hidden="true" /><strong data-insight={`${scope}.browsers`}>—</strong><span>Participating browsers</span></div>
+    <div class="usage-metric"><Eye size={21} aria-hidden="true" /><strong data-insight={`${scope}.views`}>—</strong><span>Page views</span></div>
+    <div class="usage-metric"><BookOpenCheck size={21} aria-hidden="true" /><strong data-insight={`${scope}.reads`}>—</strong><span>Reading sessions · 30 s visible</span></div>
+    <div class="usage-metric"><MousePointerClick size={21} aria-hidden="true" /><strong data-insight={`${scope}.exercises`}>—</strong><span>Exercise opens</span></div>
+  </div>
+  <p class="usage-note">A browser is not necessarily a person. <strong data-insight="registered_learners">—</strong> registered learner accounts · all time. Counts begin when this feature is published and exclude visitors who decline measurement. <a href="/insights/">Explore course and page activity →</a> · <a href="/privacy/">How counting works</a></p>
+  <p class="usage-error" data-insight-status role="status"></p>
+</section>

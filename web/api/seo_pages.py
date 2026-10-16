@@ -291,6 +291,16 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         "pt": ("Pratique os exercícios", "Ver o enunciado", "Comparar com a resposta comentada", "Verificando se há uma questão revisada com cinco alternativas…"),
         "es": ("Practica los ejercicios", "Ver el enunciado", "Comparar con la respuesta desarrollada", "Buscando una pregunta revisada con cinco opciones…"),
     }.get(language, ("Practice the exercises", "Open the prompt", "Compare with the worked answer", "Checking for a reviewed five-choice question…"))
+    usage_copy = {
+        "en": ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page."),
+        "pt": ("Atividade pública", "Visualizações", "Sessões de leitura", "Exercícios abertos", "Aberturas em 30 dias", "Contagens incluem navegadores que permitiram análise de uso. Uma sessão de leitura exige 30 segundos com a página visível."),
+        "es": ("Actividad pública", "Visualizaciones", "Sesiones de lectura", "Ejercicios abiertos", "Aperturas en 30 días", "Los recuentos incluyen navegadores que permitieron el análisis de uso. Una sesión de lectura exige 30 segundos con la página visible."),
+    }.get(language, ("Public activity", "Page views", "Reading sessions", "Exercise opens", "Opens in 30 days", "Counts reflect browsers that allowed analytics. A reading session requires 30 seconds on a visible page."))
+    practice_intro = {
+        "en": "Open a prompt, write your response, then compare it with the worked answer. Five-choice practice appears where a reviewed question is available.",
+        "pt": "Leia o enunciado, escreva sua resposta e compare com a resolução. Questões de cinco alternativas aparecem onde já há revisão.",
+        "es": "Lee el enunciado, escribe tu respuesta y compárala con la solución. Las preguntas de cinco opciones aparecen donde ya fueron revisadas.",
+    }.get(language, "Open a prompt, write your response, then compare it with the worked answer. Five-choice practice appears where a reviewed question is available.")
     practice_cards = []
     for digits in lesson.get("exercise_ids", []):
         exercise_id = f"EX{digits}"
@@ -301,11 +311,12 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         practice_cards.append(
             f'<section class="exercise-attempt" data-exercise-id="{exercise_id}">'
             f'<h3>{exercise_id}</h3><div class="exercise-links">{prompt_link}{answer_link}</div>'
+            f'<small class="exercise-public-count">{html.escape(usage_copy[4])}: <strong data-exercise-insight="{exercise_id}">—</strong></small>'
             f'<div class="exercise-choice-options"></div>'
             f'<p class="exercise-attempt-status" role="status">{html.escape(practice_copy[3])}</p></section>'
         )
     practice_html = (f'<section id="lesson-practice" class="lesson-practice" aria-label="{html.escape(practice_copy[0], quote=True)}">'
-                     f'<h2>{html.escape(practice_copy[0])}</h2>{"".join(practice_cards)}</section>') if practice_cards else ""
+                     f'<h2>{html.escape(practice_copy[0])}</h2><p class="practice-intro">{html.escape(practice_intro)}</p>{"".join(practice_cards)}</section>') if practice_cards else ""
     diagram_script = '<script src="/seo-diagrams.js" defer></script>' if 'class="language-mermaid"' in body or 'class="language-mermaid"' in answers else ''
     language_name = html.escape(LANGUAGE_NAMES.get(language, language))
     return f'''<!doctype html>
@@ -326,10 +337,10 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <meta name="twitter:description" content="{escaped['description']}"><meta name="twitter:image" content="{SITE}/social-card.png">
   <script type="application/ld+json">{json_script(structured)}</script>
   <link rel="stylesheet" href="/seo-lesson.css"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('open-cyber-academy-theme')||'dark'}}catch(_){{document.documentElement.dataset.theme='dark'}}</script>
-  <script src="/seo-lesson.js" defer></script>{diagram_script}<script src="/analytics.js" defer></script>
+  <script src="/seo-lesson.js" defer></script>{diagram_script}<script src="/analytics.js" defer></script><script src="/insights.js" defer></script>
 </head>
 <body><a class="skip" href="#lesson-content">{chrome['skip']}</a>
-<header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/tabletop/">TableTop</a><a href="/for-ai/">{chrome['ai']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
+<header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a><nav aria-label="{chrome['navigation']}"><a href="/levels/">{chrome['levels']}</a><a href="/subjects/">{chrome['subjects']}</a><a href="/tests/">{study['tests']}</a><a href="/tabletop/">TableTop</a><a href="/account/">{study['dashboard']}</a><button id="theme-toggle" type="button" aria-label="{chrome['theme']}">◐</button></nav></div></header>
 <main id="lesson-content" class="shell">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">{ui['home']}</a><span>›</span><a href="{escaped['course_url']}">{escaped['name']}</a><span>›</span><span>{label} {number}</span></nav>
   <div class="eyebrow">{escaped['level_name']} · {label} {number} · {language_name}</div>
@@ -353,6 +364,11 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
          data-language="{html.escape(language, quote=True)}" data-chapter="{number}"
          data-published="{len([unit for unit in guide['daily_slots'] if unit['published']]) if guide and not guide['chapter_lessons'] else len([unit for unit in guide['legacy_chapters'] if unit['published']]) if guide else 0}">
     <div class="sidebar-inner"><h2>{html.escape(study['progress'])}</h2>
+      <div class="reader-public-usage"><h3>{html.escape(usage_copy[0])} · 30d</h3>
+        <p><strong data-insight="page.views">—</strong> {html.escape(usage_copy[1])}</p>
+        <p><strong data-insight="page.reads">—</strong> {html.escape(usage_copy[2])}</p>
+        <p><strong data-insight="page.exercises">—</strong> {html.escape(usage_copy[3])}</p>
+        <small>{html.escape(usage_copy[5])}</small><small data-insight-status role="status"></small></div>
       <p id="progress-status">{html.escape(study['loading'])}</p>
       <div id="progress-metrics" hidden>
         <p><strong id="progress-completed">0</strong> {html.escape(study['completed'])}</p>

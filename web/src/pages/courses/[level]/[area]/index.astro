@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import UsagePanel from '../../../../components/UsagePanel.astro';
+import { BookOpenCheck, ChevronRight, FlaskConical } from 'lucide-react';
 import { catalog, coursePath, levelPath, subjectPath } from '../../../../lib/catalog';
 
 export function getStaticPaths() {
@@ -31,9 +33,10 @@ const structuredData = [
       <div class="course-heading-actions">
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
         <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
-        <a class="button gold" href={`/tests/?level=${course.level}&area=${course.area}`} data-test-link>Test yourself →</a>
+        <a class="button gold" href={`/tests/?level=${course.level}&area=${course.area}`} data-test-link><FlaskConical size={16} aria-hidden="true" /> Test yourself <ChevronRight size={16} aria-hidden="true" /></a>
       </div>
     </div></section>
+    <section class="shell course-usage"><UsagePanel scope="course" compact={true} /></section>
     <div id="live-lesson-directory"></div>
     <nav class="shell directory-foot" aria-label="Adjacent courses">
       {previous && <a href={`${coursePath(previous.level, previous.area)}start/`} data-language-link>← Previous course</a>}

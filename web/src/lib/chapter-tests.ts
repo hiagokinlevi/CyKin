@@ -38,28 +38,46 @@ export function initChapterTests(): void {
   let busy = false;
   let resultsRequest = 0;
   let practiceRequest = 0;
-  const chaptersByCourse = testIndex.courses as Record<string, Chapter[]>;
-  const publishedCards: HTMLElement[] = [];
-  for (const [key, chapters] of Object.entries(chaptersByCourse)) {
+  let chaptersByCourse = testIndex.courses as Record<string, Chapter[]>;
+  const renderPublishedCards = () => {
+    const publishedCards: HTMLElement[] = [];
+    for (const [key, chapters] of Object.entries(chaptersByCourse)) {
     const [courseLevel, courseArea, courseLanguage] = key.split('/');
     if (!activeLanguages.includes(courseLanguage)) continue;
     const course = catalog.courses.find(item => item.level === courseLevel && item.area === courseArea);
     if (!course) continue;
-    for (const item of chapters) {
-      const card = document.createElement('article'); card.className = 'test-chapter';
-      const heading = document.createElement('strong');
-      heading.textContent = `${course.titles[courseLanguage as keyof typeof course.titles] || course.title} · ${ui.chapter} ${item.chapter.toString().padStart(2, '0')}`;
-      const detail = document.createElement('p'); detail.className = 'muted';
-      detail.textContent = `${names[courseLanguage]} · ${catalog.level_names[courseLevel as keyof typeof catalog.level_names][siteLanguage()]}`;
-      const link = document.createElement('a');
-      const url = new URL('/tests/', location.href);
-      if (location.hostname.endsWith('opencyber.academy')) url.hostname = courseLanguage === 'en' ? 'opencyber.academy' : `${courseLanguage}.opencyber.academy`;
-      url.search = new URLSearchParams({ lang: courseLanguage, area: courseArea, level: courseLevel, chapter: String(item.chapter) }).toString();
-      link.href = url.href; link.textContent = `${ui.open} →`;
-      card.append(heading, detail, link); publishedCards.push(card);
+    if (!chapters.length) continue;
+    const card = document.createElement('article'); card.className = 'test-chapter test-course-card';
+    const heading = document.createElement('strong');
+    heading.textContent = course.titles[courseLanguage as keyof typeof course.titles] || course.title;
+    const detail = document.createElement('p'); detail.className = 'muted';
+    detail.textContent = `${names[courseLanguage]} · ${catalog.level_names[courseLevel as keyof typeof catalog.level_names][siteLanguage()]}`;
+    const coverage = document.createElement('span'); coverage.className = 'test-coverage';
+    coverage.textContent = ui.count(chapters.length, course.planned_chapters);
+    const link = document.createElement('a');
+    const url = new URL('/tests/', location.href);
+    if (location.hostname.endsWith('opencyber.academy')) url.hostname = courseLanguage === 'en' ? 'opencyber.academy' : `${courseLanguage}.opencyber.academy`;
+    url.search = new URLSearchParams({ lang: courseLanguage, area: courseArea, level: courseLevel }).toString();
+    link.href = url.href; link.textContent = `${ui.open} →`;
+    card.append(heading, detail, coverage, link); publishedCards.push(card);
     }
-  }
-  el('test-available').replaceChildren(...publishedCards);
+    el('test-available').replaceChildren(...publishedCards);
+  };
+  renderPublishedCards();
+  void fetch('/api/tests/catalog', { cache: 'no-store' }).then(async response => {
+    if (!response.ok) throw new Error('Catalog unavailable');
+    const latest = await response.json() as { courses: Record<string, Chapter[]>; live_sync?: string };
+    if (!latest.courses || typeof latest.courses !== 'object') throw new Error('Invalid catalog');
+    chaptersByCourse = latest.courses;
+    renderPublishedCards();
+    if (!active) render();
+    el('test-catalog-sync').textContent = latest.live_sync === 'github'
+      ? siteLanguage() === 'pt' ? 'Sincronizado com o GitHub atual.' : siteLanguage() === 'es' ? 'Sincronizado con el GitHub actual.' : 'Synced with current GitHub main.'
+      : siteLanguage() === 'pt' ? 'Exibindo o último índice publicado enquanto o GitHub é verificado.' : siteLanguage() === 'es' ? 'Mostrando el último índice publicado mientras se verifica GitHub.' : 'Showing the last published index while GitHub refresh is unavailable.';
+  }).catch(() => {
+    el('test-catalog-sync').textContent = siteLanguage() === 'pt' ? 'Exibindo o último índice publicado.' :
+      siteLanguage() === 'es' ? 'Mostrando el último índice publicado.' : 'Showing the last published index.';
+  });
   const clearAttempt = () => {
     resultsRequest++;
     if (timer) clearInterval(timer);

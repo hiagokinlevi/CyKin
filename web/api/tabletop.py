@@ -206,6 +206,11 @@ def validate_catalog(data: dict[str, Any]) -> list[dict[str, Any]]:
 
 def _document(language: str, title: str, description: str, path: str, body: str) -> str:
     ui = UI[language]
+    usage = {
+        "en": ("Page views", "Participating browsers", "Last 30 days · optional analytics"),
+        "pt": ("Visualizações", "Navegadores participantes", "Últimos 30 dias · análise opcional"),
+        "es": ("Visualizaciones", "Navegadores participantes", "Últimos 30 días · análisis opcional"),
+    }[language]
     origin = site_for_language(language)
     canonical = origin + path
     alternates = "".join(
@@ -227,11 +232,11 @@ def _document(language: str, title: str, description: str, path: str, body: str)
 <script type="application/ld+json">{schema}</script>
 <link rel="stylesheet" href="/seo-lesson.css"><link rel="stylesheet" href="/tabletop.css">
 <script>try{{document.documentElement.dataset.theme=localStorage.getItem('open-cyber-academy-theme')||'dark'}}catch(_){{document.documentElement.dataset.theme='dark'}}</script>
-<script src="/analytics.js" defer></script></head><body>
+<script src="/analytics.js" defer></script><script src="/insights.js" defer></script></head><body>
 <a class="skip" href="#tabletop-main">{_esc(ui["skip"])}</a>
 <header class="header"><div class="shell header-row"><a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">OpenCyber Academy</a>
 <nav aria-label="{_esc(ui["nav"])}"><a href="/levels/">{_esc(ui["courses"])}</a><a href="/tests/">{_esc(ui["tests"])}</a><a href="/tabletop/" aria-current="page">TableTop</a><a href="/account/">{_esc(ui["account"])}</a></nav></div></header>
-<main id="tabletop-main" class="shell tabletop-main">{body}</main>
+<main id="tabletop-main" class="shell tabletop-main"><div class="tabletop-usage" aria-label="{_esc(usage[2])}"><span>{_esc(usage[2])}</span><strong data-insight="page.views">—</strong> {_esc(usage[0])}<strong data-insight="page.browsers">—</strong> {_esc(usage[1])}<small data-insight-status role="status"></small></div>{body}</main>
 <footer class="footer"><div class="shell">© OpenCyber Academy · {_esc(ui["note"])} · <a href="{SOURCE}">{_esc(ui["source"])}</a></div></footer>
 </body></html>'''
 

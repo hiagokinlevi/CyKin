@@ -34,8 +34,10 @@
       const url = `/api/practice/${payload.level}/${payload.area}/${lesson[3]}/${payload.language}/${payload.chapter}`;
       fetch(url, { cache: 'no-store' }).then(async response => {
         if (!response.ok) {
-          const message = response.status === 404 ? ui.noChoice : ui.choiceFailed;
-          for (const card of practiceCards) card.querySelector('.exercise-attempt-status').textContent = message;
+          for (const card of practiceCards) {
+            card.dataset.mode = 'written';
+            card.querySelector('.exercise-attempt-status').textContent = response.status === 404 ? '' : ui.choiceFailed;
+          }
           return;
         }
         const bank = await response.json();
@@ -43,7 +45,7 @@
         for (const card of practiceCards) {
           const question = questions.get(card.dataset.exerciseId);
           const status = card.querySelector('.exercise-attempt-status');
-          if (!question) { status.textContent = ui.noChoice; continue; }
+          if (!question) { card.dataset.mode = 'written'; status.textContent = ''; continue; }
           const fieldset = document.createElement('fieldset'); fieldset.className = 'exercise-choices';
           const legend = document.createElement('legend'); legend.textContent = question.prompt; fieldset.append(legend);
           for (const option of question.options) {
@@ -55,8 +57,9 @@
               fieldset.disabled = true;
               const chosen = option.id === question.correct;
               const right = question.options.find(item => item.id === question.correct);
-              const verdict = `${chosen ? ui.correct : ui.incorrect} ${ui.right}: ${right.id.toUpperCase()}. ${right.text} ${question.explanation}`;
-              status.textContent = verdict; status.dataset.correct = String(chosen);
+              const verdict = chosen ? `${ui.correct} ${question.explanation}` :
+                `${ui.incorrect} ${ui.right}: ${right.id.toUpperCase()}. ${right.text}. ${question.explanation}`;
+              status.textContent = verdict; status.dataset.correct = String(chosen); card.dataset.result = chosen ? 'correct' : 'incorrect';
               try {
                 const response = await fetch('/student/progress/exercise', { method: 'POST', credentials: 'same-origin',
                   headers: { 'Content-Type': 'application/json' },
