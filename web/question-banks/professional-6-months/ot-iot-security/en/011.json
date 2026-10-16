@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 11,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "d97a4b6fd48e34015dd09754b7dfeab1a1918572",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-11",
+  "source_sha256": "65bd8c7182a3849f765f37ad2cf6d9c58e7e7baa75f26f4ecbf749e4b4223d6c",
+  "case_note": "Millbrook Hospital, the incident, controller behaviour and the times 22:40, 22:55 and 14:00 are invented narrative facts. Hypothetical reviews do not add observations to that case. A ransom message alone does not establish scope, cause or clinical harm. No question authorises real OT testing, isolation, shutdown or recovery; dependency validation and the responsible operational and clinical leadership are prerequisites. Source guidance is not evidence that a control was implemented or that every controller behaves like Millbrook's.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A ransom message is reported, but clinical conditions are unknown. What takes priority over a network-cut decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IT identifies the malware family before involving estates"
+        },
+        {
+          "id": "b",
+          "text": "The contractor isolates the plant under its usual maintenance access"
+        },
+        {
+          "id": "c",
+          "text": "The clinical site manager and estates assess immediate safety"
+        },
+        {
+          "id": "d",
+          "text": "The analyst rebuilds BMS-WS before checking affected services"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 11.2 starts with the clinical picture and assigns immediate protective decisions to the site manager and estates. Malware identification and service recovery do not replace that assessment. A contractor's normal maintenance access does not by itself confer authority to isolate plant; Section 11.1 requires that authority to be agreed beforehand. A ransom message triggers the response process without establishing patient harm. This is a decision exercise, not an instruction to disconnect equipment or postpone urgent clinical protection for technical analysis.",
+      "source": "Chapter 11, §11.1 \"Planning ahead\" and §11.2 \"Detect and assess\"; EX051 \"First question\" and its worked answer."
+    },
+    {
+      "id": "Q02",
+      "prompt": "At 22:40, the case reports a ransom message on BMS-WS. Which conclusion is supported by that observation alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Response is warranted; the affected scope and operational impact need assessment"
+        },
+        {
+          "id": "b",
+          "text": "Every field controller has been encrypted by the same malware"
+        },
+        {
+          "id": "c",
+          "text": "The gateway has been established as the initial entry route"
+        },
+        {
+          "id": "d",
+          "text": "Ventilation has stopped in an occupied clinical area"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The narrated observation is a displayed ransom message on one workstation. Section 11.2 then asks what is affected, how it started and whether it is spreading. The message alone answers none of those questions and supplies no measurement of ventilation or patient condition. All-controller encryption, a gateway entry path and clinical failure would each require additional evidence. The later narrative about empty theatres, isolation and local schedules must not be treated as information already established by the message itself. Act on the trigger while keeping unconfirmed claims separate.",
+      "source": "Chapter 11, §11.2 \"Detect and assess\"; \"Worked example (synthetic Millbrook)\"; EX051 \"First question\". Primary cross-check: NIST SP 800-61 Rev. 3, §1, p. 2, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q03",
+      "prompt": "A response plan names IT contacts only. Which addition closes Chapter 11's coordination gap?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Let each contractor decide isolation independently for its equipment"
+        },
+        {
+          "id": "b",
+          "text": "Treat a general NIST reference as the hospital's isolation approval"
+        },
+        {
+          "id": "c",
+          "text": "Add an incident lead but defer fallback and night-contact arrangements"
+        },
+        {
+          "id": "d",
+          "text": "Agree leadership, isolation authority, system fallbacks and night contacts across teams"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 11.1 brings estates, clinical site managers, IT security and contractors into the agreement on leadership, fallback arrangements and out-of-hours contact. An IT contact list or a lead's name alone leaves operational decisions unresolved. Independent contractor decisions fragment coordination, and a publication cannot assign local authority. The chapter also calls for exercising the plan with estates and a contractor; a document's existence is not evidence that an exercise occurred. NIST's general role guidance supports preparation but does not prove the hospital has completed it.",
+      "source": "Chapter 11, §11.1 \"Planning ahead\"; EX051 \"First question\" and EX055 \"Safe defaults\" (clinical authority and equipment-specific preparation). Primary cross-check: NIST SP 800-61 Rev. 3, §2.2, pp. 6–7, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A plan assumes all controllers retain normal operation without the BMS server. What evidence gap prevents accepting that assumption?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The incident record does not yet identify the ransom-message author"
+        },
+        {
+          "id": "b",
+          "text": "Each critical controller's server-loss behaviour and dependencies are unverified"
+        },
+        {
+          "id": "c",
+          "text": "The public statement has not yet been approved"
+        },
+        {
+          "id": "d",
+          "text": "The 14:00 recovery time has not been added to the schedule"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 11.3 requires checking each critical controller before isolation. EX055 explains that server loss can produce defaults such as fixed fan speed or closed dampers, which need not preserve normal clinical conditions. Calling a state fail-safe does not establish suitability for every installation. Neither identifying an actor, approving a statement nor adopting the example's recovery time resolves that technical and safety gap. Behaviour, dependencies and acceptable fallbacks must be validated through the responsible operational and clinical process, not by an unapproved live disconnection.",
+      "source": "Chapter 11, §11.1 \"Planning ahead\", §11.3 \"Contain\" and \"Errors and limits\"; EX055 \"Safe defaults\" and its worked answer."
+    },
+    {
+      "id": "Q05",
+      "prompt": "In Millbrook's narrative, why can local operation continue after the 22:55 firewall containment without proving the BMS is clean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Field controllers run local schedules; firewall containment limits external command paths"
+        },
+        {
+          "id": "b",
+          "text": "The firewall replaces the controllers' programs with a clean configuration"
+        },
+        {
+          "id": "c",
+          "text": "A blocked conduit verifies the integrity of every controller's firmware"
+        },
+        {
+          "id": "d",
+          "text": "Loss of the BMS server places every device in an identical operating state"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 11.3 and EX052 distinguish local controller execution from commands crossing the BMS-zone boundary. In this invented case, schedules continue while the network team contains remote paths. A firewall neither replaces device programs nor verifies firmware integrity. Different controllers may react differently to server loss, as EX055 stresses. Continued local operation therefore explains the reported continuity; it does not prove eradication, normal operation at another site or protection from every command originating inside the allowed environment. The 22:55 result is narrative evidence, not a reproduced controller test.",
+      "source": "Chapter 11, §11.3 \"Contain\"; \"Worked example (synthetic Millbrook)\"; EX052 \"Why isolation is acceptable\" and EX055 \"Safe defaults\"."
+    },
+    {
+      "id": "Q06",
+      "prompt": "BMS monitoring is unavailable during the case's containment. Which temporary arrangement preserves the chapter's independent checks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the last central dashboard values until connectivity returns"
+        },
+        {
+          "id": "b",
+          "text": "Treat absence of new BMS alarms as evidence of safe operation"
+        },
+        {
+          "id": "c",
+          "text": "Continue patrols indefinitely without a staffing or restoration plan"
+        },
+        {
+          "id": "d",
+          "text": "Use staffed estates rounds for local values and staff checks of local alarms"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 11.3 uses estates patrols and local readings rather than relying on the untrusted or unavailable BMS. EX053 adds ward and theatre staff watching local alarms, including medical gas panels. Old dashboard values are not current observations, and silence from unavailable monitoring proves no safe state. Errors and limits makes this a temporary arrangement requiring staffing, not an indefinite replacement for restored monitoring. Hourly patrols belong to the synthetic case; they are not a universal safe interval for every device, alarm or clinical area.",
+      "source": "Chapter 11, §11.3 \"Contain\" and \"Errors and limits\"; EX053 \"Manual monitoring\" and its worked answer."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Immediate safety needs are addressed; a rebuild is proposed before logs and the BMS-WS image are preserved. What should gate that rebuild?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebuild first and reconstruct the original disk state from memory"
+        },
+        {
+          "id": "b",
+          "text": "Have the assigned custodian preserve the agreed logs and image in the evidence store"
+        },
+        {
+          "id": "c",
+          "text": "Keep only the ransom-message screenshot as a substitute for both artefacts"
+        },
+        {
+          "id": "d",
+          "text": "Delete the firewall extract once a restoration image is available"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 11.4 places preservation before rebuilding and assigns evidence collection and storage in advance. The case specifically retains the BMS-WS disk image and a firewall extract for 22:00–23:00. Rebuilding can destroy the prior state; memory, a screenshot or a restoration image cannot substitute for those records. Preserve their provenance and document collection actions. The chapter's sequence follows clinical protection; it is not a rule to delay an urgent safety intervention for forensics. Retention is governed by the applicable organisational procedures, not an invented fixed legal period.",
+      "source": "Chapter 11, §11.2 \"Detect and assess\" and §11.4 \"Evidence and recovery\"; EX054 \"Reconnecting\" (preservation precedes recovery). Primary cross-check: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which distinction prevents confusing the captured BMS-WS disk image with a suitable restoration source?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An image becomes safe to restore merely by entering the evidence store"
+        },
+        {
+          "id": "b",
+          "text": "The newest available image is necessarily a clean recovery baseline"
+        },
+        {
+          "id": "c",
+          "text": "The captured image preserves evidence; restoration requires a verified recovery source"
+        },
+        {
+          "id": "d",
+          "text": "A verified backup removes the need to check the restored system"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The incident-state disk image and a verified recovery image serve different purposes. Section 11.4 preserves the first and restores from verified backups; storing an artefact does not make its contents trustworthy for restoration. Recency alone is not verification, and a verified source does not establish the restored system's behaviour. NIST separates checking restoration assets before use from validating restored services afterward. The book does not specify the backup-validation method, prove that every captured image is infected or report additional forensic findings. Do not invent any of those details.",
+      "source": "Chapter 11, §11.4 \"Evidence and recovery\"; \"Worked example (synthetic Millbrook)\"; EX054 \"Reconnecting\". Primary cross-check: NIST SP 800-61 Rev. 3, Table 3, RC.RP-03 and RC.RP-05, p. 34, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetical: one conduit is restored, but critical-point comparisons and alarm readiness remain unconfirmed. Which recovery status is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Recovery is complete because network connectivity returned"
+        },
+        {
+          "id": "b",
+          "text": "All remaining conduits can return once the clock reaches 14:00"
+        },
+        {
+          "id": "c",
+          "text": "Recovery has failed because validation results are not yet recorded"
+        },
+        {
+          "id": "d",
+          "text": "A reconnection step occurred; operational validation remains pending"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 11.4 and EX054 restore one conduit at a time, with estates comparing critical points against local readings before the next step. Connectivity is not that validation, and missing results do not prove failure. Local-alarm monitoring in EX053 is a separate safety function; agreement of point values alone does not demonstrate alarm readiness. NIST likewise requires confirmation of restored service operation. The case narrates reconnection by 14:00 after point checks, not permission to skip checks at that time, and supplies no completed alarm-test record. This hypothetical adds no such observation.",
+      "source": "Chapter 11, §11.3 \"Contain\" and §11.4 \"Evidence and recovery\"; EX053 \"Manual monitoring\" and EX054 \"Reconnecting\", including their worked answers. Primary cross-check: NIST SP 800-61 Rev. 3, Table 3, RC.RP-04 and RC.RP-05, p. 34, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q10",
+      "prompt": "A journalist asks Aisha for the incident's cause and patient impact. Which response follows Millbrook's communication authority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Send a preliminary cause estimate under her own name"
+        },
+        {
+          "id": "b",
+          "text": "Refer the request to the incident lead and provide sourced facts internally"
+        },
+        {
+          "id": "c",
+          "text": "Share technical screenshots informally instead of making a statement"
+        },
+        {
+          "id": "d",
+          "text": "Wait until recovery ends before informing hospital management"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 11.5 routes the request to the incident lead without analyst comment. The lead informs hospital management, which decides external notification in the case's authority model. Analysts supply facts with times and sources and retain copies of updates. An estimate is not confirmed cause, screenshots are still a disclosure, and waiting for recovery is not the stated reporting process. This describes assigned responsibilities, not a universal legal permission to withhold notice. NIST's guidance on designated communicators does not establish any jurisdiction-specific deadline or patient outcome.",
+      "source": "Chapter 11, §11.5 \"Communication\", both paragraphs; §11.1 \"Planning ahead\" (assigned authority). Primary cross-check: NIST SP 800-61 Rev. 3, Table 3, RS.CO-02, recommendation R5, p. 31, https://doi.org/10.6028/NIST.SP.800-61r3"
+    }
+  ]
+}
