@@ -204,9 +204,12 @@ async def test_index(request: Request) -> dict[str, Any]:
         if _live_test_index is not None and time.time() < _live_test_index_until:
             return _live_test_index
         try:
-            from js import fetch  # type: ignore[import-not-found]
+            from js import Object, fetch  # type: ignore[import-not-found]
+            from pyodide.ffi import to_js  # type: ignore[import-not-found]
             response = await fetch(
-                "https://api.github.com/repos/hiagokinlevi/OpenCyberAcademy/git/trees/main?recursive=1"
+                "https://api.github.com/repos/hiagokinlevi/OpenCyberAcademy/git/trees/main?recursive=1",
+                to_js({"headers": {"User-Agent": "OpenCyberAcademy-public-reader",
+                                   "Accept": "application/vnd.github+json"}}, dict_converter=Object.fromEntries),
             )
             if int(response.status) != 200:
                 raise ValueError("GitHub tree is unavailable")

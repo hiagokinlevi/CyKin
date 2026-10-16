@@ -41,15 +41,18 @@ def test_live_catalog_adds_verified_bank_and_ignores_invalid_bank(monkeypatch):
             raise HTTPException(409, "Source changed")
         return {"source_sha256": "2" * 64}, "3" * 64
 
-    async def github_fetch(_url):
+    async def github_fetch(_url, _options):
         return SimpleNamespace(status=200, text=lambda: asyncio.sleep(0, result=json.dumps(tree)))
+
+    monkeypatch.setitem(sys.modules, "pyodide", SimpleNamespace(ffi=SimpleNamespace(to_js=lambda value, **_kwargs: value)))
+    monkeypatch.setitem(sys.modules, "pyodide.ffi", SimpleNamespace(to_js=lambda value, **_kwargs: value))
 
     monkeypatch.setattr(api, "public_asset_json", asset)
     monkeypatch.setattr(api, "catalog", courses)
     monkeypatch.setattr(api, "chapter_test_bank", bank)
     monkeypatch.setattr(api, "_live_test_index", None)
     monkeypatch.setattr(api, "_live_test_index_until", 0.0)
-    monkeypatch.setitem(sys.modules, "js", SimpleNamespace(fetch=github_fetch))
+    monkeypatch.setitem(sys.modules, "js", SimpleNamespace(fetch=github_fetch, Object=SimpleNamespace(fromEntries=lambda value: value)))
     request = Request({"type": "http", "method": "GET", "path": "/api/tests/catalog",
                        "headers": [], "env": object()})
 

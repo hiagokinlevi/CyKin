@@ -90,6 +90,8 @@ curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | grep -F 'rapid-1-month/incident-response-resilience/en' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | \
   python3 -c 'import json,sys; rows=json.load(sys.stdin)["courses"].get("rapid-1-month/incident-response-resilience/en", []); sys.exit(0 if [row["chapter"] for row in rows] == [1,2,3,4] else 1)'
+curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/api/tests/catalog | \
+  python3 -c 'import json,sys; data=json.load(sys.stdin); sys.exit(0 if data.get("live_sync") == "github" and data.get("source_head") else 1)'
 curl --fail --show-error --silent "${curl_options[@]}" https://opencyber.academy/analytics.js | grep -F 'G-7KDGFR12FS' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \
