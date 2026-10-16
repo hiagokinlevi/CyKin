@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 6,
+  "source_anchor": "ch-06",
+  "source_sha256": "386c2fdfd6e3e5658f46181972d6d8b440b125bc08fa749a16448dd5f8cdbd96",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which source roles preserve the chronology of EX060's three inputs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The prior note covers all outage activity; the paper and recollection merely repeat it"
+        },
+        {
+          "id": "b",
+          "text": "The latest recollection replaces the paper, while the prior note proves a separate visit"
+        },
+        {
+          "id": "c",
+          "text": "The paper records the outage interval; the prior note suggests overlap; recollection raises a discrepancy"
+        },
+        {
+          "id": "d",
+          "text": "The three accounts can be merged immediately because they concern the same animal and morning"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The sources have different origins and purposes. The outage paper is the contemporaneous documentary reference for the simulated interval. The existing note may already represent some information, while the nurse's later memory raises a disagreement to review. Neither the note's existence nor the memory's recency proves that material can be merged, replaced or counted as another visit. EX060's expanded table keeps these roles separate before any proposed entry. Hollybank is synthetic; the source labels establish no real patient, encounter identifier, treatment or clock time.",
+      "source": "Chapter 6, §6.3 \"A source hierarchy is not permission to overwrite a chart\"; §6.4 \"Name the three inputs and their evidentiary limits\", three-source table; §6.5, steps 1–4; EX060 independent extension and expanded Worked result, source-role rows."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A learner says the paper's priority makes a conflicting recollection irrelevant. Which correction is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Preserve the paper and refer the discrepancy; documentary priority does not guarantee clinical truth"
+        },
+        {
+          "id": "b",
+          "text": "Discard the paper because any conflicting recollection proves its contents are wrong"
+        },
+        {
+          "id": "c",
+          "text": "Enter both dose accounts as separate treatments so neither source is excluded"
+        },
+        {
+          "id": "d",
+          "text": "Choose the more confident account and treat that confidence as permission to amend"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The paper governs the documentary starting point, not automatic clinical correctness. The chapter requires making the disagreement visible to Dr. Moss while retaining the original. Memory is neither an authorized replacement nor proof of a second treatment, but it can identify a problem needing review. Confidence alone supplies no verified value or approval. EX060's expanded answer therefore combines use of the paper with an attributed correction process if required. No dose is supplied, chosen or declared correct here, and the task provides no clinical judgment.",
+      "source": "Chapter 6, §6.4, final two paragraphs; §6.5, step 4; §6.6, conflicting-recollection row and reconciliation-note template; §6.8, negative control A; EX060 original and expanded Worked result, recollection row and Model answer."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Without further matching facts, how should the prior note for the same animal and morning be treated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As proof of the same encounter, allowing every paper field to be merged without review"
+        },
+        {
+          "id": "b",
+          "text": "As proof of a second encounter, requiring a new visit for the paper entry"
+        },
+        {
+          "id": "c",
+          "text": "As proof that nothing from the outage interval remains to be entered"
+        },
+        {
+          "id": "d",
+          "text": "As a possible overlap requiring comparison; neither one encounter nor two is established"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Same animal and morning are matching clues, not a validated encounter identifier. Two writings can describe one event, but the supplied clues also do not conclusively establish that they do. The correct response is to compare within the authorized process and leave disputed matching questions for review. Automatically merging, duplicating or declaring completeness would each exceed the evidence. EX060's expanded answer qualifies the original no-duplicate instruction this way. The exercise supplies no identifier, exact time or matching algorithm that could settle the uncertainty automatically.",
+      "source": "Chapter 6, §6.4, matching-clues paragraph; §6.5, steps 2–3 and 6; §6.8, negative control B; EX060 independent extension and expanded Worked result, existing-note row and Model answer."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Hypothetically, an authorized comparison confirms one encounter and a source-supported missing field. Which entry plan avoids duplication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create another visit to preserve the distinction between paper and electronic media"
+        },
+        {
+          "id": "b",
+          "text": "Add only the supported missing material to that encounter through the approved workflow"
+        },
+        {
+          "id": "c",
+          "text": "Replace the whole prior note with the paper, dropping any information not repeated there"
+        },
+        {
+          "id": "d",
+          "text": "Leave the supported gap unaddressed solely because an electronic note already exists"
+        }
+      ],
+      "correct": "b",
+      "explanation": "This hypothetical supplies the comparison result that EX060 itself leaves unresolved. With a supported same-encounter match and an identified gap, the chapter permits adding missing material under the approved workflow, retaining the original paper and any unresolved issues. It does not call for another visit, a wholesale replacement of the prior note or ignoring legitimate missing information. The positive branch shows that reconciliation can support a bounded update; it is not a blanket refusal to enter data. No such comparison, approval or saved chart edit is claimed to have occurred in Hollybank.",
+      "source": "Chapter 6, §6.1, compare-and-enter paragraph; §6.5, steps 3 and 6; §6.6, source-supported-missing-information row; EX060 expanded Worked result, existing-note disposition and Model answer; hypothetical contrast only."
+    },
+    {
+      "id": "Q05",
+      "prompt": "A paper field is hard to read in a proposed transcription. Which response preserves its source rather than guessing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Seek a legible copy of the same paper and hold unresolved content for authorized review"
+        },
+        {
+          "id": "b",
+          "text": "Use the nurse's remembered value because readability determines which source has authority"
+        },
+        {
+          "id": "c",
+          "text": "Copy the prior note's value automatically because both records concern the same morning"
+        },
+        {
+          "id": "d",
+          "text": "Fill the field from surrounding text so the entry can be marked complete before review"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The worked example asks for a legible copy of the same paper instead of substituting memory. A clearer rendering must preserve that source, not create a reconstructed original. If the relevant content or match remains unresolved, the later reconciliation steps require review rather than a guessed entry. The prior note may be relevant, but its value cannot be adopted solely because the morning matches. EX060 supplies no dose that a learner can safely fill in. This is a proposed documentation check, not a claim that a new copy was received or a value verified.",
+      "source": "Chapter 6, §6.2 \"Worked example\", awkward-handwriting row; §6.5, steps 1, 3 and 4; §6.6, note template; EX060 original answer and expanded Worked result, paper/recollection rows and Falsifiers."
+    },
+    {
+      "id": "Q06",
+      "prompt": "If Dr. Moss later authorizes a correction, how should it relate to the original paper?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the original with a clean copy so reviewers see only the amended account"
+        },
+        {
+          "id": "b",
+          "text": "Treat referral to Dr. Moss as sufficient evidence that the correction has already happened"
+        },
+        {
+          "id": "c",
+          "text": "Change the disputed field silently because naming a reviewer removes the need for a reason"
+        },
+        {
+          "id": "d",
+          "text": "Keep the original and document Dr. Moss's attributed correction and reason separately"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The conditional correction is a distinct, accountable act, not silent replacement or a reconstruction labeled original. Dr. Moss must record the correction and its reason under the fictional rule, with the paper retained for comparison. Sending a discrepancy for review does not supply that approval or execution. EX060's expanded table explicitly marks the correction as a future conditional step, not an event already provided. NIST SP 800-61 Rev. 3 supports preserving records' integrity and provenance generally; it does not appoint this reviewer or prescribe a clinical amendment procedure.",
+      "source": "Chapter 6, §6.1, correction rule; §6.5, step 5; §6.7 \"Integrity, custody and the boundary of retention\"; EX060 expanded Worked result, Dr. Moss correction row and Model answer. General principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06/RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q07",
+      "prompt": "The chart looks complete. Which handling choice keeps the exercise's reconciliation open to later checking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discard the paper after a visual check, because screen completeness establishes transcription accuracy"
+        },
+        {
+          "id": "b",
+          "text": "Retain only a merged summary, eliminating the conflicting sources to simplify the file"
+        },
+        {
+          "id": "c",
+          "text": "Keep the original paper with the change log; appearance alone does not establish accurate reconciliation"
+        },
+        {
+          "id": "d",
+          "text": "Rewrite the paper to match the screen, then preserve the rewritten page as the original"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A neat chart does not prove every paper field was entered accurately or every disagreement resolved. Keeping the original permits comparison with the prior note, later authorized amendments and unresolved questions. A merged summary may aid analysis but does not replace those sources; rewriting the paper would erase the earlier record. EX060's falsifiers reject discarding it merely because the screen appears finished. This is the exercise's preservation boundary, not a specified legal retention period, chain-of-custody receipt or assertion that a real chart was checked.",
+      "source": "Chapter 6, §6.2, discard-paper row; §6.5, step 7; §6.7, preservation distinction; §6.8, negative control C; EX060 expanded Worked result, paper disposition and Falsifiers."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What does EX060's statement that the system is back establish for this task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verified production recovery time for Hollybank's practice system"
+        },
+        {
+          "id": "b",
+          "text": "A premise for reasoning about reconciliation, not evidence of a real restore or completed edit"
+        },
+        {
+          "id": "c",
+          "text": "A successful save of the outage-paper entry into the live chart"
+        },
+        {
+          "id": "d",
+          "text": "Confirmation that the separate mailbox restore and client-list refresh have also finished"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The statement sets the exercise conditions so the learner can decide how sources should be compared. It is not an observed restoration, a save receipt or evidence about other recovery tasks. Chapter 6 supplies no new log entry, final correction or real system check. Its background drill and hypothetical system-return condition must not be promoted to production events. EX060's expanded answer explicitly retains this boundary. The valid reasoning can therefore describe what would be checked next without claiming any treatment entry, mailbox recovery or refreshed client list.",
+      "source": "Chapter 6, §6.3, simulated-outage and exercise-premise paragraph; §6.5, opening paragraph; §6.8, negative control D; EX060 prompt and expanded Worked result, Model answer and Falsifiers."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which ledger status fits EX060 before the encounter match or Dr. Moss's review has been resolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One encounter confirmed; paper-only fields entered; the correction awaiting a signature after execution"
+        },
+        {
+          "id": "b",
+          "text": "Two encounters confirmed; each source assigned its own completed visit"
+        },
+        {
+          "id": "c",
+          "text": "Recollection accepted as the final dose because it was recorded after the paper"
+        },
+        {
+          "id": "d",
+          "text": "Three source roles separated; match and disputed fields unresolved; approval and final disposition not supplied"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The classroom ledger should expose the pending questions rather than fill them with expected outcomes. PAPER, PRIOR NOTE and RECOLLECTION identify different roles; a proposed match remains proposed until supported, and reviewer approval remains absent until provided. Recording a completed visit or correction would invent evidence the exercise withholds. EX060's expanded source table and model note describe comparison and review to be done, not a performed edit. No name, dose, encounter identifier, timestamp or signature should be fabricated to make the ledger appear complete.",
+      "source": "Chapter 6, §6.6, reconciliation-note template; §6.7, classroom-ledger paragraph; §6.8, independent practice; EX060 independent extension and expanded Worked result, all four source/disposition rows."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Someone says filing the paper also proves mailbox recovery and a current client list. What correction is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Preservation supports review of this record; mailbox recovery and list freshness require their own evidence"
+        },
+        {
+          "id": "b",
+          "text": "Filing proves those results because all three tasks belong to the same continuity effort"
+        },
+        {
+          "id": "c",
+          "text": "The NIST data-security outcome certifies every recovery task once the paper is retained"
+        },
+        {
+          "id": "d",
+          "text": "The exercise's filing instruction supplies a legal retention rule that closes all three questions"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The artefacts answer different questions. Retaining the paper keeps the outage-period source available for reconciliation; it neither restores a mailbox nor produces or verifies a client list. EX060's documentation decision does not close those separate tasks. NIST CSF 2.0 PR.DS provides general integrity and availability outcomes, not a receipt that Hollybank achieved them. The chapter also supplies no legal retention period or clinical protocol. This distinction preserves the usefulness of filing without turning it into evidence of unrelated recovery, local approval or completed operations.",
+      "source": "Chapter 6, §6.3, NIST boundary; §6.6, mailbox/list row; §6.7, retention boundary; Errors and limits; EX060 expanded Worked result, paper disposition and Falsifiers. General outcomes only: NIST CSF 2.0, Abstract and Appendix A, PR.DS, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
