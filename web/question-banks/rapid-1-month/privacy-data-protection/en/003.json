@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "e4bea0e7b72dc81f913ff5f0ddfa9a34da50dccf7ec2fd703855e1849b099db4",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A draft inventory names Juniper's systems but omits their connections. What addition makes it a useful flow map?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the data descriptions with a count of suppliers alone"
+        },
+        {
+          "id": "b",
+          "text": "Add sender, receiver, contents and the expectation assessment to each relevant arrow"
+        },
+        {
+          "id": "c",
+          "text": "Treat every named system as approved without checking what it exchanges"
+        },
+        {
+          "id": "d",
+          "text": "Remove paper files because only electronic transfers can affect the review"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Sections 3.1 and 3.2 distinguish places that hold data from movements between them. The map includes paper as well as digital systems; its arrows identify contents and whether customers would expect the flow. EX027 concerns a transfer the owner had not realised, while EX028 and EX038 identify delivery contents and the expectation check. Counting four vendors does not replace mapping seven systems or their connections. This is an improvement to a hypothetical draft, not a new inventory, an approved transfer or proof that every real-world flow has been found.",
+      "source": "Chapter 3, sections 3.1 Mapping the systems and 3.2 Following the flows; Data — four flows that leave the shop; general Worked example; Worked results (#worked-results; EX027, EX028, EX029, EX038)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which distinction should Sofia preserve between the nightly loyalty feed and the described delivery flow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both recipients receive the same complete medication history because both are vendors"
+        },
+        {
+          "id": "b",
+          "text": "A sealed bag means the delivery firm's names and addresses are anonymous"
+        },
+        {
+          "id": "c",
+          "text": "The loyalty label proves its feed contains points only, regardless of the mapped contents"
+        },
+        {
+          "id": "d",
+          "text": "The loyalty feed includes medicine items; delivery has names, addresses and a sealed-bag description"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The two arrows carry different information. EX027 describes medicine purchases going from the till to the loyalty app each night; EX028 limits the stated delivery contents to names, addresses and a sealed bag description. The package being sealed does not make those identifiers anonymous, and being a loyalty service does not remove medicine data from its input. The narrative supports a concern about health-revealing purchases, not a diagnosis for a named customer or a claim that the driver received a complete prescription history. No new export or delivery was performed for this question.",
+      "source": "Chapter 3, sections 3.1-3.2, nightly transfer and delivery sentences; Data — four flows that leave the shop, loyalty and delivery rows; general Worked example; Worked results (#worked-results; EX027, EX028)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Mr. Patel has drafted the missing clauses. Which contract-status report is supported at this chapter's checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Loyalty and delivery remain the flagged gaps; drafting is not evidence that new terms are binding"
+        },
+        {
+          "id": "b",
+          "text": "All four vendors are cleared because a mentor drafted the missing wording"
+        },
+        {
+          "id": "c",
+          "text": "The dispensing supplier's terms automatically cover the separate loyalty and delivery firms"
+        },
+        {
+          "id": "d",
+          "text": "The gap proves that either vendor has already disclosed customer data to an outsider"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 3.3 finds relevant terms for the dispensing supplier and newsletter tool, but gaps for loyalty and delivery. It reports drafting, not acceptance or a completed contractual change. EX030 names the two gaps; the later example within this chapter still says the loyalty terms are missing. GDPR Article 28(3) requires a binding contract or other qualifying legal act governing processing, not merely proposed wording. This distinction neither invents a signature nor proves misconduct by a vendor. Existing terms for one provider do not establish the terms of a different relationship.",
+      "source": "Chapter 3, section 3.3 Vendors and dependencies; Data — four flows that leave the shop, contract column; Worked example — a text when insulin is sold; Worked results (#worked-results; EX030, EX031, EX055). Contract principle only: GDPR Article 28(3), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A proposed processor agreement says only 'we keep data safe'. What review best follows EX031?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept the sentence as proof that every required safeguard is already implemented"
+        },
+        {
+          "id": "b",
+          "text": "Replace the review with the supplier's subscription price and reputation"
+        },
+        {
+          "id": "c",
+          "text": "Check instructions, confidentiality, security and end-of-service handling against the actual obligations"
+        },
+        {
+          "id": "d",
+          "text": "Remove all end-of-service provisions because security wording makes retention irrelevant"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX031 identifies several obligations, not a slogan or a price test. GDPR Article 28(3)(a)-(c) addresses instructions, confidentiality and security; point (g) covers deletion or return at the controller's choice after services end, subject to legally required storage. Point (h) supports access to compliance information and audits. These are general requirements to examine, not evidence that Juniper audited a provider or that promised deletion occurred. The chapter's short list is not the whole Article 28 checklist. Reviewing a proposed agreement does not itself approve a new purpose or certify the supplier.",
+      "source": "Chapter 3, section 3.3, processor commitments; Decision flow — the owner proposes one new use, receiver-contract branch; general Worked example; Worked results (#worked-results; EX030, EX031). General provisions: GDPR Article 28(3)(a)-(c), (g)-(h), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Why does the dispensing entry's Article 9(2)(h) condition not automatically authorize a medicine-triggered promotional message?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every activity performed by a pharmacy is necessarily health care"
+        },
+        {
+          "id": "b",
+          "text": "The condition relates to necessary care-related processing, not every later use of the same data"
+        },
+        {
+          "id": "c",
+          "text": "Article 9 removes the need to consider an ordinary lawful basis for health information"
+        },
+        {
+          "id": "d",
+          "text": "Newsletter consent automatically covers every health-data purpose in the pharmacy"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX032 identifies the health-care condition for the dispensing purpose; it is not a transferable approval for advertising. Article 9(2)(h) has necessity and legal or professional-contract conditions, with the safeguards in Article 9(3). Article 6 lawfulness remains a separate question. The chapter does not establish all those conditions for any real pharmacy, and its table supplies no ordinary Article 6 basis by merely writing 'health care'. Brazil has its own sensitive-data rules, including LGPD Article 11(II)(f); GDPR numbering cannot be imported as Brazilian authorization. No promotional processing is approved here.",
+      "source": "Chapter 3, section 3.4 Lawful bases; Concepts — the basis does not travel to the next purpose, dispensing and medicine-message rows; Worked example — a text when insulin is sold; Worked results (#worked-results; EX032, EX037, EX055). GDPR Articles 6(1), 9(2)(h), 9(3), https://data.europa.eu/eli/reg/2016/679/oj; jurisdiction distinction only: LGPD Article 11(II)(f), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q06",
+      "prompt": "In EX055, what prevents switching on the insulin-triggered voucher under the existing points membership?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A familiar customer may receive it without any purpose-specific assessment"
+        },
+        {
+          "id": "b",
+          "text": "The owner's wish supplies explicit consent on behalf of every member"
+        },
+        {
+          "id": "c",
+          "text": "Ordinary newsletter consent repairs both the new purpose and the vendor contract"
+        },
+        {
+          "id": "d",
+          "text": "The new health-data purpose lacks its required explicit consent, and the processor terms remain deficient"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX055 distinguishes the member agreement used for points from the agreement governing the loyalty supplier's processing. Neither substitutes for explicit consent for this medicine-based offer, which the case says has not been collected. The supplier terms also still lack Article 28 provisions, so solving only one issue would not settle the other. GDPR Article 9(2)(a) describes purpose-specific explicit consent, subject to its limits; it is not the only Article 9 condition for every possible health-data activity. The proposal stays off. The question invents no consent, message, diagnosis or completed contract.",
+      "source": "Chapter 3, section 3.4; Concepts — the basis does not travel to the next purpose, points and medicine-message rows; Worked example — a text when insulin is sold; Apply EX055 and Worked results (#worked-results; EX030, EX033, EX055). GDPR Articles 9(2)(a), 28(3), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q07",
+      "prompt": "The owner instead proposes a voucher based only on total points, with no medicine named. What follows from the example?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess this different proposal from the start; removing the medicine trigger does not approve it"
+        },
+        {
+          "id": "b",
+          "text": "Activate it immediately because refusal of one proposal approves every alternative"
+        },
+        {
+          "id": "c",
+          "text": "Reuse the dispensing condition because both proposals came from the same pharmacy"
+        },
+        {
+          "id": "d",
+          "text": "Treat the old expectation check as permanent permission for any future voucher"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The worked example explicitly treats a points-only voucher as a different proposal that must enter the decision flow again. Its purpose, applicable basis, receiver terms and retention still need consideration. EX037 places the basis decision before processing, while EX038 concerns expectations rather than automatic permission. A less sensitive proposal can remove one concern without satisfying all remaining checks. This is the bounded teaching decision, not a rule that every new purpose always requires fresh consent. No alternative was activated and no new approval, retention period or processing outcome is supplied.",
+      "source": "Chapter 3, Worked example — a text when insulin is sold, points-only alternative; Decision flow — the owner proposes one new use, purpose through retention branches; sections 3.2 and 3.4; Worked results (#worked-results; EX037, EX038, EX055)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "EX056 leaves delivery records on the driver's phone without an end date. Which response avoids inventing a retention rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply CCTV's thirty days to every record because it is the only number given"
+        },
+        {
+          "id": "b",
+          "text": "Erase all prescription records immediately to make the amount retained smaller"
+        },
+        {
+          "id": "c",
+          "text": "Have the owner set an appropriate delivery period without rewriting the professional prescription period"
+        },
+        {
+          "id": "d",
+          "text": "Keep delivery records forever because needing them once establishes permanent necessity"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX056 identifies the delivery retention gap and assigns the period-setting decision to the owner. The prescription period follows professional rules that Sofia must not invent; the CCTV period is a separate fact of this fictional case, not a general deadline. GDPR Article 5(1)(e) limits identifiable storage to what the processing purposes require, with its stated exceptions. Reducing unnecessary holdings can reduce possible exposure, as EX036 explains, but does not justify indiscriminate deletion or prove that a breach cannot occur. No delivery deadline, deletion or change to pharmacy obligations is reported here.",
+      "source": "Chapter 3, section 3.5 Retention; Concepts — the basis does not travel to the next purpose, prescription-record row; Data — four flows that leave the shop, retention column; Apply EX056 and Worked results (#worked-results; EX034, EX035, EX036, EX056). General storage-limitation principle only: GDPR Article 5(1)(e), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q09",
+      "prompt": "The newsletter tool has Article 28 terms, but no period for never-opened mail subscribers. Has the contract closed that gap?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; processor terms automatically assign the same period to every dataset"
+        },
+        {
+          "id": "b",
+          "text": "No; the documented contract and the unresolved retention period answer different questions"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the owner's approval of a recommendation proves the schedule was implemented"
+        },
+        {
+          "id": "d",
+          "text": "No; the missing period proves that the previously found processor terms do not exist"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The newsletter row has a positive contract entry and an unresolved retention entry at the same time. Section 3.5 recommends a schedule for loyalty, delivery and subscribers who never open mail; the owner approves that recommendation. Neither the contract nor that approval supplies a written duration or evidence of deletion. Preserving both columns avoids inventing completion and avoids erasing terms actually found. EX030 concerns contract gaps, while EX035 and EX056 support the separate retention inquiry. This chapter does not perform an audit or establish that every newsletter recipient must be deleted after a universal period.",
+      "source": "Chapter 3, section 3.5, recommendation and owner approval; Data — four flows that leave the shop, newsletter row; Decision flow — the owner proposes one new use, separate contract and retention checks; Worked results (#worked-results; EX030, EX035, EX056)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "In a hypothetical later change, a flow would reach a different supplier. How should Sofia use the existing map?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Leave it unchanged because completing the original drawing made it permanently accurate"
+        },
+        {
+          "id": "b",
+          "text": "Copy the previous supplier's approval to the new receiver without examining its role or terms"
+        },
+        {
+          "id": "c",
+          "text": "Assume the change has already happened and record an unobserved transfer as completed"
+        },
+        {
+          "id": "d",
+          "text": "Review the changed connection and relevant checks, distinguishing a proposal from an observed flow"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Errors and limits requires updating a map when systems change. Sections 3.1-3.3 connect each flow to its contents and receiver, and the decision flow evaluates new uses before adding them. The original map is a starting record, not a permanent guarantee or a transferable vendor approval. EX027, EX030 and EX038 support checking the connection, terms and expectations rather than relying on an old label. Because this prompt is hypothetical, the bank records no new supplier, transfer, signature or inspection. The existing Chapter 2/index/Chapter 4 navigation remains a reading path, not proof that later changes were reviewed.",
+      "source": "Chapter 3, sections 3.1-3.3; Errors and limits; Data — four flows that leave the shop; Decision flow — the owner proposes one new use; Continue studying; Worked results (#worked-results; EX027, EX030, EX038)."
+    }
+  ]
+}
