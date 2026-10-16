@@ -23,5 +23,6 @@ Original classroom TableTop: [Public portal disruption (English)](tabletops/06-d
 Original classroom TableTop: [Water-system controller anomaly (English)](tabletops/07-water-ot-anomaly.en.md).
 Original classroom TableTop: [Lost field laptop (English)](tabletops/08-lost-laptop.en.md).
 Original classroom TableTop: [Web application compromise (English)](tabletops/09-web-application-compromise.en.md).
+Original classroom TableTop: [Domain routing hijack (English)](tabletops/10-dns-domain-hijack.en.md).
 
 These links are pinned to source revisions. Review each repository's license and current safety guidance before reuse. No linked file is silently copied or relicensed here.
