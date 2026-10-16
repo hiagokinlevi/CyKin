@@ -794,6 +794,72 @@ Until the technician produces a new export and the same kind of count is run, th
 
 > **Synthetic case.** The counts 47, 300, 8, 4, 25 and 10 stay the published run. This lesson does not invent a second output.
 
+
+### 7.3 Define the evidence before calculating
+
+A **control change** is an action intended to change a permission. A **census** is an observation of how many records meet a defined condition within a specified data population. A **reproducible script** gives the same result for equivalent inputs; that property does not make an older input current. These are different evidence types. In the Hollybank exercise, Sofia's change log describes remediation, whereas the prior laboratory's output documents the older synthetic count.
+
+Chapter 2's Python program creates **300 fictional (folder, open-flag) rows** in memory, using a fixed seed of 2. It does not read actual cloud permissions or consume a subsequent export. Its verified output was:
+
+| Synthetic folder | Open-link rows | Total rows |
+|---|---:|---:|
+| clients | 8 | 140 |
+| finance | 4 | 60 |
+| marketing | 25 | 80 |
+| rotas | 10 | 20 |
+| **all files** | **47** | **300** |
+
+The original exact terminal line is **all files: 47 of 300**. Sofia's restriction of eight client files and four finance files is a **reported change**. The narrative also describes moving the rota workflow behind sign-in and making new sharing default to clinic-only. Those actions should remain in the change log, but do not retroactively alter the generator's rows or make its output a new measurement. The metric counts open flags, including public marketing content; a decision to prioritize sensitive files does not authorize silently excluding marketing from the original denominator or numerator.
+
+The [NIST Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29) distinguishes intended protective outcomes from the evidence used to assess their achievement. It does not prescribe this fictional count or certify Hollybank's configuration. The distinction here is an original teaching application, not a claimed audit of a real practice.
+
+### 7.4 Why 47 minus 12 does not establish 35
+
+**Arithmetic can be correct while the observation claim is false.** Forty-seven minus twelve equals thirty-five as an integer, but the sentence “current open files: 35 of 300” requires assumptions that have **not** been checked. To be a measured total, all of these would need evidence:
+
+1. The twelve changed items must be the same **twelve distinct** records originally counted as open, not just twelve actions or files with similar names.
+2. Each requested restriction must have become an **effective access change**; approval or setting intent alone is insufficient.
+3. No other link has been created, reopened, changed or made private, including rotas and permitted public marketing.
+4. The population must still contain exactly the same **300 distinct in-scope files**; none were added, removed, reclassified, filtered away or counted twice.
+5. The observation cutoff, identity of the export, definition of open-to-anyone-with-link, and inclusion of every folder must be comparable.
+6. A later source and result must have actually been captured and reviewed. **No such export or rerun is provided.**
+
+The synthetic generator has no unique file identifier; it stores a folder and boolean flag. Therefore it cannot prove that a later set of restrictions corresponded to twelve particular old rows. A duplicate row in an export could be counted twice. An absent row might indicate export incompleteness rather than corrected access. A link could reopen after a restriction, or a newly created file could alter the denominator. Each is a **possible counterexample**, not an observed Hollybank event.
+
+| Candidate statement | Evidence available | Verdict |
+|---|---|---|
+| “Twelve sensitive files were restricted.” | Described intervention in the fictional change log | Keep as **change history**, not count |
+| “The verified seed-2 output was 47 of 300.” | Exact code and printed synthetic output in Chapter 2 | Keep, labeled as the **historical fixture** |
+| “The current total is 35 of 300.” | Only subtraction and unverified assumptions | **Not established** |
+| “Marketing is allowed to be public; delete its 25 from the old report.” | A separate risk-priority decision | Refuse the change to the historical all-files metric |
+| “The monthly reminder proves a new scan occurred.” | Intention to repeat checking | **No**; a planned measurement is not a captured result |
+
+The verified old value is not proof that **47 files remain open today**, either. The current state is **not measured in this chapter**. Keep “last verified fixture: 47 of 300” separate from the unknown new total.
+
+### 7.5 Dataset, sample and software version
+
+A new count would need a pinned **export source and capture time**, **population boundary**, **file identities**, **category filters**, **permission predicate**, **deduplication rules**, **program version**, and an accountable validation. If any of these change, explain the difference instead of presenting the before/after figures as perfectly comparable. A new report might be incomplete due to missing folders or access limits of the exporter, and a file shown as absent cannot be treated automatically as secured.
+
+The Chapter 2 fixture is **not a representative statistical sample of real Hollybank records**. The folder sizes and generation probabilities are teaching parameters. The seed simply permits reproduction of a deterministic synthetic sequence for the same execution conditions. The [official Python random module documentation](https://docs.python.org/3.13/library/random.html) explains seeding and pseudorandom reproducibility; the [collections.Counter documentation](https://docs.python.org/3.13/library/collections.html#collections.Counter) explains how the program tallies occurrences. Neither library independently understands permission inheritance, sharing links, effective access or file identity. Running the **unchanged** seed-2 generator again would test that fixture, **not** discover this month's permissions.
+
+Changing the seed or file counts to make the printout show thirty-five would create **different inputs**, not an updated record of the previously run example. Keeping the seed but calling an old printout “current” would make the opposite mistake: unchanged inputs with an unjustified new date.
+
+### 7.6 Worked reporting and verification gate
+
+**Supported note:** “The fixed seed-2 synthetic exercise printed all files: 47 of 300 (clients 8, finance 4, marketing 25, rotas 10). The fictional change log separately records restricting twelve sensitive files and adjusting rota/default handling. Because there is no new export or verified permission census, thirty-five is only arithmetic under unchecked assumptions; a current open-link total has not been observed.”
+
+**Unsupported note:** “The twelve closes mean the count fell to 35 of 300, and Hollybank is now secure.” The first clause claims a measurement never made, and the second invents an organization-wide assurance from a tiny synthetic model.
+
+An authorized **future** measurement would need: a newly identified source, time and scope; effective permission fields; stable file identity; a documented rule for duplicate and absent rows; a review of folder coverage; the same open-link predicate or a documented metric change; and an actual checked output retained alongside the original. **This is a proposed method, not work performed in this lesson.**
+
+**Negative controls:** A reopened link makes the subtraction unsafe. A new file makes the fixed denominator unsafe. A missing folder can make a smaller report misleading. A duplicate row can change a count without changing access. A public marketing file may remain a valid business decision yet must still be counted in the all-files metric if open.
+
+### 7.7 Independent practice for EX061
+
+Write the original EX061 response before reading its worked result: specify why thirty-five was **not measured**, preserve the exact **47 of 300** output, and name the next evidence step rather than altering Python. Then make a table with columns **change action**, **source/version**, **observed count**, and **open verification question**. Keep the new count blank. State three assumptions required for 47 minus 12 to describe a current census, and one plausible negative control against each. Distinguish an observed export from a seed-reproduced teaching fixture.
+
+Compare your response with [EX061 worked result](#answer-ex061). This is a source-and-reasoning exercise, not authorization to export production files, modify permissions, rerun the historical lab or claim a current new number.
+
 ### Errors and limits
 
 A later run might show 35, or 40, or 12 again if a link was reopened. Any of those is a result only after it is counted. This chapter does not perform that count, and it does not change `random.seed(2)`.
@@ -801,6 +867,10 @@ A later run might show 35, or 40, or 12 again if a link was reopened. Any of tho
 ### Apply
 
 - **EX061 — Do not subtract a census.** Someone writes "open files this month: 35 of 300" because twelve were closed. What is wrong with the number, and what remains the verified total? *Rubric:* 3 = 35 was not counted; the verified total is still 47 of 300 until a new export is run; do not edit the script;; 2 = reject 35 and keep 47 of 300;; 1 = one of those;; 0 = none.
+
+  - **Independent extension:** State three unverified assumptions behind 47 minus 12, plus what new scoped export, unique file identity, effective-access predicate and observation time would be required for a new valid count.
+  - **Negative controls:** New links, reopened permissions, duplicate rows, missing folders and changing denominators make subtraction unsafe. Do not edit the original script or declare a second run.
+  - **Worked result:** [EX061](#answer-ex061).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 20)
@@ -826,7 +896,7 @@ After this chapter, you should be able to:
 
 Chapter 2 refused a shared reception login for the locum and created a personal account, with a second factor, before the first patient. The same log says which account to disable when the locum leaves. The monthly routine includes leavers' accounts. A classmate argues the account is safe to keep because sign-in needs the key. The key reduces one path. It does not end the account. A key left at the clinic, or a factor that was never removed, still belongs to an account that should have been closed.
 
-The review question is narrow. Does the change log contain the disable, with a date, after the locum's last day? If it does not, the finding is an open leaver account. Sofia disables it and writes the line. She does not wait for the next incident card to discover a sign-in.
+The review question is narrow. Does the change log contain the disable, with a date, after the locum's last day? If it does not, the documented finding is **an unresolved account closure**: no completed disable appears in the log. The owner should arrange a check of the exact account's current status, approved deactivation if still enabled, and a real dated execution record and readback after the action. Silence in the log is not proof of current technical state; no disable or sign-in is observed here.
 
 ### 8.2 Worked example
 
@@ -835,9 +905,76 @@ The review question is narrow. Does the change log contain the disable, with a d
 | "The second factor is on." | A control on a live account | Disable anyway, then write it |
 | "The locum might return next month." | No approval from Dr. Moss for a standing account | Disable. A return needs a new approval |
 | "The week ended, so the system will have expired it." | No such expiry is recorded | Do not assume it |
-| "The disable is already in the log, dated after the last day." | The review item is met | Cite that line. Do not disable twice without checking |
+| "A dated disable appears in a separate hypothetical file." | Such a line could document an action, not prove current technical status | Verify the record and approved account-state readback rather than repeating an unverified operation |
 
 > **Synthetic case.** The locum is unnamed. Do not add a personal name.
+
+
+### 8.3 Account authorization and authentication solve different problems
+
+A **personal account** ties access to an individual work identity rather than a shared desk login. **Authorization** establishes that a person has a legitimate right to perform particular tasks for a defined period. **Authentication** evaluates whether a claimant controls the required authenticators; an additional factor strengthens that check under the configured method. **Disabling an account** ends its eligibility for use under the approved lifecycle procedure. A **verified closure** is an actual checked outcome, not just a sentence that says someone should disable the account.
+
+Chapter 2 provides an unnamed locum account, separately created for a temporary engagement, with a second factor and a change-log instruction identifying which account should be disabled at the end. EX062 says the last day has passed but the log contains only the **instruction**, not a dated record that deactivation occurred. The precise evidence finding is **“account retirement not documented or verified.”** It is a priority potential-residual-access question. A missing log line **does not independently prove** a backend is still enabled; equally, the existence of a second factor **does not prove** the account has been disabled. No actual account-state readback or sign-in event was supplied.
+
+[NIST SP 800-53 Rev. 5, AC-2 (Account Management)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) addresses the lifecycle of creating, modifying, reviewing and disabling accounts no longer required. [NIST SP 800-63B-4, Authentication and Authenticator Management](https://pages.nist.gov/800-63-4/sp800-63b.html) addresses authenticators and authentication, not automatic continued authorization to work. These are primary general principles; Hollybank is a fictional practice with **no validated identity platform, assurance level, disabling API or administrative log** provided.
+
+### 8.4 Four gates to a defensible closure
+
+Keep **request**, **approval**, **execution**, and **independent readback** as four different evidence states. The source and owner matter at every step:
+
+| Stage | Purpose and evidence needed | Status supplied in Hollybank |
+|---|---|---|
+| Original account setup | Individually assigned role, second factor and initial Dr. Moss approval | Described in Chapter 2 |
+| Engagement end | Business reason to withdraw temporary access | Last day has passed according to EX062, with no exact date supplied |
+| Closure request | Identify the right personal account and ask to end the role | Prior log names the account to disable |
+| Approval of closure | Confirm decision through authorized Dr. Moss workflow | No new completion record supplied |
+| Execution | Authorized actor changes the **correct account**, recording true time and result | **No dated disable result supplied** |
+| Readback | Approved account-state evidence and review of relevant sessions/other access where applicable | **No checked readback supplied** |
+| Future work | Fresh bounded purpose, role and Dr. Moss permission | **No return or reauthorization recorded** |
+
+Writing “disabled” without executing and checking would create a false audit trail. Executing a command and assuming it succeeded would also skip evidence. A readback from an approved state source could support closure if obtained, but this exercise has none. Whether actual sessions remain active after account disabling depends on system behavior that Hollybank does not describe; do not invent a logout, access token, device, key return, or revocation receipt.
+
+### 8.5 Worked current finding versus hypothetical future result
+
+**Actual supplied evidence:** The locum was assigned an individual account and second factor. The last day has passed. The available log still has only a disable instruction, so reviewers can establish an **undocumented closure**. They cannot prove from the missing line that the system still accepts authentication, nor claim it was successfully disabled.
+
+**Correct next action, not yet performed:** Identify the correct account, confirm the owner-approved deactivation decision, have an authorized administrator inspect status, disable if it remains enabled, record the real execution date and accountable actor, then independently check the resulting state and relevant access consequences. Do not backfill a date or mark closure complete without a receipt.
+
+**Explicitly hypothetical case:** Suppose a fresh approval is requested for a future locum assignment. Dr. Moss would need a new role/scope/period decision. That could imply new account provisioning or approved reactivation depending on actual system policy, but the old authenticator cannot by itself authorize continued access. This case does **not** say the locum returned, that a new account was created, or that an MFA device was recovered.
+
+| Suggested statement | Missing inference or evidence | Correct decision |
+|---|---|---|
+| “MFA is on, so the account is safe to leave forever.” | Factor checks do not renew a temporary business purpose | End the grant through account management |
+| “The last day passed, so automatic expiry happened.” | No expiry feature or verified status in the file | Do not assume deactivation |
+| “A disable was planned, so completed.” | Plan is not execution or readback | Keep completion **unverified** |
+| “There is no disable line, so the backend is certainly enabled.” | Missing documentation is not direct technical status | Treat potential residual access as requiring checking |
+| “The locum may return later.” | Future possibility is not today's owner authorization | Require fresh Dr. Moss decision |
+| “Disable all reception staff accounts.” | Targets unrelated authorized identities | Restrict the closure to the exact temporary account |
+
+### 8.6 Potential residual access and evidence-aware reporting
+
+If the account remained usable after the assignment ended, credentials or still-valid sessions **could** offer residual access inconsistent with the limited role. That is a risk scenario, not an observed misuse or a security incident. To classify any real exposure an authorized reviewer would need status and permission evidence; to identify an actual intrusion would require relevant activity and applicable incident criteria. No such records are in the synthetic case.
+
+A proposed **closure receipt template**, not evidence of execution, could track:
+
+| Field to be completed on a future real change | Value currently supported |
+|---|---|
+| Specific account | The earlier log identifies which locum account should be targeted; no literal identifier supplied |
+| End-of-assignment reason | Stipulated as passed in EX062 |
+| Dr. Moss decision | Required workflow; no new completion assertion |
+| Action, actor, actual date and outcome | **Not supplied** |
+| Independent status and relevant session check | **Not supplied** |
+| Closure status | **Open verification item**, not certified disabled |
+
+A returned authentication factor would not necessarily deactivate an account. A perfect MFA implementation would not automatically make an expired role legitimate. These are different control decisions.
+
+### 8.7 Negative controls and independent EX062 practice
+
+**Negative control A:** Imagine the second factor is extremely strong. Authorization still ends with the assignment. **Negative control B:** Imagine a colleague writes a completion date into the change log without performing the action. That does not prove the account state. **Negative control C:** Imagine a future approved status check reveals the account was already disabled. It would be **new evidence**, not something known from the existing log. **Negative control D:** Imagine the locum might work next month. That does not renew the current grant. **Negative control E:** Confusing the locum's personal identity with reception's unrelated accounts risks disabling the wrong users.
+
+Complete the original EX062 response first. Then make a four-stage evidence ladder for **requested, authorized, executed, read back**. Write **not supplied** for unsupported steps, and state how a later actual execution date should be documented if deactivation occurs. Your model answer should report what is missing without fabricating a disable result, locum name, system capability, sign-in, incident or new employment approval.
+
+Compare with [EX062 worked result](#answer-ex062). A correct answer ends the unnecessary temporary grant **through an approved, verifiable future action**, not through a statement that it already happened.
 
 ### Errors and limits
 
@@ -846,6 +983,10 @@ Disabling the locum account does not remove the reception staff's own accounts, 
 ### Apply
 
 - **EX062 — Leaver or leftover?** The locum's last day has passed. The log still only says which account to disable. The second factor remains on. What is the finding, and what line must be added? *Rubric:* 3 = the account is still open; disable it; write the date in the change log; the second factor is not a substitute;; 2 = disable and record it;; 1 = one action;; 0 = none.
+
+  - **Independent extension:** Separate a disable request, Dr. Moss approval, executed change and status readback. Mark unsupported facts **not supplied**, including real execution date and current backend state.
+  - **Negative controls:** MFA is not disabling, a possible return is not reauthorization, and a missing log line does not prove an observed successful or failed shutdown.
+  - **Worked result:** [EX062](#answer-ex062).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 20)
@@ -1557,7 +1698,41 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX061.** Thirty-five was not counted. The verified total remains 47 of 300 until a new export is run. Do not edit the seed-2 script to force a lower number.
 
-**EX062.** The locum account is still open because the log never recorded the disable. Disable it and write the date. The second factor does not close the account.
+
+<a id="answer-ex061"></a>
+**Expanded EX061 worked result — change versus census.**
+
+| Evidence | Proven statement | Invalid leap |
+|---|---|---|
+| Chapter 2 fixed Python seed-2 lab | Clients 8 of 140, finance 4 of 60, marketing 25 of 80, rotas 10 of 20; **all files: 47 of 300** | A new current exposure count was measured |
+| Hollybank change record | Eight client and four finance shares restricted, rota/default approach changed | Exactly twelve distinct old count flags have been independently rechecked |
+| Classmate's arithmetic | **47 minus 12 = 35** as an integer | “35 of 300 is the new observed census” |
+| Not-yet-obtained current export | No source time, distinct file identifiers, coverage, validated predicate or new output | Any replacement reported figure |
+
+**Core answer:** “Thirty-five was not counted. The last verified seed-2 synthetic output remains **all files: 47 of 300**, and the historical script must not be modified to force a new printout. Twelve described restrictions are interventions, not a new measurement. To publish a current total, an authorized, dated and scoped export with effective-permission checks, file identity, population coverage and a validated counting method would be necessary; no such result is provided.”
+
+**Worked counterexample:** A newly shared file or reopened link could invalidate the proposed reduction. A missing folder or duplicate row could change the count without changing access. The marketing count still belongs to the original all-files metric even when public marketing is permitted. Re-running unchanged seed-2 code recreates an artificial fixture, not Hollybank's current state. The correct result preserves old measurement, records the interventions separately and withholds the unobserved second census.
+
+
+**EX062.** The log has no verified completed disable for the locum; identify this as an unresolved closure issue rather than proof of the live backend status. Arrange approved disable if the account is still enabled, record its real execution date only after the action, and verify the resulting state. MFA does not terminate the account.
+
+
+<a id="answer-ex062"></a>
+**Expanded EX062 worked result — account lifecycle.**
+
+| Gate | Evidence provided | Needed to claim completion |
+|---|---|---|
+| Temporary role and personal account | Chapter 2 locum setup with additional factor | No invented identity or account number |
+| End-of-engagement and closure request | Last day passed; log identifies account to disable | Owner should confirm target and need |
+| Authorization | Dr. Moss's approved-account workflow | Actual closure instruction/approval as required |
+| Execution | **No dated completed disable entry** | True operator, action time and outcome **only when performed** |
+| Readback | **No approved technical state verification** | Check and record account state and any remaining access questions |
+| Possible return | **No future assignment approved** | Fresh time-bounded authorization if another engagement arises |
+
+**Model response:** “The available change log does not establish that the locum account was disabled after the work ended; potential residual access must be verified and closed through the authorized workflow. If the account is still enabled, the proper administrator disables that account, records the real execution date and checks the resulting status. The additional authentication factor can protect sign-in, but does **not** end account authorization or disable the account.”
+
+**Boundary:** The original rubric's concern is an unclosed leaver review task. Silence in the change log does not by itself prove backend enabled status, and the presence of MFA does not prove backend disabled status. Do not fabricate an action, date, sign-in, identity, revocation, readback or incident. A later work assignment would require a fresh Dr. Moss approval, not automatic continuation. Full credit includes request, authorization, execution and independently checked outcome as **separate states**.
+
 
 **EX063.** Call the wholesaler on the number the clinic already held. Ignore the number printed in the new email. The second person approves only after that call. Last month's stopped attempt does not waive the rule.
 
