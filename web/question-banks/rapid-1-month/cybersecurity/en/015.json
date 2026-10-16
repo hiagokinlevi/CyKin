@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 15,
+  "source_anchor": "ch-15",
+  "source_sha256": "4420e984e2ac476dd8a893492def7134ad7da72375e6c9498034869c99d3eda6",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, which object should supply the current sitting's booking-state answers?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The earlier 11:40 page after adding the newest booking row"
+        },
+        {
+          "id": "b",
+          "text": "The owner-named 11:55 page with SYN-001, SYN-002 and SYN-003 intact"
+        },
+        {
+          "id": "c",
+          "text": "The 11:55 page reduced to the row not seen on the older sheet"
+        },
+        {
+          "id": "d",
+          "text": "A master sheet assembled from the preferred rows of both pages"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The owner named the particular 11:55 artifact, whose three rows stand together. Neither an updated-looking older sheet, a reduced later sheet nor a selected blend is that named object. Section 15.1 rejects choosing the best row from each source because it manufactures another set of assertions. The original 11:40 page remains historical evidence, not today's replacement schedule. EX031 requires reading the current page whole while preserving both originals. This source designation is limited to the fictional sitting; it does not authorize a real booking operation or future outage procedure.",
+      "source": "Chapter 15, §15.1 \"A schedule is the page in front of you\"; §15.2 \"Worked example\", answer-from-page row; §15.4, artifact table; EX031, task, rubric and current-page row in the expanded worked comparison."
+    },
+    {
+      "id": "Q02",
+      "prompt": "SYN-003 is accurately copied from 11:55 onto 11:40. Why is this still not a verified correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It proves the genuine SYN-003 record on the later page is false"
+        },
+        {
+          "id": "b",
+          "text": "It renews the earlier page's authority but needs a new title"
+        },
+        {
+          "id": "c",
+          "text": "It cancels Room 4's booking by repeating the record"
+        },
+        {
+          "id": "d",
+          "text": "It attributes a later-page row to an earlier artifact that never printed it"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The copied fields can match the later record while giving a false account of the older artifact. SYN-003 was not on the two-row 11:40 page. Adding it creates an altered derivative, not evidence that the earlier printer output contained it or that a correction was authorized. Nothing in this edit invalidates the genuine later row, renews the older grant or cancels a reservation. Section 15.5 distinguishes accurate-looking content from authentic provenance. EX031 rejects this change without claiming that every possible controlled correction is forbidden; no such correction process is supplied here.",
+      "source": "Chapter 15, §15.2, addition-to-11:40 row; §15.5 \"Why both proposed edits create false provenance\", Edit A; §15.7, older-missing-row control; EX031, first rejected edit in the original and expanded worked results."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A classmate calls striking SYN-002 from 11:55 de-duplication. Which distinction defeats that justification?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The same booking appears on separate dated artifacts, not as an accidental duplicate in one register"
+        },
+        {
+          "id": "b",
+          "text": "A row becomes obsolete whenever a later page contains any new booking"
+        },
+        {
+          "id": "c",
+          "text": "Reading a row yesterday is equivalent to cancelling its reservation today"
+        },
+        {
+          "id": "d",
+          "text": "The three-row page is authorized only for information absent from the older page"
+        }
+      ],
+      "correct": "a",
+      "explanation": "SYN-002 belongs to each original's contents and is still printed as a confirmed Room 2 / 15:00 booking on the named page. Seeing it in an earlier artifact is not evidence of cancellation or an instruction to filter the current source. Striking it would hide a current printed row rather than remove an accidental duplicate within one register. No new-information-only authority was granted. Section 15.7 tests this distinction explicitly. EX031 preserves the Room 2 result alongside SYN-003's separate Room 4 booking, without inventing a cancellation or changing either paper.",
+      "source": "Chapter 15, §15.1, dropped-row warning; §15.5, Edit B; §15.7 \"Negative controls and bounded practice\", fewer-rows control; EX031, second rejected edit and expanded current-page row."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which comparison record is permitted without becoming a third booking source?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An amended 11:40 original presented as the newly complete schedule"
+        },
+        {
+          "id": "b",
+          "text": "A copied table titled current master and used to promise rooms"
+        },
+        {
+          "id": "c",
+          "text": "A separate labeled note identifying each page's rows and its analytical limit"
+        },
+        {
+          "id": "d",
+          "text": "An unlabeled list of combined rows that replaces the two originals"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The note may describe 11:40 as containing SYN-001/SYN-002 and 11:55 as containing SYN-001/SYN-002/SYN-003. Labeling the sources and the comparison's scope lets another learner check it without changing either paper. That analytical derivative has no authority to allocate rooms or replace the named page. An amended original, self-appointed master or unlabeled replacement would blur those roles. EX031 keeps the comparison beside the originals. NIST CSF 2.0 supports preserving record integrity and provenance generally; it does not designate this note as an authoritative schedule or establish a library incident.",
+      "source": "Chapter 15, §15.1, comparison paragraph; §15.4 \"Integrity belongs to an identified artifact\", comparison-note row and final paragraph; §15.5, separate-comparison example; EX031, independent comparison extension and worked comparison-note row. General principle only: NIST CSF 2.0, Appendix A, RS.AN-06/RS.AN-07, p. 22, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Hypothetical: a student's fresh sheet perfectly reproduces all 11:55 fields. What remains unestablished?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The ability to compare the copied text with the original"
+        },
+        {
+          "id": "b",
+          "text": "That the derivative is an owner-approved decision source for this sitting"
+        },
+        {
+          "id": "c",
+          "text": "The fact that the original displayed three rows"
+        },
+        {
+          "id": "d",
+          "text": "The original page's printed SYN-002 and SYN-003 statuses"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 15.7 separates matching data from matching authority. An accurate transcription can be compared with its original, but it is still the student's derivative; the owner named the original 11:55 page. The original's rows and statuses do not disappear because a copy is imagined. What is missing is an applicable designation for using that derivative as the decision source. EX031 requires retaining source identities rather than accepting a correct-looking substitute. This hypothetical is not a newly issued source, a performed copying test or proof of any digital-signature mechanism in Harbor Library.",
+      "source": "Chapter 15, §15.4, artifact and source-designation definitions; §15.7, same-text/different-authority control; §15.2, named-object comparison; EX031, expanded derivative distinction and grading contrast."
+    },
+    {
+      "id": "Q06",
+      "prompt": "The current page is sufficient for both 15:00 questions. What should happen to the older 11:40 original?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discard it because a newer authoritative page makes the older record valueless"
+        },
+        {
+          "id": "b",
+          "text": "Replace it with the comparison note to avoid keeping different versions"
+        },
+        {
+          "id": "c",
+          "text": "Add SYN-003 before filing so the historical pages no longer disagree"
+        },
+        {
+          "id": "d",
+          "text": "File it unchanged as evidence of the earlier page's actual contents"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Its archival purpose is different from current decision authority. The older page records that its own printed set contained SYN-001 and SYN-002, not SYN-003. Destroying it removes that earlier record; replacing it with analysis or editing it removes the original basis for comparison. Section 15.2 explicitly rejects throwing it away. EX031 requires both originals to remain unmarked even though only 11:55 is named now. This is the exercise's preservation rule, not a claim of a universal retention period or indefinite authority for the older paper.",
+      "source": "Chapter 15, §15.2, discard-earlier-page row; §15.4, original-11:40 row; §15.5, Edit A; EX031, rubric and earlier-page row in the expanded worked comparison."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Reading the intact named page, which pair of 15:00 answers is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 is taken from SYN-002; Room 4 is taken from SYN-003"
+        },
+        {
+          "id": "b",
+          "text": "Room 2 is free because SYN-002 already appeared on the earlier page"
+        },
+        {
+          "id": "c",
+          "text": "Room 4 is free because its row was absent from the older page"
+        },
+        {
+          "id": "d",
+          "text": "Both rooms may be assigned anew because the owner approved the source"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Each conclusion matches both room and start and reads the confirmed status on the current page. Neither repetition of SYN-002 nor the earlier absence of SYN-003 reverses those positive matches. Source approval grants no right to assign either occupied slot to the asker. EX031 therefore requires both taken answers, without a personal name or new booking. The result remains query-specific: Section 15.6 leaves Room 4 / 16:00 pending because no matching row establishes that separate slot's availability. No merge, live lookup or transaction is needed to interpret the supplied paper.",
+      "source": "Chapter 15, §15.2, paragraph after the table; §15.6 \"Worked source-to-decision example\", room-and-start table; EX031, task, rubric and expanded two-slot explanation."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Hypothetically, an unauthorized blend produces the correct-looking two taken answers. Does that validate the blend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a matching final answer proves that the source was properly authorized"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the edits become controlled corrections when no answer changes"
+        },
+        {
+          "id": "c",
+          "text": "No; matching conclusions do not restore the altered artifacts' origin or authority"
+        },
+        {
+          "id": "d",
+          "text": "No; both genuine bookings must now be considered cancelled"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The worked EX031 grading contrast rejects judging provenance solely by the final-looking answer. A blend can repeat a correct statement while misrepresenting which original contained which row. A favorable answer does not supply the missing correction process, source designation or preserved original. Conversely, an unauthorized edit does not cancel the genuine bookings printed on the intact named source. Section 15.5 treats these as altered assertions, not proof of attack. NIST CSF 2.0's integrity and managed-authorization outcomes support that general distinction, without certifying this classroom process or implying implemented controls.",
+      "source": "Chapter 15, §15.4, integrity paragraph; §15.5, paragraph on the different third set of assertions; §15.7, same-text control; EX031, expanded grading contrast. General principles only: NIST CSF 2.0, Appendix A, PR.AA-05 and PR.DS-01, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q09",
+      "prompt": "What should the comparison do to Chapter 4's 09:00-based verdict record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove REFUSE now that the newer source shows SYN-002"
+        },
+        {
+          "id": "b",
+          "text": "Turn ALLOW into a receipt for the Room 4 booking"
+        },
+        {
+          "id": "c",
+          "text": "Add the comparison as a fifth action and recompute the counters"
+        },
+        {
+          "id": "d",
+          "text": "Leave the original tally intact; comparison creates no action in that fixed log"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The page comparison is not another input to the historical four-action run. Its line remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. The original ALLOW concerns the 11:45 mark-pending proposal, not an executed reservation or a statement of Room 4 availability. Neither a later row nor a proposed handwritten edit changes what the 09:00-based classifier evaluated. EX031 preserves that provenance and requires no new program run. This question interprets published text; it reports no execution, replacement tally or operational outcome.",
+      "source": "Chapter 15, §15.2, census paragraph; §15.6, final paragraph; EX031, negative control and exact tally in the expanded worked response."
+    },
+    {
+      "id": "Q10",
+      "prompt": "What does the supplied one-row difference between the two pages establish by itself?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SYN-003 appears on 11:55 only, while SYN-002 appears on both originals"
+        },
+        {
+          "id": "b",
+          "text": "The production reservation system completed a successful synchronization"
+        },
+        {
+          "id": "c",
+          "text": "A malicious actor deleted SYN-003 from the earlier page"
+        },
+        {
+          "id": "d",
+          "text": "The older printer malfunction caused the booking-view outage"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The comparison supports a statement about the rows on two identified synthetic artifacts. It does not establish how a real system synchronized, why a printer behaved a certain way, or whether anyone attacked the service. Section 15.3 permits describing the difference without naming a person or declaring a cause. EX031 keeps that description analytical rather than an authoritative new schedule. A missing causal explanation does not authorize consulting a real site or rerunning the program. Preserve the originals and their limited conclusions without adding a resident identity, incident or technical failure to the case.",
+      "source": "Chapter 15, §15.3 \"What a comparison may still say\"; §15.4, supplied-synthetic-facts paragraph; §15.6, decision limits; EX031, worked comparison-note row, independent extension and final grading prohibition."
+    }
+  ]
+}
