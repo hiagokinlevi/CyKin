@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "821b1de061a7bfc90749b3da1a8fdcaef79588d0b7e4946a4539ef85c7d90cd0",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A bank-change email looks polished and quotes the correct invoice. What should Hollybank do before trusting the request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept it because matching invoice details outweigh the need for another check"
+        },
+        {
+          "id": "b",
+          "text": "Reply in the same email thread and treat agreement there as independent confirmation"
+        },
+        {
+          "id": "c",
+          "text": "Pause and verify through the stored supplier number, retaining the separate approval requirement"
+        },
+        {
+          "id": "d",
+          "text": "Declare a confirmed mailbox intrusion solely because the request concerns bank details"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Appearance and familiar details are not authority to redirect payment. The chapter's equipment-supplier message had a correct invoice number but was denied through the known-number call. EX027-EX029 teach useful warning signs and the habit of checking, not a complete detector. EX030 retains both the independent call and second approval. A reply in the same thread does not provide the required independent route, while suspicion does not prove mailbox intrusion. FTC phishing guidance likewise advises contacting the apparent sender through contact information already known to be genuine; it supplies no new finding about this fictional clinic.",
+      "source": "Chapter 3, §3.1 \"Phishing signs\"; §3.2 \"Invoice fraud\"; §3.3 \"The rule in action\"; \"Concepts — sign, channel, and report\", Signs/Channel rows; EX027-EX030 and their Worked results. General verification principle: FTC, How To Recognize and Avoid Phishing Scams, \"What To Do if You Suspect a Phishing Attack\", https://consumer.ftc.gov/articles/how-recognize-avoid-phishing-scams"
+    },
+    {
+      "id": "Q02",
+      "prompt": "In EX055, a second approver is ready but the stored-number call has not happened. Which action respects the rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Make the stored-number call first; neither approve the change nor pay before confirmation"
+        },
+        {
+          "id": "b",
+          "text": "Let the second person approve now and verify the supplier after payment"
+        },
+        {
+          "id": "c",
+          "text": "Call the mobile number in the signature because the invoice reference is correct"
+        },
+        {
+          "id": "d",
+          "text": "Send a small payment first to test whether the new destination accepts money"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Being ready to approve is not approval and cannot replace supplier verification. EX055 requires the number already stored, no approval until that call confirms the change, and no payment before the call. The signature's mobile number is part of the unverified request. A trial transfer would act on that request without satisfying the gate; acceptance of money would not establish the destination's legitimacy. In the Tuesday example the stored accounts desk denies the change, so the waiting second person does not approve it. No new call, approval or payment is performed by this question.",
+      "source": "Chapter 3, §3.2; \"Decision flow — a message asks for money or a secret\", stored-number and confirmation branches; \"Worked example — the laboratory changes its account on a Tuesday\"; Apply EX055 \"Tuesday call\", rubric, and Worked results EX055."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Hypothetical contrast: the stored supplier contact confirms a bank change. What must the clinic still do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the external confirmation as the clinic's second-person approval"
+        },
+        {
+          "id": "b",
+          "text": "Record the change as completed before anyone gives internal approval"
+        },
+        {
+          "id": "c",
+          "text": "Skip the log because a phone conversation provides every required record"
+        },
+        {
+          "id": "d",
+          "text": "Obtain the separate second approval, then record any authorized change when made"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Supplier confirmation and internal approval answer different questions. The flow's Yes branch retains a second approver and a change-log entry rather than treating the call as all three steps. EX030 and EX055 require this separation, and the original prior written-agreement rule for setting changes remains in force. This is a hypothetical branch, not a revised ending to either narrated denial. In the Tuesday example no bank change was confirmed and the second person did not approve. The question supplies no actual approval, account update or transfer and does not authorize retrospective approval.",
+      "source": "Chapter 3, §3.2; \"Concepts — sign, channel, and report\", Channel row; \"Decision flow — a message asks for money or a secret\", Yes branch; Tuesday worked example contrasted with EX030/EX055 and their Worked results. Existing approval boundary: Chapter 1, §1.5 \"Ground rules\"."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which summary preserves the evidence from the equipment-supplier episode without turning a possibility into a finding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The correct invoice number proved the supplier authorized the new bank account"
+        },
+        {
+          "id": "b",
+          "text": "The supplier denied the message; nothing went to the new account, and mailbox compromise remained only a possibility"
+        },
+        {
+          "id": "c",
+          "text": "The call proved a mailbox intrusion, after which a second approver released payment"
+        },
+        {
+          "id": "d",
+          "text": "The clinic discovered a fraudulent transfer and recovered the money after forwarding the email"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The narrative records the known-number denial, the supplier's statement that its mailbox may have been compromised, and no payment to the new account. These are distinct facts with different certainty. The invoice reference did not authenticate the request; the supplier's tentative explanation is not forensic confirmation. No second approval, new-account transfer or recovery is narrated. EX032 and EX033 identify the episode and its bounded payment outcome. Hollybank, the supplier and the event are synthetic. This account does not establish a real invasion or import the separate Tuesday example's original-account payment into this episode.",
+      "source": "Chapter 3, §3.3 \"The rule in action\"; \"Data — one attempted payment and the training rhythm\", message and payment rows; general Worked example; EX032/EX033 and their Worked results."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Why is the stored-number call a stronger check than calling the number in the change-request email?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It uses a contact route established outside that request, without making the process immune to every fraud"
+        },
+        {
+          "id": "b",
+          "text": "A telephone conversation authenticates the supplier regardless of where its number came from"
+        },
+        {
+          "id": "c",
+          "text": "Stored contact details can never be wrong or compromised, so the second approval is unnecessary"
+        },
+        {
+          "id": "d",
+          "text": "One refused request establishes a measured guarantee that all future payment changes are safe"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The useful mechanism is independence from the request's chosen contact route. Calling a number supplied by the same unverified message can let its sender control the supposed verification. EX031 explains the intended separation, and the Tuesday example applies it using an already-held accounts-desk number. The chapter's categorical wording must not be generalized into an unbreakable telephone system or a measured success rate. FTC guidance supports known-contact verification, not universal immunity. The second approver remains necessary under EX030/EX055; the single synthetic refusal proves no future outcome or supplier-wide security condition.",
+      "source": "Chapter 3, §3.2; \"Concepts — sign, channel, and report\", channel explanation; Tuesday worked example; EX031/EX030/EX055 and their Worked results. General principle and limit: FTC, Cybersecurity for Small Business, \"Phishing — What you can do\" and \"Business Email Imposters — Implement verification policies\", https://www.ftc.gov/business-guidance/small-businesses/cybersecurity"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Staff ask why an invoice looked convincing. Which training follow-up best matches the chapter's approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace future practice with one exhaustive warning-sign list that certifies safe email use"
+        },
+        {
+          "id": "b",
+          "text": "Teach only session lengths and supplier names, without rehearsing a response"
+        },
+        {
+          "id": "c",
+          "text": "Use a short synthetic example based on the question, rehearse the check and record the topic for newcomers"
+        },
+        {
+          "id": "d",
+          "text": "Use the discussion as permission to remove the second approver from future bank changes"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 3.4 selects recurring topics from staff questions, uses relevant synthetic examples and keeps a topic list so new starters can catch up. The Tuesday example turns a practical uncertainty into a later session topic and thanks the assistant. EX034/EX035 concern that training rhythm; memorizing its duration is not the operational lesson. An exhaustive sign list cannot guarantee detection, and a discussion does not amend the payment rule. This is a proposed teaching follow-up, not evidence of another completed session, a measured reduction in fraud or an approved policy change.",
+      "source": "Chapter 3, §3.4 \"Short training\"; §3.1, incomplete-sign-list limit; Tuesday worked example, final sentence; \"Data — one attempted payment and the training rhythm\", Staff session row; EX034/EX035 and their Worked results."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A receptionist quickly reports entering a password on an odd page and fears blame. Which response follows EX056?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for visible misuse before accepting the report or checking the account"
+        },
+        {
+          "id": "b",
+          "text": "Ask the receptionist to revisit the suspicious page and submit the password again as proof"
+        },
+        {
+          "id": "c",
+          "text": "Criticize the mistake first, then defer action until the next monthly training session"
+        },
+        {
+          "id": "d",
+          "text": "Receive the report without criticism; arrange the same-morning reset and account check"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter makes prompt reporting useful even before misuse has been demonstrated. Staff can forward the concern to Sofia or tell her at the desk. Sofia's narrated response is a password reset that morning and a check for misuse, consistent with Dr. Moss's promise not to criticize a quickly reported mistake. EX036-EX038 and EX056 preserve both action and reporting culture. Waiting for harm, demanding another exposure or deferring action would defeat that purpose. The report does not itself prove a compromise, and this question neither requests a real password nor performs an account change.",
+      "source": "Chapter 3, §3.5 \"Reporting without blame\"; \"Concepts — sign, channel, and report\", Report row; \"Decision flow — a message asks for money or a secret\", report/reset/no-criticism branches; EX036-EX038 and Apply EX056 with their Worked results."
+    },
+    {
+      "id": "Q08",
+      "prompt": "EX056 mentions a second factor after the password report. Which interpretation avoids overstating that protection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If the additional required factor remains secure, the password alone is insufficient; phishing resistance still depends on the method"
+        },
+        {
+          "id": "b",
+          "text": "Every password-plus-code method blocks any phishing attempt, so the account check is redundant"
+        },
+        {
+          "id": "c",
+          "text": "No misuse found proves that an attacker tried to sign in and the second factor blocked the attempt"
+        },
+        {
+          "id": "d",
+          "text": "A successful reset establishes the clinic's highest authentication assurance level"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The defensible point is protection against password-only reuse when the configured additional factor is still required and uncompromised. EX056 does not supply a blocked-attempt log or identify the method's protocol. NIST SP 800-63B-4 explains that manually entered authenticator outputs can be relayed by an impostor and are not phishing-resistant. Thus the exercise's broad sentence cannot establish prevention of every takeover, an assurance level or permission to omit the account check. The useful second factor and prompt report are complementary controls; neither is a receipt proving that an attack was attempted or stopped.",
+      "source": "Chapter 3, §3.5; \"Data — one attempted payment and the training rhythm\", Second factor row; Apply EX056 and its Worked result, read with Chapter 2 §2.2 limitations. General authentication principle: NIST SP 800-63B-4, §3.2.5 \"Phishing Resistance\", https://pages.nist.gov/800-63-4/sp800-63b.html#phishing-resistance"
+    },
+    {
+      "id": "Q09",
+      "prompt": "After the same-morning reset and account check, which outcome can the learner accurately record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All historic and future account misuse has been ruled out by the password reset"
+        },
+        {
+          "id": "b",
+          "text": "No misuse was found in the narrated check; its scope does not establish universal account safety"
+        },
+        {
+          "id": "c",
+          "text": "A mailbox compromise was confirmed because the receptionist had typed a password"
+        },
+        {
+          "id": "d",
+          "text": "The password report was unnecessary because the check found nothing wrong"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 3.5 supplies the reset, account check and finding of no misuse, not the check's detailed coverage or a permanent security guarantee. A reset is an action, while the check's finding is a bounded observation in the fictional narrative. Neither proves a compromise nor rules out every possible misuse. EX038 and EX056 keep the response worthwhile despite that negative finding: prompt reporting enabled action without waiting for proven harm. No additional scan, session review, remediation result or real account access is asserted, and no password or personal record is introduced.",
+      "source": "Chapter 3, §3.5 \"Reporting without blame\"; \"Data — one attempted payment and the training rhythm\", Password typed row; general Worked example; EX038/EX056 and their Worked results."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Sofia recorded the denied equipment-supplier request and forwarded its email. What does that forwarding establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The supplier's possible mailbox compromise was investigated and remediated"
+        },
+        {
+          "id": "b",
+          "text": "The supplier accepted the new bank details after receiving the forwarded copy"
+        },
+        {
+          "id": "c",
+          "text": "The narrative includes a notification step, but no supplier remediation or new payment approval is demonstrated"
+        },
+        {
+          "id": "d",
+          "text": "Every related client received a warning and the privacy incident was closed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter narrates recording the attempt, sending the email to the supplier and thanking the assistant. Those steps do not provide the supplier's investigation, a repair record, approval of new bank details or messages to clients. The supplier's mailbox statement remains tentative, and EX033 still records nothing paid to the new account. The decision flow separates refusal and reporting from the conditional approval branch. Describing a communication as complete cannot make a different recovery action complete. All events here are synthetic; the question reports no real notification, transfer or closed incident.",
+      "source": "Chapter 3, §3.3 \"The rule in action\"; \"Decision flow — a message asks for money or a secret\", No branch; \"Concepts — sign, channel, and report\", Channel/Report distinction; EX033/EX030 and their Worked results, contrasted with the Tuesday example and EX055."
+    }
+  ]
+}
