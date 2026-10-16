@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 10,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "fcf8f4193618563b258f1f242312ab3e2827dd93",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-10",
+  "source_sha256": "fc06363eb7f5deb56a8411e11c60ce7e6ddcf2fbedb6accd582d0ae306ca5dc0",
+  "case_note": "Millbrook, CHILLER-1, LIFT-CTRL and DOOR-SRV are synthetic. The DOOR-SRV advisory, versions 4.1/4.2, 30-minute outage and Sunday 06:00 plan are invented, not a real CVE or vendor notice. Hypothetical evidence does not add observations to the source case. Decisions, deployed controls and verified completion are separate states. No question authorises real OT testing, patching or disconnection; operational and clinical safety remain with the responsible site leaders. No unspecified port, protocol or rollback capability is assumed.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "The inventory confirms the product and affected version. Which remaining matching question addresses local exposure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Does every product from that vendor need patching?"
+        },
+        {
+          "id": "b",
+          "text": "Can the weakness be reached as the advisory describes?"
+        },
+        {
+          "id": "c",
+          "text": "Does the device have an internet-facing address?"
+        },
+        {
+          "id": "d",
+          "text": "Has a successful intrusion already been confirmed?"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 10.2 checks product presence, affected version and reachability in the way the advisory describes. The first two facts do not settle the third. Sharing a vendor is not a product match; an internet-facing address is not the only possible access path; confirmed intrusion is not required for an advisory to matter. In the synthetic example, DOOR-SRV remains reachable from its access control zone. That bounded exposure is different from both internet exposure and an unreachable feature. Resolve the path from authorised evidence without inventing a live test or an intrusion.",
+      "source": "Chapter 10, §10.2 \"Matching\"; \"Worked example (synthetic Millbrook)\"; EX046 \"Three matching questions\" and its worked answer."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The current inventory and system owner confirm the advisory's product is absent. Which disposition preserves the review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record non-applicability, the checked scope, reason and check date"
+        },
+        {
+          "id": "b",
+          "text": "Discard the advisory because only positive matches need records"
+        },
+        {
+          "id": "c",
+          "text": "Open a patch task for another product from that vendor"
+        },
+        {
+          "id": "d",
+          "text": "Mark the advisory fixed by segmentation without further evidence"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.2 requires recording the matching answers even when the product is absent; Section 10.1 records when sources were checked. Preserve the product-absence finding and the scope supporting it rather than discarding the review. Another product is not automatically affected, and an absent product has not been repaired by an unverified segmentation change. This hypothetical supplies confirmation from both inventory and owner: a missing inventory row alone would not establish completeness. The conclusion is about this advisory and reviewed environment, not freedom from all vulnerabilities.",
+      "source": "Chapter 10, §10.1 \"Sources\" and §10.2 \"Matching\"; EX046 \"Three matching questions\"."
+    },
+    {
+      "id": "Q03",
+      "prompt": "An advisory applies to unsupported CHILLER-1 or LIFT-CTRL with no patch. Which disposition matches the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept the condition indefinitely while the device still operates"
+        },
+        {
+          "id": "b",
+          "text": "Mark the product unaffected because no vendor fix exists"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a patch without recording an interim treatment"
+        },
+        {
+          "id": "d",
+          "text": "Record the risk, agree compensating controls and prioritise replacement"
+        }
+      ],
+      "correct": "d",
+      "explanation": "No available patch does not remove an applicable weakness. Section 10.2 calls for tighter isolation and monitoring; EX047 adds recording the no-fix condition and increasing replacement priority. Continued operation is not indefinite risk acceptance, and waiting without treatment leaves the finding unmanaged. The EX047 worked answer retains only LIFT-CTRL's maintenance route, so the chapter's broad remote-access restriction must not become indiscriminate removal of necessary support. The responsible owners must agree safe restrictions. These are compensating measures, not a claim that unsupported firmware has been fixed or that controls were already deployed.",
+      "source": "Chapter 10, §10.2 \"Matching\" and §10.4 \"Tracking\"; EX047 \"Unsupported match\" and its worked answer. Primary cross-check: NIST SP 800-82 Rev. 3, §6.2.11, p. 125, https://doi.org/10.6028/NIST.SP.800-82r3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "What would justify restricting DOOR-SRV access now while planning its synthetic 4.2 patch for Sunday 06:00?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The availability of 4.2 alone establishes safe deployment"
+        },
+        {
+          "id": "b",
+          "text": "Reachability only inside one zone makes patching unnecessary"
+        },
+        {
+          "id": "c",
+          "text": "Verified interim protection plus a safe, planned patch window"
+        },
+        {
+          "id": "d",
+          "text": "The Sunday appointment itself proves the restriction works"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 10.3 weighs consequence and the availability of a safe slot, requiring mitigation to block the described path effectively. The example plans a workstation restriction before a patch that interrupts door scheduling for 30 minutes. A release number alone does not establish safe deployment, internal reachability does not remove the weakness, and a scheduled appointment verifies no control. Record the rationale, owner and review date, with the planned manual-key fallback. The narrative states the decision; it supplies neither completed mitigation checks nor evidence that version 4.2 was actually installed.",
+      "source": "Chapter 10, §10.3 \"Choosing\"; \"Worked example (synthetic Millbrook)\"; EX048 \"Door outage plan\" and EX049 \"Register entry\"."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which evidence distinguishes workstation-only access from DOOR-SRV's existing access-control-zone restriction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Owner shows the rule; only security-office access is confirmed"
+        },
+        {
+          "id": "b",
+          "text": "Owner shows the rule; office allowed; another same-zone host denied"
+        },
+        {
+          "id": "c",
+          "text": "Office allowed; corporate host denied; same-zone access unexamined"
+        },
+        {
+          "id": "d",
+          "text": "Office and another same-zone host allowed; corporate host denied"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX050's worked answer checks that the page loads from the security office workstation and fails from another host in the same access control zone, alongside the network owner's rule evidence. Positive access alone does not test exclusion. A corporate-host denial may reflect the pre-existing zone boundary, while another same-zone host succeeding contradicts workstation-only access. The worked answer therefore makes the negative check more discriminating than the rubric's broad other-zone wording. These would be authorised verification results, not results observed here, and they establish a reachability restriction rather than removal of the underlying software flaw.",
+      "source": "Chapter 10, §10.3 \"Choosing\", §10.6 \"Vendor contact\" and \"Errors and limits\"; \"Worked example (synthetic Millbrook)\"; EX050 \"Checking a mitigation\", especially its worked answer."
+    },
+    {
+      "id": "Q06",
+      "prompt": "An overdue register entry says only 'mitigate, then patch'. Which revision makes the decision accountable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a patch date and assume mitigation is already complete"
+        },
+        {
+          "id": "b",
+          "text": "Copy the advisory rating and omit the local review date"
+        },
+        {
+          "id": "c",
+          "text": "Keep the entry unchanged until a new advisory arrives"
+        },
+        {
+          "id": "d",
+          "text": "Assign an owner and dates; separate action status, evidence and review"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Sections 10.3 and 10.4 require a dated decision with an owner and review date, alongside the advisory, affected products, mitigation and patch date. EX049 illustrates an estates security systems lead and review after patching. A patch appointment proves neither mitigation deployment nor its effect; a rating cannot replace ownership; age requires a fresh decision rather than silent deferral. Review open items with estates monthly and escalate high-consequence items. Record planned, implemented and evidenced work separately so that missing results do not become a completion claim.",
+      "source": "Chapter 10, §10.3 \"Choosing\" and §10.4 \"Tracking\"; EX049 \"Register entry\" and its worked answer."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A controller patch is available, but no contractor slot or fallback is agreed. What is the justified readiness assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Preparation is incomplete: agree the slot, responsible staff, checks and fallback"
+        },
+        {
+          "id": "b",
+          "text": "Ready for the next automatic office-IT update cycle"
+        },
+        {
+          "id": "c",
+          "text": "Ready once the installer file has been downloaded"
+        },
+        {
+          "id": "d",
+          "text": "Ready because vendor release implies local operational approval"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Package availability is not deployment readiness. Section 10.3 requires contractor coordination and a booked slot; Section 10.5 requires predefined checks, named testers and a fallback such as previous firmware. A downloaded installer and a vendor release establish none of those local arrangements, and office-IT scheduling is not an OT safety decision. NIST §6.2.11 likewise calls for suitable testing and planned OT outages. A previous version may support an agreed rollback, but no universal rollback capability or command is demonstrated. Actual work remains subject to the responsible operational and clinical approvals; this is a planning question only.",
+      "source": "Chapter 10, §10.3 \"Choosing\" and §10.5 \"Testing after patching\"; EX048 \"Door outage plan\" and EX049 \"Register entry\". Primary cross-check: NIST SP 800-82 Rev. 3, §6.2.11, pp. 124–125, https://doi.org/10.6028/NIST.SP.800-82r3"
+    },
+    {
+      "id": "Q08",
+      "prompt": "How do manual keys differ from a previous-software fallback during the synthetic 30-minute DOOR-SRV outage?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keys are needed only after software rollback has failed"
+        },
+        {
+          "id": "b",
+          "text": "Previous software alone maintains secure physical access during installation"
+        },
+        {
+          "id": "c",
+          "text": "Keys support controlled physical access; previous software supports recovery"
+        },
+        {
+          "id": "d",
+          "text": "Issuing keys proves that the new electronic schedules will work"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The two fallbacks address different needs. EX048 provides keys to ward managers so restricted areas can remain controlled and usable while electronic scheduling may be unavailable. Retaining previous software can support recovery but does not itself provide physical access during an outage. Keys are not reserved only for failed rollback, and issuing them does not test the patched schedules or eliminate the vulnerability. Section 10.5 still requires operational checks and estates sign-off. These are provisions of the invented plan, not evidence that keys were issued, a rollback occurred or any patient was affected.",
+      "source": "Chapter 10, §10.5 \"Testing after patching\"; \"Worked example (synthetic Millbrook)\"; EX048 \"Door outage plan\" and its worked answer."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetical: DOOR-SRV displays 4.2, but point, alarm and schedule checks are missing. Which status is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All work is complete because the displayed version matches"
+        },
+        {
+          "id": "b",
+          "text": "Version change evidenced; operational validation and estates sign-off remain pending"
+        },
+        {
+          "id": "c",
+          "text": "The patch has failed because no test results are recorded"
+        },
+        {
+          "id": "d",
+          "text": "The earlier access restriction validates the updated schedules"
+        }
+      ],
+      "correct": "b",
+      "explanation": "A version check supports an installed-version claim, not every operational outcome. Section 10.5 requires the contractor to confirm point reporting, working alarms and correct schedules, followed by estates sign-off recorded in the register. Section 10.4 closes work only on evidence. Missing results do not prove failure, and an access restriction does not test scheduling or alarm behaviour after an update. Keep the validation gap open; where practical, the chapter checks one patched unit before proceeding. This hypothetical does not add a successful 4.2 installation to the source case.",
+      "source": "Chapter 10, §10.4 \"Tracking\" and §10.5 \"Testing after patching\"; EX049 \"Register entry\" and its worked answer."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A vendor says a mitigation works but omits model and configuration details. What remains necessary for local acceptance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Clarify the scope, retain the attributed response and verify local effect"
+        },
+        {
+          "id": "b",
+          "text": "Treat vendor assurance as the site's completion evidence"
+        },
+        {
+          "id": "c",
+          "text": "Extend the assurance to every model from that manufacturer"
+        },
+        {
+          "id": "d",
+          "text": "Treat an unclear feature description as proof the advisory does not apply"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.6 asks for exact models and options, whether the feature is enabled by default, and evidence of testing on comparable systems. Keep the answer and respondent with the advisory, asking again when unclear. A vendor assurance is not local verification, one model does not establish every model's behaviour, and unclear scope is not non-applicability. Section 10.1 also requires dated checks of CISA and vendor sources. The network owner and authorised operational process must establish the actual mitigation effect; neither an advisory nor a support response proves controls were implemented at Millbrook.",
+      "source": "Chapter 10, §10.1 \"Sources\", §10.6 \"Vendor contact\" and \"Errors and limits\"; EX046 \"Three matching questions\" and EX050 \"Checking a mitigation\"."
+    }
+  ]
+}
