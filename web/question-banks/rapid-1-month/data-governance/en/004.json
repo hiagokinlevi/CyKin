@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "data-governance",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "9a38f40562c15273e75e24e07a06367afd73153eb9796a66e53c5199d59efec3",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What does the printed total of five count in the published twelve-row fixture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Five rows left after the program physically deletes the other seven"
+        },
+        {
+          "id": "b",
+          "text": "Distinct normalized addresses satisfying the selection expression in this synthetic input"
+        },
+        {
+          "id": "c",
+          "text": "Five independently identified people whose agreement the program has verified"
+        },
+        {
+          "id": "d",
+          "text": "Five messages successfully delivered by the program to actual customers"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The program keeps twelve input rows and builds a set named ok; its length is five for this fixture. The other printed diagnostics are two blank emails, one malformed address and two duplicate rows. Building the set does not delete the source rows, establish anyone's identity or send messages: the executable only processes strings and prints counts. EX039 and EX043 distinguish input size from the selected-address total. The narrative's shorthand about five people must not be promoted into identity or consent verification. The result belongs to the supplied synthetic input, not a measured live campaign.",
+      "source": "Chapter 4, sections 4.1-4.2; Lab, rows/ok/print statements and verified output; Concepts — a row is not a permission, result table; general Worked example; Worked results (#worked-results; EX039, EX040, EX041, EX042, EX043)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why do ana@example.org and Ana@Example.org with a trailing space not add two entries to the selected set?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the spelling entered first is accepted; the other address is inherently malformed"
+        },
+        {
+          "id": "b",
+          "text": "The script counts two entries because it compares the untouched input strings"
+        },
+        {
+          "id": "c",
+          "text": "Trimming and lowercasing produce the same key, which the set stores only once"
+        },
+        {
+          "id": "d",
+          "text": "The second row changes the first row's tick and cancels both selections"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The clean comprehension applies strip().lower() to each email while retaining its associated tick. Both supplied spellings therefore become ana@example.org, and both have the exact yes tick. A set holds that normalized string once, although both input rows remain. The duplicate loop separately counts repeated nonblank normalized emails; the full fixture reports two duplicate rows, including the repeated cai address. EX042 and EX044 connect normalization with repeat detection. This is string-based deduplication in the teaching fixture, not a general method of proving that two records describe the same real person.",
+      "source": "Chapter 4, Lab, clean comprehension, seen/dup loop and ok set; section 4.2; Concepts — a row is not a permission; Worked results (#worked-results; EX042, EX043, EX044). Python behavior only: Python 3.13 Built-in Types, str.strip, str.lower and Set Types, https://docs.python.org/3.13/library/stdtypes.html"
+    },
+    {
+      "id": "Q03",
+      "prompt": "For EX057's Ina@Example.org row with tick Yes, which result follows without changing the published program?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both strings become lowercase, so the row passes the exact yes test"
+        },
+        {
+          "id": "b",
+          "text": "The email's capitals cause rejection before the tick can be considered"
+        },
+        {
+          "id": "c",
+          "text": "The tick is automatically corrected because the example calls Ina a customer"
+        },
+        {
+          "id": "d",
+          "text": "The email becomes ina@example.org, but the unchanged Yes tick fails selection"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Only the email is normalized. The variable c is carried into clean unchanged, so Yes does not equal the literal yes used by the selection expression. EX057's worked answer therefore excludes this row even though its email is normalized. Lowercasing or rewriting the tick would change the test rather than explain its result. Ina's row is a separate worked example and offline probe, not an extra row silently added to the original twelve. The published five remains the result of the original input; no new signup or actual send is established.",
+      "source": "Chapter 4, Lab, clean and ok expressions; Concepts — a row is not a permission, exact-tick paragraph; Worked example — a capital Yes and a regular who ticked no; Apply EX057 and Worked results (#worked-results; EX044, EX045, EX057)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The fixture has a blank email with yes and dee@example with yes. Why are both excluded?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The first lacks an address; the second fails the fixture's suffix check despite its tick"
+        },
+        {
+          "id": "b",
+          "text": "Both are duplicates, so their ticks are irrelevant to the malformed-address diagnostic"
+        },
+        {
+          "id": "c",
+          "text": "Any yes tick overrides address checks, so both should enter the selected set"
+        },
+        {
+          "id": "d",
+          "text": "The script reconstructs their missing address parts before deciding whether to include them"
+        }
+      ],
+      "correct": "a",
+      "explanation": "An empty email fails the nonempty condition. For dee@example, the part after @ contains no dot, so it is counted by bad and does not satisfy ok. The yes flag supplies neither a missing address nor a missing address component. Blank and malformed are separate diagnostics, not interchangeable labels: this fixture reports two blanks and one malformed nonblank address. EX040 and EX041 identify those results. These checks explain the supplied examples only; they are not a complete address-validation procedure, and the program invents no replacement address or customer data.",
+      "source": "Chapter 4, Lab, blank/bad/ok expressions; section 4.2; Concepts — a row is not a permission, Blank email and Malformed address rows; Worked results (#worked-results; EX040, EX041, EX043)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Subtracting two blanks, one malformed row and two repeats from twelve gives seven. Why is the selected count still five?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The program always caps its output at five, regardless of the supplied rows"
+        },
+        {
+          "id": "b",
+          "text": "Two additional duplicates are hidden by the diagnostic's printed total"
+        },
+        {
+          "id": "c",
+          "text": "The remaining addresses still need exact yes ticks; ben's blank and Eli's no fail"
+        },
+        {
+          "id": "d",
+          "text": "Two selected addresses were removed because delivery to real mailboxes failed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "For this fixture, removing blank, malformed and repeated entries leaves seven distinct well-formed-looking addresses, but format and uniqueness are not the whole selection rule. ben@example.org has a blank tick and eli@example.org has no. Neither equals yes, leaving the five strings in ok. There is no numerical cap, hidden duplicate count or delivery test in the script. The separate conditions must be evaluated on the actual rows, not replaced by subtraction alone. This arithmetic explains the historical input; it does not create a new measurement or establish legal permission for real recipients.",
+      "source": "Chapter 4, Lab, supplied rows and ok predicate; sections 4.2-4.3; Concepts — a row is not a permission, Tick blank or no row; Worked results (#worked-results; EX039, EX040, EX041, EX042, EX043, EX045, EX058)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Mrs. Adeyemi wants Eli included because Eli is a regular. Which response follows EX058 without inventing a new signup?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Include Eli now because the owner's request replaces the recorded no"
+        },
+        {
+          "id": "b",
+          "text": "Keep Eli out, offer the new sheet in person, and record the refusal with its date"
+        },
+        {
+          "id": "c",
+          "text": "Change no to yes because repeat custom proves the intended answer"
+        },
+        {
+          "id": "d",
+          "text": "Create a fresh row with yes and treat it as evidence that Eli signed again"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The worked example refuses to substitute familiarity for the recorded tick. Eli remains outside the selected set, and EX058 offers the possibility of signing the new sheet in person. The refusal is recorded with its date in the synthetic narrative; the bank supplies no actual calendar date. Offering a future choice is not evidence that Eli accepted it, and an owner request is not a replacement row or a changed tick. This answer applies the case's rule without asserting a universal legal requirement for in-person collection or claiming that any message was sent.",
+      "source": "Chapter 4, section 4.3; Worked example — a capital Yes and a regular who ticked no, Eli paragraph; Apply EX058; Worked results (#worked-results; EX045, EX046, EX058)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "In a separate offline probe, rows contains only ('.', 'yes'). What does the unchanged computation reveal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The malformed diagnostic automatically removes the value from ok before it can be counted"
+        },
+        {
+          "id": "b",
+          "text": "The code repairs the dot into an email and verifies who owns that address"
+        },
+        {
+          "id": "c",
+          "text": "A yes flag guarantees that every selected string contains an at sign"
+        },
+        {
+          "id": "d",
+          "text": "The malformed diagnostic and selected set can disagree because their conditions differ"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The probe produces bad = 1 because @ is absent, yet ok contains the dot: its expression requires a nonempty value, exact yes and a dot in the last split component, but does not require @. Computing bad does not filter clean. This exposes a pre-existing limitation in the code, not a change to the published twelve-row result, which still reports five. The probe is separate synthetic test input, not a customer record or a revised send list. Reading the actual expressions prevents treating the printed word valid as a comprehensive validator or a permission decision.",
+      "source": "Chapter 4, Lab, contrast between bad and ok expressions; Concepts — a row is not a permission and result table; Worked results (#worked-results; EX041, EX043). Supplemental negative control derived from the unchanged code, not an additional row in the published fixture."
+    },
+    {
+      "id": "Q08",
+      "prompt": "The new form includes a clear consent box and date. What does the laboratory's five-address output fail to establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That actual people completed that form, or that any resulting campaign was sent"
+        },
+        {
+          "id": "b",
+          "text": "That the supplied synthetic rows were evaluated using an exact yes comparison"
+        },
+        {
+          "id": "c",
+          "text": "That the original file contains both blank and no ticks excluded from selection"
+        },
+        {
+          "id": "d",
+          "text": "That the program formed a set rather than counting every repeated input row"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX048 describes features of the new sheet; the program instead evaluates already-supplied synthetic strings. Its output contains no evidence of real form completion, who supplied a tick, when agreement was given or whether any messages were delivered. The fixture does support statements about its string comparison, excluded tick values and use of a set. Keeping form design, recorded choices and executed communications separate avoids turning a classroom result into consent, security or legal-compliance evidence. Section 4.3's fictional decision and date are not an execution receipt for a real campaign, and this question supplies no additional legal proposition.",
+      "source": "Chapter 4, sections 4.1, 4.3 and 4.4; Lab, full executable; Data — the five actions and the one that slipped, new-sheet row; general Worked example; Worked results (#worked-results; EX043, EX045, EX046, EX048)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Four actions are done and the staff explanation moved to next week. How should the plan show that review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the explanation so four completed actions can be reported as the entire plan"
+        },
+        {
+          "id": "b",
+          "text": "Keep all five actions and retain the explanation as pending with the delay visible"
+        },
+        {
+          "id": "c",
+          "text": "Mark the explanation done because rescheduling proves staff already heard the rules"
+        },
+        {
+          "id": "d",
+          "text": "Discard the four completed results because one action has not yet happened"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The plan's scope remains five actions. The data table reports four completed actions and explicitly leaves the staff-meeting explanation unfinished after it moved. Deleting that row would hide the delay; rescheduling is not delivery of the explanation. The four completed actions should also retain their own status rather than being erased. EX047 and EX049 support this bounded progress report. No later meeting date is supplied, and reaching the end of the month does not demonstrate completion of the entire manuscript or its editorial review. The chapter's existing next lesson remains Chapter 5.",
+      "source": "Chapter 4, sections 4.4-4.5; Data — the five actions and the one that slipped, status column and following paragraph; general Worked example; Continue studying, Chapter 5 navigation; Worked results (#worked-results; EX047, EX049, EX050)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The recurring list check is marked done at the first review. What evidence would support a later month's count?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The old output alone, relabelled with the later month because the routine was approved"
+        },
+        {
+          "id": "b",
+          "text": "The action's tick, treated as proof that every future monthly check has succeeded"
+        },
+        {
+          "id": "c",
+          "text": "A separately performed check of that later input, with its actual result recorded"
+        },
+        {
+          "id": "d",
+          "text": "A preferred total typed into the report while the source input remains unexamined"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The action plan calls for checking the typed list each month. Its first-review status supports the work narrated for that review, not unknown future inputs or executions. A later result needs its own checked input and evidence; neither a tick nor a scheduled date recomputes the list. The original twelve-row output remains the historical result, and the script should not be edited to force a desired total. This question proposes the evidence needed for a future check without claiming one occurred. It also leaves the separate, delayed staff explanation pending rather than using the recurring-check status to close it.",
+      "source": "Chapter 4, sections 4.3-4.5, dated decision and monthly-check action; Data — the five actions and the one that slipped, recurring-check and explanation rows; general Worked example; Worked results (#worked-results; EX039, EX043, EX047, EX049)."
+    }
+  ]
+}
