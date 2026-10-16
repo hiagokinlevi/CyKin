@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 16,
+  "source_anchor": "ch-16",
+  "source_sha256": "3a4a1fbe55646b1c1853674f969e606a996b353fa31fc094662ea1350ff04d1b",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, what does SYN-003's Created value of 11:20 identify?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The start of the requested Room 4 session"
+        },
+        {
+          "id": "b",
+          "text": "The synthetic booking record's creation time"
+        },
+        {
+          "id": "c",
+          "text": "The moment the learner inspected the named page"
+        },
+        {
+          "id": "d",
+          "text": "The deadline after which the booking must be removed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Created labels the record's given creation time. The requested start is 15:00, the page heading is 11:55, and no exact learner-observation receipt is supplied. None of these facts makes 11:20 a cancellation or expiry deadline. Reading the field with its event type prevents an ordinary earlier creation from being mistaken for invalidity. EX032 retains SYN-003 as a confirmed Room 4 / 15:00 row on the owner-named page. These values describe the fictional fixture, not a verified creation event in a real reservation service.",
+      "source": "Chapter 16, §16.1 \"Two clocks, one row\"; §16.4 \"Separate creation, page, observation and program time\", creation/start/observation rows; §16.2 \"Worked example\", first claim; EX032, task and expanded timing table."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which statement can the 11:55 heading support without an independent printer or synchronization record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The complete production database finished synchronizing at 11:55"
+        },
+        {
+          "id": "b",
+          "text": "The learner's inspection occurred at exactly 11:55"
+        },
+        {
+          "id": "c",
+          "text": "The page remains approved until 11:55 on the following day"
+        },
+        {
+          "id": "d",
+          "text": "The named paper presents 11:55 as its stated page time"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The visible heading supplies a page attribute, not an independent account of how or when a real system generated it. It cannot timestamp the learner's inspection, certify a full synchronization or define tomorrow's authorization. The owner named this particular page for this sitting; that bounded designation is separate from the clock printed on it. EX032 records the heading while preserving those missing forms of provenance. The matching confirmed row still supports a limited taken answer. A desire to verify the printer's mechanism does not authorize a real-site lookup in this paper exercise.",
+      "source": "Chapter 16, §16.4, named-sheet row; §16.5 \"Mechanism: decide from the artifact that exists\", opening paragraph; §16.6 \"Worked contrasting claims\", synchronization claim; EX032, independent timing extension and expanded heading row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Inspection is described, but no exact observation receipt is given. What belongs in the clock ledger?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Inspection described; exact observation time not supplied"
+        },
+        {
+          "id": "b",
+          "text": "Inspection at 11:56, inferred as the next minute after the heading"
+        },
+        {
+          "id": "c",
+          "text": "Inspection at 11:55, copied from the source heading"
+        },
+        {
+          "id": "d",
+          "text": "No inspection occurred because a timestamp is missing"
+        }
+      ],
+      "correct": "a",
+      "explanation": "An observation can be described without a separately recorded clock value. Neither the page heading nor the following minute supplies the missing receipt, and its absence does not negate the stated inspection. Record the gap rather than filling it with an estimate presented as fact. EX032's worked table explicitly leaves the exact observation time unspecified. NIST SP 800-61 Rev. 3 discusses preserving the integrity and provenance of records and metadata. That general discipline supports distinguishing supplied evidence from additions; it does not provide the missing time or establish that Harbor Library experienced an incident.",
+      "source": "Chapter 16, §16.4, learner-observation row; §16.6, observation-time claim; §16.7, Control C; EX032, independent timing extension and expanded learner-observation row. General provenance principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q04",
+      "prompt": "In the historical Chapter 4 computation, what role does PRINTOUT = 09:00 have?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It timestamps all four staff proposals at 09:00"
+        },
+        {
+          "id": "b",
+          "text": "It makes the later 11:55 page part of the original input"
+        },
+        {
+          "id": "c",
+          "text": "It fixes the prior synthetic source cutoff, not the program's execution time"
+        },
+        {
+          "id": "d",
+          "text": "It defines the expiry of every booking created afterward"
+        }
+      ],
+      "correct": "c",
+      "explanation": "09:00 is the historical PRINTOUT constant. The four proposed actions have their own times, 11:42 through 11:45; the constant is not an execution receipt for the program. Section 16.5 also separates the old BOOKING fixture, containing SYN-001 and SYN-002, from the later SYN-003 evidence. Those fixture records must not be confused with what a 09:00 paper could contain. The constant neither imports the later sheet nor sets expiry for later bookings. EX032 protects the original input/output relationship without reopening the computation or inventing a run timestamp.",
+      "source": "Chapter 16, §16.4, program-cutoff definition and PRINTOUT row; §16.5, historical-fixture paragraph; §16.2, rerun claim; EX032, expanded PRINTOUT row and third worked statement."
+    },
+    {
+      "id": "Q05",
+      "prompt": "11:20 precedes 11:55, yet SYN-003 is visibly confirmed for Room 4 / 15:00. Which decision follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the row because every record older than its page has expired"
+        },
+        {
+          "id": "b",
+          "text": "Offer Room 4 because the later heading overrides the confirmed status"
+        },
+        {
+          "id": "c",
+          "text": "Withhold any slot-state answer solely because the two clocks differ"
+        },
+        {
+          "id": "d",
+          "text": "Keep the row and report the slot already booked within this sitting"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A record created earlier can appear on a later page without contradiction. Creation time is not a lifetime rule; the owner-named artifact explicitly prints the relevant room, start and confirmed status. That positive match supports already booked, not an offer to this requester. Mere ordering of the clocks supplies no cancellation or reason to discard the bounded answer. Control A and EX032 preserve the row. This does not mean it remains valid forever: a separately authorized later status change would require review, but the chapter supplies none.",
+      "source": "Chapter 16, §16.1, current taken conclusion; §16.2, deletion claim; §16.4, paragraph after the time table; §16.7, Control A; EX032, rubric, second worked statement and first falsifier."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A learner uses 11:20 > 09:00 to demand that the old ALLOW become REFUSE. What is wrong with this inference?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The arithmetic is reversed: 11:20 occurs before 09:00"
+        },
+        {
+          "id": "b",
+          "text": "It substitutes later evidence into old inputs and mistakes a pending-action verdict for vacancy"
+        },
+        {
+          "id": "c",
+          "text": "A creation time after 09:00 automatically renews the original paper"
+        },
+        {
+          "id": "d",
+          "text": "Every ALLOW label applies permanently to every room and action"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The numeric ordering is correct, but it establishes neither proposed conclusion. SYN-003 was absent from the historical fixture, so its later release cannot retroactively change that computation. Separately, the actual ALLOW labeled the 11:45 mark-pending proposal, not a Room 4 availability check. Both the evidence set and the meaning of the action matter. EX032 identifies these as two errors rather than a clock-arithmetic problem. Preserve the original record; neither a supposed refresh nor an unlimited interpretation of ALLOW authorizes editing its labels or confirming a room.",
+      "source": "Chapter 16, §16.1, second proposed clock argument; §16.5, historical-input and mark-pending paragraphs; §16.6, after-09:00 and ALLOW claims; EX032, final two paragraphs and second falsifier."
+    },
+    {
+      "id": "Q07",
+      "prompt": "In the chapter's unexecuted extra-booking counterfactual, why would mark-pending still not be a Room 4 vacancy test?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The branch returns a real reservation receipt before checking any row"
+        },
+        {
+          "id": "b",
+          "text": "The 11:20 creation time removes that booking from every later source"
+        },
+        {
+          "id": "c",
+          "text": "The branch classifies recording a pending request, not whether a slot is free"
+        },
+        {
+          "id": "d",
+          "text": "A missing Room 4 record proves complete availability in every dataset"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter explains the branch semantically: marking a request pending is permitted without being a room-conflict test. Changing a hypothetical booking array would not turn that action into a confirmation or make an omitted row prove universal vacancy. Creation time supplies no removal rule either. The counterfactual is explicitly different from the published fixture, and no altered run is performed here. EX032 therefore rejects both retroactive relabeling and the idea that a pending-action label is a booking outcome. The new page's confirmed Room 4 row remains a separate source-scoped fact.",
+      "source": "Chapter 16, §16.5, paragraph beginning \"Even in a separately labeled counterfactual\"; §16.6, ALLOW claim; §16.7, Control B; EX032, expanded fixed-lab and unexecuted-fixture paragraph."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which treatment of the old counters is justified after the later SYN-003 row has been read?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the exact published tally and retain the later source reading separately"
+        },
+        {
+          "id": "b",
+          "text": "Increase UNKNOWN because the learner's observation time is unspecified"
+        },
+        {
+          "id": "c",
+          "text": "Add SYN-003 as a fifth logged action and recalculate the result"
+        },
+        {
+          "id": "d",
+          "text": "Clear REFUSE because a later source now contains more booking information"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The later row and the missing observation receipt are not new actions in the old four-action log. Its tally stays STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. REFUSE still describes the 11:42 Room 2 / 15:00 paper-confirmation proposal; ALLOW still concerns mark-pending at 11:45. Record the later page as later evidence without silently replacing the historical inputs. NIST SP 800-61 Rev. 3 supplies general record-integrity and provenance principles, not a reason to declare an incident or rerun this exercise. EX032 expressly leaves the program closed.",
+      "source": "Chapter 16, §16.2, label-change claim; §16.5, exact historical output; §16.6, worked handoff; EX032, safe condition, third worked statement and expanded fixed-lab mapping. General principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q09",
+      "prompt": "SYN-002 is older and still confirmed on the named page. What supports the Room 2 / 15:00 answer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its age authorizes cancelling it to make room for the newer SYN-003"
+        },
+        {
+          "id": "b",
+          "text": "Its matching room, start and confirmed status support a bounded taken reply"
+        },
+        {
+          "id": "c",
+          "text": "SYN-003's newer creation time supersedes every other booking"
+        },
+        {
+          "id": "d",
+          "text": "The 11:55 heading assigns both reservations to the current requester"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The current named page still prints SYN-002 as confirmed for Room 2 / 15:00. Neither age nor repetition across pages is cancellation evidence. SYN-003 concerns a different room and cannot supersede SYN-002 merely by being newer. The heading grants no reservation to the asker. Section 16.6 preserves both positive matches and limits the reply to slot state, without treating a synthetic identifier as a person's name. EX032's timing rule rejects deletion based on a clock; it supplies no executed cancellation, reallocation or access to a real booking service.",
+      "source": "Chapter 16, §16.5, whole-row mechanism; §16.6, SYN-002 and identity claims and worked handoff; §16.7, instruction to keep the current page intact; EX032, timing objective, negative control and expanded no-cancellation distinction."
+    },
+    {
+      "id": "Q10",
+      "prompt": "With no exact inspection receipt or independent clock-sync log, which overall conclusion remains warranted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The printed SYN-003 row must be treated as absent"
+        },
+        {
+          "id": "b",
+          "text": "The 35-minute gap proves the view outage lasted 35 minutes"
+        },
+        {
+          "id": "c",
+          "text": "A real-site check is implicitly authorized to repair the missing provenance"
+        },
+        {
+          "id": "d",
+          "text": "The named row supports already booked here, while operational timing and cause remain unproved"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Control C limits stronger operational claims without erasing the supplied paper evidence. The creation-to-heading interval is not an outage-duration measurement, a printing-frequency result or a clock-synchronization test. Nothing in those times establishes a cause or expands authorization to a live site. The bounded classroom answer still follows from the owner-named source and its matching confirmed row. EX032 requires preserving those distinctions rather than inventing a receipt, rerun or probe. The arithmetic difference of 35 minutes adds no expiry rule and does not prove any real service behavior.",
+      "source": "Chapter 16, §16.3 \"What the clocks still do not show\"; §16.4, temporal-evidence limits; §16.6, synchronization/observation claims; §16.7, Control C and paper-only extension; EX032, independent timing extension, expanded timing table and falsifiers."
+    }
+  ]
+}
