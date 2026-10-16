@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 12,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "4c334d11dd5dad3d1e4171ec088c6441bac3771b",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-12",
+  "source_sha256": "9936f2bdf4ddd5ede7e9c19408513f3c6787da134d75088f7512bb5b3e6859c1",
+  "case_note": "Millbrook Hospital, its assets, report, ratings and management decisions are fictional. Hypothetical review records do not add observations to the case. Potential clinical consequences are not observed patient harm. Recommendations, funding, implementation and verified completion are distinct. Risk acceptance belongs to authorised hospital management, not automatically to the analyst or contractor. No formal IEC 62443 assessment or certification is claimed, and no question authorises changes to real OT. The source hash covers the stripped ch-12 text ending before the worked-results anchor, excluding that appendix anchor.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A report reviews BMS and lift records but excludes access control. Which scope statement is defensible?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All hospital building systems were assessed because they share an owner"
+        },
+        {
+          "id": "b",
+          "text": "Access control is low risk because it produced no findings"
+        },
+        {
+          "id": "c",
+          "text": "Name the reviewed systems, evidence method and access-control exclusion"
+        },
+        {
+          "id": "d",
+          "text": "Claim IEC 62443 certification because the report uses zones"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 12.1 requires scope and method, systems and owners, and an explicit account of what was and was not reviewed. Reviewing two systems does not assess a third, and an excluded system's lack of findings does not establish low risk. A common owner does not extend the evidence collected. Errors and limits explicitly says this report is not a formal IEC 62443 assessment; using a technical term cannot turn it into certification. The scenario is a hypothetical scope boundary, not a new audit of Millbrook.",
+      "source": "Chapter 12, §12.1 \"Structure\", both paragraphs; \"Errors and limits\"; EX056 \"Report sections\" and its worked answer."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A report draft alleges an enabled contractor account but has no supporting item. Which finding status is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unconfirmed; obtain and link supporting evidence"
+        },
+        {
+          "id": "b",
+          "text": "Confirmed because the allegation names a familiar weakness"
+        },
+        {
+          "id": "c",
+          "text": "Disproved because the appendix currently has no item"
+        },
+        {
+          "id": "d",
+          "text": "Accepted residual risk because no evidence was attached"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 12.5 says a finding without a supporting item remains unconfirmed until evidence is collected. Attach the relevant record to the finding with its collection date, collector and original location. Familiarity with the weakness does not prove this particular account state. Missing support also does not disprove the allegation, and it cannot constitute management acceptance of risk. This hypothetical lacks the evidence needed for a confirmed finding; it must not be filled in using the separate account finding narrated in the fictional worked example.",
+      "source": "Chapter 12, §12.5 \"Evidence appendix\", both paragraphs; §12.1 \"Structure\"; EX056 \"Report sections\" (findings and evidence)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A reviewer labels possible patient-transfer disruption as likelihood. Which correction separates the chapter's two rating dimensions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat likely occurrence and potential harm as interchangeable ratings"
+        },
+        {
+          "id": "b",
+          "text": "Rate both dimensions high whenever an asset is unsupported"
+        },
+        {
+          "id": "c",
+          "text": "Treat a high consequence rating as proof that patients were harmed"
+        },
+        {
+          "id": "d",
+          "text": "Use disruption for consequence; exposure and known activity inform likelihood"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 12.2 distinguishes what could happen to patients or services from how plausible the event is, informed by exposure, ease and known activity. Unsupported status alone assigns neither dimension automatically. A severe potential consequence is not an observation of harm. Agree and define the three-level scales with estates and clinical leads before rating, rather than changing meanings between findings. The NIST risk definition also considers both potential adverse impact and likelihood; it does not supply this hospital's ratings or prescribe a numerical formula for these qualitative labels.",
+      "source": "Chapter 12, §12.2 \"Rating\", both paragraphs; EX057 \"Ranking two risks\". Primary terminology check: NIST CSRC Glossary, \"risk\", https://csrc.nist.gov/glossary/term/risk"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why does the case prioritise LIFT-CTRL over 14-day trend retention despite the retention finding's higher likelihood?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The lift has the higher likelihood in the worked example"
+        },
+        {
+          "id": "b",
+          "text": "Patient-transfer consequences outweigh the investigation-evidence limitation here"
+        },
+        {
+          "id": "c",
+          "text": "A short retention period cannot create any security risk"
+        },
+        {
+          "id": "d",
+          "text": "The two ordinal ratings must be multiplied to prove the ordering"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The worked example rates the lift high consequence and medium likelihood, but retention medium consequence and high likelihood. EX057 prioritises possible disruption to patient transfers over weakened investigations in this case. Reversing the likelihood labels misreads the source; treating retention as harmless also contradicts the listed finding. No calibrated numerical multiplication rule is provided, so ordinal labels cannot prove a score that the text never calculates. Explain the case's consequence-led priority using the agreed scales. No actual lift failure, patient injury or lost investigation is reported by this comparison.",
+      "source": "Chapter 12, §12.2 \"Rating\"; \"Worked example (synthetic Millbrook)\"; EX057 \"Ranking two risks\" and its worked answer."
+    },
+    {
+      "id": "Q05",
+      "prompt": "A recommendation says only 'improve contractor account control'. Which revision makes it actionable and testable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Specify session-end disabling, a responsible owner, a due date and account-to-ticket evidence"
+        },
+        {
+          "id": "b",
+          "text": "Assign an owner but replace the due date with 'when resources permit'"
+        },
+        {
+          "id": "c",
+          "text": "Set a due date but use the meeting invitation as completion evidence"
+        },
+        {
+          "id": "d",
+          "text": "Record weekly reviews without defining the account state they must demonstrate"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 12.3 requires a specific change, owner, date and evidence of completion. EX058 connects session-end disabling to a report comparing enabled contractor accounts with open tickets. A vague resource condition provides no committed date, a meeting invitation proves neither the account state nor disabling, and reviews without a defined result leave success ambiguous. The precise owner and deadline must be assigned through the real decision process; the example answer is a model, not evidence that automation was implemented. A sampled account report supports its observed scope, not an unlimited guarantee of future behaviour.",
+      "source": "Chapter 12, §12.3 \"Recommendations\", both paragraphs; EX058 \"Writing a recommendation\" and its worked answer."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A hypothetical follow-up has an approved lift budget and purchase order, but no installation evidence. Which status follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The replacement and all risk-reduction work are complete"
+        },
+        {
+          "id": "b",
+          "text": "The purchase order proves the old controller has been isolated"
+        },
+        {
+          "id": "c",
+          "text": "Funding and procurement are evidenced; completed replacement is not"
+        },
+        {
+          "id": "d",
+          "text": "No progress can be recorded until the replacement is installed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Match each artefact to the claim it supports. Section 12.3 mentions a purchase order as evidence, which can demonstrate procurement progress; it does not show installation, retirement of LIFT-CTRL or effective technical controls. Section 12.6 asks whether each action was completed. Report the evidenced milestones without calling the full replacement finished or ignoring genuine progress. The source worked example approves future funding; this hypothetical purchase order is not an additional observation from that narrative. Residual risk and temporary controls remain separate from the procurement milestone.",
+      "source": "Chapter 12, §12.3 \"Recommendations\"; §12.6 \"After the meeting\"; \"Worked example (synthetic Millbrook)\"; EX058 \"Writing a recommendation\" and EX060 \"Residual risk\"."
+    },
+    {
+      "id": "Q07",
+      "prompt": "LIFT-CTRL remains in service pending replacement. Which residual-risk statement preserves the chapter's authority and control requirements?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst accepts the risk automatically by listing it in the report"
+        },
+        {
+          "id": "b",
+          "text": "Record authorised management acceptance, bounded temporary controls and review"
+        },
+        {
+          "id": "c",
+          "text": "Contractor monitoring alone removes the need for a hospital decision"
+        },
+        {
+          "id": "d",
+          "text": "Future replacement funding makes the remaining risk zero immediately"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 12.1 requires identifying who accepted residual risk, as decided by hospital managers. EX060's example relies on the lift's own zone, a cellular link restricted to the contractor's service centre under tickets, and connection monitoring while replacement is pending. Those measures are the stated rationale, not a transfer of acceptance authority to the analyst or contractor. Funding is not a technical control and does not eliminate existing exposure. NIST defines residual risk as what remains after security measures; document which measures are actually supported, any unverified claims and the review arrangements. The fictional rationale is not permission to accept another hospital's risk.",
+      "source": "Chapter 12, §12.1 \"Structure\", second paragraph; §12.6 \"After the meeting\"; EX060 \"Residual risk\" and its worked answer. Primary terminology check: NIST CSRC Glossary, \"residual risk\", https://csrc.nist.gov/glossary/term/residual_risk"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which appendix design preserves traceability without distributing sensitive device details indiscriminately?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Email every configuration extract to all staff for transparency"
+        },
+        {
+          "id": "b",
+          "text": "Keep screenshots but remove dates and collector details"
+        },
+        {
+          "id": "c",
+          "text": "Retain only risk ratings and discard links to original evidence"
+        },
+        {
+          "id": "d",
+          "text": "Restrict access; link each item to its finding, date, collector and original location"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 12.5 combines provenance with access control: retain supporting photographs, logs or configurations, identify the collection date and collector, link them to finding numbers and record the originals' location. Device addresses and weaknesses justify controlled access, not unrestricted circulation. Removing provenance weakens traceability, while ratings alone cannot substitute for the underlying evidence. Section 12.4 keeps the appendix available for questions without making it the routine management presentation. Protection must not erase the material needed for an authorised reviewer to check a finding; no particular storage technology is demonstrated by the chapter.",
+      "source": "Chapter 12, §12.5 \"Evidence appendix\", both paragraphs; §12.4 \"Presenting\"; EX056 \"Report sections\" (findings linked to evidence)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Managers receive a technical findings deck but no requested decisions. Which revision follows the chapter's presentation method?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lead with patient-service risks, request specific decisions and communicate assigned actions"
+        },
+        {
+          "id": "b",
+          "text": "Replace the summary with the complete device-level evidence appendix"
+        },
+        {
+          "id": "c",
+          "text": "Present possible patient harm as an observed incident to secure funding"
+        },
+        {
+          "id": "d",
+          "text": "Let the analyst assign risk acceptance and omit management confirmation"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 12.4 leads with the top risks in patient terms, shows evidenced improvements and asks for decisions such as replacement funding. Confirm who acts on each decision, then send the slides and summary so absent managers receive consistent information. Section 12.6 records the decisions, owners and dates. A device-level data dump does not replace that purpose; inventing patient harm is not justified persuasion; and the analyst cannot assume management's acceptance authority. EX059 models a funding request tied to the lift's role, not a claim that a clinical incident occurred.",
+      "source": "Chapter 12, §12.4 \"Presenting\"; §12.6 \"After the meeting\"; EX059 \"Opening the presentation\" and its worked answer; §12.1 \"Structure\"."
+    },
+    {
+      "id": "Q10",
+      "prompt": "At the six-month review, an action lacks completion evidence and its deadline has passed. Which update is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close it because six months is the report's automatic expiry period"
+        },
+        {
+          "id": "b",
+          "text": "Carry forward the old rating and date without checking new evidence"
+        },
+        {
+          "id": "c",
+          "text": "Check progress, record a reason and new date, and reassess ratings using current evidence"
+        },
+        {
+          "id": "d",
+          "text": "Remove the action from the register because the original meeting is over"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 12.6 checks completion, updates ratings when evidence changes and requires a new date and reason for slipped actions. Keep responsibility and the supporting records traceable rather than treating a review date as automatic closure or erasing an overdue item. Missing completion evidence is not proof that nothing was done, so establish what is supported. Section 12.2 also calls for review when evidence changes: the six-month meeting is a scheduled checkpoint, not permission to ignore important changes in between. Errors and limits bounds the report by its evidence date and excludes a formal IEC 62443 assessment.",
+      "source": "Chapter 12, §12.6 \"After the meeting\", both paragraphs; §12.2 \"Rating\"; \"Errors and limits\"; EX058 \"Writing a recommendation\" and EX060 \"Residual risk\"."
+    }
+  ]
+}
