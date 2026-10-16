@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 10,
+  "source_anchor": "ch-10",
+  "source_sha256": "62b4b29f0a68fe239a6966c4899b3a4e7bc477a6ee0bb70b747fd713d0010237",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, a facilitator repeats an owner's mention of 11:40. What evidence has reached the learner?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An approved printout with directly verified booking rows"
+        },
+        {
+          "id": "b",
+          "text": "A source-generation log proving the refresh completed"
+        },
+        {
+          "id": "c",
+          "text": "A second-hand report about a possible later sheet"
+        },
+        {
+          "id": "d",
+          "text": "A confirmation receipt allocating the requested room"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The mention supplies words about a purported source time, not the source itself. Section 10.1 preserves the status reported, not verified. Nothing in the retelling supplies a sheet, observed rows, a generation log or a booking receipt. That does not prove the report false; it identifies a lead requiring checks. EX026 therefore files the sentence beside the original paper rather than substituting it for that paper. Harbor Library is fictional, and Chapter 10 supplies no newly inspected 11:40 artifact or real-system observation.",
+      "source": "Chapter 10, §10.1 \"The rule reads an artifact, not a recollection\"; §10.2 \"Worked example\", first table row; EX026, input, worked result and second expanded-ledger row."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which two checks must be recorded for the later-sheet source gate in this exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Owner names the exact sheet; learner records its 11:40 heading and printed SYN-002"
+        },
+        {
+          "id": "b",
+          "text": "Owner mentions a time; facilitator repeats that the row exists"
+        },
+        {
+          "id": "c",
+          "text": "Learner sees a later heading; requester agrees to use the room"
+        },
+        {
+          "id": "d",
+          "text": "Learner retypes the clock; classifier produces the preferred verdict"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.5 requires identification of this particular sheet by the designated exercise owner and direct observations from that same artifact. The second gate includes both its 11:40 heading and its printed SYN-002 row. An oral repetition is not inspection; a requester cannot supply the missing source authority; and changing an input does not obtain a sheet. These are necessary source checks, not sufficient authority to create a reservation. EX026 records them as missing at this checkpoint, so the question does not assert that either check has occurred.",
+      "source": "Chapter 10, §10.2, opening paragraph; §10.5 \"Provenance is a chain of claims, not an attractive header\", checks 1–2; EX026, rubric and three-part worked reply."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Hypothetical: the 11:40 heading and SYN-002 are inspected, but no owner identifies the sheet as approved. What remains unresolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The row's visibility automatically grants source authority"
+        },
+        {
+          "id": "b",
+          "text": "A later clock authorizes any use of the page"
+        },
+        {
+          "id": "c",
+          "text": "The missing approval proves the page is forged"
+        },
+        {
+          "id": "d",
+          "text": "The exact sheet's authority for the bounded decision"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The second row of Section 10.2 distinguishes a checked artifact from an approved source. Seeing a heading and row does not establish that the owner permits this object to support the requested decision. A later printed time cannot replace that authority, and missing approval is not evidence of forgery. Keep confirmation withheld and seek the owner's identification of the exact source. The inspected page in this question is a conditional comparison from the chapter, not an artifact actually released at the Chapter 10 checkpoint. No signature technology or real approval workflow is implied.",
+      "source": "Chapter 10, §10.2, checked-artifact/authority-open row; §10.5, check 1; §10.6, candidate-input contrasts; EX026, missing-check requirement and expanded evidence ledger."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Hypothetical: the owner names a particular sheet, but its contents are only described orally. Which evidence is still missing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Permission to replace the published program's input clock"
+        },
+        {
+          "id": "b",
+          "text": "Directly recorded heading and SYN-002 observations from that same sheet"
+        },
+        {
+          "id": "c",
+          "text": "A second person's repetition of the same description"
+        },
+        {
+          "id": "d",
+          "text": "The requester's identity from the event-contact list"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Source identification does not supply the content observations. Section 10.5 requires the worker to inspect the identified artifact and record its 11:40 heading and relevant printed SYN-002 row. Another retelling would remain a report, not the missing inspection. Editing the program and looking up a person's identity answer neither check and fall outside the task. EX026 keeps seen and approved as separate evidence claims. This conditional question tests the other incomplete-gate combination; it does not claim that owner approval or inspection has been received in Chapter 10.",
+      "source": "Chapter 10, §10.5, check 2; §10.2, opening paragraph; §10.6, oral-content-report row; EX026, worked three-part reply and negative control."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Why does the published 11:42 confirm-from-printout proposal remain REFUSE despite the spoken 11:40 time?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its fixed 09:00 source predates SYN-002's 10:05 creation; the report replaces no input"
+        },
+        {
+          "id": "b",
+          "text": "The requested 15:00 start proves SYN-002 was created at 15:00"
+        },
+        {
+          "id": "c",
+          "text": "The spoken 11:40 time is the generation time of the inspected source"
+        },
+        {
+          "id": "d",
+          "text": "The 11:42 verdict records a real reservation transaction being rejected"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.1 uses the 09:00 paper and the synthetic row created at 10:05. The later booking is absent from that fixed copy. The 11:42 item is a classified proposal, not an executed reservation, and 15:00 is the requested room-use time rather than the row's creation time. The reported 11:40 refresh provides no inspected generation record and changes no published input. EX026 therefore preserves the original REFUSE without claiming a real booking was rejected. This question interprets the supplied run; it does not execute it again.",
+      "source": "Chapter 10, §10.1, opening paragraph; §10.4 \"Four different times can appear in one sentence\", time table; EX026, original-paper ledger row and worked timing explanation."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Two classmates repeat the same facilitator's 11:40 story. How should a source ledger treat the repetition?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As two independent inspections corroborating the printed row"
+        },
+        {
+          "id": "b",
+          "text": "As direct owner approval because more people repeated it"
+        },
+        {
+          "id": "c",
+          "text": "As retellings of the same report, not independent artifact checks"
+        },
+        {
+          "id": "d",
+          "text": "As proof that no 11:40 source exists"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 10.7 warns that a second retelling is not a second independent source. Record the relationship to the earlier report rather than upgrading it to seeing or approving an artifact. Repetition neither proves the contents nor disproves the possible sheet's existence. Preserve when the claim became known separately from the source time being claimed; no exact retelling timestamp is supplied here. NIST SP 800-61 Rev. 3 discusses preserving records and their provenance during incident response. That general principle supports careful records, but it neither classifies this fictional outage as an incident nor verifies the report.",
+      "source": "Chapter 10, §10.7 \"Preserve chronology when reporting a new source\", ledger and following paragraph; §10.8, first negative control; EX026, negative control. General provenance reference: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A learner proposes retyping PRINTOUT as 11:40 to clear REFUSE. What would that substitution establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That the owner approved an actual new sheet"
+        },
+        {
+          "id": "b",
+          "text": "Only a changed model assumption, not newly acquired evidence"
+        },
+        {
+          "id": "c",
+          "text": "That the original 09:00 classification was incorrect"
+        },
+        {
+          "id": "d",
+          "text": "That the booking store now permits the requested allocation"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Retyping the clock would change the input assumption rather than acquire the reported artifact. Section 10.6 explains the counterfactual without executing it: any different classification would follow from altered inputs, not direct observation or owner approval. It would neither disprove the original result nor authorize a booking. EX026 expressly prohibits starting a replacement run on this basis. Preserve the original fixture and report instead. No modified execution, new verdict or operational result is supplied by this question, and no change to the Chapter 4 program is requested.",
+      "source": "Chapter 10, §10.1, second paragraph; §10.2, retyping-plan row; §10.6 \"Worked contrast: the same clock under different evidentiary conditions\", counterfactual; EX026, safe condition and expanded worked explanation."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Only an oral report has been added. What happens to the published tally and the Room 2 / 15:00 request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "REFUSE becomes zero and the request is confirmed"
+        },
+        {
+          "id": "b",
+          "text": "UNKNOWN increases because the reported source is unverified"
+        },
+        {
+          "id": "c",
+          "text": "ALLOW increases because hearing the report approves the room"
+        },
+        {
+          "id": "d",
+          "text": "The exact tally stays unchanged and the request stays not confirmed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The report is not one of the four classified actions. Section 10.1 says it cannot clear REFUSE or move UNKNOWN. The published line remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. Missing human checks do not become new classifier inputs, and the existing ALLOW for a pending action is not allocation authority. The report's status and the unresolved request belong in the evidence ledger. EX026 retains both without a new run, a changed census, an approved replacement or a confirmed reservation.",
+      "source": "Chapter 10, §10.1, final paragraph; §10.2, closing paragraph; §10.7, ledger; EX026, rubric, worked result and three-part worked reply."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Hypothetical later check: an approved sheet shows SYN-002 confirmed for 15:00. Which room-state conclusion follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The slot is already booked; source approval does not authorize giving it away"
+        },
+        {
+          "id": "b",
+          "text": "The later timestamp makes the occupied slot available again"
+        },
+        {
+          "id": "c",
+          "text": "The waiting request automatically supersedes SYN-002"
+        },
+        {
+          "id": "d",
+          "text": "The new page retroactively validates the original paper confirmation"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.6's semantic negative control makes the distinction explicit: a verified source can show that the requested slot is occupied. It cannot make that reservation disappear. Authority to use a source is separate from authority to create or alter a booking, and a pending request overrides nothing. A later checked page also cannot backdate what the earlier paper contained. This is an explicitly hypothetical follow-up, not a received Chapter 10 sheet or a newly performed test. The appropriate bounded room-state statement discloses no resident identity.",
+      "source": "Chapter 10, §10.5, follow-on scope checks; §10.6, semantic negative control; §10.8, second negative control; EX026, hypothetical-future-source row and final negative control."
+    },
+    {
+      "id": "Q10",
+      "prompt": "In a hypothetical follow-up, both minimum source gates pass. Which further review remains relevant?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat every future schedule as current under the same approval"
+        },
+        {
+          "id": "b",
+          "text": "Check the task's day, room, start, status and any owner-defined cutoff"
+        },
+        {
+          "id": "c",
+          "text": "Use the heading as proof of a complete synchronization history"
+        },
+        {
+          "id": "d",
+          "text": "Infer that the outage cause and recovery have been verified"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 10.5 keeps source approval bounded: the relevant date, Room 2 / 15:00, row status and any applicable cutoff or superseding update still matter. The two minimum checks do not certify future schedules, synchronization or recovery, and the chapter supplies no generation receipt or diagnosed cause. Any separate booking permission also remains distinct. The NIST CSF expresses general outcomes rather than a mandatory Harbor Library form. Its provenance outcomes support preserving the evidence boundary, not declaring the fictional check complete or extending its authority beyond the task.",
+      "source": "Chapter 10, §10.5, paragraph after checks 1–2; §10.4, evidence layers; §10.3 \"What this chapter does not open\"; EX026, future-source ledger row and expanded reasoning. General reference: NIST CSF 2.0, abstract and Appendix A RS.AN-06/RS.AN-07, p. 22, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
