@@ -19,5 +19,6 @@ Original classroom TableTop: [Vendor invoice fraud (English)](tabletops/02-vendo
 Original classroom TableTop: [Cloud credential exposure (English)](tabletops/03-cloud-key-exposure.en.md).
 Original classroom TableTop: [Compromised supplier update (English)](tabletops/04-supplier-update.en.md).
 Original classroom TableTop: [Suspicious data export (English)](tabletops/05-insider-data-export.en.md).
+Original classroom TableTop: [Public portal disruption (English)](tabletops/06-ddos-portal.en.md).
 
 These links are pinned to source revisions. Review each repository's license and current safety guidance before reuse. No linked file is silently copied or relicensed here.
