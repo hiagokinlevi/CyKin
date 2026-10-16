@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 13,
+  "source_anchor": "ch-13",
+  "source_sha256": "b691267959b8abe1175508c6af31b695b1559febfd36701d5af8be6d6ab9b053",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, what has changed at the new morning's 09:12 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The earlier page has been proved false because a new day began"
+        },
+        {
+          "id": "b",
+          "text": "Possession of the page has renewed the earlier owner's approval"
+        },
+        {
+          "id": "c",
+          "text": "The earlier designation no longer applies and no current source has been named"
+        },
+        {
+          "id": "d",
+          "text": "The unchanged SYN-002 row has become today's confirmed reservation"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The source grant was limited to the earlier sitting. Section 13.1 describes a new morning with the view unavailable at 09:12 and no source named for today. The paper can remain unchanged without retaining authority for this new decision. Neither physical possession nor a familiar row renews that grant, and the change of context does not prove falsification. EX029 therefore leaves today's Room 2 / 15:00 request not confirmed. This is the supplied fictional checkpoint, not evidence of an actual outage, current booking or renewal event.",
+      "source": "Chapter 13, §13.1 \"A naming has a sitting attached\"; §13.2 \"Worked example\", first two rows; §13.4, second paragraph; EX029, task, worked result and new-morning checkpoint row."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which statement about the retained SYN-002 row remains justified as an archival record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The previously named sheet showed Room 2 / 15:00 confirmed for that earlier sitting"
+        },
+        {
+          "id": "b",
+          "text": "Today's Room 2 / 15:00 is taken because the ink has not changed"
+        },
+        {
+          "id": "c",
+          "text": "Today's Room 2 / 15:00 is free because the old approval ended"
+        },
+        {
+          "id": "d",
+          "text": "The historical booking has been cancelled because its page is no longer current"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 13.4 preserves the time-qualified observation about the earlier named page. It does not extend the row to today's question. An expired source designation proves neither vacancy nor cancellation, just as an unchanged row proves no continuing current authority. The expanded EX029 answer keeps the earlier taken conclusion in its own record while withholding both taken and free for today. Filing the sheet retains its evidential usefulness without inventing a new reservation, a cancellation or a false historical statement.",
+      "source": "Chapter 13, §13.3 \"What this limit does not deny\"; §13.4, historical-claim table; §13.6, earlier-sitting contrast; EX029, independent extension and expanded answer, previous-sitting row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Why would a similar time of day on an older page not make it today's decision source?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A matching clock proves the document was generated on today's date"
+        },
+        {
+          "id": "b",
+          "text": "Any printed timestamp renews approval until the page is removed"
+        },
+        {
+          "id": "c",
+          "text": "Every paper authorization lasts exactly twenty-four hours"
+        },
+        {
+          "id": "d",
+          "text": "The document's date and the grant's effective scope must still match the new decision"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter separates document time from authority time. A familiar clock value is not evidence of a matching date or an applicable designation. Section 13.8 explicitly tests a similar time on a different date; it supplies no automatic renewal rule or universal twenty-four-hour lifetime. Here the actual restriction is the earlier sitting, and today's owner has named no source. EX029's negative control therefore preserves the pending state. The NIST CSF supports defined responsibilities and managed permissions in general, not this fictional per-sitting expiry rule.",
+      "source": "Chapter 13, §13.4 \"What expires: authority to use a source, not the historical fact\", definitions and two-clocks paragraph; §13.8, counterexample (c); EX029, negative controls and expanded temporal-authority answer. General principles only: NIST CSF 2.0, Appendix A, GV.RR-02 (p. 17) and PR.AA-05 (p. 20), https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A participant repeats yesterday's owner's approval word for word. How should that repetition be classified today?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A fresh source designation because the wording is unchanged"
+        },
+        {
+          "id": "b",
+          "text": "A report of the earlier grant, not a new applicable authorization"
+        },
+        {
+          "id": "c",
+          "text": "Direct verification of today's booking state"
+        },
+        {
+          "id": "d",
+          "text": "Evidence that today's owner deliberately refused every source"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Repeating the earlier words preserves a report about their original scope; it does not create a new authorized act. Today's owner has not named a current source, which is different from having deliberately rejected every candidate. Nor does repetition inspect any current booking content. Section 13.8 tests this exact distinction, and EX029 withholds confirmation rather than borrowing the old speech. The useful record identifies the earlier grant as earlier, without inventing today's approval, a refusal, a checked row or the participant's authority to renew the grant.",
+      "source": "Chapter 13, §13.1, first paragraph; §13.5, step 2; §13.8, counterexample (b); EX029, input, negative controls and expanded answer's final paragraph."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which pending slip records the new request using the four allowed intake fields?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Heard 09:12; Room 2; requested start 15:00 today; not confirmed"
+        },
+        {
+          "id": "b",
+          "text": "Heard 09:12; Room 2; requested start 15:00 today; confirmed from the old page"
+        },
+        {
+          "id": "c",
+          "text": "Heard 11:40 yesterday; Room 2; requested start 15:00 today; not confirmed"
+        },
+        {
+          "id": "d",
+          "text": "Heard 09:12; Room 2; requested start 15:00 today; requester name instead of status"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The four fields are the time the request was heard, the room, the requested start and the explicit non-confirmation state. The intake time is 09:12; 11:40 is the old document's heading, not today's intake. The earlier page cannot supply confirmation, and adding a person's name in place of status both loses a required limit and introduces data excluded from the exercise. Section 13.2 permits the separate explanatory note that no source was named today. The slip itself records a request, not allocation, identity verification or a completed booking.",
+      "source": "Chapter 13, §13.2, morning-note paragraph; §13.5 \"Mechanism: make the new decision from today's evidence set\", steps 1 and 4; §13.7, first paragraph; EX029, expanded answer, new-morning checkpoint row."
+    },
+    {
+      "id": "Q06",
+      "prompt": "At 09:12, which response to today's Room 2 / 15:00 request stays within the evidence available?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is taken as before, so I will retire the pending slip"
+        },
+        {
+          "id": "b",
+          "text": "It should be free now that yesterday's naming has ended"
+        },
+        {
+          "id": "c",
+          "text": "I cannot determine today's slot from that sheet; the request remains not confirmed"
+        },
+        {
+          "id": "d",
+          "text": "I will hold the room provisionally while waiting for today's owner"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The current source gate is unmet, so the worker cannot classify today's slot as taken or free from the archive. A provisional hold would also add an allocation that the case does not authorize. The useful reply states the limit and retains the request, rather than retiring it or promising a room. Section 13.6 gives this bounded response for the new morning. EX029 does not retract the earlier taken finding; it keeps that finding attached to the earlier sitting and leaves today's independent decision pending.",
+      "source": "Chapter 13, §13.1, second paragraph; §13.6 \"Worked contrasts: the same words in different contexts\", new-morning contrast; §13.7, worked handoff; EX029, rubric and expanded three-sentence answer."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Hypothetical later designation: today's owner names another source. What must still precede a room-state answer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transfer the old SYN-002 result without inspecting the new source"
+        },
+        {
+          "id": "b",
+          "text": "Treat naming alone as a receipt for a newly completed booking"
+        },
+        {
+          "id": "c",
+          "text": "Rewrite the older page with the desired present-day result"
+        },
+        {
+          "id": "d",
+          "text": "Inspect the designated source for today's actual question and keep booking authority separate"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 13.6 makes this a future possibility, not evidence already released. A designation identifies a source; it does not supply its relevant contents, establish a match for today's date and slot, or perform a reservation. The actual question still requires checked current evidence, and any later booking needs its own approved process. Borrowing the old row or rewriting history answers none of those requirements. EX029 states that no new source or confirmed transaction is supplied in Chapter 13. The hypothetical therefore changes no current request state or earlier tally.",
+      "source": "Chapter 13, §13.5, step 5; §13.6, hypothetical-future-authorization paragraph; §13.7, worked handoff; EX029, expanded answer, current-source and separate-transaction boundary."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Yesterday's note says taken; today's note says pending. How should a handoff preserve those records?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete yesterday's conclusion so the two notes cannot disagree"
+        },
+        {
+          "id": "b",
+          "text": "Keep both with their separate sitting, source, authority and decision limits"
+        },
+        {
+          "id": "c",
+          "text": "Copy taken into today's note because the requested hour is the same"
+        },
+        {
+          "id": "d",
+          "text": "Destroy the earlier sheet to invalidate its expired approval"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The notes address different dated decisions. Their different conclusions do not establish a contradiction or falsity in the earlier record. Sections 13.5 and 13.7 retain the old page and scoped conclusion while recording today's missing source and pending request separately. Destroying the archive is unnecessary, and copying its conclusion forward would erase the evidence boundary. NIST SP 800-61 Rev. 3 supports preserving record integrity and provenance as a general discipline; it does not prescribe this classroom handoff, declare a library incident or set a retention period for this exercise.",
+      "source": "Chapter 13, §13.5, step 6; §13.6, negative control on removing the earlier conclusion; §13.7 \"Provenance, handoff and the stop condition\"; EX029, independent extension and both worked checkpoint rows. General evidence principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06 and RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q09",
+      "prompt": "Does today's unresolved request change the original Chapter 4 tally or the meaning of its ALLOW?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes: UNKNOWN increases because today's slot has no approved source"
+        },
+        {
+          "id": "b",
+          "text": "Yes: ALLOW confirms today's room and clears the old REFUSE"
+        },
+        {
+          "id": "c",
+          "text": "No: preserve the old tally; ALLOW labels the earlier 11:45 mark-pending proposal"
+        },
+        {
+          "id": "d",
+          "text": "No: the unchanged UNKNOWN 0 proves today's outage cause is known"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The old census remains STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0. Today's question was not appended to that four-action fixture. Its unresolved evidence does not increment UNKNOWN, and ALLOW concerns an earlier pending proposal, not permission to allocate today's slot or cancel REFUSE. Leaving the tally unchanged also reveals nothing about today's outage cause. Section 13.6 supplies neither telemetry nor a common causal mechanism. EX029 keeps the program closed; this question interprets the published record without reporting a new execution or outcome.",
+      "source": "Chapter 13, §13.2, tally row; §13.6, final two negative controls and concluding paragraph; EX029, safe condition, rubric and worked result."
+    },
+    {
+      "id": "Q10",
+      "prompt": "The source gap remains. Which follow-up respects the stop condition without pretending the gap has been resolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Retain the minimal pending slip and ask today's owner for an applicable, checked source"
+        },
+        {
+          "id": "b",
+          "text": "Use read-only access to the real booking site because no page is named"
+        },
+        {
+          "id": "c",
+          "text": "Find the person behind SYN-002 to infer today's room availability"
+        },
+        {
+          "id": "d",
+          "text": "Reuse the prior outage's assumed cause as grounds to confirm the room"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The allowed next step is a request for a current decision basis, not a claim that the owner has already supplied it. Section 13.7 stops promises, identity disclosure, record alterations and improvised live-site checks when current authority or evidence is missing. Read-only access is not an exception to this exercise boundary. An identifier is not a person's identity, and neither outage has supplied a causal assessment that could authorize a booking. Keep the archive and the pending slip distinct; no new source, real-system check, personal data or transaction is introduced.",
+      "source": "Chapter 13, §13.5, step 5; §13.6, outage-cause negative control; §13.7, stop-condition paragraph; EX029, safe condition, worked result and expanded answer's next-action requirement."
+    }
+  ]
+}
