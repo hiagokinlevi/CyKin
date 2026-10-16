@@ -41,7 +41,7 @@ def test_live_catalog_adds_verified_bank_and_ignores_invalid_bank(monkeypatch):
             raise HTTPException(409, "Source changed")
         return {"source_sha256": "2" * 64}, "3" * 64
 
-    async def github_fetch(_url, _options):
+    async def github_fetch(_url):
         return SimpleNamespace(status=200, text=lambda: asyncio.sleep(0, result=json.dumps(tree)))
 
     monkeypatch.setattr(api, "public_asset_json", asset)

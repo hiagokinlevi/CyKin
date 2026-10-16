@@ -206,8 +206,7 @@ async def test_index(request: Request) -> dict[str, Any]:
         try:
             from js import fetch  # type: ignore[import-not-found]
             response = await fetch(
-                "https://api.github.com/repos/hiagokinlevi/OpenCyberAcademy/git/trees/main?recursive=1",
-                {"headers": {"Accept": "application/vnd.github+json", "User-Agent": "OpenCyberAcademy-public-reader"}},
+                "https://api.github.com/repos/hiagokinlevi/OpenCyberAcademy/git/trees/main?recursive=1"
             )
             if int(response.status) != 200:
                 raise ValueError("GitHub tree is unavailable")
