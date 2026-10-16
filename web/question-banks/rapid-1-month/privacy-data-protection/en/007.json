@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 7,
+  "source_anchor": "ch-07",
+  "source_sha256": "85f1e773f47e716770da7d79552754301dba3f7a1dc8d766944d69b783c132a8",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What can Sofia substantiate from Mr. Patel's draft alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A binding loyalty agreement, because a knowledgeable adviser prepared the wording"
+        },
+        {
+          "id": "b",
+          "text": "The wording Juniper proposes, not the loyalty firm's acceptance of those terms"
+        },
+        {
+          "id": "c",
+          "text": "Completed security measures, because the draft describes the intended safeguards"
+        },
+        {
+          "id": "d",
+          "text": "A concluded delivery agreement, because both gaps were discussed together"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The first row of the worked example permits reporting that clauses were drafted. A draft establishes proposed wording, not supplier acceptance or completed safeguards. It also cannot resolve a different supplier's contract merely because that supplier was part of the same review. Section 7.1 preserves the missing signature instead of upgrading the document's status. This is the fictional Juniper file, not a conclusion about a real contract or a newly obtained approval.",
+      "source": "Chapter 7, section 7.1 The two-week sentence is about negotiation, draft and signature distinction; section 7.2 Worked example, first and fourth rows; Apply EX061; Worked results (#worked-results; EX061)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The two-week note says negotiation. A colleague requests the new weekly loyalty file. What does Sofia do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Send it once as a trial while retaining negotiation as the contract status"
+        },
+        {
+          "id": "b",
+          "text": "Send it because two weeks of discussion completes the missing acceptance"
+        },
+        {
+          "id": "c",
+          "text": "Refuse the new file; the negotiation note does not satisfy the case's contract gate"
+        },
+        {
+          "id": "d",
+          "text": "Send it after adding the words subject to contract to the existing note"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX061 requires refusing the proposed new weekly file. The two-week note records negotiation, not a completed agreement. Neither the passage of time, a trial transfer nor a qualifier in a note supplies the missing evidence. Sofia's decision prevents this proposed addition; it does not report a transfer being made. The answer applies the teaching case's documented gate and adds no exception, signature, personal data or new sending event.",
+      "source": "Chapter 7, section 7.1, two-week note and colleague's request; section 7.2 Worked example, negotiation row; Apply EX061 and its rubric; Worked results (#worked-results; EX061)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A summary marks all four vendors as lacking data-protection terms. Which correction matches the review file?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep all four flagged because any unresolved supplier gap invalidates every other contract"
+        },
+        {
+          "id": "b",
+          "text": "Clear loyalty and delivery because their standard commercial agreements already exist"
+        },
+        {
+          "id": "c",
+          "text": "Flag only loyalty because the proposed weekly file does not concern delivery"
+        },
+        {
+          "id": "d",
+          "text": "Flag loyalty and delivery; retain the terms already found for dispensing and the newsletter tool"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Chapter 3 found relevant terms for dispensing and the newsletter tool, while loyalty and delivery had standard terms without the data-protection provisions. Chapter 7 carries those two gaps forward. A gap is not the absence of every commercial document, and one pending request does not erase the other supplier's gap. Equally, two deficient relationships do not invalidate terms found elsewhere. The correction preserves each supplier's documented status without claiming that any vendor passed an implementation audit.",
+      "source": "Chapter 7, section 7.1, opening comparison; learning outcome 2; Apply EX061; Worked results (#worked-results; EX061). Context: Chapter 3, section 3.3 Vendors and dependencies and Data — four flows that leave the shop, contract column."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The dispensing agreement belongs to Juniper too. Why can it not substitute for the loyalty agreement in EX061?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The evidence concerns a different supplier relationship and establishes no acceptance by loyalty"
+        },
+        {
+          "id": "b",
+          "text": "An older agreement automatically loses effect when another supplier begins negotiation"
+        },
+        {
+          "id": "c",
+          "text": "The same business name makes all supplier obligations interchangeable"
+        },
+        {
+          "id": "d",
+          "text": "Any contract mentioning health information is unusable for a supplier review"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A document must match the relationship for which it is offered as evidence. The dispensing supplier's agreement is not evidence that the separate loyalty firm accepted the missing obligations. Section 7.2 rejects that substitution, rather than declaring the dispensing agreement invalid. The case supplies no arrangement extending its coverage. A common customer of two suppliers does not establish that one supplier's document governs the other. No additional party, amendment or contractual structure is invented here.",
+      "source": "Chapter 7, section 7.1, refusal to borrow the dispensing contract; section 7.2 Worked example, different-vendor row; Apply EX061; Worked results (#worked-results; EX061). Context: Chapter 3, section 3.3, distinct vendor relationships."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Does refusing the new weekly file establish that the previously mapped nightly till feed has stopped?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the refusal proves that a fresh nightly transfer was executed during this lesson"
+        },
+        {
+          "id": "b",
+          "text": "Yes; refusing any file automatically disconnects every feed to the same recipient"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the refusal retrospectively proves that the nightly feed never existed"
+        },
+        {
+          "id": "d",
+          "text": "No; the refusal concerns a new request, not a verified change to the existing feed"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Errors and limits explicitly separates the new-file refusal from the night-time till flow already mapped. The refusal does not cancel that flow, which remains a known gap in the review. It is neither a technical shutdown receipt nor a new observation of another transfer. Chapter 3 supplies the historical mapping; Chapter 7 supplies the refusal. Preserve both statements without treating an unchanged known gap as permission to continue or inventing an intervention in a real system.",
+      "source": "Chapter 7, Errors and limits, first two sentences; section 7.1, new weekly file; Apply EX061; Worked results (#worked-results; EX061). Context: Chapter 3, sections 3.1-3.2 and Data — four flows that leave the shop, nightly loyalty feed."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A review checklist covers only instructions and security. Which addition completes the four commitments highlighted by this chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supplier price and the expected commercial benefit of the weekly file"
+        },
+        {
+          "id": "b",
+          "text": "Confidentiality and end-of-service data handling, without claiming implementation"
+        },
+        {
+          "id": "c",
+          "text": "A signature date guessed from the week when negotiations began"
+        },
+        {
+          "id": "d",
+          "text": "A statement that listing two safeguards proves all other duties were performed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter names instructions, confidentiality, security and deletion. The proposed checklist omits two of those areas; adding them improves the review, not the evidence of execution. GDPR Article 28(3)(a)-(c) addresses the first three, and point (g) covers deletion or return at service end, at the controller's choice, with the legal-storage exception. The chapter's four-part shorthand is not the complete Article 28 checklist. This hypothetical adds no accepted terms or completed measure to Juniper's file.",
+      "source": "Chapter 7, section 7.1, four obligations; section 7.2 Worked example, fourth row; Apply EX061; Worked results (#worked-results; EX061). Context: Chapter 3, section 3.3. General provisions only: GDPR Article 28(3)(a)-(c), (g), https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A draft clause describes deletion after services end. Does that support recording the vendor's existing copies as already erased?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; proposed handling obligations and evidence that data were erased are different things"
+        },
+        {
+          "id": "b",
+          "text": "Yes; writing an end-of-service obligation is itself evidence of completed erasure"
+        },
+        {
+          "id": "c",
+          "text": "Yes; refusing the weekly file also erases every copy previously held by the vendor"
+        },
+        {
+          "id": "d",
+          "text": "No; an erasure clause establishes that every copy must remain indefinitely"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The draft describes intended duties; it contains no evidence that any copies were erased. Even an agreed obligation would not itself be a record of performance. Refusing a new transfer also does not execute deletion. Article 28(3)(g) addresses end-of-service handling, subject to its conditions, rather than declaring that data disappear when wording is drafted. The case provides no service-end event, deletion date, verification receipt or retention decision. None should be added to the log.",
+      "source": "Chapter 7, section 7.1, drafted deletion terms; section 7.2 Worked example, draft versus signed document; Errors and limits, refusal does not cancel the existing flow; Apply EX061; Worked results (#worked-results; EX061). General provision only: GDPR Article 28(3)(g), https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679"
+    },
+    {
+      "id": "Q08",
+      "prompt": "A signature-date field is blank. May the date of the two-week negotiation note be copied into it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the latest document date is a sufficient estimate of signature timing"
+        },
+        {
+          "id": "b",
+          "text": "Yes; drafting first and negotiating later makes a signature between them certain"
+        },
+        {
+          "id": "c",
+          "text": "No; preserve the negotiation evidence and leave an unsupported signature date unwritten"
+        },
+        {
+          "id": "d",
+          "text": "No; remove the negotiation note because an undated signature makes it useless"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A date attached to one activity cannot establish when a different activity occurred. The two-week note evidences negotiation only. Section 7.2's synthetic-case note expressly supplies no signature date for either supplier, so neither an estimate nor an assumed intermediate signature is justified. The negotiation record remains useful and should not be discarded. This question proposes a recordkeeping decision; it adds no calendar date, signature or completed contract to the narrative.",
+      "source": "Chapter 7, section 7.1, two-week negotiation note; section 7.2 Worked example, fourth row and Synthetic case note; Apply EX061; Worked results (#worked-results; EX061)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Does the chapter's signed-contract language mean GDPR Article 28 accepts only ink-signed paper?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; every electronic draft becomes binding as soon as it is saved"
+        },
+        {
+          "id": "b",
+          "text": "Yes; electronic written agreements are excluded whenever a processor handles personal data"
+        },
+        {
+          "id": "c",
+          "text": "No; Article 28 permits electronic written form, but Juniper's draft still proves no binding arrangement"
+        },
+        {
+          "id": "d",
+          "text": "Yes; paper format alone establishes the required obligations and acceptance"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Article 28(3) requires a binding contract or qualifying legal act; paragraph 9 permits written electronic form. Medium and binding status are different tests. Neither paper nor a saved draft alone proves acceptance. The chapter's missing-signature evidence remains missing; this clarification supplies no electronic agreement for Juniper. It prevents a paper-only rule being inferred from the case and does not assess a real agreement's enforceability or declare that the four named duties exhaust the Regulation.",
+      "source": "Chapter 7, learning outcome 1; section 7.1, proposed versus signed terms; section 7.2 Worked example, fourth row; Apply EX061; Worked results (#worked-results; EX061). Legal-form clarification only: GDPR Article 28(3), (9), https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679"
+    },
+    {
+      "id": "Q10",
+      "prompt": "What damages conclusion can be drawn from the contractual gaps and the refused weekly file?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All customers suffered a quantified loss because the contract terms are missing"
+        },
+        {
+          "id": "b",
+          "text": "The chapter establishes neither an assessed loss nor an absence of harm"
+        },
+        {
+          "id": "c",
+          "text": "No harm was possible because Sofia refused this additional file"
+        },
+        {
+          "id": "d",
+          "text": "The negotiation note records compensation already paid by both suppliers"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Errors and limits expressly states that the chapter does not assess damages. A documented contract gap is not a quantified loss, and refusal of one new request is not proof of zero harm from every activity. No compensation, patient attribution or incident outcome is supplied. EX061 asks which file to refuse and which supplier gaps remain; it does not ask the learner to determine liability or invent a damages assessment. The answer preserves that evidential boundary, not a legal ruling about a real pharmacy.",
+      "source": "Chapter 7, Errors and limits, final sentence; section 7.1 and section 7.2 Worked example, documented gaps and refusal; Apply EX061; Worked results (#worked-results; EX061). Scope limitation only, not a statutory damages test."
+    }
+  ]
+}
