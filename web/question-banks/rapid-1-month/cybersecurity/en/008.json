@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 8,
+  "source_anchor": "ch-08",
+  "source_sha256": "5b49f481442aad3eb943c93b5a5ff495a7843f6849462343b090442000cba735",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, which statement is a supplied observation rather than a claim about an untested system?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The live booking store deleted SYN-002 before the worker checked it"
+        },
+        {
+          "id": "b",
+          "text": "The worker completed a conflicting reservation during the interruption"
+        },
+        {
+          "id": "c",
+          "text": "The fixed 09:00 paper omits SYN-002, created at 10:05 in the fixture"
+        },
+        {
+          "id": "d",
+          "text": "The booking application failed to write the later reservation to storage"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Sections 8.2 and 8.6 support the timing comparison within the synthetic fixture. A fixed copy made before the later row cannot contain that later change. This does not demonstrate deletion, a storage failure or a completed conflicting reservation: none of those application behaviors was inspected. The view interruption is also described by the fictional narrative, not diagnosed through telemetry. EX024 therefore separates the supplied paper timing from stronger claims about a real system. An absent later row on an earlier copy is not, by itself, a technical defect.",
+      "source": "Chapter 8, §8.2 \"Worked example\", first row; §8.5, \"Supplied observation\" row; §8.6, conclusion 1; EX024, original worked result and first evidence-matrix row."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which statement keeps the possible booking consequence conditional instead of inventing an observed failure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If stale paper is used as current and a later booking conflicts, an incorrect promise may follow"
+        },
+        {
+          "id": "b",
+          "text": "The later synthetic row proves that a visitor received a duplicate reservation"
+        },
+        {
+          "id": "c",
+          "text": "The outage confirms that the production procedure permits unchecked allocation"
+        },
+        {
+          "id": "d",
+          "text": "The missing paper row establishes that a reservation was already communicated incorrectly"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The hypothesis needs both the use of stale paper as a current decision source and a conflicting later state. Those conditions explain a plausible route to an incorrect promise, not an observed promise or committed reservation. Neither the outage nor the existence of SYN-002 establishes the actual production rule or worker behavior. Sections 8.5 and 8.6 retain the conditional language for exactly this reason. The second row of EX024's worked matrix leaves the live procedure, worker action and confirmation evidence unverified. Possible harm remains worth examining without being reported as actual harm.",
+      "source": "Chapter 8, §8.5, \"Risk scenario / hypothesis\" row; §8.6, conclusions 2–3; EX024, independent extension and second worked evidence-matrix row."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Why is \"a procedure can never be a vulnerability\" the wrong interpretation of this chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every outdated document is automatically an established vulnerability"
+        },
+        {
+          "id": "b",
+          "text": "A procedural weakness qualifies only after an attacker exploits it"
+        },
+        {
+          "id": "c",
+          "text": "Only executable software can contain a security-relevant weakness"
+        },
+        {
+          "id": "d",
+          "text": "A verified procedural weakness can be triggerable without a software bug"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 8.4 and the NIST glossary include weaknesses in security procedures and internal controls, not only software. A sufficiently evidenced, in-scope mechanism that can be exploited or triggered may support a finding without an observed attacker. But merely finding an old document does not demonstrate the operational rule, trigger or relevant effect. Harbor Library has not established those real-world links. EX024's expanded answer makes the same distinction: a process vulnerability is possible in principle, while this exercise supports a procedural weakness and potential risk scenario. Do not replace one overstatement with another.",
+      "source": "Chapter 8, §8.4 \"A careful definition: a procedure can be a vulnerability, but evidence still matters\", paragraphs 1–2; EX024, independent extension and worked causal-boundary paragraph. Primary terminology: NIST CSRC Glossary, \"vulnerability\", definitions covering procedures and internal controls, https://csrc.nist.gov/glossary/term/vulnerability"
+    },
+    {
+      "id": "Q04",
+      "prompt": "How should a possible staff mistake be treated when reasoning about the stale-paper trigger?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Helpful intent excludes any possible security or service consequence"
+        },
+        {
+          "id": "b",
+          "text": "Accidental reliance is a possible trigger, not evidence that harm or malice occurred"
+        },
+        {
+          "id": "c",
+          "text": "Calling it a threat source identifies the staff member as an attacker"
+        },
+        {
+          "id": "d",
+          "text": "The described outage proves that a worker made the proposed mistake"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 8.4 uses accidental reliance on stale paper as a possible human-error trigger. NIST's threat-source terminology includes circumstances that may trigger a weakness accidentally; it does not always identify a malicious person. Good intent does not remove the possible consequence, but a plausible mechanism does not show that the mistake happened. The outage provides no evidence of a particular worker's action or intent. Keep the trigger, possible effect and missing occurrence evidence separate, as EX024's matrix requires. This is reasoning about fictional conditions, not an allegation about staff.",
+      "source": "Chapter 8, §8.4, paragraph on threat sources; §8.5, procedural-weakness and hypothesis rows; EX024, worked evidence matrix and causal boundary. Primary terminology: NIST CSRC Glossary, \"threat source\", accidental-trigger definition, https://csrc.nist.gov/glossary/term/threat_source"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which evidence package could support a bounded finding in a future, separately authorized procedure review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verified rule, defined trigger, evidenced control behavior and bounded effect, reviewed by the owner"
+        },
+        {
+          "id": "b",
+          "text": "Outage timing plus a student-invented rule assumed to be the approved procedure"
+        },
+        {
+          "id": "c",
+          "text": "A classroom classifier verdict treated as proof of a committed production reservation"
+        },
+        {
+          "id": "d",
+          "text": "A plausible harmful outcome without evidence connecting the procedure to that outcome"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 8.7 requires the actual asset and authorized rule, trigger conditions, observable control behavior, competing explanations, impact rationale and decision authority. Reviewed design, a permitted controlled check or properly obtained historical records may contribute; the evidence must support the specific claim. A student-created policy does not establish the real rule. A proposed action, a spoken promise and a committed reservation are also distinct. Plausibility alone leaves the causal connection open. The evidence plan in the chapter authorizes no real testing, and the classroom has not produced this assessed finding. NIST ID.RA-01 is a general validation outcome, not a receipt for this case.",
+      "source": "Chapter 8, §8.7 \"What would an authorized vulnerability assessment require?\", assessment requirements; §8.5, assessed-finding row; EX024, fourth matrix row and causal boundary. General cross-check: NIST CSF 2.0, Appendix A, ID.RA-01, p. 18, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Hypothetical authorized rehearsal: the pending rule prevents unsupported confirmation under the same timing. What conclusion is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The procedure is proven safe across every shift and future outage"
+        },
+        {
+          "id": "b",
+          "text": "The earlier hypothesis establishes a vulnerability despite this contrary result"
+        },
+        {
+          "id": "c",
+          "text": "The tested conditions do not support the failure hypothesis; wider behavior remains unverified"
+        },
+        {
+          "id": "d",
+          "text": "The comparison is invalid unless it uses an attacker and live resident records"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.7 asks for a falsifier before the result is known. A controlled comparison in which the current-source and pending requirements prevent the alleged failure is evidence against that mechanism under those tested conditions. It does not certify every shift, channel or later failure. Ignoring the contrary result would make the hypothesis impossible to challenge, while using live resident records would breach the exercise boundary rather than improve the reasoning. EX024's worked extension proposes this comparison but reports no completed test. The result in this question is explicitly hypothetical, not a new Harbor Library observation.",
+      "source": "Chapter 8, §8.7, negative-control requirement and falsifier paragraph; §8.8 \"Independent evidence test and safer finding note\"; EX024, worked causal-boundary paragraph on the controlled comparison."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which rule avoids both automatically declaring an outage a security incident and dismissing it because its cause is unknown?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Declare every interruption an incident without examining its context"
+        },
+        {
+          "id": "b",
+          "text": "Apply defined incident criteria to event evidence through the authorized assessment"
+        },
+        {
+          "id": "c",
+          "text": "Wait for an identified attacker before an incident can be recognized"
+        },
+        {
+          "id": "d",
+          "text": "Dismiss the event whenever no software defect has been demonstrated"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 8.5 separates an actual event meeting response criteria from an unexplained service interruption described in a classroom. Incident recognition does not require identifying an attacker or first proving a software vulnerability; relevant jeopardy or a policy violation can be assessed while cause remains uncertain. Conversely, inconvenience alone does not establish the classification. The NIST incident glossary supplies terminology, and CSF DE.AE-08 relates declaration to defined criteria. Neither source classifies Harbor Library for the learner. This narrative supplies no verified owner assessment or real telemetry, so the stronger case claim remains unproven.",
+      "source": "Chapter 8, §8.5 \"Evidence ladder: observation, hypothesis, finding, incident\", incident row and following paragraph; §8.2, outage row; EX024, original answer and third evidence-matrix row. Primary references: NIST CSRC Glossary, \"incident\", FIPS 200-derived definition, https://csrc.nist.gov/glossary/term/incident ; NIST CSF 2.0, Appendix A, DE.AE-08, p. 21, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q08",
+      "prompt": "A reviewer adds \"critical, score 9.1\" to the classroom dossier. Which response preserves the evidence limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Convert the proportion of REFUSE labels into the vulnerability score"
+        },
+        {
+          "id": "b",
+          "text": "Keep 9.1 as an established rating because the service was unavailable"
+        },
+        {
+          "id": "c",
+          "text": "Replace 9.1 with zero because no incident has been established"
+        },
+        {
+          "id": "d",
+          "text": "Withhold the rating; no severity method, assessed defect or impact measurement supports it"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Sections 8.3 and 8.6 reject a numerical vulnerability rating derived from the classroom verdicts. The exercise provides neither an assessed site defect nor severity inputs and a justified method. A label tally measures neither affected people nor harmful reservations, and an outage alone supplies no score. Unknown severity also does not mean zero risk, so replacing an unsupported high number with an unsupported zero repeats the mistake. EX024's extended rubric withholds scores and victim counts that the source cannot justify. This question does not calculate CVSS or report any new laboratory output.",
+      "source": "Chapter 8, §8.3 \"What a later lesson would need\"; §8.6, conclusion 5 and review of the original EX024 sentence; EX024, extended rubric and worked causal-boundary paragraph."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which procedural response addresses the modeled weakness without claiming a technical repair or incident closure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Write later rows onto the old snapshot so confirmation appears justified"
+        },
+        {
+          "id": "b",
+          "text": "Leave the practice unchanged until an exploited software defect is proved"
+        },
+        {
+          "id": "c",
+          "text": "Keep requests pending, preserve the snapshot and seek owner-checked current evidence"
+        },
+        {
+          "id": "d",
+          "text": "Declare the incident resolved once the classroom pending rule is written down"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 8.2 retains the pending rule, rejects edits that manufacture agreement and avoids inventing identities. This can address the modeled confirmation weakness before a product flaw or attack is established. Altering the old snapshot disguises its limitation rather than checking a current source. Waiting for exploitation is not necessary to improve the teaching procedure, and drafting a rule proves neither deployment nor incident closure. Sections 8.7 and 8.8 leave real-process review to an authorized owner. The proposed correction does not identify a resident, confirm a room or certify a live control.",
+      "source": "Chapter 8, §8.2, procedural-decision paragraph; §8.7, asset/rule and decision-authority requirements; §8.8, safer finding note; EX024, supported problem class and worked causal boundary."
+    },
+    {
+      "id": "Q10",
+      "prompt": "What can the chapter's evidence ladder and a NIST citation establish about a proposed finding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each claim still needs its own support; the references do not verify the case"
+        },
+        {
+          "id": "b",
+          "text": "The observation-to-incident ladder is a mandatory NIST sequence"
+        },
+        {
+          "id": "c",
+          "text": "Labeling a statement as a finding proves that an incident occurred"
+        },
+        {
+          "id": "d",
+          "text": "Citing the framework authorizes a learner to test the real booking site"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 8.5 calls the ladder a classroom method, not a required NIST workflow or an automatic progression to incident. Naming a claim does not provide the evidence it lacks. CSF 2.0 describes high-level outcomes and does not prescribe their implementation; a citation neither verifies the fictional case nor grants testing permission. EX024's correction must keep the synthetic observation, conditional procedural concern and unproven stronger claims separate. Section 8.7 expressly reserves any real assessment for a separate authorized scope. The useful result is a bounded evidence note, not a vulnerability disclosure or incident declaration.",
+      "source": "Chapter 8, §8.5, opening paragraph and evidence ladder; §8.7, final scope restriction; §8.8, three-sentence correction rubric; EX024, original answer and worked causal boundary. General reference: NIST CSF 2.0, abstract, p. i, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
