@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "7a14396b6b6652074325203af0e36b16225a40927ed02fb28bcf1f0c59de0e37",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A slip omits the customer's name but keeps a loyalty number Juniper can link to them. What follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing the name makes the slip anonymous despite the retained link"
+        },
+        {
+          "id": "b",
+          "text": "The linkable number remains personal data even without a printed name"
+        },
+        {
+          "id": "c",
+          "text": "The number becomes personal only after someone opens the linked record"
+        },
+        {
+          "id": "d",
+          "text": "A loyalty identifier is health data regardless of what the slip contains"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX051 states that Juniper can connect the number to one customer. That link, not a printed name or a fresh lookup, makes the points slip personal data. Its points do not themselves reveal illness, so personal and health classification remain separate. GDPR Article 4(1) and LGPD Article 5(I) both cover identifiable people; the laws are not thereby interchangeable. No lookup, new identity or permission for further use is established. This is the synthetic relationship supplied by the manuscript, not a test performed against a real dispensing system.",
+      "source": "Chapter 1, section 1.2; Concepts — three different tests, Named/Linkable rows; Worked example — a nameless slip, then a stapled line, first two sentences; Worked results (#worked-results; EX001, EX051). Definitions: GDPR Article 4(1), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(I), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q02",
+      "prompt": "When the insulin line is added to EX052's already linkable points slip, which assessment changes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The number first becomes identifiable only when the medicine is named"
+        },
+        {
+          "id": "b",
+          "text": "The new health classification authorizes the previously refused promotional photo"
+        },
+        {
+          "id": "c",
+          "text": "The combined slip stops being personal data and becomes a separate category"
+        },
+        {
+          "id": "d",
+          "text": "Health classification is added; existing identifiability and the photo refusal remain"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The receipt was already personal because of the link. EX052 adds health-revealing content to the same item, rather than replacing its personal-data status. The prior counter-photo refusal is unaffected. GDPR Articles 4(15) and 9(1) concern health data; LGPD Article 5(II) uses the term sensitive personal data. The example supports handling this linked medicine information as health data, not announcing a confirmed diagnosis, treatment or medicine use by a real person. The manuscript's stronger insulin wording is read with EX002's qualified answer, not promoted into clinical proof. No new permission follows from classification.",
+      "source": "Chapter 1, section 1.3; Data — one slip, two layers, first two rows; Worked example — a nameless slip, then a stapled line; Apply EX052; Worked results (#worked-results; EX002, EX003, EX051, EX052). GDPR Articles 4(15), 9(1), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(II), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q03",
+      "prompt": "The uncaptioned CCTV still shows an identifiable face but no diagnosis. Which conclusion matches the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is personal data; the described still alone does not establish health data"
+        },
+        {
+          "id": "b",
+          "text": "Without a name caption, the visible face cannot make it personal data"
+        },
+        {
+          "id": "c",
+          "text": "The pharmacy location conclusively establishes a medical condition for the person"
+        },
+        {
+          "id": "d",
+          "text": "Because no diagnosis is stated, the image is unrestricted for any reuse"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The Data table treats the visible face as identifying the person, while explicitly limiting what the uncaptioned still says about health. Identifiability does not require a name label. Conversely, the shop setting does not prove a diagnosis, and absence of a demonstrated health condition is not permission for unrestricted reuse. GDPR Article 4(1) supports the identity test and Article 4(15) the separate health-information question. This answer is limited to the image described in the synthetic case; it does not declare every pharmacy image ordinary data or validate any real surveillance system.",
+      "source": "Chapter 1, section 1.2, CCTV example; Concepts — three different tests; Data — one slip, two layers, CCTV row; contrast with the stapled-line example; Worked results (#worked-results; EX001, EX002, EX052). GDPR Articles 4(1), 4(15), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Tuesday's total takings has no receipt attached and no person-level link in the case. How should Sofia classify that item?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As health data because all money received by a pharmacy reveals illness"
+        },
+        {
+          "id": "b",
+          "text": "As personal data because every business number identifies a customer"
+        },
+        {
+          "id": "c",
+          "text": "As non-personal on these stated facts, without generalizing to all totals"
+        },
+        {
+          "id": "d",
+          "text": "As anonymous even if an identifiable customer's receipt is later attached"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter contrasts this bare shop total with a number Juniper can link to a customer. The given total describes the business, not an identifiable person, so the table marks it non-personal. That bounded conclusion neither classifies every numerical value the same way nor promises that an enriched or linked version would remain non-personal. It also does not create a receipt or a customer to fill the gap. EX001 and EX051 explain the contrasting linkability test. The precaution for genuinely uncertain linkage should not erase the chapter's explicitly specified non-personal example.",
+      "source": "Chapter 1, Concepts — three different tests, Shop, not a person row and following paragraph; Data — one slip, two layers, Tuesday's total takings row; contrast with Worked example — a nameless slip, then a stapled line; Worked results (#worked-results; EX001, EX051). Definition boundary: GDPR Article 4(1), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(I), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q05",
+      "prompt": "An app proposal adds medicine details because storage is available. What question applies Sofia's minimisation checklist?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Can the database accommodate the fields without slowing the app?"
+        },
+        {
+          "id": "b",
+          "text": "Which information is actually needed for the stated points-and-vouchers purpose?"
+        },
+        {
+          "id": "c",
+          "text": "Could the owner choose a use for all stored information later?"
+        },
+        {
+          "id": "d",
+          "text": "Does replacing names with loyalty numbers remove every need to limit fields?"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX007 ties collection to what points and vouchers need, not to spare storage or a possible later use. Linkable identifiers remain personal, so replacing names does not answer the necessity question. GDPR Article 5(1)(c) expresses data minimisation; LGPD Article 6(III) expresses necessity. These are comparable principles under distinct laws, not one combined provision. EX006 and EX013 connect the principle with a system-specific checklist. The answer proposes a decision criterion; it does not invent an approved field list, remove data, establish a legal basis or demonstrate Juniper's compliance.",
+      "source": "Chapter 1, section 1.4, minimisation sentence and system-specific checklist; Decision flow — classify before you decide the use, final purpose/minimisation step; general Worked example; Worked results (#worked-results; EX006, EX007, EX013). GDPR Article 5(1)(c), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 6(III), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Under the GDPR, does an ordinary lawful basis alone settle processing of the linked health information in EX052?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the applicable Article 9 condition must also be established"
+        },
+        {
+          "id": "b",
+          "text": "Yes; any ordinary basis automatically lifts the special-category restriction"
+        },
+        {
+          "id": "c",
+          "text": "Yes; operating a pharmacy proves an exception for every promotional use"
+        },
+        {
+          "id": "d",
+          "text": "No; Article 9 permits only consent and excludes every other condition"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX012 requires an additional Article 9 condition. GDPR Article 6(1) addresses lawfulness, while Article 9(1)-(2) adds the special-category restriction and its exceptions. Neither the business type nor a desirable purpose proves that a particular exception applies. Article 9 lists alternatives, so consent is not its only possible condition. This question grants none of them to Juniper. Brazil's sensitive-data grounds are addressed separately in LGPD Article 11; GDPR numbering and exceptions are not imported into that law. Classification, an applicable basis and local permission must not be collapsed into a single approval.",
+      "source": "Chapter 1, section 1.3, additional-condition sentence; Decision flow — classify before you decide the use, health branch; Apply EX052; Worked results (#worked-results; EX012, EX052). GDPR Articles 6(1), 9(1)-(2), https://data.europa.eu/eli/reg/2016/679/oj. Jurisdiction distinction only: LGPD Article 11, https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A colleague says a non-diagnostic counter photo may therefore be posted for promotion. Which test have they skipped?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether every visible customer can first be assigned a medical diagnosis"
+        },
+        {
+          "id": "b",
+          "text": "Whether ordinary personal data become anonymous whenever used for promotion"
+        },
+        {
+          "id": "c",
+          "text": "Whether the owner's commercial goal proves that customers expected the post"
+        },
+        {
+          "id": "d",
+          "text": "Whether this proposed use fits the purpose and expectations assessed separately"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The photo's classification does not decide the proposed use. Section 1.5 identifies promotion, the customers' lack of expectation of appearing online and a less intrusive alternative. The Concepts table keeps that judgment separate even for ordinary personal data. GDPR Article 5(1)(a)-(b) supplies general fairness, transparency and purpose principles; it does not prescribe Sofia's exact response. Expected use would not itself supply an Article 6 lawful basis either. EX009 and EX010 anchor the scenario's purpose and expectation. No photograph is posted, no permission obtained and no customer diagnosed by this question.",
+      "source": "Chapter 1, section 1.5 A first decision; Concepts — three different tests, Expectation row; Decision flow — classify before you decide the use, use branches; general Worked example; Worked results (#worked-results; EX008, EX009, EX010, EX013). General principles only: GDPR Articles 5(1)(a)-(b), 6(1), https://data.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which proposed change preserves the shop-photo goal without assuming customers have already granted permission?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Post the busy-counter photo because the owner agreed with the business goal"
+        },
+        {
+          "id": "b",
+          "text": "Treat entering the pharmacy as documented permission for public promotion"
+        },
+        {
+          "id": "c",
+          "text": "Take a replacement without customers present; do not invent permission or completion"
+        },
+        {
+          "id": "d",
+          "text": "Keep the original photo and add a caption guessing each customer's health needs"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX008 offers taking photos without customers present or with clear permission. Choosing the first route avoids relying on permission the example has not documented. The owner's agreement with Sofia's recommendation is not permission from the people pictured, and it is not proof that a replacement was taken or published. The other route remains a conditional proposal, not an established legal entitlement. This question selects a less intrusive way to pursue promotion; it does not claim that permission is the only possible legal basis for all photography or that the whole business is compliant.",
+      "source": "Chapter 1, section 1.5, recommendation and owner agreement; general Worked example; Concepts — three different tests, Expectation row; Worked results (#worked-results; EX008, EX009, EX010). The proposed alternative and its unperformed status are reasoning within the synthetic case, not a universal photography rule."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A purchase history includes a pregnancy-test purchase. Which interpretation respects the chapter's limit on inference?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can raise a health-information concern without proving the purchaser is pregnant"
+        },
+        {
+          "id": "b",
+          "text": "It conclusively establishes pregnancy for whoever holds the loyalty account"
+        },
+        {
+          "id": "c",
+          "text": "Its loyalty-program label prevents any entry from being health information"
+        },
+        {
+          "id": "d",
+          "text": "The possible inference supplies permission to send a health-targeted offer"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 1.3 says such a purchase may hint at a condition; EX004 explains why purchase history can reveal health information. That possibility is not a confirmed diagnosis or proof about who used the product. Designing an app for points also does not determine the sensitivity of every value placed in it. A possible inference supplies no permission for targeting. The assessment must consider the actual content and linkage rather than either asserting certainty or ignoring the concern. This is a bounded interpretation of the teaching example, not a medical conclusion or a reported real purchase.",
+      "source": "Chapter 1, section 1.3, pregnancy-test and purchase-history sentences; contrast with the points-only slip in Data — one slip, two layers; Worked results (#worked-results; EX002, EX004, EX051). Health-data category: GDPR Articles 4(15), 9(1), https://data.europa.eu/eli/reg/2016/679/oj; LGPD Article 5(II), https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Sofia cannot tell whether an unfamiliar item is linkable. What does the chapter's precaution justify?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Declare it anonymous because no linkage has yet been demonstrated"
+        },
+        {
+          "id": "b",
+          "text": "Declare a specific customer and illness to avoid leaving the assessment uncertain"
+        },
+        {
+          "id": "c",
+          "text": "Publish it first and reconsider only if somebody recognizes themselves"
+        },
+        {
+          "id": "d",
+          "text": "Handle it as personal while the uncertainty remains, without inventing identity or health content"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Errors and limits directs Sofia to treat uncertain items as personal rather than guess that protection is unnecessary. That handling precaution is not evidence that she has identified someone, found health information or gained permission to investigate a live system. It leaves the unresolved fact unresolved. The known link in EX051 supports a positive classification, whereas this question stipulates that linkage is not yet clear. The explicitly bare daily total remains a different, defined case. Recording the distinction preserves the three tests instead of turning caution into invented evidence or a blanket claim about all shop data.",
+      "source": "Chapter 1, Errors and limits; Concepts — three different tests, paragraph after the table; Decision flow — classify before you decide the use, uncertainty branch; contrast with Worked example — a nameless slip, then a stapled line; Worked results (#worked-results; EX001, EX013, EX051). The precaution is the manuscript's teaching rule, not a newly verified linkage."
+    }
+  ]
+}
