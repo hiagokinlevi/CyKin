@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 18,
+  "source_anchor": "ch-18",
+  "source_sha256": "aa7e231654ed355cff80d13451696c9ae25b1e36c73adaab763b5d83ee9d720e",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, which artifact preserves the paper basis for the historical 11:42 REFUSE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The 11:40 page, because it later displayed SYN-002"
+        },
+        {
+          "id": "b",
+          "text": "The 09:00 snapshot retained beside the original classifier record"
+        },
+        {
+          "id": "c",
+          "text": "The 11:55 page, because it contains the most supplied rows"
+        },
+        {
+          "id": "d",
+          "text": "The classifier transcript alone, treated as the original paper snapshot"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The 09:00 snapshot is the fixed paper basis for the earlier confirm-from-printout decision. It showed SYN-001; SYN-002, created at 10:05, was absent from that snapshot. The later pages cannot retrospectively replace this input. The transcript records the classifications but is a different artifact, not the original paper. EX034 keeps both the snapshot and its connection to REFUSE reviewable. This distinction does not change the separate booking fixture used by the program or claim that the program ran at 09:00.",
+      "source": "Chapter 18, §18.1 \"Newer does not mean solitary\"; §18.2 \"Worked example\", 09:00 row; §18.5, artifacts A and D; EX034, task, first worked line and expanded 09:00 preservation row."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Suppose the 09:00 original were lost but the script and narration remained. Which consequence is accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every trace of the earlier decision would necessarily disappear"
+        },
+        {
+          "id": "b",
+          "text": "The recorded REFUSE would automatically become an incorrect verdict"
+        },
+        {
+          "id": "c",
+          "text": "The newer 11:55 page would fully restore the missing original's contents"
+        },
+        {
+          "id": "d",
+          "text": "Direct comparison with the original input would weaken, though other history could remain"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 18.7 explicitly limits the loss claim. Removing A loses the paper snapshot used to explain the cutoff and refusal, weakening direct review; it need not erase an existing script or narration. Loss of evidence does not reverse the historical classification. A later page also cannot recreate which rows the earlier original contained merely by being newer. EX034 therefore preserves A instead of relying on a summary or substitute. This is a hypothetical consequence of disposal, not a report that a sheet was actually destroyed.",
+      "source": "Chapter 18, §18.2, shredding-09:00 proposal; §18.7 \"Why the apparent cleanup damages reviewability\", Shred A; EX034, independent extension and first expanded worked line."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which source-scoped fact is preserved by keeping the two-row 11:40 original?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It lacked SYN-003; its silence did not establish Room 4 / 15:00 availability"
+        },
+        {
+          "id": "b",
+          "text": "It certified Room 4 / 15:00 as free because SYN-003 was absent"
+        },
+        {
+          "id": "c",
+          "text": "It contained SYN-003 because that row appears on the later 11:55 page"
+        },
+        {
+          "id": "d",
+          "text": "It proved the earlier omission resulted from a failed synchronization"
+        }
+      ],
+      "correct": "a",
+      "explanation": "B contained SYN-001 and SYN-002, not SYN-003. Keeping that original preserves the earlier observation of silence without upgrading silence to vacancy. The later three-row page neither changes B's past contents nor explains its generation mechanism. Its presence cannot stand in for the missing historical comparison if B is discarded. EX034 retains the earlier limited Room 4 conclusion and the separately bounded Room 2 reading. No synchronization failure, cancellation, free slot or retroactively printed third row is established by the two-row artifact.",
+      "source": "Chapter 18, §18.1, role of 11:40; §18.5 \"Build a truthful inventory without changing the sheets\", artifact B; §18.7, Shred B; EX034, second worked line and expanded 11:40 row."
+    },
+    {
+      "id": "Q04",
+      "prompt": "For the current Room 4 / 15:00 question, which action combines valid source selection with preservation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read 09:00 as today's source because it is the oldest retained input"
+        },
+        {
+          "id": "b",
+          "text": "Read 11:40 and offer the room because its missing row remains archived"
+        },
+        {
+          "id": "c",
+          "text": "Use the named 11:55 page to report already booked, while retaining the earlier pages"
+        },
+        {
+          "id": "d",
+          "text": "First replace the earlier pages with 11:55 copies, then assign the slot to the asker"
+        }
+      ],
+      "correct": "c",
+      "explanation": "C is the owner-named source for this sitting. Its confirmed SYN-003 row supports Room 4 / 15:00 already booked, without a holder's name or a new reservation. Keeping A and B is compatible with using C; preservation is not an instruction to use every retained item as current authority. Neither the age of A nor the silence on B overrides the matching current row. EX034 names C in its fourth line and keeps all three originals. Source approval also supplies no right to assign an occupied slot to the new requester.",
+      "source": "Chapter 18, §18.2, accepted current-answer row; §18.5, artifact C and final paragraph; §18.8, opening current-query example; EX034, rubric, fourth worked line and expanded 11:55 row."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Does filing the earlier owner-named 11:40 page make it an approved source for today's room decisions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, provided one of its booking rows also appears on the current page"
+        },
+        {
+          "id": "b",
+          "text": "No; archival preservation does not renew its earlier sitting's designation"
+        },
+        {
+          "id": "c",
+          "text": "Yes, unless the owner physically removes it from the folder"
+        },
+        {
+          "id": "d",
+          "text": "No; an expired designation makes every historical statement on it false"
+        }
+      ],
+      "correct": "b",
+      "explanation": "B remains useful as evidence about the earlier sitting. Its retention is not a renewed grant to use it for today's question, even when some fields agree with C. Physical removal is not the stated condition for expiry, and expiry of a designation does not falsify the old rows. Section 18.8 separates retention from access and decision rights. EX034 preserves B with its original scope while selecting C now. That separation creates no automatic future-outage approval and does not require destroying an archive to end an authority it lacks for today.",
+      "source": "Chapter 18, §18.4, preservation and provenance definitions; §18.5, final source-selection paragraph; §18.6, worked label for B; §18.8, negative control B; EX034, negative controls and earlier-sitting role in the worked table."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Why is replacing the 09:00 and 11:40 originals with copies of 11:55 not a faithful cleanup?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is faithful whenever the newest page gives a correct current room answer"
+        },
+        {
+          "id": "b",
+          "text": "It proves the original refusal was based on an already complete three-row page"
+        },
+        {
+          "id": "c",
+          "text": "It improves provenance by removing all visible differences between the records"
+        },
+        {
+          "id": "d",
+          "text": "It substitutes later knowledge for distinct historical contents and decision bases"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A and B explain different earlier knowledge states. Replacing them with C loses the original comparisons and can make a finished decision appear to have used later evidence. A correct current answer does not repair that false provenance. The remedy is separate originals and a clearly labeled comparison, not synchronized-looking copies or a hybrid schedule. EX034 rejects overwriting as well as shredding. NIST SP 800-61 Rev. 3 supports preserving record integrity and provenance generally; it does not authenticate these classroom papers or declare that a real incident occurred.",
+      "source": "Chapter 18, §18.1, overwriting comparison; §18.2, replacement proposal; §18.7, Replace A and B with C and Annotate both pages; EX034, safe condition and four-line worked response. General principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-06/RS.AN-07, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A file label needs handling details that the exercise never supplied. Which entry preserves that limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Human custodian, collection receipt and checksum: not supplied"
+        },
+        {
+          "id": "b",
+          "text": "Named exercise owner: verified collector and signer of all three sheets"
+        },
+        {
+          "id": "c",
+          "text": "Collection time: 11:55, established solely by the printed heading"
+        },
+        {
+          "id": "d",
+          "text": "Checksum validated: established by matching the visible SYN identifiers"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A truthful label may state the supplied identity, heading, row set and scope while marking absent handling evidence as not supplied. Naming a source is not proof that the owner collected or signed it. A page heading is not a collection receipt, and matching identifiers are not a computed checksum. Section 18.6 places labels on separate inventory slips rather than altering booking fields. EX034's custody limit expressly withholds a real collector, transfer, signature and hash. No formal chain of custody or evidentiary admissibility is established by making a label look complete.",
+      "source": "Chapter 18, §18.4, absent forensic records; §18.6 \"Label, handle and refer without inventing forensic custody\", label requirements and worked labels; §18.8, negative control C; EX034, negative controls and worked custody/retention limit."
+    },
+    {
+      "id": "Q08",
+      "prompt": "The inventory lists A, B, C and the classifier transcript D. What kind of record is this inventory?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A fourth official booking schedule combining every available row"
+        },
+        {
+          "id": "b",
+          "text": "A chain-of-custody certificate proving actual transfers among named collectors"
+        },
+        {
+          "id": "c",
+          "text": "An analytical index linking separate artifacts to their roles and evidence limits"
+        },
+        {
+          "id": "d",
+          "text": "A replacement transcript that adds the inventory as another classifier action"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The inventory points to three pages and a distinct program record; it does not add a fourth schedule or a fifth logged action. Its labels make the original evidence easier to locate while preserving each item's time basis and authority. They do not supply real transfers or collectors. Section 18.5 explicitly calls this an analytical index, and EX034 permits a separate inventory slip beside unmodified originals. NIST CSF 2.0's record-integrity and provenance outcomes support the general discipline, not certification of the inventory or authority to transact from a compiled table.",
+      "source": "Chapter 18, §18.5, inventory table and analytical-index paragraph; §18.6, separate slips and worked labels; §18.7, separate-comparison treatment; EX034, independent extension and worked custody/retention limit. General principle only: NIST CSF 2.0, Appendix A, RS.AN-06/RS.AN-07, p. 22, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q09",
+      "prompt": "What retention conclusion follows from the instruction to keep the three sheets?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every real library must preserve every paper record indefinitely"
+        },
+        {
+          "id": "b",
+          "text": "The classroom file is automatically subject to a legal hold"
+        },
+        {
+          "id": "c",
+          "text": "The pages must be destroyed immediately when this lesson ends"
+        },
+        {
+          "id": "d",
+          "text": "Keep them for this exercise's review; real retention terms were not supplied"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The exercise protects reviewability, not a universal retention term. It supplies no legal hold, indefinite-storage obligation or automatic disposal deadline. Neither preservation nor silence about duration authorizes importing such a rule. Sections 18.3 and 18.8 leave real retention decisions to applicable organizational authority and requirements. EX034 repeats that boundary. NIST SP 800-61 Rev. 3 connects incident-evidence retention to organizational procedures and policies; that general guidance does not turn the synthetic folder into a legal incident file or answer an actual library's records question.",
+      "source": "Chapter 18, §18.3 \"Not a retention policy for a real library\"; §18.4, retention definition; §18.8 \"Practice a custody decision without claiming a retention law\"; EX034, independent extension and worked custody/retention limit. General principle only: NIST SP 800-61 Rev. 3, Table 3, RS.AN-07 R1, p. 29, https://doi.org/10.6028/NIST.SP.800-61r3"
+    },
+    {
+      "id": "Q10",
+      "prompt": "After selecting 11:55 for today's answer and filing the older pages, what should happen to the old tally?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Preserve it beside the 09:00 input assumptions; filing creates no new run"
+        },
+        {
+          "id": "b",
+          "text": "Clear REFUSE because the current sheet now contains more booking information"
+        },
+        {
+          "id": "c",
+          "text": "Convert ALLOW into confirmation of the current Room 4 reservation request"
+        },
+        {
+          "id": "d",
+          "text": "Recalculate all counters using the three retained pages as a merged input"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Current source selection and historical computation are separate. D remains the original four-action classification record beside A's 09:00 input assumptions. Its line stays STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0, rather than being revised to fit C. The current booked-slot answer is not a new booking receipt or a reason to reclassify the old actions. EX034 explicitly forbids rerunning the census. Retaining and labeling artifacts neither appends inputs nor proves that an unavailable view recovered, and no program execution or live-site check is performed here.",
+      "source": "Chapter 18, §18.2, final census paragraph; §18.5, artifact D; §18.7, keeping separate sources; §18.9, unchanged-tally requirement; EX034, rubric, fourth worked line and exact historic census in the worked answer."
+    }
+  ]
+}
