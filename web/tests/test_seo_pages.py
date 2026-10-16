@@ -357,3 +357,4 @@ def test_authored_markdown_cannot_inject_script_or_foreign_click_target():
     assert 'href="javascript:' not in page
     assert 'href="/courses/rapid-1-month/incident-response-resilience/lessons/en/2/"' in page
     assert "\\u003c/script>" in page
+    assert page.index('<div class="lesson-main">') < page.index('<aside class="course-sidebar"')

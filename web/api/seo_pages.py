@@ -349,16 +349,16 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <p class="intro">{ui['free']}</p>
   <nav class="lesson-nav" aria-label="{chrome['lesson_navigation']}">{previous}<a href="{escaped['course_url']}">{ui['guide']}</a>{following}</nav>
   <div class="lesson-layout">
-  <aside class="course-sidebar" aria-label="{html.escape(study['published'], quote=True)}"><div class="sidebar-inner">
-    <h2>{html.escape(ui['guide'])}</h2><a class="course-home-link" href="{escaped['course_url']}">{escaped['name']}</a>
-    <nav aria-label="{html.escape(study['published'], quote=True)}">{course_navigation}</nav>
-  </div></aside>
   <div class="lesson-main">
   <article class="prose" lang="{html.escape(language)}">{body}</article>
   {practice_html}
   {answers_html}
   <nav class="lesson-nav" aria-label="{chrome['next_step']}">{previous}<a href="{escaped['course_url']}">{ui['all']}</a>{following}</nav>
   </div>
+  <aside class="course-sidebar" aria-label="{html.escape(study['published'], quote=True)}"><div class="sidebar-inner">
+    <h2>{html.escape(ui['guide'])}</h2><a class="course-home-link" href="{escaped['course_url']}">{escaped['name']}</a>
+    <nav aria-label="{html.escape(study['published'], quote=True)}">{course_navigation}</nav>
+  </div></aside>
   <aside class="progress-sidebar" aria-label="{html.escape(study['progress'], quote=True)}"
          data-level="{html.escape(level, quote=True)}" data-area="{html.escape(area, quote=True)}"
          data-language="{html.escape(language, quote=True)}" data-chapter="{number}"
