@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "information-security",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "b00dbe179cf01316def727a32e12ae89cf4943fd2a7216bfca94eed072889d27",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "An inventory lists only a cloud brand. Which revision best supports Hollybank's harm assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give every item one cloud label because its provider determines its harm"
+        },
+        {
+          "id": "b",
+          "text": "Map records to the practice system, contracts to folders and lab results to email"
+        },
+        {
+          "id": "c",
+          "text": "Keep only the practice-system entries because clinical information cannot arrive by email"
+        },
+        {
+          "id": "d",
+          "text": "List devices instead of information because hardware count identifies every data location"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter separates information from the places where it sits. Appointments and pet records are in the practice system, staff contracts and rotas in shared folders, and laboratory results arrive by email. A provider name or device count does not preserve those distinctions. Omitting email would omit information used for treatment. EX004 and EX007 identify the relevant locations; EX008 then asks about harm from reading, changing or losing the information. NIST CSF 2.0 supports inventory and importance-based prioritization generally, but does not verify Hollybank's synthetic inventory or assign its marks.",
+      "source": "Chapter 1, §1.3 \"What the clinic holds\"; \"Data — where Hollybank's information sits\", location table and final paragraph; EX004, EX007 and EX008 with their Worked results. General principles only: NIST CSF 2.0, Appendix A, ID.AM-05/ID.AM-07, p. 18, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Hypothetically, a readable supplier invoice has the wrong bank account number. Which harm explains the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Availability: readable email necessarily means the payment service has failed"
+        },
+        {
+          "id": "b",
+          "text": "Confidentiality: an incorrect value necessarily proves someone disclosed the invoice"
+        },
+        {
+          "id": "c",
+          "text": "Low harm: the invoice remains accessible even though its payment details differ"
+        },
+        {
+          "id": "d",
+          "text": "Integrity: an altered payment destination could send the clinic's money incorrectly"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The integrity question is which decision goes wrong when information is changed. The supplier-account example links an incorrect value to a wrong payment, explaining why avoiding fraudulent invoices is a priority. Being readable addresses neither correctness nor the destination of the money. An incorrect value alone also does not establish disclosure or a service outage. EX010 connects the payment priority to integrity, while EX008 bases the mark on harm. This question is hypothetical; it reports no fraud, transfer, attacker or actual loss at a clinic.",
+      "source": "Chapter 1, §1.4 \"What cannot be lost\"; \"Concepts — three goals, one harm mark\", integrity row; \"Data — where Hollybank's information sits\", supplier row; EX008 and EX010 with their Worked results."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A proposed safeguard would block authorized reception access during opening hours. What conflict should the owner review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It could protect against reading while obstructing appointments and treatment-note access"
+        },
+        {
+          "id": "b",
+          "text": "It would satisfy all three goals simply because fewer people could reach the system"
+        },
+        {
+          "id": "c",
+          "text": "It would make the information unimportant because unavailable records no longer need protection"
+        },
+        {
+          "id": "d",
+          "text": "It would prove reception caused the neighboring business's ransomware disruption"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Hollybank needs the practice system during opening hours, and the owner asks for protection without slowing reception. Preventing authorized use could undermine that availability priority even if the proposal aims to restrict reading. One goal is not a substitute for the others. Making records inaccessible does not remove their value, and no connection to the neighbor's event follows. EX006 and EX009 provide the service constraints to consider. This is review of a proposal, not an instruction to block access or evidence that the safeguard was approved or implemented.",
+      "source": "Chapter 1, §1.2 \"The practice\"; §1.4, three priorities; \"Concepts — three goals, one harm mark\", availability row; EX006 and EX009 with their Worked results."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why does the client-linked wound photo not inherit a low mark from its marketing-folder location?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The folder name establishes that the client authorized publication of every image inside"
+        },
+        {
+          "id": "b",
+          "text": "Only the file's location matters; clinical content cannot change its assigned harm mark"
+        },
+        {
+          "id": "c",
+          "text": "Its client link raises confidentiality harm, and losing the working copy could hinder the recheck"
+        },
+        {
+          "id": "d",
+          "text": "Placing the file in that folder proves an outsider viewed it and a breach occurred"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The worked photo is clinical and its filename links it to a client. A stranger's access would expose that linkage, so the confidentiality mark is high. Losing the working copy when the vet needs the comparison also makes availability important. The folder name proves neither publication nor permission, and the narrative does not report an outsider viewing it. EX008's harm method applies to the item and its use, not its label. The photograph, filename and people are synthetic; no animal or client image is supplied or examined here.",
+      "source": "Chapter 1, \"Concepts — three goals, one harm mark\"; \"Data — where Hollybank's information sits\", marketing row; \"Worked example — a photograph that is not marketing\"; EX008 and its Worked result."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The same marketing image is already public. How should its lower confidentiality concern affect the inventory?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the item entirely because public information can no longer suffer any kind of harm"
+        },
+        {
+          "id": "b",
+          "text": "Keep it listed and assess other harms; do not extend its mark to a different clinical image"
+        },
+        {
+          "id": "c",
+          "text": "Give every photograph in the folder the same low mark regardless of content or use"
+        },
+        {
+          "id": "d",
+          "text": "Use its public status as written approval for changing the folder's sharing settings"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The concepts table keeps low-mark items on the list, and the data table limits the marketing example to the same image already being public. That does not make every image public, remove integrity or availability questions, or authorize a setting change. The clinical photograph is a contrasting item with different consequences. EX008 requires considering harm from a leak, wrong change or loss. NIST CSF 2.0 PR.DS likewise covers confidentiality, integrity and availability as general outcomes; it supplies no local sharing approval or proof of consent.",
+      "source": "Chapter 1, \"Concepts — three goals, one harm mark\", low-mark examples; \"Data — where Hollybank's information sits\", marketing row; clinical-photograph worked example; EX008 and its Worked result. General principle only: NIST CSF 2.0, Appendix A, PR.DS, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q06",
+      "prompt": "A learner marks EX051's named laboratory email only for confidentiality. What important assessment is missing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A named client removes the need to assess correctness or access to the result"
+        },
+        {
+          "id": "b",
+          "text": "Email delivery makes the result low impact even when treatment depends on its content"
+        },
+        {
+          "id": "c",
+          "text": "Any absent email proves an attacker changed the result before the consultation"
+        },
+        {
+          "id": "d",
+          "text": "Wrong text threatens integrity; absence when the vet needs it threatens availability"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX051 supports high confidentiality because the email names the client and high integrity because an incorrect result would change treatment. If the result is missing when needed for comparison, availability is the first goal threatened by that absence. More than one goal can matter for the same item; the prose explicitly says so. Email as a location does not determine low harm, and absence alone identifies no malicious cause. This follows the supplied exercise and answer, not an observed treatment error, real client record or diagnosis.",
+      "source": "Chapter 1, \"Data — where Hollybank's information sits\", laboratory row; prose following \"Decision flow — mark one item\"; Apply: EX051 \"Mark a laboratory result\", rubric; Worked results, answer-ex051."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Sofia proposes a sharing-setting change after finding a high-harm item. Which sequence follows the ground rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain Dr. Moss's written agreement first, then record the change with date and reason when made"
+        },
+        {
+          "id": "b",
+          "text": "Apply the setting immediately, because the high mark already grants the necessary permission"
+        },
+        {
+          "id": "c",
+          "text": "Use the technician's availability as approval and ask the owner to sign after the change"
+        },
+        {
+          "id": "d",
+          "text": "Treat a dated proposal in the log as both implementation evidence and written owner approval"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 1.5 requires written owner agreement before changing any setting and a record of each change with its date and reason. A high mark identifies a concern; it is not permission. Technical ability to help does not replace the named approver, and recording a proposal does not prove approval or implementation. The decision flow retains the written-agreement gate. EX013 explains why the resulting record matters for later tracing. The sequence is the fictional course rule, not new permission to change a real system or proof that any proposed change occurred.",
+      "source": "Chapter 1, §1.5 \"Ground rules\"; \"Decision flow — mark one item\", written-agreement step and following prose; clinical-photograph worked example; EX013 and its Worked result."
+    },
+    {
+      "id": "Q08",
+      "prompt": "In EX052's Monday-move/Friday-log variant, what is defensible on Wednesday?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The shared copy was certainly deleted on Monday because the main worked example says so"
+        },
+        {
+          "id": "b",
+          "text": "The late log proves someone viewed the clinical image before Wednesday"
+        },
+        {
+          "id": "c",
+          "text": "The move lacks a timely trace, and the shared copy may still be open"
+        },
+        {
+          "id": "d",
+          "text": "Friday's entry will prove that approval and safe handling were complete on Monday"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The variant delays the record instead of documenting the change when it happens. EX052's answer identifies the traceability gap and says the shared copy may still be open. It does not say access or disclosure definitely occurred. Nor does a future entry establish earlier approval, deletion or safe handling. Importing the completed steps of the main photo example would erase the variant's uncertainty. Keep the date-and-reason record timely and distinguish a possible remaining copy from a verified exposure. No real Wednesday observation is being reported.",
+      "source": "Chapter 1, §1.5; \"Errors and limits\"; clinical-photograph worked example contrasted with Apply: EX052 \"Late log\", rubric; Worked results, answer-ex052."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which template best records the narrated photograph move without claiming a wider security result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Photo handled; all clinic data now secure and legally compliant"
+        },
+        {
+          "id": "b",
+          "text": "Moved at some point; the reason can be reconstructed if a problem appears"
+        },
+        {
+          "id": "c",
+          "text": "Cloud folder renamed; the image is now low harm because its location changed"
+        },
+        {
+          "id": "d",
+          "text": "Date and reason; move from shared folder to practice system; shared-copy deletion recorded"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The example narrates the move, deletion of the shared copy and a log entry before the shift ends. A useful record preserves the date, reason and affected locations so later problems can be traced, rather than asserting that all data are secure. The template supplies no invented calendar date, receipt or additional transfer. Location does not replace the harm assessment, and the client linkage still matters. EX013 and EX052 explain why vague or delayed records are insufficient. This is a record of the synthetic narrative, not independent verification of a production move or legal compliance.",
+      "source": "Chapter 1, §1.5; \"Data — where Hollybank's information sits\", final paragraph; \"Worked example — a photograph that is not marketing\"; EX013/EX052 and their Worked results."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which coursework approach respects both the client-data rule and the change log's access boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use synthetic examples and keep the original log limited to the practice manager and owner"
+        },
+        {
+          "id": "b",
+          "text": "Share the live log with the whole class because a shared document must be open to everyone"
+        },
+        {
+          "id": "c",
+          "text": "Send real client details only to the trainer because a small audience supplies permission"
+        },
+        {
+          "id": "d",
+          "text": "Attach a real clinical image because citing ISO/IEC 27000 proves compliant handling"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter expressly excludes real client details from coursework and limits the change log to Sofia and Dr. Moss. A document can be shared between approved users without being available to the class. A trainer's role or a smaller audience does not override the rule. The official ISO/IEC 27000:2026 page describes an overview of information-security management concepts; citing it is not a receipt for compliant handling or local approval. EX012 preserves the access limit. All case names and images remain invented, with no request for real records or extension of access.",
+      "source": "Chapter 1, §1.5 \"Ground rules\"; synthetic-case notices and clinical-photograph worked example; EX011/EX012 and their Worked results. Publication scope only: ISO/IEC 27000:2026 official overview, https://www.iso.org/standard/27000 ; no unexamined normative clause is asserted."
+    }
+  ]
+}
