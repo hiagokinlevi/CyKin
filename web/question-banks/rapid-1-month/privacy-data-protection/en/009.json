@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 9,
+  "source_anchor": "ch-09",
+  "source_sha256": "57ec12d371290bb3275152c6c6914559493a4f566ab400537ec175152a741384",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What belongs in Sofia's initial report without opening the prescription copies?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Customer names and medicines copied from a few representative pages"
+        },
+        {
+          "id": "b",
+          "text": "The place, time and what she observed, without reading individual records"
+        },
+        {
+          "id": "c",
+          "text": "A list of every copy already proven to be beyond its retention period"
+        },
+        {
+          "id": "d",
+          "text": "A completed destruction entry inferred from the later booking"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 9.1 describes a report of the place, time and observed condition, not a review of individual prescriptions. The first row of the worked table preserves that report. Reading sample pages would cross the boundary; identifying every expired copy or recording completed destruction would add facts not established. EX063 keeps reporting separate from handling and disposal. Juniper is a synthetic case, and this question supplies no customer, medicine, exact timestamp or additional inspection.",
+      "source": "Chapter 9, section 9.1 The box is still not hers to handle, opening sentences; section 9.2 Worked example, report row; Apply EX063; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The owner has arranged secure shredding. Which action status is justified at the Chapter 9 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Completed, because the owner arranged an appropriate disposal method"
+        },
+        {
+          "id": "b",
+          "text": "Not started, so the documented lock and report should be removed"
+        },
+        {
+          "id": "c",
+          "text": "Completed, provided the booking date is used as the destruction date"
+        },
+        {
+          "id": "d",
+          "text": "Shredding arranged; destruction completion remains unconfirmed and the line stays open"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The arrangement is genuine progress, but it concerns an intended operation. Section 9.2 classifies it as a plan, not a destruction date. Marking disposal complete would replace missing evidence with an assumption; marking everything unstarted would erase the documented report and lock. EX063 requires keeping the destruction line open. This answer neither cancels the arrangement nor invents a completed service, receipt or calendar date.",
+      "source": "Chapter 9, section 9.1, arrangement and missing destruction date; section 9.2 Worked example, shredding row; Apply EX063 and rubric; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "What follows solely from the empty destruction-date field, without another observation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The record does not establish completion; the empty field alone proves neither destruction nor its non-occurrence"
+        },
+        {
+          "id": "b",
+          "text": "Every copy must still be present because an empty field proves nothing was destroyed"
+        },
+        {
+          "id": "c",
+          "text": "The copies must have been destroyed because someone probably forgot to enter the date"
+        },
+        {
+          "id": "d",
+          "text": "The arrangement must have been cancelled because no completion date appears"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A documentation gap limits what the reviewer can substantiate. It is not an observation of the physical copies or of a disposal operation. Section 9.1 and EX063 therefore support an open completion line, not either confident claim about what happened off-record. Assuming an omitted entry or a cancelled booking is equally unsupported. Keep the missing evidence explicit without inventing a present inventory, a destruction event or an explanation for the blank.",
+      "source": "Chapter 9, section 9.1, what the file contains and lacks; section 9.2, Synthetic case note; Apply EX063; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A colleague wants the storeroom unlocked while destruction evidence is pending. What should Sofia retain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open access, because a pending disposal task makes the lock premature"
+        },
+        {
+          "id": "b",
+          "text": "The shredding booking as a substitute for controlling access to the room"
+        },
+        {
+          "id": "c",
+          "text": "The documented lock, independently of the still-open destruction line"
+        },
+        {
+          "id": "d",
+          "text": "An unlocked room so she can check which prescriptions are oldest"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits explicitly states that an open shredding line is not a reason to unlock the room. The lock addresses access after the finding; destruction is a separate action whose completion is not documented. An arrangement cannot provide the same evidence as the existing access control, and the pending task does not authorise reading records. EX063 preserves the lock and the open line together, without claiming that the lock proves disposal or complete protection.",
+      "source": "Chapter 9, section 9.2 Worked example, lock row; Errors and limits, first two sentences; Apply EX063; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Would moving the closed box to help the shredding service, without reading any pages, respect Sofia's stated boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; avoiding reading automatically authorises every other form of handling"
+        },
+        {
+          "id": "b",
+          "text": "No; the case excludes moving the copies as well as reading them"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the owner's shredding arrangement transfers the handling task to Sofia"
+        },
+        {
+          "id": "d",
+          "text": "No; she must read the pages first before she can move the box"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX063 and its worked answer name two separate exclusions: do not move the copies and do not read them. Meeting one does not remove the other. A helpful motive or the owner's arrangement supplies no additional assignment to Sofia. The proposed move is hypothetical and is not performed. The answer follows this review's boundary, not a universal prohibition on an appropriately authorised person carrying out disposal.",
+      "source": "Chapter 9, learning outcome 3; section 9.1, handling boundary; Apply EX063 and rubric; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Does calling the prescription copies old establish which ones are eligible for destruction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; apparent age does not supply the applicable professional period or an authorised record-by-record determination"
+        },
+        {
+          "id": "b",
+          "text": "Yes; every paper described as old has necessarily passed its professional retention period"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the known CCTV period can be applied to the prescriptions to resolve the uncertainty"
+        },
+        {
+          "id": "d",
+          "text": "No; the missing number proves that prescription records have no governing retention rule"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The planned shredding concerns copies past the applicable period, not every item described as old. Section 9.1 refuses to establish eligibility by reading the box and guessing the rule. Chapter 8 preserves the professional prescription requirements without inventing their duration; a CCTV period is not a substitute. EX063 supplies no list of eligible records. The reviewer must not turn an age description or an omitted numeric detail into a clinical-record retention decision.",
+      "source": "Chapter 9, section 9.1, final sentence; section 9.2 Worked example, handling row; Apply EX063; Worked results (#worked-results; EX063). Retention context: Chapter 8, section 8.1 and section 8.2, prescription-rule boundary."
+    },
+    {
+      "id": "Q07",
+      "prompt": "After the owner locks the room, should the original report of an unlocked storeroom be rewritten as locked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; only the newest condition should remain anywhere in the review history"
+        },
+        {
+          "id": "b",
+          "text": "Yes; leaving the original condition visible would imply that the owner did nothing"
+        },
+        {
+          "id": "c",
+          "text": "No; the initial report proves that the room must still be unlocked now"
+        },
+        {
+          "id": "d",
+          "text": "No; preserve the initial finding and the later lock as observations at different stages"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 9.1 gives a sequence: the unlocked storeroom was found and reported, then the owner locked it. The two facts concern different stages and can both remain true. Rewriting the original would obscure what prompted the response; using it to deny the later lock would ignore the documented control. The worked table keeps both report and lock. EX063 preserves this history while leaving destruction pending, without adding an exact date or a later inspection.",
+      "source": "Chapter 9, section 9.1, finding-to-response sequence; section 9.2 Worked example, first two rows; Apply EX063; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which kind of later evidence could support entering a destruction date, if it actually became available?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A calendar entry stating when the shredding service was expected to attend"
+        },
+        {
+          "id": "b",
+          "text": "The earlier approval to arrange shredding, relabelled as confirmation of completion"
+        },
+        {
+          "id": "c",
+          "text": "Evidence establishing that the relevant copies were destroyed and when that occurred"
+        },
+        {
+          "id": "d",
+          "text": "A dated note confirming only that the storeroom remained locked"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The missing claim is completed destruction of the relevant copies at an evidenced time. Evidence of scheduling, approval or a lock answers different questions even when it carries a date. This hypothetical identifies what a completion statement would need to substantiate; it does not supply that evidence now, prescribe a certificate format or assign Sofia a new handling task. At the actual EX063 checkpoint, the date remains open and no destruction event is added.",
+      "source": "Chapter 9, section 9.1, absence of a date on which those copies were destroyed; section 9.2 Worked example, lock and arrangement rows; Synthetic case note; Apply EX063; Worked results (#worked-results; EX063)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Does the locked room, by itself, settle how long the prescription copies may be retained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; preventing access makes indefinite retention acceptable without further assessment"
+        },
+        {
+          "id": "b",
+          "text": "No; access protection and the retention decision are separate, and the professional period is not supplied here"
+        },
+        {
+          "id": "c",
+          "text": "Yes; a physical lock establishes that every retention and disposal duty has been completed"
+        },
+        {
+          "id": "d",
+          "text": "No; storage limitation requires Sofia to destroy every copy immediately regardless of the applicable period"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter keeps an access control in place without inventing the prescription period or declaring disposal complete. GDPR Article 5(1)(e) addresses storage limitation; Article 32(1)-(2) addresses security measures appropriate to risk. These principles are not interchangeable, and neither supplies a numeric prescription period or permission for Sofia to handle the copies. Chapter 8 and EX063 retain that boundary. The fictional lock is not a compliance finding, and a pending retention question does not justify arbitrary immediate destruction.",
+      "source": "Chapter 9, section 9.1, professional-period boundary; section 9.2, lock row; Errors and limits; Apply EX063; Worked results (#worked-results; EX063). Context: Chapter 8, Errors and limits. General principles only: GDPR Article 5(1)(e) and Article 32(1)-(2), https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does the same-day internal report establish that a breach notice was required, unnecessary or already sent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the chapter records the report but leaves the breach-notification determination unresolved"
+        },
+        {
+          "id": "b",
+          "text": "Yes; reporting internally automatically proves that a regulator received a breach notice"
+        },
+        {
+          "id": "c",
+          "text": "Yes; locking the room establishes that no breach notice could have been required"
+        },
+        {
+          "id": "d",
+          "text": "Yes; the missing destruction date establishes a mandatory regulatory notification"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Errors and limits expressly declines to decide whether a breach notice was required. Reporting the observed finding, reducing access and scheduling disposal do not constitute a regulatory determination or proof of sending a notice. EX063 concerns the open destruction line and the handling exclusions. The correct answer preserves that scope; it is not advice to report or withhold a report in a real incident. No deadline, affected person, regulator contact or notification outcome is invented.",
+      "source": "Chapter 9, section 9.1, report and owner response; Errors and limits, final sentence; Apply EX063; Worked results (#worked-results; EX063). This is the lesson's explicit boundary, not a statutory notification test."
+    }
+  ]
+}
