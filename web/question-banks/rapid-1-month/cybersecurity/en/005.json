@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "cybersecurity",
+  "language": "en",
+  "chapter": 5,
+  "source_anchor": "ch-05",
+  "source_sha256": "7b0a7e7b1501ca49c4a7c393d860fb9c3a093f5ade917a7e2a536f3cb22785d9",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "In fictional Harbor Library, a claim is supported but disclosure authority is missing. Which gate remains unmet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Evidence only; accuracy supplies permission"
+        },
+        {
+          "id": "b",
+          "text": "Disclosure authority; truth cannot replace permission"
+        },
+        {
+          "id": "c",
+          "text": "Neither; supported facts may always be shared"
+        },
+        {
+          "id": "d",
+          "text": "Both; missing permission makes the source unreliable"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 5.4 treats factual support and disclosure authority as independent checks. The stipulated claim has evidence, but the audience, purpose and channel still need authority for that information category. Accuracy does not grant permission; missing permission does not itself make the source false. Conversely, permission in principle cannot make an unsupported claim true. NIST CSF 2.0 describes general authorization and data-protection outcomes, not a prescribed Harbor Library reply or a local law. This question supplies no new permission to disclose a resident's identity.",
+      "source": "Chapter 5, §5.4 \"Two independent gates: evidence and disclosure authority\"; EX021, independent extension and expanded worked reasoning. General source only: NIST CSF 2.0, abstract and Appendix A, PR.AA-05 and PR.DS, p. 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q02",
+      "prompt": "What does SYN-001 identify in the supplied booking record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A resident whose name may be retrieved from event contacts"
+        },
+        {
+          "id": "b",
+          "text": "A verified caller entitled to receive booking details"
+        },
+        {
+          "id": "c",
+          "text": "A consent record allowing public identification"
+        },
+        {
+          "id": "d",
+          "text": "A synthetic booking row, with no supplied resident-identity mapping"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The row identifier distinguishes the synthetic booking, not a person. Sections 5.1 and 5.5 supply no name field or verified mapping from SYN-001 to a resident. Neither caller authentication nor consent is encoded by the identifier. Event-announcement contacts are outside the booking path and cannot fill that evidence gap. EX021's worked result also omits the internal ID from the spoken reply because the asker's operational need can be met with the slot state alone. No real resident or identity lookup is involved.",
+      "source": "Chapter 5, §5.1 \"Confidentiality is about disclosure, not secrecy of the room\" and §5.5 \"Worked claim ledger: what can the sentence actually prove?\"; EX021 and its worked result."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which reply best answers the supplied 14:00 request without unnecessary disclosure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room 2 at 14:00 is booked; this record does not identify who"
+        },
+        {
+          "id": "b",
+          "text": "I cannot discuss even the room's booking state"
+        },
+        {
+          "id": "c",
+          "text": "SYN-001 has it; that identifier tells you who booked"
+        },
+        {
+          "id": "d",
+          "text": "The advertised speaker probably made that booking"
+        }
+      ],
+      "correct": "a",
+      "explanation": "SYN-001 supports the recorded 14:00 booking state in the stipulated snapshot, and the exercise permits sharing that operational fact. The reply need not invent a person or disclose an internal ID. Refusing every fact would withhold an answer the source and scope support. Reading the ID as a person's identity confuses information categories; borrowing a speaker's name adds an unsupported link. This is a bounded reply about the supplied fictional record, not a claim that the worker queried a live service or searched every possible identity source.",
+      "source": "Chapter 5, §5.2 \"Worked example\"; §5.5, worked interaction A; §5.6 \"Why correct facts may still be the wrong reply\"; EX021, rubric and worked result."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which creation-time comparison explains what the fixed 09:00 sheet can represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both confirmed rows belong on it regardless of creation time"
+        },
+        {
+          "id": "b",
+          "text": "SYN-002 belongs on it because its 15:00 slot is still in the future"
+        },
+        {
+          "id": "c",
+          "text": "SYN-001 was created before printing, at 08:20; SYN-002 after, at 10:05"
+        },
+        {
+          "id": "d",
+          "text": "Neither booking can appear until its room-use time arrives"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The relevant cutoff is the time the record was created relative to printing, not the future time when the room will be used. Section 5.4 places SYN-001 at 08:20, before the 09:00 snapshot; Section 5.5 places SYN-002 at 10:05, afterward. Confirmed status does not retroactively insert a later row into an earlier copy. Future room-use times do not prevent earlier reservations being recorded. This explains the stated snapshot limitation; it does not establish that the sheet covers every room or remains complete at 11:42.",
+      "source": "Chapter 5, §5.4, step 3; §5.5, claim ledger; EX021, independent extension and expanded worked reasoning."
+    },
+    {
+      "id": "Q05",
+      "prompt": "At 11:42 the desk lacks a live view, but the instructor sees SYN-002. Which statement keeps their evidence separate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The worker has verified the live 15:00 booking because the instructor sees it"
+        },
+        {
+          "id": "b",
+          "text": "The desk sheet proves the instructor's later row cannot exist"
+        },
+        {
+          "id": "c",
+          "text": "The worker may describe the full fixture as a live query result"
+        },
+        {
+          "id": "d",
+          "text": "The fixture contains the later booking; that does not prove a desk lookup occurred"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The instructor's full teaching fixture and the worker's available source are not interchangeable. SYN-002 exists in the supplied fixture, but the worker at 11:42 has only the stale 09:00 paper during the stipulated outage. Neither the instructor's knowledge nor a correct statement about the fixture proves the worker consulted a current source. Conversely, the older paper cannot disprove a later row. Section 5.5 explicitly contrasts these viewpoints so an author's knowledge is not silently presented as the participant's authenticated observation.",
+      "source": "Chapter 5, §5.4, step 3; §5.5, worked interaction B and the paragraph distinguishing narrative from participant observation; EX021, expanded worked reasoning."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A 15:00 request is recorded as pending during the outage. What has this step established?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The requested slot is now reserved for the asker"
+        },
+        {
+          "id": "b",
+          "text": "The request awaits an approved current-source check, not confirmation"
+        },
+        {
+          "id": "c",
+          "text": "The earlier booking has been cancelled by the new request"
+        },
+        {
+          "id": "d",
+          "text": "A pending entry is evidence that live access has recovered"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The pending procedure preserves a request while withholding a decision the old source cannot support. It is not a reservation, a cancellation or a recovery test. In worked interaction B, the useful reply identifies the 09:00 source limitation and says what can happen next: an approved current source must be checked. A recorded request does not make that check occur and gives no guarantee that the requested slot will be available. EX021's extension applies this distinction to the fictional 11:42 interaction without accessing a real system.",
+      "source": "Chapter 5, §5.4, step 5; §5.5, worked interaction B; EX021, extended assessment and expanded worked reasoning."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Why can an empty space on the old sheet not justify 'probably free' or 'no other bookings exist'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A bounded, stale source cannot establish complete current absence"
+        },
+        {
+          "id": "b",
+          "text": "Leaving out names makes any room-state answer confidential"
+        },
+        {
+          "id": "c",
+          "text": "A missing row always proves a booking was deleted"
+        },
+        {
+          "id": "d",
+          "text": "The paper's silence outweighs records created after printing"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Sections 5.5 and 5.6 reject both the global absence claim and softer reassurance unsupported by the source. Later entries may be absent from the fixed printout, and a bounded example does not establish a complete schedule. This is a freshness and coverage limit, not a rule that all room-state information is secret. Nor does the gap prove deletion. The worker should state the uncertainty and use the pending procedure rather than invent either availability or an incident. No probability estimate is supplied by the missing row.",
+      "source": "Chapter 5, §5.5, fourth and fifth claim-ledger rows; §5.6, second paragraph; §5.7 \"Independent decision rehearsal\"; EX021, extended assessment."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A staff lead asks for a booking identity for a safety reason, but no access policy is supplied. What follows?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The title alone authorizes release of any identity available elsewhere"
+        },
+        {
+          "id": "b",
+          "text": "A stated safety purpose establishes the missing identity as fact"
+        },
+        {
+          "id": "c",
+          "text": "Refer the need to the authorized owner and record why; do not assume release authority"
+        },
+        {
+          "id": "d",
+          "text": "Treat the request itself as proof of suspicious conduct"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A legitimate operational need and an authorization to release a particular category are different questions. Sections 5.3 and 5.6 refer such requests to the responsible owner, with the reason recorded, rather than derive blanket access from a managerial title. A stated purpose does not supply a missing name. Section 5.4 also warns that referral is neither disclosure approval nor evidence that the asker is suspicious. The exercise defines no identity-access policy for this request and does not authorize an improvised lookup in another data set.",
+      "source": "Chapter 5, §5.3 \"What this chapter does not decide\"; §5.4, step 6; §5.6, first paragraph; EX021, independent extension on authority and withholding."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A hypothetical public program names a consenting speaker. What can that establish about the unrelated synthetic room booking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The speaker must be the resident behind SYN-001"
+        },
+        {
+          "id": "b",
+          "text": "The public program does not establish the booking's identity or disclosure permission"
+        },
+        {
+          "id": "c",
+          "text": "Consent to the program also permits access to announcement-contact records"
+        },
+        {
+          "id": "d",
+          "text": "A matching event time is sufficient to verify who reserved the room"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter permits the possibility of an advertised program with a consenting speaker, but supplies no connection from that program to this booking. Publication for one purpose does not establish a reservation's identity or authority for a different disclosure. Neither a familiar name nor a coincident time is a verified mapping. Announcement-contact data remain outside the booking decision. This is the chapter's hypothetical contrast, not evidence that Harbor Library obtained consent or stored a real patron's name. Room-state questions should still be answered from their own supported source.",
+      "source": "Chapter 5, §5.3 \"What this chapter does not decide\" and §5.6, first paragraph; §5.5, identity-claim boundary; EX021, expanded worked reasoning."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A caller says 'I booked it myself'. With no verification procedure supplied, which response respects the exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the assertion as authentication and release identity details"
+        },
+        {
+          "id": "b",
+          "text": "Request real identity documents to improvise a check"
+        },
+        {
+          "id": "c",
+          "text": "Match the caller against event contacts without an approved process"
+        },
+        {
+          "id": "d",
+          "text": "Refer identity verification to the responsible owner; invent no check or disclosure"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 5.6 states that the assertion alone neither authenticates the caller nor authorizes disclosure. The offline exercise contains no account-validation procedure and expressly rules out demanding real identity documents or improvising a lookup. Event contacts cannot replace that missing procedure. Refer the identity-specific request through the responsible owner instead of fabricating verification. This does not make the caller suspicious or forbid a separately supported, permitted room-state reply. The task is to stay useful within the evidence and authority provided, not to operate a real identity system.",
+      "source": "Chapter 5, §5.6, second and third paragraphs; §5.4, steps 4–6; EX021, objective and independent extension."
+    }
+  ]
+}
