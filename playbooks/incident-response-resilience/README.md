@@ -21,5 +21,6 @@ Original classroom TableTop: [Compromised supplier update (English)](tabletops/0
 Original classroom TableTop: [Suspicious data export (English)](tabletops/05-insider-data-export.en.md).
 Original classroom TableTop: [Public portal disruption (English)](tabletops/06-ddos-portal.en.md).
 Original classroom TableTop: [Water-system controller anomaly (English)](tabletops/07-water-ot-anomaly.en.md).
+Original classroom TableTop: [Lost field laptop (English)](tabletops/08-lost-laptop.en.md).
 
 These links are pinned to source revisions. Review each repository's license and current safety guidance before reuse. No linked file is silently copied or relicensed here.
