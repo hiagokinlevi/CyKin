@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "level": "professional-6-months",
+  "area": "ot-iot-security",
+  "language": "en",
+  "chapter": 9,
+  "source_path": "levels/professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md",
+  "source_revision": "4f3c920368ff1947398e280cb7a33734ac66112e",
+  "source_manuscript_blob_sha": "6c08a70674e0109f310d520b690143345d7a8b59",
+  "source_manuscript_sha256": "b77b17a4041267a2cdf15c054a31247214809d9679b7b74602b296a5ed2cd5db",
+  "source_anchor": "ch-09",
+  "source_sha256": "31f79443738f8cec2b97a155d99a3d5341272fdd2c6a74cdc9cb7cbb8298d94a",
+  "case_note": "Millbrook Hospital, the trend samples and the worked explanation are synthetic. Q03 uses the explicitly changed EX042 window; other hypothetical reviews do not amend the source case. A setpoint is not measured room temperature, a window label is not proof of authorisation, and a missing log entry is not proof of absence. Clinical consequences require assessment by estates and clinical leads, not diagnosis from this lab. No question authorises real OT testing or changes.",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Lab 9 records a 26 °C setpoint at 03:00. Which review response avoids an unsupported clinical conclusion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Declare the theatre unsafe solely from the setpoint"
+        },
+        {
+          "id": "b",
+          "text": "Assess measured conditions with estates and clinical leads; impact is unconfirmed"
+        },
+        {
+          "id": "c",
+          "text": "Treat 26 °C as the measured room temperature"
+        },
+        {
+          "id": "d",
+          "text": "Close the safety question because the 09:00 setpoint is lower"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 9.3 explicitly says the lab shows only the setpoint. It neither measures room temperature nor establishes the condition of a patient or theatre. Review the actual temperature trend and ask estates and clinical leads to assess any operational or clinical risk. EX044 raises possible consequences for review; it does not supply those measurements. Neither the 03:00 target nor the later lower target proves harm, readiness or recovery. A timing flag is likewise not evidence of a malicious cause.",
+      "source": "Chapter 9, §9.3 \"Reading the output\", second paragraph; §9.5 \"Alerting\"; EX044 \"Clinical impact\" (risk question, bounded by the setpoint-only evidence)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why does the original Lab 9 print the 09:00 change despite classifying it inside 08:00–10:00?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every sample prints, including unchanged values"
+        },
+        {
+          "id": "b",
+          "text": "A lower setpoint automatically passes a clinical safety check"
+        },
+        {
+          "id": "c",
+          "text": "The script prints changed samples; the window determines their label"
+        },
+        {
+          "id": "d",
+          "text": "An audit-log approval makes the script print an authorised change"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The loop prints when a previous sample exists and the setpoint differs from it. It therefore prints both 03:00, 20.0 to 26.0, and 09:00, 26.0 to 21.0. The inclusive time comparison labels 03:00 outside and 09:00 inside the original window. Unchanged samples do not print. The script reads no audit log, approval or measured temperature, and a lower target is not a clinical safety test. Both changes remain relevant to the review even though only the first receives the outside-window label.",
+      "source": "Chapter 9, §9.2 \"Change windows\", Lab 9 loop and verified output; §9.3 \"Reading the output\"; EX041 \"Window logic\"."
+    },
+    {
+      "id": "Q03",
+      "prompt": "With EX042’s 02:00–04:00 window, what changes relative to the original Lab 9 run?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The 03:00 row disappears because it is now inside the window"
+        },
+        {
+          "id": "b",
+          "text": "Both changes become inside-window events"
+        },
+        {
+          "id": "c",
+          "text": "The setpoint values change to match the new window"
+        },
+        {
+          "id": "d",
+          "text": "The two window labels switch; sample times and values stay unchanged"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Only the window tuple changes. The same value transitions still produce two lines: 03:00 setpoint 20.0->26.0 in window, and 09:00 setpoint 26.0->21.0 OUTSIDE WINDOW - review. Inside-window changes are still printed, 09:00 is later than 04:00, and the script never rewrites trend values. This is the exercise’s explicit offline variation, not a retroactive authorisation of the original change or a new observation at Millbrook.",
+      "source": "Chapter 9, §9.2 \"Change windows\", Lab 9 comparison and print statement; EX042 \"Modified trend\" and its worked answer."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which mapping correctly separates the three log sources used with the setpoint trend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "BMS audit: accounts; gateway: remote sessions; firewall: BMS-zone connections"
+        },
+        {
+          "id": "b",
+          "text": "BMS audit: measured room temperature; gateway: accounts; firewall: staff intent"
+        },
+        {
+          "id": "c",
+          "text": "BMS audit: remote sessions; gateway: clinical safety; firewall: setpoint values"
+        },
+        {
+          "id": "d",
+          "text": "BMS audit: accounts; gateway: all local activity; firewall: work approval"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 9.4 uses the BMS audit log for account activity, the gateway log for remote sessions, and the firewall log for connections to the BMS zone. None of those roles makes a log a measurement of room temperature, clinical safety, intention or approval. Gateway records do not cover all local activity. Correlate the sources without substituting one for another. The case reports BMS and gateway findings; it describes a firewall check conditionally, so this mapping must not be reported as an already-completed three-log investigation.",
+      "source": "Chapter 9, §9.4 \"Combining sources\", both paragraphs; EX043 \"Three sources\". Primary cross-check: NIST SP 800-82 Rev. 3, §6.2.6.1 \"Logging\", p. 118, https://doi.org/10.6028/NIST.SP.800-82r3"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Hypothetical review: a shared BMS login and no 03:00 gateway entry. Which attribution is justified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The engineer rostered at 03:00 is proved to be the actor"
+        },
+        {
+          "id": "b",
+          "text": "All remote routes are ruled out by the empty gateway result"
+        },
+        {
+          "id": "c",
+          "text": "The shared account is identifiable; the person and access path remain unresolved"
+        },
+        {
+          "id": "d",
+          "text": "Missing gateway evidence proves that the logs were deliberately erased"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 9.1 limits person-level attribution when accounts are shared. A missing entry in the examined gateway log is not proof that every route was unused or that somebody erased evidence; scope, clocks and retention also matter. A shift roster alone does not resolve the shared credential. The published worked example separately names a night engineer and provides a chiller-fault explanation. Do not import that explanation into this different hypothetical or assert compromise from the attribution gap.",
+      "source": "Chapter 9, §9.1 \"Trends as evidence\", second paragraph; §9.4 \"Combining sources\"; \"Errors and limits\"; EX043 \"Three sources\"."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Two consecutive stored setpoint samples are equal. Which conclusion respects the sampling limitation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The setpoint stayed constant throughout the interval"
+        },
+        {
+          "id": "b",
+          "text": "A brief change and reversal may have fallen between samples"
+        },
+        {
+          "id": "c",
+          "text": "The equal values prove that a change was deliberately hidden"
+        },
+        {
+          "id": "d",
+          "text": "The sampling interval no longer matters to the review"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The stored values establish equality at the sampled observations, not a continuous history between them. Section 9.1 requires checking the sampling interval, and Errors and limits warns that brief changes may be missed. A change that reverted between samples is therefore possible, not established. Continuous stability is unproved; deliberate concealment is also unproved; the interval still determines what may have escaped observation. Do not turn this blind spot into either proof of tampering or a claim that nothing happened.",
+      "source": "Chapter 9, §9.1 \"Trends as evidence\"; \"Errors and limits\"; §9.2 \"Change windows\", Lab 9 comparison of stored samples."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Two logs display 03:00, but clock alignment is unknown. What should the reviewer establish before correlating them?",
+      "options": [
+        {
+          "id": "a",
+          "text": "That equal displayed times prove the same event"
+        },
+        {
+          "id": "b",
+          "text": "That the gateway timestamp is correct because it is a network device"
+        },
+        {
+          "id": "c",
+          "text": "That a mismatch proves deliberate timestamp manipulation"
+        },
+        {
+          "id": "d",
+          "text": "The time basis and synchronisation, retaining any unresolved timing uncertainty"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Matching displayed times alone does not establish aligned clocks, identical events or causation. The chapter requires synchronised clocks; NIST explains that alignment and consistent timestamp formats support correlation. OWASP recommends recording offset or timestamp confidence when synchronisation cannot be established. No source is automatically correct merely because it is a gateway, and uncertainty is not proof of manipulation. Preserve the original records and their time context rather than silently changing timestamps to manufacture agreement.",
+      "source": "Chapter 9, \"Errors and limits\"; §9.4 \"Combining sources\"; EX043 \"Three sources\". Primary cross-checks: NIST SP 800-82 Rev. 3, §6.2.12 \"Time Synchronization\", pp. 125–126, https://doi.org/10.6028/NIST.SP.800-82r3; OWASP Logging Cheat Sheet, \"Event collection\", Note C, https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#event-collection"
+    },
+    {
+      "id": "Q08",
+      "prompt": "A change needs review at Millbrook, where trend retention is 14 days. Which preservation decision follows Chapter 9?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Export relevant trend and audit records that day, noting source and export time; restrict access"
+        },
+        {
+          "id": "b",
+          "text": "Wait until day 14 and preserve only the final conclusion"
+        },
+        {
+          "id": "c",
+          "text": "Keep screenshots without source or export time because the values are visible"
+        },
+        {
+          "id": "d",
+          "text": "Retain the trend only and assume deleted audit records can later be reconstructed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 9.6 calls for same-day export of relevant trend and audit records, an export timestamp, source notes and storage limited to reviewers. Keep those exports with the review notes. Waiting risks losing evidence; visible values without provenance weaken later interpretation; retained trends do not recreate missing audit history. Fourteen days is the synthetic installation’s retention, not a recommended standard or legal period. Export time records collection, not necessarily the time the event occurred.",
+      "source": "Chapter 9, §9.6 \"Keeping evidence\", both paragraphs; \"Errors and limits\"; EX043 \"Three sources\" (preserving evidence for correlation)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "An out-of-window alarm has been configured. What else makes it an operationally accountable control?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A generic mailbox, with every alarm treated as a confirmed attack"
+        },
+        {
+          "id": "b",
+          "text": "A screenshot of its settings, with action deferred until the quarterly review"
+        },
+        {
+          "id": "c",
+          "text": "Agreed critical units, an estates on-call response, and a recorded planned verification"
+        },
+        {
+          "id": "d",
+          "text": "Automatic clinical closure decisions based only on the setpoint threshold"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 9.5 requires agreement with estates on critical units and the on-call engineer’s response, plus verification during a planned change with its result recorded. Configuration alone does not demonstrate delivery or response. A generic mailbox or deferred action leaves ownership ineffective, and a timing alarm neither confirms attack nor authorises a clinical decision. Review the alarm list quarterly with the on-call engineers. This question assesses the required evidence and responsibility; it directs no live OT test.",
+      "source": "Chapter 9, §9.5 \"Alerting\", both paragraphs; EX045 \"Process improvement\". Primary cross-check: NIST SP 800-82 Rev. 3, §6.3.1 \"Anomalies and Events\", p. 127, https://doi.org/10.6028/NIST.SP.800-82r3"
+    },
+    {
+      "id": "Q10",
+      "prompt": "In the worked example, a chiller-fault explanation is documented. Which improvement addresses why the change was initially unexplained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Widen the historical window until the earlier change is no longer flagged"
+        },
+        {
+          "id": "b",
+          "text": "Close the review solely because the setpoint was lower at 09:00"
+        },
+        {
+          "id": "c",
+          "text": "Treat all future changes by the night shift as malicious"
+        },
+        {
+          "id": "d",
+          "text": "Require each out-of-window change and its reason in the shift log"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The synthetic narrative attributes the change to load reduction during a chiller fault and identifies the missing record as the process gap. A shift-log entry with the reason makes later exceptions reviewable; EX045 also links this to a critical-setpoint alarm with an owner. Reclassifying the old window hides rather than explains the exception, a lower target does not establish safety or cause, and the example supplies no basis for blaming all future night-shift activity. The documented explanation belongs to this invented case, not to other alerts by default.",
+      "source": "Chapter 9, \"Worked example (synthetic Millbrook)\"; §9.2 \"Change windows\"; §9.5 \"Alerting\"; EX045 \"Process improvement\" and its worked answer."
+    }
+  ]
+}
