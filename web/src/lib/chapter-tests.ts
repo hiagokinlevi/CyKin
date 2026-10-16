@@ -123,10 +123,12 @@ export function initChapterTests(): void {
       if (!response.ok) throw new Error('The published course guide is unavailable');
       const edition = await response.json() as PublishedGuide;
       if (requestId !== practiceRequest || key !== courseKey()) return;
-      const units = [
-        ...edition.daily_slots.filter(unit => unit.published).map(unit => ({ ...unit, route: 'lessons', label: ui.lesson })),
-        ...edition.legacy_chapters.filter(unit => unit.published).map(unit => ({ ...unit, route: 'chapters', label: edition.chapter_lessons ? ui.lesson : ui.chapter })),
-      ];
+      const units = edition.chapter_lessons
+        ? edition.legacy_chapters.filter(unit => unit.published).map(unit => ({ ...unit, route: 'chapters', label: ui.lesson }))
+        : [
+          ...edition.daily_slots.filter(unit => unit.published).map(unit => ({ ...unit, route: 'lessons', label: ui.lesson })),
+          ...edition.legacy_chapters.filter(unit => unit.published).map(unit => ({ ...unit, route: 'chapters', label: ui.chapter })),
+        ];
       status.textContent = units.length ? ui.practiceCount(units.length) : ui.practiceNone;
       for (const unit of units) {
         const card = document.createElement('article'); card.className = 'test-chapter';
