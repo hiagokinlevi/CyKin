@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 19,
+  "source_anchor": "ch-19",
+  "source_sha256": "2bbae411d819bda5a291e00ca7f1ddb91f0be7b8d01abf3dd2b45e0c35f9d319",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which relationship does the owner's completed request to the app vendor establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sofia has been delegated every communication about the app"
+        },
+        {
+          "id": "b",
+          "text": "The request concerned supplier changes, not authorization for Sofia to notify customers"
+        },
+        {
+          "id": "c",
+          "text": "Every member has already received news of the changes"
+        },
+        {
+          "id": "d",
+          "text": "The signed scope now covers both the supplier and all customers"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 19.1 separates the owner's request to the supplier from the communications now proposed for Sofia. A shared subject, the loyalty app, does not make the actors, recipients or permissions interchangeable. The request establishes neither customer notification nor a scope amendment. The first worked-example row preserves the supplier request while EX073 refuses Sofia's email and call. Juniper is synthetic; no completed customer contact, delegation or contractual change is added.",
+      "source": "Chapter 19, learning outcome 2; section 19.1 The vendor was asked. The customers were not hers to call., opening three sentences; section 19.2 Worked example, vendor row; Apply EX073; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Would changing the proposed email to a call to one regular customer avoid the contact exclusion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; spoken communication falls outside a restriction on contact"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a regular customer is automatically inside the review"
+        },
+        {
+          "id": "c",
+          "text": "Yes; contacting one person is permitted even when contacting members is not"
+        },
+        {
+          "id": "d",
+          "text": "No; both channels are customer contact under the current page"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter explicitly classifies both an email to members and a call to one regular as contact. The exclusion is not limited to written messages or large recipient groups. Familiarity with the recipient supplies no exception either. The email and call rows of section 19.2 therefore both refuse the proposed action. EX073 requires neither sending nor calling, not a switch of channel. No conversation, recipient identity or reduced-volume exception is supplied.",
+      "source": "Chapter 19, section 19.1, proposed email and call followed by 'Either message is contact'; section 19.2 Worked example, email and call rows; Apply EX073 and rubric; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Sofia may inspect the loyalty settings. Does that inspection permission also let her notify members about the shorter form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; observing an allowed part of the app and contacting its users are different actions"
+        },
+        {
+          "id": "b",
+          "text": "Yes; knowing a fact about the form authorizes communicating it to members"
+        },
+        {
+          "id": "c",
+          "text": "Yes; every activity involving the loyalty app belongs to the same permission"
+        },
+        {
+          "id": "d",
+          "text": "No; the request proves that the earlier inspection itself was forbidden"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Chapter 2 permits specified inspection while separately excluding customer contact. Permission is tied to the action, not merely the system's name or Sofia's knowledge. An accurate observation does not extend the list of allowed actions. Conversely, declining contact does not invalidate the permitted inspection. Section 19.1 and EX073 retain that separation. EX014 asks for scope exclusions; its worked answer gives two examples rather than replacing the full signed scope with a shorter list.",
+      "source": "Chapter 19, section 19.1, unchanged signed page and shorter-form request; section 19.2 Worked example, email row; Chapter 2, section 2.1 Agreeing the scope and EX014; Apply EX073; Worked results (#worked-results; EX014 and EX073)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "What sequence from the delivery-phone precedent controls an action outside Sofia's current scope?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the action first and add written permission when reporting it"
+        },
+        {
+          "id": "b",
+          "text": "Treat discussion with the driver as permission for any later action"
+        },
+        {
+          "id": "c",
+          "text": "Obtain the relevant written addition before acting, not afterwards"
+        },
+        {
+          "id": "d",
+          "text": "Replace the signed page with Sofia's recollection of the owner's wishes"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The delivery-phone example required the owner to add that inspection in writing before Sofia looked. Chapter 19 applies the same ordering to a proposed call or email. Discussion and recollection are not substitutes for the written addition, and recording it afterwards would reverse the sequence. EX018 confirms how the earlier addition was obtained; EX073 confirms that no contact addition appears here. This identifies a prerequisite without claiming it has now been fulfilled or authorizing any message.",
+      "source": "Chapter 19, section 19.1, sentence requiring an addition before any call or mail; section 19.2 Worked example, written-addition row; Chapter 2, section 2.3 When asked to go further and EX018; Apply EX073; Worked results (#worked-results; EX018 and EX073)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Can the earlier written addition for inspecting the driver's phone be reused as permission to call a customer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; any signed addition removes all remaining exclusions"
+        },
+        {
+          "id": "b",
+          "text": "No; that addition covered its specified inspection, not a new customer-contact task"
+        },
+        {
+          "id": "c",
+          "text": "Yes; both activities involve a phone, so their authorization is identical"
+        },
+        {
+          "id": "d",
+          "text": "No; the earlier addition was never written according to the case"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The precedent demonstrates how scope can be changed; it does not grant a portable permission for unrelated actions. The earlier written addition exists, but its subject was examining the driver's phone for stored addresses. A customer call is another action, despite the shared word phone. Chapter 19 leaves that contact permission unwritten. EX018 and EX073 must therefore both remain true: the earlier inspection was added, while the present contact exclusion stands. No amendment is created or erased.",
+      "source": "Chapter 19, learning outcome 3; section 19.1, delivery-phone comparison and missing contact line; Chapter 2, section 2.3 and EX018; Apply EX073; Worked results (#worked-results; EX018 and EX073)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which handover entry accurately distinguishes the owner's request from Sofia's actual response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sofia emailed the members and is now preparing the follow-up call"
+        },
+        {
+          "id": "b",
+          "text": "Sofia called the regular but left the email unsent"
+        },
+        {
+          "id": "c",
+          "text": "No customer contact was proposed because none was authorized"
+        },
+        {
+          "id": "d",
+          "text": "The owner proposed email or a call; Sofia did not send an email or dial"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A proposal can exist without permission or execution. Section 19.1 records the requests and then states that Sofia does not send or dial. The first two alternatives manufacture operations; the third erases a documented request merely because it was refused. EX073 preserves all three states: contact was requested, the exclusion still applies, and neither operation occurs. This is a proposed description of the teaching file, not a new operational log entry or a claim about every communication Juniper has ever made.",
+      "source": "Chapter 19, section 19.1, owner's requests and Sofia's response; section 19.2 Worked example, email and call decisions; Apply EX073 and rubric; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "How should a suggestion to add a medicine name for an accurate customer message be handled in this exercise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do not compose that message; no medicine-bearing draft belongs to the supplied task"
+        },
+        {
+          "id": "b",
+          "text": "Insert a plausible medicine because the entire scenario is fictional"
+        },
+        {
+          "id": "c",
+          "text": "Use a medicine from a real customer's record and leave out the name"
+        },
+        {
+          "id": "d",
+          "text": "Prepare the message now because only its later delivery could cross a boundary"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The final sentence of section 19.1 declines the suggested medicine-bearing draft, and the synthetic-case note supplies no message text. Inventing a medicine would fabricate detail; extracting one from a real record would introduce an excluded lookup. Treating a draft as automatically acceptable also contradicts this exercise's explicit boundary. EX073 asks what Sofia does not send and which permission is absent, not for message composition. This is not a universal legal claim that all unsent drafts are prohibited.",
+      "source": "Chapter 19, section 19.1, final sentence on the proposed medicine detail; section 19.2 Synthetic case note; Apply EX073, required decision rather than message composition; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Does refusing today's proposed customer contact mean members must never be told about the app changes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the current exclusion permanently binds every future communicator"
+        },
+        {
+          "id": "b",
+          "text": "Yes; declining a call establishes a decision to conceal the changes"
+        },
+        {
+          "id": "c",
+          "text": "No; the current boundary does not settle future communication or supply future permission"
+        },
+        {
+          "id": "d",
+          "text": "No; it guarantees that Sofia will be allowed to notify them later"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits expressly rejects turning this refusal into permanent silence. That limit does not provide a future authorization, promise a later message or decide who would communicate. A later written addition would be a new fact, and the present lesson supplies none. EX073 therefore remains a decision under the current page, not an irreversible ban or a guaranteed future approval. No communication schedule, concealment decision or new permitted sender is invented.",
+      "source": "Chapter 19, Errors and limits, all four sentences; learning outcome 3; Apply EX073, unchanged exclusion; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A worksheet asks which regular customer Sofia should call. What response preserves the facts and the task boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supply an invented customer name because a fictional case needs a complete recipient field"
+        },
+        {
+          "id": "b",
+          "text": "Leave the customer unnamed and decline the call; no recipient needs to be identified"
+        },
+        {
+          "id": "c",
+          "text": "Inspect delivery records to identify the regular before deciding whether to call"
+        },
+        {
+          "id": "d",
+          "text": "Conclude that no call was requested because the chapter supplies no name"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The request concerns one regular, but the synthetic-case note names no customer and composes no message. Missing identity does not erase the request; it also does not justify a lookup or invention to fill the worksheet. The signed contact exclusion already resolves Sofia's action. EX073 is answerable without identifying anyone. Keep the recipient unspecified and the call refused rather than adding a customer, accessing records or turning an incomplete worksheet field into permission to act.",
+      "source": "Chapter 19, section 19.1, request concerning one regular; section 19.2 Synthetic case note and call row; Apply EX073, inputs and decision; Worked results (#worked-results; EX073)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Would a useful purpose and a very brief update, by themselves, override Sofia's signed contact exclusion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; minimising the words in an update automatically grants permission to send it"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a helpful purpose turns every requested use of customer details into an authorized one"
+        },
+        {
+          "id": "c",
+          "text": "No; the GDPR universally forbids all organisations from contacting customers"
+        },
+        {
+          "id": "d",
+          "text": "No; general purpose and minimisation principles do not amend her task-specific authority"
+        }
+      ],
+      "correct": "d",
+      "explanation": "GDPR Article 5(1)(b)-(c) addresses specified purposes, compatible use and data limited to what those purposes require. It does not appoint Sofia as sender or replace the case's signed scope. A short or helpful update therefore supplies no missing contact permission; nor do these principles impose a universal ban on customer communication. Section 19.1 and EX073 supply the actual refusal. No lawful basis, notification duty, scope amendment or conclusion of legal compliance is selected for synthetic Juniper.",
+      "source": "Chapter 19, section 19.1, contact excluded despite the explanatory purpose; section 19.2 Worked example, email and call rows; Apply EX073; Worked results (#worked-results; EX073). General context only: GDPR Article 5(1)(b)-(c), https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+    }
+  ]
+}
