@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "human-factors-policy",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "123a2dafc279a3defff90da44ae20a13e091fee2dd798852fe6c4c5caafc28ee",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Ruth traces a donor address from a paper form. Which map entry follows the chapter without confusing another system's purpose?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The rota app stores donor addresses so the treasurer can authorise payments"
+        },
+        {
+          "id": "b",
+          "text": "The donations spreadsheet receives donor details; the rota app holds volunteer phone numbers"
+        },
+        {
+          "id": "c",
+          "text": "The online bank account replaces the spreadsheet as the donor-address register"
+        },
+        {
+          "id": "d",
+          "text": "Shared social-media posts are the recorded destination for donor details from paper"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Sections 3.1 and 3.2 place donor names and addresses in the donations spreadsheet, with volunteers copying details from paper forms. The rota app holds volunteer phone numbers; the bank can make payments. Shared email and social-media pages complete the five-system map, but the chapter does not make either a donor register. The alternatives mix up data locations, capabilities and handovers. EX027 supports following the recorded flow rather than moving data to a more familiar system. No donor identity, copied record or new transfer is added to fictional Riverbend.",
+      "source": "Chapter 3, sections 3.1 Mapping systems and 3.2 Data and people, paper-to-spreadsheet flow; Exercises EX027 Data locations; Worked results (#worked-results; EX027)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "What does the laboratory line 'treasurer: 5 of 5' measure, rather than prove about security?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Five people jointly approve payments whenever the treasurer is away"
+        },
+        {
+          "id": "b",
+          "text": "All five systems have passed a security test for that role"
+        },
+        {
+          "id": "c",
+          "text": "The role's set contains five systems; the print is not a needs or safety assessment"
+        },
+        {
+          "id": "d",
+          "text": "Five completed fixes have removed every dependency on the treasurer"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The loop prints len(s), the number of systems in each role's set, against the fixed five-system universe. The original lines are treasurer 5 of 5, coordinator 3 of 5, warehouse volunteer 1 of 5 and staff (rota needed) 1 of 5. EX028 describes current access in the fixture, not five people, completed improvements or security test results. Access counts alone do not decide what access a role needs. The program neither queries live accounts nor grants permissions, and its original inputs and four output lines remain unchanged.",
+      "source": "Chapter 3, section 3.2 Data and people; Lab - Counting systems each role can reach, access dictionary, len(s) and verified output; Exercises EX028 Treasurer access; Worked results (#worked-results; EX028)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Warehouse volunteers and staff needing the rota both print '1 of 5'. Why do those equal counts not resolve the rota gap?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Their sets differ: warehouse has spreadsheet, while the staff row has email but needs rota access"
+        },
+        {
+          "id": "b",
+          "text": "One system per role is the target, so both roles already have everything required"
+        },
+        {
+          "id": "c",
+          "text": "Equal counts mean both roles can use the rota even though their labels differ"
+        },
+        {
+          "id": "d",
+          "text": "Both roles must receive the treasurer's full set to make the counts equal to five"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The warehouse set contains spreadsheet; the staff set contains email, not rota. EX038 identifies missing access needed for work, not a numerical target of one or five. Matching totals therefore conceal different permissions, and copying the treasurer's whole set would add unrelated access rather than address the specific gap. NIST CSF 2.0 PR.AA-05 offers general context for managing and reviewing permissions with least privilege; it does not grant Riverbend access or assess these accounts. The gap remains a finding, with no new grant, changed dictionary or second run invented.",
+      "source": "Chapter 3, sections 3.2 Data and people and 3.5 Checking the fixes, read with Errors and limits; Lab, warehouse volunteer and staff (rota needed) sets; Exercises EX038 Rota access gap; Worked results (#worked-results; EX038). General context only: NIST CSF 2.0, Appendix A, PR.AA-05, printed page 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why can invoices waiting for the treasurer create a security risk even though the coordinator can forward them by email?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Forwarding an invoice already authorises payment, so delay proves a bank outage"
+        },
+        {
+          "id": "b",
+          "text": "The waiting invoices establish that an attacker has already changed the bank details"
+        },
+        {
+          "id": "c",
+          "text": "The coordinator's three-system access automatically includes payment approval as a fallback"
+        },
+        {
+          "id": "d",
+          "text": "Forwarding is not approval; reliance on one approver creates pressure that urgent fakes could exploit"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 3.2 separates the coordinator's email handover from the treasurer's approval. Section 3.3 and EX029 make sole approval the dependency: absence can leave invoices waiting, and EX030 explains how urgency could then influence decisions. The access count does not appoint an approver. Nor does a queue demonstrate a bank failure, altered details or an observed fraud. The scenario identifies a possible route to harm under pressure, without inventing an absence, a particular invoice, a payment or an incident at Riverbend.",
+      "source": "Chapter 3, section 3.2 Data and people, invoice handover; section 3.3 Single points of failure, payment dependency and pressure; Exercises EX029 Payment single point and EX030 Pressure link; Worked results (#worked-results; EX029, EX030)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which part of Riverbend's payment fix removes sole-person dependence without abandoning the check on changed bank details?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Let any available volunteer pay when an invoice is marked urgent"
+        },
+        {
+          "id": "b",
+          "text": "Use the authorised second trustee while retaining the callback for any bank change"
+        },
+        {
+          "id": "c",
+          "text": "Let the second trustee skip callbacks once their account can reach the bank"
+        },
+        {
+          "id": "d",
+          "text": "Give the coordinator the treasurer's shared credentials instead of assigning another approver"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 3.4 and EX033 combine another authorised trustee with callbacks for bank changes. Availability and verification answer different problems: another person can handle approval, but that authority does not authenticate a change request. Urgency, general volunteer availability and shared credentials are not the selected fix. Errors and limits also say second approvers need training. Section 3.5 describes asking that trustee to approve a small test payment with a callback; it supplies no amount, new banking details or general approval for future requests. The question adds no transaction or permission.",
+      "source": "Chapter 3, sections 3.3 Single points of failure, 3.4 Simple fixes and 3.5 Checking the fixes, second-trustee test-payment request; Errors and limits; Exercises EX033 Payment fix; Worked results (#worked-results; EX033)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Only one volunteer knows the social-media password. Which design addresses access protection and recovery without preserving that same dependency?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Individual logins and two-step verification, with recovery details held by the manager"
+        },
+        {
+          "id": "b",
+          "text": "A stronger shared password known only to the same volunteer"
+        },
+        {
+          "id": "c",
+          "text": "Individual logins while leaving all recovery knowledge with the original password holder"
+        },
+        {
+          "id": "d",
+          "text": "Two-step verification on the shared login, with no other recovery arrangement"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX031 identifies dependence on one person's knowledge, not merely password strength. Section 3.4 and EX034 combine individual logins, two-step verification and recovery details under the manager's responsibility. A stronger secret alone leaves the recovery problem; adding individual logins or an extra verification step without the recovery arrangement omits part of the chosen design. The chapter describes these fixes, but does not identify a specific authenticator or show every recovery path being tested. No password, volunteer name, universal resistance to account takeover or destruction of an old credential is asserted.",
+      "source": "Chapter 3, section 3.3 Single points of failure, social-media dependency; section 3.4 Simple fixes, login and recovery arrangement; Exercises EX031 Social media risk and EX034 Social media fix; Worked results (#worked-results; EX031, EX034)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "After the bank-alert fix and its test, which statement preserves both the routing change and the evidence limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The shared mailbox replaced the personal destination, and all personal copies were deleted"
+        },
+        {
+          "id": "b",
+          "text": "Changing the recipient setting proves that every later bank alert will be delivered"
+        },
+        {
+          "id": "c",
+          "text": "The shared mailbox received a test alert; the treasurer remains a destination, without a guarantee for later alerts"
+        },
+        {
+          "id": "d",
+          "text": "The test proves that every recipient read the alert and completed incident handling"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Originally alerts went only to the treasurer's personal email. Section 3.4 adds a shared charity mailbox as well as the treasurer, not instead of that destination. Section 3.5 and EX036 supply the bounded observation that a test alert reached the shared mailbox. Neither a configuration statement nor one arrival proves future delivery, reading or response. EX032 preserves the original dependency so the change can be understood. No second alert, deleted personal copy, completed investigation or future performance is added to the synthetic case.",
+      "source": "Chapter 3, sections 3.3 Single points of failure, original alert destination; 3.4 Simple fixes, additional mailbox; 3.5 Checking the fixes, observed test alert; Exercises EX032 Bank alerts and EX036 Fix checks; Worked results (#worked-results; EX032, EX036)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A reviewer proposes keeping every available donor detail for possible later projects. Which boundary follows the chapter's spreadsheet fix?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep everything because a small charity cannot create privacy risk"
+        },
+        {
+          "id": "b",
+          "text": "Move surplus fields to the rota app so they no longer count as spreadsheet data"
+        },
+        {
+          "id": "c",
+          "text": "Collect all fields first and treat a promise to delete later as the same limitation"
+        },
+        {
+          "id": "d",
+          "text": "Limit donor data to what the stated thank-you-letter task needs"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 3.4 and EX035 limit data to the thank-you-letter purpose. Keeping an unrestricted collection for unspecified projects defeats that boundary; transferring surplus fields to another system changes their location rather than their necessity. A possible later deletion does not equal the stated limit on the data held. Small size also supplies no exception in this case. The question applies Riverbend's described decision without inventing a field inventory, new purpose, retention period, completed deletion or legal compliance assessment. It does not turn the fictional charity into empirical evidence.",
+      "source": "Chapter 3, section 3.1 Mapping systems, donations spreadsheet; section 3.4 Simple fixes, donor-data limit; Worked example; Exercises EX027 Data locations and EX035 Donor data limit; Worked results (#worked-results; EX027, EX035)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Ruth checks two-step verification using her own social-media login. What can that observation support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every staff account now has identical protection and a tested recovery route"
+        },
+        {
+          "id": "b",
+          "text": "The verification worked in that account's check, not proof of complete account migration or future immunity"
+        },
+        {
+          "id": "c",
+          "text": "The original shared password was destroyed when Ruth successfully signed in"
+        },
+        {
+          "id": "d",
+          "text": "The check is only a proposed fix, so it supplies no observation at all"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 3.5 describes an actual check within the synthetic narrative: Ruth logs in with her own account to confirm two-step verification. Dismissing it as only a proposal loses observed evidence, but extending it to every account or every future attack exceeds its scope. The chapter does not provide an old-password destruction record or a complete migration audit. EX034 names the intended account safeguards and EX037 explains why checking matters. Preserve the one-account observation without adding credentials, another login, a recovery test or an assurance-level claim.",
+      "source": "Chapter 3, section 3.4 Simple fixes, social-media arrangement; section 3.5 Checking the fixes, Ruth's own login; Exercises EX034 Social media fix and EX037 Unchecked fixes; Worked results (#worked-results; EX034, EX037)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Why retain dated checks alongside the list of fixes rather than mark the whole programme effective from its design?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Checks distinguish intended changes from what was actually examined and can reveal quiet failures"
+        },
+        {
+          "id": "b",
+          "text": "An approved design proves delivery, so dates merely decorate the record"
+        },
+        {
+          "id": "c",
+          "text": "One successful check certifies all five systems indefinitely"
+        },
+        {
+          "id": "d",
+          "text": "A dated test request alone proves a payment settled and all callbacks work"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 3.5 links checking to changes that might otherwise fail quietly. It describes the second-trustee test-payment request with a callback, receipt of a test bank alert and Ruth's own login check, with dates recorded. Keep each record at that level: a request is not independent proof of settlement, and one observation is not a complete programme assessment. NIST CSF 2.0 ID.IM-01 provides general context for learning from evaluations, not evidence about Riverbend. EX037 supports follow-through without inventing dates, transaction receipts, another test or measured future effectiveness.",
+      "source": "Chapter 3, section 3.5 Checking the fixes, three checks and dated records; Worked example; Errors and limits; Exercises EX033 Payment fix, EX036 Fix checks and EX037 Unchecked fixes; Worked results (#worked-results; EX033, EX036, EX037). General context only: NIST CSF 2.0, Appendix A, ID.IM-01, printed page 19, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
