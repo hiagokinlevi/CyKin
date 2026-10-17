@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 14,
+  "source_anchor": "ch-14",
+  "source_sha256": "bc5e04b7e0a671228a630442b0563bb174f6bbe3f83f60b16f945b6cdab27b23",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which handover description preserves the documented origin of the teaching screenshot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A real customer's screen was photographed and later given a fictitious label"
+        },
+        {
+          "id": "b",
+          "text": "The pharmacist created a test customer, whose screen became the example"
+        },
+        {
+          "id": "c",
+          "text": "Sofia selected a real record and concealed its name before using it"
+        },
+        {
+          "id": "d",
+          "text": "An example downloaded from an outside source replaced the pharmacy screen"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 14.1 records the creation of a test customer by the pharmacist. It does not describe relabelling a real record, concealing a real customer's name or downloading an example. Those alternatives invent different origins and could disguise the live-record access that the signed page excludes. Preserve how the example was produced rather than inferring a process from its fictional label. EX068 keeps this test screenshot distinct from a real customer's screen. Juniper and its teaching record are synthetic; no new screenshot is created here.",
+      "source": "Chapter 14, section 14.1 The invention limits the record. It does not change the phone., opening sentence; section 14.2 Worked example, real-screen row; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which storage choice matches the current review arrangement for the test screenshot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep a temporary copy on a personal phone until the presentation is finished"
+        },
+        {
+          "id": "b",
+          "text": "Move it into a personal slide account because its intended use is educational"
+        },
+        {
+          "id": "c",
+          "text": "Leave it in the encrypted folder on the shop computer"
+        },
+        {
+          "id": "d",
+          "text": "Replace the shop copy with a portable copy for work during the journey"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The first row of section 14.2 accepts leaving the screenshot in the encrypted shop folder. The other choices substitute destinations or movements that the source does not authorize. A temporary duration or an educational purpose does not change the selected location. EX068 retains the shop folder and refuses the personal-phone copy. This is a positive decision about where the existing example remains, not an instruction to create a new copy, a claim that a slide has been completed or approval of another service.",
+      "source": "Chapter 14, learning outcome 1; section 14.1, storage location; section 14.2 Worked example, first two rows; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A colleague argues that an invented customer makes the phone restriction irrelevant. Which distinction answers that argument?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The kind of record and the authorized location are separate questions"
+        },
+        {
+          "id": "b",
+          "text": "Invented customers give staff unrestricted rights to move all review material"
+        },
+        {
+          "id": "c",
+          "text": "The restriction applies only after a real customer has been identified"
+        },
+        {
+          "id": "d",
+          "text": "Calling the customer invented proves the screenshot was never created"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The test customer limits the example to an invented record; it does not change how this review stores its material. Section 14.1 explicitly keeps the folder fixed despite the invention. A restriction can therefore remain applicable without asserting that this particular picture identifies a real patient. The fictional status neither grants unrestricted movement nor negates the documented screenshot. EX068 refuses the phone copy on the existing review boundary. This is a case-specific distinction, not a legal classification of every possible synthetic dataset.",
+      "source": "Chapter 14, section 14.1, sentences linking the invented customer to the unchanged folder; section 14.2 Worked example, phone row; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The proposed title asks for the test customer's name. What should the learner do with this missing detail?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a plausible name and treat it as the one the pharmacist used"
+        },
+        {
+          "id": "b",
+          "text": "Recover a real customer name from a live record to make the title accurate"
+        },
+        {
+          "id": "c",
+          "text": "Conclude that the test record had no name because the lesson omits it"
+        },
+        {
+          "id": "d",
+          "text": "Describe a test-customer example without supplying a name absent from the file"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The source says an invented name was used but does not state what it was. Absence from the lesson is not proof that the test record lacked a name. Equally, it does not license the learner to invent a value or consult a real record to fill the gap. The third worked-example row and EX068 require leaving that name out. The decision preserves both facts: a named test record was created, and its name is unavailable in this teaching file. No title or identity is presented as already produced.",
+      "source": "Chapter 14, section 14.1, name absent from the file; section 14.2 Worked example, title row and Synthetic case note; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Would photographing a live customer screen become acceptable merely by saving it in the encrypted shop folder?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; using the correct folder authorizes any source material placed there"
+        },
+        {
+          "id": "b",
+          "text": "No; the storage location does not remove the exclusion on real customer screens"
+        },
+        {
+          "id": "c",
+          "text": "Yes; replacing the test example expands the signed page automatically"
+        },
+        {
+          "id": "d",
+          "text": "No; the chapter instead requires sending real screenshots to a personal phone"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Source selection and destination are separate checks. A permitted storage location does not authorize obtaining material that the signed page excludes. The final row of section 14.2 refuses photographing a live customer screen, and the worked answer repeats that boundary. The test example is not a gateway to wider access, and no alternative personal-phone route is supplied. This hypothetical checks the proposed substitution without performing it. It adds no real customer, photograph, scope amendment or legal conclusion.",
+      "source": "Chapter 14, section 14.2 Worked example, live-screen row; Apply EX068 and rubric, real-screen exclusion; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague promises to erase a personal-phone copy when the review ends. Does that promise authorize copying now?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; eventual deletion makes every temporary destination part of the review"
+        },
+        {
+          "id": "b",
+          "text": "Yes; planned cleanup proves that no additional copy would actually be created"
+        },
+        {
+          "id": "c",
+          "text": "No; a later cleanup step does not authorize the currently refused copy"
+        },
+        {
+          "id": "d",
+          "text": "No; the existence of cleanup means the original screenshot must never be used"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 14.1 expressly rejects using end-of-review cleanup as a reason to make an extra copy now. A promise about a later operation does not approve the present operation or prevent the copy from being created. Nor does it cancel the accepted use of the existing test example in its chosen location. EX068 still refuses the phone copy. The promise is an assessment scenario, not a commitment or deletion event added to Juniper; no cleanup date or newly approved destination is supplied.",
+      "source": "Chapter 14, section 14.1, final two sentences; section 14.2 Worked example, shop-folder and phone rows; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "What does the refusal establish about whether the encrypted shop folder has already been emptied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing about completed clearing; the lesson supplies no cleanup date or result"
+        },
+        {
+          "id": "b",
+          "text": "The folder is empty because declining a copy automatically removes the original"
+        },
+        {
+          "id": "c",
+          "text": "The folder was cleared at review end because cleanup is mentioned as a step"
+        },
+        {
+          "id": "d",
+          "text": "The folder can never be cleared because the screenshot must remain there forever"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Errors and limits separates refusal from clearing the source folder and explicitly supplies no clearing date. A decision not to copy is not a deletion operation or evidence of one. Mentioning an end-of-review step does not establish that the review has ended or that cleanup occurred. The same paragraph does not authorize indefinite storage either. EX068 keeps the location rule without turning it into a statement of completed cleanup or permanent retention. No inspection of current folder contents is invented.",
+      "source": "Chapter 14, Errors and limits, both sentences; section 14.1, later clearing of stray copies; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A draft handover says 'the screenshot was sent to Sofia's phone'. Which correction matches the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the sentence because a request proves that the recipient received the file"
+        },
+        {
+          "id": "b",
+          "text": "Record a successful transfer followed by deletion to explain why Sofia refused"
+        },
+        {
+          "id": "c",
+          "text": "Replace it with a claim that nobody has ever made any copy of the screenshot"
+        },
+        {
+          "id": "d",
+          "text": "Record the request and refusal, without claiming a completed transfer"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 14.1 gives a request followed by a refusal, not a transfer receipt. The narrative also establishes the earlier screenshot in the shop folder, so a universal claim that no copy ever existed would overreach. Adding a transfer-and-deletion sequence would invent two operations. The corrected account records only the proposed destination and Sofia's decision. EX068 supports that refusal. This edits a hypothetical handover statement, not the manuscript or an operational log, and introduces no device event or result.",
+      "source": "Chapter 14, section 14.1, colleague request and Sofia refusing; section 14.2 Worked example, phone row; Apply EX068; Worked results (#worked-results; EX068)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "What does the description of an encrypted shop folder support when discussing NIST SC-28?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A description of protection for stored information, not proof of assessed compliance"
+        },
+        {
+          "id": "b",
+          "text": "Proof that every device and every later transfer implements the same protection"
+        },
+        {
+          "id": "c",
+          "text": "Proof that encryption grants permission to use any destination for the screenshot"
+        },
+        {
+          "id": "d",
+          "text": "A verified choice of algorithm and keys, even though neither appears in the lesson"
+        }
+      ],
+      "correct": "a",
+      "explanation": "SC-28 addresses specified information at rest; SC-28(1) adds cryptographic protection. The folder description is relevant to that topic, but the narrative contains no implementation assessment, algorithm or key-management evidence. It establishes neither protection of every later transfer nor permission to choose another device. Section 14.1 and EX068 supply the actual location decision. These NIST controls provide general context, not a claim that Juniper implemented or passed them. Protecting stored data and authorizing its movement remain separate questions.",
+      "source": "Chapter 14, section 14.1, encrypted folder on the shop computer; section 14.2 Worked example, first row; Apply EX068; Worked results (#worked-results; EX068). General context only: NIST SP 800-53 Rev. 5, SC-28 and SC-28(1), pp. 316-317, https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does protection in the shop folder automatically cover carrying a copy outside the shop for work on the way home?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; protection at the source remains sufficient wherever a copy is carried"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a useful presentation purpose makes media transport authorized without review"
+        },
+        {
+          "id": "c",
+          "text": "No; protection at rest and authorized, controlled media transport are separate matters"
+        },
+        {
+          "id": "d",
+          "text": "No; MP-5 instead imposes a universal ban on all movement of every kind of media"
+        }
+      ],
+      "correct": "c",
+      "explanation": "MP-5 addresses protection, accountability, documentation and authorized personnel for system media transported outside controlled areas. It is not blanket permission to move a copy, nor a universal transport ban. Protection at the source does not by itself establish protection or authorization for the proposed journey. Juniper's own rule still refuses the personal-phone copy in EX068. This is contextual comparison with media carriage, not an assertion about a network-transfer method. No copy, journey with the data, transport record or NIST compliance result is invented.",
+      "source": "Chapter 14, section 14.1, proposed work on the way home and personal-phone exclusion; section 14.2 Worked example, phone row; Apply EX068; Worked results (#worked-results; EX068). General media-transport context only: NIST SP 800-53 Rev. 5, MP-5(a)-(d) and Discussion, pp. 173-174, https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+    }
+  ]
+}
