@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 15,
+  "source_anchor": "ch-15",
+  "source_sha256": "8ccbf8491361f79315a1ea6910bb1a6d21b040b11fcf26cb68a5b238e8aab5bc",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which feature makes the points voucher a different proposal from the refused insulin message?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner has asked again, so the original message has acquired permission"
+        },
+        {
+          "id": "b",
+          "text": "The proposed trigger is a points threshold rather than a named-medicine purchase"
+        },
+        {
+          "id": "c",
+          "text": "The same supplier would implement it, so its purpose is already approved"
+        },
+        {
+          "id": "d",
+          "text": "The new wording proves that all underlying data have been deleted"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 15.1 changes the proposed trigger from buying insulin to crossing a points threshold, with no medicine named. That is a different proposed use, not a new authorization created by repetition or by using the same supplier. Nothing says underlying data were deleted. The second row of the worked example therefore sends the points proposal back through the assessment flow. EX069 preserves the distinction without approving either message. Juniper is synthetic; no threshold value, implementation, deletion or message delivery is added.",
+      "source": "Chapter 15, section 15.1 A different message is not an approved message, comparison of triggers; section 15.2 Worked example, first two rows; Apply EX069; Worked results (#worked-results; EX069)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why does the existing membership agreement not justify switching on the insulin-triggered text in this case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner's new suggestion retrospectively supplies the missing health-purpose consent"
+        },
+        {
+          "id": "b",
+          "text": "Being a loyalty member automatically authorizes every use of medicine purchases"
+        },
+        {
+          "id": "c",
+          "text": "Mentioning insulin means a voucher has already been sent and needs no prior assessment"
+        },
+        {
+          "id": "d",
+          "text": "The agreement covers points, not the medicine-triggered purpose whose explicit consent is missing"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 15.1 and Chapter 3's insulin example distinguish points membership from a message triggered by health data. The case records no explicit consent for that purpose, so the insulin switch stays off. A proposal does not supply consent or prove a send. GDPR Article 9(1)-(2)(a) provides general context for health data and purpose-specific explicit consent; Article 9 contains other conditions too. This answer neither selects another condition nor claims consent is the sole condition in every setting. EX069 retains the original refusal, without diagnosing a member.",
+      "source": "Chapter 15, section 15.1, opening insulin account; section 15.2 Worked example, insulin row; Chapter 3, Worked example - a text when insulin is sold; Apply EX069; Worked results (#worked-results; EX069). General legal context only: GDPR Article 9(1), 9(2)(a), https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    },
+    {
+      "id": "Q03",
+      "prompt": "Where should Sofia begin assessing the points-only proposal rather than borrowing a decision from the insulin refusal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Start with the purpose and its recorded basis, then follow the remaining checks"
+        },
+        {
+          "id": "b",
+          "text": "Skip to activation because no medicine appears in the proposed text"
+        },
+        {
+          "id": "c",
+          "text": "Start by choosing a points number, which substitutes for reviewing the purpose"
+        },
+        {
+          "id": "d",
+          "text": "Reuse the insulin decision as approval because the proposed message differs"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The chapter sends the different proposal through Chapter 3's flow from the beginning, not merely through whichever check seems most convenient. That flow first asks about the purpose and its basis before considering health data, the recipient and retention. A trigger value cannot replace those decisions. GDPR Article 5(1)(b) supplies general purpose-limitation context, not a new basis for Juniper. The actual Chapter 15 file supplies no new basis line. EX069 requires restarting the review without activating the proposal or assuming that every new purpose needs a different statutory basis.",
+      "source": "Chapter 15, learning outcome 2; section 15.1, return to the beginning of the flow; section 15.2 Worked example, points row; Chapter 3, Decision flow - the owner proposes one new use; Apply EX069; Worked results (#worked-results; EX069). General context only: GDPR Article 5(1)(b), https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Can the agreement with loyalty members fill the missing Article 28 agreement with the loyalty supplier?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; agreements mentioning the same app are interchangeable regardless of their parties"
+        },
+        {
+          "id": "b",
+          "text": "Yes; ongoing negotiations demonstrate that the supplier's terms already bind it"
+        },
+        {
+          "id": "c",
+          "text": "No; the member relationship and the supplier's processing obligations are different matters"
+        },
+        {
+          "id": "d",
+          "text": "No; Article 28 instead proves the pharmacy has no agreement with any member"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter distinguishes the members' points arrangement from the loyalty firm's unfinished processing agreement. One cannot be used as evidence that the other is complete. Article 28(3) requires a binding contract or other legal act for processor activity; paragraph 9 permits written electronic form. Mere negotiation is not evidence that the required arrangement exists here, but the case's word 'signed' is not a universal demand for an ink signature. EX069 leaves the supplier gap open. No contract is executed, member relationship erased or compliance conclusion reached.",
+      "source": "Chapter 15, section 15.1, members' contract versus loyalty firm's contract; Apply EX069 and rubric, unsigned Article 28 agreement; Chapter 3, section 3.3 Vendors and dependencies; Worked results (#worked-results; EX069). General distinction only: GDPR Article 28(3), 28(9), https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Hypothetically, the supplier agreement is completed but the loyalty retention row is still blank. Does that alone clear activation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; finishing any one prerequisite clears all remaining conditions"
+        },
+        {
+          "id": "b",
+          "text": "No; the unresolved retention decision remains a separate blocker"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the agreement automatically selects a retention period for the blank row"
+        },
+        {
+          "id": "d",
+          "text": "No; the hypothetical proves the supplier agreement cannot ever be completed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 15.1 says either open gap stops a new flow. Resolving the contract alone would not resolve an expressly still-blank retention row, nor establish the proposal's other missing conditions. The correct reasoning checks each prerequisite rather than treating progress on one as permission for the whole activity. The hypothetical does not contradict the possibility of a future agreement. At the actual EX069 checkpoint, both gaps remain open. No signature, period, completed negotiation or additional approval is introduced into Juniper's narrative.",
+      "source": "Chapter 15, section 15.1, 'Either open gap stops a new flow'; learning outcome 3; Errors and limits, missing conditions; Apply EX069; Worked results (#worked-results; EX069)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "What can be inferred from the loyalty retention row having no written end?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keeping loyalty data indefinitely has been explicitly approved"
+        },
+        {
+          "id": "b",
+          "text": "The period for another data type automatically supplies the missing end"
+        },
+        {
+          "id": "c",
+          "text": "Sofia may choose a convenient period and record it as the owner's decision"
+        },
+        {
+          "id": "d",
+          "text": "The decision remains unresolved; neither unlimited retention nor a guessed period is authorized"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A missing entry is a gap, not an instruction to retain forever or permission to borrow a period. Section 15.1 and Errors and limits leave the loyalty period unwritten. GDPR Article 5(1)(e) relates identifiable storage to necessity for its purposes, with specified exceptions; it supplies no numeric period for this case. EX069 keeps the proposal off while this condition is unresolved. The answer does not set a deadline, claim records were erased or turn the classroom file into a legal assessment of a real pharmacy.",
+      "source": "Chapter 15, section 15.1, loyalty retention row; Errors and limits, period not written; Apply EX069; Worked results (#worked-results; EX069). General storage-limitation context only: GDPR Article 5(1)(e), https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A handover calls the owner's points request an approved launch. Which replacement statement matches the current record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A points-based proposal was raised; approval is not established and it must not be switched on here"
+        },
+        {
+          "id": "b",
+          "text": "The owner requested a voucher, so approval and a successful launch are both established"
+        },
+        {
+          "id": "c",
+          "text": "No points proposal exists because Sofia has not approved it"
+        },
+        {
+          "id": "d",
+          "text": "The recorded refusal proves a campaign was launched and then withdrawn"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 15.1 records the owner's proposal while explicitly withholding approval; the worked example says not to switch it on here. A request can exist without approval, and neither its existence nor its refusal proves operational execution. The handover must preserve those separate states rather than erase the request or invent launch and rollback. EX069 asks what kind of proposal this is and what not to activate. No running campaign, delivery result, configuration change or operational test is supplied by the source.",
+      "source": "Chapter 15, section 15.1, owner's request and approval not recorded; section 15.2 Worked example, points row; Apply EX069, proposal and activation decision; Worked results (#worked-results; EX069)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "How should the suggested points number in the worked table be treated when completing the proposal note?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As an approved threshold because appearing in a table makes it part of the configuration"
+        },
+        {
+          "id": "b",
+          "text": "As a measured customer balance from which the trigger must be derived"
+        },
+        {
+          "id": "c",
+          "text": "As a rejected suggestion; the chapter chooses no actual threshold value"
+        },
+        {
+          "id": "d",
+          "text": "As a default that may be activated before the basis and supplier checks"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The final worked-example row shows someone trying to make the note look decided by inserting a number. Its decision column rejects that move, and the synthetic-case note confirms that no threshold is chosen. A rejected illustration is neither a measured balance nor an implemented default. EX069 remains answerable without a numeric trigger: it concerns assessment and the instruction not to activate. Preserve the missing parameter rather than promoting an example into a decision, collecting a balance or adding another number to the case.",
+      "source": "Chapter 15, section 15.1, no threshold written; section 15.2 Worked example, final row and Synthetic case note; Apply EX069; Worked results (#worked-results; EX069)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Does keeping this points proposal off settle the acceptability of every future points message?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the insulin refusal creates an irreversible ban on all points-based offers"
+        },
+        {
+          "id": "b",
+          "text": "No; the hold leaves future assessment possible without approving any later message"
+        },
+        {
+          "id": "c",
+          "text": "Yes; once the current proposal is held, all differently worded messages become allowed"
+        },
+        {
+          "id": "d",
+          "text": "No; future approval is guaranteed as soon as another request is made"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Errors and limits expressly rejects a permanent ban on every points message. That does not create the opposite rule of automatic permission or guarantee that a later request will pass. A later decision would need its actual supporting conditions; none are supplied here. The current refusal of insulin and the hold on the new proposal remain intact. EX069 therefore controls this checkpoint, not all conceivable future campaigns. The answer invents no next proposal, future approval, signature, consent or scheduled activation.",
+      "source": "Chapter 15, Errors and limits, first sentence and conditions for a later record; section 15.2 Worked example, rejected automatic-approval leap; Apply EX069; Worked results (#worked-results; EX069)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "If a future file contained the missing basis, contract and period, would those documents alone prove vouchers had been sent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; documenting prerequisites is the same operation as sending the messages"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a written basis is a delivery receipt for the proposed campaign"
+        },
+        {
+          "id": "c",
+          "text": "No; documents can never contribute evidence to any approval decision"
+        },
+        {
+          "id": "d",
+          "text": "No; supporting documents, an approval decision and evidence of actual sending are distinct"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter identifies missing documentation needed before a later decision can be recorded. It does not equate that documentation with activation or delivered messages. Supporting documents may inform a decision, so declaring them useless is also wrong. This conditional question distinguishes prerequisites, approval and execution; it does not claim the prerequisites would settle every legal question or automatically authorize the flow. In the actual EX069 file they remain missing, the proposal is not approved, and no new send or operational outcome is recorded.",
+      "source": "Chapter 15, section 15.1, no approval or new basis line; section 15.2 Worked example, 'Do not switch it on here'; Errors and limits, later documentation distinguished from current state; Apply EX069; Worked results (#worked-results; EX069)."
+    }
+  ]
+}
