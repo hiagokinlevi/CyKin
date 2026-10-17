@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-architecture",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "a133da4d9b6c0144feee6d4388bc1cbaca2a32acff8bec2869f275bb384a1552",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A product shortlist looks reasonable item by item. What must Leah examine before treating it as Saltmarsh's security architecture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether every product has a security label, regardless of how people use it"
+        },
+        {
+          "id": "b",
+          "text": "Whether the list contains enough products for the fictional membership count"
+        },
+        {
+          "id": "c",
+          "text": "How people, processes and technology work together, including access, data and recovery decisions"
+        },
+        {
+          "id": "d",
+          "text": "Whether each supplier can make its own access decisions without reference to the others"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Sections 1.1 and 1.2 require a coherent arrangement, not a catalogue of individually attractive products. EX001 defines the whole; EX002 and EX011 explain why isolated choices can conflict. Product labels and the fictional membership count do not evaluate those interactions, while delegating each decision independently preserves the problem. Anderson's framework considers how mechanisms work together and includes people within the system boundary. This supports evaluating the proposed combination, not claiming that Saltmarsh bought products, suffered a failure or passed an assessment. No empirical failure rate is supplied by the case.",
+      "source": "Chapter 1, sections 1.1 What architecture means and 1.2 Why it matters to a small organisation; Exercises EX001 Plain definition, EX002 Small organisations and EX011 Combined failures; Worked results (#worked-results; EX001, EX002, EX011). General context: Anderson (2020), Security Engineering, third edition, sections 1.2 and 1.7, printed pages 4 and 12; author's page https://www.cl.cam.ac.uk/archive/rja14/book.html and chapter https://www.cl.cam.ac.uk/archive/rja14/Papers/SEv3-ch01.pdf"
+    },
+    {
+      "id": "Q02",
+      "prompt": "A teller can view a member account but cannot change its interest rate. Why are these different permissions consistent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The role receives the operations its job needs, rather than every operation on the account"
+        },
+        {
+          "id": "b",
+          "text": "Viewing an account should automatically grant every operation on the same data"
+        },
+        {
+          "id": "c",
+          "text": "Least privilege requires refusing all account access, including necessary viewing"
+        },
+        {
+          "id": "d",
+          "text": "A successful sign-in is sufficient authority to change the account's interest rate"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX003 distinguishes viewing from changing interest rates. The teller's job can require one operation without requiring the other, so access to the same account need not imply identical authority for every action. Saltzer and Schroeder's least-privilege principle limits privileges to the task. Denying necessary viewing confuses minimum sufficient access with no service at all; granting all operations or relying only on sign-in discards the role boundary. This explains the stated Saltmarsh example without granting additional rights, identifying a member or asserting that every permission has been tested.",
+      "source": "Chapter 1, section 1.3 Five principles, least privilege; section 1.4 Applying them at Saltmarsh, teller example; Exercises EX003 Least privilege at Saltmarsh; Worked results (#worked-results; EX003). Primary principle: Saltzer and Schroeder (1975), section I.A.3(f), https://doi.org/10.1109/PROC.1975.9939; author-hosted text https://web.mit.edu/Saltzer/www/publications/protection/Basic.html"
+    },
+    {
+      "id": "Q03",
+      "prompt": "A hypothetical new staff account has no approved roles yet. Which default follows the chapter's account-creation example?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Grant common roles immediately and remove any that are later prohibited"
+        },
+        {
+          "id": "b",
+          "text": "Copy another employee's roles because both accounts belong to the same branch"
+        },
+        {
+          "id": "c",
+          "text": "Grant access after sign-in even though no role has been approved"
+        },
+        {
+          "id": "d",
+          "text": "Start with no access and add the needed roles only after approval"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 1.4 and EX004 describe an empty start followed by approved role grants. Saltzer and Schroeder base fail-safe defaults on explicit permission, not on trying to enumerate exclusions. Temporary broad access and copied roles reverse the sequence; sign-in alone does not supply a missing approval. Unlike least privilege's question about the needed set of rights, this question asks what happens before permission exists. The hypothetical account is not an account created in the narrative, and no approval, identity or provisioning result is invented.",
+      "source": "Chapter 1, section 1.3 Five principles, fail-safe defaults; section 1.4 Applying them at Saltmarsh, new-account example; Exercises EX004 Fail-safe example; Worked results (#worked-results; EX004). Primary principle: Saltzer and Schroeder (1975), section I.A.3(b), https://doi.org/10.1109/PROC.1975.9939; author-hosted text https://web.mit.edu/Saltzer/www/publications/protection/Basic.html"
+    },
+    {
+      "id": "Q04",
+      "prompt": "A proposed design checks permission only at sign-in and then accepts later requests without checking their authority. What is missing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fail-safe defaults, fully solved merely by starting the account with no roles"
+        },
+        {
+          "id": "b",
+          "text": "Complete mediation: each request still needs an authority check, not just the initial sign-in"
+        },
+        {
+          "id": "c",
+          "text": "Psychological acceptability, which requires removing permission checks after sign-in"
+        },
+        {
+          "id": "d",
+          "text": "Separation of privilege, fully solved by the same user signing in twice"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 1.3 explicitly contrasts complete mediation with checking only at sign-in. Saltzer and Schroeder require authority to be checked for every access; that is not a requirement to make the person log in repeatedly. EX003 and EX004 define permitted operations and the initial default, but neither replaces enforcement on later requests. Ease of use does not excuse the omitted checks, and repeating one person's sign-in is not the case's two-person approval. This diagnoses a proposed design, not an observed Saltmarsh defect, successful access or implemented repair.",
+      "source": "Chapter 1, section 1.3 Five principles, complete mediation; section 1.4, role and account examples; comparison with Exercises EX003 Least privilege at Saltmarsh and EX004 Fail-safe example; Worked results (#worked-results; EX003, EX004). Primary principle: Saltzer and Schroeder (1975), section I.A.3(c), https://doi.org/10.1109/PROC.1975.9939; author-hosted text https://web.mit.edu/Saltzer/www/publications/protection/Basic.html"
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which approval pattern preserves Saltmarsh's separation-of-privilege example for a large transfer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The initiating employee approves twice using two confirmation screens"
+        },
+        {
+          "id": "b",
+          "text": "The initiating employee alone approves and another person reads the record later"
+        },
+        {
+          "id": "c",
+          "text": "A second staff member also approves before the transfer proceeds"
+        },
+        {
+          "id": "d",
+          "text": "Any signed-in teller approves alone because the account began with no roles"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX005 and section 1.4 make a second staff member's approval part of the decision, not a later review. Saltzer and Schroeder discuss separated conditions for access; the chapter applies that principle through two people. Two clicks by the same person do not meet this example, and reading a record afterwards does not provide the prior approval. Initial account defaults answer a different question. No monetary threshold, approver identity, transfer or approval actually given is added: the item evaluates the rule described in the fictional case.",
+      "source": "Chapter 1, section 1.3 Five principles, separation of privilege; section 1.4 Applying them at Saltmarsh, large-transfer example; Exercises EX005 Two-person rule; Worked results (#worked-results; EX005). Primary principle: Saltzer and Schroeder (1975), section I.A.3(e), https://doi.org/10.1109/PROC.1975.9939; author-hosted text https://web.mit.edu/Saltzer/www/publications/protection/Basic.html"
+    },
+    {
+      "id": "Q06",
+      "prompt": "The chapter says members find the existing app-based second factor easy. Which conclusion stays within that evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It illustrates psychological acceptability, not measured immunity to attacks or suitability for every user"
+        },
+        {
+          "id": "b",
+          "text": "It proves that every app-based factor prevents every form of account takeover"
+        },
+        {
+          "id": "c",
+          "text": "It shows that member sign-in includes approval by a second staff member"
+        },
+        {
+          "id": "d",
+          "text": "It establishes that every account request is checked because sign-in is easy"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX007 uses the described ease of the app-based factor as an acceptability example. Saltzer and Schroeder connect usability with correct use of protections, not with universal security guarantees. The chapter supplies neither comparative measurements nor a specific authenticator protocol. A second factor is also not evidence of Saltmarsh's separate two-person transfer approval, and ease at sign-in does not demonstrate complete mediation. Preserve the existing control as narrated without inventing a survey, participant count, attack test, deployment change or guarantee about all members.",
+      "source": "Chapter 1, section 1.3 Five principles, psychological acceptability; section 1.4 Applying them at Saltmarsh, existing app-based factor; Exercises EX007 Acceptability example; Worked results (#worked-results; EX007). Primary principle: Saltzer and Schroeder (1975), section I.A.3(h), https://doi.org/10.1109/PROC.1975.9939; author-hosted text https://web.mit.edu/Saltzer/www/publications/protection/Basic.html"
+    },
+    {
+      "id": "Q07",
+      "prompt": "A proposed shortcut removes the second transfer approval to reduce friction. How should Leah reason about the competing principles?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat every reduction in effort as a security improvement, regardless of lost approval"
+        },
+        {
+          "id": "b",
+          "text": "Dismiss usability because an inconvenient control is automatically more secure"
+        },
+        {
+          "id": "c",
+          "text": "Assume a recorded conflict means neither principle needs further consideration"
+        },
+        {
+          "id": "d",
+          "text": "Examine the friction and seek a usable design without silently discarding the second-person requirement"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Errors and limits and EX012 identify a real tension: extra approvals can add friction. That tension is a reason to review the design, not automatic permission to remove EX005's second-person check or to ignore usability. Section 1.5 provides a place to record reasons and consequences so the tradeoff can be challenged. The answer is a reasoning approach to a hypothetical shortcut; it does not supply an implemented workflow, a new exception, measured delay or approval to change Saltmarsh's transfer rule.",
+      "source": "Chapter 1, section 1.3 Five principles; section 1.4, two-person transfer rule; section 1.5 Recording a decision; Errors and limits, principle conflict; Exercises EX005 Two-person rule and EX012 Principle conflict; Worked results (#worked-results; EX005, EX012)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What feature of Leah's selected email design addresses the inability to tell which teller answered a member query?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keeping one branch login and giving every teller the same renamed password"
+        },
+        {
+          "id": "b",
+          "text": "Each person uses an individual account to access the shared inbox"
+        },
+        {
+          "id": "c",
+          "text": "Retaining shared credentials but separating inbox folders by subject"
+        },
+        {
+          "id": "d",
+          "text": "Removing the shared inbox while leaving all tellers on a common identity"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX006 identifies the attribution gap, EX009 names the chosen option, and EX010 gives its reason. Shared work does not require a shared sign-in identity: the selected design keeps shared inbox access through individual accounts. Renaming a common secret, rearranging folders or removing the shared inbox while retaining a common identity does not supply the intended distinction between tellers. This explains the choice and its intended accountability, not proof that accounts were issued or that any particular message has already been attributed. No member query is opened or invented.",
+      "source": "Chapter 1, section 1.4 Applying them at Saltmarsh, shared branch email gap; section 1.5 Recording a decision, selected design and accountability; Worked example; Exercises EX006 Shared mailbox gap, EX009 Chosen option and EX010 Reason for choice; Worked results (#worked-results; EX006, EX009, EX010)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A handover note states only 'choose individual accounts'. What should the decision record preserve so a successor can challenge that choice?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Context, options, choice, reasons, consequences and when to revisit the decision"
+        },
+        {
+          "id": "b",
+          "text": "Only the product name and cost, because reasons become irrelevant after selection"
+        },
+        {
+          "id": "c",
+          "text": "Only the chosen option and a statement that future reviewers must not change it"
+        },
+        {
+          "id": "d",
+          "text": "Only a completion date, even if no implementation evidence exists"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 1.5 and EX008 specify the six parts; EX013 explains why they matter after the original author leaves. Context and alternatives make the decision intelligible, reasons and consequences expose the tradeoff, and a revisit point supports later reconsideration. A product receipt omits the reasoning, an unchallengeable label defeats the purpose, and an invented completion date confuses decision history with delivery. No particular date or new approval is supplied. The record should preserve grounds for scrutiny rather than turn the selected option into a permanent rule.",
+      "source": "Chapter 1, section 1.5 Recording a decision, record contents and later challenge; Exercises EX008 Decision record parts and EX013 Value of writing; Worked results (#worked-results; EX008, EX013)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A colleague marks the mailbox rollout complete solely because Leah recorded her choice. Which status is actually supported at this point?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All individual mailboxes are operating and the shared branch credentials have been removed"
+        },
+        {
+          "id": "b",
+          "text": "Every past member query can now be traced because accountability was the stated reason"
+        },
+        {
+          "id": "c",
+          "text": "The option and rationale are recorded; issuance and operational results are not demonstrated"
+        },
+        {
+          "id": "d",
+          "text": "No architectural decision exists until every mailbox has been deployed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The worked example ends with a recorded decision to replace the shared arrangement. EX009 establishes a selection, while EX010 explains the intended benefit; neither is an issuance record or a retrospective attribution result. The last alternative makes the opposite error by erasing a real decision because implementation is unproved. Keep the choice available for later challenge, as EX013 requires, without inventing accounts, removed credentials, dates, testing or completed review. Saltmarsh and its membership figure are fictional, and this bank does not certify the organisation or finish the book.",
+      "source": "Chapter 1, section 1.5 Recording a decision; Worked example, decision to replace the shared account; Errors and limits; Exercises EX009 Chosen option, EX010 Reason for choice and EX013 Value of writing; Worked results (#worked-results; EX009, EX010, EX013)."
+    }
+  ]
+}
