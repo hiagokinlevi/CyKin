@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "human-factors-policy",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "dd1534a519d17a9cf7f3fb1bf8eb1f073171ef13b17e03ae31614e7b01a00018",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which change replaces Riverbend's informal reporting without requiring every volunteer to contact the IT volunteer directly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep concerns with whoever is nearby, unless the reporter can prove an attack"
+        },
+        {
+          "id": "b",
+          "text": "Use the shared report address or the duty coordinator, who forwards concerns into that route"
+        },
+        {
+          "id": "c",
+          "text": "Ask each volunteer to investigate the message before selecting a recipient"
+        },
+        {
+          "id": "d",
+          "text": "Publish a guide but leave the destination and responsibility for checking reports unspecified"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 4.1 replaces ad hoc conversations with two entry routes: a shared address or the duty coordinator, who forwards the concern. The IT volunteer checks the address daily and is to reply with a short verdict and thanks. Requiring proof or investigation adds a barrier the chapter does not impose; a guide without an assigned route leaves the original gap. EX039 and EX040 connect routing with responsibility. This describes the fictional design, not continuous monitoring or proof that any particular reply was sent.",
+      "source": "Chapter 4, section 4.1 Reporting route, old practice, two entry routes and IT volunteer duties; Exercises EX039 Old reporting and EX040 Reply promise; Worked results (#worked-results; EX039, EX040)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why does the guided reporting lab not contradict Ruth's rejection of deceptive tests?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A small group makes an unannounced deception harmless by definition"
+        },
+        {
+          "id": "b",
+          "text": "A test account alone means participants do not need to know the exercise's purpose"
+        },
+        {
+          "id": "c",
+          "text": "Using three messages proves that no participant could feel mistrusted"
+        },
+        {
+          "id": "d",
+          "text": "Participants know they are testing the route, using a test account and synthetic messages"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 4.2 explicitly makes the purpose known: the route is being tested, not unsuspecting volunteers. A test account and synthetic messages support that design but do not, by themselves, replace openness. Neither a small group nor a message count guarantees trust. Section 4.5 and EX049 retain Ruth's view that deceptive tests are unnecessary and could harm trust. The described guided exercise is therefore different from a secret phishing test. No real message, deceptive campaign or measured trust outcome is added.",
+      "source": "Chapter 4, section 4.2 Guided lab, announced purpose and synthetic inputs; section 4.5 Synthesis, deceptive tests; Worked example and synthetic-case notice; Exercises EX049 Deceptive tests view; Worked results (#worked-results; EX049)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A teammate wants to count the genuine-message forward as another correct identification because Ruth called it useful. Which response preserves both facts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep correct 7/8 while welcoming the genuine-message forward without blame"
+        },
+        {
+          "id": "b",
+          "text": "Change the final zero to one so the printed score reflects the supportive response"
+        },
+        {
+          "id": "c",
+          "text": "Discard the eighth attempt and report success only among the seven remaining volunteers"
+        },
+        {
+          "id": "d",
+          "text": "Keep 7/8 but reprimand the volunteer to make the scoring rule credible"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The correct list measures identification of the suspicious message: seven ones and a final zero. EX041 preserves seven of eight; EX043 says the other forward was useful rather than a reason for blame. These are different judgements. Replacing the zero or excluding the attempt changes the measurement, while reprimanding the volunteer contradicts Ruth's response. EX045's invitation to report when unsure is compatible with an unchanged score. No participant is named and the original inputs remain intact.",
+      "source": "Chapter 4, section 4.2 Guided lab, genuine forward; Lab, correct list; section 4.3 Learning from the test, uncertainty; Exercises EX041 Lab success, EX043 Genuine forward and EX045 Unsure line; Worked results (#worked-results; EX041, EX043, EX045)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Which calculation reproduces the timing outputs while keeping all eight observations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use 38 seconds alone as the median and ignore the upper half of the list"
+        },
+        {
+          "id": "b",
+          "text": "Average 25 and 110 for the median, then count every time below 60"
+        },
+        {
+          "id": "c",
+          "text": "Average the middle values 38 and 42 for 40 seconds; count 95 and 110 as above 60"
+        },
+        {
+          "id": "d",
+          "text": "Drop 95 and 110 as outliers before calculating the reported median"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The sorted list contains eight times. The code averages s[3] and s[4], which are 38 and 42, yielding 40 seconds. Its separate strict test t > 60 counts 95 and 110, so two observations exceed a minute. Selecting only one middle value, averaging the extremes or dropping slow attempts does not reproduce the program. EX042 and the literal output support this calculation. The median does not mean every volunteer took 40 seconds, and the slow values stay in the published list.",
+      "source": "Chapter 4, section 4.2 Guided lab; Lab - Reporting times and success in the guided lab, sorted list, median expression and over-60 predicate; Exercises EX042 Lab median time; Worked results (#worked-results; EX042)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "What do 7/8 and a 40-second median justify claiming about future reports across the charity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every later suspicious message will be identified correctly within a minute"
+        },
+        {
+          "id": "b",
+          "text": "They describe this small guided test; they do not establish future organisation-wide performance"
+        },
+        {
+          "id": "c",
+          "text": "The test supplies no useful evidence because it used synthetic messages"
+        },
+        {
+          "id": "d",
+          "text": "They measure the effect of the phone contact added after the test"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The result is useful evidence about the eight guided attempts, but Errors and limits calls it a small test. Neither the score nor the median guarantees later performance. Rejecting all value discards observed difficulties; crediting the later phone contact reverses the chronology. NIST SP 800-50 Rev. 1, section 5.2.3.3, distinguishes learning assessments from evidence of behaviour and organisational results. That distinction provides general context, not another Riverbend measurement or a compliance finding. EX041 and EX042 remain results of the original test only.",
+      "source": "Chapter 4, section 4.2 Guided lab and literal lab output; section 4.3 Learning from the test, later phone change; Errors and limits; Exercises EX041 Lab success and EX042 Lab median time; Worked results (#worked-results; EX041, EX042). General context only: NIST SP 800-50 Rev. 1, section 5.2.3.3 and Table 3, printed pages 60-61, https://doi.org/10.6028/NIST.SP.800-50r1"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Two volunteers struggled to find the report address, and one feared reporting a genuine message. Which response addresses those barriers?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the address to shared-phone contacts and tell volunteers to report when unsure"
+        },
+        {
+          "id": "b",
+          "text": "Require certainty before reporting and publish only the quickest attempts"
+        },
+        {
+          "id": "c",
+          "text": "Replace the two slow times with estimated times after adding the contact"
+        },
+        {
+          "id": "d",
+          "text": "Change the genuine forward to a correct identification instead of improving the route"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX044 addresses the practical obstacle by making the address easier to find on shared volunteer phones. EX045 addresses uncertainty with 'if unsure, report it'. Section 4.3 describes both actions after the test. Requiring certainty strengthens the hesitation, while rewriting times or success flags hides evidence rather than removes barriers. The chapter gives no later timing or measured improvement from these changes. The original 95 and 110 seconds and the 7/8 result therefore remain, without an invented retest or a named volunteer.",
+      "source": "Chapter 4, section 4.3 Learning from the test, phone contact and uncertainty line; Worked example; Exercises EX044 Phone fix and EX045 Unsure line; Worked results (#worked-results; EX044, EX045)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "What can the review note say about the quick reply template requested after the lab?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The template produced replies to all eight attempts during the earlier test"
+        },
+        {
+          "id": "b",
+          "text": "The request proves the IT volunteer has completed and deployed the template"
+        },
+        {
+          "id": "c",
+          "text": "Until a template is finished, the route has no commitment to reply to reports"
+        },
+        {
+          "id": "d",
+          "text": "The template was requested; the verdict-and-thanks reply commitment does not prove template completion or sent replies"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX040 defines the route's reply commitment. Section 4.3 separately records Ruth asking for a quick template after the guided test. A request is not completed work, and a later request cannot establish what produced earlier replies. The reply commitment also does not disappear while the template is pending. Volunteers' preference for hearing back helps explain the request, but supplies no implementation record or measured future effect. Keep the request and commitment distinct; invent neither template text nor a set of sent replies.",
+      "source": "Chapter 4, section 4.1 Reporting route, verdict and thanks; section 4.3 Learning from the test, later template request and participant feedback; Exercises EX040 Reply promise; Worked results (#worked-results; EX040)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "The trustees adopt a plan whose second week replaces the shared donations login. Which status statement is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Individual accounts are all issued because the trustees endorsed the plan"
+        },
+        {
+          "id": "b",
+          "text": "The shared password is destroyed because week two appears on the schedule"
+        },
+        {
+          "id": "c",
+          "text": "The replacement is part of the adopted plan; adoption does not establish that week two is complete"
+        },
+        {
+          "id": "d",
+          "text": "Nothing has been decided until evidence of the account replacement exists"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 4.5 records adoption, which is a real decision in the fictional narrative. Section 4.4 and EX046 place account replacement in week two; they do not provide issuance or password-destruction evidence. Week one covers callbacks and the no-blame message, week three the route with guide and poster, and week four review with the manager. None is proved complete merely by adoption. The last alternative wrongly erases the decision because execution is unverified. No rollout date, new account or completed four-week programme is supplied.",
+      "source": "Chapter 4, section 4.4 One-month plan, four scheduled steps; section 4.5 Synthesis, trustee adoption; Worked example; Exercises EX046 Week two; Worked results (#worked-results; EX046)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "What makes Ruth's short plan operationally useful rather than merely short?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its small page count proves every action will be completed on time"
+        },
+        {
+          "id": "b",
+          "text": "It gives concrete weekly steps, an owner and a check for each, so follow-through can be examined"
+        },
+        {
+          "id": "c",
+          "text": "It removes checks to keep the document easy for busy volunteers to read"
+        },
+        {
+          "id": "d",
+          "text": "It replaces named actions with a broad ambition to improve security"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 4.4 connects the short plan to specific actions, ownership and checks. EX048 reports Callum's preference for a manageable plan, not a measured probability or guarantee of completion. Page count alone provides no follow-through; removing checks loses evidence, and a broad ambition removes the concrete work. The chapter also warns that plans slip without review. This evaluates the design of the existing plan without appointing another owner, purchasing a tool or treating an assigned check as one already performed.",
+      "source": "Chapter 4, section 4.4 One-month plan, owners, checks and concrete planning; Errors and limits; Exercises EX048 Plan style; Worked results (#worked-results; EX048)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "How should the week-four review and Callum's three-month reminder be represented without inventing a completed review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep week four's manager review and the later three-month reminder distinct; adoption proves neither occurred"
+        },
+        {
+          "id": "b",
+          "text": "Mark both reviews complete because the trustees adopted the plan"
+        },
+        {
+          "id": "c",
+          "text": "Treat the week-four review as proof that the three-month interval has already elapsed"
+        },
+        {
+          "id": "d",
+          "text": "Cancel the week-four check because Callum mentioned a later review"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX047 places review of reports, replies and problems with the charity manager in week four. EX050 records the separate recommendation to review the plan after three months. The later reminder neither cancels the earlier checkpoint nor supplies elapsed time or findings. NIST SP 800-50 Rev. 1, section 5.2.3, provides general context for periodic evaluation using documented measures and feedback; it does not prescribe Riverbend's dates or prove a review happened. Preserve both planned checks and the book's open review status without adding outcomes.",
+      "source": "Chapter 4, section 4.4 One-month plan, week-four review; section 4.5 Synthesis, three-month reminder; Errors and limits; Exercises EX047 Week four and EX050 Review timing; Worked results (#worked-results; EX047, EX050). General context only: NIST SP 800-50 Rev. 1, section 5.2.3 Evaluating CPLP Effectiveness, printed page 59, https://doi.org/10.6028/NIST.SP.800-50r1"
+    }
+  ]
+}
