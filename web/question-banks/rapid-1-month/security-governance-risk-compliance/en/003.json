@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-governance-risk-compliance",
+  "language": "en",
+  "chapter": 3,
+  "source_anchor": "ch-03",
+  "source_sha256": "48052a35d102033de5b6c3f9712472deae1ff15f56e3cc30569b495da214c235",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A proposed portal recovery checklist covers only the web host and scheduling database. Which mapped links are missing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The case database and its document file storage"
+        },
+        {
+          "id": "b",
+          "text": "The volunteer roster and every supplier's internal system"
+        },
+        {
+          "id": "c",
+          "text": "The identity provider for sign-in and the email relay for confirmations"
+        },
+        {
+          "id": "d",
+          "text": "No links; the database alone represents the whole appointment service"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 3.1 maps four components behind the appointment portal. Hosting and scheduling data leave sign-in and confirmation delivery unaccounted for. The case database and file storage belong to case management, while the roster is another service. Supplier internals are not a substitute for the documented chain. EX021 therefore supports completing the map, not treating a database-only checklist as end-to-end coverage. This evaluates a proposed checklist for fictional Northstar; it reports no restore, confirmed recovery capability or permission to access additional systems.",
+      "source": "Chapter 3, section 3.1 From services to components; Lab - Northstar dependency map and owners, appointment portal entry; Exercises EX021 Portal chain; Final appendix - worked results and assessment notes (#worked-results; EX021)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why does the map bring the identity provider into the planned restore exercise rather than treat it as another missing-owner task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It supports all three services, and staff still need sign-in after the scheduling database is restored"
+        },
+        {
+          "id": "b",
+          "text": "Its owner is NONE, so the engineer must assign it to herself before testing"
+        },
+        {
+          "id": "c",
+          "text": "Its shared status proves that a working fallback already exists for every service"
+        },
+        {
+          "id": "d",
+          "text": "Including it authorizes investigation of every service that uses its sign-in"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The identity provider has owner IT in the fixture; its significance here is dependency, not missing ownership. Section 3.2 explains that a restored scheduling database is insufficient if staff cannot sign in. EX024 and EX056 connect that fact to the planned exercise. Shared use demonstrates neither a tested fallback nor access permission for excluded services. The map's limits also leave possible redundancy unexamined. This is a reason for exercise design, not a successful sign-in test, a new owner appointment or expansion into case management and the roster.",
+      "source": "Chapter 3, section 3.2 Reading the dependency map; Concepts - the listing counts names, it does not grant a key, identity-provider row; Exercises EX022 Universal dependency and EX024 Restore scope change; Apply EX056; Final appendix - worked results and assessment notes (#worked-results; EX022, EX024, EX056)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "What should the engineer do with the email relay and roster spreadsheet rows that print owner NONE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove both rows, since unowned components cannot support a service"
+        },
+        {
+          "id": "b",
+          "text": "Reconfigure both immediately, because an empty owner delegates authority to the reviewer"
+        },
+        {
+          "id": "c",
+          "text": "Give both a support count of three so their ownership gaps receive attention"
+        },
+        {
+          "id": "d",
+          "text": "Keep the rows and raise ownership decisions with the director, without reconfiguring either component"
+        }
+      ],
+      "correct": "d",
+      "explanation": "NONE represents a missing owner in the lab data, not a missing component or an implicit delegation. The relay still supports two services and the roster spreadsheet one. Section 3.2 and EX025 place ownership on the operations director's decision list; the Concepts table and EX056 prohibit substituting reconfiguration for that decision. Deleting rows or changing counts would distort the evidence. No owner has been newly assigned, no configuration changed, and the published markers remain intact. A requested governance decision is not its completed implementation.",
+      "source": "Chapter 3, section 3.2; Lab, verified owner markers; Concepts, email-relay and roster-spreadsheet rows; Exercises EX023 Unowned components and EX025 Decision list; Apply EX056 Two facts that must not be swapped; Final appendix - worked results and assessment notes (#worked-results; EX023, EX025, EX056)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The case database appears in the map but is excluded from the first scope. Which response preserves evidence and authority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete its row so the map cannot show an excluded service"
+        },
+        {
+          "id": "b",
+          "text": "Keep the row for dependency context, but leave the database closed"
+        },
+        {
+          "id": "c",
+          "text": "Open the database because its printed owner has already authorized every reviewer"
+        },
+        {
+          "id": "d",
+          "text": "Report a confirmed suspicious account because the row appears outside scope"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX055 requires keeping the case-database row so the common identity dependency remains visible across services. The first scope still excludes case management; neither a printed row nor the owner label is permission to open it. Removing it would hide a relationship, while calling the row an incident would invent a finding. The worked example explicitly says no suspicious account was found. Preserve the contextual map without exporting, investigating, deleting the row or manufacturing a security event.",
+      "source": "Chapter 3, section 3.1, case-management components; Concepts, case-database row and scope paragraph; Worked example - the case-database row is not a key; Apply EX055 A row outside the scope; Final appendix - worked results and assessment notes (#worked-results; EX055)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "What selects the identity provider for the lab's closing shared-by-all-three list?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its collected list of supporting services has length three; the owner label and display position are not selection tests"
+        },
+        {
+          "id": "b",
+          "text": "Its owner is IT; every component assigned to IT passes the closing test"
+        },
+        {
+          "id": "c",
+          "text": "It is displayed first; sorting grants the first component permission across all services"
+        },
+        {
+          "id": "d",
+          "text": "The two NONE labels are added to its service count to reach three"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The program builds use from the services naming each component, then filters for len(ss) == 3. That selects only the identity provider in this fixed input. Sorting explains the display order, while owners supplies separate labels; neither grants access. The relay has two supporters and each remaining component one, regardless of owner. EX022 and EX056 keep the support count distinct from ownership and permission. This interprets the original program and verified output, not a modified input, a new Northstar measurement or a scan of live dependencies.",
+      "source": "Chapter 3, section 3.2 Reading the dependency map; Lab - Northstar dependency map and owners, construction of use and final comprehension; Concepts, opening paragraph; Exercises EX022 Universal dependency; Apply EX056; Final appendix - worked results and assessment notes (#worked-results; EX022, EX056)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "An inventory names the scheduling database but omits its data flows. Which additions would help assess privacy exposure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only a vendor rating and the number of stored tables"
+        },
+        {
+          "id": "b",
+          "text": "Only the current storage server, because recipients and copies cannot change exposure"
+        },
+        {
+          "id": "c",
+          "text": "Data held, purposes, permitted viewers, copy destinations and retention, with unresolved facts left as gaps"
+        },
+        {
+          "id": "d",
+          "text": "Every client's full record, copied into the review notes to make the inventory complete"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 3.3 and EX028 follow data rather than just system names: what exists, why it is held, who can see it, where copies go and how long it is kept. A server address or rating cannot answer those questions, and copying complete client records is not required to describe the processing. NIST Privacy Framework 1.0 ID.IM-P5, P6 and P8 provide general mapping context. They do not supply Northstar's missing facts, grant access or establish compliance. The question proposes inventory fields, not collected evidence or a chosen retention period.",
+      "source": "Chapter 3, section 3.3 Data and where it goes; Exercises EX028 Data record fields; Final appendix - worked results and assessment notes (#worked-results; EX028). General context only: NIST Privacy Framework 1.0, Appendix A, ID.IM-P5, ID.IM-P6 and ID.IM-P8, printed page 20, https://www.nist.gov/document/nist-privacy-frameworkv10pdf"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which proposed change addresses the unnecessary exposure in appointment confirmation emails without removing the confirmation service?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable every confirmation, because any email is prohibited by the chapter"
+        },
+        {
+          "id": "b",
+          "text": "Keep the full appointment reason whenever the recipient is the client"
+        },
+        {
+          "id": "c",
+          "text": "Put the reason in an attachment and assume this removes its sensitivity"
+        },
+        {
+          "id": "d",
+          "text": "Omit the appointment reason from confirmations while retaining the information needed for that communication"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX026 explains that a reason may reveal health problems or financial hardship; EX027 identifies removing it from confirmation emails as the targeted improvement. Section 3.3 says clients need less information in that email, not that all confirmations must stop. Being the intended recipient or moving content into an attachment does not establish necessity or remove sensitivity. This identifies the content change, not proof that a cleaned email was inspected or a relay change was authorized. No client, condition, new message or completed remediation is supplied.",
+      "source": "Chapter 3, section 3.3 Data and where it goes, confirmation-email finding and reduction; Exercises EX026 Sensitive appointment data and EX027 Email content fix; Final appendix - worked results and assessment notes (#worked-results; EX026, EX027)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Northstar cannot inspect a supplier's internals. Which review approach is still supported by the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept the marketing assurance as proof that all dependent services are safe"
+        },
+        {
+          "id": "b",
+          "text": "Examine assurance scope, outage and data terms, and exportability; link evidence and review date to the supported service"
+        },
+        {
+          "id": "c",
+          "text": "Treat inaccessible internals as proof that no external dependency exists"
+        },
+        {
+          "id": "d",
+          "text": "Open the supplier's systems without permission to complete the internal inventory"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 3.4 permits meaningful supplier review without internal access: ask for assurance, examine outage and data-handling terms, and check whether data can be exported on exit. EX031 makes the record traceable to a supplier, service, evidence and last review date. Marketing claims are not blanket proof; lack of internal visibility neither removes the dependency nor grants access. NIST CSF 2.0 places this context in Govern, including GV.SC-05 and GV.SC-07. The framework does not prove that Northstar obtained evidence, tested an export, audited a contract or approved a supplier.",
+      "source": "Chapter 3, section 3.4 Dependencies outside the organisation; Errors and limits, assurance scope; Exercises EX029 Supplier questions, EX030 CSF placement and EX031 Supplier record; Final appendix - worked results and assessment notes (#worked-results; EX029, EX030, EX031). General context only: NIST CSF 2.0, Govern/GV.SC, GV.SC-05 and GV.SC-07, printed pages 17-18, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q09",
+      "prompt": "What must remain unresolved when requesting identity-provider status history and fallback options?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the lab lists the identity provider; its printed row is no longer usable"
+        },
+        {
+          "id": "b",
+          "text": "Whether an identity outage has already stopped every service; the request confirms that incident"
+        },
+        {
+          "id": "c",
+          "text": "Whether fallback sign-in works; an evidence request is not a performed fallback test"
+        },
+        {
+          "id": "d",
+          "text": "Whether the backup vendor has repaired identity; the map proves that repair"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 3.5 and EX032 identify an untested fallback sign-in as the evidence gap. Requesting history and options is a way to investigate that gap, not a completed exercise or an observed outage. The known dependency row remains valid; it does not demonstrate a vendor repair or a usable alternative path. EX035 requires separating checked facts from assumptions. Keep the scenario conditional and the fallback unverified, without inventing a status response, fallback product, collected test evidence or incident across the three services.",
+      "source": "Chapter 3, section 3.5 From map to scenarios and evidence, identity scenario and evidence request; Exercises EX032 Identity scenario and EX035 Honest strategy; Final appendix - worked results and assessment notes (#worked-results; EX032, EX035)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which evidence pairing would address the relay and roster scenarios without declaring that either scenario has occurred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Request the relay configuration and the roster's current sharing list through the appropriate owners"
+        },
+        {
+          "id": "b",
+          "text": "Use the relay's support count as proof of misdirected mail and NONE as proof of data theft"
+        },
+        {
+          "id": "c",
+          "text": "Collect another dependency diagram and treat it as a completed configuration and access review"
+        },
+        {
+          "id": "d",
+          "text": "Read all case-management records because a shared identity provider authorizes that investigation"
+        }
+      ],
+      "correct": "a",
+      "explanation": "A misconfigured relay could send confirmations to the wrong people; excessive roster sharing could expose contact details. Section 3.5 pairs those possibilities with configuration and sharing-list requests. The support count and NONE marker answer different questions and prove neither event. A diagram is not the requested access evidence, and shared identity does not override the excluded scope. EX033-EX035 support requesting the right evidence through responsible owners without claiming it arrived or opening the excluded roster or case database. No message, sharing result, incident or new permission is invented.",
+      "source": "Chapter 3, section 3.5 From map to scenarios and evidence, relay and roster scenarios; Concepts and Decision flow, distinction between map and permission; Exercises EX033 Relay scenario, EX034 Roster evidence and EX035 Honest strategy; Final appendix - worked results and assessment notes (#worked-results; EX033, EX034, EX035)."
+    }
+  ]
+}
