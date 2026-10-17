@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-architecture",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "74db0414ad57e849a31dd8944e952200e27a874a35037513a02f85f7ccf67cde",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A colleague wants Leah to include core banking because the loan service depends on it. Which boundary follows her current scope?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Include every connected system because dependencies override the written exclusions"
+        },
+        {
+          "id": "b",
+          "text": "Keep core banking and the card processor excluded; review only the named loan-related systems"
+        },
+        {
+          "id": "c",
+          "text": "Exclude the document upload feature because members, rather than staff, use it"
+        },
+        {
+          "id": "d",
+          "text": "Remove staff PCs from the review because only the loan application was requested"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.1 includes the loan system, the staff PCs using it and member document uploads, but excludes core banking operated by a service bureau and the card processor. A dependency does not silently expand that boundary. The other alternatives either override explicit exclusions or drop systems expressly included. EX014 and Errors and limits allow two facts to coexist: an excluded system may contain problems, and Leah still has no permission to review it. This evaluates the existing fictional scope, not a newly approved extension or a finding in an excluded system.",
+      "source": "Chapter 2, section 2.1 Setting scope, included and excluded systems; Errors and limits; Exercises EX014 Excluded systems; Worked results (#worked-results; EX014)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The upload feature is in scope. Which proposed activity is nevertheless outside Leah's permission?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read its configuration screens within the approved review"
+        },
+        {
+          "id": "b",
+          "text": "Interview staff about how they use the loan system"
+        },
+        {
+          "id": "c",
+          "text": "Review upload settings without opening member documents"
+        },
+        {
+          "id": "d",
+          "text": "Open a member's uploaded identity document to demonstrate the exposure"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Inclusion of a system does not authorize every operation on it. Section 2.1 permits settings review and staff interviews while excluding attacks and access to member files. The first three options remain within that activity boundary; opening a real identity document crosses it even when described as evidence gathering. EX015 and section 2.3 support inspecting settings without accessing the sensitive contents. No member document is opened in this question, and discovering a risky configuration supplies no additional permission to do so.",
+      "source": "Chapter 2, section 2.1 Setting scope, permitted and prohibited activities; section 2.3 Safe handling of member data; Exercises EX015 Not allowed; Worked results (#worked-results; EX015)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "What makes Leah's written approval more useful than a general statement that she works for Saltmarsh?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It identifies Leah, systems, dates and allowed activities, with approval from the chief executive and system owner"
+        },
+        {
+          "id": "b",
+          "text": "It permits any security-related action because the reviewer is an employee"
+        },
+        {
+          "id": "c",
+          "text": "It replaces the need to distinguish permitted activities from prohibited ones"
+        },
+        {
+          "id": "d",
+          "text": "It lets the tutor expand the review without consulting the named approvers"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.2 records written approval from the chief executive and loan system owner for an identified reviewer, scope, dates and activities. Employment or a broad security purpose does not provide those limits, and the chapter gives the tutor no authority to expand them. EX016 identifies the actual approvers. NIST SP 800-115 section 6.5 likewise treats authorized assessors, targets and activities as assessment-planning matters, including for internal reviews. That is general guidance, not another Saltmarsh signature or a declaration of legal compliance. No approval date is invented.",
+      "source": "Chapter 2, section 2.2 Written permission, approvers and approval contents; section 2.1, activity limits; Exercises EX016 Approvers; Worked results (#worked-results; EX016). General context only: NIST SP 800-115, section 6.5 Assessment Plan Development, printed pages 6-10 to 6-11, https://csrc.nist.gov/pubs/sp/800/115/final"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why does Leah consult the loan vendor about configuration-screen review after obtaining internal approval?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Internal approval automatically cancels any limits in the support contract"
+        },
+        {
+          "id": "b",
+          "text": "A vendor response would authorize attacks on every outsourced system"
+        },
+        {
+          "id": "c",
+          "text": "Contract conditions and internal authorization are separate checks on the proposed activity"
+        },
+        {
+          "id": "d",
+          "text": "Reading settings is always outside the scope, regardless of the written approval"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX017 concerns whether reading configuration screens would breach the support contract. That question complements the internal permission in section 2.2; neither check substitutes for the other. Internal approval does not rewrite supplier terms, and a response about reading screens does not authorize attacks or additional targets. Conversely, settings review is expressly among Leah's permitted activities. The question evaluates the purpose of the documented vendor check without inventing contract language, an amendment, a new signature or a wider authorization.",
+      "source": "Chapter 2, sections 2.1 Setting scope and 2.2 Written permission, support-contract inquiry; Exercises EX017 Vendor check; Worked results (#worked-results; EX017)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which approach documents a setting without making Leah's review a new source of member-data exposure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a real application and rely on deleting its screenshots after acceptance"
+        },
+        {
+          "id": "b",
+          "text": "Use the vendor's fictitious test application and check that screenshots contain no member information"
+        },
+        {
+          "id": "c",
+          "text": "Capture a real identity document now and remove the member's name later"
+        },
+        {
+          "id": "d",
+          "text": "Assume a restricted folder makes collecting payslips necessary for the review"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.3 uses a vendor-created test application because the review does not need payslips, bank statements or identity documents. Leah also checks screenshots before saving them; test data and capture hygiene are complementary safeguards. Later deletion does not justify unnecessary collection now, and removing a name does not establish that a captured document contains no member information. Restricting storage controls access but does not create a need for the contents. EX018, EX019 and EX026 support this case-specific approach, already discussed with the owner, without adding a screenshot or member record.",
+      "source": "Chapter 2, section 2.3 Safe handling of member data, test application, screenshots and exposure boundary; Worked example; Exercises EX018 Test application, EX019 Screenshot care and EX026 Review exposure; Worked results (#worked-results; EX018, EX019, EX026)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which interpretation correctly applies Leah's three stop conditions to a hypothetical continuation of the review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop only when a break-in, exposed documents and service disruption occur together"
+        },
+        {
+          "id": "b",
+          "text": "Continue through disruption unless an attacker has been identified"
+        },
+        {
+          "id": "c",
+          "text": "Stop only after reading member files to confirm someone has taken data"
+        },
+        {
+          "id": "d",
+          "text": "Any one trigger is enough: break-in signs, online document exposure or review-caused service disruption"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 2.4 says Leah stops in each of the three situations, not only when all are present. Signs of a prior intrusion, documents exposed online and disruption caused to the loan service are independent triggers. Identifying an attacker is not a prerequisite, and opening member files would breach her activity limit rather than satisfy a stop rule. EX020 tests recognition of these conditions. The scenario is hypothetical: it adds no intrusion, disruption, data access or participant to the fictional case.",
+      "source": "Chapter 2, section 2.4 Stop conditions, three independent triggers; section 2.1, member-file exclusion; Exercises EX020 Three stop triggers; Worked results (#worked-results; EX020)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Once a stop condition is met, which response preserves the boundary between Leah's review and incident response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop, notify the system owner and chief executive, and avoid investigating further alone"
+        },
+        {
+          "id": "b",
+          "text": "Continue alone until the root cause is proven, then notify the owner"
+        },
+        {
+          "id": "c",
+          "text": "Repair the service immediately using any available administrative access"
+        },
+        {
+          "id": "d",
+          "text": "Ask the tutor for informal permission to investigate instead of informing the responsible owners"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.4 and EX021 distinguish the authority and skills for review from those needed for incident response. Leah's next step is the specified notification, not independent diagnosis or reconfiguration. Delaying notification to prove cause, assuming administrative powers or substituting the tutor for the named contacts ignores that boundary. NIST SP 800-115 section 6.5 provides general guidance to predefine incident handling, contacts and stopping or resuming authority. It does not appoint Saltmarsh's approvers or grant Leah additional powers. No new investigation or repair is performed here.",
+      "source": "Chapter 2, section 2.4 Stop conditions, escalation and authority boundary; Worked example; Exercises EX020 Three stop triggers and EX021 Why stop; Worked results (#worked-results; EX020, EX021). General context only: NIST SP 800-115, section 6.5, printed pages 6-11 to 6-12, https://csrc.nist.gov/pubs/sp/800/115/final"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which account of the link-sharing finding keeps the observed condition, response and actor separate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The folder was public, so Leah tested real downloads and repaired it herself"
+        },
+        {
+          "id": "b",
+          "text": "A member complained of theft, so the chief executive changed all systems within an hour"
+        },
+        {
+          "id": "c",
+          "text": "Leah found link-based access, stopped and notified the owners; the vendor changed the setting within the hour"
+        },
+        {
+          "id": "d",
+          "text": "The sharing setting was risky, so every supplier system was certified safe after the vendor's response"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.5 records uploads in a cloud folder viewable by anyone with the link. Leah stops and informs the owner and chief executive; the vendor changes that setting within the hour. EX022 establishes the configuration finding and EX025 the response timing. The text does not say Leah downloaded real documents, repaired the system herself or received a theft complaint. A change to one setting is not certification of other systems. Keep the fictional event, response and evidence without inventing an access, affected member or exact clock time.",
+      "source": "Chapter 2, section 2.5 A finding under scope, link-sharing condition, escalation and vendor response; Worked example; Exercises EX022 Upload finding and EX025 Response speed; Worked results (#worked-results; EX022, EX025)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The vendor's logs show no access by unknown parties. Which conclusion preserves both that result and the chapter's limitation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No unknown party could have accessed any document because the logs found none"
+        },
+        {
+          "id": "b",
+          "text": "The log limitation proves that an unrecorded intrusion actually occurred"
+        },
+        {
+          "id": "c",
+          "text": "The negative log result means the link-sharing exposure never existed"
+        },
+        {
+          "id": "d",
+          "text": "No unknown-party access was found in the checked logs; incomplete coverage prevents a universal absence claim"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX023 reports the vendor's negative finding, while Errors and limits warns that vendor logs may not show all access. Preserve the observed result without treating the logs as a complete history. Missing coverage does not itself prove an intrusion, and a negative access finding does not undo the documented sharing setting. Configuration exposure and observed use answer different questions. The chapter supplies no additional log source, access event, member identity or regulatory decision, so none is inferred here.",
+      "source": "Chapter 2, section 2.5 A finding under scope, vendor log result; Errors and limits, incomplete log coverage; Exercises EX023 Vendor log result; Worked results (#worked-results; EX023)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does the vendor's within-hour fix establish that Leah's review notes should already have been deleted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; notes stay restricted, and the stated deletion trigger is acceptance of the review, not the setting change"
+        },
+        {
+          "id": "b",
+          "text": "Yes; finishing any remedial change automatically accepts the entire review"
+        },
+        {
+          "id": "c",
+          "text": "Yes; notes expire one hour after every finding, regardless of acceptance"
+        },
+        {
+          "id": "d",
+          "text": "No; the restricted folder authorizes keeping the notes indefinitely"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.3 and EX024 tie deletion to acceptance of the review. EX025's within-hour response describes a different event: the vendor changing the sharing setting. That event is not an acceptance record or evidence that deletion occurred. Nor does restricted storage justify unlimited retention. The text provides a condition rather than a calendar date or a universal retention law. Preserve it without inventing acceptance, a deletion receipt, an extra retention period or completed editorial review of the book.",
+      "source": "Chapter 2, section 2.3 Safe handling of member data, restricted storage and deletion condition; section 2.5, vendor response; Exercises EX024 Notes retention and EX025 Response speed; Worked results (#worked-results; EX024, EX025)."
+    }
+  ]
+}
