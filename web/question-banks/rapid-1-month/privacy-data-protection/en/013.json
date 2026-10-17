@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 13,
+  "source_anchor": "ch-13",
+  "source_sha256": "96101380861f0e62b2b5e81bd282a8505fc7a393bda8894331e124d0b08b8c89",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which task did the owner's written addition bring into Sofia's review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Inspect every function and individual record accessible on the driver's phone"
+        },
+        {
+          "id": "b",
+          "text": "Determine whether customer addresses were stored and record the storage finding"
+        },
+        {
+          "id": "c",
+          "text": "Copy the address list to any device used to prepare the review"
+        },
+        {
+          "id": "d",
+          "text": "Select a retention period and remove deliveries that exceed it"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 13.1 ties the written addition to a particular storage question, and the first worked-example row states that this question has already been answered. Naming the phone does not authorize every operation available on it. Copying its contents, opening individual deliveries and selecting a retention period are not supplied by that line. EX067 preserves the storage finding while refusing the wider requests. Juniper is synthetic; this answer describes the existing authorization, not a new inspection or a general legal power over a device.",
+      "source": "Chapter 13, section 13.1 The page grew once, for one question, opening sentences; section 13.2 Worked example, storage-question row; Apply EX067; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "After refusing the wider requests, must Sofia withdraw the earlier finding that delivery records have no end date?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; refusing a later request invalidates every observation made on that phone"
+        },
+        {
+          "id": "b",
+          "text": "Yes; only a full copy of the address list could support a storage finding"
+        },
+        {
+          "id": "c",
+          "text": "No; retaining the finding also proves every individual delivery was reviewed"
+        },
+        {
+          "id": "d",
+          "text": "No; the authorized storage finding stands without authorizing the later requests"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter expressly preserves the finding that records remain on the phone without an end date. A later refusal limits a different proposed activity; it does not retract the earlier authorized work. Keeping that finding does not require making a personal copy, and it does not imply that individual delivery histories were examined. EX067 asks the learner to keep the storage finding and refuse both expansions. This distinction preserves the existing evidence without adding a fresh inspection, a complete-record audit or a new result.",
+      "source": "Chapter 13, section 13.1, 'That finding stands' and subsequent requests; section 13.2 Worked example, first row; Apply EX067, what the written line still supports; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A colleague wants the address list on Sofia's personal phone so the review can quote it. What is the relevant boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The proposal makes a new copy at an excluded destination; the stated convenience does not authorize it"
+        },
+        {
+          "id": "b",
+          "text": "Any copy becomes authorized when its intended use is to support a review"
+        },
+        {
+          "id": "c",
+          "text": "The driver's inclusion in the review also includes Sofia's personal phone as a storage location"
+        },
+        {
+          "id": "d",
+          "text": "Copying is within scope as long as the report never prints the full list"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The second worked-example row identifies a new copy outside the approved setting. A reason for wanting the copy does not establish permission to create it, and limiting a later report would not undo the earlier copying act. GDPR Article 5(1)(b)-(c) provides general purpose and minimisation principles, not permission to use this destination. The specific refusal comes from Juniper's written scope and note-handling boundary. EX067 keeps the list off Sofia's personal phone. No transfer, new storage approval or finding of real compliance is added.",
+      "source": "Chapter 13, section 13.1, proposed quotation and personal-phone boundary; section 13.2 Worked example, copy row; Apply EX067; Worked results (#worked-results; EX067). General context only: GDPR Article 5(1)(b)-(c), EUR-Lex consolidated text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q04",
+      "prompt": "Would opening just one regular customer's deliveries, without making a copy, stay within the storage question?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a small number of records is automatically included in a storage review"
+        },
+        {
+          "id": "b",
+          "text": "Yes; only copying is restricted once the driver's phone has been added"
+        },
+        {
+          "id": "c",
+          "text": "No; it would inspect an individual record, which the existing written line does not authorize"
+        },
+        {
+          "id": "d",
+          "text": "No; the chapter proves that every delivery record is inaccurate"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The third worked-example row treats a named customer's deliveries as an individual-record request. Removing the copying step does not remove the separate act of inspecting that record. Neither the small scale nor prior inclusion of the phone changes the question Sofia was authorized to answer. The source also makes no finding about the accuracy of every delivery. EX067 refuses the individual lookup under the current line. This is a proposed variation, not a lookup performed or evidence about a customer's actual deliveries.",
+      "source": "Chapter 13, learning outcome 3; section 13.1, 'A named delivery is an individual record'; section 13.2 Worked example, named-delivery row; Apply EX067; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Why does the owner's earlier conversation with the driver not authorize anything on the phone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The conversation proves that no written addition was ever made"
+        },
+        {
+          "id": "b",
+          "text": "The later written addition defines the permitted question; the conversation does not broaden its contents"
+        },
+        {
+          "id": "c",
+          "text": "The driver supplied permission for every possible copy by discussing the review"
+        },
+        {
+          "id": "d",
+          "text": "Discussing a device replaces the need to check the scope of later requests"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 13.1 gives a sequence: the owner spoke with the driver and then made a written addition for a limited question. The last row of the worked example rejects turning that conversation into unrestricted scope. Both the conversation and the addition remain facts; neither supports an invented blanket approval. EX067 evaluates later requests against what was actually written. The answer does not deny that the addition exists or assume the driver's wishes about a new use. No additional agreement or conversation is introduced.",
+      "source": "Chapter 13, section 13.1, conversation followed by written addition; section 13.2 Worked example, final row; Apply EX067; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague proposes doing the broader lookup now and obtaining the owner's written addition afterwards. What follows from the chapter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proceed, because a promised later signature supplies current permission"
+        },
+        {
+          "id": "b",
+          "text": "Proceed with a personal copy first, since that is not a broader lookup"
+        },
+        {
+          "id": "c",
+          "text": "Treat the proposed addition as already written because the owner amended the scope once before"
+        },
+        {
+          "id": "d",
+          "text": "Stop; the broader look needs a new written line before it can be treated as authorized"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 13.1 stops at the current boundary and says a wider look would need a new written line from the owner. The chapter supplies no such addition. A future promise or the existence of an earlier, narrower amendment cannot serve as present authority, and copying is itself one of the refused activities. EX067 leaves the broader work waiting. This evaluates a proposed sequence, not a new event. It does not draft an amendment, guarantee that one will be approved or grant any additional legal authority.",
+      "source": "Chapter 13, section 13.1, stopping and requirement for a new written line; section 13.2 Worked example, named-delivery row; Apply EX067 and rubric; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Does Sofia's refusal to copy the list establish that the addresses were deleted from the driver's phone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; declining a new copy does not perform or demonstrate deletion of the source data"
+        },
+        {
+          "id": "b",
+          "text": "Yes; refusing a transfer automatically erases the file that would have been transferred"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the narrower review scope removes data that are outside its question"
+        },
+        {
+          "id": "d",
+          "text": "No; the refusal proves that an extra copy already exists on another device"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Errors and limits directly separates stopping a copy from deleting the phone's contents. One concerns a proposed new operation; the other would change existing data. The refusal demonstrates neither deletion nor an additional copy elsewhere. The earlier storage finding therefore remains part of the record, without asserting a new current inspection of the device. EX067 does not report cleanup. The answer supplies no deletion command, execution date, device state beyond the narrative or proof that a transfer was completed.",
+      "source": "Chapter 13, Errors and limits, first sentence; section 13.1, storage finding and refused copy; Apply EX067; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What should the retention entry say after the refusal, given that no delivery end date has been supplied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The new permission to inspect storage also set the retention period"
+        },
+        {
+          "id": "b",
+          "text": "The blank now authorizes keeping delivery records forever"
+        },
+        {
+          "id": "c",
+          "text": "The delivery period remains unresolved; neither an invented deadline nor unlimited permission follows"
+        },
+        {
+          "id": "d",
+          "text": "The refusal completed the retention action, so the empty row can be removed"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits says that Chapter 8's retention row is still blank and that this lesson does not fill it. A permitted storage check and a refused copy do not choose an end date. GDPR Article 5(1)(e) supplies a general storage-limitation principle, with specified exceptions, not a numeric delivery period or permission to retain forever. EX067 preserves the existing finding rather than recording remediation. Keep the unresolved decision visible without inventing a deadline, removal of records, completed action or legal conclusion for Juniper.",
+      "source": "Chapter 13, section 13.1, records with no end date; Errors and limits, second and third sentences; Apply EX067; Worked results (#worked-results; EX067). General principle only: GDPR Article 5(1)(e), EUR-Lex consolidated text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q09",
+      "prompt": "An editor asks for a plausible street address to make the worked example look complete. Which response preserves the evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Invent an address and present it as one observed during the authorized check"
+        },
+        {
+          "id": "b",
+          "text": "Open a regular customer's delivery to obtain an accurate example"
+        },
+        {
+          "id": "c",
+          "text": "Copy the list privately and choose one address without publishing the rest"
+        },
+        {
+          "id": "d",
+          "text": "Keep the finding at storage level and add no address or customer identity absent from the source"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 13.1 and the synthetic-case note explicitly supply no street address. The finding concerns storage with no end date; an illustrative address is not evidence needed to preserve that finding. Inventing one would add unsupported specificity, while obtaining one through a named lookup or a personal copy would perform one of the refused acts. EX067 remains answerable using the documented facts. This concerns the fixed lesson record, not a universal ban on appropriately authorized operational detail in other work.",
+      "source": "Chapter 13, section 13.1, final sentence; section 13.2 Synthetic case note; Apply EX067, available facts and refused operations; Worked results (#worked-results; EX067)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does the colleague's request to send the list show that Sofia actually transferred it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the proposal and refusal establish no completed transfer"
+        },
+        {
+          "id": "b",
+          "text": "Yes; asking for a copy is evidence that the data reached its proposed destination"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the reported storage on the driver's phone proves a copy exists on Sofia's phone"
+        },
+        {
+          "id": "d",
+          "text": "No; the refusal instead proves that nobody has ever copied any delivery data"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 13.1 reports a proposed copy followed by Sofia stopping. It does not report execution. The source phone's existing storage is a different fact from a transfer to Sofia's device, and this refusal does not establish the complete copying history of the business. EX067 supports refusing the proposed operations and retaining the earlier finding. The correct conclusion is limited to the evidence provided: no completed transfer is demonstrated here. It does not invent a security incident, a forensic result, another device or a universal absence of copies.",
+      "source": "Chapter 13, section 13.1, colleague's proposal and Sofia stopping; section 13.2 Worked example, personal-copy row; Apply EX067; Worked results (#worked-results; EX067)."
+    }
+  ]
+}
