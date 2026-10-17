@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-governance-risk-compliance",
+  "language": "en",
+  "chapter": 4,
+  "source_anchor": "ch-04",
+  "source_sha256": "79889b708ec3a743b823fc8b69349b2ccf011d2598808750ba806fe260fb7b14",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which evidence meets the exercise's predefined functional success criterion without exposing the live appointment service?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The database restore finishes, with no need to test booking functionality"
+        },
+        {
+          "id": "b",
+          "text": "Real clients receive trial confirmations from bookings on the live portal"
+        },
+        {
+          "id": "c",
+          "text": "Front-desk staff make test bookings on the isolated restored portal with outbound email blocked"
+        },
+        {
+          "id": "d",
+          "text": "The director attends, making isolation and a stop authority unnecessary"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 4.1 defines success as front-desk test bookings, not merely a completed database task. The exercise uses an isolated environment, blocks outbound email and names someone who can stop it; the live portal is untouched. Director attendance concerns the service limit the director owns and does not replace those safeguards. EX036 and EX037 therefore distinguish demonstrated functionality from component completion or authority alone. The answer describes the first synthetic exercise, not real client bookings, a second test or proof that its elapsed time met the target.",
+      "source": "Chapter 4, section 4.1 Running the exercise, safeguards, success definition and director attendance; Exercises EX036 Success definition and EX037 Director presence; Final appendix - worked results and assessment notes (#worked-results; EX036, EX037)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which reading of the original six-step log correctly applies the program's target comparison?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The six durations total 245 minutes; 245 <= 240 is false, so the run missed by 5 minutes"
+        },
+        {
+          "id": "b",
+          "text": "The last step took 20 minutes; 20 <= 240 is true, so the complete exercise met the target"
+        },
+        {
+          "id": "c",
+          "text": "The largest step took 70 minutes; 70 <= 240 is true, so the service met the target"
+        },
+        {
+          "id": "d",
+          "text": "Rounding 4.08 hours down to four changes the program's result to MET"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The loop adds 15, 55, 70, 60, 25 and 20, producing cumulative totals 15, 70, 140, 200, 225 and 245. The comparison uses that final sum, not the last step or the maximum. Its published line remains 'total 245 min = 4.08 h; target 240 min; MISSED by 5 min'. The formatted hours do not replace the integer-minute comparison. EX038, EX039 and EX057 support this reading. No step is removed, target changed or new exercise result added.",
+      "source": "Chapter 4, section 4.2 Reading the timings; Lab - Timing the Northstar restore exercise, t += m and target comparison, verified cumulative output; Concepts, sum row; Exercises EX038 and EX039; Apply EX057; Final appendix - worked results and assessment notes (#worked-results; EX038, EX039, EX057)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "The locate step ends at cumulative minute 70. Why is it still not the step selected by max() as the longest?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The maximum selects whichever step has the latest cumulative finish time"
+        },
+        {
+          "id": "b",
+          "text": "The maximum selects the governance gap regardless of individual durations"
+        },
+        {
+          "id": "c",
+          "text": "The locate step and database restore both last 70 minutes, so either is equally correct"
+        },
+        {
+          "id": "d",
+          "text": "The locate step itself lasts 55 minutes; max() selects the database step's own 70 minutes"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The 70 beside the locate step is 15 plus 55, not that step's duration. The program selects max(steps, key=lambda x: x[1]), which compares individual minute values and chooses the 70-minute scheduling-database restore. The 55-minute search remains a governance gap identified by interpretation, not by that maximum. The final cumulative value of 245 answers yet another question. EX040, EX041 and EX057 require all three facts to remain separate; identifying the longest task does not by itself explain the five-minute miss or measure a saving.",
+      "source": "Chapter 4, section 4.2; Lab, locate-step cumulative line and maximum expression; Concepts - two calculations, and a reading that is neither, maximum and governance rows; Exercises EX040 and EX041; Apply EX057; Final appendix - worked results and assessment notes (#worked-results; EX040, EX041, EX057)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Someone changes only the notepad's locate value from 55 to 50. What does the resulting total establish?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A second timed exercise has verified that the approved improvements saved five minutes"
+        },
+        {
+          "id": "b",
+          "text": "The hypothetical sum is 240 and would print MET, but the original run and unconfirmed limit remain unchanged"
+        },
+        {
+          "id": "c",
+          "text": "The scheduling-database restore has been measured again and is now faster"
+        },
+        {
+          "id": "d",
+          "text": "The director's service limit can be confirmed because the arithmetic reaches the threshold"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Subtracting five from the one copied addend produces 240, which satisfies the same less-than-or-equal comparison. That is arithmetic on a notepad: it performs no isolation, booking test or timed restoration. The published script and first log remain unchanged. EX058 requires actual improvements and a retest before confirmation; EX050 warns against changing the target instead of the process. Neither a measured saving nor a new database timing follows from the pencil change, and no second execution is attributed to Northstar.",
+      "source": "Chapter 4, Concepts, hypothetical-addend row; Worked example - a pencil on the 55; Decision flow - sum, maximum, pencil; Apply EX058 Fifty instead of fifty-five; Exercises EX050 Adjusting targets; Final appendix - worked results and assessment notes (#worked-results; EX050, EX058)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which follow-up addresses the three identified improvement opportunities without booking an unmeasured saving?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the recorded database duration with a lower number and mark the target achieved"
+        },
+        {
+          "id": "b",
+          "text": "Assume every minute spent locating the backup will disappear once a protected location is proposed"
+        },
+        {
+          "id": "c",
+          "text": "Protect instruction and credential access, script web-host configuration, and document identity reconnection; then retest"
+        },
+        {
+          "id": "d",
+          "text": "Raise the interruption limit instead of carrying out the recommended process improvements"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 4.3 identifies a known protected location for instructions and credential access, a scripted web-host configuration and a written identity reconnection step. These address observed difficulties, but their completion and time savings are not supplied. Editing minutes or assuming the entire search disappears would invent evidence; raising the limit is not the selected recommendation. NIST CSF 2.0 ID.IM-02 offers general context for identifying improvements from exercises, not proof that Northstar implemented them. EX042 supports the three actions, and the original durations stay intact. Any savings require separately measured evidence.",
+      "source": "Chapter 4, section 4.3 What the result means; Concepts, paragraph on unmeasured savings; Exercises EX042 Three improvements; Final appendix - worked results and assessment notes (#worked-results; EX042). General context only: NIST CSF 2.0, Appendix A, ID.IM-02, printed page 19, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Why should the first announced exercise not be treated as a guarantee of four-hour recovery during a real event?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is bounded evidence from calm, prepared conditions; changed availability and possible active threats can change recovery performance"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled retest is equivalent to a successful second measurement"
+        },
+        {
+          "id": "c",
+          "text": "A miss of only five minutes proves that the next event will meet the target without changes"
+        },
+        {
+          "id": "d",
+          "text": "Because it was simulated, its timings provide no useful evidence for improving the strategy"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The first run is useful evidence, but its calm, announced conditions limit generalisation. A real event could occur at night, without warning and with attackers still present; the chapter provides no timing for such an event. EX043 and EX044 call for improvements and a second exercise, not a guarantee from proximity to the target. Booking is not measurement, and a small miss does not predict a future pass. Conversely, rejecting all value in the log would discard the evidence that supports the proposed improvements. No incident or future duration is invented.",
+      "source": "Chapter 4, section 4.3, rehearsal limits and second exercise; Errors and limits; Exercises EX043 Calm conditions and EX044 Second exercise; Apply EX058, limit of one announced exercise; Final appendix - worked results and assessment notes (#worked-results; EX043, EX044, EX058)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which choice did the director approve among the three options, and what does that leave unresolved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate acceptance of four hours; the first exercise is already sufficient"
+        },
+        {
+          "id": "b",
+          "text": "Six hours with manual booking; the longer limit has replaced the original target"
+        },
+        {
+          "id": "c",
+          "text": "All three options together; the engineer may select whichever makes the log pass"
+        },
+        {
+          "id": "d",
+          "text": "Improve within thirty days and retest; four hours is not yet confirmed, and six hours was not selected"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 4.4 offers immediate acceptance, acceptance after improvements and a second test, or a six-hour limit with manual booking. The director approves the second recommendation. Its thirty-day window is for the improvements, and the retest is booked, not run. Approval is therefore a decision about what happens next, not evidence of final recovery capability. EX045 and EX046 do not authorise combining the options or treating the manual-booking alternative as implemented. The first 245-minute result and 240-minute target remain unchanged; no new acceptance or staffing arrangement is added.",
+      "source": "Chapter 4, section 4.4 Recording the decision, options and approved recommendation; Worked example; Exercises EX045 Decision options and EX046 Recommended option; Final appendix - worked results and assessment notes (#worked-results; EX045, EX046)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Why is the approved decision record filed with the exercise log rather than kept as an unsupported approval label?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Filing converts every recommendation into a completed infrastructure change"
+        },
+        {
+          "id": "b",
+          "text": "It preserves the evidence, alternatives and reasoning behind the decision for later checking"
+        },
+        {
+          "id": "c",
+          "text": "The director's presence makes the measured step times unnecessary to retain"
+        },
+        {
+          "id": "d",
+          "text": "An approval label proves the retest has occurred even without another log"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The record states the decision needed, evidence, alternatives and recommendation. Keeping it beside the first exercise log lets a later reviewer trace why the director chose improvement and retesting. EX047 concerns that traceability, not automatic completion. EX037 explains the director's attendance through ownership of the service limit; attendance does not replace the underlying timestamps. Filing cannot create implemented improvements or an absent second run. The answer preserves the existing decision and log without inventing a new signature, review finding or operational result.",
+      "source": "Chapter 4, section 4.1, director attendance; section 4.4 Recording the decision, contents and filing; Exercises EX037 Director presence and EX047 Record filing; Final appendix - worked results and assessment notes (#worked-results; EX037, EX047)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Which update to the one-page strategy accurately separates the new risk scenario from outcomes still to be delivered?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All service dependencies have now been tested because an identity step appears in the first restore log"
+        },
+        {
+          "id": "b",
+          "text": "The quarter outcome to remove appointment reasons proves every confirmation email has already been cleaned"
+        },
+        {
+          "id": "c",
+          "text": "Include identity-provider failure as a scenario, while keeping the improvements, retest and other quarter outcomes as work to deliver"
+        },
+        {
+          "id": "d",
+          "text": "Treat assigning owners as complete because ownership appears in the updated strategy"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 4.5 adds identity-provider failure to the leading scenarios and names the quarter's outcomes: restore improvements, another test, owners for the relay and roster, and removal of appointment reasons from emails. Identifying those outcomes is not evidence that each was implemented. An identity reconnection step also does not test every dependency or prove an outage occurred. EX048 anchors the scenario; the strategy keeps appointment scheduling as the priority and the director as tradeoff owner. No cleaned message, assigned owner, completed improvement or additional test is supplied.",
+      "source": "Chapter 4, section 4.5 Updating the one-page strategy, scenario and quarter-outcome sentences; Exercises EX048 New scenario; section 4.4, later improvements and booked exercise; Final appendix - worked results and assessment notes (#worked-results; EX048)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which reporting approach follows the monthly signals proposed in the updated strategy without claiming a review already happened?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep restore time, backup failures, privileged changes and overdue owner actions as signals for review; record results only when observed"
+        },
+        {
+          "id": "b",
+          "text": "Mark the monthly review complete because the first exercise log and decision were filed"
+        },
+        {
+          "id": "c",
+          "text": "Report one restore duration as the measured monthly average for all outages"
+        },
+        {
+          "id": "d",
+          "text": "Replace the signals with the newly approved target and declare the improvement programme complete"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 4.5 and EX049 name four signals to review monthly, not measured monthly values or a completed review. A single exercise duration does not become an average, and neither filing nor a target supplies evidence for the remaining signals. NIST CSF 2.0 GV.OV-03 provides general context for evaluating risk-management performance and considering adjustments; it does not prescribe Northstar's monthly cadence or prove its review occurred. Retain the proposed oversight and the case's open actions without invented counts, approval of the four-hour limit or book-completion claims.",
+      "source": "Chapter 4, section 4.5 Updating the one-page strategy, monthly signals; Exercises EX049 Monthly signals; section 4.4, filed evidence and conditional decision; Final appendix - worked results and assessment notes (#worked-results; EX049). General context only: NIST CSF 2.0, Appendix A, GV.OV-03, printed page 17, https://doi.org/10.6028/NIST.CSWP.29"
+    }
+  ]
+}
