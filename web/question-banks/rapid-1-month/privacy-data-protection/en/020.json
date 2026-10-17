@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 20,
+  "source_anchor": "ch-20",
+  "source_sha256": "96b962cd3656fcf7bf9a622813ae50605b489254720790e67c5a683cf73c4109",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which classification can the leaving note retain for 44021 with points but no health-revealing line?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Not personal, because the note supplies no customer's name"
+        },
+        {
+          "id": "b",
+          "text": "Personal data, but the supplied points do not establish health data"
+        },
+        {
+          "id": "c",
+          "text": "Health data, because identifying a pharmacy customer proves a condition"
+        },
+        {
+          "id": "d",
+          "text": "Personal data whose classification automatically approves promotional use"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 20.1 separates the link to a living person, health-revealing content and the proposed use. Juniper can link 44021 to a customer, so omitting a name does not remove the personal classification. Points alone do not establish a condition. A revealing medicine line would change the health classification, not retroactively create the personal link. Correct classification also does not approve promotion. The first worked-example row may stay in the evidence-based note considered by EX074; no identity, diagnosis or new medicine line is added.",
+      "source": "Chapter 20, section 20.1 The note repeats the file, opening classification sentences; section 20.2 Worked example, 44021 row; Apply EX074, keeping the leaving note evidence-based; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The later form has five fields. Which entry still belongs under the published laboratory output?",
+      "options": [
+        {
+          "id": "a",
+          "text": "fields collected 5; not needed for any stated purpose 0 (0%)"
+        },
+        {
+          "id": "b",
+          "text": "fields collected 10; not needed for any stated purpose 0 (0%)"
+        },
+        {
+          "id": "c",
+          "text": "fields collected 5; not needed for any stated purpose 5 (100%)"
+        },
+        {
+          "id": "d",
+          "text": "fields collected 10; not needed for any stated purpose 5 (50%)"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The published output belongs to the original ten-name input, not to a later form. Five original names were outside the union of the stated purpose sets, giving five of ten, or 50 percent. The other options replace that input, remove failures without a corresponding run, or mix incompatible counts. Chapter 20 preserves the original print, and EX074 rejects replacing it with five collected and none unneeded. No edit to collected, new-input execution or replacement laboratory output is supplied by this question.",
+      "source": "Chapter 20, section 20.1, published lab lines and two-week form; section 20.2 Worked example, replacement-print row; Chapter 4, Lab - Loyalty app fields versus stated purposes, original code and verified output; Apply EX074, first claim; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A closing note treats drafted clauses as signed contracts for loyalty and delivery. What correction does the file support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both remain in negotiation; drafting is not evidence that either was signed"
+        },
+        {
+          "id": "b",
+          "text": "Both are signed because drafting completed the supplier assessment"
+        },
+        {
+          "id": "c",
+          "text": "The dispensing agreement automatically supplies their missing terms"
+        },
+        {
+          "id": "d",
+          "text": "No vendor has data-protection terms because these two are unresolved"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 20.1 distinguishes dispensing and the newsletter tool, which had terms, from loyalty and delivery, which remain in negotiation. A draft shows preparatory work, not an established signature. Another supplier's agreement cannot fill that evidence gap, and the two gaps do not erase the agreements actually found. EX074 specifically rejects the claimed loyalty signature. This answer describes the synthetic file, not a universal legal rule about contract form; it invents no signature, date, binding agreement or assessment of contractual compliance.",
+      "source": "Chapter 20, section 20.1, four-vendor account and negotiation status; section 20.2 Worked example, drafted-clauses row; Apply EX074, second claim; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "How should the note reconcile the clean two-week export with the later file that names insulin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the earlier result with a failure because the later file differs"
+        },
+        {
+          "id": "b",
+          "text": "Keep the action closed because purchase_history is an allowed field name"
+        },
+        {
+          "id": "c",
+          "text": "Keep the earlier result, record the later failure and leave the action open"
+        },
+        {
+          "id": "d",
+          "text": "Record that every intervening and future export contains medicine names"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Each observation applies to its own file. The clean two-week export remains a valid historical result, while the later medicine line is a failed content check. Neither the allowed field name nor the earlier result clears that later content. Conversely, one failed file does not establish the contents of every other night. Section 20.1 retains both observations, and EX074 rejects permanent closure based on the first. The answer adds no inspection, intervening export, patient or new result.",
+      "source": "Chapter 20, section 20.1, final two sentences on exports and the open action; section 20.2 Worked example, every-later-night row; Apply EX074, third claim; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Does the single export in the review file justify recording that all three tills passed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; approval of the plan establishes a result for each till"
+        },
+        {
+          "id": "b",
+          "text": "No; the other tills have no demonstrated result in that evidence"
+        },
+        {
+          "id": "c",
+          "text": "No; the missing exports establish that the other two tills failed"
+        },
+        {
+          "id": "d",
+          "text": "Yes; copying the same export into three entries verifies all three"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The worked example rejects the all-three-tills claim because the evidence is one export. Plan approval and repeated copies of a file do not create observations from other tills. Missing evidence also cannot be converted into a failure result. This is the spatial limit of the evidence, distinct from the limit across different nights. EX074's instruction to reject unsupported conclusions applies to this row as well. No other export, shop identity, customer allocation or additional test is invented.",
+      "source": "Chapter 20, section 20.1, the one two-week export; section 20.2 Worked example, all-three-tills row; Apply EX074, unsupported closure in the leaving note; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Which activity is on Sofia's signed scope rather than an expansion invented while finishing the review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Calling a customer to explain the export before closing the file"
+        },
+        {
+          "id": "b",
+          "text": "Opening an individual record to add supporting detail to the note"
+        },
+        {
+          "id": "c",
+          "text": "Changing the recorder settings to complete an action herself"
+        },
+        {
+          "id": "d",
+          "text": "Inspecting the shop's CCTV signs without changing settings"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 20.1 lists CCTV signs among the permitted subjects and separately excludes individual records, customer contact and settings changes. A useful closing task does not amend those boundaries. The first three options cross explicit exclusions; inspecting the signs remains within the listed scope. This identifies permission, not a new inspection actually performed. EX074 asks for an accurate note rather than new operations to make its claims look complete. No call, lookup, scope addition or recorder change is supplied.",
+      "source": "Chapter 20, section 20.1, signed-scope permissions and exclusions; section 20.2 Synthetic case note, no added customer details; Apply EX074, evidence-based leaving note; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which retention summary preserves both the known CCTV cycle and the decisions still missing from the file?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CCTV stays at thirty days; the other listed end dates remain unwritten"
+        },
+        {
+          "id": "b",
+          "text": "The CCTV period now supplies the end date for every data type"
+        },
+        {
+          "id": "c",
+          "text": "A blank retention row authorizes keeping that category without limit"
+        },
+        {
+          "id": "d",
+          "text": "Sofia may choose a prescription period to complete the final note"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The known thirty-day cycle belongs to CCTV and is not extended or copied to other categories. Loyalty, delivery and newsletter subscribers who never open emails still have no written end. Those gaps are not unlimited-retention approvals. Prescription records retain their professional-rule context; this lesson supplies no numeric duration for Sofia to insert. Section 20.2 rejects her invented prescription year. In applying EX074's no-invented-endings discipline, preserve the gaps without asserting a new schedule, deletion, legal deadline or completed retention change.",
+      "source": "Chapter 20, section 20.1, CCTV and the three unwritten retention ends; section 20.2 Worked example, prescription-period row; Apply EX074, limits on the leaving note; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Does locking the storeroom and arranging shredding support marking destruction as completed in the leaving note?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; restricted room access is the same result as destroyed copies"
+        },
+        {
+          "id": "b",
+          "text": "Yes; an arrangement supplies the missing destruction date"
+        },
+        {
+          "id": "c",
+          "text": "No; the control and arrangement are recorded, but dated destruction is not"
+        },
+        {
+          "id": "d",
+          "text": "No; the missing date proves the copies were never destroyed at any time"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The file records a locked room and arranged shredding, but no destruction date. Access restriction is a current control; an arrangement is preparatory work; neither is evidence of dated completion. Equally, absence of that entry is not a new observation proving that destruction could never have occurred. Section 20.1 leaves the ending open. EX074's evidence-based note must preserve this distinction rather than invent a receipt, date or disposal result. It does not authorize reading or moving prescription copies to settle the gap.",
+      "source": "Chapter 20, section 20.1, storeroom report, locked room and missing destruction date; section 20.2 Synthetic case note, no added dates; Apply EX074, unsupported endings; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A later export names insulin. Which statement about the insulin-triggered voucher message can the note retain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The medicine line is evidence that a voucher was delivered"
+        },
+        {
+          "id": "b",
+          "text": "The text remains off; an export line does not establish a message send"
+        },
+        {
+          "id": "c",
+          "text": "Leaving the text off proves that no export can contain medicine data"
+        },
+        {
+          "id": "d",
+          "text": "Approval of the improvement plan establishes that the text was activated"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Export contents and message activation are different operations. Section 20.1 records the later content failure, while the worked example expressly keeps the insulin text off. The export line proves neither a delivered voucher nor activation through plan approval. Conversely, the off state does not erase medicine content already reported in the export. EX074 requires the note to repeat the evidence rather than combine separate facts into a new event. No recipient, new transfer, message, switch change or operational result is added.",
+      "source": "Chapter 20, section 20.1, later export content; section 20.2 Worked example, insulin-text row; Apply EX074, repeat evidence without inventing outcomes; Worked results (#worked-results; EX074)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "After checking EX074's four claims, what conclusion is justified at the end of these twenty lessons?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the compliance claim because twenty lessons close the editorial review"
+        },
+        {
+          "id": "b",
+          "text": "Keep the signature claim because a drafted clause is a completed agreement"
+        },
+        {
+          "id": "c",
+          "text": "Treat the next-course link as proof that every Juniper action is closed"
+        },
+        {
+          "id": "d",
+          "text": "Reject all four; the planning minimum is met, but review remains open"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Reject the replacement count, assumed signature, permanent export closure and compliance claim. The print remains ten collected and five unneeded; negotiation is not a signature; one clean file does not settle later nights. Twenty lessons meet the planning minimum, not the publication gate in BOOK_STANDARD.md or a legal compliance assessment. The next step is the edition index and Course 005, Security governance, risk and compliance. That navigation closes no Juniper action and adds no Chapter 21, certificate, completed review or new language edition.",
+      "source": "Chapter 20, section 20.2 Worked example, replacement-print, signature, closure and compliance rows; Errors and limits; Apply EX074, full rubric; Worked results (#worked-results; EX074). BOOK_STANDARD.md, Publication gate for each volume; edition SUBJECTS.md, final Course 005 row."
+    }
+  ]
+}
