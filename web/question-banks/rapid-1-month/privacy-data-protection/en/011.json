@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 11,
+  "source_anchor": "ch-11",
+  "source_sha256": "a26ac28fe00164865e38b1bb24976da1720a56e983217b4c3d9b10d4c0bc5411",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What does the owner's approval of all five actions establish at the Chapter 11 checkpoint?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All five actions were implemented and verified across the business"
+        },
+        {
+          "id": "b",
+          "text": "The business approved the plan; implementation evidence must be assessed separately"
+        },
+        {
+          "id": "c",
+          "text": "The unchecked tills show that the owner never approved the plan"
+        },
+        {
+          "id": "d",
+          "text": "The approval itself verifies every file described in the plan"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 11.1 preserves the owner's approval as a business decision. It does not turn that decision into observations of implementation or of every export. Conversely, missing checks do not erase the approval. The first worked-example row therefore remains in the record while evidence of results keeps its narrower scope. EX065 requires retaining the approval, not using it as a substitute for verification. Juniper is synthetic; no additional approval, completed action or inspection is supplied here.",
+      "source": "Chapter 11, section 11.1 Approval and verification are different sentences, opening and two-week checkpoint; section 11.2 Worked example, approval row; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Which claim stays within the evidence supplied by the inspected till export?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The pharmacy no longer sells medicines because this export has no medicine names"
+        },
+        {
+          "id": "b",
+          "text": "Every export from all shops contains only totals and non-medicine categories"
+        },
+        {
+          "id": "c",
+          "text": "All five actions passed because the inspected file contains no medicine names"
+        },
+        {
+          "id": "d",
+          "text": "The inspected file shows totals and non-medicine categories, without certifying other files"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX065 describes the content of one export. That observation supports a statement about this file, not a conclusion about everything sold, every other export or all five actions. Section 11.2 deliberately uses the bounded claim that this export had no medicine name. Removing the reference to this file would enlarge the claim beyond its evidence. The answer records the supplied content without inventing a later export, a change to sales or a complete business-wide result.",
+      "source": "Chapter 11, section 11.1, final sentence; section 11.2 Worked example, inspected-export row; Apply EX065, supplied export contents; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "The other two tills have no exports in the log. Which status should Sofia record for them?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unchecked in this record; neither a pass nor a content failure is established"
+        },
+        {
+          "id": "b",
+          "text": "Passed, because the owner approved the same plan for the whole business"
+        },
+        {
+          "id": "c",
+          "text": "Failed, because a missing export proves that medicine names are being sent"
+        },
+        {
+          "id": "d",
+          "text": "Permanently exempt from checking because one acceptable file already exists"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 11.1 leaves the two tills unchecked. Errors and limits explicitly rejects calling that absence a finding that medicine names are sent. The owner's approval does not fill the gap with a pass, and the chapter grants no exemption from further assessment. EX065 therefore supports an unresolved status tied to the log. This is a statement about available evidence, not a fresh observation of either till or an explanation for why its export is absent.",
+      "source": "Chapter 11, section 11.1, missing second and third exports; section 11.2 Worked example, other-tills row; Errors and limits, first two sentences; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Would copying the inspected export's result into the other two tills' rows create evidence that those tills were checked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; separate log rows are sufficient to establish separate inspections"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the business-wide approval makes the result transferable between tills"
+        },
+        {
+          "id": "c",
+          "text": "No; copying the entry repeats the same evidence and does not add another inspection"
+        },
+        {
+          "id": "d",
+          "text": "No; making a copy would prove that the original inspected export contained medicine names"
+        }
+      ],
+      "correct": "c",
+      "explanation": "A record entry must not be mistaken for a new observation. Copying the same result would still rely on the original file, while claiming coverage the source does not provide. The second learning outcome and the worked example reject pasting one export onto the other shops. Approval does not change that relationship, and copying an entry says nothing new about the original contents. This question evaluates a proposed log edit; it does not perform an edit or create a second export.",
+      "source": "Chapter 11, learning outcome 2; section 11.1, unsupported all-shops statement; section 11.2 Worked example, other-tills row; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Must Sofia discard the first export's result because the other tills remain unchecked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a result has no value unless every shop has already been assessed"
+        },
+        {
+          "id": "b",
+          "text": "No; keep its bounded finding while leaving the other tills unresolved"
+        },
+        {
+          "id": "c",
+          "text": "Yes; incomplete coverage proves that the first file's contents were recorded incorrectly"
+        },
+        {
+          "id": "d",
+          "text": "No; keeping the first result requires recording all shops as passed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The final sentence of section 11.1 preserves the first export as evidence about the file opened. Limited coverage does not invalidate that observation, but it also does not extend it to other files. Deleting the finding would lose supported information; retaining it alongside invented passes would overstate it. EX065 keeps both the genuine result and the unverified areas visible. Nothing here establishes an error in the first file, another test result or a reason to discard the owner's approval.",
+      "source": "Chapter 11, section 11.1, final sentence; section 11.2 Worked example, keep-it-as-that-file decision; Errors and limits; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A summary requests a customer count for each shop. How should the figure of about 9,000 be used?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Divide it equally among the shops and report the portions as observed headcounts"
+        },
+        {
+          "id": "b",
+          "text": "Assign it entirely to the shop whose export was inspected"
+        },
+        {
+          "id": "c",
+          "text": "Rewrite it as an exact count so the missing allocation can be calculated"
+        },
+        {
+          "id": "d",
+          "text": "Retain the approximate business total; the source supplies no allocation by shop"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The chapter supplies one approximate business figure, not a distribution across shops. Equal division would introduce an unsupported assumption; assigning everyone to the checked shop would be equally unsupported. Dropping about would also add precision the source does not have. The final worked-example row and EX065 explicitly keep the figure whole. The answer invents neither a per-shop population nor a measured customer count, and it does not treat the export as a census of Juniper's customers.",
+      "source": "Chapter 11, learning outcome 3; section 11.1, unsplit regular-customer figure; section 11.2 Worked example, headcount row and Synthetic case note; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A reviewer proposes adding plausible shop names and assigning the inspected file to one. What does the source permit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Describe the checked file and unchecked tills without inventing shop identities"
+        },
+        {
+          "id": "b",
+          "text": "Choose any plausible names because the organization itself is fictional"
+        },
+        {
+          "id": "c",
+          "text": "Name the largest shop as the checked location using the business customer total"
+        },
+        {
+          "id": "d",
+          "text": "Infer a location from the owner's approval and present it as documented"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 11.1 and the synthetic-case note keep the shops unnamed. Fictional status does not authorize adding details to the fixed teaching record. Neither the aggregate customer figure nor the owner's approval identifies where the inspected file came from by shop name. EX065 expressly forbids naming the shops. Preserve the distinctions the source actually gives rather than attaching an invented identity to evidence. This does not prohibit real evidence being identified accurately in another review; none is added here.",
+      "source": "Chapter 11, section 11.1, shops left unnamed; section 11.2 Synthetic case note; Apply EX065 and rubric; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "The two-week check mentions one sign-up form and one till export. Does that establish exports from two tills?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; every distinct artifact represents a different till inspection"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a sign-up form substitutes for the absent export of another shop"
+        },
+        {
+          "id": "c",
+          "text": "No; they are different artifact types, and only one till export is described"
+        },
+        {
+          "id": "d",
+          "text": "No; the form reference proves that no till export was inspected at all"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 11.1 identifies a form and an export separately. Counting them as two artifacts does not make them exports from different tills. The form does not supply the missing file from another shop, and its presence does not negate the export that is documented. EX065 still has one inspected export and two tills without exports in the log. The question distinguishes the object of each check without inventing a form result, another location or a second export.",
+      "source": "Chapter 11, section 11.1, description of the two-week check; section 11.2 Worked example, one-file boundary; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "If a later export is actually examined, how should its result relate to the existing entry?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the earlier entry because a later observation makes historical evidence false"
+        },
+        {
+          "id": "b",
+          "text": "Record it on its own line with its own scope; no such result is supplied here"
+        },
+        {
+          "id": "c",
+          "text": "Enter a pass now because the chapter anticipates that another export could be taken"
+        },
+        {
+          "id": "d",
+          "text": "Use it automatically to certify every till not covered by the first file"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Errors and limits says a later export, if taken, gets its own line. A genuine later observation would need to support its own claim rather than rewrite the earlier record or inherit coverage of every remaining till. The conditional sentence is not evidence that a new file exists or passed. At the actual EX065 checkpoint, the two absent exports remain absent. This hypothetical supplies no later result, time, shop identity or new execution and leaves the original finding intact.",
+      "source": "Chapter 11, Errors and limits, final sentence; section 11.1, evidence about the opened file; section 11.2 Worked example; Apply EX065; Worked results (#worked-results; EX065)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does citing GDPR accountability turn the approved plan and one acceptable export into demonstrated compliance for all shops?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; citing the principle replaces any missing local evidence"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the owner's approval alone demonstrates every principle for the whole business"
+        },
+        {
+          "id": "c",
+          "text": "No; the citation instead proves that both unchecked tills violate the GDPR"
+        },
+        {
+          "id": "d",
+          "text": "No; the principle calls for demonstrability, but supplies none of the missing case evidence"
+        }
+      ],
+      "correct": "d",
+      "explanation": "GDPR Article 5(2) makes the controller responsible for and able to demonstrate compliance with the principles in paragraph 1. It is a general requirement, not evidence that Juniper's other tills passed or failed. The chapter's one-file finding remains bounded, and organizational approval remains a different fact. EX065 does not certify the business. The statutory citation neither supplies exports, prescribes a sample size here nor decides a violation. This distinction is educational, not a legal opinion on a real pharmacy.",
+      "source": "Chapter 11, section 11.1, approval versus verification; section 11.2 Worked example, approval and other-tills rows; Apply EX065; Worked results (#worked-results; EX065). General accountability context only: GDPR Article 5(2), https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679"
+    }
+  ]
+}
