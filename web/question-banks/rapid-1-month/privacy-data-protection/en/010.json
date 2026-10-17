@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 10,
+  "source_anchor": "ch-10",
+  "source_sha256": "1ae662ca5771a54423a646ab1fd0aaa60bdd5608460fa2786fc1d4185397f9de",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "The shelves are described as the old photo's main subject. Which fact controls Sofia's decision under the agreed rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The photographer intended to advertise shelves rather than customers"
+        },
+        {
+          "id": "b",
+          "text": "Customers remain visible and the file contains no permission for their appearance"
+        },
+        {
+          "id": "c",
+          "text": "The picture is old enough to fall outside the current review"
+        },
+        {
+          "id": "d",
+          "text": "The business owner wants promotion, so the frame needs no further check"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 10.1 assesses what is actually in the frame, not merely what the colleague calls its main subject. Visible customers and missing permission fail Juniper's agreed rule, so Sofia refuses this post. Describing the shelves as important does not remove the people. Neither the age of the picture nor the owner's promotional aim supplies permission. EX064 requires this evidence-based refusal. The photograph and decision are synthetic; no customer identity, publication event or new image inspection is added.",
+      "source": "Chapter 10, section 10.1 The shelves do not hide the people, colleague's proposal and refusal; section 10.2 Worked example, old counter-photo row; Apply EX064 and rubric; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "What does the approved replacement plan establish, as distinct from permission for people in the old photograph?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The customers retrospectively agreed to publication of the old photograph"
+        },
+        {
+          "id": "b",
+          "text": "The replacement images have already been produced for each shop"
+        },
+        {
+          "id": "c",
+          "text": "The old photograph contains no customers because the plan excludes them"
+        },
+        {
+          "id": "d",
+          "text": "The organization chose a replacement action; the plan does not record the depicted customers agreeing"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The plan is evidence of the organization's decision to replace counter photos with customer-free images. It is not evidence of the depicted people's wishes, completed replacement work or a changed frame. The third row of section 10.2 expressly keeps the old picture refused despite approval of the plan. EX064 preserves the difference between organizational approval and permission for this use. No retroactive agreement, newly taken photograph or completed action is inferred from that document.",
+      "source": "Chapter 10, section 10.1, five-action plan and missing permission; section 10.2 Worked example, approved-plan row; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "The review file holds nobody's permission for the old photo. Which description of the evidence is accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Permission for this use is not substantiated; the file also does not document individual refusals"
+        },
+        {
+          "id": "b",
+          "text": "Every visible customer personally refused when asked by the reviewer"
+        },
+        {
+          "id": "c",
+          "text": "Permission was probably given orally and may be entered as obtained"
+        },
+        {
+          "id": "d",
+          "text": "A customer name may be added to make the missing permission entry complete"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The supplied file lacks permission, which is enough to reject the proposed post under the case rule. That gap does not establish a series of conversations, explicit refusals or an unrecorded oral agreement. Section 10.2 says not to invent a named customer's permission, and its synthetic-case note supplies no consenting person's name. Keep the evidence gap explicit rather than filling it with either agreement or refusal. This does not claim that written signatures are the only possible evidence in every situation.",
+      "source": "Chapter 10, section 10.1, nobody's permission in the review file; section 10.2 Worked example, final row and Synthetic case note; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Consider the worked example of shelves only, with no person in the frame. What follows from that description?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A replacement photo has therefore been taken and the action is complete"
+        },
+        {
+          "id": "b",
+          "text": "The older counter photo becomes acceptable because a safer alternative can be described"
+        },
+        {
+          "id": "c",
+          "text": "That type of image can fit the agreed plan; its production or use is not thereby established"
+        },
+        {
+          "id": "d",
+          "text": "Every future campaign is approved because one example matches the rule"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The first row of section 10.2 is a positive comparison: a frame without people can fit the plan. A suitable type of image is not proof that such an image has been created or used. It neither changes the contents of the old photo nor approves a future campaign. EX064 leaves the replacement undated. This question applies the table's alternative without creating a new photograph, publishing it or declaring broader legal compliance.",
+      "source": "Chapter 10, section 10.2 Worked example, shelves-only row; section 10.1, replacement not dated; Errors and limits; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Does approval of the plan change the purpose of the proposed old-photo post or prove that customers expected it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; organizational approval changes promotion into internal recordkeeping"
+        },
+        {
+          "id": "b",
+          "text": "No; the purpose remains promotion, and the approval does not establish the customers' expectations"
+        },
+        {
+          "id": "c",
+          "text": "Yes; a promotional purpose automatically proves that everyone in the frame expected publication"
+        },
+        {
+          "id": "d",
+          "text": "No; the refusal proves the image had already been used in another campaign"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 10.1 expressly retains promotion as the purpose and says the expectation test does not change because a plan exists. An internal business decision is not evidence of the customers' expectations. It also does not prove that publication already occurred in this or another campaign. The question distinguishes intended use, organizational approval and evidence about people, rather than treating them as the same test. EX064 still evaluates the proposed post under the unchanged case rule.",
+      "source": "Chapter 10, section 10.1, sentences on promotion and the expectation test; section 10.2 Worked example, approved-plan row; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A colleague wants to use the plan-approval date as the date the photos were replaced. What should the completion record show?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacement completed on the approval date, since both refer to the same action"
+        },
+        {
+          "id": "b",
+          "text": "Replacement completed when the old photo was taken, because an image already existed"
+        },
+        {
+          "id": "c",
+          "text": "Replacement completed when Sofia refused the post, because refusal creates the alternative"
+        },
+        {
+          "id": "d",
+          "text": "No invented completion date; approving or refusing something does not establish that replacement occurred"
+        }
+      ],
+      "correct": "d",
+      "explanation": "A date must evidence the event it is used to record. Plan approval, capture of the old image and refusal of its use are not completion of the replacement work. Section 10.1 states that the lesson does not date the replacement, and EX064 repeats that limit. Keep completion unsubstantiated rather than borrowing another event's time. This does not assert a new delay or that no replacement could have occurred elsewhere; it reports what this file does not establish.",
+      "source": "Chapter 10, learning outcome 3; section 10.1, final sentences; Apply EX064, question about the date and rubric; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "May the reviewer mark the photo action finished for all three shops from the approved plan and this refusal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; those records do not demonstrate completed replacement across the shops"
+        },
+        {
+          "id": "b",
+          "text": "Yes; approval at business level proves execution in every shop"
+        },
+        {
+          "id": "c",
+          "text": "Yes; refusing one image counts as a replacement completed in all locations"
+        },
+        {
+          "id": "d",
+          "text": "No; the file instead proves that exactly two shops failed their replacement work"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 10.1 explicitly refuses to tick completion for all three shops. The plan identifies intended work and this refusal concerns one offered image; neither supplies evidence of replacement across the business. The absence of that evidence also does not establish a two-shop failure count. EX064 keeps the completion claim open. Do not invent shop names, a per-shop tally, a new photograph or an inspection of other locations. Organizational scope and verified coverage are different.",
+      "source": "Chapter 10, section 10.1, refusal to mark all three shops finished; section 10.2 Worked example, plan versus old photo; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "What decision about next month follows from refusing this old photograph?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All future promotional images are now prohibited regardless of their contents"
+        },
+        {
+          "id": "b",
+          "text": "A full campaign is authorized as soon as the old photograph is excluded"
+        },
+        {
+          "id": "c",
+          "text": "No campaign is set; each proposed image still needs its own evidence-based assessment"
+        },
+        {
+          "id": "d",
+          "text": "Every future image must reproduce the shelves in exactly the same arrangement"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits says that refusing one photograph does not set a campaign for the following month. The reviewer must still assess who is visible and what permission the file actually contains for each image. A refusal therefore establishes neither a blanket ban, a campaign approval nor a compositional requirement about the shelves. EX064 settles the present proposal, not a future programme. No later campaign, image or new operational decision is added to the case.",
+      "source": "Chapter 10, Errors and limits; section 10.2 Worked example, separate pictures and decisions; Apply EX064; Worked results (#worked-results; EX064)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Does Juniper's rule establish that consent is the only GDPR basis for every use of an identifiable person's image?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the organizational rule replaces all other bases listed in the Regulation"
+        },
+        {
+          "id": "b",
+          "text": "No; GDPR has other lawful bases, but that fact supplies no alternative authorization for this refused post"
+        },
+        {
+          "id": "c",
+          "text": "Yes; every photograph is governed by precisely the same consent requirement in every context"
+        },
+        {
+          "id": "d",
+          "text": "No; the existence of other bases automatically authorizes this old photograph"
+        }
+      ],
+      "correct": "b",
+      "explanation": "GDPR Article 6(1) provides several lawful bases; EDPB Guidelines 05/2020, paragraph 2, says the appropriate basis must be considered for the envisaged processing. Juniper's agreed rule is not a universal statement that consent is always the only basis. Conversely, knowing that alternatives exist does not establish one for this post or override the case decision. EX064's refusal remains. This clarification neither selects a new basis for Juniper nor offers a legal opinion on a real photograph.",
+      "source": "Chapter 10, section 10.1, agreed organizational rule; Apply EX064; Worked results (#worked-results; EX064). General legal distinction: GDPR Article 6(1), https://eur-lex.europa.eu/eli/reg/2016/679/oj ; EDPB Guidelines 05/2020, paragraph 2, https://www.edpb.europa.eu/documents/guideline/guidelines-052020-on-consent-under-regulation-2016679_en"
+    },
+    {
+      "id": "Q10",
+      "prompt": "Hypothetically, evidence covers one visible person agreeing to promotional use. Does that establish permission for every other person shown?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; evidence concerning one person does not establish the wishes of the others"
+        },
+        {
+          "id": "b",
+          "text": "Yes; appearing in the same picture makes one person's agreement collective"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the owner's plan supplies whatever individual permissions are missing"
+        },
+        {
+          "id": "d",
+          "text": "No; every other person must therefore have expressly refused"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The case rule concerns the people shown, not merely whether any permission exists somewhere. GDPR Article 4(11) concerns the data subject's wishes; where consent is the basis, Article 7(1) and EDPB Guidelines 05/2020, paragraphs 104-107, require demonstrable consent. Evidence for one person does not establish agreement or refusal by others. This is a conditional test of evidential scope, not a new consent record: the actual EX064 file still contains no named customer's permission and the old post stays refused.",
+      "source": "Chapter 10, section 10.1, people in the picture; section 10.2 Worked example, missing permission and Synthetic case note; Apply EX064; Worked results (#worked-results; EX064). General consent-evidence principles only: GDPR Articles 4(11), 7(1), https://eur-lex.europa.eu/eli/reg/2016/679/oj ; EDPB Guidelines 05/2020, paragraphs 104-107, https://www.edpb.europa.eu/documents/guideline/guidelines-052020-on-consent-under-regulation-2016679_en"
+    }
+  ]
+}
