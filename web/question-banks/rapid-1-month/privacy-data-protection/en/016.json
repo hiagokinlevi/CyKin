@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 16,
+  "source_anchor": "ch-16",
+  "source_sha256": "9ff12781f0c9aaf7188d4b7cf1d3aa0c18426ad3a8885eeb7df5231156819b6e",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "How should the thirty-day overwrite be described in the review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A retention period the GDPR requires for every workplace camera"
+        },
+        {
+          "id": "b",
+          "text": "A new period Sofia selected to evaluate the employee"
+        },
+        {
+          "id": "c",
+          "text": "The existing cycle found in Juniper's file, not a universal legal period"
+        },
+        {
+          "id": "d",
+          "text": "Evidence that every aspect of Juniper's CCTV processing is compliant"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 16.1 reports the cycle already found, and the first worked-example row leaves it unchanged. It does not attribute that period to a new decision by Sofia or certify the CCTV system. GDPR Article 5(1)(e) relates identifiable storage to necessity for its purposes, with specified exceptions; it does not set a universal thirty-day CCTV period. EX070 preserves the case's existing cycle. Juniper is synthetic: neither a new retention choice nor a legal compliance assessment is supplied.",
+      "source": "Chapter 16, learning outcome 1; section 16.1 The camera already has a period. Watching a colleague is a new use., opening sentence; section 16.2 Worked example, first row. General context: GDPR Article 5(1)(e), https://eur-lex.europa.eu/eli/reg/2016/679/oj; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The employee is identifiable in the images but unnamed in the lesson. Which classification is supported?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The images concern a data subject; employment does not remove that status"
+        },
+        {
+          "id": "b",
+          "text": "The images cease to be personal data because the lesson omits a name"
+        },
+        {
+          "id": "c",
+          "text": "Only pharmacy customers can be data subjects in a privacy review"
+        },
+        {
+          "id": "d",
+          "text": "The images establish a health diagnosis because the person works in a pharmacy"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Chapter 16 explicitly says the images identify a person at work. Chapter 2's staff discussion makes the same distinction: staff are data subjects too. Omitting a name from this lesson does not make the depicted person unidentifiable, and working in a pharmacy supplies no diagnosis. GDPR Article 4(1) defines personal data by relation to an identified or identifiable natural person, not by customer status. EX070 applies that principle without adding an identity, illness or observation about the employee.",
+      "source": "Chapter 16, section 16.1, identifiable person at work and staff as data subjects; section 16.2 Synthetic case note; Chapter 2, section 2.5 Respecting staff. General definition: GDPR Article 4(1), https://eur-lex.europa.eu/eli/reg/2016/679/oj; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "The owner wants to use existing footage to judge one employee's speed. Why is the existing camera arrangement insufficient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The proposal changes only a filename, leaving the use unchanged"
+        },
+        {
+          "id": "b",
+          "text": "Existing footage automatically carries permission for every later use"
+        },
+        {
+          "id": "c",
+          "text": "Only collecting new images can introduce a different purpose"
+        },
+        {
+          "id": "d",
+          "text": "Keeping images longer for individual performance judgment introduces a new purpose"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The proposed use concerns why the images would be retained, not merely whether the camera or footage already exists. Section 16.1 distinguishes the purpose of judging this employee from the purpose associated with the period already found. Reusing existing material can still raise a new-purpose question. GDPR Article 5(1)(b) provides general purpose-limitation context, but supplies no local approval. EX070 refuses this extension; the lesson neither specifies the original camera purpose in further detail nor reports a new recording operation.",
+      "source": "Chapter 16, learning outcome 2; section 16.1, longer keep for individual judgment; section 16.2 Worked example, second row. General context: GDPR Article 5(1)(b), https://eur-lex.europa.eu/eli/reg/2016/679/oj; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "The basis row for the proposed performance judgment is absent. What may Sofia record about authorization for that purpose?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner's wish automatically supplies a verified lawful basis"
+        },
+        {
+          "id": "b",
+          "text": "No basis is recorded for this use; none may be invented to clear the proposal"
+        },
+        {
+          "id": "c",
+          "text": "Consent must already exist because the employee works at the shop"
+        },
+        {
+          "id": "d",
+          "text": "No lawful basis could ever support any workplace use of images"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 16.1 leaves the basis for this judgment absent. The owner's request is not evidence of a completed assessment, and employment does not establish consent. Equally, the missing row does not resolve every possible legal question about workplace images. GDPR Article 6(1) sets conditions for lawful processing; citing it does not select one for Juniper. EX070 keeps the proposed extension refused. A purpose needs its basis assessed; this does not mean every new purpose necessarily requires a different statutory basis or consent alone.",
+      "source": "Chapter 16, section 16.1, final two sentences; section 16.2 Worked example, new-purpose row. General lawfulness context: GDPR Article 6(1), https://eur-lex.europa.eu/eli/reg/2016/679/oj; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The owner personally asks Sofia to change the recorder. Which boundary still controls her action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The signed scope excludes settings changes; the request does not amend it"
+        },
+        {
+          "id": "b",
+          "text": "The person's ownership of the shop makes every request part of her scope"
+        },
+        {
+          "id": "c",
+          "text": "A change is allowed if Sofia promises to record the permission afterwards"
+        },
+        {
+          "id": "d",
+          "text": "Being able to inspect CCTV signs includes permission to reconfigure the recorder"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Chapter 2 distinguishes inspecting specified aspects of the business from changing settings. Chapter 16 applies that exclusion to the recorder, even though the request comes from the owner. The request itself is not a written scope amendment, and inspection permission is not modification permission. EX070 therefore leaves the recorder unchanged. This boundary is separate from whether the proposed processing has a lawful basis. No new approval, expanded role, actual reconfiguration or proposed technical procedure is added to the case.",
+      "source": "Chapter 16, learning outcome 3; section 16.1, settings exclusion; section 16.2 Worked example, recorder-change row; Chapter 2, section 2.1 Agreeing the scope; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Does 'one week's images' specify the number of extra retention days requested?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the duration of the selected footage fixes the extension length"
+        },
+        {
+          "id": "b",
+          "text": "Yes; it replaces the existing cycle with a shorter retention period"
+        },
+        {
+          "id": "c",
+          "text": "No; it describes the footage selected, while the extra period remains unspecified"
+        },
+        {
+          "id": "d",
+          "text": "No; it means the owner requested no retention beyond the existing cycle"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The owner selects a week's images and asks to keep them beyond the existing period. Those are two different time dimensions: the span of footage and how long it would be retained. The synthetic-case note gives no number of extra days. The request is still an extension, but neither arithmetic nor a guessed duration can fill that missing parameter. EX070 keeps the existing thirty-day cycle. This question does not set a deadline, calculate a new period or imply that any images were retained longer.",
+      "source": "Chapter 16, section 16.1, owner's request for one week's images beyond the cycle; section 16.2 Synthetic case note, no extra days entered; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "The worked table offers the sentence 'this person is slow'. How should that sentence be treated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As a measured result already established by the CCTV review"
+        },
+        {
+          "id": "b",
+          "text": "As a finding to include because the owner wants a performance judgment"
+        },
+        {
+          "id": "c",
+          "text": "As acceptable evidence once the employee's name is omitted"
+        },
+        {
+          "id": "d",
+          "text": "As an individual opinion Sofia does not enter in this review"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The table presents a requested judgment, not the result of a measurement. Its decision is not to write the opinion. Removing a name would not turn that assertion into verified evidence or bring a performance assessment into Sofia's review. Section 16.1 and Chapter 2's staff discussion keep opinions about individuals out of this work. EX070 requires no speed opinion and no name. The bank supplies no speed, comparison, examination of footage or conclusion about whether the employee works quickly or slowly.",
+      "source": "Chapter 16, section 16.1, opinion excluded from the review log; section 16.2 Worked example, final row; Chapter 2, section 2.5 Respecting staff; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A report template asks for the employee's name. Which response preserves the supplied case evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Invent a plausible employee name because the pharmacy itself is fictional"
+        },
+        {
+          "id": "b",
+          "text": "Leave the employee unnamed; do not invent an identity or inspect images to fill it"
+        },
+        {
+          "id": "c",
+          "text": "Use the request to identify the worker and expand the review silently"
+        },
+        {
+          "id": "d",
+          "text": "State that the images contain no identifiable person because no name is supplied"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The synthetic-case note leaves the employee unnamed, while section 16.1 still says the person is identifiable in the images. The correct record preserves both facts without creating an identity. A template is not permission to obtain more data or invent a value. EX070 expressly leaves the name out. This concerns the fixed teaching case and its scope, not a universal rule that every legitimate operational report must omit names. No new viewing, identification or entry in an actual report is performed.",
+      "source": "Chapter 16, section 16.2 Synthetic case note; section 16.1, identifiable employee and limits of the review; Apply rubric, no opinion and no name; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "A handover says refusal stopped the cameras. Which correction matches the chapter's operational account?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The cameras were switched off and all stored images were deleted"
+        },
+        {
+          "id": "b",
+          "text": "The owner's proposed extension was implemented despite Sofia's refusal"
+        },
+        {
+          "id": "c",
+          "text": "The cameras retain the existing thirty-day cycle; no extension or shutdown is reported"
+        },
+        {
+          "id": "d",
+          "text": "The refusal proves that every scheduled overwrite has been independently tested"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits expressly says refusal does not switch the cameras off and preserves the cycle already in the file. Declining a request is not an operation that shuts down cameras, deletes all footage or applies the requested setting. Nor does this narrative constitute a test of every overwrite. EX070 leaves the period and recorder unchanged. The corrected handover distinguishes the proposed change, the refusal and the case's continuing arrangement without inventing a technical test, deletion, outage or implementation result.",
+      "source": "Chapter 16, Errors and limits, first two sentences; section 16.1, recorder not extended; section 16.2 Worked example, existing-cycle and recorder rows; Apply EX070; Worked results (#worked-results; EX070)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "May Sofia's refusal be cited as a labour-law ruling on the employee or on every workplace camera system?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; it is a bounded review decision, not an employment ruling or compliance certificate"
+        },
+        {
+          "id": "b",
+          "text": "Yes; refusing the extension proves that the employee's performance is satisfactory"
+        },
+        {
+          "id": "c",
+          "text": "Yes; leaving the current cycle proves that every existing camera use is lawful"
+        },
+        {
+          "id": "d",
+          "text": "No; it instead proves the employee has committed misconduct"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The final sentence of Errors and limits says this chapter is not an employment ruling. The refusal follows the current purpose, evidence and scope boundaries; it does not assess the worker's merits or certify the existing surveillance arrangement. Neither satisfactory performance nor misconduct follows from that decision. EX070 requires the existing cycle, no settings change and no personal opinion or name. Juniper is synthetic, and the lesson provides neither a real employment judgment nor a comprehensive legal assessment of CCTV use.",
+      "source": "Chapter 16, Errors and limits, final sentence; section 16.1, review boundaries; section 16.2 Worked example, opinion row; Apply EX070; Worked results (#worked-results; EX070)."
+    }
+  ]
+}
