@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "human-factors-policy",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "5952e72659cdd2e11843eef06e11ab2e656c491ee03a48e3b3ecfb504a5d4983",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Riverbend's volunteers share a donations login because individual accounts were never arranged. Which response addresses the documented cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Issue stricter reminders while leaving the account setup unchanged"
+        },
+        {
+          "id": "b",
+          "text": "Arrange usable individual accounts rather than treating the workaround as evidence of laziness"
+        },
+        {
+          "id": "c",
+          "text": "Exclude inexperienced volunteers before examining how accounts are provided"
+        },
+        {
+          "id": "d",
+          "text": "Make the shared login permanent because its current use proves it meets the work's needs"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 1.2 identifies a setup gap: individual accounts were not arranged. Reminders alone leave that barrier in place, excluding volunteers blames people without addressing it, and current use does not establish that sharing is a sound permanent solution. EX003 and EX004 direct attention to how work and security fit together. Adams and Sasse's password study supports examining implementation, communication and work compatibility, not assuming inherent carelessness. It is not evidence about Riverbend or a universal rate of rule breaking. Ruth's individual-account decision still needs follow-through; no account creation is claimed.",
+      "source": "Chapter 1, section 1.2 Not the enemy; section 1.5 Three early decisions, individual accounts; Exercises EX003 Rule breaking cause and EX004 Shared login cause; Worked results (#worked-results; EX003, EX004). General context: Adams and Sasse (1999), Users are not the enemy, work-compatibility findings and Users and password behavior; author manuscript pages 3 and 6, https://doi.org/10.1145/322796.322806 (author version: https://discovery.ucl.ac.uk/id/eprint/20247/2/CACM%20FINAL.pdf)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "How should a learner use Callum's statement that most small-charity attacks reach people first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat it as a measured attack frequency for every small charity"
+        },
+        {
+          "id": "b",
+          "text": "Use Riverbend's staff and volunteer counts as an empirical attack sample"
+        },
+        {
+          "id": "c",
+          "text": "Attribute it to the facilitator's teaching and keep it separate from demonstrated statistics"
+        },
+        {
+          "id": "d",
+          "text": "Record it as evidence that Riverbend has already received a fraudulent invoice"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX002 asks what Callum says, not for a measured prevalence estimate. Section 1.1 uses examples involving a person's action to motivate practical support under pressure. EX001's staff and volunteer counts describe a fictional organisation; they are not an attack dataset. Neither the statement nor those counts establishes an observed invoice fraud. The teaching can motivate attention to people without proving how often attacks begin that way or excluding technical attack paths. Riverbend, Oakmere and the people in this lesson remain synthetic, and no incident or percentage is added.",
+      "source": "Chapter 1, section 1.1 People and security, facilitator statement and examples; Worked example, synthetic-case notice; Exercises EX001 Charity size and EX002 Where attacks land; Worked results (#worked-results; EX001, EX002)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "In a hypothetical message, a sender claims to be the bank and demands action today. Which reading separates the tactics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The claimed bank role invokes authority; the deadline creates urgency, and neither authenticates the sender"
+        },
+        {
+          "id": "b",
+          "text": "The bank role proves identity; only the deadline needs checking"
+        },
+        {
+          "id": "c",
+          "text": "The deadline demonstrates authority; the bank claim merely specifies when to act"
+        },
+        {
+          "id": "d",
+          "text": "The combination establishes a genuine emergency that overrides normal verification"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 1.3 distinguishes an authority claim from pressure to act quickly. EX005 uses a bank or major donor as an authority example, while EX006 uses a deadline today for urgency. These features can influence a decision without proving who sent the message. Reversing the two mechanisms obscures the pressure being applied; accepting the bank label or the combined pressure bypasses verification. This interprets the chapter's hypothetical tactics. It does not establish a real message, authenticated bank, emergency, fraudulent sender or payment at Riverbend.",
+      "source": "Chapter 1, section 1.3 Deception tactics, authority and urgency examples; Worked example; Exercises EX005 Authority example and EX006 Urgency example; Worked results (#worked-results; EX005, EX006)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A hypothetical bank-change email resembles the wholesaler's usual style but has a lookalike address. What is the sound inference?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The familiar writing style establishes that the wholesaler authorised the change"
+        },
+        {
+          "id": "b",
+          "text": "The lookalike clue proves that the wholesaler's mailbox has been compromised"
+        },
+        {
+          "id": "c",
+          "text": "Failing to find another warning sign would make the new bank details trustworthy"
+        },
+        {
+          "id": "d",
+          "text": "The resemblance can exploit familiarity; the address is a warning, so the request still needs independent verification"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 1.3 explains that copying a known supplier's style can exploit familiarity and presents a lookalike-address request as a possible attack. Familiarity is not authentication, but a suspicious address alone also does not prove a particular compromise. Requiring another clue before checking would make safety depend on spotting every warning. EX007 and the callback decision instead support verifying the requested change independently. The message is hypothetical: no supplier account breach, completed check, genuine request, money loss or observed Riverbend fraud is inferred.",
+      "source": "Chapter 1, section 1.3 Deception tactics, familiarity and lookalike-wholesaler example; section 1.5, first decision; Exercises EX007 Typical attack and EX011 First decision; Worked results (#worked-results; EX007, EX011)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which callback follows Ruth's decision before changing a supplier's bank details, even when the request looks familiar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Call the new number supplied inside the bank-change message"
+        },
+        {
+          "id": "b",
+          "text": "Call the supplier using the number already on file before making any change"
+        },
+        {
+          "id": "c",
+          "text": "Reply to the requesting email and rely on its confirmation"
+        },
+        {
+          "id": "d",
+          "text": "Update the details first, then call the stored number to check the result"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 1.5 and EX011 specify both the source of the number and the order: use the number already on file, before changing bank details. A number supplied by the same request or a reply to its sender is not the independent check Ruth selected. Calling after the update reverses the control's preventive sequence. This question identifies the procedure, not a callback that occurred or a guarantee against every fraud. The chapter supplies no telephone number, new banking details, supplier response, authorised payment or successful verification result.",
+      "source": "Chapter 1, section 1.3, checks that do not depend on spotting every clue; section 1.5 Three early decisions, first decision; Worked example, callbacks; Exercises EX011 First decision; Worked results (#worked-results; EX011)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "A volunteer is unsure whether something odd is malicious. Which reporting message fits Ruth's decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Welcome the concern without blame and make it easy to ask for help before certainty is available"
+        },
+        {
+          "id": "b",
+          "text": "Request reports only after volunteers can prove that an attack occurred"
+        },
+        {
+          "id": "c",
+          "text": "Warn that mistaken suspicions will be recorded against the person reporting"
+        },
+        {
+          "id": "d",
+          "text": "Promise that every reported concern will be classified as a confirmed attack"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Ruth's second decision welcomes reports from staff and volunteers without blame. Section 1.4 adds friendly help, so uncertainty should not become a barrier to asking. Requiring proof makes the reporter responsible for a conclusion the report does not yet support; punishment contradicts the intended culture. Welcoming a report also does not make its contents a confirmed attack. EX010 and EX012 support an accessible, supportive route, not guaranteed detection. This is an application of the proposed message, not evidence of a report received, a response sent or improved reporting rates.",
+      "source": "Chapter 1, section 1.4 Knowledge is not enough, friendly help; section 1.5, second decision; Worked example, no-blame message; Exercises EX010 Practical approach and EX012 Second decision; Worked results (#worked-results; EX010, EX012)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A draft handout lists deception tactics but gives no steps for risky tasks or way to get help. What is its main gap?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It needs a longer list of tactic names before any practical steps can be useful"
+        },
+        {
+          "id": "b",
+          "text": "It should use stronger fear messages instead of explaining how to act"
+        },
+        {
+          "id": "c",
+          "text": "It raises awareness without yet giving people a usable procedure and accessible support"
+        },
+        {
+          "id": "d",
+          "text": "It proves that the procedure works because the relevant topics appear on the page"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 1.4 separates knowing about a threat from being able to act safely. EX008 identifies the chapter's warning about relying on fear or assuming knowledge becomes action, while EX010 calls for easy habits, clear procedures and friendly help. More labels or fear do not supply the missing steps. A handout's coverage of topics is not evidence that someone can execute a procedure under pressure. The handout here is a hypothetical design choice, not a new Riverbend artefact, completed lesson, failed campaign or measured change in behaviour.",
+      "source": "Chapter 1, section 1.4 Knowledge is not enough; section 1.5, decisions expressed in plain language; Exercises EX008 Campaign weakness and EX010 Practical approach; Worked results (#worked-results; EX008, EX010)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which proposed learning programme best combines awareness, role-based training and evaluation rather than counting attendance alone?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Show the same lecture to everyone and treat attendance as proof of safe performance"
+        },
+        {
+          "id": "b",
+          "text": "Test only recall of tactic names and declare all risky tasks covered"
+        },
+        {
+          "id": "c",
+          "text": "File a training plan and count its approval as completed learning"
+        },
+        {
+          "id": "d",
+          "text": "Explain the risks, practise tasks relevant to each role, and assess learning and application to improve the programme"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX009 combines awareness, role-based training and evaluation. Awareness explains what deserves attention; task-relevant learning develops the ability to act, and evaluation checks what the programme achieves rather than presuming success from attendance or a plan. NIST SP 800-50 Rev. 1 describes learning tied to work responsibilities and periodic effectiveness evaluation. It does not establish that Riverbend delivered or measured any training. The option proposes a programme, not an unannounced test, achieved behaviour change, compliance finding or completed rollout.",
+      "source": "Chapter 1, section 1.4 Knowledge is not enough, SP 800-50r1 and practical approach; Exercises EX009 SP 800-50r1 content and EX010 Practical approach; Worked results (#worked-results; EX009, EX010). General context: NIST SP 800-50 Rev. 1 (2024), Executive Summary and sections 2.7.3 Training Content and 5.2.3 Evaluating CPLP Effectiveness, https://doi.org/10.6028/NIST.SP.800-50r1"
+    },
+    {
+      "id": "Q09",
+      "prompt": "A teammate proposes keeping only the individual-account decision. Why should Ruth retain callbacks and the no-blame reporting decision too?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The three decisions address different problems; individual accounts do not verify bank changes or create a welcoming reporting culture"
+        },
+        {
+          "id": "b",
+          "text": "Once individual accounts are proposed, supplier identities no longer need independent checks"
+        },
+        {
+          "id": "c",
+          "text": "The account decision guarantees that every concern will be reported, making the reporting message redundant"
+        },
+        {
+          "id": "d",
+          "text": "Keeping all three decisions proves that all three controls are already operating"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 1.5 assigns different functions to the three decisions: check supplier bank changes, encourage reporting and replace the shared donations login. Fixing the account setup does not perform the callback or tell people they can report without blame. Conversely, retaining all three in the note records intended work, not implementation. EX011-EX013 and the worked example support keeping the complementary decisions together. No new account, completed callback, delivered reporting message, manager approval or operating effectiveness is inferred from the note.",
+      "source": "Chapter 1, section 1.5 Three early decisions, all three decisions; Worked example; Errors and limits, follow-through; Exercises EX011 First decision, EX012 Second decision and EX013 Third decision; Worked results (#worked-results; EX011, EX012, EX013)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "What can a status note accurately say at the end of Chapter 1, before evidence of follow-through is supplied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All individual donations accounts have been created and the shared login has been retired"
+        },
+        {
+          "id": "b",
+          "text": "The new callback process has stopped a measured number of fraudulent payments"
+        },
+        {
+          "id": "c",
+          "text": "Ruth recorded three decisions and their reasons for the manager; implementation and effectiveness still need evidence"
+        },
+        {
+          "id": "d",
+          "text": "Every volunteer has received the reporting message and demonstrated the procedure"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The chapter supplies Ruth's one-page decision note, not account-provisioning records, callback outcomes or training and communication results. Errors and limits explicitly say that decisions need follow-through. Therefore the note may record the decisions and their reasons but cannot claim that accounts were replaced, payments protected or everyone reached. EX011-EX013 identify intended actions, not completion receipts. This preserves the chapter's point in the fictional narrative and adds no rollout date, approval, measurement, incident or claim that the book's open review is complete.",
+      "source": "Chapter 1, section 1.5 Three early decisions, one-page note; Worked example; Errors and limits, follow-through and changing teams; Exercises EX011 First decision, EX012 Second decision and EX013 Third decision; Worked results (#worked-results; EX011, EX012, EX013)."
+    }
+  ]
+}
