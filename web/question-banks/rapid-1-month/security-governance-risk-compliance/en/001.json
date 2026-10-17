@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-governance-risk-compliance",
+  "language": "en",
+  "chapter": 1,
+  "source_anchor": "ch-01",
+  "source_sha256": "14034b2e55056ba942786c99932d52755a9e46747545035d5796aadc724a2b3d",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which proposed statement turns a security activity into a testable service outcome rather than a purchase or document?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Purchase an endpoint platform during the quarter"
+        },
+        {
+          "id": "b",
+          "text": "Finish a policy describing how appointment backups should work"
+        },
+        {
+          "id": "c",
+          "text": "Demonstrate appointment restoration against the provisional four-hour target in a timed exercise"
+        },
+        {
+          "id": "d",
+          "text": "Expand the list of tools that support the appointment portal"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The third option names a service capability and a way to test it. Buying, documenting and expanding a tool list may support that capability, but completing those activities does not demonstrate restored scheduling. EX001 distinguishes activities from outcomes, while section 1.4 also requires an owner, boundary, date and evidence for a complete commitment. The proposed target remains subject to the operations director's validation. This question classifies a proposed outcome; it reports no purchase, exercise, accepted limit or achieved recovery time for fictional Northstar.",
+      "source": "Chapter 1, section 1.1 The decision problem, platform-versus-restoration comparison; section 1.4 Choose outcomes that can be checked; EX001 Activity or outcome; Final appendix - worked results and assessment notes (#worked-results; EX001)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A draft says, 'If former volunteers retain roster access, contact details may be exposed.' Which addition makes its evidence gap explicit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether departed accounts retain access remains an assumption to test through an access review"
+        },
+        {
+          "id": "b",
+          "text": "The absence of a review proves that former volunteers stole the contact details"
+        },
+        {
+          "id": "c",
+          "text": "The roster is safe because no confirmed breach is described"
+        },
+        {
+          "id": "d",
+          "text": "A new platform must be purchased before the scenario can be discussed"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Lingering access is the conditional weakness, the volunteer roster is the affected service, and exposure of contact details is the possible consequence. The missing review identifies evidence needed to decide whether the condition holds. EX002's worked result explicitly treats continuing access as an assumption, not an observed fact. Missing assurance proves neither theft nor safety, and naming a product does not fill the evidence gap. This is a scenario for analysis, not a report of an incident, a completed review or a real volunteer's access.",
+      "source": "Chapter 1, section 1.3 Translate a threat into a business scenario, four-part construction and conditional example; EX002 Scenario construction; Final appendix - worked results and assessment notes (#worked-results; EX002)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Northstar reports that all critical services have backups. Which evidence set best tests that claim against appointment continuity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A configuration screenshot, the backup product brochure and its invoice"
+        },
+        {
+          "id": "b",
+          "text": "A list of enabled jobs, a policy title and the number of protected devices"
+        },
+        {
+          "id": "c",
+          "text": "The proposed four-hour target, Calder's score and the planned exercise date"
+        },
+        {
+          "id": "d",
+          "text": "A current backup inventory, timestamped restore evidence and a map of recoverable service dependencies"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX003 calls for an inventory, a restore-test log with success criteria and timestamps, and a dependency map. A configuration screenshot can show that a job is configured; it does not establish a usable copy, complete dependency coverage or a recovered service. Product paperwork, job counts and proposed targets leave those questions unanswered. NIST CSF 2.0 PR.DS-11 includes testing alongside creating and protecting backups, as general context only. The listed evidence is requested, not supplied or verified by Northstar in this chapter; no successful restore is inferred.",
+      "source": "Chapter 1, section 1.4, backup coverage versus restore testing; section 1.6 A short working example, evidence-to-request column; EX003 Evidence selection; Final appendix - worked results and assessment notes (#worked-results; EX003). General context: NIST CSF 2.0, Appendix A, PR.DS-11, page 20, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q04",
+      "prompt": "For the proposed end-to-end exercise, why is 'the database restored' too narrow as the only success criterion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An end-to-end result must include buying every available security control"
+        },
+        {
+          "id": "b",
+          "text": "Scheduling also depends on access and application components, and must work for its users"
+        },
+        {
+          "id": "c",
+          "text": "Any database restoration automatically proves that manual booking works"
+        },
+        {
+          "id": "d",
+          "text": "A service outcome can be judged only by whether the public portal stayed online"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX003 identifies identity, network and application configuration as dependencies whose recoverability needs examination. Restoring one component does not establish that clients and front-desk staff can use scheduling. Section 1.6 makes continuity of appointments the goal, even if the portal is unavailable, but does not prove a manual alternative works. The correct criterion therefore follows the service rather than tool count or uninterrupted portal uptime. This is prospective test design: no component restore, dependency inventory, user trial or fallback validation is claimed to have occurred.",
+      "source": "Chapter 1, section 1.2 Start with a service, not a product; section 1.6, appointment continuity and unconfirmed dependencies; EX003 Evidence selection; Final appendix - worked results and assessment notes (#worked-results; EX003)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "The team has one week: an unowned dashboard purchase or a timed restoration exercise with the director. Which priority best follows the strategy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Plan the exercise first; it tests the priority outcome and can reveal dependencies before later spending"
+        },
+        {
+          "id": "b",
+          "text": "Buy the dashboard first; visibility alone supplies an alert reviewer and response path"
+        },
+        {
+          "id": "c",
+          "text": "Reject all dashboards permanently because the exercise is the better first action"
+        },
+        {
+          "id": "d",
+          "text": "Defer both until every integration is inventoried perfectly"
+        }
+      ],
+      "correct": "a",
+      "explanation": "EX004 prioritizes the exercise because it addresses the service outcome and produces evidence about a major unknown; its findings may guide later investment. A dashboard without review ownership does not create an action path. That does not make dashboards permanently inappropriate: sources, alert definitions, an assigned reviewer and response paths could later support a measurable detection target. Nor does section 1.2 require a perfect inventory before useful work. This chooses the next planned action, not a completed test, authorized purchase or observed reduction of harm.",
+      "source": "Chapter 1, section 1.5 Set priorities under a real limit; section 1.6, first outcome and evidence requests; EX004 Priority decision; Final appendix - worked results and assessment notes (#worked-results; EX004)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "The engineer has named the service and proposed four hours. What still prevents completing sentence 2 as an accepted limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The brochure has not yet supplied a higher readiness score"
+        },
+        {
+          "id": "b",
+          "text": "The engineer has not bought the tool that automatically approves the limit"
+        },
+        {
+          "id": "c",
+          "text": "The operations director has not accepted the impact limit; resource acceptance is also pending"
+        },
+        {
+          "id": "d",
+          "text": "The lack of an incident means no service owner can make a decision"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Naming a target is not the accountable owner's acceptance. Section 1.7's second sentence and EX052 remain incomplete because the director has not accepted four hours; the data table also leaves written resource acceptance pending. That missing fact becomes a research and decision task, not permission to buy the platform or wait for an incident. NIST CSF 2.0 GV.RM-02 and GV.RR-02 provide general context for risk direction and authority, not evidence of local approval. The engineer owns the exercise; the director owns the service tradeoff. Neither approval nor a new commitment is invented.",
+      "source": "Chapter 1, sections 1.6 and 1.7; Data - where the six sentences stop, rows 2 and 5; EX005 One-page strategy and Apply EX052 The blank second sentence; Final appendix - worked results and assessment notes (#worked-results; EX005 and EX052). General context: NIST CSF 2.0, GV.RM-02 and GV.RR-02, pages 16-17, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q07",
+      "prompt": "Which proposed action line includes ownership, a time boundary and evidence without claiming the restore already happened?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Recovery is complete because the strategy now names an engineer"
+        },
+        {
+          "id": "b",
+          "text": "The engineer plans an end-to-end restore with the director within 30 days, retaining timestamps and a signed result"
+        },
+        {
+          "id": "c",
+          "text": "The team should improve resilience whenever resources become available"
+        },
+        {
+          "id": "d",
+          "text": "The director has accepted four hours because a thirty-day task appears in the plan"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX005's worked draft identifies the engineer and director, a thirty-day window and evidence to retain. Those details make the proposed work checkable, but they do not prove execution or acceptance of its service target. A named owner alone is not completion, a vague resilience promise lacks a test, and a task deadline is not an approved interruption limit. The full six-sentence strategy must still label the target and unresolved reviews honestly. No date of execution, signature, successful result or approval is added to the chapter's draft.",
+      "source": "Chapter 1, section 1.4, owner/date/boundary/evidence; section 1.6, first-outcome row; section 1.7, sentence 4; Data - where the six sentences stop, rows 2-5; EX005 One-page strategy; Final appendix - worked results and assessment notes (#worked-results; EX005)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Which pairing correctly separates coverage, quality and effect when deciding what evidence to request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Coverage: vendor score; quality: tool count; effect: backup policy length"
+        },
+        {
+          "id": "b",
+          "text": "Coverage: restore duration; quality: inventory size; effect: number of purchased platforms"
+        },
+        {
+          "id": "c",
+          "text": "Coverage: planned deadline; quality: director's job title; effect: existence of a screenshot"
+        },
+        {
+          "id": "d",
+          "text": "Coverage: included services; quality: restore success under test; effect: recovery time against the service outcome"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Coverage concerns the population included; quality concerns whether the control works under a deliberate test; effect concerns the service result for those relying on it. A timed end-to-end restore can speak to quality and, when the service clock is kept, effect. It does not establish coverage of unexamined services or integrations. The other pairings substitute paperwork, status or purchases for the evidence each question needs. EX051 preserves these distinctions. These are proposed measures, not reported Northstar counts, a successful exercise or a verified four-hour recovery.",
+      "source": "Chapter 1, section 1.4, coverage/quality/effect paragraph; Concepts - three questions a number cannot answer, comparison table; EX003 and Apply EX051 A decimal on a slide; Final appendix - worked results and assessment notes (#worked-results; EX003 and EX051)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "No colleague can name a decision that would change if Calder's 9.1 moved by a tenth. What should happen to that figure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Exclude it as unsupported precision for this decision; resolve the owner-acceptance gap instead of ordering the platform"
+        },
+        {
+          "id": "b",
+          "text": "Round it to a whole number and treat it as Northstar's measured readiness"
+        },
+        {
+          "id": "c",
+          "text": "Average it with backup coverage to create an accepted recovery target"
+        },
+        {
+          "id": "d",
+          "text": "Treat all numerical evidence, including future restore timestamps, as unusable"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The problem is not the presence of a decimal: the brochure figure has no explained connection to a changed choice and is not a measurement of Northstar's portal. Rounding or averaging cannot supply that missing basis. Rejecting it also does not discredit meaningful future measurements such as restore timestamps. EX051 rejects the figure; EX052 identifies the unaccepted impact limit as the next research task. The purchase is not made into the strategy choice while that sentence is blank. No replacement score, measurement, order or director approval is invented.",
+      "source": "Chapter 1, section 1.5, false-precision rule; Decision flow - reject the number, then test the blank sentence; Worked example - Calder's Tuesday brochure; Apply EX051 and EX052; Final appendix - worked results and assessment notes (#worked-results; EX051 and EX052)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Which final sentence best keeps the six-sentence strategy revisable without claiming that its monitoring or exercise has already occurred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Once the six sentences are drafted, no later evidence should change their priorities"
+        },
+        {
+          "id": "b",
+          "text": "Daily backup checks have already proved the four-hour target, so the planned exercise can be removed"
+        },
+        {
+          "id": "c",
+          "text": "Plan daily backup-failure review and monthly strategy review; use exercise evidence to revise the assumptions"
+        },
+        {
+          "id": "d",
+          "text": "Future improvements may be recorded now because the owners and review cadence are named"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX005 proposes daily review of backup failures and monthly review of the strategy, with changes after the restore test. Section 1.6 permits priorities to change when evidence improves and calls for recording the reason. A planned cadence is not a record of completed reviews; neither it nor six drafted sentences verifies the target. Future benefits must not be booked as observed results. This line preserves a feedback process while the four-hour limit, integration inventory and exercise remain unresolved at this chapter's point in the narrative. The working draft is not a completed qualification.",
+      "source": "Chapter 1, section 1.6, final paragraph on revised decisions; section 1.7, sentence 6; Data - where the six sentences stop, signals row; EX005 One-page strategy; Final appendix - worked results and assessment notes (#worked-results; EX005)."
+    }
+  ]
+}
