@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 17,
+  "source_anchor": "ch-17",
+  "source_sha256": "56deef7aac93ab2dc9d26dae3b6d0b23edb0b825ff740ad8b3d37e98a5293ef7",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Tuesday's total has no receipt or other link to a person. Which classification fits this item as supplied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Personal data, because every figure produced by a pharmacy describes a customer"
+        },
+        {
+          "id": "b",
+          "text": "A shop figure, with neither a personal link nor health information supplied"
+        },
+        {
+          "id": "c",
+          "text": "Health data, because some of the shop's sales could involve medicines"
+        },
+        {
+          "id": "d",
+          "text": "Personal data, because the word Tuesday identifies whoever shopped that day"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The first row of section 17.2 treats the bare total as a shop figure. The scenario supplies no receipt or other connection to an individual. The pharmacy setting and the day label do not create that missing link or establish health content. This is not a general claim that every aggregate is anonymous: it applies to the specified item with nothing attached. EX071 preserves the bare total's classification while distinguishing a page to which a personal identifier is added. No customer or transaction detail is inferred.",
+      "source": "Chapter 17, learning outcome 1; section 17.1 The staple is the change. The coins are not., opening sentence; section 17.2 Worked example, bare-total row; Chapter 1, Concepts - three different tests, shop-not-person row; Apply EX071; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Why does adding 44021 make the page personal data even though no customer name is written?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every sequence of digits is personal data regardless of what it identifies"
+        },
+        {
+          "id": "b",
+          "text": "The number establishes which medicine the customer bought"
+        },
+        {
+          "id": "c",
+          "text": "The absence of a name means a completed identity lookup is required first"
+        },
+        {
+          "id": "d",
+          "text": "Juniper can connect that particular loyalty number to one customer"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 17.1 supplies a specific linkage capability for 44021. That is why the unnamed page is personal; neither the shape of a number nor an invented medicine explains the result. GDPR Article 4(1) includes indirect identification through identifiers, without requiring a printed name. The chapter does not ask Sofia to perform a new lookup or reveal the customer's identity. EX071 relies on the link already given by the synthetic narrative. No new identification operation or customer detail is added.",
+      "source": "Chapter 17, section 17.1, Juniper's link from 44021 to one customer; section 17.2 Worked example, number-without-medicine row; Chapter 1, section 1.2 and Worked example - a nameless slip, then a stapled line; Apply EX071; Worked results (#worked-results; EX071). General definition only: GDPR Article 4(1), EUR-Lex consolidated text, https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q03",
+      "prompt": "The total's amount is unchanged after the case's receipt is attached. Why must the page still be reassessed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The combined page now carries a personal association that the isolated total lacked"
+        },
+        {
+          "id": "b",
+          "text": "Attaching paper proves that the recorded sales amount was corrected"
+        },
+        {
+          "id": "c",
+          "text": "Classification can change only if the monetary value changes"
+        },
+        {
+          "id": "d",
+          "text": "The attachment retroactively makes the original bare figure a named customer's record"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The unit being assessed is the page together with its attachment, not just the unchanged amount. Section 17.1 makes the attachment the relevant change, and the table contrasts the bare total with the total plus a receipt. No correction to the sales figure is narrated. Nor must the original bare item be relabelled retroactively. EX071 keeps the bare total, left bare, outside personal data while classifying the linked page differently. This comparison does not report an altered amount, another receipt or a newly named customer.",
+      "source": "Chapter 17, section 17.1, attachment and unchanged total; section 17.2 Worked example, first two rows; Apply EX071, the change made by the attachment; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "What additional conclusion is justified when the linked page contains only the stated loyalty number and points, with no health-revealing content?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It identifies a customer and therefore necessarily states a health condition"
+        },
+        {
+          "id": "b",
+          "text": "It cannot be personal until a medicine or illness appears"
+        },
+        {
+          "id": "c",
+          "text": "It is personal data, but those supplied details do not establish health data"
+        },
+        {
+          "id": "d",
+          "text": "It is health data merely because Juniper is a pharmacy"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Identifiability and health content are separate tests. The number provides the personal link, while the points in this example state no illness. The location of the business and the ability to identify a customer do not, by themselves, supply health information. Conversely, personal data need not include a medicine. The number-without-medicine row and EX071 therefore retain the personal classification without adding the health classification. This is a bounded conclusion about the given contents, not an assurance about unseen records or every possible points dataset.",
+      "source": "Chapter 17, learning outcome 3; section 17.1, points and illness distinction; section 17.2 Worked example, number-without-medicine row; Chapter 1, Data - one slip, two layers; Apply EX071; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "If an attached medicine line revealed a condition, which classification would change on a page already linked to a customer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Personal data would become non-personal because the line concerns a product"
+        },
+        {
+          "id": "b",
+          "text": "Only then would the page first become personal data"
+        },
+        {
+          "id": "c",
+          "text": "The page would stop being personal and become a separate, non-personal health category"
+        },
+        {
+          "id": "d",
+          "text": "The page would also be health data, while remaining personal data"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The receipt row makes health classification conditional on content that states or reveals a condition. In this hypothetical, that condition is expressly met; the personal link was present already. Article 9(1) includes data concerning health among special categories of personal data, not as a replacement for personal data. Chapter 1's layered example illustrates the same distinction. EX071's actual number-only page remains not yet health data. No medicine line is added to that exercise, and no diagnosis, treatment, processing permission or real patient is asserted.",
+      "source": "Chapter 17, section 17.1, conditional health change; section 17.2 Worked example, receipt row; Chapter 1, Worked example - a nameless slip, then a stapled line; Apply EX071 and its unchanged health answer; Worked results (#worked-results; EX071). General category context only: GDPR Article 9(1), https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q06",
+      "prompt": "Sofia cannot tell whether a scribble links the page to a person. Which response preserves both caution and uncertainty?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat it as personal for handling, without claiming that a particular identity was established"
+        },
+        {
+          "id": "b",
+          "text": "Declare it non-personal because the link has not been conclusively established"
+        },
+        {
+          "id": "c",
+          "text": "Declare that it identifies the same customer as 44021 without further evidence"
+        },
+        {
+          "id": "d",
+          "text": "Call it health data because uncertainty itself demonstrates a condition"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The last sentence of section 17.1 applies a cautious handling rule when linkage is uncertain. Treating the page as personal does not invent a resolved identity, connect the scribble to 44021 or establish health content. Declaring it non-personal would ignore the possibility the rule preserves. Chapter 1 states the same uncertainty boundary. EX071 supplies a known link for its own number; this hypothetical does not replace that fact or report a new lookup. The prudent decision and the evidential uncertainty should remain separate.",
+      "source": "Chapter 17, section 17.1, final sentence on an uncertain scribble; Chapter 1, Errors and limits and Concepts - three different tests, uncertainty paragraph; Apply EX071, contrast with its supplied linkage; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Does attaching 44021 establish that its customer personally spent the whole of Tuesday's shop total?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; identifying a customer assigns all nearby monetary figures to that person's purchases"
+        },
+        {
+          "id": "b",
+          "text": "No; a personal link does not establish that customer's contribution to the shop total"
+        },
+        {
+          "id": "c",
+          "text": "Yes; a personal-data classification is a verified allocation of sales to one customer"
+        },
+        {
+          "id": "d",
+          "text": "No; the attachment instead proves that this customer bought nothing that day"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The narrative still describes a shop total and supplies a way to link the attached number to a person. It supplies no allocation of that total among customers. The inference warranted is the classification of the combined page, not a calculation of one person's spending. Neither all of the total nor zero spending follows. This applies EX071's boundary between what the attachment establishes and what it leaves unstated. No amount, individual purchase, allocation or customer behaviour is invented, and no additional transaction is inspected.",
+      "source": "Chapter 17, section 17.1, shop figure and attachment; section 17.2 Worked example, bare-total and number rows; Apply EX071, classification rather than allocation of the total; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "A reviewer correctly labels the page personal but not health data. Does that label approve a proposed new use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; ordinary personal data may be used for any purpose once correctly labelled"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the ability to link a customer supplies permission for the proposed use"
+        },
+        {
+          "id": "c",
+          "text": "No; purpose and minimisation still require separate assessment"
+        },
+        {
+          "id": "d",
+          "text": "No; being personal data permanently prohibits every possible use"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits expressly separates classification from deciding what the till may do with the page. Article 5(1)(b)-(c) provides general purpose and necessity principles; it does not select a use for Juniper. Correct labelling neither grants unrestricted permission nor proves that every use is forbidden. EX071 resolves the class change and the unchanged health answer, not a later processing decision. No consent, lawful basis, purpose approval or operation is supplied by this question. The proposed use remains unspecified rather than silently authorized.",
+      "source": "Chapter 17, Errors and limits, both sentences; section 17.2 Worked example, number-without-medicine row; Chapter 1, Decision flow - classify before you decide the use; Apply EX071; Worked results (#worked-results; EX071). General context only: GDPR Article 5(1)(b)-(c), https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q09",
+      "prompt": "A worksheet asks for Tuesday's exact takings to complete the classification exercise. What should the learner enter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No invented sum; explain the classification using the supplied link and contents"
+        },
+        {
+          "id": "b",
+          "text": "An estimated amount, presented as the figure that Sofia observed"
+        },
+        {
+          "id": "c",
+          "text": "The loyalty number as the monetary total because it is the only supplied number"
+        },
+        {
+          "id": "d",
+          "text": "A new total obtained by inspecting individual sales to fill the missing detail"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The last worked-example row and the synthetic-case note prohibit adding a takings figure. The exercise is answerable from the relationship between the page, its identifier and its contents; no monetary amount is necessary. An estimate would manufacture evidence, 44021 is an identifier rather than revenue, and a new sales inspection would go beyond the supplied task. EX071 therefore remains complete as reasoning without a numeric sum. This answer does not invent a customer, collect new records or assert that the unknown amount was zero.",
+      "source": "Chapter 17, section 17.1, amount not invented; section 17.2 Worked example, final row and Synthetic case note; Apply EX071, supplied facts; Worked results (#worked-results; EX071)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Does the page's personal-but-not-health classification establish how long the till may keep it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; absence of health information authorizes indefinite retention"
+        },
+        {
+          "id": "b",
+          "text": "No; the classification supplies neither a retention period nor evidence of an approved one"
+        },
+        {
+          "id": "c",
+          "text": "Yes; every personal-data item inherits a single fixed period from the GDPR"
+        },
+        {
+          "id": "d",
+          "text": "No; classification proves that deletion has already been completed"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter explicitly leaves retention as a further question. Article 5(1)(e) links identifiable storage to necessity for the processing purposes, with specified exceptions; it does not provide a numeric period for this page. Being outside the health category does not authorize keeping it forever. A classification is also not a deletion operation or evidence of one. EX071 establishes no retention decision, expiry date or cleanup result. Keep those matters unresolved rather than borrowing a period or treating a label as approval or completed action.",
+      "source": "Chapter 17, Errors and limits, retention left unanswered; Apply EX071 and its classification-only result; Worked results (#worked-results; EX071). General storage-limitation context only: GDPR Article 5(1)(e), https://eur-lex.europa.eu/eli/reg/2016/679/"
+    }
+  ]
+}
