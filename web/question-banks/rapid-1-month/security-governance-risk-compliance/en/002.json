@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "security-governance-risk-compliance",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "17db7a1ab6366642d3eeba93bea7db26703ff990f2a6bc5f40aeee15e49e2524",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "A reviewer labels the first scope 'all Northstar services'. Which correction preserves its documented boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Include every service that might be connected to an approved component"
+        },
+        {
+          "id": "b",
+          "text": "Keep the listed portal components included; case management and the volunteer roster remain excluded"
+        },
+        {
+          "id": "c",
+          "text": "Exclude the identity provider and backup service because they are not the public portal"
+        },
+        {
+          "id": "d",
+          "text": "Treat the next-quarter review note as permission to inspect the excluded services now"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.1 includes the appointment portal, scheduling database, identity provider and backup service. It excludes case management and the volunteer roster for the first review. A dependency or a later-review note does not erase those exclusions. Removing included supporting components would also misstate the boundary. EX006-EX008 require the scope to identify systems, services, data, people, locations, exclusions and duration so neither work nor conclusions expand silently. This corrects a proposed label; it adds no access, new period or completed review to fictional Northstar.",
+      "source": "Chapter 2, section 2.1 Why scope comes first; Concepts - four gates that do not unlock each other, Scope row; Exercises EX006 Scope contents, EX007 Excluded services and EX008 Scope failures; Final appendix - worked results and assessment notes (#worked-results; EX006, EX007, EX008)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The Wednesday page allows reading backup logs. Why does preparing a restore not make that restore authorized?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Knowing how to restore supplies the missing authority once preparation begins"
+        },
+        {
+          "id": "b",
+          "text": "The database's inclusion in scope permits every operation on it"
+        },
+        {
+          "id": "c",
+          "text": "Permission follows the approved verb, actor and period; reading does not authorize restoration"
+        },
+        {
+          "id": "d",
+          "text": "A successful restore would retroactively validate the earlier read-only permission"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.2 separates technical ability and inclusion in scope from permission for a particular action. The Wednesday page names reading logs, not restoring the database. Preparing work does not change that verb, and a hypothetical success would not supply prior approval. The permission must also identify who may act and when; it is not transferable to arbitrary operators or periods. EX009 and EX053 therefore leave the restore unapproved. No restore, additional signature, changed permission or operational success is asserted.",
+      "source": "Chapter 2, section 2.2 Permission and authority; Concepts, Permission row; Worked example - Wednesday's log-reading page; Exercises EX009 Scope versus permission; Apply EX053 Reading is not a restore; Final appendix - worked results and assessment notes (#worked-results; EX009, EX053)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Only the operations director has signed Wednesday's proposed scheduling-data export. What is the correct permission decision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for the data protection lead's approval before exporting; the second approval is still missing"
+        },
+        {
+          "id": "b",
+          "text": "Export now because service ownership replaces the data protection lead's agreement"
+        },
+        {
+          "id": "c",
+          "text": "Export first and obtain the second signature when filing the evidence"
+        },
+        {
+          "id": "d",
+          "text": "Treat masking the exported records as a substitute for the missing approval"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The scheduling database contains client personal data, so section 2.2 requires agreement from the data protection lead as well as the operations director. EX054 explicitly leaves that signature blank and the export unperformed. Service ownership, later paperwork and masking do not fill the permission gap. NIST CSF 2.0 GV.RR-02 offers general context for established and enforced responsibilities; it does not name Northstar's approvers or provide their signatures. Even obtaining both approvals would not, by itself, settle separate safety and custody requirements.",
+      "source": "Chapter 2, section 2.2 Permission and authority; Worked example - Wednesday's log-reading page; Exercises EX010 Second approver; Apply EX054 One signature, and a laptop; Final appendix - worked results and assessment notes (#worked-results; EX010, EX054). General context only: NIST CSF 2.0, GV.RR-02, printed page 17, https://doi.org/10.6028/NIST.CSWP.29"
+    },
+    {
+      "id": "Q04",
+      "prompt": "If a suspicious account is noticed in the excluded case-management system, which response respects the first scope?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open its records quietly because suspicion expands the review boundary"
+        },
+        {
+          "id": "b",
+          "text": "Delete the account before informing its owner to contain a confirmed incident"
+        },
+        {
+          "id": "c",
+          "text": "Ignore the observation because nothing outside scope may be reported"
+        },
+        {
+          "id": "d",
+          "text": "Report the observation to that system's owner without investigating it alone"
+        }
+      ],
+      "correct": "d",
+      "explanation": "EX011 and section 2.2 distinguish reporting a possible concern from investigating outside permission. Escalating to the accountable owner preserves that boundary; ignoring it is not the required response. Suspicion supplies neither proof of compromise nor authority to inspect or delete an account. The question applies the chapter's conditional example, not a newly discovered Northstar incident. No account name, investigation, deletion, external notification or expanded scope is added, and the owner has not been shown approving further action.",
+      "source": "Chapter 2, section 2.2, final sentence on an out-of-scope finding; section 2.1, case-management exclusion; Decision flow - read, export, restore, or stop, outside-scope branch; Exercises EX011 Out-of-scope discovery; Final appendix - worked results and assessment notes (#worked-results; EX011)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which proposed account-export request best limits privacy risk created by the review itself?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Request all available fields now because unused data can always be removed later"
+        },
+        {
+          "id": "b",
+          "text": "Request only the fields needed for the review, with the required permission and controlled handling"
+        },
+        {
+          "id": "c",
+          "text": "Skip privacy precautions unless evidence first establishes an external attacker"
+        },
+        {
+          "id": "d",
+          "text": "Collect every field into a restricted folder because storage protection makes minimisation unnecessary"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX012 limits the requested fields to those needed for the review. Permission and secure storage remain separate requirements, not alternatives to minimisation. NIST Privacy Framework 1.0 section 1.2.1 explains that privacy problems can arise from data processing without a cybersecurity incident. Section 2.3 applies that principle to review work: unnecessary copies and careless handling can create harm even with helpful intentions. This is request design, not a completed export; it introduces no real client, chosen field list, approval or observed privacy incident.",
+      "source": "Chapter 2, section 2.3 Handling personal data safely; Exercises EX012 Minimal exports and EX014 Privacy beyond breaches; Final appendix - worked results and assessment notes (#worked-results; EX012, EX014). General context only: NIST Privacy Framework 1.0, NIST CSWP 10, section 1.2.1, printed page 3, https://www.nist.gov/document/nist-privacy-frameworkv10pdf"
+    },
+    {
+      "id": "Q06",
+      "prompt": "The offered screenshots have masked client names. Does that make the engineer's personal laptop an acceptable evidence location?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; masking replaces every restriction on where evidence is kept"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a promise to delete the files later approves a temporary personal copy"
+        },
+        {
+          "id": "c",
+          "text": "No; masked evidence still belongs in the restricted folder, and unexpected identifying fields also need care"
+        },
+        {
+          "id": "d",
+          "text": "No; the offer itself proves that an unmasked client record was already copied"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Masking reduces one exposure, while custody determines the permitted storage location. Section 2.3 and EX054 require the restricted folder even for masked screenshots. Errors and limits also warn that unexpected fields can defeat masking. A future cleanup step is not permission to create an unauthorized copy now. Conversely, an offer does not prove that a transfer occurred. Reject the proposed personal-laptop location without inventing a copied record, completed deletion, new approval or guarantee that masking removed every identifier.",
+      "source": "Chapter 2, section 2.3 Handling personal data safely; Errors and limits; Concepts, Custody row; Worked example - Wednesday's log-reading page; Exercises EX013 Screenshot care; Apply EX054 One signature, and a laptop; Final appendix - worked results and assessment notes (#worked-results; EX013, EX054)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Even if a later page authorizes a restore, what prevents client-facing harm from the proposed test?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An isolated target and blocked outbound email, with success criteria and safeguards defined before starting"
+        },
+        {
+          "id": "b",
+          "text": "Running outside opening hours while restoring over the live database"
+        },
+        {
+          "id": "c",
+          "text": "Keeping outbound email enabled so real clients can confirm whether test bookings arrived"
+        },
+        {
+          "id": "d",
+          "text": "Relying on the signature alone to make the most recent backup safe to restore anywhere"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Permission does not make an unsafe test safe. Section 2.4 specifies an isolated environment rather than production and blocks outbound email because a backup can contain real appointment data. After-hours timing is another precaution, not a substitute for either barrier. EX053 also requires a named person who can stop the exercise; separate test credentials remain part of the plan. The later authorization is hypothetical here. No second page, restore, client message, validated isolation or successful safety test is claimed to exist.",
+      "source": "Chapter 2, section 2.4 Designing a safe exercise; Errors and limits; Concepts, Safe test row; Worked example - Wednesday's log-reading page; Exercises EX015 Isolated restore and EX016 Email block; Apply EX053 Reading is not a restore; Final appendix - worked results and assessment notes (#worked-results; EX015, EX016, EX053)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Why do separate test credentials and a named stop authority belong in the exercise plan as different safeguards?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Separate credentials prove that the person running the test has both required approvals"
+        },
+        {
+          "id": "b",
+          "text": "A stop authority makes sharing production credentials safe by definition"
+        },
+        {
+          "id": "c",
+          "text": "Both measures only document the test afterwards and cannot affect how it is conducted"
+        },
+        {
+          "id": "d",
+          "text": "Credential separation reduces wrong-target risk; stop authority lets someone halt unsafe work"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 2.4 links separate credentials to avoiding an accidental restore over production and names someone empowered to stop the exercise at any time. Those mechanisms address different failure paths. Neither supplies missing written permission, nor does one remove the need for the other. EX017 and EX018 support keeping both in the plan alongside isolation and the outbound-email block. These are planned safeguards, not proof that credentials were issued, a person was newly appointed, the exercise ran or every operational risk was eliminated.",
+      "source": "Chapter 2, section 2.4 Designing a safe exercise, stop rule and wrong-target risk; Concepts, Safe test row; Exercises EX017 Stop rule and EX018 Credential separation; Apply EX053, named stopper; Final appendix - worked results and assessment notes (#worked-results; EX017, EX018, EX053)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "What should an activity record contain so a later reviewer can trace the work to permission and evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the conclusion, because a confident summary makes underlying evidence unnecessary"
+        },
+        {
+          "id": "b",
+          "text": "The actual date, actor, approval reference, access or change performed, and evidence retained"
+        },
+        {
+          "id": "c",
+          "text": "A planned result entered as complete so the review log has no blank lines"
+        },
+        {
+          "id": "d",
+          "text": "A software-generated score without an actor or approval reference"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.5 specifies dated, attributable records linked to an approval and the evidence retained. EX019 explains their three uses: checking or repeating work, demonstrating its permission boundary and supporting decisions. A conclusion or score without those links cannot establish who did what under which authority. Planned results must not be substituted for actual operations, and the log cannot retrospectively authorize an excluded action. This question defines a record's contents; it does not create a new log entry, approval, export, restore or measured result.",
+      "source": "Chapter 2, section 2.5 Recording what was done; Decision flow - read, export, restore, or stop, final record step; Exercises EX019 Record purposes; Final appendix - worked results and assessment notes (#worked-results; EX019)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "After a dated activity log is filed, which statement correctly describes the chapter's oversight requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Filing automatically proves that the operations director completed the month-end review"
+        },
+        {
+          "id": "b",
+          "text": "The engineer's recollection replaces review because that engineer performed the work"
+        },
+        {
+          "id": "c",
+          "text": "The director is to review it at month end; storage alone does not establish that review occurred"
+        },
+        {
+          "id": "d",
+          "text": "A special software purchase must occur before anyone can review the log"
+        }
+      ],
+      "correct": "c",
+      "explanation": "EX020 assigns the end-of-month review to the operations director. Section 2.5 treats the restricted log as evidence for decisions, not as an automatic record that somebody examined it. It also says special software is unnecessary. The engineer's memory and mere filing cannot stand in for the specified review. This applies the distinction between a review procedure and evidence of its performance, without importing a later chapter's event. No completed monthly review, new finding, purchase or overall book approval is asserted; the edition remains a working draft.",
+      "source": "Chapter 2, section 2.5 Recording what was done, final sentence; Exercises EX019 Record purposes and EX020 Record review; Final appendix - worked results and assessment notes (#worked-results; EX019, EX020)."
+    }
+  ]
+}
