@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 12,
+  "source_anchor": "ch-12",
+  "source_sha256": "cc4ad479113c589a85d6e33d96f8dea64d28fac62381adc370a927054a986828",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "What does last week's refusal entry establish about the signed scope today?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The individual-record exclusion expired when the first request was logged"
+        },
+        {
+          "id": "b",
+          "text": "It documents a refusal, not a change to the signed scope"
+        },
+        {
+          "id": "c",
+          "text": "It records permission to perform the same lookup on a later request"
+        },
+        {
+          "id": "d",
+          "text": "It establishes that the neighbour's prescription was not collected"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The log records what Sofia did with the earlier request: she refused it. The signed page governs what she may inspect and still excludes individual customer records. Recording the refusal neither expires that exclusion nor grants permission for another occasion. It also reports no prescription-collection result. Section 12.1 and EX066 keep the historical decision and current scope separate. This is the synthetic Juniper case, not evidence of a real patient's activity or a newly approved scope.",
+      "source": "Chapter 12, section 12.1 The log remembers the refusal. It does not grant the look., first log line and unchanged signed page; section 12.2 Worked example, first row; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "The same request returns the following week. What should happen to its place in the review history?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Omit it because the first entry already covers every repetition"
+        },
+        {
+          "id": "b",
+          "text": "Rewrite last week's entry as though both requests arrived together"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a successful lookup before recording the renewed request"
+        },
+        {
+          "id": "d",
+          "text": "Record this request on the same day, preserving the earlier refusal"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The first learning outcome treats the repetition as a new request, and section 12.1 records the new request on the day it arrives. Similar content does not make two occurrences the same event. Omitting the second request loses that distinction; rewriting the first merges their chronology. Logging also does not depend on completing the prohibited lookup. EX066 calls for another refusal and a record of this request without opening the dispensing record. No calendar date or additional request is invented.",
+      "source": "Chapter 12, learning outcomes 1 and 3; section 12.1, next-week request and same-day logging; section 12.2 Worked example, first two rows; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "A colleague says the neighbour asked again, so the lookup is now 'for them'. What does that statement change?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It supplies a reason offered for the request, not an amendment to Sofia's signed scope"
+        },
+        {
+          "id": "b",
+          "text": "It grants access because a colleague can extend the signed page on the neighbour's behalf"
+        },
+        {
+          "id": "c",
+          "text": "It proves the neighbour gave every authorization needed for Sofia's review"
+        },
+        {
+          "id": "d",
+          "text": "It permits a trial lookup while a written amendment is sought later"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 12.2 tests this exact justification against the page: contact and lookup remain outside it. The colleague's account of the request does not establish a changed authorization for Sofia. She need not declare the colleague dishonest to maintain the boundary, and the chapter does not validate consent or delegation. A trial lookup would cross the same exclusion before any new written line exists. EX066 therefore retains the refusal and the same-day record, without adding an amendment or a consultation.",
+      "source": "Chapter 12, section 12.1, the 'for them' claim; section 12.2 Worked example, 'They asked me to check' row; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Why does promising only a yes-or-no answer fail to make this lookup acceptable under the case rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A short answer necessarily names the medicine even when nobody asks for it"
+        },
+        {
+          "id": "b",
+          "text": "A yes-or-no response can be obtained without using any customer record"
+        },
+        {
+          "id": "c",
+          "text": "The answer still depends on consulting the excluded individual record"
+        },
+        {
+          "id": "d",
+          "text": "The approved scope excludes long answers but permits every shorter response"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The third worked-example row separates output length from the access required to produce it. A reliable yes-or-no answer to this request still uses the dispensing record that Sofia is not authorized to open in this review. The objection is not that the answer must name a medicine; that would invent its contents. Nor does the signed page contain a word-count exception. EX066 refuses the lookup itself, not only a detailed disclosure. No answer about prescription collection is supplied by this question.",
+      "source": "Chapter 12, section 12.1, individual-record exclusion; section 12.2 Worked example, 'Just say yes or no' row; Apply EX066, proposed yes-or-no answer; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Suppose Sofia is asked to open the record privately and tell nobody the result. Does withholding the reply satisfy the exclusion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the page restricts publication but not silent inspection"
+        },
+        {
+          "id": "b",
+          "text": "Yes; an undisclosed lookup becomes a review-log task rather than record access"
+        },
+        {
+          "id": "c",
+          "text": "No; she must first open it to determine whether opening it is permitted"
+        },
+        {
+          "id": "d",
+          "text": "No; the excluded act includes opening the individual record, even without a reply"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 12.1 says Sofia does not open the dispensing record. That boundary is not limited to what she later tells a colleague. The hypothetical removes disclosure but leaves the prohibited inspection unchanged; relabelling it as logging does not change the act. Opening the record to decide whether access is allowed would cross the boundary first. EX066's worked answer pairs refusal and logging with leaving the record unopened. This proposed variant is not an event in the case and does not describe a new consultation.",
+      "source": "Chapter 12, learning outcome 3; section 12.1, record left unopened; Apply EX066, what Sofia does with the record; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "May a summary replace 'lookup refused' with 'prescription not collected' because Sofia gave no positive answer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; a refusal and a negative record result mean the same thing"
+        },
+        {
+          "id": "b",
+          "text": "No; refusal describes an access decision, not the neighbour's prescription activity"
+        },
+        {
+          "id": "c",
+          "text": "Yes; repeated refusal is stronger evidence of non-collection than one refusal"
+        },
+        {
+          "id": "d",
+          "text": "No; the refusal instead proves that the prescription was collected"
+        }
+      ],
+      "correct": "b",
+      "explanation": "A decision not to consult a record is not a finding obtained from that record. Section 12.1 leaves the dispensing record unopened, so neither collection nor non-collection is established. Repeating a refusal does not strengthen evidence about the underlying clinical activity. The correct summary preserves the access decision rather than translating it into a yes-or-no result. EX066 asks for refusal and logging, not a clinical conclusion. No prescription event, medicine or personal detail is added.",
+      "source": "Chapter 12, section 12.1, refused lookup and unopened dispensing record; section 12.2 Worked example, yes-or-no row; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "An editor wants a plausible neighbour name in the teaching log. What should the new entry preserve?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The unnamed person and the documented request and refusal, without adding an identity"
+        },
+        {
+          "id": "b",
+          "text": "An invented name, because a synthetic setting makes every added detail part of the source"
+        },
+        {
+          "id": "c",
+          "text": "A name obtained by opening the dispensing record solely to complete the log"
+        },
+        {
+          "id": "d",
+          "text": "No entry at all, because a request cannot be recorded without a personal name"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The synthetic-case note leaves the neighbour unnamed, and section 12.1 explicitly refuses to add a name absent from the file. Recording the new request and refusal does not require inventing an identity or performing the excluded lookup to obtain one. Omitting the entry would also contradict the same-day logging instruction. EX066 supports a factual record within these limits. This is a constraint on this fixed teaching example, not a claim that all real operational logs must omit every person's name.",
+      "source": "Chapter 12, section 12.1, no personal name added; section 12.2 Synthetic case note; learning outcome 3; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q08",
+      "prompt": "The table mentions a work reason added by the owner in writing. Can that row be treated as an amendment already granted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; every row in a worked example reports an event that has happened"
+        },
+        {
+          "id": "b",
+          "text": "Yes; the colleague's second request automatically supplies the owner's written reason"
+        },
+        {
+          "id": "c",
+          "text": "No; the existing exclusion means the owner could never consider any future change"
+        },
+        {
+          "id": "d",
+          "text": "No; the row is marked as outside this lesson and supplies no actual amendment"
+        }
+      ],
+      "correct": "d",
+      "explanation": "The final row of section 12.2 says the owner's written addition is not part of this lesson and must not be invented. It identifies a possible kind of new evidence, not an event that has already changed the page. Neither a repeated request nor a colleague's assertion supplies that evidence. The row also does not prohibit all future consideration of scope. At EX066's actual checkpoint, the exclusion remains unchanged and Sofia does not open the record. No future authorization is selected or assumed.",
+      "source": "Chapter 12, section 12.2 Worked example, final row and 'Do not invent the line' decision; section 12.1, unchanged signed page; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "What does recording the repeated request establish about reporting outside the review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An external notice was sent automatically when the internal entry was made"
+        },
+        {
+          "id": "b",
+          "text": "No further report could ever be required because the lookup was refused"
+        },
+        {
+          "id": "c",
+          "text": "It establishes an internal entry; neither external notification nor the need for further reporting is decided here"
+        },
+        {
+          "id": "d",
+          "text": "The repeated request alone establishes that a regulator must receive a report"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Errors and limits separates two questions from internal logging: whether anyone outside the review was notified, and whether further reporting is needed. It supplies neither an external notice nor a determination of that need. Refusal does not turn into a permanent exemption, and repetition alone is not the regulatory decision the chapter declines to make. EX066 covers this request, its refusal and the unopened record. No recipient, deadline, incident classification or external action is invented.",
+      "source": "Chapter 12, Errors and limits, both sentences; section 12.1, same-day review-log entry; Apply EX066; Worked results (#worked-results; EX066)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "A colleague calls one bit of information 'minimal', so purpose no longer matters. Which reasoning is sound?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Necessity must relate to the processing purpose; a smaller answer does not authorize this excluded lookup"
+        },
+        {
+          "id": "b",
+          "text": "Any one-bit answer satisfies data minimisation regardless of why the record is accessed"
+        },
+        {
+          "id": "c",
+          "text": "Citing purpose limitation creates a new written permission on the review page"
+        },
+        {
+          "id": "d",
+          "text": "Refusing the lookup demonstrates full GDPR compliance for the pharmacy"
+        }
+      ],
+      "correct": "a",
+      "explanation": "GDPR Article 5(1)(b) addresses purpose limitation, while point (c) ties minimisation to what is necessary for the processing purpose. These principles are not a rule that the shortest possible answer is automatically justified. In the case, the yes-or-no request still requires access excluded by the unchanged page. The legal text supplies context, not local authorization or proof of Juniper's compliance. EX066's refusal remains the documented decision. No lawful basis, scope amendment or legal judgment about a real pharmacy is added.",
+      "source": "Chapter 12, section 12.1, work reason and current scope; section 12.2 Worked example, yes-or-no row; Apply EX066; Worked results (#worked-results; EX066). General context only: GDPR Article 5(1)(b)-(c), https://eur-lex.europa.eu/legal-content/EN/TXT/?qid=1618398943851&uri=CELEX:32016R0679"
+    }
+  ]
+}
