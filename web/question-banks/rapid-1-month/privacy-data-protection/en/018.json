@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "privacy-data-protection",
+  "language": "en",
+  "chapter": 18,
+  "source_anchor": "ch-18",
+  "source_sha256": "922a443c3221a55b5732f62e11d7a538b76e7e9433a018d368129692f4666fce",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Why did the original laboratory mark phone as NOT NEEDED?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No stated purpose set contained that field name"
+        },
+        {
+          "id": "b",
+          "text": "The program found an invalid telephone number inside the field"
+        },
+        {
+          "id": "c",
+          "text": "The field appeared last in the original collected list"
+        },
+        {
+          "id": "d",
+          "text": "Every telephone field is prohibited for every possible purpose"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The Chapter 4 program compares each collected name with the union of the stated purpose sets. Phone is absent from that union, so it receives NOT NEEDED. The program does not inspect telephone values, and position in the list does not determine membership. GDPR Article 5(1)(c) supplies general purpose-relative minimisation context, not a universal ban on phone fields. Section 18.1 and EX072 preserve this original classification when the box returns; no new purpose or legal assessment of Juniper is supplied.",
+      "source": "Chapter 18, section 18.1 The template can grow back one box at a time, opening sentence; Chapter 4, Lab - Loyalty app fields versus stated purposes and Concepts - the script tests names, not values; Apply EX072; Worked results (#worked-results; EX072). General context only: GDPR Article 5(1)(c), https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q02",
+      "prompt": "Phone is visible again, while the other rejected fields have not been checked. What happens to this screen's field result?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It passes until every rejected field has been found"
+        },
+        {
+          "id": "b",
+          "text": "It remains undecidable until the content export is opened"
+        },
+        {
+          "id": "c",
+          "text": "It fails, and Sofia records the return with the action open"
+        },
+        {
+          "id": "d",
+          "text": "It passes because the earlier form had already been improved"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The field check requires the rejected names to be absent. One observed counterexample, phone, is enough to fail that condition without assuming anything about the others. A content inspection is a different test and is not needed to recognise this field failure. The earlier improved form does not override the later observation. Section 18.2 and EX072 require recording the returned field and leaving the action open. This decision does not itself remove the field or establish a completed repair.",
+      "source": "Chapter 18, section 18.1, absence criterion and Sofia's recorded decision; section 18.2 Worked example, phone-present row; Apply EX072 and rubric; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Which status belongs to gender, postcode, prescription_items and location_trail after only the returned phone box is observed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All four have returned with the same template"
+        },
+        {
+          "id": "b",
+          "text": "Their current presence or absence is unverified"
+        },
+        {
+          "id": "c",
+          "text": "All four remain absent because only phone was mentioned"
+        },
+        {
+          "id": "d",
+          "text": "Exactly one of the four has returned, but its name is unknown"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The source explicitly leaves those four names unknown until they are inspected. Observing phone does not establish either their return or their continued absence, and it supplies no intermediate count. The third worked-example row rejects assuming that they all returned. EX072 requires retaining this uncertainty while still reporting the field check as failed. The answer does not perform an inspection, assign results to unseen fields or infer that the entire earlier template was restored.",
+      "source": "Chapter 18, section 18.1, final three sentences; section 18.2 Worked example, other-four-names row; Apply EX072, names not to assume; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "A classmate proposes reporting eleven fields because phone reappeared later. Which summary preserves the published lab?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eleven collected and six unneeded, combining the screen with the lab"
+        },
+        {
+          "id": "b",
+          "text": "Five collected and none unneeded, replacing the original with the improved form"
+        },
+        {
+          "id": "c",
+          "text": "An exact current count calculated from the returned phone box alone"
+        },
+        {
+          "id": "d",
+          "text": "Ten collected and five unneeded, describing the original lab input"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Phone was already one of the original ten names; its later reappearance is not an eleventh entry in that historical input. The two-week form is also a separate observation, not a replacement execution of the published program. EX072 preserves ten collected and five not needed. The later screen has not received a complete field census in this lesson, so no exact current total follows. Keep the original input-output record instead of combining observations from different sources into a fabricated print.",
+      "source": "Chapter 18, section 18.1, preserving collected and the historic print; section 18.2 Worked example, eleven-names row; Chapter 4, original collected list and verified output; Apply EX072; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Does the later return of phone make the earlier observation that the two-week form omitted it false?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; the earlier observation stands, but does not establish the later screen's state"
+        },
+        {
+          "id": "b",
+          "text": "Yes; a returned field means it must have been present throughout"
+        },
+        {
+          "id": "c",
+          "text": "No; the earlier observation therefore overrides the later visible box"
+        },
+        {
+          "id": "d",
+          "text": "Yes; both observations must be erased because their results differ"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 18.1 gives an ordered sequence: the two-week form did not ask for phone, and a later screen shows it again. Different states at different times are not contradictory observations. Neither erasing the earlier finding nor using it as a permanent pass preserves that sequence. EX072 evaluates the current visible box and keeps the historical lab result intact. No additional date, continuous-monitoring result, intervening inspection or claim about how long the field was absent is supplied.",
+      "source": "Chapter 18, section 18.1, two-week form followed by the later sign-up screen; Apply EX072, opening facts and current failure; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "In the table's hypothetical screen with five allowed names and phone absent, what may be concluded about other shops?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every shop passed because the allowed list has five names"
+        },
+        {
+          "id": "b",
+          "text": "The other shops failed because this screen differs from the observed failure"
+        },
+        {
+          "id": "c",
+          "text": "Nothing about their results; this screen does not establish their field state"
+        },
+        {
+          "id": "d",
+          "text": "The other shops were inspected when this hypothetical was described"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The first worked-example row describes a screen without this phone failure and expressly forbids inventing passes for other shops. A result is tied to the screen examined, not automatically to every location using the application. The row is a comparison, not evidence that additional inspections occurred. It also does not imply that unexamined shops failed. EX072's actual later screen still contains phone. This hypothetical adds no shop identity, new inspection, pass, failure or business-wide approval.",
+      "source": "Chapter 18, section 18.2 Worked example, five-allowed-names row and its decision; Apply EX072, contrast with the actual returned-phone screen; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "A colleague blames the vendor's default template. Which distinction belongs in the finding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The attribution proves both the cause and return of the whole template"
+        },
+        {
+          "id": "b",
+          "text": "Phone's return is observed; the suggested cause is not independently established"
+        },
+        {
+          "id": "c",
+          "text": "A vendor default makes the field necessary without reviewing its purpose"
+        },
+        {
+          "id": "d",
+          "text": "The field failure disappears until someone establishes the cause"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The chapter reports a visible box and separately attributes an explanation to a colleague. It supplies no vendor change record that proves that explanation. The field failure can be recorded without resolving causation, and a default is not evidence of necessity. GDPR Article 25(1)-(2) provides general design-and-default safeguards, not proof of who changed this screen or an exemption for defaults. EX072 keeps the failure open without inventing a deployment, confirmed cause, supplier fault assessment or compliance result.",
+      "source": "Chapter 18, section 18.1, colleague's attribution contrasted with the observed box; Chapter 4, section 4.2, possible template origin; Apply EX072; Worked results (#worked-results; EX072). General context only: GDPR Article 25(1)-(2), https://eur-lex.europa.eu/eli/reg/2016/679/"
+    },
+    {
+      "id": "Q08",
+      "prompt": "Does the returned phone field establish what is stored inside purchase_history?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; phone's presence proves that medicine values have returned too"
+        },
+        {
+          "id": "b",
+          "text": "Yes; purchase_history is an allowed name, so its contents are necessarily acceptable"
+        },
+        {
+          "id": "c",
+          "text": "Yes; the earlier clean export settles every later content result"
+        },
+        {
+          "id": "d",
+          "text": "No; export contents require their own file-specific check"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Field membership and stored values are different evidence. The laboratory never reads inside purchase_history, and Chapter 18's Errors and limits keeps the content check separate. Chapter 5 also limits the clean two-week export and the later insulin finding to their respective files. Neither supplies the contents of an unexamined export. EX072 establishes a field failure, not a new content result. No medicine line, additional export, patient information or unseen-file verdict is invented.",
+      "source": "Chapter 18, Errors and limits, both sentences; Chapter 4, Concepts - the script tests names, not values; Chapter 5, section 5.1 Two exports, two results; Apply EX072; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "The lesson shows a phone box but supplies no telephone number. Which report stays within that evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A particular customer's number was stored by the vendor"
+        },
+        {
+          "id": "b",
+          "text": "No customer anywhere could have entered a phone number"
+        },
+        {
+          "id": "c",
+          "text": "The field is present; no actual telephone value or customer is established here"
+        },
+        {
+          "id": "d",
+          "text": "An invented example number may be recorded as the observed value"
+        }
+      ],
+      "correct": "c",
+      "explanation": "The synthetic-case note explicitly supplies no telephone number. A field label is evidence about the form, not an observed value or proof that a particular person submitted data. Conversely, the absence of a value in the lesson does not prove that nobody ever entered one. EX072 can be answered by recording the returned field without filling it. Keep that evidence boundary: do not invent a number, customer, submission, vendor-held record or universal absence of phone data.",
+      "source": "Chapter 18, section 18.1, observation limited to the phone box; section 18.2 Synthetic case note; Apply EX072, supplied inputs; Worked results (#worked-results; EX072)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Would deleting phone from the published collected list repair the phone box on the later application screen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; editing the teaching input directly changes the application's form"
+        },
+        {
+          "id": "b",
+          "text": "No; it changes the lab evidence, not the application, and demonstrates no repair"
+        },
+        {
+          "id": "c",
+          "text": "Yes; a cleaner laboratory list is sufficient proof that the action can close"
+        },
+        {
+          "id": "d",
+          "text": "No; that edit would instead prove that every other rejected field returned"
+        }
+      ],
+      "correct": "b",
+      "explanation": "The Chapter 4 script classifies and prints its synthetic list; it contains no operation that changes the loyalty application. Editing collected would change the teaching input rather than remove the observed box. It would also break the association with the historical print that section 18.1 and EX072 preserve. A repair requires its own evidence, which this chapter does not add. No edit, new execution, replacement output, application change or inspection of the other fields is performed or claimed.",
+      "source": "Chapter 18, section 18.1, refusal to edit collected; section 18.2 Worked example, preserving the original file; Chapter 4, Lab - Loyalty app fields versus stated purposes, program operations; Apply EX072; Worked results (#worked-results; EX072)."
+    }
+  ]
+}
