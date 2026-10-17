@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "level": "rapid-1-month",
+  "area": "human-factors-policy",
+  "language": "en",
+  "chapter": 2,
+  "source_anchor": "ch-02",
+  "source_sha256": "f7f5918c069b36c9360b017942154d5ce2df5212935b6a850a0d45e510217199",
+  "questions": [
+    {
+      "id": "Q01",
+      "prompt": "Which proposed activity stays inside Ruth's first scope without turning security support into surveillance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read volunteers' inboxes to decide who needs the welcome guide"
+        },
+        {
+          "id": "b",
+          "text": "Work on reporting, bank-change procedures, individual accounts and the welcome guide"
+        },
+        {
+          "id": "c",
+          "text": "Monitor particular volunteers because the review is intended to protect them"
+        },
+        {
+          "id": "d",
+          "text": "Send unannounced deceptive tests as part of ordinary message reporting"
+        }
+      ],
+      "correct": "b",
+      "explanation": "Section 2.1 includes four areas of support, while excluding reading other people's email, monitoring volunteers and deception without agreement. The purpose of helping the charity does not remove those boundaries. Inbox inspection and individual monitoring are not substitutes for a welcome guide; secret tests are not ordinary reporting. EX014 supports checking the proposed activity against the written scope before acting. This classifies a proposal for fictional Riverbend, not surveillance, an email inspection or a test that occurred.",
+      "source": "Chapter 2, section 2.1 Setting scope, inclusion and exclusion sentences; Worked example; Exercises EX014 Out-of-scope item; Worked results (#worked-results; EX014)."
+    },
+    {
+      "id": "Q02",
+      "prompt": "A teammate calls an access change too small to need permission. Which response follows Ruth's signed scope and summary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the facilitator's advice as permission to change any account"
+        },
+        {
+          "id": "b",
+          "text": "Make the change first and explain its friendly purpose afterwards"
+        },
+        {
+          "id": "c",
+          "text": "Assume signatures on the scope authorize every later access change"
+        },
+        {
+          "id": "d",
+          "text": "Stay within the manager-and-chair-approved scope and ask before changing access"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 2.2 records approval by the charity manager and trustees' chair; it is not an unlimited delegation from the facilitator. Section 2.5 separately tells Ruth to ask before changing anyone's access. Small or well-meant work still affects accounts, data and trust, so neither retrospective explanation nor the size of the change replaces permission. EX015 identifies the actual signatories. The answer applies the existing boundary without inventing a further signature, a new approver, a completed account change or a requirement that the same two people re-sign every task.",
+      "source": "Chapter 2, section 2.2 Permission, signatories and reason for asking first; section 2.5 Safe practice summary, access-change rule; Exercises EX015 Scope signatories; Worked results (#worked-results; EX015)."
+    },
+    {
+      "id": "Q03",
+      "prompt": "What can Ruth record about the suggestion to place the guide in the existing induction pack?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It uses an existing route for newcomers, but does not establish that the guide was inserted or delivered"
+        },
+        {
+          "id": "b",
+          "text": "The guide has reached everyone because new volunteers already receive an induction pack"
+        },
+        {
+          "id": "c",
+          "text": "The suggestion confirms that all current volunteers understand the procedures"
+        },
+        {
+          "id": "d",
+          "text": "Only a separate distribution process could make the coordinator's suggestion useful"
+        }
+      ],
+      "correct": "a",
+      "explanation": "The coordinator proposes reusing an established induction process, avoiding unnecessary parallel work. EX016 records that idea, not an inserted page, a distribution count or demonstrated understanding. The fact that newcomers already receive a pack says nothing about whether this new guide is inside it. Errors and limits also warn that volunteers may not read guides. Ruth may preserve the suggestion and its rationale without claiming delivery, comprehension or a completed rollout; no later lesson's result is imported.",
+      "source": "Chapter 2, section 2.2 Permission, volunteer coordinator's suggestion; Errors and limits, guides may not be read; Exercises EX016 Coordinator idea; Worked results (#worked-results; EX016)."
+    },
+    {
+      "id": "Q04",
+      "prompt": "If a reported email contains a link and attachment, which handling path follows Ruth's rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open the attachment but avoid its links before forwarding it"
+        },
+        {
+          "id": "b",
+          "text": "Click the link once so the IT volunteer receives a verified report"
+        },
+        {
+          "id": "c",
+          "text": "Leave both unopened and forward the report to the IT volunteer by the agreed method"
+        },
+        {
+          "id": "d",
+          "text": "Use a personal phone to test the link while keeping the charity computer untouched"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.3 prohibits both clicking reported links and opening reported attachments. Forwarding by the agreed method lets the IT volunteer help without Ruth activating the content herself. Testing on another device does not change her rule, and she need not establish maliciousness by clicking first. EX017's short prompt concerns links; its worked answer and the prose also cover attachments. This is a conditional handling decision, not a message received, inspected, forwarded or confirmed as malicious in Riverbend.",
+      "source": "Chapter 2, section 2.3 Handling reports safely, no-click/no-attachment and forwarding rules; section 2.5, safe handling; Exercises EX017 Reported link rule; Worked results (#worked-results; EX017)."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Which proposed report-log entry meets the chapter's recording boundary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Date, type, outcome and the reporter's name for a private ranking"
+        },
+        {
+          "id": "b",
+          "text": "Date, type and outcome only, without the reporter's name"
+        },
+        {
+          "id": "c",
+          "text": "Date and reporter name, omitting the outcome to keep the entry short"
+        },
+        {
+          "id": "d",
+          "text": "The complete reported message and volunteer profile as routine log fields"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX018 specifies date, type and outcome only. Adding a name or profile breaches that case-specific boundary even when the log is described as private. Omitting the outcome loses one of the required fields; copying an entire message is not the compact log the chapter defines. Section 2.3 keeps safe forwarding and the minimal activity record distinct. The question supplies a record format, not an actual entry, identified reporter, completed investigation or fabricated outcome, and it makes no claim about a universal legal logging requirement.",
+      "source": "Chapter 2, section 2.3 Handling reports safely, record fields; section 2.5 Safe practice summary, records free of names; Exercises EX018 Record fields; Worked results (#worked-results; EX018)."
+    },
+    {
+      "id": "Q06",
+      "prompt": "If a report suggests donor data went to the wrong address, what should Ruth do before drawing conclusions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Follow the charity's incident steps and seek the IT volunteer's help rather than investigate alone"
+        },
+        {
+          "id": "b",
+          "text": "Open donor records independently because seriousness overrides the agreed scope"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the reporter proves a breach before asking for help"
+        },
+        {
+          "id": "d",
+          "text": "Declare a confirmed breach and issue an external notification immediately"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.3 and EX019 direct a serious report into the charity's incident steps with the IT volunteer's help. Urgency does not authorize an independent investigation, and a reporter need not prove the event before Ruth asks for support. A suggestion of misdirection also does not establish a confirmed breach or a particular external-notification duty. This applies the chapter's conditional example without adding donor data, an actual incident, a contact made, a finding or a legal decision. The minimal record and no-click rules remain in force.",
+      "source": "Chapter 2, section 2.3 Handling reports safely, serious-report example and assistance; section 2.5, signed scope; Exercises EX019 Serious report; Worked results (#worked-results; EX019)."
+    },
+    {
+      "id": "Q07",
+      "prompt": "How should the cited simulation research inform Riverbend's decision without overstating its findings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It proves every phishing simulation is ineffective in every organisation"
+        },
+        {
+          "id": "b",
+          "text": "It shows that Riverbend already ran a failed simulation and should record that result"
+        },
+        {
+          "id": "c",
+          "text": "It authorizes a small secret trial because a study was conducted elsewhere"
+        },
+        {
+          "id": "d",
+          "text": "It warrants caution about the studied practices, not a universal verdict; Riverbend remains at no simulations for now"
+        }
+      ],
+      "correct": "d",
+      "explanation": "Section 2.4 describes some practices, not every possible simulation. Lain, Kostiainen and Capkun studied voluntary embedded training in a particular organisational setting; their author preprint explicitly leaves generalisation to very small organisations uncertain. That supports a bounded reading, not a universal claim or a Riverbend outcome. EX020 and EX021 separately anchor Ruth's present recommendation in concern for trust. Research elsewhere grants no local permission. The no-simulations-for-now decision stays, without inventing a trial, a measured loss of trust or a permanent ban.",
+      "source": "Chapter 2, section 2.4 Simulations and ethics, research sentence and present recommendation; Exercises EX020 Simulation risk and EX021 Simulation recommendation; Worked results (#worked-results; EX020, EX021). Primary study: Lain, Kostiainen and Capkun (2022), https://doi.org/10.1109/SP46214.2022.9833766; consulted author preprint arXiv:2112.07498v1, section II-B and section VIII, https://arxiv.org/pdf/2112.07498"
+    },
+    {
+      "id": "Q08",
+      "prompt": "If simulations are reconsidered later, which design respects the chapter's stated conditions without claiming present approval?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Announce afterwards, avoid hardship lures and give immediate kind feedback"
+        },
+        {
+          "id": "b",
+          "text": "Agree with representatives first, but use food and money worries to make the test realistic"
+        },
+        {
+          "id": "c",
+          "text": "Agree and announce beforehand, avoid money/food/hardship lures, give kind feedback and use totals only"
+        },
+        {
+          "id": "d",
+          "text": "Obtain one manager's agreement and skip representatives because the programme is announced"
+        }
+      ],
+      "correct": "c",
+      "explanation": "Section 2.4 makes these conditions cumulative: agreement with staff and volunteer representatives, prior announcement, no lures about money, food or personal hardship, immediate kind feedback and totals never used against people. A good feature does not compensate for a missing safeguard. Later announcement cannot repair surprise, agreement does not permit excluded themes, and a manager alone does not replace the named representatives. EX022 identifies the prohibited themes. This evaluates a hypothetical design; it neither changes the current refusal nor supplies a future agreement, approval or executed simulation.",
+      "source": "Chapter 2, section 2.4 Simulations and ethics, conditional rules for any future use; Worked example, strict future rules; Exercises EX021 Simulation recommendation, EX022 Banned lure themes and EX023 Results use; Worked results (#worked-results; EX021, EX022, EX023)."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Even if a future simulation published totals only, which additional practice would still violate its results-use rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give participants immediate, kind feedback about the practice"
+        },
+        {
+          "id": "b",
+          "text": "Keep named results privately to penalise individual volunteers"
+        },
+        {
+          "id": "c",
+          "text": "Discuss programme-level learning needs without identifying participants"
+        },
+        {
+          "id": "d",
+          "text": "Withhold an individual ranking from the report and avoid using results against anyone"
+        }
+      ],
+      "correct": "b",
+      "explanation": "EX023 restricts both the form of reporting and how results may be used. A totals-only public report cannot justify a private punitive list. Immediate kind feedback is required, while programme-level discussion without identifying people is consistent with that boundary; neither entails ranking or punishment. Section 2.5 explains the importance of trust where volunteers can leave if they feel mistrusted. This is a conditional test of the rule, not collected simulation results, a real named list, an employment action or an approval to start simulations.",
+      "source": "Chapter 2, section 2.4 Simulations and ethics, feedback and results-use conditions; section 2.5 Safe practice summary, trust; Exercises EX023 Results use and EX025 Why habits matter more; Worked results (#worked-results; EX023, EX025)."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Ruth's safe-practice summary is pinned above her desk. Which next practice follows it without overstating what the reminder proves?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use announced role-play with synthetic examples; the pinned page alone does not prove procedures were practised"
+        },
+        {
+          "id": "b",
+          "text": "Send a surprise test, then explain that it was only role-play"
+        },
+        {
+          "id": "c",
+          "text": "Use real donor messages and identifiable records to make the exercise convincing"
+        },
+        {
+          "id": "d",
+          "text": "Mark everyone trained because Ruth has displayed the summary"
+        }
+      ],
+      "correct": "a",
+      "explanation": "Section 2.5 specifies synthetic examples and announced role-play rather than secret tests. EX026 locates Ruth's own reminder above her desk; it is not an attendance record or evidence that colleagues practised successfully. Surprise is still deception without agreement, and real identifiable material is not the synthetic training input selected here. EX024 supports practising the procedure openly while preserving the scope and asking before access changes. No role-play session, training result, real message or course completion is added to the fictional case.",
+      "source": "Chapter 2, section 2.5 Safe practice summary, synthetic examples, announced role-play and pinned note; Worked example; Errors and limits; Exercises EX024 Procedure practice and EX026 Pinned summary; Worked results (#worked-results; EX024, EX026)."
+    }
+  ]
+}
